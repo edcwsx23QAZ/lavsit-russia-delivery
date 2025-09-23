@@ -1,0 +1,26 @@
+{
+  "id": "prt_975c89e9f001bq4e4ZmSG3lVFg",
+  "messageID": "msg_975c6de77001PmXkBOFkyDhWUA",
+  "sessionID": "ses_68a64bdc5ffeVKHQcgswYhtY22",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Jix5tMjpegyNwb6m7dNfum",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  // Парсер деталей расчета для читаемого формата\n  const parseCalculationDetails = (calc: CalculationResult) => {\n    const details = [];",
+      "newString": "  // Парсер деталей расчета для читаемого формата\n  const parseCalculationDetails = (calc: CalculationResult) => {\n    const details: { service: string; description: string; price: number }[] = [];"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -518,9 +518,9 @@\n };\n \n // Парсер деталей расчета для читаемого формата\n const parseCalculationDetails = (calc: CalculationResult) => {\n-  const details = [];\n+  const details: { service: string; description: string; price: number }[] = [];\n   \n   if (calc.company === 'Деловые Линии' && calc.details) {\n     // Основная перевозка\n     if (calc.details.availableDeliveryTypes?.auto) {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758617707890,
+      "end": 1758617707896
+    }
+  }
+}

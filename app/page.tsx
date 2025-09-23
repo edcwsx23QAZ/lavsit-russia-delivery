@@ -94,6 +94,7 @@ export default function Home() {
   const [calculations, setCalculations] = useState<CalculationResult[]>([]);
   const [calculating, setCalculating] = useState(false);
   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});
+  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});
   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });
 
   // Загрузка сохраненных данных
@@ -471,6 +472,9 @@ export default function Home() {
     setCalculating(true);
     setCalculations([]);
     
+    // Сохраняем данные формы после расчета
+    localStorage.setItem('deliveryForm', JSON.stringify(form));
+    
     try {
       const results = await Promise.all([
         calculateDellin(),
@@ -504,6 +508,107 @@ export default function Home() {
       ...prev,
       [company]: !prev[company]
     }));
+  };
+
+  const toggleDebugInfo = (company: string) => {
+    setExpandedDebugInfo(prev => ({
+      ...prev,
+      [company]: !prev[company]
+    }));
+  };
+
+  // Парсер деталей расчета для читаемого формата
+  const parseCalculationDetails = (calc: CalculationResult) => {
+    const details: { service: string; description: string; price: number }[] = [];
+    
+    if (calc.company === 'Деловые Линии' && calc.details) {
+      // Основная перевозка
+      if (calc.details.availableDeliveryTypes?.auto) {
+        details.push({
+          service: 'Межтерминальная перевозка',
+          description: `${form.fromCity} - ${form.toCity}`,
+          price: calc.details.availableDeliveryTypes.auto
+        });
+      }
+      
+      // Забор груза
+      if (!form.fromTerminal && calc.details.derival?.price) {
+        details.push({
+          service: 'Забор груза',
+          description: 'От адреса',
+          price: calc.details.derival.price
+        });
+      }
+      
+      // Доставка груза
+      if (!form.toTerminal && calc.details.arrival?.price) {
+        details.push({
+          service: 'Отвоз груза',
+          description: 'До адреса',
+          price: calc.details.arrival.price
+        });
+      }
+      
+      // Страхование
+      if (form.needInsurance && calc.details.insurance) {
+        details.push({
+          service: 'Страхование груза и срока',
+          description: '',
+          price: calc.details.insurance
+        });
+        
+        if (form.declaredValue > 0) {
+          details.push({
+            service: 'Страхование груза',
+            description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
+            price: Math.round(form.declaredValue * 0.01)
+          });
+        }
+      }
+      
+      // Упаковка
+      if (form.needPackaging) {
+        const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
+        details.push({
+          service: 'Услуги на терминале отправителе',
+          description: 'Упаковка груза',
+          price: Math.round(totalWeight * 50)
+        });
+      }
+      
+      // Дополнительные услуги
+      details.push({
+        service: 'Доп.услуги',
+        description: 'Информирование о статусе груза',
+        price: 15
+      });
+    } else {
+      // Для других ТК - базовая информация
+      details.push({
+        service: 'Доставка груза',
+        description: `${form.fromCity} - ${form.toCity}`,
+        price: calc.price
+      });
+      
+      if (form.needInsurance && form.declaredValue > 0) {
+        details.push({
+          service: 'Страхование',
+          description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
+          price: Math.round(form.declaredValue * 0.02)
+        });
+      }
+      
+      if (form.needPackaging) {
+        const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
+        details.push({
+          service: 'Упаковка',
+          description: '',
+          price: Math.round(totalWeight * 30)
+        });
+      }
+    }
+    
+    return details;
   };
 
   return (
@@ -826,11 +931,54 @@ export default function Home() {
                               onClick={() => toggleDetails(calc.company)}
                               className="h-6 text-xs"
                             >
-                              {expandedDetails[calc.company] ? 'Скрыть детали' : 'Показать подробнее'}
+                              {expandedDetails[calc.company] ? 'Скрыть подробнее' : 'Показать подробнее'}
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => toggleDebugInfo(calc.company)}
+                              className="h-6 text-xs"
+                            >
+                              {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}
                             </Button>
                           </div>
                           
+                          {/* Детали расчета */}
                           <Collapsible open={expandedDetails[calc.company]}>
+                            <CollapsibleContent className="mt-2">
+                              <div className="bg-gray-900 p-3 rounded text-xs">
+                                <h4 className="font-bold mb-2 text-white">Детали расчета:</h4>
+                                {(() => {
+                                  const details = parseCalculationDetails(calc);
+                                  const totalPrice = details.reduce((sum, detail) => sum + detail.price, 0);
+                                  
+                                  return (
+                                    <div className="space-y-1">
+                                      {details.map((detail, idx) => (
+                                        <div key={idx} className="flex justify-between text-white">
+                                          <div>
+                                            <div className="font-medium">{detail.service}</div>
+                                            {detail.description && (
+                                              <div className="text-gray-400 text-xs">{detail.description}</div>
+                                            )}
+                                          </div>
+                                          <div className="font-medium">{detail.price.toLocaleString()} ₽</div>
+                                        </div>
+                                      ))}
+                                      <hr className="border-gray-600 my-2" />
+                                      <div className="flex justify-between font-bold text-white">
+                                        <div>К оплате по заказу:</div>
+                                        <div>{totalPrice.toLocaleString()} ₽</div>
+                                      </div>
+                                    </div>
+                                  );
+                                })()}
+                              </div>
+                            </CollapsibleContent>
+                          </Collapsible>
+                          
+                          {/* Отладочная информация */}
+                          <Collapsible open={expandedDebugInfo[calc.company]}>
                             <CollapsibleContent className="mt-2">
                               <div className="bg-gray-900 p-3 rounded text-xs">
                                 <h4 className="font-bold mb-2 text-white">Отладочная информация:</h4>
@@ -869,7 +1017,7 @@ export default function Home() {
                                 
                                 {calc.details && (
                                   <div className="mb-3">
-                                    <h5 className="font-bold mb-1 text-white">Детали расчета:</h5>
+                                    <h5 className="font-bold mb-1 text-white">Детали расчета (JSON):</h5>
                                     <pre className="whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs">
                                       {JSON.stringify(calc.details, null, 2)}
                                     </pre>

@@ -1,0 +1,26 @@
+{
+  "id": "prt_975c819d6001BJ9B1sH9MJ9rBD",
+  "messageID": "msg_975c6de77001PmXkBOFkyDhWUA",
+  "sessionID": "ses_68a64bdc5ffeVKHQcgswYhtY22",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Dfaa5SHL3qsgegskF9js1N",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Build project to test implementation"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:527:22\nType error: Argument of type '{ service: string; description: string; price: any; }' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 525 |\u001b[39m       \u001b[90m// Основная перевозка\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 526 |\u001b[39m       \u001b[36mif\u001b[39m (calc\u001b[33m.\u001b[39mdetails\u001b[33m.\u001b[39mavailableDeliveryTypes\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mauto) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 527 |\u001b[39m         details\u001b[33m.\u001b[39mpush({\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 528 |\u001b[39m           service\u001b[33m:\u001b[39m \u001b[32m'Межтерминальная перевозка'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 529 |\u001b[39m           description\u001b[33m:\u001b[39m \u001b[32m`${form.fromCity} - ${form.toCity}`\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 530 |\u001b[39m           price\u001b[33m:\u001b[39m calc\u001b[33m.\u001b[39mdetails\u001b[33m.\u001b[39mavailableDeliveryTypes\u001b[33m.\u001b[39mauto\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:527:22\nType error: Argument of type '{ service: string; description: string; price: any; }' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 525 |\u001b[39m       \u001b[90m// Основная перевозка\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 526 |\u001b[39m       \u001b[36mif\u001b[39m (calc\u001b[33m.\u001b[39mdetails\u001b[33m.\u001b[39mavailableDeliveryTypes\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mauto) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 527 |\u001b[39m         details\u001b[33m.\u001b[39mpush({\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 528 |\u001b[39m           service\u001b[33m:\u001b[39m \u001b[32m'Межтерминальная перевозка'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 529 |\u001b[39m           description\u001b[33m:\u001b[39m \u001b[32m`${form.fromCity} - ${form.toCity}`\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 530 |\u001b[39m           price\u001b[33m:\u001b[39m calc\u001b[33m.\u001b[39mdetails\u001b[33m.\u001b[39mavailableDeliveryTypes\u001b[33m.\u001b[39mauto\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build project to test implementation"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1758617672885,
+      "end": 1758617703018
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "prt_975c919ea001cgzoIrtC9Xvs7l",
+  "messageID": "msg_975c6de77001PmXkBOFkyDhWUA",
+  "sessionID": "ses_68a64bdc5ffeVKHQcgswYhtY22",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01MrunSVHUUwNwwAe7NQNTkq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run dev",
+      "timeout": 10000,
+      "description": "Start development server to test functionality"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env\n\n ✓ Starting...\n ✓ Ready in 1936ms\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env\n\n ✓ Starting...\n ✓ Ready in 1936ms\n",
+      "exit": null,
+      "description": "Start development server to test functionality"
+    },
+    "title": "cd /home/user/project && npm run dev",
+    "time": {
+      "start": 1758617738436,
+      "end": 1758617748445
+    }
+  }
+}
