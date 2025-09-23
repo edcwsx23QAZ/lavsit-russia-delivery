@@ -433,22 +433,188 @@ export default function Home() {
     }
   };
 
-  // Заглушки для других ТК
+  // Получение ID городов ПЭК по названию
+  const getPEKCityId = async (cityName: string): Promise<number | null> => {
+    try {
+      // Хардкод основных городов для демонстрации
+      const cityMappings: { [key: string]: number } = {
+        'москва': -457,
+        'санкт-петербург': 64883,
+        'спб': 64883,
+        'екатеринбург': 65102,
+        'новосибирск': 65398,
+        'краснодар': 65294,
+        'ростов-на-дону': 65456,
+        'казань': 65265,
+        'нижний новгород': 65392,
+        'самара': 65469,
+        'уфа': 65533,
+        'красноярск': 65300,
+        'пермь': 65419,
+        'воронеж': 65122,
+        'волгоград': 65118
+      };
+      
+      const normalizedCity = cityName.toLowerCase().trim();
+      return cityMappings[normalizedCity] || null;
+    } catch (error) {
+      console.error('Ошибка получения ID города ПЭК:', error);
+      return null;
+    }
+  };
+
+  // Расчет для ПЭК
   const calculatePEK = async (): Promise<CalculationResult> => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    const basePrice = form.cargos.reduce((sum, cargo) => sum + cargo.weight * 15, 0);
-    let totalPrice = basePrice;
+    const apiUrl = 'http://calc.pecom.ru/bitrix/components/pecom/calc/ajax.php';
     
-    if (form.needInsurance) totalPrice += form.declaredValue * 0.02;
-    if (form.needPackaging) totalPrice += basePrice * 0.1;
-    
-    return {
-      company: 'ПЭК',
-      price: totalPrice,
-      days: 3,
-      apiUrl: 'https://pecom.ru/business/developers/api_public/',
-      details: { note: 'Заглушка - API не реализован' }
-    };
+    try {
+      // Получаем ID городов
+      const fromCityId = await getPEKCityId(form.fromCity);
+      const toCityId = await getPEKCityId(form.toCity);
+      
+      if (!fromCityId || !toCityId) {
+        return {
+          company: 'ПЭК',
+          price: 0,
+          days: 0,
+          error: 'Город не найден в базе ПЭК',
+          apiUrl
+        };
+      }
+
+      // Формируем параметры запроса
+      const params = new URLSearchParams();
+      
+      // Добавляем грузы
+      form.cargos.forEach((cargo, index) => {
+        const width = cargo.width / 100; // переводим в метры
+        const length = cargo.length / 100;
+        const height = cargo.height / 100;
+        const volume = width * length * height;
+        const weight = cargo.weight;
+        const isOversized = (width > 2.4 || length > 12 || height > 2.7 || weight > 1500) ? 1 : 0;
+        const needZTU = form.needPackaging ? 1 : 0;
+        
+        params.append(`places[${index}][]`, width.toString());
+        params.append(`places[${index}][]`, length.toString());
+        params.append(`places[${index}][]`, height.toString());
+        params.append(`places[${index}][]`, volume.toString());
+        params.append(`places[${index}][]`, weight.toString());
+        params.append(`places[${index}][]`, isOversized.toString());
+        params.append(`places[${index}][]`, needZTU.toString());
+      });
+      
+      // Параметры забора
+      params.append('take[town]', fromCityId.toString());
+      params.append('take[tent]', '0'); // растентровка
+      params.append('take[gidro]', form.needLoading ? '1' : '0'); // гидролифт
+      params.append('take[manip]', '0'); // манипулятор
+      params.append('take[speed]', '0'); // срочный забор
+      params.append('take[moscow]', '0'); // ограничения по Москве
+      
+      // Параметры доставки
+      params.append('deliver[town]', toCityId.toString());
+      params.append('deliver[tent]', '0');
+      params.append('deliver[gidro]', form.needLoading ? '1' : '0');
+      params.append('deliver[manip]', '0');
+      params.append('deliver[speed]', '0');
+      params.append('deliver[moscow]', '0');
+      
+      // Дополнительные услуги
+      params.append('plombir', '0'); // пломбы
+      params.append('strah', form.needInsurance ? form.declaredValue.toString() : '0'); // страховка
+      params.append('ashan', '0'); // доставка в Ашан
+      params.append('night', '0'); // ночное время
+      params.append('pal', '0'); // запаллечивание
+      params.append('pallets', '0'); // паллетная перевозка
+
+      const fullUrl = `${apiUrl}?${params.toString()}`;
+      const requestData = Object.fromEntries(params);
+
+      const response = await fetch(fullUrl, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      const data = await response.json();
+
+      if (response.ok && !data.error?.length) {
+        let totalPrice = 0;
+        let services: { name: string; description: string; price: number }[] = [];
+        
+        // Собираем стоимость услуг
+        if (data.take?.[2]) {
+          totalPrice += parseFloat(data.take[2]);
+          services.push({ name: data.take[0], description: data.take[1], price: parseFloat(data.take[2]) });
+        }
+        
+        if (data.auto?.[2]) {
+          totalPrice += parseFloat(data.auto[2]);
+          services.push({ name: data.auto[0], description: data.auto[1], price: parseFloat(data.auto[2]) });
+        } else if (data.autonegabarit?.[2]) {
+          totalPrice += parseFloat(data.autonegabarit[2]);
+          services.push({ name: data.autonegabarit[0], description: data.autonegabarit[1], price: parseFloat(data.autonegabarit[2]) });
+        }
+        
+        if (data.deliver?.[2]) {
+          totalPrice += parseFloat(data.deliver[2]);
+          services.push({ name: data.deliver[0], description: data.deliver[1], price: parseFloat(data.deliver[2]) });
+        }
+        
+        // Дополнительные услуги
+        ['ADD', 'ADD_1', 'ADD_2', 'ADD_3', 'ADD_4'].forEach(key => {
+          if (data[key]?.[2] && parseFloat(data[key][2]) > 0) {
+            totalPrice += parseFloat(data[key][2]);
+            services.push({ name: data[key][0], description: data[key][1], price: parseFloat(data[key][2]) });
+          }
+        });
+        
+        // Определяем срок доставки
+        let deliveryDays = 3; // по умолчанию
+        if (data.periods) {
+          const daysMatch = data.periods.match(/(\d+)\s*дн/);
+          if (daysMatch) {
+            deliveryDays = parseInt(daysMatch[1]);
+          }
+        }
+
+        return {
+          company: 'ПЭК',
+          price: Math.round(totalPrice),
+          days: deliveryDays,
+          details: {
+            services,
+            periods: data.periods,
+            aperiods: data.aperiods,
+            rawData: data
+          },
+          requestData,
+          responseData: data,
+          apiUrl: fullUrl
+        };
+      } else {
+        const errorMessages = data.error?.join(', ') || 'Неизвестная ошибка';
+        return {
+          company: 'ПЭК',
+          price: 0,
+          days: 0,
+          error: errorMessages,
+          requestData,
+          responseData: data,
+          apiUrl: fullUrl
+        };
+      }
+    } catch (error: any) {
+      return {
+        company: 'ПЭК',
+        price: 0,
+        days: 0,
+        error: `Ошибка соединения: ${error.message}`,
+        apiUrl
+      };
+    }
   };
 
   const calculateRailContinent = async (): Promise<CalculationResult> => {
@@ -581,6 +747,17 @@ export default function Home() {
         service: 'Доп.услуги',
         description: 'Информирование о статусе груза',
         price: 15
+      });
+    } else if (calc.company === 'ПЭК' && calc.details?.services) {
+      // Для ПЭК используем данные из API
+      calc.details.services.forEach((service: any) => {
+        if (service.price > 0) {
+          details.push({
+            service: service.name || 'Услуга ПЭК',
+            description: service.description || '',
+            price: service.price
+          });
+        }
       });
     } else {
       // Для других ТК - базовая информация

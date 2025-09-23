@@ -1,0 +1,26 @@
+{
+  "id": "prt_975d370b5001J85g5Z6LKAs9WL",
+  "messageID": "msg_975d1560c001oNfdYZ7oowGpiJ",
+  "sessionID": "ses_68a64bdc5ffeVKHQcgswYhtY22",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01NXAdatNjXYpMh5YfSN1QNE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Build project to test ПЭК implementation"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:550:25\nType error: Argument of type '{ name: any; description: any; price: number; }' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 548 |\u001b[39m         \u001b[36mif\u001b[39m (data\u001b[33m.\u001b[39mtake\u001b[33m?\u001b[39m\u001b[33m.\u001b[39m[\u001b[35m2\u001b[39m]) {\u001b[0m\n\u001b[0m \u001b[90m 549 |\u001b[39m           totalPrice \u001b[33m+=\u001b[39m parseFloat(data\u001b[33m.\u001b[39mtake[\u001b[35m2\u001b[39m])\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 550 |\u001b[39m           services\u001b[33m.\u001b[39mpush({ name\u001b[33m:\u001b[39m data\u001b[33m.\u001b[39mtake[\u001b[35m0\u001b[39m]\u001b[33m,\u001b[39m description\u001b[33m:\u001b[39m data\u001b[33m.\u001b[39mtake[\u001b[35m1\u001b[39m]\u001b[33m,\u001b[39m price\u001b[33m:\u001b[39m parseFloat(data\u001b[33m.\u001b[39mtake[\u001b[35m2\u001b[39m]) })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 551 |\u001b[39m         }\u001b[0m\n\u001b[0m \u001b[90m 552 |\u001b[39m         \u001b[0m\n\u001b[0m \u001b[90m 553 |\u001b[39m         \u001b[36mif\u001b[39m (data\u001b[33m.\u001b[39mauto\u001b[33m?\u001b[39m\u001b[33m.\u001b[39m[\u001b[35m2\u001b[39m]) {\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:550:25\nType error: Argument of type '{ name: any; description: any; price: number; }' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 548 |\u001b[39m         \u001b[36mif\u001b[39m (data\u001b[33m.\u001b[39mtake\u001b[33m?\u001b[39m\u001b[33m.\u001b[39m[\u001b[35m2\u001b[39m]) {\u001b[0m\n\u001b[0m \u001b[90m 549 |\u001b[39m           totalPrice \u001b[33m+=\u001b[39m parseFloat(data\u001b[33m.\u001b[39mtake[\u001b[35m2\u001b[39m])\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 550 |\u001b[39m           services\u001b[33m.\u001b[39mpush({ name\u001b[33m:\u001b[39m data\u001b[33m.\u001b[39mtake[\u001b[35m0\u001b[39m]\u001b[33m,\u001b[39m description\u001b[33m:\u001b[39m data\u001b[33m.\u001b[39mtake[\u001b[35m1\u001b[39m]\u001b[33m,\u001b[39m price\u001b[33m:\u001b[39m parseFloat(data\u001b[33m.\u001b[39mtake[\u001b[35m2\u001b[39m]) })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 551 |\u001b[39m         }\u001b[0m\n\u001b[0m \u001b[90m 552 |\u001b[39m         \u001b[0m\n\u001b[0m \u001b[90m 553 |\u001b[39m         \u001b[36mif\u001b[39m (data\u001b[33m.\u001b[39mauto\u001b[33m?\u001b[39m\u001b[33m.\u001b[39m[\u001b[35m2\u001b[39m]) {\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build project to test ПЭК implementation"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1758618416057,
+      "end": 1758618431396
+    }
+  }
+}

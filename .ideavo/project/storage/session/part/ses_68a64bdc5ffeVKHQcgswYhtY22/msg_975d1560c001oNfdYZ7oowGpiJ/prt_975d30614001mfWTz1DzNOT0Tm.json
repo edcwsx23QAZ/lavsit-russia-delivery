@@ -1,0 +1,25 @@
+{
+  "id": "prt_975d30614001mfWTz1DzNOT0Tm",
+  "messageID": "msg_975d1560c001oNfdYZ7oowGpiJ",
+  "sessionID": "ses_68a64bdc5ffeVKHQcgswYhtY22",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Lypukm9QZwYiitX9bKW5Ca",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 570,
+      "limit": 70
+    },
+    "output": "<file>\n00571|           }\n00572|         });\n00573|         \n00574|         // Определяем срок доставки\n00575|         let deliveryDays = 3; // по умолчанию\n00576|         if (data.periods) {\n00577|           const daysMatch = data.periods.match(/(\\d+)\\s*дн/);\n00578|           if (daysMatch) {\n00579|             deliveryDays = parseInt(daysMatch[1]);\n00580|           }\n00581|         }\n00582| \n00583|         return {\n00584|           company: 'ПЭК',\n00585|           price: Math.round(totalPrice),\n00586|           days: deliveryDays,\n00587|           details: {\n00588|             services,\n00589|             periods: data.periods,\n00590|             aperiods: data.aperiods,\n00591|             rawData: data\n00592|           },\n00593|           requestData,\n00594|           responseData: data,\n00595|           apiUrl: fullUrl\n00596|         };\n00597|       } else {\n00598|         const errorMessages = data.error?.join(', ') || 'Неизвестная ошибка';\n00599|         return {\n00600|           company: 'ПЭК',\n00601|           price: 0,\n00602|           days: 0,\n00603|           error: errorMessages,\n00604|           requestData,\n00605|           responseData: data,\n00606|           apiUrl: fullUrl\n00607|         };\n00608|       }\n00609|     } catch (error: any) {\n00610|       return {\n00611|         company: 'ПЭК',\n00612|         price: 0,\n00613|         days: 0,\n00614|         error: `Ошибка соединения: ${error.message}`,\n00615|         apiUrl\n00616|       };\n00617|     }\n00618|   };\n00619| \n00620|   const calculateRailContinent = async (): Promise<CalculationResult> => {\n00621|     await new Promise(resolve => setTimeout(resolve, 1200));\n00622|     const basePrice = form.cargos.reduce((sum, cargo) => sum + cargo.weight * 12, 0);\n00623|     let totalPrice = basePrice;\n00624|     \n00625|     if (form.needInsurance) totalPrice += form.declaredValue * 0.025;\n00626|     if (form.needPackaging) totalPrice += basePrice * 0.08;\n00627|     \n00628|     return {\n00629|       company: 'Rail Continent',\n00630|       price: totalPrice,\n00631|       days: 5,\n00632|       apiUrl: 'https://www.railcontinent.ru/services/prochie-gruzoperevozki/forshop/api-manual/',\n00633|       details: { note: 'Заглушка - API не реализован' }\n00634|     };\n00635|   };\n00636| \n00637|   const handleCalculate = async () => {\n00638|     setCalculating(true);\n00639|     setCalculations([]);\n00640|     \n\n(File has more lines. Use 'offset' parameter to read beyond line 640)\n</file>",
+    "metadata": {
+      "preview": "          }\n        });\n        \n        // Определяем срок доставки\n        let deliveryDays = 3; // по умолчанию\n        if (data.periods) {\n          const daysMatch = data.periods.match(/(\\d+)\\s*дн/);\n          if (daysMatch) {\n            deliveryDays = parseInt(daysMatch[1]);\n          }\n        }\n\n        return {\n          company: 'ПЭК',\n          price: Math.round(totalPrice),\n          days: deliveryDays,\n          details: {\n            services,\n            periods: data.periods,\n            aperiods: data.aperiods,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758618388892,
+      "end": 1758618388894
+    }
+  }
+}

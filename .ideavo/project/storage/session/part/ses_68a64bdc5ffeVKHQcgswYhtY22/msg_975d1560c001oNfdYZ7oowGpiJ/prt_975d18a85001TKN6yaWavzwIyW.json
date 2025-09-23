@@ -1,0 +1,25 @@
+{
+  "id": "prt_975d18a85001TKN6yaWavzwIyW",
+  "messageID": "msg_975d1560c001oNfdYZ7oowGpiJ",
+  "sessionID": "ses_68a64bdc5ffeVKHQcgswYhtY22",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Fti4MMxeJtBALw2dnPHnGZ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 435,
+      "limit": 50
+    },
+    "output": "<file>\n00436|   // Заглушки для других ТК\n00437|   const calculatePEK = async (): Promise<CalculationResult> => {\n00438|     await new Promise(resolve => setTimeout(resolve, 1000));\n00439|     const basePrice = form.cargos.reduce((sum, cargo) => sum + cargo.weight * 15, 0);\n00440|     let totalPrice = basePrice;\n00441|     \n00442|     if (form.needInsurance) totalPrice += form.declaredValue * 0.02;\n00443|     if (form.needPackaging) totalPrice += basePrice * 0.1;\n00444|     \n00445|     return {\n00446|       company: 'ПЭК',\n00447|       price: totalPrice,\n00448|       days: 3,\n00449|       apiUrl: 'https://pecom.ru/business/developers/api_public/',\n00450|       details: { note: 'Заглушка - API не реализован' }\n00451|     };\n00452|   };\n00453| \n00454|   const calculateRailContinent = async (): Promise<CalculationResult> => {\n00455|     await new Promise(resolve => setTimeout(resolve, 1200));\n00456|     const basePrice = form.cargos.reduce((sum, cargo) => sum + cargo.weight * 12, 0);\n00457|     let totalPrice = basePrice;\n00458|     \n00459|     if (form.needInsurance) totalPrice += form.declaredValue * 0.025;\n00460|     if (form.needPackaging) totalPrice += basePrice * 0.08;\n00461|     \n00462|     return {\n00463|       company: 'Rail Continent',\n00464|       price: totalPrice,\n00465|       days: 5,\n00466|       apiUrl: 'https://www.railcontinent.ru/services/prochie-gruzoperevozki/forshop/api-manual/',\n00467|       details: { note: 'Заглушка - API не реализован' }\n00468|     };\n00469|   };\n00470| \n00471|   const handleCalculate = async () => {\n00472|     setCalculating(true);\n00473|     setCalculations([]);\n00474|     \n00475|     // Сохраняем данные формы после расчета\n00476|     localStorage.setItem('deliveryForm', JSON.stringify(form));\n00477|     \n00478|     try {\n00479|       const results = await Promise.all([\n00480|         calculateDellin(),\n00481|         calculatePEK(),\n00482|         calculateNordWheel(),\n00483|         calculateRailContinent()\n00484|       ]);\n00485|       \n\n(File has more lines. Use 'offset' parameter to read beyond line 485)\n</file>",
+    "metadata": {
+      "preview": "  // Заглушки для других ТК\n  const calculatePEK = async (): Promise<CalculationResult> => {\n    await new Promise(resolve => setTimeout(resolve, 1000));\n    const basePrice = form.cargos.reduce((sum, cargo) => sum + cargo.weight * 15, 0);\n    let totalPrice = basePrice;\n    \n    if (form.needInsurance) totalPrice += form.declaredValue * 0.02;\n    if (form.needPackaging) totalPrice += basePrice * 0.1;\n    \n    return {\n      company: 'ПЭК',\n      price: totalPrice,\n      days: 3,\n      apiUrl: 'https://pecom.ru/business/developers/api_public/',\n      details: { note: 'Заглушка - API не реализован' }\n    };\n  };\n\n  const calculateRailContinent = async (): Promise<CalculationResult> => {\n    await new Promise(resolve => setTimeout(resolve, 1200));"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758618291812,
+      "end": 1758618291815
+    }
+  }
+}

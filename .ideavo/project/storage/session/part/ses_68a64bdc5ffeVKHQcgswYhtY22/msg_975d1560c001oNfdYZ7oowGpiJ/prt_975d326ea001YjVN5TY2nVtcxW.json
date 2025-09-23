@@ -1,0 +1,26 @@
+{
+  "id": "prt_975d326ea001YjVN5TY2nVtcxW",
+  "messageID": "msg_975d1560c001oNfdYZ7oowGpiJ",
+  "sessionID": "ses_68a64bdc5ffeVKHQcgswYhtY22",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01VZDVXne4SoKZxbak1gh49m",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    } else {\n      // Для других ТК - базовая информация\n      details.push({\n        service: 'Доставка груза',\n        description: `${form.fromCity} - ${form.toCity}`,\n        price: calc.price\n      });\n      \n      if (form.needInsurance && form.declaredValue > 0) {\n        details.push({\n          service: 'Страхование',\n          description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n          price: Math.round(form.declaredValue * 0.02)\n        });\n      }\n      \n      if (form.needPackaging) {\n        const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n        details.push({\n          service: 'Упаковка',\n          description: '',\n          price: Math.round(totalWeight * 30)\n        });\n      }\n    }",
+      "newString": "    } else if (calc.company === 'ПЭК' && calc.details?.services) {\n      // Для ПЭК используем данные из API\n      calc.details.services.forEach((service: any) => {\n        if (service.price > 0) {\n          details.push({\n            service: service.name || 'Услуга ПЭК',\n            description: service.description || '',\n            price: service.price\n          });\n        }\n      });\n    } else {\n      // Для других ТК - базовая информация\n      details.push({\n        service: 'Доставка груза',\n        description: `${form.fromCity} - ${form.toCity}`,\n        price: calc.price\n      });\n      \n      if (form.needInsurance && form.declaredValue > 0) {\n        details.push({\n          service: 'Страхование',\n          description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n          price: Math.round(form.declaredValue * 0.02)\n        });\n      }\n      \n      if (form.needPackaging) {\n        const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n        details.push({\n          service: 'Упаковка',\n          description: '',\n          price: Math.round(totalWeight * 30)\n        });\n      }\n    }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -747,8 +747,19 @@\n     service: 'Доп.услуги',\n     description: 'Информирование о статусе груза',\n     price: 15\n   });\n+} else if (calc.company === 'ПЭК' && calc.details?.services) {\n+  // Для ПЭК используем данные из API\n+  calc.details.services.forEach((service: any) => {\n+    if (service.price > 0) {\n+      details.push({\n+        service: service.name || 'Услуга ПЭК',\n+        description: service.description || '',\n+        price: service.price\n+      });\n+    }\n+  });\n } else {\n   // Для других ТК - базовая информация\n   details.push({\n     service: 'Доставка груза',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758618402955,
+      "end": 1758618402966
+    }
+  }
+}

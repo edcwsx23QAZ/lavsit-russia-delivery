@@ -1,0 +1,25 @@
+{
+  "id": "prt_975d318d0001mbGF63xgkBXkCZ",
+  "messageID": "msg_975d1560c001oNfdYZ7oowGpiJ",
+  "sessionID": "ses_68a64bdc5ffeVKHQcgswYhtY22",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01TFxX84pnEubH8simAWW43m",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 710,
+      "limit": 50
+    },
+    "output": "<file>\n00711|         details.push({\n00712|           service: 'Отвоз груза',\n00713|           description: 'До адреса',\n00714|           price: calc.details.arrival.price\n00715|         });\n00716|       }\n00717|       \n00718|       // Страхование\n00719|       if (form.needInsurance && calc.details.insurance) {\n00720|         details.push({\n00721|           service: 'Страхование груза и срока',\n00722|           description: '',\n00723|           price: calc.details.insurance\n00724|         });\n00725|         \n00726|         if (form.declaredValue > 0) {\n00727|           details.push({\n00728|             service: 'Страхование груза',\n00729|             description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n00730|             price: Math.round(form.declaredValue * 0.01)\n00731|           });\n00732|         }\n00733|       }\n00734|       \n00735|       // Упаковка\n00736|       if (form.needPackaging) {\n00737|         const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n00738|         details.push({\n00739|           service: 'Услуги на терминале отправителе',\n00740|           description: 'Упаковка груза',\n00741|           price: Math.round(totalWeight * 50)\n00742|         });\n00743|       }\n00744|       \n00745|       // Дополнительные услуги\n00746|       details.push({\n00747|         service: 'Доп.услуги',\n00748|         description: 'Информирование о статусе груза',\n00749|         price: 15\n00750|       });\n00751|     } else {\n00752|       // Для других ТК - базовая информация\n00753|       details.push({\n00754|         service: 'Доставка груза',\n00755|         description: `${form.fromCity} - ${form.toCity}`,\n00756|         price: calc.price\n00757|       });\n00758|       \n00759|       if (form.needInsurance && form.declaredValue > 0) {\n00760|         details.push({\n\n(File has more lines. Use 'offset' parameter to read beyond line 760)\n</file>",
+    "metadata": {
+      "preview": "        details.push({\n          service: 'Отвоз груза',\n          description: 'До адреса',\n          price: calc.details.arrival.price\n        });\n      }\n      \n      // Страхование\n      if (form.needInsurance && calc.details.insurance) {\n        details.push({\n          service: 'Страхование груза и срока',\n          description: '',\n          price: calc.details.insurance\n        });\n        \n        if (form.declaredValue > 0) {\n          details.push({\n            service: 'Страхование груза',\n            description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n            price: Math.round(form.declaredValue * 0.01)"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758618393365,
+      "end": 1758618393367
+    }
+  }
+}
