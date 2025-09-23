@@ -1,0 +1,61 @@
+{
+  "id": "prt_9759b4dd2001Df6WuElXtuQa6l",
+  "messageID": "msg_9759b451a001p1cCnqZ47vtvWy",
+  "sessionID": "ses_68a64bdc5ffeVKHQcgswYhtY22",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01P3wDzPktBaQBBte5yg3Pn8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Добавить авторизацию в API Деловых Линий",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Исправить структуру запроса согласно документации",
+          "status": "pending",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Проверить соответствие всем правилам API",
+          "status": "pending",
+          "priority": "medium",
+          "id": "3"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Добавить авторизацию в API Деловых Линий\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"1\"\n  },\n  {\n    \"content\": \"Исправить структуру запроса согласно документации\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"2\"\n  },\n  {\n    \"content\": \"Проверить соответствие всем правилам API\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"3\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Добавить авторизацию в API Деловых Линий",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Исправить структуру запроса согласно документации",
+          "status": "pending",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Проверить соответствие всем правилам API",
+          "status": "pending",
+          "priority": "medium",
+          "id": "3"
+        }
+      ]
+    },
+    "title": "3 todos",
+    "time": {
+      "start": 1758614738639,
+      "end": 1758614738649
+    }
+  }
+}
