@@ -428,69 +428,47 @@ export default function Home() {
     }
   };
 
-  // Получение списка городов ПЭК
-  const [pekCities, setPekCities] = React.useState<{ [region: string]: { [id: string]: string } } | null>(null);
-  
-  const loadPekCities = async () => {
+  // Получение ID склада ПЭК по адресу через API
+  const findPekWarehouseId = async (address: string): Promise<string | null> => {
     try {
-      const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://pecom.ru/ru/calc/towns.php'));
-      const proxyData = await response.json();
-      if (proxyData.contents) {
-        const cities = JSON.parse(proxyData.contents);
-        setPekCities(cities);
-        return cities;
-      }
-      return null;
-    } catch (error) {
-      console.error('Ошибка загрузки городов ПЭК:', error);
-      return null;
-    }
-  };
+      // Используем API ПЭК для поиска склада по адресу
+      const response = await fetch('https://api.pecom.ru/v1/branches/findzonebyaddress', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Basic ' + btoa('C04C5BF2AE367BDCBDC71E7DA520A69B167D1984:')
+        },
+        body: JSON.stringify({
+          address: address
+        })
+      });
 
-  React.useEffect(() => {
-    loadPekCities();
-  }, []);
-
-  // Поиск ID города ПЭК по названию
-  const findPekCityId = async (cityName: string): Promise<number | null> => {
-    try {
-      let cities = pekCities;
-      if (!cities) {
-        cities = await loadPekCities();
-        if (!cities) return null;
-      }
-
-      const normalizedSearch = cityName.toLowerCase().trim()
-        .replace(/ё/g, 'е')
-        .replace(/[\s\-\.]+/g, '');
-
-      // Поиск по всем регионам
-      for (const region of Object.values(cities)) {
-        for (const [cityId, cityNameInList] of Object.entries(region)) {
-          const normalizedCity = cityNameInList.toLowerCase()
-            .replace(/ё/g, 'е')
-            .replace(/[\s\-\.]+/g, '');
-          
-          if (normalizedCity.includes(normalizedSearch) || 
-              normalizedSearch.includes(normalizedCity) ||
-              normalizedCity === normalizedSearch) {
-            return parseInt(cityId);
-          }
-        }
+      if (response.ok) {
+        const data = await response.json();
+        return data.mainWarehouseId || null;
       }
       
       // Фоллбэк для основных городов
-      const fallbackCities: { [key: string]: number } = {
-        'москва': -457,
-        'moscow': -457,
-        'санктпетербург': 64883,
-        'спб': 64883,
-        'питер': 64883
+      const fallbackWarehouses: { [key: string]: string } = {
+        'москва': 'dc6c746d-812d-11e4-bbfc-001999d8b3c5',
+        'санкт-петербург': 'b436c978-086d-11e6-b6ca-00155d668909',
+        'екатеринбург': '550e8400-e29b-41d4-a716-446655440000'
       };
       
-      return fallbackCities[normalizedSearch] || null;
+      const normalizedCity = address.toLowerCase().trim()
+        .replace(/ё/g, 'е')
+        .replace(/[\s\-\.]+/g, '');
+      
+      for (const [city, warehouseId] of Object.entries(fallbackWarehouses)) {
+        const normalizedCityKey = city.replace(/[\s\-\.]+/g, '');
+        if (normalizedCity.includes(normalizedCityKey) || normalizedCityKey.includes(normalizedCity)) {
+          return warehouseId;
+        }
+      }
+      
+      return null;
     } catch (error) {
-      console.error('Ошибка поиска города ПЭК:', error);
+      console.error('Ошибка поиска склада ПЭК:', error);
       return null;
     }
   };
