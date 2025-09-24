@@ -1,0 +1,74 @@
+{
+  "id": "prt_97ada1569001O9VxtUuLmZTegl",
+  "messageID": "msg_97ad87c320016uoZFX7OuqDvVp",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01K6QmboLP5iU54F6dV1qD4R",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "          derival: {\n            variant: form.fromTerminal ? 'terminal' : 'address',\n            address: {\n              search: form.fromAddress || form.fromCity\n            },",
+          "newString": "          derival: {\n            variant: form.fromTerminal ? 'terminal' : 'address',\n            address: {\n              search: form.fromTerminal ? form.fromCity : (form.fromAddress || form.fromCity)\n            },"
+        },
+        {
+          "oldString": "          arrival: {\n            variant: form.toTerminal ? 'terminal' : 'address',\n            address: {\n              search: form.toAddress || form.toCity\n            },",
+          "newString": "          arrival: {\n            variant: form.toTerminal ? 'terminal' : 'address',\n            address: {\n              search: form.toTerminal ? form.toCity : (form.toAddress || form.toCity)\n            },"
+        },
+        {
+          "oldString": "        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: data.metadata?.detail || data.metadata?.message || 'Ошибка расчета',\n          requestData,\n          responseData: data,\n          apiUrl,\n          sessionId: sessionID\n        };",
+          "newString": "        const errorMessage = data.metadata?.detail || data.metadata?.message || data.errors?.[0]?.detail || JSON.stringify(data) || 'Ошибка расчета';\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: errorMessage,\n          requestData,\n          responseData: data,\n          apiUrl,\n          sessionId: sessionID\n        };"
+        },
+        {
+          "oldString": "      if (response.ok && data.data) {",
+          "newString": "      if (response.ok && data.data && !data.errors) {"
+        },
+        {
+          "oldString": "        // Получаем цену за доставку\n        if (data.data.availableDeliveryTypes?.auto) {\n          totalPrice = data.data.availableDeliveryTypes.auto;\n        } else if (data.data.price) {\n          totalPrice = data.data.price;\n        }\n        \n        // Добавляем стоимость страховки\n        if (form.needInsurance && data.data.insurance) {\n          totalPrice += data.data.insurance;\n        }\n        \n        // Добавляем стоимость упаковки (если включена)\n        if (form.needPackaging) {\n          totalPrice += Math.round(totalWeight * 50);\n        }",
+          "newString": "        // Получаем полную стоимость доставки\n        if (data.data.orderPrice?.totalPrice) {\n          totalPrice = data.data.orderPrice.totalPrice;\n        } else if (data.data.availableDeliveryTypes?.auto) {\n          totalPrice = data.data.availableDeliveryTypes.auto;\n        } else if (data.data.price) {\n          totalPrice = data.data.price;\n        }\n        \n        // Если полная стоимость не найдена, собираем вручную\n        if (!totalPrice && data.data.orderPrice) {\n          totalPrice = (data.data.orderPrice.insurance || 0) + \n                       (data.data.orderPrice.derival || 0) + \n                       (data.data.orderPrice.intercity || 0) + \n                       (data.data.orderPrice.arrival || 0);\n        }"
+        },
+        {
+          "oldString": "        'красноярск': 65300,\n        'пермь': 65419,\n        'воронеж': 65122,\n        'волгоград': 65118",
+          "newString": "        'красноярск': 65300,\n        'пермь': 65419,\n        'воронеж': 65122,\n        'волгоград': 65118,\n        'тула': 65518,\n        'иваново': 65228,\n        'тверь': 65503,\n        'ярославль': 65564,\n        'рязань': 65461,\n        'владимир': 65109,\n        'калуга': 65267,\n        'орел': 65408,\n        'курск': 65306,\n        'белгород': 65070,\n        'липецк': 65324,\n        'тамбов': 65499,\n        'брянск': 65082,\n        'смоленск': 65492"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -258,9 +258,9 @@\n },\n derival: {\n   variant: form.fromTerminal ? 'terminal' : 'address',\n   address: {\n-    search: form.fromAddress || form.fromCity\n+    search: form.fromTerminal ? form.fromCity : (form.fromAddress || form.fromCity)\n   },\n   handling: form.needCarry ? {\n     freightLift: form.hasFreightLift,\n     toFloor: form.floor,\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -269,9 +269,9 @@\n },\n arrival: {\n   variant: form.toTerminal ? 'terminal' : 'address',\n   address: {\n-    search: form.toAddress || form.toCity\n+    search: form.toTerminal ? form.toCity : (form.toAddress || form.toCity)\n   },\n   handling: form.needCarry ? {\n     freightLift: form.hasFreightLift,\n     toFloor: form.floor,\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -344,13 +344,14 @@\n     apiUrl,\n     sessionId: sessionID\n   };\n } else {\n+  const errorMessage = data.metadata?.detail || data.metadata?.message || data.errors?.[0]?.detail || JSON.stringify(data) || 'Ошибка расчета';\n   return {\n     company: 'Деловые Линии',\n     price: 0,\n     days: 0,\n-    error: data.metadata?.detail || data.metadata?.message || 'Ошибка расчета',\n+    error: errorMessage,\n     requestData,\n     responseData: data,\n     apiUrl,\n     sessionId: sessionID\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -313,9 +313,9 @@\n });\n \n const data = await response.json();\n \n-if (response.ok && data.data) {\n+if (response.ok && data.data && !data.errors) {\n   let totalPrice = 0;\n   \n   // Получаем цену за доставку\n   if (data.data.availableDeliveryTypes?.auto) {\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -316,24 +316,24 @@\n \n if (response.ok && data.data && !data.errors) {\n   let totalPrice = 0;\n   \n-  // Получаем цену за доставку\n-  if (data.data.availableDeliveryTypes?.auto) {\n+  // Получаем полную стоимость доставки\n+  if (data.data.orderPrice?.totalPrice) {\n+    totalPrice = data.data.orderPrice.totalPrice;\n+  } else if (data.data.availableDeliveryTypes?.auto) {\n     totalPrice = data.data.availableDeliveryTypes.auto;\n   } else if (data.data.price) {\n     totalPrice = data.data.price;\n   }\n   \n-  // Добавляем стоимость страховки\n-  if (form.needInsurance && data.data.insurance) {\n-    totalPrice += data.data.insurance;\n+  // Если полная стоимость не найдена, собираем вручную\n+  if (!totalPrice && data.data.orderPrice) {\n+    totalPrice = (data.data.orderPrice.insurance || 0) + \n+                 (data.data.orderPrice.derival || 0) + \n+                 (data.data.orderPrice.intercity || 0) + \n+                 (data.data.orderPrice.arrival || 0);\n   }\n-  \n-  // Добавляем стоимость упаковки (если включена)\n-  if (form.needPackaging) {\n-    totalPrice += Math.round(totalWeight * 50);\n-  }\n \n   return {\n     company: 'Деловые Линии',\n     price: totalPrice,\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -465,9 +465,23 @@\n   'уфа': 65533,\n   'красноярск': 65300,\n   'пермь': 65419,\n   'воронеж': 65122,\n-  'волгоград': 65118\n+  'волгоград': 65118,\n+  'тула': 65518,\n+  'иваново': 65228,\n+  'тверь': 65503,\n+  'ярославль': 65564,\n+  'рязань': 65461,\n+  'владимир': 65109,\n+  'калуга': 65267,\n+  'орел': 65408,\n+  'курск': 65306,\n+  'белгород': 65070,\n+  'липецк': 65324,\n+  'тамбов': 65499,\n+  'брянск': 65082,\n+  'смоленск': 65492\n };\n \n const normalizedCity = cityName.toLowerCase().trim()\n   .replace(/ё/g, 'е')\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758702757569,
+      "end": 1758702757624
+    }
+  }
+}

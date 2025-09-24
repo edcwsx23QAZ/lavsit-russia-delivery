@@ -259,7 +259,7 @@ export default function Home() {
           derival: {
             variant: form.fromTerminal ? 'terminal' : 'address',
             address: {
-              search: form.fromAddress || form.fromCity
+              search: form.fromTerminal ? form.fromCity : (form.fromAddress || form.fromCity)
             },
             handling: form.needCarry ? {
               freightLift: form.hasFreightLift,
@@ -270,7 +270,7 @@ export default function Home() {
           arrival: {
             variant: form.toTerminal ? 'terminal' : 'address',
             address: {
-              search: form.toAddress || form.toCity
+              search: form.toTerminal ? form.toCity : (form.toAddress || form.toCity)
             },
             handling: form.needCarry ? {
               freightLift: form.hasFreightLift,
@@ -314,24 +314,24 @@ export default function Home() {
 
       const data = await response.json();
 
-      if (response.ok && data.data) {
+      if (response.ok && data.data && !data.errors) {
         let totalPrice = 0;
         
-        // Получаем цену за доставку
-        if (data.data.availableDeliveryTypes?.auto) {
+        // Получаем полную стоимость доставки
+        if (data.data.orderPrice?.totalPrice) {
+          totalPrice = data.data.orderPrice.totalPrice;
+        } else if (data.data.availableDeliveryTypes?.auto) {
           totalPrice = data.data.availableDeliveryTypes.auto;
         } else if (data.data.price) {
           totalPrice = data.data.price;
         }
         
-        // Добавляем стоимость страховки
-        if (form.needInsurance && data.data.insurance) {
-          totalPrice += data.data.insurance;
-        }
-        
-        // Добавляем стоимость упаковки (если включена)
-        if (form.needPackaging) {
-          totalPrice += Math.round(totalWeight * 50);
+        // Если полная стоимость не найдена, собираем вручную
+        if (!totalPrice && data.data.orderPrice) {
+          totalPrice = (data.data.orderPrice.insurance || 0) + 
+                       (data.data.orderPrice.derival || 0) + 
+                       (data.data.orderPrice.intercity || 0) + 
+                       (data.data.orderPrice.arrival || 0);
         }
 
         return {
@@ -345,11 +345,12 @@ export default function Home() {
           sessionId: sessionID
         };
       } else {
+        const errorMessage = data.metadata?.detail || data.metadata?.message || data.errors?.[0]?.detail || JSON.stringify(data) || 'Ошибка расчета';
         return {
           company: 'Деловые Линии',
           price: 0,
           days: 0,
-          error: data.metadata?.detail || data.metadata?.message || 'Ошибка расчета',
+          error: errorMessage,
           requestData,
           responseData: data,
           apiUrl,
@@ -392,7 +393,7 @@ export default function Home() {
         insurance: form.needInsurance ? '1' : '0',
         sum: form.declaredValue.toString(),
         documentsReturn: '0',
-        fragile: '0'
+        fragile: '1'
       });
 
       const requestData = Object.fromEntries(params);
@@ -406,7 +407,15 @@ export default function Home() {
           company: 'Nord Wheel',
           price: data.data.total || 0,
           days: data.data.days || 0,
-          details: data.data,
+          details: {
+            ...data.data,
+            totalCost: data.data.total,
+            deliveryCost: data.data.door,
+            terminalCost: data.data.terminal,
+            pickupCost: data.data.pick,
+            deliveryToDoorCost: data.data.deliver,
+            additionalServices: (data.data.total || 0) - (data.data.door || 0)
+          },
           requestData,
           responseData: data,
           apiUrl: fullUrl
@@ -439,8 +448,13 @@ export default function Home() {
       // Хардкод основных городов для демонстрации
       const cityMappings: { [key: string]: number } = {
         'москва': -457,
+        'moscow': -457,
         'санкт-петербург': 64883,
+        'санкт петербург': 64883,
         'спб': 64883,
+        'питер': 64883,
+        'petersburg': 64883,
+        'saint petersburg': 64883,
         'екатеринбург': 65102,
         'новосибирск': 65398,
         'краснодар': 65294,
@@ -452,10 +466,35 @@ export default function Home() {
         'красноярск': 65300,
         'пермь': 65419,
         'воронеж': 65122,
-        'волгоград': 65118
+        'волгоград': 65118,
+        'тула': 65518,
+        'иваново': 65228,
+        'тверь': 65503,
+        'ярославль': 65564,
+        'рязань': 65461,
+        'владимир': 65109,
+        'калуга': 65267,
+        'орел': 65408,
+        'курск': 65306,
+        'белгород': 65070,
+        'липецк': 65324,
+        'тамбов': 65499,
+        'брянск': 65082,
+        'смоленск': 65492
       };
       
-      const normalizedCity = cityName.toLowerCase().trim();
+      const normalizedCity = cityName.toLowerCase().trim()
+        .replace(/ё/g, 'е')
+        .replace(/[\s\-\.]+/g, '');
+      
+      // Проверяем различные варианты названий
+      for (const [city, id] of Object.entries(cityMappings)) {
+        const normalizedMappingCity = city.toLowerCase().replace(/ё/g, 'е').replace(/[\s\-\.]+/g, '');
+        if (normalizedMappingCity.includes(normalizedCity) || normalizedCity.includes(normalizedMappingCity)) {
+          return id;
+        }
+      }
+      
       return cityMappings[normalizedCity] || null;
     } catch (error) {
       console.error('Ошибка получения ID города ПЭК:', error);
@@ -748,6 +787,57 @@ export default function Home() {
         description: 'Информирование о статусе груза',
         price: 15
       });
+    } else if (calc.company === 'Nord Wheel' && calc.details) {
+      // Расшифровка для Nord Wheel согласно требованиям
+      if (calc.details.totalCost) {
+        details.push({
+          service: 'Общая стоимость доставки',
+          description: '',
+          price: calc.details.totalCost
+        });
+      }
+      if (calc.details.deliveryCost) {
+        details.push({
+          service: 'Стоимость перевозки',
+          description: '',
+          price: calc.details.deliveryCost
+        });
+      }
+      if (calc.details.terminalCost) {
+        details.push({
+          service: 'Стоимость межтерминальной перевозки',
+          description: '',
+          price: calc.details.terminalCost
+        });
+      }
+      if (calc.details.pickupCost) {
+        details.push({
+          service: 'Стоимость забора',
+          description: '',
+          price: calc.details.pickupCost
+        });
+      }
+      if (calc.details.deliveryToDoorCost) {
+        details.push({
+          service: 'Стоимость доставки до двери',
+          description: '',
+          price: calc.details.deliveryToDoorCost
+        });
+      }
+      if (calc.details.additionalServices && calc.details.additionalServices > 0) {
+        details.push({
+          service: 'Стоимость доп.услуг',
+          description: '',
+          price: calc.details.additionalServices
+        });
+      }
+      if (calc.details.days) {
+        details.push({
+          service: 'Срок доставки',
+          description: `${calc.details.days} дней`,
+          price: 0
+        });
+      }
     } else if (calc.company === 'ПЭК' && calc.details?.services) {
       // Для ПЭК используем данные из API
       calc.details.services.forEach((service: any) => {

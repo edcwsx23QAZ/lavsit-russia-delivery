@@ -1,0 +1,66 @@
+{
+  "id": "prt_97ad945b9001eiWomG725fgGR4",
+  "messageID": "msg_97ad87c320016uoZFX7OuqDvVp",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01US6CnEi6coJU99mGx6mBv6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "        fragile: '0'",
+          "newString": "        fragile: '1'"
+        },
+        {
+          "oldString": "      if (response.ok && data.status === 'success' && data.data) {\n        return {\n          company: 'Nord Wheel',\n          price: data.data.total || 0,\n          days: data.data.days || 0,\n          details: data.data,\n          requestData,\n          responseData: data,\n          apiUrl: fullUrl\n        };",
+          "newString": "      if (response.ok && data.status === 'success' && data.data) {\n        return {\n          company: 'Nord Wheel',\n          price: data.data.total || 0,\n          days: data.data.days || 0,\n          details: {\n            ...data.data,\n            totalCost: data.data.total,\n            deliveryCost: data.data.door,\n            terminalCost: data.data.terminal,\n            pickupCost: data.data.pick,\n            deliveryToDoorCost: data.data.deliver,\n            additionalServices: (data.data.total || 0) - (data.data.door || 0)\n          },\n          requestData,\n          responseData: data,\n          apiUrl: fullUrl\n        };"
+        },
+        {
+          "oldString": "      const normalizedCity = cityName.toLowerCase().trim();\n      return cityMappings[normalizedCity] || null;",
+          "newString": "      const normalizedCity = cityName.toLowerCase().trim()\n        .replace(/ё/g, 'е')\n        .replace(/[\\s\\-\\.]+/g, '');\n      \n      // Проверяем различные варианты названий\n      for (const [city, id] of Object.entries(cityMappings)) {\n        const normalizedMappingCity = city.toLowerCase().replace(/ё/g, 'е').replace(/[\\s\\-\\.]+/g, '');\n        if (normalizedMappingCity.includes(normalizedCity) || normalizedCity.includes(normalizedMappingCity)) {\n          return id;\n        }\n      }\n      \n      return cityMappings[normalizedCity] || null;"
+        },
+        {
+          "oldString": "        'москва': -457,\n        'санкт-петербург': 64883,\n        'спб': 64883,",
+          "newString": "        'москва': -457,\n        'moscow': -457,\n        'санкт-петербург': 64883,\n        'санкт петербург': 64883,\n        'спб': 64883,\n        'питер': 64883,\n        'petersburg': 64883,\n        'saint petersburg': 64883,"
+        },
+        {
+          "oldString": "    } else if (calc.company === 'ПЭК' && calc.details?.services) {\n      // Для ПЭК используем данные из API\n      calc.details.services.forEach((service: any) => {\n        if (service.price > 0) {\n          details.push({\n            service: service.name || 'Услуга ПЭК',\n            description: service.description || '',\n            price: service.price\n          });\n        }\n      });",
+          "newString": "    } else if (calc.company === 'Nord Wheel' && calc.details) {\n      // Расшифровка для Nord Wheel согласно требованиям\n      if (calc.details.totalCost) {\n        details.push({\n          service: 'Общая стоимость доставки',\n          description: '',\n          price: calc.details.totalCost\n        });\n      }\n      if (calc.details.deliveryCost) {\n        details.push({\n          service: 'Стоимость перевозки',\n          description: '',\n          price: calc.details.deliveryCost\n        });\n      }\n      if (calc.details.terminalCost) {\n        details.push({\n          service: 'Стоимость межтерминальной перевозки',\n          description: '',\n          price: calc.details.terminalCost\n        });\n      }\n      if (calc.details.pickupCost) {\n        details.push({\n          service: 'Стоимость забора',\n          description: '',\n          price: calc.details.pickupCost\n        });\n      }\n      if (calc.details.deliveryToDoorCost) {\n        details.push({\n          service: 'Стоимость доставки до двери',\n          description: '',\n          price: calc.details.deliveryToDoorCost\n        });\n      }\n      if (calc.details.additionalServices && calc.details.additionalServices > 0) {\n        details.push({\n          service: 'Стоимость доп.услуг',\n          description: '',\n          price: calc.details.additionalServices\n        });\n      }\n      if (calc.details.days) {\n        details.push({\n          service: 'Срок доставки',\n          description: `${calc.details.days} дней`,\n          price: 0\n        });\n      }\n    } else if (calc.company === 'ПЭК' && calc.details?.services) {\n      // Для ПЭК используем данные из API\n      calc.details.services.forEach((service: any) => {\n        if (service.price > 0) {\n          details.push({\n            service: service.name || 'Услуга ПЭК',\n            description: service.description || '',\n            price: service.price\n          });\n        }\n      });"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -391,9 +391,9 @@\n   packageCount: form.cargos.length.toString(),\n   insurance: form.needInsurance ? '1' : '0',\n   sum: form.declaredValue.toString(),\n   documentsReturn: '0',\n-  fragile: '0'\n+  fragile: '1'\n });\n \n const requestData = Object.fromEntries(params);\n const fullUrl = `${apiUrl}?${params.toString()}`;\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -405,9 +405,17 @@\n return {\n   company: 'Nord Wheel',\n   price: data.data.total || 0,\n   days: data.data.days || 0,\n-  details: data.data,\n+  details: {\n+    ...data.data,\n+    totalCost: data.data.total,\n+    deliveryCost: data.data.door,\n+    terminalCost: data.data.terminal,\n+    pickupCost: data.data.pick,\n+    deliveryToDoorCost: data.data.deliver,\n+    additionalServices: (data.data.total || 0) - (data.data.door || 0)\n+  },\n   requestData,\n   responseData: data,\n   apiUrl: fullUrl\n };\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -462,9 +462,20 @@\n     'воронеж': 65122,\n     'волгоград': 65118\n   };\n   \n-  const normalizedCity = cityName.toLowerCase().trim();\n+  const normalizedCity = cityName.toLowerCase().trim()\n+    .replace(/ё/g, 'е')\n+    .replace(/[\\s\\-\\.]+/g, '');\n+  \n+  // Проверяем различные варианты названий\n+  for (const [city, id] of Object.entries(cityMappings)) {\n+    const normalizedMappingCity = city.toLowerCase().replace(/ё/g, 'е').replace(/[\\s\\-\\.]+/g, '');\n+    if (normalizedMappingCity.includes(normalizedCity) || normalizedCity.includes(normalizedMappingCity)) {\n+      return id;\n+    }\n+  }\n+  \n   return cityMappings[normalizedCity] || null;\n } catch (error) {\n   console.error('Ошибка получения ID города ПЭК:', error);\n   return null;\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -446,10 +446,15 @@\n try {\n   // Хардкод основных городов для демонстрации\n   const cityMappings: { [key: string]: number } = {\n     'москва': -457,\n+    'moscow': -457,\n     'санкт-петербург': 64883,\n+    'санкт петербург': 64883,\n     'спб': 64883,\n+    'питер': 64883,\n+    'petersburg': 64883,\n+    'saint petersburg': 64883,\n     'екатеринбург': 65102,\n     'новосибирск': 65398,\n     'краснодар': 65294,\n     'ростов-на-дону': 65456,\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -771,8 +771,59 @@\n     service: 'Доп.услуги',\n     description: 'Информирование о статусе груза',\n     price: 15\n   });\n+} else if (calc.company === 'Nord Wheel' && calc.details) {\n+  // Расшифровка для Nord Wheel согласно требованиям\n+  if (calc.details.totalCost) {\n+    details.push({\n+      service: 'Общая стоимость доставки',\n+      description: '',\n+      price: calc.details.totalCost\n+    });\n+  }\n+  if (calc.details.deliveryCost) {\n+    details.push({\n+      service: 'Стоимость перевозки',\n+      description: '',\n+      price: calc.details.deliveryCost\n+    });\n+  }\n+  if (calc.details.terminalCost) {\n+    details.push({\n+      service: 'Стоимость межтерминальной перевозки',\n+      description: '',\n+      price: calc.details.terminalCost\n+    });\n+  }\n+  if (calc.details.pickupCost) {\n+    details.push({\n+      service: 'Стоимость забора',\n+      description: '',\n+      price: calc.details.pickupCost\n+    });\n+  }\n+  if (calc.details.deliveryToDoorCost) {\n+    details.push({\n+      service: 'Стоимость доставки до двери',\n+      description: '',\n+      price: calc.details.deliveryToDoorCost\n+    });\n+  }\n+  if (calc.details.additionalServices && calc.details.additionalServices > 0) {\n+    details.push({\n+      service: 'Стоимость доп.услуг',\n+      description: '',\n+      price: calc.details.additionalServices\n+    });\n+  }\n+  if (calc.details.days) {\n+    details.push({\n+      service: 'Срок доставки',\n+      description: `${calc.details.days} дней`,\n+      price: 0\n+    });\n+  }\n } else if (calc.company === 'ПЭК' && calc.details?.services) {\n   // Для ПЭК используем данные из API\n   calc.details.services.forEach((service: any) => {\n     if (service.price > 0) {\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758702713061,
+      "end": 1758702713121
+    }
+  }
+}
