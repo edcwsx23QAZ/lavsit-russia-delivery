@@ -428,98 +428,262 @@ export default function Home() {
     }
   };
 
-  // Получение ID городов ПЭК по названию
-  const getPEKCityId = async (cityName: string): Promise<number | null> => {
+  // Получение списка городов ПЭК
+  const [pekCities, setPekCities] = React.useState<{ [region: string]: { [id: string]: string } } | null>(null);
+  
+  const loadPekCities = async () => {
     try {
-      // Хардкод основных городов для демонстрации
-      const cityMappings: { [key: string]: number } = {
-        'москва': -457,
-        'moscow': -457,
-        'санкт-петербург': 64883,
-        'санкт петербург': 64883,
-        'спб': 64883,
-        'питер': 64883,
-        'petersburg': 64883,
-        'saint petersburg': 64883,
-        'екатеринбург': 65102,
-        'новосибирск': 65398,
-        'краснодар': 65294,
-        'ростов-на-дону': 65456,
-        'казань': 65265,
-        'нижний новгород': 65392,
-        'самара': 65469,
-        'уфа': 65533,
-        'красноярск': 65300,
-        'пермь': 65419,
-        'воронеж': 65122,
-        'волгоград': 65118,
-        'тула': 65518,
-        'иваново': 65228,
-        'тверь': 65503,
-        'ярославль': 65564,
-        'рязань': 65461,
-        'владимир': 65109,
-        'калуга': 65267,
-        'орел': 65408,
-        'курск': 65306,
-        'белгород': 65070,
-        'липецк': 65324,
-        'тамбов': 65499,
-        'брянск': 65082,
-        'смоленск': 65492
-      };
-      
-      const normalizedCity = cityName.toLowerCase().trim()
+      const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://pecom.ru/ru/calc/towns.php'));
+      const proxyData = await response.json();
+      if (proxyData.contents) {
+        const cities = JSON.parse(proxyData.contents);
+        setPekCities(cities);
+        return cities;
+      }
+      return null;
+    } catch (error) {
+      console.error('Ошибка загрузки городов ПЭК:', error);
+      return null;
+    }
+  };
+
+  React.useEffect(() => {
+    loadPekCities();
+  }, []);
+
+  // Поиск ID города ПЭК по названию
+  const findPekCityId = async (cityName: string): Promise<number | null> => {
+    try {
+      let cities = pekCities;
+      if (!cities) {
+        cities = await loadPekCities();
+        if (!cities) return null;
+      }
+
+      const normalizedSearch = cityName.toLowerCase().trim()
         .replace(/ё/g, 'е')
         .replace(/[\s\-\.]+/g, '');
-      
-      // Проверяем различные варианты названий
-      for (const [city, id] of Object.entries(cityMappings)) {
-        const normalizedMappingCity = city.toLowerCase().replace(/ё/g, 'е').replace(/[\s\-\.]+/g, '');
-        if (normalizedMappingCity.includes(normalizedCity) || normalizedCity.includes(normalizedMappingCity)) {
-          return id;
+
+      // Поиск по всем регионам
+      for (const region of Object.values(cities)) {
+        for (const [cityId, cityNameInList] of Object.entries(region)) {
+          const normalizedCity = cityNameInList.toLowerCase()
+            .replace(/ё/g, 'е')
+            .replace(/[\s\-\.]+/g, '');
+          
+          if (normalizedCity.includes(normalizedSearch) || 
+              normalizedSearch.includes(normalizedCity) ||
+              normalizedCity === normalizedSearch) {
+            return parseInt(cityId);
+          }
         }
       }
       
-      return cityMappings[normalizedCity] || null;
+      // Фоллбэк для основных городов
+      const fallbackCities: { [key: string]: number } = {
+        'москва': -457,
+        'moscow': -457,
+        'санктпетербург': 64883,
+        'спб': 64883,
+        'питер': 64883
+      };
+      
+      return fallbackCities[normalizedSearch] || null;
     } catch (error) {
-      console.error('Ошибка получения ID города ПЭК:', error);
+      console.error('Ошибка поиска города ПЭК:', error);
       return null;
     }
   };
 
   // Расчет для ПЭК - заглушка, так как API недоступен для внешних запросов
+  // Расчет для ПЭК с использованием публичного API
   const calculatePEK = async (): Promise<CalculationResult> => {
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    const apiUrl = 'http://calc.pecom.ru/bitrix/components/pecom/calc/ajax.php';
     
-    const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
-    const basePrice = totalWeight * 15; // базовая ставка 15 руб за кг
-    let totalPrice = basePrice;
-    
-    // Добавляем доп услуги
-    if (form.needInsurance) totalPrice += form.declaredValue * 0.015;
-    if (form.needPackaging) totalPrice += totalWeight * 25;
-    if (form.needLoading) totalPrice += 500;
-    if (!form.fromTerminal) totalPrice += 800; // забор
-    if (!form.toTerminal) totalPrice += 800; // доставка
-    
-    return {
-      company: 'ПЭК',
-      price: Math.round(totalPrice),
-      days: Math.floor(Math.random() * 3) + 2,
-      apiUrl: 'https://pecom.ru/',
-      details: {
-        note: 'Расчетная стоимость - API ПЭК недоступен для публичного использования',
-        basePrice,
-        services: [
-          { name: 'Межтерминальная перевозка', price: basePrice },
-          ...(form.needInsurance ? [{ name: 'Страхование', price: Math.round(form.declaredValue * 0.015) }] : []),
-          ...(form.needPackaging ? [{ name: 'Упаковка', price: Math.round(totalWeight * 25) }] : []),
-          ...(!form.fromTerminal ? [{ name: 'Забор груза', price: 800 }] : []),
-          ...(!form.toTerminal ? [{ name: 'Доставка до адреса', price: 800 }] : [])
-        ]
+    try {
+      // Получаем ID городов
+      const fromCityId = await findPekCityId(form.fromCity);
+      const toCityId = await findPekCityId(form.toCity);
+      
+      if (!fromCityId || !toCityId) {
+        return {
+          company: 'ПЭК',
+          price: 0,
+          days: 0,
+          error: `Город не найден в базе ПЭК. Проверьте: ${!fromCityId ? form.fromCity : ''} ${!toCityId ? form.toCity : ''}`.trim(),
+          apiUrl
+        };
       }
-    };
+
+      // Формируем параметры запроса согласно документации
+      const params = new URLSearchParams();
+      
+      // Добавляем грузы согласно формату: Ширина (м), Длина (м), Высота (м), Объем (м3), Вес (кг), Негабарит (0/1), ЗТУ (0/1)
+      form.cargos.forEach((cargo, index) => {
+        const width = cargo.width / 100; // переводим см в метры
+        const length = cargo.length / 100;
+        const height = cargo.height / 100;
+        const volume = width * length * height;
+        const weight = cargo.weight;
+        const isOversized = (width > 2.4 || length > 12 || height > 2.7 || weight > 1500) ? 1 : 0;
+        const needZTU = form.needPackaging ? 1 : 0;
+        
+        params.append(`places[${index}][]`, width.toString());
+        params.append(`places[${index}][]`, length.toString());
+        params.append(`places[${index}][]`, height.toString());
+        params.append(`places[${index}][]`, volume.toString());
+        params.append(`places[${index}][]`, weight.toString());
+        params.append(`places[${index}][]`, isOversized.toString());
+        params.append(`places[${index}][]`, needZTU.toString());
+      });
+      
+      // Параметры забора
+      params.append('take[town]', fromCityId.toString());
+      params.append('take[tent]', '0'); // растентровка
+      params.append('take[gidro]', form.needLoading ? '1' : '0'); // гидролифт
+      params.append('take[manip]', '0'); // манипулятор
+      params.append('take[speed]', '0'); // срочный забор
+      params.append('take[moscow]', '0'); // ограничения по Москве
+      
+      // Параметры доставки
+      params.append('deliver[town]', toCityId.toString());
+      params.append('deliver[tent]', '0');
+      params.append('deliver[gidro]', form.needLoading ? '1' : '0');
+      params.append('deliver[manip]', '0');
+      params.append('deliver[speed]', '0');
+      params.append('deliver[moscow]', '0');
+      
+      // Дополнительные услуги
+      params.append('plombir', '0'); // пломбы
+      params.append('strah', form.needInsurance ? form.declaredValue.toString() : '0'); // страховка
+      params.append('ashan', '0'); // доставка в Ашан
+      params.append('night', '0'); // ночное время
+      params.append('pal', '0'); // запаллечивание
+      params.append('pallets', '0'); // паллетная перевозка
+
+      const fullUrl = `${apiUrl}?${params.toString()}`;
+      const requestData = Object.fromEntries(params);
+
+      // Используем прокси для обхода CORS
+      const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent(fullUrl);
+      const response = await fetch(proxyUrl);
+      const proxyData = await response.json();
+      
+      if (!response.ok || !proxyData.contents) {
+        throw new Error('Ошибка загрузки данных через прокси');
+      }
+      
+      const data = JSON.parse(proxyData.contents);
+
+      if (data && !data.error?.length) {
+        let totalPrice = 0;
+        let services: { name: string; description: string; price: number }[] = [];
+        
+        // Собираем стоимость услуг по документации
+        if (data.take?.[2]) {
+          const price = parseFloat(data.take[2]);
+          totalPrice += price;
+          services.push({ 
+            name: data.take[0] || 'Забор груза', 
+            description: data.take[1] || '', 
+            price 
+          });
+        }
+        
+        // Выбираем тип перевозки
+        let transportCost = 0;
+        let transportName = '';
+        if (data.autonegabarit?.[2] && parseFloat(data.autonegabarit[2]) > 0) {
+          transportCost = parseFloat(data.autonegabarit[2]);
+          transportName = data.autonegabarit[0] || 'Автоперевозка (негабарит)';
+        } else if (data.auto?.[2]) {
+          transportCost = parseFloat(data.auto[2]);
+          transportName = data.auto[0] || 'Автоперевозка';
+        } else if (data.avia?.[2]) {
+          transportCost = parseFloat(data.avia[2]);
+          transportName = data.avia[0] || 'Авиаперевозка';
+        }
+        
+        if (transportCost > 0) {
+          totalPrice += transportCost;
+          services.push({ 
+            name: transportName, 
+            description: data.auto?.[1] || data.autonegabarit?.[1] || data.avia?.[1] || '', 
+            price: transportCost 
+          });
+        }
+        
+        if (data.deliver?.[2]) {
+          const price = parseFloat(data.deliver[2]);
+          totalPrice += price;
+          services.push({ 
+            name: data.deliver[0] || 'Доставка груза', 
+            description: data.deliver[1] || '', 
+            price 
+          });
+        }
+        
+        // Дополнительные услуги
+        ['ADD', 'ADD_1', 'ADD_2', 'ADD_3', 'ADD_4'].forEach(key => {
+          if (data[key]?.[2] && parseFloat(data[key][2]) > 0) {
+            const price = parseFloat(data[key][2]);
+            totalPrice += price;
+            services.push({ 
+              name: data[key][0] || `Доп. услуга ${key}`, 
+              description: data[key][1] || '', 
+              price 
+            });
+          }
+        });
+        
+        // Определяем срок доставки
+        let deliveryDays = 3; // по умолчанию
+        if (data.periods) {
+          const daysMatch = data.periods.match(/(\d+)\s*дн/);
+          if (daysMatch) {
+            deliveryDays = parseInt(daysMatch[1]);
+          }
+        }
+
+        return {
+          company: 'ПЭК',
+          price: Math.round(totalPrice),
+          days: deliveryDays,
+          details: {
+            services,
+            periods: data.periods,
+            aperiods: data.aperiods,
+            rawData: data,
+            fromCityId,
+            toCityId
+          },
+          requestData,
+          responseData: data,
+          apiUrl: fullUrl
+        };
+      } else {
+        const errorMessages = data.error?.join(', ') || 'Неизвестная ошибка ПЭК';
+        return {
+          company: 'ПЭК',
+          price: 0,
+          days: 0,
+          error: errorMessages,
+          requestData,
+          responseData: data,
+          apiUrl: fullUrl
+        };
+      }
+    } catch (error: any) {
+      return {
+        company: 'ПЭК',
+        price: 0,
+        days: 0,
+        error: `Ошибка соединения: ${error.message}`,
+        requestData: null,
+        responseData: null,
+        apiUrl
+      };
+    }
   };
 
   const calculateRailContinent = async (): Promise<CalculationResult> => {

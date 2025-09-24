@@ -1,0 +1,25 @@
+{
+  "id": "prt_97b21a63a001d3dqGpQusO7YkK",
+  "messageID": "msg_97b1fbf30001dPgX9xh7sknr7v",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01GhfNYpy5SdHaiEAo2T3rU8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "const calculatePEK",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 499:   const calculatePEK = async (): Promise<CalculationResult> => {",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "const calculatePEK",
+    "time": {
+      "start": 1758707427384,
+      "end": 1758707427393
+    }
+  }
+}

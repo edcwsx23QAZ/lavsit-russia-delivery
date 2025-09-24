@@ -1,0 +1,25 @@
+{
+  "id": "prt_97b21b704001OsUcd9lNu7RVaO",
+  "messageID": "msg_97b1fbf30001dPgX9xh7sknr7v",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_018S6VpUGUxJ3hadiXP84Wik",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 498,
+      "limit": 35
+    },
+    "output": "<file>\n00499|   const calculatePEK = async (): Promise<CalculationResult> => {\n00500|     await new Promise(resolve => setTimeout(resolve, 1000));\n00501|     \n00502|     const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n00503|     const basePrice = totalWeight * 15; // базовая ставка 15 руб за кг\n00504|     let totalPrice = basePrice;\n00505|     \n00506|     // Добавляем доп услуги\n00507|     if (form.needInsurance) totalPrice += form.declaredValue * 0.015;\n00508|     if (form.needPackaging) totalPrice += totalWeight * 25;\n00509|     if (form.needLoading) totalPrice += 500;\n00510|     if (!form.fromTerminal) totalPrice += 800; // забор\n00511|     if (!form.toTerminal) totalPrice += 800; // доставка\n00512|     \n00513|     return {\n00514|       company: 'ПЭК',\n00515|       price: Math.round(totalPrice),\n00516|       days: Math.floor(Math.random() * 3) + 2,\n00517|       apiUrl: 'https://pecom.ru/',\n00518|       details: {\n00519|         note: 'Расчетная стоимость - API ПЭК недоступен для публичного использования',\n00520|         basePrice,\n00521|         services: [\n00522|           { name: 'Межтерминальная перевозка', price: basePrice },\n00523|           ...(form.needInsurance ? [{ name: 'Страхование', price: Math.round(form.declaredValue * 0.015) }] : []),\n00524|           ...(form.needPackaging ? [{ name: 'Упаковка', price: Math.round(totalWeight * 25) }] : []),\n00525|           ...(!form.fromTerminal ? [{ name: 'Забор груза', price: 800 }] : []),\n00526|           ...(!form.toTerminal ? [{ name: 'Доставка до адреса', price: 800 }] : [])\n00527|         ]\n00528|       }\n00529|     };\n00530|   };\n00531| \n00532|   const calculateRailContinent = async (): Promise<CalculationResult> => {\n00533|     await new Promise(resolve => setTimeout(resolve, 1200));\n\n(File has more lines. Use 'offset' parameter to read beyond line 533)\n</file>",
+    "metadata": {
+      "preview": "  const calculatePEK = async (): Promise<CalculationResult> => {\n    await new Promise(resolve => setTimeout(resolve, 1000));\n    \n    const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n    const basePrice = totalWeight * 15; // базовая ставка 15 руб за кг\n    let totalPrice = basePrice;\n    \n    // Добавляем доп услуги\n    if (form.needInsurance) totalPrice += form.declaredValue * 0.015;\n    if (form.needPackaging) totalPrice += totalWeight * 25;\n    if (form.needLoading) totalPrice += 500;\n    if (!form.fromTerminal) totalPrice += 800; // забор\n    if (!form.toTerminal) totalPrice += 800; // доставка\n    \n    return {\n      company: 'ПЭК',\n      price: Math.round(totalPrice),\n      days: Math.floor(Math.random() * 3) + 2,\n      apiUrl: 'https://pecom.ru/',\n      details: {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758707431926,
+      "end": 1758707431929
+    }
+  }
+}

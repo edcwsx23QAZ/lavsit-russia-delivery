@@ -1,0 +1,25 @@
+{
+  "id": "prt_97b213557001Yz6cEFLXokF1kL",
+  "messageID": "msg_97b1fbf30001dPgX9xh7sknr7v",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01HBntyWwcA2YetztGGYJ8Ki",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 430,
+      "limit": 50
+    },
+    "output": "<file>\n00431|   // Получение ID городов ПЭК по названию\n00432|   const getPEKCityId = async (cityName: string): Promise<number | null> => {\n00433|     try {\n00434|       // Хардкод основных городов для демонстрации\n00435|       const cityMappings: { [key: string]: number } = {\n00436|         'москва': -457,\n00437|         'moscow': -457,\n00438|         'санкт-петербург': 64883,\n00439|         'санкт петербург': 64883,\n00440|         'спб': 64883,\n00441|         'питер': 64883,\n00442|         'petersburg': 64883,\n00443|         'saint petersburg': 64883,\n00444|         'екатеринбург': 65102,\n00445|         'новосибирск': 65398,\n00446|         'краснодар': 65294,\n00447|         'ростов-на-дону': 65456,\n00448|         'казань': 65265,\n00449|         'нижний новгород': 65392,\n00450|         'самара': 65469,\n00451|         'уфа': 65533,\n00452|         'красноярск': 65300,\n00453|         'пермь': 65419,\n00454|         'воронеж': 65122,\n00455|         'волгоград': 65118,\n00456|         'тула': 65518,\n00457|         'иваново': 65228,\n00458|         'тверь': 65503,\n00459|         'ярославль': 65564,\n00460|         'рязань': 65461,\n00461|         'владимир': 65109,\n00462|         'калуга': 65267,\n00463|         'орел': 65408,\n00464|         'курск': 65306,\n00465|         'белгород': 65070,\n00466|         'липецк': 65324,\n00467|         'тамбов': 65499,\n00468|         'брянск': 65082,\n00469|         'смоленск': 65492\n00470|       };\n00471|       \n00472|       const normalizedCity = cityName.toLowerCase().trim()\n00473|         .replace(/ё/g, 'е')\n00474|         .replace(/[\\s\\-\\.]+/g, '');\n00475|       \n00476|       // Проверяем различные варианты названий\n00477|       for (const [city, id] of Object.entries(cityMappings)) {\n00478|         const normalizedMappingCity = city.toLowerCase().replace(/ё/g, 'е').replace(/[\\s\\-\\.]+/g, '');\n00479|         if (normalizedMappingCity.includes(normalizedCity) || normalizedCity.includes(normalizedMappingCity)) {\n00480|           return id;\n\n(File has more lines. Use 'offset' parameter to read beyond line 480)\n</file>",
+    "metadata": {
+      "preview": "  // Получение ID городов ПЭК по названию\n  const getPEKCityId = async (cityName: string): Promise<number | null> => {\n    try {\n      // Хардкод основных городов для демонстрации\n      const cityMappings: { [key: string]: number } = {\n        'москва': -457,\n        'moscow': -457,\n        'санкт-петербург': 64883,\n        'санкт петербург': 64883,\n        'спб': 64883,\n        'питер': 64883,\n        'petersburg': 64883,\n        'saint petersburg': 64883,\n        'екатеринбург': 65102,\n        'новосибирск': 65398,\n        'краснодар': 65294,\n        'ростов-на-дону': 65456,\n        'казань': 65265,\n        'нижний новгород': 65392,\n        'самара': 65469,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758707398145,
+      "end": 1758707398154
+    }
+  }
+}
