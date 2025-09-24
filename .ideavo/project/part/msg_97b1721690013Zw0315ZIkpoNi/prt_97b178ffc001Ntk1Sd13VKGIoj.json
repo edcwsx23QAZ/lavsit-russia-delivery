@@ -1,0 +1,25 @@
+{
+  "id": "prt_97b178ffc001Ntk1Sd13VKGIoj",
+  "messageID": "msg_97b1721690013Zw0315ZIkpoNi",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01HfEmkMygC6vrSSrpsbQ6AA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 500,
+      "limit": 30
+    },
+    "output": "<file>\n00501|       return null;\n00502|     }\n00503|   };\n00504| \n00505|   // Расчет для ПЭК\n00506|   const calculatePEK = async (): Promise<CalculationResult> => {\n00507|     const apiUrl = 'http://calc.pecom.ru/bitrix/components/pecom/calc/ajax.php';\n00508|     \n00509|     try {\n00510|       // Получаем ID городов\n00511|       const fromCityId = await getPEKCityId(form.fromCity);\n00512|       const toCityId = await getPEKCityId(form.toCity);\n00513|       \n00514|       if (!fromCityId || !toCityId) {\n00515|         return {\n00516|           company: 'ПЭК',\n00517|           price: 0,\n00518|           days: 0,\n00519|           error: 'Город не найден в базе ПЭК',\n00520|           apiUrl\n00521|         };\n00522|       }\n00523| \n00524|       // Формируем параметры запроса\n00525|       const params = new URLSearchParams();\n00526|       \n00527|       // Добавляем грузы\n00528|       form.cargos.forEach((cargo, index) => {\n00529|         const width = cargo.width / 100; // переводим в метры\n00530|         const length = cargo.length / 100;\n\n(File has more lines. Use 'offset' parameter to read beyond line 530)\n</file>",
+    "metadata": {
+      "preview": "      return null;\n    }\n  };\n\n  // Расчет для ПЭК\n  const calculatePEK = async (): Promise<CalculationResult> => {\n    const apiUrl = 'http://calc.pecom.ru/bitrix/components/pecom/calc/ajax.php';\n    \n    try {\n      // Получаем ID городов\n      const fromCityId = await getPEKCityId(form.fromCity);\n      const toCityId = await getPEKCityId(form.toCity);\n      \n      if (!fromCityId || !toCityId) {\n        return {\n          company: 'ПЭК',\n          price: 0,\n          days: 0,\n          error: 'Город не найден в базе ПЭК',\n          apiUrl"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758706766535,
+      "end": 1758706766538
+    }
+  }
+}

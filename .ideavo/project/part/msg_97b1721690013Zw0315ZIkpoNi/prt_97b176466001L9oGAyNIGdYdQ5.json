@@ -1,0 +1,25 @@
+{
+  "id": "prt_97b176466001L9oGAyNIGdYdQ5",
+  "messageID": "msg_97b1721690013Zw0315ZIkpoNi",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01Fx7KXGBoUewpDLkKinmi8z",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "  // Расчет для ПЭК\n  const calculatePEK = async (): Promise<CalculationResult> => {\n    const apiUrl = 'http://calc.pecom.ru/bitrix/components/pecom/calc/ajax.php';",
+          "newString": "  // Расчет для ПЭК\n  const calculatePEK = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://pecom.ru/services/calc/';"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758706759118,
+      "end": 1758706759123
+    }
+  }
+}
