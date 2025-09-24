@@ -1,0 +1,25 @@
+{
+  "id": "prt_97b125cd9001x90tp7xTorozHs",
+  "messageID": "msg_97b110dd2001GE68bR7kwkk3QT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_013tzMTjwuykphhWBo4T57wv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "\\u0421\\u0440\\u043e\\u043a \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0438",
+      "include": "*.tsx"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 836:           service: 'Срок доставки',\n  Line 1192:                           <p className=\"text-white text-xs\"><strong>Срок доставки:</strong> {calc.days} дней</p>",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "\\u0421\\u0440\\u043e\\u043a \\u0434\\u043e\\u0441\\u0442\\u0430\\u0432\\u043a\\u0438",
+    "time": {
+      "start": 1758706425861,
+      "end": 1758706425880
+    }
+  }
+}

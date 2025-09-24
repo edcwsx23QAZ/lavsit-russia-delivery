@@ -1,0 +1,26 @@
+{
+  "id": "prt_97b115eeb001M9oIAhsTeu5Uz0",
+  "messageID": "msg_97b110dd2001GE68bR7kwkk3QT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_018g2Lb9iP84v9XPgmcLSweX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "find /home/user/project -name \"*.pdf\" -o -name \"*.doc\" -o -name \"*.docx\" -o -name \"*.txt\" -o -name \"*.md\" | head -10",
+      "description": "Поиск файлов документации"
+    },
+    "output": "/home/user/project/node_modules/vaul/LICENSE.md\n/home/user/project/node_modules/vaul/README.md\n/home/user/project/node_modules/@types/ms/README.md\n/home/user/project/node_modules/@types/uuid/README.md\n/home/user/project/node_modules/@types/jsonwebtoken/README.md\n/home/user/project/node_modules/@types/react/README.md\n/home/user/project/node_modules/@types/react-dom/README.md\n/home/user/project/node_modules/@types/prop-types/README.md\n/home/user/project/node_modules/@types/node/README.md\n/home/user/project/node_modules/@types/d3-interpolate/README.md\n",
+    "metadata": {
+      "output": "/home/user/project/node_modules/vaul/LICENSE.md\n/home/user/project/node_modules/vaul/README.md\n/home/user/project/node_modules/@types/ms/README.md\n/home/user/project/node_modules/@types/uuid/README.md\n/home/user/project/node_modules/@types/jsonwebtoken/README.md\n/home/user/project/node_modules/@types/react/README.md\n/home/user/project/node_modules/@types/react-dom/README.md\n/home/user/project/node_modules/@types/prop-types/README.md\n/home/user/project/node_modules/@types/node/README.md\n/home/user/project/node_modules/@types/d3-interpolate/README.md\n",
+      "exit": 0,
+      "description": "Поиск файлов документации"
+    },
+    "title": "find /home/user/project -name \"*.pdf\" -o -name \"*.doc\" -o -name \"*.docx\" -o -name \"*.txt\" -o -name \"*.md\" | head -10",
+    "time": {
+      "start": 1758706361099,
+      "end": 1758706361164
+    }
+  }
+}

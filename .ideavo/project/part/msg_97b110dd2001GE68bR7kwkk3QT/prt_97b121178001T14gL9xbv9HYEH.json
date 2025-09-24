@@ -1,0 +1,34 @@
+{
+  "id": "prt_97b121178001T14gL9xbv9HYEH",
+  "messageID": "msg_97b110dd2001GE68bR7kwkk3QT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01Nvsfs9UjbHvpeTnXJXWzEN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "                                       <hr className=\"border-gray-600 my-2\" />\n                                       <div className=\"flex justify-between font-bold text-white\">\n                                         <div>К оплате по заказу:</div>\n                                         <div>{totalPrice.toLocaleString()} ₽</div>\n                                       </div>",
+          "newString": ""
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1231,13 +1231,9 @@\n             </div>\n             <div className=\"font-medium\">{detail.price.toLocaleString()} ₽</div>\n           </div>\n         ))}\n-        <hr className=\"border-gray-600 my-2\" />\n-        <div className=\"flex justify-between font-bold text-white\">\n-          <div>К оплате по заказу:</div>\n-          <div>{totalPrice.toLocaleString()} ₽</div>\n-        </div>\n+\n       </div>\n     );\n   })()}\n </div>\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758706407697,
+      "end": 1758706407732
+    }
+  }
+}

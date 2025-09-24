@@ -1,0 +1,25 @@
+{
+  "id": "prt_97b1203d0001gHqIu2sN47JR0B",
+  "messageID": "msg_97b110dd2001GE68bR7kwkk3QT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01G2cpN4v1Jp1c18jHNsRSTc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1230,
+      "limit": 20
+    },
+    "output": "<file>\n01231|                                           </div>\n01232|                                           <div className=\"font-medium\">{detail.price.toLocaleString()} ₽</div>\n01233|                                         </div>\n01234|                                       ))}\n01235|                                       <hr className=\"border-gray-600 my-2\" />\n01236|                                       <div className=\"flex justify-between font-bold text-white\">\n01237|                                         <div>К оплате по заказу:</div>\n01238|                                         <div>{totalPrice.toLocaleString()} ₽</div>\n01239|                                       </div>\n01240|                                     </div>\n01241|                                   );\n01242|                                 })()}\n01243|                               </div>\n01244|                             </CollapsibleContent>\n01245|                           </Collapsible>\n01246|                           \n01247|                           {/* Отладочная информация */}\n01248|                           <Collapsible open={expandedDebugInfo[calc.company]}>\n01249|                             <CollapsibleContent className=\"mt-2\">\n01250|                               <div className=\"bg-gray-900 p-3 rounded text-xs\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 1250)\n</file>",
+    "metadata": {
+      "preview": "                                          </div>\n                                          <div className=\"font-medium\">{detail.price.toLocaleString()} ₽</div>\n                                        </div>\n                                      ))}\n                                      <hr className=\"border-gray-600 my-2\" />\n                                      <div className=\"flex justify-between font-bold text-white\">\n                                        <div>К оплате по заказу:</div>\n                                        <div>{totalPrice.toLocaleString()} ₽</div>\n                                      </div>\n                                    </div>\n                                  );\n                                })()}\n                              </div>\n                            </CollapsibleContent>\n                          </Collapsible>\n                          \n                          {/* Отладочная информация */}\n                          <Collapsible open={expandedDebugInfo[calc.company]}>\n                            <CollapsibleContent className=\"mt-2\">\n                              <div className=\"bg-gray-900 p-3 rounded text-xs\">"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758706402888,
+      "end": 1758706402891
+    }
+  }
+}

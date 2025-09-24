@@ -831,13 +831,7 @@ export default function Home() {
           price: calc.details.additionalServices
         });
       }
-      if (calc.details.days) {
-        details.push({
-          service: 'Срок доставки',
-          description: `${calc.details.days} дней`,
-          price: 0
-        });
-      }
+
     } else if (calc.company === 'ПЭК' && calc.details?.services) {
       // Для ПЭК используем данные из API
       calc.details.services.forEach((service: any) => {
@@ -1232,11 +1226,7 @@ export default function Home() {
                                           <div className="font-medium">{detail.price.toLocaleString()} ₽</div>
                                         </div>
                                       ))}
-                                      <hr className="border-gray-600 my-2" />
-                                      <div className="flex justify-between font-bold text-white">
-                                        <div>К оплате по заказу:</div>
-                                        <div>{totalPrice.toLocaleString()} ₽</div>
-                                      </div>
+
                                     </div>
                                   );
                                 })()}

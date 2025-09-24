@@ -1,0 +1,85 @@
+{
+  "id": "prt_97b1224e10011lRsQyBvAwHqQj",
+  "messageID": "msg_97b110dd2001GE68bR7kwkk3QT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_0151w23GN4rDCogjHmmp2vMo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Убрать строчку \"К оплате по заказу:\" в деталях расчета",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Убрать стоимость в \"сроке доставки\"",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Исправить расчет Деловых Линий - проверить API документацию",
+          "status": "pending",
+          "priority": "high",
+          "id": "3"
+        },
+        {
+          "content": "Исправить ошибку ПЭК \"Failed to fetch\" - проверить URL и HTTP-метод",
+          "status": "pending",
+          "priority": "high",
+          "id": "4"
+        },
+        {
+          "content": "Провести самоанализ и убедиться что все расчеты работают",
+          "status": "pending",
+          "priority": "high",
+          "id": "5"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Убрать строчку \\\"К оплате по заказу:\\\" в деталях расчета\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"1\"\n  },\n  {\n    \"content\": \"Убрать стоимость в \\\"сроке доставки\\\"\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"2\"\n  },\n  {\n    \"content\": \"Исправить расчет Деловых Линий - проверить API документацию\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"3\"\n  },\n  {\n    \"content\": \"Исправить ошибку ПЭК \\\"Failed to fetch\\\" - проверить URL и HTTP-метод\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"4\"\n  },\n  {\n    \"content\": \"Провести самоанализ и убедиться что все расчеты работают\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"5\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Убрать строчку \"К оплате по заказу:\" в деталях расчета",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Убрать стоимость в \"сроке доставки\"",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Исправить расчет Деловых Линий - проверить API документацию",
+          "status": "pending",
+          "priority": "high",
+          "id": "3"
+        },
+        {
+          "content": "Исправить ошибку ПЭК \"Failed to fetch\" - проверить URL и HTTP-метод",
+          "status": "pending",
+          "priority": "high",
+          "id": "4"
+        },
+        {
+          "content": "Провести самоанализ и убедиться что все расчеты работают",
+          "status": "pending",
+          "priority": "high",
+          "id": "5"
+        }
+      ]
+    },
+    "title": "4 todos",
+    "time": {
+      "start": 1758706420686,
+      "end": 1758706420686
+    }
+  }
+}
