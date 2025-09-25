@@ -1,0 +1,25 @@
+{
+  "id": "prt_980952264001Ud276fq1pqdrR7",
+  "messageID": "msg_980942693001bEaCgJYymkh7Wt",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01AkX5ctZgigXmof8DnzTMQT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 205,
+      "limit": 100
+    },
+    "output": "<file>\n00206|     try {\n00207|       const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n00208|         method: 'POST',\n00209|         headers: {\n00210|           'Content-Type': 'application/json'\n00211|         },\n00212|         body: JSON.stringify({\n00213|           appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n00214|           login: 'service@lavsit.ru',\n00215|           password: 'edcwsx123QAZ'\n00216|         })\n00217|       });\n00218| \n00219|       if (authResponse.ok) {\n00220|         const authData = await authResponse.json();\n00221|         return authData.data?.sessionID || null;\n00222|       }\n00223|     } catch (error) {\n00224|       console.error('Ошибка авторизации Деловые Линии:', error);\n00225|     }\n00226|     return null;\n00227|   };\n00228| \n00229|   // Расчет для Деловых Линий по новой документации\n00230|   const calculateDellin = async (): Promise<CalculationResult> => {\n00231|     const apiUrl = 'https://api.dellin.ru/v2/calculator';\n00232|     \n00233|     try {\n00234|       const sessionID = await getDellinSessionId();\n00235|       \n00236|       if (!sessionID) {\n00237|         return {\n00238|           company: 'Деловые Линии',\n00239|           price: 0,\n00240|           days: 0,\n00241|           error: 'Не удалось получить sessionID',\n00242|           apiUrl\n00243|         };\n00244|       }\n00245| \n00246|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n00247|       const totalVolume = form.cargos.reduce((sum, cargo) => \n00248|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n00249|       );\n00250| \n00251|       // Правильная структура запроса согласно документации\n00252|       const requestData = {\n00253|         appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n00254|         sessionID: sessionID,\n00255|         delivery: {\n00256|           deliveryType: {\n00257|             type: 'auto'\n00258|           },\n00259|           derival: {\n00260|             variant: form.fromAddressDelivery ? 'address' : 'terminal',\n00261|             address: {\n00262|               search: form.fromAddressDelivery ? (form.fromAddress || form.fromCity) : form.fromCity\n00263|             }\n00264|           },\n00265|           arrival: {\n00266|             variant: form.toAddressDelivery ? 'address' : 'terminal', \n00267|             address: {\n00268|               search: form.toAddressDelivery ? (form.toAddress || form.toCity) : form.toCity\n00269|             }\n00270|           }\n00271|         },\n00272|         cargo: {\n00273|           quantity: form.cargos.length,\n00274|           weight: totalWeight,\n00275|           totalVolume: totalVolume,\n00276|           totalWeight: totalWeight,\n00277|           oversizedWeight: 0,\n00278|           oversizedVolume: 0,\n00279|           ...(form.needInsurance && form.declaredValue > 0 ? {\n00280|             insurance: {\n00281|               statedValue: form.declaredValue,\n00282|               term: false\n00283|             }\n00284|           } : {})\n00285|         },\n00286|         ...(form.needPackaging ? {\n00287|           packages: [{\n00288|             uid: 'bag'\n00289|           }]\n00290|         } : {})\n00291|       };\n00292| \n00293|       const response = await fetch(apiUrl, {\n00294|         method: 'POST',\n00295|         headers: {\n00296|           'Content-Type': 'application/json',\n00297|           'Accept': 'application/json'\n00298|         },\n00299|         body: JSON.stringify(requestData)\n00300|       });\n00301| \n00302|       const data = await response.json();\n00303| \n00304|       if (response.ok && data.data && data.metadata?.status === 200) {\n00305|         let totalPrice = data.data.price || 0;\n\n(File has more lines. Use 'offset' parameter to read beyond line 305)\n</file>",
+    "metadata": {
+      "preview": "    try {\n      const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json'\n        },\n        body: JSON.stringify({\n          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n          login: 'service@lavsit.ru',\n          password: 'edcwsx123QAZ'\n        })\n      });\n\n      if (authResponse.ok) {\n        const authData = await authResponse.json();\n        return authData.data?.sessionID || null;\n      }\n    } catch (error) {\n      console.error('Ошибка авторизации Деловые Линии:', error);\n    }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758798882206,
+      "end": 1758798882209
+    }
+  }
+}

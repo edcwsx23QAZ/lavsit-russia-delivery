@@ -1,0 +1,25 @@
+{
+  "id": "prt_98094f40a001GcBTtcR0c5MkPb",
+  "messageID": "msg_980942693001bEaCgJYymkh7Wt",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01MdELtSVmVRicteFnAESgsR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 390,
+      "limit": 40
+    },
+    "output": "<file>\n00391|       if (response.ok && data.status === 'success' && data.data) {\n00392|         return {\n00393|           company: 'Nord Wheel',\n00394|           price: data.data.total || 0,\n00395|           days: data.data.days || 0,\n00396|           details: {\n00397|             ...data.data,\n00398|             totalCost: data.data.total,\n00399|             deliveryCost: data.data.door,\n00400|             terminalCost: data.data.terminal,\n00401|             pickupCost: data.data.pick,\n00402|             deliveryToDoorCost: data.data.deliver,\n00403|             additionalServices: (data.data.total || 0) - (data.data.door || 0)\n00404|           },\n00405|           requestData,\n00406|           responseData: data,\n00407|           apiUrl: fullUrl\n00408|         };\n00409|       } else {\n00410|         return {\n00411|           company: 'Nord Wheel',\n00412|           price: 0,\n00413|           days: 0,\n00414|           error: 'Ошибка расчета Nord Wheel',\n00415|           requestData,\n00416|           responseData: data,\n00417|           apiUrl: fullUrl\n00418|         };\n00419|       }\n00420|     } catch (error: any) {\n00421|       return {\n00422|         company: 'Nord Wheel',\n00423|         price: 0,\n00424|         days: 0,\n00425|         error: `Ошибка соединения: ${error.message}`,\n00426|         apiUrl\n00427|       };\n00428|     }\n00429|   };\n00430| \n\n(File has more lines. Use 'offset' parameter to read beyond line 430)\n</file>",
+    "metadata": {
+      "preview": "      if (response.ok && data.status === 'success' && data.data) {\n        return {\n          company: 'Nord Wheel',\n          price: data.data.total || 0,\n          days: data.data.days || 0,\n          details: {\n            ...data.data,\n            totalCost: data.data.total,\n            deliveryCost: data.data.door,\n            terminalCost: data.data.terminal,\n            pickupCost: data.data.pick,\n            deliveryToDoorCost: data.data.deliver,\n            additionalServices: (data.data.total || 0) - (data.data.door || 0)\n          },\n          requestData,\n          responseData: data,\n          apiUrl: fullUrl\n        };\n      } else {\n        return {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758798870051,
+      "end": 1758798870065
+    }
+  }
+}

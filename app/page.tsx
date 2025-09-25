@@ -216,19 +216,58 @@ export default function Home() {
         })
       });
 
-      if (authResponse.ok) {
-        const authData = await authResponse.json();
-        return authData.data?.sessionID || null;
+      const authData = await authResponse.json();
+      console.log('Деловые Линии авторизация:', authData);
+      
+      if (authResponse.ok && authData.data?.sessionID) {
+        return authData.data.sessionID;
+      } else {
+        console.error('Ошибка авторизации Деловые Линии:', authData);
+        return null;
       }
     } catch (error) {
-      console.error('Ошибка авторизации Деловые Линии:', error);
+      console.error('Ошибка соединения с авторизацией Деловые Линии:', error);
     }
     return null;
   };
 
-  // Расчет для Деловых Линий по новой документации
+  // Получение терминалов Деловые Линии для города
+  const getDellinTerminal = async (citySearch: string): Promise<string | null> => {
+    try {
+      const response = await fetch('https://api.dellin.ru/v3/public/terminals.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'
+        })
+      });
+
+      const data = await response.json();
+      console.log('Деловые Линии терминалы:', data);
+      
+      if (response.ok && data.terminals) {
+        // Ищем терминал в указанном городе
+        const normalizedCity = citySearch.toLowerCase().trim();
+        const terminal = data.terminals.find((t: any) => 
+          t.city?.toLowerCase().includes(normalizedCity) ||
+          normalizedCity.includes(t.city?.toLowerCase())
+        );
+        
+        return terminal?.id || data.terminals[0]?.id || null;
+      }
+      
+      return null;
+    } catch (error) {
+      console.error('Ошибка получения терминалов Деловые Линии:', error);
+      return null;
+    }
+  };
+
+  // Расчет для Деловых Линий через корректный API v2/calculator.json
   const calculateDellin = async (): Promise<CalculationResult> => {
-    const apiUrl = 'https://api.dellin.ru/v2/calculator';
+    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';
     
     try {
       const sessionID = await getDellinSessionId();
@@ -239,56 +278,117 @@ export default function Home() {
           price: 0,
           days: 0,
           error: 'Не удалось получить sessionID',
-          apiUrl
+          apiUrl,
+          requestData: null,
+          responseData: null
         };
       }
 
+      // Вычисляем размеры и объемы
       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
       const totalVolume = form.cargos.reduce((sum, cargo) => 
         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
       );
+      const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах
+      const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;
+      const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;
 
-      // Правильная структура запроса согласно документации
+      // Получаем терминалы для городов (если нужно)
+      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;
+      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;
+
+      // Формируем дату отправления на завтра
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const produceDate = tomorrow.toISOString().split('T')[0];
+
+      // Формируем корректную структуру запроса согласно инструкции
       const requestData = {
         appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
         sessionID: sessionID,
         delivery: {
           deliveryType: {
-            type: 'auto'
+            type: 'auto'  // Всегда "auto" по умолчанию
           },
           derival: {
+            produceDate: produceDate,  // Обязательная дата отправления
             variant: form.fromAddressDelivery ? 'address' : 'terminal',
-            address: {
-              search: form.fromAddressDelivery ? (form.fromAddress || form.fromCity) : form.fromCity
+            ...(form.fromAddressDelivery ? {
+              address: {
+                search: form.fromAddress || form.fromCity
+              }
+            } : {
+              terminalID: fromTerminalId
+            }),
+            time: {
+              worktimeStart: '10:00',
+              worktimeEnd: '18:00',
+              breakStart: '13:00',
+              breakEnd: '14:00',
+              exactTime: false
+            },
+            handling: {
+              freightLift: true,
+              toFloor: 5,
+              carry: 0
             }
           },
           arrival: {
-            variant: form.toAddressDelivery ? 'address' : 'terminal', 
-            address: {
-              search: form.toAddressDelivery ? (form.toAddress || form.toCity) : form.toCity
+            variant: form.toAddressDelivery ? 'address' : 'terminal',
+            ...(form.toAddressDelivery ? {
+              address: {
+                search: form.toAddress || form.toCity
+              }
+            } : {
+              terminalID: toTerminalId
+            }),
+            time: {
+              worktimeStart: '10:00',
+              worktimeEnd: '18:00',
+              breakStart: '13:00',
+              breakEnd: '14:00',
+              exactTime: false
+            },
+            handling: {
+              freightLift: true,
+              toFloor: 5,
+              carry: 0
             }
-          }
+          },
+          ...(form.needPackaging ? {
+            packages: [{
+              uid: 'crate_with_bubble',  // Правильный uid упаковки
+              count: 1
+            }]
+          } : {})
         },
         cargo: {
           quantity: form.cargos.length,
+          length: maxLength,
+          width: maxWidth,
+          height: maxHeight,
           weight: totalWeight,
           totalVolume: totalVolume,
           totalWeight: totalWeight,
           oversizedWeight: 0,
           oversizedVolume: 0,
+          hazardClass: 0,  // Всегда 0 если нет опасных грузов
           ...(form.needInsurance && form.declaredValue > 0 ? {
             insurance: {
               statedValue: form.declaredValue,
-              term: false
+              term: true  // Всегда true при наличии страхования
             }
           } : {})
         },
-        ...(form.needPackaging ? {
-          packages: [{
-            uid: 'bag'
-          }]
-        } : {})
+        payment: {
+          type: 'noncash',  // Всегда "noncash"
+          paymentCitySearch: {
+            search: form.fromCity  // Город оплаты
+          }
+        }
       };
+
+      console.log('Деловые Линии запрос:', JSON.stringify(requestData, null, 2));
 
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -300,6 +400,7 @@ export default function Home() {
       });
 
       const data = await response.json();
+      console.log('Деловые Линии ответ:', data);
 
       if (response.ok && data.data && data.metadata?.status === 200) {
         let totalPrice = data.data.price || 0;
