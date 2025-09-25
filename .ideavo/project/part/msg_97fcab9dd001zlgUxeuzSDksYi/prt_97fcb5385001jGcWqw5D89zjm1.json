@@ -1,0 +1,25 @@
+{
+  "id": "prt_97fcb5385001jGcWqw5D89zjm1",
+  "messageID": "msg_97fcab9dd001zlgUxeuzSDksYi",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0138YpzD77Br1SqARGtvE5Vb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 430,
+      "limit": 50
+    },
+    "output": "<file>\n00431|   // Получение ID города ПЭК через публичный API\n00432|   const findPekCityId = async (cityName: string): Promise<string | null> => {\n00433|     try {\n00434|       // Используем прокси для загрузки списка городов ПЭК\n00435|       const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://pecom.ru/ru/calc/towns.php');\n00436|       const response = await fetch(proxyUrl);\n00437|       const proxyData = await response.json();\n00438|       \n00439|       if (!response.ok || !proxyData.contents) {\n00440|         throw new Error('Ошибка загрузки списка городов ПЭК');\n00441|       }\n00442|       \n00443|       // Парсим JavaScript-массив городов\n00444|       const citiesText = proxyData.contents;\n00445|       const citiesMatch = citiesText.match(/var\\s+towns\\s*=\\s*(\\[[\\s\\S]*?\\]);/);\n00446|       \n00447|       if (citiesMatch) {\n00448|         // Безопасно парсим массив городов\n00449|         const citiesArray = eval(citiesMatch[1]);\n00450|         \n00451|         const normalizedSearchCity = cityName.toLowerCase().trim()\n00452|           .replace(/ё/g, 'е')\n00453|           .replace(/[\\s\\-\\.]+/g, '');\n00454|         \n00455|         // Ищем город по названию\n00456|         for (const city of citiesArray) {\n00457|           if (Array.isArray(city) && city.length >= 2) {\n00458|             const cityNameFromApi = city[1].toLowerCase()\n00459|               .replace(/ё/g, 'е')\n00460|               .replace(/[\\s\\-\\.]+/g, '');\n00461|             \n00462|             if (cityNameFromApi.includes(normalizedSearchCity) || \n00463|                 normalizedSearchCity.includes(cityNameFromApi)) {\n00464|               return city[0]; // Возвращаем ID города\n00465|             }\n00466|           }\n00467|         }\n00468|       }\n00469|       \n00470|       // Фоллбэк для основных городов если API не сработал\n00471|       const fallbackCities: { [key: string]: string } = {\n00472|         'москва': '2974',\n00473|         'санкт-петербург': '2975',\n00474|         'екатеринбург': '2976',\n00475|         'новосибирск': '2977',\n00476|         'нижний новгород': '2978',\n00477|         'самара': '2979',\n00478|         'омск': '2980',\n00479|         'казань': '2981',\n00480|         'ростов-на-дону': '2982',\n\n(File has more lines. Use 'offset' parameter to read beyond line 480)\n</file>",
+    "metadata": {
+      "preview": "  // Получение ID города ПЭК через публичный API\n  const findPekCityId = async (cityName: string): Promise<string | null> => {\n    try {\n      // Используем прокси для загрузки списка городов ПЭК\n      const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://pecom.ru/ru/calc/towns.php');\n      const response = await fetch(proxyUrl);\n      const proxyData = await response.json();\n      \n      if (!response.ok || !proxyData.contents) {\n        throw new Error('Ошибка загрузки списка городов ПЭК');\n      }\n      \n      // Парсим JavaScript-массив городов\n      const citiesText = proxyData.contents;\n      const citiesMatch = citiesText.match(/var\\s+towns\\s*=\\s*(\\[[\\s\\S]*?\\]);/);\n      \n      if (citiesMatch) {\n        // Безопасно парсим массив городов\n        const citiesArray = eval(citiesMatch[1]);\n        "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758785656224,
+      "end": 1758785656233
+    }
+  }
+}

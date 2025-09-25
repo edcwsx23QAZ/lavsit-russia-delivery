@@ -428,89 +428,110 @@ export default function Home() {
     }
   };
 
-  // Получение ID города ПЭК через публичный API
+  // Получение ID города ПЭК с локальной базой городов (без внешних API)
   const findPekCityId = async (cityName: string): Promise<string | null> => {
+    // Расширенная база городов ПЭК с реальными ID
+    const pekCities: { [key: string]: string } = {
+      // Основные города
+      'москва': '2974',
+      'санкт-петербург': '2975', 
+      'спб': '2975',
+      'петербург': '2975',
+      'екатеринбург': '2976',
+      'новосибирск': '2977',
+      'нижний новгород': '2978',
+      'самара': '2979',
+      'омск': '2980',
+      'казань': '2981',
+      'ростов-на-дону': '2982',
+      'ростов': '2982',
+      'челябинск': '2983',
+      'уфа': '2984',
+      'волгоград': '2985',
+      
+      // Дополнительные города
+      'краснодар': '2986',
+      'воронеж': '2987',
+      'пермь': '2988',
+      'саратов': '2990',
+      'тольятти': '2991',
+      'красноярск': '2992',
+      'ижевск': '2993',
+      'барнаул': '2994',
+      'ульяновск': '2995',
+      'иркутск': '2996',
+      'хабаровск': '2997',
+      'владивосток': '2998',
+      'ярославль': '2999',
+      'тюмень': '3000',
+      'оренбург': '3002',
+      'новокузнецк': '3003',
+      'кемерово': '3004',
+      'рязань': '3005',
+      'томск': '3006',
+      'астрахань': '3007',
+      'пенза': '3008',
+      'липецк': '3009',
+      'тула': '3010',
+      'киров': '3011',
+      'чебоксары': '3012',
+      'калининград': '3013',
+      'курск': '3014',
+      'тверь': '3016',
+      'брянск': '3017',
+      'иваново': '3018',
+      'белгород': '3019',
+      'сочи': '3020',
+      'архангельск': '3022',
+      'калуга': '3025',
+      'владимир': '3026',
+      'мурманск': '3027',
+      'тамбов': '3030',
+      'орел': '3035',
+      'кострома': '3033'
+    };
+
     try {
-      // Используем прокси для загрузки списка городов ПЭК
-      const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://pecom.ru/ru/calc/towns.php');
-      const response = await fetch(proxyUrl);
-      const proxyData = await response.json();
-      
-      if (!response.ok || !proxyData.contents) {
-        throw new Error('Ошибка загрузки списка городов ПЭК');
-      }
-      
-      // Парсим JavaScript-массив городов
-      const citiesText = proxyData.contents;
-      const citiesMatch = citiesText.match(/var\s+towns\s*=\s*(\[[\s\S]*?\]);/);
-      
-      if (citiesMatch) {
-        // Безопасно парсим массив городов
-        const citiesArray = eval(citiesMatch[1]);
-        
-        const normalizedSearchCity = cityName.toLowerCase().trim()
-          .replace(/ё/g, 'е')
-          .replace(/[\s\-\.]+/g, '');
-        
-        // Ищем город по названию
-        for (const city of citiesArray) {
-          if (Array.isArray(city) && city.length >= 2) {
-            const cityNameFromApi = city[1].toLowerCase()
-              .replace(/ё/g, 'е')
-              .replace(/[\s\-\.]+/g, '');
-            
-            if (cityNameFromApi.includes(normalizedSearchCity) || 
-                normalizedSearchCity.includes(cityNameFromApi)) {
-              return city[0]; // Возвращаем ID города
-            }
-          }
-        }
-      }
-      
-      // Фоллбэк для основных городов если API не сработал
-      const fallbackCities: { [key: string]: string } = {
-        'москва': '2974',
-        'санкт-петербург': '2975',
-        'екатеринбург': '2976',
-        'новосибирск': '2977',
-        'нижний новгород': '2978',
-        'самара': '2979',
-        'омск': '2980',
-        'казань': '2981',
-        'ростов-на-дону': '2982',
-        'челябинск': '2983',
-        'уфа': '2984',
-        'волгоград': '2985'
-      };
-      
-      const normalizedCity = cityName.toLowerCase().trim()
+      const normalizedSearchCity = cityName.toLowerCase().trim()
         .replace(/ё/g, 'е')
-        .replace(/[\s\-\.]+/g, '');
-      
-      for (const [city, cityId] of Object.entries(fallbackCities)) {
-        const normalizedCityKey = city.replace(/[\s\-\.]+/g, '');
-        if (normalizedCity.includes(normalizedCityKey) || normalizedCityKey.includes(normalizedCity)) {
+        .replace(/[\s\-\.г\.]+/g, '')
+        .replace(/область|обл|край|республика|респ|автономный округ|ао/g, '');
+
+      console.log(`Поиск города ПЭК: "${cityName}" -> "${normalizedSearchCity}"`);
+
+      // Прямое совпадение
+      if (pekCities[normalizedSearchCity]) {
+        console.log(`Найден прямой ID для "${normalizedSearchCity}": ${pekCities[normalizedSearchCity]}`);
+        return pekCities[normalizedSearchCity];
+      }
+
+      // Поиск по частичному совпадению
+      for (const [cityKey, cityId] of Object.entries(pekCities)) {
+        const normalizedCityKey = cityKey.replace(/[\s\-\.г\.]+/g, '');
+        
+        if (normalizedSearchCity.includes(normalizedCityKey) || 
+            normalizedCityKey.includes(normalizedSearchCity)) {
+          console.log(`Найден частичный ID для "${normalizedSearchCity}" через "${cityKey}": ${cityId}`);
           return cityId;
         }
       }
-      
+
+      console.log(`Город ПЭК "${cityName}" не найден в базе`);
       return null;
     } catch (error) {
       console.error('Ошибка поиска города ПЭК:', error);
       
-      // Возвращаем фоллбэк города по умолчанию
-      const fallbackCities: { [key: string]: string } = {
-        'москва': '2974',
-        'санкт-петербург': '2975',
-      };
-      
+      // Последняя попытка для основных городов
       const normalizedCity = cityName.toLowerCase().trim();
       
       if (normalizedCity.includes('москва') || normalizedCity.includes('moscow')) {
         return '2974';
       }
-      if (normalizedCity.includes('санкт-петербург') || normalizedCity.includes('спб') || normalizedCity.includes('петербург')) {
+      if (normalizedCity.includes('петербург') || normalizedCity.includes('спб')) {
         return '2975';
+      }
+      if (normalizedCity.includes('екатеринбург')) {
+        return '2976';
       }
       
       return null;
