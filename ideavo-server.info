@@ -4,13 +4,19 @@ $ next dev
   - Environments: .env
 
  ✓ Starting...
- ✓ Ready in 3.4s
- ✓ Compiled /middleware in 275ms
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+ ✓ Ready in 2.8s
+ ✓ Compiled /middleware in 261ms
  ✓ Compiled (73 modules)
  ○ Compiling / ...
- ✓ Compiled / in 5.5s (543 modules)
- GET / 200 in 6755ms
- ✓ Compiled in 1283ms (280 modules)
- GET / 200 in 233ms
- ⚠ Cross origin request detected from 4000-i0affo9iiqadcedznb7v2.e2b.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+ ✓ Compiled / in 10.3s (552 modules)
+ GET / 200 in 11699ms
+ ✓ Compiled in 1454ms (280 modules)
+ ✓ Compiled in 241ms (266 modules)
+ GET / 200 in 187ms
+ ⚠ Cross origin request detected from 4000-i859b80wqs6c2fhjwbj2w.e2b.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins

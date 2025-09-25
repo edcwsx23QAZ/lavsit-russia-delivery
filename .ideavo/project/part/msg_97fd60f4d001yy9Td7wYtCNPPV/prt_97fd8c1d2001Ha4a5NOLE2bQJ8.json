@@ -1,0 +1,11 @@
+{
+  "id": "prt_97fd8c1d2001Ha4a5NOLE2bQJ8",
+  "messageID": "msg_97fd60f4d001yy9Td7wYtCNPPV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Я вижу проблему! Ошибка \"Failed to fetch\" происходит на строке 657, где используется прокси `api.allorigins.win` для запроса к `http://calc.pecom.ru`. Проблемы:\n\n1. **Прокси недоступен** - `api.allorigins.win` может быть заблокирован или недоступен\n2. **HTTP вместо HTTPS** - современные браузеры блокируют mixed content\n3. **Неправильный API endpoint** - используется старый calc API вместо официального REST API\n\nДавайте полностью переделаем интеграцию ПЭК, используя официальный API с предоставленным ключом:",
+  "time": {
+    "start": 1758786539683,
+    "end": 1758786539683
+  }
+}
