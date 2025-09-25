@@ -428,6 +428,95 @@ export default function Home() {
     }
   };
 
+  // Получение ID города ПЭК через публичный API
+  const findPekCityId = async (cityName: string): Promise<string | null> => {
+    try {
+      // Используем прокси для загрузки списка городов ПЭК
+      const proxyUrl = 'https://api.allorigins.win/get?url=' + encodeURIComponent('https://pecom.ru/ru/calc/towns.php');
+      const response = await fetch(proxyUrl);
+      const proxyData = await response.json();
+      
+      if (!response.ok || !proxyData.contents) {
+        throw new Error('Ошибка загрузки списка городов ПЭК');
+      }
+      
+      // Парсим JavaScript-массив городов
+      const citiesText = proxyData.contents;
+      const citiesMatch = citiesText.match(/var\s+towns\s*=\s*(\[[\s\S]*?\]);/);
+      
+      if (citiesMatch) {
+        // Безопасно парсим массив городов
+        const citiesArray = eval(citiesMatch[1]);
+        
+        const normalizedSearchCity = cityName.toLowerCase().trim()
+          .replace(/ё/g, 'е')
+          .replace(/[\s\-\.]+/g, '');
+        
+        // Ищем город по названию
+        for (const city of citiesArray) {
+          if (Array.isArray(city) && city.length >= 2) {
+            const cityNameFromApi = city[1].toLowerCase()
+              .replace(/ё/g, 'е')
+              .replace(/[\s\-\.]+/g, '');
+            
+            if (cityNameFromApi.includes(normalizedSearchCity) || 
+                normalizedSearchCity.includes(cityNameFromApi)) {
+              return city[0]; // Возвращаем ID города
+            }
+          }
+        }
+      }
+      
+      // Фоллбэк для основных городов если API не сработал
+      const fallbackCities: { [key: string]: string } = {
+        'москва': '2974',
+        'санкт-петербург': '2975',
+        'екатеринбург': '2976',
+        'новосибирск': '2977',
+        'нижний новгород': '2978',
+        'самара': '2979',
+        'омск': '2980',
+        'казань': '2981',
+        'ростов-на-дону': '2982',
+        'челябинск': '2983',
+        'уфа': '2984',
+        'волгоград': '2985'
+      };
+      
+      const normalizedCity = cityName.toLowerCase().trim()
+        .replace(/ё/g, 'е')
+        .replace(/[\s\-\.]+/g, '');
+      
+      for (const [city, cityId] of Object.entries(fallbackCities)) {
+        const normalizedCityKey = city.replace(/[\s\-\.]+/g, '');
+        if (normalizedCity.includes(normalizedCityKey) || normalizedCityKey.includes(normalizedCity)) {
+          return cityId;
+        }
+      }
+      
+      return null;
+    } catch (error) {
+      console.error('Ошибка поиска города ПЭК:', error);
+      
+      // Возвращаем фоллбэк города по умолчанию
+      const fallbackCities: { [key: string]: string } = {
+        'москва': '2974',
+        'санкт-петербург': '2975',
+      };
+      
+      const normalizedCity = cityName.toLowerCase().trim();
+      
+      if (normalizedCity.includes('москва') || normalizedCity.includes('moscow')) {
+        return '2974';
+      }
+      if (normalizedCity.includes('санкт-петербург') || normalizedCity.includes('спб') || normalizedCity.includes('петербург')) {
+        return '2975';
+      }
+      
+      return null;
+    }
+  };
+
   // Получение ID склада ПЭК по адресу через API
   const findPekWarehouseId = async (address: string): Promise<string | null> => {
     try {
