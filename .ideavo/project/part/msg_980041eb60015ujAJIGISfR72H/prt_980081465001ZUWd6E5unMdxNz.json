@@ -1,0 +1,25 @@
+{
+  "id": "prt_980081465001ZUWd6E5unMdxNz",
+  "messageID": "msg_980041eb60015ujAJIGISfR72H",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01EWspvpDmLz5rsRigFAPQb4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1280,
+      "limit": 50
+    },
+    "output": "<file>\n01281|                       <div className=\"flex justify-between items-center\">\n01282|                         <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n01283|                           <Building2 className=\"h-4 w-4\" />\n01284|                           {calc.company}\n01285|                         </CardTitle>\n01286|                         {calc.error ? (\n01287|                           <Badge variant=\"destructive\" className=\"text-xs\">Ошибка</Badge>\n01288|                         ) : (\n01289|                           <Badge variant=\"default\" className=\"bg-green-600 text-xs\">\n01290|                             {calc.price.toLocaleString()} ₽\n01291|                           </Badge>\n01292|                         )}\n01293|                       </div>\n01294|                     </CardHeader>\n01295|                     <CardContent className=\"pt-0\">\n01296|                       {calc.error ? (\n01297|                         <Alert className=\"border-red-600\">\n01298|                           <AlertDescription className=\"text-white text-xs\">{calc.error}</AlertDescription>\n01299|                         </Alert>\n01300|                       ) : (\n01301|                         <div className=\"space-y-2\">\n01302|                           <p className=\"text-white text-xs\"><strong>Стоимость:</strong> {calc.price.toLocaleString()} ₽</p>\n01303|                           <p className=\"text-white text-xs\"><strong>Срок доставки:</strong> {calc.days} дней</p>\n01304|                           \n01305|                           <div className=\"flex gap-2 mt-2\">\n01306|                             <Button\n01307|                               variant=\"outline\"\n01308|                               size=\"sm\"\n01309|                               onClick={() => toggleDetails(calc.company)}\n01310|                               className=\"h-6 text-xs\"\n01311|                             >\n01312|                               {expandedDetails[calc.company] ? 'Скрыть подробнее' : 'Показать подробнее'}\n01313|                             </Button>\n01314|                             <Button\n01315|                               variant=\"outline\"\n01316|                               size=\"sm\"\n01317|                               onClick={() => toggleDebugInfo(calc.company)}\n01318|                               className=\"h-6 text-xs\"\n01319|                             >\n01320|                               {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}\n01321|                             </Button>\n01322|                           </div>\n01323|                           \n01324|                           {/* Детали расчета */}\n01325|                           <Collapsible open={expandedDetails[calc.company]}>\n01326|                             <CollapsibleContent className=\"mt-2\">\n01327|                               <div className=\"bg-gray-900 p-3 rounded text-xs\">\n01328|                                 <h4 className=\"font-bold mb-2 text-white\">Детали расчета:</h4>\n01329|                                 {(() => {\n01330|                                   const details = parseCalculationDetails(calc);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1330)\n</file>",
+    "metadata": {
+      "preview": "                      <div className=\"flex justify-between items-center\">\n                        <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n                          <Building2 className=\"h-4 w-4\" />\n                          {calc.company}\n                        </CardTitle>\n                        {calc.error ? (\n                          <Badge variant=\"destructive\" className=\"text-xs\">Ошибка</Badge>\n                        ) : (\n                          <Badge variant=\"default\" className=\"bg-green-600 text-xs\">\n                            {calc.price.toLocaleString()} ₽\n                          </Badge>\n                        )}\n                      </div>\n                    </CardHeader>\n                    <CardContent className=\"pt-0\">\n                      {calc.error ? (\n                        <Alert className=\"border-red-600\">\n                          <AlertDescription className=\"text-white text-xs\">{calc.error}</AlertDescription>\n                        </Alert>\n                      ) : ("
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758789638077,
+      "end": 1758789638079
+    }
+  }
+}

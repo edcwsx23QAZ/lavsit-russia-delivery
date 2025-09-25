@@ -1,0 +1,26 @@
+{
+  "id": "prt_980079645001Cb6Kq7S7HrjAET",
+  "messageID": "msg_980041eb60015ujAJIGISfR72H",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Y5fYxDBa49DQJ7L8d3i4s9",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  // Расчет для ПЭК через официальный REST API\n  const calculatePEK = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://api.pecom.ru/v1/calculator/calculate';",
+      "newString": "  // Расчет для ПЭК через публичный API\n  const calculatePEK = async (): Promise<CalculationResult> => {\n    const apiUrl = 'http://calc.pecom.ru/bitrix/components/pecom/calc/ajax.php';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -571,11 +571,11 @@\n     return null;\n   }\n };\n \n-// Расчет для ПЭК через официальный REST API\n+// Расчет для ПЭК через публичный API\n const calculatePEK = async (): Promise<CalculationResult> => {\n-  const apiUrl = 'https://api.pecom.ru/v1/calculator/calculate';\n+  const apiUrl = 'http://calc.pecom.ru/bitrix/components/pecom/calc/ajax.php';\n   \n   try {\n     // Получаем ID городов\n     const fromCityId = await findPekCityId(form.fromCity);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758789607161,
+      "end": 1758789607169
+    }
+  }
+}

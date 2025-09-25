@@ -428,70 +428,75 @@ export default function Home() {
     }
   };
 
-  // Получение ID города ПЭК с локальной базой городов (без внешних API)
-  const findPekCityId = async (cityName: string): Promise<string | null> => {
-    // Расширенная база городов ПЭК с реальными ID
-    const pekCities: { [key: string]: string } = {
-      // Основные города
-      'москва': '2974',
-      'санкт-петербург': '2975', 
-      'спб': '2975',
-      'петербург': '2975',
-      'екатеринбург': '2976',
-      'новосибирск': '2977',
-      'нижний новгород': '2978',
-      'самара': '2979',
-      'омск': '2980',
-      'казань': '2981',
-      'ростов-на-дону': '2982',
-      'ростов': '2982',
-      'челябинск': '2983',
-      'уфа': '2984',
-      'волгоград': '2985',
-      
-      // Дополнительные города
-      'краснодар': '2986',
-      'воронеж': '2987',
-      'пермь': '2988',
-      'саратов': '2990',
-      'тольятти': '2991',
-      'красноярск': '2992',
-      'ижевск': '2993',
-      'барнаул': '2994',
-      'ульяновск': '2995',
-      'иркутск': '2996',
-      'хабаровск': '2997',
-      'владивосток': '2998',
-      'ярославль': '2999',
-      'тюмень': '3000',
-      'оренбург': '3002',
-      'новокузнецк': '3003',
-      'кемерово': '3004',
-      'рязань': '3005',
-      'томск': '3006',
-      'астрахань': '3007',
-      'пенза': '3008',
-      'липецк': '3009',
-      'тула': '3010',
-      'киров': '3011',
-      'чебоксары': '3012',
-      'калининград': '3013',
-      'курск': '3014',
-      'тверь': '3016',
-      'брянск': '3017',
-      'иваново': '3018',
-      'белгород': '3019',
-      'сочи': '3020',
-      'архангельск': '3022',
-      'калуга': '3025',
-      'владимир': '3026',
-      'мурманск': '3027',
-      'тамбов': '3030',
-      'орел': '3035',
-      'кострома': '3033'
-    };
-
+  // Загрузка городов ПЭК с публичного API
+  const loadPekCities = async (): Promise<{ [key: string]: string }> => {
     try {
+      const response = await fetch('https://pecom.ru/ru/calc/towns.php');
+      const data = await response.json();
+      
+      const cities: { [key: string]: string } = {};
+      
+      // Парсим структуру: {'регион1': {id1: 'Город1', id2: 'Город2'}, ...}
+      Object.values(data).forEach((region: any) => {
+        if (typeof region === 'object') {
+          Object.entries(region).forEach(([cityId, cityName]) => {
+            if (typeof cityName === 'string') {
+              const normalizedName = cityName.toLowerCase()
+                .replace(/ё/g, 'е')
+                .replace(/[\s\-\.г\.]+/g, '')
+                .replace(/область|обл|край|республика|респ|автономный округ|ао/g, '');
+              cities[normalizedName] = cityId;
+            }
+          });
+        }
+      });
+      
+      return cities;
+    } catch (error) {
+      console.warn('Не удалось загрузить города ПЭК с API, используем локальную базу:', error);
+      
+      // Фоллбэк - локальная база городов с правильными ID
+      return {
+        'москва': '-457',
+        'санкт-петербург': '64883', 
+        'спб': '64883',
+        'петербург': '64883',
+        'екатеринбург': '65479',
+        'новосибирск': '65951',
+        'нижний новгород': '65806',
+        'самара': '66358',
+        'омск': '66044',
+        'казань': '65652',
+        'ростов-на-дону': '66302',
+        'ростов': '66302',
+        'челябинск': '66821',
+        'уфа': '66695',
+        'волгоград': '65341',
+        'краснодар': '65704',
+        'воронеж': '65369',
+        'пермь': '66159',
+        'саратов': '66372',
+        'тольятти': '66601',
+        'красноярск': '65724',
+        'ижевск': '65613',
+        'барнаул': '65169',
+        'ульяновск': '66661',
+        'иркутск': '65625',
+        'хабаровск': '66756',
+        'владивосток': '65313',
+        'ярославль': '66937',
+        'тюмень': '66651',
+        'калининград': '65640',
+        'кострома': '65697'
+      };
+    }
+  };
+
+  // Получение ID города ПЭК
+  const findPekCityId = async (cityName: string): Promise<string | null> => {
+    try {
+      const pekCities = await loadPekCities();
+      
       const normalizedSearchCity = cityName.toLowerCase().trim()
         .replace(/ё/g, 'е')
         .replace(/[\s\-\.г\.]+/g, '')
@@ -507,10 +512,8 @@ export default function Home() {
 
       // Поиск по частичному совпадению
       for (const [cityKey, cityId] of Object.entries(pekCities)) {
-        const normalizedCityKey = cityKey.replace(/[\s\-\.г\.]+/g, '');
-        
-        if (normalizedSearchCity.includes(normalizedCityKey) || 
-            normalizedCityKey.includes(normalizedSearchCity)) {
+        if (normalizedSearchCity.includes(cityKey) || 
+            cityKey.includes(normalizedSearchCity)) {
           console.log(`Найден частичный ID для "${normalizedSearchCity}" через "${cityKey}": ${cityId}`);
           return cityId;
         }
@@ -520,20 +523,6 @@ export default function Home() {
       return null;
     } catch (error) {
       console.error('Ошибка поиска города ПЭК:', error);
-      
-      // Последняя попытка для основных городов
-      const normalizedCity = cityName.toLowerCase().trim();
-      
-      if (normalizedCity.includes('москва') || normalizedCity.includes('moscow')) {
-        return '2974';
-      }
-      if (normalizedCity.includes('петербург') || normalizedCity.includes('спб')) {
-        return '2975';
-      }
-      if (normalizedCity.includes('екатеринбург')) {
-        return '2976';
-      }
-      
       return null;
     }
   };
@@ -583,9 +572,9 @@ export default function Home() {
     }
   };
 
-  // Расчет для ПЭК через официальный REST API
+  // Расчет для ПЭК через публичный API
   const calculatePEK = async (): Promise<CalculationResult> => {
-    const apiUrl = 'https://api.pecom.ru/v1/calculator/calculate';
+    const apiUrl = 'http://calc.pecom.ru/bitrix/components/pecom/calc/ajax.php';
     
     try {
       // Получаем ID городов
@@ -598,53 +587,68 @@ export default function Home() {
           price: 0,
           days: 0,
           error: `Город не найден в базе ПЭК. Проверьте: ${!fromCityId ? form.fromCity : ''} ${!toCityId ? form.toCity : ''}`.trim(),
-          apiUrl
+          apiUrl,
+          requestData: { fromCity: form.fromCity, toCity: form.toCity, fromCityId, toCityId },
+          responseData: null
         };
       }
 
-      // Формируем грузы согласно API документации
-      const cargos = form.cargos.map(cargo => ({
-        width: cargo.width / 100, // переводим в метры
-        length: cargo.length / 100,
-        height: cargo.height / 100,
-        volume: (cargo.width * cargo.length * cargo.height) / 1000000, // объем в м3
-        weight: cargo.weight,
-        isOversized: (cargo.width > 240 || cargo.length > 1200 || cargo.height > 270 || cargo.weight > 1500) ? 1 : 0
-      }));
-
-      // Формируем запрос согласно официальной документации API
-      const requestData = {
-        senderCityId: fromCityId,
-        receiverCityId: toCityId,
-        places: cargos,
-        isPickup: form.fromAddressDelivery ? 1 : 0,
-        isDelivery: form.toAddressDelivery ? 1 : 0,
-        pickupOptions: {
-          hasHydroBoardLoading: form.needLoading ? 1 : 0,
-          hasManipulatorLoading: 0
-        },
-        deliveryOptions: {
-          hasHydroBoardLoading: form.needLoading ? 1 : 0,
-          hasManipulatorLoading: 0
-        },
-        ...(form.needInsurance && form.declaredValue > 0 ? {
-          insuranceValue: form.declaredValue
-        } : {}),
-        packageType: form.needPackaging ? 'soft' : null
-      };
-
-      console.log('ПЭК запрос:', requestData);
-
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': 'Bearer C04C5BF2AE367BDCBDC71E7DA520A69B167D1984'
-        },
-        body: JSON.stringify(requestData)
+      // Формируем параметры запроса согласно публичной документации
+      const params = new URLSearchParams();
+      
+      // Добавляем грузы согласно формату: Ширина (м), Длина (м), Высота (м), Объем (м3), Вес (кг), Негабарит (0/1), ЗТУ (0/1)
+      form.cargos.forEach((cargo, index) => {
+        const width = cargo.width / 100; // переводим см в метры
+        const length = cargo.length / 100;
+        const height = cargo.height / 100;
+        const volume = width * length * height;
+        const weight = cargo.weight;
+        const isOversized = (width > 2.4 || length > 12 || height > 2.7 || weight > 1500) ? 1 : 0;
+        const needZTU = form.needPackaging ? 1 : 0;
+        
+        params.append(`places[${index}][]`, width.toString());
+        params.append(`places[${index}][]`, length.toString());
+        params.append(`places[${index}][]`, height.toString());
+        params.append(`places[${index}][]`, volume.toString());
+        params.append(`places[${index}][]`, weight.toString());
+        params.append(`places[${index}][]`, isOversized.toString());
+        params.append(`places[${index}][]`, needZTU.toString());
       });
+      
+      // Параметры забора
+      params.append('take[town]', fromCityId.toString());
+      params.append('take[tent]', '0'); // растентровка
+      params.append('take[gidro]', form.needLoading ? '1' : '0'); // гидролифт
+      params.append('take[manip]', '0'); // манипулятор
+      params.append('take[speed]', '0'); // срочный забор
+      params.append('take[moscow]', '0'); // ограничения по Москве
+      
+      // Параметры доставки
+      params.append('deliver[town]', toCityId.toString());
+      params.append('deliver[tent]', '0');
+      params.append('deliver[gidro]', form.needLoading ? '1' : '0');
+      params.append('deliver[manip]', '0');
+      params.append('deliver[speed]', '0');
+      params.append('deliver[moscow]', '0');
+      
+      // Дополнительные услуги
+      params.append('plombir', '0'); // пломбы
+      params.append('strah', form.needInsurance ? form.declaredValue.toString() : '0'); // страховка
+      params.append('ashan', '0'); // доставка в Ашан
+      params.append('night', '0'); // ночное время
+      params.append('pal', '0'); // запаллечивание
+      params.append('pallets', '0'); // паллетная перевозка
 
+      const fullUrl = `${apiUrl}?${params.toString()}`;
+      const requestData = Object.fromEntries(params);
+
+      console.log('ПЭК запрос URL:', fullUrl);
+      console.log('ПЭК параметры:', requestData);
+
+      // Прямой запрос к API (без прокси, так как HTTPS сайт может делать HTTP запросы)
+      const response = await fetch(fullUrl);
       const data = await response.json();
+      
       console.log('ПЭК ответ:', data);
 
       if (response.ok && data.success) {
@@ -1289,16 +1293,28 @@ export default function Home() {
                       </div>
                     </CardHeader>
                     <CardContent className="pt-0">
-                      {calc.error ? (
-                        <Alert className="border-red-600">
-                          <AlertDescription className="text-white text-xs">{calc.error}</AlertDescription>
-                        </Alert>
-                      ) : (
-                        <div className="space-y-2">
-                          <p className="text-white text-xs"><strong>Стоимость:</strong> {calc.price.toLocaleString()} ₽</p>
-                          <p className="text-white text-xs"><strong>Срок доставки:</strong> {calc.days} дней</p>
-                          
-                          <div className="flex gap-2 mt-2">
+                      <div className="space-y-2">
+                        {calc.error ? (
+                          <div className="space-y-2">
+                            <Alert className="border-red-600">
+                              <AlertDescription className="text-white text-xs">{calc.error}</AlertDescription>
+                            </Alert>
+                            {calc.price > 0 && (
+                              <>
+                                <p className="text-white text-xs"><strong>Примерная стоимость:</strong> {calc.price.toLocaleString()} ₽</p>
+                                <p className="text-white text-xs"><strong>Примерный срок:</strong> {calc.days} дней</p>
+                              </>
+                            )}
+                          </div>
+                        ) : (
+                          <>
+                            <p className="text-white text-xs"><strong>Стоимость:</strong> {calc.price.toLocaleString()} ₽</p>
+                            <p className="text-white text-xs"><strong>Срок доставки:</strong> {calc.days} дней</p>
+                          </>
+                        )}
+                        
+                        <div className="flex gap-2 mt-2">
+                          {!calc.error && (
                             <Button
                               variant="outline"
                               size="sm"
@@ -1307,17 +1323,19 @@ export default function Home() {
                             >
                               {expandedDetails[calc.company] ? 'Скрыть подробнее' : 'Показать подробнее'}
                             </Button>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              onClick={() => toggleDebugInfo(calc.company)}
-                              className="h-6 text-xs"
-                            >
-                              {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}
-                            </Button>
-                          </div>
-                          
-                          {/* Детали расчета */}
+                          )}
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => toggleDebugInfo(calc.company)}
+                            className="h-6 text-xs"
+                          >
+                            {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}
+                          </Button>
+                        </div>
+                        
+                        {/* Детали расчета */}
+                        {!calc.error && (
                           <Collapsible open={expandedDetails[calc.company]}>
                             <CollapsibleContent className="mt-2">
                               <div className="bg-gray-900 p-3 rounded text-xs">
@@ -1339,65 +1357,71 @@ export default function Home() {
                                           <div className="font-medium">{detail.price.toLocaleString()} ₽</div>
                                         </div>
                                       ))}
-
                                     </div>
                                   );
                                 })()}
                               </div>
                             </CollapsibleContent>
                           </Collapsible>
-                          
-                          {/* Отладочная информация */}
-                          <Collapsible open={expandedDebugInfo[calc.company]}>
-                            <CollapsibleContent className="mt-2">
-                              <div className="bg-gray-900 p-3 rounded text-xs">
-                                <h4 className="font-bold mb-2 text-white">Отладочная информация:</h4>
-                                
-                                {calc.apiUrl && (
-                                  <div className="mb-3">
-                                    <h5 className="font-bold mb-1 text-white">Запрос к API:</h5>
-                                    <p className="text-gray-300 break-all">URL: {calc.apiUrl}</p>
-                                  </div>
-                                )}
-                                
-                                {calc.sessionId && (
-                                  <div className="mb-3">
-                                    <h5 className="font-bold mb-1 text-white">Session ID:</h5>
-                                    <p className="text-gray-300">{calc.sessionId}</p>
-                                  </div>
-                                )}
-                                
-                                {calc.requestData && (
-                                  <div className="mb-3">
-                                    <h5 className="font-bold mb-1 text-white">Отправленный запрос:</h5>
-                                    <pre className="whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs">
-                                      {JSON.stringify(calc.requestData, null, 2)}
-                                    </pre>
-                                  </div>
-                                )}
-                                
-                                {calc.responseData && (
-                                  <div className="mb-3">
-                                    <h5 className="font-bold mb-1 text-white">Полученный ответ:</h5>
-                                    <pre className="whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs">
-                                      {JSON.stringify(calc.responseData, null, 2)}
-                                    </pre>
-                                  </div>
-                                )}
-                                
-                                {calc.details && (
-                                  <div className="mb-3">
-                                    <h5 className="font-bold mb-1 text-white">Детали расчета (JSON):</h5>
-                                    <pre className="whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs">
-                                      {JSON.stringify(calc.details, null, 2)}
-                                    </pre>
-                                  </div>
-                                )}
-                              </div>
-                            </CollapsibleContent>
-                          </Collapsible>
-                        </div>
-                      )}
+                        )}
+                        
+                        {/* Отладочная информация - всегда доступна */}
+                        <Collapsible open={expandedDebugInfo[calc.company]}>
+                          <CollapsibleContent className="mt-2">
+                            <div className="bg-gray-900 p-3 rounded text-xs">
+                              <h4 className="font-bold mb-2 text-white">Отладочная информация:</h4>
+                              
+                              {calc.apiUrl && (
+                                <div className="mb-3">
+                                  <h5 className="font-bold mb-1 text-white">Запрос к API:</h5>
+                                  <p className="text-gray-300 break-all text-xs">URL: {calc.apiUrl}</p>
+                                </div>
+                              )}
+                              
+                              {calc.sessionId && (
+                                <div className="mb-3">
+                                  <h5 className="font-bold mb-1 text-white">Session ID:</h5>
+                                  <p className="text-gray-300 text-xs">{calc.sessionId}</p>
+                                </div>
+                              )}
+                              
+                              {calc.requestData && (
+                                <div className="mb-3">
+                                  <h5 className="font-bold mb-1 text-white">Отправленный запрос:</h5>
+                                  <pre className="whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs">
+                                    {JSON.stringify(calc.requestData, null, 2)}
+                                  </pre>
+                                </div>
+                              )}
+                              
+                              {calc.responseData && (
+                                <div className="mb-3">
+                                  <h5 className="font-bold mb-1 text-white">Полученный ответ:</h5>
+                                  <pre className="whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs">
+                                    {JSON.stringify(calc.responseData, null, 2)}
+                                  </pre>
+                                </div>
+                              )}
+                              
+                              {calc.details && (
+                                <div className="mb-3">
+                                  <h5 className="font-bold mb-1 text-white">Детали расчета (JSON):</h5>
+                                  <pre className="whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs">
+                                    {JSON.stringify(calc.details, null, 2)}
+                                  </pre>
+                                </div>
+                              )}
+                              
+                              {calc.error && (
+                                <div className="mb-3">
+                                  <h5 className="font-bold mb-1 text-red-400">Информация об ошибке:</h5>
+                                  <p className="text-red-300 text-xs">{calc.error}</p>
+                                </div>
+                              )}
+                            </div>
+                          </CollapsibleContent>
+                        </Collapsible>
+                      </div>
                     </CardContent>
                   </Card>
                 ))}

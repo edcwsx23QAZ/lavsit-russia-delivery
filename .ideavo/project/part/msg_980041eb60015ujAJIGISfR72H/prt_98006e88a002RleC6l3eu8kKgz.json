@@ -1,0 +1,25 @@
+{
+  "id": "prt_98006e88a002RleC6l3eu8kKgz",
+  "messageID": "msg_980041eb60015ujAJIGISfR72H",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011tpafpfivu5iFRzqmJ2ZhT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1180,
+      "limit": 50
+    },
+    "output": "<file>\n01181|               <CardContent className=\"space-y-3\">\n01182|                 <div>\n01183|                   <Label className=\"text-white text-xs\">Объявленная стоимость (руб.)</Label>\n01184|                   <Input\n01185|                     type=\"number\"\n01186|                     value={form.declaredValue || ''}\n01187|                     onChange={(e) => setForm(prev => ({ ...prev, declaredValue: Number(e.target.value) }))}\n01188|                     className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n01189|                   />\n01190|                 </div>\n01191|                 \n01192|                 <div className=\"space-y-2\">\n01193|                   <div className=\"flex items-center space-x-2\">\n01194|                     <Checkbox\n01195|                       id=\"packaging\"\n01196|                       checked={form.needPackaging}\n01197|                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needPackaging: checked as boolean }))}\n01198|                     />\n01199|                     <Label htmlFor=\"packaging\" className=\"text-white text-xs\">Требуется упаковка</Label>\n01200|                   </div>\n01201|                   \n01202|                   <div className=\"flex items-center space-x-2\">\n01203|                     <Checkbox\n01204|                       id=\"insurance\"\n01205|                       checked={form.needInsurance}\n01206|                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needInsurance: checked as boolean }))}\n01207|                     />\n01208|                     <Label htmlFor=\"insurance\" className=\"text-white text-xs\">Требуется страховка</Label>\n01209|                   </div>\n01210|                   \n01211|                   <div className=\"flex items-center space-x-2\">\n01212|                     <Checkbox\n01213|                       id=\"loading\"\n01214|                       checked={form.needLoading}\n01215|                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needLoading: checked as boolean }))}\n01216|                     />\n01217|                     <Label htmlFor=\"loading\" className=\"text-white text-xs\">Требуется погрузка/разгрузка</Label>\n01218|                   </div>\n01219|                   \n01220|                   <div className=\"flex items-center space-x-2\">\n01221|                     <Checkbox\n01222|                       id=\"carry\"\n01223|                       checked={form.needCarry}\n01224|                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needCarry: checked as boolean }))}\n01225|                     />\n01226|                     <Label htmlFor=\"carry\" className=\"text-white text-xs\">Требуется подъем</Label>\n01227|                   </div>\n01228|                   \n01229|                   {form.needCarry && (\n01230|                     <div className=\"ml-6 space-y-2 border-l-2 border-gray-600 pl-3\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 1230)\n</file>",
+    "metadata": {
+      "preview": "              <CardContent className=\"space-y-3\">\n                <div>\n                  <Label className=\"text-white text-xs\">Объявленная стоимость (руб.)</Label>\n                  <Input\n                    type=\"number\"\n                    value={form.declaredValue || ''}\n                    onChange={(e) => setForm(prev => ({ ...prev, declaredValue: Number(e.target.value) }))}\n                    className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n                  />\n                </div>\n                \n                <div className=\"space-y-2\">\n                  <div className=\"flex items-center space-x-2\">\n                    <Checkbox\n                      id=\"packaging\"\n                      checked={form.needPackaging}\n                      onCheckedChange={(checked) => setForm(prev => ({ ...prev, needPackaging: checked as boolean }))}\n                    />\n                    <Label htmlFor=\"packaging\" className=\"text-white text-xs\">Требуется упаковка</Label>\n                  </div>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758789561337,
+      "end": 1758789561342
+    }
+  }
+}
