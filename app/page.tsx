@@ -1228,7 +1228,7 @@ export default function Home() {
       let derivalPrice = 0;
       let arrivalPrice = 0;
       let packagingPrice = 0;
-      let packagingPremiums = 0;
+      // packagingPremiums больше не используются - надбавки включены в pkg.price
       let insurancePrice = 0;
       
       // Межтерминальная перевозка
@@ -1261,33 +1261,17 @@ export default function Home() {
         });
       }
       
-      // Упаковка с детализацией надбавок
+      // Упаковка (надбавки уже включены в pkg.price)
       if (form.needPackaging && calc.details.packages) {
         Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {
           if (pkg.price && pkg.price > 0) {
-            // Базовая стоимость упаковки (без надбавок)
-            let basePackagingPrice = pkg.price;
-            packagingPrice += basePackagingPrice;
+            packagingPrice += pkg.price;
             
             details.push({
               service: 'Упаковка груза',
               description: 'Упаковать в комплекс «обрешётка + амортизация»',
-              price: basePackagingPrice
+              price: pkg.price
             });
-            
-            // Добавляем детали надбавок если есть
-            if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {
-              pkg.premiumDetails.forEach((premium: any) => {
-                if (premium.value && premium.value > 0) {
-                  packagingPremiums += premium.value;
-                  details.push({
-                    service: 'Надбавка к упаковке',
-                    description: premium.name || 'Дополнительная надбавка',
-                    price: premium.value
-                  });
-                }
-              });
-            }
           }
         });
       }
@@ -1310,7 +1294,7 @@ export default function Home() {
       });
       
       // Если есть расхождение между суммой компонентов и общей стоимостью, добавляем остаток
-      const calculatedSum = intercityPrice + derivalPrice + arrivalPrice + packagingPrice + packagingPremiums + insurancePrice + 15;
+      const calculatedSum = intercityPrice + derivalPrice + arrivalPrice + packagingPrice + insurancePrice + 15;
       const remainder = basePrice - calculatedSum;
       
       if (Math.abs(remainder) > 1) { // Если расхождение больше 1 рубля

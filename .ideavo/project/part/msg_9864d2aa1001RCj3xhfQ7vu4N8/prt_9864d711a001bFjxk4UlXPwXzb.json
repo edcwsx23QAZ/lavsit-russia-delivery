@@ -1,0 +1,25 @@
+{
+  "id": "prt_9864d711a001bFjxk4UlXPwXzb",
+  "messageID": "msg_9864d2aa1001RCj3xhfQ7vu4N8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01CcpAFooJr2iELytfKt25BU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1300,
+      "limit": 15
+    },
+    "output": "<file>\n01301|         details.push({\n01302|           service: remainder > 0 ? 'Прочие услуги' : 'Скидка',\n01303|           description: 'Дополнительные сборы и корректировки',\n01304|           price: remainder\n01305|         });\n01306|       }\n01307|     } else if (calc.company === 'Nord Wheel' && calc.details) {\n01308|       // Расшифровка для Nord Wheel согласно требованиям\n01309|       if (calc.details.totalCost) {\n01310|         details.push({\n01311|           service: 'Общая стоимость доставки',\n01312|           description: '',\n01313|           price: calc.details.totalCost\n01314|         });\n01315|       }\n\n(File has more lines. Use 'offset' parameter to read beyond line 1315)\n</file>",
+    "metadata": {
+      "preview": "        details.push({\n          service: remainder > 0 ? 'Прочие услуги' : 'Скидка',\n          description: 'Дополнительные сборы и корректировки',\n          price: remainder\n        });\n      }\n    } else if (calc.company === 'Nord Wheel' && calc.details) {\n      // Расшифровка для Nord Wheel согласно требованиям\n      if (calc.details.totalCost) {\n        details.push({\n          service: 'Общая стоимость доставки',\n          description: '',\n          price: calc.details.totalCost\n        });\n      }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758894846966,
+      "end": 1758894846968
+    }
+  }
+}

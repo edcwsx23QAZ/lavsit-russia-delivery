@@ -1,0 +1,26 @@
+{
+  "id": "prt_9864d4d70001Xb9vooY8NkJODs",
+  "messageID": "msg_9864d2aa1001RCj3xhfQ7vu4N8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01LYS5hTSUMmuM8JX7ryE6c8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Упаковка с детализацией надбавок\n      if (form.needPackaging && calc.details.packages) {\n        Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n          if (pkg.price && pkg.price > 0) {\n            // Базовая стоимость упаковки (без надбавок)\n            let basePackagingPrice = pkg.price;\n            packagingPrice += basePackagingPrice;\n            \n            details.push({\n              service: 'Упаковка груза',\n              description: 'Упаковать в комплекс «обрешётка + амортизация»',\n              price: basePackagingPrice\n            });\n            \n            // Добавляем детали надбавок если есть\n            if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {\n              pkg.premiumDetails.forEach((premium: any) => {\n                if (premium.value && premium.value > 0) {\n                  packagingPremiums += premium.value;\n                  details.push({\n                    service: 'Надбавка к упаковке',\n                    description: premium.name || 'Дополнительная надбавка',\n                    price: premium.value\n                  });\n                }\n              });\n            }\n          }\n        });\n      }",
+      "newString": "      // Упаковка (надбавки уже включены в pkg.price)\n      if (form.needPackaging && calc.details.packages) {\n        Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n          if (pkg.price && pkg.price > 0) {\n            packagingPrice += pkg.price;\n            \n            details.push({\n              service: 'Упаковка груза',\n              description: 'Упаковать в комплекс «обрешётка + амортизация»',\n              price: pkg.price\n            });\n          }\n        });\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1260,35 +1260,19 @@\n     price: arrivalPrice\n   });\n }\n \n-// Упаковка с детализацией надбавок\n+// Упаковка (надбавки уже включены в pkg.price)\n if (form.needPackaging && calc.details.packages) {\n   Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n     if (pkg.price && pkg.price > 0) {\n-      // Базовая стоимость упаковки (без надбавок)\n-      let basePackagingPrice = pkg.price;\n-      packagingPrice += basePackagingPrice;\n+      packagingPrice += pkg.price;\n       \n       details.push({\n         service: 'Упаковка груза',\n         description: 'Упаковать в комплекс «обрешётка + амортизация»',\n-        price: basePackagingPrice\n+        price: pkg.price\n       });\n-      \n-      // Добавляем детали надбавок если есть\n-      if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {\n-        pkg.premiumDetails.forEach((premium: any) => {\n-          if (premium.value && premium.value > 0) {\n-            packagingPremiums += premium.value;\n-            details.push({\n-              service: 'Надбавка к упаковке',\n-              description: premium.name || 'Дополнительная надбавка',\n-              price: premium.value\n-            });\n-          }\n-        });\n-      }\n     }\n   });\n }\n \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758894841774,
+      "end": 1758894841793
+    }
+  }
+}
