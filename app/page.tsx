@@ -246,7 +246,7 @@ export default function Home() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          appkey: '00000000-0000-0000-0000-000000000000'  // Используем ключ из требований
+          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'  // Используем стандартный ключ
         })
       });
 
