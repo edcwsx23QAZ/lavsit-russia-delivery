@@ -436,7 +436,7 @@ export default function Home() {
           ...(form.needPackaging && packageUid ? {
             packages: [{
               uid: packageUid,  // UID упаковки crate_with_bubble из справочника
-              count: form.cargos.length  // Количество грузов
+              count: 1  // По умолчанию 1
             }]
           } : {})
         },

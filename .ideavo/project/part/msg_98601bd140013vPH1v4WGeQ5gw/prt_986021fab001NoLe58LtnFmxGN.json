@@ -1,0 +1,25 @@
+{
+  "id": "prt_986021fab001NoLe58LtnFmxGN",
+  "messageID": "msg_98601bd140013vPH1v4WGeQ5gw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01CuUfZX57H8Jo2NNAU1Ujtt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 300,
+      "limit": 35
+    },
+    "output": "<file>\n00301|     }\n00302|   };\n00303| \n00304|   // Получение UID упаковки \"crate_with_bubble\" из справочника упаковок Деловые Линии\n00305|   const getDellinCrateWithBubbleUid = async (): Promise<string | null> => {\n00306|     try {\n00307|       const response = await fetch('https://api.dellin.ru/v1/references/packages.json', {\n00308|         method: 'POST',\n00309|         headers: {\n00310|           'Content-Type': 'application/json'\n00311|         },\n00312|         body: JSON.stringify({\n00313|           appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'\n00314|         })\n00315|       });\n00316| \n00317|       const data = await response.json();\n00318|       console.log('Деловые Линии справочник упаковок:', data);\n00319|       \n00320|       if (response.ok && data.packages && Array.isArray(data.packages)) {\n00321|         // Находим упаковку с title \"crate_with_bubble\"\n00322|         const crateWithBubble = data.packages.find((pkg: any) => \n00323|           pkg.title === 'crate_with_bubble'\n00324|         );\n00325|         \n00326|         if (crateWithBubble && crateWithBubble.uid) {\n00327|           console.log('Найден UID для crate_with_bubble:', crateWithBubble.uid);\n00328|           return crateWithBubble.uid;\n00329|         }\n00330|       }\n00331|       \n00332|       console.warn('Упаковка crate_with_bubble не найдена в справочнике');\n00333|       return null;\n00334|     } catch (error) {\n00335|       console.error('Ошибка получения справочника упаковок Деловые Линии:', error);\n\n(File has more lines. Use 'offset' parameter to read beyond line 335)\n</file>",
+    "metadata": {
+      "preview": "    }\n  };\n\n  // Получение UID упаковки \"crate_with_bubble\" из справочника упаковок Деловые Линии\n  const getDellinCrateWithBubbleUid = async (): Promise<string | null> => {\n    try {\n      const response = await fetch('https://api.dellin.ru/v1/references/packages.json', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json'\n        },\n        body: JSON.stringify({\n          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'\n        })\n      });\n\n      const data = await response.json();\n      console.log('Деловые Линии справочник упаковок:', data);\n      \n      if (response.ok && data.packages && Array.isArray(data.packages)) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758889910727,
+      "end": 1758889910730
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "prt_98601bbda001797au6xGEIxKCl",
+  "type": "text",
+  "text": "В API Деловые Линии если стоит чекбокс \"требуется упаковка\" добавь в запрос\n \"packages\":[\n         {\n            \"uid\":\"0xa6a7bd2bf950e67f4b2cf7cc3a97c111\",\n            \"count\":1\n\ncount по умолчанию пусть будет 1\nuid возьми методом: JSON: https://api.dellin.ru/v1/references/packages.json Структура запроса { \"appkey\": \"00000000-0000-0000-0000-000000000000\" }\n\nИз ответа JSON нужно взять uid относящийся к title \" crate_with_bubble\"",
+  "messageID": "msg_98601bbd9001Hn86aimTtmZLoN",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14"
+}

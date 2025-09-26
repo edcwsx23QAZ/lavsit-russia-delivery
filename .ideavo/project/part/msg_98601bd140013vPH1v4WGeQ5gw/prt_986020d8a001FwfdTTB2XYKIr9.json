@@ -1,0 +1,25 @@
+{
+  "id": "prt_986020d8a001FwfdTTB2XYKIr9",
+  "messageID": "msg_98601bd140013vPH1v4WGeQ5gw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Dj66e3ochmAx86dsHb6WTD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 435,
+      "limit": 10
+    },
+    "output": "<file>\n00436|           ...(form.needPackaging && packageUid ? {\n00437|             packages: [{\n00438|               uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n00439|               count: form.cargos.length  // Количество грузов\n00440|             }]\n00441|           } : {})\n00442|         },\n00443|         cargo: {\n00444|           quantity: form.cargos.length,\n00445|           length: maxLength,\n\n(File has more lines. Use 'offset' parameter to read beyond line 445)\n</file>",
+    "metadata": {
+      "preview": "          ...(form.needPackaging && packageUid ? {\n            packages: [{\n              uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n              count: form.cargos.length  // Количество грузов\n            }]\n          } : {})\n        },\n        cargo: {\n          quantity: form.cargos.length,\n          length: maxLength,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758889906136,
+      "end": 1758889906141
+    }
+  }
+}

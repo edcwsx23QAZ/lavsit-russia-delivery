@@ -1,0 +1,26 @@
+{
+  "id": "prt_986023018001HyUMgIBvkCbbqS",
+  "messageID": "msg_98601bd140013vPH1v4WGeQ5gw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_011TwDnM35cec5NSc6oozsCQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          ...(form.needPackaging && packageUid ? {\n            packages: [{\n              uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n              count: form.cargos.length  // Количество грузов\n            }]\n          } : {})",
+      "newString": "          ...(form.needPackaging && packageUid ? {\n            packages: [{\n              uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n              count: 1  // По умолчанию 1\n            }]\n          } : {})"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -435,9 +435,9 @@\n   },\n   ...(form.needPackaging && packageUid ? {\n     packages: [{\n       uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n-      count: form.cargos.length  // Количество грузов\n+      count: 1  // По умолчанию 1\n     }]\n   } : {})\n },\n cargo: {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758889916038,
+      "end": 1758889916054
+    }
+  }
+}
