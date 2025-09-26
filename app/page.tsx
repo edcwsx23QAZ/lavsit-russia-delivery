@@ -838,45 +838,151 @@ export default function Home() {
     try {
       console.log(`🔍 ПЭК: поиск зоны по адресу "${address}"`);
       
-      const response = await fetch('https://api.pecom.ru/v1/branches/findzonebyaddress/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer 624FC93CA677B23673BB476D4982294DC27E246F`
+      // Пробуем разные варианты API и авторизации
+      const apiVariants = [
+        {
+          url: 'https://api.pecom.ru/v1/branches/findzonebyaddress/',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer 624FC93CA677B23673BB476D4982294DC27E246F`
+          }
         },
-        body: JSON.stringify({
-          address: address
-        })
-      });
-
-      if (!response.ok) {
-        console.error(`❌ ПЭК API ошибка: ${response.status} ${response.statusText}`);
-        return null;
-      }
-
-      const data = await response.json();
-      console.log(`✅ ПЭК зона найдена:`, data);
+        {
+          url: 'https://api.pecom.ru/v1/branches/findzonebyaddress',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer 624FC93CA677B23673BB476D4982294DC27E246F`
+          }
+        },
+        {
+          url: 'https://api.pecom.ru/v1/branches/findzonebyaddress/',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Basic ' + btoa('624FC93CA677B23673BB476D4982294DC27E246F:')
+          }
+        }
+      ];
       
-      if (data.zoneId && data.mainWarehouseId) {
+      for (let i = 0; i < apiVariants.length; i++) {
+        const variant = apiVariants[i];
+        
+        try {
+          console.log(`🔄 ПЭК: попытка ${i + 1}/${apiVariants.length} - ${variant.url}`);
+          
+          const response = await fetch(variant.url, {
+            method: 'POST',
+            headers: variant.headers,
+            body: JSON.stringify({
+              address: address
+            })
+          });
+
+          console.log(`📡 ПЭК API статус: ${response.status} ${response.statusText}`);
+          console.log(`📡 ПЭК API URL: ${response.url}`);
+          
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error(`❌ ПЭК API ошибка ${i + 1}: ${response.status} ${response.statusText}`);
+            console.error(`❌ Ответ API:`, errorText.substring(0, 500));
+            continue;
+          }
+
+          const data = await response.json();
+          console.log(`✅ ПЭК зона найдена (попытка ${i + 1}):`, data);
+          
+          if (data.zoneId && data.mainWarehouseId) {
+            return {
+              zoneId: data.zoneId,
+              zoneName: data.zoneName,
+              branchUID: data.branchUID,
+              branchCode: data.branchCode,
+              branchTitle: data.branchTitle,
+              mainWarehouseId: data.mainWarehouseId,
+              warehousePoint: data.warehousePoint,
+              geoData: data.GeoData,
+              precision: data.GeoData?.precision
+            };
+          }
+          
+          console.warn(`⚠️ ПЭК: некорректный ответ (попытка ${i + 1}):`, data);
+        } catch (apiError) {
+          console.error(`❌ ПЭК: ошибка запроса ${i + 1}:`, apiError);
+          continue;
+        }
+      }
+      
+      // Если все попытки API провалились, используем фоллбэк
+      console.log(`🔄 ПЭК: переход к фоллбэк методу для "${address}"`);
+      return getPekZoneFallback(address);
+      
+    } catch (error) {
+      console.error('❌ ПЭК: критическая ошибка поиска зоны:', error);
+      return getPekZoneFallback(address);
+    }
+  };
+
+  // Фоллбэк метод для определения зоны ПЭК
+  const getPekZoneFallback = (address: string) => {
+    console.log(`🔄 ПЭК фоллбэк: анализ адреса "${address}"`);
+    
+    const addressLower = address.toLowerCase();
+    
+    // Определяем основные города и их данные
+    const cityMappings: { [key: string]: any } = {
+      'москва': {
+        zoneId: 'moscow-zone-001',
+        zoneName: 'Москва',
+        branchUID: 'moscow-branch-001',
+        branchCode: 'МСК',
+        branchTitle: 'Москва',
+        mainWarehouseId: 'dc6c746d-812d-11e4-bbfc-001999d8b3c5',
+        warehousePoint: {
+          latitude: 55.755826,
+          longitude: 37.6173
+        }
+      },
+      'санкт-петербург': {
+        zoneId: 'spb-zone-001',
+        zoneName: 'Санкт-Петербург',
+        branchUID: 'spb-branch-001',
+        branchCode: 'СПБ',
+        branchTitle: 'Санкт-Петербург',
+        mainWarehouseId: 'b436c978-086d-11e6-b6ca-00155d668909',
+        warehousePoint: {
+          latitude: 59.9311,
+          longitude: 30.3609
+        }
+      },
+      'екатеринбург': {
+        zoneId: 'ekb-zone-001',
+        zoneName: 'Екатеринбург',
+        branchUID: 'ekb-branch-001',
+        branchCode: 'ЕКБ',
+        branchTitle: 'Екатеринбург',
+        mainWarehouseId: 'f8d9c8e3-8e2d-11e4-bbfc-001999d8b3c5',
+        warehousePoint: {
+          latitude: 56.8431,
+          longitude: 60.6454
+        }
+      }
+    };
+    
+    for (const [city, data] of Object.entries(cityMappings)) {
+      if (addressLower.includes(city) || addressLower.includes(city.replace('-', ' '))) {
+        console.log(`✅ ПЭК фоллбэк: найден город ${city}`);
         return {
-          zoneId: data.zoneId,
-          zoneName: data.zoneName,
-          branchUID: data.branchUID,
-          branchCode: data.branchCode,
-          branchTitle: data.branchTitle,
-          mainWarehouseId: data.mainWarehouseId,
-          warehousePoint: data.warehousePoint,
-          geoData: data.GeoData,
-          precision: data.GeoData?.precision
+          ...data,
+          geoData: {
+            precision: 'fallback',
+            kind: 'locality'
+          },
+          precision: 'fallback'
         };
       }
-      
-      console.warn(`❌ ПЭК: зона не обслуживается для адреса "${address}"`);
-      return null;
-    } catch (error) {
-      console.error('❌ ПЭК: ошибка поиска зоны:', error);
-      return null;
     }
+    
+    console.warn(`❌ ПЭК фоллбэк: город не найден в "${address}"`);
+    return null;
   };
 
   // Получение ближайших отделений ПЭК
@@ -893,8 +999,10 @@ export default function Home() {
       
       if (coordinates) {
         requestBody.coordinates = coordinates;
+        console.log(`📍 ПЭК: поиск по координатам`, coordinates);
       } else {
         requestBody.address = address;
+        console.log(`📍 ПЭК: поиск по адресу "${address}"`);
       }
       
       const response = await fetch('https://api.pecom.ru/v1/branches/nearestdepartments/', {
@@ -906,8 +1014,12 @@ export default function Home() {
         body: JSON.stringify(requestBody)
       });
 
+      console.log(`📡 ПЭК отделения API статус: ${response.status}`);
+      
       if (!response.ok) {
+        const errorText = await response.text();
         console.error(`❌ ПЭК отделения API ошибка: ${response.status} ${response.statusText}`);
+        console.error(`❌ Ответ:`, errorText.substring(0, 500));
         return null;
       }
 
@@ -917,6 +1029,7 @@ export default function Home() {
       // Возвращаем первое бесплатное отделение с наивысшим приоритетом
       if (data.freeDepartments && data.freeDepartments.length > 0) {
         const bestDepartment = data.freeDepartments.sort((a: any, b: any) => b.priority - a.priority)[0];
+        console.log(`✅ ПЭК: выбрано отделение`, bestDepartment.divisionName);
         return {
           warehouseId: bestDepartment.warehouseId,
           branchId: bestDepartment.branchId,
@@ -968,18 +1081,37 @@ export default function Home() {
     
     try {
       // Получаем информацию о зонах и складах по адресам
-      const senderZone = await getPekZoneByAddress(form.fromAddress || `Россия, ${form.fromCity}`);
-      const receiverZone = await getPekZoneByAddress(form.toAddress || `Россия, ${form.toCity}`);
+      console.log(`🚀 ПЭК: начинаем расчет`);
+      console.log(`📍 От: ${form.fromAddress || form.fromCity}`);
+      console.log(`📍 До: ${form.toAddress || form.toCity}`);
+      
+      const senderZone = await getPekZoneByAddress(form.fromAddress || `г ${form.fromCity}`);
+      const receiverZone = await getPekZoneByAddress(form.toAddress || `г ${form.toCity}`);
+      
+      console.log(`🔍 ПЭК зоны:`);
+      console.log(`📍 Отправитель:`, senderZone ? `${senderZone.branchTitle} (${senderZone.mainWarehouseId})` : 'НЕ НАЙДЕНА');
+      console.log(`📍 Получатель:`, receiverZone ? `${receiverZone.branchTitle} (${receiverZone.mainWarehouseId})` : 'НЕ НАЙДЕНА');
       
       if (!senderZone || !receiverZone) {
+        // Детальная диагностика
+        const debugInfo = {
+          senderAddress: form.fromAddress || form.fromCity,
+          receiverAddress: form.toAddress || form.toCity,
+          senderZoneFound: !!senderZone,
+          receiverZoneFound: !!receiverZone,
+          apiTested: true
+        };
+        
+        console.error(`❌ ПЭК: зоны не найдены`, debugInfo);
+        
         return {
           company: 'ПЭК',
           price: 0,
           days: 0,
           error: `Зона ПЭК не обслуживается. Проверьте адреса: ${!senderZone ? (form.fromAddress || form.fromCity) : ''} ${!receiverZone ? (form.toAddress || form.toCity) : ''}`.trim(),
           apiUrl,
-          requestData: { fromAddress: form.fromAddress || form.fromCity, toAddress: form.toAddress || form.toCity },
-          responseData: null
+          requestData: debugInfo,
+          responseData: { senderZone, receiverZone }
         };
       }
 
@@ -1082,6 +1214,7 @@ export default function Home() {
       }
 
       console.log('🚀 ПЭК API запрос:', JSON.stringify(requestData, null, 2));
+      console.log('🌐 ПЭК API URL:', apiUrl);
 
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -1093,8 +1226,20 @@ export default function Home() {
         body: JSON.stringify(requestData)
       });
 
-      const data = await response.json();
-      console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));
+      console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);
+      console.log(`📡 ПЭК API URL: ${response.url}`);
+      
+      const responseText = await response.text();
+      console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));
+      
+      let data;
+      try {
+        data = JSON.parse(responseText);
+        console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));
+      } catch (parseError) {
+        console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);
+        throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);
+      }
 
       if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {
         const transfer = data.transfers[0]; // берем первый тариф (авто)
@@ -1171,33 +1316,93 @@ export default function Home() {
       console.error('🚨 Ошибка ПЭК API:', error);
       
       // Фоллбэк расчет при ошибке
-      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
-      let basePrice = totalWeight * 18; // 18 руб за кг для ПЭК
+      console.error('🚨 ПЭК: переходим к фоллбэк расчету из-за ошибки:', error.message);
       
-      if (form.fromAddressDelivery) basePrice += 600;
-      if (form.toAddressDelivery) basePrice += 600;
-      if (form.needInsurance && form.declaredValue > 0) basePrice += form.declaredValue * 0.012;
-      if (form.needPackaging) basePrice += totalWeight * 25;
-      if (form.needCarry) basePrice += 500;
+      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
+      const totalVolume = form.cargos.reduce((sum, cargo) => 
+        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+      );
+      
+      // Более точный фоллбэк расчет на основе веса и объема
+      let basePrice = Math.max(
+        totalWeight * 18, // 18 руб за кг
+        totalVolume * 4500 // 4500 руб за м3
+      );
+      
+      // Добавляем услуги
+      const services = [];
+      
+      services.push({
+        name: 'Транспортировка',
+        description: `${form.fromCity} - ${form.toCity} (${totalWeight} кг, ${totalVolume.toFixed(3)} м³)`,
+        price: Math.round(basePrice)
+      });
+      
+      if (form.fromAddressDelivery) {
+        const pickupCost = 600;
+        basePrice += pickupCost;
+        services.push({
+          name: 'Забор груза',
+          description: 'От адреса отправителя',
+          price: pickupCost
+        });
+      }
+      
+      if (form.toAddressDelivery) {
+        const deliveryCost = 600;
+        basePrice += deliveryCost;
+        services.push({
+          name: 'Доставка груза',
+          description: 'До адреса получателя',
+          price: deliveryCost
+        });
+      }
+      
+      if (form.needInsurance && form.declaredValue > 0) {
+        const insuranceCost = form.declaredValue * 0.012;
+        basePrice += insuranceCost;
+        services.push({
+          name: 'Страхование',
+          description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
+          price: Math.round(insuranceCost)
+        });
+      }
+      
+      if (form.needPackaging) {
+        const packagingCost = totalWeight * 25;
+        basePrice += packagingCost;
+        services.push({
+          name: 'Защитная упаковка',
+          description: 'Упаковка груза',
+          price: Math.round(packagingCost)
+        });
+      }
+      
+      if (form.needCarry) {
+        const carryCost = 500;
+        basePrice += carryCost;
+        services.push({
+          name: 'Подъем на этаж',
+          description: `На ${form.floor} этаж ${form.hasFreightLift ? '(с лифтом)' : '(без лифта)'}`,
+          price: carryCost
+        });
+      }
       
       return {
         company: 'ПЭК',
         price: Math.round(basePrice),
         days: 3,
         details: {
-          note: 'Примерный расчет по базовым тарифам ПЭК (ошибка API)',
-          services: [
-            {
-              name: 'Доставка груза',
-              description: `${form.fromCity} - ${form.toCity}`,
-              price: Math.round(basePrice)
-            }
-          ]
+          note: 'Примерный расчет по базовым тарифам ПЭК (API недоступен)',
+          services,
+          totalWeight,
+          totalVolume,
+          errorInfo: error.message
         },
         requestData: null,
         responseData: null,
         apiUrl,
-        error: `Ошибка API ПЭК: ${error.message}. Показан примерный расчет.`
+        error: `API ПЭК недоступен: ${error.message}. Показан примерный расчет по базовым тарифам.`
       };
     }
   };

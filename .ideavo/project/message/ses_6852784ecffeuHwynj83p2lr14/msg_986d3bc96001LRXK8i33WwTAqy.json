@@ -1,0 +1,29 @@
+{
+  "id": "msg_986d3bc96001LRXK8i33WwTAqy",
+  "role": "assistant",
+  "mode": "build",
+  "path": {
+    "cwd": "/home/user/project",
+    "root": "/home/user/project"
+  },
+  "tokens": {
+    "input": 6,
+    "output": 70,
+    "reasoning": 0,
+    "cache": {
+      "write": 290,
+      "read": 120099
+    }
+  },
+  "time": {
+    "created": 1758903647382,
+    "completed": 1758903841112
+  },
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "error": {
+    "name": "UnknownError",
+    "data": {
+      "message": "TypeError: undefined is not an object (evaluating 'toSummarize.at(-1).info')"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_986d65fa5001FOkdIVPOA215pH",
+  "messageID": "msg_986d3bc96001LRXK8i33WwTAqy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_0151Da1L8rBKxw5PtPyw62ae",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "services.*\\[\\]",
+      "include": "*.tsx"
+    },
+    "output": "Found 3 matches\n/home/user/project/app/page.tsx:\n  Line 1249:           const services: { name: string; description: string; price: number }[] = [];\n  Line 1252:           const processServices = (servicesList: any[], parentName = '') => {\n  Line 1333:       const services = [];",
+    "metadata": {
+      "matches": 3,
+      "truncated": false
+    },
+    "title": "services.*\\[\\]",
+    "time": {
+      "start": 1758903820329,
+      "end": 1758903820339
+    }
+  }
+}

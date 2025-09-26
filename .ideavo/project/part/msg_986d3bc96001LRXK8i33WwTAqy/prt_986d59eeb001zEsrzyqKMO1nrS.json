@@ -1,0 +1,27 @@
+{
+  "id": "prt_986d59eeb001zEsrzyqKMO1nrS",
+  "messageID": "msg_986d3bc96001LRXK8i33WwTAqy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01YYo6qL4AcHnZLtBq2P8kz6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run dev",
+      "timeout": 10000,
+      "description": "Запускает Next.js приложение в режиме разработки"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env\n\n ✓ Starting...\n ✓ Ready in 1904ms\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env\n\n ✓ Starting...\n ✓ Ready in 1904ms\n",
+      "exit": null,
+      "description": "Запускает Next.js приложение в режиме разработки"
+    },
+    "title": "cd /home/user/project && npm run dev",
+    "time": {
+      "start": 1758903771915,
+      "end": 1758903781932
+    }
+  }
+}
