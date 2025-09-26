@@ -1,0 +1,25 @@
+{
+  "id": "prt_986f0f061001UYrYDRWRNLAbPR",
+  "messageID": "msg_986eea3f0001qcRxGevBYzEFFB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_014NDHpj7xKvJ1iJKvqyCjSu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/pek-test/page.tsx",
+      "offset": 0,
+      "limit": 20
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import { useState } from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Input } from '@/components/ui/input';\n00007| import { Textarea } from '@/components/ui/textarea';\n00008| \n00009| export default function PekTestPage() {\n00010|   const [results, setResults] = useState<{ [key: string]: any }>({});\n00011|   const [loading, setLoading] = useState<{ [key: string]: boolean }>({});\n00012|   const [testAddress, setTestAddress] = useState('г Москва, Шмитовский проезд, д 1, кв 39');\n00013| \n00014|   const runTest = async (testName: string, testFunction: () => Promise<any>) => {\n00015|     setLoading(prev => ({ ...prev, [testName]: true }));\n00016|     try {\n00017|       const result = await testFunction();\n00018|       setResults(prev => ({ ...prev, [testName]: result }));\n00019|     } catch (error: any) {\n00020|       setResults(prev => ({ \n\n(File has more lines. Use 'offset' parameter to read beyond line 20)\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport { useState } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Textarea } from '@/components/ui/textarea';\n\nexport default function PekTestPage() {\n  const [results, setResults] = useState<{ [key: string]: any }>({});\n  const [loading, setLoading] = useState<{ [key: string]: boolean }>({});\n  const [testAddress, setTestAddress] = useState('г Москва, Шмитовский проезд, д 1, кв 39');\n\n  const runTest = async (testName: string, testFunction: () => Promise<any>) => {\n    setLoading(prev => ({ ...prev, [testName]: true }));\n    try {\n      const result = await testFunction();\n      setResults(prev => ({ ...prev, [testName]: result }));\n    } catch (error: any) {\n      setResults(prev => ({ "
+    },
+    "title": "app/pek-test/page.tsx",
+    "time": {
+      "start": 1758905561888,
+      "end": 1758905561890
+    }
+  }
+}

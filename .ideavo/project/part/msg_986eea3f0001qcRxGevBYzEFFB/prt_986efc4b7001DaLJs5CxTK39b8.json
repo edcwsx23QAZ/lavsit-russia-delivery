@@ -1,0 +1,20 @@
+{
+  "id": "prt_986efc4b7001DaLJs5CxTK39b8",
+  "messageID": "msg_986eea3f0001qcRxGevBYzEFFB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_016wEUTWv88ECcuEP8TFo3CX",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/lib/env-config.ts",
+      "content": "// Environment variables configuration\nexport const ENV_VARIABLES = [\n  {\n    name: 'NEXT_PUBLIC_SUPABASE_URL',\n    description: 'Supabase project URL',\n    required: false,\n    instructions: 'Получите из панели управления Supabase в разделе Settings > API'\n  },\n  {\n    name: 'NEXT_PUBLIC_SUPABASE_ANON_KEY', \n    description: 'Supabase anonymous/public key',\n    required: false,\n    instructions: 'Получите из панели управления Supabase в разделе Settings > API'\n  },\n  {\n    name: 'DATABASE_URL',\n    description: 'Database connection string for Prisma',\n    required: false, \n    instructions: 'Получите строку подключения к базе данных из Supabase в разделе Settings > Database'\n  },\n  {\n    name: 'PEK_LOGIN',\n    description: 'Логин пользователя личного кабинета ПЭК',\n    required: true,\n    instructions: 'Введите логин от личного кабинета на сайте kabinet.pecom.ru'\n  },\n  {\n    name: 'PEK_API_KEY',\n    description: 'API ключ доступа к ПЭК',\n    required: true,\n    instructions: 'Получите ключ в личном кабинете ПЭК в разделе \"Регистрационные данные\" > \"Ключи API\"'\n  }\n];\n\nexport function getEnvValue(name: string): string | undefined {\n  if (typeof window !== 'undefined') {\n    // Client side - only public env vars\n    if (name.startsWith('NEXT_PUBLIC_')) {\n      return process.env[name];\n    }\n    return undefined;\n  } else {\n    // Server side - all env vars\n    return process.env[name];\n  }\n}\n\nexport function checkRequiredEnvVars(): { missing: string[], warnings: string[] } {\n  const missing: string[] = [];\n  const warnings: string[] = [];\n  \n  ENV_VARIABLES.forEach(envVar => {\n    const value = getEnvValue(envVar.name);\n    \n    if (envVar.required && !value) {\n      missing.push(envVar.name);\n    } else if (!envVar.required && !value) {\n      warnings.push(envVar.name);\n    }\n  });\n  \n  return { missing, warnings };\n}"
+    },
+    "error": "Error: You must read the file /home/user/project/lib/env-config.ts before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758905493457,
+      "end": 1758905493458
+    }
+  }
+}

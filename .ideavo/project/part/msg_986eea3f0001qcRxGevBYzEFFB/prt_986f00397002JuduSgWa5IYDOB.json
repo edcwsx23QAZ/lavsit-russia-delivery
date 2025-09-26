@@ -1,0 +1,34 @@
+{
+  "id": "prt_986f00397002JuduSgWa5IYDOB",
+  "messageID": "msg_986eea3f0001qcRxGevBYzEFFB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01TvnstWzDsjNygC86MmoC87",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/env-config.ts",
+      "edits": [
+        {
+          "oldString": "// IMPORTANT: When adding new env variables to the codebase, update this array\nexport const ENV_VARIABLES: EnvVariable[] = [\n  // Add your active environment variables here\n];",
+          "newString": "// IMPORTANT: When adding new env variables to the codebase, update this array\nexport const ENV_VARIABLES: EnvVariable[] = [\n  {\n    name: \"PEK_LOGIN\",\n    description: \"Логин пользователя личного кабинета ПЭК\",\n    required: true,\n    instructions: \"Перейдите на [kabinet.pecom.ru](https://kabinet.pecom.ru) и введите ваш логин от личного кабинета. Если у вас нет логина, зарегистрируйтесь на сайте ПЭК.\"\n  },\n  {\n    name: \"PEK_API_KEY\",\n    description: \"API ключ доступа к ПЭК\",\n    required: true,\n    instructions: \"Войдите в [kabinet.pecom.ru](https://kabinet.pecom.ru) → Регистрационные данные → Ключи API. Создайте новый ключ и скопируйте его значение.\"\n  }\n];"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/lib/env-config.ts\n===================================================================\n--- /home/user/project/lib/env-config.ts\n+++ /home/user/project/lib/env-config.ts\n@@ -1,7 +1,18 @@\n // IMPORTANT: When adding new env variables to the codebase, update this array\n export const ENV_VARIABLES: EnvVariable[] = [\n-  // Add your active environment variables here\n+  {\n+    name: \"PEK_LOGIN\",\n+    description: \"Логин пользователя личного кабинета ПЭК\",\n+    required: true,\n+    instructions: \"Перейдите на [kabinet.pecom.ru](https://kabinet.pecom.ru) и введите ваш логин от личного кабинета. Если у вас нет логина, зарегистрируйтесь на сайте ПЭК.\"\n+  },\n+  {\n+    name: \"PEK_API_KEY\",\n+    description: \"API ключ доступа к ПЭК\",\n+    required: true,\n+    instructions: \"Войдите в [kabinet.pecom.ru](https://kabinet.pecom.ru) → Регистрационные данные → Ключи API. Создайте новый ключ и скопируйте его значение.\"\n+  }\n ];\n \n // SUPABASE/DATABASE VARIABLES (uncomment and add to ENV_VARIABLES array when adding database features)\n // {\n"
+        }
+      ]
+    },
+    "title": "lib/env-config.ts",
+    "time": {
+      "start": 1758905515724,
+      "end": 1758905515731
+    }
+  }
+}

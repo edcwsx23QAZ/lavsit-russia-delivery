@@ -1,0 +1,26 @@
+{
+  "id": "prt_986f2376d001hS5K3gKL3kGo4F",
+  "messageID": "msg_986eea3f0001qcRxGevBYzEFFB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_0129J9HLs3NpxDJP2VZ7BCwh",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/.env.example",
+      "content": "# Настройки API ПЭК (ОБЯЗАТЕЛЬНО)\n# Получите эти данные в личном кабинете https://kabinet.pecom.ru\n\n# Логин пользователя личного кабинета ПЭК\nPEK_LOGIN=your_username_here\n\n# API ключ из раздела \"Регистрационные данные\" > \"Ключи API\"\nPEK_API_KEY=your_api_key_here\n\n# Пример заполнения:\n# PEK_LOGIN=demo\n# PEK_API_KEY=624FC93CA677B23673BB476D4982294DC27E246F\n\n# ИНСТРУКЦИИ:\n# 1. Скопируйте этот файл в .env.local\n# 2. Замените значения на ваши реальные данные\n# 3. Перезапустите сервер разработки (npm run dev)\n\n# БАЗА ДАННЫХ (опционально)\n# DATABASE_URL=your_database_url\n# NEXT_PUBLIC_SUPABASE_URL=your_supabase_url  \n# NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/.env.example",
+      "exists": false
+    },
+    "title": ".env.example",
+    "time": {
+      "start": 1758905651084,
+      "end": 1758905651085
+    }
+  }
+}

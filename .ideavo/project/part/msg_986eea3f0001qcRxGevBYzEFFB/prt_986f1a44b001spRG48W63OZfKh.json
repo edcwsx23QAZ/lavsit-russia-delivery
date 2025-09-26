@@ -1,0 +1,34 @@
+{
+  "id": "prt_986f1a44b001spRG48W63OZfKh",
+  "messageID": "msg_986eea3f0001qcRxGevBYzEFFB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_013EJ3Gx8Ktmyy9XWwhYnUV6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/pek-test/page.tsx",
+      "edits": [
+        {
+          "oldString": "            <Button \n              onClick={async () => {\n                console.log('🚀 Запуск полной диагностики ПЭК API');\n                await runTest('proxy', testProxyHealth);\n                await runTest('newproxy', testNewProxy);\n                await runTest('zone', testFindZoneByAddress);\n                await runTest('get', testGetRequests);\n                await runTest('direct', testDirectPekApi);\n                await runTest('tokens', testTokenVariants);\n                await runTest('urls', testApiUrls);\n                console.log('✅ Диагностика завершена');\n              }}\n              disabled={Object.values(loading).some(Boolean)}\n              className=\"w-full\"\n            >\n              Запустить Полную Диагностику\n            </Button>",
+          "newString": "            <Button \n              onClick={async () => {\n                console.log('🚀 Запуск полной диагностики ПЭК API');\n                \n                // Приоритет: официальный API первым\n                await runTest('official', testOfficialPekApi);\n                await runTest('proxy', testProxyHealth);\n                await runTest('zone', testFindZoneByAddress);\n                \n                // Остальные тесты\n                await runTest('newproxy', testNewProxy);\n                await runTest('get', testGetRequests);\n                await runTest('direct', testDirectPekApi);\n                await runTest('tokens', testTokenVariants);\n                await runTest('urls', testApiUrls);\n                \n                console.log('✅ Диагностика завершена');\n              }}\n              disabled={Object.values(loading).some(Boolean)}\n              className=\"w-full bg-blue-600 hover:bg-blue-700\"\n            >\n              🚀 ПОЛНАЯ ДИАГНОСТИКА API ПЭК\n            </Button>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/pek-test/page.tsx\n===================================================================\n--- /home/user/project/app/pek-test/page.tsx\n+++ /home/user/project/app/pek-test/page.tsx\n@@ -397,21 +397,27 @@\n     <CardContent>\n       <Button \n         onClick={async () => {\n           console.log('🚀 Запуск полной диагностики ПЭК API');\n+          \n+          // Приоритет: официальный API первым\n+          await runTest('official', testOfficialPekApi);\n           await runTest('proxy', testProxyHealth);\n-          await runTest('newproxy', testNewProxy);\n           await runTest('zone', testFindZoneByAddress);\n+          \n+          // Остальные тесты\n+          await runTest('newproxy', testNewProxy);\n           await runTest('get', testGetRequests);\n           await runTest('direct', testDirectPekApi);\n           await runTest('tokens', testTokenVariants);\n           await runTest('urls', testApiUrls);\n+          \n           console.log('✅ Диагностика завершена');\n         }}\n         disabled={Object.values(loading).some(Boolean)}\n-        className=\"w-full\"\n+        className=\"w-full bg-blue-600 hover:bg-blue-700\"\n       >\n-        Запустить Полную Диагностику\n+        🚀 ПОЛНАЯ ДИАГНОСТИКА API ПЭК\n       </Button>\n     </CardContent>\n   </Card>\n </div>\n"
+        }
+      ]
+    },
+    "title": "app/pek-test/page.tsx",
+    "time": {
+      "start": 1758905621348,
+      "end": 1758905621351
+    }
+  }
+}

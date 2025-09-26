@@ -1,0 +1,85 @@
+{
+  "id": "prt_986eeb647001geLplYe2WvWcpB",
+  "messageID": "msg_986eea3f0001qcRxGevBYzEFFB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_011ykKYxgmbM8JsSLm7A3BoT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Анализ официальной документации ПЭК API",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Исправить метод авторизации на Basic Auth",
+          "status": "pending",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Обновить базовый URL на kabinet.pecom.ru",
+          "status": "pending",
+          "priority": "high",
+          "id": "3"
+        },
+        {
+          "content": "Исправить заголовки HTTP запросов",
+          "status": "pending",
+          "priority": "high",
+          "id": "4"
+        },
+        {
+          "content": "Добавить необходимость логина пользователя",
+          "status": "pending",
+          "priority": "medium",
+          "id": "5"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Анализ официальной документации ПЭК API\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"1\"\n  },\n  {\n    \"content\": \"Исправить метод авторизации на Basic Auth\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"2\"\n  },\n  {\n    \"content\": \"Обновить базовый URL на kabinet.pecom.ru\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"3\"\n  },\n  {\n    \"content\": \"Исправить заголовки HTTP запросов\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"4\"\n  },\n  {\n    \"content\": \"Добавить необходимость логина пользователя\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"5\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Анализ официальной документации ПЭК API",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Исправить метод авторизации на Basic Auth",
+          "status": "pending",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Обновить базовый URL на kabinet.pecom.ru",
+          "status": "pending",
+          "priority": "high",
+          "id": "3"
+        },
+        {
+          "content": "Исправить заголовки HTTP запросов",
+          "status": "pending",
+          "priority": "high",
+          "id": "4"
+        },
+        {
+          "content": "Добавить необходимость логина пользователя",
+          "status": "pending",
+          "priority": "medium",
+          "id": "5"
+        }
+      ]
+    },
+    "title": "5 todos",
+    "time": {
+      "start": 1758905418580,
+      "end": 1758905418580
+    }
+  }
+}

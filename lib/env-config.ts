@@ -1,6 +1,17 @@
 // IMPORTANT: When adding new env variables to the codebase, update this array
 export const ENV_VARIABLES: EnvVariable[] = [
-  // Add your active environment variables here
+  {
+    name: "PEK_LOGIN",
+    description: "Логин пользователя личного кабинета ПЭК",
+    required: true,
+    instructions: "Перейдите на [kabinet.pecom.ru](https://kabinet.pecom.ru) и введите ваш логин от личного кабинета. Если у вас нет логина, зарегистрируйтесь на сайте ПЭК."
+  },
+  {
+    name: "PEK_API_KEY",
+    description: "API ключ доступа к ПЭК",
+    required: true,
+    instructions: "Войдите в [kabinet.pecom.ru](https://kabinet.pecom.ru) → Регистрационные данные → Ключи API. Создайте новый ключ и скопируйте его значение."
+  }
 ];
 
 // SUPABASE/DATABASE VARIABLES (uncomment and add to ENV_VARIABLES array when adding database features)

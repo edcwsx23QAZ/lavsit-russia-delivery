@@ -2,23 +2,31 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   try {
-    console.log('🔧 ПЭК Прокси: Получен запрос');
+    console.log('🔧 ПЭК Прокси: Получен запрос (по официальной документации)');
     
     const requestData = await request.json();
     console.log('📝 Данные запроса:', JSON.stringify(requestData, null, 2));
     
     const { method, address, coordinates } = requestData;
     
-    const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';
+    // Данные авторизации согласно документации ПЭК
+    const PEK_API_KEY = process.env.PEK_API_KEY || '624FC93CA677B23673BB476D4982294DC27E246F';
+    const PEK_LOGIN = process.env.PEK_LOGIN || 'demo';
     
-    // Попробуем разные базовые URL - API могло переехать
-    const API_VARIANTS = [
-      'https://kabinet.pecom.ru/api/v1',  // Личный кабинет (наиболее вероятный)
-      'https://lk.pecom.ru/api/v1',       // Сокращенная версия
-      'https://api.pecom.ru/v1',          // Оригинальный (не работает)
-      'https://pecom.ru/api/v1',          // Основной сайт
-      'https://www.pecom.ru/api/v1'       // С www
-    ];
+    if (!process.env.PEK_LOGIN || !process.env.PEK_API_KEY) {
+      console.warn('⚠️ Не настроены переменные окружения PEK_LOGIN и PEK_API_KEY');
+      console.warn('⚠️ Перейдите на /env-check для настройки');
+      
+      return NextResponse.json({ 
+        error: 'Не настроены данные ПЭК',
+        details: 'Необходимо настроить PEK_LOGIN и PEK_API_KEY в переменных окружения',
+        suggestion: 'Перейдите на /env-check для настройки',
+        requiredVars: ['PEK_LOGIN', 'PEK_API_KEY']
+      }, { status: 500 });
+    }
+    
+    // Официальный базовый URL согласно документации
+    const BASE_URL = 'https://kabinet.pecom.ru/api/v1';
     
     let urlPath = '';
     let body = {};
@@ -53,9 +61,11 @@ export async function POST(request: NextRequest) {
         console.log('🔧 Тестовый метод прокси');
         return NextResponse.json({ 
           status: 'OK', 
-          message: 'Прокси работает',
+          message: 'Прокси работает (официальная версия)',
           timestamp: new Date().toISOString(),
-          receivedData: requestData
+          receivedData: requestData,
+          authMethod: 'Basic Auth',
+          baseUrl: BASE_URL
         });
         
       default:
@@ -63,95 +73,107 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Неизвестный метод', method }, { status: 400 });
     }
     
-    // Разные варианты авторизации
-    const AUTH_VARIANTS = [
-      { type: 'Bearer', value: `Bearer ${PEK_TOKEN}` },
-      { type: 'Basic', value: `Basic ${btoa(PEK_TOKEN + ':')}` },
-      { type: 'Token', value: PEK_TOKEN },
-      { type: 'X-API-Key', value: PEK_TOKEN }
-    ];
+    const fullUrl = BASE_URL + urlPath;
     
-    // Попробуем каждый вариант URL с разными методами авторизации
-    for (let i = 0; i < API_VARIANTS.length; i++) {
-      const baseUrl = API_VARIANTS[i];
-      const fullUrl = baseUrl + urlPath;
+    // Basic Auth согласно документации: base64(login:api_key)
+    const credentials = Buffer.from(`${PEK_LOGIN}:${PEK_API_KEY}`).toString('base64');
+    
+    console.log('🌐 Запрос к ПЭК API (официальная версия):');
+    console.log('URL:', fullUrl);
+    console.log('Auth: Basic (логин + API ключ)');
+    console.log('Body:', JSON.stringify(body, null, 2));
+    
+    try {
+      const response = await fetch(fullUrl, {
+        method: 'POST',
+        headers: {
+          // Заголовки согласно официальной документации
+          'Content-Type': 'application/json;charset=utf-8',
+          'Accept': 'application/json',
+          'Accept-Encoding': 'gzip',
+          'Authorization': `Basic ${credentials}`,
+        },
+        body: JSON.stringify(body)
+      });
       
-      for (let j = 0; j < AUTH_VARIANTS.length; j++) {
-        const auth = AUTH_VARIANTS[j];
+      console.log('📡 Ответ от ПЭК API:');
+      console.log('Status:', response.status, response.statusText);
+      console.log('Headers:', Object.fromEntries(response.headers.entries()));
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('❌ ПЭК API ошибка:', response.status, response.statusText);
+        console.error('❌ Ответ:', errorText.substring(0, 1000));
         
-        try {
-          console.log(`🌐 Попытка ${i + 1}.${j + 1}: ${fullUrl} (авторизация: ${auth.type})`);
-          console.log('Body:', JSON.stringify(body, null, 2));
-          
-          const headers: any = {
-            'Content-Type': 'application/json',
-          };
-          
-          if (auth.type === 'X-API-Key') {
-            headers['X-API-Key'] = auth.value;
-          } else {
-            headers['Authorization'] = auth.value;
-          }
-          
-          const response = await fetch(fullUrl, {
-            method: 'POST',
-            headers,
-            body: JSON.stringify(body)
-          });
-        
-          console.log(`📡 Ответ попытка ${i + 1}.${j + 1}:`, response.status, response.statusText);
-          
-          if (response.ok) {
-            const responseText = await response.text();
-            console.log(`✅ Успешный ответ ${i + 1}.${j + 1}:`, responseText.substring(0, 500));
-            
-            try {
-              const data = JSON.parse(responseText);
-              console.log(`✅ Найден рабочий endpoint: ${fullUrl} с ${auth.type}`);
-              return NextResponse.json(data);
-            } catch (parseError) {
-              console.error(`❌ Ошибка парсинга JSON ${i + 1}.${j + 1}:`, parseError);
-              continue; // Пробуем следующий
-            }
-          } else {
-            const errorText = await response.text();
-            console.error(`❌ Ошибка ${i + 1}.${j + 1}: ${response.status}`, errorText.substring(0, 100));
-            
-            // Если 404 или 401, пробуем следующий
-            if (response.status === 404 || response.status === 401) {
-              continue;
-            }
-            
-            // Если другая ошибка, возвращаем её
-            if (response.status !== 404 && response.status !== 401 && j === AUTH_VARIANTS.length - 1) {
-              return NextResponse.json({ 
-                error: `ПЭК API ошибка: ${response.status} ${response.statusText}`,
-                details: errorText,
-                url: fullUrl,
-                auth: auth.type,
-                method,
-                requestBody: body,
-                attempt: `${i + 1}.${j + 1}`
-              }, { status: response.status });
-            }
-          }
-          
-        } catch (fetchError) {
-          console.error(`❌ Сетевая ошибка ${i + 1}.${j + 1}:`, fetchError);
-          continue; // Пробуем следующий
+        // Детализируем ошибки согласно документации
+        if (response.status === 404) {
+          return NextResponse.json({ 
+            error: 'Метод API не найден',
+            details: 'URL метода неверный или метод не существует',
+            url: fullUrl,
+            suggestion: 'Проверьте правильность пути к методу'
+          }, { status: 404 });
         }
+        
+        if (response.status === 403) {
+          return NextResponse.json({ 
+            error: 'Доступ запрещен',
+            details: 'Нарушение прав доступа к методу',
+            suggestion: 'Проверьте права пользователя для данного метода'
+          }, { status: 403 });
+        }
+        
+        if (response.status === 401) {
+          return NextResponse.json({ 
+            error: 'Ошибка авторизации',
+            details: 'Неверный логин или API ключ',
+            suggestion: 'Проверьте данные авторизации в личном кабинете ПЭК'
+          }, { status: 401 });
+        }
+        
+        return NextResponse.json({ 
+          error: `ПЭК API ошибка: ${response.status} ${response.statusText}`,
+          details: errorText,
+          url: fullUrl,
+          method,
+          requestBody: body
+        }, { status: response.status });
       }
+      
+      const responseText = await response.text();
+      console.log('✅ Успешный ответ от ПЭК:', responseText.substring(0, 500));
+      
+      try {
+        const data = JSON.parse(responseText);
+        
+        // Проверяем формат ошибки согласно документации
+        if (data.error) {
+          console.error('❌ Логическая ошибка ПЭК:', data.error);
+          return NextResponse.json({ 
+            error: data.error.title || 'Логическая ошибка API',
+            details: data.error.message || 'Подробности недоступны',
+            apiError: true,
+            originalError: data.error
+          }, { status: 400 });
+        }
+        
+        return NextResponse.json(data);
+      } catch (parseError) {
+        console.error('❌ Ошибка парсинга JSON:', parseError);
+        return NextResponse.json({ 
+          error: 'Ошибка парсинга ответа',
+          details: responseText.substring(0, 1000)
+        }, { status: 500 });
+      }
+      
+    } catch (fetchError) {
+      console.error('❌ Сетевая ошибка:', fetchError);
+      return NextResponse.json({ 
+        error: 'Сетевая ошибка',
+        details: fetchError instanceof Error ? fetchError.message : 'Неизвестная ошибка',
+        url: fullUrl
+      }, { status: 503 });
     }
-    
-    // Если все попытки провалились
-    console.error('❌ Все URL варианты провалились');
-    return NextResponse.json({ 
-      error: 'Все варианты ПЭК API недоступны',
-      details: 'Проверены все возможные endpoints',
-      attemptedUrls: API_VARIANTS.map(base => base + urlPath),
-      method,
-      requestBody: body
-    }, { status: 503 });
     
   } catch (error) {
     console.error('❌ Критическая ошибка прокси ПЭК API:', error);

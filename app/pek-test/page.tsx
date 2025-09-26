@@ -205,6 +205,25 @@ export default function PekTestPage() {
       data: await response.json()
     };
   };
+  
+  // Тест 8: Официальный API ПЭК (по документации)
+  const testOfficialPekApi = async () => {
+    const response = await fetch('/api/pek', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        method: 'test'
+      })
+    });
+
+    return {
+      status: response.status,
+      statusText: response.statusText,
+      ok: response.ok,
+      data: await response.json(),
+      description: 'Проверка настроек и доступности официального API'
+    };
+  };
 
   const renderResult = (testName: string) => {
     const result = results[testName];
@@ -351,6 +370,25 @@ export default function PekTestPage() {
             {renderResult('newproxy')}
           </CardContent>
         </Card>
+        
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">8. Официальный API ПЭК</CardTitle>
+            <p className="text-sm text-gray-600 mt-2">
+              Basic Auth + kabinet.pecom.ru по документации
+            </p>
+          </CardHeader>
+          <CardContent>
+            <Button 
+              onClick={() => runTest('official', testOfficialPekApi)}
+              disabled={loading.official}
+              className="mb-3 bg-green-600 hover:bg-green-700"
+            >
+              Официальный API
+            </Button>
+            {renderResult('official')}
+          </CardContent>
+        </Card>
 
         <Card>
           <CardHeader>
@@ -360,19 +398,25 @@ export default function PekTestPage() {
             <Button 
               onClick={async () => {
                 console.log('🚀 Запуск полной диагностики ПЭК API');
+                
+                // Приоритет: официальный API первым
+                await runTest('official', testOfficialPekApi);
                 await runTest('proxy', testProxyHealth);
-                await runTest('newproxy', testNewProxy);
                 await runTest('zone', testFindZoneByAddress);
+                
+                // Остальные тесты
+                await runTest('newproxy', testNewProxy);
                 await runTest('get', testGetRequests);
                 await runTest('direct', testDirectPekApi);
                 await runTest('tokens', testTokenVariants);
                 await runTest('urls', testApiUrls);
+                
                 console.log('✅ Диагностика завершена');
               }}
               disabled={Object.values(loading).some(Boolean)}
-              className="w-full"
+              className="w-full bg-blue-600 hover:bg-blue-700"
             >
-              Запустить Полную Диагностику
+              🚀 ПОЛНАЯ ДИАГНОСТИКА API ПЭК
             </Button>
           </CardContent>
         </Card>

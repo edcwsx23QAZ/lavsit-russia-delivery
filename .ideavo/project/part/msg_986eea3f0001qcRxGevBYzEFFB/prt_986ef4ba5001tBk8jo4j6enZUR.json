@@ -1,0 +1,24 @@
+{
+  "id": "prt_986ef4ba5001tBk8jo4j6enZUR",
+  "messageID": "msg_986eea3f0001qcRxGevBYzEFFB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01HJ5LbUkE99ZzPK4jNa1GGs",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "limit": 5
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server';\n00002| \n00003| export async function POST(request: NextRequest) {\n00004|   try {\n00005|     console.log('🔧 ПЭК Прокси: Получен запрос');\n\n(File has more lines. Use 'offset' parameter to read beyond line 5)\n</file>",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server';\n\nexport async function POST(request: NextRequest) {\n  try {\n    console.log('🔧 ПЭК Прокси: Получен запрос');"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758905454169,
+      "end": 1758905454172
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "prt_986f16de8001v36Sm0FunqLNn7",
+  "messageID": "msg_986eea3f0001qcRxGevBYzEFFB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01BFPWsrq8edPujtLxGDz2MD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/pek-test/page.tsx",
+      "edits": [
+        {
+          "oldString": "        <Card>\n          <CardHeader>\n            <CardTitle className=\"text-lg\">7. Новый Прокси (Множественные Попытки)</CardTitle>\n          </CardHeader>\n          <CardContent>\n            <Button \n              onClick={() => runTest('newproxy', testNewProxy)}\n              disabled={loading.newproxy}\n              className=\"mb-3\"\n            >\n              Новый Прокси\n            </Button>\n            {renderResult('newproxy')}\n          </CardContent>\n        </Card>",
+          "newString": "        <Card>\n          <CardHeader>\n            <CardTitle className=\"text-lg\">7. Новый Прокси (Множественные Попытки)</CardTitle>\n          </CardHeader>\n          <CardContent>\n            <Button \n              onClick={() => runTest('newproxy', testNewProxy)}\n              disabled={loading.newproxy}\n              className=\"mb-3\"\n            >\n              Новый Прокси\n            </Button>\n            {renderResult('newproxy')}\n          </CardContent>\n        </Card>\n        \n        <Card>\n          <CardHeader>\n            <CardTitle className=\"text-lg\">8. Официальный API ПЭК</CardTitle>\n            <p className=\"text-sm text-gray-600 mt-2\">\n              Basic Auth + kabinet.pecom.ru по документации\n            </p>\n          </CardHeader>\n          <CardContent>\n            <Button \n              onClick={() => runTest('official', testOfficialPekApi)}\n              disabled={loading.official}\n              className=\"mb-3 bg-green-600 hover:bg-green-700\"\n            >\n              Официальный API\n            </Button>\n            {renderResult('official')}\n          </CardContent>\n        </Card>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/pek-test/page.tsx\n===================================================================\n--- /home/user/project/app/pek-test/page.tsx\n+++ /home/user/project/app/pek-test/page.tsx\n@@ -369,8 +369,27 @@\n     </Button>\n     {renderResult('newproxy')}\n   </CardContent>\n </Card>\n+\n+<Card>\n+  <CardHeader>\n+    <CardTitle className=\"text-lg\">8. Официальный API ПЭК</CardTitle>\n+    <p className=\"text-sm text-gray-600 mt-2\">\n+      Basic Auth + kabinet.pecom.ru по документации\n+    </p>\n+  </CardHeader>\n+  <CardContent>\n+    <Button \n+      onClick={() => runTest('official', testOfficialPekApi)}\n+      disabled={loading.official}\n+      className=\"mb-3 bg-green-600 hover:bg-green-700\"\n+    >\n+      Официальный API\n+    </Button>\n+    {renderResult('official')}\n+  </CardContent>\n+</Card>\n \n <Card>\n   <CardHeader>\n     <CardTitle className=\"text-lg\">Запуск Всех Тестов</CardTitle>\n"
+        }
+      ]
+    },
+    "title": "app/pek-test/page.tsx",
+    "time": {
+      "start": 1758905603901,
+      "end": 1758905603905
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "prt_986f09d6100120cIwgLj8dsz43",
+  "messageID": "msg_986eea3f0001qcRxGevBYzEFFB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_017Eg6uQunSyGBFZuPi1oN5Q",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "    // Данные авторизации согласно документации ПЭК\n    const PEK_API_KEY = '624FC93CA677B23673BB476D4982294DC27E246F';\n    const PEK_LOGIN = 'demo'; // Нужно заменить на реальный логин из личного кабинета",
+          "newString": "    // Данные авторизации согласно документации ПЭК\n    const PEK_API_KEY = process.env.PEK_API_KEY || '624FC93CA677B23673BB476D4982294DC27E246F';\n    const PEK_LOGIN = process.env.PEK_LOGIN || 'demo';\n    \n    if (!process.env.PEK_LOGIN || !process.env.PEK_API_KEY) {\n      console.warn('⚠️ Не настроены переменные окружения PEK_LOGIN и PEK_API_KEY');\n      console.warn('⚠️ Перейдите на /env-check для настройки');\n      \n      return NextResponse.json({ \n        error: 'Не настроены данные ПЭК',\n        details: 'Необходимо настроить PEK_LOGIN и PEK_API_KEY в переменных окружения',\n        suggestion: 'Перейдите на /env-check для настройки',\n        requiredVars: ['PEK_LOGIN', 'PEK_API_KEY']\n      }, { status: 500 });\n    }"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -9,11 +9,23 @@\n \n const { method, address, coordinates } = requestData;\n \n // Данные авторизации согласно документации ПЭК\n-const PEK_API_KEY = '624FC93CA677B23673BB476D4982294DC27E246F';\n-const PEK_LOGIN = 'demo'; // Нужно заменить на реальный логин из личного кабинета\n+const PEK_API_KEY = process.env.PEK_API_KEY || '624FC93CA677B23673BB476D4982294DC27E246F';\n+const PEK_LOGIN = process.env.PEK_LOGIN || 'demo';\n \n+if (!process.env.PEK_LOGIN || !process.env.PEK_API_KEY) {\n+  console.warn('⚠️ Не настроены переменные окружения PEK_LOGIN и PEK_API_KEY');\n+  console.warn('⚠️ Перейдите на /env-check для настройки');\n+  \n+  return NextResponse.json({ \n+    error: 'Не настроены данные ПЭК',\n+    details: 'Необходимо настроить PEK_LOGIN и PEK_API_KEY в переменных окружения',\n+    suggestion: 'Перейдите на /env-check для настройки',\n+    requiredVars: ['PEK_LOGIN', 'PEK_API_KEY']\n+  }, { status: 500 });\n+}\n+\n // Официальный базовый URL согласно документации\n const BASE_URL = 'https://kabinet.pecom.ru/api/v1';\n \n let urlPath = '';\n"
+        }
+      ]
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758905545283,
+      "end": 1758905545289
+    }
+  }
+}

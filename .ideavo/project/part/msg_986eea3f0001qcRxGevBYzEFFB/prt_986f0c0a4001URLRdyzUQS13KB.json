@@ -1,0 +1,25 @@
+{
+  "id": "prt_986f0c0a4001URLRdyzUQS13KB",
+  "messageID": "msg_986eea3f0001qcRxGevBYzEFFB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_019YReo1nin9RmiGjqMQTxC5",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/pek-test/page.tsx",
+      "edits": [
+        {
+          "oldString": "export default function PekTestPage() {\n  const [results, setResults] = useState<{ [key: string]: any }>({});\n  const [loading, setLoading] = useState<{ [key: string]: boolean }>({});\n  const [testAddress, setTestAddress] = useState('г Москва, Шмитовский проезд, д 1, кв 39');",
+          "newString": "export default function PekTestPage() {\n  const [results, setResults] = useState<{ [key: string]: any }>({});\n  const [loading, setLoading] = useState<{ [key: string]: boolean }>({});\n  const [testAddress, setTestAddress] = useState('г Москва, Шмитовский проезд, д 1, кв 39');\n  \n  // Проверяем настройки переменных окружения\n  const [envStatus, setEnvStatus] = useState<any>(null);\n  \n  const checkEnvStatus = async () => {\n    try {\n      const response = await fetch('/api/pek', {\n        method: 'POST',\n        headers: { 'Content-Type': 'application/json' },\n        body: JSON.stringify({ method: 'test' })\n      });\n      \n      const data = await response.json();\n      setEnvStatus({ ok: response.ok, data });\n    } catch (error: any) {\n      setEnvStatus({ ok: false, error: error.message });\n    }\n  };"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/app/pek-test/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758905558397,
+      "end": 1758905558399
+    }
+  }
+}
