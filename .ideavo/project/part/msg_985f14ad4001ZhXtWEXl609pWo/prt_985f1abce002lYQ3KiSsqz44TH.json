@@ -1,0 +1,25 @@
+{
+  "id": "prt_985f1abce002lYQ3KiSsqz44TH",
+  "messageID": "msg_985f14ad4001ZhXtWEXl609pWo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01EtXfhpVrk1WTuNJ75dVYL4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 480,
+      "limit": 30
+    },
+    "output": "<file>\n00481|       console.log('Деловые Линии ответ:', data);\n00482|       console.log('Срок доставки - data.data?.derivalToAddressMax:', data.data?.derivalToAddressMax);\n00483|       console.log('Срок доставки - data.derivalToAddressMax:', data.derivalToAddressMax);\n00484| \n00485|       if (response.ok && data.data && data.metadata?.status === 200) {\n00486|         let totalPrice = data.data.price || 0;\n00487|         \n00488|         // Добавляем страховку если есть\n00489|         if (data.data.insurance) {\n00490|           totalPrice += data.data.insurance;\n00491|         }\n00492|         \n00493|         // Добавляем услуги упаковки если есть\n00494|         if (data.data.packages && form.needPackaging) {\n00495|           Object.values(data.data.packages).forEach((pkg: any) => {\n00496|             if (pkg.price) totalPrice += pkg.price;\n00497|           });\n00498|         }\n00499| \n00500|         return {\n00501|           company: 'Деловые Линии',\n00502|           price: Math.round(totalPrice),\n00503|           days: data.data?.derivalToAddressMax || data.derivalToAddressMax || 0,\n00504|           details: data.data,\n00505|           requestData,\n00506|           responseData: data,\n00507|           apiUrl,\n00508|           sessionId: sessionID\n00509|         };\n00510|       } else {\n\n(File has more lines. Use 'offset' parameter to read beyond line 510)\n</file>",
+    "metadata": {
+      "preview": "      console.log('Деловые Линии ответ:', data);\n      console.log('Срок доставки - data.data?.derivalToAddressMax:', data.data?.derivalToAddressMax);\n      console.log('Срок доставки - data.derivalToAddressMax:', data.derivalToAddressMax);\n\n      if (response.ok && data.data && data.metadata?.status === 200) {\n        let totalPrice = data.data.price || 0;\n        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          totalPrice += data.data.insurance;\n        }\n        \n        // Добавляем услуги упаковки если есть\n        if (data.data.packages && form.needPackaging) {\n          Object.values(data.data.packages).forEach((pkg: any) => {\n            if (pkg.price) totalPrice += pkg.price;\n          });\n        }\n\n        return {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758888832578,
+      "end": 1758888832582
+    }
+  }
+}

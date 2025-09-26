@@ -1,0 +1,21 @@
+{
+  "id": "prt_985f17b8e001oRbWveUP30YDq5",
+  "messageID": "msg_985f14ad4001ZhXtWEXl609pWo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_019q3MMwKrpFyoMJ9NY5qDJ4",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      console.log('Деловые Линии ответ:', data);\n      console.log('Срок доставки - data.data?.derivalToAddressMax:', data.data?.derivalToAddressMax);\n      console.log('Срок доставки - data.derivalToAddressMax:', data.derivalToAddressMax);\n\n      if (response.ok && data.data && data.metadata?.status === 200) {\n        let totalPrice = data.data.price || 0;\n        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          totalPrice += data.data.insurance;\n        }\n        \n        // Добавляем услуги упаковки если есть\n        if (data.data.packages && form.needPackaging) {\n          Object.values(data.data.packages).forEach((pkg: any) => {\n            if (pkg.price) totalPrice += pkg.price;\n          });\n        }\n\n        return {\n          company: 'Деловые Линии',\n          price: Math.round(totalPrice),\n          days: data.data?.derivalToAddressMax || data.derivalToAddressMax || 0,\n          details: data.data,\n          requestData,\n          responseData: data,\n          apiUrl,\n          sessionId: sessionID\n        };",
+      "newString": "      console.log('Деловые Линии ответ:', data);\n\n      if (response.ok && data.data && data.metadata?.status === 200) {\n        let totalPrice = data.data.price || 0;\n        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          totalPrice += data.data.insurance;\n        }\n        \n        // Добавляем услуги упаковки если есть\n        if (data.data.packages && form.needPackaging) {\n          Object.values(data.data.packages).forEach((pkg: any) => {\n            if (pkg.price) totalPrice += pkg.price;\n          });\n        }\n\n        // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver\n        let deliveryDays = 0;\n        try {\n          const pickup = data.data.pickup || data.pickup;\n          const arrivalToOspReceiver = data.data.arrivalToOspReceiver || data.arrivalToOspReceiver;\n          \n          console.log('Дата pickup:', pickup);\n          console.log('Дата arrivalToOspReceiver:', arrivalToOspReceiver);\n          \n          if (pickup && arrivalToOspReceiver) {\n            const pickupDate = new Date(pickup);\n            const arrivalDate = new Date(arrivalToOspReceiver);\n            \n            // Вычисляем разность в днях\n            const timeDiff = arrivalDate.getTime() - pickupDate.getTime();\n            deliveryDays = Math.ceil(timeDiff / (1000 * 3600 * 24));\n            \n            console.log('Вычислен срок доставки:', deliveryDays, 'дней');\n          }\n        } catch (error) {\n          console.error('Ошибка вычисления срока доставки:', error);\n        }\n\n        return {\n          company: 'Деловые Линии',\n          price: Math.round(totalPrice),\n          days: deliveryDays || 0,\n          details: data.data,\n          requestData,\n          responseData: data,\n          apiUrl,\n          sessionId: sessionID\n        };"
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758888828540,
+      "end": 1758888828542
+    }
+  }
+}

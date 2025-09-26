@@ -479,8 +479,6 @@ export default function Home() {
 
       const data = await response.json();
       console.log('Деловые Линии ответ:', data);
-      console.log('Срок доставки - data.data?.derivalToAddressMax:', data.data?.derivalToAddressMax);
-      console.log('Срок доставки - data.derivalToAddressMax:', data.derivalToAddressMax);
 
       if (response.ok && data.data && data.metadata?.status === 200) {
         let totalPrice = data.data.price || 0;
@@ -497,10 +495,33 @@ export default function Home() {
           });
         }
 
+        // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver
+        let deliveryDays = 0;
+        try {
+          const pickup = data.data.pickup || data.pickup;
+          const arrivalToOspReceiver = data.data.arrivalToOspReceiver || data.arrivalToOspReceiver;
+          
+          console.log('Дата pickup:', pickup);
+          console.log('Дата arrivalToOspReceiver:', arrivalToOspReceiver);
+          
+          if (pickup && arrivalToOspReceiver) {
+            const pickupDate = new Date(pickup);
+            const arrivalDate = new Date(arrivalToOspReceiver);
+            
+            // Вычисляем разность в днях
+            const timeDiff = arrivalDate.getTime() - pickupDate.getTime();
+            deliveryDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+            
+            console.log('Вычислен срок доставки:', deliveryDays, 'дней');
+          }
+        } catch (error) {
+          console.error('Ошибка вычисления срока доставки:', error);
+        }
+
         return {
           company: 'Деловые Линии',
           price: Math.round(totalPrice),
-          days: data.data?.derivalToAddressMax || data.derivalToAddressMax || 0,
+          days: deliveryDays || 0,
           details: data.data,
           requestData,
           responseData: data,
