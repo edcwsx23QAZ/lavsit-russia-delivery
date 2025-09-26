@@ -1,0 +1,25 @@
+{
+  "id": "prt_9869d4de1001obS3XkP4WwbhkR",
+  "messageID": "msg_9869d1a3d001qxajp3q6hdJ2nS",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01DpTt7imFQ8QVgo3TZeZuzd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 560,
+      "limit": 20
+    },
+    "output": "<file>\n00561|       console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n00562|       console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n00563|       console.log('🚀 ОТВЕТ ДЛ data:', data);\n00564|       \n00565|       // Специально проверяем наличие packages в ответе\n00566|       console.log('=== ПОИСК PACKAGES В ОТВЕТЕ ===');\n00567|       console.log('📦 data.data =', data.data);\n00568|       console.log('📦 data.data.packages =', data.data?.packages);\n00569|       console.log('📦 Тип data.data.packages:', typeof data.data?.packages);\n00570|       if (data.data?.packages) {\n00571|         console.log('✅ PACKAGES НАЙДЕН В ОТВЕТЕ!');\n00572|         console.log('📦 Содержимое packages:', JSON.stringify(data.data.packages, null, 2));\n00573|       } else {\n00574|         console.log('❌ PACKAGES НЕ НАЙДЕН В ОТВЕТЕ');\n00575|       }\n00576|       console.log('=== КОНЕЦ ПОИСКА PACKAGES ===');\n00577| \n00578|       if (response.ok && data.data && data.metadata?.status === 200) {\n00579|         let totalPrice = data.data.price || 0;\n00580|         console.log('💰 РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ:');\n\n(File has more lines. Use 'offset' parameter to read beyond line 580)\n</file>",
+    "metadata": {
+      "preview": "      console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n      console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n      console.log('🚀 ОТВЕТ ДЛ data:', data);\n      \n      // Специально проверяем наличие packages в ответе\n      console.log('=== ПОИСК PACKAGES В ОТВЕТЕ ===');\n      console.log('📦 data.data =', data.data);\n      console.log('📦 data.data.packages =', data.data?.packages);\n      console.log('📦 Тип data.data.packages:', typeof data.data?.packages);\n      if (data.data?.packages) {\n        console.log('✅ PACKAGES НАЙДЕН В ОТВЕТЕ!');\n        console.log('📦 Содержимое packages:', JSON.stringify(data.data.packages, null, 2));\n      } else {\n        console.log('❌ PACKAGES НЕ НАЙДЕН В ОТВЕТЕ');\n      }\n      console.log('=== КОНЕЦ ПОИСКА PACKAGES ===');\n\n      if (response.ok && data.data && data.metadata?.status === 200) {\n        let totalPrice = data.data.price || 0;\n        console.log('💰 РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ:');"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758900080768,
+      "end": 1758900080773
+    }
+  }
+}

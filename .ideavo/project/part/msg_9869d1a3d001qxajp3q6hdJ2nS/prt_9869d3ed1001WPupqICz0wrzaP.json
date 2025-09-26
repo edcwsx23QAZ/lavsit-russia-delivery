@@ -1,0 +1,24 @@
+{
+  "id": "prt_9869d3ed1001WPupqICz0wrzaP",
+  "messageID": "msg_9869d1a3d001qxajp3q6hdJ2nS",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01T9zZjZyEegM11MACz6ZKuM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Insurance"
+    },
+    "output": "Found 13 matches\n/home/user/project/app/page.tsx:\n  Line 35:   needInsurance: boolean;\n  Line 85:     needInsurance: false,\n  Line 143:       setForm(prev => ({ ...prev, needInsurance: true }));\n  Line 524:           ...(form.needInsurance && form.declaredValue > 0 ? {\n  Line 741:         insurance: form.needInsurance ? '1' : '0',\n  Line 998:       params.append('strah', form.needInsurance ? form.declaredValue.toString() : '0'); // страховка\n  Line 1089:         if (form.needInsurance) basePrice += form.declaredValue * 0.01; // страховка\n  Line 1117:       if (form.needInsurance) basePrice += form.declaredValue * 0.01;\n  Line 1143:     if (form.needInsurance) totalPrice += form.declaredValue * 0.025;\n  Line 1311:       if (form.needInsurance && calc.details.insurance) {\n  Line 1402:       if (form.needInsurance && form.declaredValue > 0) {\n  Line 1641:                       checked={form.needInsurance}\n  Line 1642:                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needInsurance: checked as boolean }))}",
+    "metadata": {
+      "matches": 13,
+      "truncated": false
+    },
+    "title": "Insurance",
+    "time": {
+      "start": 1758900076462,
+      "end": 1758900076473
+    }
+  }
+}
