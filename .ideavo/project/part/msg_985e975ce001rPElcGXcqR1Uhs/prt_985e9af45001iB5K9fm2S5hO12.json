@@ -1,0 +1,21 @@
+{
+  "id": "prt_985e9af45001iB5K9fm2S5hO12",
+  "messageID": "msg_985e975ce001rPElcGXcqR1Uhs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01BuXCeDA8M8YSeZYf49SgML",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          days: data.deliveryTerm || data.data?.deliveryTerm || 0,",
+      "newString": "          days: data.data?.derivalToAddressMax || data.derivalToAddressMax || 0,"
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758888309897,
+      "end": 1758888309898
+    }
+  }
+}

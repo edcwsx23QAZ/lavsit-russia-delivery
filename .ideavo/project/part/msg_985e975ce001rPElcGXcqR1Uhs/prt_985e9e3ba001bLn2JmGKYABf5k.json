@@ -1,0 +1,26 @@
+{
+  "id": "prt_985e9e3ba001bLn2JmGKYABf5k",
+  "messageID": "msg_985e975ce001rPElcGXcqR1Uhs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_015E8JUrEmnXN6EDEkm5nXk4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      console.log('Деловые Линии ответ:', data);\n      console.log('Срок доставки - data.deliveryTerm:', data.deliveryTerm);\n      console.log('Срок доставки - data.data?.deliveryTerm:', data.data?.deliveryTerm);",
+      "newString": "      console.log('Деловые Линии ответ:', data);\n      console.log('Срок доставки - data.data?.derivalToAddressMax:', data.data?.derivalToAddressMax);\n      console.log('Срок доставки - data.derivalToAddressMax:', data.derivalToAddressMax);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -478,10 +478,10 @@\n });\n \n const data = await response.json();\n console.log('Деловые Линии ответ:', data);\n-console.log('Срок доставки - data.deliveryTerm:', data.deliveryTerm);\n-console.log('Срок доставки - data.data?.deliveryTerm:', data.data?.deliveryTerm);\n+console.log('Срок доставки - data.data?.derivalToAddressMax:', data.data?.derivalToAddressMax);\n+console.log('Срок доставки - data.derivalToAddressMax:', data.derivalToAddressMax);\n \n if (response.ok && data.data && data.metadata?.status === 200) {\n   let totalPrice = data.data.price || 0;\n   \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758888323598,
+      "end": 1758888323610
+    }
+  }
+}

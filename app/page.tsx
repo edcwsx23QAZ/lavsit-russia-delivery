@@ -479,8 +479,8 @@ export default function Home() {
 
       const data = await response.json();
       console.log('Деловые Линии ответ:', data);
-      console.log('Срок доставки - data.deliveryTerm:', data.deliveryTerm);
-      console.log('Срок доставки - data.data?.deliveryTerm:', data.data?.deliveryTerm);
+      console.log('Срок доставки - data.data?.derivalToAddressMax:', data.data?.derivalToAddressMax);
+      console.log('Срок доставки - data.derivalToAddressMax:', data.derivalToAddressMax);
 
       if (response.ok && data.data && data.metadata?.status === 200) {
         let totalPrice = data.data.price || 0;
@@ -500,7 +500,7 @@ export default function Home() {
         return {
           company: 'Деловые Линии',
           price: Math.round(totalPrice),
-          days: data.deliveryTerm || data.data?.deliveryTerm || 0,
+          days: data.data?.derivalToAddressMax || data.derivalToAddressMax || 0,
           details: data.data,
           requestData,
           responseData: data,
