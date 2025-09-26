@@ -1,0 +1,26 @@
+{
+  "id": "prt_9856895ff001S4xV8EpLIjRKZA",
+  "messageID": "msg_985682911001yC6lFkcVxxtWTq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01FKBS8tPgHWuajyv39NbFfk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Страхование\n      if (form.needInsurance && calc.details.insurance) {\n        details.push({\n          service: 'Страхование груза и срока',\n          description: '',\n          price: calc.details.insurance\n        });\n        \n        if (form.declaredValue > 0) {\n          details.push({\n            service: 'Страхование груза',\n            description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n            price: Math.round(form.declaredValue * 0.01)\n          });\n        }",
+      "newString": "      // Страхование - только из API\n      if (form.needInsurance && calc.details.insurance) {\n        details.push({\n          service: 'Страхование груза',\n          description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n          price: calc.details.insurance // Используем только стоимость из API\n        });\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1057,24 +1057,17 @@\n     price: calc.details.arrival.price\n   });\n }\n \n-// Страхование\n+// Страхование - только из API\n if (form.needInsurance && calc.details.insurance) {\n   details.push({\n-    service: 'Страхование груза и срока',\n-    description: '',\n-    price: calc.details.insurance\n+    service: 'Страхование груза',\n+    description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n+    price: calc.details.insurance // Используем только стоимость из API\n   });\n-  \n-  if (form.declaredValue > 0) {\n-    details.push({\n-      service: 'Страхование груза',\n-      description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n-      price: Math.round(form.declaredValue * 0.01)\n-    });\n-  }\n }\n+}\n \n // Упаковка\n if (form.needPackaging) {\n   const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758879850968,
+      "end": 1758879850985
+    }
+  }
+}

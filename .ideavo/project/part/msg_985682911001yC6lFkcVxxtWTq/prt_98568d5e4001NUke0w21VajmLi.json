@@ -1,0 +1,25 @@
+{
+  "id": "prt_98568d5e4001NUke0w21VajmLi",
+  "messageID": "msg_985682911001yC6lFkcVxxtWTq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01BoE5kV1osQXAEoRBgEtS5B",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1070,
+      "limit": 30
+    },
+    "output": "<file>\n01071|       // Упаковка\n01072|       if (form.needPackaging) {\n01073|         const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n01074|         details.push({\n01075|           service: 'Услуги на терминале отправителе',\n01076|           description: 'Упаковка груза',\n01077|           price: Math.round(totalWeight * 50)\n01078|         });\n01079|       }\n01080|       \n01081|       // Дополнительные услуги\n01082|       details.push({\n01083|         service: 'Доп.услуги',\n01084|         description: 'Информирование о статусе груза',\n01085|         price: 15\n01086|       });\n01087|     } else if (calc.company === 'Nord Wheel' && calc.details) {\n01088|       // Расшифровка для Nord Wheel согласно требованиям\n01089|       if (calc.details.totalCost) {\n01090|         details.push({\n01091|           service: 'Общая стоимость доставки',\n01092|           description: '',\n01093|           price: calc.details.totalCost\n01094|         });\n01095|       }\n01096|       if (calc.details.deliveryCost) {\n01097|         details.push({\n01098|           service: 'Стоимость перевозки',\n01099|           description: '',\n01100|           price: calc.details.deliveryCost\n\n(File has more lines. Use 'offset' parameter to read beyond line 1100)\n</file>",
+    "metadata": {
+      "preview": "      // Упаковка\n      if (form.needPackaging) {\n        const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n        details.push({\n          service: 'Услуги на терминале отправителе',\n          description: 'Упаковка груза',\n          price: Math.round(totalWeight * 50)\n        });\n      }\n      \n      // Дополнительные услуги\n      details.push({\n        service: 'Доп.услуги',\n        description: 'Информирование о статусе груза',\n        price: 15\n      });\n    } else if (calc.company === 'Nord Wheel' && calc.details) {\n      // Расшифровка для Nord Wheel согласно требованиям\n      if (calc.details.totalCost) {\n        details.push({"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758879864836,
+      "end": 1758879864837
+    }
+  }
+}

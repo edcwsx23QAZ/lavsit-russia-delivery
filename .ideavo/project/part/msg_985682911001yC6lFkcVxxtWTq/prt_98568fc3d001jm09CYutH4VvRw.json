@@ -1,0 +1,26 @@
+{
+  "id": "prt_98568fc3d001jm09CYutH4VvRw",
+  "messageID": "msg_985682911001yC6lFkcVxxtWTq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01LDStDgczHFaN4nAVbEyZAj",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Страхование - только из API\n      if (form.needInsurance && calc.details.insurance) {\n        details.push({\n          service: 'Страхование груза',\n          description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n          price: calc.details.insurance // Используем только стоимость из API\n        });\n      }\n      }",
+      "newString": "      // Страхование - только из API\n      if (form.needInsurance && calc.details.insurance) {\n        details.push({\n          service: 'Страхование груза',\n          description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n          price: calc.details.insurance // Используем только стоимость из API\n        });\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1065,9 +1065,8 @@\n     description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n     price: calc.details.insurance // Используем только стоимость из API\n   });\n }\n-}\n \n // Упаковка\n if (form.needPackaging) {\n   const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758879878434,
+      "end": 1758879878441
+    }
+  }
+}

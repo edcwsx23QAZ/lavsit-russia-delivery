@@ -1058,21 +1058,13 @@ export default function Home() {
         });
       }
       
-      // Страхование
+      // Страхование - только из API
       if (form.needInsurance && calc.details.insurance) {
         details.push({
-          service: 'Страхование груза и срока',
-          description: '',
-          price: calc.details.insurance
+          service: 'Страхование груза',
+          description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
+          price: calc.details.insurance // Используем только стоимость из API
         });
-        
-        if (form.declaredValue > 0) {
-          details.push({
-            service: 'Страхование груза',
-            description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
-            price: Math.round(form.declaredValue * 0.01)
-          });
-        }
       }
       
       // Упаковка

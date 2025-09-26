@@ -1,0 +1,11 @@
+{
+  "id": "prt_985688b74001AWL3vggwfpxE3N",
+  "messageID": "msg_985682911001yC6lFkcVxxtWTq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Вот проблема! В функции parseCalculationDetails добавляются ДВЕ страховки:\n1. `calc.details.insurance` (из API - это правильная)\n2. `form.declaredValue * 0.01` (рассчитанная локально - это лишняя)\n\nУберем вторую, локально рассчитанную страховку:",
+  "time": {
+    "start": 1758879847933,
+    "end": 1758879847933
+  }
+}

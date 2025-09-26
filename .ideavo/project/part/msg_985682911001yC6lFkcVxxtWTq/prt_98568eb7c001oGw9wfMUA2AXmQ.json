@@ -1,0 +1,25 @@
+{
+  "id": "prt_98568eb7c001oGw9wfMUA2AXmQ",
+  "messageID": "msg_985682911001yC6lFkcVxxtWTq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01C8xzkh382VXeFbbpH6Fm6o",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1055,
+      "limit": 40
+    },
+    "output": "<file>\n01056|           description: 'До адреса',\n01057|           price: calc.details.arrival.price\n01058|         });\n01059|       }\n01060|       \n01061|       // Страхование - только из API\n01062|       if (form.needInsurance && calc.details.insurance) {\n01063|         details.push({\n01064|           service: 'Страхование груза',\n01065|           description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n01066|           price: calc.details.insurance // Используем только стоимость из API\n01067|         });\n01068|       }\n01069|       }\n01070|       \n01071|       // Упаковка\n01072|       if (form.needPackaging) {\n01073|         const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n01074|         details.push({\n01075|           service: 'Услуги на терминале отправителе',\n01076|           description: 'Упаковка груза',\n01077|           price: Math.round(totalWeight * 50)\n01078|         });\n01079|       }\n01080|       \n01081|       // Дополнительные услуги\n01082|       details.push({\n01083|         service: 'Доп.услуги',\n01084|         description: 'Информирование о статусе груза',\n01085|         price: 15\n01086|       });\n01087|     } else if (calc.company === 'Nord Wheel' && calc.details) {\n01088|       // Расшифровка для Nord Wheel согласно требованиям\n01089|       if (calc.details.totalCost) {\n01090|         details.push({\n01091|           service: 'Общая стоимость доставки',\n01092|           description: '',\n01093|           price: calc.details.totalCost\n01094|         });\n01095|       }\n\n(File has more lines. Use 'offset' parameter to read beyond line 1095)\n</file>",
+    "metadata": {
+      "preview": "          description: 'До адреса',\n          price: calc.details.arrival.price\n        });\n      }\n      \n      // Страхование - только из API\n      if (form.needInsurance && calc.details.insurance) {\n        details.push({\n          service: 'Страхование груза',\n          description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n          price: calc.details.insurance // Используем только стоимость из API\n        });\n      }\n      }\n      \n      // Упаковка\n      if (form.needPackaging) {\n        const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n        details.push({\n          service: 'Услуги на терминале отправителе',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758879870326,
+      "end": 1758879870329
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_98568afc4001RZVl0eIPqCWbrV",
+  "messageID": "msg_985682911001yC6lFkcVxxtWTq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01MftUEeXj7BsTA7GKSkkiCU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Check build after insurance fix"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expected a semicolon\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:1084:1]\n \u001b[2m1084\u001b[0m |         description: 'Информирование о статусе груза',\n \u001b[2m1085\u001b[0m |         price: 15\n \u001b[2m1086\u001b[0m |       });\n \u001b[2m1087\u001b[0m |     } else if (calc.company === 'Nord Wheel' && calc.details) {\n      : \u001b[31;1m      ^^^^\u001b[0m\n \u001b[2m1088\u001b[0m |       // Расшифровка для Nord Wheel согласно требованиям\n \u001b[2m1089\u001b[0m |       if (calc.details.totalCost) {\n \u001b[2m1090\u001b[0m |         details.push({\n      `----\n\n  \u001b[31mx\u001b[0m Expression expected\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:1129:1]\n \u001b[2m1129\u001b[0m |         });\n \u001b[2m1130\u001b[0m |       }\n \u001b[2m1131\u001b[0m | \n \u001b[2m1132\u001b[0m |     } else if (calc.company === 'ПЭК' && calc.details?.services) {\n      : \u001b[31;1m      ^^^^\u001b[0m\n \u001b[2m1133\u001b[0m |       // Для ПЭК используем данные из API\n \u001b[2m1134\u001b[0m |       calc.details.services.forEach((service: any) => {\n \u001b[2m1135\u001b[0m |         if (service.price > 0) {\n      `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expected a semicolon\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:1084:1]\n \u001b[2m1084\u001b[0m |         description: 'Информирование о статусе груза',\n \u001b[2m1085\u001b[0m |         price: 15\n \u001b[2m1086\u001b[0m |       });\n \u001b[2m1087\u001b[0m |     } else if (calc.company === 'Nord Wheel' && calc.details) {\n      : \u001b[31;1m      ^^^^\u001b[0m\n \u001b[2m1088\u001b[0m |       // Расшифровка для Nord Wheel согласно требованиям\n \u001b[2m1089\u001b[0m |       if (calc.details.totalCost) {\n \u001b[2m1090\u001b[0m |         details.push({\n      `----\n\n  \u001b[31mx\u001b[0m Expression expected\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:1129:1]\n \u001b[2m1129\u001b[0m |         });\n \u001b[2m1130\u001b[0m |       }\n \u001b[2m1131\u001b[0m | \n \u001b[2m1132\u001b[0m |     } else if (calc.company === 'ПЭК' && calc.details?.services) {\n      : \u001b[31;1m      ^^^^\u001b[0m\n \u001b[2m1133\u001b[0m |       // Для ПЭК используем данные из API\n \u001b[2m1134\u001b[0m |       calc.details.services.forEach((service: any) => {\n \u001b[2m1135\u001b[0m |         if (service.price > 0) {\n      `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+      "exit": 1,
+      "description": "Check build after insurance fix"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1758879854918,
+      "end": 1758879858337
+    }
+  }
+}

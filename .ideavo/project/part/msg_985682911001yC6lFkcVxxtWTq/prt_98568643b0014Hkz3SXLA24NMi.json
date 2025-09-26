@@ -1,0 +1,25 @@
+{
+  "id": "prt_98568643b0014Hkz3SXLA24NMi",
+  "messageID": "msg_985682911001yC6lFkcVxxtWTq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GcPTV3AdqkcMyWU9ZeSNBi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 490,
+      "limit": 30
+    },
+    "output": "<file>\n00491|       if (response.ok && data.data && data.metadata?.status === 200) {\n00492|         let totalPrice = data.data.price || 0;\n00493|         \n00494|         // Добавляем страховку если есть\n00495|         if (data.data.insurance) {\n00496|           totalPrice += data.data.insurance;\n00497|         }\n00498|         \n00499|         // Добавляем услуги упаковки если есть\n00500|         if (data.data.packages && form.needPackaging) {\n00501|           Object.values(data.data.packages).forEach((pkg: any) => {\n00502|             if (pkg.price) totalPrice += pkg.price;\n00503|           });\n00504|         }\n00505| \n00506|         return {\n00507|           company: 'Деловые Линии',\n00508|           price: Math.round(totalPrice),\n00509|           days: data.data.deliveryTerm || 0,\n00510|           details: data.data,\n00511|           requestData,\n00512|           responseData: data,\n00513|           apiUrl,\n00514|           sessionId: sessionID\n00515|         };\n00516|       } else {\n00517|         const errorMessage = data.metadata?.detail || \n00518|                            data.metadata?.message || \n00519|                            data.errors?.[0]?.detail || \n00520|                            (data.metadata?.status !== 200 ? `HTTP ${data.metadata?.status}` : '') ||\n\n(File has more lines. Use 'offset' parameter to read beyond line 520)\n</file>",
+    "metadata": {
+      "preview": "      if (response.ok && data.data && data.metadata?.status === 200) {\n        let totalPrice = data.data.price || 0;\n        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          totalPrice += data.data.insurance;\n        }\n        \n        // Добавляем услуги упаковки если есть\n        if (data.data.packages && form.needPackaging) {\n          Object.values(data.data.packages).forEach((pkg: any) => {\n            if (pkg.price) totalPrice += pkg.price;\n          });\n        }\n\n        return {\n          company: 'Деловые Линии',\n          price: Math.round(totalPrice),\n          days: data.data.deliveryTerm || 0,\n          details: data.data,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758879836051,
+      "end": 1758879836055
+    }
+  }
+}

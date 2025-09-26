@@ -1,0 +1,25 @@
+{
+  "id": "prt_985687cbd0018Kf5JF5u9b9pKL",
+  "messageID": "msg_985682911001yC6lFkcVxxtWTq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Gvc2nzRpTEFy2y5zPP2xPY",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1060,
+      "limit": 15
+    },
+    "output": "<file>\n01061|       // Страхование\n01062|       if (form.needInsurance && calc.details.insurance) {\n01063|         details.push({\n01064|           service: 'Страхование груза и срока',\n01065|           description: '',\n01066|           price: calc.details.insurance\n01067|         });\n01068|         \n01069|         if (form.declaredValue > 0) {\n01070|           details.push({\n01071|             service: 'Страхование груза',\n01072|             description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n01073|             price: Math.round(form.declaredValue * 0.01)\n01074|           });\n01075|         }\n\n(File has more lines. Use 'offset' parameter to read beyond line 1075)\n</file>",
+    "metadata": {
+      "preview": "      // Страхование\n      if (form.needInsurance && calc.details.insurance) {\n        details.push({\n          service: 'Страхование груза и срока',\n          description: '',\n          price: calc.details.insurance\n        });\n        \n        if (form.declaredValue > 0) {\n          details.push({\n            service: 'Страхование груза',\n            description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n            price: Math.round(form.declaredValue * 0.01)\n          });\n        }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758879842091,
+      "end": 1758879842093
+    }
+  }
+}
