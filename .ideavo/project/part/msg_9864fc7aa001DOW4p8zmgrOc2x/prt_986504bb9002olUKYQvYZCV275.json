@@ -1,0 +1,25 @@
+{
+  "id": "prt_986504bb9002olUKYQvYZCV275",
+  "messageID": "msg_9864fc7aa001DOW4p8zmgrOc2x",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01CRSKK3A1bK63WKRypiGMkX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 578,
+      "limit": 6
+    },
+    "output": "<file>\n00579|         let totalPrice = data.data.price || 0;\n00580|         \n00581|         // Добавляем страховку если есть\n00582|         if (data.data.insurance) {\n00583|           totalPrice += data.data.insurance;\n00584|         }\n\n(File has more lines. Use 'offset' parameter to read beyond line 584)\n</file>",
+    "metadata": {
+      "preview": "        let totalPrice = data.data.price || 0;\n        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          totalPrice += data.data.insurance;\n        }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758895033911,
+      "end": 1758895033913
+    }
+  }
+}

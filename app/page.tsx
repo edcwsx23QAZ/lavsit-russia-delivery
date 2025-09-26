@@ -577,10 +577,16 @@ export default function Home() {
 
       if (response.ok && data.data && data.metadata?.status === 200) {
         let totalPrice = data.data.price || 0;
+        console.log('💰 РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ:');
+        console.log('💰 Базовая стоимость data.data.price:', totalPrice);
         
         // Добавляем страховку если есть
         if (data.data.insurance) {
+          console.log('💰 Страховка data.data.insurance:', data.data.insurance);
           totalPrice += data.data.insurance;
+          console.log('💰 Стоимость с страховкой:', totalPrice);
+        } else {
+          console.log('💰 Страховка не добавляется');
         }
         
         // УПАКОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно
@@ -671,6 +677,8 @@ export default function Home() {
           console.error('Деловые Линии - Ошибка вычисления срока доставки:', error);
         }
 
+        console.log('💰 ФИНАЛЬНАЯ ИТОГОВАЯ СТОИМОСТЬ:', Math.round(totalPrice));
+        
         return {
           company: 'Деловые Линии',
           price: Math.round(totalPrice),
@@ -1261,17 +1269,41 @@ export default function Home() {
         });
       }
       
-      // Упаковка (надбавки уже включены в pkg.price)
+      // Упаковка (надбавки уже включены в pkg.price, но показываем их для детализации)
       if (form.needPackaging && calc.details.packages) {
         Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {
           if (pkg.price && pkg.price > 0) {
-            packagingPrice += pkg.price;
+            // Вычисляем базовую цену упаковки (без надбавок) для отображения
+            let basePkgPrice = pkg.price;
+            let totalPremiums = 0;
             
+            if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {
+              totalPremiums = pkg.premiumDetails.reduce((sum: number, premium: any) => 
+                sum + (premium.value || 0), 0);
+              basePkgPrice = pkg.price - totalPremiums;
+            }
+            
+            packagingPrice += pkg.price; // В общую сумму добавляем полную цену
+            
+            // Показываем базовую упаковку
             details.push({
               service: 'Упаковка груза',
               description: 'Упаковать в комплекс «обрешётка + амортизация»',
-              price: pkg.price
+              price: basePkgPrice
             });
+            
+            // Показываем надбавки отдельно (для детализации, но не добавляем к общей сумме)
+            if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {
+              pkg.premiumDetails.forEach((premium: any) => {
+                if (premium.value && premium.value > 0) {
+                  details.push({
+                    service: 'Надбавка к упаковке',
+                    description: premium.name || 'Дополнительная надбавка',
+                    price: premium.value
+                  });
+                }
+              });
+            }
           }
         });
       }

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9865060490018s08fCAnW6Hqzi",
+  "messageID": "msg_9864fc7aa001DOW4p8zmgrOc2x",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01WH6C5dASkDmTSd7euf6hpn",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        let totalPrice = data.data.price || 0;\n        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          totalPrice += data.data.insurance;\n        }",
+      "newString": "        let totalPrice = data.data.price || 0;\n        console.log('💰 РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ:');\n        console.log('💰 Базовая стоимость data.data.price:', totalPrice);\n        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          console.log('💰 Страховка data.data.insurance:', data.data.insurance);\n          totalPrice += data.data.insurance;\n          console.log('💰 Стоимость с страховкой:', totalPrice);\n        } else {\n          console.log('💰 Страховка не добавляется');\n        }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -576,12 +576,18 @@\n console.log('=== КОНЕЦ ПОИСКА PACKAGES ===');\n \n if (response.ok && data.data && data.metadata?.status === 200) {\n   let totalPrice = data.data.price || 0;\n+  console.log('💰 РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ:');\n+  console.log('💰 Базовая стоимость data.data.price:', totalPrice);\n   \n   // Добавляем страховку если есть\n   if (data.data.insurance) {\n+    console.log('💰 Страховка data.data.insurance:', data.data.insurance);\n     totalPrice += data.data.insurance;\n+    console.log('💰 Стоимость с страховкой:', totalPrice);\n+  } else {\n+    console.log('💰 Страховка не добавляется');\n   }\n   \n   // УПАКОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно\n   console.log('💰 ИНФОРМАЦИЯ ОБ УПАКОВКЕ (УЖЕ ВКЛЮЧЕНА В ОСНОВНУЮ СТОИМОСТЬ):');\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758895041749,
+      "end": 1758895041758
+    }
+  }
+}

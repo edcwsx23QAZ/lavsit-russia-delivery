@@ -1,0 +1,25 @@
+{
+  "id": "prt_986508d2b0015nZnk3fq2BF2GT",
+  "messageID": "msg_9864fc7aa001DOW4p8zmgrOc2x",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_018PWzD57V26dn8pso4v5zPx",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 680,
+      "limit": 8
+    },
+    "output": "<file>\n00681|           company: 'Деловые Линии',\n00682|           price: Math.round(totalPrice),\n00683|           days: deliveryDays || 0,\n00684|           details: data.data,\n00685|           requestData,\n00686|           responseData: data,\n00687|           apiUrl,\n00688|           sessionId: sessionID\n\n(File has more lines. Use 'offset' parameter to read beyond line 688)\n</file>",
+    "metadata": {
+      "preview": "          company: 'Деловые Линии',\n          price: Math.round(totalPrice),\n          days: deliveryDays || 0,\n          details: data.data,\n          requestData,\n          responseData: data,\n          apiUrl,\n          sessionId: sessionID"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758895050715,
+      "end": 1758895050717
+    }
+  }
+}

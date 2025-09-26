@@ -1,0 +1,25 @@
+{
+  "id": "prt_986503d320016w9EUDXp6wCWSB",
+  "messageID": "msg_9864fc7aa001DOW4p8zmgrOc2x",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_012gxLxFNAk129aW6tTkScRk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 579,
+      "limit": 20
+    },
+    "output": "<file>\n00580|         \n00581|         // Добавляем страховку если есть\n00582|         if (data.data.insurance) {\n00583|           totalPrice += data.data.insurance;\n00584|         }\n00585|         \n00586|         // УПАКОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно\n00587|         console.log('💰 ИНФОРМАЦИЯ ОБ УПАКОВКЕ (УЖЕ ВКЛЮЧЕНА В ОСНОВНУЮ СТОИМОСТЬ):');\n00588|         console.log('💰 data.data.packages =', data.data.packages);\n00589|         console.log('💰 form.needPackaging =', form.needPackaging);\n00590|         \n00591|         if (data.data.packages && form.needPackaging) {\n00592|           console.log('💰 ✅ УПАКОВКА ПРИСУТСТВУЕТ В ОТВЕТЕ (цена уже включена в data.data.price)');\n00593|           console.log('💰 Тип packages:', Array.isArray(data.data.packages) ? 'Array' : 'Object');\n00594|           \n00595|           if (Array.isArray(data.data.packages)) {\n00596|             data.data.packages.forEach((pkg: any, index: number) => {\n00597|               console.log(`💰 Package [${index}] (включена в основную стоимость):`, pkg);\n00598|             });\n00599|           } else {\n\n(File has more lines. Use 'offset' parameter to read beyond line 599)\n</file>",
+    "metadata": {
+      "preview": "        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          totalPrice += data.data.insurance;\n        }\n        \n        // УПАКОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно\n        console.log('💰 ИНФОРМАЦИЯ ОБ УПАКОВКЕ (УЖЕ ВКЛЮЧЕНА В ОСНОВНУЮ СТОИМОСТЬ):');\n        console.log('💰 data.data.packages =', data.data.packages);\n        console.log('💰 form.needPackaging =', form.needPackaging);\n        \n        if (data.data.packages && form.needPackaging) {\n          console.log('💰 ✅ УПАКОВКА ПРИСУТСТВУЕТ В ОТВЕТЕ (цена уже включена в data.data.price)');\n          console.log('💰 Тип packages:', Array.isArray(data.data.packages) ? 'Array' : 'Object');\n          \n          if (Array.isArray(data.data.packages)) {\n            data.data.packages.forEach((pkg: any, index: number) => {\n              console.log(`💰 Package [${index}] (включена в основную стоимость):`, pkg);\n            });\n          } else {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758895030165,
+      "end": 1758895030169
+    }
+  }
+}

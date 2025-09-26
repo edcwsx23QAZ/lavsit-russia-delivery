@@ -1,0 +1,25 @@
+{
+  "id": "prt_9865002f3001DDOjfP9fu8b0nq",
+  "messageID": "msg_9864fc7aa001DOW4p8zmgrOc2x",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_017TQZLFq3gCjBvMwjvojSE5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1264,
+      "limit": 15
+    },
+    "output": "<file>\n01265|       if (form.needPackaging && calc.details.packages) {\n01266|         Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n01267|           if (pkg.price && pkg.price > 0) {\n01268|             packagingPrice += pkg.price;\n01269|             \n01270|             details.push({\n01271|               service: 'Упаковка груза',\n01272|               description: 'Упаковать в комплекс «обрешётка + амортизация»',\n01273|               price: pkg.price\n01274|             });\n01275|           }\n01276|         });\n01277|       }\n01278|       \n01279|       // Страхование\n\n(File has more lines. Use 'offset' parameter to read beyond line 1279)\n</file>",
+    "metadata": {
+      "preview": "      if (form.needPackaging && calc.details.packages) {\n        Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n          if (pkg.price && pkg.price > 0) {\n            packagingPrice += pkg.price;\n            \n            details.push({\n              service: 'Упаковка груза',\n              description: 'Упаковать в комплекс «обрешётка + амортизация»',\n              price: pkg.price\n            });\n          }\n        });\n      }\n      \n      // Страхование"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758895015226,
+      "end": 1758895015236
+    }
+  }
+}

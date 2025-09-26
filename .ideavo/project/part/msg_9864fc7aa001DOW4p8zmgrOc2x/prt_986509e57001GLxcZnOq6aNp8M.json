@@ -1,0 +1,26 @@
+{
+  "id": "prt_986509e57001GLxcZnOq6aNp8M",
+  "messageID": "msg_9864fc7aa001DOW4p8zmgrOc2x",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_0186FnXfB2uxwqetpe3gy7Gd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        return {\n          company: 'Деловые Линии',\n          price: Math.round(totalPrice),\n          days: deliveryDays || 0,\n          details: data.data,\n          requestData,\n          responseData: data,\n          apiUrl,\n          sessionId: sessionID\n        };",
+      "newString": "        console.log('💰 ФИНАЛЬНАЯ ИТОГОВАЯ СТОИМОСТЬ:', Math.round(totalPrice));\n        \n        return {\n          company: 'Деловые Линии',\n          price: Math.round(totalPrice),\n          days: deliveryDays || 0,\n          details: data.data,\n          requestData,\n          responseData: data,\n          apiUrl,\n          sessionId: sessionID\n        };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -676,8 +676,10 @@\n } catch (error) {\n   console.error('Деловые Линии - Ошибка вычисления срока доставки:', error);\n }\n \n+console.log('💰 ФИНАЛЬНАЯ ИТОГОВАЯ СТОИМОСТЬ:', Math.round(totalPrice));\n+\n return {\n   company: 'Деловые Линии',\n   price: Math.round(totalPrice),\n   days: deliveryDays || 0,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758895057641,
+      "end": 1758895057652
+    }
+  }
+}
