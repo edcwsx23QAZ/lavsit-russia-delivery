@@ -1,0 +1,25 @@
+{
+  "id": "prt_9862631d4001ipoB3aLP537VNe",
+  "messageID": "msg_986262352001U5JpemZdtaDqkL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01UnjmHTjp9Sjiks7nXCMxJ8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 400,
+      "limit": 15
+    },
+    "output": "<file>\n00401| \n00402|       // Получаем UID упаковки crate_with_bubble (если нужна упаковка)\n00403|       let packageUid: string | null = null;\n00404|       console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);\n00405|       if (form.needPackaging) {\n00406|         console.log('🔍 ЗАПРАШИВАЕМ UID упаковки из справочника...');\n00407|         packageUid = await getDellinCrateWithBubbleUid();\n00408|         console.log('🔍 РЕЗУЛЬТАТ: packageUid =', packageUid);\n00409|       } else {\n00410|         console.log('🔍 Упаковка не требуется, пропускаем получение UID');\n00411|       }\n00412| \n00413|       // Формируем дату отправления на завтра\n00414|       const tomorrow = new Date();\n00415|       tomorrow.setDate(tomorrow.getDate() + 1);\n\n(File has more lines. Use 'offset' parameter to read beyond line 415)\n</file>",
+    "metadata": {
+      "preview": "\n      // Получаем UID упаковки crate_with_bubble (если нужна упаковка)\n      let packageUid: string | null = null;\n      console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);\n      if (form.needPackaging) {\n        console.log('🔍 ЗАПРАШИВАЕМ UID упаковки из справочника...');\n        packageUid = await getDellinCrateWithBubbleUid();\n        console.log('🔍 РЕЗУЛЬТАТ: packageUid =', packageUid);\n      } else {\n        console.log('🔍 Упаковка не требуется, пропускаем получение UID');\n      }\n\n      // Формируем дату отправления на завтра\n      const tomorrow = new Date();\n      tomorrow.setDate(tomorrow.getDate() + 1);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758892275309,
+      "end": 1758892275317
+    }
+  }
+}

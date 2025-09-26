@@ -1,0 +1,24 @@
+{
+  "id": "prt_98626445c001oYw9DWyru5lZIr",
+  "messageID": "msg_986262352001U5JpemZdtaDqkL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01FDRyqrVmuEVVpTeVka9VUp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "needPackaging"
+    },
+    "output": "Found 19 matches\n/home/user/project/app/page.tsx:\n  Line 30:   needPackaging: boolean;\n  Line 80:     needPackaging: false,\n  Line 404:       console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);\n  Line 405:       if (form.needPackaging) {\n  Line 420:       console.log('  form.needPackaging =', form.needPackaging);\n  Line 422:       console.log('  Условие для packages:', form.needPackaging && packageUid);\n  Line 476:           ...(form.needPackaging && packageUid ? {\n  Line 516:         console.log('   form.needPackaging =', form.needPackaging);\n  Line 518:         console.log('   Условие:', form.needPackaging && packageUid);\n  Line 545:         if (data.data.packages && form.needPackaging) {\n  Line 675:         package: form.needPackaging ? '1' : '0',\n  Line 905:         const needZTU = form.needPackaging ? 1 : 0;\n  Line 1026:         if (form.needPackaging) basePrice += totalWeight * 20; // упаковка\n  Line 1054:       if (form.needPackaging) basePrice += totalWeight * 20;\n  Line 1080:     if (form.needPackaging) totalPrice += basePrice * 0.08;\n  Line 1203:       if (form.needPackaging && calc.details.packages) {\n  Line 1293:       if (form.needPackaging) {\n  Line 1514:                       checked={form.needPackaging}\n  Line 1515:                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needPackaging: checked as boolean }))}",
+    "metadata": {
+      "matches": 19,
+      "truncated": false
+    },
+    "title": "needPackaging",
+    "time": {
+      "start": 1758892278891,
+      "end": 1758892278902
+    }
+  }
+}

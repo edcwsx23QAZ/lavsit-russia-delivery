@@ -1,0 +1,25 @@
+{
+  "id": "prt_986265600001sozqCrdHUJVR0f",
+  "messageID": "msg_986262352001U5JpemZdtaDqkL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Lw8UGJ9MA54EVt3gR9PrxV",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1510,
+      "limit": 10
+    },
+    "output": "<file>\n01511|                   <div className=\"flex items-center space-x-2\">\n01512|                     <Checkbox\n01513|                       id=\"packaging\"\n01514|                       checked={form.needPackaging}\n01515|                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needPackaging: checked as boolean }))}\n01516|                       className=\"border-white data-[state=checked]:bg-white data-[state=checked]:text-black\"\n01517|                     />\n01518|                     <Label htmlFor=\"packaging\" className=\"text-white text-xs\">Требуется упаковка</Label>\n01519|                   </div>\n01520|                   \n\n(File has more lines. Use 'offset' parameter to read beyond line 1520)\n</file>",
+    "metadata": {
+      "preview": "                  <div className=\"flex items-center space-x-2\">\n                    <Checkbox\n                      id=\"packaging\"\n                      checked={form.needPackaging}\n                      onCheckedChange={(checked) => setForm(prev => ({ ...prev, needPackaging: checked as boolean }))}\n                      className=\"border-white data-[state=checked]:bg-white data-[state=checked]:text-black\"\n                    />\n                    <Label htmlFor=\"packaging\" className=\"text-white text-xs\">Требуется упаковка</Label>\n                  </div>\n                  "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758892284089,
+      "end": 1758892284091
+    }
+  }
+}
