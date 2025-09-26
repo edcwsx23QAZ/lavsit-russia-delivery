@@ -1,0 +1,25 @@
+{
+  "id": "prt_985f95b48001HGlDzl5FGOiUOa",
+  "messageID": "msg_985f8e20c001x1SbPqiiv2h79o",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01CEHzd2AqoXwJrSdTQipzvp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 500,
+      "limit": 50
+    },
+    "output": "<file>\n00501|           // Более детальный поиск дат в разных местах ответа\n00502|           console.log('=== ОТЛАДКА СРОКА ДОСТАВКИ ДЕЛОВЫЕ ЛИНИИ ===');\n00503|           console.log('Полная структура data:', JSON.stringify(data, null, 2));\n00504|           console.log('Структура data.data:', JSON.stringify(data.data, null, 2));\n00505|           \n00506|           // Ищем даты в разных возможных местах\n00507|           const pickup = data.data?.pickup || \n00508|                         data.pickup || \n00509|                         data.data?.derival?.date ||\n00510|                         data.data?.produceDate ||\n00511|                         data.derival?.date;\n00512|           \n00513|           const arrivalToOspReceiver = data.data?.arrivalToOspReceiver || \n00514|                                      data.arrivalToOspReceiver ||\n00515|                                      data.data?.arrival?.date ||\n00516|                                      data.arrival?.date ||\n00517|                                      data.data?.deliveryDate;\n00518|           \n00519|           console.log('Найденная дата pickup:', pickup);\n00520|           console.log('Найденная дата arrivalToOspReceiver:', arrivalToOspReceiver);\n00521|           \n00522|           if (pickup && arrivalToOspReceiver) {\n00523|             const pickupDate = new Date(pickup);\n00524|             const arrivalDate = new Date(arrivalToOspReceiver);\n00525|             \n00526|             console.log('Парсированная дата pickup:', pickupDate);\n00527|             console.log('Парсированная дата arrival:', arrivalDate);\n00528|             \n00529|             // Проверяем, что даты валидны\n00530|             if (!isNaN(pickupDate.getTime()) && !isNaN(arrivalDate.getTime())) {\n00531|               // Вычисляем разность в днях\n00532|               const timeDiff = arrivalDate.getTime() - pickupDate.getTime();\n00533|               deliveryDays = Math.max(1, Math.ceil(timeDiff / (1000 * 3600 * 24))); // Минимум 1 день\n00534|               \n00535|               console.log('Разность в миллисекундах:', timeDiff);\n00536|               console.log('ИТОГОВЫЙ срок доставки:', deliveryDays, 'дней');\n00537|             } else {\n00538|               console.error('Невалидные даты после парсинга');\n00539|             }\n00540|           } else {\n00541|             console.warn('Не найдены даты pickup или arrivalToOspReceiver');\n00542|             console.log('Все возможные поля дат в ответе:');\n00543|             console.log('- data.data?.pickup:', data.data?.pickup);\n00544|             console.log('- data.pickup:', data.pickup);\n00545|             console.log('- data.data?.arrivalToOspReceiver:', data.data?.arrivalToOspReceiver);\n00546|             console.log('- data.arrivalToOspReceiver:', data.arrivalToOspReceiver);\n00547|             console.log('- data.data?.derival:', data.data?.derival);\n00548|             console.log('- data.data?.arrival:', data.data?.arrival);\n00549|           }\n00550|           console.log('=== КОНЕЦ ОТЛАДКИ ===');\n\n(File has more lines. Use 'offset' parameter to read beyond line 550)\n</file>",
+    "metadata": {
+      "preview": "          // Более детальный поиск дат в разных местах ответа\n          console.log('=== ОТЛАДКА СРОКА ДОСТАВКИ ДЕЛОВЫЕ ЛИНИИ ===');\n          console.log('Полная структура data:', JSON.stringify(data, null, 2));\n          console.log('Структура data.data:', JSON.stringify(data.data, null, 2));\n          \n          // Ищем даты в разных возможных местах\n          const pickup = data.data?.pickup || \n                        data.pickup || \n                        data.data?.derival?.date ||\n                        data.data?.produceDate ||\n                        data.derival?.date;\n          \n          const arrivalToOspReceiver = data.data?.arrivalToOspReceiver || \n                                     data.arrivalToOspReceiver ||\n                                     data.data?.arrival?.date ||\n                                     data.arrival?.date ||\n                                     data.data?.deliveryDate;\n          \n          console.log('Найденная дата pickup:', pickup);\n          console.log('Найденная дата arrivalToOspReceiver:', arrivalToOspReceiver);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758889335695,
+      "end": 1758889335703
+    }
+  }
+}

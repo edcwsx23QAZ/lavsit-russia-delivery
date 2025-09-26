@@ -498,28 +498,15 @@ export default function Home() {
         // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver
         let deliveryDays = 0;
         try {
-          // Более детальный поиск дат в разных местах ответа
-          console.log('=== ОТЛАДКА СРОКА ДОСТАВКИ ДЕЛОВЫЕ ЛИНИИ ===');
-          console.log('Полная структура data:', JSON.stringify(data, null, 2));
-          console.log('Структура data.data:', JSON.stringify(data.data, null, 2));
+          // Извлекаем точные поля из ответа API
+          const pickup = data.data?.pickup || data.pickup;
+          const arrivalToOspReceiver = data.data?.arrivalToOspReceiver || data.arrivalToOspReceiver;
           
-          // Ищем даты в разных возможных местах
-          const pickup = data.data?.pickup || 
-                        data.pickup || 
-                        data.data?.derival?.date ||
-                        data.data?.produceDate ||
-                        data.derival?.date;
-          
-          const arrivalToOspReceiver = data.data?.arrivalToOspReceiver || 
-                                     data.arrivalToOspReceiver ||
-                                     data.data?.arrival?.date ||
-                                     data.arrival?.date ||
-                                     data.data?.deliveryDate;
-          
-          console.log('Найденная дата pickup:', pickup);
-          console.log('Найденная дата arrivalToOspReceiver:', arrivalToOspReceiver);
+          console.log('Деловые Линии - дата pickup:', pickup);
+          console.log('Деловые Линии - дата arrivalToOspReceiver:', arrivalToOspReceiver);
           
           if (pickup && arrivalToOspReceiver) {
+            // Парсим даты (формат может быть "2025-09-27" или "2025-09-27 10:00:00")
             const pickupDate = new Date(pickup);
             const arrivalDate = new Date(arrivalToOspReceiver);
             
@@ -533,23 +520,19 @@ export default function Home() {
               deliveryDays = Math.max(1, Math.ceil(timeDiff / (1000 * 3600 * 24))); // Минимум 1 день
               
               console.log('Разность в миллисекундах:', timeDiff);
-              console.log('ИТОГОВЫЙ срок доставки:', deliveryDays, 'дней');
+              console.log('Деловые Линии - ВЫЧИСЛЕН срок доставки:', deliveryDays, 'дней');
             } else {
-              console.error('Невалидные даты после парсинга');
+              console.error('Деловые Линии - Невалидные даты после парсинга');
+              console.error('pickup Date object:', pickupDate);
+              console.error('arrival Date object:', arrivalDate);
             }
           } else {
-            console.warn('Не найдены даты pickup или arrivalToOspReceiver');
-            console.log('Все возможные поля дат в ответе:');
-            console.log('- data.data?.pickup:', data.data?.pickup);
-            console.log('- data.pickup:', data.pickup);
-            console.log('- data.data?.arrivalToOspReceiver:', data.data?.arrivalToOspReceiver);
-            console.log('- data.arrivalToOspReceiver:', data.arrivalToOspReceiver);
-            console.log('- data.data?.derival:', data.data?.derival);
-            console.log('- data.data?.arrival:', data.data?.arrival);
+            console.warn('Деловые Линии - Не найдены даты pickup или arrivalToOspReceiver');
+            console.log('pickup найден:', !!pickup, pickup);
+            console.log('arrivalToOspReceiver найден:', !!arrivalToOspReceiver, arrivalToOspReceiver);
           }
-          console.log('=== КОНЕЦ ОТЛАДКИ ===');
         } catch (error) {
-          console.error('Ошибка вычисления срока доставки:', error);
+          console.error('Деловые Линии - Ошибка вычисления срока доставки:', error);
         }
 
         return {
