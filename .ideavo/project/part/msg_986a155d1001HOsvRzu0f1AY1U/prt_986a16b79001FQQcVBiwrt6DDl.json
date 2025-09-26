@@ -1,0 +1,21 @@
+{
+  "id": "prt_986a16b79001FQQcVBiwrt6DDl",
+  "messageID": "msg_986a155d1001HOsvRzu0f1AY1U",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01FP7w6H8UQmZzumoR2VqPbG",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      const data = await response.json();\n      console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n      console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n      console.log('🚀 ОТВЕТ ДЛ data:', data);",
+      "newString": "      const data = await response.json();\n      console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n      console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n      console.log('🚀 ОТВЕТ ДЛ data:', data);\n      \n      // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n      console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n      console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));\n      \n      // Поиск всех полей связанных со страховкой\n      console.log('💳 ПОИСК КОМПОНЕНТОВ СТРАХОВКИ:');\n      console.log('💳 data.data.insurance:', data.data?.insurance);\n      console.log('💳 data.data.cargoInsurance:', data.data?.cargoInsurance);\n      console.log('💳 data.data.termInsurance:', data.data?.termInsurance);\n      console.log('💳 data.data.insuranceDetails:', data.data?.insuranceDetails);\n      console.log('💳 data.data.services:', data.data?.services);\n      console.log('💳 data.data.additionalServices:', data.data?.additionalServices);\n      \n      // Поиск страховки в других разделах\n      if (data.data.derival) {\n        console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival.insurance);\n      }\n      if (data.data.arrival) {\n        console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival.insurance);\n      }\n      if (data.data.intercity) {\n        console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);\n      }\n      \n      // Рекурсивный поиск всех полей содержащих \"insurance\"\n      const findInsuranceFields = (obj: any, path = '') => {\n        if (typeof obj !== 'object' || obj === null) return;\n        \n        Object.keys(obj).forEach(key => {\n          const fullPath = path ? `${path}.${key}` : key;\n          if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {\n            console.log(`💳 НАЙДЕНО ПОЛЕ СТРАХОВКИ [${fullPath}]:`, obj[key]);\n          }\n          if (typeof obj[key] === 'object') {\n            findInsuranceFields(obj[key], fullPath);\n          }\n        });\n      };\n      \n      console.log('💳 РЕКУРСИВНЫЙ ПОИСК ПОЛЕЙ СТРАХОВКИ:');\n      findInsuranceFields(data.data, 'data.data');\n      console.log('=== КОНЕЦ АНАЛИЗА СТРАХОВКИ ===');"
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758900360250,
+      "end": 1758900360253
+    }
+  }
+}

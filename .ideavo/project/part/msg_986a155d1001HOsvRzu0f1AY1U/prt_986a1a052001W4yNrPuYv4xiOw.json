@@ -1,0 +1,25 @@
+{
+  "id": "prt_986a1a052001W4yNrPuYv4xiOw",
+  "messageID": "msg_986a155d1001HOsvRzu0f1AY1U",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01HZfHJp3DW8UjVaoT2GCV84",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 560,
+      "limit": 8
+    },
+    "output": "<file>\n00561|       console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n00562|       console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n00563|       console.log('🚀 ОТВЕТ ДЛ data:', data);\n00564|       \n00565|       // Специально проверяем наличие packages в ответе\n00566|       console.log('=== ПОИСК PACKAGES В ОТВЕТЕ ===');\n00567|       console.log('📦 data.data =', data.data);\n00568|       console.log('📦 data.data.packages =', data.data?.packages);\n\n(File has more lines. Use 'offset' parameter to read beyond line 568)\n</file>",
+    "metadata": {
+      "preview": "      console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n      console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n      console.log('🚀 ОТВЕТ ДЛ data:', data);\n      \n      // Специально проверяем наличие packages в ответе\n      console.log('=== ПОИСК PACKAGES В ОТВЕТЕ ===');\n      console.log('📦 data.data =', data.data);\n      console.log('📦 data.data.packages =', data.data?.packages);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758900363692,
+      "end": 1758900363695
+    }
+  }
+}

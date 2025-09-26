@@ -562,6 +562,49 @@ export default function Home() {
       console.log('🚀 ОТВЕТ ДЛ status:', response.status);
       console.log('🚀 ОТВЕТ ДЛ data:', data);
       
+      // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ
+      console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');
+      console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));
+      
+      // Поиск всех полей связанных со страховкой
+      console.log('💳 ПОИСК КОМПОНЕНТОВ СТРАХОВКИ:');
+      console.log('💳 data.data.insurance:', data.data?.insurance);
+      console.log('💳 data.data.cargoInsurance:', data.data?.cargoInsurance);
+      console.log('💳 data.data.termInsurance:', data.data?.termInsurance);
+      console.log('💳 data.data.insuranceDetails:', data.data?.insuranceDetails);
+      console.log('💳 data.data.services:', data.data?.services);
+      console.log('💳 data.data.additionalServices:', data.data?.additionalServices);
+      
+      // Поиск страховки в других разделах
+      if (data.data.derival) {
+        console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival.insurance);
+      }
+      if (data.data.arrival) {
+        console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival.insurance);
+      }
+      if (data.data.intercity) {
+        console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);
+      }
+      
+      // Рекурсивный поиск всех полей содержащих "insurance"
+      const findInsuranceFields = (obj: any, path = '') => {
+        if (typeof obj !== 'object' || obj === null) return;
+        
+        Object.keys(obj).forEach(key => {
+          const fullPath = path ? `${path}.${key}` : key;
+          if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {
+            console.log(`💳 НАЙДЕНО ПОЛЕ СТРАХОВКИ [${fullPath}]:`, obj[key]);
+          }
+          if (typeof obj[key] === 'object') {
+            findInsuranceFields(obj[key], fullPath);
+          }
+        });
+      };
+      
+      console.log('💳 РЕКУРСИВНЫЙ ПОИСК ПОЛЕЙ СТРАХОВКИ:');
+      findInsuranceFields(data.data, 'data.data');
+      console.log('=== КОНЕЦ АНАЛИЗА СТРАХОВКИ ===');
+      
       // Специально проверяем наличие packages в ответе
       console.log('=== ПОИСК PACKAGES В ОТВЕТЕ ===');
       console.log('📦 data.data =', data.data);
