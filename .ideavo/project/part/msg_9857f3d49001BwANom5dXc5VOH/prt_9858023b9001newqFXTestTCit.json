@@ -1,0 +1,26 @@
+{
+  "id": "prt_9858023b9001newqFXTestTCit",
+  "messageID": "msg_9857f3d49001BwANom5dXc5VOH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01JQFXwyKnfgYykcidTntvw6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Упаковка\n      if (form.needPackaging) {\n        const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n        details.push({\n          service: 'Услуги на терминале отправителе',\n          description: 'Упаковка груза',\n          price: Math.round(totalWeight * 50)\n        });\n      }",
+      "newString": "      // Упаковка - теперь берется только из API packages\n      if (form.needPackaging && calc.details.packages) {\n        Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n          if (pkg.price && pkg.price > 0) {\n            details.push({\n              service: 'Упаковка груза',\n              description: pkg.name || 'Упаковка crate_with_bubble',\n              price: pkg.price\n            });\n          }\n        });\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1054,15 +1054,18 @@\n     price: calc.details.insurance // Используем только стоимость из API\n   });\n }\n \n-// Упаковка\n-if (form.needPackaging) {\n-  const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n-  details.push({\n-    service: 'Услуги на терминале отправителе',\n-    description: 'Упаковка груза',\n-    price: Math.round(totalWeight * 50)\n+// Упаковка - теперь берется только из API packages\n+if (form.needPackaging && calc.details.packages) {\n+  Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n+    if (pkg.price && pkg.price > 0) {\n+      details.push({\n+        service: 'Упаковка груза',\n+        description: pkg.name || 'Упаковка crate_with_bubble',\n+        price: pkg.price\n+      });\n+    }\n   });\n }\n \n // Дополнительные услуги\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758881397324,
+      "end": 1758881397331
+    }
+  }
+}

@@ -297,63 +297,38 @@ export default function Home() {
     }
   };
 
-  // Получение доступных упаковок Деловые Линии
-  const getDellinPackages = async (fromPoint: string, toPoint: string, cargo: any): Promise<string | null> => {
+  // Получение UID упаковки "crate_with_bubble" из справочника упаковок Деловые Линии
+  const getDellinCrateWithBubbleUid = async (): Promise<string | null> => {
     try {
-      // Для демонстрации используем примерные коды городов
-      // В реальности нужно получать их из API городов/терминалов
-      const cityCodeMap: { [key: string]: string } = {
-        'москва': '7700000000000000000000000',
-        'санкт-петербург': '7800000000000000000000000',
-        'спб': '7800000000000000000000000',
-        'петербург': '7800000000000000000000000',
-        'екатеринбург': '6600000000000000000000000',
-        'новосибирск': '5400000000000000000000000',
-        'нижний новгород': '5200000000000000000000000',
-        'самара': '6300000000000000000000000',
-        'краснодар': '2300000000000000000000000',
-        'ростов-на-дону': '6100000000000000000000000',
-        'казань': '1600000000000000000000000'
-      };
-
-      const fromCode = cityCodeMap[fromPoint.toLowerCase().trim()] || fromPoint;
-      const toCode = cityCodeMap[toPoint.toLowerCase().trim()] || toPoint;
-
-      const requestBody = {
-        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
-        arrivalPoint: toCode,
-        derivalPoint: fromCode,
-        length: cargo.length / 100, // в метрах
-        width: cargo.width / 100,
-        height: cargo.height / 100,
-        weight: cargo.weight,
-        quantity: 1
-      };
-
-      console.log('Деловые Линии запрос упаковок:', requestBody);
-
-      const response = await fetch('https://api.dellin.ru/v1/public/packages_available.json', {
+      const response = await fetch('https://api.dellin.ru/v1/references/packages.json', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(requestBody)
+        body: JSON.stringify({
+          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'
+        })
       });
 
       const data = await response.json();
-      console.log('Деловые Линии доступные упаковки:', data);
+      console.log('Деловые Линии справочник упаковок:', data);
       
-      if (response.ok && data.packages && data.packages.length > 0) {
-        // Берем первый доступный пакет без несовместимостей
-        const compatiblePackage = data.packages.find((pkg: any) => 
-          !pkg.incompatible_uids || pkg.incompatible_uids.length === 0
+      if (response.ok && data.packages && Array.isArray(data.packages)) {
+        // Находим упаковку с title "crate_with_bubble"
+        const crateWithBubble = data.packages.find((pkg: any) => 
+          pkg.title === 'crate_with_bubble'
         );
-        return compatiblePackage?.uid || data.packages[0].uid;
+        
+        if (crateWithBubble && crateWithBubble.uid) {
+          console.log('Найден UID для crate_with_bubble:', crateWithBubble.uid);
+          return crateWithBubble.uid;
+        }
       }
       
+      console.warn('Упаковка crate_with_bubble не найдена в справочнике');
       return null;
     } catch (error) {
-      console.error('Ошибка получения упаковок Деловые Линии:', error);
+      console.error('Ошибка получения справочника упаковок Деловые Линии:', error);
       return null;
     }
   };
@@ -390,16 +365,11 @@ export default function Home() {
       const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;
       const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;
 
-      // Получаем доступные упаковки (если нужна упаковка)
+      // Получаем UID упаковки crate_with_bubble (если нужна упаковка)
       let packageUid: string | null = null;
-      if (form.needPackaging && form.cargos.length > 0) {
-        // Используем параметры самого большого груза
-        const biggestCargo = form.cargos.reduce((max, cargo) => 
-          cargo.weight > max.weight ? cargo : max
-        );
-        
-        packageUid = await getDellinPackages(form.fromCity, form.toCity, biggestCargo);
-        console.log('Получен packageUid:', packageUid);
+      if (form.needPackaging) {
+        packageUid = await getDellinCrateWithBubbleUid();
+        console.log('Получен packageUid для crate_with_bubble:', packageUid);
       }
 
       // Формируем дату отправления на завтра
@@ -461,8 +431,8 @@ export default function Home() {
           },
           ...(form.needPackaging && packageUid ? {
             packages: [{
-              uid: packageUid,  // Динамический uid упаковки из API
-              count: 1
+              uid: packageUid,  // UID упаковки crate_with_bubble из справочника
+              count: form.cargos.length  // Количество грузов
             }]
           } : {})
         },
@@ -1085,13 +1055,16 @@ export default function Home() {
         });
       }
       
-      // Упаковка
-      if (form.needPackaging) {
-        const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
-        details.push({
-          service: 'Услуги на терминале отправителе',
-          description: 'Упаковка груза',
-          price: Math.round(totalWeight * 50)
+      // Упаковка - теперь берется только из API packages
+      if (form.needPackaging && calc.details.packages) {
+        Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {
+          if (pkg.price && pkg.price > 0) {
+            details.push({
+              service: 'Упаковка груза',
+              description: pkg.name || 'Упаковка crate_with_bubble',
+              price: pkg.price
+            });
+          }
         });
       }
       
