@@ -401,14 +401,25 @@ export default function Home() {
 
       // Получаем UID упаковки crate_with_bubble (если нужна упаковка)
       let packageUid: string | null = null;
+      console.log('=== НАЧАЛО ОТЛАДКИ УПАКОВКИ ===');
       console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);
+      console.log('🔍 ОТЛАДКА УПАКОВКИ: typeof form.needPackaging =', typeof form.needPackaging);
+      
       if (form.needPackaging) {
-        console.log('🔍 ЗАПРАШИВАЕМ UID упаковки из справочника...');
-        packageUid = await getDellinCrateWithBubbleUid();
-        console.log('🔍 РЕЗУЛЬТАТ: packageUid =', packageUid);
+        console.log('🔍 ✅ УПАКОВКА ТРЕБУЕТСЯ - ЗАПРАШИВАЕМ UID...');
+        try {
+          packageUid = await getDellinCrateWithBubbleUid();
+          console.log('🔍 ✅ ПОЛУЧЕН packageUid:', packageUid);
+          console.log('🔍 ✅ typeof packageUid:', typeof packageUid);
+          console.log('🔍 ✅ packageUid == null:', packageUid == null);
+          console.log('🔍 ✅ packageUid === null:', packageUid === null);
+        } catch (error) {
+          console.log('🔍 ❌ ОШИБКА при получении packageUid:', error);
+        }
       } else {
-        console.log('🔍 Упаковка не требуется, пропускаем получение UID');
+        console.log('🔍 ❌ Упаковка не требуется, пропускаем получение UID');
       }
+      console.log('=== КОНЕЦ ОТЛАДКИ УПАКОВКИ ===');
 
       // Формируем дату отправления на завтра
       const tomorrow = new Date();
@@ -416,10 +427,19 @@ export default function Home() {
       const produceDate = tomorrow.toISOString().split('T')[0];
 
       // Отладка перед формированием запроса
-      console.log('🔍 ФОРМИРОВАНИЕ ЗАПРОСА:');
-      console.log('  form.needPackaging =', form.needPackaging);
-      console.log('  packageUid =', packageUid);
-      console.log('  Условие для packages:', form.needPackaging && packageUid);
+      console.log('=== ОТЛАДКА ФОРМИРОВАНИЯ ЗАПРОСА ===');
+      console.log('🔍 form.needPackaging =', form.needPackaging, '(тип:', typeof form.needPackaging, ')');
+      console.log('🔍 packageUid =', packageUid, '(тип:', typeof packageUid, ')');
+      console.log('🔍 packageUid truthy =', !!packageUid);
+      console.log('🔍 Условие (form.needPackaging && packageUid) =', form.needPackaging && packageUid);
+      
+      if (form.needPackaging && packageUid) {
+        console.log('✅ PACKAGES БУДЕТ ДОБАВЛЕН В ЗАПРОС!');
+      } else {
+        console.log('❌ PACKAGES НЕ БУДЕТ ДОБАВЛЕН:');
+        if (!form.needPackaging) console.log('  - form.needPackaging = false');
+        if (!packageUid) console.log('  - packageUid отсутствует/null');
+      }
 
       // Формируем корректную структуру запроса согласно инструкции
       const requestData = {
@@ -528,10 +548,22 @@ export default function Home() {
       });
 
       const data = await response.json();
-      console.log('Деловые Линии ответ:', data);
-      console.log('=== ПОЛНАЯ ОТЛАДКА СТРУКТУРЫ ОТВЕТА ===');
-      console.log('data:', JSON.stringify(data, null, 2));
-      console.log('=== КОНЕЦ ОТЛАДКИ СТРУКТУРЫ ===');
+      console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);
+      console.log('🚀 ОТВЕТ ДЛ status:', response.status);
+      console.log('🚀 ОТВЕТ ДЛ data:', data);
+      
+      // Специально проверяем наличие packages в ответе
+      console.log('=== ПОИСК PACKAGES В ОТВЕТЕ ===');
+      console.log('📦 data.data =', data.data);
+      console.log('📦 data.data.packages =', data.data?.packages);
+      console.log('📦 Тип data.data.packages:', typeof data.data?.packages);
+      if (data.data?.packages) {
+        console.log('✅ PACKAGES НАЙДЕН В ОТВЕТЕ!');
+        console.log('📦 Содержимое packages:', JSON.stringify(data.data.packages, null, 2));
+      } else {
+        console.log('❌ PACKAGES НЕ НАЙДЕН В ОТВЕТЕ');
+      }
+      console.log('=== КОНЕЦ ПОИСКА PACKAGES ===');
 
       if (response.ok && data.data && data.metadata?.status === 200) {
         let totalPrice = data.data.price || 0;
@@ -542,10 +574,34 @@ export default function Home() {
         }
         
         // Добавляем услуги упаковки если есть
+        console.log('💰 РАСЧЕТ ЦЕНЫ УПАКОВКИ:');
+        console.log('💰 data.data.packages =', data.data.packages);
+        console.log('💰 form.needPackaging =', form.needPackaging);
+        console.log('💰 Условие для расчета упаковки:', data.data.packages && form.needPackaging);
+        
         if (data.data.packages && form.needPackaging) {
-          Object.values(data.data.packages).forEach((pkg: any) => {
-            if (pkg.price) totalPrice += pkg.price;
-          });
+          console.log('💰 ✅ ОБРАБАТЫВАЕМ ЦЕНУ УПАКОВКИ');
+          console.log('💰 Тип packages:', Array.isArray(data.data.packages) ? 'Array' : 'Object');
+          
+          if (Array.isArray(data.data.packages)) {
+            data.data.packages.forEach((pkg: any, index: number) => {
+              console.log(`💰 Package [${index}]:`, pkg);
+              if (pkg.price) {
+                console.log(`💰 Добавляем цену упаковки [${index}]: ${pkg.price}`);
+                totalPrice += pkg.price;
+              }
+            });
+          } else {
+            Object.entries(data.data.packages).forEach(([key, pkg]: [string, any]) => {
+              console.log(`💰 Package [${key}]:`, pkg);
+              if (pkg.price) {
+                console.log(`💰 Добавляем цену упаковки [${key}]: ${pkg.price}`);
+                totalPrice += pkg.price;
+              }
+            });
+          }
+        } else {
+          console.log('💰 ❌ НЕ обрабатываем цену упаковки');
         }
 
         // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver

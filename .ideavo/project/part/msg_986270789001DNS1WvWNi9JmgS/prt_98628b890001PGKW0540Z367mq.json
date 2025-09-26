@@ -1,0 +1,26 @@
+{
+  "id": "prt_98628b890001PGKW0540Z367mq",
+  "messageID": "msg_986270789001DNS1WvWNi9JmgS",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_016QJzM1CYLG7DZkFWTcHo7m",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      const data = await response.json();\n      console.log('Деловые Линии ответ:', data);\n      console.log('=== ПОЛНАЯ ОТЛАДКА СТРУКТУРЫ ОТВЕТА ===');\n      console.log('data:', JSON.stringify(data, null, 2));\n      console.log('=== КОНЕЦ ОТЛАДКИ СТРУКТУРЫ ===');",
+      "newString": "      const data = await response.json();\n      console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n      console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n      console.log('🚀 ОТВЕТ ДЛ data:', data);\n      \n      // Специально проверяем наличие packages в ответе\n      console.log('=== ПОИСК PACKAGES В ОТВЕТЕ ===');\n      console.log('📦 data.data =', data.data);\n      console.log('📦 data.data.packages =', data.data?.packages);\n      console.log('📦 Тип data.data.packages:', typeof data.data?.packages);\n      if (data.data?.packages) {\n        console.log('✅ PACKAGES НАЙДЕН В ОТВЕТЕ!');\n        console.log('📦 Содержимое packages:', JSON.stringify(data.data.packages, null, 2));\n      } else {\n        console.log('❌ PACKAGES НЕ НАЙДЕН В ОТВЕТЕ');\n      }\n      console.log('=== КОНЕЦ ПОИСКА PACKAGES ===');"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -547,12 +547,24 @@\n   body: JSON.stringify(requestData)\n });\n \n const data = await response.json();\n-console.log('Деловые Линии ответ:', data);\n-console.log('=== ПОЛНАЯ ОТЛАДКА СТРУКТУРЫ ОТВЕТА ===');\n-console.log('data:', JSON.stringify(data, null, 2));\n-console.log('=== КОНЕЦ ОТЛАДКИ СТРУКТУРЫ ===');\n+console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n+console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n+console.log('🚀 ОТВЕТ ДЛ data:', data);\n+\n+// Специально проверяем наличие packages в ответе\n+console.log('=== ПОИСК PACKAGES В ОТВЕТЕ ===');\n+console.log('📦 data.data =', data.data);\n+console.log('📦 data.data.packages =', data.data?.packages);\n+console.log('📦 Тип data.data.packages:', typeof data.data?.packages);\n+if (data.data?.packages) {\n+  console.log('✅ PACKAGES НАЙДЕН В ОТВЕТЕ!');\n+  console.log('📦 Содержимое packages:', JSON.stringify(data.data.packages, null, 2));\n+} else {\n+  console.log('❌ PACKAGES НЕ НАЙДЕН В ОТВЕТЕ');\n+}\n+console.log('=== КОНЕЦ ПОИСКА PACKAGES ===');\n \n if (response.ok && data.data && data.metadata?.status === 200) {\n   let totalPrice = data.data.price || 0;\n   \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758892448557,
+      "end": 1758892448568
+    }
+  }
+}

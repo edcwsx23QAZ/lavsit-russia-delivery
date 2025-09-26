@@ -1,0 +1,25 @@
+{
+  "id": "prt_98628157a0011Ocbo2UQbi09cP",
+  "messageID": "msg_986270789001DNS1WvWNi9JmgS",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01KfC9KemNizK2jXMqAKSQp6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 425,
+      "limit": 10
+    },
+    "output": "<file>\n00426|       tomorrow.setDate(tomorrow.getDate() + 1);\n00427|       const produceDate = tomorrow.toISOString().split('T')[0];\n00428| \n00429|       // Отладка перед формированием запроса\n00430|       console.log('🔍 ФОРМИРОВАНИЕ ЗАПРОСА:');\n00431|       console.log('  form.needPackaging =', form.needPackaging);\n00432|       console.log('  packageUid =', packageUid);\n00433|       console.log('  Условие для packages:', form.needPackaging && packageUid);\n00434| \n00435|       // Формируем корректную структуру запроса согласно инструкции\n\n(File has more lines. Use 'offset' parameter to read beyond line 435)\n</file>",
+    "metadata": {
+      "preview": "      tomorrow.setDate(tomorrow.getDate() + 1);\n      const produceDate = tomorrow.toISOString().split('T')[0];\n\n      // Отладка перед формированием запроса\n      console.log('🔍 ФОРМИРОВАНИЕ ЗАПРОСА:');\n      console.log('  form.needPackaging =', form.needPackaging);\n      console.log('  packageUid =', packageUid);\n      console.log('  Условие для packages:', form.needPackaging && packageUid);\n\n      // Формируем корректную структуру запроса согласно инструкции"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758892398711,
+      "end": 1758892398712
+    }
+  }
+}

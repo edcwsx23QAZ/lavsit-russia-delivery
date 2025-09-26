@@ -1,0 +1,26 @@
+{
+  "id": "prt_986282998001rtSdwr4wrMOZkp",
+  "messageID": "msg_986270789001DNS1WvWNi9JmgS",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01VDyt7j34oSZssj9LXVUHYo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Отладка перед формированием запроса\n      console.log('🔍 ФОРМИРОВАНИЕ ЗАПРОСА:');\n      console.log('  form.needPackaging =', form.needPackaging);\n      console.log('  packageUid =', packageUid);\n      console.log('  Условие для packages:', form.needPackaging && packageUid);",
+      "newString": "      // Отладка перед формированием запроса\n      console.log('=== ОТЛАДКА ФОРМИРОВАНИЯ ЗАПРОСА ===');\n      console.log('🔍 form.needPackaging =', form.needPackaging, '(тип:', typeof form.needPackaging, ')');\n      console.log('🔍 packageUid =', packageUid, '(тип:', typeof packageUid, ')');\n      console.log('🔍 packageUid truthy =', !!packageUid);\n      console.log('🔍 Условие (form.needPackaging && packageUid) =', form.needPackaging && packageUid);\n      \n      if (form.needPackaging && packageUid) {\n        console.log('✅ PACKAGES БУДЕТ ДОБАВЛЕН В ЗАПРОС!');\n      } else {\n        console.log('❌ PACKAGES НЕ БУДЕТ ДОБАВЛЕН:');\n        if (!form.needPackaging) console.log('  - form.needPackaging = false');\n        if (!packageUid) console.log('  - packageUid отсутствует/null');\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -426,12 +426,21 @@\n tomorrow.setDate(tomorrow.getDate() + 1);\n const produceDate = tomorrow.toISOString().split('T')[0];\n \n // Отладка перед формированием запроса\n-console.log('🔍 ФОРМИРОВАНИЕ ЗАПРОСА:');\n-console.log('  form.needPackaging =', form.needPackaging);\n-console.log('  packageUid =', packageUid);\n-console.log('  Условие для packages:', form.needPackaging && packageUid);\n+console.log('=== ОТЛАДКА ФОРМИРОВАНИЯ ЗАПРОСА ===');\n+console.log('🔍 form.needPackaging =', form.needPackaging, '(тип:', typeof form.needPackaging, ')');\n+console.log('🔍 packageUid =', packageUid, '(тип:', typeof packageUid, ')');\n+console.log('🔍 packageUid truthy =', !!packageUid);\n+console.log('🔍 Условие (form.needPackaging && packageUid) =', form.needPackaging && packageUid);\n+\n+if (form.needPackaging && packageUid) {\n+  console.log('✅ PACKAGES БУДЕТ ДОБАВЛЕН В ЗАПРОС!');\n+} else {\n+  console.log('❌ PACKAGES НЕ БУДЕТ ДОБАВЛЕН:');\n+  if (!form.needPackaging) console.log('  - form.needPackaging = false');\n+  if (!packageUid) console.log('  - packageUid отсутствует/null');\n+}\n \n // Формируем корректную структуру запроса согласно инструкции\n const requestData = {\n   appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758892409550,
+      "end": 1758892409562
+    }
+  }
+}

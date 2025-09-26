@@ -1,0 +1,26 @@
+{
+  "id": "prt_98628e7d50017cyggbPbe1quKz",
+  "messageID": "msg_986270789001DNS1WvWNi9JmgS",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_016SCVDkknKQdtv7MMqvHk4v",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        // Добавляем услуги упаковки если есть\n        if (data.data.packages && form.needPackaging) {\n          Object.values(data.data.packages).forEach((pkg: any) => {\n            if (pkg.price) totalPrice += pkg.price;\n          });\n        }",
+      "newString": "        // Добавляем услуги упаковки если есть\n        console.log('💰 РАСЧЕТ ЦЕНЫ УПАКОВКИ:');\n        console.log('💰 data.data.packages =', data.data.packages);\n        console.log('💰 form.needPackaging =', form.needPackaging);\n        console.log('💰 Условие для расчета упаковки:', data.data.packages && form.needPackaging);\n        \n        if (data.data.packages && form.needPackaging) {\n          console.log('💰 ✅ ОБРАБАТЫВАЕМ ЦЕНУ УПАКОВКИ');\n          console.log('💰 Тип packages:', Array.isArray(data.data.packages) ? 'Array' : 'Object');\n          \n          if (Array.isArray(data.data.packages)) {\n            data.data.packages.forEach((pkg: any, index: number) => {\n              console.log(`💰 Package [${index}]:`, pkg);\n              if (pkg.price) {\n                console.log(`💰 Добавляем цену упаковки [${index}]: ${pkg.price}`);\n                totalPrice += pkg.price;\n              }\n            });\n          } else {\n            Object.entries(data.data.packages).forEach(([key, pkg]: [string, any]) => {\n              console.log(`💰 Package [${key}]:`, pkg);\n              if (pkg.price) {\n                console.log(`💰 Добавляем цену упаковки [${key}]: ${pkg.price}`);\n                totalPrice += pkg.price;\n              }\n            });\n          }\n        } else {\n          console.log('💰 ❌ НЕ обрабатываем цену упаковки');\n        }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -573,12 +573,36 @@\n   totalPrice += data.data.insurance;\n }\n \n // Добавляем услуги упаковки если есть\n+console.log('💰 РАСЧЕТ ЦЕНЫ УПАКОВКИ:');\n+console.log('💰 data.data.packages =', data.data.packages);\n+console.log('💰 form.needPackaging =', form.needPackaging);\n+console.log('💰 Условие для расчета упаковки:', data.data.packages && form.needPackaging);\n+\n if (data.data.packages && form.needPackaging) {\n-  Object.values(data.data.packages).forEach((pkg: any) => {\n-    if (pkg.price) totalPrice += pkg.price;\n-  });\n+  console.log('💰 ✅ ОБРАБАТЫВАЕМ ЦЕНУ УПАКОВКИ');\n+  console.log('💰 Тип packages:', Array.isArray(data.data.packages) ? 'Array' : 'Object');\n+  \n+  if (Array.isArray(data.data.packages)) {\n+    data.data.packages.forEach((pkg: any, index: number) => {\n+      console.log(`💰 Package [${index}]:`, pkg);\n+      if (pkg.price) {\n+        console.log(`💰 Добавляем цену упаковки [${index}]: ${pkg.price}`);\n+        totalPrice += pkg.price;\n+      }\n+    });\n+  } else {\n+    Object.entries(data.data.packages).forEach(([key, pkg]: [string, any]) => {\n+      console.log(`💰 Package [${key}]:`, pkg);\n+      if (pkg.price) {\n+        console.log(`💰 Добавляем цену упаковки [${key}]: ${pkg.price}`);\n+        totalPrice += pkg.price;\n+      }\n+    });\n+  }\n+} else {\n+  console.log('💰 ❌ НЕ обрабатываем цену упаковки');\n }\n \n // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver\n let deliveryDays = 0;\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758892459134,
+      "end": 1758892459143
+    }
+  }
+}

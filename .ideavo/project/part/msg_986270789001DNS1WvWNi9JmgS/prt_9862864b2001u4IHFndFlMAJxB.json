@@ -1,0 +1,25 @@
+{
+  "id": "prt_9862864b2001u4IHFndFlMAJxB",
+  "messageID": "msg_986270789001DNS1WvWNi9JmgS",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01DdQFGbtS7aG2YHYJWyzDTG",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 550,
+      "limit": 25
+    },
+    "output": "<file>\n00551|       console.log('Деловые Линии ответ:', data);\n00552|       console.log('=== ПОЛНАЯ ОТЛАДКА СТРУКТУРЫ ОТВЕТА ===');\n00553|       console.log('data:', JSON.stringify(data, null, 2));\n00554|       console.log('=== КОНЕЦ ОТЛАДКИ СТРУКТУРЫ ===');\n00555| \n00556|       if (response.ok && data.data && data.metadata?.status === 200) {\n00557|         let totalPrice = data.data.price || 0;\n00558|         \n00559|         // Добавляем страховку если есть\n00560|         if (data.data.insurance) {\n00561|           totalPrice += data.data.insurance;\n00562|         }\n00563|         \n00564|         // Добавляем услуги упаковки если есть\n00565|         if (data.data.packages && form.needPackaging) {\n00566|           Object.values(data.data.packages).forEach((pkg: any) => {\n00567|             if (pkg.price) totalPrice += pkg.price;\n00568|           });\n00569|         }\n00570| \n00571|         // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver\n00572|         let deliveryDays = 0;\n00573|         try {\n00574|           console.log('=== ПОИСК ДАТ В ОТВЕТЕ ===');\n00575|           \n\n(File has more lines. Use 'offset' parameter to read beyond line 575)\n</file>",
+    "metadata": {
+      "preview": "      console.log('Деловые Линии ответ:', data);\n      console.log('=== ПОЛНАЯ ОТЛАДКА СТРУКТУРЫ ОТВЕТА ===');\n      console.log('data:', JSON.stringify(data, null, 2));\n      console.log('=== КОНЕЦ ОТЛАДКИ СТРУКТУРЫ ===');\n\n      if (response.ok && data.data && data.metadata?.status === 200) {\n        let totalPrice = data.data.price || 0;\n        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          totalPrice += data.data.insurance;\n        }\n        \n        // Добавляем услуги упаковки если есть\n        if (data.data.packages && form.needPackaging) {\n          Object.values(data.data.packages).forEach((pkg: any) => {\n            if (pkg.price) totalPrice += pkg.price;\n          });\n        }\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758892419702,
+      "end": 1758892419703
+    }
+  }
+}
