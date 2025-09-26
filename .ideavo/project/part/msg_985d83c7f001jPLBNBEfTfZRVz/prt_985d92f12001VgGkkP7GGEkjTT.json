@@ -1,0 +1,25 @@
+{
+  "id": "prt_985d92f12001VgGkkP7GGEkjTT",
+  "messageID": "msg_985d83c7f001jPLBNBEfTfZRVz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01HTM5jwqcquBizkXRpcdw4t",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1020,
+      "limit": 40
+    },
+    "output": "<file>\n01021|   // Парсер деталей расчета для читаемого формата\n01022|   const parseCalculationDetails = (calc: CalculationResult) => {\n01023|     const details: { service: string; description: string; price: number }[] = [];\n01024|     \n01025|     if (calc.company === 'Деловые Линии' && calc.details) {\n01026|       // Основная перевозка\n01027|       if (calc.details.availableDeliveryTypes?.auto) {\n01028|         details.push({\n01029|           service: 'Межтерминальная перевозка',\n01030|           description: `${form.fromCity} - ${form.toCity}`,\n01031|           price: calc.details.availableDeliveryTypes.auto\n01032|         });\n01033|       }\n01034|       \n01035|       // Забор груза\n01036|       if (!form.fromTerminal && calc.details.derival?.price) {\n01037|         details.push({\n01038|           service: 'Забор груза',\n01039|           description: 'От адреса',\n01040|           price: calc.details.derival.price\n01041|         });\n01042|       }\n01043|       \n01044|       // Доставка груза\n01045|       if (!form.toTerminal && calc.details.arrival?.price) {\n01046|         details.push({\n01047|           service: 'Отвоз груза',\n01048|           description: 'До адреса',\n01049|           price: calc.details.arrival.price\n01050|         });\n01051|       }\n01052|       \n01053|       // Страхование - только из API\n01054|       if (form.needInsurance && calc.details.insurance) {\n01055|         details.push({\n01056|           service: 'Страхование груза',\n01057|           description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n01058|           price: calc.details.insurance // Используем только стоимость из API\n01059|         });\n01060|       }\n\n(File has more lines. Use 'offset' parameter to read beyond line 1060)\n</file>",
+    "metadata": {
+      "preview": "  // Парсер деталей расчета для читаемого формата\n  const parseCalculationDetails = (calc: CalculationResult) => {\n    const details: { service: string; description: string; price: number }[] = [];\n    \n    if (calc.company === 'Деловые Линии' && calc.details) {\n      // Основная перевозка\n      if (calc.details.availableDeliveryTypes?.auto) {\n        details.push({\n          service: 'Межтерминальная перевозка',\n          description: `${form.fromCity} - ${form.toCity}`,\n          price: calc.details.availableDeliveryTypes.auto\n        });\n      }\n      \n      // Забор груза\n      if (!form.fromTerminal && calc.details.derival?.price) {\n        details.push({\n          service: 'Забор груза',\n          description: 'От адреса',\n          price: calc.details.derival.price"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758887228198,
+      "end": 1758887228200
+    }
+  }
+}

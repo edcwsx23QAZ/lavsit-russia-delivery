@@ -1,0 +1,26 @@
+{
+  "id": "prt_985d95141001SxxVMDhykvESeb",
+  "messageID": "msg_985d83c7f001jPLBNBEfTfZRVz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01DpZnZwjXTt7XAbmnxbPEjB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const toggleDebugInfo = (company: string) => {\n    setExpandedDebugInfo(prev => ({\n      ...prev,\n      [company]: !prev[company]\n    }));\n  };\n\n  // Парсер деталей расчета для читаемого формата",
+      "newString": "  const toggleDebugInfo = (company: string) => {\n    setExpandedDebugInfo(prev => ({\n      ...prev,\n      [company]: !prev[company]\n    }));\n  };\n\n  // Сброс формы и результатов расчета\n  const handleReset = () => {\n    if (typeof window !== 'undefined') {\n      // Очищаем localStorage\n      localStorage.removeItem('deliveryForm');\n      \n      // Сбрасываем состояние формы к начальному\n      setForm(initialFormState);\n      \n      // Очищаем результаты расчетов и состояния\n      setCalculations([]);\n      setExpandedDetails({});\n      setExpandedDebugInfo({});\n      setSuggestions([]);\n      setShowSuggestions(false);\n      setActiveField('');\n      \n      console.log('Форма сброшена к начальному состоянию');\n    }\n  };\n\n  // Парсер деталей расчета для читаемого формата"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1017,8 +1017,29 @@\n     [company]: !prev[company]\n   }));\n };\n \n+// Сброс формы и результатов расчета\n+const handleReset = () => {\n+  if (typeof window !== 'undefined') {\n+    // Очищаем localStorage\n+    localStorage.removeItem('deliveryForm');\n+    \n+    // Сбрасываем состояние формы к начальному\n+    setForm(initialFormState);\n+    \n+    // Очищаем результаты расчетов и состояния\n+    setCalculations([]);\n+    setExpandedDetails({});\n+    setExpandedDebugInfo({});\n+    setSuggestions([]);\n+    setShowSuggestions(false);\n+    setActiveField('');\n+    \n+    console.log('Форма сброшена к начальному состоянию');\n+  }\n+};\n+\n // Парсер деталей расчета для читаемого формата\n const parseCalculationDetails = (calc: CalculationResult) => {\n   const details: { service: string; description: string; price: number }[] = [];\n   \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758887240161,
+      "end": 1758887240172
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "prt_985d8c7f5002pvzzRU7w01UhGk",
+  "messageID": "msg_985d83c7f001jPLBNBEfTfZRVz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01LAu9A6NgYWatEJ6TJhNsB9",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "export default function Home() {\n  const [form, setForm] = useState<DeliveryForm>({\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false\n  });",
+          "newString": "export default function Home() {\n  // Начальное состояние формы\n  const initialFormState: DeliveryForm = {\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false\n  };\n\n  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);"
+        },
+        {
+          "oldString": "  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n\n  // Загрузка сохраненных данных (только на клиенте)\n  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined') {\n      try {\n        const saved = localStorage.getItem('deliveryForm');\n        if (saved) {\n          const savedForm = JSON.parse(saved);\n          // Убеждаемся, что есть хотя бы один груз\n          if (!savedForm.cargos || savedForm.cargos.length === 0) {\n            savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n          }\n          setForm(savedForm);\n        }\n      } catch (error) {\n        console.error('Ошибка загрузки сохраненных данных:', error);\n        // В случае ошибки устанавливаем базовую конфигурацию\n        setForm(prev => ({\n          ...prev,\n          cargos: prev.cargos.length > 0 ? prev.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n        }));\n      }\n    }\n  }, []);",
+          "newString": "  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n\n  // Загрузка сохраненных данных (только на клиенте)\n  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined' && !isLoaded) {\n      try {\n        const saved = localStorage.getItem('deliveryForm');\n        if (saved) {\n          const savedForm = JSON.parse(saved);\n          // Убеждаемся, что есть хотя бы один груз\n          if (!savedForm.cargos || savedForm.cargos.length === 0) {\n            savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n          }\n          setForm(savedForm);\n          console.log('Загружены сохраненные данные формы:', savedForm);\n        }\n      } catch (error) {\n        console.error('Ошибка загрузки сохраненных данных:', error);\n        // В случае ошибки оставляем начальное состояние\n      } finally {\n        setIsLoaded(true);\n      }\n    }\n  }, [isLoaded]);"
+        },
+        {
+          "oldString": "  // Сохранение данных при изменении (только на клиенте)\n  useEffect(() => {\n    if (typeof window !== 'undefined') {\n      try {\n        localStorage.setItem('deliveryForm', JSON.stringify(form));\n      } catch (error) {\n        console.error('Ошибка сохранения данных:', error);\n      }\n    }\n  }, [form]);",
+          "newString": "  // Сохранение данных при изменении (только на клиенте)\n  useEffect(() => {\n    if (typeof window !== 'undefined' && isLoaded) {\n      try {\n        localStorage.setItem('deliveryForm', JSON.stringify(form));\n        console.log('Сохранены данные формы в localStorage');\n      } catch (error) {\n        console.error('Ошибка сохранения данных:', error);\n      }\n    }\n  }, [form, isLoaded]);"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -68,9 +68,10 @@\n   { name: 'Rail Continent', logo: '🚂', connected: true }\n ];\n \n export default function Home() {\n-  const [form, setForm] = useState<DeliveryForm>({\n+  // Начальное состояние формы\n+  const initialFormState: DeliveryForm = {\n     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n     fromCity: '',\n     toCity: '',\n     fromAddress: '',\n@@ -85,10 +86,13 @@\n     fromTerminal: true,\n     toTerminal: true,\n     fromAddressDelivery: false,\n     toAddressDelivery: false\n-  });\n+  };\n \n+  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n+  const [isLoaded, setIsLoaded] = useState(false);\n+\n   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n   const [showSuggestions, setShowSuggestions] = useState(false);\n   const [activeField, setActiveField] = useState('');\n   const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -103,9 +103,9 @@\n \n // Загрузка сохраненных данных (только на клиенте)\n useEffect(() => {\n   // Проверяем, что мы на клиенте\n-  if (typeof window !== 'undefined') {\n+  if (typeof window !== 'undefined' && !isLoaded) {\n     try {\n       const saved = localStorage.getItem('deliveryForm');\n       if (saved) {\n         const savedForm = JSON.parse(saved);\n@@ -113,19 +113,18 @@\n         if (!savedForm.cargos || savedForm.cargos.length === 0) {\n           savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n         }\n         setForm(savedForm);\n+        console.log('Загружены сохраненные данные формы:', savedForm);\n       }\n     } catch (error) {\n       console.error('Ошибка загрузки сохраненных данных:', error);\n-      // В случае ошибки устанавливаем базовую конфигурацию\n-      setForm(prev => ({\n-        ...prev,\n-        cargos: prev.cargos.length > 0 ? prev.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n-      }));\n+      // В случае ошибки оставляем начальное состояние\n+    } finally {\n+      setIsLoaded(true);\n     }\n   }\n-}, []);\n+}, [isLoaded]);\n \n // Сохранение данных при изменении (только на клиенте)\n useEffect(() => {\n   if (typeof window !== 'undefined') {\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -126,16 +126,17 @@\n }, [isLoaded]);\n \n // Сохранение данных при изменении (только на клиенте)\n useEffect(() => {\n-  if (typeof window !== 'undefined') {\n+  if (typeof window !== 'undefined' && isLoaded) {\n     try {\n       localStorage.setItem('deliveryForm', JSON.stringify(form));\n+      console.log('Сохранены данные формы в localStorage');\n     } catch (error) {\n       console.error('Ошибка сохранения данных:', error);\n     }\n   }\n-}, [form]);\n+}, [form, isLoaded]);\n \n // Автоматическая страховка при указании стоимости\n useEffect(() => {\n   if (form.declaredValue > 0) {\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758887218288,
+      "end": 1758887218320
+    }
+  }
+}

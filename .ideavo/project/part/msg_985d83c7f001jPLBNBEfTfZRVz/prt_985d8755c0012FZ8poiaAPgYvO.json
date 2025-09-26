@@ -1,0 +1,29 @@
+{
+  "id": "prt_985d8755c0012FZ8poiaAPgYvO",
+  "messageID": "msg_985d83c7f001jPLBNBEfTfZRVz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01MZMCwhRWvaSPBYrxwguxfs",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "export default function Home() {\n  const [form, setForm] = useState<DeliveryForm>({\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false\n  });",
+          "newString": "export default function Home() {\n  // Начальное состояние формы\n  const initialFormState: DeliveryForm = {\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false\n  };\n\n  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);"
+        },
+        {
+          "oldString": "  // Загрузка сохраненных данных (только на клиенте)\n  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined') {\n      try {\n        const saved = localStorage.getItem('deliveryForm');\n        if (saved) {\n          const savedForm = JSON.parse(saved);\n          // Убеждаемся, что есть хотя бы один груз\n          if (!savedForm.cargos || savedForm.cargos.length === 0) {\n            savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n          }\n          setForm(savedForm);\n        }\n      } catch (error) {\n        console.error('Ошибка загрузки сохраненных данных:', error);\n        // В случае ошибки устанавливаем базовую конфигурацию\n        setForm(prev => ({\n          ...prev,\n          cargos: prev.cargos.length > 0 ? prev.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n        }));\n      }\n    }\n  }, []);",
+          "newString": "  // Загрузка сохраненных данных (только на клиенте)\n  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined' && !isLoaded) {\n      try {\n        const saved = localStorage.getItem('deliveryForm');\n        if (saved) {\n          const savedForm = JSON.parse(saved);\n          // Убеждаемся, что есть хотя бы один груз\n          if (!savedForm.cargos || savedForm.cargos.length === 0) {\n            savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n          }\n          setForm(savedForm);\n          console.log('Загружены сохраненные данные формы:', savedForm);\n        }\n      } catch (error) {\n        console.error('Ошибка загрузки сохраненных данных:', error);\n        // В случае ошибки оставляем начальное состояние\n      } finally {\n        setIsLoaded(true);\n      }\n    }\n  }, [isLoaded]);"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758887192916,
+      "end": 1758887192918
+    }
+  }
+}

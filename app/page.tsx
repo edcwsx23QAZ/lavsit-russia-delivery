@@ -69,7 +69,8 @@ const COMPANIES = [
 ];
 
 export default function Home() {
-  const [form, setForm] = useState<DeliveryForm>({
+  // Начальное состояние формы
+  const initialFormState: DeliveryForm = {
     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],
     fromCity: '',
     toCity: '',
@@ -86,7 +87,10 @@ export default function Home() {
     toTerminal: true,
     fromAddressDelivery: false,
     toAddressDelivery: false
-  });
+  };
+
+  const [form, setForm] = useState<DeliveryForm>(initialFormState);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -100,7 +104,7 @@ export default function Home() {
   // Загрузка сохраненных данных (только на клиенте)
   useEffect(() => {
     // Проверяем, что мы на клиенте
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && !isLoaded) {
       try {
         const saved = localStorage.getItem('deliveryForm');
         if (saved) {
@@ -110,28 +114,28 @@ export default function Home() {
             savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];
           }
           setForm(savedForm);
+          console.log('Загружены сохраненные данные формы:', savedForm);
         }
       } catch (error) {
         console.error('Ошибка загрузки сохраненных данных:', error);
-        // В случае ошибки устанавливаем базовую конфигурацию
-        setForm(prev => ({
-          ...prev,
-          cargos: prev.cargos.length > 0 ? prev.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]
-        }));
+        // В случае ошибки оставляем начальное состояние
+      } finally {
+        setIsLoaded(true);
       }
     }
-  }, []);
+  }, [isLoaded]);
 
   // Сохранение данных при изменении (только на клиенте)
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && isLoaded) {
       try {
         localStorage.setItem('deliveryForm', JSON.stringify(form));
+        console.log('Сохранены данные формы в localStorage');
       } catch (error) {
         console.error('Ошибка сохранения данных:', error);
       }
     }
-  }, [form]);
+  }, [form, isLoaded]);
 
   // Автоматическая страховка при указании стоимости
   useEffect(() => {
@@ -1014,6 +1018,27 @@ export default function Home() {
     }));
   };
 
+  // Сброс формы и результатов расчета
+  const handleReset = () => {
+    if (typeof window !== 'undefined') {
+      // Очищаем localStorage
+      localStorage.removeItem('deliveryForm');
+      
+      // Сбрасываем состояние формы к начальному
+      setForm(initialFormState);
+      
+      // Очищаем результаты расчетов и состояния
+      setCalculations([]);
+      setExpandedDetails({});
+      setExpandedDebugInfo({});
+      setSuggestions([]);
+      setShowSuggestions(false);
+      setActiveField('');
+      
+      console.log('Форма сброшена к начальному состоянию');
+    }
+  };
+
   // Парсер деталей расчета для читаемого формата
   const parseCalculationDetails = (calc: CalculationResult) => {
     const details: { service: string; description: string; price: number }[] = [];
@@ -1427,13 +1452,24 @@ export default function Home() {
                   )}
                 </div>
                 
-                <Button 
-                  onClick={handleCalculate} 
-                  className="w-full bg-blue-600 hover:bg-blue-700 h-8" 
-                  disabled={calculating}
-                >
-                  {calculating ? 'Расчет...' : 'Рассчитать'}
-                </Button>
+                <div className="space-y-2">
+                  <Button 
+                    onClick={handleCalculate} 
+                    className="w-full bg-blue-600 hover:bg-blue-700 h-8" 
+                    disabled={calculating}
+                  >
+                    {calculating ? 'Расчет...' : 'Рассчитать'}
+                  </Button>
+                  
+                  <Button 
+                    onClick={handleReset} 
+                    variant="outline" 
+                    className="w-full h-8 text-white border-gray-600 hover:bg-gray-700" 
+                    disabled={calculating}
+                  >
+                    Сбросить расчет
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>

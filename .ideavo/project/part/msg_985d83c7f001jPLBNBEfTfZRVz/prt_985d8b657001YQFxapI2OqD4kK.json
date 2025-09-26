@@ -1,0 +1,25 @@
+{
+  "id": "prt_985d8b657001YQFxapI2OqD4kK",
+  "messageID": "msg_985d83c7f001jPLBNBEfTfZRVz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016erLNZQNYox5yQpmAULQYa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 70,
+      "limit": 30
+    },
+    "output": "<file>\n00071| export default function Home() {\n00072|   const [form, setForm] = useState<DeliveryForm>({\n00073|     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00074|     fromCity: '',\n00075|     toCity: '',\n00076|     fromAddress: '',\n00077|     toAddress: '',\n00078|     declaredValue: 0,\n00079|     needPackaging: false,\n00080|     needLoading: false,\n00081|     needCarry: false,\n00082|     floor: 1,\n00083|     hasFreightLift: false,\n00084|     needInsurance: false,\n00085|     fromTerminal: true,\n00086|     toTerminal: true,\n00087|     fromAddressDelivery: false,\n00088|     toAddressDelivery: false\n00089|   });\n00090| \n00091|   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n00092|   const [showSuggestions, setShowSuggestions] = useState(false);\n00093|   const [activeField, setActiveField] = useState('');\n00094|   const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n00095|   const [calculating, setCalculating] = useState(false);\n00096|   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n00097|   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n00098|   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n00099| \n00100|   // Загрузка сохраненных данных (только на клиенте)\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "metadata": {
+      "preview": "export default function Home() {\n  const [form, setForm] = useState<DeliveryForm>({\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false\n  });\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758887196989,
+      "end": 1758887196993
+    }
+  }
+}

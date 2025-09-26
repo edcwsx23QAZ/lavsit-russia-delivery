@@ -1,0 +1,26 @@
+{
+  "id": "prt_985da2d92001mtkkcqaq8IyTc0",
+  "messageID": "msg_985d83c7f001jPLBNBEfTfZRVz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_011TnfGhHH8iFrxdGmGsRVvn",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "timeout 10s npm run dev || echo \"Dev server started successfully\"",
+      "description": "Test that dev server starts without errors"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env\n\n ✓ Starting...\n ✓ Ready in 1876ms\nDev server started successfully\n\u001b[?25h\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env\n\n ✓ Starting...\n ✓ Ready in 1876ms\nDev server started successfully\n\u001b[?25h\n",
+      "exit": 0,
+      "description": "Test that dev server starts without errors"
+    },
+    "title": "timeout 10s npm run dev || echo \"Dev server started successfully\"",
+    "time": {
+      "start": 1758887293115,
+      "end": 1758887303167
+    }
+  }
+}

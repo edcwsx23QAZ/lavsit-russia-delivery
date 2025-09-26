@@ -1,0 +1,25 @@
+{
+  "id": "prt_985d941e6001ar6djmVsGyfqLF",
+  "messageID": "msg_985d83c7f001jPLBNBEfTfZRVz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_015Uu5HhHMoz8w89jZ872Mj9",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 996,
+      "limit": 30
+    },
+    "output": "<file>\n00997|       setCalculating(false);\n00998|     }\n00999|   };\n01000| \n01001|   const exportToPDF = () => {\n01002|     if (typeof window !== 'undefined') {\n01003|       window.print();\n01004|     }\n01005|   };\n01006| \n01007|   const toggleDetails = (company: string) => {\n01008|     setExpandedDetails(prev => ({\n01009|       ...prev,\n01010|       [company]: !prev[company]\n01011|     }));\n01012|   };\n01013| \n01014|   const toggleDebugInfo = (company: string) => {\n01015|     setExpandedDebugInfo(prev => ({\n01016|       ...prev,\n01017|       [company]: !prev[company]\n01018|     }));\n01019|   };\n01020| \n01021|   // Парсер деталей расчета для читаемого формата\n01022|   const parseCalculationDetails = (calc: CalculationResult) => {\n01023|     const details: { service: string; description: string; price: number }[] = [];\n01024|     \n01025|     if (calc.company === 'Деловые Линии' && calc.details) {\n01026|       // Основная перевозка\n\n(File has more lines. Use 'offset' parameter to read beyond line 1026)\n</file>",
+    "metadata": {
+      "preview": "      setCalculating(false);\n    }\n  };\n\n  const exportToPDF = () => {\n    if (typeof window !== 'undefined') {\n      window.print();\n    }\n  };\n\n  const toggleDetails = (company: string) => {\n    setExpandedDetails(prev => ({\n      ...prev,\n      [company]: !prev[company]\n    }));\n  };\n\n  const toggleDebugInfo = (company: string) => {\n    setExpandedDebugInfo(prev => ({\n      ...prev,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758887232456,
+      "end": 1758887232458
+    }
+  }
+}
