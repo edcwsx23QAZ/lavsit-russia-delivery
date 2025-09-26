@@ -1,0 +1,26 @@
+{
+  "id": "prt_9861733540011laXByJ9Z12ZKP",
+  "messageID": "msg_98616d0d40012mMK6sQus72PRk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01UkkxaZhTNoGij1Aur1Dx3H",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      if (authResponse.ok && authData.data?.sessionID) {\n        console.log('✅ SessionID получен:', authData.data.sessionID);\n        return authData.data.sessionID;\n      } else {\n        console.error('❌ Ошибка авторизации Деловые Линии:', authData);\n        console.error('❌ Статус ответа:', authResponse.status);\n        console.error('❌ Текст ответа:', authResponse.statusText);\n        return null;\n      }",
+      "newString": "      // Проверяем разные возможные пути к sessionID\n      let sessionID = null;\n      \n      if (authData.data?.sessionID) {\n        sessionID = authData.data.sessionID;\n        console.log('✅ SessionID найден в data.sessionID:', sessionID);\n      } else if (authData.sessionID) {\n        sessionID = authData.sessionID;\n        console.log('✅ SessionID найден в sessionID:', sessionID);\n      } else if (authData.data?.session) {\n        sessionID = authData.data.session;\n        console.log('✅ SessionID найден в data.session:', sessionID);\n      }\n      \n      if (authResponse.ok && sessionID) {\n        return sessionID;\n      } else {\n        console.error('❌ Ошибка авторизации Деловые Линии:', authData);\n        console.error('❌ Статус ответа:', authResponse.status);\n        console.error('❌ Текст ответа:', authResponse.statusText);\n        return null;\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -255,11 +255,24 @@\n console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData:', authData);\n console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data:', authData.data);\n console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data?.sessionID:', authData.data?.sessionID);\n \n-if (authResponse.ok && authData.data?.sessionID) {\n-  console.log('✅ SessionID получен:', authData.data.sessionID);\n-  return authData.data.sessionID;\n+// Проверяем разные возможные пути к sessionID\n+let sessionID = null;\n+\n+if (authData.data?.sessionID) {\n+  sessionID = authData.data.sessionID;\n+  console.log('✅ SessionID найден в data.sessionID:', sessionID);\n+} else if (authData.sessionID) {\n+  sessionID = authData.sessionID;\n+  console.log('✅ SessionID найден в sessionID:', sessionID);\n+} else if (authData.data?.session) {\n+  sessionID = authData.data.session;\n+  console.log('✅ SessionID найден в data.session:', sessionID);\n+}\n+\n+if (authResponse.ok && sessionID) {\n+  return sessionID;\n } else {\n   console.error('❌ Ошибка авторизации Деловые Линии:', authData);\n   console.error('❌ Статус ответа:', authResponse.status);\n   console.error('❌ Текст ответа:', authResponse.statusText);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758891298994,
+      "end": 1758891299006
+    }
+  }
+}

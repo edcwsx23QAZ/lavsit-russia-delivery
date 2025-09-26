@@ -1,0 +1,26 @@
+{
+  "id": "prt_9861704fd001JQips9eANs9kx2",
+  "messageID": "msg_98616d0d40012mMK6sQus72PRk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_019SqBvLb18EbBKef2NEUnsD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      const authData = await authResponse.json();\n      console.log('Деловые Линии авторизация:', authData);\n      \n      if (authResponse.ok && authData.data?.sessionID) {\n        return authData.data.sessionID;\n      } else {\n        console.error('Ошибка авторизации Деловые Линии:', authData);\n        return null;\n      }",
+      "newString": "      const authData = await authResponse.json();\n      console.log('🔑 АВТОРИЗАЦИЯ ДЛ response.ok:', authResponse.ok);\n      console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData:', authData);\n      console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data:', authData.data);\n      console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data?.sessionID:', authData.data?.sessionID);\n      \n      if (authResponse.ok && authData.data?.sessionID) {\n        console.log('✅ SessionID получен:', authData.data.sessionID);\n        return authData.data.sessionID;\n      } else {\n        console.error('❌ Ошибка авторизации Деловые Линии:', authData);\n        console.error('❌ Статус ответа:', authResponse.status);\n        console.error('❌ Текст ответа:', authResponse.statusText);\n        return null;\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -250,14 +250,20 @@\n     })\n   });\n \n   const authData = await authResponse.json();\n-  console.log('Деловые Линии авторизация:', authData);\n+  console.log('🔑 АВТОРИЗАЦИЯ ДЛ response.ok:', authResponse.ok);\n+  console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData:', authData);\n+  console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data:', authData.data);\n+  console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data?.sessionID:', authData.data?.sessionID);\n   \n   if (authResponse.ok && authData.data?.sessionID) {\n+    console.log('✅ SessionID получен:', authData.data.sessionID);\n     return authData.data.sessionID;\n   } else {\n-    console.error('Ошибка авторизации Деловые Линии:', authData);\n+    console.error('❌ Ошибка авторизации Деловые Линии:', authData);\n+    console.error('❌ Статус ответа:', authResponse.status);\n+    console.error('❌ Текст ответа:', authResponse.statusText);\n     return null;\n   }\n } catch (error) {\n   console.error('Ошибка соединения с авторизацией Деловые Линии:', error);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758891287715,
+      "end": 1758891287731
+    }
+  }
+}

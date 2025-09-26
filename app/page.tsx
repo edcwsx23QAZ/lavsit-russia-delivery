@@ -251,12 +251,31 @@ export default function Home() {
       });
 
       const authData = await authResponse.json();
-      console.log('Деловые Линии авторизация:', authData);
+      console.log('🔑 АВТОРИЗАЦИЯ ДЛ response.ok:', authResponse.ok);
+      console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData:', authData);
+      console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data:', authData.data);
+      console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data?.sessionID:', authData.data?.sessionID);
       
-      if (authResponse.ok && authData.data?.sessionID) {
-        return authData.data.sessionID;
+      // Проверяем разные возможные пути к sessionID
+      let sessionID = null;
+      
+      if (authData.data?.sessionID) {
+        sessionID = authData.data.sessionID;
+        console.log('✅ SessionID найден в data.sessionID:', sessionID);
+      } else if (authData.sessionID) {
+        sessionID = authData.sessionID;
+        console.log('✅ SessionID найден в sessionID:', sessionID);
+      } else if (authData.data?.session) {
+        sessionID = authData.data.session;
+        console.log('✅ SessionID найден в data.session:', sessionID);
+      }
+      
+      if (authResponse.ok && sessionID) {
+        return sessionID;
       } else {
-        console.error('Ошибка авторизации Деловые Линии:', authData);
+        console.error('❌ Ошибка авторизации Деловые Линии:', authData);
+        console.error('❌ Статус ответа:', authResponse.status);
+        console.error('❌ Текст ответа:', authResponse.statusText);
         return null;
       }
     } catch (error) {
