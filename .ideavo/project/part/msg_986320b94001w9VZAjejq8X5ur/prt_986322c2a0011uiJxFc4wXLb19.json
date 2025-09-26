@@ -1,0 +1,24 @@
+{
+  "id": "prt_986322c2a0011uiJxFc4wXLb19",
+  "messageID": "msg_986320b94001w9VZAjejq8X5ur",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01PB8JMzjjU6tX51DaXGmScE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "needPackaging"
+    },
+    "output": "Found 24 matches\n/home/user/project/app/page.tsx:\n  Line 30:   needPackaging: boolean;\n  Line 80:     needPackaging: false,\n  Line 405:       console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);\n  Line 406:       console.log('🔍 ОТЛАДКА УПАКОВКИ: typeof form.needPackaging =', typeof form.needPackaging);\n  Line 408:       if (form.needPackaging) {\n  Line 431:       console.log('🔍 form.needPackaging =', form.needPackaging, '(тип:', typeof form.needPackaging, ')');\n  Line 434:       console.log('🔍 Условие (form.needPackaging && packageUid) =', form.needPackaging && packageUid);\n  Line 436:       if (form.needPackaging && packageUid) {\n  Line 440:         if (!form.needPackaging) console.log('  - form.needPackaging = false');\n  Line 496:           ...(form.needPackaging && packageUid ? {\n  Line 536:         console.log('   form.needPackaging =', form.needPackaging);\n  Line 538:         console.log('   Условие:', form.needPackaging && packageUid);\n  Line 579:         console.log('💰 form.needPackaging =', form.needPackaging);\n  Line 580:         console.log('💰 Условие для расчета упаковки:', data.data.packages && form.needPackaging);\n  Line 582:         if (data.data.packages && form.needPackaging) {\n  Line 731:         package: form.needPackaging ? '1' : '0',\n  Line 961:         const needZTU = form.needPackaging ? 1 : 0;\n  Line 1082:         if (form.needPackaging) basePrice += totalWeight * 20; // упаковка\n  Line 1110:       if (form.needPackaging) basePrice += totalWeight * 20;\n  Line 1136:     if (form.needPackaging) totalPrice += basePrice * 0.08;\n  Line 1259:       if (form.needPackaging && calc.details.packages) {\n  Line 1349:       if (form.needPackaging) {\n  Line 1570:                       checked={form.needPackaging}\n  Line 1571:                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needPackaging: checked as boolean }))}",
+    "metadata": {
+      "matches": 24,
+      "truncated": false
+    },
+    "title": "needPackaging",
+    "time": {
+      "start": 1758893059588,
+      "end": 1758893059599
+    }
+  }
+}
