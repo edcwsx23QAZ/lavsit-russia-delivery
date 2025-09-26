@@ -1,0 +1,25 @@
+{
+  "id": "prt_98647180d001SrG1lLNhdlLvon",
+  "messageID": "msg_98646aa07001Rn4mdpHrJDb4H1",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01BR1boc99r7C61fwqLYrNb7",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1231,
+      "limit": 60
+    },
+    "output": "<file>\n01232|       // Забор груза\n01233|       if (!form.fromTerminal && calc.details.derival?.price) {\n01234|         details.push({\n01235|           service: 'Забор груза',\n01236|           description: 'От адреса',\n01237|           price: calc.details.derival.price\n01238|         });\n01239|       }\n01240|       \n01241|       // Доставка груза\n01242|       if (!form.toTerminal && calc.details.arrival?.price) {\n01243|         details.push({\n01244|           service: 'Отвоз груза',\n01245|           description: 'До адреса',\n01246|           price: calc.details.arrival.price\n01247|         });\n01248|       }\n01249|       \n01250|       // Страхование - только из API\n01251|       if (form.needInsurance && calc.details.insurance) {\n01252|         details.push({\n01253|           service: 'Страхование груза',\n01254|           description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n01255|           price: calc.details.insurance // Используем только стоимость из API\n01256|         });\n01257|       }\n01258|       \n01259|       // Упаковка - теперь берется только из API packages\n01260|       if (form.needPackaging && calc.details.packages) {\n01261|         Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n01262|           if (pkg.price && pkg.price > 0) {\n01263|             details.push({\n01264|               service: 'Упаковка груза',\n01265|               description: 'Упаковать в комплекс «обрешётка + амортизация»',\n01266|               price: pkg.price\n01267|             });\n01268|           }\n01269|         });\n01270|       }\n01271|       \n01272|       // Дополнительные услуги\n01273|       details.push({\n01274|         service: 'Доп.услуги',\n01275|         description: 'Информирование о статусе груза',\n01276|         price: 15\n01277|       });\n01278|     } else if (calc.company === 'Nord Wheel' && calc.details) {\n01279|       // Расшифровка для Nord Wheel согласно требованиям\n01280|       if (calc.details.totalCost) {\n01281|         details.push({\n01282|           service: 'Общая стоимость доставки',\n01283|           description: '',\n01284|           price: calc.details.totalCost\n01285|         });\n01286|       }\n01287|       if (calc.details.deliveryCost) {\n01288|         details.push({\n01289|           service: 'Стоимость перевозки',\n01290|           description: '',\n01291|           price: calc.details.deliveryCost\n\n(File has more lines. Use 'offset' parameter to read beyond line 1291)\n</file>",
+    "metadata": {
+      "preview": "      // Забор груза\n      if (!form.fromTerminal && calc.details.derival?.price) {\n        details.push({\n          service: 'Забор груза',\n          description: 'От адреса',\n          price: calc.details.derival.price\n        });\n      }\n      \n      // Доставка груза\n      if (!form.toTerminal && calc.details.arrival?.price) {\n        details.push({\n          service: 'Отвоз груза',\n          description: 'До адреса',\n          price: calc.details.arrival.price\n        });\n      }\n      \n      // Страхование - только из API\n      if (form.needInsurance && calc.details.insurance) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758894430898,
+      "end": 1758894430900
+    }
+  }
+}

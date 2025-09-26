@@ -583,35 +583,26 @@ export default function Home() {
           totalPrice += data.data.insurance;
         }
         
-        // Добавляем услуги упаковки если есть
-        console.log('💰 РАСЧЕТ ЦЕНЫ УПАКОВКИ:');
+        // УПАКОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно
+        console.log('💰 ИНФОРМАЦИЯ ОБ УПАКОВКЕ (УЖЕ ВКЛЮЧЕНА В ОСНОВНУЮ СТОИМОСТЬ):');
         console.log('💰 data.data.packages =', data.data.packages);
         console.log('💰 form.needPackaging =', form.needPackaging);
-        console.log('💰 Условие для расчета упаковки:', data.data.packages && form.needPackaging);
         
         if (data.data.packages && form.needPackaging) {
-          console.log('💰 ✅ ОБРАБАТЫВАЕМ ЦЕНУ УПАКОВКИ');
+          console.log('💰 ✅ УПАКОВКА ПРИСУТСТВУЕТ В ОТВЕТЕ (цена уже включена в data.data.price)');
           console.log('💰 Тип packages:', Array.isArray(data.data.packages) ? 'Array' : 'Object');
           
           if (Array.isArray(data.data.packages)) {
             data.data.packages.forEach((pkg: any, index: number) => {
-              console.log(`💰 Package [${index}]:`, pkg);
-              if (pkg.price) {
-                console.log(`💰 Добавляем цену упаковки [${index}]: ${pkg.price}`);
-                totalPrice += pkg.price;
-              }
+              console.log(`💰 Package [${index}] (включена в основную стоимость):`, pkg);
             });
           } else {
             Object.entries(data.data.packages).forEach(([key, pkg]: [string, any]) => {
-              console.log(`💰 Package [${key}]:`, pkg);
-              if (pkg.price) {
-                console.log(`💰 Добавляем цену упаковки [${key}]: ${pkg.price}`);
-                totalPrice += pkg.price;
-              }
+              console.log(`💰 Package [${key}] (включена в основную стоимость):`, pkg);
             });
           }
         } else {
-          console.log('💰 ❌ НЕ обрабатываем цену упаковки');
+          console.log('💰 ❌ Упаковка не запрашивалась');
         }
 
         // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver
@@ -1229,52 +1220,85 @@ export default function Home() {
     const details: { service: string; description: string; price: number }[] = [];
     
     if (calc.company === 'Деловые Линии' && calc.details) {
-      // Основная перевозка
-      if (calc.details.availableDeliveryTypes?.auto) {
+      // Основная стоимость доставки (уже включает все базовые услуги и упаковку)
+      let basePrice = calc.details.price || calc.price || 0;
+      
+      // Разбиваем основную стоимость на компоненты если возможно
+      let intercityPrice = 0;
+      let derivalPrice = 0;
+      let arrivalPrice = 0;
+      let packagingPrice = 0;
+      let packagingPremiums = 0;
+      let insurancePrice = 0;
+      
+      // Межтерминальная перевозка
+      if (calc.details.intercity?.price) {
+        intercityPrice = calc.details.intercity.price;
         details.push({
           service: 'Межтерминальная перевозка',
           description: `${form.fromCity} - ${form.toCity}`,
-          price: calc.details.availableDeliveryTypes.auto
+          price: intercityPrice
         });
       }
       
       // Забор груза
-      if (!form.fromTerminal && calc.details.derival?.price) {
+      if (calc.details.derival?.price) {
+        derivalPrice = calc.details.derival.price;
         details.push({
           service: 'Забор груза',
           description: 'От адреса',
-          price: calc.details.derival.price
+          price: derivalPrice
         });
       }
       
       // Доставка груза
-      if (!form.toTerminal && calc.details.arrival?.price) {
+      if (calc.details.arrival?.price) {
+        arrivalPrice = calc.details.arrival.price;
         details.push({
           service: 'Отвоз груза',
           description: 'До адреса',
-          price: calc.details.arrival.price
+          price: arrivalPrice
         });
       }
       
-      // Страхование - только из API
-      if (form.needInsurance && calc.details.insurance) {
-        details.push({
-          service: 'Страхование груза',
-          description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
-          price: calc.details.insurance // Используем только стоимость из API
-        });
-      }
-      
-      // Упаковка - теперь берется только из API packages
+      // Упаковка с детализацией надбавок
       if (form.needPackaging && calc.details.packages) {
         Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {
           if (pkg.price && pkg.price > 0) {
+            // Базовая стоимость упаковки (без надбавок)
+            let basePackagingPrice = pkg.price;
+            packagingPrice += basePackagingPrice;
+            
             details.push({
               service: 'Упаковка груза',
               description: 'Упаковать в комплекс «обрешётка + амортизация»',
-              price: pkg.price
+              price: basePackagingPrice
             });
+            
+            // Добавляем детали надбавок если есть
+            if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {
+              pkg.premiumDetails.forEach((premium: any) => {
+                if (premium.value && premium.value > 0) {
+                  packagingPremiums += premium.value;
+                  details.push({
+                    service: 'Надбавка к упаковке',
+                    description: premium.name || 'Дополнительная надбавка',
+                    price: premium.value
+                  });
+                }
+              });
+            }
           }
+        });
+      }
+      
+      // Страхование
+      if (form.needInsurance && calc.details.insurance) {
+        insurancePrice = calc.details.insurance;
+        details.push({
+          service: 'Страхование груза',
+          description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
+          price: insurancePrice
         });
       }
       
@@ -1284,6 +1308,18 @@ export default function Home() {
         description: 'Информирование о статусе груза',
         price: 15
       });
+      
+      // Если есть расхождение между суммой компонентов и общей стоимостью, добавляем остаток
+      const calculatedSum = intercityPrice + derivalPrice + arrivalPrice + packagingPrice + packagingPremiums + insurancePrice + 15;
+      const remainder = basePrice - calculatedSum;
+      
+      if (Math.abs(remainder) > 1) { // Если расхождение больше 1 рубля
+        details.push({
+          service: remainder > 0 ? 'Прочие услуги' : 'Скидка',
+          description: 'Дополнительные сборы и корректировки',
+          price: remainder
+        });
+      }
     } else if (calc.company === 'Nord Wheel' && calc.details) {
       // Расшифровка для Nord Wheel согласно требованиям
       if (calc.details.totalCost) {
