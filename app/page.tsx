@@ -578,15 +578,14 @@ export default function Home() {
       if (response.ok && data.data && data.metadata?.status === 200) {
         let totalPrice = data.data.price || 0;
         console.log('💰 РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ:');
-        console.log('💰 Базовая стоимость data.data.price:', totalPrice);
+        console.log('💰 Базовая стоимость data.data.price (УЖЕ ВКЛЮЧАЕТ ВСЕ):', totalPrice);
         
-        // Добавляем страховку если есть
+        // СТРАХОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно
         if (data.data.insurance) {
-          console.log('💰 Страховка data.data.insurance:', data.data.insurance);
-          totalPrice += data.data.insurance;
-          console.log('💰 Стоимость с страховкой:', totalPrice);
+          console.log('💰 Страховка data.data.insurance (УЖЕ включена в базовую стоимость):', data.data.insurance);
+          console.log('💰 НЕ добавляем страховку повторно');
         } else {
-          console.log('💰 Страховка не добавляется');
+          console.log('💰 Страховка отсутствует в ответе');
         }
         
         // УПАКОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно

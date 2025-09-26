@@ -1,0 +1,25 @@
+{
+  "id": "prt_98666f067001dK7XfTt3JsnDAL",
+  "messageID": "msg_98666b9d7001yzD0ra0jlOFIqv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QRV8j4cUXc26CEf4pQuTEA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 579,
+      "limit": 15
+    },
+    "output": "<file>\n00580|         console.log('💰 РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ:');\n00581|         console.log('💰 Базовая стоимость data.data.price:', totalPrice);\n00582|         \n00583|         // Добавляем страховку если есть\n00584|         if (data.data.insurance) {\n00585|           console.log('💰 Страховка data.data.insurance:', data.data.insurance);\n00586|           totalPrice += data.data.insurance;\n00587|           console.log('💰 Стоимость с страховкой:', totalPrice);\n00588|         } else {\n00589|           console.log('💰 Страховка не добавляется');\n00590|         }\n00591|         \n00592|         // УПАКОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно\n00593|         console.log('💰 ИНФОРМАЦИЯ ОБ УПАКОВКЕ (УЖЕ ВКЛЮЧЕНА В ОСНОВНУЮ СТОИМОСТЬ):');\n00594|         console.log('💰 data.data.packages =', data.data.packages);\n\n(File has more lines. Use 'offset' parameter to read beyond line 594)\n</file>",
+    "metadata": {
+      "preview": "        console.log('💰 РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ:');\n        console.log('💰 Базовая стоимость data.data.price:', totalPrice);\n        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          console.log('💰 Страховка data.data.insurance:', data.data.insurance);\n          totalPrice += data.data.insurance;\n          console.log('💰 Стоимость с страховкой:', totalPrice);\n        } else {\n          console.log('💰 Страховка не добавляется');\n        }\n        \n        // УПАКОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно\n        console.log('💰 ИНФОРМАЦИЯ ОБ УПАКОВКЕ (УЖЕ ВКЛЮЧЕНА В ОСНОВНУЮ СТОИМОСТЬ):');\n        console.log('💰 data.data.packages =', data.data.packages);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758896517914,
+      "end": 1758896517917
+    }
+  }
+}
