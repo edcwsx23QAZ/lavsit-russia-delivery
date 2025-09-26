@@ -1,0 +1,25 @@
+{
+  "id": "prt_986ccbb54001WjHqCda5UJy3d3",
+  "messageID": "msg_986cb16f6001hgYHgWxj5ABVEt",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_011uLeimSzMGPhtdMzyAaupT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "const calculatePEK|const findPekCityId",
+      "path": "/home/user/project"
+    },
+    "output": "Found 8 matches\n/home/user/project/ideavo-server.info:\n  Line 18:  \u001b[2m 900\u001b[0m |   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 260:  \u001b[2m1140\u001b[0m |   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 277:  \u001b[2m 900\u001b[0m |   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 519:  \u001b[2m1140\u001b[0m |   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 536:  \u001b[2m 900\u001b[0m |   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 778:  \u001b[2m1140\u001b[0m |   const calculatePEK = async (): Promise<CalculationResult> => {\n\n/home/user/project/app/page.tsx:\n  Line 900:   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 1140:   const calculatePEK = async (): Promise<CalculationResult> => {",
+    "metadata": {
+      "matches": 8,
+      "truncated": false
+    },
+    "title": "const calculatePEK|const findPekCityId",
+    "time": {
+      "start": 1758903188825,
+      "end": 1758903188836
+    }
+  }
+}

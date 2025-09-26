@@ -1,0 +1,25 @@
+{
+  "id": "prt_986ccaa97001VWY0C4NfdXFKRI",
+  "messageID": "msg_986cb16f6001hgYHgWxj5ABVEt",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_013JwNmspxciyWvm8DirRaLr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "calculatePEK|findPekCityId|getPekWarehouseId",
+      "path": "/home/user/project"
+    },
+    "output": "Found 29 matches\n/home/user/project/ideavo-server.info:\n  Line 13:   \u001b[31mx\u001b[0m the name `calculatePEK` is defined multiple times\n  Line 18:  \u001b[2m 900\u001b[0m |   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 20:       :               \u001b[31;1m`-- \u001b[31;1mprevious definition of `calculatePEK` here\u001b[0m\u001b[0m\n  Line 25:  \u001b[2m 905\u001b[0m |       const senderWarehouseId = getPekWarehouseId(form.fromCity);\n  Line 26:  \u001b[2m 906\u001b[0m |       const receiverWarehouseId = getPekWarehouseId(form.toCity);\n  Line 260:  \u001b[2m1140\u001b[0m |   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 262:       :               \u001b[33;1m`-- \u001b[33;1m`calculatePEK` redefined here\u001b[0m\u001b[0m\n  Line 272:   \u001b[31mx\u001b[0m the name `calculatePEK` is defined multiple times\n  Line 277:  \u001b[2m 900\u001b[0m |   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 279:       :               \u001b[31;1m`-- \u001b[31;1mprevious definition of `calculatePEK` here\u001b[0m\u001b[0m\n  Line 284:  \u001b[2m 905\u001b[0m |       const senderWarehouseId = getPekWarehouseId(form.fromCity);\n  Line 285:  \u001b[2m 906\u001b[0m |       const receiverWarehouseId = getPekWarehouseId(form.toCity);\n  Line 519:  \u001b[2m1140\u001b[0m |   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 521:       :               \u001b[33;1m`-- \u001b[33;1m`calculatePEK` redefined here\u001b[0m\u001b[0m\n  Line 531:   \u001b[31mx\u001b[0m the name `calculatePEK` is defined multiple times\n  Line 536:  \u001b[2m 900\u001b[0m |   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 538:       :               \u001b[31;1m`-- \u001b[31;1mprevious definition of `calculatePEK` here\u001b[0m\u001b[0m\n  Line 543:  \u001b[2m 905\u001b[0m |       const senderWarehouseId = getPekWarehouseId(form.fromCity);\n  Line 544:  \u001b[2m 906\u001b[0m |       const receiverWarehouseId = getPekWarehouseId(form.toCity);\n  Line 778:  \u001b[2m1140\u001b[0m |   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 780:       :               \u001b[33;1m`-- \u001b[33;1m`calculatePEK` redefined here\u001b[0m\u001b[0m\n\n/home/user/project/app/page.tsx:\n  Line 856:   const getPekWarehouseId = (cityName: string): string | null => {\n  Line 900:   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 905:       const senderWarehouseId = getPekWarehouseId(form.fromCity);\n  Line 906:       const receiverWarehouseId = getPekWarehouseId(form.toCity);\n  Line 1140:   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 1145:       const fromCityId = await findPekCityId(form.fromCity);\n  Line 1146:       const toCityId = await findPekCityId(form.toCity);\n  Line 1367:         calculatePEK(),",
+    "metadata": {
+      "matches": 29,
+      "truncated": false
+    },
+    "title": "calculatePEK|findPekCityId|getPekWarehouseId",
+    "time": {
+      "start": 1758903184298,
+      "end": 1758903184309
+    }
+  }
+}
