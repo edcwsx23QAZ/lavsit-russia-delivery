@@ -1,0 +1,25 @@
+{
+  "id": "prt_985f5b1cb001tb1SDLpOnzQW8S",
+  "messageID": "msg_985f537fa001ScD5Dm085Tr2iR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_015gnRTyHHUpBUHZe5nEPZWz",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 500,
+      "limit": 35
+    },
+    "output": "<file>\n00501|           const pickup = data.data.pickup || data.pickup;\n00502|           const arrivalToOspReceiver = data.data.arrivalToOspReceiver || data.arrivalToOspReceiver;\n00503|           \n00504|           console.log('Дата pickup:', pickup);\n00505|           console.log('Дата arrivalToOspReceiver:', arrivalToOspReceiver);\n00506|           \n00507|           if (pickup && arrivalToOspReceiver) {\n00508|             const pickupDate = new Date(pickup);\n00509|             const arrivalDate = new Date(arrivalToOspReceiver);\n00510|             \n00511|             // Вычисляем разность в днях\n00512|             const timeDiff = arrivalDate.getTime() - pickupDate.getTime();\n00513|             deliveryDays = Math.ceil(timeDiff / (1000 * 3600 * 24));\n00514|             \n00515|             console.log('Вычислен срок доставки:', deliveryDays, 'дней');\n00516|           }\n00517|         } catch (error) {\n00518|           console.error('Ошибка вычисления срока доставки:', error);\n00519|         }\n00520| \n00521|         return {\n00522|           company: 'Деловые Линии',\n00523|           price: Math.round(totalPrice),\n00524|           days: deliveryDays || 0,\n00525|           details: data.data,\n00526|           requestData,\n00527|           responseData: data,\n00528|           apiUrl,\n00529|           sessionId: sessionID\n00530|         };\n00531|       } else {\n00532|         const errorMessage = data.metadata?.detail || \n00533|                            data.metadata?.message || \n00534|                            data.errors?.[0]?.detail || \n00535|                            (data.metadata?.status !== 200 ? `HTTP ${data.metadata?.status}` : '') ||\n\n(File has more lines. Use 'offset' parameter to read beyond line 535)\n</file>",
+    "metadata": {
+      "preview": "          const pickup = data.data.pickup || data.pickup;\n          const arrivalToOspReceiver = data.data.arrivalToOspReceiver || data.arrivalToOspReceiver;\n          \n          console.log('Дата pickup:', pickup);\n          console.log('Дата arrivalToOspReceiver:', arrivalToOspReceiver);\n          \n          if (pickup && arrivalToOspReceiver) {\n            const pickupDate = new Date(pickup);\n            const arrivalDate = new Date(arrivalToOspReceiver);\n            \n            // Вычисляем разность в днях\n            const timeDiff = arrivalDate.getTime() - pickupDate.getTime();\n            deliveryDays = Math.ceil(timeDiff / (1000 * 3600 * 24));\n            \n            console.log('Вычислен срок доставки:', deliveryDays, 'дней');\n          }\n        } catch (error) {\n          console.error('Ошибка вычисления срока доставки:', error);\n        }\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758889096202,
+      "end": 1758889096206
+    }
+  }
+}
