@@ -1,0 +1,26 @@
+{
+  "id": "prt_9853c2377001qE7ypJFmFxHtop",
+  "messageID": "msg_9853abeef00102ZzqvYw8pQ3gw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_0163EW7KzimzH3YmtJrWSiBw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Check build after packages API integration"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:369:9\nType error: Type 'string | null' is not assignable to type 'null'.\n  Type 'string' is not assignable to type 'null'.\n\n\u001b[0m \u001b[90m 367 |\u001b[39m         )\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 368 |\u001b[39m         \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 369 |\u001b[39m         packageUid \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m getDellinPackages(form\u001b[33m.\u001b[39mfromCity\u001b[33m,\u001b[39m form\u001b[33m.\u001b[39mtoCity\u001b[33m,\u001b[39m biggestCargo)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 370 |\u001b[39m         console\u001b[33m.\u001b[39mlog(\u001b[32m'Получен packageUid:'\u001b[39m\u001b[33m,\u001b[39m packageUid)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 371 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 372 |\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:369:9\nType error: Type 'string | null' is not assignable to type 'null'.\n  Type 'string' is not assignable to type 'null'.\n\n\u001b[0m \u001b[90m 367 |\u001b[39m         )\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 368 |\u001b[39m         \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 369 |\u001b[39m         packageUid \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m getDellinPackages(form\u001b[33m.\u001b[39mfromCity\u001b[33m,\u001b[39m form\u001b[33m.\u001b[39mtoCity\u001b[33m,\u001b[39m biggestCargo)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 370 |\u001b[39m         console\u001b[33m.\u001b[39mlog(\u001b[32m'Получен packageUid:'\u001b[39m\u001b[33m,\u001b[39m packageUid)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 371 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 372 |\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Check build after packages API integration"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1758876936061,
+      "end": 1758876953928
+    }
+  }
+}

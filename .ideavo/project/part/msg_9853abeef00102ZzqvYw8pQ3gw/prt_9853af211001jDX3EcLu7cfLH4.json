@@ -1,0 +1,26 @@
+{
+  "id": "prt_9853af211001jDX3EcLu7cfLH4",
+  "messageID": "msg_9853abeef00102ZzqvYw8pQ3gw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_014T5VhTrWsPPzWV7xjCDFeS",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  };\n\n  // Расчет для Деловых Линий через корректный API v2/calculator.json",
+      "newString": "  };\n\n  // Получение доступных упаковок Деловые Линии\n  const getDellinPackages = async (fromPoint: string, toPoint: string, cargo: any): Promise<string | null> => {\n    try {\n      const response = await fetch('https://api.dellin.ru/v1/public/packages_available.json', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json'\n        },\n        body: JSON.stringify({\n          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n          arrivalPoint: toPoint,\n          derivalPoint: fromPoint,\n          length: cargo.length / 100, // в метрах\n          width: cargo.width / 100,\n          height: cargo.height / 100,\n          weight: cargo.weight,\n          quantity: 1\n        })\n      });\n\n      const data = await response.json();\n      console.log('Деловые Линии доступные упаковки:', data);\n      \n      if (response.ok && data.packages && data.packages.length > 0) {\n        // Берем первый доступный пакет\n        return data.packages[0].uid;\n      }\n      \n      return null;\n    } catch (error) {\n      console.error('Ошибка получения упаковок Деловые Линии:', error);\n      return null;\n    }\n  };\n\n  // Расчет для Деловых Линий через корректный API v2/calculator.json"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -264,8 +264,43 @@\n     return null;\n   }\n };\n \n+// Получение доступных упаковок Деловые Линии\n+const getDellinPackages = async (fromPoint: string, toPoint: string, cargo: any): Promise<string | null> => {\n+  try {\n+    const response = await fetch('https://api.dellin.ru/v1/public/packages_available.json', {\n+      method: 'POST',\n+      headers: {\n+        'Content-Type': 'application/json'\n+      },\n+      body: JSON.stringify({\n+        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n+        arrivalPoint: toPoint,\n+        derivalPoint: fromPoint,\n+        length: cargo.length / 100, // в метрах\n+        width: cargo.width / 100,\n+        height: cargo.height / 100,\n+        weight: cargo.weight,\n+        quantity: 1\n+      })\n+    });\n+\n+    const data = await response.json();\n+    console.log('Деловые Линии доступные упаковки:', data);\n+    \n+    if (response.ok && data.packages && data.packages.length > 0) {\n+      // Берем первый доступный пакет\n+      return data.packages[0].uid;\n+    }\n+    \n+    return null;\n+  } catch (error) {\n+    console.error('Ошибка получения упаковок Деловые Линии:', error);\n+    return null;\n+  }\n+};\n+\n // Расчет для Деловых Линий через корректный API v2/calculator.json\n const calculateDellin = async (): Promise<CalculationResult> => {\n   const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n   \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758876870594,
+      "end": 1758876870612
+    }
+  }
+}

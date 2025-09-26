@@ -1,0 +1,25 @@
+{
+  "id": "prt_9853b528a001pvMwnQw3ybpwMt",
+  "messageID": "msg_9853abeef00102ZzqvYw8pQ3gw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Qi9wwxxcZBWUAtMjrM8ALF",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 385,
+      "limit": 20
+    },
+    "output": "<file>\n00386|             },\n00387|             handling: {\n00388|               freightLift: true,\n00389|               toFloor: 5,\n00390|               carry: 0\n00391|             }\n00392|           },\n00393|           ...(form.needPackaging ? {\n00394|             packages: [{\n00395|               uid: 'crate_with_bubble',  // Правильный uid упаковки\n00396|               count: 1\n00397|             }]\n00398|           } : {})\n00399|         },\n00400|         cargo: {\n00401|           quantity: form.cargos.length,\n00402|           length: maxLength,\n00403|           width: maxWidth,\n00404|           height: maxHeight,\n00405|           weight: totalWeight,\n\n(File has more lines. Use 'offset' parameter to read beyond line 405)\n</file>",
+    "metadata": {
+      "preview": "            },\n            handling: {\n              freightLift: true,\n              toFloor: 5,\n              carry: 0\n            }\n          },\n          ...(form.needPackaging ? {\n            packages: [{\n              uid: 'crate_with_bubble',  // Правильный uid упаковки\n              count: 1\n            }]\n          } : {})\n        },\n        cargo: {\n          quantity: form.cargos.length,\n          length: maxLength,\n          width: maxWidth,\n          height: maxHeight,\n          weight: totalWeight,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758876882280,
+      "end": 1758876882282
+    }
+  }
+}

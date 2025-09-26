@@ -1,0 +1,25 @@
+{
+  "id": "prt_9853b6735001LAkBAWmIHdpiOx",
+  "messageID": "msg_9853abeef00102ZzqvYw8pQ3gw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PyTgw8k3TFvLK22gttvBMd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 300,
+      "limit": 80
+    },
+    "output": "<file>\n00301|   };\n00302| \n00303|   // Расчет для Деловых Линий через корректный API v2/calculator.json\n00304|   const calculateDellin = async (): Promise<CalculationResult> => {\n00305|     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n00306|     \n00307|     try {\n00308|       const sessionID = await getDellinSessionId();\n00309|       \n00310|       if (!sessionID) {\n00311|         return {\n00312|           company: 'Деловые Линии',\n00313|           price: 0,\n00314|           days: 0,\n00315|           error: 'Не удалось получить sessionID',\n00316|           apiUrl,\n00317|           requestData: null,\n00318|           responseData: null\n00319|         };\n00320|       }\n00321| \n00322|       // Вычисляем размеры и объемы\n00323|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n00324|       const totalVolume = form.cargos.reduce((sum, cargo) => \n00325|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n00326|       );\n00327|       const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n00328|       const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n00329|       const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;\n00330| \n00331|       // Получаем терминалы для городов (если нужно)\n00332|       const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n00333|       const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;\n00334| \n00335|       // Формируем дату отправления на завтра\n00336|       const tomorrow = new Date();\n00337|       tomorrow.setDate(tomorrow.getDate() + 1);\n00338|       const produceDate = tomorrow.toISOString().split('T')[0];\n00339| \n00340|       // Формируем корректную структуру запроса согласно инструкции\n00341|       const requestData = {\n00342|         appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n00343|         sessionID: sessionID,\n00344|         delivery: {\n00345|           deliveryType: {\n00346|             type: 'auto'  // Всегда \"auto\" по умолчанию\n00347|           },\n00348|           derival: {\n00349|             produceDate: produceDate,  // Обязательная дата отправления\n00350|             variant: form.fromAddressDelivery ? 'address' : 'terminal',\n00351|             ...(form.fromAddressDelivery ? {\n00352|               address: {\n00353|                 search: form.fromAddress || form.fromCity\n00354|               }\n00355|             } : {\n00356|               terminalID: fromTerminalId\n00357|             }),\n00358|             time: {\n00359|               worktimeStart: '10:00',\n00360|               worktimeEnd: '18:00',\n00361|               breakStart: '13:00',\n00362|               breakEnd: '14:00',\n00363|               exactTime: false\n00364|             },\n00365|             handling: {\n00366|               freightLift: true,\n00367|               toFloor: 5,\n00368|               carry: 0\n00369|             }\n00370|           },\n00371|           arrival: {\n00372|             variant: form.toAddressDelivery ? 'address' : 'terminal',\n00373|             ...(form.toAddressDelivery ? {\n00374|               address: {\n00375|                 search: form.toAddress || form.toCity\n00376|               }\n00377|             } : {\n00378|               terminalID: toTerminalId\n00379|             }),\n00380|             time: {\n\n(File has more lines. Use 'offset' parameter to read beyond line 380)\n</file>",
+    "metadata": {
+      "preview": "  };\n\n  // Расчет для Деловых Линий через корректный API v2/calculator.json\n  const calculateDellin = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n    \n    try {\n      const sessionID = await getDellinSessionId();\n      \n      if (!sessionID) {\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: 'Не удалось получить sessionID',\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758876887445,
+      "end": 1758876887447
+    }
+  }
+}

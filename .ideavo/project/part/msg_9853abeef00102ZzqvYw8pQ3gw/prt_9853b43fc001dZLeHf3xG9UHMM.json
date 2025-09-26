@@ -1,0 +1,24 @@
+{
+  "id": "prt_9853b43fc001dZLeHf3xG9UHMM",
+  "messageID": "msg_9853abeef00102ZzqvYw8pQ3gw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01Gtcjd3cv4NXjmrePnEbktD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "crate_with_bubble"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 395:               uid: 'crate_with_bubble',  // Правильный uid упаковки",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "crate_with_bubble",
+    "time": {
+      "start": 1758876878119,
+      "end": 1758876878128
+    }
+  }
+}

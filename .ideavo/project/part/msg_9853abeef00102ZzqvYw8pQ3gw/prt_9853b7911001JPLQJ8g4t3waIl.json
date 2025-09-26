@@ -1,0 +1,26 @@
+{
+  "id": "prt_9853b7911001JPLQJ8g4t3waIl",
+  "messageID": "msg_9853abeef00102ZzqvYw8pQ3gw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Vht6AFH9b7MPD1tCwXdEqZ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Получаем терминалы для городов (если нужно)\n      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;\n\n      // Формируем дату отправления на завтра\n      const tomorrow = new Date();\n      tomorrow.setDate(tomorrow.getDate() + 1);\n      const produceDate = tomorrow.toISOString().split('T')[0];",
+      "newString": "      // Получаем терминалы для городов (если нужно)\n      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;\n\n      // Получаем доступные упаковки (если нужна упаковка)\n      let packageUid = null;\n      if (form.needPackaging && form.cargos.length > 0) {\n        // Используем параметры самого большого груза\n        const biggestCargo = form.cargos.reduce((max, cargo) => \n          cargo.weight > max.weight ? cargo : max\n        );\n        \n        const fromPoint = fromTerminalId || form.fromCity;\n        const toPoint = toTerminalId || form.toCity;\n        \n        packageUid = await getDellinPackages(fromPoint, toPoint, biggestCargo);\n      }\n\n      // Формируем дату отправления на завтра\n      const tomorrow = new Date();\n      tomorrow.setDate(tomorrow.getDate() + 1);\n      const produceDate = tomorrow.toISOString().split('T')[0];"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -331,8 +331,22 @@\n // Получаем терминалы для городов (если нужно)\n const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;\n \n+// Получаем доступные упаковки (если нужна упаковка)\n+let packageUid = null;\n+if (form.needPackaging && form.cargos.length > 0) {\n+  // Используем параметры самого большого груза\n+  const biggestCargo = form.cargos.reduce((max, cargo) => \n+    cargo.weight > max.weight ? cargo : max\n+  );\n+  \n+  const fromPoint = fromTerminalId || form.fromCity;\n+  const toPoint = toTerminalId || form.toCity;\n+  \n+  packageUid = await getDellinPackages(fromPoint, toPoint, biggestCargo);\n+}\n+\n // Формируем дату отправления на завтра\n const tomorrow = new Date();\n tomorrow.setDate(tomorrow.getDate() + 1);\n const produceDate = tomorrow.toISOString().split('T')[0];\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758876898764,
+      "end": 1758876898777
+    }
+  }
+}

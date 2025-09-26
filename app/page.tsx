@@ -265,6 +265,67 @@ export default function Home() {
     }
   };
 
+  // Получение доступных упаковок Деловые Линии
+  const getDellinPackages = async (fromPoint: string, toPoint: string, cargo: any): Promise<string | null> => {
+    try {
+      // Для демонстрации используем примерные коды городов
+      // В реальности нужно получать их из API городов/терминалов
+      const cityCodeMap: { [key: string]: string } = {
+        'москва': '7700000000000000000000000',
+        'санкт-петербург': '7800000000000000000000000',
+        'спб': '7800000000000000000000000',
+        'петербург': '7800000000000000000000000',
+        'екатеринбург': '6600000000000000000000000',
+        'новосибирск': '5400000000000000000000000',
+        'нижний новгород': '5200000000000000000000000',
+        'самара': '6300000000000000000000000',
+        'краснодар': '2300000000000000000000000',
+        'ростов-на-дону': '6100000000000000000000000',
+        'казань': '1600000000000000000000000'
+      };
+
+      const fromCode = cityCodeMap[fromPoint.toLowerCase().trim()] || fromPoint;
+      const toCode = cityCodeMap[toPoint.toLowerCase().trim()] || toPoint;
+
+      const requestBody = {
+        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
+        arrivalPoint: toCode,
+        derivalPoint: fromCode,
+        length: cargo.length / 100, // в метрах
+        width: cargo.width / 100,
+        height: cargo.height / 100,
+        weight: cargo.weight,
+        quantity: 1
+      };
+
+      console.log('Деловые Линии запрос упаковок:', requestBody);
+
+      const response = await fetch('https://api.dellin.ru/v1/public/packages_available.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+      const data = await response.json();
+      console.log('Деловые Линии доступные упаковки:', data);
+      
+      if (response.ok && data.packages && data.packages.length > 0) {
+        // Берем первый доступный пакет без несовместимостей
+        const compatiblePackage = data.packages.find((pkg: any) => 
+          !pkg.incompatible_uids || pkg.incompatible_uids.length === 0
+        );
+        return compatiblePackage?.uid || data.packages[0].uid;
+      }
+      
+      return null;
+    } catch (error) {
+      console.error('Ошибка получения упаковок Деловые Линии:', error);
+      return null;
+    }
+  };
+
   // Расчет для Деловых Линий через корректный API v2/calculator.json
   const calculateDellin = async (): Promise<CalculationResult> => {
     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';
@@ -296,6 +357,18 @@ export default function Home() {
       // Получаем терминалы для городов (если нужно)
       const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;
       const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;
+
+      // Получаем доступные упаковки (если нужна упаковка)
+      let packageUid: string | null = null;
+      if (form.needPackaging && form.cargos.length > 0) {
+        // Используем параметры самого большого груза
+        const biggestCargo = form.cargos.reduce((max, cargo) => 
+          cargo.weight > max.weight ? cargo : max
+        );
+        
+        packageUid = await getDellinPackages(form.fromCity, form.toCity, biggestCargo);
+        console.log('Получен packageUid:', packageUid);
+      }
 
       // Формируем дату отправления на завтра
       const tomorrow = new Date();
@@ -355,9 +428,9 @@ export default function Home() {
               carry: 0
             }
           },
-          ...(form.needPackaging ? {
+          ...(form.needPackaging && packageUid ? {
             packages: [{
-              uid: 'crate_with_bubble',  // Правильный uid упаковки
+              uid: packageUid,  // Динамический uid упаковки из API
               count: 1
             }]
           } : {})

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9853ad80d0019JwnmrK6hzFkbx",
+  "messageID": "msg_9853abeef00102ZzqvYw8pQ3gw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01P2RWcKo6G2p61X3YZf6vg2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 250,
+      "limit": 30
+    },
+    "output": "<file>\n00251|         // Ищем терминал в указанном городе\n00252|         const normalizedCity = citySearch.toLowerCase().trim();\n00253|         const terminal = data.terminals.find((t: any) => \n00254|           t.city?.toLowerCase().includes(normalizedCity) ||\n00255|           normalizedCity.includes(t.city?.toLowerCase())\n00256|         );\n00257|         \n00258|         return terminal?.id || data.terminals[0]?.id || null;\n00259|       }\n00260|       \n00261|       return null;\n00262|     } catch (error) {\n00263|       console.error('Ошибка получения терминалов Деловые Линии:', error);\n00264|       return null;\n00265|     }\n00266|   };\n00267| \n00268|   // Расчет для Деловых Линий через корректный API v2/calculator.json\n00269|   const calculateDellin = async (): Promise<CalculationResult> => {\n00270|     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n00271|     \n00272|     try {\n00273|       const sessionID = await getDellinSessionId();\n00274|       \n00275|       if (!sessionID) {\n00276|         return {\n00277|           company: 'Деловые Линии',\n00278|           price: 0,\n00279|           days: 0,\n00280|           error: 'Не удалось получить sessionID',\n\n(File has more lines. Use 'offset' parameter to read beyond line 280)\n</file>",
+    "metadata": {
+      "preview": "        // Ищем терминал в указанном городе\n        const normalizedCity = citySearch.toLowerCase().trim();\n        const terminal = data.terminals.find((t: any) => \n          t.city?.toLowerCase().includes(normalizedCity) ||\n          normalizedCity.includes(t.city?.toLowerCase())\n        );\n        \n        return terminal?.id || data.terminals[0]?.id || null;\n      }\n      \n      return null;\n    } catch (error) {\n      console.error('Ошибка получения терминалов Деловые Линии:', error);\n      return null;\n    }\n  };\n\n  // Расчет для Деловых Линий через корректный API v2/calculator.json\n  const calculateDellin = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758876852069,
+      "end": 1758876852076
+    }
+  }
+}

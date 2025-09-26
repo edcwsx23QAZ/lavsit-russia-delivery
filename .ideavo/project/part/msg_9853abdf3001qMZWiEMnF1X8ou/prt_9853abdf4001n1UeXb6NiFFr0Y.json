@@ -1,0 +1,7 @@
+{
+  "id": "prt_9853abdf4001n1UeXb6NiFFr0Y",
+  "type": "text",
+  "text": "Скорректируй код запроса API Деловых Линий\nДля получения \"packages\": [\n      {\n        \"uid\"\n\nИспользуй метод:\nАдрес метода: https://api.dellin.ru/v1/public/packages_available.json\n{\n   \"appkey\":\"00000000-0000-0000-0000-000000000000\",\n   \"arrivalPoint\":\"1000000100000160000000000\",\n   \"derivalPoint\":\"7800000000000000000000000\",\n   \"length\":1,\n   \"width\":1,\n   \"height\":1,\n   \"weight\":1,\n   \"quantity\":1\n}\n\nПример ответа содержащего uid:\n\n{  \n   \"packages\":[  \n      {  \n         \"incompatible_uids\":[  \n            \"0x8783b183e825d40d4eb5c21ef63fbbfb\",\n            \"0xb9f594d27a2d31b440a647d19547543c\"\n         ],\n         \"uid\":\"0x838fc70baeb49b564426b45b1d216c15\"\n      },\n      {  \n         \"incompatible_uids\":[  \n            \"0x838fc70baeb49b564426b45b1d216c15\"\n         ],\n         \"uid\":\"0x8783b183e825d40d4eb5c21ef63fbbfb\"\n      },\n      {  \n         \"incompatible_uids\":[  \n            \"0x84f7578779ae4a444e3dfc8b96d80e08\"\n         ],\n         \"uid\":\"0x9a7f11408f4957d7494570820fcf4549\"\n      },\n      {  \n         \"incompatible_uids\":[],\n         \"uid\":\"0xa8b42ac5ec921a4d43c0b702c3f1c109\"\n      },\n      {  \n         \"incompatible_uids\":[  \n            \"0x9195b45e731fd4bd44c3157f2e23b33f\"\n         ],\n         \"uid\":\"0xbaa65b894f477a964d70a4d97ec280be\"\n      }\n   ]\n}",
+  "messageID": "msg_9853abdf3001qMZWiEMnF1X8ou",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14"
+}
