@@ -1,0 +1,27 @@
+{
+  "id": "prt_986fe6cdf001BaT9ebEFD3rm5p",
+  "messageID": "msg_986fbf1ca001eb408qkiFUIken",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01XFrXv2WFrBFZyLP5jv4aR3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run dev &",
+      "timeout": 3000,
+      "description": "Запуск сервера в фоне"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n ⚠ Port 3000 is in use, trying 3001 instead.\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3001\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ✓ Ready in 1968ms\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n ⚠ Port 3000 is in use, trying 3001 instead.\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3001\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ✓ Ready in 1968ms\n",
+      "exit": 0,
+      "description": "Запуск сервера в фоне"
+    },
+    "title": "cd /home/user/project && npm run dev &",
+    "time": {
+      "start": 1758906445953,
+      "end": 1758906448960
+    }
+  }
+}

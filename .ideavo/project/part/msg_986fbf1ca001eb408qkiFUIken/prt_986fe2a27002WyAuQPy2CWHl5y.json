@@ -1,0 +1,27 @@
+{
+  "id": "prt_986fe2a27002WyAuQPy2CWHl5y",
+  "messageID": "msg_986fbf1ca001eb408qkiFUIken",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01LmdErVnonn4HC7ASVq7F5L",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run dev",
+      "timeout": 5000,
+      "description": "Чистый перезапуск Next.js"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ✓ Ready in 1955ms\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ✓ Ready in 1955ms\n",
+      "exit": null,
+      "description": "Чистый перезапуск Next.js"
+    },
+    "title": "cd /home/user/project && npm run dev",
+    "time": {
+      "start": 1758906428807,
+      "end": 1758906433813
+    }
+  }
+}

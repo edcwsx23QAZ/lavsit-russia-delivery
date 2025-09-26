@@ -1,0 +1,25 @@
+{
+  "id": "prt_986fd3b150010XmJoMnJtp405w",
+  "messageID": "msg_986fbf1ca001eb408qkiFUIken",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01HFSvSkza37AAGFMm7c8P9L",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "offset": 20,
+      "limit": 30
+    },
+    "output": "<file>\n00021|         error: 'Не настроены данные ПЭК',\n00022|         details: 'Необходимо настроить PEK_LOGIN и PEK_API_KEY в переменных окружения',\n00023|         suggestion: 'Перейдите на /env-check для настройки',\n00024|         requiredVars: ['PEK_LOGIN', 'PEK_API_KEY']\n00025|       }, { status: 500 });\n00026|     }\n00027|     \n00028|     // Официальный базовый URL согласно документации\n00029|     const BASE_URL = 'https://kabinet.pecom.ru/api/v1';\n00030|     \n00031|     let urlPath = '';\n00032|     let body = {};\n00033|     \n00034|     switch (method) {\n00035|       case 'findzonebyaddress':\n00036|         urlPath = '/branches/findzonebyaddress/';\n00037|         body = { address: address };\n00038|         break;\n00039|         \n00040|       case 'findzonebycoordinates':\n00041|         urlPath = '/branches/findzonebycoordinates/';\n00042|         body = {\n00043|           longitude: coordinates.longitude,\n00044|           latitude: coordinates.latitude\n00045|         };\n00046|         break;\n00047|         \n00048|       case 'calculateprice':\n00049|         urlPath = '/calculator/calculateprice/';\n00050|         const { method: methodName, ...calculationData } = requestData;\n\n(File has more lines. Use 'offset' parameter to read beyond line 50)\n</file>",
+    "metadata": {
+      "preview": "        error: 'Не настроены данные ПЭК',\n        details: 'Необходимо настроить PEK_LOGIN и PEK_API_KEY в переменных окружения',\n        suggestion: 'Перейдите на /env-check для настройки',\n        requiredVars: ['PEK_LOGIN', 'PEK_API_KEY']\n      }, { status: 500 });\n    }\n    \n    // Официальный базовый URL согласно документации\n    const BASE_URL = 'https://kabinet.pecom.ru/api/v1';\n    \n    let urlPath = '';\n    let body = {};\n    \n    switch (method) {\n      case 'findzonebyaddress':\n        urlPath = '/branches/findzonebyaddress/';\n        body = { address: address };\n        break;\n        \n      case 'findzonebycoordinates':"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758906367621,
+      "end": 1758906367622
+    }
+  }
+}

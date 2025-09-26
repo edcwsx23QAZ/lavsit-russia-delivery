@@ -1,0 +1,25 @@
+{
+  "id": "prt_986fc92060017MxdcG7QlvyXCB",
+  "messageID": "msg_986fbf1ca001eb408qkiFUIken",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01MaGnuM4MZPaTdXbY4qaf2M",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/pek-test/page.tsx",
+      "offset": 60,
+      "limit": 40
+    },
+    "output": "<file>\n00061|       statusText: response.statusText,\n00062|       ok: response.ok,\n00063|       data: await response.json()\n00064|     };\n00065|   };\n00066| \n00067|   // Тест 3: Прямой запрос к API ПЭК (для сравнения с сервера)\n00068|   const testDirectPekApi = async () => {\n00069|     const response = await fetch('https://api.pecom.ru/v1/branches/findzonebyaddress/', {\n00070|       method: 'POST',\n00071|       headers: {\n00072|         'Content-Type': 'application/json',\n00073|         'Authorization': 'Bearer 624FC93CA677B23673BB476D4982294DC27E246F'\n00074|       },\n00075|       body: JSON.stringify({\n00076|         address: testAddress\n00077|       })\n00078|     });\n00079| \n00080|     return {\n00081|       status: response.status,\n00082|       statusText: response.statusText,\n00083|       ok: response.ok,\n00084|       corsBlocked: !response.ok && response.type === 'cors',\n00085|       data: response.ok ? await response.json() : await response.text()\n00086|     };\n00087|   };\n00088| \n00089|   // Тест 4: Проверка всех вариантов токена\n00090|   const testTokenVariants = async () => {\n00091|     const tokens = [\n00092|       { name: 'Bearer Token', value: 'Bearer 624FC93CA677B23673BB476D4982294DC27E246F' },\n00093|       { name: 'Basic Auth', value: 'Basic ' + btoa('624FC93CA677B23673BB476D4982294DC27E246F:') },\n00094|       { name: 'Plain Token', value: '624FC93CA677B23673BB476D4982294DC27E246F' }\n00095|     ];\n00096| \n00097|     const results = [];\n00098|     \n00099|     for (const token of tokens) {\n00100|       try {\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "metadata": {
+      "preview": "      statusText: response.statusText,\n      ok: response.ok,\n      data: await response.json()\n    };\n  };\n\n  // Тест 3: Прямой запрос к API ПЭК (для сравнения с сервера)\n  const testDirectPekApi = async () => {\n    const response = await fetch('https://api.pecom.ru/v1/branches/findzonebyaddress/', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'Authorization': 'Bearer 624FC93CA677B23673BB476D4982294DC27E246F'\n      },\n      body: JSON.stringify({\n        address: testAddress\n      })\n    });\n\n    return {"
+    },
+    "title": "app/pek-test/page.tsx",
+    "time": {
+      "start": 1758906324330,
+      "end": 1758906324334
+    }
+  }
+}

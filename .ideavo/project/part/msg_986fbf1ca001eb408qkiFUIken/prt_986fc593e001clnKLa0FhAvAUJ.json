@@ -1,0 +1,26 @@
+{
+  "id": "prt_986fc593e001clnKLa0FhAvAUJ",
+  "messageID": "msg_986fbf1ca001eb408qkiFUIken",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01LnfpjgW35Fz31ouEaFk9sg",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:3000/api/pek-simple \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"method\": \"test\"}' \\\n  --max-time 10",
+      "description": "Тестирование упрощенного прокси"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100    18    0     0  100    18      0     14  0:00:01  0:00:01 --:--:--    14\r100    18    0     0  100    18      0      8  0:00:02  0:00:02 --:--:--     8\r100    18    0     0  100    18      0      5  0:00:03  0:00:03 --:--:--     5\r100    18    0     0  100    18      0      4  0:00:04  0:00:04 --:--:--     4\r100    18    0     0  100    18      0      3  0:00:06  0:00:05  0:00:01     3\r100    18    0     0  100    18      0      2  0:00:09  0:00:06  0:00:03     0\r100    18    0     0  100    18      0      2  0:00:09  0:00:07  0:00:02     0\r100    18    0     0  100    18      0      2  0:00:09  0:00:08  0:00:01     0\r100    18    0     0  100    18      0      1  0:00:18  0:00:09  0:00:09     0\r100    18    0     0  100    18      0      1  0:00:18  0:00:10  0:00:08     0\ncurl: (28) Operation timed out after 10001 milliseconds with 0 bytes received\n",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100    18    0     0  100    18      0     14  0:00:01  0:00:01 --:--:--    14\r100    18    0     0  100    18      0      8  0:00:02  0:00:02 --:--:--     8\r100    18    0     0  100    18      0      5  0:00:03  0:00:03 --:--:--     5\r100    18    0     0  100    18      0      4  0:00:04  0:00:04 --:--:--     4\r100    18    0     0  100    18      0      3  0:00:06  0:00:05  0:00:01     3\r100    18    0     0  100    18      0      2  0:00:09  0:00:06  0:00:03     0\r100    18    0     0  100    18      0      2  0:00:09  0:00:07  0:00:02     0\r100    18    0     0  100    18      0      2  0:00:09  0:00:08  0:00:01     0\r100    18    0     0  100    18      0      1  0:00:18  0:00:09  0:00:09     0\r100    18    0     0  100    18      0      1  0:00:18  0:00:10  0:00:08     0\ncurl: (28) Operation timed out after 10001 milliseconds with 0 bytes received\n",
+      "exit": 28,
+      "description": "Тестирование упрощенного прокси"
+    },
+    "title": "curl -X POST http://localhost:3000/api/pek-simple \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"method\": \"test\"}' \\\n  --max-time 10",
+    "time": {
+      "start": 1758906309752,
+      "end": 1758906319768
+    }
+  }
+}

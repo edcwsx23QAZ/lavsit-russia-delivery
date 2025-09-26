@@ -1,0 +1,26 @@
+{
+  "id": "prt_986fddc2b0012ioiDociANCwIk",
+  "messageID": "msg_986fbf1ca001eb408qkiFUIken",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01PMqaKVDrycMmBHwk8bhqNM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/test/route.ts",
+      "content": "import { NextRequest, NextResponse } from 'next/server';\n\nexport async function GET() {\n  return NextResponse.json({ status: 'OK', message: 'Simple test works' });\n}\n\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    return NextResponse.json({ \n      status: 'OK', \n      message: 'POST test works',\n      received: body \n    });\n  } catch (error) {\n    return NextResponse.json({ \n      status: 'ERROR', \n      message: 'Error parsing JSON',\n      error: error instanceof Error ? error.message : 'Unknown error'\n    });\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/api/test/route.ts",
+      "exists": false
+    },
+    "title": "app/api/test/route.ts",
+    "time": {
+      "start": 1758906410508,
+      "end": 1758906410510
+    }
+  }
+}

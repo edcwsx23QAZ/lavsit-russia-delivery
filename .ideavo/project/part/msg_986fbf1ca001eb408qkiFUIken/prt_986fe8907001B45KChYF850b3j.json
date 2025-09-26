@@ -1,0 +1,73 @@
+{
+  "id": "prt_986fe8907001B45KChYF850b3j",
+  "messageID": "msg_986fbf1ca001eb408qkiFUIken",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01A29dZ2DfXs5sC8TXxbebtV",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Исправить CORS ошибки в тестах",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Исправить 400 ошибки в прокси API",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Убрать прямые вызовы к внешним API из браузера",
+          "status": "completed",
+          "priority": "medium",
+          "id": "3"
+        },
+        {
+          "content": "Организовать рабочие тесты через браузер",
+          "status": "pending",
+          "priority": "high",
+          "id": "4"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Исправить CORS ошибки в тестах\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"1\"\n  },\n  {\n    \"content\": \"Исправить 400 ошибки в прокси API\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"2\"\n  },\n  {\n    \"content\": \"Убрать прямые вызовы к внешним API из браузера\",\n    \"status\": \"completed\",\n    \"priority\": \"medium\",\n    \"id\": \"3\"\n  },\n  {\n    \"content\": \"Организовать рабочие тесты через браузер\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"4\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Исправить CORS ошибки в тестах",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Исправить 400 ошибки в прокси API",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Убрать прямые вызовы к внешним API из браузера",
+          "status": "completed",
+          "priority": "medium",
+          "id": "3"
+        },
+        {
+          "content": "Организовать рабочие тесты через браузер",
+          "status": "pending",
+          "priority": "high",
+          "id": "4"
+        }
+      ]
+    },
+    "title": "2 todos",
+    "time": {
+      "start": 1758906460626,
+      "end": 1758906460626
+    }
+  }
+}

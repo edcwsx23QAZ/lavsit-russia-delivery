@@ -25,18 +25,36 @@ export default function PekTestPage() {
           stack: error.stack 
         } 
       }));
+    } finally {
+      setLoading(prev => ({ ...prev, [testName]: false }));
     }
-    setLoading(prev => ({ ...prev, [testName]: false }));
   };
 
-  // Тест 1: Проверка прокси API напрямую
+  const renderResult = (testName: string) => {
+    const result = results[testName];
+    if (!result && !loading[testName]) return null;
+    
+    if (loading[testName]) {
+      return <div className="text-blue-600 font-mono text-sm">🔄 Выполняется...</div>;
+    }
+    
+    return (
+      <Textarea 
+        value={JSON.stringify(result, null, 2)} 
+        readOnly 
+        className="font-mono text-sm h-48 mt-2"
+      />
+    );
+  };
+
+  // Тест 1: Проверка работы прокси (тестовый метод)
   const testProxyHealth = async () => {
     const response = await fetch('/api/pek', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ method: 'test' })
     });
-    
+
     return {
       status: response.status,
       statusText: response.statusText,
@@ -45,7 +63,7 @@ export default function PekTestPage() {
     };
   };
 
-  // Тест 2: Поиск зоны по адресу
+  // Тест 2: Поиск зоны по адресу через прокси
   const testFindZoneByAddress = async () => {
     const response = await fetch('/api/pek', {
       method: 'POST',
@@ -64,119 +82,12 @@ export default function PekTestPage() {
     };
   };
 
-  // Тест 3: Прямой запрос к API ПЭК (для сравнения с сервера)
-  const testDirectPekApi = async () => {
-    const response = await fetch('https://api.pecom.ru/v1/branches/findzonebyaddress/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer 624FC93CA677B23673BB476D4982294DC27E246F'
-      },
-      body: JSON.stringify({
-        address: testAddress
-      })
-    });
-
-    return {
-      status: response.status,
-      statusText: response.statusText,
-      ok: response.ok,
-      corsBlocked: !response.ok && response.type === 'cors',
-      data: response.ok ? await response.json() : await response.text()
-    };
-  };
-
-  // Тест 4: Проверка всех вариантов токена
-  const testTokenVariants = async () => {
-    const tokens = [
-      { name: 'Bearer Token', value: 'Bearer 624FC93CA677B23673BB476D4982294DC27E246F' },
-      { name: 'Basic Auth', value: 'Basic ' + btoa('624FC93CA677B23673BB476D4982294DC27E246F:') },
-      { name: 'Plain Token', value: '624FC93CA677B23673BB476D4982294DC27E246F' }
-    ];
-
-    const results = [];
-    
-    for (const token of tokens) {
-      try {
-        const response = await fetch('https://api.pecom.ru/v1/branches/findzonebyaddress/', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': token.value
-          },
-          body: JSON.stringify({ address: testAddress })
-        });
-
-        results.push({
-          tokenType: token.name,
-          status: response.status,
-          statusText: response.statusText,
-          ok: response.ok,
-          corsError: !response.ok && response.type === 'cors'
-        });
-      } catch (error: any) {
-        results.push({
-          tokenType: token.name,
-          error: error.message,
-          corsError: error.name === 'TypeError' && error.message.includes('fetch')
-        });
-      }
-    }
-
-    return results;
-  };
-
-  // Тест 5: Проверка альтернативных URL
-  const testApiUrls = async () => {
-    const urls = [
-      'https://api.pecom.ru/v1/branches/findzonebyaddress/',
-      'https://api.pecom.ru/v1/branches/findzonebyaddress',
-      'https://api.pecom.ru/branches/findzonebyaddress/',
-      'https://lk.pecom.ru/api/v1/branches/findzonebyaddress/',
-    ];
-
-    const results = [];
-    
-    for (const url of urls) {
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer 624FC93CA677B23673BB476D4982294DC27E246F'
-          },
-          body: JSON.stringify({ address: testAddress })
-        });
-
-        results.push({
-          url,
-          status: response.status,
-          statusText: response.statusText,
-          ok: response.ok,
-          accessible: true
-        });
-      } catch (error: any) {
-        results.push({
-          url,
-          error: error.message,
-          accessible: false,
-          corsError: error.name === 'TypeError'
-        });
-      }
-    }
-
-    return results;
-  };
-  
-  // Тест 6: Проверка GET запросов
-  const testGetRequests = async () => {
-    const response = await fetch('/api/pek-get', {
+  // Тест 3: Упрощенный прокси
+  const testSimpleProxy = async () => {
+    const response = await fetch('/api/pek-simple', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        method: 'test',
-        address: testAddress
-      })
+      body: JSON.stringify({ method: 'test' })
     });
 
     return {
@@ -186,16 +97,13 @@ export default function PekTestPage() {
       data: await response.json()
     };
   };
-  
-  // Тест 7: Полный тест нового прокси
-  const testNewProxy = async () => {
-    const response = await fetch('/api/pek', {
+
+  // Тест 4: Прямой вызов к ПЭК через упрощенный прокси
+  const testDirectThroughProxy = async () => {
+    const response = await fetch('/api/pek-simple', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        method: 'findzonebyaddress',
-        address: testAddress
-      })
+      body: JSON.stringify({ method: 'direct' })
     });
 
     return {
@@ -204,233 +112,156 @@ export default function PekTestPage() {
       ok: response.ok,
       data: await response.json()
     };
-  };
-  
-  // Тест 8: Официальный API ПЭК (по документации)
-  const testOfficialPekApi = async () => {
-    const response = await fetch('/api/pek', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        method: 'test'
-      })
-    });
-
-    return {
-      status: response.status,
-      statusText: response.statusText,
-      ok: response.ok,
-      data: await response.json(),
-      description: 'Проверка настроек и доступности официального API'
-    };
-  };
-
-  const renderResult = (testName: string) => {
-    const result = results[testName];
-    const isLoading = loading[testName];
-
-    if (isLoading) {
-      return <div className="text-blue-600">Загрузка...</div>;
-    }
-
-    if (!result) {
-      return <div className="text-gray-500">Не запущен</div>;
-    }
-
-    return (
-      <pre className="text-xs bg-gray-50 p-2 rounded overflow-auto max-h-64">
-        {JSON.stringify(result, null, 2)}
-      </pre>
-    );
   };
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Диагностика API ПЭК</h1>
-      
-      <div className="mb-4">
-        <label className="block text-sm font-medium mb-2">Тестовый адрес:</label>
-        <Input 
-          value={testAddress} 
-          onChange={(e) => setTestAddress(e.target.value)}
-          className="max-w-md"
-        />
-      </div>
+    <div className="min-h-screen bg-gray-50 p-4">
+      <div className="max-w-6xl mx-auto space-y-6">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold mb-2">🧪 Диагностика ПЭК API</h1>
+          <p className="text-gray-600">Проверка работы API через серверные прокси (без CORS ошибок)</p>
+        </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        
+        {/* Настройки теста */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">1. Проверка Прокси API</CardTitle>
+            <CardTitle>Настройки тестирования</CardTitle>
           </CardHeader>
           <CardContent>
-            <Button 
-              onClick={() => runTest('proxy', testProxyHealth)}
-              disabled={loading.proxy}
-              className="mb-3"
-            >
-              Проверить Прокси
-            </Button>
-            {renderResult('proxy')}
+            <div className="space-y-3">
+              <div>
+                <label className="block text-sm font-medium mb-1">Тестовый адрес:</label>
+                <Input
+                  value={testAddress}
+                  onChange={(e) => setTestAddress(e.target.value)}
+                  placeholder="Введите адрес для тестирования"
+                />
+              </div>
+            </div>
           </CardContent>
         </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">2. Поиск Зоны через Прокси</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Button 
-              onClick={() => runTest('zone', testFindZoneByAddress)}
-              disabled={loading.zone}
-              className="mb-3"
-            >
-              Найти Зону
-            </Button>
-            {renderResult('zone')}
-          </CardContent>
-        </Card>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Тест 1 */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">1. Проверка прокси (тест)</CardTitle>
+              <p className="text-sm text-gray-600">Проверка работы основного прокси API</p>
+            </CardHeader>
+            <CardContent>
+              <Button 
+                onClick={() => runTest('proxy', testProxyHealth)}
+                disabled={loading.proxy}
+                className="mb-3"
+              >
+                Тест прокси
+              </Button>
+              {renderResult('proxy')}
+            </CardContent>
+          </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">3. Прямой Запрос к ПЭК</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Button 
-              onClick={() => runTest('direct', testDirectPekApi)}
-              disabled={loading.direct}
-              className="mb-3"
-            >
-              Прямой Запрос
-            </Button>
-            {renderResult('direct')}
-          </CardContent>
-        </Card>
+          {/* Тест 2 */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">2. Поиск зоны по адресу</CardTitle>
+              <p className="text-sm text-gray-600">Реальный вызов ПЭК API через прокси</p>
+            </CardHeader>
+            <CardContent>
+              <Button 
+                onClick={() => runTest('zone', testFindZoneByAddress)}
+                disabled={loading.zone}
+                className="mb-3"
+              >
+                Поиск зоны
+              </Button>
+              {renderResult('zone')}
+            </CardContent>
+          </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">4. Тест Токенов</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Button 
-              onClick={() => runTest('tokens', testTokenVariants)}
-              disabled={loading.tokens}
-              className="mb-3"
-            >
-              Проверить Токены
-            </Button>
-            {renderResult('tokens')}
-          </CardContent>
-        </Card>
+          {/* Тест 3 */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">3. Упрощенный прокси</CardTitle>
+              <p className="text-sm text-gray-600">Тестирование запасного прокси</p>
+            </CardHeader>
+            <CardContent>
+              <Button 
+                onClick={() => runTest('simple', testSimpleProxy)}
+                disabled={loading.simple}
+                className="mb-3"
+              >
+                Простой прокси
+              </Button>
+              {renderResult('simple')}
+            </CardContent>
+          </Card>
 
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">5. Тест URL Вариантов</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Button 
-              onClick={() => runTest('urls', testApiUrls)}
-              disabled={loading.urls}
-              className="mb-3"
-            >
-              Проверить URLs
-            </Button>
-            {renderResult('urls')}
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">6. Тест GET Запросов</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Button 
-              onClick={() => runTest('get', testGetRequests)}
-              disabled={loading.get}
-              className="mb-3"
-            >
-              Проверить GET
-            </Button>
-            {renderResult('get')}
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">7. Новый Прокси (Множественные Попытки)</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Button 
-              onClick={() => runTest('newproxy', testNewProxy)}
-              disabled={loading.newproxy}
-              className="mb-3"
-            >
-              Новый Прокси
-            </Button>
-            {renderResult('newproxy')}
-          </CardContent>
-        </Card>
-        
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">8. Официальный API ПЭК</CardTitle>
-            <p className="text-sm text-gray-600 mt-2">
-              Basic Auth + kabinet.pecom.ru по документации
-            </p>
-          </CardHeader>
-          <CardContent>
-            <Button 
-              onClick={() => runTest('official', testOfficialPekApi)}
-              disabled={loading.official}
-              className="mb-3 bg-green-600 hover:bg-green-700"
-            >
-              Официальный API
-            </Button>
-            {renderResult('official')}
-          </CardContent>
-        </Card>
+          {/* Тест 4 */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-lg">4. Прямой вызов ПЭК</CardTitle>
+              <p className="text-sm text-gray-600">Прямой вызов к API ПЭК через прокси</p>
+            </CardHeader>
+            <CardContent>
+              <Button 
+                onClick={() => runTest('direct', testDirectThroughProxy)}
+                disabled={loading.direct}
+                className="mb-3"
+              >
+                Прямой вызов
+              </Button>
+              {renderResult('direct')}
+            </CardContent>
+          </Card>
+        </div>
 
+        {/* Полная диагностика */}
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Запуск Всех Тестов</CardTitle>
+            <CardTitle className="text-lg">🚀 Полная диагностика</CardTitle>
           </CardHeader>
           <CardContent>
             <Button 
               onClick={async () => {
                 console.log('🚀 Запуск полной диагностики ПЭК API');
                 
-                // Приоритет: официальный API первым
-                await runTest('official', testOfficialPekApi);
+                // Запускаем все тесты последовательно
                 await runTest('proxy', testProxyHealth);
+                await runTest('simple', testSimpleProxy);
                 await runTest('zone', testFindZoneByAddress);
-                
-                // Остальные тесты
-                await runTest('newproxy', testNewProxy);
-                await runTest('get', testGetRequests);
-                await runTest('direct', testDirectPekApi);
-                await runTest('tokens', testTokenVariants);
-                await runTest('urls', testApiUrls);
+                await runTest('direct', testDirectThroughProxy);
                 
                 console.log('✅ Диагностика завершена');
               }}
               disabled={Object.values(loading).some(Boolean)}
               className="w-full bg-blue-600 hover:bg-blue-700"
             >
-              🚀 ПОЛНАЯ ДИАГНОСТИКА API ПЭК
+              🚀 ЗАПУСТИТЬ ВСЕ ТЕСТЫ
             </Button>
           </CardContent>
         </Card>
-      </div>
 
-      <div className="mt-6">
+        {/* Статус переменных окружения */}
         <Card>
           <CardHeader>
-            <CardTitle>Консоль Браузера</CardTitle>
+            <CardTitle className="text-lg">📋 Справка</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-gray-600">
-              Откройте Developer Tools (F12) → Console для просмотра детальных логов запросов
-            </p>
+            <div className="text-sm space-y-2">
+              <p><strong>Ожидаемые результаты:</strong></p>
+              <ul className="list-disc list-inside space-y-1 text-gray-600">
+                <li><strong>Тест 1:</strong> Должен вернуть статус "OK" и информацию о прокси</li>
+                <li><strong>Тест 2:</strong> Должен вернуть данные о зоне доставки для указанного адреса</li>
+                <li><strong>Тест 3:</strong> Должен показать информацию о переменных окружения</li>
+                <li><strong>Тест 4:</strong> Должен сделать прямой вызов к API ПЭК с авторизацией</li>
+              </ul>
+              <div className="mt-4 p-3 bg-yellow-50 rounded-lg">
+                <p className="text-yellow-800">
+                  <strong>💡 Совет:</strong> Если тесты не работают, проверьте настройки на странице 
+                  <a href="/env-check" className="text-blue-600 underline ml-1">/env-check</a>
+                </p>
+              </div>
+            </div>
           </CardContent>
         </Card>
       </div>

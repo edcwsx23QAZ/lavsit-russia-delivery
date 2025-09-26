@@ -1,0 +1,34 @@
+{
+  "id": "prt_986fd4bfd001Yr7tfYgXQpDuFZ",
+  "messageID": "msg_986fbf1ca001eb408qkiFUIken",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01M4SzmR5Tf5thf5S7z1EKPq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "    if (!process.env.PEK_LOGIN || !process.env.PEK_API_KEY) {\n      console.warn('⚠️ Не настроены переменные окружения PEK_LOGIN и PEK_API_KEY');\n      console.warn('⚠️ Перейдите на /env-check для настройки');\n      \n      return NextResponse.json({ \n        error: 'Не настроены данные ПЭК',\n        details: 'Необходимо настроить PEK_LOGIN и PEK_API_KEY в переменных окружения',\n        suggestion: 'Перейдите на /env-check для настройки',\n        requiredVars: ['PEK_LOGIN', 'PEK_API_KEY']\n      }, { status: 500 });\n    }",
+          "newString": "    // Проверяем только для не-тестовых методов\n    if (method !== 'test' && (!process.env.PEK_LOGIN || !process.env.PEK_API_KEY)) {\n      console.warn('⚠️ Не настроены переменные окружения PEK_LOGIN и PEK_API_KEY');\n      console.warn('⚠️ Перейдите на /env-check для настройки');\n      \n      return NextResponse.json({ \n        error: 'Не настроены данные ПЭК',\n        details: 'Необходимо настроить PEK_LOGIN и PEK_API_KEY в переменных окружения',\n        suggestion: 'Перейдите на /env-check для настройки',\n        requiredVars: ['PEK_LOGIN', 'PEK_API_KEY'],\n        currentEnv: {\n          hasLogin: !!process.env.PEK_LOGIN,\n          hasKey: !!process.env.PEK_API_KEY,\n          loginPreview: process.env.PEK_LOGIN ? process.env.PEK_LOGIN.substring(0, 3) + '***' : 'отсутствует'\n        }\n      }, { status: 500 });\n    }"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -12,17 +12,23 @@\n // Данные авторизации согласно документации ПЭК\n const PEK_API_KEY = process.env.PEK_API_KEY || '624FC93CA677B23673BB476D4982294DC27E246F';\n const PEK_LOGIN = process.env.PEK_LOGIN || 'demo';\n \n-if (!process.env.PEK_LOGIN || !process.env.PEK_API_KEY) {\n+// Проверяем только для не-тестовых методов\n+if (method !== 'test' && (!process.env.PEK_LOGIN || !process.env.PEK_API_KEY)) {\n   console.warn('⚠️ Не настроены переменные окружения PEK_LOGIN и PEK_API_KEY');\n   console.warn('⚠️ Перейдите на /env-check для настройки');\n   \n   return NextResponse.json({ \n     error: 'Не настроены данные ПЭК',\n     details: 'Необходимо настроить PEK_LOGIN и PEK_API_KEY в переменных окружения',\n     suggestion: 'Перейдите на /env-check для настройки',\n-    requiredVars: ['PEK_LOGIN', 'PEK_API_KEY']\n+    requiredVars: ['PEK_LOGIN', 'PEK_API_KEY'],\n+    currentEnv: {\n+      hasLogin: !!process.env.PEK_LOGIN,\n+      hasKey: !!process.env.PEK_API_KEY,\n+      loginPreview: process.env.PEK_LOGIN ? process.env.PEK_LOGIN.substring(0, 3) + '***' : 'отсутствует'\n+    }\n   }, { status: 500 });\n }\n \n // Официальный базовый URL согласно документации\n"
+        }
+      ]
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758906377637,
+      "end": 1758906377647
+    }
+  }
+}

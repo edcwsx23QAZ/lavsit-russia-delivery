@@ -1,0 +1,26 @@
+{
+  "id": "prt_986fc1d67001waogw2DhBSUdvf",
+  "messageID": "msg_986fbf1ca001eb408qkiFUIken",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01KHUG3W8Dj43WVw5JCGAb5v",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:3000/api/pek-simple \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"method\": \"test\"}' \\\n  --max-time 10",
+      "description": "Тестирование упрощенного прокси"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 1 ms: Couldn't connect to server\n",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 1 ms: Couldn't connect to server\n",
+      "exit": 7,
+      "description": "Тестирование упрощенного прокси"
+    },
+    "title": "curl -X POST http://localhost:3000/api/pek-simple \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"method\": \"test\"}' \\\n  --max-time 10",
+    "time": {
+      "start": 1758906295070,
+      "end": 1758906295099
+    }
+  }
+}

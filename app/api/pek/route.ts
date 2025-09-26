@@ -13,7 +13,8 @@ export async function POST(request: NextRequest) {
     const PEK_API_KEY = process.env.PEK_API_KEY || '624FC93CA677B23673BB476D4982294DC27E246F';
     const PEK_LOGIN = process.env.PEK_LOGIN || 'demo';
     
-    if (!process.env.PEK_LOGIN || !process.env.PEK_API_KEY) {
+    // Проверяем только для не-тестовых методов
+    if (method !== 'test' && (!process.env.PEK_LOGIN || !process.env.PEK_API_KEY)) {
       console.warn('⚠️ Не настроены переменные окружения PEK_LOGIN и PEK_API_KEY');
       console.warn('⚠️ Перейдите на /env-check для настройки');
       
@@ -21,7 +22,12 @@ export async function POST(request: NextRequest) {
         error: 'Не настроены данные ПЭК',
         details: 'Необходимо настроить PEK_LOGIN и PEK_API_KEY в переменных окружения',
         suggestion: 'Перейдите на /env-check для настройки',
-        requiredVars: ['PEK_LOGIN', 'PEK_API_KEY']
+        requiredVars: ['PEK_LOGIN', 'PEK_API_KEY'],
+        currentEnv: {
+          hasLogin: !!process.env.PEK_LOGIN,
+          hasKey: !!process.env.PEK_API_KEY,
+          loginPreview: process.env.PEK_LOGIN ? process.env.PEK_LOGIN.substring(0, 3) + '***' : 'отсутствует'
+        }
       }, { status: 500 });
     }
     
