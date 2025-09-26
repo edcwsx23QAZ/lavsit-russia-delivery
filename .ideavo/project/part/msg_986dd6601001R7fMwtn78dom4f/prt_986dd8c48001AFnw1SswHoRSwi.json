@@ -1,0 +1,26 @@
+{
+  "id": "prt_986dd8c48001AFnw1SswHoRSwi",
+  "messageID": "msg_986dd6601001R7fMwtn78dom4f",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01QbRDU4zBrR8V3bih9WqbZo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "content": "import { NextRequest, NextResponse } from 'next/server';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const { method, address, coordinates } = await request.json();\n    \n    const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';\n    const BASE_URL = 'https://api.pecom.ru/v1';\n    \n    let url = '';\n    let body = {};\n    \n    switch (method) {\n      case 'findzonebyaddress':\n        url = `${BASE_URL}/branches/findzonebyaddress/`;\n        body = {\n          address: address\n        };\n        break;\n        \n      case 'findzonebycoordinates':\n        url = `${BASE_URL}/branches/findzonebycoordinates/`;\n        body = {\n          longitude: coordinates.longitude,\n          latitude: coordinates.latitude\n        };\n        break;\n        \n      case 'calculateprice':\n        url = `${BASE_URL}/calculator/calculateprice/`;\n        body = request.body;\n        break;\n        \n      default:\n        return NextResponse.json({ error: 'Неизвестный метод' }, { status: 400 });\n    }\n    \n    const response = await fetch(url, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'Authorization': `Bearer ${PEK_TOKEN}`,\n      },\n      body: JSON.stringify(body)\n    });\n    \n    if (!response.ok) {\n      const errorText = await response.text();\n      console.error('ПЭК API ошибка:', response.status, errorText);\n      return NextResponse.json({ \n        error: `ПЭК API ошибка: ${response.status}`,\n        details: errorText\n      }, { status: response.status });\n    }\n    \n    const data = await response.json();\n    return NextResponse.json(data);\n    \n  } catch (error) {\n    console.error('Ошибка прокси ПЭК API:', error);\n    return NextResponse.json({ \n      error: 'Ошибка сервера при обращении к ПЭК API',\n      details: error instanceof Error ? error.message : 'Неизвестная ошибка'\n    }, { status: 500 });\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/api/pek/route.ts",
+      "exists": false
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758904296106,
+      "end": 1758904296109
+    }
+  }
+}

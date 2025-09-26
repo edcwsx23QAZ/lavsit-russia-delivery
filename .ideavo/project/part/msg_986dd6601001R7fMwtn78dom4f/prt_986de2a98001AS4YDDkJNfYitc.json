@@ -1,0 +1,25 @@
+{
+  "id": "prt_986de2a98001AS4YDDkJNfYitc",
+  "messageID": "msg_986dd6601001R7fMwtn78dom4f",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01AMcnJyK4t9dZCJHRXbBnJA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 830,
+      "limit": 20
+    },
+    "output": "<file>\n00831|         apiUrl\n00832|       };\n00833|     }\n00834|   };\n00835| \n00836|   // Получение тарифной зоны и склада ПЭК по адресу через API\n00837|   const getPekZoneByAddress = async (address: string) => {\n00838|     try {\n00839|       console.log(`🔍 ПЭК: поиск зоны по адресу \"${address}\"`);\n00840|       \n00841|       // Пробуем разные варианты API и авторизации\n00842|       const apiVariants = [\n00843|         {\n00844|           url: 'https://api.pecom.ru/v1/branches/findzonebyaddress/',\n00845|           headers: {\n00846|             'Content-Type': 'application/json',\n00847|             'Authorization': `Bearer 624FC93CA677B23673BB476D4982294DC27E246F`\n00848|           }\n00849|         },\n00850|         {\n\n(File has more lines. Use 'offset' parameter to read beyond line 850)\n</file>",
+    "metadata": {
+      "preview": "        apiUrl\n      };\n    }\n  };\n\n  // Получение тарифной зоны и склада ПЭК по адресу через API\n  const getPekZoneByAddress = async (address: string) => {\n    try {\n      console.log(`🔍 ПЭК: поиск зоны по адресу \"${address}\"`);\n      \n      // Пробуем разные варианты API и авторизации\n      const apiVariants = [\n        {\n          url: 'https://api.pecom.ru/v1/branches/findzonebyaddress/',\n          headers: {\n            'Content-Type': 'application/json',\n            'Authorization': `Bearer 624FC93CA677B23673BB476D4982294DC27E246F`\n          }\n        },\n        {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758904331493,
+      "end": 1758904331495
+    }
+  }
+}

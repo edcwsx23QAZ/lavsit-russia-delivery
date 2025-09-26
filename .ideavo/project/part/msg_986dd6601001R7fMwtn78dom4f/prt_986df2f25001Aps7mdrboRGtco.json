@@ -1,0 +1,25 @@
+{
+  "id": "prt_986df2f25001Aps7mdrboRGtco",
+  "messageID": "msg_986dd6601001R7fMwtn78dom4f",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01RLop8whLXNpASQeLkG2TaH",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 988,
+      "limit": 50
+    },
+    "output": "<file>\n00989|       }\n00990| \n00991|       const data = await response.json();\n00992|       console.log(`✅ ПЭК отделения найдены:`, data);\n00993|       \n00994|       // Возвращаем первое бесплатное отделение с наивысшим приоритетом\n00995|       if (data.freeDepartments && data.freeDepartments.length > 0) {\n00996|         const bestDepartment = data.freeDepartments.sort((a: any, b: any) => b.priority - a.priority)[0];\n00997|         console.log(`✅ ПЭК: выбрано отделение`, bestDepartment.divisionName);\n00998|         return {\n00999|           warehouseId: bestDepartment.warehouseId,\n01000|           branchId: bestDepartment.branchId,\n01001|           branchName: bestDepartment.branchName,\n01002|           divisionName: bestDepartment.divisionName,\n01003|           address: bestDepartment.address,\n01004|           coordinates: bestDepartment.coordinates,\n01005|           phone: bestDepartment.phone,\n01006|           email: bestDepartment.email\n01007|         };\n01008|       }\n01009|       \n01010|       console.warn(`❌ ПЭК: отделения не найдены для \"${address}\"`);\n01011|       return null;\n01012|     } catch (error) {\n01013|       console.error('❌ ПЭК: ошибка поиска отделений:', error);\n01014|       return null;\n01015|     }\n01016|   };\n01017| \n01018|   // Получение координат через Яндекс.Карты (резервный метод для ПЭК)\n01019|   const getYandexCoordinates = async (address: string): Promise<{ latitude: string, longitude: string } | null> => {\n01020|     try {\n01021|       const encodedAddress = encodeURIComponent(address);\n01022|       const response = await fetch(`https://geocode-maps.yandex.ru/1.x/?apikey=YOUR_API_KEY&geocode=${encodedAddress}&format=json`);\n01023|       \n01024|       if (!response.ok) return null;\n01025|       \n01026|       const data = await response.json();\n01027|       const coords = data?.response?.GeoObjectCollection?.featureMember?.[0]?.GeoObject?.Point?.pos?.split(' ');\n01028|       \n01029|       if (coords && coords.length === 2) {\n01030|         return {\n01031|           longitude: coords[0],\n01032|           latitude: coords[1]\n01033|         };\n01034|       }\n01035|       \n01036|       return null;\n01037|     } catch (error) {\n01038|       console.error('Ошибка получения координат Яндекс:', error);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1038)\n</file>",
+    "metadata": {
+      "preview": "      }\n\n      const data = await response.json();\n      console.log(`✅ ПЭК отделения найдены:`, data);\n      \n      // Возвращаем первое бесплатное отделение с наивысшим приоритетом\n      if (data.freeDepartments && data.freeDepartments.length > 0) {\n        const bestDepartment = data.freeDepartments.sort((a: any, b: any) => b.priority - a.priority)[0];\n        console.log(`✅ ПЭК: выбрано отделение`, bestDepartment.divisionName);\n        return {\n          warehouseId: bestDepartment.warehouseId,\n          branchId: bestDepartment.branchId,\n          branchName: bestDepartment.branchName,\n          divisionName: bestDepartment.divisionName,\n          address: bestDepartment.address,\n          coordinates: bestDepartment.coordinates,\n          phone: bestDepartment.phone,\n          email: bestDepartment.email\n        };\n      }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758904398332,
+      "end": 1758904398335
+    }
+  }
+}

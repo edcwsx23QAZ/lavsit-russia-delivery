@@ -1,0 +1,34 @@
+{
+  "id": "prt_986deeef2001pu6nNEu2hs0I16",
+  "messageID": "msg_986dd6601001R7fMwtn78dom4f",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01PVxFhA8VearPjDTBQrwx6i",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "      case 'calculateprice':\n        url = `${BASE_URL}/calculator/calculateprice/`;\n        body = request.body;\n        break;",
+          "newString": "      case 'calculateprice':\n        url = `${BASE_URL}/calculator/calculateprice/`;\n        const { method: methodName, ...calculationData } = await request.json();\n        body = calculationData;\n        break;"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -27,9 +27,10 @@\n   break;\n   \n case 'calculateprice':\n   url = `${BASE_URL}/calculator/calculateprice/`;\n-  body = request.body;\n+  const { method: methodName, ...calculationData } = await request.json();\n+  body = calculationData;\n   break;\n   \n default:\n   return NextResponse.json({ error: 'Неизвестный метод' }, { status: 400 });\n"
+        }
+      ]
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758904383313,
+      "end": 1758904383316
+    }
+  }
+}

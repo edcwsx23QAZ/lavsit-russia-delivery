@@ -1,0 +1,25 @@
+{
+  "id": "prt_986deb6140012aJdbRGeYCHN7T",
+  "messageID": "msg_986dd6601001R7fMwtn78dom4f",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PjLSmg4m9YaVPwGdfUZamC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1180,
+      "limit": 30
+    },
+    "output": "<file>\n01181|       console.log('🚀 ПЭК API запрос:', JSON.stringify(requestData, null, 2));\n01182|       console.log('🌐 ПЭК API URL:', apiUrl);\n01183| \n01184|       const response = await fetch(apiUrl, {\n01185|         method: 'POST',\n01186|         headers: {\n01187|           'Content-Type': 'application/json;charset=utf-8',\n01188|           'Accept': 'application/json',\n01189|           'Authorization': `Bearer 624FC93CA677B23673BB476D4982294DC27E246F`\n01190|         },\n01191|         body: JSON.stringify(requestData)\n01192|       });\n01193| \n01194|       console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n01195|       console.log(`📡 ПЭК API URL: ${response.url}`);\n01196|       \n01197|       const responseText = await response.text();\n01198|       console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));\n01199|       \n01200|       let data;\n01201|       try {\n01202|         data = JSON.parse(responseText);\n01203|         console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));\n01204|       } catch (parseError) {\n01205|         console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);\n01206|         throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);\n01207|       }\n01208| \n01209|       if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {\n01210|         const transfer = data.transfers[0]; // берем первый тариф (авто)\n\n(File has more lines. Use 'offset' parameter to read beyond line 1210)\n</file>",
+    "metadata": {
+      "preview": "      console.log('🚀 ПЭК API запрос:', JSON.stringify(requestData, null, 2));\n      console.log('🌐 ПЭК API URL:', apiUrl);\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json;charset=utf-8',\n          'Accept': 'application/json',\n          'Authorization': `Bearer 624FC93CA677B23673BB476D4982294DC27E246F`\n        },\n        body: JSON.stringify(requestData)\n      });\n\n      console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n      console.log(`📡 ПЭК API URL: ${response.url}`);\n      \n      const responseText = await response.text();\n      console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));\n      \n      let data;"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758904367505,
+      "end": 1758904367507
+    }
+  }
+}

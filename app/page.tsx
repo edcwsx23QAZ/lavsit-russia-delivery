@@ -833,86 +833,51 @@ export default function Home() {
     }
   };
 
-  // Получение тарифной зоны и склада ПЭК по адресу через API
+  // Получение тарифной зоны и склада ПЭК по адресу через прокси
   const getPekZoneByAddress = async (address: string) => {
     try {
-      console.log(`🔍 ПЭК: поиск зоны по адресу "${address}"`);
+      console.log(`🔍 ПЭК: поиск зоны для адреса "${address}"`);
       
-      // Пробуем разные варианты API и авторизации
-      const apiVariants = [
-        {
-          url: 'https://api.pecom.ru/v1/branches/findzonebyaddress/',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer 624FC93CA677B23673BB476D4982294DC27E246F`
-          }
+      const response = await fetch('/api/pek', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        {
-          url: 'https://api.pecom.ru/v1/branches/findzonebyaddress',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer 624FC93CA677B23673BB476D4982294DC27E246F`
-          }
-        },
-        {
-          url: 'https://api.pecom.ru/v1/branches/findzonebyaddress/',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Basic ' + btoa('624FC93CA677B23673BB476D4982294DC27E246F:')
-          }
-        }
-      ];
+        body: JSON.stringify({
+          method: 'findzonebyaddress',
+          address: address
+        })
+      });
+
+      console.log(`📡 ПЭК API статус: ${response.status} ${response.statusText}`);
       
-      for (let i = 0; i < apiVariants.length; i++) {
-        const variant = apiVariants[i];
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error(`❌ ПЭК API ошибка:`, errorData);
         
-        try {
-          console.log(`🔄 ПЭК: попытка ${i + 1}/${apiVariants.length} - ${variant.url}`);
-          
-          const response = await fetch(variant.url, {
-            method: 'POST',
-            headers: variant.headers,
-            body: JSON.stringify({
-              address: address
-            })
-          });
+        // Если API недоступен, используем фоллбэк
+        console.log(`🔄 ПЭК: переход к фоллбэк методу для "${address}"`);
+        return getPekZoneFallback(address);
+      }
 
-          console.log(`📡 ПЭК API статус: ${response.status} ${response.statusText}`);
-          console.log(`📡 ПЭК API URL: ${response.url}`);
-          
-          if (!response.ok) {
-            const errorText = await response.text();
-            console.error(`❌ ПЭК API ошибка ${i + 1}: ${response.status} ${response.statusText}`);
-            console.error(`❌ Ответ API:`, errorText.substring(0, 500));
-            continue;
-          }
-
-          const data = await response.json();
-          console.log(`✅ ПЭК зона найдена (попытка ${i + 1}):`, data);
-          
-          if (data.zoneId && data.mainWarehouseId) {
-            return {
-              zoneId: data.zoneId,
-              zoneName: data.zoneName,
-              branchUID: data.branchUID,
-              branchCode: data.branchCode,
-              branchTitle: data.branchTitle,
-              mainWarehouseId: data.mainWarehouseId,
-              warehousePoint: data.warehousePoint,
-              geoData: data.GeoData,
-              precision: data.GeoData?.precision
-            };
-          }
-          
-          console.warn(`⚠️ ПЭК: некорректный ответ (попытка ${i + 1}):`, data);
-        } catch (apiError) {
-          console.error(`❌ ПЭК: ошибка запроса ${i + 1}:`, apiError);
-          continue;
-        }
+      const data = await response.json();
+      console.log(`✅ ПЭК зона найдена:`, data);
+      
+      if (data.zoneId && data.mainWarehouseId) {
+        return {
+          zoneId: data.zoneId,
+          zoneName: data.zoneName,
+          branchUID: data.branchUID,
+          branchCode: data.branchCode,
+          branchTitle: data.branchTitle,
+          mainWarehouseId: data.mainWarehouseId,
+          warehousePoint: data.warehousePoint,
+          geoData: data.GeoData,
+          precision: data.GeoData?.precision
+        };
       }
       
-      // Если все попытки API провалились, используем фоллбэк
-      console.log(`🔄 ПЭК: переход к фоллбэк методу для "${address}"`);
+      console.warn(`⚠️ ПЭК: некорректный ответ:`, data);
       return getPekZoneFallback(address);
       
     } catch (error) {
@@ -1005,13 +970,15 @@ export default function Home() {
         console.log(`📍 ПЭК: поиск по адресу "${address}"`);
       }
       
-      const response = await fetch('https://api.pecom.ru/v1/branches/nearestdepartments/', {
+      const response = await fetch('/api/pek', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer 624FC93CA677B23673BB476D4982294DC27E246F`
         },
-        body: JSON.stringify(requestBody)
+        body: JSON.stringify({
+          method: 'nearestdepartments',
+          ...requestBody
+        })
       });
 
       console.log(`📡 ПЭК отделения API статус: ${response.status}`);
@@ -1216,14 +1183,15 @@ export default function Home() {
       console.log('🚀 ПЭК API запрос:', JSON.stringify(requestData, null, 2));
       console.log('🌐 ПЭК API URL:', apiUrl);
 
-      const response = await fetch(apiUrl, {
+      const response = await fetch('/api/pek', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-          'Accept': 'application/json',
-          'Authorization': `Bearer 624FC93CA677B23673BB476D4982294DC27E246F`
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(requestData)
+        body: JSON.stringify({
+          method: 'calculateprice',
+          ...requestData
+        })
       });
 
       console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);
