@@ -1,0 +1,19 @@
+{
+  "id": "prt_9855000c5002R38UE8c0G0eKYc",
+  "messageID": "msg_9854f7389001Pa0KXl3BYcTGJK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01PXkPkdBz27nh61YqzZDmVh",
+  "state": {
+    "status": "error",
+    "input": {
+      "pattern": "handling.*{"
+    },
+    "error": "Error: ripgrep failed: regex parse error:\n    handling.*{\n              ^\nerror: unclosed counted repetition\n",
+    "time": {
+      "start": 1758878237018,
+      "end": 1758878237023
+    }
+  }
+}

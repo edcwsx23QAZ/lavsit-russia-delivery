@@ -1,0 +1,25 @@
+{
+  "id": "prt_9854f9532001X6FktKlllvvlg2",
+  "messageID": "msg_9854f7389001Pa0KXl3BYcTGJK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01KA67zdJsq6fpyUQAiEBp6P",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 80,
+      "limit": 50
+    },
+    "output": "<file>\n00081|     needCarry: false,\n00082|     floor: 1,\n00083|     hasFreightLift: false,\n00084|     needInsurance: false,\n00085|     fromTerminal: true,\n00086|     toTerminal: true,\n00087|     fromAddressDelivery: false,\n00088|     toAddressDelivery: false\n00089|   });\n00090| \n00091|   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n00092|   const [showSuggestions, setShowSuggestions] = useState(false);\n00093|   const [activeField, setActiveField] = useState('');\n00094|   const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n00095|   const [calculating, setCalculating] = useState(false);\n00096|   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n00097|   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n00098|   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n00099| \n00100|   // Загрузка сохраненных данных\n00101|   useEffect(() => {\n00102|     const saved = localStorage.getItem('deliveryForm');\n00103|     if (saved) {\n00104|       setForm(JSON.parse(saved));\n00105|     }\n00106|   }, []);\n00107| \n00108|   // Сохранение данных при изменении\n00109|   useEffect(() => {\n00110|     localStorage.setItem('deliveryForm', JSON.stringify(form));\n00111|   }, [form]);\n00112| \n00113|   // Автоматическая страховка при указании стоимости\n00114|   useEffect(() => {\n00115|     if (form.declaredValue > 0) {\n00116|       setForm(prev => ({ ...prev, needInsurance: true }));\n00117|     }\n00118|   }, [form.declaredValue]);\n00119| \n00120|   const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n00121|     if (query.length < 3) {\n00122|       setSuggestions([]);\n00123|       setShowSuggestions(false);\n00124|       return;\n00125|     }\n00126| \n00127|     setActiveField(field);\n00128|     \n00129|     // Установка позиции автоподсказок\n00130|     if (element) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 130)\n</file>",
+    "metadata": {
+      "preview": "    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false\n  });\n\n  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n  const [showSuggestions, setShowSuggestions] = useState(false);\n  const [activeField, setActiveField] = useState('');\n  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  const [calculating, setCalculating] = useState(false);\n  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n\n  // Загрузка сохраненных данных"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758878209899,
+      "end": 1758878209904
+    }
+  }
+}

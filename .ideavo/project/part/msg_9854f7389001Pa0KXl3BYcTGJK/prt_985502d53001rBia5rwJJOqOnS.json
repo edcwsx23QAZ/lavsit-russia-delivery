@@ -1,0 +1,21 @@
+{
+  "id": "prt_985502d53001rBia5rwJJOqOnS",
+  "messageID": "msg_9854f7389001Pa0KXl3BYcTGJK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01AE4zQFdSqrYMYpX9gXUeys",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "            },\n            handling: {\n              freightLift: true,\n              toFloor: 5,\n              carry: 0\n            }",
+      "newString": "            }\n            // handling в derival всегда пропускается"
+    },
+    "error": "Error: oldString found multiple times and requires more code context to uniquely identify the intended match",
+    "time": {
+      "start": 1758878249450,
+      "end": 1758878249490
+    }
+  }
+}

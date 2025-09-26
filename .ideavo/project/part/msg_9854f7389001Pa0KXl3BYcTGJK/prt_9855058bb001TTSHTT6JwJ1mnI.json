@@ -1,0 +1,25 @@
+{
+  "id": "prt_9855058bb001TTSHTT6JwJ1mnI",
+  "messageID": "msg_9854f7389001Pa0KXl3BYcTGJK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01VL9outXre5zhiBJ1TVfivw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 395,
+      "limit": 25
+    },
+    "output": "<file>\n00396|             produceDate: produceDate,  // Обязательная дата отправления\n00397|             variant: form.fromAddressDelivery ? 'address' : 'terminal',\n00398|             ...(form.fromAddressDelivery ? {\n00399|               address: {\n00400|                 search: form.fromAddress || form.fromCity\n00401|               }\n00402|             } : {\n00403|               terminalID: fromTerminalId\n00404|             }),\n00405|             time: {\n00406|               worktimeStart: '10:00',\n00407|               worktimeEnd: '18:00',\n00408|               breakStart: '13:00',\n00409|               breakEnd: '14:00',\n00410|               exactTime: false\n00411|             },\n00412|             handling: {\n00413|               freightLift: true,\n00414|               toFloor: 5,\n00415|               carry: 0\n00416|             }\n00417|           },\n00418|           arrival: {\n00419|             variant: form.toAddressDelivery ? 'address' : 'terminal',\n00420|             ...(form.toAddressDelivery ? {\n\n(File has more lines. Use 'offset' parameter to read beyond line 420)\n</file>",
+    "metadata": {
+      "preview": "            produceDate: produceDate,  // Обязательная дата отправления\n            variant: form.fromAddressDelivery ? 'address' : 'terminal',\n            ...(form.fromAddressDelivery ? {\n              address: {\n                search: form.fromAddress || form.fromCity\n              }\n            } : {\n              terminalID: fromTerminalId\n            }),\n            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            },\n            handling: {\n              freightLift: true,\n              toFloor: 5,\n              carry: 0"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758878260100,
+      "end": 1758878260102
+    }
+  }
+}

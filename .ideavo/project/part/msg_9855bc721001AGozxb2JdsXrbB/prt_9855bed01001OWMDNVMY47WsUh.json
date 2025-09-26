@@ -1,0 +1,25 @@
+{
+  "id": "prt_9855bed01001OWMDNVMY47WsUh",
+  "messageID": "msg_9855bc721001AGozxb2JdsXrbB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_013bta5Y5fStrviCDsJRAvzA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 145,
+      "limit": 15
+    },
+    "output": "<file>\n00146|         headers: {\n00147|           'Content-Type': 'application/json',\n00148|           'Accept': 'application/json',\n00149|           'Authorization': 'Token eb87bbb3789bb43ed465f796892ea951f9e91008'\n00150|         },\n00151|         body: JSON.stringify({\n00152|           query: query,\n00153|           count: 10\n00154|         })\n00155|       });\n00156| \n00157|       if (response.ok) {\n00158|         const data = await response.json();\n00159|         setSuggestions(data.suggestions || []);\n00160|         setShowSuggestions(true);\n\n(File has more lines. Use 'offset' parameter to read beyond line 160)\n</file>",
+    "metadata": {
+      "preview": "        headers: {\n          'Content-Type': 'application/json',\n          'Accept': 'application/json',\n          'Authorization': 'Token eb87bbb3789bb43ed465f796892ea951f9e91008'\n        },\n        body: JSON.stringify({\n          query: query,\n          count: 10\n        })\n      });\n\n      if (response.ok) {\n        const data = await response.json();\n        setSuggestions(data.suggestions || []);\n        setShowSuggestions(true);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758879018884,
+      "end": 1758879018886
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_985516846001jkK8Kca0TpIDNK",
+  "messageID": "msg_9854f7389001Pa0KXl3BYcTGJK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Xyp8cRKZYtBnCBZrRnB3zA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  // Загрузка сохраненных данных\n  useEffect(() => {\n    const saved = localStorage.getItem('deliveryForm');\n    if (saved) {\n      setForm(JSON.parse(saved));\n    }\n  }, []);",
+      "newString": "  // Загрузка сохраненных данных\n  useEffect(() => {\n    const saved = localStorage.getItem('deliveryForm');\n    if (saved) {\n      const savedForm = JSON.parse(saved);\n      // Убеждаемся, что есть хотя бы один груз\n      if (!savedForm.cargos || savedForm.cargos.length === 0) {\n        savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n      }\n      setForm(savedForm);\n    }\n  }, []);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -100,9 +100,14 @@\n // Загрузка сохраненных данных\n useEffect(() => {\n   const saved = localStorage.getItem('deliveryForm');\n   if (saved) {\n-    setForm(JSON.parse(saved));\n+    const savedForm = JSON.parse(saved);\n+    // Убеждаемся, что есть хотя бы один груз\n+    if (!savedForm.cargos || savedForm.cargos.length === 0) {\n+      savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n+    }\n+    setForm(savedForm);\n   }\n }, []);\n \n // Сохранение данных при изменении\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758878331494,
+      "end": 1758878331502
+    }
+  }
+}

@@ -101,7 +101,12 @@ export default function Home() {
   useEffect(() => {
     const saved = localStorage.getItem('deliveryForm');
     if (saved) {
-      setForm(JSON.parse(saved));
+      const savedForm = JSON.parse(saved);
+      // Убеждаемся, что есть хотя бы один груз
+      if (!savedForm.cargos || savedForm.cargos.length === 0) {
+        savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];
+      }
+      setForm(savedForm);
     }
   }, []);
 
@@ -145,7 +150,16 @@ export default function Home() {
         },
         body: JSON.stringify({
           query: query,
-          count: 10
+          count: 10,
+          // Ограничение для полей городов - только города
+          ...(field === 'fromCity' || field === 'toCity' ? {
+            restrict_value: true,
+            locations: [{
+              country: 'Россия'
+            }],
+            from_bound: { value: 'city' },
+            to_bound: { value: 'city' }
+          } : {})
         })
       });
 
@@ -399,12 +413,8 @@ export default function Home() {
               breakStart: '13:00',
               breakEnd: '14:00',
               exactTime: false
-            },
-            handling: {
-              freightLift: true,
-              toFloor: 5,
-              carry: 0
             }
+            // handling в derival всегда пропускается согласно инструкции
           },
           arrival: {
             variant: form.toAddressDelivery ? 'address' : 'terminal',
@@ -422,11 +432,14 @@ export default function Home() {
               breakEnd: '14:00',
               exactTime: false
             },
-            handling: {
-              freightLift: true,
-              toFloor: 5,
-              carry: 0
-            }
+            // handling в arrival заполняется только если требуется подъем
+            ...(form.needCarry ? {
+              handling: {
+                freightLift: form.hasFreightLift, // true только если есть галочка "наличие грузового лифта"
+                toFloor: form.floor, // этаж из формы
+                carry: 0
+              }
+            } : {})
           },
           ...(form.needPackaging && packageUid ? {
             packages: [{

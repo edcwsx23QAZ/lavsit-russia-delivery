@@ -1,0 +1,21 @@
+{
+  "id": "prt_9855c3e9c001D2uTnexxNTlDuP",
+  "messageID": "msg_9855bc721001AGozxb2JdsXrbB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01UDjaNfMT7e2n1aZYjkUMnz",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            },\n            handling: {\n              freightLift: true,\n              toFloor: 5,\n              carry: 0\n            }\n          },",
+      "newString": "            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            }\n            // handling в derival всегда пропускается согласно инструкции\n          },"
+    },
+    "error": "Error: oldString found multiple times and requires more code context to uniquely identify the intended match",
+    "time": {
+      "start": 1758879041573,
+      "end": 1758879041632
+    }
+  }
+}

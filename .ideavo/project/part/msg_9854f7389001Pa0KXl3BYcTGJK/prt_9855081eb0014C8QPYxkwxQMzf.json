@@ -1,0 +1,25 @@
+{
+  "id": "prt_9855081eb0014C8QPYxkwxQMzf",
+  "messageID": "msg_9854f7389001Pa0KXl3BYcTGJK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01W9Pf86mVohAKZxJyEVFWYR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 425,
+      "limit": 20
+    },
+    "output": "<file>\n00426|               breakStart: '13:00',\n00427|               breakEnd: '14:00',\n00428|               exactTime: false\n00429|             },\n00430|             handling: {\n00431|               freightLift: true,\n00432|               toFloor: 5,\n00433|               carry: 0\n00434|             }\n00435|           },\n00436|           ...(form.needPackaging && packageUid ? {\n00437|             packages: [{\n00438|               uid: packageUid,  // Динамический uid упаковки из API\n00439|               count: 1\n00440|             }]\n00441|           } : {})\n00442|         },\n00443|         cargo: {\n00444|           quantity: form.cargos.length,\n00445|           length: maxLength,\n\n(File has more lines. Use 'offset' parameter to read beyond line 445)\n</file>",
+    "metadata": {
+      "preview": "              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            },\n            handling: {\n              freightLift: true,\n              toFloor: 5,\n              carry: 0\n            }\n          },\n          ...(form.needPackaging && packageUid ? {\n            packages: [{\n              uid: packageUid,  // Динамический uid упаковки из API\n              count: 1\n            }]\n          } : {})\n        },\n        cargo: {\n          quantity: form.cargos.length,\n          length: maxLength,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758878270464,
+      "end": 1758878270466
+    }
+  }
+}

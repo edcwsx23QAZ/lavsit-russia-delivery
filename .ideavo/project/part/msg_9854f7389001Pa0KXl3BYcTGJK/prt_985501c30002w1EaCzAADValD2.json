@@ -1,0 +1,25 @@
+{
+  "id": "prt_985501c30002w1EaCzAADValD2",
+  "messageID": "msg_9854f7389001Pa0KXl3BYcTGJK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01JgzfpRS4kCqYHsLhxJX6w6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 405,
+      "limit": 40
+    },
+    "output": "<file>\n00406|               worktimeStart: '10:00',\n00407|               worktimeEnd: '18:00',\n00408|               breakStart: '13:00',\n00409|               breakEnd: '14:00',\n00410|               exactTime: false\n00411|             },\n00412|             handling: {\n00413|               freightLift: true,\n00414|               toFloor: 5,\n00415|               carry: 0\n00416|             }\n00417|           },\n00418|           arrival: {\n00419|             variant: form.toAddressDelivery ? 'address' : 'terminal',\n00420|             ...(form.toAddressDelivery ? {\n00421|               address: {\n00422|                 search: form.toAddress || form.toCity\n00423|               }\n00424|             } : {\n00425|               terminalID: toTerminalId\n00426|             }),\n00427|             time: {\n00428|               worktimeStart: '10:00',\n00429|               worktimeEnd: '18:00',\n00430|               breakStart: '13:00',\n00431|               breakEnd: '14:00',\n00432|               exactTime: false\n00433|             },\n00434|             handling: {\n00435|               freightLift: true,\n00436|               toFloor: 5,\n00437|               carry: 0\n00438|             }\n00439|           },\n00440|           ...(form.needPackaging && packageUid ? {\n00441|             packages: [{\n00442|               uid: packageUid,  // Динамический uid упаковки из API\n00443|               count: 1\n00444|             }]\n00445|           } : {})\n\n(File has more lines. Use 'offset' parameter to read beyond line 445)\n</file>",
+    "metadata": {
+      "preview": "              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            },\n            handling: {\n              freightLift: true,\n              toFloor: 5,\n              carry: 0\n            }\n          },\n          arrival: {\n            variant: form.toAddressDelivery ? 'address' : 'terminal',\n            ...(form.toAddressDelivery ? {\n              address: {\n                search: form.toAddress || form.toCity\n              }\n            } : {\n              terminalID: toTerminalId"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758878244427,
+      "end": 1758878244429
+    }
+  }
+}

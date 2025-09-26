@@ -1,0 +1,25 @@
+{
+  "id": "prt_9855c2782001prl7xYmV6FqiDx",
+  "messageID": "msg_9855bc721001AGozxb2JdsXrbB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Ekchbcd56VJ6CXK7grhiuC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 405,
+      "limit": 50
+    },
+    "output": "<file>\n00406|               }\n00407|             } : {\n00408|               terminalID: fromTerminalId\n00409|             }),\n00410|             time: {\n00411|               worktimeStart: '10:00',\n00412|               worktimeEnd: '18:00',\n00413|               breakStart: '13:00',\n00414|               breakEnd: '14:00',\n00415|               exactTime: false\n00416|             },\n00417|             handling: {\n00418|               freightLift: true,\n00419|               toFloor: 5,\n00420|               carry: 0\n00421|             }\n00422|           },\n00423|           arrival: {\n00424|             variant: form.toAddressDelivery ? 'address' : 'terminal',\n00425|             ...(form.toAddressDelivery ? {\n00426|               address: {\n00427|                 search: form.toAddress || form.toCity\n00428|               }\n00429|             } : {\n00430|               terminalID: toTerminalId\n00431|             }),\n00432|             time: {\n00433|               worktimeStart: '10:00',\n00434|               worktimeEnd: '18:00',\n00435|               breakStart: '13:00',\n00436|               breakEnd: '14:00',\n00437|               exactTime: false\n00438|             },\n00439|             handling: {\n00440|               freightLift: true,\n00441|               toFloor: 5,\n00442|               carry: 0\n00443|             }\n00444|           },\n00445|           ...(form.needPackaging && packageUid ? {\n00446|             packages: [{\n00447|               uid: packageUid,  // Динамический uid упаковки из API\n00448|               count: 1\n00449|             }]\n00450|           } : {})\n00451|         },\n00452|         cargo: {\n00453|           quantity: form.cargos.length,\n00454|           length: maxLength,\n00455|           width: maxWidth,\n\n(File has more lines. Use 'offset' parameter to read beyond line 455)\n</file>",
+    "metadata": {
+      "preview": "              }\n            } : {\n              terminalID: fromTerminalId\n            }),\n            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            },\n            handling: {\n              freightLift: true,\n              toFloor: 5,\n              carry: 0\n            }\n          },\n          arrival: {\n            variant: form.toAddressDelivery ? 'address' : 'terminal',\n            ...(form.toAddressDelivery ? {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758879034323,
+      "end": 1758879034324
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "prt_98551511f001qa06gNkEEQxLZC",
+  "messageID": "msg_9854f7389001Pa0KXl3BYcTGJK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01VCXSXVJB4bMQDRraNpzqgZ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "cargos:"
+    },
+    "output": "Found 5 matches\n/home/user/project/app/page.tsx:\n  Line 24:   cargos: Cargo[];\n  Line 73:     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n  Line 182:       cargos: [...prev.cargos, { id: newId, length: 0, width: 0, height: 0, weight: 0 }]\n  Line 189:       cargos: prev.cargos.map(cargo => \n  Line 199:         cargos: prev.cargos.filter(cargo => cargo.id !== id)",
+    "metadata": {
+      "matches": 5,
+      "truncated": false
+    },
+    "title": "cargos:",
+    "time": {
+      "start": 1758878323079,
+      "end": 1758878323090
+    }
+  }
+}

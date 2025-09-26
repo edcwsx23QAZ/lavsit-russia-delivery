@@ -1,0 +1,25 @@
+{
+  "id": "prt_985512f5e001GA05N3eqsUhYvQ",
+  "messageID": "msg_9854f7389001Pa0KXl3BYcTGJK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Dk2MBsXci9TiBnTfq79Dub",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 100,
+      "limit": 20
+    },
+    "output": "<file>\n00101|   useEffect(() => {\n00102|     const saved = localStorage.getItem('deliveryForm');\n00103|     if (saved) {\n00104|       setForm(JSON.parse(saved));\n00105|     }\n00106|   }, []);\n00107| \n00108|   // Сохранение данных при изменении\n00109|   useEffect(() => {\n00110|     localStorage.setItem('deliveryForm', JSON.stringify(form));\n00111|   }, [form]);\n00112| \n00113|   // Автоматическая страховка при указании стоимости\n00114|   useEffect(() => {\n00115|     if (form.declaredValue > 0) {\n00116|       setForm(prev => ({ ...prev, needInsurance: true }));\n00117|     }\n00118|   }, [form.declaredValue]);\n00119| \n00120|   const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n\n(File has more lines. Use 'offset' parameter to read beyond line 120)\n</file>",
+    "metadata": {
+      "preview": "  useEffect(() => {\n    const saved = localStorage.getItem('deliveryForm');\n    if (saved) {\n      setForm(JSON.parse(saved));\n    }\n  }, []);\n\n  // Сохранение данных при изменении\n  useEffect(() => {\n    localStorage.setItem('deliveryForm', JSON.stringify(form));\n  }, [form]);\n\n  // Автоматическая страховка при указании стоимости\n  useEffect(() => {\n    if (form.declaredValue > 0) {\n      setForm(prev => ({ ...prev, needInsurance: true }));\n    }\n  }, [form.declaredValue]);\n\n  const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758878314777,
+      "end": 1758878314778
+    }
+  }
+}

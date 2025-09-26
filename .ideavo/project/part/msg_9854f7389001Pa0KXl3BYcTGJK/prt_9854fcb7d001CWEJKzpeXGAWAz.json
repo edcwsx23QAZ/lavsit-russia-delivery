@@ -1,0 +1,26 @@
+{
+  "id": "prt_9854fcb7d001CWEJKzpeXGAWAz",
+  "messageID": "msg_9854f7389001Pa0KXl3BYcTGJK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Aqdj4PGY1Fp9JykftwoQ5Z",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        body: JSON.stringify({\n          query: query,\n          count: 10\n        })",
+      "newString": "        body: JSON.stringify({\n          query: query,\n          count: 10,\n          // Ограничение для полей городов - только города\n          ...(field === 'fromCity' || field === 'toCity' ? {\n            restrict_value: true,\n            locations: [{\n              country: 'Россия'\n            }],\n            from_bound: { value: 'city' },\n            to_bound: { value: 'city' }\n          } : {})\n        })"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -144,9 +144,18 @@\n     'Authorization': 'Token eb87bbb3789bb43ed465f796892ea951f9e91008'\n   },\n   body: JSON.stringify({\n     query: query,\n-    count: 10\n+    count: 10,\n+    // Ограничение для полей городов - только города\n+    ...(field === 'fromCity' || field === 'toCity' ? {\n+      restrict_value: true,\n+      locations: [{\n+        country: 'Россия'\n+      }],\n+      from_bound: { value: 'city' },\n+      to_bound: { value: 'city' }\n+    } : {})\n   })\n });\n \n if (response.ok) {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758878226935,
+      "end": 1758878226952
+    }
+  }
+}

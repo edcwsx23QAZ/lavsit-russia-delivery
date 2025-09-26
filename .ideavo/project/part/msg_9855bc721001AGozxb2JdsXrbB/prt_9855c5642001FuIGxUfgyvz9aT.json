@@ -1,0 +1,26 @@
+{
+  "id": "prt_9855c5642001FuIGxUfgyvz9aT",
+  "messageID": "msg_9855bc721001AGozxb2JdsXrbB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_013Gx9cVCwFtRBTA7RNhp1L6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          derival: {\n            produceDate: produceDate,  // Обязательная дата отправления\n            variant: form.fromAddressDelivery ? 'address' : 'terminal',\n            ...(form.fromAddressDelivery ? {\n              address: {\n                search: form.fromAddress || form.fromCity\n              }\n            } : {\n              terminalID: fromTerminalId\n            }),\n            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            },\n            handling: {\n              freightLift: true,\n              toFloor: 5,\n              carry: 0\n            }\n          },",
+      "newString": "          derival: {\n            produceDate: produceDate,  // Обязательная дата отправления\n            variant: form.fromAddressDelivery ? 'address' : 'terminal',\n            ...(form.fromAddressDelivery ? {\n              address: {\n                search: form.fromAddress || form.fromCity\n              }\n            } : {\n              terminalID: fromTerminalId\n            }),\n            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            }\n            // handling в derival всегда пропускается согласно инструкции\n          },"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -412,14 +412,10 @@\n     worktimeEnd: '18:00',\n     breakStart: '13:00',\n     breakEnd: '14:00',\n     exactTime: false\n-  },\n-  handling: {\n-    freightLift: true,\n-    toFloor: 5,\n-    carry: 0\n   }\n+  // handling в derival всегда пропускается согласно инструкции\n },\n arrival: {\n   variant: form.toAddressDelivery ? 'address' : 'terminal',\n   ...(form.toAddressDelivery ? {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758879049767,
+      "end": 1758879049780
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_985509d79001pQt7EBB75mGUAU",
+  "messageID": "msg_9854f7389001Pa0KXl3BYcTGJK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01LZmLjLw2bu3WSAPc6VYdki",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "            },\n            handling: {\n              freightLift: true,\n              toFloor: 5,\n              carry: 0\n            }\n          },",
+      "newString": "            },\n            // handling в arrival заполняется только если требуется подъем\n            ...(form.needCarry ? {\n              handling: {\n                freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n                toFloor: form.floor, // этаж из формы\n                carry: 0\n              }\n            } : {})\n          },"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -426,13 +426,16 @@\n     breakStart: '13:00',\n     breakEnd: '14:00',\n     exactTime: false\n   },\n-  handling: {\n-    freightLift: true,\n-    toFloor: 5,\n-    carry: 0\n-  }\n+  // handling в arrival заполняется только если требуется подъем\n+  ...(form.needCarry ? {\n+    handling: {\n+      freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n+      toFloor: form.floor, // этаж из формы\n+      carry: 0\n+    }\n+  } : {})\n },\n ...(form.needPackaging && packageUid ? {\n   packages: [{\n     uid: packageUid,  // Динамический uid упаковки из API\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758878282297,
+      "end": 1758878282306
+    }
+  }
+}

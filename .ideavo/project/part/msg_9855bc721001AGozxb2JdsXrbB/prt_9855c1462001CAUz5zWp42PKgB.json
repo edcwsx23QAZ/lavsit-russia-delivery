@@ -1,0 +1,25 @@
+{
+  "id": "prt_9855c1462001CAUz5zWp42PKgB",
+  "messageID": "msg_9855bc721001AGozxb2JdsXrbB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_013Fy3ZbSpY14SbFUt6uoHKn",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 410,
+      "limit": 30
+    },
+    "output": "<file>\n00411|               worktimeStart: '10:00',\n00412|               worktimeEnd: '18:00',\n00413|               breakStart: '13:00',\n00414|               breakEnd: '14:00',\n00415|               exactTime: false\n00416|             },\n00417|             handling: {\n00418|               freightLift: true,\n00419|               toFloor: 5,\n00420|               carry: 0\n00421|             }\n00422|           },\n00423|           arrival: {\n00424|             variant: form.toAddressDelivery ? 'address' : 'terminal',\n00425|             ...(form.toAddressDelivery ? {\n00426|               address: {\n00427|                 search: form.toAddress || form.toCity\n00428|               }\n00429|             } : {\n00430|               terminalID: toTerminalId\n00431|             }),\n00432|             time: {\n00433|               worktimeStart: '10:00',\n00434|               worktimeEnd: '18:00',\n00435|               breakStart: '13:00',\n00436|               breakEnd: '14:00',\n00437|               exactTime: false\n00438|             },\n00439|             handling: {\n00440|               freightLift: true,\n\n(File has more lines. Use 'offset' parameter to read beyond line 440)\n</file>",
+    "metadata": {
+      "preview": "              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            },\n            handling: {\n              freightLift: true,\n              toFloor: 5,\n              carry: 0\n            }\n          },\n          arrival: {\n            variant: form.toAddressDelivery ? 'address' : 'terminal',\n            ...(form.toAddressDelivery ? {\n              address: {\n                search: form.toAddress || form.toCity\n              }\n            } : {\n              terminalID: toTerminalId"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758879028808,
+      "end": 1758879028813
+    }
+  }
+}
