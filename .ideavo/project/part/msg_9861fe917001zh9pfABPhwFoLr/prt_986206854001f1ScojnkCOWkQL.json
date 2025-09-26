@@ -1,0 +1,21 @@
+{
+  "id": "prt_986206854001f1ScojnkCOWkQL",
+  "messageID": "msg_9861fe917001zh9pfABPhwFoLr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01L9GheTtN3EanF8HsFxrFW7",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          ...(form.needPackaging && packageUid ? {\n            packages: [{\n              uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n              count: 1  // По умолчанию 1\n            }]\n          } : {})",
+      "newString": "          ...(form.needPackaging && packageUid ? {\n            packages: [{\n              uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n              count: 1  // По умолчанию 1\n            }]\n          } : {})"
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1758891896666,
+      "end": 1758891896666
+    }
+  }
+}

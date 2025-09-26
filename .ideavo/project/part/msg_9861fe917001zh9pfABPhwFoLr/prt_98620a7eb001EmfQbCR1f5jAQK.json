@@ -1,0 +1,26 @@
+{
+  "id": "prt_98620a7eb001EmfQbCR1f5jAQK",
+  "messageID": "msg_9861fe917001zh9pfABPhwFoLr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01AKTM5oLL9FkpRaS5ukFCww",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      console.log('📦 СПРАВОЧНИК УПАКОВОК response.ok:', response.ok);\n      console.log('📦 СПРАВОЧНИК УПАКОВОК data:', data);",
+      "newString": "      console.log('📦 СПРАВОЧНИК УПАКОВОК response.ok:', response.ok);\n      console.log('📦 СПРАВОЧНИК УПАКОВОК status:', response.status);\n      console.log('📦 СПРАВОЧНИК УПАКОВОК data:', data);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -334,8 +334,9 @@\n });\n \n const data = await response.json();\n console.log('📦 СПРАВОЧНИК УПАКОВОК response.ok:', response.ok);\n+console.log('📦 СПРАВОЧНИК УПАКОВОК status:', response.status);\n console.log('📦 СПРАВОЧНИК УПАКОВОК data:', data);\n \n if (response.ok && data.data && Array.isArray(data.data)) {\n   console.log('📦 Количество упаковок в справочнике:', data.data.length);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758891912606,
+      "end": 1758891912620
+    }
+  }
+}

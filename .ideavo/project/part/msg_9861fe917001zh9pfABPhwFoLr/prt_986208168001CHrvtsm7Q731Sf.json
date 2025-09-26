@@ -1,0 +1,26 @@
+{
+  "id": "prt_986208168001CHrvtsm7Q731Sf",
+  "messageID": "msg_9861fe917001zh9pfABPhwFoLr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01ELEBFUdwkewsjnYJHc5VNt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      console.log('Деловые Линии запрос:', JSON.stringify(requestData, null, 2));",
+      "newString": "      console.log('🚀 ИТОГОВЫЙ ЗАПРОС К ДЛ:', JSON.stringify(requestData, null, 2));\n      \n      // Специальная проверка блока packages\n      if (requestData.delivery.packages) {\n        console.log('✅ PACKAGES НАЙДЕН В ЗАПРОСЕ:', requestData.delivery.packages);\n      } else {\n        console.log('❌ PACKAGES НЕ НАЙДЕН В ЗАПРОСЕ');\n        console.log('   form.needPackaging =', form.needPackaging);\n        console.log('   packageUid =', packageUid);\n        console.log('   Условие:', form.needPackaging && packageUid);\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -504,9 +504,19 @@\n     }\n   }\n };\n \n-console.log('Деловые Линии запрос:', JSON.stringify(requestData, null, 2));\n+console.log('🚀 ИТОГОВЫЙ ЗАПРОС К ДЛ:', JSON.stringify(requestData, null, 2));\n+\n+// Специальная проверка блока packages\n+if (requestData.delivery.packages) {\n+  console.log('✅ PACKAGES НАЙДЕН В ЗАПРОСЕ:', requestData.delivery.packages);\n+} else {\n+  console.log('❌ PACKAGES НЕ НАЙДЕН В ЗАПРОСЕ');\n+  console.log('   form.needPackaging =', form.needPackaging);\n+  console.log('   packageUid =', packageUid);\n+  console.log('   Условие:', form.needPackaging && packageUid);\n+}\n \n const response = await fetch(apiUrl, {\n   method: 'POST',\n   headers: {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758891906723,
+      "end": 1758891906739
+    }
+  }
+}

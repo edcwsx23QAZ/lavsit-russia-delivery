@@ -335,6 +335,7 @@ export default function Home() {
 
       const data = await response.json();
       console.log('📦 СПРАВОЧНИК УПАКОВОК response.ok:', response.ok);
+      console.log('📦 СПРАВОЧНИК УПАКОВОК status:', response.status);
       console.log('📦 СПРАВОЧНИК УПАКОВОК data:', data);
       
       if (response.ok && data.data && Array.isArray(data.data)) {
@@ -505,7 +506,17 @@ export default function Home() {
         }
       };
 
-      console.log('Деловые Линии запрос:', JSON.stringify(requestData, null, 2));
+      console.log('🚀 ИТОГОВЫЙ ЗАПРОС К ДЛ:', JSON.stringify(requestData, null, 2));
+      
+      // Специальная проверка блока packages
+      if (requestData.delivery.packages) {
+        console.log('✅ PACKAGES НАЙДЕН В ЗАПРОСЕ:', requestData.delivery.packages);
+      } else {
+        console.log('❌ PACKAGES НЕ НАЙДЕН В ЗАПРОСЕ');
+        console.log('   form.needPackaging =', form.needPackaging);
+        console.log('   packageUid =', packageUid);
+        console.log('   Условие:', form.needPackaging && packageUid);
+      }
 
       const response = await fetch(apiUrl, {
         method: 'POST',

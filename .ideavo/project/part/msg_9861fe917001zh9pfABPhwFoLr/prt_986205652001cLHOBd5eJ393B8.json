@@ -1,0 +1,25 @@
+{
+  "id": "prt_986205652001cLHOBd5eJ393B8",
+  "messageID": "msg_9861fe917001zh9pfABPhwFoLr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XDJd8e8NkCfyTE171iCeVo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 475,
+      "limit": 8
+    },
+    "output": "<file>\n00476|             packages: [{\n00477|               uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n00478|               count: 1  // По умолчанию 1\n00479|             }]\n00480|           } : {})\n00481|         },\n00482|         cargo: {\n00483|           quantity: form.cargos.length,\n\n(File has more lines. Use 'offset' parameter to read beyond line 483)\n</file>",
+    "metadata": {
+      "preview": "            packages: [{\n              uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n              count: 1  // По умолчанию 1\n            }]\n          } : {})\n        },\n        cargo: {\n          quantity: form.cargos.length,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758891890701,
+      "end": 1758891890705
+    }
+  }
+}

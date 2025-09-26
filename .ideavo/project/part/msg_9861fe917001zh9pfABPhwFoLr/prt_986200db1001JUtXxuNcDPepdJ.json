@@ -1,0 +1,24 @@
+{
+  "id": "prt_986200db1001JUtXxuNcDPepdJ",
+  "messageID": "msg_9861fe917001zh9pfABPhwFoLr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_019vyx1mjQRyR2YEZM6yhtQn",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "getDellinCrateWithBubbleUid"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 324:   const getDellinCrateWithBubbleUid = async (): Promise<string | null> => {\n  Line 406:         packageUid = await getDellinCrateWithBubbleUid();",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "getDellinCrateWithBubbleUid",
+    "time": {
+      "start": 1758891872048,
+      "end": 1758891872060
+    }
+  }
+}

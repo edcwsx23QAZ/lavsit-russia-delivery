@@ -1,0 +1,7 @@
+{
+  "id": "prt_9861fe7d4001jY3apMRt3O6Qbp",
+  "type": "text",
+  "text": "Если стоит чекбокс \"требуется упаковка\" добавь в запрос API Деловых Линий строчку:\n\n\n\n\"packages\":[\n         {\n            \"uid\":\"0xa6a7bd2bf950e67f4b2cf7cc3a97c111\",\n            \"count\":1\n         }\n\ncount по умолчания будет 1\nuid для этой строчки получи следующим методом:\n\nОтправь запрос по адресу: https://api.dellin.ru/v1/references/packages.json\n\nТекст запроса: \n\n{\n   \"appkey\": \"E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B\"\n}\n\nВ ответе найди:\n \"uid\" у которого \"name\" это crate_with_bubble\n\nИспользуй данный uid в запросе packages",
+  "messageID": "msg_9861fe7d3001k7lGJOEWlvENdF",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14"
+}

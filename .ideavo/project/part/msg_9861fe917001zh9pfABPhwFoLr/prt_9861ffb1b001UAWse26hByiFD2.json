@@ -1,0 +1,25 @@
+{
+  "id": "prt_9861ffb1b001UAWse26hByiFD2",
+  "messageID": "msg_9861fe917001zh9pfABPhwFoLr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01RSxu87mcNBFRtJzAVN6hYp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 230,
+      "limit": 20
+    },
+    "output": "<file>\n00231|   const removeCargo = (id: string) => {\n00232|     if (form.cargos.length > 1) {\n00233|       setForm(prev => ({\n00234|         ...prev,\n00235|         cargos: prev.cargos.filter(cargo => cargo.id !== id)\n00236|       }));\n00237|     }\n00238|   };\n00239| \n00240|   // Получение sessionID для Деловых Линий\n00241|   const getDellinSessionId = async (): Promise<string | null> => {\n00242|     try {\n00243|       const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n00244|         method: 'POST',\n00245|         headers: {\n00246|           'Content-Type': 'application/json'\n00247|         },\n00248|         body: JSON.stringify({\n00249|           appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n00250|           login: 'service@lavsit.ru',\n\n(File has more lines. Use 'offset' parameter to read beyond line 250)\n</file>",
+    "metadata": {
+      "preview": "  const removeCargo = (id: string) => {\n    if (form.cargos.length > 1) {\n      setForm(prev => ({\n        ...prev,\n        cargos: prev.cargos.filter(cargo => cargo.id !== id)\n      }));\n    }\n  };\n\n  // Получение sessionID для Деловых Линий\n  const getDellinSessionId = async (): Promise<string | null> => {\n    try {\n      const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json'\n        },\n        body: JSON.stringify({\n          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n          login: 'service@lavsit.ru',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758891867520,
+      "end": 1758891867527
+    }
+  }
+}

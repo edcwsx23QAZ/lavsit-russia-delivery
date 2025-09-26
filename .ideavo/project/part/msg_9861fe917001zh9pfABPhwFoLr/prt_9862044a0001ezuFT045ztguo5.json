@@ -1,0 +1,25 @@
+{
+  "id": "prt_9862044a0001ezuFT045ztguo5",
+  "messageID": "msg_9861fe917001zh9pfABPhwFoLr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01C6HtGYb8tuXqHVK31pvx2y",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 460,
+      "limit": 15
+    },
+    "output": "<file>\n00461|               worktimeEnd: '18:00',\n00462|               breakStart: '13:00',\n00463|               breakEnd: '14:00',\n00464|               exactTime: false\n00465|             },\n00466|             // handling в arrival заполняется только если требуется подъем\n00467|             ...(form.needCarry ? {\n00468|               handling: {\n00469|                 freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n00470|                 toFloor: form.floor, // этаж из формы\n00471|                 carry: 0\n00472|               }\n00473|             } : {})\n00474|           },\n00475|           ...(form.needPackaging && packageUid ? {\n\n(File has more lines. Use 'offset' parameter to read beyond line 475)\n</file>",
+    "metadata": {
+      "preview": "              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            },\n            // handling в arrival заполняется только если требуется подъем\n            ...(form.needCarry ? {\n              handling: {\n                freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n                toFloor: form.floor, // этаж из формы\n                carry: 0\n              }\n            } : {})\n          },\n          ...(form.needPackaging && packageUid ? {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758891886211,
+      "end": 1758891886212
+    }
+  }
+}
