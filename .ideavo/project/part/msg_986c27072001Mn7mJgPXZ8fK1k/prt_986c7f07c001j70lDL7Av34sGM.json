@@ -1,0 +1,25 @@
+{
+  "id": "prt_986c7f07c001j70lDL7Av34sGM",
+  "messageID": "msg_986c27072001Mn7mJgPXZ8fK1k",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01EhrWdJKaz6cnCZdJpFtvPq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1090,
+      "limit": 50
+    },
+    "output": "<file>\n01091|     }\n01092|   };\n01093| \n01094|   // Получение ID склада ПЭК по адресу через API\n01095|   const findPekWarehouseId = async (address: string): Promise<string | null> => {\n01096|     try {\n01097|       // Используем API ПЭК для поиска склада по адресу\n01098|       const response = await fetch('https://api.pecom.ru/v1/branches/findzonebyaddress', {\n01099|         method: 'POST',\n01100|         headers: {\n01101|           'Content-Type': 'application/json',\n01102|           'Authorization': 'Basic ' + btoa('C04C5BF2AE367BDCBDC71E7DA520A69B167D1984:')\n01103|         },\n01104|         body: JSON.stringify({\n01105|           address: address\n01106|         })\n01107|       });\n01108| \n01109|       if (response.ok) {\n01110|         const data = await response.json();\n01111|         return data.mainWarehouseId || null;\n01112|       }\n01113|       \n01114|       // Фоллбэк для основных городов\n01115|       const fallbackWarehouses: { [key: string]: string } = {\n01116|         'москва': 'dc6c746d-812d-11e4-bbfc-001999d8b3c5',\n01117|         'санкт-петербург': 'b436c978-086d-11e6-b6ca-00155d668909',\n01118|         'екатеринбург': '550e8400-e29b-41d4-a716-446655440000'\n01119|       };\n01120|       \n01121|       const normalizedCity = address.toLowerCase().trim()\n01122|         .replace(/ё/g, 'е')\n01123|         .replace(/[\\s\\-\\.]+/g, '');\n01124|       \n01125|       for (const [city, warehouseId] of Object.entries(fallbackWarehouses)) {\n01126|         const normalizedCityKey = city.replace(/[\\s\\-\\.]+/g, '');\n01127|         if (normalizedCity.includes(normalizedCityKey) || normalizedCityKey.includes(normalizedCity)) {\n01128|           return warehouseId;\n01129|         }\n01130|       }\n01131|       \n01132|       return null;\n01133|     } catch (error) {\n01134|       console.error('Ошибка поиска склада ПЭК:', error);\n01135|       return null;\n01136|     }\n01137|   };\n01138| \n01139|   // Расчет для ПЭК через публичный API\n01140|   const calculatePEK = async (): Promise<CalculationResult> => {\n\n(File has more lines. Use 'offset' parameter to read beyond line 1140)\n</file>",
+    "metadata": {
+      "preview": "    }\n  };\n\n  // Получение ID склада ПЭК по адресу через API\n  const findPekWarehouseId = async (address: string): Promise<string | null> => {\n    try {\n      // Используем API ПЭК для поиска склада по адресу\n      const response = await fetch('https://api.pecom.ru/v1/branches/findzonebyaddress', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Authorization': 'Basic ' + btoa('C04C5BF2AE367BDCBDC71E7DA520A69B167D1984:')\n        },\n        body: JSON.stringify({\n          address: address\n        })\n      });\n\n      if (response.ok) {\n        const data = await response.json();"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758902875067,
+      "end": 1758902875069
+    }
+  }
+}

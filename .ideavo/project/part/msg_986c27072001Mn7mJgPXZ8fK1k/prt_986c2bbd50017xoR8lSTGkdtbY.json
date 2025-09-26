@@ -1,0 +1,25 @@
+{
+  "id": "prt_986c2bbd50017xoR8lSTGkdtbY",
+  "messageID": "msg_986c27072001Mn7mJgPXZ8fK1k",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QNjws4RgEe7s8W9EnBjmDo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 980,
+      "limit": 50
+    },
+    "output": "<file>\n00981|   const calculatePEK = async (): Promise<CalculationResult> => {\n00982|     const apiUrl = 'http://calc.pecom.ru/bitrix/components/pecom/calc/ajax.php';\n00983|     \n00984|     try {\n00985|       // Получаем ID городов\n00986|       const fromCityId = await findPekCityId(form.fromCity);\n00987|       const toCityId = await findPekCityId(form.toCity);\n00988|       \n00989|       if (!fromCityId || !toCityId) {\n00990|         return {\n00991|           company: 'ПЭК',\n00992|           price: 0,\n00993|           days: 0,\n00994|           error: `Город не найден в базе ПЭК. Проверьте: ${!fromCityId ? form.fromCity : ''} ${!toCityId ? form.toCity : ''}`.trim(),\n00995|           apiUrl,\n00996|           requestData: { fromCity: form.fromCity, toCity: form.toCity, fromCityId, toCityId },\n00997|           responseData: null\n00998|         };\n00999|       }\n01000| \n01001|       // Формируем параметры запроса согласно публичной документации\n01002|       const params = new URLSearchParams();\n01003|       \n01004|       // Добавляем грузы согласно формату: Ширина (м), Длина (м), Высота (м), Объем (м3), Вес (кг), Негабарит (0/1), ЗТУ (0/1)\n01005|       form.cargos.forEach((cargo, index) => {\n01006|         const width = cargo.width / 100; // переводим см в метры\n01007|         const length = cargo.length / 100;\n01008|         const height = cargo.height / 100;\n01009|         const volume = width * length * height;\n01010|         const weight = cargo.weight;\n01011|         const isOversized = (width > 2.4 || length > 12 || height > 2.7 || weight > 1500) ? 1 : 0;\n01012|         const needZTU = form.needPackaging ? 1 : 0;\n01013|         \n01014|         params.append(`places[${index}][]`, width.toString());\n01015|         params.append(`places[${index}][]`, length.toString());\n01016|         params.append(`places[${index}][]`, height.toString());\n01017|         params.append(`places[${index}][]`, volume.toString());\n01018|         params.append(`places[${index}][]`, weight.toString());\n01019|         params.append(`places[${index}][]`, isOversized.toString());\n01020|         params.append(`places[${index}][]`, needZTU.toString());\n01021|       });\n01022|       \n01023|       // Параметры забора\n01024|       params.append('take[town]', fromCityId.toString());\n01025|       params.append('take[tent]', '0'); // растентровка\n01026|       params.append('take[gidro]', form.needLoading ? '1' : '0'); // гидролифт\n01027|       params.append('take[manip]', '0'); // манипулятор\n01028|       params.append('take[speed]', '0'); // срочный забор\n01029|       params.append('take[moscow]', '0'); // ограничения по Москве\n01030|       \n\n(File has more lines. Use 'offset' parameter to read beyond line 1030)\n</file>",
+    "metadata": {
+      "preview": "  const calculatePEK = async (): Promise<CalculationResult> => {\n    const apiUrl = 'http://calc.pecom.ru/bitrix/components/pecom/calc/ajax.php';\n    \n    try {\n      // Получаем ID городов\n      const fromCityId = await findPekCityId(form.fromCity);\n      const toCityId = await findPekCityId(form.toCity);\n      \n      if (!fromCityId || !toCityId) {\n        return {\n          company: 'ПЭК',\n          price: 0,\n          days: 0,\n          error: `Город не найден в базе ПЭК. Проверьте: ${!fromCityId ? form.fromCity : ''} ${!toCityId ? form.toCity : ''}`.trim(),\n          apiUrl,\n          requestData: { fromCity: form.fromCity, toCity: form.toCity, fromCityId, toCityId },\n          responseData: null\n        };\n      }\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758902533751,
+      "end": 1758902533755
+    }
+  }
+}

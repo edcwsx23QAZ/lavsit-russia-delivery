@@ -1,0 +1,25 @@
+{
+  "id": "prt_986c4f1c9001hh4clZx9WXNQn9",
+  "messageID": "msg_986c27072001Mn7mJgPXZ8fK1k",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01BtFjNZgki3KmSiTvUBZjq8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1170,
+      "limit": 15
+    },
+    "output": "<file>\n01171|             { name: 'Доставка груза', description: `${form.fromCity} - ${form.toCity}`, price: basePrice }\n01172|           ]\n01173|         },\n01174|         requestData: null,\n01175|         responseData: null,\n01176|         apiUrl,\n01177|         error: `Ошибка соединения: ${error.message}. Показан примерный расчет.`\n01178|       };\n01179|     }\n01180|   };\n01181| \n01182|   const calculateRailContinent = async (): Promise<CalculationResult> => {\n01183|     await new Promise(resolve => setTimeout(resolve, 1200));\n01184|     const basePrice = form.cargos.reduce((sum, cargo) => sum + cargo.weight * 12, 0);\n01185|     let totalPrice = basePrice;\n\n(File has more lines. Use 'offset' parameter to read beyond line 1185)\n</file>",
+    "metadata": {
+      "preview": "            { name: 'Доставка груза', description: `${form.fromCity} - ${form.toCity}`, price: basePrice }\n          ]\n        },\n        requestData: null,\n        responseData: null,\n        apiUrl,\n        error: `Ошибка соединения: ${error.message}. Показан примерный расчет.`\n      };\n    }\n  };\n\n  const calculateRailContinent = async (): Promise<CalculationResult> => {\n    await new Promise(resolve => setTimeout(resolve, 1200));\n    const basePrice = form.cargos.reduce((sum, cargo) => sum + cargo.weight * 12, 0);\n    let totalPrice = basePrice;"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758902678535,
+      "end": 1758902678537
+    }
+  }
+}

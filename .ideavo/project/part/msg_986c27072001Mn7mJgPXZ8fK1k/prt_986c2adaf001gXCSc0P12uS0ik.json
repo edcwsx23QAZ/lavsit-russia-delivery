@@ -1,0 +1,24 @@
+{
+  "id": "prt_986c2adaf001gXCSc0P12uS0ik",
+  "messageID": "msg_986c27072001Mn7mJgPXZ8fK1k",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01WcE6ZG6xkdr2Xa4pcjZboJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "ПЭК"
+    },
+    "output": "Found 24 matches\n/home/user/project/app/page.tsx:\n  Line 66:   { name: 'ПЭК', logo: '🚛', connected: true },\n  Line 836:   // Загрузка городов ПЭК с публичного API\n  Line 861:       console.warn('Не удалось загрузить города ПЭК с API, используем локальную базу:', error);\n  Line 900:   // Получение ID города ПЭК\n  Line 910:       console.log(`Поиск города ПЭК: \"${cityName}\" -> \"${normalizedSearchCity}\"`);\n  Line 927:       console.log(`Город ПЭК \"${cityName}\" не найден в базе`);\n  Line 930:       console.error('Ошибка поиска города ПЭК:', error);\n  Line 935:   // Получение ID склада ПЭК по адресу через API\n  Line 938:       // Используем API ПЭК для поиска склада по адресу\n  Line 975:       console.error('Ошибка поиска склада ПЭК:', error);\n  Line 980:   // Расчет для ПЭК через публичный API\n  Line 991:           company: 'ПЭК',\n  Line 994:           error: `Город не найден в базе ПЭК. Проверьте: ${!fromCityId ? form.fromCity : ''} ${!toCityId ? form.toCity : ''}`.trim(),\n  Line 1050:       console.log('ПЭК запрос URL:', fullUrl);\n  Line 1051:       console.log('ПЭК параметры:', requestData);\n  Line 1057:       console.log('ПЭК ответ:', data);\n  Line 1071:                 name: service.name || 'Услуга ПЭК',\n  Line 1108:           company: 'ПЭК',\n  Line 1136:           company: 'ПЭК',\n  Line 1150:           error: data.message || data.error || 'API ПЭК временно недоступен, показан примерный расчет'\n  Line 1164:         company: 'ПЭК',\n  Line 1426:     } else if (calc.company === 'ПЭК' && calc.details?.services) {\n  Line 1427:       // Для ПЭК используем данные из API\n  Line 1431:             service: service.name || 'Услуга ПЭК',",
+    "metadata": {
+      "matches": 24,
+      "truncated": false
+    },
+    "title": "ПЭК",
+    "time": {
+      "start": 1758902529748,
+      "end": 1758902529758
+    }
+  }
+}

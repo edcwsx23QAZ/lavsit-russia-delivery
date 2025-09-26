@@ -1,0 +1,26 @@
+{
+  "id": "prt_986c787e3001Ko2oMjrcEcKyHV",
+  "messageID": "msg_986c27072001Mn7mJgPXZ8fK1k",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_0118L3ieFm3fGYD9AK4FCQ5c",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    } catch (error) {\n      console.error('Ошибка получения координат Яндекс:', error);\n      return null;\n    }\n  };\n    }\n  };",
+      "newString": "    } catch (error) {\n      console.error('Ошибка получения координат Яндекс:', error);\n      return null;\n    }\n  };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -894,10 +894,8 @@\n     console.error('Ошибка получения координат Яндекс:', error);\n     return null;\n   }\n };\n-  }\n-};\n \n // Расчет для ПЭК через официальный API\n const calculatePEK = async (): Promise<CalculationResult> => {\n   const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758902848954,
+      "end": 1758902848966
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_986c4e341001ukbrL5k3QSgRRk",
+  "messageID": "msg_986c27072001Mn7mJgPXZ8fK1k",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011EsMTRTZNjZgtNiX6zSYXF",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1150,
+      "limit": 20
+    },
+    "output": "<file>\n01151|           error: data.message || data.error || 'API ПЭК временно недоступен, показан примерный расчет'\n01152|         };\n01153|       }\n01154|     } catch (error: any) {\n01155|       // Фоллбэк расчет при ошибке соединения\n01156|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n01157|       let basePrice = totalWeight * 15; // 15 руб за кг\n01158|       \n01159|       if (form.fromAddressDelivery) basePrice += 500;\n01160|       if (form.toAddressDelivery) basePrice += 500; \n01161|       if (form.needInsurance) basePrice += form.declaredValue * 0.01;\n01162|       if (form.needPackaging) basePrice += totalWeight * 20;\n01163|       \n01164|       return {\n01165|         company: 'ПЭК',\n01166|         price: Math.round(basePrice),\n01167|         days: 3,\n01168|         details: {\n01169|           note: 'Примерный расчет по базовым тарифам (ошибка соединения с API)',\n01170|           services: [\n\n(File has more lines. Use 'offset' parameter to read beyond line 1170)\n</file>",
+    "metadata": {
+      "preview": "          error: data.message || data.error || 'API ПЭК временно недоступен, показан примерный расчет'\n        };\n      }\n    } catch (error: any) {\n      // Фоллбэк расчет при ошибке соединения\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      let basePrice = totalWeight * 15; // 15 руб за кг\n      \n      if (form.fromAddressDelivery) basePrice += 500;\n      if (form.toAddressDelivery) basePrice += 500; \n      if (form.needInsurance) basePrice += form.declaredValue * 0.01;\n      if (form.needPackaging) basePrice += totalWeight * 20;\n      \n      return {\n        company: 'ПЭК',\n        price: Math.round(basePrice),\n        days: 3,\n        details: {\n          note: 'Примерный расчет по базовым тарифам (ошибка соединения с API)',\n          services: ["
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758902674924,
+      "end": 1758902674926
+    }
+  }
+}

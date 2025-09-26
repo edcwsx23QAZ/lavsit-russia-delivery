@@ -1,0 +1,25 @@
+{
+  "id": "prt_986c4720f001f9COfkNupRtuAm",
+  "messageID": "msg_986c27072001Mn7mJgPXZ8fK1k",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01A5z5nKTFTnKULQBeND7sgc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 975,
+      "limit": 10
+    },
+    "output": "<file>\n00976|       console.error('Ошибка поиска склада ПЭК:', error);\n00977|       return null;\n00978|     }\n00979|   };\n00980| \n00981|   // Расчет для ПЭК через публичный API\n00982|   const calculatePEK = async (): Promise<CalculationResult> => {\n00983|     const apiUrl = 'http://calc.pecom.ru/bitrix/components/pecom/calc/ajax.php';\n00984|     \n00985|     try {\n\n(File has more lines. Use 'offset' parameter to read beyond line 985)\n</file>",
+    "metadata": {
+      "preview": "      console.error('Ошибка поиска склада ПЭК:', error);\n      return null;\n    }\n  };\n\n  // Расчет для ПЭК через публичный API\n  const calculatePEK = async (): Promise<CalculationResult> => {\n    const apiUrl = 'http://calc.pecom.ru/bitrix/components/pecom/calc/ajax.php';\n    \n    try {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758902645909,
+      "end": 1758902645911
+    }
+  }
+}

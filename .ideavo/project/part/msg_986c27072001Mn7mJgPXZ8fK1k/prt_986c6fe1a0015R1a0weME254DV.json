@@ -1,0 +1,25 @@
+{
+  "id": "prt_986c6fe1a0015R1a0weME254DV",
+  "messageID": "msg_986c27072001Mn7mJgPXZ8fK1k",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01VxPpqxRNCgGe9N4rvs4Txu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 890,
+      "limit": 15
+    },
+    "output": "<file>\n00891|       \n00892|       return null;\n00893|     } catch (error) {\n00894|       console.error('Ошибка получения координат Яндекс:', error);\n00895|       return null;\n00896|     }\n00897|   };\n00898|     }\n00899|   };\n00900| \n00901|   // Расчет для ПЭК через официальный API\n00902|   const calculatePEK = async (): Promise<CalculationResult> => {\n00903|     const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n00904|     \n00905|     try {\n\n(File has more lines. Use 'offset' parameter to read beyond line 905)\n</file>",
+    "metadata": {
+      "preview": "      \n      return null;\n    } catch (error) {\n      console.error('Ошибка получения координат Яндекс:', error);\n      return null;\n    }\n  };\n    }\n  };\n\n  // Расчет для ПЭК через официальный API\n  const calculatePEK = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n    \n    try {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758902812941,
+      "end": 1758902812943
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_986c8019b001ij72LBrWemytxd",
+  "messageID": "msg_986c27072001Mn7mJgPXZ8fK1k",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XSEaD7HmMXub4wopWS9wEF",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1350,
+      "limit": 30
+    },
+    "output": "<file>\n01351|       days: 5,\n01352|       apiUrl: 'https://www.railcontinent.ru/services/prochie-gruzoperevozki/forshop/api-manual/',\n01353|       details: { note: 'Заглушка - API не реализован' }\n01354|     };\n01355|   };\n01356| \n01357|   const handleCalculate = async () => {\n01358|     setCalculating(true);\n01359|     setCalculations([]);\n01360|     \n01361|     // Сохраняем данные формы после расчета\n01362|     localStorage.setItem('deliveryForm', JSON.stringify(form));\n01363|     \n01364|     try {\n01365|       const results = await Promise.all([\n01366|         calculateDellin(),\n01367|         calculatePEK(),\n01368|         calculateNordWheel(),\n01369|         calculateRailContinent()\n01370|       ]);\n01371|       \n01372|       // Сортировка по цене\n01373|       const sortedResults = results\n01374|         .filter(result => !result.error)\n01375|         .sort((a, b) => a.price - b.price)\n01376|         .concat(results.filter(result => result.error));\n01377|       \n01378|       setCalculations(sortedResults);\n01379|     } catch (error) {\n01380|       console.error('Ошибка при расчете:', error);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1380)\n</file>",
+    "metadata": {
+      "preview": "      days: 5,\n      apiUrl: 'https://www.railcontinent.ru/services/prochie-gruzoperevozki/forshop/api-manual/',\n      details: { note: 'Заглушка - API не реализован' }\n    };\n  };\n\n  const handleCalculate = async () => {\n    setCalculating(true);\n    setCalculations([]);\n    \n    // Сохраняем данные формы после расчета\n    localStorage.setItem('deliveryForm', JSON.stringify(form));\n    \n    try {\n      const results = await Promise.all([\n        calculateDellin(),\n        calculatePEK(),\n        calculateNordWheel(),\n        calculateRailContinent()\n      ]);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758902879254,
+      "end": 1758902879256
+    }
+  }
+}

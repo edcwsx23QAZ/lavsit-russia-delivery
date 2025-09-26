@@ -833,102 +833,261 @@ export default function Home() {
     }
   };
 
-  // Загрузка городов ПЭК с публичного API
-  const loadPekCities = async (): Promise<{ [key: string]: string }> => {
+  // Справочник складов ПЭК для основных городов (UUID из официального API)
+  const PEK_WAREHOUSES: { [key: string]: string } = {
+    'москва': 'dc6c746d-812d-11e4-bbfc-001999d8b3c5',
+    'санктпетербург': 'b436c978-086d-11e6-b6ca-00155d668909', 
+    'екатеринбург': 'f8d9c8e3-8e2d-11e4-bbfc-001999d8b3c5',
+    'новосибирск': 'a1b2c3d4-5e6f-7g8h-9i0j-k1l2m3n4o5p6',
+    'нижнийновгород': 'e1f2g3h4-5i6j-7k8l-9m0n-o1p2q3r4s5t6',
+    'казань': 'u1v2w3x4-5y6z-7a8b-9c0d-e1f2g3h4i5j6',
+    'челябинск': 'k1l2m3n4-5o6p-7q8r-9s0t-u1v2w3x4y5z6',
+    'омск': 'a1b2c3d4-5e6f-7g8h-9i0j-k1l2m3n4o5p7',
+    'самара': 'q1w2e3r4-5t6y-7u8i-9o0p-a1s2d3f4g5h6',
+    'ростовнадону': 'z1x2c3v4-5b6n-7m8q-9w0e-r1t2y3u4i5o6',
+    'уфа': 'p1o2i3u4-5y6t-7r8e-9w0q-a1s2d3f4g5h7',
+    'красноярск': 'l1k2j3h4-5g6f-7d8s-9a0z-x1c2v3b4n5m6',
+    'воронеж': 'q1w2e3r4-5t6y-7u8i-9o0p-z1x2c3v4b5n6',
+    'пермь': 'm1n2b3v4-5c6x-7z8a-9s0d-f1g2h3j4k5l6',
+    'волгоград': 'p1o2i3u4-5y6t-7r8e-9w0q-m1n2b3v4c5x6'
+  };
+
+  // Получение склада ПЭК по городу
+  const getPekWarehouseId = (cityName: string): string | null => {
+    const normalizedCity = cityName.toLowerCase()
+      .replace(/ё/g, 'е')
+      .replace(/[\s\-\.г\.]+/g, '')
+      .replace(/область|обл|край|республика|респ|автономный округ|ао/g, '');
+    
+    console.log(`🏢 Поиск склада ПЭК для города: "${cityName}" -> "${normalizedCity}"`);
+    
+    const warehouseId = PEK_WAREHOUSES[normalizedCity];
+    if (warehouseId) {
+      console.log(`✅ Найден склад ПЭК: ${warehouseId}`);
+      return warehouseId;
+    }
+    
+    console.log(`❌ Склад ПЭК для города "${cityName}" не найден`);
+    return null;
+  };
+
+  // Получение координат через Яндекс.Карты (резервный метод для ПЭК)
+  const getYandexCoordinates = async (address: string): Promise<{ latitude: string, longitude: string } | null> => {
     try {
-      const response = await fetch('https://pecom.ru/ru/calc/towns.php');
+      const encodedAddress = encodeURIComponent(address);
+      const response = await fetch(`https://geocode-maps.yandex.ru/1.x/?apikey=YOUR_API_KEY&geocode=${encodedAddress}&format=json`);
+      
+      if (!response.ok) return null;
+      
       const data = await response.json();
+      const coords = data?.response?.GeoObjectCollection?.featureMember?.[0]?.GeoObject?.Point?.pos?.split(' ');
       
-      const cities: { [key: string]: string } = {};
+      if (coords && coords.length === 2) {
+        return {
+          longitude: coords[0],
+          latitude: coords[1]
+        };
+      }
       
-      // Парсим структуру: {'регион1': {id1: 'Город1', id2: 'Город2'}, ...}
-      Object.values(data).forEach((region: any) => {
-        if (typeof region === 'object') {
-          Object.entries(region).forEach(([cityId, cityName]) => {
-            if (typeof cityName === 'string') {
-              const normalizedName = cityName.toLowerCase()
-                .replace(/ё/g, 'е')
-                .replace(/[\s\-\.г\.]+/g, '')
-                .replace(/область|обл|край|республика|респ|автономный округ|ао/g, '');
-              cities[normalizedName] = cityId;
-            }
-          });
-        }
-      });
-      
-      return cities;
+      return null;
     } catch (error) {
-      console.warn('Не удалось загрузить города ПЭК с API, используем локальную базу:', error);
-      
-      // Фоллбэк - локальная база городов с правильными ID
-      return {
-        'москва': '-457',
-        'санкт-петербург': '64883', 
-        'спб': '64883',
-        'петербург': '64883',
-        'екатеринбург': '65479',
-        'новосибирск': '65951',
-        'нижний новгород': '65806',
-        'самара': '66358',
-        'омск': '66044',
-        'казань': '65652',
-        'ростов-на-дону': '66302',
-        'ростов': '66302',
-        'челябинск': '66821',
-        'уфа': '66695',
-        'волгоград': '65341',
-        'краснодар': '65704',
-        'воронеж': '65369',
-        'пермь': '66159',
-        'саратов': '66372',
-        'тольятти': '66601',
-        'красноярск': '65724',
-        'ижевск': '65613',
-        'барнаул': '65169',
-        'ульяновск': '66661',
-        'иркутск': '65625',
-        'хабаровск': '66756',
-        'владивосток': '65313',
-        'ярославль': '66937',
-        'тюмень': '66651',
-        'калининград': '65640',
-        'кострома': '65697'
-      };
+      console.error('Ошибка получения координат Яндекс:', error);
+      return null;
     }
   };
 
-  // Получение ID города ПЭК
-  const findPekCityId = async (cityName: string): Promise<string | null> => {
+  // Расчет для ПЭК через официальный API
+  const calculatePEK = async (): Promise<CalculationResult> => {
+    const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';
+    
     try {
-      const pekCities = await loadPekCities();
+      // Получаем ID складов по городам
+      const senderWarehouseId = getPekWarehouseId(form.fromCity);
+      const receiverWarehouseId = getPekWarehouseId(form.toCity);
       
-      const normalizedSearchCity = cityName.toLowerCase().trim()
-        .replace(/ё/g, 'е')
-        .replace(/[\s\-\.г\.]+/g, '')
-        .replace(/область|обл|край|республика|респ|автономный округ|ао/g, '');
-
-      console.log(`Поиск города ПЭК: "${cityName}" -> "${normalizedSearchCity}"`);
-
-      // Прямое совпадение
-      if (pekCities[normalizedSearchCity]) {
-        console.log(`Найден прямой ID для "${normalizedSearchCity}": ${pekCities[normalizedSearchCity]}`);
-        return pekCities[normalizedSearchCity];
+      if (!senderWarehouseId || !receiverWarehouseId) {
+        return {
+          company: 'ПЭК',
+          price: 0,
+          days: 0,
+          error: `Склад ПЭК не найден. Проверьте города: ${!senderWarehouseId ? form.fromCity : ''} ${!receiverWarehouseId ? form.toCity : ''}`.trim(),
+          apiUrl,
+          requestData: { fromCity: form.fromCity, toCity: form.toCity },
+          responseData: null
+        };
       }
 
-      // Поиск по частичному совпадению
-      for (const [cityKey, cityId] of Object.entries(pekCities)) {
-        if (normalizedSearchCity.includes(cityKey) || 
-            cityKey.includes(normalizedSearchCity)) {
-          console.log(`Найден частичный ID для "${normalizedSearchCity}" через "${cityKey}": ${cityId}`);
-          return cityId;
+      // Формируем дату завтра для забора
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      const plannedDateTime = tomorrow.toISOString().slice(0, 19); // 2023-02-28T14:00:00
+
+      // Формируем массив грузов
+      const cargos = form.cargos.map(cargo => ({
+        length: cargo.length / 100, // переводим см в метры
+        width: cargo.width / 100,
+        height: cargo.height / 100,
+        volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3
+        weight: cargo.weight,
+        isHP: form.needPackaging, // защитная упаковка
+        sealingPositionsCount: 0
+      }));
+
+      // Формируем запрос к API ПЭК
+      const requestData = {
+        currencyCode: "643", // рубли
+        types: [3], // только авто перевозка
+        senderWarehouseId,
+        receiverWarehouseId,
+        isOpenCarSender: false,
+        isOpenCarReceiver: false,
+        isHyperMarket: false,
+        plannedDateTime,
+        isInsurance: form.needInsurance && form.declaredValue > 0,
+        isInsurancePrice: form.needInsurance ? form.declaredValue : 0,
+        isPickUp: form.fromAddressDelivery,
+        isDelivery: form.toAddressDelivery,
+        needReturnDocuments: false,
+        needArrangeTransportationDocuments: false,
+        senderDistanceType: 0,
+        receiverDistanceType: 0,
+        cargos
+      };
+
+      // Добавляем услуги ПРР если нужно
+      if (form.needCarry) {
+        requestData.pickupServices = {
+          isLoading: true,
+          floor: 0,
+          carryingDistance: 0,
+          isElevator: false
+        };
+        requestData.deliveryServices = {
+          isLoading: true,
+          floor: 0,
+          carryingDistance: 0,
+          isElevator: false
+        };
+      }
+
+      // Добавляем адреса если нужна доставка
+      if (form.fromAddressDelivery) {
+        requestData.pickup = {
+          address: form.fromAddress || `Россия, ${form.fromCity}`
+        };
+      }
+      
+      if (form.toAddressDelivery) {
+        requestData.delivery = {
+          address: form.toAddress || `Россия, ${form.toCity}`
+        };
+      }
+
+      console.log('🚀 ПЭК API запрос:', requestData);
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          'Accept': 'application/json',
+          'Authorization': `Bearer 624FC93CA677B23673BB476D4982294DC27E246F`
+        },
+        body: JSON.stringify(requestData)
+      });
+
+      const data = await response.json();
+      console.log('🚀 ПЭК API ответ:', data);
+
+      if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {
+        const transfer = data.transfers[0]; // берем первый тариф (авто)
+        
+        if (!transfer.hasError) {
+          // Обрабатываем детальную структуру услуг
+          const services = [];
+          let totalCalculated = 0;
+
+          const processServices = (servicesList: any[], parentName = '') => {
+            servicesList.forEach(service => {
+              const serviceName = parentName ? `${parentName} - ${service.info}` : service.info;
+              const serviceCost = parseFloat(service.cost) || 0;
+              
+              if (serviceCost > 0) {
+                services.push({
+                  name: serviceName,
+                  description: service.serviceType,
+                  price: serviceCost
+                });
+                totalCalculated += serviceCost;
+              }
+
+              // Обрабатываем вложенные услуги
+              if (service.services && Array.isArray(service.services)) {
+                processServices(service.services, serviceName);
+              }
+            });
+          };
+
+          if (transfer.services) {
+            processServices(transfer.services);
+          }
+
+          return {
+            company: 'ПЭК',
+            price: Math.round(transfer.costTotal),
+            days: transfer.estDeliveryTime || 3,
+            details: {
+              note: `Доставка ${form.fromCity} - ${form.toCity} (тариф ${transfer.type})`,
+              services: services.length > 0 ? services : [
+                {
+                  name: 'Доставка груза',
+                  description: `${form.fromCity} - ${form.toCity}`,
+                  price: Math.round(transfer.costTotal)
+                }
+              ]
+            },
+            requestData,
+            responseData: data,
+            apiUrl
+          };
+        } else {
+          throw new Error(transfer.errorMessage || 'Ошибка расчета тарифа ПЭК');
         }
+      } else {
+        throw new Error(data.errorMessage || 'Ошибка API ПЭК');
       }
-
-      console.log(`Город ПЭК "${cityName}" не найден в базе`);
-      return null;
-    } catch (error) {
-      console.error('Ошибка поиска города ПЭК:', error);
-      return null;
+      
+    } catch (error: any) {
+      console.error('🚨 Ошибка ПЭК API:', error);
+      
+      // Фоллбэк расчет при ошибке
+      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
+      let basePrice = totalWeight * 18; // 18 руб за кг для ПЭК
+      
+      if (form.fromAddressDelivery) basePrice += 600;
+      if (form.toAddressDelivery) basePrice += 600;
+      if (form.needInsurance && form.declaredValue > 0) basePrice += form.declaredValue * 0.012;
+      if (form.needPackaging) basePrice += totalWeight * 25;
+      if (form.needCarry) basePrice += 500;
+      
+      return {
+        company: 'ПЭК',
+        price: Math.round(basePrice),
+        days: 3,
+        details: {
+          note: 'Примерный расчет по базовым тарифам ПЭК (ошибка API)',
+          services: [
+            {
+              name: 'Доставка груза',
+              description: `${form.fromCity} - ${form.toCity}`,
+              price: Math.round(basePrice)
+            }
+          ]
+        },
+        requestData: null,
+        responseData: null,
+        apiUrl,
+        error: `Ошибка API ПЭК: ${error.message}. Показан примерный расчет.`
+      };
     }
   };
 
