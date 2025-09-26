@@ -1,0 +1,26 @@
+{
+  "id": "prt_985df3a36002b32Dtbi1Jd3IRT",
+  "messageID": "msg_985deb279001Slhs4UAcUQnQQ8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Ybxk2niCnSDTE8WyzXL9fG",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                  <Button \n                    onClick={handleReset} \n                    variant=\"outline\" \n                    className=\"w-full h-8 text-white border-gray-600 hover:bg-gray-700\" \n                    disabled={calculating}\n                  >\n                    Сбросить расчет\n                  </Button>",
+      "newString": "                  <Button \n                    onClick={handleReset} \n                    variant=\"outline\" \n                    className=\"w-full h-8 text-black border-gray-600 hover:bg-gray-700 hover:text-white\" \n                    disabled={calculating}\n                  >\n                    Сбросить расчет\n                  </Button>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1463,9 +1463,9 @@\n \n <Button \n   onClick={handleReset} \n   variant=\"outline\" \n-  className=\"w-full h-8 text-white border-gray-600 hover:bg-gray-700\" \n+  className=\"w-full h-8 text-black border-gray-600 hover:bg-gray-700 hover:text-white\" \n   disabled={calculating}\n >\n   Сбросить расчет\n </Button>\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758887624947,
+      "end": 1758887624962
+    }
+  }
+}

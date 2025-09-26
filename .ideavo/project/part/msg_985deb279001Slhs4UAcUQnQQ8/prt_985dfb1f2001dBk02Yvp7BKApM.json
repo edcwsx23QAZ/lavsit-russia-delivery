@@ -1,0 +1,26 @@
+{
+  "id": "prt_985dfb1f2001dBk02Yvp7BKApM",
+  "messageID": "msg_985deb279001Slhs4UAcUQnQQ8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Sho8J4NbGdjfx3m8VGRkiF",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          days: data.data.deliveryTerm || 0,",
+      "newString": "          days: data.deliveryTerm || data.data?.deliveryTerm || 0,"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -497,9 +497,9 @@\n \n return {\n   company: 'Деловые Линии',\n   price: Math.round(totalPrice),\n-  days: data.data.deliveryTerm || 0,\n+  days: data.deliveryTerm || data.data?.deliveryTerm || 0,\n   details: data.data,\n   requestData,\n   responseData: data,\n   apiUrl,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758887654920,
+      "end": 1758887654927
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "prt_985df7a28001VFrk6dd2ZPuf6Q",
+  "messageID": "msg_985deb279001Slhs4UAcUQnQQ8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01PZR3wx5BsTgURTpDEhrpJT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "days: data\\.data\\.deliveryTerm"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 501:           days: data.data.deliveryTerm || 0,",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "days: data\\.data\\.deliveryTerm",
+    "time": {
+      "start": 1758887639862,
+      "end": 1758887639873
+    }
+  }
+}

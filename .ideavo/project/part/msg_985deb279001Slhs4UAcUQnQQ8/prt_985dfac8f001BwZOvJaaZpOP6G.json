@@ -1,0 +1,11 @@
+{
+  "id": "prt_985dfac8f001BwZOvJaaZpOP6G",
+  "messageID": "msg_985deb279001Slhs4UAcUQnQQ8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Интересно, возможно проблема в том, что в API ответе используется другое поле. Давайте проверим, возможно нужно использовать просто `data.deliveryTerm` без `.data`:",
+  "time": {
+    "start": 1758887653873,
+    "end": 1758887653873
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "prt_985df13a9001hTACPzHnyMmeg1",
+  "messageID": "msg_985deb279001Slhs4UAcUQnQQ8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_012vcFY2b6ksSrSdv9UFmyqm",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                  <Button \n                    onClick={handleReset} \n                    variant=\"outline\" \n                    className=\"w-full h-8 text-white border-gray-600 hover:bg-gray-700\" \n                    disabled={calculating}\n                  >\n                    Сбросить расчет\n                  </Button>",
+      "newString": "                  <Button \n                    onClick={handleReset} \n                    variant=\"outline\" \n                    className=\"w-full h-8 text-black border-gray-600 hover:bg-gray-700 hover:text-white\" \n                    disabled={calculating}\n                  >\n                    Сбросить расчет\n                  </Button>"
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758887615280,
+      "end": 1758887615283
+    }
+  }
+}

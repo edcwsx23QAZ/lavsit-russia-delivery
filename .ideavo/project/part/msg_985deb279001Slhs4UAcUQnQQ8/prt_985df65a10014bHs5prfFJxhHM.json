@@ -1,0 +1,25 @@
+{
+  "id": "prt_985df65a10014bHs5prfFJxhHM",
+  "messageID": "msg_985deb279001Slhs4UAcUQnQQ8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_014yR5vBnFftcAGFxocxPB6v",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 520,
+      "limit": 30
+    },
+    "output": "<file>\n00521|           apiUrl,\n00522|           sessionId: sessionID\n00523|         };\n00524|       }\n00525|     } catch (error: any) {\n00526|       return {\n00527|         company: 'Деловые Линии',\n00528|         price: 0,\n00529|         days: 0,\n00530|         error: `Ошибка соединения: ${error.message}`,\n00531|         requestData: null,\n00532|         responseData: null,\n00533|         apiUrl\n00534|       };\n00535|     }\n00536|   };\n00537| \n00538|   // Расчет для Nord Wheel\n00539|   const calculateNordWheel = async (): Promise<CalculationResult> => {\n00540|     const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n00541|     \n00542|     try {\n00543|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n00544|       const totalVolume = form.cargos.reduce((sum, cargo) => \n00545|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n00546|       );\n00547| \n00548|       const params = new URLSearchParams({\n00549|         from: '91', // Москва (нужно будет получать ID города)\n00550|         to: '92', // СПб (нужно будет получать ID города)\n\n(File has more lines. Use 'offset' parameter to read beyond line 550)\n</file>",
+    "metadata": {
+      "preview": "          apiUrl,\n          sessionId: sessionID\n        };\n      }\n    } catch (error: any) {\n      return {\n        company: 'Деловые Линии',\n        price: 0,\n        days: 0,\n        error: `Ошибка соединения: ${error.message}`,\n        requestData: null,\n        responseData: null,\n        apiUrl\n      };\n    }\n  };\n\n  // Расчет для Nord Wheel\n  const calculateNordWheel = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758887635283,
+      "end": 1758887635285
+    }
+  }
+}

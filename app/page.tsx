@@ -498,7 +498,7 @@ export default function Home() {
         return {
           company: 'Деловые Линии',
           price: Math.round(totalPrice),
-          days: data.data.deliveryTerm || 0,
+          days: data.deliveryTerm || data.data?.deliveryTerm || 0,
           details: data.data,
           requestData,
           responseData: data,
@@ -1464,7 +1464,7 @@ export default function Home() {
                   <Button 
                     onClick={handleReset} 
                     variant="outline" 
-                    className="w-full h-8 text-white border-gray-600 hover:bg-gray-700" 
+                    className="w-full h-8 text-black border-gray-600 hover:bg-gray-700 hover:text-white" 
                     disabled={calculating}
                   >
                     Сбросить расчет
