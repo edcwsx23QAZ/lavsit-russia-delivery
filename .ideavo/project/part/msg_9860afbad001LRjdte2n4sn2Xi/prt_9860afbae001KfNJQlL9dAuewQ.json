@@ -1,0 +1,7 @@
+{
+  "id": "prt_9860afbae001KfNJQlL9dAuewQ",
+  "type": "text",
+  "text": "Меняй алгоритм по упаковке у Деловых Линий\n\nЕсли стоит чекбокс \"требуется упаковка\", то в исходный запрос добавляется:\n   \"packages\":[\n         {\n            \"uid\":\"0xa6a7bd2bf950e67f4b2cf7cc3a97c111\",\n            \"count\":1\n\nДля получения uid используется JSON\n\nПроводится запрос:\n\nПример запроса:\n{\n   \"appkey\": \"00000000-0000-0000-0000-000000000000\"\n}\n\nКлюч запроса используется стандартный\n\nМетод запроса:\nhttps://api.dellin.ru/v1/references/packages.json\n\nПример полученного ответа:\n{\n   \"metadata\":{\n      \"status\":200,\n      \"generated_at\":\"2015-06-18 12:37:28\"\n   },\n   \"data\":[\n      {\n         \"uid\":\"0x838FC70BAEB49B564426B45B1D216C15\",\n         \"title\":\"Деревянная обрешётка\",\n         \"name\":\"crate\",\n         \"countable\":\"false\",\n         \"incompatible\":[\n            \"0x8783b183e825d40d4eb5c21ef63fbbfb\",\n            \"0xb9f594d27a2d31b440a647d19547543c\"\n         ]\n      }\n   ]\n}\n\nИз ответа берется uid у которого name это crate_with_bubble",
+  "messageID": "msg_9860afbad001LRjdte2n4sn2Xi",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14"
+}

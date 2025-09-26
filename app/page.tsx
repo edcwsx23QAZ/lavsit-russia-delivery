@@ -317,10 +317,10 @@ export default function Home() {
       const data = await response.json();
       console.log('Деловые Линии справочник упаковок:', data);
       
-      if (response.ok && data.packages && Array.isArray(data.packages)) {
-        // Находим упаковку с title "crate_with_bubble"
-        const crateWithBubble = data.packages.find((pkg: any) => 
-          pkg.title === 'crate_with_bubble'
+      if (response.ok && data.data && Array.isArray(data.data)) {
+        // Находим упаковку с name "crate_with_bubble"
+        const crateWithBubble = data.data.find((pkg: any) => 
+          pkg.name === 'crate_with_bubble'
         );
         
         if (crateWithBubble && crateWithBubble.uid) {
@@ -329,7 +329,7 @@ export default function Home() {
         }
       }
       
-      console.warn('Упаковка crate_with_bubble не найдена в справочнике');
+      console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');
       return null;
     } catch (error) {
       console.error('Ошибка получения справочника упаковок Деловые Линии:', error);
