@@ -246,7 +246,9 @@ export default function Home() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'  // Используем стандартный ключ
+          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
+          login: 'service@lavsit.ru',
+          password: 'edcwsx123QAZ'
         })
       });
 

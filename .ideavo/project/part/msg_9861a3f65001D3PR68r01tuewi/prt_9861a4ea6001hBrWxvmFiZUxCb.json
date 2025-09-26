@@ -1,0 +1,21 @@
+{
+  "id": "prt_9861a4ea6001hBrWxvmFiZUxCb",
+  "messageID": "msg_9861a3f65001D3PR68r01tuewi",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01RwZpKpHVgqDjXTTcSMDoos",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        body: JSON.stringify({\n          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'  // Используем стандартный ключ\n        })",
+      "newString": "        body: JSON.stringify({\n          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n          login: 'service@lavsit.ru',\n          password: 'edcwsx123QAZ'\n        })"
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758891496752,
+      "end": 1758891496754
+    }
+  }
+}

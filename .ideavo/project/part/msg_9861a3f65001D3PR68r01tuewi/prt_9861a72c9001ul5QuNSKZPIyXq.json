@@ -1,0 +1,26 @@
+{
+  "id": "prt_9861a72c9001ul5QuNSKZPIyXq",
+  "messageID": "msg_9861a3f65001D3PR68r01tuewi",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01CPAPK4f6D9cTfVxTCgSBrd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        body: JSON.stringify({\n          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'  // Используем стандартный ключ\n        })",
+      "newString": "        body: JSON.stringify({\n          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n          login: 'service@lavsit.ru',\n          password: 'edcwsx123QAZ'\n        })"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -245,9 +245,11 @@\n   headers: {\n     'Content-Type': 'application/json'\n   },\n   body: JSON.stringify({\n-    appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'  // Используем стандартный ключ\n+    appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n+    login: 'service@lavsit.ru',\n+    password: 'edcwsx123QAZ'\n   })\n });\n \n const authData = await authResponse.json();\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758891506590,
+      "end": 1758891506603
+    }
+  }
+}
