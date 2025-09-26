@@ -1,0 +1,24 @@
+{
+  "id": "prt_9860f3022001JcX9bLT3pK18jc",
+  "messageID": "msg_9860dddc7001VZK2EAjycWWZGY",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01CMqhm2tkFax2Bp3Bj3LvKP",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "v2/calculator"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 340:   // Расчет для Деловых Линий через корректный API v2/calculator.json\n  Line 342:     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "v2/calculator",
+    "time": {
+      "start": 1758890766509,
+      "end": 1758890766519
+    }
+  }
+}

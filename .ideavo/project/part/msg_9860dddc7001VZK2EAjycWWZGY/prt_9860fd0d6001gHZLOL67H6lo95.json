@@ -1,0 +1,25 @@
+{
+  "id": "prt_9860fd0d6001gHZLOL67H6lo95",
+  "messageID": "msg_9860dddc7001VZK2EAjycWWZGY",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01HUekTXn81UDCSwipc9vrhR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 465,
+      "limit": 30
+    },
+    "output": "<file>\n00466|         }\n00467|       };\n00468| \n00469|       console.log('Деловые Линии запрос:', JSON.stringify(requestData, null, 2));\n00470| \n00471|       const response = await fetch(apiUrl, {\n00472|         method: 'POST',\n00473|         headers: {\n00474|           'Content-Type': 'application/json',\n00475|           'Accept': 'application/json'\n00476|         },\n00477|         body: JSON.stringify(requestData)\n00478|       });\n00479| \n00480|       const data = await response.json();\n00481|       console.log('Деловые Линии ответ:', data);\n00482|       console.log('=== ПОЛНАЯ ОТЛАДКА СТРУКТУРЫ ОТВЕТА ===');\n00483|       console.log('data:', JSON.stringify(data, null, 2));\n00484|       console.log('=== КОНЕЦ ОТЛАДКИ СТРУКТУРЫ ===');\n00485| \n00486|       if (response.ok && data.data && data.metadata?.status === 200) {\n00487|         let totalPrice = data.data.price || 0;\n00488|         \n00489|         // Добавляем страховку если есть\n00490|         if (data.data.insurance) {\n00491|           totalPrice += data.data.insurance;\n00492|         }\n00493|         \n00494|         // Добавляем услуги упаковки если есть\n00495|         if (data.data.packages && form.needPackaging) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 495)\n</file>",
+    "metadata": {
+      "preview": "        }\n      };\n\n      console.log('Деловые Линии запрос:', JSON.stringify(requestData, null, 2));\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Accept': 'application/json'\n        },\n        body: JSON.stringify(requestData)\n      });\n\n      const data = await response.json();\n      console.log('Деловые Линии ответ:', data);\n      console.log('=== ПОЛНАЯ ОТЛАДКА СТРУКТУРЫ ОТВЕТА ===');\n      console.log('data:', JSON.stringify(data, null, 2));\n      console.log('=== КОНЕЦ ОТЛАДКИ СТРУКТУРЫ ===');\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758890808335,
+      "end": 1758890808337
+    }
+  }
+}

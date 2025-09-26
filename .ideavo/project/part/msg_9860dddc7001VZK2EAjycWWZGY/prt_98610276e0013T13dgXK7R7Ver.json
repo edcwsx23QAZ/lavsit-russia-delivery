@@ -1,0 +1,27 @@
+{
+  "id": "prt_98610276e0013T13dgXK7R7Ver",
+  "messageID": "msg_9860dddc7001VZK2EAjycWWZGY",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_0159NK8M8fpTraS7HmVyDspy",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run dev",
+      "timeout": 10000,
+      "description": "Start development server to test packaging integration"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env\n\n ✓ Starting...\n ✓ Ready in 2.1s\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env\n\n ✓ Starting...\n ✓ Ready in 2.1s\n",
+      "exit": null,
+      "description": "Start development server to test packaging integration"
+    },
+    "title": "npm run dev",
+    "time": {
+      "start": 1758890830444,
+      "end": 1758890840455
+    }
+  }
+}
