@@ -1,0 +1,34 @@
+{
+  "id": "prt_986e419e6001C22TBKbqyF07rV",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_012ZEnx3Ku3h7gdJKwSB36Ek",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "      if (!response.ok) {\n        const errorData = await response.json();\n        console.error(`❌ ПЭК API ошибка:`, errorData);\n        \n        // Если API недоступен, используем фоллбэк\n        console.log(`🔄 ПЭК: переход к фоллбэк методу для \"${address}\"`);\n        return getPekZoneFallback(address);\n      }",
+          "newString": "      if (!response.ok) {\n        let errorData;\n        try {\n          errorData = await response.json();\n        } catch {\n          errorData = { error: 'Невозможно парсить ответ' };\n        }\n        \n        console.error(`❌ ПЭК API ошибка ${response.status}:`, errorData);\n        \n        // Детализация ошибок\n        if (response.status === 401) {\n          console.error('❌ ПЭК: Ошибка авторизации - неверный токен');\n        } else if (response.status === 404) {\n          console.error('❌ ПЭК: Метод API не найден');\n        } else if (response.status === 400) {\n          console.error('❌ ПЭК: Некорректные параметры запроса');\n        } else if (response.status >= 500) {\n          console.error('❌ ПЭК: Ошибка сервера ПЭК');\n        }\n        \n        console.log(`🔄 ПЭК: переход к фоллбэк методу для \"${address}\"`);\n        return getPekZoneFallback(address);\n      }"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -851,12 +851,28 @@\n \n console.log(`📡 ПЭК API статус: ${response.status} ${response.statusText}`);\n \n if (!response.ok) {\n-  const errorData = await response.json();\n-  console.error(`❌ ПЭК API ошибка:`, errorData);\n+  let errorData;\n+  try {\n+    errorData = await response.json();\n+  } catch {\n+    errorData = { error: 'Невозможно парсить ответ' };\n+  }\n   \n-  // Если API недоступен, используем фоллбэк\n+  console.error(`❌ ПЭК API ошибка ${response.status}:`, errorData);\n+  \n+  // Детализация ошибок\n+  if (response.status === 401) {\n+    console.error('❌ ПЭК: Ошибка авторизации - неверный токен');\n+  } else if (response.status === 404) {\n+    console.error('❌ ПЭК: Метод API не найден');\n+  } else if (response.status === 400) {\n+    console.error('❌ ПЭК: Некорректные параметры запроса');\n+  } else if (response.status >= 500) {\n+    console.error('❌ ПЭК: Ошибка сервера ПЭК');\n+  }\n+  \n   console.log(`🔄 ПЭК: переход к фоллбэк методу для \"${address}\"`);\n   return getPekZoneFallback(address);\n }\n \n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758904737988,
+      "end": 1758904737998
+    }
+  }
+}

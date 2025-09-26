@@ -1,0 +1,25 @@
+{
+  "id": "prt_986e40c67001NXOc2AxtHBXSjV",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_019PHbWcnonLZogXtdWnr8z3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1040,
+      "limit": 50
+    },
+    "output": "<file>\n01041|       return null;\n01042|     }\n01043|   };\n01044| \n01045|   // Расчет для ПЭК через официальный API v1/calculateprice/\n01046|   const calculatePEK = async (): Promise<CalculationResult> => {\n01047|     const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n01048|     \n01049|     try {\n01050|       // Получаем информацию о зонах и складах по адресам\n01051|       console.log(`🚀 ПЭК: начинаем расчет`);\n01052|       console.log(`📍 От: ${form.fromAddress || form.fromCity}`);\n01053|       console.log(`📍 До: ${form.toAddress || form.toCity}`);\n01054|       \n01055|       const senderZone = await getPekZoneByAddress(form.fromAddress || `г ${form.fromCity}`);\n01056|       const receiverZone = await getPekZoneByAddress(form.toAddress || `г ${form.toCity}`);\n01057|       \n01058|       console.log(`🔍 ПЭК зоны:`);\n01059|       console.log(`📍 Отправитель:`, senderZone ? `${senderZone.branchTitle} (${senderZone.mainWarehouseId})` : 'НЕ НАЙДЕНА');\n01060|       console.log(`📍 Получатель:`, receiverZone ? `${receiverZone.branchTitle} (${receiverZone.mainWarehouseId})` : 'НЕ НАЙДЕНА');\n01061|       \n01062|       if (!senderZone || !receiverZone) {\n01063|         // Детальная диагностика\n01064|         const debugInfo = {\n01065|           senderAddress: form.fromAddress || form.fromCity,\n01066|           receiverAddress: form.toAddress || form.toCity,\n01067|           senderZoneFound: !!senderZone,\n01068|           receiverZoneFound: !!receiverZone,\n01069|           apiTested: true\n01070|         };\n01071|         \n01072|         console.error(`❌ ПЭК: зоны не найдены`, debugInfo);\n01073|         \n01074|         return {\n01075|           company: 'ПЭК',\n01076|           price: 0,\n01077|           days: 0,\n01078|           error: `Зона ПЭК не обслуживается. Проверьте адреса: ${!senderZone ? (form.fromAddress || form.fromCity) : ''} ${!receiverZone ? (form.toAddress || form.toCity) : ''}`.trim(),\n01079|           apiUrl,\n01080|           requestData: debugInfo,\n01081|           responseData: { senderZone, receiverZone }\n01082|         };\n01083|       }\n01084| \n01085|       // Получаем ближайшие отделения если нужна адресная доставка\n01086|       let senderWarehouseId = senderZone.mainWarehouseId;\n01087|       let receiverWarehouseId = receiverZone.mainWarehouseId;\n01088|       \n01089|       if (form.fromAddressDelivery && senderZone.warehousePoint) {\n01090|         const senderDepartment = await getPekNearestDepartments(\n\n(File has more lines. Use 'offset' parameter to read beyond line 1090)\n</file>",
+    "metadata": {
+      "preview": "      return null;\n    }\n  };\n\n  // Расчет для ПЭК через официальный API v1/calculateprice/\n  const calculatePEK = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n    \n    try {\n      // Получаем информацию о зонах и складах по адресам\n      console.log(`🚀 ПЭК: начинаем расчет`);\n      console.log(`📍 От: ${form.fromAddress || form.fromCity}`);\n      console.log(`📍 До: ${form.toAddress || form.toCity}`);\n      \n      const senderZone = await getPekZoneByAddress(form.fromAddress || `г ${form.fromCity}`);\n      const receiverZone = await getPekZoneByAddress(form.toAddress || `г ${form.toCity}`);\n      \n      console.log(`🔍 ПЭК зоны:`);\n      console.log(`📍 Отправитель:`, senderZone ? `${senderZone.branchTitle} (${senderZone.mainWarehouseId})` : 'НЕ НАЙДЕНА');\n      console.log(`📍 Получатель:`, receiverZone ? `${receiverZone.branchTitle} (${receiverZone.mainWarehouseId})` : 'НЕ НАЙДЕНА');"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758904717375,
+      "end": 1758904717377
+    }
+  }
+}

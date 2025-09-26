@@ -852,10 +852,26 @@ export default function Home() {
       console.log(`📡 ПЭК API статус: ${response.status} ${response.statusText}`);
       
       if (!response.ok) {
-        const errorData = await response.json();
-        console.error(`❌ ПЭК API ошибка:`, errorData);
+        let errorData;
+        try {
+          errorData = await response.json();
+        } catch {
+          errorData = { error: 'Невозможно парсить ответ' };
+        }
         
-        // Если API недоступен, используем фоллбэк
+        console.error(`❌ ПЭК API ошибка ${response.status}:`, errorData);
+        
+        // Детализация ошибок
+        if (response.status === 401) {
+          console.error('❌ ПЭК: Ошибка авторизации - неверный токен');
+        } else if (response.status === 404) {
+          console.error('❌ ПЭК: Метод API не найден');
+        } else if (response.status === 400) {
+          console.error('❌ ПЭК: Некорректные параметры запроса');
+        } else if (response.status >= 500) {
+          console.error('❌ ПЭК: Ошибка сервера ПЭК');
+        }
+        
         console.log(`🔄 ПЭК: переход к фоллбэк методу для "${address}"`);
         return getPekZoneFallback(address);
       }
@@ -1281,10 +1297,22 @@ export default function Home() {
       }
       
     } catch (error: any) {
-      console.error('🚨 Ошибка ПЭК API:', error);
+      console.error('🚨 Критическая ошибка ПЭК API:', error);
       
-      // Фоллбэк расчет при ошибке
-      console.error('🚨 ПЭК: переходим к фоллбэк расчету из-за ошибки:', error.message);
+      // Определяем тип ошибки
+      let errorDescription = 'Ошибка API ПЭК';
+      
+      if (error.message?.includes('Failed to fetch')) {
+        errorDescription = 'API ПЭК недоступен';
+      } else if (error.message?.includes('401')) {
+        errorDescription = 'Ошибка авторизации ПЭК';
+      } else if (error.message?.includes('400')) {
+        errorDescription = 'Некорректные параметры запроса';
+      } else if (error.message?.includes('timeout')) {
+        errorDescription = 'Тайм-аут запроса к API';
+      }
+      
+      console.error(`🚨 ПЭК: ${errorDescription}. Переходим к фоллбэк расчету`);
       
       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
       const totalVolume = form.cargos.reduce((sum, cargo) => 
@@ -1370,7 +1398,7 @@ export default function Home() {
         requestData: null,
         responseData: null,
         apiUrl,
-        error: `API ПЭК недоступен: ${error.message}. Показан примерный расчет по базовым тарифам.`
+        error: `${errorDescription}. Показан примерный расчет по базовым тарифам.`
       };
     }
   };

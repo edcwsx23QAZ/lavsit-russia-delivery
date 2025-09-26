@@ -1,0 +1,25 @@
+{
+  "id": "prt_986e46c0f001WA1MRt0O0Wxn04",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Fu9da3y2Frmm1o2Lr6PuY5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1290,
+      "limit": 50
+    },
+    "output": "<file>\n01291|           };\n01292|         } else {\n01293|           throw new Error(transfer.errorMessage || 'Ошибка расчета тарифа ПЭК');\n01294|         }\n01295|       } else {\n01296|         throw new Error(data.errorMessage || data.message || 'Ошибка API ПЭК');\n01297|       }\n01298|       \n01299|     } catch (error: any) {\n01300|       console.error('🚨 Ошибка ПЭК API:', error);\n01301|       \n01302|       // Фоллбэк расчет при ошибке\n01303|       console.error('🚨 ПЭК: переходим к фоллбэк расчету из-за ошибки:', error.message);\n01304|       \n01305|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n01306|       const totalVolume = form.cargos.reduce((sum, cargo) => \n01307|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n01308|       );\n01309|       \n01310|       // Более точный фоллбэк расчет на основе веса и объема\n01311|       let basePrice = Math.max(\n01312|         totalWeight * 18, // 18 руб за кг\n01313|         totalVolume * 4500 // 4500 руб за м3\n01314|       );\n01315|       \n01316|       // Добавляем услуги\n01317|       const services = [];\n01318|       \n01319|       services.push({\n01320|         name: 'Транспортировка',\n01321|         description: `${form.fromCity} - ${form.toCity} (${totalWeight} кг, ${totalVolume.toFixed(3)} м³)`,\n01322|         price: Math.round(basePrice)\n01323|       });\n01324|       \n01325|       if (form.fromAddressDelivery) {\n01326|         const pickupCost = 600;\n01327|         basePrice += pickupCost;\n01328|         services.push({\n01329|           name: 'Забор груза',\n01330|           description: 'От адреса отправителя',\n01331|           price: pickupCost\n01332|         });\n01333|       }\n01334|       \n01335|       if (form.toAddressDelivery) {\n01336|         const deliveryCost = 600;\n01337|         basePrice += deliveryCost;\n01338|         services.push({\n01339|           name: 'Доставка груза',\n01340|           description: 'До адреса получателя',\n\n(File has more lines. Use 'offset' parameter to read beyond line 1340)\n</file>",
+    "metadata": {
+      "preview": "          };\n        } else {\n          throw new Error(transfer.errorMessage || 'Ошибка расчета тарифа ПЭК');\n        }\n      } else {\n        throw new Error(data.errorMessage || data.message || 'Ошибка API ПЭК');\n      }\n      \n    } catch (error: any) {\n      console.error('🚨 Ошибка ПЭК API:', error);\n      \n      // Фоллбэк расчет при ошибке\n      console.error('🚨 ПЭК: переходим к фоллбэк расчету из-за ошибки:', error.message);\n      \n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n      \n      // Более точный фоллбэк расчет на основе веса и объема"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758904741872,
+      "end": 1758904741874
+    }
+  }
+}

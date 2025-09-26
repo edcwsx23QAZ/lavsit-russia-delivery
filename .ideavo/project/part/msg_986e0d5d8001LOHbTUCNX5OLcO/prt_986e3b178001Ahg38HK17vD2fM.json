@@ -1,0 +1,34 @@
+{
+  "id": "prt_986e3b178001Ahg38HK17vD2fM",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_0137iJZ2WM2ecGMHTrhPi8jn",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "      case 'nearestdepartments':\n        url = `${BASE_URL}/branches/nearestdepartments/`;\n        const { method: nearestMethod, ...departmentData } = requestData;\n        body = departmentData;\n        break;\n        \n      default:\n        console.log('❌ Неизвестный метод:', method);\n        return NextResponse.json({ error: 'Неизвестный метод', method }, { status: 400 });",
+          "newString": "      case 'nearestdepartments':\n        url = `${BASE_URL}/branches/nearestdepartments/`;\n        const { method: nearestMethod, ...departmentData } = requestData;\n        body = departmentData;\n        break;\n        \n      case 'test':\n        console.log('🔧 Тестовый метод прокси');\n        return NextResponse.json({ \n          status: 'OK', \n          message: 'Прокси работает',\n          timestamp: new Date().toISOString(),\n          receivedData: requestData\n        });\n        \n      default:\n        console.log('❌ Неизвестный метод:', method);\n        return NextResponse.json({ error: 'Неизвестный метод', method }, { status: 400 });"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -42,8 +42,17 @@\n     const { method: nearestMethod, ...departmentData } = requestData;\n     body = departmentData;\n     break;\n     \n+  case 'test':\n+    console.log('🔧 Тестовый метод прокси');\n+    return NextResponse.json({ \n+      status: 'OK', \n+      message: 'Прокси работает',\n+      timestamp: new Date().toISOString(),\n+      receivedData: requestData\n+    });\n+    \n   default:\n     console.log('❌ Неизвестный метод:', method);\n     return NextResponse.json({ error: 'Неизвестный метод', method }, { status: 400 });\n }\n"
+        }
+      ]
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758904702441,
+      "end": 1758904702475
+    }
+  }
+}

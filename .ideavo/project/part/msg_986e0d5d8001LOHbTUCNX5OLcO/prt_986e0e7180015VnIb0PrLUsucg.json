@@ -1,0 +1,73 @@
+{
+  "id": "prt_986e0e7180015VnIb0PrLUsucg",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_011PSA4K8su51yMtBm156Hh8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Протестировать работу ПЭК API",
+          "status": "completed",
+          "priority": "high",
+          "id": "4"
+        },
+        {
+          "content": "Провести полную диагностику API ПЭК",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "5"
+        },
+        {
+          "content": "Проверить логи сервера и ошибки прокси",
+          "status": "pending",
+          "priority": "high",
+          "id": "6"
+        },
+        {
+          "content": "Протестировать каждый метод API отдельно",
+          "status": "pending",
+          "priority": "medium",
+          "id": "7"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Протестировать работу ПЭК API\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"4\"\n  },\n  {\n    \"content\": \"Провести полную диагностику API ПЭК\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"5\"\n  },\n  {\n    \"content\": \"Проверить логи сервера и ошибки прокси\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"6\"\n  },\n  {\n    \"content\": \"Протестировать каждый метод API отдельно\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"7\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Протестировать работу ПЭК API",
+          "status": "completed",
+          "priority": "high",
+          "id": "4"
+        },
+        {
+          "content": "Провести полную диагностику API ПЭК",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "5"
+        },
+        {
+          "content": "Проверить логи сервера и ошибки прокси",
+          "status": "pending",
+          "priority": "high",
+          "id": "6"
+        },
+        {
+          "content": "Протестировать каждый метод API отдельно",
+          "status": "pending",
+          "priority": "medium",
+          "id": "7"
+        }
+      ]
+    },
+    "title": "3 todos",
+    "time": {
+      "start": 1758904512421,
+      "end": 1758904512421
+    }
+  }
+}

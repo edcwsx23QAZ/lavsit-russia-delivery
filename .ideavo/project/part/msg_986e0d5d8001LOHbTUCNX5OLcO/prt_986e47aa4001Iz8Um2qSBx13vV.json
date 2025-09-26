@@ -1,0 +1,34 @@
+{
+  "id": "prt_986e47aa4001Iz8Um2qSBx13vV",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01Xktpv8LHNhbCLKuvxKoKqC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "    } catch (error: any) {\n      console.error('🚨 Ошибка ПЭК API:', error);\n      \n      // Фоллбэк расчет при ошибке\n      console.error('🚨 ПЭК: переходим к фоллбэк расчету из-за ошибки:', error.message);",
+          "newString": "    } catch (error: any) {\n      console.error('🚨 Критическая ошибка ПЭК API:', error);\n      \n      // Определяем тип ошибки\n      let errorDescription = 'Ошибка API ПЭК';\n      \n      if (error.message?.includes('Failed to fetch')) {\n        errorDescription = 'API ПЭК недоступен';\n      } else if (error.message?.includes('401')) {\n        errorDescription = 'Ошибка авторизации ПЭК';\n      } else if (error.message?.includes('400')) {\n        errorDescription = 'Некорректные параметры запроса';\n      } else if (error.message?.includes('timeout')) {\n        errorDescription = 'Тайм-аут запроса к API';\n      }\n      \n      console.error(`🚨 ПЭК: ${errorDescription}. Переходим к фоллбэк расчету`);"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1296,13 +1296,25 @@\n     throw new Error(data.errorMessage || data.message || 'Ошибка API ПЭК');\n   }\n   \n } catch (error: any) {\n-  console.error('🚨 Ошибка ПЭК API:', error);\n+  console.error('🚨 Критическая ошибка ПЭК API:', error);\n   \n-  // Фоллбэк расчет при ошибке\n-  console.error('🚨 ПЭК: переходим к фоллбэк расчету из-за ошибки:', error.message);\n+  // Определяем тип ошибки\n+  let errorDescription = 'Ошибка API ПЭК';\n   \n+  if (error.message?.includes('Failed to fetch')) {\n+    errorDescription = 'API ПЭК недоступен';\n+  } else if (error.message?.includes('401')) {\n+    errorDescription = 'Ошибка авторизации ПЭК';\n+  } else if (error.message?.includes('400')) {\n+    errorDescription = 'Некорректные параметры запроса';\n+  } else if (error.message?.includes('timeout')) {\n+    errorDescription = 'Тайм-аут запроса к API';\n+  }\n+  \n+  console.error(`🚨 ПЭК: ${errorDescription}. Переходим к фоллбэк расчету`);\n+  \n   const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n   const totalVolume = form.cargos.reduce((sum, cargo) => \n     sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n   );\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758904759701,
+      "end": 1758904759731
+    }
+  }
+}

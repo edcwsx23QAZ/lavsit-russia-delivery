@@ -1,0 +1,25 @@
+{
+  "id": "prt_986e1b878001F7aCyqqzavx7hc",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_011n8ffTPpmFn2YoxGeH83uh",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "export async function POST(request: NextRequest) {\n  try {\n    const requestData = await request.json();\n    const { method, address, coordinates } = requestData;\n    \n    const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';\n    const BASE_URL = 'https://api.pecom.ru/v1';\n    \n    let url = '';\n    let body = {};",
+          "newString": "export async function POST(request: NextRequest) {\n  try {\n    console.log('🔧 ПЭК Прокси: Получен запрос');\n    \n    const requestData = await request.json();\n    console.log('📝 Данные запроса:', JSON.stringify(requestData, null, 2));\n    \n    const { method, address, coordinates } = requestData;\n    \n    const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';\n    const BASE_URL = 'https://api.pecom.ru/v1';\n    \n    let url = '';\n    let body = {};"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/app/api/pek/route.ts before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758904595233,
+      "end": 1758904595235
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "prt_986e25ca8001MwjqrhERLqP4AD",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01Uj95wXqE6LjMjJ1PGgpyK7",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "export async function POST(request: NextRequest) {\n  try {\n    const requestData = await request.json();\n    const { method, address, coordinates } = requestData;\n    \n    const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';\n    const BASE_URL = 'https://api.pecom.ru/v1';\n    \n    let url = '';\n    let body = {};",
+          "newString": "export async function POST(request: NextRequest) {\n  try {\n    console.log('🔧 ПЭК Прокси: Получен запрос');\n    \n    const requestData = await request.json();\n    console.log('📝 Данные запроса:', JSON.stringify(requestData, null, 2));\n    \n    const { method, address, coordinates } = requestData;\n    \n    const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';\n    const BASE_URL = 'https://api.pecom.ru/v1';\n    \n    let url = '';\n    let body = {};"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -1,9 +1,13 @@\n import { NextRequest, NextResponse } from 'next/server';\n \n export async function POST(request: NextRequest) {\n   try {\n+    console.log('🔧 ПЭК Прокси: Получен запрос');\n+    \n     const requestData = await request.json();\n+    console.log('📝 Данные запроса:', JSON.stringify(requestData, null, 2));\n+    \n     const { method, address, coordinates } = requestData;\n     \n     const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';\n     const BASE_URL = 'https://api.pecom.ru/v1';\n"
+        }
+      ]
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758904611766,
+      "end": 1758904611778
+    }
+  }
+}

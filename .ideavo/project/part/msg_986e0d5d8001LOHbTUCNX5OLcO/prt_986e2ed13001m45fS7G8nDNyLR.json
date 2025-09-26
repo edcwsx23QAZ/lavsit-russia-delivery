@@ -1,0 +1,34 @@
+{
+  "id": "prt_986e2ed13001m45fS7G8nDNyLR",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01ATFkKY2qGmbvHwxb1J7pzi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "  } catch (error) {\n    console.error('Ошибка прокси ПЭК API:', error);\n    return NextResponse.json({ \n      error: 'Ошибка сервера при обращении к ПЭК API',\n      details: error instanceof Error ? error.message : 'Неизвестная ошибка'\n    }, { status: 500 });\n  }\n}",
+          "newString": "  } catch (error) {\n    console.error('❌ Критическая ошибка прокси ПЭК API:', error);\n    \n    if (error instanceof Error) {\n      console.error('Stack trace:', error.stack);\n    }\n    \n    return NextResponse.json({ \n      error: 'Критическая ошибка сервера',\n      details: error instanceof Error ? error.message : 'Неизвестная ошибка',\n      type: error instanceof Error ? error.name : 'Unknown',\n      stack: error instanceof Error ? error.stack : undefined\n    }, { status: 500 });\n  }\n}"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -94,11 +94,18 @@\n       }, { status: 500 });\n     }\n     \n   } catch (error) {\n-    console.error('Ошибка прокси ПЭК API:', error);\n+    console.error('❌ Критическая ошибка прокси ПЭК API:', error);\n+    \n+    if (error instanceof Error) {\n+      console.error('Stack trace:', error.stack);\n+    }\n+    \n     return NextResponse.json({ \n-      error: 'Ошибка сервера при обращении к ПЭК API',\n-      details: error instanceof Error ? error.message : 'Неизвестная ошибка'\n+      error: 'Критическая ошибка сервера',\n+      details: error instanceof Error ? error.message : 'Неизвестная ошибка',\n+      type: error instanceof Error ? error.name : 'Unknown',\n+      stack: error instanceof Error ? error.stack : undefined\n     }, { status: 500 });\n   }\n }\n\\ No newline at end of file\n"
+        }
+      ]
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758904650840,
+      "end": 1758904650843
+    }
+  }
+}

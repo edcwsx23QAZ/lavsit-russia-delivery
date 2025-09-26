@@ -1,0 +1,25 @@
+{
+  "id": "prt_986e4c41f0016Ukh24JpkSg5eN",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_015tCW3nMw67VCYdypJYQh5N",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1370,
+      "limit": 30
+    },
+    "output": "<file>\n01371|           name: 'Защитная упаковка',\n01372|           description: 'Упаковка груза',\n01373|           price: Math.round(packagingCost)\n01374|         });\n01375|       }\n01376|       \n01377|       if (form.needCarry) {\n01378|         const carryCost = 500;\n01379|         basePrice += carryCost;\n01380|         services.push({\n01381|           name: 'Подъем на этаж',\n01382|           description: `На ${form.floor} этаж ${form.hasFreightLift ? '(с лифтом)' : '(без лифта)'}`,\n01383|           price: carryCost\n01384|         });\n01385|       }\n01386|       \n01387|       return {\n01388|         company: 'ПЭК',\n01389|         price: Math.round(basePrice),\n01390|         days: 3,\n01391|         details: {\n01392|           note: 'Примерный расчет по базовым тарифам ПЭК (API недоступен)',\n01393|           services,\n01394|           totalWeight,\n01395|           totalVolume,\n01396|           errorInfo: error.message\n01397|         },\n01398|         requestData: null,\n01399|         responseData: null,\n01400|         apiUrl,\n\n(File has more lines. Use 'offset' parameter to read beyond line 1400)\n</file>",
+    "metadata": {
+      "preview": "          name: 'Защитная упаковка',\n          description: 'Упаковка груза',\n          price: Math.round(packagingCost)\n        });\n      }\n      \n      if (form.needCarry) {\n        const carryCost = 500;\n        basePrice += carryCost;\n        services.push({\n          name: 'Подъем на этаж',\n          description: `На ${form.floor} этаж ${form.hasFreightLift ? '(с лифтом)' : '(без лифта)'}`,\n          price: carryCost\n        });\n      }\n      \n      return {\n        company: 'ПЭК',\n        price: Math.round(basePrice),\n        days: 3,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758904764471,
+      "end": 1758904764475
+    }
+  }
+}

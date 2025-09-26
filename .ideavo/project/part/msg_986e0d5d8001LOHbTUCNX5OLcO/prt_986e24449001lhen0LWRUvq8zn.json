@@ -1,0 +1,23 @@
+{
+  "id": "prt_986e24449001lhen0LWRUvq8zn",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011irgiZPUVJ5h1TEd63v5ng",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts"
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server';\n00002| \n00003| export async function POST(request: NextRequest) {\n00004|   try {\n00005|     const requestData = await request.json();\n00006|     const { method, address, coordinates } = requestData;\n00007|     \n00008|     const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';\n00009|     const BASE_URL = 'https://api.pecom.ru/v1';\n00010|     \n00011|     let url = '';\n00012|     let body = {};\n00013|     \n00014|     switch (method) {\n00015|       case 'findzonebyaddress':\n00016|         url = `${BASE_URL}/branches/findzonebyaddress/`;\n00017|         body = {\n00018|           address: address\n00019|         };\n00020|         break;\n00021|         \n00022|       case 'findzonebycoordinates':\n00023|         url = `${BASE_URL}/branches/findzonebycoordinates/`;\n00024|         body = {\n00025|           longitude: coordinates.longitude,\n00026|           latitude: coordinates.latitude\n00027|         };\n00028|         break;\n00029|         \n00030|       case 'calculateprice':\n00031|         url = `${BASE_URL}/calculator/calculateprice/`;\n00032|         const { method: methodName, ...calculationData } = requestData;\n00033|         body = calculationData;\n00034|         break;\n00035|         \n00036|       case 'nearestdepartments':\n00037|         url = `${BASE_URL}/branches/nearestdepartments/`;\n00038|         const { method: nearestMethod, ...departmentData } = requestData;\n00039|         body = departmentData;\n00040|         break;\n00041|         \n00042|       default:\n00043|         return NextResponse.json({ error: 'Неизвестный метод' }, { status: 400 });\n00044|     }\n00045|     \n00046|     const response = await fetch(url, {\n00047|       method: 'POST',\n00048|       headers: {\n00049|         'Content-Type': 'application/json',\n00050|         'Authorization': `Bearer ${PEK_TOKEN}`,\n00051|       },\n00052|       body: JSON.stringify(body)\n00053|     });\n00054|     \n00055|     if (!response.ok) {\n00056|       const errorText = await response.text();\n00057|       console.error('ПЭК API ошибка:', response.status, errorText);\n00058|       return NextResponse.json({ \n00059|         error: `ПЭК API ошибка: ${response.status}`,\n00060|         details: errorText\n00061|       }, { status: response.status });\n00062|     }\n00063|     \n00064|     const data = await response.json();\n00065|     return NextResponse.json(data);\n00066|     \n00067|   } catch (error) {\n00068|     console.error('Ошибка прокси ПЭК API:', error);\n00069|     return NextResponse.json({ \n00070|       error: 'Ошибка сервера при обращении к ПЭК API',\n00071|       details: error instanceof Error ? error.message : 'Неизвестная ошибка'\n00072|     }, { status: 500 });\n00073|   }\n00074| }\n</file>",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const requestData = await request.json();\n    const { method, address, coordinates } = requestData;\n    \n    const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';\n    const BASE_URL = 'https://api.pecom.ru/v1';\n    \n    let url = '';\n    let body = {};\n    \n    switch (method) {\n      case 'findzonebyaddress':\n        url = `${BASE_URL}/branches/findzonebyaddress/`;\n        body = {\n          address: address\n        };\n        break;"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758904599888,
+      "end": 1758904599890
+    }
+  }
+}

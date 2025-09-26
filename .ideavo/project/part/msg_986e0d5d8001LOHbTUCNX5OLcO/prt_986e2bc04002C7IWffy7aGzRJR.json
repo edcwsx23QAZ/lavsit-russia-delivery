@@ -1,0 +1,34 @@
+{
+  "id": "prt_986e2bc04002C7IWffy7aGzRJR",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01R84hPNWLeAgBV4auTdzeeo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "    if (!response.ok) {\n      const errorText = await response.text();\n      console.error('ПЭК API ошибка:', response.status, errorText);\n      return NextResponse.json({ \n        error: `ПЭК API ошибка: ${response.status}`,\n        details: errorText\n      }, { status: response.status });\n    }\n    \n    const data = await response.json();\n    return NextResponse.json(data);",
+          "newString": "    if (!response.ok) {\n      const errorText = await response.text();\n      console.error('❌ ПЭК API ошибка:', response.status, response.statusText);\n      console.error('❌ Ответ:', errorText.substring(0, 1000));\n      \n      return NextResponse.json({ \n        error: `ПЭК API ошибка: ${response.status} ${response.statusText}`,\n        details: errorText,\n        url,\n        method,\n        requestBody: body\n      }, { status: response.status });\n    }\n    \n    const responseText = await response.text();\n    console.log('✅ Успешный ответ от ПЭК:', responseText.substring(0, 500));\n    \n    try {\n      const data = JSON.parse(responseText);\n      return NextResponse.json(data);\n    } catch (parseError) {\n      console.error('❌ Ошибка парсинга JSON:', parseError);\n      return NextResponse.json({ \n        error: 'Ошибка парсинга ответа',\n        details: responseText\n      }, { status: 500 });\n    }"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -67,18 +67,34 @@\n   console.log('Headers:', Object.fromEntries(response.headers.entries()));\n   \n   if (!response.ok) {\n     const errorText = await response.text();\n-    console.error('ПЭК API ошибка:', response.status, errorText);\n+    console.error('❌ ПЭК API ошибка:', response.status, response.statusText);\n+    console.error('❌ Ответ:', errorText.substring(0, 1000));\n+    \n     return NextResponse.json({ \n-      error: `ПЭК API ошибка: ${response.status}`,\n-      details: errorText\n+      error: `ПЭК API ошибка: ${response.status} ${response.statusText}`,\n+      details: errorText,\n+      url,\n+      method,\n+      requestBody: body\n     }, { status: response.status });\n   }\n   \n-  const data = await response.json();\n-  return NextResponse.json(data);\n+  const responseText = await response.text();\n+  console.log('✅ Успешный ответ от ПЭК:', responseText.substring(0, 500));\n   \n+  try {\n+    const data = JSON.parse(responseText);\n+    return NextResponse.json(data);\n+  } catch (parseError) {\n+    console.error('❌ Ошибка парсинга JSON:', parseError);\n+    return NextResponse.json({ \n+      error: 'Ошибка парсинга ответа',\n+      details: responseText\n+    }, { status: 500 });\n+  }\n+  \n } catch (error) {\n   console.error('Ошибка прокси ПЭК API:', error);\n   return NextResponse.json({ \n     error: 'Ошибка сервера при обращении к ПЭК API',\n"
+        }
+      ]
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758904639119,
+      "end": 1758904639122
+    }
+  }
+}

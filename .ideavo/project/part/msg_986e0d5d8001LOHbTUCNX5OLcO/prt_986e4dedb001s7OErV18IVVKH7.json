@@ -1,0 +1,34 @@
+{
+  "id": "prt_986e4dedb001s7OErV18IVVKH7",
+  "messageID": "msg_986e0d5d8001LOHbTUCNX5OLcO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01EvrBPnUsoScTv5ZkckQnRn",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "        error: `API ПЭК недоступен: ${error.message}. Показан примерный расчет по базовым тарифам.`",
+          "newString": "        error: `${errorDescription}. Показан примерный расчет по базовым тарифам.`"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1397,9 +1397,9 @@\n       },\n       requestData: null,\n       responseData: null,\n       apiUrl,\n-      error: `API ПЭК недоступен: ${error.message}. Показан примерный расчет по базовым тарифам.`\n+      error: `${errorDescription}. Показан примерный расчет по базовым тарифам.`\n     };\n   }\n };\n \n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758904775911,
+      "end": 1758904775921
+    }
+  }
+}
