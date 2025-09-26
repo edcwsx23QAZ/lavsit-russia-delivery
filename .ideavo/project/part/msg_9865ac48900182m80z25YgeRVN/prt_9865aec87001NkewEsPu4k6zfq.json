@@ -1,0 +1,11 @@
+{
+  "id": "prt_9865aec87001NkewEsPu4k6zfq",
+  "messageID": "msg_9865ac48900182m80z25YgeRVN",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Проблема найдена! В запросе мы передаем:\n\n```javascript\ninsurance: {\n  statedValue: form.declaredValue,\n  term: true\n}\n```\n\nЭто означает, что **API автоматически включает страховку в data.data.price**, а потом мы **еще раз добавляем data.data.insurance к totalPrice**.\n\nПолучается двойное добавление страховки:\n1. **В data.data.price** уже включена страховка (26,269₽ уже с учетом страховки)\n2. **Мы добавляем data.data.insurance** (+2,044₽) повторно\n\n**Правильная логика должна быть:**\n- Либо data.data.price уже включает страховку, тогда НЕ добавлять data.data.insurance\n- Либо data.data.price без страховки, тогда добавлять data.data.insurance\n\n**Реальная стоимость без двойной страховки: 28,313₽ - 2,044₽ = 26,269₽**\n\nНужно исправить логику - не добавлять data.data.insurance к totalPrice, так как страховка уже включена в базовую стоимость благодаря параметру insurance в запросе.",
+  "time": {
+    "start": 1758895734927,
+    "end": 1758895734927
+  }
+}

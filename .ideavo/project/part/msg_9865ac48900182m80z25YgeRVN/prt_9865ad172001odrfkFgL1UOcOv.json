@@ -1,0 +1,24 @@
+{
+  "id": "prt_9865ad172001odrfkFgL1UOcOv",
+  "messageID": "msg_9865ac48900182m80z25YgeRVN",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01ARUqBnzoWS7H6tm8dWTFEM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "insurance"
+    },
+    "output": "Found 12 matches\n/home/user/project/app/page.tsx:\n  Line 525:             insurance: {\n  Line 584:         if (data.data.insurance) {\n  Line 585:           console.log('💰 Страховка data.data.insurance:', data.data.insurance);\n  Line 586:           totalPrice += data.data.insurance;\n  Line 742:         insurance: form.needInsurance ? '1' : '0',\n  Line 1240:       let insurancePrice = 0;\n  Line 1312:       if (form.needInsurance && calc.details.insurance) {\n  Line 1313:         insurancePrice = calc.details.insurance;\n  Line 1317:           price: insurancePrice\n  Line 1329:       const calculatedSum = intercityPrice + derivalPrice + arrivalPrice + packagingPrice + insurancePrice + 15;\n  Line 1641:                       id=\"insurance\"\n  Line 1646:                     <Label htmlFor=\"insurance\" className=\"text-white text-xs\">Требуется страховка</Label>",
+    "metadata": {
+      "matches": 12,
+      "truncated": false
+    },
+    "title": "insurance",
+    "time": {
+      "start": 1758895723231,
+      "end": 1758895723241
+    }
+  }
+}
