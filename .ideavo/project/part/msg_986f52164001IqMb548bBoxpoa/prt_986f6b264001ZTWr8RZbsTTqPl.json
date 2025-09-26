@@ -1,0 +1,25 @@
+{
+  "id": "prt_986f6b264001ZTWr8RZbsTTqPl",
+  "messageID": "msg_986f52164001IqMb548bBoxpoa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_0181kRaSEuw2JwAZDMs7fU66",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "      const response = await fetch(fullUrl, {\n        method: 'POST',\n        headers: {\n          // Заголовки согласно официальной документации\n          'Content-Type': 'application/json;charset=utf-8',\n          'Accept': 'application/json',\n          'Accept-Encoding': 'gzip',\n          'Authorization': `Basic ${credentials}`,\n        },\n        body: JSON.stringify(body)\n      });",
+          "newString": "      const response = await fetch(fullUrl, {\n        method: 'POST',\n        headers: {\n          // Заголовки согласно официальной документации\n          'Content-Type': 'application/json;charset=utf-8',\n          'Accept': 'application/json',\n          // Убираем Accept-Encoding: gzip для упрощения отладки\n          'Authorization': `Basic ${credentials}`,\n        },\n        body: JSON.stringify(body)\n      });"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/app/api/pek/route.ts before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758905942514,
+      "end": 1758905942516
+    }
+  }
+}

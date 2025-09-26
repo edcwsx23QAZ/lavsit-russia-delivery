@@ -1,0 +1,26 @@
+{
+  "id": "prt_986f6e5de001FB1EMp471m43NT",
+  "messageID": "msg_986f52164001IqMb548bBoxpoa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01VmEZVjAbC8bngc8bwRXMp7",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "oldString": "          'Accept-Encoding': 'gzip',",
+      "newString": "          // 'Accept-Encoding': 'gzip', // Убираем для упрощения отладки"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -89,9 +89,9 @@\n   headers: {\n     // Заголовки согласно официальной документации\n     'Content-Type': 'application/json;charset=utf-8',\n     'Accept': 'application/json',\n-    'Accept-Encoding': 'gzip',\n+    // 'Accept-Encoding': 'gzip', // Убираем для упрощения отладки\n     'Authorization': `Basic ${credentials}`,\n   },\n   body: JSON.stringify(body)\n });\n"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758905953057,
+      "end": 1758905953064
+    }
+  }
+}

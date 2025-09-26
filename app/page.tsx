@@ -1697,6 +1697,22 @@ export default function Home() {
           Междугородняя доставка Лавсит
         </h1>
         
+        {/* Уведомление о настройке API */}
+        <Alert className="border-blue-500 bg-blue-900/20 mb-4">
+          <Building2 className="h-4 w-4 text-blue-400" />
+          <AlertDescription className="text-blue-100">
+            <strong className="text-blue-300">🚚 Калькулятор ПЭК готов!</strong> Для получения реальных тарифов настройте API ПЭК.
+            <br />
+            <a href="/env-check" className="text-blue-400 underline font-medium hover:text-blue-300">
+              Проверить настройки ПЭК API →
+            </a>
+            {' | '}
+            <a href="/pek-test" className="text-blue-400 underline font-medium hover:text-blue-300">
+              Диагностика API →
+            </a>
+          </AlertDescription>
+        </Alert>
+        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[90vh]">
           {/* Левая часть - форма */}
           <div className="space-y-3 overflow-y-auto pr-2">

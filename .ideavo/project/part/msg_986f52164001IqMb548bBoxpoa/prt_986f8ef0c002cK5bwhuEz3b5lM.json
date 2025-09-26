@@ -1,0 +1,25 @@
+{
+  "id": "prt_986f8ef0c002cK5bwhuEz3b5lM",
+  "messageID": "msg_986f52164001IqMb548bBoxpoa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01LPMVj22pTPzus2QiYqS3Ta",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 500,
+      "limit": 20
+    },
+    "output": "<file>\n00501|                 toFloor: form.floor, // этаж из формы\n00502|                 carry: 0\n00503|               }\n00504|             } : {})\n00505|           },\n00506|           ...(form.needPackaging && packageUid ? {\n00507|             packages: [{\n00508|               uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n00509|               count: 1  // По умолчанию 1\n00510|             }]\n00511|           } : {})\n00512|         },\n00513|         cargo: {\n00514|           quantity: form.cargos.length,\n00515|           length: maxLength,\n00516|           width: maxWidth,\n00517|           height: maxHeight,\n00518|           weight: totalWeight,\n00519|           totalVolume: totalVolume,\n00520|           totalWeight: totalWeight,\n\n(File has more lines. Use 'offset' parameter to read beyond line 520)\n</file>",
+    "metadata": {
+      "preview": "                toFloor: form.floor, // этаж из формы\n                carry: 0\n              }\n            } : {})\n          },\n          ...(form.needPackaging && packageUid ? {\n            packages: [{\n              uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n              count: 1  // По умолчанию 1\n            }]\n          } : {})\n        },\n        cargo: {\n          quantity: form.cargos.length,\n          length: maxLength,\n          width: maxWidth,\n          height: maxHeight,\n          weight: totalWeight,\n          totalVolume: totalVolume,\n          totalWeight: totalWeight,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758906085713,
+      "end": 1758906085715
+    }
+  }
+}

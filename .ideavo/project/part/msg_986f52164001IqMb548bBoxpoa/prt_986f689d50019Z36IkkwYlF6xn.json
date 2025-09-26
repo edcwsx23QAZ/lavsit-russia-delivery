@@ -1,0 +1,26 @@
+{
+  "id": "prt_986f689d50019Z36IkkwYlF6xn",
+  "messageID": "msg_986f52164001IqMb548bBoxpoa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01WhVgz77FAxHjxj24VcdD9X",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/ \\\n  -H \"Content-Type: application/json;charset=utf-8\" \\\n  -H \"Accept: application/json\" \\\n  -H \"Authorization: Basic bGF2c2l0OjIyODA2MDcwNTEwMDMwNkFGOERBMTkwOEY5QkRGOUFGQjFGRTE4NUM=\" \\\n  -d '{\"address\": \"г Москва, Шмитовский проезд, д 1\"}' \\\n  --max-time 15",
+      "description": "Тестирование без gzip для получения читаемого ответа"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   912  100   841  100    71   1143     96 --:--:-- --:--:-- --:--:--  1240\n{\"zoneId\":\"d68e47fa-66bb-11e5-80cf-003048baa05f\",\"zoneName\":\"Москва ТТК\",\"branchUID\":\"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d\",\"bitrixId\":446,\"branchCode\":\"МВ\",\"branchTitle\":\"Москва Восток\",\"mainWarehouseId\":\"a678333f-2a2a-11e9-80ce-00155d713b38\",\"warehousePoint\":{\"latitude\":55.53300000000000,\"longitude\":37.57900000000000},\"GeoData\":{\"precision\":\"exact\",\"kind\":\"house\",\"Address\":{\"country_code\":\"RU\",\"formatted\":\"Россия, Москва, Шмитовский проезд, 1\",\"postal_code\":\"123100\",\"Components\":[{\"kind\":\"country\",\"name\":\"Россия\"},{\"kind\":\"province\",\"name\":\"Центральный федеральный округ\"},{\"kind\":\"province\",\"name\":\"Москва\"},{\"kind\":\"locality\",\"name\":\"Москва\"},{\"kind\":\"street\",\"name\":\"Шмитовский проезд\"},{\"kind\":\"house\",\"name\":\"1\"}]}}}",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   912  100   841  100    71   1143     96 --:--:-- --:--:-- --:--:--  1240\n{\"zoneId\":\"d68e47fa-66bb-11e5-80cf-003048baa05f\",\"zoneName\":\"Москва ТТК\",\"branchUID\":\"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d\",\"bitrixId\":446,\"branchCode\":\"МВ\",\"branchTitle\":\"Москва Восток\",\"mainWarehouseId\":\"a678333f-2a2a-11e9-80ce-00155d713b38\",\"warehousePoint\":{\"latitude\":55.53300000000000,\"longitude\":37.57900000000000},\"GeoData\":{\"precision\":\"exact\",\"kind\":\"house\",\"Address\":{\"country_code\":\"RU\",\"formatted\":\"Россия, Москва, Шмитовский проезд, 1\",\"postal_code\":\"123100\",\"Components\":[{\"kind\":\"country\",\"name\":\"Россия\"},{\"kind\":\"province\",\"name\":\"Центральный федеральный округ\"},{\"kind\":\"province\",\"name\":\"Москва\"},{\"kind\":\"locality\",\"name\":\"Москва\"},{\"kind\":\"street\",\"name\":\"Шмитовский проезд\"},{\"kind\":\"house\",\"name\":\"1\"}]}}}",
+      "exit": 0,
+      "description": "Тестирование без gzip для получения читаемого ответа"
+    },
+    "title": "curl -X POST https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/ \\\n  -H \"Content-Type: application/json;charset=utf-8\" \\\n  -H \"Accept: application/json\" \\\n  -H \"Authorization: Basic bGF2c2l0OjIyODA2MDcwNTEwMDMwNkFGOERBMTkwOEY5QkRGOUFGQjFGRTE4NUM=\" \\\n  -d '{\"address\": \"г Москва, Шмитовский проезд, д 1\"}' \\\n  --max-time 15",
+    "time": {
+      "start": 1758905930088,
+      "end": 1758905930840
+    }
+  }
+}

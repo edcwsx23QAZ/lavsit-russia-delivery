@@ -1,0 +1,26 @@
+{
+  "id": "prt_986f6a402001Or5rIK0DZnfVjP",
+  "messageID": "msg_986f52164001IqMb548bBoxpoa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_016MC299hypCiuLFpsuPvsWa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "pkill -f \"next dev\"",
+      "description": "Остановка сервера для обновления кода"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Остановка сервера для обновления кода"
+    },
+    "title": "pkill -f \"next dev\"",
+    "time": {
+      "start": 1758905935730,
+      "end": 1758905935937
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_986f85638001IeHMcXium5P07K",
+  "messageID": "msg_986f52164001IqMb548bBoxpoa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01LZFZWYeqVNgD6Kuc97riVV",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek-simple/route.ts",
+      "content": "import { NextRequest, NextResponse } from 'next/server';\n\nexport async function POST(request: NextRequest) {\n  try {\n    console.log('🔧 ПЭК Simple: Получен запрос');\n    \n    const requestData = await request.json();\n    console.log('📝 Данные запроса:', JSON.stringify(requestData, null, 2));\n    \n    const { method } = requestData;\n    \n    if (method === 'test') {\n      return NextResponse.json({ \n        status: 'OK', \n        message: 'Простая версия прокси работает',\n        env: {\n          hasLogin: !!process.env.PEK_LOGIN,\n          hasKey: !!process.env.PEK_API_KEY,\n          login: process.env.PEK_LOGIN?.substring(0, 3) + '***'\n        }\n      });\n    }\n    \n    // Данные авторизации\n    const PEK_API_KEY = process.env.PEK_API_KEY;\n    const PEK_LOGIN = process.env.PEK_LOGIN;\n    \n    if (!PEK_LOGIN || !PEK_API_KEY) {\n      return NextResponse.json({ \n        error: 'Нет данных авторизации',\n        hasLogin: !!PEK_LOGIN,\n        hasKey: !!PEK_API_KEY\n      }, { status: 500 });\n    }\n    \n    // Тестируем прямой вызов к ПЭК\n    if (method === 'direct') {\n      const credentials = Buffer.from(`${PEK_LOGIN}:${PEK_API_KEY}`).toString('base64');\n      \n      console.log('🌐 Прямой вызов ПЭК API');\n      \n      const response = await fetch('https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json;charset=utf-8',\n          'Accept': 'application/json',\n          'Authorization': `Basic ${credentials}`,\n        },\n        body: JSON.stringify({ address: 'г Москва, Шмитовский проезд, д 1' })\n      });\n      \n      console.log('📡 Ответ ПЭК:', response.status, response.statusText);\n      \n      const responseText = await response.text();\n      console.log('📄 Тело ответа:', responseText.substring(0, 200));\n      \n      if (response.ok) {\n        try {\n          const data = JSON.parse(responseText);\n          return NextResponse.json(data);\n        } catch (e) {\n          return NextResponse.json({ error: 'Ошибка парсинга', raw: responseText });\n        }\n      } else {\n        return NextResponse.json({ \n          error: 'API ошибка',\n          status: response.status,\n          response: responseText \n        }, { status: response.status });\n      }\n    }\n    \n    return NextResponse.json({ error: 'Неизвестный метод', method });\n    \n  } catch (error) {\n    console.error('❌ Ошибка:', error);\n    return NextResponse.json({ \n      error: 'Критическая ошибка',\n      details: error instanceof Error ? error.message : 'Неизвестная ошибка'\n    }, { status: 500 });\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/api/pek-simple/route.ts",
+      "exists": false
+    },
+    "title": "app/api/pek-simple/route.ts",
+    "time": {
+      "start": 1758906056962,
+      "end": 1758906056964
+    }
+  }
+}

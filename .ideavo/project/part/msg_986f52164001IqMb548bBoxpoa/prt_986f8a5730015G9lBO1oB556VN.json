@@ -1,0 +1,25 @@
+{
+  "id": "prt_986f8a5730015G9lBO1oB556VN",
+  "messageID": "msg_986f52164001IqMb548bBoxpoa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01BLYyzT9eX1L6We8Wgwup3K",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "  return (\n    <div className=\"min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4\">\n      <div className=\"max-w-4xl mx-auto space-y-8\">",
+          "newString": "  return (\n    <div className=\"min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-4\">\n      <div className=\"max-w-4xl mx-auto space-y-8\">\n        \n        {/* Уведомление о настройке API */}\n        <Alert className=\"border-blue-200 bg-blue-50\">\n          <Building2 className=\"h-4 w-4\" />\n          <AlertDescription>\n            <strong>🚚 Калькулятор ПЭК готов!</strong> Для получения реальных тарифов настройте API ПЭК.\n            <br />\n            <a href=\"/env-check\" className=\"text-blue-600 underline font-medium\">\n              Проверить настройки ПЭК API →\n            </a>\n            {' | '}\n            <a href=\"/pek-test\" className=\"text-blue-600 underline font-medium\">\n              Диагностика API →\n            </a>\n          </AlertDescription>\n        </Alert>"
+        }
+      ]
+    },
+    "error": "Error: oldString not found in content",
+    "time": {
+      "start": 1758906077856,
+      "end": 1758906077884
+    }
+  }
+}

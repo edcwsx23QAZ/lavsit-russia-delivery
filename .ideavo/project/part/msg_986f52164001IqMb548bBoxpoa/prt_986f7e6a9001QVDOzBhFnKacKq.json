@@ -1,0 +1,26 @@
+{
+  "id": "prt_986f7e6a9001QVDOzBhFnKacKq",
+  "messageID": "msg_986f52164001IqMb548bBoxpoa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_015V87Va5z75d6nLQr8YR7XB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/public/test-pek.html",
+      "content": "<!DOCTYPE html>\n<html>\n<head>\n    <title>Тест ПЭК API</title>\n    <meta charset=\"utf-8\">\n</head>\n<body>\n    <h1>🚀 Тест ПЭК API</h1>\n    \n    <div id=\"results\"></div>\n    \n    <button onclick=\"testApi()\">Тестировать API</button>\n    \n    <script>\n    async function testApi() {\n        const results = document.getElementById('results');\n        results.innerHTML = '<p>🔄 Тестирование...</p>';\n        \n        try {\n            // Тест 1: Проверка прокси\n            results.innerHTML += '<h3>Тест 1: Проверка прокси</h3>';\n            const response1 = await fetch('/api/pek', {\n                method: 'POST',\n                headers: { 'Content-Type': 'application/json' },\n                body: JSON.stringify({ method: 'test' })\n            });\n            \n            const data1 = await response1.json();\n            results.innerHTML += `<pre>${JSON.stringify(data1, null, 2)}</pre>`;\n            \n            // Тест 2: Поиск зоны по адресу\n            results.innerHTML += '<h3>Тест 2: Поиск зоны по адресу</h3>';\n            const response2 = await fetch('/api/pek', {\n                method: 'POST',\n                headers: { 'Content-Type': 'application/json' },\n                body: JSON.stringify({ \n                    method: 'findzonebyaddress', \n                    address: 'г Москва, Шмитовский проезд, д 1' \n                })\n            });\n            \n            const data2 = await response2.json();\n            results.innerHTML += `<pre>${JSON.stringify(data2, null, 2)}</pre>`;\n            \n        } catch (error) {\n            results.innerHTML += `<p>❌ Ошибка: ${error.message}</p>`;\n        }\n    }\n    </script>\n</body>\n</html>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/public/test-pek.html",
+      "exists": false
+    },
+    "title": "public/test-pek.html",
+    "time": {
+      "start": 1758906023995,
+      "end": 1758906023995
+    }
+  }
+}

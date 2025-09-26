@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Тест ПЭК API</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1>🚀 Тест ПЭК API</h1>
+    
+    <div id="results"></div>
+    
+    <button onclick="testApi()">Тестировать API</button>
+    
+    <script>
+    async function testApi() {
+        const results = document.getElementById('results');
+        results.innerHTML = '<p>🔄 Тестирование...</p>';
+        
+        try {
+            // Тест 1: Проверка прокси
+            results.innerHTML += '<h3>Тест 1: Проверка прокси</h3>';
+            const response1 = await fetch('/api/pek', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ method: 'test' })
+            });
+            
+            const data1 = await response1.json();
+            results.innerHTML += `<pre>${JSON.stringify(data1, null, 2)}</pre>`;
+            
+            // Тест 2: Поиск зоны по адресу
+            results.innerHTML += '<h3>Тест 2: Поиск зоны по адресу</h3>';
+            const response2 = await fetch('/api/pek', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    method: 'findzonebyaddress', 
+                    address: 'г Москва, Шмитовский проезд, д 1' 
+                })
+            });
+            
+            const data2 = await response2.json();
+            results.innerHTML += `<pre>${JSON.stringify(data2, null, 2)}</pre>`;
+            
+        } catch (error) {
+            results.innerHTML += `<p>❌ Ошибка: ${error.message}</p>`;
+        }
+    }
+    </script>
+</body>
+</html>

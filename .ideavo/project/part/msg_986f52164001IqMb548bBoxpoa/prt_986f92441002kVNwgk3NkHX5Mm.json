@@ -1,0 +1,25 @@
+{
+  "id": "prt_986f92441002kVNwgk3NkHX5Mm",
+  "messageID": "msg_986f52164001IqMb548bBoxpoa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01TWf8pEDgqj4Q6gvcjvLGDv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1690,
+      "limit": 20
+    },
+    "output": "<file>\n01691|   };\n01692| \n01693|   return (\n01694|     <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n01695|       <div className=\"max-w-7xl mx-auto\">\n01696|         <h1 className=\"text-2xl font-bold text-center mb-6 text-blue-400\">\n01697|           Междугородняя доставка Лавсит\n01698|         </h1>\n01699|         \n01700|         <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-4 h-[90vh]\">\n01701|           {/* Левая часть - форма */}\n01702|           <div className=\"space-y-3 overflow-y-auto pr-2\">\n01703|             {/* Грузы */}\n01704|             <Card className=\"bg-gray-800 border-gray-700\">\n01705|               <CardHeader className=\"pb-3\">\n01706|                 <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n01707|                   <Truck className=\"h-4 w-4\" />\n01708|                   Грузы\n01709|                 </CardTitle>\n01710|               </CardHeader>\n\n(File has more lines. Use 'offset' parameter to read beyond line 1710)\n</file>",
+    "metadata": {
+      "preview": "  };\n\n  return (\n    <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n      <div className=\"max-w-7xl mx-auto\">\n        <h1 className=\"text-2xl font-bold text-center mb-6 text-blue-400\">\n          Междугородняя доставка Лавсит\n        </h1>\n        \n        <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-4 h-[90vh]\">\n          {/* Левая часть - форма */}\n          <div className=\"space-y-3 overflow-y-auto pr-2\">\n            {/* Грузы */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-3\">\n                <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n                  <Truck className=\"h-4 w-4\" />\n                  Грузы\n                </CardTitle>\n              </CardHeader>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758906099353,
+      "end": 1758906099355
+    }
+  }
+}

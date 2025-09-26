@@ -1,0 +1,25 @@
+{
+  "id": "prt_986f6cceb001s63cErRT983NLM",
+  "messageID": "msg_986f52164001IqMb548bBoxpoa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01SDGqjPF8tuv2Xda143ZPgE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "offset": 65,
+      "limit": 10
+    },
+    "output": "<file>\n00066|           receivedData: requestData,\n00067|           authMethod: 'Basic Auth',\n00068|           baseUrl: BASE_URL\n00069|         });\n00070|         \n00071|       default:\n00072|         console.log('❌ Неизвестный метод:', method);\n00073|         return NextResponse.json({ error: 'Неизвестный метод', method }, { status: 400 });\n00074|     }\n00075|     \n\n(File has more lines. Use 'offset' parameter to read beyond line 75)\n</file>",
+    "metadata": {
+      "preview": "          receivedData: requestData,\n          authMethod: 'Basic Auth',\n          baseUrl: BASE_URL\n        });\n        \n      default:\n        console.log('❌ Неизвестный метод:', method);\n        return NextResponse.json({ error: 'Неизвестный метод', method }, { status: 400 });\n    }\n    "
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758905945956,
+      "end": 1758905945958
+    }
+  }
+}

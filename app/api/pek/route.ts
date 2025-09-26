@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
           // Заголовки согласно официальной документации
           'Content-Type': 'application/json;charset=utf-8',
           'Accept': 'application/json',
-          'Accept-Encoding': 'gzip',
+          // 'Accept-Encoding': 'gzip', // Убираем для упрощения отладки
           'Authorization': `Basic ${credentials}`,
         },
         body: JSON.stringify(body)

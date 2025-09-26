@@ -1,0 +1,26 @@
+{
+  "id": "prt_986f667180011k3fyom1EKhysZ",
+  "messageID": "msg_986f52164001IqMb548bBoxpoa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01T7jY1QMig451xXmQ2tyQd2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/ \\\n  -H \"Content-Type: application/json;charset=utf-8\" \\\n  -H \"Accept: application/json\" \\\n  -H \"Accept-Encoding: gzip\" \\\n  -H \"Authorization: Basic bGF2c2l0OjIyODA2MDcwNTEwMDMwNkFGOERBMTkwOEY5QkRGOUFGQjFGRTE4NUM=\" \\\n  -d '{\"address\": \"г Москва, Шмитовский проезд, д 1\"}' \\\n  --max-time 15",
+      "description": "Прямое тестирование ПЭК API с реальными данными"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   560  100   489  100    71    403     58  0:00:01  0:00:01 --:--:--   462\n\u001f�\b\u0000\u0000\u0000\u0000\u0000\u0004\u0000�QMo�0\u0010�++��*Y�k{C��zA\bQq@\b�\u001d�Zd�U⅖U��p\u0003�R��\u0003�P�X�V�\u0002�/8���6)\u0011\u001c6��3��{ϳ o�\u0012[9Y'y��(-�O\u0012��0\u0014��\u0005����\u0006Q�\u0000�� �\u0012�\u0000�\u0002\u0019���i\u000f�=�g#�\u0005�G\u0004�\n\u0014����D\u0004�R�Ť�s��G�\u0000\u001f\"6�#�\u0012�\u00121I��Q���s\u0011EI?aC������Ҕ�+\u001f�K{ho�5\"� �\u0013�Ď�׷� I3Ji�a\f.��%\u0013�,��<\r)�\u0019\u0012_���Z*C�\u0017�\u0004#��و㵘����R�\u0017]��kq:\u0019t\u001b��\u0017z\u0013\f�1�JpYK�Ћ�\u0005nP�T��R\u000f���\u0012u��\\ϕ���������]�j\n�\bG���q\u000f�U{䍆/��S�\u0013��)Η�+�}d��X����7\nq�L�\u0006�^!\u001c�0\b����3ܮ2��颷������>0@\u001a�\u000e8��+��\u0018 OP�W{��g�G�\u0001�ߣ��\u001d�/��?e��v�}k���:�<D��C)��jdm*!�\u0000��ن�~e\u001d7$ͳ�i�\u0000�I�I\u0003\u0000\u0000",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   560  100   489  100    71    403     58  0:00:01  0:00:01 --:--:--   462\n\u001f�\b\u0000\u0000\u0000\u0000\u0000\u0004\u0000�QMo�0\u0010�++��*Y�k{C��zA\bQq@\b�\u001d�Zd�U⅖U��p\u0003�R��\u0003�P�X�V�\u0002�/8���6)\u0011\u001c6��3��{ϳ o�\u0012[9Y'y��(-�O\u0012��0\u0014��\u0005����\u0006Q�\u0000�� �\u0012�\u0000�\u0002\u0019���i\u000f�=�g#�\u0005�G\u0004�\n\u0014����D\u0004�R�Ť�s��G�\u0000\u001f\"6�#�\u0012�\u00121I��Q���s\u0011EI?aC������Ҕ�+\u001f�K{ho�5\"� �\u0013�Ď�׷� I3Ji�a\f.��%\u0013�,��<\r)�\u0019\u0012_���Z*C�\u0017�\u0004#��و㵘����R�\u0017]��kq:\u0019t\u001b��\u0017z\u0013\f�1�JpYK�Ћ�\u0005nP�T��R\u000f���\u0012u��\\ϕ���������]�j\n�\bG���q\u000f�U{䍆/��S�\u0013��)Η�+�}d��X����7\nq�L�\u0006�^!\u001c�0\b����3ܮ2��颷������>0@\u001a�\u000e8��+��\u0018 OP�W{��g�G�\u0001�ߣ��\u001d�/��?e��v�}k���:�<D��C)��jdm*!�\u0000��ن�~e\u001d7$ͳ�i�\u0000�I�I\u0003\u0000\u0000",
+      "exit": 0,
+      "description": "Прямое тестирование ПЭК API с реальными данными"
+    },
+    "title": "curl -X POST https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/ \\\n  -H \"Content-Type: application/json;charset=utf-8\" \\\n  -H \"Accept: application/json\" \\\n  -H \"Accept-Encoding: gzip\" \\\n  -H \"Authorization: Basic bGF2c2l0OjIyODA2MDcwNTEwMDMwNkFGOERBMTkwOEY5QkRGOUFGQjFGRTE4NUM=\" \\\n  -d '{\"address\": \"г Москва, Шмитовский проезд, д 1\"}' \\\n  --max-time 15",
+    "time": {
+      "start": 1758905922439,
+      "end": 1758905923667
+    }
+  }
+}

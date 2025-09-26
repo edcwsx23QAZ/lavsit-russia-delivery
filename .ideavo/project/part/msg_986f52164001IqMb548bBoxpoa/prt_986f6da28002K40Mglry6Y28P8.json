@@ -1,0 +1,25 @@
+{
+  "id": "prt_986f6da28002K40Mglry6Y28P8",
+  "messageID": "msg_986f52164001IqMb548bBoxpoa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Akh3L7UqFyfPvDtMmJTn7V",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "offset": 85,
+      "limit": 10
+    },
+    "output": "<file>\n00086|     try {\n00087|       const response = await fetch(fullUrl, {\n00088|         method: 'POST',\n00089|         headers: {\n00090|           // Заголовки согласно официальной документации\n00091|           'Content-Type': 'application/json;charset=utf-8',\n00092|           'Accept': 'application/json',\n00093|           'Accept-Encoding': 'gzip',\n00094|           'Authorization': `Basic ${credentials}`,\n00095|         },\n\n(File has more lines. Use 'offset' parameter to read beyond line 95)\n</file>",
+    "metadata": {
+      "preview": "    try {\n      const response = await fetch(fullUrl, {\n        method: 'POST',\n        headers: {\n          // Заголовки согласно официальной документации\n          'Content-Type': 'application/json;charset=utf-8',\n          'Accept': 'application/json',\n          'Accept-Encoding': 'gzip',\n          'Authorization': `Basic ${credentials}`,\n        },"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758905949301,
+      "end": 1758905949303
+    }
+  }
+}
