@@ -1,0 +1,24 @@
+{
+  "id": "prt_98635ac9d001laVNvcNTvNNaY4",
+  "messageID": "msg_9863587800015uO553axsxfl9T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01RGn9t4egEWd7xXSuypci7H",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Упаковка"
+    },
+    "output": "Found 6 matches\n/home/user/project/app/page.tsx:\n  Line 362:       console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');\n  Line 430:         console.log('🔍 ❌ Упаковка не требуется, пропускаем получение UID');\n  Line 1268:       // Упаковка - теперь берется только из API packages\n  Line 1273:               service: 'Упаковка груза',\n  Line 1274:               description: pkg.name || 'Упаковка crate_with_bubble',\n  Line 1362:           service: 'Упаковка',",
+    "metadata": {
+      "matches": 6,
+      "truncated": false
+    },
+    "title": "Упаковка",
+    "time": {
+      "start": 1758893288810,
+      "end": 1758893288821
+    }
+  }
+}

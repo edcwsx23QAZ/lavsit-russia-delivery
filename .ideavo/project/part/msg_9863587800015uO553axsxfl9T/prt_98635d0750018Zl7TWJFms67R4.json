@@ -1,0 +1,26 @@
+{
+  "id": "prt_98635d0750018Zl7TWJFms67R4",
+  "messageID": "msg_9863587800015uO553axsxfl9T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01VswuLKSmZyi9f892yhFwSa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "            details.push({\n              service: 'Упаковка груза',\n              description: pkg.name || 'Упаковка crate_with_bubble',\n              price: pkg.price\n            });",
+      "newString": "            details.push({\n              service: 'Упаковка груза',\n              description: 'Упаковать в комплекс «обрешётка + амортизация»',\n              price: pkg.price\n            });"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1270,9 +1270,9 @@\n Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n   if (pkg.price && pkg.price > 0) {\n     details.push({\n       service: 'Упаковка груза',\n-      description: pkg.name || 'Упаковка crate_with_bubble',\n+      description: 'Упаковать в комплекс «обрешётка + амортизация»',\n       price: pkg.price\n     });\n   }\n });\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758893299405,
+      "end": 1758893299423
+    }
+  }
+}

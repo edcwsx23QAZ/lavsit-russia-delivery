@@ -1271,7 +1271,7 @@ export default function Home() {
           if (pkg.price && pkg.price > 0) {
             details.push({
               service: 'Упаковка груза',
-              description: pkg.name || 'Упаковка crate_with_bubble',
+              description: 'Упаковать в комплекс «обрешётка + амортизация»',
               price: pkg.price
             });
           }
