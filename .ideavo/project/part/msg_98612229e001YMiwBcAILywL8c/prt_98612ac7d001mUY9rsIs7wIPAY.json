@@ -1,0 +1,26 @@
+{
+  "id": "prt_98612ac7d001mUY9rsIs7wIPAY",
+  "messageID": "msg_98612229e001YMiwBcAILywL8c",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_017E7MZUBE85gcXBbdwFvEAm",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Формируем корректную структуру запроса согласно инструкции\n      const requestData = {",
+      "newString": "      // Отладка перед формированием запроса\n      console.log('🔍 ФОРМИРОВАНИЕ ЗАПРОСА:');\n      console.log('  form.needPackaging =', form.needPackaging);\n      console.log('  packageUid =', packageUid);\n      console.log('  Условие для packages:', form.needPackaging && packageUid);\n\n      // Формируем корректную структуру запроса согласно инструкции\n      const requestData = {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -384,8 +384,14 @@\n const tomorrow = new Date();\n tomorrow.setDate(tomorrow.getDate() + 1);\n const produceDate = tomorrow.toISOString().split('T')[0];\n \n+// Отладка перед формированием запроса\n+console.log('🔍 ФОРМИРОВАНИЕ ЗАПРОСА:');\n+console.log('  form.needPackaging =', form.needPackaging);\n+console.log('  packageUid =', packageUid);\n+console.log('  Условие для packages:', form.needPackaging && packageUid);\n+\n // Формируем корректную структуру запроса согласно инструкции\n const requestData = {\n   appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n   sessionID: sessionID,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758890997074,
+      "end": 1758890997082
+    }
+  }
+}

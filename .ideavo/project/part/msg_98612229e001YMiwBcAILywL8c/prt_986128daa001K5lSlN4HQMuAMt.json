@@ -1,0 +1,11 @@
+{
+  "id": "prt_986128daa001K5lSlN4HQMuAMt",
+  "messageID": "msg_98612229e001YMiwBcAILywL8c",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Проблема найдена! Логирование происходит, но `packageUid` скорее всего равен `null`, поэтому условие `form.needPackaging && packageUid` не проходит.\n\nДавайте добавим более детальное логирование перед формированием запроса:",
+  "time": {
+    "start": 1758890988509,
+    "end": 1758890988509
+  }
+}

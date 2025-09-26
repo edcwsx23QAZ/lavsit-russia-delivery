@@ -1,0 +1,25 @@
+{
+  "id": "prt_98612707d0011UnCtkXts1KAHd",
+  "messageID": "msg_98612229e001YMiwBcAILywL8c",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01DpHRD4G4J1GKxyBNkmfWQw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 372,
+      "limit": 10
+    },
+    "output": "<file>\n00373|       let packageUid: string | null = null;\n00374|       if (form.needPackaging) {\n00375|         packageUid = await getDellinCrateWithBubbleUid();\n00376|         console.log('Получен packageUid для crate_with_bubble:', packageUid);\n00377|       }\n00378| \n00379|       // Формируем дату отправления на завтра\n00380|       const tomorrow = new Date();\n00381|       tomorrow.setDate(tomorrow.getDate() + 1);\n00382|       const produceDate = tomorrow.toISOString().split('T')[0];\n\n(File has more lines. Use 'offset' parameter to read beyond line 382)\n</file>",
+    "metadata": {
+      "preview": "      let packageUid: string | null = null;\n      if (form.needPackaging) {\n        packageUid = await getDellinCrateWithBubbleUid();\n        console.log('Получен packageUid для crate_with_bubble:', packageUid);\n      }\n\n      // Формируем дату отправления на завтра\n      const tomorrow = new Date();\n      tomorrow.setDate(tomorrow.getDate() + 1);\n      const produceDate = tomorrow.toISOString().split('T')[0];"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758890979962,
+      "end": 1758890979968
+    }
+  }
+}

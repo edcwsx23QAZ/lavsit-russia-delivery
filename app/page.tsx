@@ -246,9 +246,7 @@ export default function Home() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
-          login: 'service@lavsit.ru',
-          password: 'edcwsx123QAZ'
+          appkey: '00000000-0000-0000-0000-000000000000'  // Используем ключ из требований
         })
       });
 
@@ -315,18 +313,28 @@ export default function Home() {
       });
 
       const data = await response.json();
-      console.log('Деловые Линии справочник упаковок:', data);
+      console.log('📦 СПРАВОЧНИК УПАКОВОК response.ok:', response.ok);
+      console.log('📦 СПРАВОЧНИК УПАКОВОК data:', data);
       
       if (response.ok && data.data && Array.isArray(data.data)) {
+        console.log('📦 Количество упаковок в справочнике:', data.data.length);
+        console.log('📦 Первые 3 упаковки:', data.data.slice(0, 3).map(p => ({name: p.name, uid: p.uid})));
+        
         // Находим упаковку с name "crate_with_bubble"
         const crateWithBubble = data.data.find((pkg: any) => 
           pkg.name === 'crate_with_bubble'
         );
         
+        console.log('📦 Поиск crate_with_bubble результат:', crateWithBubble);
+        
         if (crateWithBubble && crateWithBubble.uid) {
-          console.log('Найден UID для crate_with_bubble:', crateWithBubble.uid);
+          console.log('✅ Найден UID для crate_with_bubble:', crateWithBubble.uid);
           return crateWithBubble.uid;
+        } else {
+          console.log('❌ crate_with_bubble не найден или нет UID');
         }
+      } else {
+        console.log('❌ Ошибка структуры ответа API упаковок');
       }
       
       console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');
@@ -371,15 +379,25 @@ export default function Home() {
 
       // Получаем UID упаковки crate_with_bubble (если нужна упаковка)
       let packageUid: string | null = null;
+      console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);
       if (form.needPackaging) {
+        console.log('🔍 ЗАПРАШИВАЕМ UID упаковки из справочника...');
         packageUid = await getDellinCrateWithBubbleUid();
-        console.log('Получен packageUid для crate_with_bubble:', packageUid);
+        console.log('🔍 РЕЗУЛЬТАТ: packageUid =', packageUid);
+      } else {
+        console.log('🔍 Упаковка не требуется, пропускаем получение UID');
       }
 
       // Формируем дату отправления на завтра
       const tomorrow = new Date();
       tomorrow.setDate(tomorrow.getDate() + 1);
       const produceDate = tomorrow.toISOString().split('T')[0];
+
+      // Отладка перед формированием запроса
+      console.log('🔍 ФОРМИРОВАНИЕ ЗАПРОСА:');
+      console.log('  form.needPackaging =', form.needPackaging);
+      console.log('  packageUid =', packageUid);
+      console.log('  Условие для packages:', form.needPackaging && packageUid);
 
       // Формируем корректную структуру запроса согласно инструкции
       const requestData = {
