@@ -97,22 +97,40 @@ export default function Home() {
   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});
   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });
 
-  // Загрузка сохраненных данных
+  // Загрузка сохраненных данных (только на клиенте)
   useEffect(() => {
-    const saved = localStorage.getItem('deliveryForm');
-    if (saved) {
-      const savedForm = JSON.parse(saved);
-      // Убеждаемся, что есть хотя бы один груз
-      if (!savedForm.cargos || savedForm.cargos.length === 0) {
-        savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];
+    // Проверяем, что мы на клиенте
+    if (typeof window !== 'undefined') {
+      try {
+        const saved = localStorage.getItem('deliveryForm');
+        if (saved) {
+          const savedForm = JSON.parse(saved);
+          // Убеждаемся, что есть хотя бы один груз
+          if (!savedForm.cargos || savedForm.cargos.length === 0) {
+            savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];
+          }
+          setForm(savedForm);
+        }
+      } catch (error) {
+        console.error('Ошибка загрузки сохраненных данных:', error);
+        // В случае ошибки устанавливаем базовую конфигурацию
+        setForm(prev => ({
+          ...prev,
+          cargos: prev.cargos.length > 0 ? prev.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]
+        }));
       }
-      setForm(savedForm);
     }
   }, []);
 
-  // Сохранение данных при изменении
+  // Сохранение данных при изменении (только на клиенте)
   useEffect(() => {
-    localStorage.setItem('deliveryForm', JSON.stringify(form));
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('deliveryForm', JSON.stringify(form));
+      } catch (error) {
+        console.error('Ошибка сохранения данных:', error);
+      }
+    }
   }, [form]);
 
   // Автоматическая страховка при указании стоимости
@@ -1378,6 +1396,7 @@ export default function Home() {
                       id="packaging"
                       checked={form.needPackaging}
                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needPackaging: checked as boolean }))}
+                      className="border-white data-[state=checked]:bg-white data-[state=checked]:text-black"
                     />
                     <Label htmlFor="packaging" className="text-white text-xs">Требуется упаковка</Label>
                   </div>
@@ -1387,6 +1406,7 @@ export default function Home() {
                       id="insurance"
                       checked={form.needInsurance}
                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needInsurance: checked as boolean }))}
+                      className="border-white data-[state=checked]:bg-white data-[state=checked]:text-black"
                     />
                     <Label htmlFor="insurance" className="text-white text-xs">Требуется страховка</Label>
                   </div>
@@ -1396,6 +1416,7 @@ export default function Home() {
                       id="loading"
                       checked={form.needLoading}
                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needLoading: checked as boolean }))}
+                      className="border-white data-[state=checked]:bg-white data-[state=checked]:text-black"
                     />
                     <Label htmlFor="loading" className="text-white text-xs">Требуется погрузка/разгрузка</Label>
                   </div>
@@ -1405,6 +1426,7 @@ export default function Home() {
                       id="carry"
                       checked={form.needCarry}
                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needCarry: checked as boolean }))}
+                      className="border-white data-[state=checked]:bg-white data-[state=checked]:text-black"
                     />
                     <Label htmlFor="carry" className="text-white text-xs">Требуется подъем</Label>
                   </div>

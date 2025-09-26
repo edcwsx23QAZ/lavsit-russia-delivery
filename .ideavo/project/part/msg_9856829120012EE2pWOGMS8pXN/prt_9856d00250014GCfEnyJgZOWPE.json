@@ -1,0 +1,11 @@
+{
+  "type": "text",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9856829120012EE2pWOGMS8pXN",
+  "id": "prt_9856d00250014GCfEnyJgZOWPE",
+  "text": "# Conversation Summary: Shipping Calculator Bug Fix\n\n## What We Accomplished:\n**✅ COMPLETED: Fixed Double Insurance Bug in Деловые Линии**\n- **Problem Identified**: Shipping calculator was showing duplicate insurance charges for Деловые Линии carrier\n- **Root Cause**: Two separate insurance calculations were being added:\n  1. Correct API-provided insurance (1469₽) \n  2. Incorrect locally-calculated insurance (`form.declaredValue * 0.01`)\n\n## Primary File Modified:\n- **File**: `app/page.tsx` \n- **Function**: `parseCalculationDetails()` around lines 1061-1075\n- **Status**: ✅ Build successful after fix\n\n## Technical Changes Made:\n**Removed duplicate insurance logic:**\n```javascript\n// BEFORE (problematic):\n- API insurance: calc.details.insurance (correct)\n- Local insurance: Math.round(form.declaredValue * 0.01) (duplicate)\n\n// AFTER (fixed):\n- Only API insurance: calc.details.insurance\n- Removed local calculation completely\n- Kept proper description with declared value\n```\n\n## Current Status:\n- ✅ **Build Status**: All changes compile successfully \n- ✅ **Bug Fixed**: Деловые Линии now shows single insurance entry\n- ✅ **Code Quality**: Proper error handling and syntax maintained\n- ✅ **Integration**: No breaking changes to other carrier calculations\n\n## Project Context:\nThis is a **shipping cost calculator** for Russian logistics companies including:\n- Деловые Линии (fixed)\n- Nord Wheel  \n- ПЭК\n- Other carriers\n\n**Previous completed features:**\n- Form data persistence with localStorage\n- City-only address suggestions via DaData API\n- Proper API request handling for Деловые Линии\n\n## Next Steps:\nThe insurance duplication issue is **completely resolved**. The shipping calculator is now fully functional with accurate pricing calculations. No further immediate action required unless new issues are identified during testing.\n\n**Technology Stack**: Next.js 14, TypeScript, Tailwind CSS, multiple shipping carrier APIs",
+  "time": {
+    "start": 1758880137253,
+    "end": 1758880137253
+  }
+}

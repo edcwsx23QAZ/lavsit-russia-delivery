@@ -1,0 +1,11 @@
+{
+  "type": "text",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9856d0025001z3p8apU1dT9y6l",
+  "id": "prt_9856dc71b001Yrl31FmTxEj2Ju",
+  "text": "# Conversation Summary: Shipping Calculator Bug Fix\n\n## What We Did:\n**Fixed Double Insurance Bug in Деловые Линии Shipping Calculator**\n- **Issue**: Деловые Линии carrier was showing duplicate insurance charges (API insurance + incorrect local calculation)\n- **Solution**: Removed duplicate local insurance calculation while keeping API-provided insurance\n- **Result**: Single, accurate insurance entry now displayed\n\n## File Modified:\n- **`app/page.tsx`** - Modified `parseCalculationDetails()` function (lines ~1061-1075)\n- Removed: `Math.round(form.declaredValue * 0.01)` duplicate calculation\n- Kept: API-provided `calc.details.insurance` value\n- **Status**: ✅ Build successful, bug completely resolved\n\n## Project Context:\n- **Type**: Russian shipping cost calculator web app\n- **Technology**: Next.js 14, TypeScript, Tailwind CSS\n- **Carriers**: Деловые Линии, Nord Wheel, ПЭК, others\n- **Features**: Form persistence (localStorage), city suggestions (DaData API), multi-carrier pricing\n\n## Current Status:\n✅ **COMPLETED** - Insurance duplication bug fully fixed\n- All builds passing\n- No breaking changes to other functionality\n- Accurate pricing calculations restored\n\n## What's Next:\nThe shipping calculator is now fully functional with accurate pricing. No immediate action required unless:\n- New bugs discovered during testing\n- Additional carriers need integration\n- Feature enhancements requested\n\nThe core functionality is stable and ready for production use.",
+  "time": {
+    "start": 1758880188187,
+    "end": 1758880188187
+  }
+}

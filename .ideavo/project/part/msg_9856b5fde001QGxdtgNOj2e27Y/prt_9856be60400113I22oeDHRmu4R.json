@@ -1,0 +1,26 @@
+{
+  "id": "prt_9856be60400113I22oeDHRmu4R",
+  "messageID": "msg_9856b5fde001QGxdtgNOj2e27Y",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_014DAdavGSZRwRTPh7kYSXWT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  // Загрузка сохраненных данных\n  useEffect(() => {\n    const saved = localStorage.getItem('deliveryForm');\n    if (saved) {\n      const savedForm = JSON.parse(saved);\n      // Убеждаемся, что есть хотя бы один груз\n      if (!savedForm.cargos || savedForm.cargos.length === 0) {\n        savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n      }\n      setForm(savedForm);\n    }\n  }, []);\n\n  // Сохранение данных при изменении\n  useEffect(() => {\n    localStorage.setItem('deliveryForm', JSON.stringify(form));\n  }, [form]);",
+      "newString": "  // Загрузка сохраненных данных (только на клиенте)\n  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined') {\n      try {\n        const saved = localStorage.getItem('deliveryForm');\n        if (saved) {\n          const savedForm = JSON.parse(saved);\n          // Убеждаемся, что есть хотя бы один груз\n          if (!savedForm.cargos || savedForm.cargos.length === 0) {\n            savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n          }\n          setForm(savedForm);\n        }\n      } catch (error) {\n        console.error('Ошибка загрузки сохраненных данных:', error);\n        // В случае ошибки устанавливаем базовую конфигурацию\n        setForm(prev => ({\n          ...prev,\n          cargos: prev.cargos.length > 0 ? prev.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n        }));\n      }\n    }\n  }, []);\n\n  // Сохранение данных при изменении (только на клиенте)\n  useEffect(() => {\n    if (typeof window !== 'undefined') {\n      try {\n        localStorage.setItem('deliveryForm', JSON.stringify(form));\n      } catch (error) {\n        console.error('Ошибка сохранения данных:', error);\n      }\n    }\n  }, [form]);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -96,24 +96,42 @@\n const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n \n-// Загрузка сохраненных данных\n+// Загрузка сохраненных данных (только на клиенте)\n useEffect(() => {\n-  const saved = localStorage.getItem('deliveryForm');\n-  if (saved) {\n-    const savedForm = JSON.parse(saved);\n-    // Убеждаемся, что есть хотя бы один груз\n-    if (!savedForm.cargos || savedForm.cargos.length === 0) {\n-      savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n+  // Проверяем, что мы на клиенте\n+  if (typeof window !== 'undefined') {\n+    try {\n+      const saved = localStorage.getItem('deliveryForm');\n+      if (saved) {\n+        const savedForm = JSON.parse(saved);\n+        // Убеждаемся, что есть хотя бы один груз\n+        if (!savedForm.cargos || savedForm.cargos.length === 0) {\n+          savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n+        }\n+        setForm(savedForm);\n+      }\n+    } catch (error) {\n+      console.error('Ошибка загрузки сохраненных данных:', error);\n+      // В случае ошибки устанавливаем базовую конфигурацию\n+      setForm(prev => ({\n+        ...prev,\n+        cargos: prev.cargos.length > 0 ? prev.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n+      }));\n     }\n-    setForm(savedForm);\n   }\n }, []);\n \n-// Сохранение данных при изменении\n+// Сохранение данных при изменении (только на клиенте)\n useEffect(() => {\n-  localStorage.setItem('deliveryForm', JSON.stringify(form));\n+  if (typeof window !== 'undefined') {\n+    try {\n+      localStorage.setItem('deliveryForm', JSON.stringify(form));\n+    } catch (error) {\n+      console.error('Ошибка сохранения данных:', error);\n+    }\n+  }\n }, [form]);\n \n // Автоматическая страховка при указании стоимости\n useEffect(() => {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758880072829,
+      "end": 1758880072847
+    }
+  }
+}

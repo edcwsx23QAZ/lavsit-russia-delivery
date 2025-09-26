@@ -1,0 +1,25 @@
+{
+  "id": "prt_9856bd0130015IfjZxHaLXlyH2",
+  "messageID": "msg_9856b5fde001QGxdtgNOj2e27Y",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01TrQKtgjTFa5PUS4NmSAG4u",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 100,
+      "limit": 20
+    },
+    "output": "<file>\n00101|   useEffect(() => {\n00102|     const saved = localStorage.getItem('deliveryForm');\n00103|     if (saved) {\n00104|       const savedForm = JSON.parse(saved);\n00105|       // Убеждаемся, что есть хотя бы один груз\n00106|       if (!savedForm.cargos || savedForm.cargos.length === 0) {\n00107|         savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n00108|       }\n00109|       setForm(savedForm);\n00110|     }\n00111|   }, []);\n00112| \n00113|   // Сохранение данных при изменении\n00114|   useEffect(() => {\n00115|     localStorage.setItem('deliveryForm', JSON.stringify(form));\n00116|   }, [form]);\n00117| \n00118|   // Автоматическая страховка при указании стоимости\n00119|   useEffect(() => {\n00120|     if (form.declaredValue > 0) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 120)\n</file>",
+    "metadata": {
+      "preview": "  useEffect(() => {\n    const saved = localStorage.getItem('deliveryForm');\n    if (saved) {\n      const savedForm = JSON.parse(saved);\n      // Убеждаемся, что есть хотя бы один груз\n      if (!savedForm.cargos || savedForm.cargos.length === 0) {\n        savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n      }\n      setForm(savedForm);\n    }\n  }, []);\n\n  // Сохранение данных при изменении\n  useEffect(() => {\n    localStorage.setItem('deliveryForm', JSON.stringify(form));\n  }, [form]);\n\n  // Автоматическая страховка при указании стоимости\n  useEffect(() => {\n    if (form.declaredValue > 0) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758880060005,
+      "end": 1758880060010
+    }
+  }
+}
