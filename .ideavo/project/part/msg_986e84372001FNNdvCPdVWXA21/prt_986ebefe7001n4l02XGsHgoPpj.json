@@ -1,0 +1,26 @@
+{
+  "id": "prt_986ebefe7001n4l02XGsHgoPpj",
+  "messageID": "msg_986e84372001FNNdvCPdVWXA21",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01PbxgoTzSXvjYrV7vKU2AoR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek-get/route.ts",
+      "content": "import { NextRequest, NextResponse } from 'next/server';\n\n// Дополнительный endpoint для тестирования GET запросов к ПЭК API\nexport async function POST(request: NextRequest) {\n  try {\n    console.log('🔧 ПЭК GET Тест: Получен запрос');\n    \n    const requestData = await request.json();\n    const { method, address } = requestData;\n    \n    const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';\n    \n    // Попробуем GET запросы с параметрами в URL\n    const API_VARIANTS = [\n      'https://kabinet.pecom.ru/api/v1',\n      'https://lk.pecom.ru/api/v1',\n      'https://api.pecom.ru/v1',\n      'https://pecom.ru/api/v1'\n    ];\n    \n    for (let i = 0; i < API_VARIANTS.length; i++) {\n      const baseUrl = API_VARIANTS[i];\n      \n      try {\n        // Пробуем простой GET запрос к корню API\n        const testUrl = baseUrl + '/';\n        console.log(`🌐 GET тест ${i + 1}: ${testUrl}`);\n        \n        const response = await fetch(testUrl, {\n          method: 'GET',\n          headers: {\n            'Authorization': `Bearer ${PEK_TOKEN}`,\n            'Accept': 'application/json'\n          }\n        });\n        \n        console.log(`📡 GET ответ ${i + 1}:`, response.status, response.statusText);\n        \n        if (response.ok) {\n          const responseText = await response.text();\n          console.log(`✅ GET успех ${i + 1}:`, responseText.substring(0, 500));\n          \n          return NextResponse.json({\n            success: true,\n            workingUrl: testUrl,\n            status: response.status,\n            response: responseText.substring(0, 1000)\n          });\n        } else {\n          const errorText = await response.text();\n          console.log(`❌ GET ошибка ${i + 1}:`, response.status, errorText.substring(0, 200));\n        }\n        \n      } catch (error) {\n        console.error(`❌ GET сетевая ошибка ${i + 1}:`, error);\n      }\n    }\n    \n    return NextResponse.json({\n      success: false,\n      message: 'Все GET варианты не работают',\n      testedUrls: API_VARIANTS\n    });\n    \n  } catch (error) {\n    console.error('❌ Критическая ошибка GET теста:', error);\n    return NextResponse.json({ \n      error: 'Критическая ошибка',\n      details: error instanceof Error ? error.message : 'Неизвестная ошибка'\n    }, { status: 500 });\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/api/pek-get/route.ts",
+      "exists": false
+    },
+    "title": "app/api/pek-get/route.ts",
+    "time": {
+      "start": 1758905245933,
+      "end": 1758905245935
+    }
+  }
+}

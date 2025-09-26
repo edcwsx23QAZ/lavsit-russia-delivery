@@ -1,0 +1,11 @@
+{
+  "id": "prt_986e86778001e6E1tOo6dJwRN4",
+  "messageID": "msg_986e84372001FNNdvCPdVWXA21",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Анализирую ошибки. Проблема очевидна - все API endpoints ПЭК возвращают 404 ошибку с nginx. Это означает, что URL endpoints неверные или API изменился.\n\n## 🔍 Анализ проблем:\n\n1. **404 ошибки от nginx** - endpoints не существуют:\n   - `https://api.pecom.ru/v1/branches/findzonebyaddress/`\n   - `https://api.pecom.ru/v1/branches/nearestdepartments/`\n   - `https://api.pecom.ru/v1/calculator/calculateprice/`\n\n2. **HTML ответ вместо JSON** - nginx сервер, не API\n\n3. **Токен проходит** - 404 означает что авторизация работает, но endpoint не найден\n\nПопробую найти правильные URL через веб-поиск:",
+  "time": {
+    "start": 1758905007277,
+    "end": 1758905007277
+  }
+}

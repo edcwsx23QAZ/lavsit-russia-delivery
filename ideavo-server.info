@@ -4,19 +4,40 @@ $ next dev
   - Environments: .env
 
  ✓ Starting...
- ✓ Ready in 1937ms
- ✓ Compiled /middleware in 160ms
+ ✓ Ready in 1959ms
+ ✓ Compiled /middleware in 161ms
  ✓ Compiled (73 modules)
  ○ Compiling / ...
- ✓ Compiled / in 3.5s (543 modules)
- GET / 200 in 4113ms
- ✓ Compiled in 605ms (280 modules)
- GET / 200 in 44ms
+ ✓ Compiled / in 3.4s (543 modules)
+ GET / 200 in 3962ms
+ ✓ Compiled in 627ms (280 modules)
+ GET / 200 in 40ms
  ⚠ Cross origin request detected from 4000-i859b80wqs6c2fhjwbj2w.e2b.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
  ○ Compiling /api/pek ...
- ✓ Compiled /api/pek in 504ms (293 modules)
-ПЭК API ошибка: 404 <html>
+ ✓ Compiled /api/pek in 581ms (293 modules)
+🔧 ПЭК Прокси: Получен запрос
+📝 Данные запроса: {
+  "method": "findzonebyaddress",
+  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
+}
+🌐 Отправка запроса к ПЭК:
+URL: https://api.pecom.ru/v1/branches/findzonebyaddress/
+Body: {
+  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
+}
+Headers: Content-Type: application/json, Authorization: Bearer [TOKEN]
+📡 Ответ от ПЭК API:
+Status: 404 Not Found
+Headers: {
+  connection: 'keep-alive',
+  'content-length': '153',
+  'content-type': 'text/html',
+  date: 'Fri, 26 Sep 2025 16:40:28 GMT',
+  server: 'nginx/1.20.1'
+}
+❌ ПЭК API ошибка: 404 Not Found
+❌ Ответ: <html>
 <head><title>404 Not Found</title></head>
 <body>
 <center><h1>404 Not Found</h1></center>
@@ -24,8 +45,73 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
 </body>
 </html>
 
- POST /api/pek 404 in 1732ms
-ПЭК API ошибка: 404 <html>
+ POST /api/pek 404 in 1611ms
+🔧 ПЭК Прокси: Получен запрос
+📝 Данные запроса: {
+  "method": "findzonebyaddress",
+  "address": "г Санкт-Петербург, Невский пр-кт, д 110"
+}
+🌐 Отправка запроса к ПЭК:
+URL: https://api.pecom.ru/v1/branches/findzonebyaddress/
+Body: {
+  "address": "г Санкт-Петербург, Невский пр-кт, д 110"
+}
+Headers: Content-Type: application/json, Authorization: Bearer [TOKEN]
+📡 Ответ от ПЭК API:
+Status: 404 Not Found
+Headers: {
+  connection: 'keep-alive',
+  'content-length': '153',
+  'content-type': 'text/html',
+  date: 'Fri, 26 Sep 2025 16:40:28 GMT',
+  server: 'nginx/1.20.1'
+}
+❌ ПЭК API ошибка: 404 Not Found
+❌ Ответ: <html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx/1.20.1</center>
+</body>
+</html>
+
+ POST /api/pek 404 in 187ms
+🔧 ПЭК Прокси: Получен запрос
+📝 Данные запроса: {
+  "method": "nearestdepartments",
+  "departmentOperation": 3,
+  "type": 3,
+  "searchRadius": 50,
+  "limit": 5,
+  "coordinates": {
+    "latitude": "55.755826",
+    "longitude": "37.6173"
+  }
+}
+🌐 Отправка запроса к ПЭК:
+URL: https://api.pecom.ru/v1/branches/nearestdepartments/
+Body: {
+  "departmentOperation": 3,
+  "type": 3,
+  "searchRadius": 50,
+  "limit": 5,
+  "coordinates": {
+    "latitude": "55.755826",
+    "longitude": "37.6173"
+  }
+}
+Headers: Content-Type: application/json, Authorization: Bearer [TOKEN]
+📡 Ответ от ПЭК API:
+Status: 404 Not Found
+Headers: {
+  connection: 'keep-alive',
+  'content-length': '153',
+  'content-type': 'text/html',
+  date: 'Fri, 26 Sep 2025 16:40:29 GMT',
+  server: 'nginx/1.20.1'
+}
+❌ ПЭК API ошибка: 404 Not Found
+❌ Ответ: <html>
 <head><title>404 Not Found</title></head>
 <body>
 <center><h1>404 Not Found</h1></center>
@@ -34,7 +120,42 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
 </html>
 
  POST /api/pek 404 in 185ms
-ПЭК API ошибка: 404 <html>
+🔧 ПЭК Прокси: Получен запрос
+📝 Данные запроса: {
+  "method": "nearestdepartments",
+  "departmentOperation": 3,
+  "type": 3,
+  "searchRadius": 50,
+  "limit": 5,
+  "coordinates": {
+    "latitude": "59.9311",
+    "longitude": "30.3609"
+  }
+}
+🌐 Отправка запроса к ПЭК:
+URL: https://api.pecom.ru/v1/branches/nearestdepartments/
+Body: {
+  "departmentOperation": 3,
+  "type": 3,
+  "searchRadius": 50,
+  "limit": 5,
+  "coordinates": {
+    "latitude": "59.9311",
+    "longitude": "30.3609"
+  }
+}
+Headers: Content-Type: application/json, Authorization: Bearer [TOKEN]
+📡 Ответ от ПЭК API:
+Status: 404 Not Found
+Headers: {
+  connection: 'keep-alive',
+  'content-length': '153',
+  'content-type': 'text/html',
+  date: 'Fri, 26 Sep 2025 16:40:29 GMT',
+  server: 'nginx/1.20.1'
+}
+❌ ПЭК API ошибка: 404 Not Found
+❌ Ответ: <html>
 <head><title>404 Not Found</title></head>
 <body>
 <center><h1>404 Not Found</h1></center>
@@ -42,8 +163,113 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
 </body>
 </html>
 
- POST /api/pek 404 in 184ms
-ПЭК API ошибка: 404 <html>
+ POST /api/pek 404 in 186ms
+🔧 ПЭК Прокси: Получен запрос
+📝 Данные запроса: {
+  "method": "calculateprice",
+  "currencyCode": "643",
+  "types": [
+    3
+  ],
+  "senderWarehouseId": "dc6c746d-812d-11e4-bbfc-001999d8b3c5",
+  "receiverWarehouseId": "b436c978-086d-11e6-b6ca-00155d668909",
+  "isOpenCarSender": false,
+  "isOpenCarReceiver": false,
+  "isHyperMarket": false,
+  "plannedDateTime": "2025-09-27T16:40:29",
+  "isInsurance": true,
+  "isInsurancePrice": 200000,
+  "isPickUp": true,
+  "isDelivery": true,
+  "needReturnDocuments": false,
+  "needArrangeTransportationDocuments": false,
+  "senderDistanceType": 0,
+  "receiverDistanceType": 0,
+  "cargos": [
+    {
+      "length": 2,
+      "width": 1,
+      "height": 1,
+      "volume": 2,
+      "weight": 100,
+      "isHP": true,
+      "sealingPositionsCount": 0
+    }
+  ],
+  "pickup": {
+    "address": "г Москва, Шмитовский проезд, д 1, кв 39",
+    "coordinates": {
+      "latitude": 55.755826,
+      "longitude": 37.6173
+    }
+  },
+  "delivery": {
+    "address": "г Санкт-Петербург, Невский пр-кт, д 110",
+    "coordinates": {
+      "latitude": 59.9311,
+      "longitude": 30.3609
+    }
+  }
+}
+🌐 Отправка запроса к ПЭК:
+URL: https://api.pecom.ru/v1/calculator/calculateprice/
+Body: {
+  "currencyCode": "643",
+  "types": [
+    3
+  ],
+  "senderWarehouseId": "dc6c746d-812d-11e4-bbfc-001999d8b3c5",
+  "receiverWarehouseId": "b436c978-086d-11e6-b6ca-00155d668909",
+  "isOpenCarSender": false,
+  "isOpenCarReceiver": false,
+  "isHyperMarket": false,
+  "plannedDateTime": "2025-09-27T16:40:29",
+  "isInsurance": true,
+  "isInsurancePrice": 200000,
+  "isPickUp": true,
+  "isDelivery": true,
+  "needReturnDocuments": false,
+  "needArrangeTransportationDocuments": false,
+  "senderDistanceType": 0,
+  "receiverDistanceType": 0,
+  "cargos": [
+    {
+      "length": 2,
+      "width": 1,
+      "height": 1,
+      "volume": 2,
+      "weight": 100,
+      "isHP": true,
+      "sealingPositionsCount": 0
+    }
+  ],
+  "pickup": {
+    "address": "г Москва, Шмитовский проезд, д 1, кв 39",
+    "coordinates": {
+      "latitude": 55.755826,
+      "longitude": 37.6173
+    }
+  },
+  "delivery": {
+    "address": "г Санкт-Петербург, Невский пр-кт, д 110",
+    "coordinates": {
+      "latitude": 59.9311,
+      "longitude": 30.3609
+    }
+  }
+}
+Headers: Content-Type: application/json, Authorization: Bearer [TOKEN]
+📡 Ответ от ПЭК API:
+Status: 404 Not Found
+Headers: {
+  connection: 'keep-alive',
+  'content-length': '153',
+  'content-type': 'text/html',
+  date: 'Fri, 26 Sep 2025 16:40:29 GMT',
+  server: 'nginx/1.20.1'
+}
+❌ ПЭК API ошибка: 404 Not Found
+❌ Ответ: <html>
 <head><title>404 Not Found</title></head>
 <body>
 <center><h1>404 Not Found</h1></center>
@@ -51,13 +277,4 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
 </body>
 </html>
 
- POST /api/pek 404 in 184ms
-ПЭК API ошибка: 404 <html>
-<head><title>404 Not Found</title></head>
-<body>
-<center><h1>404 Not Found</h1></center>
-<hr><center>nginx/1.20.1</center>
-</body>
-</html>
-
- POST /api/pek 404 in 184ms
+ POST /api/pek 404 in 183ms

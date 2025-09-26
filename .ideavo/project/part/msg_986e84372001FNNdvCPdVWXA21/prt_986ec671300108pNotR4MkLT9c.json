@@ -1,0 +1,25 @@
+{
+  "id": "prt_986ec671300108pNotR4MkLT9c",
+  "messageID": "msg_986e84372001FNNdvCPdVWXA21",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_017L1k7rXLwtJdwTZK9UP2eP",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/pek-test/page.tsx",
+      "offset": 100,
+      "limit": 50
+    },
+    "output": "<file>\n00101|         const response = await fetch('https://api.pecom.ru/v1/branches/findzonebyaddress/', {\n00102|           method: 'POST',\n00103|           headers: {\n00104|             'Content-Type': 'application/json',\n00105|             'Authorization': token.value\n00106|           },\n00107|           body: JSON.stringify({ address: testAddress })\n00108|         });\n00109| \n00110|         results.push({\n00111|           tokenType: token.name,\n00112|           status: response.status,\n00113|           statusText: response.statusText,\n00114|           ok: response.ok,\n00115|           corsError: !response.ok && response.type === 'cors'\n00116|         });\n00117|       } catch (error: any) {\n00118|         results.push({\n00119|           tokenType: token.name,\n00120|           error: error.message,\n00121|           corsError: error.name === 'TypeError' && error.message.includes('fetch')\n00122|         });\n00123|       }\n00124|     }\n00125| \n00126|     return results;\n00127|   };\n00128| \n00129|   // Тест 5: Проверка альтернативных URL\n00130|   const testApiUrls = async () => {\n00131|     const urls = [\n00132|       'https://api.pecom.ru/v1/branches/findzonebyaddress/',\n00133|       'https://api.pecom.ru/v1/branches/findzonebyaddress',\n00134|       'https://api.pecom.ru/branches/findzonebyaddress/',\n00135|       'https://lk.pecom.ru/api/v1/branches/findzonebyaddress/',\n00136|     ];\n00137| \n00138|     const results = [];\n00139|     \n00140|     for (const url of urls) {\n00141|       try {\n00142|         const response = await fetch(url, {\n00143|           method: 'POST',\n00144|           headers: {\n00145|             'Content-Type': 'application/json',\n00146|             'Authorization': 'Bearer 624FC93CA677B23673BB476D4982294DC27E246F'\n00147|           },\n00148|           body: JSON.stringify({ address: testAddress })\n00149|         });\n00150| \n\n(File has more lines. Use 'offset' parameter to read beyond line 150)\n</file>",
+    "metadata": {
+      "preview": "        const response = await fetch('https://api.pecom.ru/v1/branches/findzonebyaddress/', {\n          method: 'POST',\n          headers: {\n            'Content-Type': 'application/json',\n            'Authorization': token.value\n          },\n          body: JSON.stringify({ address: testAddress })\n        });\n\n        results.push({\n          tokenType: token.name,\n          status: response.status,\n          statusText: response.statusText,\n          ok: response.ok,\n          corsError: !response.ok && response.type === 'cors'\n        });\n      } catch (error: any) {\n        results.push({\n          tokenType: token.name,\n          error: error.message,"
+    },
+    "title": "app/pek-test/page.tsx",
+    "time": {
+      "start": 1758905264528,
+      "end": 1758905264529
+    }
+  }
+}

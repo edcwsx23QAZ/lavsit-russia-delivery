@@ -1,0 +1,25 @@
+{
+  "id": "prt_986ec2c9d001tM24jzIPFWi2zl",
+  "messageID": "msg_986e84372001FNNdvCPdVWXA21",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01YWzzfRwa8MYAFRQueL6rFF",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/pek-test/page.tsx",
+      "edits": [
+        {
+          "oldString": "  // Тест 5: Проверка альтернативных URL\n  const testApiUrls = async () => {\n    const urls = [\n      'https://api.pecom.ru/v1/branches/findzonebyaddress/',\n      'https://api.pecom.ru/v1/branches/findzonebyaddress',\n      'https://api.pecom.ru/branches/findzonebyaddress/',\n      'https://lk.pecom.ru/api/v1/branches/findzonebyaddress/',\n    ];\n\n    const results = [];\n    \n    for (const url of urls) {\n      try {\n        const response = await fetch(url, {\n          method: 'POST',\n          headers: {\n            'Content-Type': 'application/json',\n            'Authorization': 'Bearer 624FC93CA677B23673BB476D4982294DC27E246F'\n          },\n          body: JSON.stringify({ address: testAddress })\n        });\n\n        results.push({\n          url,\n          status: response.status,\n          statusText: response.statusText,\n          ok: response.ok,\n          accessible: true\n        });\n      } catch (error: any) {\n        results.push({\n          url,\n          error: error.message,\n          accessible: false,\n          corsError: error.name === 'TypeError'\n        });\n      }\n    }\n\n    return results;\n  };",
+          "newString": "  // Тест 5: Проверка GET запросов\n  const testGetRequests = async () => {\n    const response = await fetch('/api/pek-get', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify({\n        method: 'test',\n        address: testAddress\n      })\n    });\n\n    return {\n      status: response.status,\n      statusText: response.statusText,\n      ok: response.ok,\n      data: await response.json()\n    };\n  };\n  \n  // Тест 6: Полный тест нового прокси\n  const testNewProxy = async () => {\n    const response = await fetch('/api/pek', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify({\n        method: 'findzonebyaddress',\n        address: testAddress\n      })\n    });\n\n    return {\n      status: response.status,\n      statusText: response.statusText,\n      ok: response.ok,\n      data: await response.json()\n    };\n  };"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/app/pek-test/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758905260916,
+      "end": 1758905260917
+    }
+  }
+}

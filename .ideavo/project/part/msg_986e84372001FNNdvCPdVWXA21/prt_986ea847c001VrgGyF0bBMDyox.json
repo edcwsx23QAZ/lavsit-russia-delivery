@@ -1,0 +1,25 @@
+{
+  "id": "prt_986ea847c001VrgGyF0bBMDyox",
+  "messageID": "msg_986e84372001FNNdvCPdVWXA21",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_012eN7f4dSqJgh7mj3WCLrMi",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "    const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';\n    const BASE_URL = 'https://api.pecom.ru/v1';",
+          "newString": "    const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';\n    \n    // Попробуем разные базовые URL\n    const API_VARIANTS = [\n      'https://kabinet.pecom.ru/api/v1',\n      'https://lk.pecom.ru/api/v1', \n      'https://api.pecom.ru/v1',\n      'https://pecom.ru/api/v1'\n    ];"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/app/api/pek/route.ts before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758905144671,
+      "end": 1758905144673
+    }
+  }
+}

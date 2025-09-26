@@ -167,6 +167,44 @@ export default function PekTestPage() {
 
     return results;
   };
+  
+  // Тест 6: Проверка GET запросов
+  const testGetRequests = async () => {
+    const response = await fetch('/api/pek-get', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        method: 'test',
+        address: testAddress
+      })
+    });
+
+    return {
+      status: response.status,
+      statusText: response.statusText,
+      ok: response.ok,
+      data: await response.json()
+    };
+  };
+  
+  // Тест 7: Полный тест нового прокси
+  const testNewProxy = async () => {
+    const response = await fetch('/api/pek', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        method: 'findzonebyaddress',
+        address: testAddress
+      })
+    });
+
+    return {
+      status: response.status,
+      statusText: response.statusText,
+      ok: response.ok,
+      data: await response.json()
+    };
+  };
 
   const renderResult = (testName: string) => {
     const result = results[testName];
@@ -281,6 +319,38 @@ export default function PekTestPage() {
             {renderResult('urls')}
           </CardContent>
         </Card>
+        
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">6. Тест GET Запросов</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Button 
+              onClick={() => runTest('get', testGetRequests)}
+              disabled={loading.get}
+              className="mb-3"
+            >
+              Проверить GET
+            </Button>
+            {renderResult('get')}
+          </CardContent>
+        </Card>
+        
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-lg">7. Новый Прокси (Множественные Попытки)</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Button 
+              onClick={() => runTest('newproxy', testNewProxy)}
+              disabled={loading.newproxy}
+              className="mb-3"
+            >
+              Новый Прокси
+            </Button>
+            {renderResult('newproxy')}
+          </CardContent>
+        </Card>
 
         <Card>
           <CardHeader>
@@ -289,16 +359,20 @@ export default function PekTestPage() {
           <CardContent>
             <Button 
               onClick={async () => {
+                console.log('🚀 Запуск полной диагностики ПЭК API');
                 await runTest('proxy', testProxyHealth);
+                await runTest('newproxy', testNewProxy);
                 await runTest('zone', testFindZoneByAddress);
+                await runTest('get', testGetRequests);
                 await runTest('direct', testDirectPekApi);
                 await runTest('tokens', testTokenVariants);
                 await runTest('urls', testApiUrls);
+                console.log('✅ Диагностика завершена');
               }}
               disabled={Object.values(loading).some(Boolean)}
               className="w-full"
             >
-              Запустить Все Тесты
+              Запустить Полную Диагностику
             </Button>
           </CardContent>
         </Card>

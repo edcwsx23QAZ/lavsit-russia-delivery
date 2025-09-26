@@ -1,0 +1,34 @@
+{
+  "id": "prt_986ec7504001nAP1uogx5PDpS5",
+  "messageID": "msg_986e84372001FNNdvCPdVWXA21",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01CVpxcX6chsnq3BeTAqFBzD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/pek-test/page.tsx",
+      "edits": [
+        {
+          "oldString": "    return results;\n  };\n\n  const renderResult = (testName: string) => {",
+          "newString": "    return results;\n  };\n  \n  // Тест 6: Проверка GET запросов\n  const testGetRequests = async () => {\n    const response = await fetch('/api/pek-get', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify({\n        method: 'test',\n        address: testAddress\n      })\n    });\n\n    return {\n      status: response.status,\n      statusText: response.statusText,\n      ok: response.ok,\n      data: await response.json()\n    };\n  };\n  \n  // Тест 7: Полный тест нового прокси\n  const testNewProxy = async () => {\n    const response = await fetch('/api/pek', {\n      method: 'POST',\n      headers: { 'Content-Type': 'application/json' },\n      body: JSON.stringify({\n        method: 'findzonebyaddress',\n        address: testAddress\n      })\n    });\n\n    return {\n      status: response.status,\n      statusText: response.statusText,\n      ok: response.ok,\n      data: await response.json()\n    };\n  };\n\n  const renderResult = (testName: string) => {"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/pek-test/page.tsx\n===================================================================\n--- /home/user/project/app/pek-test/page.tsx\n+++ /home/user/project/app/pek-test/page.tsx\n@@ -166,9 +166,47 @@\n   }\n \n   return results;\n };\n+\n+// Тест 6: Проверка GET запросов\n+const testGetRequests = async () => {\n+  const response = await fetch('/api/pek-get', {\n+    method: 'POST',\n+    headers: { 'Content-Type': 'application/json' },\n+    body: JSON.stringify({\n+      method: 'test',\n+      address: testAddress\n+    })\n+  });\n \n+  return {\n+    status: response.status,\n+    statusText: response.statusText,\n+    ok: response.ok,\n+    data: await response.json()\n+  };\n+};\n+\n+// Тест 7: Полный тест нового прокси\n+const testNewProxy = async () => {\n+  const response = await fetch('/api/pek', {\n+    method: 'POST',\n+    headers: { 'Content-Type': 'application/json' },\n+    body: JSON.stringify({\n+      method: 'findzonebyaddress',\n+      address: testAddress\n+    })\n+  });\n+\n+  return {\n+    status: response.status,\n+    statusText: response.statusText,\n+    ok: response.ok,\n+    data: await response.json()\n+  };\n+};\n+\n const renderResult = (testName: string) => {\n   const result = results[testName];\n   const isLoading = loading[testName];\n \n"
+        }
+      ]
+    },
+    "title": "app/pek-test/page.tsx",
+    "time": {
+      "start": 1758905274320,
+      "end": 1758905274325
+    }
+  }
+}

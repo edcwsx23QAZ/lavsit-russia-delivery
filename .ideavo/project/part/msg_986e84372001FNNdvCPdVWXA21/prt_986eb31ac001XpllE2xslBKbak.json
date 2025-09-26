@@ -1,0 +1,34 @@
+{
+  "id": "prt_986eb31ac001XpllE2xslBKbak",
+  "messageID": "msg_986e84372001FNNdvCPdVWXA21",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01BymWhpQMdaKjV5sDEwPCE8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "    // Попробуем каждый вариант URL\n    for (let i = 0; i < API_VARIANTS.length; i++) {\n      const baseUrl = API_VARIANTS[i];\n      const fullUrl = baseUrl + urlPath;\n      \n      try {\n        console.log(`🌐 Попытка ${i + 1}/${API_VARIANTS.length}: ${fullUrl}`);\n        console.log('Body:', JSON.stringify(body, null, 2));\n        \n        const response = await fetch(fullUrl, {\n          method: 'POST',\n          headers: {\n            'Content-Type': 'application/json',\n            'Authorization': `Bearer ${PEK_TOKEN}`,\n          },\n          body: JSON.stringify(body)\n        });",
+          "newString": "    // Разные варианты авторизации\n    const AUTH_VARIANTS = [\n      { type: 'Bearer', value: `Bearer ${PEK_TOKEN}` },\n      { type: 'Basic', value: `Basic ${btoa(PEK_TOKEN + ':')}` },\n      { type: 'Token', value: PEK_TOKEN },\n      { type: 'X-API-Key', value: PEK_TOKEN }\n    ];\n    \n    // Попробуем каждый вариант URL с разными методами авторизации\n    for (let i = 0; i < API_VARIANTS.length; i++) {\n      const baseUrl = API_VARIANTS[i];\n      const fullUrl = baseUrl + urlPath;\n      \n      for (let j = 0; j < AUTH_VARIANTS.length; j++) {\n        const auth = AUTH_VARIANTS[j];\n        \n        try {\n          console.log(`🌐 Попытка ${i + 1}.${j + 1}: ${fullUrl} (авторизация: ${auth.type})`);\n          console.log('Body:', JSON.stringify(body, null, 2));\n          \n          const headers: any = {\n            'Content-Type': 'application/json',\n          };\n          \n          if (auth.type === 'X-API-Key') {\n            headers['X-API-Key'] = auth.value;\n          } else {\n            headers['Authorization'] = auth.value;\n          }\n          \n          const response = await fetch(fullUrl, {\n            method: 'POST',\n            headers,\n            body: JSON.stringify(body)\n          });"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -62,25 +62,43 @@\n     console.log('❌ Неизвестный метод:', method);\n     return NextResponse.json({ error: 'Неизвестный метод', method }, { status: 400 });\n }\n \n-// Попробуем каждый вариант URL\n+// Разные варианты авторизации\n+const AUTH_VARIANTS = [\n+  { type: 'Bearer', value: `Bearer ${PEK_TOKEN}` },\n+  { type: 'Basic', value: `Basic ${btoa(PEK_TOKEN + ':')}` },\n+  { type: 'Token', value: PEK_TOKEN },\n+  { type: 'X-API-Key', value: PEK_TOKEN }\n+];\n+\n+// Попробуем каждый вариант URL с разными методами авторизации\n for (let i = 0; i < API_VARIANTS.length; i++) {\n   const baseUrl = API_VARIANTS[i];\n   const fullUrl = baseUrl + urlPath;\n   \n-  try {\n-    console.log(`🌐 Попытка ${i + 1}/${API_VARIANTS.length}: ${fullUrl}`);\n-    console.log('Body:', JSON.stringify(body, null, 2));\n+  for (let j = 0; j < AUTH_VARIANTS.length; j++) {\n+    const auth = AUTH_VARIANTS[j];\n     \n-    const response = await fetch(fullUrl, {\n-      method: 'POST',\n-      headers: {\n+    try {\n+      console.log(`🌐 Попытка ${i + 1}.${j + 1}: ${fullUrl} (авторизация: ${auth.type})`);\n+      console.log('Body:', JSON.stringify(body, null, 2));\n+      \n+      const headers: any = {\n         'Content-Type': 'application/json',\n-        'Authorization': `Bearer ${PEK_TOKEN}`,\n-      },\n-      body: JSON.stringify(body)\n-    });\n+      };\n+      \n+      if (auth.type === 'X-API-Key') {\n+        headers['X-API-Key'] = auth.value;\n+      } else {\n+        headers['Authorization'] = auth.value;\n+      }\n+      \n+      const response = await fetch(fullUrl, {\n+        method: 'POST',\n+        headers,\n+        body: JSON.stringify(body)\n+      });\n     \n     console.log(`📡 Ответ попытка ${i + 1}:`, response.status, response.statusText);\n     \n     if (response.ok) {\n"
+        }
+      ]
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758905198081,
+      "end": 1758905198096
+    }
+  }
+}
