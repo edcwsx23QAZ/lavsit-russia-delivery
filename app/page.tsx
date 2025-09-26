@@ -479,6 +479,8 @@ export default function Home() {
 
       const data = await response.json();
       console.log('Деловые Линии ответ:', data);
+      console.log('Срок доставки - data.deliveryTerm:', data.deliveryTerm);
+      console.log('Срок доставки - data.data?.deliveryTerm:', data.data?.deliveryTerm);
 
       if (response.ok && data.data && data.metadata?.status === 200) {
         let totalPrice = data.data.price || 0;

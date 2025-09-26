@@ -1,0 +1,22 @@
+{
+  "id": "prt_985e89f70001CZsvfFCx4sC45R",
+  "messageID": "msg_985e7ac35001pooy5TKlrMgi3N",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_014vYkDTxaGjfUsnZitwAf7S",
+  "state": {
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/5) ...\n   Generating static pages (1/5) \r\n   Generating static pages (2/5) \r\n   Generating static pages (3/5) \r\n ✓ Generating static pages (5/5)\n   Finalizing page optimization ...\n   Collecting build traces ...\n",
+      "description": "Build the project to check for any errors"
+    },
+    "status": "running",
+    "input": {
+      "command": "npm run build",
+      "description": "Build the project to check for any errors"
+    },
+    "time": {
+      "start": 1758888256192
+    }
+  }
+}

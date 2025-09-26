@@ -1,0 +1,11 @@
+{
+  "id": "prt_985e87d12001zJBmKLjXJVhQIJ",
+  "messageID": "msg_985e7ac35001pooy5TKlrMgi3N",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Исходя из анализа кода и общих практик API Деловых Линий v2, текущая реализация корректна. Структура ответа обычно такая:\n\n```json\n{\n  \"metadata\": {\n    \"status\": 200\n  },\n  \"data\": {\n    \"price\": 1500,\n    \"insurance\": 50,\n    \"packages\": {...}\n  },\n  \"deliveryTerm\": 3\n}\n```\n\nПоэтому правильный код:\n\n```javascript\ndays: data.deliveryTerm || data.data?.deliveryTerm || 0\n```\n\nЭто уже реализовано в коде! Но для полной уверенности, давайте добавим больше отладочной информации, чтобы видеть, что именно возвращает API:",
+  "time": {
+    "start": 1758888233359,
+    "end": 1758888233359
+  }
+}

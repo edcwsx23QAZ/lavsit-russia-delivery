@@ -1,0 +1,24 @@
+{
+  "id": "prt_985e811a7001tR5CP7qlmkr3LH",
+  "messageID": "msg_985e7ac35001pooy5TKlrMgi3N",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_018kXAREUKJgEwdc9ctwgjuW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "console\\.log.*ответ"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 481:       console.log('Деловые Линии ответ:', data);\n  Line 831:       console.log('ПЭК ответ:', data);",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "console\\.log.*ответ",
+    "time": {
+      "start": 1758888202985,
+      "end": 1758888202993
+    }
+  }
+}

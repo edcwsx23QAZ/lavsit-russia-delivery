@@ -1,0 +1,25 @@
+{
+  "id": "prt_985e86d8700127nr38NJq1Qpx0",
+  "messageID": "msg_985e7ac35001pooy5TKlrMgi3N",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01R1zNCji51KY45V9ManZE5Y",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 483,
+      "limit": 10
+    },
+    "output": "<file>\n00484|         let totalPrice = data.data.price || 0;\n00485|         \n00486|         // Добавляем страховку если есть\n00487|         if (data.data.insurance) {\n00488|           totalPrice += data.data.insurance;\n00489|         }\n00490|         \n00491|         // Добавляем услуги упаковки если есть\n00492|         if (data.data.packages && form.needPackaging) {\n00493|           Object.values(data.data.packages).forEach((pkg: any) => {\n\n(File has more lines. Use 'offset' parameter to read beyond line 493)\n</file>",
+    "metadata": {
+      "preview": "        let totalPrice = data.data.price || 0;\n        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          totalPrice += data.data.insurance;\n        }\n        \n        // Добавляем услуги упаковки если есть\n        if (data.data.packages && form.needPackaging) {\n          Object.values(data.data.packages).forEach((pkg: any) => {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758888226847,
+      "end": 1758888226849
+    }
+  }
+}

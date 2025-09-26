@@ -1,0 +1,25 @@
+{
+  "id": "prt_985e8256c0016atggbdEchSJZe",
+  "messageID": "msg_985e7ac35001pooy5TKlrMgi3N",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_018FNb5qyionMybELBPvmKDu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 478,
+      "limit": 25
+    },
+    "output": "<file>\n00479| \n00480|       const data = await response.json();\n00481|       console.log('Деловые Линии ответ:', data);\n00482| \n00483|       if (response.ok && data.data && data.metadata?.status === 200) {\n00484|         let totalPrice = data.data.price || 0;\n00485|         \n00486|         // Добавляем страховку если есть\n00487|         if (data.data.insurance) {\n00488|           totalPrice += data.data.insurance;\n00489|         }\n00490|         \n00491|         // Добавляем услуги упаковки если есть\n00492|         if (data.data.packages && form.needPackaging) {\n00493|           Object.values(data.data.packages).forEach((pkg: any) => {\n00494|             if (pkg.price) totalPrice += pkg.price;\n00495|           });\n00496|         }\n00497| \n00498|         return {\n00499|           company: 'Деловые Линии',\n00500|           price: Math.round(totalPrice),\n00501|           days: data.deliveryTerm || data.data?.deliveryTerm || 0,\n00502|           details: data.data,\n00503|           requestData,\n\n(File has more lines. Use 'offset' parameter to read beyond line 503)\n</file>",
+    "metadata": {
+      "preview": "\n      const data = await response.json();\n      console.log('Деловые Линии ответ:', data);\n\n      if (response.ok && data.data && data.metadata?.status === 200) {\n        let totalPrice = data.data.price || 0;\n        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          totalPrice += data.data.insurance;\n        }\n        \n        // Добавляем услуги упаковки если есть\n        if (data.data.packages && form.needPackaging) {\n          Object.values(data.data.packages).forEach((pkg: any) => {\n            if (pkg.price) totalPrice += pkg.price;\n          });\n        }\n\n        return {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758888208313,
+      "end": 1758888208318
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_985e857b2001yWLhxsqEtaBDNC",
+  "messageID": "msg_985e7ac35001pooy5TKlrMgi3N",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_013ds2hV3kgGQBzvjuujsV31",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "(term|Term|срок|дни|дней)",
+      "include": "*.tsx"
+    },
+    "output": "Found 30 matches\n/home/user/project/app/page.tsx:\n  Line 36:   fromTerminal: boolean;\n  Line 37:   toTerminal: boolean;\n  Line 86:     fromTerminal: true,\n  Line 87:     toTerminal: true,\n  Line 271:   const getDellinTerminal = async (citySearch: string): Promise<string | null> => {\n  Line 273:       const response = await fetch('https://api.dellin.ru/v3/public/terminals.json', {\n  Line 286:       if (response.ok && data.terminals) {\n  Line 289:         const terminal = data.terminals.find((t: any) => \n  Line 294:         return terminal?.id || data.terminals[0]?.id || null;\n  Line 369:       const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n  Line 370:       const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;\n  Line 394:             variant: form.fromAddressDelivery ? 'address' : 'terminal',\n  Line 400:               terminalID: fromTerminalId\n  Line 412:             variant: form.toAddressDelivery ? 'address' : 'terminal',\n  Line 418:               terminalID: toTerminalId\n  Line 457:               term: true  // Всегда true при наличии страхования\n  Line 501:           days: data.deliveryTerm || data.data?.deliveryTerm || 0,\n  Line 579:             terminalCost: data.data.terminal,\n  Line 1057:       if (!form.fromTerminal && calc.details.derival?.price) {\n  Line 1066:       if (!form.toTerminal && calc.details.arrival?.price) {\n  Line 1118:       if (calc.details.terminalCost) {\n  Line 1122:           price: calc.details.terminalCost\n  Line 1285:                         checked={form.fromTerminal}\n  Line 1286:                         onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false }))}\n  Line 1295:                         onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true }))}\n  Line 1334:                         checked={form.toTerminal}\n  Line 1335:                         onChange={() => setForm(prev => ({ ...prev, toTerminal: true, toAddressDelivery: false }))}\n  Line 1344:                         onChange={() => setForm(prev => ({ ...prev, toTerminal: false, toAddressDelivery: true }))}\n  Line 1515:                                 <p className=\"text-white text-xs\"><strong>Примерный срок:</strong> {calc.days} дней</p>\n  Line 1522:                             <p className=\"text-white text-xs\"><strong>Срок доставки:</strong> {calc.days} дней</p>",
+    "metadata": {
+      "matches": 30,
+      "truncated": false
+    },
+    "title": "(term|Term|срок|дни|дней)",
+    "time": {
+      "start": 1758888221083,
+      "end": 1758888221095
+    }
+  }
+}
