@@ -1,0 +1,25 @@
+{
+  "id": "prt_985fc7c4e0011LY5kqw272Okqw",
+  "messageID": "msg_985fbe97e001Jl2ltJnZ2K2e8J",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01EjbwvDThXD51gdNMa81Fgr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 500,
+      "limit": 15
+    },
+    "output": "<file>\n00501|         // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver\n00502|         let deliveryDays = 0;\n00503|         try {\n00504|           // Извлекаем точные поля из ответа API\n00505|           const pickup = data.data?.pickup || data.pickup;\n00506|           const arrivalToOspReceiver = data.data?.arrivalToOspReceiver || data.arrivalToOspReceiver;\n00507|           \n00508|           console.log('Деловые Линии - дата pickup:', pickup);\n00509|           console.log('Деловые Линии - дата arrivalToOspReceiver:', arrivalToOspReceiver);\n00510|           \n00511|           if (pickup && arrivalToOspReceiver) {\n00512|             // Парсим даты (формат может быть \"2025-09-27\" или \"2025-09-27 10:00:00\")\n00513|             const pickupDate = new Date(pickup);\n00514|             const arrivalDate = new Date(arrivalToOspReceiver);\n00515|             \n\n(File has more lines. Use 'offset' parameter to read beyond line 515)\n</file>",
+    "metadata": {
+      "preview": "        // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver\n        let deliveryDays = 0;\n        try {\n          // Извлекаем точные поля из ответа API\n          const pickup = data.data?.pickup || data.pickup;\n          const arrivalToOspReceiver = data.data?.arrivalToOspReceiver || data.arrivalToOspReceiver;\n          \n          console.log('Деловые Линии - дата pickup:', pickup);\n          console.log('Деловые Линии - дата arrivalToOspReceiver:', arrivalToOspReceiver);\n          \n          if (pickup && arrivalToOspReceiver) {\n            // Парсим даты (формат может быть \"2025-09-27\" или \"2025-09-27 10:00:00\")\n            const pickupDate = new Date(pickup);\n            const arrivalDate = new Date(arrivalToOspReceiver);\n            "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758889541192,
+      "end": 1758889541195
+    }
+  }
+}

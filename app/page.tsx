@@ -479,6 +479,9 @@ export default function Home() {
 
       const data = await response.json();
       console.log('Деловые Линии ответ:', data);
+      console.log('=== ПОЛНАЯ ОТЛАДКА СТРУКТУРЫ ОТВЕТА ===');
+      console.log('data:', JSON.stringify(data, null, 2));
+      console.log('=== КОНЕЦ ОТЛАДКИ СТРУКТУРЫ ===');
 
       if (response.ok && data.data && data.metadata?.status === 200) {
         let totalPrice = data.data.price || 0;
@@ -498,12 +501,38 @@ export default function Home() {
         // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver
         let deliveryDays = 0;
         try {
-          // Извлекаем точные поля из ответа API
-          const pickup = data.data?.pickup || data.pickup;
-          const arrivalToOspReceiver = data.data?.arrivalToOspReceiver || data.arrivalToOspReceiver;
+          console.log('=== ПОИСК ДАТ В ОТВЕТЕ ===');
           
-          console.log('Деловые Линии - дата pickup:', pickup);
-          console.log('Деловые Линии - дата arrivalToOspReceiver:', arrivalToOspReceiver);
+          // Проверяем все возможные места где могут быть даты
+          console.log('Проверяем data.data?.pickup:', data.data?.pickup);
+          console.log('Проверяем data.pickup:', data.pickup);
+          console.log('Проверяем data?.pickup:', data?.pickup);
+          console.log('Проверяем data.data?.arrivalToOspReceiver:', data.data?.arrivalToOspReceiver);
+          console.log('Проверяем data.arrivalToOspReceiver:', data.arrivalToOspReceiver);
+          console.log('Проверяем data?.arrivalToOspReceiver:', data?.arrivalToOspReceiver);
+          
+          // Более широкий поиск во всей структуре data
+          const findDateInObject = (obj: any, fieldName: string): string | null => {
+            if (!obj || typeof obj !== 'object') return null;
+            
+            for (const [key, value] of Object.entries(obj)) {
+              if (key === fieldName && typeof value === 'string') {
+                return value;
+              }
+              if (typeof value === 'object' && value !== null) {
+                const found = findDateInObject(value, fieldName);
+                if (found) return found;
+              }
+            }
+            return null;
+          };
+          
+          const pickup = findDateInObject(data, 'pickup');
+          const arrivalToOspReceiver = findDateInObject(data, 'arrivalToOspReceiver');
+          
+          console.log('НАЙДЕННЫЕ ДАТЫ:');
+          console.log('pickup:', pickup);
+          console.log('arrivalToOspReceiver:', arrivalToOspReceiver);
           
           if (pickup && arrivalToOspReceiver) {
             // Парсим даты (формат может быть "2025-09-27" или "2025-09-27 10:00:00")

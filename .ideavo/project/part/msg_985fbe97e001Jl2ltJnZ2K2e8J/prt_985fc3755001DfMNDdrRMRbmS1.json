@@ -1,0 +1,21 @@
+{
+  "id": "prt_985fc3755001DfMNDdrRMRbmS1",
+  "messageID": "msg_985fbe97e001Jl2ltJnZ2K2e8J",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Bdx1n5e2baGiKkRujoXQxX",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      console.log('Деловые Линии ответ:', data);\n\n      if (response.ok && data.data && data.metadata?.status === 200) {",
+      "newString": "      console.log('Деловые Линии ответ:', data);\n      console.log('=== ПОЛНАЯ ОТЛАДКА СТРУКТУРЫ ОТВЕТА ===');\n      console.log('data:', JSON.stringify(data, null, 2));\n      console.log('=== КОНЕЦ ОТЛАДКИ СТРУКТУРЫ ===');\n\n      if (response.ok && data.data && data.metadata?.status === 200) {"
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758889526252,
+      "end": 1758889526254
+    }
+  }
+}

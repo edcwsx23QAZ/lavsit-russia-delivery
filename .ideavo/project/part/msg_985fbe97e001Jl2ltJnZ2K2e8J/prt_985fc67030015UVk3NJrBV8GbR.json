@@ -1,0 +1,26 @@
+{
+  "id": "prt_985fc67030015UVk3NJrBV8GbR",
+  "messageID": "msg_985fbe97e001Jl2ltJnZ2K2e8J",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01No6cKMs755p3v5yEt3NtUT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      console.log('Деловые Линии ответ:', data);\n\n      if (response.ok && data.data && data.metadata?.status === 200) {",
+      "newString": "      console.log('Деловые Линии ответ:', data);\n      console.log('=== ПОЛНАЯ ОТЛАДКА СТРУКТУРЫ ОТВЕТА ===');\n      console.log('data:', JSON.stringify(data, null, 2));\n      console.log('=== КОНЕЦ ОТЛАДКИ СТРУКТУРЫ ===');\n\n      if (response.ok && data.data && data.metadata?.status === 200) {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -478,8 +478,11 @@\n });\n \n const data = await response.json();\n console.log('Деловые Линии ответ:', data);\n+console.log('=== ПОЛНАЯ ОТЛАДКА СТРУКТУРЫ ОТВЕТА ===');\n+console.log('data:', JSON.stringify(data, null, 2));\n+console.log('=== КОНЕЦ ОТЛАДКИ СТРУКТУРЫ ===');\n \n if (response.ok && data.data && data.metadata?.status === 200) {\n   let totalPrice = data.data.price || 0;\n   \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758889536847,
+      "end": 1758889536866
+    }
+  }
+}

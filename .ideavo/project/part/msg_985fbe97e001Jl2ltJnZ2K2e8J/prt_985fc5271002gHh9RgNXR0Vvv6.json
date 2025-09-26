@@ -1,0 +1,25 @@
+{
+  "id": "prt_985fc5271002gHh9RgNXR0Vvv6",
+  "messageID": "msg_985fbe97e001Jl2ltJnZ2K2e8J",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_014WiVzLKXjyuoLTWrZBuUkK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 480,
+      "limit": 10
+    },
+    "output": "<file>\n00481|       console.log('Деловые Линии ответ:', data);\n00482| \n00483|       if (response.ok && data.data && data.metadata?.status === 200) {\n00484|         let totalPrice = data.data.price || 0;\n00485|         \n00486|         // Добавляем страховку если есть\n00487|         if (data.data.insurance) {\n00488|           totalPrice += data.data.insurance;\n00489|         }\n00490|         \n\n(File has more lines. Use 'offset' parameter to read beyond line 490)\n</file>",
+    "metadata": {
+      "preview": "      console.log('Деловые Линии ответ:', data);\n\n      if (response.ok && data.data && data.metadata?.status === 200) {\n        let totalPrice = data.data.price || 0;\n        \n        // Добавляем страховку если есть\n        if (data.data.insurance) {\n          totalPrice += data.data.insurance;\n        }\n        "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758889530530,
+      "end": 1758889530536
+    }
+  }
+}

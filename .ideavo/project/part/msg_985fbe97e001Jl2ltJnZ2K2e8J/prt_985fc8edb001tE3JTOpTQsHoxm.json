@@ -1,0 +1,26 @@
+{
+  "id": "prt_985fc8edb001tE3JTOpTQsHoxm",
+  "messageID": "msg_985fbe97e001Jl2ltJnZ2K2e8J",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01J1jQ7oPWDD7nabEjcSzZhW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver\n        let deliveryDays = 0;\n        try {\n          // Извлекаем точные поля из ответа API\n          const pickup = data.data?.pickup || data.pickup;\n          const arrivalToOspReceiver = data.data?.arrivalToOspReceiver || data.arrivalToOspReceiver;\n          \n          console.log('Деловые Линии - дата pickup:', pickup);\n          console.log('Деловые Линии - дата arrivalToOspReceiver:', arrivalToOspReceiver);",
+      "newString": "        // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver\n        let deliveryDays = 0;\n        try {\n          console.log('=== ПОИСК ДАТ В ОТВЕТЕ ===');\n          \n          // Проверяем все возможные места где могут быть даты\n          console.log('Проверяем data.data?.pickup:', data.data?.pickup);\n          console.log('Проверяем data.pickup:', data.pickup);\n          console.log('Проверяем data?.pickup:', data?.pickup);\n          console.log('Проверяем data.data?.arrivalToOspReceiver:', data.data?.arrivalToOspReceiver);\n          console.log('Проверяем data.arrivalToOspReceiver:', data.arrivalToOspReceiver);\n          console.log('Проверяем data?.arrivalToOspReceiver:', data?.arrivalToOspReceiver);\n          \n          // Более широкий поиск во всей структуре data\n          const findDateInObject = (obj: any, fieldName: string): string | null => {\n            if (!obj || typeof obj !== 'object') return null;\n            \n            for (const [key, value] of Object.entries(obj)) {\n              if (key === fieldName && typeof value === 'string') {\n                return value;\n              }\n              if (typeof value === 'object' && value !== null) {\n                const found = findDateInObject(value, fieldName);\n                if (found) return found;\n              }\n            }\n            return null;\n          };\n          \n          const pickup = findDateInObject(data, 'pickup');\n          const arrivalToOspReceiver = findDateInObject(data, 'arrivalToOspReceiver');\n          \n          console.log('НАЙДЕННЫЕ ДАТЫ:');\n          console.log('pickup:', pickup);\n          console.log('arrivalToOspReceiver:', arrivalToOspReceiver);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -500,15 +500,41 @@\n \n // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver\n let deliveryDays = 0;\n try {\n-  // Извлекаем точные поля из ответа API\n-  const pickup = data.data?.pickup || data.pickup;\n-  const arrivalToOspReceiver = data.data?.arrivalToOspReceiver || data.arrivalToOspReceiver;\n+  console.log('=== ПОИСК ДАТ В ОТВЕТЕ ===');\n   \n-  console.log('Деловые Линии - дата pickup:', pickup);\n-  console.log('Деловые Линии - дата arrivalToOspReceiver:', arrivalToOspReceiver);\n+  // Проверяем все возможные места где могут быть даты\n+  console.log('Проверяем data.data?.pickup:', data.data?.pickup);\n+  console.log('Проверяем data.pickup:', data.pickup);\n+  console.log('Проверяем data?.pickup:', data?.pickup);\n+  console.log('Проверяем data.data?.arrivalToOspReceiver:', data.data?.arrivalToOspReceiver);\n+  console.log('Проверяем data.arrivalToOspReceiver:', data.arrivalToOspReceiver);\n+  console.log('Проверяем data?.arrivalToOspReceiver:', data?.arrivalToOspReceiver);\n   \n+  // Более широкий поиск во всей структуре data\n+  const findDateInObject = (obj: any, fieldName: string): string | null => {\n+    if (!obj || typeof obj !== 'object') return null;\n+    \n+    for (const [key, value] of Object.entries(obj)) {\n+      if (key === fieldName && typeof value === 'string') {\n+        return value;\n+      }\n+      if (typeof value === 'object' && value !== null) {\n+        const found = findDateInObject(value, fieldName);\n+        if (found) return found;\n+      }\n+    }\n+    return null;\n+  };\n+  \n+  const pickup = findDateInObject(data, 'pickup');\n+  const arrivalToOspReceiver = findDateInObject(data, 'arrivalToOspReceiver');\n+  \n+  console.log('НАЙДЕННЫЕ ДАТЫ:');\n+  console.log('pickup:', pickup);\n+  console.log('arrivalToOspReceiver:', arrivalToOspReceiver);\n+  \n   if (pickup && arrivalToOspReceiver) {\n     // Парсим даты (формат может быть \"2025-09-27\" или \"2025-09-27 10:00:00\")\n     const pickupDate = new Date(pickup);\n     const arrivalDate = new Date(arrivalToOspReceiver);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758889553933,
+      "end": 1758889553944
+    }
+  }
+}
