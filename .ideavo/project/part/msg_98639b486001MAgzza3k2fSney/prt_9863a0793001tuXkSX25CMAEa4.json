@@ -1,0 +1,25 @@
+{
+  "id": "prt_9863a0793001tuXkSX25CMAEa4",
+  "messageID": "msg_98639b486001MAgzza3k2fSney",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01M9aZDozXhpy4nkskwowqRC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1220,
+      "limit": 30
+    },
+    "output": "<file>\n01221|       setActiveField('');\n01222|       \n01223|       console.log('Форма сброшена к начальному состоянию');\n01224|     }\n01225|   };\n01226| \n01227|   // Парсер деталей расчета для читаемого формата\n01228|   const parseCalculationDetails = (calc: CalculationResult) => {\n01229|     const details: { service: string; description: string; price: number }[] = [];\n01230|     \n01231|     if (calc.company === 'Деловые Линии' && calc.details) {\n01232|       // Основная перевозка\n01233|       if (calc.details.availableDeliveryTypes?.auto) {\n01234|         details.push({\n01235|           service: 'Межтерминальная перевозка',\n01236|           description: `${form.fromCity} - ${form.toCity}`,\n01237|           price: calc.details.availableDeliveryTypes.auto\n01238|         });\n01239|       }\n01240|       \n01241|       // Забор груза\n01242|       if (!form.fromTerminal && calc.details.derival?.price) {\n01243|         details.push({\n01244|           service: 'Забор груза',\n01245|           description: 'От адреса',\n01246|           price: calc.details.derival.price\n01247|         });\n01248|       }\n01249|       \n01250|       // Доставка груза\n\n(File has more lines. Use 'offset' parameter to read beyond line 1250)\n</file>",
+    "metadata": {
+      "preview": "      setActiveField('');\n      \n      console.log('Форма сброшена к начальному состоянию');\n    }\n  };\n\n  // Парсер деталей расчета для читаемого формата\n  const parseCalculationDetails = (calc: CalculationResult) => {\n    const details: { service: string; description: string; price: number }[] = [];\n    \n    if (calc.company === 'Деловые Линии' && calc.details) {\n      // Основная перевозка\n      if (calc.details.availableDeliveryTypes?.auto) {\n        details.push({\n          service: 'Межтерминальная перевозка',\n          description: `${form.fromCity} - ${form.toCity}`,\n          price: calc.details.availableDeliveryTypes.auto\n        });\n      }\n      "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758893574683,
+      "end": 1758893574685
+    }
+  }
+}

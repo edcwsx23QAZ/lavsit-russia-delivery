@@ -1,0 +1,25 @@
+{
+  "id": "prt_98639ec9a001ADiEh4cKaYCh3v",
+  "messageID": "msg_98639b486001MAgzza3k2fSney",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PRdzSXCQ9F5LLjuRRjUWdX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1250,
+      "limit": 50
+    },
+    "output": "<file>\n01251|       if (!form.toTerminal && calc.details.arrival?.price) {\n01252|         details.push({\n01253|           service: 'Отвоз груза',\n01254|           description: 'До адреса',\n01255|           price: calc.details.arrival.price\n01256|         });\n01257|       }\n01258|       \n01259|       // Страхование - только из API\n01260|       if (form.needInsurance && calc.details.insurance) {\n01261|         details.push({\n01262|           service: 'Страхование груза',\n01263|           description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n01264|           price: calc.details.insurance // Используем только стоимость из API\n01265|         });\n01266|       }\n01267|       \n01268|       // Упаковка - теперь берется только из API packages\n01269|       if (form.needPackaging && calc.details.packages) {\n01270|         Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n01271|           if (pkg.price && pkg.price > 0) {\n01272|             details.push({\n01273|               service: 'Упаковка груза',\n01274|               description: 'Упаковать в комплекс «обрешётка + амортизация»',\n01275|               price: pkg.price\n01276|             });\n01277|           }\n01278|         });\n01279|       }\n01280|       \n01281|       // Дополнительные услуги\n01282|       details.push({\n01283|         service: 'Доп.услуги',\n01284|         description: 'Информирование о статусе груза',\n01285|         price: 15\n01286|       });\n01287|     } else if (calc.company === 'Nord Wheel' && calc.details) {\n01288|       // Расшифровка для Nord Wheel согласно требованиям\n01289|       if (calc.details.totalCost) {\n01290|         details.push({\n01291|           service: 'Общая стоимость доставки',\n01292|           description: '',\n01293|           price: calc.details.totalCost\n01294|         });\n01295|       }\n01296|       if (calc.details.deliveryCost) {\n01297|         details.push({\n01298|           service: 'Стоимость перевозки',\n01299|           description: '',\n01300|           price: calc.details.deliveryCost\n\n(File has more lines. Use 'offset' parameter to read beyond line 1300)\n</file>",
+    "metadata": {
+      "preview": "      if (!form.toTerminal && calc.details.arrival?.price) {\n        details.push({\n          service: 'Отвоз груза',\n          description: 'До адреса',\n          price: calc.details.arrival.price\n        });\n      }\n      \n      // Страхование - только из API\n      if (form.needInsurance && calc.details.insurance) {\n        details.push({\n          service: 'Страхование груза',\n          description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n          price: calc.details.insurance // Используем только стоимость из API\n        });\n      }\n      \n      // Упаковка - теперь берется только из API packages\n      if (form.needPackaging && calc.details.packages) {\n        Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758893567748,
+      "end": 1758893567750
+    }
+  }
+}

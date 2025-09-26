@@ -1,0 +1,25 @@
+{
+  "id": "prt_98639f9d70013crolVBD7i1stk",
+  "messageID": "msg_98639b486001MAgzza3k2fSney",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Ed5rsA2b68qNxxAxXG4sK8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 650,
+      "limit": 50
+    },
+    "output": "<file>\n00651|           console.log('arrivalToOspReceiver:', arrivalToOspReceiver);\n00652|           \n00653|           if (pickup && arrivalToOspReceiver) {\n00654|             // Парсим даты (формат может быть \"2025-09-27\" или \"2025-09-27 10:00:00\")\n00655|             const pickupDate = new Date(pickup);\n00656|             const arrivalDate = new Date(arrivalToOspReceiver);\n00657|             \n00658|             console.log('Парсированная дата pickup:', pickupDate);\n00659|             console.log('Парсированная дата arrival:', arrivalDate);\n00660|             \n00661|             // Проверяем, что даты валидны\n00662|             if (!isNaN(pickupDate.getTime()) && !isNaN(arrivalDate.getTime())) {\n00663|               // Вычисляем разность в днях\n00664|               const timeDiff = arrivalDate.getTime() - pickupDate.getTime();\n00665|               deliveryDays = Math.max(1, Math.ceil(timeDiff / (1000 * 3600 * 24))); // Минимум 1 день\n00666|               \n00667|               console.log('Разность в миллисекундах:', timeDiff);\n00668|               console.log('Деловые Линии - ВЫЧИСЛЕН срок доставки:', deliveryDays, 'дней');\n00669|             } else {\n00670|               console.error('Деловые Линии - Невалидные даты после парсинга');\n00671|               console.error('pickup Date object:', pickupDate);\n00672|               console.error('arrival Date object:', arrivalDate);\n00673|             }\n00674|           } else {\n00675|             console.warn('Деловые Линии - Не найдены даты pickup или arrivalToOspReceiver');\n00676|             console.log('pickup найден:', !!pickup, pickup);\n00677|             console.log('arrivalToOspReceiver найден:', !!arrivalToOspReceiver, arrivalToOspReceiver);\n00678|           }\n00679|         } catch (error) {\n00680|           console.error('Деловые Линии - Ошибка вычисления срока доставки:', error);\n00681|         }\n00682| \n00683|         return {\n00684|           company: 'Деловые Линии',\n00685|           price: Math.round(totalPrice),\n00686|           days: deliveryDays || 0,\n00687|           details: data.data,\n00688|           requestData,\n00689|           responseData: data,\n00690|           apiUrl,\n00691|           sessionId: sessionID\n00692|         };\n00693|       } else {\n00694|         const errorMessage = data.metadata?.detail || \n00695|                            data.metadata?.message || \n00696|                            data.errors?.[0]?.detail || \n00697|                            (data.metadata?.status !== 200 ? `HTTP ${data.metadata?.status}` : '') ||\n00698|                            'Ошибка расчета Деловые Линии';\n00699|         return {\n00700|           company: 'Деловые Линии',\n\n(File has more lines. Use 'offset' parameter to read beyond line 700)\n</file>",
+    "metadata": {
+      "preview": "          console.log('arrivalToOspReceiver:', arrivalToOspReceiver);\n          \n          if (pickup && arrivalToOspReceiver) {\n            // Парсим даты (формат может быть \"2025-09-27\" или \"2025-09-27 10:00:00\")\n            const pickupDate = new Date(pickup);\n            const arrivalDate = new Date(arrivalToOspReceiver);\n            \n            console.log('Парсированная дата pickup:', pickupDate);\n            console.log('Парсированная дата arrival:', arrivalDate);\n            \n            // Проверяем, что даты валидны\n            if (!isNaN(pickupDate.getTime()) && !isNaN(arrivalDate.getTime())) {\n              // Вычисляем разность в днях\n              const timeDiff = arrivalDate.getTime() - pickupDate.getTime();\n              deliveryDays = Math.max(1, Math.ceil(timeDiff / (1000 * 3600 * 24))); // Минимум 1 день\n              \n              console.log('Разность в миллисекундах:', timeDiff);\n              console.log('Деловые Линии - ВЫЧИСЛЕН срок доставки:', deliveryDays, 'дней');\n            } else {\n              console.error('Деловые Линии - Невалидные даты после парсинга');"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758893571122,
+      "end": 1758893571124
+    }
+  }
+}

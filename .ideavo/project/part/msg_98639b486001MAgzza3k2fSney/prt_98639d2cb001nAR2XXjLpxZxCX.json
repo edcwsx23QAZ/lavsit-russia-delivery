@@ -1,0 +1,25 @@
+{
+  "id": "prt_98639d2cb001nAR2XXjLpxZxCX",
+  "messageID": "msg_98639b486001MAgzza3k2fSney",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01LyVbJA91pKrf2npHqwcuKK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 586,
+      "limit": 40
+    },
+    "output": "<file>\n00587|         console.log('💰 РАСЧЕТ ЦЕНЫ УПАКОВКИ:');\n00588|         console.log('💰 data.data.packages =', data.data.packages);\n00589|         console.log('💰 form.needPackaging =', form.needPackaging);\n00590|         console.log('💰 Условие для расчета упаковки:', data.data.packages && form.needPackaging);\n00591|         \n00592|         if (data.data.packages && form.needPackaging) {\n00593|           console.log('💰 ✅ ОБРАБАТЫВАЕМ ЦЕНУ УПАКОВКИ');\n00594|           console.log('💰 Тип packages:', Array.isArray(data.data.packages) ? 'Array' : 'Object');\n00595|           \n00596|           if (Array.isArray(data.data.packages)) {\n00597|             data.data.packages.forEach((pkg: any, index: number) => {\n00598|               console.log(`💰 Package [${index}]:`, pkg);\n00599|               if (pkg.price) {\n00600|                 console.log(`💰 Добавляем цену упаковки [${index}]: ${pkg.price}`);\n00601|                 totalPrice += pkg.price;\n00602|               }\n00603|             });\n00604|           } else {\n00605|             Object.entries(data.data.packages).forEach(([key, pkg]: [string, any]) => {\n00606|               console.log(`💰 Package [${key}]:`, pkg);\n00607|               if (pkg.price) {\n00608|                 console.log(`💰 Добавляем цену упаковки [${key}]: ${pkg.price}`);\n00609|                 totalPrice += pkg.price;\n00610|               }\n00611|             });\n00612|           }\n00613|         } else {\n00614|           console.log('💰 ❌ НЕ обрабатываем цену упаковки');\n00615|         }\n00616| \n00617|         // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver\n00618|         let deliveryDays = 0;\n00619|         try {\n00620|           console.log('=== ПОИСК ДАТ В ОТВЕТЕ ===');\n00621|           \n00622|           // Проверяем все возможные места где могут быть даты\n00623|           console.log('Проверяем data.data?.pickup:', data.data?.pickup);\n00624|           console.log('Проверяем data.pickup:', data.pickup);\n00625|           console.log('Проверяем data?.pickup:', data?.pickup);\n00626|           console.log('Проверяем data.data?.arrivalToOspReceiver:', data.data?.arrivalToOspReceiver);\n\n(File has more lines. Use 'offset' parameter to read beyond line 626)\n</file>",
+    "metadata": {
+      "preview": "        console.log('💰 РАСЧЕТ ЦЕНЫ УПАКОВКИ:');\n        console.log('💰 data.data.packages =', data.data.packages);\n        console.log('💰 form.needPackaging =', form.needPackaging);\n        console.log('💰 Условие для расчета упаковки:', data.data.packages && form.needPackaging);\n        \n        if (data.data.packages && form.needPackaging) {\n          console.log('💰 ✅ ОБРАБАТЫВАЕМ ЦЕНУ УПАКОВКИ');\n          console.log('💰 Тип packages:', Array.isArray(data.data.packages) ? 'Array' : 'Object');\n          \n          if (Array.isArray(data.data.packages)) {\n            data.data.packages.forEach((pkg: any, index: number) => {\n              console.log(`💰 Package [${index}]:`, pkg);\n              if (pkg.price) {\n                console.log(`💰 Добавляем цену упаковки [${index}]: ${pkg.price}`);\n                totalPrice += pkg.price;\n              }\n            });\n          } else {\n            Object.entries(data.data.packages).forEach(([key, pkg]: [string, any]) => {\n              console.log(`💰 Package [${key}]:`, pkg);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758893560817,
+      "end": 1758893560819
+    }
+  }
+}
