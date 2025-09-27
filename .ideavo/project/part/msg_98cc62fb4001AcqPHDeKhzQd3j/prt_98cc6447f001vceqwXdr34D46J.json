@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cc6447f001vceqwXdr34D46J",
+  "messageID": "msg_98cc62fb4001AcqPHDeKhzQd3j",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01AbGAyQx29npo9S9pFtSz78",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "calculateRailContinent",
+      "include": "*.tsx"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 1664:   const calculateRailContinent = async (): Promise<CalculationResult> => {\n  Line 1834:         calculateRailContinent()",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "calculateRailContinent",
+    "time": {
+      "start": 1759003428682,
+      "end": 1759003428694
+    }
+  }
+}

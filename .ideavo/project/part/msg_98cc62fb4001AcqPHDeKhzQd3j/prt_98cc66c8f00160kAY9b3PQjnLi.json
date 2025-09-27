@@ -1,0 +1,11 @@
+{
+  "id": "prt_98cc66c8f00160kAY9b3PQjnLi",
+  "messageID": "msg_98cc62fb4001AcqPHDeKhzQd3j",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Проверил Rail Continent реализацию. Все требуемые параметры настроены правильно:\n\n## ✅ Проверенные параметры запроса:\n\n1. **service-delivery (доставка до адреса)**: строка 1690\n   ```typescript\n   delivery: form.toAddressDelivery ? '1' : '0'\n   ```\n\n2. **service-pickup (забор от адреса)**: строка 1689\n   ```typescript\n   pickup: form.fromAddressDelivery ? '1' : '0'\n   ```\n\n3. **service-package (упаковка)**: строка 1691\n   ```typescript\n   packaging: form.needPackaging ? '1' : '0'\n   ```\n\n## ✅ Проверенная обработка ответа по стоимости:\n\n1. **Стоимость доставки** (строки 1753-1759):\n   ```typescript\n   if (form.toAddressDelivery && autoTariff.priceDelivery && parseInt(autoTariff.priceDelivery) > 0)\n   ```\n\n2. **Стоимость забора** (строки 1745-1751):\n   ```typescript\n   if (form.fromAddressDelivery && autoTariff.pricePickup && parseInt(autoTariff.pricePickup) > 0)\n   ```\n\n3. **Стоимость страхования** (строки 1762-1769):\n   ```typescript\n   if (form.needInsurance && autoTariff.priceInsurance)\n   const insuranceCost = Math.round(form.declaredValue * parseFloat(autoTariff.priceInsurance) / 100)\n   ```\n\nВсе параметры правильно добавлены в запрос и корректно обрабатываются в ответе. Проблема в \"Failed to fetch\" скорее всего связана с недоступностью API или CORS политикой.",
+  "time": {
+    "start": 1759003446153,
+    "end": 1759003446153
+  }
+}

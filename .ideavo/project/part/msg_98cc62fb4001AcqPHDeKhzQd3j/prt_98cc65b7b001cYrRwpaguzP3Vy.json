@@ -1,0 +1,23 @@
+{
+  "id": "prt_98cc65b7b001cYrRwpaguzP3Vy",
+  "messageID": "msg_98cc62fb4001AcqPHDeKhzQd3j",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01J3DqLUokv9wEiLnLsNr638",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/rail-continent/route.ts"
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server';\n00002| \n00003| export async function POST(request: NextRequest) {\n00004|   try {\n00005|     const params = await request.json();\n00006|     \n00007|     // Строим URL для API Rail Continent\n00008|     const apiUrl = new URL('https://www.railcontinent.ru/ajax/api.php');\n00009|     \n00010|     // Добавляем параметры в URL\n00011|     Object.entries(params).forEach(([key, value]) => {\n00012|       if (value !== undefined && value !== null) {\n00013|         apiUrl.searchParams.append(key, String(value));\n00014|       }\n00015|     });\n00016| \n00017|     console.log('🚂 Rail Continent API запрос:', apiUrl.toString());\n00018| \n00019|     const response = await fetch(apiUrl.toString(), {\n00020|       method: 'GET',\n00021|       headers: {\n00022|         'Accept': 'application/json',\n00023|         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n00024|       }\n00025|     });\n00026| \n00027|     if (!response.ok) {\n00028|       console.error('🚂 Rail Continent API ошибка:', response.status, response.statusText);\n00029|       return NextResponse.json({\n00030|         success: false,\n00031|         error: `API ошибка: ${response.status} ${response.statusText}`\n00032|       }, { status: response.status });\n00033|     }\n00034| \n00035|     const data = await response.json();\n00036|     console.log('🚂 Rail Continent API ответ:', JSON.stringify(data, null, 2));\n00037| \n00038|     return NextResponse.json(data);\n00039| \n00040|   } catch (error: any) {\n00041|     console.error('🚂 Rail Continent API критическая ошибка:', error);\n00042|     return NextResponse.json({\n00043|       success: false,\n00044|       error: error.message || 'Внутренняя ошибка сервера'\n00045|     }, { status: 500 });\n00046|   }\n00047| }\n</file>",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const params = await request.json();\n    \n    // Строим URL для API Rail Continent\n    const apiUrl = new URL('https://www.railcontinent.ru/ajax/api.php');\n    \n    // Добавляем параметры в URL\n    Object.entries(params).forEach(([key, value]) => {\n      if (value !== undefined && value !== null) {\n        apiUrl.searchParams.append(key, String(value));\n      }\n    });\n\n    console.log('🚂 Rail Continent API запрос:', apiUrl.toString());\n\n    const response = await fetch(apiUrl.toString(), {\n      method: 'GET',"
+    },
+    "title": "app/api/rail-continent/route.ts",
+    "time": {
+      "start": 1759003434553,
+      "end": 1759003434555
+    }
+  }
+}
