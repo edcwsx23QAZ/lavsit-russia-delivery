@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cd0cd82001DClLVhrZvuSDj5",
+  "messageID": "msg_98cd0909a001xw17voDfzrSnxV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01VhwFn4LK2Zk3rtJPfYnC1S",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1714,
+      "limit": 80
+    },
+    "output": "<file>\n01715|           const services = [];\n01716|           let totalPrice = 0;\n01717|           \n01718|           // Основная стоимость доставки груза (7073р)\n01719|           if (autoTariff.price_with_out_sale) {\n01720|             const deliveryPrice = autoTariff.price_with_out_sale;\n01721|             services.push({\n01722|               name: 'Доставка груза',\n01723|               description: `${autoTariff.type} (${autoTariff.rsType})`,\n01724|               price: deliveryPrice\n01725|             });\n01726|             totalPrice += deliveryPrice;\n01727|           }\n01728|           \n01729|           // Упаковка (3000р)\n01730|           if (form.needPackaging && autoTariff.pricePackage) {\n01731|             const packagingPrice = parseInt(autoTariff.pricePackage);\n01732|             services.push({\n01733|               name: 'Упаковка груза',\n01734|               description: 'Профессиональная упаковка',\n01735|               price: packagingPrice\n01736|             });\n01737|             totalPrice += packagingPrice;\n01738|           }\n01739|           \n01740|           // Страхование (4000р)\n01741|           if (form.needInsurance && autoTariff.priceInsurance) {\n01742|             const insuranceCost = Math.round(form.declaredValue * parseFloat(autoTariff.priceInsurance) / 100);\n01743|             services.push({\n01744|               name: 'Страхование груза',\n01745|               description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n01746|               price: insuranceCost\n01747|             });\n01748|             totalPrice += insuranceCost;\n01749|           }\n01750| \n01751|           // Дополнительные услуги (показываем, но не включаем в общую стоимость)\n01752|           const additionalServices = [];\n01753|           \n01754|           // Терминальные сборы\n01755|           if (autoTariff.terminalEnter1) {\n01756|             additionalServices.push({\n01757|               name: 'Терминальный сбор отправления',\n01758|               description: 'Обработка груза на терминале',\n01759|               price: parseInt(autoTariff.terminalEnter1)\n01760|             });\n01761|           }\n01762|           \n01763|           // Забор/доставка\n01764|           if (form.fromAddressDelivery && autoTariff.pricePickup && parseInt(autoTariff.pricePickup) > 0) {\n01765|             additionalServices.push({\n01766|               name: 'Забор груза',\n01767|               description: 'От адреса отправителя',\n01768|               price: parseInt(autoTariff.pricePickup)\n01769|             });\n01770|           }\n01771|           \n01772|           if (form.toAddressDelivery && autoTariff.priceDelivery && parseInt(autoTariff.priceDelivery) > 0) {\n01773|             additionalServices.push({\n01774|               name: 'Доставка по адресу',\n01775|               description: 'До адреса получателя',\n01776|               price: parseInt(autoTariff.priceDelivery)\n01777|             });\n01778|           }\n01779| \n01780|           return {\n01781|             company: 'Rail Continent',\n01782|             price: Math.round(totalPrice),\n01783|             days: parseInt(autoTariff.duration) || 5,\n01784|             details: {\n01785|               tariff: `${autoTariff.type} - ${autoTariff.service}`,\n01786|               transportType: autoTariff.rsType,\n01787|               weight: totalWeight,\n01788|               volume: totalVolume,\n01789|               route: `${form.fromCity} - ${form.toCity}`,\n01790|               services,\n01791|               additionalServices,\n01792|               allTariffs: data.data\n01793|             },\n01794|             requestData,\n\n(File has more lines. Use 'offset' parameter to read beyond line 1794)\n</file>",
+    "metadata": {
+      "preview": "          const services = [];\n          let totalPrice = 0;\n          \n          // Основная стоимость доставки груза (7073р)\n          if (autoTariff.price_with_out_sale) {\n            const deliveryPrice = autoTariff.price_with_out_sale;\n            services.push({\n              name: 'Доставка груза',\n              description: `${autoTariff.type} (${autoTariff.rsType})`,\n              price: deliveryPrice\n            });\n            totalPrice += deliveryPrice;\n          }\n          \n          // Упаковка (3000р)\n          if (form.needPackaging && autoTariff.pricePackage) {\n            const packagingPrice = parseInt(autoTariff.pricePackage);\n            services.push({\n              name: 'Упаковка груза',\n              description: 'Профессиональная упаковка',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004119087,
+      "end": 1759004119092
+    }
+  }
+}

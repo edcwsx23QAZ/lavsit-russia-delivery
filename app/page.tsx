@@ -1715,9 +1715,19 @@ export default function Home() {
           const services = [];
           let totalPrice = 0;
           
-          // Основная стоимость доставки груза (7073р)
+          console.log('🚂 Rail Continent детали тарифа:', {
+            price_with_out_sale: autoTariff.price_with_out_sale,
+            pricePackage: autoTariff.pricePackage,
+            priceInsurance: autoTariff.priceInsurance,
+            needPackaging: form.needPackaging,
+            needInsurance: form.needInsurance,
+            declaredValue: form.declaredValue
+          });
+          
+          // Основная стоимость доставки груза
           if (autoTariff.price_with_out_sale) {
-            const deliveryPrice = autoTariff.price_with_out_sale;
+            const deliveryPrice = parseFloat(autoTariff.price_with_out_sale);
+            console.log('🚂 Доставка груза:', deliveryPrice);
             services.push({
               name: 'Доставка груза',
               description: `${autoTariff.type} (${autoTariff.rsType})`,
@@ -1726,9 +1736,10 @@ export default function Home() {
             totalPrice += deliveryPrice;
           }
           
-          // Упаковка (3000р)
+          // Упаковка
           if (form.needPackaging && autoTariff.pricePackage) {
-            const packagingPrice = parseInt(autoTariff.pricePackage);
+            const packagingPrice = parseFloat(autoTariff.pricePackage);
+            console.log('🚂 Упаковка груза:', packagingPrice);
             services.push({
               name: 'Упаковка груза',
               description: 'Профессиональная упаковка',
@@ -1737,9 +1748,10 @@ export default function Home() {
             totalPrice += packagingPrice;
           }
           
-          // Страхование (4000р)
+          // Страхование
           if (form.needInsurance && autoTariff.priceInsurance) {
             const insuranceCost = Math.round(form.declaredValue * parseFloat(autoTariff.priceInsurance) / 100);
+            console.log('🚂 Страхование груза:', insuranceCost, '(', form.declaredValue, '*', autoTariff.priceInsurance, '%)');
             services.push({
               name: 'Страхование груза',
               description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
@@ -1747,6 +1759,9 @@ export default function Home() {
             });
             totalPrice += insuranceCost;
           }
+
+          console.log('🚂 Rail Continent итоговая стоимость:', totalPrice);
+          console.log('🚂 Rail Continent услуги:', services);
 
           // Дополнительные услуги (показываем, но не включаем в общую стоимость)
           const additionalServices = [];
