@@ -34,26 +34,34 @@ export async function GET(request: NextRequest) {
     // Используем nextUrl для избежания ошибки dynamic server usage
     const searchParams = request.nextUrl.searchParams;
     const query = searchParams.get('q')?.toLowerCase() || '';
+    const forceUpdate = searchParams.get('update') === 'true';
     
-    // Проверяем кэш
+    // Проверяем кэш (с учетом принудительного обновления)
     const now = Date.now();
-    if (!cachedData || (now - cachedData.lastUpdated) > CACHE_DURATION) {
-      console.log('🔄 Обновляем кэш данных мебели...');
+    if (!cachedData || (now - cachedData.lastUpdated) > CACHE_DURATION || forceUpdate) {
+      console.log(forceUpdate ? '🔄 Принудительное обновление товарной матрицы...' : '🔄 Обновляем кэш данных мебели...');
       cachedData = await fetchFurnitureData();
     }
     
-    // Фильтруем по поисковому запросу
+    // Фильтруем по поисковому запросу с поддержкой частичного поиска
     let products = cachedData.products;
     if (query) {
-      products = products.filter(product => 
-        product.name.toLowerCase().includes(query) ||
-        product.externalCode.toLowerCase().includes(query)
-      );
+      // Разбиваем запрос на отдельные слова
+      const queryWords = query.split(/\s+/).filter(word => word.length > 0);
+      
+      products = products.filter(product => {
+        const productText = (product.name + ' ' + product.externalCode).toLowerCase();
+        
+        // Проверяем, что все слова из запроса содержатся в тексте товара
+        return queryWords.every(word => productText.includes(word));
+      });
     }
     
-    // Ограничиваем количество результатов для автокомплита
-    const limit = parseInt(searchParams.get('limit') || '20');
-    products = products.slice(0, limit);
+    // Ограничиваем количество результатов для автокомплита (по умолчанию все товары)
+    const limit = parseInt(searchParams.get('limit') || '0');
+    if (limit > 0) {
+      products = products.slice(0, limit);
+    }
     
     return NextResponse.json({
       success: true,

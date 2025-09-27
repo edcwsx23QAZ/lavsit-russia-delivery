@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d42cc270010pYzRgINXrJ8ha",
+  "messageID": "msg_98d429594001hCU6THDG2MhLuy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_011hpGPHF5RyWAm22ssPiJbA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/furniture-products/route.ts",
+      "oldString": "    // Фильтруем по поисковому запросу\n    let products = cachedData.products;\n    if (query) {\n      products = products.filter(product => \n        product.name.toLowerCase().includes(query) ||\n        product.externalCode.toLowerCase().includes(query)\n      );\n    }",
+      "newString": "    // Фильтруем по поисковому запросу с поддержкой частичного поиска\n    let products = cachedData.products;\n    if (query) {\n      // Разбиваем запрос на отдельные слова\n      const queryWords = query.split(/\\s+/).filter(word => word.length > 0);\n      \n      products = products.filter(product => {\n        const productText = (product.name + ' ' + product.externalCode).toLowerCase();\n        \n        // Проверяем, что все слова из запроса содержатся в тексте товара\n        return queryWords.every(word => productText.includes(word));\n      });\n    }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/furniture-products/route.ts\n===================================================================\n--- /home/user/project/app/api/furniture-products/route.ts\n+++ /home/user/project/app/api/furniture-products/route.ts\n@@ -41,15 +41,20 @@\n   console.log('🔄 Обновляем кэш данных мебели...');\n   cachedData = await fetchFurnitureData();\n }\n \n-// Фильтруем по поисковому запросу\n+// Фильтруем по поисковому запросу с поддержкой частичного поиска\n let products = cachedData.products;\n if (query) {\n-  products = products.filter(product => \n-    product.name.toLowerCase().includes(query) ||\n-    product.externalCode.toLowerCase().includes(query)\n-  );\n+  // Разбиваем запрос на отдельные слова\n+  const queryWords = query.split(/\\s+/).filter(word => word.length > 0);\n+  \n+  products = products.filter(product => {\n+    const productText = (product.name + ' ' + product.externalCode).toLowerCase();\n+    \n+    // Проверяем, что все слова из запроса содержатся в тексте товара\n+    return queryWords.every(word => productText.includes(word));\n+  });\n }\n \n // Ограничиваем количество результатов для автокомплита (по умолчанию все товары)\n const limit = parseInt(searchParams.get('limit') || '0');\n"
+    },
+    "title": "app/api/furniture-products/route.ts",
+    "time": {
+      "start": 1759011592894,
+      "end": 1759011592918
+    }
+  }
+}

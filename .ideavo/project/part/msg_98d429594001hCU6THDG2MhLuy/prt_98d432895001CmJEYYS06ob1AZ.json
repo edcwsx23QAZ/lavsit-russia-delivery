@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d432895001CmJEYYS06ob1AZ",
+  "messageID": "msg_98d429594001hCU6THDG2MhLuy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_019fEF5EYdSfhhz7XhxUHB6X",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/furniture-products/route.ts",
+      "oldString": "export async function GET(request: NextRequest) {\n  try {\n    // Используем nextUrl для избежания ошибки dynamic server usage\n    const searchParams = request.nextUrl.searchParams;\n    const query = searchParams.get('q')?.toLowerCase() || '';\n    \n    // Проверяем кэш\n    const now = Date.now();\n    if (!cachedData || (now - cachedData.lastUpdated) > CACHE_DURATION) {\n      console.log('🔄 Обновляем кэш данных мебели...');\n      cachedData = await fetchFurnitureData();\n    }",
+      "newString": "export async function GET(request: NextRequest) {\n  try {\n    // Используем nextUrl для избежания ошибки dynamic server usage\n    const searchParams = request.nextUrl.searchParams;\n    const query = searchParams.get('q')?.toLowerCase() || '';\n    const forceUpdate = searchParams.get('update') === 'true';\n    \n    // Проверяем кэш (с учетом принудительного обновления)\n    const now = Date.now();\n    if (!cachedData || (now - cachedData.lastUpdated) > CACHE_DURATION || forceUpdate) {\n      console.log(forceUpdate ? '🔄 Принудительное обновление товарной матрицы...' : '🔄 Обновляем кэш данных мебели...');\n      cachedData = await fetchFurnitureData();\n    }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/furniture-products/route.ts\n===================================================================\n--- /home/user/project/app/api/furniture-products/route.ts\n+++ /home/user/project/app/api/furniture-products/route.ts\n@@ -33,13 +33,14 @@\n try {\n   // Используем nextUrl для избежания ошибки dynamic server usage\n   const searchParams = request.nextUrl.searchParams;\n   const query = searchParams.get('q')?.toLowerCase() || '';\n+  const forceUpdate = searchParams.get('update') === 'true';\n   \n-  // Проверяем кэш\n+  // Проверяем кэш (с учетом принудительного обновления)\n   const now = Date.now();\n-  if (!cachedData || (now - cachedData.lastUpdated) > CACHE_DURATION) {\n-    console.log('🔄 Обновляем кэш данных мебели...');\n+  if (!cachedData || (now - cachedData.lastUpdated) > CACHE_DURATION || forceUpdate) {\n+    console.log(forceUpdate ? '🔄 Принудительное обновление товарной матрицы...' : '🔄 Обновляем кэш данных мебели...');\n     cachedData = await fetchFurnitureData();\n   }\n   \n   // Фильтруем по поисковому запросу с поддержкой частичного поиска\n"
+    },
+    "title": "app/api/furniture-products/route.ts",
+    "time": {
+      "start": 1759011618058,
+      "end": 1759011618065
+    }
+  }
+}

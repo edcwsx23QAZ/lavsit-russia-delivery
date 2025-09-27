@@ -28,18 +28,51 @@ export function cargoPlaceToFormCargo(
 }
 
 /**
- * Поиск товаров по запросу
+ * Поиск товаров по запросу с поддержкой нечеткого поиска
  */
 export function searchProducts(products: FurnitureProduct[], query: string): FurnitureProduct[] {
   if (!query.trim()) return [];
   
   const normalizedQuery = query.toLowerCase().trim();
   
-  return products.filter(product => {
-    const nameMatch = product.name.toLowerCase().includes(normalizedQuery);
-    const codeMatch = product.externalCode.toLowerCase().includes(normalizedQuery);
-    return (nameMatch || codeMatch) && product.isActive;
-  }).slice(0, 20); // Ограничиваем результаты
+  // Разбиваем запрос на отдельные слова
+  const queryWords = normalizedQuery.split(/\s+/).filter(word => word.length > 0);
+  
+  const searchResults = products.filter(product => {
+    if (!product.isActive) return false;
+    
+    const productText = (product.name + ' ' + product.externalCode).toLowerCase();
+    
+    // Проверяем, что все слова из запроса содержатся в тексте товара
+    const allWordsMatch = queryWords.every(word => productText.includes(word));
+    
+    // Альтернативно: проверяем частичное совпадение любого слова
+    const anyWordMatch = queryWords.some(word => {
+      // Поиск по началу слов в названии товара
+      const productWords = productText.split(/\s+/);
+      return productWords.some(productWord => 
+        productWord.startsWith(word) || productWord.includes(word)
+      );
+    });
+    
+    return allWordsMatch || (queryWords.length === 1 && anyWordMatch);
+  });
+  
+  // Сортируем результаты по релевантности
+  return searchResults.sort((a, b) => {
+    const aText = a.name.toLowerCase();
+    const bText = b.name.toLowerCase();
+    
+    // Точное совпадение в начале названия имеет приоритет
+    const aStartsWithQuery = aText.startsWith(normalizedQuery);
+    const bStartsWithQuery = bText.startsWith(normalizedQuery);
+    
+    if (aStartsWithQuery && !bStartsWithQuery) return -1;
+    if (!aStartsWithQuery && bStartsWithQuery) return 1;
+    
+    // Если оба или ни один не начинается с запроса, сортируем по алфавиту
+    return aText.localeCompare(bText, 'ru');
+  }).slice(0, 50); // Увеличиваем лимит до 50 результатов
 }
 
 /**

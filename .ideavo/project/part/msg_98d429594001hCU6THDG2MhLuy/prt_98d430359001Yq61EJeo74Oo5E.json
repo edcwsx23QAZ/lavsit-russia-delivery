@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d430359001Yq61EJeo74Oo5E",
+  "messageID": "msg_98d429594001hCU6THDG2MhLuy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01JFEEnqHqfHE4ckhob9qVud",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ProductSearch.tsx",
+      "oldString": "  // Загрузка продуктов с сервера\n  const loadProducts = async () => {\n    setIsLoadingProducts(true);\n    try {\n      const response = await fetch('/api/furniture-products');\n      const data = await response.json();\n      \n      if (data.success) {\n        setAllProducts(data.data);\n        console.log(`✅ Загружено ${data.data.length} товаров`);\n      } else {\n        console.error('❌ Ошибка загрузки товаров:', data.error);\n      }\n    } catch (error) {\n      console.error('❌ Ошибка загрузки товаров:', error);\n    } finally {\n      setIsLoadingProducts(false);\n    }\n  };",
+      "newString": "  // Загрузка продуктов с сервера (включая обновление кэша)\n  const loadProducts = async (forceUpdate = false) => {\n    setIsLoadingProducts(true);\n    try {\n      // Добавляем параметр для принудительного обновления кэша\n      const url = forceUpdate \n        ? '/api/furniture-products?update=true' \n        : '/api/furniture-products';\n        \n      const response = await fetch(url);\n      const data = await response.json();\n      \n      if (data.success) {\n        setAllProducts(data.data);\n        console.log(`✅ Загружено ${data.data.length} товаров`);\n        if (forceUpdate) {\n          console.log('🔄 Принудительное обновление товарной матрицы завершено');\n        }\n      } else {\n        console.error('❌ Ошибка загрузки товаров:', data.error);\n      }\n    } catch (error) {\n      console.error('❌ Ошибка загрузки товаров:', error);\n    } finally {\n      setIsLoadingProducts(false);\n    }\n  };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/ProductSearch.tsx\n===================================================================\n--- /home/user/project/components/ProductSearch.tsx\n+++ /home/user/project/components/ProductSearch.tsx\n@@ -32,18 +32,26 @@\n useEffect(() => {\n   loadProducts();\n }, []);\n \n-// Загрузка продуктов с сервера\n-const loadProducts = async () => {\n+// Загрузка продуктов с сервера (включая обновление кэша)\n+const loadProducts = async (forceUpdate = false) => {\n   setIsLoadingProducts(true);\n   try {\n-    const response = await fetch('/api/furniture-products');\n+    // Добавляем параметр для принудительного обновления кэша\n+    const url = forceUpdate \n+      ? '/api/furniture-products?update=true' \n+      : '/api/furniture-products';\n+      \n+    const response = await fetch(url);\n     const data = await response.json();\n     \n     if (data.success) {\n       setAllProducts(data.data);\n       console.log(`✅ Загружено ${data.data.length} товаров`);\n+      if (forceUpdate) {\n+        console.log('🔄 Принудительное обновление товарной матрицы завершено');\n+      }\n     } else {\n       console.error('❌ Ошибка загрузки товаров:', data.error);\n     }\n   } catch (error) {\n"
+    },
+    "title": "components/ProductSearch.tsx",
+    "time": {
+      "start": 1759011609994,
+      "end": 1759011610002
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d4344a6002kTO9f28lbPu0RM",
+  "messageID": "msg_98d429594001hCU6THDG2MhLuy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01V2wuaofiEyicuBN3CEkYJW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ProductSearch.tsx",
+      "oldString": "import React, { useState, useEffect, useRef, useCallback } from 'react';\nimport { Input } from '@/components/ui/input';\nimport { Button } from '@/components/ui/button';\nimport { Badge } from '@/components/ui/badge';\nimport { Card, CardContent } from '@/components/ui/card';\nimport { Plus, Search, Package, Loader2 } from 'lucide-react';",
+      "newString": "import React, { useState, useEffect, useRef, useCallback } from 'react';\nimport { Input } from '@/components/ui/input';\nimport { Button } from '@/components/ui/button';\nimport { Badge } from '@/components/ui/badge';\nimport { Card, CardContent } from '@/components/ui/card';\nimport { Plus, Search, Package, Loader2, RefreshCw } from 'lucide-react';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/ProductSearch.tsx\n===================================================================\n--- /home/user/project/components/ProductSearch.tsx\n+++ /home/user/project/components/ProductSearch.tsx\n@@ -4,9 +4,9 @@\n import { Input } from '@/components/ui/input';\n import { Button } from '@/components/ui/button';\n import { Badge } from '@/components/ui/badge';\n import { Card, CardContent } from '@/components/ui/card';\n-import { Plus, Search, Package, Loader2 } from 'lucide-react';\n+import { Plus, Search, Package, Loader2, RefreshCw } from 'lucide-react';\n import { FurnitureProduct, ProductSearchState } from '@/lib/furniture-types';\n import { searchProducts, formatPrice, getProductSummary } from '@/lib/furniture-utils';\n \n interface ProductSearchProps {\n"
+    },
+    "title": "components/ProductSearch.tsx",
+    "time": {
+      "start": 1759011622796,
+      "end": 1759011622799
+    }
+  }
+}

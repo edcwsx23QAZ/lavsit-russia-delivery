@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d4356430018orBuiEfVBQbxj",
+  "messageID": "msg_98d429594001hCU6THDG2MhLuy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Gw4hcGR7LFvkA3vE2orFKB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ProductSearch.tsx",
+      "oldString": "        <Button\n          type=\"button\"\n          onClick={() => {\n            if (searchState.selectedIndex >= 0) {\n              handleProductSelect(searchState.suggestions[searchState.selectedIndex]);\n            } else if (searchState.suggestions.length === 1) {\n              handleProductSelect(searchState.suggestions[0]);\n            }\n          }}\n          disabled={disabled || searchState.suggestions.length === 0}\n          className=\"bg-blue-600 hover:bg-blue-700 h-10 px-4\"\n        >\n          <Plus className=\"h-4 w-4 mr-2\" />\n          Добавить товар\n        </Button>",
+      "newString": "        <Button\n          type=\"button\"\n          onClick={() => {\n            if (searchState.selectedIndex >= 0) {\n              handleProductSelect(searchState.suggestions[searchState.selectedIndex]);\n            } else if (searchState.suggestions.length === 1) {\n              handleProductSelect(searchState.suggestions[0]);\n            }\n          }}\n          disabled={disabled || searchState.suggestions.length === 0}\n          className=\"bg-blue-600 hover:bg-blue-700 h-10 px-4\"\n        >\n          <Plus className=\"h-4 w-4 mr-2\" />\n          Добавить товар\n        </Button>\n        \n        <Button\n          type=\"button\"\n          onClick={() => loadProducts(true)}\n          disabled={disabled || isLoadingProducts}\n          variant=\"outline\"\n          className=\"h-10 px-4 border-gray-600 hover:bg-gray-700\"\n          title=\"Обновить товарную матрицу\"\n        >\n          <RefreshCw className={`h-4 w-4 ${isLoadingProducts ? 'animate-spin' : ''}`} />\n        </Button>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/ProductSearch.tsx\n===================================================================\n--- /home/user/project/components/ProductSearch.tsx\n+++ /home/user/project/components/ProductSearch.tsx\n@@ -189,8 +189,19 @@\n   >\n     <Plus className=\"h-4 w-4 mr-2\" />\n     Добавить товар\n   </Button>\n+  \n+  <Button\n+    type=\"button\"\n+    onClick={() => loadProducts(true)}\n+    disabled={disabled || isLoadingProducts}\n+    variant=\"outline\"\n+    className=\"h-10 px-4 border-gray-600 hover:bg-gray-700\"\n+    title=\"Обновить товарную матрицу\"\n+  >\n+    <RefreshCw className={`h-4 w-4 ${isLoadingProducts ? 'animate-spin' : ''}`} />\n+  </Button>\n </div>\n \n {/* Список подсказок */}\n {searchState.showSuggestions && searchState.suggestions.length > 0 && (\n"
+    },
+    "title": "components/ProductSearch.tsx",
+    "time": {
+      "start": 1759011630126,
+      "end": 1759011630129
+    }
+  }
+}

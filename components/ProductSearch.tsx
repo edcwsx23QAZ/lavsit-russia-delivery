@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { Plus, Search, Package, Loader2 } from 'lucide-react';
+import { Plus, Search, Package, Loader2, RefreshCw } from 'lucide-react';
 import { FurnitureProduct, ProductSearchState } from '@/lib/furniture-types';
 import { searchProducts, formatPrice, getProductSummary } from '@/lib/furniture-utils';
 
@@ -33,16 +33,24 @@ export default function ProductSearch({ onProductAdd, disabled = false }: Produc
     loadProducts();
   }, []);
   
-  // Загрузка продуктов с сервера
-  const loadProducts = async () => {
+  // Загрузка продуктов с сервера (включая обновление кэша)
+  const loadProducts = async (forceUpdate = false) => {
     setIsLoadingProducts(true);
     try {
-      const response = await fetch('/api/furniture-products');
+      // Добавляем параметр для принудительного обновления кэша
+      const url = forceUpdate 
+        ? '/api/furniture-products?update=true' 
+        : '/api/furniture-products';
+        
+      const response = await fetch(url);
       const data = await response.json();
       
       if (data.success) {
         setAllProducts(data.data);
         console.log(`✅ Загружено ${data.data.length} товаров`);
+        if (forceUpdate) {
+          console.log('🔄 Принудительное обновление товарной матрицы завершено');
+        }
       } else {
         console.error('❌ Ошибка загрузки товаров:', data.error);
       }
@@ -181,6 +189,17 @@ export default function ProductSearch({ onProductAdd, disabled = false }: Produc
         >
           <Plus className="h-4 w-4 mr-2" />
           Добавить товар
+        </Button>
+        
+        <Button
+          type="button"
+          onClick={() => loadProducts(true)}
+          disabled={disabled || isLoadingProducts}
+          variant="outline"
+          className="h-10 px-4 border-gray-600 hover:bg-gray-700"
+          title="Обновить товарную матрицу"
+        >
+          <RefreshCw className={`h-4 w-4 ${isLoadingProducts ? 'animate-spin' : ''}`} />
         </Button>
       </div>
       

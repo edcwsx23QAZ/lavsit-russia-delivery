@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d42b77e001mDWXJ8VQQ7rgvJ",
+  "messageID": "msg_98d429594001hCU6THDG2MhLuy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01UX8vgXry1Mq7KaCzAoFMfk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/furniture-products/route.ts",
+      "oldString": "    // Ограничиваем количество результатов для автокомплита\n    const limit = parseInt(searchParams.get('limit') || '20');\n    products = products.slice(0, limit);",
+      "newString": "    // Ограничиваем количество результатов для автокомплита (по умолчанию все товары)\n    const limit = parseInt(searchParams.get('limit') || '0');\n    if (limit > 0) {\n      products = products.slice(0, limit);\n    }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/furniture-products/route.ts\n===================================================================\n--- /home/user/project/app/api/furniture-products/route.ts\n+++ /home/user/project/app/api/furniture-products/route.ts\n@@ -50,11 +50,13 @@\n     product.externalCode.toLowerCase().includes(query)\n   );\n }\n \n-// Ограничиваем количество результатов для автокомплита\n-const limit = parseInt(searchParams.get('limit') || '20');\n-products = products.slice(0, limit);\n+// Ограничиваем количество результатов для автокомплита (по умолчанию все товары)\n+const limit = parseInt(searchParams.get('limit') || '0');\n+if (limit > 0) {\n+  products = products.slice(0, limit);\n+}\n \n return NextResponse.json({\n   success: true,\n   data: products,\n"
+    },
+    "title": "app/api/furniture-products/route.ts",
+    "time": {
+      "start": 1759011586716,
+      "end": 1759011586723
+    }
+  }
+}
