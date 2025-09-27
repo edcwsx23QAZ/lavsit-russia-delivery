@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d25f804001XPPP4caExUTEUi",
+  "messageID": "msg_98d23bb8b001LCMZkSQv5I9Wpu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_017zjBjcRx5q6u5jopR3zce4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Build project to check for compilation errors"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/diagnostic/page.tsx:454:19\nType error: Argument of type 'any' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 452 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 453 |\u001b[39m       \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 454 |\u001b[39m       cargos\u001b[33m.\u001b[39mpush(cargo)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 455 |\u001b[39m     }\u001b[0m\n\u001b[0m \u001b[90m 456 |\u001b[39m     \u001b[0m\n\u001b[0m \u001b[90m 457 |\u001b[39m     \u001b[36mreturn\u001b[39m cargos\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/diagnostic/page.tsx:454:19\nType error: Argument of type 'any' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 452 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 453 |\u001b[39m       \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 454 |\u001b[39m       cargos\u001b[33m.\u001b[39mpush(cargo)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 455 |\u001b[39m     }\u001b[0m\n\u001b[0m \u001b[90m 456 |\u001b[39m     \u001b[0m\n\u001b[0m \u001b[90m 457 |\u001b[39m     \u001b[36mreturn\u001b[39m cargos\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build project to check for compilation errors"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759009700646,
+      "end": 1759009714195
+    }
+  }
+}

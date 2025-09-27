@@ -31,9 +31,25 @@ export default function DiagnosticPage() {
       totalTests: number;
       successful: number;
       failed: number;
+      skipped: number;
       errors: string[];
+      averageResponseTime: number;
+      successRate: number;
     };
     details: any[];
+    progressInfo: {
+      currentTK: string;
+      completedTests: number;
+      totalPlannedTests: number;
+      stage: string;
+    } | null;
+  } | null>(null);
+
+  const [testProgress, setTestProgress] = useState<{
+    currentTK: string;
+    completedTests: number;
+    totalPlannedTests: number;
+    stage: string;
   } | null>(null);
 
   const updateResult = (service: string, result: any) => {
@@ -398,22 +414,53 @@ export default function DiagnosticPage() {
   };
 
   // 🔧 Генератор тестовых данных для множественных грузовых мест
-  const generateTestCargos = (count: number) => {
-    const cargos = [];
+  const generateTestCargos = (count: number, variant: 'small' | 'medium' | 'large' | 'mixed' = 'mixed') => {
+    const cargos: Array<{length: number; width: number; height: number; weight: number}> = [];
+    
     for (let i = 0; i < count; i++) {
-      cargos.push({
-        length: 50 + Math.floor(Math.random() * 150), // 50-200 см
-        width: 30 + Math.floor(Math.random() * 120),  // 30-150 см  
-        height: 20 + Math.floor(Math.random() * 180), // 20-200 см
-        weight: 5 + Math.floor(Math.random() * 95)    // 5-100 кг
-      });
+      let cargo;
+      
+      switch (variant) {
+        case 'small':
+          cargo = {
+            length: 30 + Math.floor(Math.random() * 70),  // 30-100 см
+            width: 20 + Math.floor(Math.random() * 50),   // 20-70 см
+            height: 15 + Math.floor(Math.random() * 35),  // 15-50 см
+            weight: 1 + Math.floor(Math.random() * 19)    // 1-20 кг
+          };
+          break;
+        case 'medium':
+          cargo = {
+            length: 80 + Math.floor(Math.random() * 70),  // 80-150 см
+            width: 60 + Math.floor(Math.random() * 60),   // 60-120 см
+            height: 40 + Math.floor(Math.random() * 80),  // 40-120 см
+            weight: 15 + Math.floor(Math.random() * 35)   // 15-50 кг
+          };
+          break;
+        case 'large':
+          cargo = {
+            length: 150 + Math.floor(Math.random() * 100), // 150-250 см (негабарит)
+            width: 120 + Math.floor(Math.random() * 80),   // 120-200 см
+            height: 100 + Math.floor(Math.random() * 100), // 100-200 см
+            weight: 40 + Math.floor(Math.random() * 460)   // 40-500 кг
+          };
+          break;
+        default: // mixed
+          const types = ['small', 'medium', 'large'] as const;
+          const randomType = types[Math.floor(Math.random() * types.length)];
+          cargo = generateTestCargos(1, randomType)[0];
+          break;
+      }
+      
+      cargos.push(cargo);
     }
+    
     return cargos;
   };
 
-  // 🔧 Генератор всех комбинаций опций
+  // 🔧 Генератор всех комбинаций опций с расширенными сценариями
   const generateOptionsCombinations = () => {
-    const combinations = [];
+    const combinations: any[] = [];
     const options = [
       { name: 'fromAddressDelivery', values: [true, false] },
       { name: 'toAddressDelivery', values: [true, false] },
@@ -438,7 +485,18 @@ export default function DiagnosticPage() {
       combinations.push(combination);
     }
     
-    return combinations;
+    // Добавляем специальные комбинации с разными стоимостями
+    const specialCombinations = [
+      { ...combinations[0], declaredValue: 10000, testCase: 'low_value' },
+      { ...combinations[0], declaredValue: 100000, testCase: 'medium_value' },
+      { ...combinations[0], declaredValue: 500000, testCase: 'high_value' },
+      { ...combinations[0], declaredValue: 1000000, testCase: 'very_high_value' },
+      // Тестирование разных маршрутов
+      { ...combinations[0], fromCity: 'Екатеринбург', toCity: 'Новосибирск', testCase: 'long_distance' },
+      { ...combinations[0], fromCity: 'Москва', toCity: 'Мытищи', testCase: 'short_distance' }
+    ];
+    
+    return [...combinations, ...specialCombinations];
   };
 
   // 🔧 Функция тестирования одной ТК с определенными параметрами
@@ -638,91 +696,198 @@ export default function DiagnosticPage() {
     }
   };
 
-  // 🔧 ПОЛНОЕ ТЕСТИРОВАНИЕ
+  // 🔧 РАСШИРЕННОЕ ПОЛНОЕ ТЕСТИРОВАНИЕ
   const runFullTesting = async () => {
     setIsFullTesting(true);
     setFullTestResults(null);
+    setTestProgress(null);
     
     const allResults: any[] = [];
     const errors: string[] = [];
     let totalTests = 0;
     let successful = 0;
+    let skipped = 0;
+    let totalResponseTime = 0;
     
-    console.log('🧪 ===== НАЧАЛО ПОЛНОГО ТЕСТИРОВАНИЯ =====');
+    console.log('🧪 ===== НАЧАЛО РАСШИРЕННОГО ПОЛНОГО ТЕСТИРОВАНИЯ =====');
     
     try {
-      const transportCompanies = ['pek', 'railcontinent', 'vozovoz', 'nordwheel'];
-      const cargoCountTests = [1, 2, 3, 5, 10, 20, 50]; // Тестируем до 50 грузовых мест
+      const transportCompanies = ['pek', 'railcontinent', 'vozovoz', 'nordwheel', 'dellin'];
+      // Расширенный набор тестирования количества грузовых мест
+      const cargoCountTests = [1, 2, 3, 5, 7, 10, 15, 20, 25, 30, 40, 50];
+      const cargoVariants = ['small', 'medium', 'large', 'mixed'] as const;
       const optionCombinations = generateOptionsCombinations();
       
-      console.log(`🧪 Планируется тестов: ${transportCompanies.length} ТК × ${cargoCountTests.length} вариантов мест × ${optionCombinations.length} комбинаций опций = ${transportCompanies.length * cargoCountTests.length * optionCombinations.length}`);
+      // Планируем более полное тестирование
+      const totalPlannedTests = transportCompanies.length * cargoCountTests.length * cargoVariants.length * Math.min(optionCombinations.length, 8);
       
-      // Ограничиваем количество тестов для производительности
-      const maxTestsPerTK = 20; // 20 тестов на ТК (вместо всех комбинаций)
+      console.log(`🧪 Планируется тестов: ${totalPlannedTests} (${transportCompanies.length} ТК × ${cargoCountTests.length} вариантов мест × ${cargoVariants.length} типов груза × до 8 комбинаций опций)`);
       
       for (const tk of transportCompanies) {
-        console.log(`🧪 Тестирование ${tk.toUpperCase()}...`);
-        let testsForTK = 0;
+        console.log(`🧪 Начинаем тестирование ${tk.toUpperCase()}...`);
+        
+        setTestProgress({
+          currentTK: tk.toUpperCase(),
+          completedTests: totalTests,
+          totalPlannedTests,
+          stage: 'Инициализация тестирования'
+        });
+        
+        let testsForCurrentTK = 0;
+        const maxTestsPerTK = 150; // Увеличиваем лимит для более полного тестирования
         
         // Тестируем различное количество грузовых мест
         for (const cargoCount of cargoCountTests) {
-          if (testsForTK >= maxTestsPerTK) break;
+          if (testsForCurrentTK >= maxTestsPerTK) {
+            console.log(`⚠️ Достигнут лимит тестов для ${tk} (${maxTestsPerTK})`);
+            break;
+          }
           
-          // Выбираем несколько комбинаций опций (не все, для экономии времени)
-          const selectedCombinations = optionCombinations.slice(0, Math.min(3, Math.floor(maxTestsPerTK / cargoCountTests.length)));
+          setTestProgress({
+            currentTK: tk.toUpperCase(),
+            completedTests: totalTests,
+            totalPlannedTests,
+            stage: `Тестирование ${cargoCount} грузовых мест`
+          });
           
-          for (const options of selectedCombinations) {
-            if (testsForTK >= maxTestsPerTK) break;
+          // Тестируем разные типы грузов
+          for (const cargoVariant of cargoVariants) {
+            if (testsForCurrentTK >= maxTestsPerTK) break;
             
-            const testData = {
-              ...options,
-              cargos: generateTestCargos(cargoCount)
-            };
+            // Выбираем разнообразные комбинации опций
+            const selectedCombinations = [
+              optionCombinations[0],  // Базовая (все false)
+              optionCombinations[15], // Все услуги (все true)
+              optionCombinations[5],  // Частичная комбинация 1
+              optionCombinations[10], // Частичная комбинация 2
+              ...optionCombinations.filter(c => c.testCase).slice(0, 4) // Специальные сценарии
+            ].slice(0, Math.min(8, Math.ceil(maxTestsPerTK / (cargoCountTests.length * cargoVariants.length))));
             
-            console.log(`🧪 ${tk}: ${cargoCount} мест, опции: [${Object.entries(options).filter(([k, v]) => typeof v === 'boolean' && v).map(([k, v]) => k).join(', ') || 'базовые'}]`);
-            
-            const result = await testSingleTK(tk, testData);
-            allResults.push(result);
-            totalTests++;
-            testsForTK++;
-            
-            if (result.status === 'success') {
-              successful++;
-              console.log(`✅ ${tk}: ${result.message} (${result.timing}ms)`);
-            } else if (result.status === 'skipped') {
-              console.log(`⏭️ ${tk}: ${result.message}`);
-            } else {
-              console.log(`❌ ${tk}: ${result.message} (${result.timing}ms)`);
-              errors.push(`${tk}: ${result.message}`);
+            for (const options of selectedCombinations) {
+              if (testsForCurrentTK >= maxTestsPerTK) break;
+              
+              const testData = {
+                ...options,
+                cargos: generateTestCargos(cargoCount, cargoVariant),
+                testMetadata: {
+                  cargoVariant,
+                  cargoCount,
+                  testCase: options.testCase || 'standard'
+                }
+              };
+              
+              const activeOptions = Object.entries(options)
+                .filter(([k, v]) => typeof v === 'boolean' && v && !['testCase'].includes(k))
+                .map(([k]) => k)
+                .join(', ') || 'базовые';
+              
+              console.log(`🧪 ${tk}: ${cargoCount} мест (${cargoVariant}), опции: [${activeOptions}]${options.testCase ? ` - ${options.testCase}` : ''}`);
+              
+              setTestProgress({
+                currentTK: tk.toUpperCase(),
+                completedTests: totalTests,
+                totalPlannedTests,
+                stage: `${cargoCount} мест (${cargoVariant}) - ${activeOptions}`
+              });
+              
+              const result = await testSingleTK(tk, testData);
+              allResults.push({
+                ...result,
+                testMetadata: testData.testMetadata
+              });
+              
+              totalTests++;
+              testsForCurrentTK++;
+              
+              if (result.timing) {
+                totalResponseTime += result.timing;
+              }
+              
+              if (result.status === 'success') {
+                successful++;
+                console.log(`✅ ${tk}: ${result.message} (${result.timing}ms)`);
+              } else if (result.status === 'skipped') {
+                skipped++;
+                console.log(`⏭️ ${tk}: ${result.message}`);
+              } else {
+                console.log(`❌ ${tk}: ${result.message} (${result.timing || 0}ms)`);
+                errors.push(`${tk} (${cargoCount} мест, ${cargoVariant}): ${result.message}`);
+              }
+              
+              // Динамическое обновление прогресса
+              if (totalTests % 10 === 0) {
+                const currentSuccessRate = totalTests > 0 ? (successful / totalTests) * 100 : 0;
+                console.log(`📊 Промежуточные результаты: ${totalTests} тестов, ${successful} успешных (${currentSuccessRate.toFixed(1)}%)`);
+              }
+              
+              // Адаптивная пауза между запросами
+              const pauseTime = result.status === 'error' ? 500 : 200;
+              await new Promise(resolve => setTimeout(resolve, pauseTime));
             }
-            
-            // Небольшая пауза между запросами
-            await new Promise(resolve => setTimeout(resolve, 100));
           }
         }
+        
+        console.log(`🏁 Завершено тестирование ${tk.toUpperCase()}: ${testsForCurrentTK} тестов`);
       }
+      
+      const averageResponseTime = totalTests > 0 ? Math.round(totalResponseTime / (totalTests - skipped)) : 0;
+      const successRate = totalTests > 0 ? (successful / totalTests) * 100 : 0;
       
       const summary = {
         totalTests,
         successful,
-        failed: totalTests - successful,
-        errors
+        failed: totalTests - successful - skipped,
+        skipped,
+        errors,
+        averageResponseTime,
+        successRate
       };
       
       setFullTestResults({
         summary,
-        details: allResults
+        details: allResults,
+        progressInfo: null
       });
       
-      console.log('🧪 ===== РЕЗУЛЬТАТЫ ПОЛНОГО ТЕСТИРОВАНИЯ =====');
+      // Детальная статистика
+      console.log('🧪 ===== РЕЗУЛЬТАТЫ РАСШИРЕННОГО ПОЛНОГО ТЕСТИРОВАНИЯ =====');
       console.log(`📊 Всего тестов: ${totalTests}`);
       console.log(`✅ Успешных: ${successful}`);
-      console.log(`❌ Неудачных: ${totalTests - successful}`);
-      console.log(`📈 Процент успеха: ${((successful / totalTests) * 100).toFixed(1)}%`);
+      console.log(`❌ Неудачных: ${totalTests - successful - skipped}`);
+      console.log(`⏭️ Пропущенных: ${skipped}`);
+      console.log(`📈 Процент успеха: ${successRate.toFixed(1)}%`);
+      console.log(`⏱️ Среднее время ответа: ${averageResponseTime}ms`);
+      
+      // Статистика по ТК
+      const tkStats = transportCompanies.map(tk => {
+        const tkResults = allResults.filter(r => r.tk === tk);
+        const tkSuccessful = tkResults.filter(r => r.status === 'success').length;
+        const tkTotal = tkResults.length;
+        return {
+          tk: tk.toUpperCase(),
+          tests: tkTotal,
+          successful: tkSuccessful,
+          successRate: tkTotal > 0 ? (tkSuccessful / tkTotal) * 100 : 0
+        };
+      });
+      
+      console.log('📊 Статистика по ТК:');
+      tkStats.forEach(stat => {
+        console.log(`   ${stat.tk}: ${stat.successful}/${stat.tests} (${stat.successRate.toFixed(1)}%)`);
+      });
       
       if (errors.length > 0) {
-        console.log('❌ Ошибки:');
-        errors.forEach(error => console.log(`   - ${error}`));
+        console.log('❌ Основные ошибки:');
+        // Группируем ошибки по типам
+        const errorGroups = errors.reduce((acc, error) => {
+          const key = error.split(':')[0];
+          acc[key] = (acc[key] || 0) + 1;
+          return acc;
+        }, {} as {[key: string]: number});
+        
+        Object.entries(errorGroups).forEach(([errorType, count]) => {
+          console.log(`   - ${errorType}: ${count} раз`);
+        });
       }
       
     } catch (error: any) {
@@ -730,12 +895,22 @@ export default function DiagnosticPage() {
       errors.push(`Критическая ошибка: ${error.message}`);
       
       setFullTestResults({
-        summary: { totalTests, successful, failed: totalTests - successful, errors },
-        details: allResults
+        summary: { 
+          totalTests, 
+          successful, 
+          failed: totalTests - successful - skipped, 
+          skipped,
+          errors,
+          averageResponseTime: 0,
+          successRate: 0
+        },
+        details: allResults,
+        progressInfo: null
       });
     } finally {
       setIsFullTesting(false);
-      console.log('🧪 ===== КОНЕЦ ПОЛНОГО ТЕСТИРОВАНИЯ =====');
+      setTestProgress(null);
+      console.log('🧪 ===== КОНЕЦ РАСШИРЕННОГО ПОЛНОГО ТЕСТИРОВАНИЯ =====');
     }
   };
 
@@ -787,17 +962,48 @@ export default function DiagnosticPage() {
           </Button>
         </div>
 
+        {/* Прогресс полного тестирования */}
+        {testProgress && (
+          <Card className="border-blue-500 bg-blue-900/20 mb-6">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <PlayCircle className="h-5 w-5 text-blue-400 animate-pulse" />
+                Выполняется тестирование
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <div className="flex justify-between text-sm">
+                  <span>Текущая ТК: <strong>{testProgress.currentTK}</strong></span>
+                  <span>{testProgress.completedTests}/{testProgress.totalPlannedTests} тестов</span>
+                </div>
+                <div className="w-full bg-gray-700 rounded-full h-2">
+                  <div 
+                    className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                    style={{
+                      width: `${(testProgress.completedTests / testProgress.totalPlannedTests) * 100}%`
+                    }}
+                  ></div>
+                </div>
+                <div className="text-xs text-gray-400">
+                  Этап: {testProgress.stage}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Результаты полного тестирования */}
         {fullTestResults && (
           <Card className="border-gray-700 bg-gray-900 mb-6">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <TestTube className="h-5 w-5 text-purple-400" />
-                Результаты полного тестирования
+                Результаты расширенного полного тестирования
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-4">
                 <div className="text-center">
                   <div className="text-2xl font-bold text-blue-400">{fullTestResults.summary.totalTests}</div>
                   <div className="text-sm text-gray-400">Всего тестов</div>
@@ -811,10 +1017,40 @@ export default function DiagnosticPage() {
                   <div className="text-sm text-gray-400">Неудачных</div>
                 </div>
                 <div className="text-center">
+                  <div className="text-2xl font-bold text-gray-400">{fullTestResults.summary.skipped}</div>
+                  <div className="text-sm text-gray-400">Пропущено</div>
+                </div>
+                <div className="text-center">
                   <div className="text-2xl font-bold text-yellow-400">
-                    {((fullTestResults.summary.successful / fullTestResults.summary.totalTests) * 100).toFixed(1)}%
+                    {fullTestResults.summary.successRate.toFixed(1)}%
                   </div>
                   <div className="text-sm text-gray-400">Успешность</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-cyan-400">{fullTestResults.summary.averageResponseTime}ms</div>
+                  <div className="text-sm text-gray-400">Среднее время</div>
+                </div>
+              </div>
+              
+              {/* Статистика по ТК */}
+              <div className="mb-4">
+                <h4 className="font-medium mb-2">Статистика по транспортным компаниям:</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+                  {['PEK', 'RAILCONTINENT', 'VOZOVOZ', 'NORDWHEEL', 'DELLIN'].map(tk => {
+                    const tkResults = fullTestResults.details.filter((r: any) => r.tk === tk.toLowerCase());
+                    const tkSuccessful = tkResults.filter((r: any) => r.status === 'success').length;
+                    const tkTotal = tkResults.length;
+                    const tkSuccessRate = tkTotal > 0 ? (tkSuccessful / tkTotal) * 100 : 0;
+                    
+                    return (
+                      <div key={tk} className="bg-gray-800 p-2 rounded text-sm">
+                        <div className="font-medium">{tk}</div>
+                        <div className="text-xs text-gray-400">
+                          {tkSuccessful}/{tkTotal} ({tkSuccessRate.toFixed(1)}%)
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
               
@@ -822,13 +1058,13 @@ export default function DiagnosticPage() {
                 <Alert className="border-red-500 bg-red-900/20 mb-4">
                   <AlertCircle className="h-4 w-4" />
                   <AlertDescription>
-                    <div className="font-medium mb-2">Найденные ошибки:</div>
+                    <div className="font-medium mb-2">Найденные ошибки ({fullTestResults.summary.errors.length}):</div>
                     <ul className="list-disc list-inside text-sm space-y-1">
-                      {fullTestResults.summary.errors.slice(0, 10).map((error, index) => (
+                      {fullTestResults.summary.errors.slice(0, 15).map((error, index) => (
                         <li key={index}>{error}</li>
                       ))}
-                      {fullTestResults.summary.errors.length > 10 && (
-                        <li>... и еще {fullTestResults.summary.errors.length - 10} ошибок</li>
+                      {fullTestResults.summary.errors.length > 15 && (
+                        <li>... и еще {fullTestResults.summary.errors.length - 15} ошибок</li>
                       )}
                     </ul>
                   </AlertDescription>
@@ -836,10 +1072,18 @@ export default function DiagnosticPage() {
               )}
               
               <details className="mt-4">
-                <summary className="cursor-pointer text-sm font-medium">Подробные результаты</summary>
+                <summary className="cursor-pointer text-sm font-medium">Подробные результаты ({fullTestResults.details.length} записей)</summary>
                 <div className="mt-2 max-h-96 overflow-y-auto">
                   <pre className="text-xs p-2 bg-gray-800 rounded">
-                    {JSON.stringify(fullTestResults.details, null, 2)}
+                    {JSON.stringify(fullTestResults.details.map(detail => ({
+                      tk: detail.tk,
+                      status: detail.status,
+                      cargoCount: detail.cargoCount,
+                      testMetadata: detail.testMetadata,
+                      timing: detail.timing,
+                      price: detail.price,
+                      message: detail.message
+                    })), null, 2)}
                   </pre>
                 </div>
               </details>

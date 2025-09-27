@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d2402b1001QLg0YXJI3Zx04T",
+  "messageID": "msg_98d23bb8b001LCMZkSQv5I9Wpu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01XMgy9M3EQCbUL4xJRrqdDS",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Полное тестирование",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/diagnostic/page.tsx:\n  Line 779:             {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "Полное тестирование",
+    "time": {
+      "start": 1759009571950,
+      "end": 1759009571959
+    }
+  }
+}

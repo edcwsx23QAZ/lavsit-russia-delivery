@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d268cc60015vhKTrgpzSbWis",
+  "messageID": "msg_98d23bb8b001LCMZkSQv5I9Wpu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XiPGDnnBfaVysbcvF1MunC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 400,
+      "limit": 80
+    },
+    "output": "<file>\n00401|     } finally {\n00402|       setIsTestingNordWheel(false);\n00403|     }\n00404|   };\n00405| \n00406|   const testAllAPIs = async () => {\n00407|     await Promise.all([\n00408|       testPEKAPI(),\n00409|       testDellinAPI(), \n00410|       testRailContinentAPI(),\n00411|       testVozovozAPI(),\n00412|       testNordWheelAPI()\n00413|     ]);\n00414|   };\n00415| \n00416|   // 🔧 Генератор тестовых данных для множественных грузовых мест\n00417|   const generateTestCargos = (count: number, variant: 'small' | 'medium' | 'large' | 'mixed' = 'mixed') => {\n00418|     const cargos = [];\n00419|     \n00420|     for (let i = 0; i < count; i++) {\n00421|       let cargo;\n00422|       \n00423|       switch (variant) {\n00424|         case 'small':\n00425|           cargo = {\n00426|             length: 30 + Math.floor(Math.random() * 70),  // 30-100 см\n00427|             width: 20 + Math.floor(Math.random() * 50),   // 20-70 см\n00428|             height: 15 + Math.floor(Math.random() * 35),  // 15-50 см\n00429|             weight: 1 + Math.floor(Math.random() * 19)    // 1-20 кг\n00430|           };\n00431|           break;\n00432|         case 'medium':\n00433|           cargo = {\n00434|             length: 80 + Math.floor(Math.random() * 70),  // 80-150 см\n00435|             width: 60 + Math.floor(Math.random() * 60),   // 60-120 см\n00436|             height: 40 + Math.floor(Math.random() * 80),  // 40-120 см\n00437|             weight: 15 + Math.floor(Math.random() * 35)   // 15-50 кг\n00438|           };\n00439|           break;\n00440|         case 'large':\n00441|           cargo = {\n00442|             length: 150 + Math.floor(Math.random() * 100), // 150-250 см (негабарит)\n00443|             width: 120 + Math.floor(Math.random() * 80),   // 120-200 см\n00444|             height: 100 + Math.floor(Math.random() * 100), // 100-200 см\n00445|             weight: 40 + Math.floor(Math.random() * 460)   // 40-500 кг\n00446|           };\n00447|           break;\n00448|         default: // mixed\n00449|           const types = ['small', 'medium', 'large'] as const;\n00450|           const randomType = types[Math.floor(Math.random() * types.length)];\n00451|           cargo = generateTestCargos(1, randomType)[0];\n00452|           break;\n00453|       }\n00454|       \n00455|       cargos.push(cargo);\n00456|     }\n00457|     \n00458|     return cargos;\n00459|   };\n00460| \n00461|   // 🔧 Генератор всех комбинаций опций с расширенными сценариями\n00462|   const generateOptionsCombinations = () => {\n00463|     const combinations = [];\n00464|     const options = [\n00465|       { name: 'fromAddressDelivery', values: [true, false] },\n00466|       { name: 'toAddressDelivery', values: [true, false] },\n00467|       { name: 'needPackaging', values: [true, false] },\n00468|       { name: 'needInsurance', values: [true, false] }\n00469|     ];\n00470| \n00471|     // Генерируем все возможные комбинации (2^4 = 16 комбинаций)\n00472|     for (let i = 0; i < Math.pow(2, options.length); i++) {\n00473|       const combination: any = {\n00474|         fromCity: 'Москва',\n00475|         toCity: 'Санкт-Петербург',\n00476|         fromAddress: 'ул. Тверская, 1',\n00477|         toAddress: 'Невский проспект, 1',\n00478|         declaredValue: 50000\n00479|       };\n00480|       \n\n(File has more lines. Use 'offset' parameter to read beyond line 480)\n</file>",
+    "metadata": {
+      "preview": "    } finally {\n      setIsTestingNordWheel(false);\n    }\n  };\n\n  const testAllAPIs = async () => {\n    await Promise.all([\n      testPEKAPI(),\n      testDellinAPI(), \n      testRailContinentAPI(),\n      testVozovozAPI(),\n      testNordWheelAPI()\n    ]);\n  };\n\n  // 🔧 Генератор тестовых данных для множественных грузовых мест\n  const generateTestCargos = (count: number, variant: 'small' | 'medium' | 'large' | 'mixed' = 'mixed') => {\n    const cargos = [];\n    \n    for (let i = 0; i < count; i++) {"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759009738621,
+      "end": 1759009738623
+    }
+  }
+}
