@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d3bdb7c001F3GnIUwY8wHDXv",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01BqbSrQZBSQzAm88Jaj7B77",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "oldString": "  // Проверяем грузовые места\n  product.cargoPlaces?.forEach((place, index) => {\n    if (place.weight <= 0 && place.length <= 0 && place.width <= 0 && place.height <= 0) {\n      errors.push(`Грузовое место №${place.placeNumber} не содержит размеров`);\n    }\n    \n    if (place.weight > 10000) {\n      errors.push(`Грузовое место №${place.placeNumber} имеет слишком большой вес: ${place.weight}кг`);\n    }\n    \n    const maxDimension = Math.max(place.length, place.depth, place.height);\n    if (maxDimension > 1000) {\n      errors.push(`Грузовое место №${place.placeNumber} имеет слишком большие размеры: ${maxDimension}см`);\n    }\n  });",
+      "newString": "  // Проверяем грузовые места\n  product.cargoPlaces?.forEach((place, index) => {\n    if (place.weight <= 0 && place.length <= 0 && place.depth <= 0 && place.height <= 0) {\n      errors.push(`Грузовое место №${place.placeNumber} не содержит размеров`);\n    }\n    \n    if (place.weight > 10000) {\n      errors.push(`Грузовое место №${place.placeNumber} имеет слишком большой вес: ${place.weight}кг`);\n    }\n    \n    const maxDimension = Math.max(place.length, place.depth, place.height);\n    if (maxDimension > 1000) {\n      errors.push(`Грузовое место №${place.placeNumber} имеет слишком большие размеры: ${maxDimension}см`);\n    }\n  });"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/furniture-utils.ts\n===================================================================\n--- /home/user/project/lib/furniture-utils.ts\n+++ /home/user/project/lib/furniture-utils.ts\n@@ -61,9 +61,9 @@\n }\n \n // Проверяем грузовые места\n product.cargoPlaces?.forEach((place, index) => {\n-  if (place.weight <= 0 && place.length <= 0 && place.width <= 0 && place.height <= 0) {\n+  if (place.weight <= 0 && place.length <= 0 && place.depth <= 0 && place.height <= 0) {\n     errors.push(`Грузовое место №${place.placeNumber} не содержит размеров`);\n   }\n   \n   if (place.weight > 10000) {\n"
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759011139405,
+      "end": 1759011139409
+    }
+  }
+}

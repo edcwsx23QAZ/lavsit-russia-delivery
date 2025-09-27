@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d39b72f001WENEGRNDiqwmFp",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01RY8D4tg1zVEAr5kBbmrKby",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1,
+      "limit": 50
+    },
+    "output": "<file>\n00002| \n00003| import React, { useState, useEffect, useCallback } from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Input } from '@/components/ui/input';\n00007| import { Label } from '@/components/ui/label';\n00008| import { Checkbox } from '@/components/ui/checkbox';\n00009| import { Plus, Truck, Building2, Map, Settings } from 'lucide-react';\n00010| import { Alert, AlertDescription } from '@/components/ui/alert';\n00011| import { Badge } from '@/components/ui/badge';\n00012| import { Separator } from '@/components/ui/separator';\n00013| import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\n00014| \n00015| interface Cargo {\n00016|   id: string;\n00017|   length: number;\n00018|   width: number;\n00019|   height: number;\n00020|   weight: number;\n00021| }\n00022| \n00023| interface DeliveryForm {\n00024|   cargos: Cargo[];\n00025|   fromCity: string;\n00026|   toCity: string;\n00027|   fromAddress: string;\n00028|   toAddress: string;\n00029|   declaredValue: number;\n00030|   needPackaging: boolean;\n00031|   needLoading: boolean;\n00032|   needCarry: boolean;\n00033|   floor: number;\n00034|   hasFreightLift: boolean;\n00035|   needInsurance: boolean;\n00036|   fromTerminal: boolean;\n00037|   toTerminal: boolean;\n00038|   fromAddressDelivery: boolean;\n00039|   toAddressDelivery: boolean;\n00040| }\n00041| \n00042| interface CalculationResult {\n00043|   company: string;\n00044|   price: number;\n00045|   days: number;\n00046|   details?: any;\n00047|   error?: string;\n00048|   requestData?: any;\n00049|   responseData?: any;\n00050|   apiUrl?: string;\n00051|   sessionId?: string;\n\n(File has more lines. Use 'offset' parameter to read beyond line 51)\n</file>",
+    "metadata": {
+      "preview": "\nimport React, { useState, useEffect, useCallback } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Checkbox } from '@/components/ui/checkbox';\nimport { Plus, Truck, Building2, Map, Settings } from 'lucide-react';\nimport { Alert, AlertDescription } from '@/components/ui/alert';\nimport { Badge } from '@/components/ui/badge';\nimport { Separator } from '@/components/ui/separator';\nimport { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\n\ninterface Cargo {\n  id: string;\n  length: number;\n  width: number;\n  height: number;\n  weight: number;\n}"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759010994835,
+      "end": 1759010994837
+    }
+  }
+}

@@ -6,11 +6,20 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Plus, Truck, Building2, Map, Settings } from 'lucide-react';
+import { Plus, Truck, Building2, Map, Settings, Package2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';
+import ProductSearch from '@/components/ProductSearch';
+import ProductManager from '@/components/ProductManager';
+import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';
+import { 
+  createCargosForProduct, 
+  removeCargosForProduct, 
+  calculateTotalValue,
+  findCargoIndexesForProduct 
+} from '@/lib/furniture-utils';
 
 interface Cargo {
   id: string;
@@ -18,6 +27,10 @@ interface Cargo {
   width: number;
   height: number;
   weight: number;
+  // Добавляем метаданные для связи с товарами
+  productId?: string;
+  placeNumber?: number;
+  isFromProduct?: boolean;
 }
 
 interface DeliveryForm {
@@ -37,6 +50,8 @@ interface DeliveryForm {
   toTerminal: boolean;
   fromAddressDelivery: boolean;
   toAddressDelivery: boolean;
+  // Добавляем поддержку товаров
+  selectedProducts: ProductInForm[];
 }
 
 interface CalculationResult {
@@ -88,7 +103,8 @@ export default function Home() {
     fromTerminal: true,
     toTerminal: true,
     fromAddressDelivery: false,
-    toAddressDelivery: false
+    toAddressDelivery: false,
+    selectedProducts: []
   };
 
   const [form, setForm] = useState<DeliveryForm>(initialFormState);
@@ -449,6 +465,126 @@ export default function Home() {
         cargos: prev.cargos.filter(cargo => cargo.id !== id)
       }));
     }
+  };
+
+  // 🔧 Функции управления товарами
+  const handleProductAdd = (product: FurnitureProduct) => {
+    const timestamp = Date.now();
+    
+    // Создаем грузовые места для товара
+    const newCargos = createCargosForProduct(product, 1, timestamp);
+    
+    // Создаем объект товара в форме
+    const productInForm: ProductInForm = {
+      product,
+      quantity: 1,
+      totalPrice: product.retailPrice,
+      cargoIndexes: [], // Заполним после добавления грузов
+      addedAt: timestamp
+    };
+    
+    setForm(prev => {
+      // Добавляем новые грузы
+      const updatedCargos = [...prev.cargos, ...newCargos];
+      
+      // Находим индексы новых грузов
+      const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);
+      productInForm.cargoIndexes = cargoIndexes;
+      
+      // Пересчитываем объявленную стоимость
+      const newSelectedProducts = [...prev.selectedProducts, productInForm];
+      const newDeclaredValue = calculateTotalValue(newSelectedProducts);
+      
+      return {
+        ...prev,
+        cargos: updatedCargos,
+        selectedProducts: newSelectedProducts,
+        declaredValue: newDeclaredValue
+      };
+    });
+    
+    console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);
+  };
+
+  const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {
+    setForm(prev => {
+      // Находим товар
+      const productIndex = prev.selectedProducts.findIndex(p => 
+        p.product.id === productId && p.addedAt === addedAt
+      );
+      
+      if (productIndex === -1) return prev;
+      
+      const product = prev.selectedProducts[productIndex];
+      
+      // Удаляем старые грузы этого товара
+      const cargosWithoutProduct = removeCargosForProduct(
+        prev.cargos as CargoWithMetadata[], 
+        productId, 
+        addedAt
+      );
+      
+      // Создаем новые грузы с новым количеством
+      const newCargos = createCargosForProduct(product.product, newQuantity, addedAt);
+      const updatedCargos = [...cargosWithoutProduct, ...newCargos];
+      
+      // Обновляем товар
+      const updatedProduct = {
+        ...product,
+        quantity: newQuantity,
+        totalPrice: product.product.retailPrice * newQuantity,
+        cargoIndexes: findCargoIndexesForProduct(updatedCargos, productId, addedAt)
+      };
+      
+      const updatedProducts = prev.selectedProducts.map((p, index) => 
+        index === productIndex ? updatedProduct : p
+      );
+      
+      // Пересчитываем объявленную стоимость
+      const newDeclaredValue = calculateTotalValue(updatedProducts);
+      
+      return {
+        ...prev,
+        cargos: updatedCargos,
+        selectedProducts: updatedProducts,
+        declaredValue: newDeclaredValue
+      };
+    });
+    
+    console.log(`🔄 Изменено количество товара ${productId}: ${newQuantity} шт.`);
+  };
+
+  const handleProductRemove = (productId: string, addedAt: number) => {
+    setForm(prev => {
+      // Удаляем грузы товара
+      const cargosWithoutProduct = removeCargosForProduct(
+        prev.cargos as CargoWithMetadata[], 
+        productId, 
+        addedAt
+      );
+      
+      // Удаляем товар из списка
+      const updatedProducts = prev.selectedProducts.filter(p => 
+        !(p.product.id === productId && p.addedAt === addedAt)
+      );
+      
+      // Пересчитываем объявленную стоимость
+      const newDeclaredValue = calculateTotalValue(updatedProducts);
+      
+      // Убеждаемся, что остался хотя бы один груз (если нет товаров)
+      const finalCargos = cargosWithoutProduct.length === 0 
+        ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]
+        : cargosWithoutProduct;
+      
+      return {
+        ...prev,
+        cargos: finalCargos,
+        selectedProducts: updatedProducts,
+        declaredValue: newDeclaredValue
+      };
+    });
+    
+    console.log(`🗑️ Удален товар ${productId}`);
   };
 
   // Получение sessionID для Деловых Линий
@@ -2670,6 +2806,31 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[90vh]">
           {/* Левая часть - форма */}
           <div className="space-y-3 overflow-y-auto pr-2">
+            {/* Каталог мебели */}
+            <Card className="bg-gray-800 border-gray-700">
+              <CardHeader className="pb-3">
+                <CardTitle className="text-white flex items-center gap-2 text-lg">
+                  <Package2 className="h-4 w-4" />
+                  Каталог мебели
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {/* Поиск и добавление товаров */}
+                <ProductSearch 
+                  onProductAdd={handleProductAdd}
+                  disabled={calculating}
+                />
+                
+                {/* Управление добавленными товарами */}
+                <ProductManager
+                  products={form.selectedProducts}
+                  onQuantityChange={handleProductQuantityChange}
+                  onProductRemove={handleProductRemove}
+                  disabled={calculating}
+                />
+              </CardContent>
+            </Card>
+
             {/* Грузы */}
             <Card className="bg-gray-800 border-gray-700">
               <CardHeader className="pb-3">

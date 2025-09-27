@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d3cc26e001VSAEPEoCotXrkx",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01SKwntfB2KMLcFx466jCZQQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/furniture-products/route.ts",
+      "oldString": "export async function GET(request: NextRequest) {\n  try {\n    const { searchParams } = new URL(request.url);\n    const query = searchParams.get('q')?.toLowerCase() || '';\n    \n    // Проверяем кэш\n    const now = Date.now();\n    if (!cachedData || (now - cachedData.lastUpdated) > CACHE_DURATION) {\n      console.log('🔄 Обновляем кэш данных мебели...');\n      cachedData = await fetchFurnitureData();\n    }\n    \n    // Фильтруем по поисковому запросу\n    let products = cachedData.products;\n    if (query) {\n      products = products.filter(product => \n        product.name.toLowerCase().includes(query) ||\n        product.externalCode.toLowerCase().includes(query)\n      );\n    }\n    \n    // Ограничиваем количество результатов для автокомплита\n    const limit = parseInt(searchParams.get('limit') || '20');\n    products = products.slice(0, limit);",
+      "newString": "export async function GET(request: NextRequest) {\n  try {\n    // Используем nextUrl для избежания ошибки dynamic server usage\n    const searchParams = request.nextUrl.searchParams;\n    const query = searchParams.get('q')?.toLowerCase() || '';\n    \n    // Проверяем кэш\n    const now = Date.now();\n    if (!cachedData || (now - cachedData.lastUpdated) > CACHE_DURATION) {\n      console.log('🔄 Обновляем кэш данных мебели...');\n      cachedData = await fetchFurnitureData();\n    }\n    \n    // Фильтруем по поисковому запросу\n    let products = cachedData.products;\n    if (query) {\n      products = products.filter(product => \n        product.name.toLowerCase().includes(query) ||\n        product.externalCode.toLowerCase().includes(query)\n      );\n    }\n    \n    // Ограничиваем количество результатов для автокомплита\n    const limit = parseInt(searchParams.get('limit') || '20');\n    products = products.slice(0, limit);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/furniture-products/route.ts\n===================================================================\n--- /home/user/project/app/api/furniture-products/route.ts\n+++ /home/user/project/app/api/furniture-products/route.ts\n@@ -27,9 +27,10 @@\n const CACHE_DURATION = 30 * 60 * 1000; // 30 минут\n \n export async function GET(request: NextRequest) {\n   try {\n-    const { searchParams } = new URL(request.url);\n+    // Используем nextUrl для избежания ошибки dynamic server usage\n+    const searchParams = request.nextUrl.searchParams;\n     const query = searchParams.get('q')?.toLowerCase() || '';\n     \n     // Проверяем кэш\n     const now = Date.now();\n"
+    },
+    "title": "app/api/furniture-products/route.ts",
+    "time": {
+      "start": 1759011200704,
+      "end": 1759011200708
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "id": "prt_98d39e816001SPGqMVIoAHqfOu",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01VWChJ1LUN3EwTiP7LxuAKD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "import React, { useState, useEffect, useCallback } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Checkbox } from '@/components/ui/checkbox';\nimport { Plus, Truck, Building2, Map, Settings } from 'lucide-react';\nimport { Alert, AlertDescription } from '@/components/ui/alert';\nimport { Badge } from '@/components/ui/badge';\nimport { Separator } from '@/components/ui/separator';\nimport { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';",
+          "newString": "import React, { useState, useEffect, useCallback } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Checkbox } from '@/components/ui/checkbox';\nimport { Plus, Truck, Building2, Map, Settings, Package2 } from 'lucide-react';\nimport { Alert, AlertDescription } from '@/components/ui/alert';\nimport { Badge } from '@/components/ui/badge';\nimport { Separator } from '@/components/ui/separator';\nimport { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\nimport ProductSearch from '@/components/ProductSearch';\nimport ProductManager from '@/components/ProductManager';\nimport { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\nimport { \n  createCargosForProduct, \n  removeCargosForProduct, \n  calculateTotalValue,\n  findCargoIndexesForProduct \n} from '@/lib/furniture-utils';"
+        },
+        {
+          "oldString": "interface Cargo {\n  id: string;\n  length: number;\n  width: number;\n  height: number;\n  weight: number;\n}",
+          "newString": "interface Cargo {\n  id: string;\n  length: number;\n  width: number;\n  height: number;\n  weight: number;\n  // Добавляем метаданные для связи с товарами\n  productId?: string;\n  placeNumber?: number;\n  isFromProduct?: boolean;\n}"
+        },
+        {
+          "oldString": "interface DeliveryForm {\n  cargos: Cargo[];\n  fromCity: string;\n  toCity: string;\n  fromAddress: string;\n  toAddress: string;\n  declaredValue: number;\n  needPackaging: boolean;\n  needLoading: boolean;\n  needCarry: boolean;\n  floor: number;\n  hasFreightLift: boolean;\n  needInsurance: boolean;\n  fromTerminal: boolean;\n  toTerminal: boolean;\n  fromAddressDelivery: boolean;\n  toAddressDelivery: boolean;\n}",
+          "newString": "interface DeliveryForm {\n  cargos: Cargo[];\n  fromCity: string;\n  toCity: string;\n  fromAddress: string;\n  toAddress: string;\n  declaredValue: number;\n  needPackaging: boolean;\n  needLoading: boolean;\n  needCarry: boolean;\n  floor: number;\n  hasFreightLift: boolean;\n  needInsurance: boolean;\n  fromTerminal: boolean;\n  toTerminal: boolean;\n  fromAddressDelivery: boolean;\n  toAddressDelivery: boolean;\n  // Добавляем поддержку товаров\n  selectedProducts: ProductInForm[];\n}"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -5,13 +5,22 @@\n import { Button } from '@/components/ui/button';\n import { Input } from '@/components/ui/input';\n import { Label } from '@/components/ui/label';\n import { Checkbox } from '@/components/ui/checkbox';\n-import { Plus, Truck, Building2, Map, Settings } from 'lucide-react';\n+import { Plus, Truck, Building2, Map, Settings, Package2 } from 'lucide-react';\n import { Alert, AlertDescription } from '@/components/ui/alert';\n import { Badge } from '@/components/ui/badge';\n import { Separator } from '@/components/ui/separator';\n import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\n+import ProductSearch from '@/components/ProductSearch';\n+import ProductManager from '@/components/ProductManager';\n+import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\n+import { \n+  createCargosForProduct, \n+  removeCargosForProduct, \n+  calculateTotalValue,\n+  findCargoIndexesForProduct \n+} from '@/lib/furniture-utils';\n \n interface Cargo {\n   id: string;\n   length: number;\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -26,8 +26,12 @@\n   length: number;\n   width: number;\n   height: number;\n   weight: number;\n+  // Добавляем метаданные для связи с товарами\n+  productId?: string;\n+  placeNumber?: number;\n+  isFromProduct?: boolean;\n }\n \n interface DeliveryForm {\n   cargos: Cargo[];\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -49,8 +49,10 @@\n   fromTerminal: boolean;\n   toTerminal: boolean;\n   fromAddressDelivery: boolean;\n   toAddressDelivery: boolean;\n+  // Добавляем поддержку товаров\n+  selectedProducts: ProductInForm[];\n }\n \n interface CalculationResult {\n   company: string;\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759011018918,
+      "end": 1759011018971
+    }
+  }
+}

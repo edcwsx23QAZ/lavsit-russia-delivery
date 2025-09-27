@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d376352001l5Wbtc1pquwQiz",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01B2NZBZ2nFG4vX2pQqRbysn",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "груз.*Card|Cargo.*Card|груз.*title|Package",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "output": "Found 7 matches\n/home/user/project/app/diagnostic/page.tsx:\n  Line 617:             multiplePackages: testData.cargos.length > 1 ? '1' : '0'\n\n/home/user/project/app/page.tsx:\n  Line 930:               console.log(`💰 Package [${index}] (включена в основную стоимость):`, pkg);\n  Line 934:               console.log(`💰 Package [${key}] (включена в основную стоимость):`, pkg);\n  Line 1938:             pricePackage: autoTariff.pricePackage,\n  Line 1963:           if (form.needPackaging && autoTariff.pricePackage) {\n  Line 1964:             const packagingPrice = parseFloat(autoTariff.pricePackage);\n  Line 2322:         multiplePackages: form.cargos.length > 1 ? '1' : '0'",
+    "metadata": {
+      "matches": 7,
+      "truncated": false
+    },
+    "title": "груз.*Card|Cargo.*Card|груз.*title|Package",
+    "time": {
+      "start": 1759010842805,
+      "end": 1759010842816
+    }
+  }
+}

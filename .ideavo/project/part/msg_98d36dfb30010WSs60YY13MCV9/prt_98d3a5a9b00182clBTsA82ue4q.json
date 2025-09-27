@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d3a5a9b00182clBTsA82ue4q",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01T346he5WbtP15HVb4Vtk4H",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 440,
+      "limit": 40
+    },
+    "output": "<file>\n00441|     setSuggestions([]);\n00442|   };\n00443| \n00444|   const addCargo = () => {\n00445|     const newId = (form.cargos.length + 1).toString();\n00446|     setForm(prev => ({\n00447|       ...prev,\n00448|       cargos: [...prev.cargos, { id: newId, length: 0, width: 0, height: 0, weight: 0 }]\n00449|     }));\n00450|   };\n00451| \n00452|   const updateCargo = (id: string, field: string, value: number) => {\n00453|     setForm(prev => ({\n00454|       ...prev,\n00455|       cargos: prev.cargos.map(cargo => \n00456|         cargo.id === id ? { ...cargo, [field]: value } : cargo\n00457|       )\n00458|     }));\n00459|   };\n00460| \n00461|   const removeCargo = (id: string) => {\n00462|     if (form.cargos.length > 1) {\n00463|       setForm(prev => ({\n00464|         ...prev,\n00465|         cargos: prev.cargos.filter(cargo => cargo.id !== id)\n00466|       }));\n00467|     }\n00468|   };\n00469| \n00470|   // Получение sessionID для Деловых Линий\n00471|   const getDellinSessionId = async (): Promise<string | null> => {\n00472|     try {\n00473|       const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n00474|         method: 'POST',\n00475|         headers: {\n00476|           'Content-Type': 'application/json'\n00477|         },\n00478|         body: JSON.stringify({\n00479|           appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n00480|           login: 'service@lavsit.ru',\n\n(File has more lines. Use 'offset' parameter to read beyond line 480)\n</file>",
+    "metadata": {
+      "preview": "    setSuggestions([]);\n  };\n\n  const addCargo = () => {\n    const newId = (form.cargos.length + 1).toString();\n    setForm(prev => ({\n      ...prev,\n      cargos: [...prev.cargos, { id: newId, length: 0, width: 0, height: 0, weight: 0 }]\n    }));\n  };\n\n  const updateCargo = (id: string, field: string, value: number) => {\n    setForm(prev => ({\n      ...prev,\n      cargos: prev.cargos.map(cargo => \n        cargo.id === id ? { ...cargo, [field]: value } : cargo\n      )\n    }));\n  };\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759011036478,
+      "end": 1759011036481
+    }
+  }
+}

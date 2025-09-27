@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d3ae66c001GRaiono0LScob3",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01YaRbP2i9rP89EiDUvtMKFr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2790,
+      "limit": 30
+    },
+    "output": "<file>\n02791|           Междугородняя доставка Лавсит\n02792|         </h1>\n02793|         \n02794|         {/* Кнопка диагностики */}\n02795|         <div className=\"flex justify-end mb-4\">\n02796|           <Button \n02797|             onClick={() => window.open('/diagnostic', '_blank')}\n02798|             variant=\"outline\" \n02799|             className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n02800|           >\n02801|             <Settings className=\"h-4 w-4 mr-2\" />\n02802|             Диагностика\n02803|           </Button>\n02804|         </div>\n02805|         \n02806|         <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-4 h-[90vh]\">\n02807|           {/* Левая часть - форма */}\n02808|           <div className=\"space-y-3 overflow-y-auto pr-2\">\n02809|             {/* Грузы */}\n02810|             <Card className=\"bg-gray-800 border-gray-700\">\n02811|               <CardHeader className=\"pb-3\">\n02812|                 <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n02813|                   <Truck className=\"h-4 w-4\" />\n02814|                   Грузы\n02815|                 </CardTitle>\n02816|               </CardHeader>\n02817|               <CardContent className=\"space-y-3\">\n02818|                 {form.cargos.map((cargo, index) => (\n02819|                   <div key={cargo.id} className=\"border border-gray-600 rounded p-3\">\n02820|                     <div className=\"flex justify-between items-center mb-2\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 2820)\n</file>",
+    "metadata": {
+      "preview": "          Междугородняя доставка Лавсит\n        </h1>\n        \n        {/* Кнопка диагностики */}\n        <div className=\"flex justify-end mb-4\">\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Диагностика\n          </Button>\n        </div>\n        \n        <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-4 h-[90vh]\">\n          {/* Левая часть - форма */}\n          <div className=\"space-y-3 overflow-y-auto pr-2\">\n            {/* Грузы */}\n            <Card className=\"bg-gray-800 border-gray-700\">"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759011072176,
+      "end": 1759011072178
+    }
+  }
+}

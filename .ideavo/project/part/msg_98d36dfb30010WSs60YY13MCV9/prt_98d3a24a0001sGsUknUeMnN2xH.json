@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d3a24a0001sGsUknUeMnN2xH",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01HRhaaBcAu7ozgHabrATvou",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 70,
+      "limit": 30
+    },
+    "output": "<file>\n00071|   unrestricted_value: string;\n00072|   data: {\n00073|     city?: string;\n00074|     street?: string;\n00075|     house?: string;\n00076|   };\n00077| }\n00078| \n00079| // Определим базовую структуру компаний\n00080| const COMPANIES_BASE = [\n00081|   { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n00082|   { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n00083|   { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n00084|   { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },\n00085|   { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' }\n00086| ];\n00087| \n00088| export default function Home() {\n00089|   // Начальное состояние формы\n00090|   const initialFormState: DeliveryForm = {\n00091|     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00092|     fromCity: '',\n00093|     toCity: '',\n00094|     fromAddress: '',\n00095|     toAddress: '',\n00096|     declaredValue: 0,\n00097|     needPackaging: false,\n00098|     needLoading: false,\n00099|     needCarry: false,\n00100|     floor: 1,\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "metadata": {
+      "preview": "  unrestricted_value: string;\n  data: {\n    city?: string;\n    street?: string;\n    house?: string;\n  };\n}\n\n// Определим базовую структуру компаний\nconst COMPANIES_BASE = [\n  { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n  { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n  { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n  { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },\n  { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' }\n];\n\nexport default function Home() {\n  // Начальное состояние формы\n  const initialFormState: DeliveryForm = {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759011022898,
+      "end": 1759011022900
+    }
+  }
+}

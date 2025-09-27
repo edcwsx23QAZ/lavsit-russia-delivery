@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d38220b001xpB5p2NNu05c13",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_015hb7hFnYV7g7poNn1mLrwv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-types.ts",
+      "content": "// 🔧 Типы для интеграции мебельного каталога\n\nexport interface CargoPlace {\n  placeNumber: number;\n  weight: number; // кг\n  height: number; // см\n  depth: number;  // см (ширина в форме)\n  length: number; // см\n}\n\nexport interface FurnitureProduct {\n  id: string;\n  externalCode: string;\n  name: string;\n  retailPrice: number;\n  isActive: boolean;\n  cargoPlaces: CargoPlace[];\n}\n\nexport interface ProductInForm {\n  product: FurnitureProduct;\n  quantity: number;\n  totalPrice: number;\n  cargoIndexes: number[]; // индексы соответствующих мест в form.cargos\n  addedAt: number; // timestamp для уникальности\n}\n\nexport interface ProductSearchState {\n  query: string;\n  isLoading: boolean;\n  suggestions: FurnitureProduct[];\n  showSuggestions: boolean;\n  selectedIndex: number;\n}\n\n// Расширение существующего интерфейса Cargo\nexport interface CargoWithMetadata {\n  id: string;\n  length: number;\n  width: number;  // в форме это width, в данных depth\n  height: number;\n  weight: number;\n  // Метаданные для связи с товарами\n  productId?: string;\n  placeNumber?: number;\n  isFromProduct?: boolean;\n}\n\n// Утилиты для работы с данными\nexport interface FurnitureDataUtils {\n  // Преобразование CargoPlace в Cargo для формы\n  cargoPlaceToFormCargo: (place: CargoPlace, productId: string, uniqueId: string) => CargoWithMetadata;\n  \n  // Поиск товаров\n  searchProducts: (products: FurnitureProduct[], query: string) => FurnitureProduct[];\n  \n  // Валидация товара\n  validateProduct: (product: FurnitureProduct) => { isValid: boolean; errors: string[] };\n  \n  // Расчет общей стоимости\n  calculateTotalValue: (productsInForm: ProductInForm[]) => number;\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/lib/furniture-types.ts",
+      "exists": false
+    },
+    "title": "lib/furniture-types.ts",
+    "time": {
+      "start": 1759010899449,
+      "end": 1759010899450
+    }
+  }
+}

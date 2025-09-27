@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d3ab77e0019SMBscZF1WuiMV",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_018oipLTjtPBSoWJTFHkPxE8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "handleReset|сброс.*формы|reset.*form",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 2569:   const handleReset = () => {\n  Line 3077:                     onClick={handleReset}",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "handleReset|сброс.*формы|reset.*form",
+    "time": {
+      "start": 1759011060705,
+      "end": 1759011060715
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d3b15b0001mYwA0qZrPxSRFI",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_016u6yFHKLyrxVKAaHxaDFM2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/furniture-products/route.ts",
+      "oldString": "// 🔧 Простой CSV парсер\nfunction parseCSV(csvText: string): string[][] {\n  const lines = csvText.split('\\n');\n  const result: string[][] = [];\n  \n  for (const line of lines) {\n    if (line.trim()) {\n      // Простой split по запятым (может потребоваться улучшение для сложных случаев)\n      const cells = line.split(',').map(cell => cell.trim().replace(/^\"(.*)\"$/, '$1'));\n      result.push(cells);\n    }\n  }\n  \n  return result;\n}",
+      "newString": "// 🔧 Улучшенный CSV парсер\nfunction parseCSV(csvText: string): string[][] {\n  const lines = csvText.split('\\n');\n  const result: string[][] = [];\n  \n  for (const line of lines) {\n    if (line.trim()) {\n      const cells: string[] = [];\n      let current = '';\n      let inQuotes = false;\n      \n      for (let i = 0; i < line.length; i++) {\n        const char = line[i];\n        \n        if (char === '\"') {\n          inQuotes = !inQuotes;\n        } else if (char === ',' && !inQuotes) {\n          cells.push(current.trim());\n          current = '';\n        } else {\n          current += char;\n        }\n      }\n      \n      // Добавляем последнюю ячейку\n      cells.push(current.trim());\n      \n      // Очищаем кавычки и лишние символы\n      const cleanedCells = cells.map(cell => \n        cell.replace(/^\"(.*)\"$/, '$1').replace(/\\r/g, '').trim()\n      );\n      \n      result.push(cleanedCells);\n    }\n  }\n  \n  return result;\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/furniture-products/route.ts\n===================================================================\n--- /home/user/project/app/api/furniture-products/route.ts\n+++ /home/user/project/app/api/furniture-products/route.ts\n@@ -106,18 +106,41 @@\n     throw error;\n   }\n }\n \n-// 🔧 Простой CSV парсер\n+// 🔧 Улучшенный CSV парсер\n function parseCSV(csvText: string): string[][] {\n   const lines = csvText.split('\\n');\n   const result: string[][] = [];\n   \n   for (const line of lines) {\n     if (line.trim()) {\n-      // Простой split по запятым (может потребоваться улучшение для сложных случаев)\n-      const cells = line.split(',').map(cell => cell.trim().replace(/^\"(.*)\"$/, '$1'));\n-      result.push(cells);\n+      const cells: string[] = [];\n+      let current = '';\n+      let inQuotes = false;\n+      \n+      for (let i = 0; i < line.length; i++) {\n+        const char = line[i];\n+        \n+        if (char === '\"') {\n+          inQuotes = !inQuotes;\n+        } else if (char === ',' && !inQuotes) {\n+          cells.push(current.trim());\n+          current = '';\n+        } else {\n+          current += char;\n+        }\n+      }\n+      \n+      // Добавляем последнюю ячейку\n+      cells.push(current.trim());\n+      \n+      // Очищаем кавычки и лишние символы\n+      const cleanedCells = cells.map(cell => \n+        cell.replace(/^\"(.*)\"$/, '$1').replace(/\\r/g, '').trim()\n+      );\n+      \n+      result.push(cleanedCells);\n     }\n   }\n   \n   return result;\n"
+    },
+    "title": "app/api/furniture-products/route.ts",
+    "time": {
+      "start": 1759011090003,
+      "end": 1759011090007
+    }
+  }
+}

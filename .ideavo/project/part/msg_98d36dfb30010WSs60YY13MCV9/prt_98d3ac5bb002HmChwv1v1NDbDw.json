@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d3ac5bb002HmChwv1v1NDbDw",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011mGHKkH9T6dpMzTApBnbcy",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2565,
+      "limit": 25
+    },
+    "output": "<file>\n02566|   };\n02567| \n02568|   // Сброс формы и результатов расчета\n02569|   const handleReset = () => {\n02570|     if (typeof window !== 'undefined') {\n02571|       // Очищаем localStorage\n02572|       localStorage.removeItem('deliveryForm');\n02573|       \n02574|       // Сбрасываем состояние формы к начальному\n02575|       setForm(initialFormState);\n02576|       \n02577|       // Очищаем результаты расчетов и состояния\n02578|       setCalculations([]);\n02579|       setExpandedDetails({});\n02580|       setExpandedDebugInfo({});\n02581|       setSuggestions([]);\n02582|       setShowSuggestions(false);\n02583|       setActiveField('');\n02584|       \n02585|       console.log('Форма сброшена к начальному состоянию');\n02586|     }\n02587|   };\n02588| \n02589|   // Парсер деталей расчета для читаемого формата\n02590|   const parseCalculationDetails = (calc: CalculationResult) => {\n\n(File has more lines. Use 'offset' parameter to read beyond line 2590)\n</file>",
+    "metadata": {
+      "preview": "  };\n\n  // Сброс формы и результатов расчета\n  const handleReset = () => {\n    if (typeof window !== 'undefined') {\n      // Очищаем localStorage\n      localStorage.removeItem('deliveryForm');\n      \n      // Сбрасываем состояние формы к начальному\n      setForm(initialFormState);\n      \n      // Очищаем результаты расчетов и состояния\n      setCalculations([]);\n      setExpandedDetails({});\n      setExpandedDebugInfo({});\n      setSuggestions([]);\n      setShowSuggestions(false);\n      setActiveField('');\n      \n      console.log('Форма сброшена к начальному состоянию');"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759011064014,
+      "end": 1759011064017
+    }
+  }
+}

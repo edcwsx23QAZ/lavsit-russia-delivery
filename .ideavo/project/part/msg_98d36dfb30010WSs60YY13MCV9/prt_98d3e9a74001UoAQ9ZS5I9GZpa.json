@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d3e9a74001UoAQ9ZS5I9GZpa",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01XYZmeJvTRXLv34NwNMnY6F",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -s \"http://localhost:3000/api/furniture-products?q=диван&limit=2\" | python3 -m json.tool",
+      "description": "Test search functionality for sofas"
+    },
+    "output": "Expecting value: line 1 column 1 (char 0)\n",
+    "metadata": {
+      "output": "Expecting value: line 1 column 1 (char 0)\n",
+      "exit": 1,
+      "description": "Test search functionality for sofas"
+    },
+    "title": "curl -s \"http://localhost:3000/api/furniture-products?q=диван&limit=2\" | python3 -m json.tool",
+    "time": {
+      "start": 1759011315435,
+      "end": 1759011315484
+    }
+  }
+}

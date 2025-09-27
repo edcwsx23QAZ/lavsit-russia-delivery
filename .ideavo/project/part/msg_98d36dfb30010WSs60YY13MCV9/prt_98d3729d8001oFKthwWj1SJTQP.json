@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d3729d8001oFKthwWj1SJTQP",
+  "messageID": "msg_98d36dfb30010WSs60YY13MCV9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_016c7EPf5kw6jENjoxcSKyCQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "cargos.*\\[|Cargo.*Section|груз.*блок",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "output": "Found 10 matches\n/home/user/project/app/diagnostic/page.tsx:\n  Line 73:         cargos: [{\n  Line 139:         cargos: [{\n  Line 418:     const cargos: Array<{length: number; width: number; height: number; weight: number}> = [];\n\n/home/user/project/app/page.tsx:\n  Line 24:   cargos: Cargo[];\n  Line 76:     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n  Line 123:             savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n  Line 186:       cargos: [{ id: '1', length: 100, width: 100, height: 100, weight: 10 }],\n  Line 432:       cargos: [...prev.cargos, { id: newId, length: 0, width: 0, height: 0, weight: 0 }]\n  Line 1806:       return cargos[0].length / 100; // Одно место - точные габариты\n  Line 1825:       return cargos[0].height / 100;",
+    "metadata": {
+      "matches": 10,
+      "truncated": false
+    },
+    "title": "cargos.*\\[|Cargo.*Section|груз.*блок",
+    "time": {
+      "start": 1759010828063,
+      "end": 1759010828073
+    }
+  }
+}
