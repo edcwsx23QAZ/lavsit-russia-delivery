@@ -1,0 +1,23 @@
+{
+  "id": "prt_98cdeb2e4001BJeL0Bji4D3YSN",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01KUuRBSHMsS8rzMrThZfiHo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz/route.ts"
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server';\n00002| \n00003| // Токен Возовоз API\n00004| const VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n00005| \n00006| export async function POST(request: NextRequest) {\n00007|   try {\n00008|     const body = await request.json();\n00009|     \n00010|     // Строим URL для API Vozovoz с токеном\n00011|     const apiUrl = `https://vozovoz.org/api/?token=${VOZOVOZ_TOKEN}`;\n00012| \n00013|     console.log('🚚 Vozovoz API запрос:', JSON.stringify(body, null, 2));\n00014|     console.log('🚚 Vozovoz API URL:', apiUrl);\n00015| \n00016|     const response = await fetch(apiUrl, {\n00017|       method: 'POST',\n00018|       headers: {\n00019|         'Content-Type': 'application/json',\n00020|         'Accept': 'application/json',\n00021|         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n00022|       },\n00023|       body: JSON.stringify(body)\n00024|     });\n00025| \n00026|     console.log(`🚚 Vozovoz API статус: ${response.status} ${response.statusText}`);\n00027| \n00028|     if (!response.ok) {\n00029|       console.error('🚚 Vozovoz API ошибка:', response.status, response.statusText);\n00030|       \n00031|       const errorText = await response.text();\n00032|       console.error('🚚 Vozovoz API ошибка тело:', errorText);\n00033|       \n00034|       return NextResponse.json({\n00035|         success: false,\n00036|         error: `API ошибка: ${response.status} ${response.statusText}`,\n00037|         details: errorText\n00038|       }, { status: response.status });\n00039|     }\n00040| \n00041|     const data = await response.json();\n00042|     console.log('🚚 Vozovoz API ответ:', JSON.stringify(data, null, 2));\n00043| \n00044|     // Проверяем на наличие ошибок в ответе Vozovoz\n00045|     if (data.error) {\n00046|       console.error('🚚 Vozovoz API вернул ошибку:', data.error);\n00047|       return NextResponse.json({\n00048|         success: false,\n00049|         error: data.error.message || 'Vozovoz API error',\n00050|         details: data.error\n00051|       }, { status: 400 });\n00052|     }\n00053| \n00054|     return NextResponse.json(data);\n00055| \n00056|   } catch (error: any) {\n00057|     console.error('🚚 Vozovoz API критическая ошибка:', error);\n00058|     return NextResponse.json({\n00059|       success: false,\n00060|       error: error.message || 'Внутренняя ошибка сервера',\n00061|       details: error.stack\n00062|     }, { status: 500 });\n00063|   }\n00064| }\n</file>",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server';\n\n// Токен Возовоз API\nconst VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    \n    // Строим URL для API Vozovoz с токеном\n    const apiUrl = `https://vozovoz.org/api/?token=${VOZOVOZ_TOKEN}`;\n\n    console.log('🚚 Vozovoz API запрос:', JSON.stringify(body, null, 2));\n    console.log('🚚 Vozovoz API URL:', apiUrl);\n\n    const response = await fetch(apiUrl, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'Accept': 'application/json',"
+    },
+    "title": "app/api/vozovoz/route.ts",
+    "time": {
+      "start": 1759005029102,
+      "end": 1759005029103
+    }
+  }
+}

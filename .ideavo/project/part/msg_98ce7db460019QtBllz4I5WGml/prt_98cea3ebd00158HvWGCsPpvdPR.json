@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cea3ebd00158HvWGCsPpvdPR",
+  "messageID": "msg_98ce7db460019QtBllz4I5WGml",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01UphsuS1Hy7saTP4u1upSYj",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2172,
+      "limit": 50
+    },
+    "output": "<file>\n02173|     if (typeof window !== 'undefined') {\n02174|       window.print();\n02175|     }\n02176|   };\n02177| \n02178|   const toggleDetails = (company: string) => {\n02179|     setExpandedDetails(prev => ({\n02180|       ...prev,\n02181|       [company]: !prev[company]\n02182|     }));\n02183|   };\n02184| \n02185|   const toggleDebugInfo = (company: string) => {\n02186|     setExpandedDebugInfo(prev => ({\n02187|       ...prev,\n02188|       [company]: !prev[company]\n02189|     }));\n02190|   };\n02191| \n02192|   // Сброс формы и результатов расчета\n02193|   const handleReset = () => {\n02194|     if (typeof window !== 'undefined') {\n02195|       // Очищаем localStorage\n02196|       localStorage.removeItem('deliveryForm');\n02197|       \n02198|       // Сбрасываем состояние формы к начальному\n02199|       setForm(initialFormState);\n02200|       \n02201|       // Очищаем результаты расчетов и состояния\n02202|       setCalculations([]);\n02203|       setExpandedDetails({});\n02204|       setExpandedDebugInfo({});\n02205|       setSuggestions([]);\n02206|       setShowSuggestions(false);\n02207|       setActiveField('');\n02208|       \n02209|       console.log('Форма сброшена к начальному состоянию');\n02210|     }\n02211|   };\n02212| \n02213|   // Парсер деталей расчета для читаемого формата\n02214|   const parseCalculationDetails = (calc: CalculationResult) => {\n02215|     const details: { service: string; description: string; price: number }[] = [];\n02216|     \n02217|     if (calc.company === 'Деловые Линии' && calc.details) {\n02218|       // Основная стоимость доставки (уже включает все базовые услуги и упаковку)\n02219|       let basePrice = calc.details.price || calc.price || 0;\n02220|       \n02221|       // Разбиваем основную стоимость на компоненты если возможно\n02222|       let intercityPrice = 0;\n\n(File has more lines. Use 'offset' parameter to read beyond line 2222)\n</file>",
+    "metadata": {
+      "preview": "    if (typeof window !== 'undefined') {\n      window.print();\n    }\n  };\n\n  const toggleDetails = (company: string) => {\n    setExpandedDetails(prev => ({\n      ...prev,\n      [company]: !prev[company]\n    }));\n  };\n\n  const toggleDebugInfo = (company: string) => {\n    setExpandedDebugInfo(prev => ({\n      ...prev,\n      [company]: !prev[company]\n    }));\n  };\n\n  // Сброс формы и результатов расчета"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759005786407,
+      "end": 1759005786409
+    }
+  }
+}

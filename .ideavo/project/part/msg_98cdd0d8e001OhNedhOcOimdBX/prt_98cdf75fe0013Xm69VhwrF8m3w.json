@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cdf75fe0013Xm69VhwrF8m3w",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01THLXcbMg8VTmGpPoeFhdY3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const exportToPDF = () => {\n    if (typeof window !== 'undefined') {\n      window.print();\n    }\n  };",
+      "newString": "  const exportToPDF = () => {\n    if (typeof window !== 'undefined') {\n      // Разворачиваем все детали перед печатью\n      const allExpanded: { [key: string]: boolean } = {};\n      calculations.forEach((calc, index) => {\n        allExpanded[calc.company] = true;\n      });\n      setExpandedDetails(allExpanded);\n      \n      // Даем время на обновление интерфейса, затем печатаем\n      setTimeout(() => {\n        window.print();\n      }, 100);\n    }\n  };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2169,9 +2169,19 @@\n };\n \n const exportToPDF = () => {\n   if (typeof window !== 'undefined') {\n-    window.print();\n+    // Разворачиваем все детали перед печатью\n+    const allExpanded: { [key: string]: boolean } = {};\n+    calculations.forEach((calc, index) => {\n+      allExpanded[calc.company] = true;\n+    });\n+    setExpandedDetails(allExpanded);\n+    \n+    // Даем время на обновление интерфейса, затем печатаем\n+    setTimeout(() => {\n+      window.print();\n+    }, 100);\n   }\n };\n \n const toggleDetails = (company: string) => {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759005081919,
+      "end": 1759005081930
+    }
+  }
+}

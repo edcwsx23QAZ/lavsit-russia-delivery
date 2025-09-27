@@ -1,0 +1,26 @@
+{
+  "id": "prt_98ceafa95001zEglNYvPxCKfzp",
+  "messageID": "msg_98ce7db460019QtBllz4I5WGml",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_018P68dPGBSQeCqqr8rUm4xQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Финальная проверка сборки всех изменений"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:199:7\nType error: Type '{ length: number; width: number; height: number; weight: number; }[]' is not assignable to type 'Cargo[]'.\n  Property 'id' is missing in type '{ length: number; width: number; height: number; weight: number; }' but required in type 'Cargo'.\n\n\u001b[0m \u001b[90m 197 |\u001b[39m       fromCity\u001b[33m:\u001b[39m testData\u001b[33m.\u001b[39mfromCity\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 198 |\u001b[39m       toCity\u001b[33m:\u001b[39m testData\u001b[33m.\u001b[39mtoCity\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 199 |\u001b[39m       cargos\u001b[33m:\u001b[39m testData\u001b[33m.\u001b[39mcargos\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 200 |\u001b[39m       declaredValue\u001b[33m:\u001b[39m testData\u001b[33m.\u001b[39mdeclaredValue\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 201 |\u001b[39m       fromAddressDelivery\u001b[33m:\u001b[39m testData\u001b[33m.\u001b[39mfromAddressDelivery\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 202 |\u001b[39m       toAddressDelivery\u001b[33m:\u001b[39m testData\u001b[33m.\u001b[39mtoAddressDelivery\u001b[33m,\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:199:7\nType error: Type '{ length: number; width: number; height: number; weight: number; }[]' is not assignable to type 'Cargo[]'.\n  Property 'id' is missing in type '{ length: number; width: number; height: number; weight: number; }' but required in type 'Cargo'.\n\n\u001b[0m \u001b[90m 197 |\u001b[39m       fromCity\u001b[33m:\u001b[39m testData\u001b[33m.\u001b[39mfromCity\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 198 |\u001b[39m       toCity\u001b[33m:\u001b[39m testData\u001b[33m.\u001b[39mtoCity\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 199 |\u001b[39m       cargos\u001b[33m:\u001b[39m testData\u001b[33m.\u001b[39mcargos\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 200 |\u001b[39m       declaredValue\u001b[33m:\u001b[39m testData\u001b[33m.\u001b[39mdeclaredValue\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 201 |\u001b[39m       fromAddressDelivery\u001b[33m:\u001b[39m testData\u001b[33m.\u001b[39mfromAddressDelivery\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 202 |\u001b[39m       toAddressDelivery\u001b[33m:\u001b[39m testData\u001b[33m.\u001b[39mtoAddressDelivery\u001b[33m,\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Финальная проверка сборки всех изменений"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759005834670,
+      "end": 1759005849789
+    }
+  }
+}

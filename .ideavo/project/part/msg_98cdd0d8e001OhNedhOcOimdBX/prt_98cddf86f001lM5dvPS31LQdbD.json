@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cddf86f001lM5dvPS31LQdbD",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01DvUNT4Ky1wJonVT9BuxSyQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 85,
+      "limit": 20
+    },
+    "output": "<file>\n00086|     needInsurance: false,\n00087|     fromTerminal: true,\n00088|     toTerminal: true,\n00089|     fromAddressDelivery: false,\n00090|     toAddressDelivery: false\n00091|   };\n00092| \n00093|   const [form, setForm] = useState<DeliveryForm>(initialFormState);\n00094|   const [isLoaded, setIsLoaded] = useState(false);\n00095| \n00096|   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n00097|   const [showSuggestions, setShowSuggestions] = useState(false);\n00098|   const [activeField, setActiveField] = useState('');\n00099|   const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n00100|   const [calculating, setCalculating] = useState(false);\n00101|   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n00102|   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n00103|   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n00104| \n00105|   // Загрузка сохраненных данных (только на клиенте)\n\n(File has more lines. Use 'offset' parameter to read beyond line 105)\n</file>",
+    "metadata": {
+      "preview": "    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false\n  };\n\n  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n\n  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n  const [showSuggestions, setShowSuggestions] = useState(false);\n  const [activeField, setActiveField] = useState('');\n  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  const [calculating, setCalculating] = useState(false);\n  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n\n  // Загрузка сохраненных данных (только на клиенте)"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004982007,
+      "end": 1759004982009
+    }
+  }
+}

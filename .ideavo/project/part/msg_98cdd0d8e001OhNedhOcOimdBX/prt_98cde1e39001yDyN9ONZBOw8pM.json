@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cde1e39001yDyN9ONZBOw8pM",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_0131EDjJQNP7ddDbD7FD68nt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n\n  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n  const [showSuggestions, setShowSuggestions] = useState(false);\n  const [activeField, setActiveField] = useState('');\n  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  const [calculating, setCalculating] = useState(false);\n  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });",
+      "newString": "  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n  const [companies, setCompanies] = useState(INITIAL_COMPANIES);\n\n  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n  const [showSuggestions, setShowSuggestions] = useState(false);\n  const [activeField, setActiveField] = useState('');\n  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  const [calculating, setCalculating] = useState(false);\n  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -91,8 +91,9 @@\n };\n \n const [form, setForm] = useState<DeliveryForm>(initialFormState);\n const [isLoaded, setIsLoaded] = useState(false);\n+const [companies, setCompanies] = useState(INITIAL_COMPANIES);\n \n const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n const [showSuggestions, setShowSuggestions] = useState(false);\n const [activeField, setActiveField] = useState('');\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004995318,
+      "end": 1759004995331
+    }
+  }
+}

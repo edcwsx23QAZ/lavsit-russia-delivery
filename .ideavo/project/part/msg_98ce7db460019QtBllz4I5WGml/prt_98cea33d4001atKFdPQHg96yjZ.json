@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cea33d4001atKFdPQHg96yjZ",
+  "messageID": "msg_98ce7db460019QtBllz4I5WGml",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01JFCDsPk6pEcZeFVbVcYVfh",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "exportToPDF",
+      "include": "*.tsx"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 2172:   const exportToPDF = () => {\n  Line 2741:                   <Button onClick={exportToPDF} variant=\"outline\" size=\"sm\" className=\"h-7 text-xs\">",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "exportToPDF",
+    "time": {
+      "start": 1759005783361,
+      "end": 1759005783374
+    }
+  }
+}

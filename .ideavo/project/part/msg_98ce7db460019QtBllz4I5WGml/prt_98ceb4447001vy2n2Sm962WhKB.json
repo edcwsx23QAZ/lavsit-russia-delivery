@@ -1,0 +1,26 @@
+{
+  "id": "prt_98ceb4447001vy2n2Sm962WhKB",
+  "messageID": "msg_98ce7db460019QtBllz4I5WGml",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01AJ8wFhowKPdwqh5fdy73kE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    // Тестовые данные для проверки\n    const testData = {\n      fromCity: 'Москва',\n      toCity: 'Санкт-Петербург', \n      cargos: [{ length: 100, width: 100, height: 100, weight: 10 }],\n      declaredValue: 50000,\n      fromAddressDelivery: false,\n      toAddressDelivery: false,\n      needPackaging: false,\n      needInsurance: false\n    };",
+      "newString": "    // Тестовые данные для проверки\n    const testData = {\n      fromCity: 'Москва',\n      toCity: 'Санкт-Петербург', \n      cargos: [{ id: '1', length: 100, width: 100, height: 100, weight: 10 }],\n      declaredValue: 50000,\n      fromAddressDelivery: false,\n      toAddressDelivery: false,\n      needPackaging: false,\n      needInsurance: false\n    };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -179,9 +179,9 @@\n // Тестовые данные для проверки\n const testData = {\n   fromCity: 'Москва',\n   toCity: 'Санкт-Петербург', \n-  cargos: [{ length: 100, width: 100, height: 100, weight: 10 }],\n+  cargos: [{ id: '1', length: 100, width: 100, height: 100, weight: 10 }],\n   declaredValue: 50000,\n   fromAddressDelivery: false,\n   toAddressDelivery: false,\n   needPackaging: false,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759005856420,
+      "end": 1759005856434
+    }
+  }
+}

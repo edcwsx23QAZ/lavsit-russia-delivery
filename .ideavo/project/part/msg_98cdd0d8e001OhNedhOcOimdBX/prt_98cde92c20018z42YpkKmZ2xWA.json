@@ -1,0 +1,21 @@
+{
+  "id": "prt_98cde92c20018z42YpkKmZ2xWA",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01P41HhESjmS3FSAeqKiNxCH",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz/route.ts",
+      "oldString": "// Токен Возовоз API\nconst VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    \n    // Строим URL для API Vozovoz с токеном\n    const apiUrl = `https://vozovoz.org/api/?token=${VOZOVOZ_TOKEN}`;",
+      "newString": "// Токен Возовоз API (для тестирования используем vozovoz.org)\nconst VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    \n    // Строим URL для API Vozovoz с токеном (тестовый сервер)\n    const apiUrl = `https://vozovoz.org/api/?token=${VOZOVOZ_TOKEN}`;"
+    },
+    "error": "Error: You must read the file /home/user/project/app/api/vozovoz/route.ts before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1759005026290,
+      "end": 1759005026291
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cdd91bb00182XQRqZMwB0A4n",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01TreDZ4Fw8KRY9UHQUC3Efx",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "ПЭК.*Деловые.*Rail|Деловые.*ПЭК|ТК.*ПЭК|список.*компан",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 2270:                 <strong className=\"text-blue-300\">🚚 Калькулятор доставки готов!</strong> Добавлены ТК: ПЭК, Деловые Линии, Rail Continent, Возовоз",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "ПЭК.*Деловые.*Rail|Деловые.*ПЭК|ТК.*ПЭК|список.*компан",
+    "time": {
+      "start": 1759004956561,
+      "end": 1759004956569
+    }
+  }
+}

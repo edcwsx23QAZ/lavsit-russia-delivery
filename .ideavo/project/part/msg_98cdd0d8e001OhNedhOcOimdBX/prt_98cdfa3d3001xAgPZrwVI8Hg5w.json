@@ -1,0 +1,23 @@
+{
+  "id": "prt_98cdfa3d3001xAgPZrwVI8Hg5w",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_017aZNSZc4WWR2VY7jo1gWbU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/globals.css"
+    },
+    "output": "<file>\n00001| @tailwind base;\n00002| @tailwind components;\n00003| @tailwind utilities;\n00004| \n00005| :root {\n00006|   --foreground-rgb: 0, 0, 0;\n00007|   --background-start-rgb: 214, 219, 220;\n00008|   --background-end-rgb: 255, 255, 255;\n00009| }\n00010| \n00011| @media (prefers-color-scheme: dark) {\n00012|   :root {\n00013|     --foreground-rgb: 255, 255, 255;\n00014|     --background-start-rgb: 0, 0, 0;\n00015|     --background-end-rgb: 0, 0, 0;\n00016|   }\n00017| }\n00018| \n00019| @layer base {\n00020|   :root {\n00021|     --background: 0 0% 100%;\n00022|     --foreground: 0 0% 3.9%;\n00023|     --card: 0 0% 100%;\n00024|     --card-foreground: 0 0% 3.9%;\n00025|     --popover: 0 0% 100%;\n00026|     --popover-foreground: 0 0% 3.9%;\n00027|     --primary: 0 0% 9%;\n00028|     --primary-foreground: 0 0% 98%;\n00029|     --secondary: 0 0% 96.1%;\n00030|     --secondary-foreground: 0 0% 9%;\n00031|     --muted: 0 0% 96.1%;\n00032|     --muted-foreground: 0 0% 45.1%;\n00033|     --accent: 0 0% 96.1%;\n00034|     --accent-foreground: 0 0% 9%;\n00035|     --destructive: 0 84.2% 60.2%;\n00036|     --destructive-foreground: 0 0% 98%;\n00037|     --border: 0 0% 89.8%;\n00038|     --input: 0 0% 89.8%;\n00039|     --ring: 0 0% 3.9%;\n00040|     --chart-1: 12 76% 61%;\n00041|     --chart-2: 173 58% 39%;\n00042|     --chart-3: 197 37% 24%;\n00043|     --chart-4: 43 74% 66%;\n00044|     --chart-5: 27 87% 67%;\n00045|     --radius: 0.5rem;\n00046|   }\n00047|   .dark {\n00048|     --background: 0 0% 3.9%;\n00049|     --foreground: 0 0% 98%;\n00050|     --card: 0 0% 3.9%;\n00051|     --card-foreground: 0 0% 98%;\n00052|     --popover: 0 0% 3.9%;\n00053|     --popover-foreground: 0 0% 98%;\n00054|     --primary: 0 0% 98%;\n00055|     --primary-foreground: 0 0% 9%;\n00056|     --secondary: 0 0% 14.9%;\n00057|     --secondary-foreground: 0 0% 98%;\n00058|     --muted: 0 0% 14.9%;\n00059|     --muted-foreground: 0 0% 63.9%;\n00060|     --accent: 0 0% 14.9%;\n00061|     --accent-foreground: 0 0% 98%;\n00062|     --destructive: 0 62.8% 30.6%;\n00063|     --destructive-foreground: 0 0% 98%;\n00064|     --border: 0 0% 14.9%;\n00065|     --input: 0 0% 14.9%;\n00066|     --ring: 0 0% 83.1%;\n00067|     --chart-1: 220 70% 50%;\n00068|     --chart-2: 160 60% 45%;\n00069|     --chart-3: 30 80% 55%;\n00070|     --chart-4: 280 65% 60%;\n00071|     --chart-5: 340 75% 55%;\n00072|   }\n00073| }\n00074| \n00075| @layer base {\n00076|   * {\n00077|     @apply border-border;\n00078|   }\n00079|   body {\n00080|     @apply bg-background text-foreground;\n00081|   }\n00082| }\n00083| \n</file>",
+    "metadata": {
+      "preview": "@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n:root {\n  --foreground-rgb: 0, 0, 0;\n  --background-start-rgb: 214, 219, 220;\n  --background-end-rgb: 255, 255, 255;\n}\n\n@media (prefers-color-scheme: dark) {\n  :root {\n    --foreground-rgb: 255, 255, 255;\n    --background-start-rgb: 0, 0, 0;\n    --background-end-rgb: 0, 0, 0;\n  }\n}\n\n@layer base {\n  :root {"
+    },
+    "title": "app/globals.css",
+    "time": {
+      "start": 1759005091120,
+      "end": 1759005091122
+    }
+  }
+}

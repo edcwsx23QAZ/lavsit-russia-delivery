@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cdf666b0016aYk5D31tnwhcG",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GxbcV13yQNVRcxDf8CkgGZ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2715,
+      "limit": 10
+    },
+    "output": "<file>\n02716|                 <div className=\"flex justify-between items-center\">\n02717|                   <h2 className=\"text-xl font-bold text-blue-400\">Результаты расчета</h2>\n02718|                   <Button onClick={exportToPDF} variant=\"outline\" size=\"sm\" className=\"h-7 text-xs\">\n02719|                     Сохранить в PDF\n02720|                   </Button>\n02721|                 </div>\n02722|                 \n02723|                 {calculations.map((calc, index) => (\n02724|                   <Card key={index} className=\"bg-gray-800 border-gray-700\">\n02725|                     <CardHeader className=\"pb-2\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 2725)\n</file>",
+    "metadata": {
+      "preview": "                <div className=\"flex justify-between items-center\">\n                  <h2 className=\"text-xl font-bold text-blue-400\">Результаты расчета</h2>\n                  <Button onClick={exportToPDF} variant=\"outline\" size=\"sm\" className=\"h-7 text-xs\">\n                    Сохранить в PDF\n                  </Button>\n                </div>\n                \n                {calculations.map((calc, index) => (\n                  <Card key={index} className=\"bg-gray-800 border-gray-700\">\n                    <CardHeader className=\"pb-2\">"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759005075679,
+      "end": 1759005075681
+    }
+  }
+}

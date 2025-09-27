@@ -100,6 +100,12 @@ export default function Home() {
   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});
   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});
   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });
+  const [apiStatus, setApiStatus] = useState({
+    pek: 'проверка...',
+    dellin: 'проверка...',
+    railcontinent: 'проверка...',
+    vozovoz: 'проверка...'
+  });
 
   // Загрузка сохраненных данных (только на клиенте)
   useEffect(() => {
@@ -148,6 +154,154 @@ export default function Home() {
       setForm(prev => ({ ...prev, needInsurance: true }));
     }
   }, [form.declaredValue]);
+
+  // Проверка статуса API при загрузке страницы
+  useEffect(() => {
+    if (typeof window !== 'undefined' && isLoaded) {
+      checkAllAPIStatus();
+    }
+  }, [isLoaded]);
+
+  const checkAPIStatus = async (apiName: string, testFunction: () => Promise<any>) => {
+    try {
+      const result = await testFunction();
+      if (result && !result.error) {
+        setApiStatus(prev => ({ ...prev, [apiName]: 'подключено' }));
+      } else {
+        setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));
+      }
+    } catch (error) {
+      setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));
+    }
+  };
+
+  const checkAllAPIStatus = async () => {
+    // Тестовые данные для проверки
+    const testData = {
+      fromCity: 'Москва',
+      toCity: 'Санкт-Петербург', 
+      cargos: [{ id: '1', length: 100, width: 100, height: 100, weight: 10 }],
+      declaredValue: 50000,
+      fromAddressDelivery: false,
+      toAddressDelivery: false,
+      needPackaging: false,
+      needInsurance: false
+    };
+
+    // Сохраняем текущее состояние формы
+    const currentForm = form;
+    
+    // Временно устанавливаем тестовые данные
+    setForm({
+      ...form,
+      fromCity: testData.fromCity,
+      toCity: testData.toCity,
+      cargos: testData.cargos,
+      declaredValue: testData.declaredValue,
+      fromAddressDelivery: testData.fromAddressDelivery,
+      toAddressDelivery: testData.toAddressDelivery,
+      needPackaging: testData.needPackaging,
+      needInsurance: testData.needInsurance
+    });
+
+    // Запускаем проверки параллельно
+    Promise.all([
+      checkAPIStatus('pek', async () => {
+        try {
+          const response = await fetch('/api/pek', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(testData)
+          });
+          return await response.json();
+        } catch (error) {
+          return { error: true };
+        }
+      }),
+      
+      checkAPIStatus('dellin', async () => {
+        try {
+          const response = await fetch('/api/dellin-packages', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(testData)
+          });
+          return await response.json();
+        } catch (error) {
+          return { error: true };
+        }
+      }),
+      
+      checkAPIStatus('railcontinent', async () => {
+        try {
+          const response = await fetch('/api/rail-continent', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              city_sender: testData.fromCity,
+              city_receiver: testData.toCity,
+              weight: 10,
+              volume: 0.1,
+              length: 1,
+              width: 1,
+              height: 1,
+              declared_cost: testData.declaredValue,
+              pickup: '0',
+              delivery: '0',
+              packaging: '0',
+              insurance: '0',
+              tariff: 'auto'
+            })
+          });
+          return await response.json();
+        } catch (error) {
+          return { error: true };
+        }
+      }),
+      
+      checkAPIStatus('vozovoz', async () => {
+        try {
+          const response = await fetch('/api/vozovoz', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              object: "price",
+              action: "get",
+              params: {
+                cargo: {
+                  dimension: {
+                    quantity: 1,
+                    volume: 0.1,
+                    weight: 10
+                  }
+                },
+                gateway: {
+                  dispatch: {
+                    point: {
+                      location: testData.fromCity,
+                      terminal: "default"
+                    }
+                  },
+                  destination: {
+                    point: {
+                      location: testData.toCity,
+                      terminal: "default"
+                    }
+                  }
+                }
+              }
+            })
+          });
+          return await response.json();
+        } catch (error) {
+          return { error: true };
+        }
+      })
+    ]).finally(() => {
+      // Восстанавливаем исходное состояние формы
+      setForm(currentForm);
+    });
+  };
 
   const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {
     if (query.length < 3) {
@@ -2017,7 +2171,18 @@ export default function Home() {
 
   const exportToPDF = () => {
     if (typeof window !== 'undefined') {
-      window.print();
+      // Разворачиваем все детали перед печатью
+      const allExpanded = calculations.reduce((acc, calc) => {
+        acc[calc.company] = true;
+        return acc;
+      }, {} as { [key: string]: boolean });
+      
+      setExpandedDetails(allExpanded);
+      
+      // Даем время для обновления DOM
+      setTimeout(() => {
+        window.print();
+      }, 100);
     }
   };
 
@@ -2261,13 +2426,27 @@ export default function Home() {
           Междугородняя доставка Лавсит
         </h1>
         
-        {/* Кнопка диагностики */}
+        {/* Подключенные ТК и диагностика */}
         <div className="flex justify-between items-center mb-4">
           <div className="flex-1">
             <Alert className="border-blue-500 bg-blue-900/20">
               <Building2 className="h-4 w-4 text-blue-400" />
               <AlertDescription className="text-blue-100">
-                <strong className="text-blue-300">🚚 Калькулятор доставки готов!</strong> Добавлены ТК: ПЭК, Деловые Линии, Rail Continent, Возовоз
+                <strong className="text-blue-300">Подключенные транспортные компании:</strong>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  <Badge variant="outline" className="border-blue-400 text-blue-300">
+                    ПЭК <span className="ml-1 text-xs">{apiStatus.pek}</span>
+                  </Badge>
+                  <Badge variant="outline" className="border-green-400 text-green-300">
+                    Деловые Линии <span className="ml-1 text-xs">{apiStatus.dellin}</span>
+                  </Badge>
+                  <Badge variant="outline" className="border-purple-400 text-purple-300">
+                    Rail Continent <span className="ml-1 text-xs">{apiStatus.railcontinent}</span>
+                  </Badge>
+                  <Badge variant="outline" className="border-orange-400 text-orange-300">
+                    Возовоз <span className="ml-1 text-xs">{apiStatus.vozovoz}</span>
+                  </Badge>
+                </div>
               </AlertDescription>
             </Alert>
           </div>
@@ -2570,7 +2749,12 @@ export default function Home() {
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
                   <h2 className="text-xl font-bold text-blue-400">Результаты расчета</h2>
-                  <Button onClick={exportToPDF} variant="outline" size="sm" className="h-7 text-xs">
+                  <Button 
+                    onClick={exportToPDF} 
+                    variant="outline" 
+                    size="sm" 
+                    className="h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden"
+                  >
                     Сохранить в PDF
                   </Button>
                 </div>

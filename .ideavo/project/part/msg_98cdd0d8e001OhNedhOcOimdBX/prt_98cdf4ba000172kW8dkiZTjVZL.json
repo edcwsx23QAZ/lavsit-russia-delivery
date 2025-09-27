@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cdf4ba000172kW8dkiZTjVZL",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01LQT7VHWxHZmhcuNzCHh7Xc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Сохранить в PDF|exportToPDF",
+      "include": "*.tsx"
+    },
+    "output": "Found 3 matches\n/home/user/project/app/page.tsx:\n  Line 2171:   const exportToPDF = () => {\n  Line 2718:                   <Button onClick={exportToPDF} variant=\"outline\" size=\"sm\" className=\"h-7 text-xs\">\n  Line 2719:                     Сохранить в PDF",
+    "metadata": {
+      "matches": 3,
+      "truncated": false
+    },
+    "title": "Сохранить в PDF|exportToPDF",
+    "time": {
+      "start": 1759005068904,
+      "end": 1759005068914
+    }
+  }
+}

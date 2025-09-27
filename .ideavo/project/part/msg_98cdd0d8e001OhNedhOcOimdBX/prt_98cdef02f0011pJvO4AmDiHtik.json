@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cdef02f0011pJvO4AmDiHtik",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01BDaNQW17WJDxudTYqnAVgu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                  {COMPANIES.map((company, index) => (\n                    <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n                      <span className=\"text-lg\">{company.logo}</span>\n                      <div>\n                        <p className=\"font-medium text-white text-xs\">{company.name}</p>\n                        <Badge variant={company.connected ? \"default\" : \"destructive\"} className=\"text-xs\">\n                          {company.connected ? 'Подключена' : 'Отключена'}\n                        </Badge>\n                      </div>\n                    </div>\n                  ))}",
+      "newString": "                  {companies.map((company, index) => (\n                    <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n                      <span className=\"text-lg\">{company.logo}</span>\n                      <div>\n                        <p className=\"font-medium text-white text-xs\">{company.name}</p>\n                        <Badge \n                          variant={\n                            company.connected === 'connected' ? \"default\" : \n                            company.connected === 'checking' ? \"secondary\" : \"destructive\"\n                          } \n                          className=\"text-xs\"\n                        >\n                          {company.connected === 'connected' ? 'Подключено' : \n                           company.connected === 'checking' ? 'Проверка...' : 'Ошибка'}\n                        </Badge>\n                      </div>\n                    </div>\n                  ))}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2887,15 +2887,22 @@\n   <CardTitle className=\"text-white text-sm\">Подключенные транспортные компании</CardTitle>\n </CardHeader>\n <CardContent>\n   <div className=\"grid grid-cols-2 gap-2\">\n-    {COMPANIES.map((company, index) => (\n+    {companies.map((company, index) => (\n       <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n         <span className=\"text-lg\">{company.logo}</span>\n         <div>\n           <p className=\"font-medium text-white text-xs\">{company.name}</p>\n-          <Badge variant={company.connected ? \"default\" : \"destructive\"} className=\"text-xs\">\n-            {company.connected ? 'Подключена' : 'Отключена'}\n+          <Badge \n+            variant={\n+              company.connected === 'connected' ? \"default\" : \n+              company.connected === 'checking' ? \"secondary\" : \"destructive\"\n+            } \n+            className=\"text-xs\"\n+          >\n+            {company.connected === 'connected' ? 'Подключено' : \n+             company.connected === 'checking' ? 'Проверка...' : 'Ошибка'}\n           </Badge>\n         </div>\n       </div>\n     ))}\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759005048711,
+      "end": 1759005048723
+    }
+  }
+}

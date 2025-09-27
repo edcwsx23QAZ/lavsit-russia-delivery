@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cdee26a002PXsULCPm1fu9lf",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QSW7vQuLqNfiCJRJwKwZf8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2890,
+      "limit": 20
+    },
+    "output": "<file>\n02891|                   {COMPANIES.map((company, index) => (\n02892|                     <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n02893|                       <span className=\"text-lg\">{company.logo}</span>\n02894|                       <div>\n02895|                         <p className=\"font-medium text-white text-xs\">{company.name}</p>\n02896|                         <Badge variant={company.connected ? \"default\" : \"destructive\"} className=\"text-xs\">\n02897|                           {company.connected ? 'Подключена' : 'Отключена'}\n02898|                         </Badge>\n02899|                       </div>\n02900|                     </div>\n02901|                   ))}\n02902|                 </div>\n02903|               </CardContent>\n02904|             </Card>\n02905|           </div>\n02906|         </div>\n02907|       </div>\n02908| \n02909|       {/* Автоподсказки */}\n02910|       {showSuggestions && suggestions.length > 0 && (\n\n(File has more lines. Use 'offset' parameter to read beyond line 2910)\n</file>",
+    "metadata": {
+      "preview": "                  {COMPANIES.map((company, index) => (\n                    <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n                      <span className=\"text-lg\">{company.logo}</span>\n                      <div>\n                        <p className=\"font-medium text-white text-xs\">{company.name}</p>\n                        <Badge variant={company.connected ? \"default\" : \"destructive\"} className=\"text-xs\">\n                          {company.connected ? 'Подключена' : 'Отключена'}\n                        </Badge>\n                      </div>\n                    </div>\n                  ))}\n                </div>\n              </CardContent>\n            </Card>\n          </div>\n        </div>\n      </div>\n\n      {/* Автоподсказки */}\n      {showSuggestions && suggestions.length > 0 && ("
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759005041856,
+      "end": 1759005041859
+    }
+  }
+}

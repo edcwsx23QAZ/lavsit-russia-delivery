@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cddd21d001VZm6yHslmDxjXB",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016XfPKFpw2z9QS8WdS6fpCJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 60,
+      "limit": 15
+    },
+    "output": "<file>\n00061|   };\n00062| }\n00063| \n00064| const COMPANIES = [\n00065|   { name: 'Деловые Линии', logo: '📦', connected: true },\n00066|   { name: 'ПЭК', logo: '🚛', connected: true },\n00067|   { name: 'Nord Wheel', logo: '🌐', connected: true },\n00068|   { name: 'Rail Continent', logo: '🚂', connected: true }\n00069| ];\n00070| \n00071| export default function Home() {\n00072|   // Начальное состояние формы\n00073|   const initialFormState: DeliveryForm = {\n00074|     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00075|     fromCity: '',\n\n(File has more lines. Use 'offset' parameter to read beyond line 75)\n</file>",
+    "metadata": {
+      "preview": "  };\n}\n\nconst COMPANIES = [\n  { name: 'Деловые Линии', logo: '📦', connected: true },\n  { name: 'ПЭК', logo: '🚛', connected: true },\n  { name: 'Nord Wheel', logo: '🌐', connected: true },\n  { name: 'Rail Continent', logo: '🚂', connected: true }\n];\n\nexport default function Home() {\n  // Начальное состояние формы\n  const initialFormState: DeliveryForm = {\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004972471,
+      "end": 1759004972474
+    }
+  }
+}

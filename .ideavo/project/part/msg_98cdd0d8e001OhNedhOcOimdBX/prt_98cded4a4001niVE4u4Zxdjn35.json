@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cded4a4001niVE4u4Zxdjn35",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01ChunhPrQ1dcwtCbcwyZd8z",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "COMPANIES.*map|компан.*map|logo.*Building",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 2891:                   {COMPANIES.map((company, index) => (",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "COMPANIES.*map|компан.*map|logo.*Building",
+    "time": {
+      "start": 1759005038778,
+      "end": 1759005038787
+    }
+  }
+}

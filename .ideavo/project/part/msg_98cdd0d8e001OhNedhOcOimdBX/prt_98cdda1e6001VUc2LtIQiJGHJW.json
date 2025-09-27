@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cdda1e6001VUc2LtIQiJGHJW",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01LQeoumyga2u4GHNQraFr29",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "подключено|Подключено|результат.*calculation|Результат",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 2572:                   <h2 className=\"text-xl font-bold text-blue-400\">Результаты расчета</h2>",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "подключено|Подключено|результат.*calculation|Результат",
+    "time": {
+      "start": 1759004959901,
+      "end": 1759004959911
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98ce86ba500149fA6EfRU625ve",
+  "messageID": "msg_98ce7db460019QtBllz4I5WGml",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016YjCZEsvE6CHLVvtL5fcyK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 140,
+      "limit": 20
+    },
+    "output": "<file>\n00141|           requestData: testData,\n00142|           timing\n00143|         });\n00144|       } else {\n00145|         updateResult('dellin', {\n00146|           status: 'warning',\n00147|           message: `Деловые Линии API вернул ошибку: ${data.error || 'Неизвестная ошибка'}`,\n00148|           details: data.details,\n00149|           response: data,\n00150|           requestData: testData,\n00151|           timing\n00152|         });\n00153|       }\n00154|     } catch (error: any) {\n00155|       console.error('🔧 Деловые Линии API ошибка:', error);\n00156|       updateResult('dellin', {\n00157|         status: 'error',\n00158|         message: `Критическая ошибка Деловые Линии API: ${error.message}`,\n00159|         details: error,\n00160|         timing: Date.now() - startTime\n\n(File has more lines. Use 'offset' parameter to read beyond line 160)\n</file>",
+    "metadata": {
+      "preview": "          requestData: testData,\n          timing\n        });\n      } else {\n        updateResult('dellin', {\n          status: 'warning',\n          message: `Деловые Линии API вернул ошибку: ${data.error || 'Неизвестная ошибка'}`,\n          details: data.details,\n          response: data,\n          requestData: testData,\n          timing\n        });\n      }\n    } catch (error: any) {\n      console.error('🔧 Деловые Линии API ошибка:', error);\n      updateResult('dellin', {\n        status: 'error',\n        message: `Критическая ошибка Деловые Линии API: ${error.message}`,\n        details: error,\n        timing: Date.now() - startTime"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759005667027,
+      "end": 1759005667029
+    }
+  }
+}

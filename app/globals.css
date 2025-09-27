@@ -80,3 +80,68 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Стили для печати PDF */
+@media print {
+  /* Сброс цветов для печати */
+  * {
+    color: black !important;
+    background-color: white !important;
+    border-color: #ccc !important;
+  }
+  
+  /* Скрыть элементы управления */
+  .print\\:hidden {
+    display: none !important;
+  }
+  
+  /* Стили для карточек */
+  .bg-gray-800, .bg-gray-900 {
+    background-color: white !important;
+    border: 1px solid #ccc !important;
+  }
+  
+  /* Стили для текста */
+  .text-white, .text-blue-400, .text-green-400, .text-yellow-400, .text-red-400 {
+    color: black !important;
+  }
+  
+  /* Стили для бейджей */
+  .border-blue-500, .border-green-500, .border-yellow-500, .border-red-500 {
+    border-color: #666 !important;
+  }
+  
+  /* Показать все развернутые детали */
+  [data-state="closed"] {
+    display: block !important;
+  }
+  
+  /* Убрать кнопки разворачивания */
+  button[data-state] {
+    display: none !important;
+  }
+  
+  /* Отступы для печати */
+  body {
+    margin: 0.5in !important;
+    font-size: 12pt !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Заголовки */
+  h1, h2, h3 {
+    color: black !important;
+    page-break-after: avoid;
+  }
+  
+  /* Таблицы и списки */
+  table, ul, ol {
+    page-break-inside: avoid;
+  }
+  
+  /* Карточки результатов */
+  .space-y-3 > * {
+    page-break-inside: avoid;
+    margin-bottom: 0.5in;
+  }
+}

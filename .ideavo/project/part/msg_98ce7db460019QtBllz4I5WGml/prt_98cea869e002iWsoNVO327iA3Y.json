@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cea869e002iWsoNVO327iA3Y",
+  "messageID": "msg_98ce7db460019QtBllz4I5WGml",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_015DdmDmqnjFM5qHWpNo59wh",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/globals.css",
+      "oldString": "@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}",
+      "newString": "@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}\n\n/* Стили для печати PDF */\n@media print {\n  /* Сброс цветов для печати */\n  * {\n    color: black !important;\n    background-color: white !important;\n    border-color: #ccc !important;\n  }\n  \n  /* Скрыть элементы управления */\n  .print\\\\:hidden {\n    display: none !important;\n  }\n  \n  /* Стили для карточек */\n  .bg-gray-800, .bg-gray-900 {\n    background-color: white !important;\n    border: 1px solid #ccc !important;\n  }\n  \n  /* Стили для текста */\n  .text-white, .text-blue-400, .text-green-400, .text-yellow-400, .text-red-400 {\n    color: black !important;\n  }\n  \n  /* Стили для бейджей */\n  .border-blue-500, .border-green-500, .border-yellow-500, .border-red-500 {\n    border-color: #666 !important;\n  }\n  \n  /* Показать все развернутые детали */\n  [data-state=\"closed\"] {\n    display: block !important;\n  }\n  \n  /* Убрать кнопки разворачивания */\n  button[data-state] {\n    display: none !important;\n  }\n  \n  /* Отступы для печати */\n  body {\n    margin: 0.5in !important;\n    font-size: 12pt !important;\n    line-height: 1.4 !important;\n  }\n  \n  /* Заголовки */\n  h1, h2, h3 {\n    color: black !important;\n    page-break-after: avoid;\n  }\n  \n  /* Таблицы и списки */\n  table, ul, ol {\n    page-break-inside: avoid;\n  }\n  \n  /* Карточки результатов */\n  .space-y-3 > * {\n    page-break-inside: avoid;\n    margin-bottom: 0.5in;\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/globals.css\n===================================================================\n--- /home/user/project/app/globals.css\n+++ /home/user/project/app/globals.css\n@@ -79,4 +79,69 @@\n   body {\n     @apply bg-background text-foreground;\n   }\n }\n+\n+/* Стили для печати PDF */\n+@media print {\n+  /* Сброс цветов для печати */\n+  * {\n+    color: black !important;\n+    background-color: white !important;\n+    border-color: #ccc !important;\n+  }\n+  \n+  /* Скрыть элементы управления */\n+  .print\\\\:hidden {\n+    display: none !important;\n+  }\n+  \n+  /* Стили для карточек */\n+  .bg-gray-800, .bg-gray-900 {\n+    background-color: white !important;\n+    border: 1px solid #ccc !important;\n+  }\n+  \n+  /* Стили для текста */\n+  .text-white, .text-blue-400, .text-green-400, .text-yellow-400, .text-red-400 {\n+    color: black !important;\n+  }\n+  \n+  /* Стили для бейджей */\n+  .border-blue-500, .border-green-500, .border-yellow-500, .border-red-500 {\n+    border-color: #666 !important;\n+  }\n+  \n+  /* Показать все развернутые детали */\n+  [data-state=\"closed\"] {\n+    display: block !important;\n+  }\n+  \n+  /* Убрать кнопки разворачивания */\n+  button[data-state] {\n+    display: none !important;\n+  }\n+  \n+  /* Отступы для печати */\n+  body {\n+    margin: 0.5in !important;\n+    font-size: 12pt !important;\n+    line-height: 1.4 !important;\n+  }\n+  \n+  /* Заголовки */\n+  h1, h2, h3 {\n+    color: black !important;\n+    page-break-after: avoid;\n+  }\n+  \n+  /* Таблицы и списки */\n+  table, ul, ol {\n+    page-break-inside: avoid;\n+  }\n+  \n+  /* Карточки результатов */\n+  .space-y-3 > * {\n+    page-break-inside: avoid;\n+    margin-bottom: 0.5in;\n+  }\n+}\n"
+    },
+    "title": "app/globals.css",
+    "time": {
+      "start": 1759005812411,
+      "end": 1759005812415
+    }
+  }
+}

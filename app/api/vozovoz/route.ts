@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Строим URL для API Vozovoz с токеном
-    const apiUrl = `https://vozovoz.org/api/?token=${VOZOVOZ_TOKEN}`;
+    const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;
 
     console.log('🚚 Vozovoz API запрос:', JSON.stringify(body, null, 2));
     console.log('🚚 Vozovoz API URL:', apiUrl);

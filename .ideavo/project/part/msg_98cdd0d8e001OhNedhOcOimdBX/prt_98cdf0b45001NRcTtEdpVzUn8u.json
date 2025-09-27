@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cdf0b45001NRcTtEdpVzUn8u",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01K4x54o3BnsxZ93SQYduT5j",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2260,
+      "limit": 25
+    },
+    "output": "<file>\n02261|           if (pkg.price && pkg.price > 0) {\n02262|             // Вычисляем базовую цену упаковки (без надбавок) для отображения\n02263|             let basePkgPrice = pkg.price;\n02264|             let totalPremiums = 0;\n02265|             \n02266|             if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {\n02267|               totalPremiums = pkg.premiumDetails.reduce((sum: number, premium: any) => \n02268|                 sum + (premium.value || 0), 0);\n02269|               basePkgPrice = pkg.price - totalPremiums;\n02270|             }\n02271|             \n02272|             packagingPrice += pkg.price; // В общую сумму добавляем полную цену\n02273|             \n02274|             // Показываем базовую упаковку\n02275|             details.push({\n02276|               service: 'Упаковка груза',\n02277|               description: 'Упаковать в комплекс «обрешётка + амортизация»',\n02278|               price: basePkgPrice\n02279|             });\n02280|             \n02281|             // Показываем надбавки отдельно (для детализации, но не добавляем к общей сумме)\n02282|             if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {\n02283|               pkg.premiumDetails.forEach((premium: any) => {\n02284|                 if (premium.value && premium.value > 0) {\n02285|                   details.push({\n\n(File has more lines. Use 'offset' parameter to read beyond line 2285)\n</file>",
+    "metadata": {
+      "preview": "          if (pkg.price && pkg.price > 0) {\n            // Вычисляем базовую цену упаковки (без надбавок) для отображения\n            let basePkgPrice = pkg.price;\n            let totalPremiums = 0;\n            \n            if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {\n              totalPremiums = pkg.premiumDetails.reduce((sum: number, premium: any) => \n                sum + (premium.value || 0), 0);\n              basePkgPrice = pkg.price - totalPremiums;\n            }\n            \n            packagingPrice += pkg.price; // В общую сумму добавляем полную цену\n            \n            // Показываем базовую упаковку\n            details.push({\n              service: 'Упаковка груза',\n              description: 'Упаковать в комплекс «обрешётка + амортизация»',\n              price: basePkgPrice\n            });\n            "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759005052374,
+      "end": 1759005052376
+    }
+  }
+}

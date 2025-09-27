@@ -1,0 +1,21 @@
+{
+  "id": "prt_98ce83b7e001Lx2OHQVrdileGp",
+  "messageID": "msg_98ce7db460019QtBllz4I5WGml",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Pnqw6nafDxLZPpfYXmhKsA",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz/route.ts",
+      "oldString": "    // Строим URL для API Vozovoz с токеном\n    const apiUrl = `https://vozovoz.org/api/?token=${VOZOVOZ_TOKEN}`;",
+      "newString": "    // Строим URL для API Vozovoz с токеном\n    const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;"
+    },
+    "error": "Error: You must read the file /home/user/project/app/api/vozovoz/route.ts before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1759005656173,
+      "end": 1759005656175
+    }
+  }
+}

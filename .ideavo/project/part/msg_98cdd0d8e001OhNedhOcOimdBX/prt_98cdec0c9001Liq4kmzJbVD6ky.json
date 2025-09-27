@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cdec0c9001Liq4kmzJbVD6ky",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01D7ybD8jy9UmUcHRrsLEuJ5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz/route.ts",
+      "oldString": "// Токен Возовоз API\nconst VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';",
+      "newString": "// Токен Возовоз API (демо токен для тестирования)\nconst VOZOVOZ_TOKEN = 'demo';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/vozovoz/route.ts\n===================================================================\n--- /home/user/project/app/api/vozovoz/route.ts\n+++ /home/user/project/app/api/vozovoz/route.ts\n@@ -1,8 +1,8 @@\n import { NextRequest, NextResponse } from 'next/server';\n \n-// Токен Возовоз API\n-const VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n+// Токен Возовоз API (демо токен для тестирования)\n+const VOZOVOZ_TOKEN = 'demo';\n \n export async function POST(request: NextRequest) {\n   try {\n     const body = await request.json();\n"
+    },
+    "title": "app/api/vozovoz/route.ts",
+    "time": {
+      "start": 1759005034478,
+      "end": 1759005034482
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cde06e90015XLzWnFBpNG9Cp",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01SywygoqpgxMD2yYYLSqiXH",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "const COMPANIES = [\n  { name: 'Деловые Линии', logo: '📦', connected: true },\n  { name: 'ПЭК', logo: '🚛', connected: true },\n  { name: 'Nord Wheel', logo: '🌐', connected: true },\n  { name: 'Rail Continent', logo: '🚂', connected: true },\n  { name: 'Возовоз', logo: '🚚', connected: true }\n];",
+      "newString": "const INITIAL_COMPANIES = [\n  { name: 'Деловые Линии', logo: '📦', connected: 'checking' as 'checking' | 'connected' | 'error' },\n  { name: 'ПЭК', logo: '🚛', connected: 'checking' as 'checking' | 'connected' | 'error' },\n  { name: 'Nord Wheel', logo: '🌐', connected: 'checking' as 'checking' | 'connected' | 'error' },\n  { name: 'Rail Continent', logo: '🚂', connected: 'checking' as 'checking' | 'connected' | 'error' },\n  { name: 'Возовоз', logo: '🚚', connected: 'checking' as 'checking' | 'connected' | 'error' }\n];"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -60,14 +60,14 @@\n     house?: string;\n   };\n }\n \n-const COMPANIES = [\n-  { name: 'Деловые Линии', logo: '📦', connected: true },\n-  { name: 'ПЭК', logo: '🚛', connected: true },\n-  { name: 'Nord Wheel', logo: '🌐', connected: true },\n-  { name: 'Rail Continent', logo: '🚂', connected: true },\n-  { name: 'Возовоз', logo: '🚚', connected: true }\n+const INITIAL_COMPANIES = [\n+  { name: 'Деловые Линии', logo: '📦', connected: 'checking' as 'checking' | 'connected' | 'error' },\n+  { name: 'ПЭК', logo: '🚛', connected: 'checking' as 'checking' | 'connected' | 'error' },\n+  { name: 'Nord Wheel', logo: '🌐', connected: 'checking' as 'checking' | 'connected' | 'error' },\n+  { name: 'Rail Continent', logo: '🚂', connected: 'checking' as 'checking' | 'connected' | 'error' },\n+  { name: 'Возовоз', logo: '🚚', connected: 'checking' as 'checking' | 'connected' | 'error' }\n ];\n \n export default function Home() {\n   // Начальное состояние формы\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004988461,
+      "end": 1759004988474
+    }
+  }
+}

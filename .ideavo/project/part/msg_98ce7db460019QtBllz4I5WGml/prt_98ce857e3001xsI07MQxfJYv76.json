@@ -1,0 +1,26 @@
+{
+  "id": "prt_98ce857e3001xsI07MQxfJYv76",
+  "messageID": "msg_98ce7db460019QtBllz4I5WGml",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_0122yAwYM7vNzJLVWjvtR4xa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz/route.ts",
+      "oldString": "    // Строим URL для API Vozovoz с токеном\n    const apiUrl = `https://vozovoz.org/api/?token=${VOZOVOZ_TOKEN}`;",
+      "newString": "    // Строим URL для API Vozovoz с токеном\n    const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/vozovoz/route.ts\n===================================================================\n--- /home/user/project/app/api/vozovoz/route.ts\n+++ /home/user/project/app/api/vozovoz/route.ts\n@@ -7,9 +7,9 @@\n try {\n   const body = await request.json();\n   \n   // Строим URL для API Vozovoz с токеном\n-  const apiUrl = `https://vozovoz.org/api/?token=${VOZOVOZ_TOKEN}`;\n+  const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;\n \n   console.log('🚚 Vozovoz API запрос:', JSON.stringify(body, null, 2));\n   console.log('🚚 Vozovoz API URL:', apiUrl);\n \n"
+    },
+    "title": "app/api/vozovoz/route.ts",
+    "time": {
+      "start": 1759005662749,
+      "end": 1759005662757
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cdf30a2001xJ43ADd1ZFcbdV",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_016RV27D1PRtkV19ZnjsHTHJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        {/* Кнопка диагностики */}\n        <div className=\"flex justify-between items-center mb-4\">\n          <div className=\"flex-1\">\n            <Alert className=\"border-blue-500 bg-blue-900/20\">\n              <Building2 className=\"h-4 w-4 text-blue-400\" />\n              <AlertDescription className=\"text-blue-100\">\n                <strong className=\"text-blue-300\">🚚 Калькулятор доставки готов!</strong> Добавлены ТК: ПЭК, Деловые Линии, Rail Continent, Возовоз\n              </AlertDescription>\n            </Alert>\n          </div>\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"ml-4 border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Диагностика\n          </Button>\n        </div>",
+      "newString": "        {/* Кнопка диагностики */}\n        <div className=\"flex justify-end items-center mb-4\">\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Диагностика\n          </Button>\n        </div>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2414,21 +2414,13 @@\n   Междугородняя доставка Лавсит\n </h1>\n \n {/* Кнопка диагностики */}\n-<div className=\"flex justify-between items-center mb-4\">\n-  <div className=\"flex-1\">\n-    <Alert className=\"border-blue-500 bg-blue-900/20\">\n-      <Building2 className=\"h-4 w-4 text-blue-400\" />\n-      <AlertDescription className=\"text-blue-100\">\n-        <strong className=\"text-blue-300\">🚚 Калькулятор доставки готов!</strong> Добавлены ТК: ПЭК, Деловые Линии, Rail Continent, Возовоз\n-      </AlertDescription>\n-    </Alert>\n-  </div>\n+<div className=\"flex justify-end items-center mb-4\">\n   <Button \n     onClick={() => window.open('/diagnostic', '_blank')}\n     variant=\"outline\" \n-    className=\"ml-4 border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n+    className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n   >\n     <Settings className=\"h-4 w-4 mr-2\" />\n     Диагностика\n   </Button>\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759005064943,
+      "end": 1759005064957
+    }
+  }
+}

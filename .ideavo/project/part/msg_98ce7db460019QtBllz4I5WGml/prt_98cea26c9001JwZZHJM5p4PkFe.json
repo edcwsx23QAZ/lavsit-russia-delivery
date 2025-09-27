@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cea26c9001JwZZHJM5p4PkFe",
+  "messageID": "msg_98ce7db460019QtBllz4I5WGml",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XjuM1VqCkf6yVBNExhCisn",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2730,
+      "limit": 20
+    },
+    "output": "<file>\n02731|               </CardContent>\n02732|             </Card>\n02733|           </div>\n02734| \n02735|           {/* Правая часть - результаты */}\n02736|           <div className=\"space-y-3 overflow-y-auto\">\n02737|             {calculations.length > 0 && (\n02738|               <div className=\"space-y-3\">\n02739|                 <div className=\"flex justify-between items-center\">\n02740|                   <h2 className=\"text-xl font-bold text-blue-400\">Результаты расчета</h2>\n02741|                   <Button onClick={exportToPDF} variant=\"outline\" size=\"sm\" className=\"h-7 text-xs\">\n02742|                     Сохранить в PDF\n02743|                   </Button>\n02744|                 </div>\n02745|                 \n02746|                 {calculations.map((calc, index) => (\n02747|                   <Card key={index} className=\"bg-gray-800 border-gray-700\">\n02748|                     <CardHeader className=\"pb-2\">\n02749|                       <div className=\"flex justify-between items-center\">\n02750|                         <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 2750)\n</file>",
+    "metadata": {
+      "preview": "              </CardContent>\n            </Card>\n          </div>\n\n          {/* Правая часть - результаты */}\n          <div className=\"space-y-3 overflow-y-auto\">\n            {calculations.length > 0 && (\n              <div className=\"space-y-3\">\n                <div className=\"flex justify-between items-center\">\n                  <h2 className=\"text-xl font-bold text-blue-400\">Результаты расчета</h2>\n                  <Button onClick={exportToPDF} variant=\"outline\" size=\"sm\" className=\"h-7 text-xs\">\n                    Сохранить в PDF\n                  </Button>\n                </div>\n                \n                {calculations.map((calc, index) => (\n                  <Card key={index} className=\"bg-gray-800 border-gray-700\">\n                    <CardHeader className=\"pb-2\">\n                      <div className=\"flex justify-between items-center\">\n                        <CardTitle className=\"text-white flex items-center gap-2 text-sm\">"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759005780403,
+      "end": 1759005780405
+    }
+  }
+}

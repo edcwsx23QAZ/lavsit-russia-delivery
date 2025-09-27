@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cdf5904001eg26Omuh3Zzaez",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011RqkXoiNwFF3MzBvUnKzQj",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2170,
+      "limit": 30
+    },
+    "output": "<file>\n02171|   const exportToPDF = () => {\n02172|     if (typeof window !== 'undefined') {\n02173|       window.print();\n02174|     }\n02175|   };\n02176| \n02177|   const toggleDetails = (company: string) => {\n02178|     setExpandedDetails(prev => ({\n02179|       ...prev,\n02180|       [company]: !prev[company]\n02181|     }));\n02182|   };\n02183| \n02184|   const toggleDebugInfo = (company: string) => {\n02185|     setExpandedDebugInfo(prev => ({\n02186|       ...prev,\n02187|       [company]: !prev[company]\n02188|     }));\n02189|   };\n02190| \n02191|   // Сброс формы и результатов расчета\n02192|   const handleReset = () => {\n02193|     if (typeof window !== 'undefined') {\n02194|       // Очищаем localStorage\n02195|       localStorage.removeItem('deliveryForm');\n02196|       \n02197|       // Сбрасываем состояние формы к начальному\n02198|       setForm(initialFormState);\n02199|       \n02200|       // Очищаем результаты расчетов и состояния\n\n(File has more lines. Use 'offset' parameter to read beyond line 2200)\n</file>",
+    "metadata": {
+      "preview": "  const exportToPDF = () => {\n    if (typeof window !== 'undefined') {\n      window.print();\n    }\n  };\n\n  const toggleDetails = (company: string) => {\n    setExpandedDetails(prev => ({\n      ...prev,\n      [company]: !prev[company]\n    }));\n  };\n\n  const toggleDebugInfo = (company: string) => {\n    setExpandedDebugInfo(prev => ({\n      ...prev,\n      [company]: !prev[company]\n    }));\n  };\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759005072330,
+      "end": 1759005072333
+    }
+  }
+}

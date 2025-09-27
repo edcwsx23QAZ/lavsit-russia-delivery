@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cddaee70018yjy0C1Du4QjAI",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_015BDACMevHjeqwehABurZDo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2570,
+      "limit": 50
+    },
+    "output": "<file>\n02571|                 <div className=\"flex justify-between items-center\">\n02572|                   <h2 className=\"text-xl font-bold text-blue-400\">Результаты расчета</h2>\n02573|                   <Button onClick={exportToPDF} variant=\"outline\" size=\"sm\" className=\"h-7 text-xs\">\n02574|                     Сохранить в PDF\n02575|                   </Button>\n02576|                 </div>\n02577|                 \n02578|                 {calculations.map((calc, index) => (\n02579|                   <Card key={index} className=\"bg-gray-800 border-gray-700\">\n02580|                     <CardHeader className=\"pb-2\">\n02581|                       <div className=\"flex justify-between items-center\">\n02582|                         <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n02583|                           <Building2 className=\"h-4 w-4\" />\n02584|                           {calc.company}\n02585|                         </CardTitle>\n02586|                         {calc.error ? (\n02587|                           <Badge variant=\"destructive\" className=\"text-xs\">Ошибка</Badge>\n02588|                         ) : (\n02589|                           <Badge variant=\"default\" className=\"bg-green-600 text-xs\">\n02590|                             {calc.price.toLocaleString()} ₽\n02591|                           </Badge>\n02592|                         )}\n02593|                       </div>\n02594|                     </CardHeader>\n02595|                     <CardContent className=\"pt-0\">\n02596|                       <div className=\"space-y-2\">\n02597|                         {calc.error ? (\n02598|                           <div className=\"space-y-2\">\n02599|                             <Alert className=\"border-red-600\">\n02600|                               <AlertDescription className=\"text-white text-xs\">{calc.error}</AlertDescription>\n02601|                             </Alert>\n02602|                             {calc.price > 0 && (\n02603|                               <>\n02604|                                 <p className=\"text-white text-xs\"><strong>Примерная стоимость:</strong> {calc.price.toLocaleString()} ₽</p>\n02605|                                 <p className=\"text-white text-xs\"><strong>Примерный срок:</strong> {calc.days} дней</p>\n02606|                               </>\n02607|                             )}\n02608|                           </div>\n02609|                         ) : (\n02610|                           <>\n02611|                             <p className=\"text-white text-xs\"><strong>Стоимость:</strong> {calc.price.toLocaleString()} ₽</p>\n02612|                             <p className=\"text-white text-xs\"><strong>Срок доставки:</strong> {calc.days} дней</p>\n02613|                           </>\n02614|                         )}\n02615|                         \n02616|                         <div className=\"flex gap-2 mt-2\">\n02617|                           {!calc.error && (\n02618|                             <Button\n02619|                               variant=\"outline\"\n02620|                               size=\"sm\"\n\n(File has more lines. Use 'offset' parameter to read beyond line 2620)\n</file>",
+    "metadata": {
+      "preview": "                <div className=\"flex justify-between items-center\">\n                  <h2 className=\"text-xl font-bold text-blue-400\">Результаты расчета</h2>\n                  <Button onClick={exportToPDF} variant=\"outline\" size=\"sm\" className=\"h-7 text-xs\">\n                    Сохранить в PDF\n                  </Button>\n                </div>\n                \n                {calculations.map((calc, index) => (\n                  <Card key={index} className=\"bg-gray-800 border-gray-700\">\n                    <CardHeader className=\"pb-2\">\n                      <div className=\"flex justify-between items-center\">\n                        <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n                          <Building2 className=\"h-4 w-4\" />\n                          {calc.company}\n                        </CardTitle>\n                        {calc.error ? (\n                          <Badge variant=\"destructive\" className=\"text-xs\">Ошибка</Badge>\n                        ) : (\n                          <Badge variant=\"default\" className=\"bg-green-600 text-xs\">\n                            {calc.price.toLocaleString()} ₽"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004963288,
+      "end": 1759004963292
+    }
+  }
+}

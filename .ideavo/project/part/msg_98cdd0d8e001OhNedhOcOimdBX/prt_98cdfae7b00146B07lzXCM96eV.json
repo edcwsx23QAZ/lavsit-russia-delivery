@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cdfae7b00146B07lzXCM96eV",
+  "messageID": "msg_98cdd0d8e001OhNedhOcOimdBX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_018Yqkj4Vh8cVyMNWVx16uSs",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/globals.css",
+      "oldString": "@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}",
+      "newString": "@layer base {\n  * {\n    @apply border-border;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}\n\n/* Стили для печати */\n@media print {\n  body {\n    background: white !important;\n    color: black !important;\n  }\n  \n  * {\n    color: black !important;\n    background: white !important;\n    border-color: #ccc !important;\n  }\n  \n  .print\\\\:hidden {\n    display: none !important;\n  }\n  \n  h1, h2, h3, h4, h5, h6 {\n    color: black !important;\n  }\n  \n  .text-white, .text-blue-400, .text-blue-300, .text-gray-400 {\n    color: black !important;\n  }\n  \n  .bg-gray-800, .bg-gray-900, .bg-blue-900 {\n    background: white !important;\n    border: 1px solid #ccc !important;\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/globals.css\n===================================================================\n--- /home/user/project/app/globals.css\n+++ /home/user/project/app/globals.css\n@@ -79,4 +79,35 @@\n   body {\n     @apply bg-background text-foreground;\n   }\n }\n+\n+/* Стили для печати */\n+@media print {\n+  body {\n+    background: white !important;\n+    color: black !important;\n+  }\n+  \n+  * {\n+    color: black !important;\n+    background: white !important;\n+    border-color: #ccc !important;\n+  }\n+  \n+  .print\\\\:hidden {\n+    display: none !important;\n+  }\n+  \n+  h1, h2, h3, h4, h5, h6 {\n+    color: black !important;\n+  }\n+  \n+  .text-white, .text-blue-400, .text-blue-300, .text-gray-400 {\n+    color: black !important;\n+  }\n+  \n+  .bg-gray-800, .bg-gray-900, .bg-blue-900 {\n+    background: white !important;\n+    border: 1px solid #ccc !important;\n+  }\n+}\n"
+    },
+    "title": "app/globals.css",
+    "time": {
+      "start": 1759005098136,
+      "end": 1759005098139
+    }
+  }
+}
