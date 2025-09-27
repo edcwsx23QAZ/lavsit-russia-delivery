@@ -214,9 +214,14 @@ export default function Home() {
           const response = await fetch('/api/pek', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(testData)
+            body: JSON.stringify({ method: 'test' })
           });
-          return await response.json();
+          const data = await response.json();
+          if (data.status === 'OK') {
+            return { success: true };
+          } else {
+            return { error: true };
+          }
         } catch (error) {
           return { error: true };
         }
@@ -224,12 +229,23 @@ export default function Home() {
       
       checkAPIStatus('dellin', async () => {
         try {
-          const response = await fetch('/api/dellin-packages', {
+          // Тестируем получение sessionID для Деловых Линий
+          const authResponse = await fetch('https://api.dellin.ru/v2/customers/login.json', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(testData)
+            body: JSON.stringify({
+              appkey: 'demo',
+              login: 'demo',
+              password: 'demo'
+            })
           });
-          return await response.json();
+          const authData = await authResponse.json();
+          
+          if (authData && authData.data && authData.data.sessionID) {
+            return { success: true };
+          } else {
+            return { error: true };
+          }
         } catch (error) {
           return { error: true };
         }

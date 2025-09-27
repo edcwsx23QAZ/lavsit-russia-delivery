@@ -1,0 +1,85 @@
+{
+  "id": "prt_98d02beb8001e7AFmOgUkdrwx4",
+  "messageID": "msg_98d0240cd0018KglEDzM26KQlK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_015PnBMjMQ5URSWamhjsFLwe",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Проверить статус API ПЭК и найти причину ошибки подключения",
+          "status": "completed",
+          "priority": "high",
+          "id": "check-pek-status"
+        },
+        {
+          "content": "Проверить статус API Деловых Линий и найти причину ошибки подключения",
+          "status": "completed",
+          "priority": "high",
+          "id": "check-dellin-status"
+        },
+        {
+          "content": "Сравнить логику проверки статуса с логикой расчета для обеих компаний",
+          "status": "in_progress",
+          "priority": "medium",
+          "id": "compare-status-vs-calculation"
+        },
+        {
+          "content": "Исправить проверку статуса ПЭК: состояние API ключей",
+          "status": "pending",
+          "priority": "high",
+          "id": "fix-pek-status-check"
+        },
+        {
+          "content": "Исправить проверку статуса Деловых Линий: неправильный endpoint",
+          "status": "pending",
+          "priority": "high",
+          "id": "fix-dellin-status-check"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Проверить статус API ПЭК и найти причину ошибки подключения\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"check-pek-status\"\n  },\n  {\n    \"content\": \"Проверить статус API Деловых Линий и найти причину ошибки подключения\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"check-dellin-status\"\n  },\n  {\n    \"content\": \"Сравнить логику проверки статуса с логикой расчета для обеих компаний\",\n    \"status\": \"in_progress\",\n    \"priority\": \"medium\",\n    \"id\": \"compare-status-vs-calculation\"\n  },\n  {\n    \"content\": \"Исправить проверку статуса ПЭК: состояние API ключей\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"fix-pek-status-check\"\n  },\n  {\n    \"content\": \"Исправить проверку статуса Деловых Линий: неправильный endpoint\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"fix-dellin-status-check\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Проверить статус API ПЭК и найти причину ошибки подключения",
+          "status": "completed",
+          "priority": "high",
+          "id": "check-pek-status"
+        },
+        {
+          "content": "Проверить статус API Деловых Линий и найти причину ошибки подключения",
+          "status": "completed",
+          "priority": "high",
+          "id": "check-dellin-status"
+        },
+        {
+          "content": "Сравнить логику проверки статуса с логикой расчета для обеих компаний",
+          "status": "in_progress",
+          "priority": "medium",
+          "id": "compare-status-vs-calculation"
+        },
+        {
+          "content": "Исправить проверку статуса ПЭК: состояние API ключей",
+          "status": "pending",
+          "priority": "high",
+          "id": "fix-pek-status-check"
+        },
+        {
+          "content": "Исправить проверку статуса Деловых Линий: неправильный endpoint",
+          "status": "pending",
+          "priority": "high",
+          "id": "fix-dellin-status-check"
+        }
+      ]
+    },
+    "title": "3 todos",
+    "time": {
+      "start": 1759007406443,
+      "end": 1759007406444
+    }
+  }
+}

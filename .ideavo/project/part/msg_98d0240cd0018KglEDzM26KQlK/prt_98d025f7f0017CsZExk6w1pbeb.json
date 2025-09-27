@@ -1,0 +1,61 @@
+{
+  "id": "prt_98d025f7f0017CsZExk6w1pbeb",
+  "messageID": "msg_98d0240cd0018KglEDzM26KQlK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01EeXfjZiPTM7tK9vYfvaQTN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Проверить статус API ПЭК и найти причину ошибки подключения",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "check-pek-status"
+        },
+        {
+          "content": "Проверить статус API Деловых Линий и найти причину ошибки подключения",
+          "status": "pending",
+          "priority": "high",
+          "id": "check-dellin-status"
+        },
+        {
+          "content": "Сравнить логику проверки статуса с логикой расчета для обеих компаний",
+          "status": "pending",
+          "priority": "medium",
+          "id": "compare-status-vs-calculation"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Проверить статус API ПЭК и найти причину ошибки подключения\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"check-pek-status\"\n  },\n  {\n    \"content\": \"Проверить статус API Деловых Линий и найти причину ошибки подключения\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"check-dellin-status\"\n  },\n  {\n    \"content\": \"Сравнить логику проверки статуса с логикой расчета для обеих компаний\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"compare-status-vs-calculation\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Проверить статус API ПЭК и найти причину ошибки подключения",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "check-pek-status"
+        },
+        {
+          "content": "Проверить статус API Деловых Линий и найти причину ошибки подключения",
+          "status": "pending",
+          "priority": "high",
+          "id": "check-dellin-status"
+        },
+        {
+          "content": "Сравнить логику проверки статуса с логикой расчета для обеих компаний",
+          "status": "pending",
+          "priority": "medium",
+          "id": "compare-status-vs-calculation"
+        }
+      ]
+    },
+    "title": "3 todos",
+    "time": {
+      "start": 1759007373121,
+      "end": 1759007373121
+    }
+  }
+}

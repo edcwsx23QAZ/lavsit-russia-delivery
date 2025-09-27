@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d028efd001tfxIfERgOJzoXz",
+  "messageID": "msg_98d0240cd0018KglEDzM26KQlK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01CKCibgtJQLEXVAQPMjSnmA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "checkAPIStatus.*pek",
+      "path": "/home/user/project/app"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 212:       checkAPIStatus('pek', async () => {",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "checkAPIStatus.*pek",
+    "time": {
+      "start": 1759007379827,
+      "end": 1759007379838
+    }
+  }
+}

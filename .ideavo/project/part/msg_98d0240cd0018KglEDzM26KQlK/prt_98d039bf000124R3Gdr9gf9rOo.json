@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d039bf000124R3Gdr9gf9rOo",
+  "messageID": "msg_98d0240cd0018KglEDzM26KQlK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_014KGypHuR9xZG9fZEKxdypJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      checkAPIStatus('dellin', async () => {\n        try {\n          const response = await fetch('/api/dellin-packages', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify(testData)\n          });\n          return await response.json();\n        } catch (error) {\n          return { error: true };\n        }\n      }),",
+      "newString": "      checkAPIStatus('dellin', async () => {\n        try {\n          // Тестируем получение sessionID для Деловых Линий\n          const authResponse = await fetch('https://api.dellin.ru/v2/customers/login.json', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({\n              appkey: 'demo',\n              login: 'demo',\n              password: 'demo'\n            })\n          });\n          const authData = await authResponse.json();\n          \n          if (authData && authData.data && authData.data.sessionID) {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      }),"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -228,14 +228,25 @@\n }),\n \n checkAPIStatus('dellin', async () => {\n   try {\n-    const response = await fetch('/api/dellin-packages', {\n+    // Тестируем получение sessionID для Деловых Линий\n+    const authResponse = await fetch('https://api.dellin.ru/v2/customers/login.json', {\n       method: 'POST',\n       headers: { 'Content-Type': 'application/json' },\n-      body: JSON.stringify(testData)\n+      body: JSON.stringify({\n+        appkey: 'demo',\n+        login: 'demo',\n+        password: 'demo'\n+      })\n     });\n-    return await response.json();\n+    const authData = await authResponse.json();\n+    \n+    if (authData && authData.data && authData.data.sessionID) {\n+      return { success: true };\n+    } else {\n+      return { error: true };\n+    }\n   } catch (error) {\n     return { error: true };\n   }\n }),\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759007453232,
+      "end": 1759007453248
+    }
+  }
+}

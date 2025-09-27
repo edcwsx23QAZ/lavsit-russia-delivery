@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d0298e6002561WeV56FKyUko",
+  "messageID": "msg_98d0240cd0018KglEDzM26KQlK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0113rgaK7KmYF42roffokLGo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 210,
+      "limit": 20
+    },
+    "output": "<file>\n00211|     Promise.all([\n00212|       checkAPIStatus('pek', async () => {\n00213|         try {\n00214|           const response = await fetch('/api/pek', {\n00215|             method: 'POST',\n00216|             headers: { 'Content-Type': 'application/json' },\n00217|             body: JSON.stringify(testData)\n00218|           });\n00219|           return await response.json();\n00220|         } catch (error) {\n00221|           return { error: true };\n00222|         }\n00223|       }),\n00224|       \n00225|       checkAPIStatus('dellin', async () => {\n00226|         try {\n00227|           const response = await fetch('/api/dellin-packages', {\n00228|             method: 'POST',\n00229|             headers: { 'Content-Type': 'application/json' },\n00230|             body: JSON.stringify(testData)\n\n(File has more lines. Use 'offset' parameter to read beyond line 230)\n</file>",
+    "metadata": {
+      "preview": "    Promise.all([\n      checkAPIStatus('pek', async () => {\n        try {\n          const response = await fetch('/api/pek', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify(testData)\n          });\n          return await response.json();\n        } catch (error) {\n          return { error: true };\n        }\n      }),\n      \n      checkAPIStatus('dellin', async () => {\n        try {\n          const response = await fetch('/api/dellin-packages', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify(testData)"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759007382316,
+      "end": 1759007382319
+    }
+  }
+}
