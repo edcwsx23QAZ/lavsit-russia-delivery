@@ -1662,7 +1662,7 @@ export default function Home() {
 
 
   const calculateRailContinent = async (): Promise<CalculationResult> => {
-    const apiUrl = 'http://railcontinent.ru/ajax/api.php';
+    const apiUrl = '/api/rail-continent';
     
     try {
       // Вычисляем основные параметры груза
@@ -1677,64 +1677,125 @@ export default function Home() {
       const maxHeight = Math.max(...form.cargos.map(c => c.height));
       
       // Параметры для API Rail Continent
-      const params = new URLSearchParams({
+      const requestData = {
         city_sender: form.fromCity || 'Москва',
         city_receiver: form.toCity || 'Санкт-Петербург',
-        weight: totalWeight.toString(),
-        volume: totalVolume.toString(),
-        length: (maxLength / 100).toString(), // переводим см в метры
-        width: (maxWidth / 100).toString(),
-        height: (maxHeight / 100).toString(),
-        declared_cost: form.declaredValue.toString(),
+        weight: totalWeight,
+        volume: totalVolume,
+        length: maxLength / 100, // переводим см в метры
+        width: maxWidth / 100,
+        height: maxHeight / 100,
+        declared_cost: form.declaredValue,
         pickup: form.fromAddressDelivery ? '1' : '0',
         delivery: form.toAddressDelivery ? '1' : '0',
         packaging: form.needPackaging ? '1' : '0',
         insurance: form.needInsurance ? '1' : '0',
         tariff: 'auto' // Автоматический выбор оптимального тарифа
-      });
+      };
 
-      const requestData = Object.fromEntries(params);
-      const fullUrl = `${apiUrl}?${params.toString()}`;
+      console.log('🚂 Rail Continent запрос:', requestData);
 
-      const response = await fetch(fullUrl, {
-        method: 'GET',
+      const response = await fetch(apiUrl, {
+        method: 'POST',
         headers: {
-          'Accept': 'application/json',
-        }
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData)
       });
 
       const data = await response.json();
+      console.log('🚂 Rail Continent ответ:', data);
 
-      if (response.ok && data.success) {
-        // Если есть несколько тарифов, выбираем самый дешевый
-        let selectedTariff = data.tariffs?.[0];
-        if (data.tariffs && data.tariffs.length > 1) {
-          selectedTariff = data.tariffs.reduce((cheapest: any, current: any) => 
-            current.cost < cheapest.cost ? current : cheapest
-          );
-        }
+      if (response.ok && data.result === 'success' && data.data) {
+        // Выбираем автомобильный тариф как основной (самый быстрый)
+        const autoTariff = data.data.auto;
+        
+        if (autoTariff) {
+          // Собираем детали по услугам
+          const services = [];
+          
+          // Основная стоимость
+          if (autoTariff.price_with_out_sale) {
+            services.push({
+              name: 'Транспортировка',
+              description: `${autoTariff.type} (${autoTariff.rsType})`,
+              price: autoTariff.price_with_out_sale
+            });
+          }
+          
+          // Терминальные сборы
+          if (autoTariff.terminalEnter1) {
+            services.push({
+              name: 'Терминальный сбор отправления',
+              description: 'Обработка груза на терминале',
+              price: parseInt(autoTariff.terminalEnter1)
+            });
+          }
+          
+          // Упаковка
+          if (form.needPackaging && autoTariff.pricePackage) {
+            services.push({
+              name: 'Упаковка груза',
+              description: 'Профессиональная упаковка',
+              price: parseInt(autoTariff.pricePackage)
+            });
+          }
+          
+          // Забор/доставка
+          if (form.fromAddressDelivery && autoTariff.pricePickup && parseInt(autoTariff.pricePickup) > 0) {
+            services.push({
+              name: 'Забор груза',
+              description: 'От адреса отправителя',
+              price: parseInt(autoTariff.pricePickup)
+            });
+          }
+          
+          if (form.toAddressDelivery && autoTariff.priceDelivery && parseInt(autoTariff.priceDelivery) > 0) {
+            services.push({
+              name: 'Доставка груза',
+              description: 'До адреса получателя',
+              price: parseInt(autoTariff.priceDelivery)
+            });
+          }
+          
+          // Страхование
+          if (form.needInsurance && autoTariff.priceInsurance) {
+            const insuranceCost = Math.round(form.declaredValue * parseFloat(autoTariff.priceInsurance) / 100);
+            services.push({
+              name: 'Страхование груза',
+              description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
+              price: insuranceCost
+            });
+          }
 
-        return {
-          company: 'Rail Continent',
-          price: Math.round(selectedTariff?.cost || data.cost || 0),
-          days: selectedTariff?.days || data.days || 5,
-          details: {
-            tariff: selectedTariff?.name || data.tariff_name || 'Автоматический',
-            weight: totalWeight,
-            volume: totalVolume,
-            route: `${form.fromCity} - ${form.toCity}`,
-            services: {
-              pickup: form.fromAddressDelivery,
-              delivery: form.toAddressDelivery,
-              packaging: form.needPackaging,
-              insurance: form.needInsurance
+          return {
+            company: 'Rail Continent',
+            price: Math.round(autoTariff.priceTotal || autoTariff.price || 0),
+            days: parseInt(autoTariff.duration) || 5,
+            details: {
+              tariff: `${autoTariff.type} - ${autoTariff.service}`,
+              transportType: autoTariff.rsType,
+              weight: totalWeight,
+              volume: totalVolume,
+              route: `${form.fromCity} - ${form.toCity}`,
+              services,
+              allTariffs: data.data
             },
-            allTariffs: data.tariffs || []
-          },
-          requestData,
-          responseData: data,
-          apiUrl: fullUrl
-        };
+            requestData,
+            responseData: data,
+            apiUrl
+          };
+        } else {
+          return {
+            company: 'Rail Continent',
+            price: 0,
+            days: 0,
+            error: 'Автомобильный тариф недоступен для данного маршрута',
+            requestData,
+            responseData: data,
+            apiUrl
+          };
+        }
       } else {
         return {
           company: 'Rail Continent',
@@ -1743,10 +1804,11 @@ export default function Home() {
           error: data.error || 'Ошибка расчета Rail Continent',
           requestData,
           responseData: data,
-          apiUrl: fullUrl
+          apiUrl
         };
       }
     } catch (error: any) {
+      console.error('🚂 Rail Continent ошибка:', error);
       return {
         company: 'Rail Continent',
         price: 0,

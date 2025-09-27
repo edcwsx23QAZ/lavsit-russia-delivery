@@ -1,0 +1,27 @@
+{
+  "id": "prt_98cbeab1a001VO5yef1C37H4qU",
+  "messageID": "msg_98cbe94a3001r48Tox1iKDpgo6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01LiimuCi9L5Chh6ivjEevNt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run dev",
+      "timeout": 10000,
+      "description": "Запуск dev сервера для тестирования Rail Continent API"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ✓ Ready in 1956ms\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ✓ Ready in 1956ms\n",
+      "exit": null,
+      "description": "Запуск dev сервера для тестирования Rail Continent API"
+    },
+    "title": "cd /home/user/project && npm run dev",
+    "time": {
+      "start": 1759002931191,
+      "end": 1759002941211
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cc0bebf002xKjKwDCbXtBoVL",
+  "messageID": "msg_98cbe94a3001r48Tox1iKDpgo6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01DGPuASPUU8C6QhAkttU9AH",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1710,
+      "limit": 60
+    },
+    "output": "<file>\n01711|         if (data.tariffs && data.tariffs.length > 1) {\n01712|           selectedTariff = data.tariffs.reduce((cheapest: any, current: any) => \n01713|             current.cost < cheapest.cost ? current : cheapest\n01714|           );\n01715|         }\n01716| \n01717|         return {\n01718|           company: 'Rail Continent',\n01719|           price: Math.round(selectedTariff?.cost || data.cost || 0),\n01720|           days: selectedTariff?.days || data.days || 5,\n01721|           details: {\n01722|             tariff: selectedTariff?.name || data.tariff_name || 'Автоматический',\n01723|             weight: totalWeight,\n01724|             volume: totalVolume,\n01725|             route: `${form.fromCity} - ${form.toCity}`,\n01726|             services: {\n01727|               pickup: form.fromAddressDelivery,\n01728|               delivery: form.toAddressDelivery,\n01729|               packaging: form.needPackaging,\n01730|               insurance: form.needInsurance\n01731|             },\n01732|             allTariffs: data.tariffs || []\n01733|           },\n01734|           requestData,\n01735|           responseData: data,\n01736|           apiUrl: fullUrl\n01737|         };\n01738|       } else {\n01739|         return {\n01740|           company: 'Rail Continent',\n01741|           price: 0,\n01742|           days: 0,\n01743|           error: data.error || 'Ошибка расчета Rail Continent',\n01744|           requestData,\n01745|           responseData: data,\n01746|           apiUrl: fullUrl\n01747|         };\n01748|       }\n01749|     } catch (error: any) {\n01750|       return {\n01751|         company: 'Rail Continent',\n01752|         price: 0,\n01753|         days: 0,\n01754|         error: `Ошибка соединения: ${error.message}`,\n01755|         apiUrl\n01756|       };\n01757|     }\n01758|   };\n01759| \n01760|   const handleCalculate = async () => {\n01761|     setCalculating(true);\n01762|     setCalculations([]);\n01763|     \n01764|     // Сохраняем данные формы после расчета\n01765|     localStorage.setItem('deliveryForm', JSON.stringify(form));\n01766|     \n01767|     try {\n01768|       const results = await Promise.all([\n01769|         calculateDellin(),\n01770|         calculatePEK(),\n\n(File has more lines. Use 'offset' parameter to read beyond line 1770)\n</file>",
+    "metadata": {
+      "preview": "        if (data.tariffs && data.tariffs.length > 1) {\n          selectedTariff = data.tariffs.reduce((cheapest: any, current: any) => \n            current.cost < cheapest.cost ? current : cheapest\n          );\n        }\n\n        return {\n          company: 'Rail Continent',\n          price: Math.round(selectedTariff?.cost || data.cost || 0),\n          days: selectedTariff?.days || data.days || 5,\n          details: {\n            tariff: selectedTariff?.name || data.tariff_name || 'Автоматический',\n            weight: totalWeight,\n            volume: totalVolume,\n            route: `${form.fromCity} - ${form.toCity}`,\n            services: {\n              pickup: form.fromAddressDelivery,\n              delivery: form.toAddressDelivery,\n              packaging: form.needPackaging,\n              insurance: form.needInsurance"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759003066610,
+      "end": 1759003066612
+    }
+  }
+}

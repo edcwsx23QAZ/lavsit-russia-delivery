@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cbf9ffb001dzLZ2aKGTkP30r",
+  "messageID": "msg_98cbe94a3001r48Tox1iKDpgo6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01Umw6hd1UAK9ebkFW5XqPwD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/rail-continent/route.ts",
+      "content": "import { NextRequest, NextResponse } from 'next/server';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const params = await request.json();\n    \n    // Строим URL для API Rail Continent\n    const apiUrl = new URL('https://www.railcontinent.ru/ajax/api.php');\n    \n    // Добавляем параметры в URL\n    Object.entries(params).forEach(([key, value]) => {\n      if (value !== undefined && value !== null) {\n        apiUrl.searchParams.append(key, String(value));\n      }\n    });\n\n    console.log('🚂 Rail Continent API запрос:', apiUrl.toString());\n\n    const response = await fetch(apiUrl.toString(), {\n      method: 'GET',\n      headers: {\n        'Accept': 'application/json',\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n      }\n    });\n\n    if (!response.ok) {\n      console.error('🚂 Rail Continent API ошибка:', response.status, response.statusText);\n      return NextResponse.json({\n        success: false,\n        error: `API ошибка: ${response.status} ${response.statusText}`\n      }, { status: response.status });\n    }\n\n    const data = await response.json();\n    console.log('🚂 Rail Continent API ответ:', JSON.stringify(data, null, 2));\n\n    return NextResponse.json(data);\n\n  } catch (error: any) {\n    console.error('🚂 Rail Continent API критическая ошибка:', error);\n    return NextResponse.json({\n      success: false,\n      error: error.message || 'Внутренняя ошибка сервера'\n    }, { status: 500 });\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/api/rail-continent/route.ts",
+      "exists": false
+    },
+    "title": "app/api/rail-continent/route.ts",
+    "time": {
+      "start": 1759002999189,
+      "end": 1759002999192
+    }
+  }
+}

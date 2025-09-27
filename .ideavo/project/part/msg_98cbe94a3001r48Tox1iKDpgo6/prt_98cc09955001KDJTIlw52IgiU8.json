@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cc09955001KDJTIlw52IgiU8",
+  "messageID": "msg_98cbe94a3001r48Tox1iKDpgo6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QvTadH671Q1FdmHT22DmGW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1660,
+      "limit": 50
+    },
+    "output": "<file>\n01661| \n01662| \n01663| \n01664|   const calculateRailContinent = async (): Promise<CalculationResult> => {\n01665|     const apiUrl = 'http://railcontinent.ru/ajax/api.php';\n01666|     \n01667|     try {\n01668|       // Вычисляем основные параметры груза\n01669|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n01670|       const totalVolume = form.cargos.reduce((sum, cargo) => \n01671|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n01672|       );\n01673|       \n01674|       // Находим максимальные габариты\n01675|       const maxLength = Math.max(...form.cargos.map(c => c.length));\n01676|       const maxWidth = Math.max(...form.cargos.map(c => c.width));\n01677|       const maxHeight = Math.max(...form.cargos.map(c => c.height));\n01678|       \n01679|       // Параметры для API Rail Continent\n01680|       const params = new URLSearchParams({\n01681|         city_sender: form.fromCity || 'Москва',\n01682|         city_receiver: form.toCity || 'Санкт-Петербург',\n01683|         weight: totalWeight.toString(),\n01684|         volume: totalVolume.toString(),\n01685|         length: (maxLength / 100).toString(), // переводим см в метры\n01686|         width: (maxWidth / 100).toString(),\n01687|         height: (maxHeight / 100).toString(),\n01688|         declared_cost: form.declaredValue.toString(),\n01689|         pickup: form.fromAddressDelivery ? '1' : '0',\n01690|         delivery: form.toAddressDelivery ? '1' : '0',\n01691|         packaging: form.needPackaging ? '1' : '0',\n01692|         insurance: form.needInsurance ? '1' : '0',\n01693|         tariff: 'auto' // Автоматический выбор оптимального тарифа\n01694|       });\n01695| \n01696|       const requestData = Object.fromEntries(params);\n01697|       const fullUrl = `${apiUrl}?${params.toString()}`;\n01698| \n01699|       const response = await fetch(fullUrl, {\n01700|         method: 'GET',\n01701|         headers: {\n01702|           'Accept': 'application/json',\n01703|         }\n01704|       });\n01705| \n01706|       const data = await response.json();\n01707| \n01708|       if (response.ok && data.success) {\n01709|         // Если есть несколько тарифов, выбираем самый дешевый\n01710|         let selectedTariff = data.tariffs?.[0];\n\n(File has more lines. Use 'offset' parameter to read beyond line 1710)\n</file>",
+    "metadata": {
+      "preview": "\n\n\n  const calculateRailContinent = async (): Promise<CalculationResult> => {\n    const apiUrl = 'http://railcontinent.ru/ajax/api.php';\n    \n    try {\n      // Вычисляем основные параметры груза\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n      \n      // Находим максимальные габариты\n      const maxLength = Math.max(...form.cargos.map(c => c.length));\n      const maxWidth = Math.max(...form.cargos.map(c => c.width));\n      const maxHeight = Math.max(...form.cargos.map(c => c.height));\n      \n      // Параметры для API Rail Continent\n      const params = new URLSearchParams({"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759003057384,
+      "end": 1759003057387
+    }
+  }
+}

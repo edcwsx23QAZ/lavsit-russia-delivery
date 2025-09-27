@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cbf2cb0001ojIT5wwjf5wSKR",
+  "messageID": "msg_98cbe94a3001r48Tox1iKDpgo6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_017A9yEr4z4yZxwPRip5xasa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -v \"http://railcontinent.ru/ajax/api.php?city_sender=Москва&city_receiver=Санкт-Петербург&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=10000&pickup=1&delivery=1&packaging=0&insurance=1&tariff=auto\" 2>&1",
+      "description": "Тестирование Rail Continent API напрямую"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 91.221.70.153:80...\n* Connected to railcontinent.ru (91.221.70.153) port 80 (#0)\n> GET /ajax/api.php?city_sender=Москва&city_receiver=Санкт-Петербург&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=10000&pickup=1&delivery=1&packaging=0&insurance=1&tariff=auto HTTP/1.1\r\n> Host: railcontinent.ru\r\n> User-Agent: curl/7.88.1\r\n> Accept: */*\r\n> \r\n< HTTP/1.1 301 Moved Permanently\r\n< Server: nginx\r\n< Date: Sat, 27 Sep 2025 19:56:06 GMT\r\n< Content-Type: text/html\r\n< Content-Length: 209\r\n< Connection: keep-alive\r\n< Location: https://www.railcontinent.ru/ajax/api.php?city_sender=Москва&city_receiver=Санкт-Петербург&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=10000&pickup=1&delivery=1&packaging=0&insurance=1&tariff=auto\r\n< Alt-Svc: h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400\r\n< Strict-Transport-Security: max-age=31536000\r\n< \r\n{ [209 bytes data]\n\r100   209  100   209    0     0    385      0 --:--:-- --:--:-- --:--:--   385\r100   209  100   209    0     0    385      0 --:--:-- --:--:-- --:--:--   384\n* Connection #0 to host railcontinent.ru left intact\n<html>\r\n<head><title>301 Moved Permanently</title><meta name=\"color-scheme\" content=\"light dark\"></head>\r\n<body>\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 91.221.70.153:80...\n* Connected to railcontinent.ru (91.221.70.153) port 80 (#0)\n> GET /ajax/api.php?city_sender=Москва&city_receiver=Санкт-Петербург&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=10000&pickup=1&delivery=1&packaging=0&insurance=1&tariff=auto HTTP/1.1\r\n> Host: railcontinent.ru\r\n> User-Agent: curl/7.88.1\r\n> Accept: */*\r\n> \r\n< HTTP/1.1 301 Moved Permanently\r\n< Server: nginx\r\n< Date: Sat, 27 Sep 2025 19:56:06 GMT\r\n< Content-Type: text/html\r\n< Content-Length: 209\r\n< Connection: keep-alive\r\n< Location: https://www.railcontinent.ru/ajax/api.php?city_sender=Москва&city_receiver=Санкт-Петербург&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=10000&pickup=1&delivery=1&packaging=0&insurance=1&tariff=auto\r\n< Alt-Svc: h3=\":443\"; ma=86400, h3-29=\":443\"; ma=86400\r\n< Strict-Transport-Security: max-age=31536000\r\n< \r\n{ [209 bytes data]\n\r100   209  100   209    0     0    385      0 --:--:-- --:--:-- --:--:--   385\r100   209  100   209    0     0    385      0 --:--:-- --:--:-- --:--:--   384\n* Connection #0 to host railcontinent.ru left intact\n<html>\r\n<head><title>301 Moved Permanently</title><meta name=\"color-scheme\" content=\"light dark\"></head>\r\n<body>\r\n<center><h1>301 Moved Permanently</h1></center>\r\n<hr><center>nginx</center>\r\n</body>\r\n</html>\r\n",
+      "exit": 0,
+      "description": "Тестирование Rail Continent API напрямую"
+    },
+    "title": "curl -v \"http://railcontinent.ru/ajax/api.php?city_sender=Москва&city_receiver=Санкт-Петербург&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=10000&pickup=1&delivery=1&packaging=0&insurance=1&tariff=auto\" 2>&1",
+    "time": {
+      "start": 1759002965687,
+      "end": 1759002966246
+    }
+  }
+}
