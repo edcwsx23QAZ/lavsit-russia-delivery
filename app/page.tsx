@@ -301,9 +301,17 @@ export default function Home() {
         }
       }),
       
-      // Nord Wheel пока без API - устанавливаем как недоступно
       checkAPIStatus('nordwheel', async () => {
-        return { error: true, message: 'API в разработке' };
+        try {
+          const response = await fetch('/api/nord-wheel', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(testData)
+          });
+          return await response.json();
+        } catch (error) {
+          return { error: true };
+        }
       })
     ]).finally(() => {
       // Восстанавливаем исходное состояние формы
@@ -999,77 +1007,7 @@ export default function Home() {
     }
   };
 
-  // Расчет для Nord Wheel
-  const calculateNordWheel = async (): Promise<CalculationResult> => {
-    const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';
-    
-    try {
-      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
-      const totalVolume = form.cargos.reduce((sum, cargo) => 
-        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
-      );
 
-      const params = new URLSearchParams({
-        from: '91', // Москва (нужно будет получать ID города)
-        to: '92', // СПб (нужно будет получать ID города)
-        pickup: form.fromAddressDelivery ? '1' : '0',
-        deliver: form.toAddressDelivery ? '1' : '0',
-        weight: totalWeight.toString(),
-        volume: totalVolume.toString(),
-        oversized: '0',
-        package: form.needPackaging ? '1' : '0',
-        packageCount: form.cargos.length.toString(),
-        insurance: form.needInsurance ? '1' : '0',
-        sum: form.declaredValue.toString(),
-        documentsReturn: '0',
-        fragile: '1'
-      });
-
-      const requestData = Object.fromEntries(params);
-      const fullUrl = `${apiUrl}?${params.toString()}`;
-
-      const response = await fetch(fullUrl);
-      const data = await response.json();
-
-      if (response.ok && data.status === 'success' && data.data) {
-        return {
-          company: 'Nord Wheel',
-          price: data.data.total || 0,
-          days: data.data.days || 0,
-          details: {
-            ...data.data,
-            totalCost: data.data.total,
-            deliveryCost: data.data.door,
-            terminalCost: data.data.terminal,
-            pickupCost: data.data.pick,
-            deliveryToDoorCost: data.data.deliver,
-            additionalServices: (data.data.total || 0) - (data.data.door || 0)
-          },
-          requestData,
-          responseData: data,
-          apiUrl: fullUrl
-        };
-      } else {
-        return {
-          company: 'Nord Wheel',
-          price: 0,
-          days: 0,
-          error: 'Ошибка расчета Nord Wheel',
-          requestData,
-          responseData: data,
-          apiUrl: fullUrl
-        };
-      }
-    } catch (error: any) {
-      return {
-        company: 'Nord Wheel',
-        price: 0,
-        days: 0,
-        error: `Ошибка соединения: ${error.message}`,
-        apiUrl
-      };
-    }
-  };
 
   // Получение тарифной зоны и склада ПЭК по адресу через прокси
   const getPekZoneByAddress = async (address: string) => {
@@ -2196,6 +2134,165 @@ export default function Home() {
       console.error('🚚 Возовоз ошибка:', error);
       return {
         company: 'Возовоз',
+        price: 0,
+        days: 0,
+        error: `Ошибка соединения: ${error.message}`,
+        apiUrl
+      };
+    }
+  };
+
+  const calculateNordWheel = async (): Promise<CalculationResult> => {
+    const apiUrl = '/api/nord-wheel';
+    
+    try {
+      // Вычисляем основные параметры груза
+      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
+      const totalVolume = form.cargos.reduce((sum, cargo) => {
+        const volume = (cargo.length / 100) * (cargo.width / 100) * (cargo.height / 100);
+        return sum + volume;
+      }, 0);
+      
+      console.log('🌐 Nord Wheel: подготовка данных...');
+      console.log('   - Общий вес:', totalWeight, 'кг');
+      console.log('   - Общий объем:', totalVolume, 'м³');
+      console.log('   - Откуда:', form.fromCity);
+      console.log('   - Куда:', form.toCity);
+      
+      const requestData = {
+        fromCity: form.fromCity,
+        toCity: form.toCity,
+        cargos: form.cargos,
+        declaredValue: form.declaredValue,
+        fromAddressDelivery: form.fromAddressDelivery,
+        toAddressDelivery: form.toAddressDelivery,
+        needPackaging: form.needPackaging,
+        needInsurance: form.needInsurance
+      };
+
+      console.log('🌐 Nord Wheel запрос:', JSON.stringify(requestData, null, 2));
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData)
+      });
+
+      const data = await response.json();
+      console.log('🌐 Nord Wheel ответ:', JSON.stringify(data, null, 2));
+
+      if (response.ok && data && !data.error) {
+        // Собираем детали по услугам
+        const services: { name: string; description: string; price: number }[] = [];
+        let totalPrice = 0;
+        
+        // Анализируем ответ от Nord Wheel API
+        if (data.price || data.total || data.cost) {
+          totalPrice = parseFloat(data.price || data.total || data.cost);
+          
+          // Базовая доставка
+          services.push({
+            name: 'Доставка груза',
+            description: `${form.fromCity} - ${form.toCity}`,
+            price: totalPrice
+          });
+          
+          // Дополнительные услуги из ответа
+          if (data.services && Array.isArray(data.services)) {
+            data.services.forEach((service: any) => {
+              if (service.price > 0) {
+                services.push({
+                  name: service.name || 'Дополнительная услуга',
+                  description: service.description || '',
+                  price: parseFloat(service.price)
+                });
+                totalPrice += parseFloat(service.price);
+              }
+            });
+          }
+          
+          // Забор груза
+          if (form.fromAddressDelivery && data.pickupPrice) {
+            const pickupPrice = parseFloat(data.pickupPrice);
+            services.push({
+              name: 'Забор груза',
+              description: 'Забор с адреса',
+              price: pickupPrice
+            });
+            totalPrice += pickupPrice;
+          }
+          
+          // Доставка до адреса
+          if (form.toAddressDelivery && data.deliveryPrice) {
+            const deliveryPrice = parseFloat(data.deliveryPrice);
+            services.push({
+              name: 'Доставка до адреса',
+              description: 'Доставка до адреса',
+              price: deliveryPrice
+            });
+            totalPrice += deliveryPrice;
+          }
+          
+          // Упаковка
+          if (form.needPackaging && data.packagingPrice) {
+            const packagingPrice = parseFloat(data.packagingPrice);
+            services.push({
+              name: 'Упаковка груза',
+              description: 'Упаковка груза',
+              price: packagingPrice
+            });
+            totalPrice += packagingPrice;
+          }
+          
+          // Страхование
+          if (form.needInsurance && data.insurancePrice) {
+            const insurancePrice = parseFloat(data.insurancePrice);
+            services.push({
+              name: 'Страхование груза',
+              description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
+              price: insurancePrice
+            });
+            totalPrice += insurancePrice;
+          }
+        }
+
+        console.log('🌐 Nord Wheel итоговая стоимость:', totalPrice);
+        console.log('🌐 Nord Wheel услуги:', services);
+
+        return {
+          company: 'Nord Wheel',
+          price: Math.round(totalPrice),
+          days: data.deliveryDays || data.days || 5,
+          details: {
+            note: `Доставка ${form.fromCity} - ${form.toCity}`,
+            services,
+            basePrice: data.basePrice,
+            finalPrice: totalPrice,
+            deliveryTime: data.deliveryTime,
+            weight: totalWeight,
+            volume: totalVolume
+          },
+          requestData,
+          responseData: data,
+          apiUrl
+        };
+      } else {
+        return {
+          company: 'Nord Wheel',
+          price: 0,
+          days: 0,
+          error: data.error || 'Ошибка расчета Nord Wheel',
+          requestData,
+          responseData: data,
+          apiUrl
+        };
+      }
+    } catch (error: any) {
+      console.error('🌐 Nord Wheel ошибка:', error);
+      return {
+        company: 'Nord Wheel',
         price: 0,
         days: 0,
         error: `Ошибка соединения: ${error.message}`,

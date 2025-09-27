@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cfa57d6001JQ6hHg0mH0rfo2",
+  "messageID": "msg_98cf90455001N3n50eOJRYIHgT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01JoxFdBCCP4vqV8HvQnvawt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2210,
+      "limit": 15
+    },
+    "output": "<file>\n02211|       };\n02212|     }\n02213|   };\n02214| \n02215|   const handleCalculate = async () => {\n02216|     setCalculating(true);\n02217|     setCalculations([]);\n02218|     \n02219|     // Сохраняем данные формы после расчета\n02220|     localStorage.setItem('deliveryForm', JSON.stringify(form));\n02221|     \n02222|     try {\n02223|       const results = await Promise.all([\n02224|         calculateDellin(),\n02225|         calculatePEK(),\n\n(File has more lines. Use 'offset' parameter to read beyond line 2225)\n</file>",
+    "metadata": {
+      "preview": "      };\n    }\n  };\n\n  const handleCalculate = async () => {\n    setCalculating(true);\n    setCalculations([]);\n    \n    // Сохраняем данные формы после расчета\n    localStorage.setItem('deliveryForm', JSON.stringify(form));\n    \n    try {\n      const results = await Promise.all([\n        calculateDellin(),\n        calculatePEK(),"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006841355,
+      "end": 1759006841357
+    }
+  }
+}

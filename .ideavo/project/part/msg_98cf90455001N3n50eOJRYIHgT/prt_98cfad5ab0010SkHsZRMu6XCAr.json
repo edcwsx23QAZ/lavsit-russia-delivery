@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cfad5ab0010SkHsZRMu6XCAr",
+  "messageID": "msg_98cf90455001N3n50eOJRYIHgT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01RcG6s65s4krUYff1KE2je1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1008,
+      "limit": 80
+    },
+    "output": "<file>\n01009| \n01010|   // Расчет для Nord Wheel\n01011|   const calculateNordWheel = async (): Promise<CalculationResult> => {\n01012|     const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n01013|     \n01014|     try {\n01015|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n01016|       const totalVolume = form.cargos.reduce((sum, cargo) => \n01017|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n01018|       );\n01019| \n01020|       const params = new URLSearchParams({\n01021|         from: '91', // Москва (нужно будет получать ID города)\n01022|         to: '92', // СПб (нужно будет получать ID города)\n01023|         pickup: form.fromAddressDelivery ? '1' : '0',\n01024|         deliver: form.toAddressDelivery ? '1' : '0',\n01025|         weight: totalWeight.toString(),\n01026|         volume: totalVolume.toString(),\n01027|         oversized: '0',\n01028|         package: form.needPackaging ? '1' : '0',\n01029|         packageCount: form.cargos.length.toString(),\n01030|         insurance: form.needInsurance ? '1' : '0',\n01031|         sum: form.declaredValue.toString(),\n01032|         documentsReturn: '0',\n01033|         fragile: '1'\n01034|       });\n01035| \n01036|       const requestData = Object.fromEntries(params);\n01037|       const fullUrl = `${apiUrl}?${params.toString()}`;\n01038| \n01039|       const response = await fetch(fullUrl);\n01040|       const data = await response.json();\n01041| \n01042|       if (response.ok && data.status === 'success' && data.data) {\n01043|         return {\n01044|           company: 'Nord Wheel',\n01045|           price: data.data.total || 0,\n01046|           days: data.data.days || 0,\n01047|           details: {\n01048|             ...data.data,\n01049|             totalCost: data.data.total,\n01050|             deliveryCost: data.data.door,\n01051|             terminalCost: data.data.terminal,\n01052|             pickupCost: data.data.pick,\n01053|             deliveryToDoorCost: data.data.deliver,\n01054|             additionalServices: (data.data.total || 0) - (data.data.door || 0)\n01055|           },\n01056|           requestData,\n01057|           responseData: data,\n01058|           apiUrl: fullUrl\n01059|         };\n01060|       } else {\n01061|         return {\n01062|           company: 'Nord Wheel',\n01063|           price: 0,\n01064|           days: 0,\n01065|           error: 'Ошибка расчета Nord Wheel',\n01066|           requestData,\n01067|           responseData: data,\n01068|           apiUrl: fullUrl\n01069|         };\n01070|       }\n01071|     } catch (error: any) {\n01072|       return {\n01073|         company: 'Nord Wheel',\n01074|         price: 0,\n01075|         days: 0,\n01076|         error: `Ошибка соединения: ${error.message}`,\n01077|         apiUrl\n01078|       };\n01079|     }\n01080|   };\n01081| \n01082|   // Получение тарифной зоны и склада ПЭК по адресу через прокси\n01083|   const getPekZoneByAddress = async (address: string) => {\n01084|     try {\n01085|       console.log(`🔍 ПЭК: поиск зоны для адреса \"${address}\"`);\n01086|       \n01087|       const response = await fetch('/api/pek', {\n01088|         method: 'POST',\n\n(File has more lines. Use 'offset' parameter to read beyond line 1088)\n</file>",
+    "metadata": {
+      "preview": "\n  // Расчет для Nord Wheel\n  const calculateNordWheel = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n    \n    try {\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n\n      const params = new URLSearchParams({\n        from: '91', // Москва (нужно будет получать ID города)\n        to: '92', // СПб (нужно будет получать ID города)\n        pickup: form.fromAddressDelivery ? '1' : '0',\n        deliver: form.toAddressDelivery ? '1' : '0',\n        weight: totalWeight.toString(),\n        volume: totalVolume.toString(),\n        oversized: '0',\n        package: form.needPackaging ? '1' : '0',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006873994,
+      "end": 1759006873997
+    }
+  }
+}

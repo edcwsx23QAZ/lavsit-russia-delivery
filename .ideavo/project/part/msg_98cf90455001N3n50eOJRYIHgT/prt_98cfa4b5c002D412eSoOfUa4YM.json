@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cfa4b5c002D412eSoOfUa4YM",
+  "messageID": "msg_98cf90455001N3n50eOJRYIHgT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01UGnWicCq85qcnoD6hx6P4Y",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2190,
+      "limit": 20
+    },
+    "output": "<file>\n02191|         };\n02192|       } else {\n02193|         return {\n02194|           company: 'Возовоз',\n02195|           price: 0,\n02196|           days: 0,\n02197|           error: data.error || 'Ошибка расчета Возовоз',\n02198|           requestData,\n02199|           responseData: data,\n02200|           apiUrl\n02201|         };\n02202|       }\n02203|     } catch (error: any) {\n02204|       console.error('🚚 Возовоз ошибка:', error);\n02205|       return {\n02206|         company: 'Возовоз',\n02207|         price: 0,\n02208|         days: 0,\n02209|         error: `Ошибка соединения: ${error.message}`,\n02210|         apiUrl\n\n(File has more lines. Use 'offset' parameter to read beyond line 2210)\n</file>",
+    "metadata": {
+      "preview": "        };\n      } else {\n        return {\n          company: 'Возовоз',\n          price: 0,\n          days: 0,\n          error: data.error || 'Ошибка расчета Возовоз',\n          requestData,\n          responseData: data,\n          apiUrl\n        };\n      }\n    } catch (error: any) {\n      console.error('🚚 Возовоз ошибка:', error);\n      return {\n        company: 'Возовоз',\n        price: 0,\n        days: 0,\n        error: `Ошибка соединения: ${error.message}`,\n        apiUrl"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006838232,
+      "end": 1759006838235
+    }
+  }
+}

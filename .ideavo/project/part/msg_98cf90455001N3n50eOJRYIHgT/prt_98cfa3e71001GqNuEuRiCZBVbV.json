@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cfa3e71001GqNuEuRiCZBVbV",
+  "messageID": "msg_98cf90455001N3n50eOJRYIHgT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_013f9DFEyVGLi8XPmRYN7YLG",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2165,
+      "limit": 15
+    },
+    "output": "<file>\n02166|             name: 'Доставка груза',\n02167|             description: `${form.fromCity} - ${form.toCity}`,\n02168|             price: totalPrice\n02169|           });\n02170|         }\n02171| \n02172|         console.log('🚚 Возовоз итоговая стоимость:', totalPrice);\n02173|         console.log('🚚 Возовоз услуги:', services);\n02174| \n02175|         return {\n02176|           company: 'Возовоз',\n02177|           price: Math.round(totalPrice),\n02178|           days: responseData.deliveryTime?.to || responseData.deliveryTime?.from || 3,\n02179|           details: {\n02180|             note: `Доставка ${form.fromCity} - ${form.toCity}`,\n\n(File has more lines. Use 'offset' parameter to read beyond line 2180)\n</file>",
+    "metadata": {
+      "preview": "            name: 'Доставка груза',\n            description: `${form.fromCity} - ${form.toCity}`,\n            price: totalPrice\n          });\n        }\n\n        console.log('🚚 Возовоз итоговая стоимость:', totalPrice);\n        console.log('🚚 Возовоз услуги:', services);\n\n        return {\n          company: 'Возовоз',\n          price: Math.round(totalPrice),\n          days: responseData.deliveryTime?.to || responseData.deliveryTime?.from || 3,\n          details: {\n            note: `Доставка ${form.fromCity} - ${form.toCity}`,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006834928,
+      "end": 1759006834930
+    }
+  }
+}

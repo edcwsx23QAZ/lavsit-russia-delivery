@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cf948920011lUaqAKaIDr4wZ",
+  "messageID": "msg_98cf90455001N3n50eOJRYIHgT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01FJ3zwGy4xRfApY5EdJzKbU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/nord-wheel/route.ts",
+      "content": "import { NextRequest, NextResponse } from 'next/server';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    \n    console.log('🌐 Nord Wheel API запрос:', JSON.stringify(body, null, 2));\n\n    // Извлекаем данные из запроса\n    const {\n      fromCity,\n      toCity,\n      cargos,\n      declaredValue = 0,\n      fromAddressDelivery = false,\n      toAddressDelivery = false,\n      needPackaging = false,\n      needInsurance = false\n    } = body;\n\n    // Подсчитываем общий вес и объем\n    const totalWeight = cargos.reduce((sum: number, cargo: any) => sum + cargo.weight, 0);\n    const totalVolume = cargos.reduce((sum: number, cargo: any) => {\n      const volume = (cargo.length / 100) * (cargo.width / 100) * (cargo.height / 100);\n      return sum + volume;\n    }, 0);\n\n    // Параметры для API Nord Wheel\n    const params = new URLSearchParams({\n      from: '91', // Код города отправления (условно Москва)\n      to: '92',   // Код города назначения (условно СПб)\n      pickup: fromAddressDelivery ? '1' : '0',\n      deliver: toAddressDelivery ? '1' : '0',\n      weight: totalWeight.toString(),\n      volume: totalVolume.toString(),\n      oversized: '0',\n      package: needPackaging ? '1' : '0',\n      packageCount: needPackaging ? cargos.length.toString() : '0',\n      insurance: needInsurance ? '1' : '0',\n      sum: declaredValue.toString(),\n      documentsReturn: '0',\n      fragile: '1'\n    });\n\n    const apiUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n    \n    console.log('🌐 Nord Wheel API URL:', apiUrl);\n    console.log('🌐 Nord Wheel параметры:', {\n      from: '91',\n      to: '92',\n      pickup: fromAddressDelivery ? '1' : '0',\n      deliver: toAddressDelivery ? '1' : '0',\n      weight: totalWeight,\n      volume: totalVolume,\n      oversized: '0',\n      package: needPackaging ? '1' : '0',\n      packageCount: needPackaging ? cargos.length : 0,\n      insurance: needInsurance ? '1' : '0',\n      sum: declaredValue,\n      documentsReturn: '0',\n      fragile: '1'\n    });\n\n    const response = await fetch(apiUrl, {\n      method: 'GET',\n      headers: {\n        'Accept': 'application/json',\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n      }\n    });\n\n    console.log(`🌐 Nord Wheel API статус: ${response.status} ${response.statusText}`);\n\n    if (!response.ok) {\n      console.error('🌐 Nord Wheel API ошибка:', response.status, response.statusText);\n      \n      const errorText = await response.text();\n      console.error('🌐 Nord Wheel API ошибка тело:', errorText);\n      \n      return NextResponse.json({\n        success: false,\n        error: `API ошибка: ${response.status} ${response.statusText}`,\n        details: errorText\n      }, { status: response.status });\n    }\n\n    const data = await response.json();\n    console.log('🌐 Nord Wheel API ответ:', JSON.stringify(data, null, 2));\n\n    // Проверяем на наличие ошибок в ответе Nord Wheel\n    if (data.error || (data.result && data.result.error)) {\n      const errorMessage = data.error || data.result.error;\n      console.error('🌐 Nord Wheel API вернул ошибку:', errorMessage);\n      return NextResponse.json({\n        success: false,\n        error: errorMessage || 'Nord Wheel API error',\n        details: data\n      }, { status: 400 });\n    }\n\n    return NextResponse.json(data);\n\n  } catch (error: any) {\n    console.error('🌐 Nord Wheel API критическая ошибка:', error);\n    return NextResponse.json({\n      success: false,\n      error: error.message || 'Внутренняя ошибка сервера',\n      details: error.stack\n    }, { status: 500 });\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/api/nord-wheel/route.ts",
+      "exists": false
+    },
+    "title": "app/api/nord-wheel/route.ts",
+    "time": {
+      "start": 1759006786663,
+      "end": 1759006786669
+    }
+  }
+}

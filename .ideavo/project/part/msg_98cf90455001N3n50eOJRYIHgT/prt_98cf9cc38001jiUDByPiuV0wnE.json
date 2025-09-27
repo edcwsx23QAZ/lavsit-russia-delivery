@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf9cc38001jiUDByPiuV0wnE",
+  "messageID": "msg_98cf90455001N3n50eOJRYIHgT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PsFjdjdGDWRxc9vck3Vyk2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 302,
+      "limit": 10
+    },
+    "output": "<file>\n00303|       \n00304|       // Nord Wheel пока без API - устанавливаем как недоступно\n00305|       checkAPIStatus('nordwheel', async () => {\n00306|         return { error: true, message: 'API в разработке' };\n00307|       })\n00308|     ]).finally(() => {\n00309|       // Восстанавливаем исходное состояние формы\n00310|       setForm(currentForm);\n00311|     });\n00312|   };\n\n(File has more lines. Use 'offset' parameter to read beyond line 312)\n</file>",
+    "metadata": {
+      "preview": "      \n      // Nord Wheel пока без API - устанавливаем как недоступно\n      checkAPIStatus('nordwheel', async () => {\n        return { error: true, message: 'API в разработке' };\n      })\n    ]).finally(() => {\n      // Восстанавливаем исходное состояние формы\n      setForm(currentForm);\n    });\n  };"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006805713,
+      "end": 1759006805717
+    }
+  }
+}

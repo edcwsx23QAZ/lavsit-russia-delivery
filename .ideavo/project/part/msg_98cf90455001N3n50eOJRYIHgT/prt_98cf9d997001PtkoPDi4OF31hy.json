@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cf9d997001PtkoPDi4OF31hy",
+  "messageID": "msg_98cf90455001N3n50eOJRYIHgT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01VptDxzgTTKRn3Qap5QVtzN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Nord Wheel пока без API - устанавливаем как недоступно\n      checkAPIStatus('nordwheel', async () => {\n        return { error: true, message: 'API в разработке' };\n      })",
+      "newString": "      checkAPIStatus('nordwheel', async () => {\n        try {\n          const response = await fetch('/api/nord-wheel', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify(testData)\n          });\n          return await response.json();\n        } catch (error) {\n          return { error: true };\n        }\n      })"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -300,11 +300,19 @@\n       return { error: true };\n     }\n   }),\n   \n-  // Nord Wheel пока без API - устанавливаем как недоступно\n   checkAPIStatus('nordwheel', async () => {\n-    return { error: true, message: 'API в разработке' };\n+    try {\n+      const response = await fetch('/api/nord-wheel', {\n+        method: 'POST',\n+        headers: { 'Content-Type': 'application/json' },\n+        body: JSON.stringify(testData)\n+      });\n+      return await response.json();\n+    } catch (error) {\n+      return { error: true };\n+    }\n   })\n ]).finally(() => {\n   // Восстанавливаем исходное состояние формы\n   setForm(currentForm);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006809965,
+      "end": 1759006809987
+    }
+  }
+}

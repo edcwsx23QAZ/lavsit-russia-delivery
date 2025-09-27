@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cfa321f001kXTcU9m9wL5V0v",
+  "messageID": "msg_98cf90455001N3n50eOJRYIHgT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011bxBKKHRmu1DQ2ZjFFgjPu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2022,
+      "limit": 5
+    },
+    "output": "<file>\n02023|     const apiUrl = '/api/vozovoz';\n02024|     \n02025|     try {\n02026|       // Вычисляем основные параметры груза\n02027|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n\n(File has more lines. Use 'offset' parameter to read beyond line 2027)\n</file>",
+    "metadata": {
+      "preview": "    const apiUrl = '/api/vozovoz';\n    \n    try {\n      // Вычисляем основные параметры груза\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006831774,
+      "end": 1759006831777
+    }
+  }
+}
