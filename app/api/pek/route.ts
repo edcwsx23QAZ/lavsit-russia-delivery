@@ -40,6 +40,7 @@ export async function POST(request: NextRequest) {
     switch (method) {
       case 'findzonebyaddress':
         urlPath = '/branches/findzonebyaddress/';
+        console.log('🔍 ПЭК API: findzonebyaddress для адреса:', address);
         body = { address: address };
         break;
         
@@ -208,6 +209,7 @@ export async function POST(request: NextRequest) {
             error: 'Метод API не найден',
             details: 'URL метода неверный или метод не существует',
             url: fullUrl,
+            method: method,
             suggestion: 'Проверьте правильность пути к методу'
           }, { status: 404 });
         }

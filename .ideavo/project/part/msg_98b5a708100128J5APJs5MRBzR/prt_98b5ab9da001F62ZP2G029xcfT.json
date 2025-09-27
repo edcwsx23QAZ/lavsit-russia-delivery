@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b5ab9da001F62ZP2G029xcfT",
+  "messageID": "msg_98b5a708100128J5APJs5MRBzR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01Jmhri1FBgb5SoVAcvBb9Y5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/dellin-packages/route.ts",
+      "content": "import { NextRequest, NextResponse } from 'next/server'\n\nexport async function GET() {\n  try {\n    const response = await fetch('https://api.dellin.ru/v1/references/packages.json', {\n      method: 'GET',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n    })\n\n    if (!response.ok) {\n      console.error('❌ Ошибка от API Деловых Линий:', response.status, response.statusText)\n      return NextResponse.json(\n        { error: 'Ошибка получения справочника упаковок' },\n        { status: response.status }\n      )\n    }\n\n    const data = await response.json()\n    \n    return NextResponse.json(data, {\n      headers: {\n        'Access-Control-Allow-Origin': '*',\n        'Access-Control-Allow-Methods': 'GET',\n        'Access-Control-Allow-Headers': 'Content-Type',\n      },\n    })\n\n  } catch (error) {\n    console.error('❌ Ошибка запроса к API Деловых Линий:', error)\n    return NextResponse.json(\n      { error: 'Сетевая ошибка' },\n      { status: 500 }\n    )\n  }\n}\n\nexport async function OPTIONS() {\n  return new NextResponse(null, {\n    status: 200,\n    headers: {\n      'Access-Control-Allow-Origin': '*',\n      'Access-Control-Allow-Methods': 'GET',\n      'Access-Control-Allow-Headers': 'Content-Type',\n    },\n  })\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/api/dellin-packages/route.ts",
+      "exists": false
+    },
+    "title": "app/api/dellin-packages/route.ts",
+    "time": {
+      "start": 1758979608240,
+      "end": 1758979608244
+    }
+  }
+}

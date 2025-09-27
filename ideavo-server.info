@@ -4,17 +4,17 @@ $ next dev
   - Environments: .env.local, .env
 
  ✓ Starting...
- ✓ Ready in 1844ms
- ✓ Compiled /middleware in 138ms
+ ✓ Ready in 1867ms
+ ✓ Compiled /middleware in 154ms
  ✓ Compiled (73 modules)
  ○ Compiling / ...
  ✓ Compiled / in 3.5s (543 modules)
- GET / 200 in 4101ms
- ✓ Compiled in 611ms (280 modules)
- GET / 200 in 40ms
+ GET / 200 in 4138ms
+ ✓ Compiled in 577ms (280 modules)
+ GET / 200 in 39ms
  ⚠ Cross origin request detected from 4000-i859b80wqs6c2fhjwbj2w.e2b.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
- ✓ Compiled /api/pek in 384ms (293 modules)
+ ✓ Compiled /api/pek in 418ms (293 modules)
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "findzonebyaddress",
@@ -23,7 +23,7 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
 🌐 Запрос к ПЭК API (официальная версия):
 URL: https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/
 Auth: Basic (логин + API ключ)
-Body: {
+EXACT BODY TO PEK: {
   "address": "г Москва, Шмитовский проезд, д 39"
 }
 📡 Ответ от ПЭК API:
@@ -33,13 +33,13 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '492',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Sat, 27 Sep 2025 13:17:47 GMT',
-  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
+  date: 'Sat, 27 Sep 2025 13:24:58 GMT',
+  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
 ✅ Успешный ответ от ПЭК: {"zoneId":"a1dd78b1-66b7-11e5-80cf-003048baa05f","zoneName":"Москва город","branchUID":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","bitrixId":446,"branchCode":"МВ","branchTitle":"Москва Восток","mainWarehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","warehousePoint":{"latitude":55.53300000000000,"longitude":37.57900000000000},"GeoData":{"precision":"near","kind":"house","Address":{"country_code":"RU","formatted":"Россия, Москва, Шмитовский проезд, 39Ас3","postal_code":"123290","Components":[{"kind":
- POST /api/pek 200 in 1430ms
+ POST /api/pek 200 in 1463ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "findzonebyaddress",
@@ -48,7 +48,7 @@ Headers: {
 🌐 Запрос к ПЭК API (официальная версия):
 URL: https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/
 Auth: Basic (логин + API ключ)
-Body: {
+EXACT BODY TO PEK: {
   "address": "г Санкт-Петербург, Невский пр-кт, д 110"
 }
 📡 Ответ от ПЭК API:
@@ -58,13 +58,13 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '494',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Sat, 27 Sep 2025 13:17:47 GMT',
-  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
+  date: 'Sat, 27 Sep 2025 13:24:58 GMT',
+  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
 ✅ Успешный ответ от ПЭК: {"zoneId":"485a244d-92a2-11e5-94cc-00155d668909","zoneName":"Санкт-Петербург город","branchUID":"64adbe2c-a185-11dc-a911-000a5e19ccb4","bitrixId":463,"branchCode":"СП","branchTitle":"Санкт-Петербург","mainWarehouseId":"36cf9b60-a415-11dc-a911-000a5e19ccb4","warehousePoint":{"latitude":59.94281800000000,"longitude":30.44089600000000},"GeoData":{"precision":"exact","kind":"house","Address":{"country_code":"RU","formatted":"Россия, Санкт-Петербург, Невский проспект, 110","postal_code":"191025","Com
- POST /api/pek 200 in 232ms
+ POST /api/pek 200 in 225ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "nearestdepartments",
@@ -72,6 +72,7 @@ Headers: {
   "type": 3,
   "searchRadius": 50,
   "limit": 5,
+  "address": "г Москва, Шмитовский проезд, д 39",
   "coordinates": {
     "latitude": "55.533",
     "longitude": "37.579"
@@ -80,52 +81,33 @@ Headers: {
 🌐 Запрос к ПЭК API (официальная версия):
 URL: https://kabinet.pecom.ru/api/v1/branches/nearestdepartments/
 Auth: Basic (логин + API ключ)
-Body: {
+EXACT BODY TO PEK: {
   "departmentOperation": 3,
   "type": 3,
   "searchRadius": 50,
   "limit": 5,
+  "address": "г Москва, Шмитовский проезд, д 39",
   "coordinates": {
     "latitude": "55.533",
     "longitude": "37.579"
   }
 }
+🚨 ОБНАРУЖЕНЫ КООРДИНАТЫ В ЗАПРОСЕ К ПЭК!
+Full body string: {"departmentOperation":3,"type":3,"searchRadius":50,"limit":5,"address":"г Москва, Шмитовский проезд, д 39","coordinates":{"latitude":"55.533","longitude":"37.579"}}
 📡 Ответ от ПЭК API:
 Status: 200 OK
 Headers: {
   'cache-control': 'private',
   'content-encoding': 'gzip',
-  'content-length': '274',
+  'content-length': '1574',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Sat, 27 Sep 2025 13:17:48 GMT',
+  date: 'Sat, 27 Sep 2025 13:24:59 GMT',
   'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
-✅ Успешный ответ от ПЭК: {
-  "error": {
-    "fields": [
-      {
-        "Key": "address",
-        "Value": [
-          "Пожалуйста, заполните поле"
-        ]
-      }
-    ],
-    "title": "Ошибка валидации",
-    "message": "Детальные сообщения об ошибках приведены отдельно для каждого поля",
-    "error": null,
-    "status": 400
-  }
-}
-❌ Логическая ошибка ПЭК: {
-  fields: [ { Key: 'address', Value: [Array] } ],
-  title: 'Ошибка валидации',
-  message: 'Детальные сообщения об ошибках приведены отдельно для каждого поля',
-  error: null,
-  status: 400
-}
- POST /api/pek 400 in 234ms
+✅ Успешный ответ от ПЭК: {"freeDepartments":[{"warehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","departmentType":"Основное отделение филиала компании","departmentTypeId":4,"branchId":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","branchName":"Москва Восток","divisionName":"Москва Бутово","isActive":true,"address":"Россия, Москва, 2-я Мелитопольская улица, 12Ас1","coordinates":{"latitude":55.534204,"longitude":37.578127},"timeZone":"03:00:00","townBitrixId":446,"email":"pecom@pecom.ru","phone":"8(495) 660-11-11","priority":9
+ POST /api/pek 200 in 256ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "nearestdepartments",
@@ -133,6 +115,7 @@ Headers: {
   "type": 3,
   "searchRadius": 50,
   "limit": 5,
+  "address": "г Санкт-Петербург, Невский пр-кт, д 110",
   "coordinates": {
     "latitude": "59.942818",
     "longitude": "30.440896"
@@ -141,52 +124,33 @@ Headers: {
 🌐 Запрос к ПЭК API (официальная версия):
 URL: https://kabinet.pecom.ru/api/v1/branches/nearestdepartments/
 Auth: Basic (логин + API ключ)
-Body: {
+EXACT BODY TO PEK: {
   "departmentOperation": 3,
   "type": 3,
   "searchRadius": 50,
   "limit": 5,
+  "address": "г Санкт-Петербург, Невский пр-кт, д 110",
   "coordinates": {
     "latitude": "59.942818",
     "longitude": "30.440896"
   }
 }
+🚨 ОБНАРУЖЕНЫ КООРДИНАТЫ В ЗАПРОСЕ К ПЭК!
+Full body string: {"departmentOperation":3,"type":3,"searchRadius":50,"limit":5,"address":"г Санкт-Петербург, Невский пр-кт, д 110","coordinates":{"latitude":"59.942818","longitude":"30.440896"}}
 📡 Ответ от ПЭК API:
 Status: 200 OK
 Headers: {
   'cache-control': 'private',
   'content-encoding': 'gzip',
-  'content-length': '274',
+  'content-length': '1429',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Sat, 27 Sep 2025 13:17:48 GMT',
-  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
+  date: 'Sat, 27 Sep 2025 13:24:59 GMT',
+  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
-✅ Успешный ответ от ПЭК: {
-  "error": {
-    "fields": [
-      {
-        "Key": "address",
-        "Value": [
-          "Пожалуйста, заполните поле"
-        ]
-      }
-    ],
-    "title": "Ошибка валидации",
-    "message": "Детальные сообщения об ошибках приведены отдельно для каждого поля",
-    "error": null,
-    "status": 400
-  }
-}
-❌ Логическая ошибка ПЭК: {
-  fields: [ { Key: 'address', Value: [Array] } ],
-  title: 'Ошибка валидации',
-  message: 'Детальные сообщения об ошибках приведены отдельно для каждого поля',
-  error: null,
-  status: 400
-}
- POST /api/pek 400 in 216ms
+✅ Успешный ответ от ПЭК: {"freeDepartments":[{"warehouseId":"36cf9b60-a415-11dc-a911-000a5e19ccb4","departmentType":"Основное отделение филиала компании","departmentTypeId":4,"branchId":"64adbe2c-a185-11dc-a911-000a5e19ccb4","branchName":"Санкт-Петербург","divisionName":"Санкт-Петербург","isActive":true,"address":"Россия, Санкт-Петербург, улица Якорная, 17, литер Ш","coordinates":{"latitude":59.942818,"longitude":30.440896},"timeZone":"03:00:00","townBitrixId":463,"email":"pecom@pecom.ru","phone":"8(812) 458-09-02, 8(81
+ POST /api/pek 200 in 264ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "calculateprice",
@@ -199,7 +163,7 @@ Headers: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-09-28T13:17:43",
+  "plannedDateTime": "2025-09-28T13:24:55",
   "isInsurance": true,
   "isInsurancePrice": 200000,
   "isPickUp": true,
@@ -220,31 +184,13 @@ Headers: {
     }
   ],
   "pickup": {
-    "address": "г Москва, Шмитовский проезд, д 39",
-    "coordinates": {
-      "latitude": 55.533,
-      "longitude": 37.579
-    }
+    "address": "г Москва, Шмитовский проезд, д 39"
   },
   "delivery": {
-    "address": "г Санкт-Петербург, Невский пр-кт, д 110",
-    "coordinates": {
-      "latitude": 59.942818,
-      "longitude": 30.440896
-    }
+    "address": "г Санкт-Петербург, Невский пр-кт, д 110"
   }
 }
 🧪 API Прокси: Проверка координат в calculateprice
-📍 API Прокси: pickup.coordinates = { latitude: 55.533, longitude: 37.579 }
-📍 API Прокси: pickup преобразованно: lat=55.533, lng=37.579
-✅ API Прокси: pickup.coordinates валидны
-📍 API Прокси: delivery.coordinates = { latitude: 59.942818, longitude: 30.440896 }
-📍 API Прокси: delivery преобразованно: lat=59.942818, lng=30.440896
-✅ API Прокси: delivery.coordinates валидны
-📍 API Прокси: Найдены координаты в pickup.coordinates: { latitude: 55.533, longitude: 37.579 }
-✅ API Прокси: Координаты в pickup.coordinates валидны
-📍 API Прокси: Найдены координаты в delivery.coordinates: { latitude: 59.942818, longitude: 30.440896 }
-✅ API Прокси: Координаты в delivery.coordinates валидны
 🚀 API Прокси: Окончательные данные для ПЭК: {
   "currencyCode": "643",
   "types": [
@@ -255,7 +201,7 @@ Headers: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-09-28T13:17:43",
+  "plannedDateTime": "2025-09-28T13:24:55",
   "isInsurance": true,
   "isInsurancePrice": 200000,
   "isPickUp": true,
@@ -276,24 +222,16 @@ Headers: {
     }
   ],
   "pickup": {
-    "address": "г Москва, Шмитовский проезд, д 39",
-    "coordinates": {
-      "latitude": 55.533,
-      "longitude": 37.579
-    }
+    "address": "г Москва, Шмитовский проезд, д 39"
   },
   "delivery": {
-    "address": "г Санкт-Петербург, Невский пр-кт, д 110",
-    "coordinates": {
-      "latitude": 59.942818,
-      "longitude": 30.440896
-    }
+    "address": "г Санкт-Петербург, Невский пр-кт, д 110"
   }
 }
 🌐 Запрос к ПЭК API (официальная версия):
 URL: https://kabinet.pecom.ru/api/v1/calculator/calculateprice/
 Auth: Basic (логин + API ключ)
-Body: {
+EXACT BODY TO PEK: {
   "currencyCode": "643",
   "types": [
     3
@@ -303,7 +241,7 @@ Body: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-09-28T13:17:43",
+  "plannedDateTime": "2025-09-28T13:24:55",
   "isInsurance": true,
   "isInsurancePrice": 200000,
   "isPickUp": true,
@@ -324,18 +262,10 @@ Body: {
     }
   ],
   "pickup": {
-    "address": "г Москва, Шмитовский проезд, д 39",
-    "coordinates": {
-      "latitude": 55.533,
-      "longitude": 37.579
-    }
+    "address": "г Москва, Шмитовский проезд, д 39"
   },
   "delivery": {
-    "address": "г Санкт-Петербург, Невский пр-кт, д 110",
-    "coordinates": {
-      "latitude": 59.942818,
-      "longitude": 30.440896
-    }
+    "address": "г Санкт-Петербург, Невский пр-кт, д 110"
   }
 }
 📡 Ответ от ПЭК API:
@@ -343,9 +273,9 @@ Status: 200 OK
 Headers: {
   'cache-control': 'private',
   'content-encoding': 'gzip',
-  'content-length': '431',
+  'content-length': '422',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Sat, 27 Sep 2025 13:17:49 GMT',
+  date: 'Sat, 27 Sep 2025 13:25:00 GMT',
   'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
@@ -363,6 +293,7 @@ Headers: {
       "type": 3,
       "transportingType": null,
       "hasError": true,
-      "errorMessage": "Exception: The value of the parameter must be from -90.0 to 90.0.\r\nParameter name: Latitude",
- 
- POST /api/pek 200 in 697ms
+      "errorMessage": "Для выбранной даты, забор груза невозможен",
+      "costTotal": 0,
+      "estDeliveryTime": null
+ POST /api/pek 200 in 788ms

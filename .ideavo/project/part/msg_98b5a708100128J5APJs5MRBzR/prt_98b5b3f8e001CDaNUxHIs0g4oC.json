@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b5b3f8e001CDaNUxHIs0g4oC",
+  "messageID": "msg_98b5a708100128J5APJs5MRBzR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0111ZiXdc3jp53azffgUrnJS",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "offset": 130,
+      "limit": 50
+    },
+    "output": "<file>\n00131|               } else if (typeof value === 'object' && value !== null) {\n00132|                 removeInvalidCoordinates(value, currentPath);\n00133|               }\n00134|             }\n00135|           }\n00136|         };\n00137|         \n00138|         removeInvalidCoordinates(calculationData);\n00139|         \n00140|         console.log('🚀 API Прокси: Окончательные данные для ПЭК:', JSON.stringify(calculationData, null, 2));\n00141|         body = calculationData;\n00142|         break;\n00143|         \n00144|       case 'nearestdepartments':\n00145|         urlPath = '/branches/nearestdepartments/';\n00146|         const { method: nearestMethod, ...departmentData } = requestData;\n00147|         body = departmentData;\n00148|         break;\n00149|         \n00150|       case 'test':\n00151|         console.log('🔧 Тестовый метод прокси');\n00152|         return NextResponse.json({ \n00153|           status: 'OK', \n00154|           message: 'Прокси работает (официальная версия)',\n00155|           timestamp: new Date().toISOString(),\n00156|           receivedData: requestData,\n00157|           authMethod: 'Basic Auth',\n00158|           baseUrl: BASE_URL\n00159|         });\n00160|         \n00161|       default:\n00162|         console.log('❌ Неизвестный метод:', method);\n00163|         return NextResponse.json({ error: 'Неизвестный метод', method }, { status: 400 });\n00164|     }\n00165|     \n00166|     const fullUrl = BASE_URL + urlPath;\n00167|     \n00168|     // Basic Auth согласно документации: base64(login:api_key)\n00169|     const credentials = Buffer.from(`${PEK_LOGIN}:${PEK_API_KEY}`).toString('base64');\n00170|     \n00171|     console.log('🌐 Запрос к ПЭК API (официальная версия):');\n00172|     console.log('URL:', fullUrl);\n00173|     console.log('Auth: Basic (логин + API ключ)');\n00174|     console.log('EXACT BODY TO PEK:', JSON.stringify(body, null, 2));\n00175|     \n00176|     // Поиск любых слов latitude/longitude в JSON\n00177|     const bodyStr = JSON.stringify(body);\n00178|     if (bodyStr.includes('latitude') || bodyStr.includes('longitude')) {\n00179|       console.warn('🚨 ОБНАРУЖЕНЫ КООРДИНАТЫ В ЗАПРОСЕ К ПЭК!');\n00180|       console.warn('Full body string:', bodyStr);\n\n(File has more lines. Use 'offset' parameter to read beyond line 180)\n</file>",
+    "metadata": {
+      "preview": "              } else if (typeof value === 'object' && value !== null) {\n                removeInvalidCoordinates(value, currentPath);\n              }\n            }\n          }\n        };\n        \n        removeInvalidCoordinates(calculationData);\n        \n        console.log('🚀 API Прокси: Окончательные данные для ПЭК:', JSON.stringify(calculationData, null, 2));\n        body = calculationData;\n        break;\n        \n      case 'nearestdepartments':\n        urlPath = '/branches/nearestdepartments/';\n        const { method: nearestMethod, ...departmentData } = requestData;\n        body = departmentData;\n        break;\n        \n      case 'test':"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758979637730,
+      "end": 1758979637731
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b5b24bf00142FGrF8ulTNdqo",
+  "messageID": "msg_98b5a708100128J5APJs5MRBzR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01MpnZWFvzpVMreTgCDVEi4m",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 835,
+      "limit": 50
+    },
+    "output": "<file>\n00836|       console.log(`🔍 ПЭК: поиск зоны для адреса \"${address}\"`);\n00837|       \n00838|       const response = await fetch('/api/pek', {\n00839|         method: 'POST',\n00840|         headers: {\n00841|           'Content-Type': 'application/json',\n00842|         },\n00843|         body: JSON.stringify({\n00844|           method: 'findzonebyaddress',\n00845|           address: address\n00846|         })\n00847|       });\n00848| \n00849|       console.log(`📡 ПЭК API статус: ${response.status} ${response.statusText}`);\n00850|       \n00851|       if (!response.ok) {\n00852|         let errorData;\n00853|         try {\n00854|           errorData = await response.json();\n00855|         } catch {\n00856|           errorData = { error: 'Невозможно парсить ответ' };\n00857|         }\n00858|         \n00859|         console.error(`❌ ПЭК API ошибка ${response.status}:`, errorData);\n00860|         \n00861|         // Детализация ошибок\n00862|         if (response.status === 401) {\n00863|           console.error('❌ ПЭК: Ошибка авторизации - неверный токен');\n00864|         } else if (response.status === 404) {\n00865|           console.error('❌ ПЭК: Метод API не найден');\n00866|         } else if (response.status === 400) {\n00867|           console.error('❌ ПЭК: Некорректные параметры запроса');\n00868|         } else if (response.status >= 500) {\n00869|           console.error('❌ ПЭК: Ошибка сервера ПЭК');\n00870|         }\n00871|         \n00872|         console.log(`🔄 ПЭК: переход к фоллбэк методу для \"${address}\"`);\n00873|         return getPekZoneFallback(address);\n00874|       }\n00875| \n00876|       const data = await response.json();\n00877|       console.log(`✅ ПЭК зона найдена:`, data);\n00878|       \n00879|       if (data.zoneId && data.mainWarehouseId) {\n00880|         return {\n00881|           zoneId: data.zoneId,\n00882|           zoneName: data.zoneName,\n00883|           branchUID: data.branchUID,\n00884|           branchCode: data.branchCode,\n00885|           branchTitle: data.branchTitle,\n\n(File has more lines. Use 'offset' parameter to read beyond line 885)\n</file>",
+    "metadata": {
+      "preview": "      console.log(`🔍 ПЭК: поиск зоны для адреса \"${address}\"`);\n      \n      const response = await fetch('/api/pek', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify({\n          method: 'findzonebyaddress',\n          address: address\n        })\n      });\n\n      console.log(`📡 ПЭК API статус: ${response.status} ${response.statusText}`);\n      \n      if (!response.ok) {\n        let errorData;\n        try {\n          errorData = await response.json();\n        } catch {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979631194,
+      "end": 1758979631196
+    }
+  }
+}

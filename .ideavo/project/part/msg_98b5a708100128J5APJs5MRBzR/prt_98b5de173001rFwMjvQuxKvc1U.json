@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b5de173001rFwMjvQuxKvc1U",
+  "messageID": "msg_98b5a708100128J5APJs5MRBzR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_018qwtYEQ2hTg2f82fQvy1em",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          console.log('Загружены сохраненные данные формы:', savedForm);",
+      "newString": "          console.log('Загружены сохраненные данные формы:', savedForm);\n          \n          // Диагностика времени для Supabase\n          const currentTime = Math.floor(Date.now() / 1000);\n          console.log('🕒 Текущее время (timestamp):', currentTime);\n          console.log('🕒 Текущее время (ISO):', new Date().toISOString());"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -114,8 +114,13 @@\n       savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n     }\n     setForm(savedForm);\n     console.log('Загружены сохраненные данные формы:', savedForm);\n+    \n+    // Диагностика времени для Supabase\n+    const currentTime = Math.floor(Date.now() / 1000);\n+    console.log('🕒 Текущее время (timestamp):', currentTime);\n+    console.log('🕒 Текущее время (ISO):', new Date().toISOString());\n   }\n } catch (error) {\n   console.error('Ошибка загрузки сохраненных данных:', error);\n   // В случае ошибки оставляем начальное состояние\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979811317,
+      "end": 1758979811329
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "prt_98b5dbccd001hPbcTHcx95KJ4f",
+  "messageID": "msg_98b5a708100128J5APJs5MRBzR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_012BwNjXY9wnTydCaYMeXQvn",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    console.log('Загружены сохраненные данные формы:', savedFormData);",
+      "newString": "    console.log('Загружены сохраненные данные формы:', savedFormData);\n    \n    // Диагностика времени для Supabase\n    const currentTime = Math.floor(Date.now() / 1000);\n    console.log('🕒 Текущее время (timestamp):', currentTime);\n    console.log('🕒 Текущее время (ISO):', new Date().toISOString());"
+    },
+    "error": "Error: oldString not found in content",
+    "time": {
+      "start": 1758979803034,
+      "end": 1758979803056
+    }
+  }
+}

@@ -115,6 +115,11 @@ export default function Home() {
           }
           setForm(savedForm);
           console.log('Загружены сохраненные данные формы:', savedForm);
+          
+          // Диагностика времени для Supabase
+          const currentTime = Math.floor(Date.now() / 1000);
+          console.log('🕒 Текущее время (timestamp):', currentTime);
+          console.log('🕒 Текущее время (ISO):', new Date().toISOString());
         }
       } catch (error) {
         console.error('Ошибка загрузки сохраненных данных:', error);
@@ -323,14 +328,11 @@ export default function Home() {
   // Получение UID упаковки "crate_with_bubble" из справочника упаковок Деловые Линии
   const getDellinCrateWithBubbleUid = async (): Promise<string | null> => {
     try {
-      const response = await fetch('https://api.dellin.ru/v1/references/packages.json', {
-        method: 'POST',
+      const response = await fetch('/api/dellin-packages', {
+        method: 'GET',
         headers: {
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'
-        })
+        }
       });
 
       const data = await response.json();

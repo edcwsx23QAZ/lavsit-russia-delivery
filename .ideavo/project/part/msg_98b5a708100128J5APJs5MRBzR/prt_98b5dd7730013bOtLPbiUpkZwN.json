@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b5dd7730013bOtLPbiUpkZwN",
+  "messageID": "msg_98b5a708100128J5APJs5MRBzR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01NrgVP7Uuz52vvW13T15p8a",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 115,
+      "limit": 10
+    },
+    "output": "<file>\n00116|           setForm(savedForm);\n00117|           console.log('Загружены сохраненные данные формы:', savedForm);\n00118|         }\n00119|       } catch (error) {\n00120|         console.error('Ошибка загрузки сохраненных данных:', error);\n00121|         // В случае ошибки оставляем начальное состояние\n00122|       } finally {\n00123|         setIsLoaded(true);\n00124|       }\n00125|     }\n\n(File has more lines. Use 'offset' parameter to read beyond line 125)\n</file>",
+    "metadata": {
+      "preview": "          setForm(savedForm);\n          console.log('Загружены сохраненные данные формы:', savedForm);\n        }\n      } catch (error) {\n        console.error('Ошибка загрузки сохраненных данных:', error);\n        // В случае ошибки оставляем начальное состояние\n      } finally {\n        setIsLoaded(true);\n      }\n    }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979807719,
+      "end": 1758979807721
+    }
+  }
+}
