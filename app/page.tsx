@@ -1711,54 +1711,33 @@ export default function Home() {
         const autoTariff = data.data.auto;
         
         if (autoTariff) {
-          // Собираем детали по услугам
+          // Собираем детали по услугам для расчета стоимости
           const services = [];
+          let totalPrice = 0;
           
-          // Основная стоимость
+          // Основная стоимость доставки груза (7073р)
           if (autoTariff.price_with_out_sale) {
+            const deliveryPrice = autoTariff.price_with_out_sale;
             services.push({
-              name: 'Транспортировка',
+              name: 'Доставка груза',
               description: `${autoTariff.type} (${autoTariff.rsType})`,
-              price: autoTariff.price_with_out_sale
+              price: deliveryPrice
             });
+            totalPrice += deliveryPrice;
           }
           
-          // Терминальные сборы
-          if (autoTariff.terminalEnter1) {
-            services.push({
-              name: 'Терминальный сбор отправления',
-              description: 'Обработка груза на терминале',
-              price: parseInt(autoTariff.terminalEnter1)
-            });
-          }
-          
-          // Упаковка
+          // Упаковка (3000р)
           if (form.needPackaging && autoTariff.pricePackage) {
+            const packagingPrice = parseInt(autoTariff.pricePackage);
             services.push({
               name: 'Упаковка груза',
               description: 'Профессиональная упаковка',
-              price: parseInt(autoTariff.pricePackage)
+              price: packagingPrice
             });
+            totalPrice += packagingPrice;
           }
           
-          // Забор/доставка
-          if (form.fromAddressDelivery && autoTariff.pricePickup && parseInt(autoTariff.pricePickup) > 0) {
-            services.push({
-              name: 'Забор груза',
-              description: 'От адреса отправителя',
-              price: parseInt(autoTariff.pricePickup)
-            });
-          }
-          
-          if (form.toAddressDelivery && autoTariff.priceDelivery && parseInt(autoTariff.priceDelivery) > 0) {
-            services.push({
-              name: 'Доставка груза',
-              description: 'До адреса получателя',
-              price: parseInt(autoTariff.priceDelivery)
-            });
-          }
-          
-          // Страхование
+          // Страхование (4000р)
           if (form.needInsurance && autoTariff.priceInsurance) {
             const insuranceCost = Math.round(form.declaredValue * parseFloat(autoTariff.priceInsurance) / 100);
             services.push({
@@ -1766,10 +1745,37 @@ export default function Home() {
               description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
               price: insuranceCost
             });
+            totalPrice += insuranceCost;
           }
 
-          // Вычисляем общую стоимость как сумму всех услуг
-          const totalPrice = services.reduce((sum, service) => sum + service.price, 0);
+          // Дополнительные услуги (показываем, но не включаем в общую стоимость)
+          const additionalServices = [];
+          
+          // Терминальные сборы
+          if (autoTariff.terminalEnter1) {
+            additionalServices.push({
+              name: 'Терминальный сбор отправления',
+              description: 'Обработка груза на терминале',
+              price: parseInt(autoTariff.terminalEnter1)
+            });
+          }
+          
+          // Забор/доставка
+          if (form.fromAddressDelivery && autoTariff.pricePickup && parseInt(autoTariff.pricePickup) > 0) {
+            additionalServices.push({
+              name: 'Забор груза',
+              description: 'От адреса отправителя',
+              price: parseInt(autoTariff.pricePickup)
+            });
+          }
+          
+          if (form.toAddressDelivery && autoTariff.priceDelivery && parseInt(autoTariff.priceDelivery) > 0) {
+            additionalServices.push({
+              name: 'Доставка по адресу',
+              description: 'До адреса получателя',
+              price: parseInt(autoTariff.priceDelivery)
+            });
+          }
 
           return {
             company: 'Rail Continent',
@@ -1782,6 +1788,7 @@ export default function Home() {
               volume: totalVolume,
               route: `${form.fromCity} - ${form.toCity}`,
               services,
+              additionalServices,
               allTariffs: data.data
             },
             requestData,

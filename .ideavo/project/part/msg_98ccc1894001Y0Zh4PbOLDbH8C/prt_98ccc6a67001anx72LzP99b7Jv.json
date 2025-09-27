@@ -1,0 +1,26 @@
+{
+  "id": "prt_98ccc6a67001anx72LzP99b7Jv",
+  "messageID": "msg_98ccc1894001Y0Zh4PbOLDbH8C",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01D2DJxRjbXC9BxPxbDazL2h",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          return {\n            company: 'Rail Continent',\n            price: Math.round(totalPrice),\n            days: parseInt(autoTariff.duration) || 5,\n            details: {\n              tariff: `${autoTariff.type} - ${autoTariff.service}`,\n              transportType: autoTariff.rsType,\n              weight: totalWeight,\n              volume: totalVolume,\n              route: `${form.fromCity} - ${form.toCity}`,\n              services,\n              allTariffs: data.data\n            },",
+      "newString": "          return {\n            company: 'Rail Continent',\n            price: Math.round(totalPrice),\n            days: parseInt(autoTariff.duration) || 5,\n            details: {\n              tariff: `${autoTariff.type} - ${autoTariff.service}`,\n              transportType: autoTariff.rsType,\n              weight: totalWeight,\n              volume: totalVolume,\n              route: `${form.fromCity} - ${form.toCity}`,\n              services,\n              additionalServices,\n              allTariffs: data.data\n            },"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1787,8 +1787,9 @@\n   weight: totalWeight,\n   volume: totalVolume,\n   route: `${form.fromCity} - ${form.toCity}`,\n   services,\n+  additionalServices,\n   allTariffs: data.data\n },\n requestData,\n responseData: data,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759003835244,
+      "end": 1759003835261
+    }
+  }
+}
