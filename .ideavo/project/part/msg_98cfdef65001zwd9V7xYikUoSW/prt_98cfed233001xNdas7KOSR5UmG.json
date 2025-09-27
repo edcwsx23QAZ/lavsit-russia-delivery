@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cfed233001xNdas7KOSR5UmG",
+  "messageID": "msg_98cfdef65001zwd9V7xYikUoSW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01B3bxDxeJ5MWNYLS1ZFNLk7",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2160,
+      "limit": 60
+    },
+    "output": "<file>\n02161|       \n02162|       const requestData = {\n02163|         fromCity: form.fromCity,\n02164|         toCity: form.toCity,\n02165|         cargos: form.cargos,\n02166|         declaredValue: form.declaredValue,\n02167|         fromAddressDelivery: form.fromAddressDelivery,\n02168|         toAddressDelivery: form.toAddressDelivery,\n02169|         needPackaging: form.needPackaging,\n02170|         needInsurance: form.needInsurance\n02171|       };\n02172| \n02173|       console.log('🌐 Nord Wheel запрос:', JSON.stringify(requestData, null, 2));\n02174| \n02175|       const response = await fetch(apiUrl, {\n02176|         method: 'POST',\n02177|         headers: {\n02178|           'Content-Type': 'application/json',\n02179|         },\n02180|         body: JSON.stringify(requestData)\n02181|       });\n02182| \n02183|       const data = await response.json();\n02184|       console.log('🌐 Nord Wheel ответ:', JSON.stringify(data, null, 2));\n02185| \n02186|       if (response.ok && data && !data.error) {\n02187|         // Собираем детали по услугам\n02188|         const services: { name: string; description: string; price: number }[] = [];\n02189|         let totalPrice = 0;\n02190|         \n02191|         // Анализируем ответ от Nord Wheel API\n02192|         if (data.price || data.total || data.cost) {\n02193|           totalPrice = parseFloat(data.price || data.total || data.cost);\n02194|           \n02195|           // Базовая доставка\n02196|           services.push({\n02197|             name: 'Доставка груза',\n02198|             description: `${form.fromCity} - ${form.toCity}`,\n02199|             price: totalPrice\n02200|           });\n02201|           \n02202|           // Дополнительные услуги из ответа\n02203|           if (data.services && Array.isArray(data.services)) {\n02204|             data.services.forEach((service: any) => {\n02205|               if (service.price > 0) {\n02206|                 services.push({\n02207|                   name: service.name || 'Дополнительная услуга',\n02208|                   description: service.description || '',\n02209|                   price: parseFloat(service.price)\n02210|                 });\n02211|                 totalPrice += parseFloat(service.price);\n02212|               }\n02213|             });\n02214|           }\n02215|           \n02216|           // Забор груза\n02217|           if (form.fromAddressDelivery && data.pickupPrice) {\n02218|             const pickupPrice = parseFloat(data.pickupPrice);\n02219|             services.push({\n02220|               name: 'Забор груза',\n\n(File has more lines. Use 'offset' parameter to read beyond line 2220)\n</file>",
+    "metadata": {
+      "preview": "      \n      const requestData = {\n        fromCity: form.fromCity,\n        toCity: form.toCity,\n        cargos: form.cargos,\n        declaredValue: form.declaredValue,\n        fromAddressDelivery: form.fromAddressDelivery,\n        toAddressDelivery: form.toAddressDelivery,\n        needPackaging: form.needPackaging,\n        needInsurance: form.needInsurance\n      };\n\n      console.log('🌐 Nord Wheel запрос:', JSON.stringify(requestData, null, 2));\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(requestData)"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759007135176,
+      "end": 1759007135180
+    }
+  }
+}

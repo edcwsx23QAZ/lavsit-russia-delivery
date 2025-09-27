@@ -1,0 +1,11 @@
+{
+  "id": "prt_98d01403f0016IHVLfkL6phDXA",
+  "messageID": "msg_98cfdef65001zwd9V7xYikUoSW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "✅ **Откат Nord Wheel завершен!**\n\nЧто было изменено:\n\n### **1. Функция `calculateNordWheel` откачена:**\n- Убрали POST запрос к `/api/nord-wheel`\n- Вернули прямой GET запрос к `https://nordw.ru/tools/api/calc/calculate/`\n- Вернули URLSearchParams для передачи параметров в query string\n- Восстановили анализ ответа с полями `data.status`, `data.data.total`, `data.data.days`\n\n### **2. Проверка статуса API:**\n- Убрали тестирование через внутренний endpoint `/api/nord-wheel`\n- Вернули прямое тестирование Nord Wheel API\n- Восстановили GET запрос с параметрами для тестирования\n\n### **3. Удален API endpoint:**\n- Удален файл `/app/api/nord-wheel/route.ts`\n- Удалена директория `/app/api/nord-wheel/`\n\n### **Текущее состояние:**\n- **Nord Wheel** теперь работает как раньше - с прямым вызовом их API\n- **Статус и расположение** остались прежними (5-я компания в списке)\n- **Сборка проходит успешно** ✅\n- **Все остальные компании** работают без изменений\n\nТеперь Nord Wheel снова использует предыдущий метод работы с API, но остается интегрированным в калькулятор на 5-й позиции.",
+  "time": {
+    "start": 1759007301979,
+    "end": 1759007301979
+  }
+}

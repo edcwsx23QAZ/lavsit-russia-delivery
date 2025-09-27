@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cfee080001zsWIIS5ssW6mr5",
+  "messageID": "msg_98cfdef65001zwd9V7xYikUoSW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GaFKYcVpE4TJwZc6VyPTtg",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2140,
+      "limit": 25
+    },
+    "output": "<file>\n02141|       };\n02142|     }\n02143|   };\n02144| \n02145|   const calculateNordWheel = async (): Promise<CalculationResult> => {\n02146|     const apiUrl = '/api/nord-wheel';\n02147|     \n02148|     try {\n02149|       // Вычисляем основные параметры груза\n02150|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n02151|       const totalVolume = form.cargos.reduce((sum, cargo) => {\n02152|         const volume = (cargo.length / 100) * (cargo.width / 100) * (cargo.height / 100);\n02153|         return sum + volume;\n02154|       }, 0);\n02155|       \n02156|       console.log('🌐 Nord Wheel: подготовка данных...');\n02157|       console.log('   - Общий вес:', totalWeight, 'кг');\n02158|       console.log('   - Общий объем:', totalVolume, 'м³');\n02159|       console.log('   - Откуда:', form.fromCity);\n02160|       console.log('   - Куда:', form.toCity);\n02161|       \n02162|       const requestData = {\n02163|         fromCity: form.fromCity,\n02164|         toCity: form.toCity,\n02165|         cargos: form.cargos,\n\n(File has more lines. Use 'offset' parameter to read beyond line 2165)\n</file>",
+    "metadata": {
+      "preview": "      };\n    }\n  };\n\n  const calculateNordWheel = async (): Promise<CalculationResult> => {\n    const apiUrl = '/api/nord-wheel';\n    \n    try {\n      // Вычисляем основные параметры груза\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => {\n        const volume = (cargo.length / 100) * (cargo.width / 100) * (cargo.height / 100);\n        return sum + volume;\n      }, 0);\n      \n      console.log('🌐 Nord Wheel: подготовка данных...');\n      console.log('   - Общий вес:', totalWeight, 'кг');\n      console.log('   - Общий объем:', totalVolume, 'м³');\n      console.log('   - Откуда:', form.fromCity);\n      console.log('   - Куда:', form.toCity);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759007138498,
+      "end": 1759007138501
+    }
+  }
+}

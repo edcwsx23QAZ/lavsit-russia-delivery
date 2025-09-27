@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cff8a04001UYQhKgkKt2QW61",
+  "messageID": "msg_98cfdef65001zwd9V7xYikUoSW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_016AQtXSBC7tkYUoPzvzb9Es",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      checkAPIStatus('nordwheel', async () => {\n        try {\n          const response = await fetch('/api/nord-wheel', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify(testData)\n          });\n          return await response.json();\n        } catch (error) {\n          return { error: true };\n        }\n      })",
+      "newString": "      checkAPIStatus('nordwheel', async () => {\n        try {\n          const totalWeight = 10;\n          const totalVolume = 0.1;\n          \n          const params = new URLSearchParams({\n            from: '91',\n            to: '92',\n            pickup: '1',\n            deliver: '1',\n            weight: totalWeight.toString(),\n            volume: totalVolume.toString(),\n            oversized: '0',\n            package: '1',\n            packageCount: '1',\n            insurance: '1',\n            sum: '50000',\n            documentsReturn: '0',\n            fragile: '1'\n          });\n\n          const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n          const response = await fetch(fullUrl);\n          const data = await response.json();\n          \n          if (response.ok && data.status === 'success') {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      })"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -302,14 +302,36 @@\n }),\n \n checkAPIStatus('nordwheel', async () => {\n   try {\n-    const response = await fetch('/api/nord-wheel', {\n-      method: 'POST',\n-      headers: { 'Content-Type': 'application/json' },\n-      body: JSON.stringify(testData)\n+    const totalWeight = 10;\n+    const totalVolume = 0.1;\n+    \n+    const params = new URLSearchParams({\n+      from: '91',\n+      to: '92',\n+      pickup: '1',\n+      deliver: '1',\n+      weight: totalWeight.toString(),\n+      volume: totalVolume.toString(),\n+      oversized: '0',\n+      package: '1',\n+      packageCount: '1',\n+      insurance: '1',\n+      sum: '50000',\n+      documentsReturn: '0',\n+      fragile: '1'\n     });\n-    return await response.json();\n+\n+    const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n+    const response = await fetch(fullUrl);\n+    const data = await response.json();\n+    \n+    if (response.ok && data.status === 'success') {\n+      return { success: true };\n+    } else {\n+      return { error: true };\n+    }\n   } catch (error) {\n     return { error: true };\n   }\n })\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759007187461,
+      "end": 1759007187473
+    }
+  }
+}
