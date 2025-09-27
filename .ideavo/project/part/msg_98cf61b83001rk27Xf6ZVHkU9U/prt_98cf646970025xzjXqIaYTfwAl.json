@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf646970025xzjXqIaYTfwAl",
+  "messageID": "msg_98cf61b83001rk27Xf6ZVHkU9U",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_012mVApuh24wjwA5MZGnpnZv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 64,
+      "limit": 10
+    },
+    "output": "<file>\n00065| const COMPANIES_BASE = [\n00066|   { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n00067|   { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n00068|   { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n00069|   { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' }\n00070| ];\n00071| \n00072| export default function Home() {\n00073|   // Начальное состояние формы\n00074|   const initialFormState: DeliveryForm = {\n\n(File has more lines. Use 'offset' parameter to read beyond line 74)\n</file>",
+    "metadata": {
+      "preview": "const COMPANIES_BASE = [\n  { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n  { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n  { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n  { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' }\n];\n\nexport default function Home() {\n  // Начальное состояние формы\n  const initialFormState: DeliveryForm = {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006575142,
+      "end": 1759006575146
+    }
+  }
+}

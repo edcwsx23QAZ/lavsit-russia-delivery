@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf69817001bJjivRQ6qZAt34",
+  "messageID": "msg_98cf61b83001rk27Xf6ZVHkU9U",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01UHuZR6WF4NCGVh3a1VubhN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 240,
+      "limit": 60
+    },
+    "output": "<file>\n00241|             method: 'POST',\n00242|             headers: { 'Content-Type': 'application/json' },\n00243|             body: JSON.stringify({\n00244|               city_sender: testData.fromCity,\n00245|               city_receiver: testData.toCity,\n00246|               weight: 10,\n00247|               volume: 0.1,\n00248|               length: 1,\n00249|               width: 1,\n00250|               height: 1,\n00251|               declared_cost: testData.declaredValue,\n00252|               pickup: '0',\n00253|               delivery: '0',\n00254|               packaging: '0',\n00255|               insurance: '0',\n00256|               tariff: 'auto'\n00257|             })\n00258|           });\n00259|           return await response.json();\n00260|         } catch (error) {\n00261|           return { error: true };\n00262|         }\n00263|       }),\n00264|       \n00265|       checkAPIStatus('vozovoz', async () => {\n00266|         try {\n00267|           const response = await fetch('/api/vozovoz', {\n00268|             method: 'POST',\n00269|             headers: { 'Content-Type': 'application/json' },\n00270|             body: JSON.stringify({\n00271|               object: \"price\",\n00272|               action: \"get\",\n00273|               params: {\n00274|                 cargo: {\n00275|                   dimension: {\n00276|                     quantity: 1,\n00277|                     volume: 0.1,\n00278|                     weight: 10\n00279|                   }\n00280|                 },\n00281|                 gateway: {\n00282|                   dispatch: {\n00283|                     point: {\n00284|                       location: testData.fromCity,\n00285|                       terminal: \"default\"\n00286|                     }\n00287|                   },\n00288|                   destination: {\n00289|                     point: {\n00290|                       location: testData.toCity,\n00291|                       terminal: \"default\"\n00292|                     }\n00293|                   }\n00294|                 }\n00295|               }\n00296|             })\n00297|           });\n00298|           return await response.json();\n00299|         } catch (error) {\n00300|           return { error: true };\n\n(File has more lines. Use 'offset' parameter to read beyond line 300)\n</file>",
+    "metadata": {
+      "preview": "            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({\n              city_sender: testData.fromCity,\n              city_receiver: testData.toCity,\n              weight: 10,\n              volume: 0.1,\n              length: 1,\n              width: 1,\n              height: 1,\n              declared_cost: testData.declaredValue,\n              pickup: '0',\n              delivery: '0',\n              packaging: '0',\n              insurance: '0',\n              tariff: 'auto'\n            })\n          });\n          return await response.json();\n        } catch (error) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006595722,
+      "end": 1759006595725
+    }
+  }
+}

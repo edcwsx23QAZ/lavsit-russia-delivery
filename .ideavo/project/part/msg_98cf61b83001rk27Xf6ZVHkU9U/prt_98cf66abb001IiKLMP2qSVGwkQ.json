@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf66abb001IiKLMP2qSVGwkQ",
+  "messageID": "msg_98cf61b83001rk27Xf6ZVHkU9U",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01R9gGcCSuymGRizQ5eo8UwE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 102,
+      "limit": 10
+    },
+    "output": "<file>\n00103|   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n00104|   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n00105|   const [apiStatus, setApiStatus] = useState({\n00106|     pek: 'проверка...',\n00107|     dellin: 'проверка...',\n00108|     railcontinent: 'проверка...',\n00109|     vozovoz: 'проверка...'\n00110|   });\n00111| \n00112|   // Загрузка сохраненных данных (только на клиенте)\n\n(File has more lines. Use 'offset' parameter to read beyond line 112)\n</file>",
+    "metadata": {
+      "preview": "  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n  const [apiStatus, setApiStatus] = useState({\n    pek: 'проверка...',\n    dellin: 'проверка...',\n    railcontinent: 'проверка...',\n    vozovoz: 'проверка...'\n  });\n\n  // Загрузка сохраненных данных (только на клиенте)"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006584085,
+      "end": 1759006584088
+    }
+  }
+}

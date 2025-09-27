@@ -66,7 +66,8 @@ const COMPANIES_BASE = [
   { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },
   { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },
   { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },
-  { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' }
+  { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },
+  { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' }
 ];
 
 export default function Home() {
@@ -105,7 +106,8 @@ export default function Home() {
     pek: 'проверка...',
     dellin: 'проверка...',
     railcontinent: 'проверка...',
-    vozovoz: 'проверка...'
+    vozovoz: 'проверка...',
+    nordwheel: 'проверка...'
   });
 
   // Загрузка сохраненных данных (только на клиенте)
@@ -297,6 +299,11 @@ export default function Home() {
         } catch (error) {
           return { error: true };
         }
+      }),
+      
+      // Nord Wheel пока без API - устанавливаем как недоступно
+      checkAPIStatus('nordwheel', async () => {
+        return { error: true, message: 'API в разработке' };
       })
     ]).finally(() => {
       // Восстанавливаем исходное состояние формы

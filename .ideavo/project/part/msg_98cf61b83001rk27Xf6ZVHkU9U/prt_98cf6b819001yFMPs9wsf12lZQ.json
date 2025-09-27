@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cf6b819001yFMPs9wsf12lZQ",
+  "messageID": "msg_98cf61b83001rk27Xf6ZVHkU9U",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01VqK7ZjaMYKCNJ6oUqG4AES",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Проверка сборки после добавления Nord Wheel"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/14) ...\n   Generating static pages (3/14) \r\n   Generating static pages (6/14) \r\n   Generating static pages (10/14) \r\n ✓ Generating static pages (14/14)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    23.8 kB         119 kB\n├ ○ /_not-found                          873 B            88 kB\n├ ƒ /api/dellin-packages                 0 B                0 B\n├ ƒ /api/pek                             0 B                0 B\n├ ƒ /api/pek-get                         0 B                0 B\n├ ƒ /api/pek-simple                      0 B                0 B\n├ ƒ /api/rail-continent                  0 B                0 B\n├ ƒ /api/test                            0 B                0 B\n├ ƒ /api/vozovoz                         0 B                0 B\n├ ○ /diagnostic                          4.93 kB        99.8 kB\n├ ○ /env-check                           8.88 kB          96 kB\n└ ○ /pek-test                            3.08 kB        97.9 kB\n+ First Load JS shared by all            87.1 kB\n  ├ chunks/117-4f08b635ad06b12f.js       31.6 kB\n  ├ chunks/fd9d1056-9e191f0896c1d560.js  53.6 kB\n  └ other shared chunks (total)          1.86 kB\n\n\nƒ Middleware                             27.1 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/14) ...\n   Generating static pages (3/14) \r\n   Generating static pages (6/14) \r\n   Generating static pages (10/14) \r\n ✓ Generating static pages (14/14)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    23.8 kB         119 kB\n├ ○ /_not-found                          873 B            88 kB\n├ ƒ /api/dellin-packages                 0 B                0 B\n├ ƒ /api/pek                             0 B                0 B\n├ ƒ /api/pek-get                         0 B                0 B\n├ ƒ /api/pek-simple                      0 B                0 B\n├ ƒ /api/rail-continent                  0 B                0 B\n├ ƒ /api/test                            0 B                0 B\n├ ƒ /api/vozovoz                         0 B                0 B\n├ ○ /diagnostic                          4.93 kB        99.8 kB\n├ ○ /env-check                           8.88 kB          96 kB\n└ ○ /pek-test                            3.08 kB        97.9 kB\n+ First Load JS shared by all            87.1 kB\n  ├ chunks/117-4f08b635ad06b12f.js       31.6 kB\n  ├ chunks/fd9d1056-9e191f0896c1d560.js  53.6 kB\n  └ other shared chunks (total)          1.86 kB\n\n\nƒ Middleware                             27.1 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+      "exit": 0,
+      "description": "Проверка сборки после добавления Nord Wheel"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759006603907,
+      "end": 1759006629686
+    }
+  }
+}

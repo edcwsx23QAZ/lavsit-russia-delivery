@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cf6a3be002eySAQmQEe01lvi",
+  "messageID": "msg_98cf61b83001rk27Xf6ZVHkU9U",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01CsLpuK2R1TSxZK2F3qAycc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        } catch (error) {\n          return { error: true };\n        }\n      })\n    ]).finally(() => {\n      // Восстанавливаем исходное состояние формы\n      setForm(currentForm);\n    });",
+      "newString": "        } catch (error) {\n          return { error: true };\n        }\n      }),\n      \n      // Nord Wheel пока без API - устанавливаем как недоступно\n      checkAPIStatus('nordwheel', async () => {\n        return { error: true, message: 'API в разработке' };\n      })\n    ]).finally(() => {\n      // Восстанавливаем исходное состояние формы\n      setForm(currentForm);\n    });"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -298,8 +298,13 @@\n       return await response.json();\n     } catch (error) {\n       return { error: true };\n     }\n+  }),\n+  \n+  // Nord Wheel пока без API - устанавливаем как недоступно\n+  checkAPIStatus('nordwheel', async () => {\n+    return { error: true, message: 'API в разработке' };\n   })\n ]).finally(() => {\n   // Восстанавливаем исходное состояние формы\n   setForm(currentForm);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006601128,
+      "end": 1759006601140
+    }
+  }
+}
