@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cc9c49d001YWobPfnEZwHytJ",
+  "messageID": "msg_98cc9b0400014qnFNp2zbE1V11",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_012kj7zYogQdRYThgpmraHW5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          // Страхование\n          if (form.needInsurance && autoTariff.priceInsurance) {\n            const insuranceCost = Math.round(form.declaredValue * parseFloat(autoTariff.priceInsurance) / 100);\n            services.push({\n              name: 'Страхование груза',\n              description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n              price: insuranceCost\n            });\n          }\n\n          return {\n            company: 'Rail Continent',\n            price: Math.round(autoTariff.priceTotal || autoTariff.price || 0),\n            days: parseInt(autoTariff.duration) || 5,",
+      "newString": "          // Страхование\n          if (form.needInsurance && autoTariff.priceInsurance) {\n            const insuranceCost = Math.round(form.declaredValue * parseFloat(autoTariff.priceInsurance) / 100);\n            services.push({\n              name: 'Страхование груза',\n              description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n              price: insuranceCost\n            });\n          }\n\n          // Вычисляем общую стоимость как сумму всех услуг\n          const totalPrice = services.reduce((sum, service) => sum + service.price, 0);\n\n          return {\n            company: 'Rail Continent',\n            price: Math.round(totalPrice),\n            days: parseInt(autoTariff.duration) || 5,"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1767,11 +1767,14 @@\n     price: insuranceCost\n   });\n }\n \n+// Вычисляем общую стоимость как сумму всех услуг\n+const totalPrice = services.reduce((sum, service) => sum + service.price, 0);\n+\n return {\n   company: 'Rail Continent',\n-  price: Math.round(autoTariff.priceTotal || autoTariff.price || 0),\n+  price: Math.round(totalPrice),\n   days: parseInt(autoTariff.duration) || 5,\n   details: {\n     tariff: `${autoTariff.type} - ${autoTariff.service}`,\n     transportType: autoTariff.rsType,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759003661723,
+      "end": 1759003661742
+    }
+  }
+}

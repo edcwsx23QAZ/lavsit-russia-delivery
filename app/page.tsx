@@ -1768,9 +1768,12 @@ export default function Home() {
             });
           }
 
+          // Вычисляем общую стоимость как сумму всех услуг
+          const totalPrice = services.reduce((sum, service) => sum + service.price, 0);
+
           return {
             company: 'Rail Continent',
-            price: Math.round(autoTariff.priceTotal || autoTariff.price || 0),
+            price: Math.round(totalPrice),
             days: parseInt(autoTariff.duration) || 5,
             details: {
               tariff: `${autoTariff.type} - ${autoTariff.service}`,

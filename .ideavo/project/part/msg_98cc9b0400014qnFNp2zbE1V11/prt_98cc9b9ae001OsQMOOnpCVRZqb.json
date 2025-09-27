@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cc9b9ae001OsQMOOnpCVRZqb",
+  "messageID": "msg_98cc9b0400014qnFNp2zbE1V11",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01FLnrLWdVq3Q7V3X37AN6cz",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1770,
+      "limit": 30
+    },
+    "output": "<file>\n01771|           return {\n01772|             company: 'Rail Continent',\n01773|             price: Math.round(autoTariff.priceTotal || autoTariff.price || 0),\n01774|             days: parseInt(autoTariff.duration) || 5,\n01775|             details: {\n01776|               tariff: `${autoTariff.type} - ${autoTariff.service}`,\n01777|               transportType: autoTariff.rsType,\n01778|               weight: totalWeight,\n01779|               volume: totalVolume,\n01780|               route: `${form.fromCity} - ${form.toCity}`,\n01781|               services,\n01782|               allTariffs: data.data\n01783|             },\n01784|             requestData,\n01785|             responseData: data,\n01786|             apiUrl\n01787|           };\n01788|         } else {\n01789|           return {\n01790|             company: 'Rail Continent',\n01791|             price: 0,\n01792|             days: 0,\n01793|             error: 'Автомобильный тариф недоступен для данного маршрута',\n01794|             requestData,\n01795|             responseData: data,\n01796|             apiUrl\n01797|           };\n01798|         }\n01799|       } else {\n01800|         return {\n\n(File has more lines. Use 'offset' parameter to read beyond line 1800)\n</file>",
+    "metadata": {
+      "preview": "          return {\n            company: 'Rail Continent',\n            price: Math.round(autoTariff.priceTotal || autoTariff.price || 0),\n            days: parseInt(autoTariff.duration) || 5,\n            details: {\n              tariff: `${autoTariff.type} - ${autoTariff.service}`,\n              transportType: autoTariff.rsType,\n              weight: totalWeight,\n              volume: totalVolume,\n              route: `${form.fromCity} - ${form.toCity}`,\n              services,\n              allTariffs: data.data\n            },\n            requestData,\n            responseData: data,\n            apiUrl\n          };\n        } else {\n          return {\n            company: 'Rail Continent',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759003655546,
+      "end": 1759003655552
+    }
+  }
+}
