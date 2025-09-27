@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf2c37500157qJkKGMoqmlUC",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QVxWtLm8XCDuUofrse7bQs",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2055,
+      "limit": 80
+    },
+    "output": "<file>\n02056|           }\n02057|         }\n02058|       };\n02059| \n02060|       console.log('🚚 Возовоз запрос:', JSON.stringify(requestData, null, 2));\n02061| \n02062|       const response = await fetch(apiUrl, {\n02063|         method: 'POST',\n02064|         headers: {\n02065|           'Content-Type': 'application/json',\n02066|         },\n02067|         body: JSON.stringify(requestData)\n02068|       });\n02069| \n02070|       const data = await response.json();\n02071|       console.log('🚚 Возовоз ответ:', JSON.stringify(data, null, 2));\n02072| \n02073|       if (response.ok && data.response) {\n02074|         const responseData = data.response;\n02075|         \n02076|         // Собираем детали по услугам\n02077|         const services: { name: string; description: string; price: number }[] = [];\n02078|         let totalPrice = responseData.price || responseData.basePrice || 0;\n02079|         \n02080|         // Добавляем основные услуги\n02081|         if (responseData.service && Array.isArray(responseData.service)) {\n02082|           responseData.service.forEach((service: any) => {\n02083|             services.push({\n02084|               name: service.name,\n02085|               description: '',\n02086|               price: service.price\n02087|             });\n02088|           });\n02089|         }\n02090|         \n02091|         // Если услуг нет, добавляем общую стоимость\n02092|         if (services.length === 0) {\n02093|           services.push({\n02094|             name: 'Доставка груза',\n02095|             description: `${form.fromCity} - ${form.toCity}`,\n02096|             price: totalPrice\n02097|           });\n02098|         }\n02099| \n02100|         console.log('🚚 Возовоз итоговая стоимость:', totalPrice);\n02101|         console.log('🚚 Возовоз услуги:', services);\n02102| \n02103|         return {\n02104|           company: 'Возовоз',\n02105|           price: Math.round(totalPrice),\n02106|           days: responseData.deliveryTime?.to || responseData.deliveryTime?.from || 3,\n02107|           details: {\n02108|             note: `Доставка ${form.fromCity} - ${form.toCity}`,\n02109|             services,\n02110|             basePrice: responseData.basePrice,\n02111|             finalPrice: responseData.price,\n02112|             deliveryTime: responseData.deliveryTime,\n02113|             weight: totalWeight,\n02114|             volume: totalVolume\n02115|           },\n02116|           requestData,\n02117|           responseData: data,\n02118|           apiUrl\n02119|         };\n02120|       } else {\n02121|         return {\n02122|           company: 'Возовоз',\n02123|           price: 0,\n02124|           days: 0,\n02125|           error: data.error || 'Ошибка расчета Возовоз',\n02126|           requestData,\n02127|           responseData: data,\n02128|           apiUrl\n02129|         };\n02130|       }\n02131|     } catch (error: any) {\n02132|       console.error('🚚 Возовоз ошибка:', error);\n02133|       return {\n02134|         company: 'Возовоз',\n02135|         price: 0,\n\n(File has more lines. Use 'offset' parameter to read beyond line 2135)\n</file>",
+    "metadata": {
+      "preview": "          }\n        }\n      };\n\n      console.log('🚚 Возовоз запрос:', JSON.stringify(requestData, null, 2));\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(requestData)\n      });\n\n      const data = await response.json();\n      console.log('🚚 Возовоз ответ:', JSON.stringify(data, null, 2));\n\n      if (response.ok && data.response) {\n        const responseData = data.response;\n        "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006344694,
+      "end": 1759006344696
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf17d0e001C9SiTn8rICvmW6",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01BvQjo6mPhTLmub1k8YHwx6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "company.connected|companies.*connected",
+      "include": "*.tsx"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 2905:                         <Badge variant={company.connected ? \"default\" : \"destructive\"} className=\"text-xs\">\n  Line 2906:                           {company.connected ? 'Подключена' : 'Отключена'}",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "company.connected|companies.*connected",
+    "time": {
+      "start": 1759006260992,
+      "end": 1759006261005
+    }
+  }
+}

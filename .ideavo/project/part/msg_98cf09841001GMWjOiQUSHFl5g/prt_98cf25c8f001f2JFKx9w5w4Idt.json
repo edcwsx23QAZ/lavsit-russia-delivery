@@ -1,0 +1,85 @@
+{
+  "id": "prt_98cf25c8f001f2JFKx9w5w4Idt",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01664hF12ygJyog6aPrRx8Th",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Убрать дублирующий блок 'Подключенные транспортные компании' сверху и оставить только блок под расчетами",
+          "status": "completed",
+          "priority": "high",
+          "id": "remove-duplicate-block"
+        },
+        {
+          "content": "Сделать слово 'Подключена' зависимым от проверки ответа API в блоке под расчетами",
+          "status": "completed",
+          "priority": "high",
+          "id": "api-status-dependent"
+        },
+        {
+          "content": "Добавить в расчет Возовоз стоимость забора груза",
+          "status": "in_progress",
+          "priority": "medium",
+          "id": "vozovoz-pickup-cost"
+        },
+        {
+          "content": "Добавить в расчет Возовоз стоимость доставки груза до адреса",
+          "status": "pending",
+          "priority": "medium",
+          "id": "vozovoz-delivery-cost"
+        },
+        {
+          "content": "Исправить упаковку в Возовоз - заменить картонную коробку на обрешетку",
+          "status": "pending",
+          "priority": "medium",
+          "id": "vozovoz-packaging-fix"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Убрать дублирующий блок 'Подключенные транспортные компании' сверху и оставить только блок под расчетами\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"remove-duplicate-block\"\n  },\n  {\n    \"content\": \"Сделать слово 'Подключена' зависимым от проверки ответа API в блоке под расчетами\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"api-status-dependent\"\n  },\n  {\n    \"content\": \"Добавить в расчет Возовоз стоимость забора груза\",\n    \"status\": \"in_progress\",\n    \"priority\": \"medium\",\n    \"id\": \"vozovoz-pickup-cost\"\n  },\n  {\n    \"content\": \"Добавить в расчет Возовоз стоимость доставки груза до адреса\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"vozovoz-delivery-cost\"\n  },\n  {\n    \"content\": \"Исправить упаковку в Возовоз - заменить картонную коробку на обрешетку\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"vozovoz-packaging-fix\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Убрать дублирующий блок 'Подключенные транспортные компании' сверху и оставить только блок под расчетами",
+          "status": "completed",
+          "priority": "high",
+          "id": "remove-duplicate-block"
+        },
+        {
+          "content": "Сделать слово 'Подключена' зависимым от проверки ответа API в блоке под расчетами",
+          "status": "completed",
+          "priority": "high",
+          "id": "api-status-dependent"
+        },
+        {
+          "content": "Добавить в расчет Возовоз стоимость забора груза",
+          "status": "in_progress",
+          "priority": "medium",
+          "id": "vozovoz-pickup-cost"
+        },
+        {
+          "content": "Добавить в расчет Возовоз стоимость доставки груза до адреса",
+          "status": "pending",
+          "priority": "medium",
+          "id": "vozovoz-delivery-cost"
+        },
+        {
+          "content": "Исправить упаковку в Возовоз - заменить картонную коробку на обрешетку",
+          "status": "pending",
+          "priority": "medium",
+          "id": "vozovoz-packaging-fix"
+        }
+      ]
+    },
+    "title": "3 todos",
+    "time": {
+      "start": 1759006336196,
+      "end": 1759006336197
+    }
+  }
+}

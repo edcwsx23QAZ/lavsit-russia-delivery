@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf12531002QwnAKcEuaCb8G0",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01FxP1RAtXqGU64c1srvRnxe",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2430,
+      "limit": 25
+    },
+    "output": "<file>\n02431|           <div className=\"flex-1\">\n02432|             <Alert className=\"border-blue-500 bg-blue-900/20\">\n02433|               <Building2 className=\"h-4 w-4 text-blue-400\" />\n02434|               <AlertDescription className=\"text-blue-100\">\n02435|                 <strong className=\"text-blue-300\">Подключенные транспортные компании:</strong>\n02436|                 <div className=\"mt-2 flex flex-wrap gap-2\">\n02437|                   <Badge variant=\"outline\" className=\"border-blue-400 text-blue-300\">\n02438|                     ПЭК <span className=\"ml-1 text-xs\">{apiStatus.pek}</span>\n02439|                   </Badge>\n02440|                   <Badge variant=\"outline\" className=\"border-green-400 text-green-300\">\n02441|                     Деловые Линии <span className=\"ml-1 text-xs\">{apiStatus.dellin}</span>\n02442|                   </Badge>\n02443|                   <Badge variant=\"outline\" className=\"border-purple-400 text-purple-300\">\n02444|                     Rail Continent <span className=\"ml-1 text-xs\">{apiStatus.railcontinent}</span>\n02445|                   </Badge>\n02446|                   <Badge variant=\"outline\" className=\"border-orange-400 text-orange-300\">\n02447|                     Возовоз <span className=\"ml-1 text-xs\">{apiStatus.vozovoz}</span>\n02448|                   </Badge>\n02449|                 </div>\n02450|               </AlertDescription>\n02451|             </Alert>\n02452|           </div>\n02453|           <Button \n02454|             onClick={() => window.open('/diagnostic', '_blank')}\n02455|             variant=\"outline\" \n\n(File has more lines. Use 'offset' parameter to read beyond line 2455)\n</file>",
+    "metadata": {
+      "preview": "          <div className=\"flex-1\">\n            <Alert className=\"border-blue-500 bg-blue-900/20\">\n              <Building2 className=\"h-4 w-4 text-blue-400\" />\n              <AlertDescription className=\"text-blue-100\">\n                <strong className=\"text-blue-300\">Подключенные транспортные компании:</strong>\n                <div className=\"mt-2 flex flex-wrap gap-2\">\n                  <Badge variant=\"outline\" className=\"border-blue-400 text-blue-300\">\n                    ПЭК <span className=\"ml-1 text-xs\">{apiStatus.pek}</span>\n                  </Badge>\n                  <Badge variant=\"outline\" className=\"border-green-400 text-green-300\">\n                    Деловые Линии <span className=\"ml-1 text-xs\">{apiStatus.dellin}</span>\n                  </Badge>\n                  <Badge variant=\"outline\" className=\"border-purple-400 text-purple-300\">\n                    Rail Continent <span className=\"ml-1 text-xs\">{apiStatus.railcontinent}</span>\n                  </Badge>\n                  <Badge variant=\"outline\" className=\"border-orange-400 text-orange-300\">\n                    Возовоз <span className=\"ml-1 text-xs\">{apiStatus.vozovoz}</span>\n                  </Badge>\n                </div>\n              </AlertDescription>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006238641,
+      "end": 1759006238643
+    }
+  }
+}

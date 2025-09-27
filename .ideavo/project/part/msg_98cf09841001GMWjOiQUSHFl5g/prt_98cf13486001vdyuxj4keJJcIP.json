@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cf13486001vdyuxj4keJJcIP",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01HwA1wiZbKfue8L6fkkDAZQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        {/* Подключенные ТК и диагностика */}\n        <div className=\"flex justify-between items-center mb-4\">\n          <div className=\"flex-1\">\n            <Alert className=\"border-blue-500 bg-blue-900/20\">\n              <Building2 className=\"h-4 w-4 text-blue-400\" />\n              <AlertDescription className=\"text-blue-100\">\n                <strong className=\"text-blue-300\">Подключенные транспортные компании:</strong>\n                <div className=\"mt-2 flex flex-wrap gap-2\">\n                  <Badge variant=\"outline\" className=\"border-blue-400 text-blue-300\">\n                    ПЭК <span className=\"ml-1 text-xs\">{apiStatus.pek}</span>\n                  </Badge>\n                  <Badge variant=\"outline\" className=\"border-green-400 text-green-300\">\n                    Деловые Линии <span className=\"ml-1 text-xs\">{apiStatus.dellin}</span>\n                  </Badge>\n                  <Badge variant=\"outline\" className=\"border-purple-400 text-purple-300\">\n                    Rail Continent <span className=\"ml-1 text-xs\">{apiStatus.railcontinent}</span>\n                  </Badge>\n                  <Badge variant=\"outline\" className=\"border-orange-400 text-orange-300\">\n                    Возовоз <span className=\"ml-1 text-xs\">{apiStatus.vozovoz}</span>\n                  </Badge>\n                </div>\n              </AlertDescription>\n            </Alert>\n          </div>\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"ml-4 border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Диагностика\n          </Button>\n        </div>",
+      "newString": "        {/* Кнопка диагностики */}\n        <div className=\"flex justify-end mb-4\">\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Диагностика\n          </Button>\n        </div>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2425,36 +2425,14 @@\n <h1 className=\"text-2xl font-bold text-center mb-6 text-blue-400\">\n   Междугородняя доставка Лавсит\n </h1>\n \n-{/* Подключенные ТК и диагностика */}\n-<div className=\"flex justify-between items-center mb-4\">\n-  <div className=\"flex-1\">\n-    <Alert className=\"border-blue-500 bg-blue-900/20\">\n-      <Building2 className=\"h-4 w-4 text-blue-400\" />\n-      <AlertDescription className=\"text-blue-100\">\n-        <strong className=\"text-blue-300\">Подключенные транспортные компании:</strong>\n-        <div className=\"mt-2 flex flex-wrap gap-2\">\n-          <Badge variant=\"outline\" className=\"border-blue-400 text-blue-300\">\n-            ПЭК <span className=\"ml-1 text-xs\">{apiStatus.pek}</span>\n-          </Badge>\n-          <Badge variant=\"outline\" className=\"border-green-400 text-green-300\">\n-            Деловые Линии <span className=\"ml-1 text-xs\">{apiStatus.dellin}</span>\n-          </Badge>\n-          <Badge variant=\"outline\" className=\"border-purple-400 text-purple-300\">\n-            Rail Continent <span className=\"ml-1 text-xs\">{apiStatus.railcontinent}</span>\n-          </Badge>\n-          <Badge variant=\"outline\" className=\"border-orange-400 text-orange-300\">\n-            Возовоз <span className=\"ml-1 text-xs\">{apiStatus.vozovoz}</span>\n-          </Badge>\n-        </div>\n-      </AlertDescription>\n-    </Alert>\n-  </div>\n+{/* Кнопка диагностики */}\n+<div className=\"flex justify-end mb-4\">\n   <Button \n     onClick={() => window.open('/diagnostic', '_blank')}\n     variant=\"outline\" \n-    className=\"ml-4 border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n+    className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n   >\n     <Settings className=\"h-4 w-4 mr-2\" />\n     Диагностика\n   </Button>\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006248093,
+      "end": 1759006248113
+    }
+  }
+}

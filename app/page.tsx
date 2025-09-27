@@ -61,11 +61,12 @@ interface AddressSuggestion {
   };
 }
 
-const COMPANIES = [
-  { name: 'Деловые Линии', logo: '📦', connected: true },
-  { name: 'ПЭК', logo: '🚛', connected: true },
-  { name: 'Nord Wheel', logo: '🌐', connected: true },
-  { name: 'Rail Continent', logo: '🚂', connected: true }
+// Определим базовую структуру компаний
+const COMPANIES_BASE = [
+  { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },
+  { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },
+  { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },
+  { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' }
 ];
 
 export default function Home() {
@@ -2035,7 +2036,7 @@ export default function Home() {
             } : {}),
             ...(form.needPackaging ? {
               wrapping: {
-                box1: 1 // Базовая упаковка
+                palletCollar: totalVolume // Обрешетка по объему
               }
             } : {})
           },
@@ -2043,13 +2044,21 @@ export default function Home() {
             dispatch: {
               point: {
                 location: form.fromCity || 'Москва',
-                terminal: "default"
+                ...(form.fromAddressDelivery ? {
+                  address: form.fromAddress || "адрес отправления"
+                } : {
+                  terminal: "default"
+                })
               }
             },
             destination: {
               point: {
-                location: form.toCity || 'Санкт-Петербург', 
-                terminal: "default"
+                location: form.toCity || 'Санкт-Петербург',
+                ...(form.toAddressDelivery ? {
+                  address: form.toAddress || "адрес получения"
+                } : {
+                  terminal: "default"
+                })
               }
             }
           }
@@ -2076,14 +2085,63 @@ export default function Home() {
         const services: { name: string; description: string; price: number }[] = [];
         let totalPrice = responseData.price || responseData.basePrice || 0;
         
-        // Добавляем основные услуги
+        console.log('🚚 Возовоз анализ ответа:', responseData);
+        
+        // Базовая стоимость доставки
+        if (responseData.basePrice && responseData.basePrice > 0) {
+          services.push({
+            name: 'Доставка груза',
+            description: `${form.fromCity} - ${form.toCity}`,
+            price: responseData.basePrice
+          });
+        }
+        
+        // Дополнительные услуги из ответа API
         if (responseData.service && Array.isArray(responseData.service)) {
           responseData.service.forEach((service: any) => {
-            services.push({
-              name: service.name,
-              description: '',
-              price: service.price
-            });
+            if (service.price > 0) {
+              services.push({
+                name: service.name || 'Дополнительная услуга',
+                description: service.description || '',
+                price: service.price
+              });
+            }
+          });
+        }
+        
+        // Забор груза с адреса (если указан)
+        if (form.fromAddressDelivery && responseData.pickupPrice) {
+          services.push({
+            name: 'Забор груза',
+            description: `Забор с адреса: ${form.fromAddress || 'адрес отправления'}`,
+            price: responseData.pickupPrice
+          });
+        }
+        
+        // Доставка груза до адреса (если указан)
+        if (form.toAddressDelivery && responseData.deliveryPrice) {
+          services.push({
+            name: 'Доставка до адреса',
+            description: `Доставка до: ${form.toAddress || 'адрес получения'}`,
+            price: responseData.deliveryPrice
+          });
+        }
+        
+        // Упаковка (обрешетка)
+        if (form.needPackaging && responseData.wrappingPrice) {
+          services.push({
+            name: 'Упаковка груза',
+            description: 'Обрешетка груза',
+            price: responseData.wrappingPrice
+          });
+        }
+        
+        // Страхование
+        if (form.needInsurance && responseData.insurancePrice) {
+          services.push({
+            name: 'Страхование груза',
+            description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
+            price: responseData.insurancePrice
           });
         }
         
@@ -2426,34 +2484,12 @@ export default function Home() {
           Междугородняя доставка Лавсит
         </h1>
         
-        {/* Подключенные ТК и диагностика */}
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex-1">
-            <Alert className="border-blue-500 bg-blue-900/20">
-              <Building2 className="h-4 w-4 text-blue-400" />
-              <AlertDescription className="text-blue-100">
-                <strong className="text-blue-300">Подключенные транспортные компании:</strong>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  <Badge variant="outline" className="border-blue-400 text-blue-300">
-                    ПЭК <span className="ml-1 text-xs">{apiStatus.pek}</span>
-                  </Badge>
-                  <Badge variant="outline" className="border-green-400 text-green-300">
-                    Деловые Линии <span className="ml-1 text-xs">{apiStatus.dellin}</span>
-                  </Badge>
-                  <Badge variant="outline" className="border-purple-400 text-purple-300">
-                    Rail Continent <span className="ml-1 text-xs">{apiStatus.railcontinent}</span>
-                  </Badge>
-                  <Badge variant="outline" className="border-orange-400 text-orange-300">
-                    Возовоз <span className="ml-1 text-xs">{apiStatus.vozovoz}</span>
-                  </Badge>
-                </div>
-              </AlertDescription>
-            </Alert>
-          </div>
+        {/* Кнопка диагностики */}
+        <div className="flex justify-end mb-4">
           <Button 
             onClick={() => window.open('/diagnostic', '_blank')}
             variant="outline" 
-            className="ml-4 border-blue-500 text-blue-400 hover:bg-blue-900/20"
+            className="border-blue-500 text-blue-400 hover:bg-blue-900/20"
           >
             <Settings className="h-4 w-4 mr-2" />
             Диагностика
@@ -2919,17 +2955,25 @@ export default function Home() {
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 gap-2">
-                  {COMPANIES.map((company, index) => (
-                    <div key={index} className="flex items-center gap-2 p-2 bg-gray-700 rounded">
-                      <span className="text-lg">{company.logo}</span>
-                      <div>
-                        <p className="font-medium text-white text-xs">{company.name}</p>
-                        <Badge variant={company.connected ? "default" : "destructive"} className="text-xs">
-                          {company.connected ? 'Подключена' : 'Отключена'}
-                        </Badge>
+                  {COMPANIES_BASE.map((company, index) => {
+                    const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';
+                    const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];
+                    
+                    return (
+                      <div key={index} className="flex items-center gap-2 p-2 bg-gray-700 rounded">
+                        <span className="text-lg">{company.logo}</span>
+                        <div>
+                          <p className="font-medium text-white text-xs">{company.name}</p>
+                          <Badge 
+                            variant={isConnected ? "default" : "destructive"} 
+                            className="text-xs"
+                          >
+                            {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}
+                          </Badge>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </CardContent>
             </Card>

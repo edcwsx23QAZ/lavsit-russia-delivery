@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf108cb001R4MApkp6gg25mT",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Riv42kgCgwpZ3V975xGSeA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2265,
+      "limit": 20
+    },
+    "output": "<file>\n02266|           price: arrivalPrice\n02267|         });\n02268|       }\n02269|       \n02270|       // Упаковка (надбавки уже включены в pkg.price, но показываем их для детализации)\n02271|       if (form.needPackaging && calc.details.packages) {\n02272|         Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n02273|           if (pkg.price && pkg.price > 0) {\n02274|             // Вычисляем базовую цену упаковки (без надбавок) для отображения\n02275|             let basePkgPrice = pkg.price;\n02276|             let totalPremiums = 0;\n02277|             \n02278|             if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {\n02279|               totalPremiums = pkg.premiumDetails.reduce((sum: number, premium: any) => \n02280|                 sum + (premium.value || 0), 0);\n02281|               basePkgPrice = pkg.price - totalPremiums;\n02282|             }\n02283|             \n02284|             packagingPrice += pkg.price; // В общую сумму добавляем полную цену\n02285|             \n\n(File has more lines. Use 'offset' parameter to read beyond line 2285)\n</file>",
+    "metadata": {
+      "preview": "          price: arrivalPrice\n        });\n      }\n      \n      // Упаковка (надбавки уже включены в pkg.price, но показываем их для детализации)\n      if (form.needPackaging && calc.details.packages) {\n        Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n          if (pkg.price && pkg.price > 0) {\n            // Вычисляем базовую цену упаковки (без надбавок) для отображения\n            let basePkgPrice = pkg.price;\n            let totalPremiums = 0;\n            \n            if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {\n              totalPremiums = pkg.premiumDetails.reduce((sum: number, premium: any) => \n                sum + (premium.value || 0), 0);\n              basePkgPrice = pkg.price - totalPremiums;\n            }\n            \n            packagingPrice += pkg.price; // В общую сумму добавляем полную цену\n            "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006231784,
+      "end": 1759006231789
+    }
+  }
+}

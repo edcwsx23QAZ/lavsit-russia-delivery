@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cf2e94d0012C5cQki2pxojlX",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01XfZwbdR9pHV95K7nqTEpQu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Параметры для API Vozovoz\n      const requestData = {\n        object: \"price\",\n        action: \"get\",\n        params: {\n          cargo: {\n            dimension: {\n              quantity: form.cargos.length,\n              volume: totalVolume,\n              weight: totalWeight\n            },\n            ...(form.needInsurance && form.declaredValue > 0 ? {\n              insurance: form.declaredValue\n            } : {}),\n            ...(form.needPackaging ? {\n              wrapping: {\n                box1: 1 // Базовая упаковка\n              }\n            } : {})\n          },\n          gateway: {\n            dispatch: {\n              point: {\n                location: form.fromCity || 'Москва',\n                terminal: \"default\"\n              }\n            },\n            destination: {\n              point: {\n                location: form.toCity || 'Санкт-Петербург', \n                terminal: \"default\"\n              }\n            }\n          }\n        }\n      };",
+      "newString": "      // Параметры для API Vozovoz\n      const requestData = {\n        object: \"price\",\n        action: \"get\",\n        params: {\n          cargo: {\n            dimension: {\n              quantity: form.cargos.length,\n              volume: totalVolume,\n              weight: totalWeight\n            },\n            ...(form.needInsurance && form.declaredValue > 0 ? {\n              insurance: form.declaredValue\n            } : {}),\n            ...(form.needPackaging ? {\n              wrapping: {\n                palletCollar: totalVolume // Обрешетка по объему\n              }\n            } : {})\n          },\n          gateway: {\n            dispatch: {\n              point: {\n                location: form.fromCity || 'Москва',\n                ...(form.fromAddressDelivery ? {\n                  address: form.fromAddress || \"адрес отправления\"\n                } : {\n                  terminal: \"default\"\n                })\n              }\n            },\n            destination: {\n              point: {\n                location: form.toCity || 'Санкт-Петербург',\n                ...(form.toAddressDelivery ? {\n                  address: form.toAddress || \"адрес получения\"\n                } : {\n                  terminal: \"default\"\n                })\n              }\n            }\n          }\n        }\n      };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2035,23 +2035,31 @@\n       insurance: form.declaredValue\n     } : {}),\n     ...(form.needPackaging ? {\n       wrapping: {\n-        box1: 1 // Базовая упаковка\n+        palletCollar: totalVolume // Обрешетка по объему\n       }\n     } : {})\n   },\n   gateway: {\n     dispatch: {\n       point: {\n         location: form.fromCity || 'Москва',\n-        terminal: \"default\"\n+        ...(form.fromAddressDelivery ? {\n+          address: form.fromAddress || \"адрес отправления\"\n+        } : {\n+          terminal: \"default\"\n+        })\n       }\n     },\n     destination: {\n       point: {\n-        location: form.toCity || 'Санкт-Петербург', \n-        terminal: \"default\"\n+        location: form.toCity || 'Санкт-Петербург',\n+        ...(form.toAddressDelivery ? {\n+          address: form.toAddress || \"адрес получения\"\n+        } : {\n+          terminal: \"default\"\n+        })\n       }\n     }\n   }\n }\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006360036,
+      "end": 1759006360049
+    }
+  }
+}

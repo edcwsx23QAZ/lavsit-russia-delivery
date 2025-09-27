@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf1a349001zF5VL4TXUFRQUc",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_019DQCJaSMxxHDinRw89PGJk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "COMPANIES.*=|const COMPANIES",
+      "include": "*.tsx"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 64: const COMPANIES = [\n  Line 2900:                   {COMPANIES.map((company, index) => (",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "COMPANIES.*=|const COMPANIES",
+    "time": {
+      "start": 1759006270699,
+      "end": 1759006270709
+    }
+  }
+}

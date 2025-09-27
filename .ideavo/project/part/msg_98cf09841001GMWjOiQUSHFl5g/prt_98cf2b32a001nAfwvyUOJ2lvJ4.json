@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf2b32a001nAfwvyUOJ2lvJ4",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01EojwJksfhQcdwmxWwXvaz6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1875,
+      "limit": 50
+    },
+    "output": "<file>\n01876|             priceInsurance: autoTariff.priceInsurance,\n01877|             needPackaging: form.needPackaging,\n01878|             needInsurance: form.needInsurance,\n01879|             declaredValue: form.declaredValue\n01880|           });\n01881|           \n01882|           console.log('🚂 Rail Continent чекбоксы состояние:');\n01883|           console.log('   - Упаковка требуется:', form.needPackaging);\n01884|           console.log('   - Страхование требуется:', form.needInsurance);\n01885|           console.log('   - Заявленная стоимость:', form.declaredValue);\n01886|           \n01887|           // Основная стоимость доставки груза\n01888|           if (autoTariff.price_with_out_sale) {\n01889|             const deliveryPrice = parseFloat(autoTariff.price_with_out_sale);\n01890|             console.log('🚂 Доставка груза:', deliveryPrice);\n01891|             services.push({\n01892|               name: 'Доставка груза',\n01893|               description: `${autoTariff.type} (${autoTariff.rsType})`,\n01894|               price: deliveryPrice\n01895|             });\n01896|             totalPrice += deliveryPrice;\n01897|           }\n01898|           \n01899|           // Упаковка\n01900|           if (form.needPackaging && autoTariff.pricePackage) {\n01901|             const packagingPrice = parseFloat(autoTariff.pricePackage);\n01902|             console.log('🚂 Упаковка груза:', packagingPrice);\n01903|             services.push({\n01904|               name: 'Упаковка груза',\n01905|               description: 'Профессиональная упаковка',\n01906|               price: packagingPrice\n01907|             });\n01908|             totalPrice += packagingPrice;\n01909|           }\n01910|           \n01911|           // Страхование\n01912|           if (form.needInsurance && autoTariff.priceInsurance) {\n01913|             const insuranceCost = Math.round(form.declaredValue * parseFloat(autoTariff.priceInsurance) / 100);\n01914|             console.log('🚂 Страхование груза:', insuranceCost, '(', form.declaredValue, '*', autoTariff.priceInsurance, '%)');\n01915|             services.push({\n01916|               name: 'Страхование груза',\n01917|               description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n01918|               price: insuranceCost\n01919|             });\n01920|             totalPrice += insuranceCost;\n01921|           }\n01922| \n01923|           console.log('🚂 Rail Continent итоговая стоимость:', totalPrice);\n01924|           console.log('🚂 Rail Continent услуги:', services);\n01925| \n\n(File has more lines. Use 'offset' parameter to read beyond line 1925)\n</file>",
+    "metadata": {
+      "preview": "            priceInsurance: autoTariff.priceInsurance,\n            needPackaging: form.needPackaging,\n            needInsurance: form.needInsurance,\n            declaredValue: form.declaredValue\n          });\n          \n          console.log('🚂 Rail Continent чекбоксы состояние:');\n          console.log('   - Упаковка требуется:', form.needPackaging);\n          console.log('   - Страхование требуется:', form.needInsurance);\n          console.log('   - Заявленная стоимость:', form.declaredValue);\n          \n          // Основная стоимость доставки груза\n          if (autoTariff.price_with_out_sale) {\n            const deliveryPrice = parseFloat(autoTariff.price_with_out_sale);\n            console.log('🚂 Доставка груза:', deliveryPrice);\n            services.push({\n              name: 'Доставка груза',\n              description: `${autoTariff.type} (${autoTariff.rsType})`,\n              price: deliveryPrice\n            });"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006340920,
+      "end": 1759006340923
+    }
+  }
+}

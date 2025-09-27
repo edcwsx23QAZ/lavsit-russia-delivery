@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf2d531001c96RJ4fKE6eA0U",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01SM6QuL9uBfAaeXiLZeCYi9",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2015,
+      "limit": 50
+    },
+    "output": "<file>\n02016|       \n02017|       console.log('🚚 Возовоз: подготовка данных...');\n02018|       console.log('   - Общий вес:', totalWeight, 'кг');\n02019|       console.log('   - Общий объем:', totalVolume, 'м³');\n02020|       console.log('   - Откуда:', form.fromCity);\n02021|       console.log('   - Куда:', form.toCity);\n02022|       \n02023|       // Параметры для API Vozovoz\n02024|       const requestData = {\n02025|         object: \"price\",\n02026|         action: \"get\",\n02027|         params: {\n02028|           cargo: {\n02029|             dimension: {\n02030|               quantity: form.cargos.length,\n02031|               volume: totalVolume,\n02032|               weight: totalWeight\n02033|             },\n02034|             ...(form.needInsurance && form.declaredValue > 0 ? {\n02035|               insurance: form.declaredValue\n02036|             } : {}),\n02037|             ...(form.needPackaging ? {\n02038|               wrapping: {\n02039|                 box1: 1 // Базовая упаковка\n02040|               }\n02041|             } : {})\n02042|           },\n02043|           gateway: {\n02044|             dispatch: {\n02045|               point: {\n02046|                 location: form.fromCity || 'Москва',\n02047|                 terminal: \"default\"\n02048|               }\n02049|             },\n02050|             destination: {\n02051|               point: {\n02052|                 location: form.toCity || 'Санкт-Петербург', \n02053|                 terminal: \"default\"\n02054|               }\n02055|             }\n02056|           }\n02057|         }\n02058|       };\n02059| \n02060|       console.log('🚚 Возовоз запрос:', JSON.stringify(requestData, null, 2));\n02061| \n02062|       const response = await fetch(apiUrl, {\n02063|         method: 'POST',\n02064|         headers: {\n02065|           'Content-Type': 'application/json',\n\n(File has more lines. Use 'offset' parameter to read beyond line 2065)\n</file>",
+    "metadata": {
+      "preview": "      \n      console.log('🚚 Возовоз: подготовка данных...');\n      console.log('   - Общий вес:', totalWeight, 'кг');\n      console.log('   - Общий объем:', totalVolume, 'м³');\n      console.log('   - Откуда:', form.fromCity);\n      console.log('   - Куда:', form.toCity);\n      \n      // Параметры для API Vozovoz\n      const requestData = {\n        object: \"price\",\n        action: \"get\",\n        params: {\n          cargo: {\n            dimension: {\n              quantity: form.cargos.length,\n              volume: totalVolume,\n              weight: totalWeight\n            },\n            ...(form.needInsurance && form.declaredValue > 0 ? {\n              insurance: form.declaredValue"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006349532,
+      "end": 1759006349534
+    }
+  }
+}

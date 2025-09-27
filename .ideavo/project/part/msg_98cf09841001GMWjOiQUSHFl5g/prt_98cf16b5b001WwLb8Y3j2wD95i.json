@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf16b5b001WwLb8Y3j2wD95i",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01UhdFrWobdvGFfjiUcNYJxm",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2900,
+      "limit": 50
+    },
+    "output": "<file>\n02901|                     <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n02902|                       <span className=\"text-lg\">{company.logo}</span>\n02903|                       <div>\n02904|                         <p className=\"font-medium text-white text-xs\">{company.name}</p>\n02905|                         <Badge variant={company.connected ? \"default\" : \"destructive\"} className=\"text-xs\">\n02906|                           {company.connected ? 'Подключена' : 'Отключена'}\n02907|                         </Badge>\n02908|                       </div>\n02909|                     </div>\n02910|                   ))}\n02911|                 </div>\n02912|               </CardContent>\n02913|             </Card>\n02914|           </div>\n02915|         </div>\n02916|       </div>\n02917| \n02918|       {/* Автоподсказки */}\n02919|       {showSuggestions && suggestions.length > 0 && (\n02920|         <div \n02921|           className=\"fixed z-50 bg-gray-800 border border-gray-700 rounded-md shadow-lg max-w-sm w-full max-h-60 overflow-y-auto\"\n02922|           style={{\n02923|             top: suggestionPosition.top,\n02924|             left: suggestionPosition.left\n02925|           }}\n02926|         >\n02927|           <div className=\"p-1\">\n02928|             {suggestions.map((suggestion, index) => (\n02929|               <div\n02930|                 key={index}\n02931|                 className=\"p-2 hover:bg-gray-700 cursor-pointer text-xs text-white rounded transition-colors\"\n02932|                 onClick={() => selectSuggestion(suggestion)}\n02933|               >\n02934|                 {suggestion.value}\n02935|               </div>\n02936|             ))}\n02937|           </div>\n02938|         </div>\n02939|       )}\n02940|     </div>\n02941|   );\n02942| }\n</file>",
+    "metadata": {
+      "preview": "                    <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n                      <span className=\"text-lg\">{company.logo}</span>\n                      <div>\n                        <p className=\"font-medium text-white text-xs\">{company.name}</p>\n                        <Badge variant={company.connected ? \"default\" : \"destructive\"} className=\"text-xs\">\n                          {company.connected ? 'Подключена' : 'Отключена'}\n                        </Badge>\n                      </div>\n                    </div>\n                  ))}\n                </div>\n              </CardContent>\n            </Card>\n          </div>\n        </div>\n      </div>\n\n      {/* Автоподсказки */}\n      {showSuggestions && suggestions.length > 0 && (\n        <div "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006256594,
+      "end": 1759006256596
+    }
+  }
+}

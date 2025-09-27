@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf19512001PVTTeWM3lomXys",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01TuAupAwNbR5mLHL4CJKhx1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2870,
+      "limit": 40
+    },
+    "output": "<file>\n02871|                                   <pre className=\"whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs\">\n02872|                                     {JSON.stringify(calc.details, null, 2)}\n02873|                                   </pre>\n02874|                                 </div>\n02875|                               )}\n02876|                               \n02877|                               {calc.error && (\n02878|                                 <div className=\"mb-3\">\n02879|                                   <h5 className=\"font-bold mb-1 text-red-400\">Информация об ошибке:</h5>\n02880|                                   <p className=\"text-red-300 text-xs\">{calc.error}</p>\n02881|                                 </div>\n02882|                               )}\n02883|                             </div>\n02884|                           </CollapsibleContent>\n02885|                         </Collapsible>\n02886|                       </div>\n02887|                     </CardContent>\n02888|                   </Card>\n02889|                 ))}\n02890|               </div>\n02891|             )}\n02892|             \n02893|             {/* Список подключенных ТК */}\n02894|             <Card className=\"bg-gray-800 border-gray-700\">\n02895|               <CardHeader className=\"pb-2\">\n02896|                 <CardTitle className=\"text-white text-sm\">Подключенные транспортные компании</CardTitle>\n02897|               </CardHeader>\n02898|               <CardContent>\n02899|                 <div className=\"grid grid-cols-2 gap-2\">\n02900|                   {COMPANIES.map((company, index) => (\n02901|                     <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n02902|                       <span className=\"text-lg\">{company.logo}</span>\n02903|                       <div>\n02904|                         <p className=\"font-medium text-white text-xs\">{company.name}</p>\n02905|                         <Badge variant={company.connected ? \"default\" : \"destructive\"} className=\"text-xs\">\n02906|                           {company.connected ? 'Подключена' : 'Отключена'}\n02907|                         </Badge>\n02908|                       </div>\n02909|                     </div>\n02910|                   ))}\n\n(File has more lines. Use 'offset' parameter to read beyond line 2910)\n</file>",
+    "metadata": {
+      "preview": "                                  <pre className=\"whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs\">\n                                    {JSON.stringify(calc.details, null, 2)}\n                                  </pre>\n                                </div>\n                              )}\n                              \n                              {calc.error && (\n                                <div className=\"mb-3\">\n                                  <h5 className=\"font-bold mb-1 text-red-400\">Информация об ошибке:</h5>\n                                  <p className=\"text-red-300 text-xs\">{calc.error}</p>\n                                </div>\n                              )}\n                            </div>\n                          </CollapsibleContent>\n                        </Collapsible>\n                      </div>\n                    </CardContent>\n                  </Card>\n                ))}\n              </div>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006267273,
+      "end": 1759006267276
+    }
+  }
+}

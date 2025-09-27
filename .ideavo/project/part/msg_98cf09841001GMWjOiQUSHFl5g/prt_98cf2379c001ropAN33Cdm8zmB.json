@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cf2379c001ropAN33Cdm8zmB",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_011K4dm6XnnwT5g8bhaZoxVc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                <div className=\"grid grid-cols-2 gap-2\">\n                  {COMPANIES.map((company, index) => (\n                    <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n                      <span className=\"text-lg\">{company.logo}</span>\n                      <div>\n                        <p className=\"font-medium text-white text-xs\">{company.name}</p>\n                        <Badge variant={company.connected ? \"default\" : \"destructive\"} className=\"text-xs\">\n                          {company.connected ? 'Подключена' : 'Отключена'}\n                        </Badge>\n                      </div>\n                    </div>\n                  ))}",
+      "newString": "                <div className=\"grid grid-cols-2 gap-2\">\n                  {COMPANIES_BASE.map((company, index) => {\n                    const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n                    const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n                    \n                    return (\n                      <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n                        <span className=\"text-lg\">{company.logo}</span>\n                        <div>\n                          <p className=\"font-medium text-white text-xs\">{company.name}</p>\n                          <Badge \n                            variant={isConnected ? \"default\" : \"destructive\"} \n                            className=\"text-xs\"\n                          >\n                            {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}\n                          </Badge>\n                        </div>\n                      </div>\n                    );\n                  })}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2897,19 +2897,27 @@\n       <CardTitle className=\"text-white text-sm\">Подключенные транспортные компании</CardTitle>\n     </CardHeader>\n     <CardContent>\n       <div className=\"grid grid-cols-2 gap-2\">\n-        {COMPANIES.map((company, index) => (\n-          <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n-            <span className=\"text-lg\">{company.logo}</span>\n-            <div>\n-              <p className=\"font-medium text-white text-xs\">{company.name}</p>\n-              <Badge variant={company.connected ? \"default\" : \"destructive\"} className=\"text-xs\">\n-                {company.connected ? 'Подключена' : 'Отключена'}\n-              </Badge>\n+        {COMPANIES_BASE.map((company, index) => {\n+          const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n+          const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n+          \n+          return (\n+            <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n+              <span className=\"text-lg\">{company.logo}</span>\n+              <div>\n+                <p className=\"font-medium text-white text-xs\">{company.name}</p>\n+                <Badge \n+                  variant={isConnected ? \"default\" : \"destructive\"} \n+                  className=\"text-xs\"\n+                >\n+                  {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}\n+                </Badge>\n+              </div>\n             </div>\n-          </div>\n-        ))}\n+          );\n+        })}\n       </div>\n     </CardContent>\n   </Card>\n </div>\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006313757,
+      "end": 1759006313774
+    }
+  }
+}

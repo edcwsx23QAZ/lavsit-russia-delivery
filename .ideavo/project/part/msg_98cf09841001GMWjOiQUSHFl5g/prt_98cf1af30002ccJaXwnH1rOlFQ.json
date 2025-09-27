@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf1af30002ccJaXwnH1rOlFQ",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01UcQszegsUp21kBTc6GoNXU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 64,
+      "limit": 20
+    },
+    "output": "<file>\n00065|   { name: 'Деловые Линии', logo: '📦', connected: true },\n00066|   { name: 'ПЭК', logo: '🚛', connected: true },\n00067|   { name: 'Nord Wheel', logo: '🌐', connected: true },\n00068|   { name: 'Rail Continent', logo: '🚂', connected: true }\n00069| ];\n00070| \n00071| export default function Home() {\n00072|   // Начальное состояние формы\n00073|   const initialFormState: DeliveryForm = {\n00074|     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00075|     fromCity: '',\n00076|     toCity: '',\n00077|     fromAddress: '',\n00078|     toAddress: '',\n00079|     declaredValue: 0,\n00080|     needPackaging: false,\n00081|     needLoading: false,\n00082|     needCarry: false,\n00083|     floor: 1,\n00084|     hasFreightLift: false,\n\n(File has more lines. Use 'offset' parameter to read beyond line 84)\n</file>",
+    "metadata": {
+      "preview": "  { name: 'Деловые Линии', logo: '📦', connected: true },\n  { name: 'ПЭК', logo: '🚛', connected: true },\n  { name: 'Nord Wheel', logo: '🌐', connected: true },\n  { name: 'Rail Continent', logo: '🚂', connected: true }\n];\n\nexport default function Home() {\n  // Начальное состояние формы\n  const initialFormState: DeliveryForm = {\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759006273962,
+      "end": 1759006273964
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cf11981001buFeLvB3HlopMq",
+  "messageID": "msg_98cf09841001GMWjOiQUSHFl5g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01LEXKYA17wh6gC2vpaw6LDY",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Подключенные транспортные компании",
+      "include": "*.tsx"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 2435:                 <strong className=\"text-blue-300\">Подключенные транспортные компании:</strong>\n  Line 2918:                 <CardTitle className=\"text-white text-sm\">Подключенные транспортные компании</CardTitle>",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "Подключенные транспортные компании",
+    "time": {
+      "start": 1759006235471,
+      "end": 1759006235479
+    }
+  }
+}
