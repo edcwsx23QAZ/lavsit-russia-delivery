@@ -4,19 +4,18 @@ $ next dev
   - Environments: .env.local, .env
 
  ✓ Starting...
- ✓ Ready in 1887ms
- ✓ Compiled /middleware in 141ms
+ ✓ Ready in 1810ms
+ ✓ Compiled /middleware in 140ms
  ✓ Compiled (73 modules)
  ○ Compiling / ...
- ✓ Compiled / in 3.3s (545 modules)
- GET / 200 in 3835ms
- ✓ Compiled in 595ms (281 modules)
- GET / 200 in 101ms
+ ✓ Compiled / in 2.9s (545 modules)
+ GET / 200 in 3445ms
+ ✓ Compiled in 539ms (281 modules)
+ GET / 200 in 39ms
  ⚠ Cross origin request detected from 4000-i859b80wqs6c2fhjwbj2w.e2b.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
- ✓ Compiled /api/vozovoz in 283ms (294 modules)
+ ✓ Compiled /api/vozovoz in 290ms (294 modules)
  ✓ Compiled (298 modules)
-🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
 🚚 Vozovoz API запрос: {
   "object": "price",
   "action": "get",
@@ -50,7 +49,8 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
   "method": "test"
 }
 🔧 Тестовый метод прокси
- POST /api/pek 200 in 631ms
+ POST /api/pek 200 in 657ms
+🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
 🚂 Rail Continent API ответ: {
   "result": "success",
   "data": {
@@ -182,7 +182,7 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     "train_fast_temp": false
   }
 }
- POST /api/rail-continent 200 in 1522ms
+ POST /api/rail-continent 200 in 1660ms
 🚚 Vozovoz API статус: 200 OK
 🚚 Vozovoz API ответ: {
   "response": {
@@ -219,4 +219,4 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     ]
   }
 }
- POST /api/vozovoz 200 in 1880ms
+ POST /api/vozovoz 200 in 1903ms
