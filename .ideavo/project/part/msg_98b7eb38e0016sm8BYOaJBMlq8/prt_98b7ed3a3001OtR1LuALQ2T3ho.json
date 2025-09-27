@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b7ed3a3001OtR1LuALQ2T3ho",
+  "messageID": "msg_98b7eb38e0016sm8BYOaJBMlq8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_017DwktNt5gRRbk5hKWcDFXs",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1420,
+      "limit": 20
+    },
+    "output": "<file>\n01421|                 zone: receiverZone.zoneName,\n01422|                 warehouseId: receiverWarehouseId\n01423|               }\n01424|             },\n01425|             requestData: finalRequestData,\n01426|             responseData: data,\n01427|             apiUrl\n01428|               };\n01429|             } else {\n01430|               // Проверяем, является ли ошибка проблемой с датой\n01431|               const errorMessage = transfer.errorMessage || 'Ошибка расчета тарифа ПЭК';\n01432|               if (errorMessage.includes('забор груза невозможен') || errorMessage.includes('выбранной даты')) {\n01433|                 console.log(`📅 ПЭК: ${errorMessage}. Пробуем следующий день...`);\n01434|                 lastError = new Error(errorMessage);\n01435|                 // Переходим к следующему дню\n01436|                 currentDayOffset++;\n01437|                 plannedDateTime = getDateForCalculation(currentDayOffset);\n01438|                 continue; // Пробуем следующую дату\n01439|               } else {\n01440|                 throw new Error(errorMessage);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1440)\n</file>",
+    "metadata": {
+      "preview": "                zone: receiverZone.zoneName,\n                warehouseId: receiverWarehouseId\n              }\n            },\n            requestData: finalRequestData,\n            responseData: data,\n            apiUrl\n              };\n            } else {\n              // Проверяем, является ли ошибка проблемой с датой\n              const errorMessage = transfer.errorMessage || 'Ошибка расчета тарифа ПЭК';\n              if (errorMessage.includes('забор груза невозможен') || errorMessage.includes('выбранной даты')) {\n                console.log(`📅 ПЭК: ${errorMessage}. Пробуем следующий день...`);\n                lastError = new Error(errorMessage);\n                // Переходим к следующему дню\n                currentDayOffset++;\n                plannedDateTime = getDateForCalculation(currentDayOffset);\n                continue; // Пробуем следующую дату\n              } else {\n                throw new Error(errorMessage);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758981969787,
+      "end": 1758981969791
+    }
+  }
+}

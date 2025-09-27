@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b7ef03e001cKwQ3h2o7WdIKL",
+  "messageID": "msg_98b7eb38e0016sm8BYOaJBMlq8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01MF4cP6qvd8ZZNgXY4SMoGx",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1240,
+      "limit": 30
+    },
+    "output": "<file>\n01241|           needArrangeTransportationDocuments: false,\n01242|           senderDistanceType: 0,\n01243|           receiverDistanceType: 0,\n01244|           cargos // массив грузов\n01245|         };\n01246|         \n01247|         console.log('📋 ПЭК: структура requestData:', JSON.stringify(requestData, null, 2));\n01248| \n01249|         // Добавляем услуги ПРР если нужно\n01250|         if (form.needCarry) {\n01251|           requestData.pickupServices = {\n01252|             isLoading: true,\n01253|             floor: Math.max(0, form.floor - 1), // ПЭК считает с 0\n01254|             carryingDistance: 0,\n01255|             isElevator: form.hasFreightLift\n01256|           };\n01257|           requestData.deliveryServices = {\n01258|             isLoading: true,\n01259|             floor: Math.max(0, form.floor - 1),\n01260|             carryingDistance: 0,\n01261|             isElevator: form.hasFreightLift\n01262|           };\n01263|         }\n01264| \n01265|         // Добавляем блоки pickup/delivery согласно документации ПЭК\n01266|         if (form.fromAddressDelivery) {\n01267|           console.log('📍 ПЭК: добавляем блок pickup для забора');\n01268|           requestData.pickup = {\n01269|             address: form.fromAddress || `Россия, ${form.fromCity}`\n01270|             // coordinates можно добавить позже для точности\n\n(File has more lines. Use 'offset' parameter to read beyond line 1270)\n</file>",
+    "metadata": {
+      "preview": "          needArrangeTransportationDocuments: false,\n          senderDistanceType: 0,\n          receiverDistanceType: 0,\n          cargos // массив грузов\n        };\n        \n        console.log('📋 ПЭК: структура requestData:', JSON.stringify(requestData, null, 2));\n\n        // Добавляем услуги ПРР если нужно\n        if (form.needCarry) {\n          requestData.pickupServices = {\n            isLoading: true,\n            floor: Math.max(0, form.floor - 1), // ПЭК считает с 0\n            carryingDistance: 0,\n            isElevator: form.hasFreightLift\n          };\n          requestData.deliveryServices = {\n            isLoading: true,\n            floor: Math.max(0, form.floor - 1),\n            carryingDistance: 0,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758981976757,
+      "end": 1758981976759
+    }
+  }
+}

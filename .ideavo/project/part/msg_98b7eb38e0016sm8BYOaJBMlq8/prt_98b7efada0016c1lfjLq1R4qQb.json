@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b7efada0016c1lfjLq1R4qQb",
+  "messageID": "msg_98b7eb38e0016sm8BYOaJBMlq8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01FoBQ7sH8RVxDge45hDRVfH",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1270,
+      "limit": 40
+    },
+    "output": "<file>\n01271|           };\n01272|         }\n01273|         \n01274|         if (form.toAddressDelivery) {\n01275|           console.log('📍 ПЭК: добавляем блок delivery для доставки');\n01276|           requestData.delivery = {\n01277|             address: form.toAddress || `Россия, ${form.toCity}`\n01278|             // coordinates можно добавить позже для точности\n01279|           };\n01280|         }\n01281| \n01282|         // Валидация обязательных полей согласно документации\n01283|         const requiredFields = ['types', 'senderWarehouseId', 'receiverWarehouseId', 'plannedDateTime', 'cargos'];\n01284|         const missingFields = requiredFields.filter(field => !requestData[field]);\n01285|         \n01286|         if (missingFields.length > 0) {\n01287|           throw new Error(`ПЭК: отсутствуют обязательные поля: ${missingFields.join(', ')}`);\n01288|         }\n01289|         \n01290|         if (!Array.isArray(requestData.types) || requestData.types.length === 0) {\n01291|           throw new Error('ПЭК: поле types должно быть непустым массивом');\n01292|         }\n01293|         \n01294|         if (!Array.isArray(requestData.cargos) || requestData.cargos.length === 0) {\n01295|           throw new Error('ПЭК: поле cargos должно быть непустым массивом');\n01296|         }\n01297|         \n01298|         console.log('✅ ПЭК: валидация обязательных полей пройдена');\n01299| \n01300|         const finalRequestData = {\n01301|           method: 'calculateprice',\n01302|           ...requestData\n01303|         };\n01304|         \n01305|         console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n01306|         console.log('🌐 ПЭК API URL:', apiUrl);\n01307|         console.log('📋 ПЭК: количество типов тарифов:', requestData.types.length);\n01308|         console.log('📋 ПЭК: количество грузов:', requestData.cargos.length);\n01309|       \n01310|       // Проверяем координаты перед отправкой\n\n(File has more lines. Use 'offset' parameter to read beyond line 1310)\n</file>",
+    "metadata": {
+      "preview": "          };\n        }\n        \n        if (form.toAddressDelivery) {\n          console.log('📍 ПЭК: добавляем блок delivery для доставки');\n          requestData.delivery = {\n            address: form.toAddress || `Россия, ${form.toCity}`\n            // coordinates можно добавить позже для точности\n          };\n        }\n\n        // Валидация обязательных полей согласно документации\n        const requiredFields = ['types', 'senderWarehouseId', 'receiverWarehouseId', 'plannedDateTime', 'cargos'];\n        const missingFields = requiredFields.filter(field => !requestData[field]);\n        \n        if (missingFields.length > 0) {\n          throw new Error(`ПЭК: отсутствуют обязательные поля: ${missingFields.join(', ')}`);\n        }\n        \n        if (!Array.isArray(requestData.types) || requestData.types.length === 0) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758981979449,
+      "end": 1758981979451
+    }
+  }
+}
