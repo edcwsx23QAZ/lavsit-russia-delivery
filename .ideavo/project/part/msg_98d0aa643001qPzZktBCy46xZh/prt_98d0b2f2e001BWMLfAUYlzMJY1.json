@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d0b2f2e001BWMLfAUYlzMJY1",
+  "messageID": "msg_98d0aa643001qPzZktBCy46xZh",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_013ctwUVf8iReUgFUV65Qqdm",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1350,
+      "limit": 60
+    },
+    "output": "<file>\n01351|           error: `Зона ПЭК не обслуживается. Проверьте адреса: ${!senderZone ? (form.fromAddress || form.fromCity) : ''} ${!receiverZone ? (form.toAddress || form.toCity) : ''}`.trim(),\n01352|           apiUrl,\n01353|           requestData: debugInfo,\n01354|           responseData: { senderZone, receiverZone }\n01355|         };\n01356|       }\n01357| \n01358|       // Получаем ближайшие отделения если нужна адресная доставка\n01359|       let senderWarehouseId = senderZone.mainWarehouseId;\n01360|       let receiverWarehouseId = receiverZone.mainWarehouseId;\n01361|       \n01362|       if (form.fromAddressDelivery && senderZone.warehousePoint) {\n01363|         const validSenderCoords = validateCoordinates(senderZone.warehousePoint);\n01364|         if (validSenderCoords) {\n01365|           try {\n01366|             const senderDepartment = await getPekNearestDepartments(\n01367|               form.fromAddress || form.fromCity,\n01368|               {\n01369|                 latitude: validSenderCoords.latitude.toString(),\n01370|                 longitude: validSenderCoords.longitude.toString()\n01371|               }\n01372|             );\n01373|             if (senderDepartment) {\n01374|               senderWarehouseId = senderDepartment.warehouseId;\n01375|               console.log('✅ Найден ближайший склад отправителя:', senderDepartment.warehouseId);\n01376|             }\n01377|           } catch (error) {\n01378|             console.warn('⚠️ Ошибка поиска ближайших отделений отправителя, используем основной склад:', error);\n01379|           }\n01380|         } else {\n01381|           console.warn('⚠️ Некорректные координаты отправителя, используем основной склад');\n01382|         }\n01383|       }\n01384|       \n01385|       if (form.toAddressDelivery && receiverZone.warehousePoint) {\n01386|         const validReceiverCoords = validateCoordinates(receiverZone.warehousePoint);\n01387|         if (validReceiverCoords) {\n01388|           try {\n01389|             const receiverDepartment = await getPekNearestDepartments(\n01390|               form.toAddress || form.toCity,\n01391|               {\n01392|                 latitude: validReceiverCoords.latitude.toString(),\n01393|                 longitude: validReceiverCoords.longitude.toString()\n01394|               }\n01395|             );\n01396|             if (receiverDepartment) {\n01397|               receiverWarehouseId = receiverDepartment.warehouseId;\n01398|               console.log('✅ Найден ближайший склад получателя:', receiverDepartment.warehouseId);\n01399|             }\n01400|           } catch (error) {\n01401|             console.warn('⚠️ Ошибка поиска ближайших отделений получателя, используем основной склад:', error);\n01402|           }\n01403|         } else {\n01404|           console.warn('⚠️ Некорректные координаты получателя, используем основной склад');\n01405|         }\n01406|       }\n01407| \n01408|       // Функция для получения даты N дней от сегодня\n01409|       const getDateForCalculation = (daysFromToday: number): string => {\n01410|         const date = new Date();\n\n(File has more lines. Use 'offset' parameter to read beyond line 1410)\n</file>",
+    "metadata": {
+      "preview": "          error: `Зона ПЭК не обслуживается. Проверьте адреса: ${!senderZone ? (form.fromAddress || form.fromCity) : ''} ${!receiverZone ? (form.toAddress || form.toCity) : ''}`.trim(),\n          apiUrl,\n          requestData: debugInfo,\n          responseData: { senderZone, receiverZone }\n        };\n      }\n\n      // Получаем ближайшие отделения если нужна адресная доставка\n      let senderWarehouseId = senderZone.mainWarehouseId;\n      let receiverWarehouseId = receiverZone.mainWarehouseId;\n      \n      if (form.fromAddressDelivery && senderZone.warehousePoint) {\n        const validSenderCoords = validateCoordinates(senderZone.warehousePoint);\n        if (validSenderCoords) {\n          try {\n            const senderDepartment = await getPekNearestDepartments(\n              form.fromAddress || form.fromCity,\n              {\n                latitude: validSenderCoords.latitude.toString(),\n                longitude: validSenderCoords.longitude.toString()"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759007945369,
+      "end": 1759007945371
+    }
+  }
+}

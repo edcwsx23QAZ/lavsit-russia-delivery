@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d0b13a4001POIHIyiC2GY2HM",
+  "messageID": "msg_98d0aa643001qPzZktBCy46xZh",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01UvpM27AMtCbR2WfL4V6MRw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 690,
+      "limit": 80
+    },
+    "output": "<file>\n00691| \n00692|       // Формируем корректную структуру запроса согласно инструкции\n00693|       const requestData = {\n00694|         appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n00695|         sessionID: sessionID,\n00696|         delivery: {\n00697|           deliveryType: {\n00698|             type: 'auto'  // Всегда \"auto\" по умолчанию\n00699|           },\n00700|           derival: {\n00701|             produceDate: produceDate,  // Обязательная дата отправления\n00702|             variant: form.fromAddressDelivery ? 'address' : 'terminal',\n00703|             ...(form.fromAddressDelivery ? {\n00704|               address: {\n00705|                 search: form.fromAddress || form.fromCity\n00706|               }\n00707|             } : {\n00708|               terminalID: fromTerminalId\n00709|             }),\n00710|             time: {\n00711|               worktimeStart: '10:00',\n00712|               worktimeEnd: '18:00',\n00713|               breakStart: '13:00',\n00714|               breakEnd: '14:00',\n00715|               exactTime: false\n00716|             }\n00717|             // handling в derival всегда пропускается согласно инструкции\n00718|           },\n00719|           arrival: {\n00720|             variant: form.toAddressDelivery ? 'address' : 'terminal',\n00721|             ...(form.toAddressDelivery ? {\n00722|               address: {\n00723|                 search: form.toAddress || form.toCity\n00724|               }\n00725|             } : {\n00726|               terminalID: toTerminalId\n00727|             }),\n00728|             time: {\n00729|               worktimeStart: '10:00',\n00730|               worktimeEnd: '18:00',\n00731|               breakStart: '13:00',\n00732|               breakEnd: '14:00',\n00733|               exactTime: false\n00734|             },\n00735|             // handling в arrival заполняется только если требуется подъем\n00736|             ...(form.needCarry ? {\n00737|               handling: {\n00738|                 freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n00739|                 toFloor: form.floor, // этаж из формы\n00740|                 carry: 0\n00741|               }\n00742|             } : {})\n00743|           },\n00744|           ...(form.needPackaging && packageUid ? {\n00745|             packages: [{\n00746|               uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n00747|               count: 1  // По умолчанию 1\n00748|             }]\n00749|           } : {})\n00750|         },\n00751|         cargo: {\n00752|           quantity: form.cargos.length,\n00753|           length: maxLength,\n00754|           width: maxWidth,\n00755|           height: maxHeight,\n00756|           weight: totalWeight,\n00757|           totalVolume: totalVolume,\n00758|           totalWeight: totalWeight,\n00759|           oversizedWeight: 0,\n00760|           oversizedVolume: 0,\n00761|           hazardClass: 0,  // Всегда 0 если нет опасных грузов\n00762|           ...(form.needInsurance && form.declaredValue > 0 ? {\n00763|             insurance: {\n00764|               statedValue: form.declaredValue,\n00765|               term: true  // Всегда true при наличии страхования\n00766|             }\n00767|           } : {})\n00768|         },\n00769|         payment: {\n00770|           type: 'noncash',  // Всегда \"noncash\"\n\n(File has more lines. Use 'offset' parameter to read beyond line 770)\n</file>",
+    "metadata": {
+      "preview": "\n      // Формируем корректную структуру запроса согласно инструкции\n      const requestData = {\n        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n        sessionID: sessionID,\n        delivery: {\n          deliveryType: {\n            type: 'auto'  // Всегда \"auto\" по умолчанию\n          },\n          derival: {\n            produceDate: produceDate,  // Обязательная дата отправления\n            variant: form.fromAddressDelivery ? 'address' : 'terminal',\n            ...(form.fromAddressDelivery ? {\n              address: {\n                search: form.fromAddress || form.fromCity\n              }\n            } : {\n              terminalID: fromTerminalId\n            }),\n            time: {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759007938108,
+      "end": 1759007938111
+    }
+  }
+}

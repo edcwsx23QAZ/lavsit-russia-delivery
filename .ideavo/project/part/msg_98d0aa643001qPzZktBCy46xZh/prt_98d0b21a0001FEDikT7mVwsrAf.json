@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d0b21a0001FEDikT7mVwsrAf",
+  "messageID": "msg_98d0aa643001qPzZktBCy46xZh",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01H12gACx7Q3RBjn9zCPSXZH",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1279,
+      "limit": 60
+    },
+    "output": "<file>\n01280|     const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n01281|     \n01282|     // Валидация координат\n01283|     const validateCoordinates = (coords: any) => {\n01284|       console.log('🧪 Проверка координат:', coords);\n01285|       \n01286|       if (!coords) {\n01287|         console.log('⚠️ Координаты отсутствуют');\n01288|         return null;\n01289|       }\n01290|       \n01291|       if (typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {\n01292|         console.warn(`⚠️ Координаты не являются числами:`, { \n01293|           lat: coords.latitude, \n01294|           lng: coords.longitude,\n01295|           latType: typeof coords.latitude,\n01296|           lngType: typeof coords.longitude\n01297|         });\n01298|         return null;\n01299|       }\n01300|       \n01301|       const lat = Number(coords.latitude);\n01302|       const lng = Number(coords.longitude);\n01303|       \n01304|       console.log(`📍 Преобразованные координаты: lat=${lat}, lng=${lng}`);\n01305|       \n01306|       // Проверяем диапазоны\n01307|       if (lat < -90 || lat > 90 || lng < -180 || lng > 180 || isNaN(lat) || isNaN(lng)) {\n01308|         console.warn(`⚠️ Координаты вне допустимого диапазона:`, { \n01309|           lat, lng, \n01310|           latValid: lat >= -90 && lat <= 90,\n01311|           lngValid: lng >= -180 && lng <= 180,\n01312|           latIsNaN: isNaN(lat),\n01313|           lngIsNaN: isNaN(lng)\n01314|         });\n01315|         return null;\n01316|       }\n01317|       \n01318|       console.log('✅ Координаты валидны:', { latitude: lat, longitude: lng });\n01319|       return { latitude: lat, longitude: lng };\n01320|     };\n01321|     \n01322|     try {\n01323|       // Получаем информацию о зонах и складах по адресам\n01324|       console.log(`🚀 ПЭК: начинаем расчет`);\n01325|       console.log(`📍 От: ${form.fromAddress || form.fromCity}`);\n01326|       console.log(`📍 До: ${form.toAddress || form.toCity}`);\n01327|       \n01328|       const senderZone = await getPekZoneByAddress(form.fromAddress || `г ${form.fromCity}`);\n01329|       const receiverZone = await getPekZoneByAddress(form.toAddress || `г ${form.toCity}`);\n01330|       \n01331|       console.log(`🔍 ПЭК зоны:`);\n01332|       console.log(`📍 Отправитель:`, senderZone ? `${senderZone.branchTitle} (${senderZone.mainWarehouseId})` : 'НЕ НАЙДЕНА');\n01333|       console.log(`📍 Получатель:`, receiverZone ? `${receiverZone.branchTitle} (${receiverZone.mainWarehouseId})` : 'НЕ НАЙДЕНА');\n01334|       \n01335|       if (!senderZone || !receiverZone) {\n01336|         // Детальная диагностика\n01337|         const debugInfo = {\n01338|           senderAddress: form.fromAddress || form.fromCity,\n01339|           receiverAddress: form.toAddress || form.toCity,\n\n(File has more lines. Use 'offset' parameter to read beyond line 1339)\n</file>",
+    "metadata": {
+      "preview": "    const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n    \n    // Валидация координат\n    const validateCoordinates = (coords: any) => {\n      console.log('🧪 Проверка координат:', coords);\n      \n      if (!coords) {\n        console.log('⚠️ Координаты отсутствуют');\n        return null;\n      }\n      \n      if (typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {\n        console.warn(`⚠️ Координаты не являются числами:`, { \n          lat: coords.latitude, \n          lng: coords.longitude,\n          latType: typeof coords.latitude,\n          lngType: typeof coords.longitude\n        });\n        return null;\n      }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759007942060,
+      "end": 1759007942062
+    }
+  }
+}

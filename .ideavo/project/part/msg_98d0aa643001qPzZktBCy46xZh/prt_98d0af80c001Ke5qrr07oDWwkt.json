@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d0af80c001Ke5qrr07oDWwkt",
+  "messageID": "msg_98d0aa643001qPzZktBCy46xZh",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01FbSzCXJkpNKLsL6BZVichF",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "const calculate.*= async",
+      "path": "/home/user/project/app"
+    },
+    "output": "Found 5 matches\n/home/user/project/app/page.tsx:\n  Line 608:   const calculateDellin = async (): Promise<CalculationResult> => {\n  Line 1279:   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 1803:   const calculateRailContinent = async (): Promise<CalculationResult> => {\n  Line 1991:   const calculateVozovoz = async (): Promise<CalculationResult> => {\n  Line 2185:   const calculateNordWheel = async (): Promise<CalculationResult> => {",
+    "metadata": {
+      "matches": 5,
+      "truncated": false
+    },
+    "title": "const calculate.*= async",
+    "time": {
+      "start": 1759007931238,
+      "end": 1759007931246
+    }
+  }
+}

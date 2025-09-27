@@ -1,0 +1,18 @@
+{
+  "id": "prt_98d0b4f510023RIPiDKizfaN8d",
+  "messageID": "msg_98d0aa643001qPzZktBCy46xZh",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01UB1mRNSFhp4BS58GkFk1Hi",
+  "state": {
+    "status": "running",
+    "input": {
+      "command": "cd /home/user/project && grep -n \"form\\.cargos\\.\" app/page.tsx | head -20",
+      "description": "Поиск использования form.cargos в коде"
+    },
+    "time": {
+      "start": 1759007953664
+    }
+  }
+}
