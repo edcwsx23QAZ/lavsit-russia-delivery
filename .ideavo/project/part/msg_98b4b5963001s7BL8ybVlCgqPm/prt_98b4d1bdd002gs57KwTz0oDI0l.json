@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b4d1bdd002gs57KwTz0oDI0l",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01U9PjuaiviJi4WektJxazEX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "oldString": "      case 'findzonebycoordinates':\n        urlPath = '/branches/findzonebycoordinates/';\n        body = {\n          longitude: coordinates.longitude,\n          latitude: coordinates.latitude\n        };\n        break;",
+      "newString": "      case 'findzonebycoordinates':\n        urlPath = '/branches/findzonebycoordinates/';\n        \n        // Валидация координат\n        const lat = Number(coordinates.latitude);\n        const lng = Number(coordinates.longitude);\n        \n        if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n          return NextResponse.json({ \n            error: 'Некорректные координаты',\n            details: `Координаты должны быть: latitude от -90 до 90, longitude от -180 до 180`,\n            received: { latitude: coordinates.latitude, longitude: coordinates.longitude },\n            validated: { latitude: lat, longitude: lng }\n          }, { status: 400 });\n        }\n        \n        body = {\n          longitude: lng,\n          latitude: lat\n        };\n        break;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -44,11 +44,25 @@\n   break;\n   \n case 'findzonebycoordinates':\n   urlPath = '/branches/findzonebycoordinates/';\n+  \n+  // Валидация координат\n+  const lat = Number(coordinates.latitude);\n+  const lng = Number(coordinates.longitude);\n+  \n+  if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n+    return NextResponse.json({ \n+      error: 'Некорректные координаты',\n+      details: `Координаты должны быть: latitude от -90 до 90, longitude от -180 до 180`,\n+      received: { latitude: coordinates.latitude, longitude: coordinates.longitude },\n+      validated: { latitude: lat, longitude: lng }\n+    }, { status: 400 });\n+  }\n+  \n   body = {\n-    longitude: coordinates.longitude,\n-    latitude: coordinates.latitude\n+    longitude: lng,\n+    latitude: lat\n   };\n   break;\n   \n case 'calculateprice':\n"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758978713781,
+      "end": 1758978713787
+    }
+  }
+}

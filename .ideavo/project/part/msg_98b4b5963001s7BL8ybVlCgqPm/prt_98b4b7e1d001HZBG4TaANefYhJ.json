@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b4b7e1d001HZBG4TaANefYhJ",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_019PwUKTheefpbQv7VJ6hMfY",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n \"Latitude\\|latitude\" app/page.tsx",
+      "description": "Поиск мест использования координат в коде"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Поиск мест использования координат в коде"
+    },
+    "title": "cd /home/user/project && rg -n \"Latitude\\|latitude\" app/page.tsx",
+    "time": {
+      "start": 1758978605604,
+      "end": 1758978605629
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b4b6eb8001bn200O45HPDYuG",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Mdscvp593kPhmY9g89xnWR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1290,
+      "limit": 20
+    },
+    "output": "<file>\n01291|           };\n01292|         } else {\n01293|           throw new Error(transfer.errorMessage || 'Ошибка расчета тарифа ПЭК');\n01294|         }\n01295|       } else {\n01296|         throw new Error(data.errorMessage || data.message || 'Ошибка API ПЭК');\n01297|       }\n01298|       \n01299|     } catch (error: any) {\n01300|       console.error('🚨 Критическая ошибка ПЭК API:', error);\n01301|       \n01302|       // Определяем тип ошибки\n01303|       let errorDescription = 'Ошибка API ПЭК';\n01304|       \n01305|       if (error.message?.includes('Failed to fetch')) {\n01306|         errorDescription = 'API ПЭК недоступен';\n01307|       } else if (error.message?.includes('401')) {\n01308|         errorDescription = 'Ошибка авторизации ПЭК';\n01309|       } else if (error.message?.includes('400')) {\n01310|         errorDescription = 'Некорректные параметры запроса';\n\n(File has more lines. Use 'offset' parameter to read beyond line 1310)\n</file>",
+    "metadata": {
+      "preview": "          };\n        } else {\n          throw new Error(transfer.errorMessage || 'Ошибка расчета тарифа ПЭК');\n        }\n      } else {\n        throw new Error(data.errorMessage || data.message || 'Ошибка API ПЭК');\n      }\n      \n    } catch (error: any) {\n      console.error('🚨 Критическая ошибка ПЭК API:', error);\n      \n      // Определяем тип ошибки\n      let errorDescription = 'Ошибка API ПЭК';\n      \n      if (error.message?.includes('Failed to fetch')) {\n        errorDescription = 'API ПЭК недоступен';\n      } else if (error.message?.includes('401')) {\n        errorDescription = 'Ошибка авторизации ПЭК';\n      } else if (error.message?.includes('400')) {\n        errorDescription = 'Некорректные параметры запроса';"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758978601472,
+      "end": 1758978601483
+    }
+  }
+}

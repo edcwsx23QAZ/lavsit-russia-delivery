@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b4bab0d0010EXUiC5JvjXuav",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Rgq5HXRBVku4z6qVKZbU3s",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A15 -B5 \"getPekZoneByAddress\" app/page.tsx",
+      "description": "Поиск функции получения зоны ПЭК"
+    },
+    "output": "832-      };\n833-    }\n834-  };\n835-\n836-  // Получение тарифной зоны и склада ПЭК по адресу через прокси\n837:  const getPekZoneByAddress = async (address: string) => {\n838-    try {\n839-      console.log(`🔍 ПЭК: поиск зоны для адреса \"${address}\"`);\n840-      \n841-      const response = await fetch('/api/pek', {\n842-        method: 'POST',\n843-        headers: {\n844-          'Content-Type': 'application/json',\n845-        },\n846-        body: JSON.stringify({\n847-          method: 'findzonebyaddress',\n848-          address: address\n849-        })\n850-      });\n851-\n852-      console.log(`📡 ПЭК API статус: ${response.status} ${response.statusText}`);\n--\n1066-      // Получаем информацию о зонах и складах по адресам\n1067-      console.log(`🚀 ПЭК: начинаем расчет`);\n1068-      console.log(`📍 От: ${form.fromAddress || form.fromCity}`);\n1069-      console.log(`📍 До: ${form.toAddress || form.toCity}`);\n1070-      \n1071:      const senderZone = await getPekZoneByAddress(form.fromAddress || `г ${form.fromCity}`);\n1072:      const receiverZone = await getPekZoneByAddress(form.toAddress || `г ${form.toCity}`);\n1073-      \n1074-      console.log(`🔍 ПЭК зоны:`);\n1075-      console.log(`📍 Отправитель:`, senderZone ? `${senderZone.branchTitle} (${senderZone.mainWarehouseId})` : 'НЕ НАЙДЕНА');\n1076-      console.log(`📍 Получатель:`, receiverZone ? `${receiverZone.branchTitle} (${receiverZone.mainWarehouseId})` : 'НЕ НАЙДЕНА');\n1077-      \n1078-      if (!senderZone || !receiverZone) {\n1079-        // Детальная диагностика\n1080-        const debugInfo = {\n1081-          senderAddress: form.fromAddress || form.fromCity,\n1082-          receiverAddress: form.toAddress || form.toCity,\n1083-          senderZoneFound: !!senderZone,\n1084-          receiverZoneFound: !!receiverZone,\n1085-          apiTested: true\n1086-        };\n1087-        \n",
+    "metadata": {
+      "output": "832-      };\n833-    }\n834-  };\n835-\n836-  // Получение тарифной зоны и склада ПЭК по адресу через прокси\n837:  const getPekZoneByAddress = async (address: string) => {\n838-    try {\n839-      console.log(`🔍 ПЭК: поиск зоны для адреса \"${address}\"`);\n840-      \n841-      const response = await fetch('/api/pek', {\n842-        method: 'POST',\n843-        headers: {\n844-          'Content-Type': 'application/json',\n845-        },\n846-        body: JSON.stringify({\n847-          method: 'findzonebyaddress',\n848-          address: address\n849-        })\n850-      });\n851-\n852-      console.log(`📡 ПЭК API статус: ${response.status} ${response.statusText}`);\n--\n1066-      // Получаем информацию о зонах и складах по адресам\n1067-      console.log(`🚀 ПЭК: начинаем расчет`);\n1068-      console.log(`📍 От: ${form.fromAddress || form.fromCity}`);\n1069-      console.log(`📍 До: ${form.toAddress || form.toCity}`);\n1070-      \n1071:      const senderZone = await getPekZoneByAddress(form.fromAddress || `г ${form.fromCity}`);\n1072:      const receiverZone = await getPekZoneByAddress(form.toAddress || `г ${form.toCity}`);\n1073-      \n1074-      console.log(`🔍 ПЭК зоны:`);\n1075-      console.log(`📍 Отправитель:`, senderZone ? `${senderZone.branchTitle} (${senderZone.mainWarehouseId})` : 'НЕ НАЙДЕНА');\n1076-      console.log(`📍 Получатель:`, receiverZone ? `${receiverZone.branchTitle} (${receiverZone.mainWarehouseId})` : 'НЕ НАЙДЕНА');\n1077-      \n1078-      if (!senderZone || !receiverZone) {\n1079-        // Детальная диагностика\n1080-        const debugInfo = {\n1081-          senderAddress: form.fromAddress || form.fromCity,\n1082-          receiverAddress: form.toAddress || form.toCity,\n1083-          senderZoneFound: !!senderZone,\n1084-          receiverZoneFound: !!receiverZone,\n1085-          apiTested: true\n1086-        };\n1087-        \n",
+      "exit": 0,
+      "description": "Поиск функции получения зоны ПЭК"
+    },
+    "title": "cd /home/user/project && rg -n -A15 -B5 \"getPekZoneByAddress\" app/page.tsx",
+    "time": {
+      "start": 1758978616856,
+      "end": 1758978616867
+    }
+  }
+}

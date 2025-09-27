@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b4d98600013hppdwh3C5Nut4",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Kwu5uco3j1pFxNnvZRzPdM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A2 -B2 \"useState.*expanded\" app/page.tsx",
+      "description": "Поиск useState для expanded состояний"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Поиск useState для expanded состояний"
+    },
+    "title": "cd /home/user/project && rg -n -A2 -B2 \"useState.*expanded\" app/page.tsx",
+    "time": {
+      "start": 1758978743208,
+      "end": 1758978743221
+    }
+  }
+}

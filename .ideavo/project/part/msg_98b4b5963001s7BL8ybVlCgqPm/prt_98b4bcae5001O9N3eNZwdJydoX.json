@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b4bcae5001O9N3eNZwdJydoX",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01UKWvwCtGWFzvce2uHetunv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1100,
+      "limit": 50
+    },
+    "output": "<file>\n01101|       // Получаем ближайшие отделения если нужна адресная доставка\n01102|       let senderWarehouseId = senderZone.mainWarehouseId;\n01103|       let receiverWarehouseId = receiverZone.mainWarehouseId;\n01104|       \n01105|       if (form.fromAddressDelivery && senderZone.warehousePoint) {\n01106|         const senderDepartment = await getPekNearestDepartments(\n01107|           form.fromAddress || form.fromCity,\n01108|           {\n01109|             latitude: senderZone.warehousePoint.latitude.toString(),\n01110|             longitude: senderZone.warehousePoint.longitude.toString()\n01111|           }\n01112|         );\n01113|         if (senderDepartment) {\n01114|           senderWarehouseId = senderDepartment.warehouseId;\n01115|         }\n01116|       }\n01117|       \n01118|       if (form.toAddressDelivery && receiverZone.warehousePoint) {\n01119|         const receiverDepartment = await getPekNearestDepartments(\n01120|           form.toAddress || form.toCity,\n01121|           {\n01122|             latitude: receiverZone.warehousePoint.latitude.toString(),\n01123|             longitude: receiverZone.warehousePoint.longitude.toString()\n01124|           }\n01125|         );\n01126|         if (receiverDepartment) {\n01127|           receiverWarehouseId = receiverDepartment.warehouseId;\n01128|         }\n01129|       }\n01130| \n01131|       // Формируем дату завтра для забора\n01132|       const tomorrow = new Date();\n01133|       tomorrow.setDate(tomorrow.getDate() + 1);\n01134|       const plannedDateTime = tomorrow.toISOString().slice(0, 19); // 2025-09-28T14:00:00\n01135| \n01136|       // Формируем массив грузов\n01137|       const cargos = form.cargos.map(cargo => ({\n01138|         length: cargo.length / 100, // переводим см в метры\n01139|         width: cargo.width / 100,\n01140|         height: cargo.height / 100,\n01141|         volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n01142|         weight: cargo.weight,\n01143|         isHP: form.needPackaging, // защитная упаковка\n01144|         sealingPositionsCount: 0\n01145|       }));\n01146| \n01147|       // Формируем запрос к API ПЭК\n01148|       const requestData: any = {\n01149|         currencyCode: \"643\", // рубли\n01150|         types: [3], // только авто перевозка\n\n(File has more lines. Use 'offset' parameter to read beyond line 1150)\n</file>",
+    "metadata": {
+      "preview": "      // Получаем ближайшие отделения если нужна адресная доставка\n      let senderWarehouseId = senderZone.mainWarehouseId;\n      let receiverWarehouseId = receiverZone.mainWarehouseId;\n      \n      if (form.fromAddressDelivery && senderZone.warehousePoint) {\n        const senderDepartment = await getPekNearestDepartments(\n          form.fromAddress || form.fromCity,\n          {\n            latitude: senderZone.warehousePoint.latitude.toString(),\n            longitude: senderZone.warehousePoint.longitude.toString()\n          }\n        );\n        if (senderDepartment) {\n          senderWarehouseId = senderDepartment.warehouseId;\n        }\n      }\n      \n      if (form.toAddressDelivery && receiverZone.warehousePoint) {\n        const receiverDepartment = await getPekNearestDepartments(\n          form.toAddress || form.toCity,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758978625162,
+      "end": 1758978625165
+    }
+  }
+}

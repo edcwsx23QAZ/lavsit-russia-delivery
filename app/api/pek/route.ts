@@ -45,15 +45,57 @@ export async function POST(request: NextRequest) {
         
       case 'findzonebycoordinates':
         urlPath = '/branches/findzonebycoordinates/';
+        
+        // Валидация координат
+        const lat = Number(coordinates.latitude);
+        const lng = Number(coordinates.longitude);
+        
+        if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+          return NextResponse.json({ 
+            error: 'Некорректные координаты',
+            details: `Координаты должны быть: latitude от -90 до 90, longitude от -180 до 180`,
+            received: { latitude: coordinates.latitude, longitude: coordinates.longitude },
+            validated: { latitude: lat, longitude: lng }
+          }, { status: 400 });
+        }
+        
         body = {
-          longitude: coordinates.longitude,
-          latitude: coordinates.latitude
+          longitude: lng,
+          latitude: lat
         };
         break;
         
       case 'calculateprice':
         urlPath = '/calculator/calculateprice/';
         const { method: methodName, ...calculationData } = requestData;
+        
+        // Валидация координат в адресах доставки
+        if (calculationData.pickup?.coordinates) {
+          const lat = Number(calculationData.pickup.coordinates.latitude);
+          const lng = Number(calculationData.pickup.coordinates.longitude);
+          
+          if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+            console.warn('⚠️ Некорректные координаты pickup:', calculationData.pickup.coordinates);
+            // Удаляем некорректные координаты вместо ошибки
+            delete calculationData.pickup.coordinates;
+          } else {
+            calculationData.pickup.coordinates = { latitude: lat, longitude: lng };
+          }
+        }
+        
+        if (calculationData.delivery?.coordinates) {
+          const lat = Number(calculationData.delivery.coordinates.latitude);
+          const lng = Number(calculationData.delivery.coordinates.longitude);
+          
+          if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+            console.warn('⚠️ Некорректные координаты delivery:', calculationData.delivery.coordinates);
+            // Удаляем некорректные координаты вместо ошибки
+            delete calculationData.delivery.coordinates;
+          } else {
+            calculationData.delivery.coordinates = { latitude: lat, longitude: lng };
+          }
+        }
+        
         body = calculationData;
         break;
         

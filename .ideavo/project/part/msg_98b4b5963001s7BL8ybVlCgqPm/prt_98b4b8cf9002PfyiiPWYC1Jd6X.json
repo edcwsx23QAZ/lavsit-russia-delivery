@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b4b8cf9002PfyiiPWYC1Jd6X",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Vf2HsAqW9NF6KDQqtFb971",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A5 -B5 \"findzonebycoordinates\\|coordinates\" app/page.tsx",
+      "description": "Поиск использования координат в API вызовах"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Поиск использования координат в API вызовах"
+    },
+    "title": "cd /home/user/project && rg -n -A5 -B5 \"findzonebycoordinates\\|coordinates\" app/page.tsx",
+    "time": {
+      "start": 1758978609469,
+      "end": 1758978609484
+    }
+  }
+}

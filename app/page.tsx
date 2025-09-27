@@ -1062,6 +1062,24 @@ export default function Home() {
   const calculatePEK = async (): Promise<CalculationResult> => {
     const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';
     
+    // Валидация координат
+    const validateCoordinates = (coords: any) => {
+      if (!coords || typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {
+        return null;
+      }
+      
+      const lat = Number(coords.latitude);
+      const lng = Number(coords.longitude);
+      
+      // Проверяем диапазоны
+      if (lat < -90 || lat > 90 || lng < -180 || lng > 180 || isNaN(lat) || isNaN(lng)) {
+        console.warn(`⚠️ Некорректные координаты:`, coords);
+        return null;
+      }
+      
+      return { latitude: lat, longitude: lng };
+    };
+    
     try {
       // Получаем информацию о зонах и складах по адресам
       console.log(`🚀 ПЭК: начинаем расчет`);
@@ -1103,28 +1121,38 @@ export default function Home() {
       let receiverWarehouseId = receiverZone.mainWarehouseId;
       
       if (form.fromAddressDelivery && senderZone.warehousePoint) {
-        const senderDepartment = await getPekNearestDepartments(
-          form.fromAddress || form.fromCity,
-          {
-            latitude: senderZone.warehousePoint.latitude.toString(),
-            longitude: senderZone.warehousePoint.longitude.toString()
+        const validSenderCoords = validateCoordinates(senderZone.warehousePoint);
+        if (validSenderCoords) {
+          const senderDepartment = await getPekNearestDepartments(
+            form.fromAddress || form.fromCity,
+            {
+              latitude: validSenderCoords.latitude.toString(),
+              longitude: validSenderCoords.longitude.toString()
+            }
+          );
+          if (senderDepartment) {
+            senderWarehouseId = senderDepartment.warehouseId;
           }
-        );
-        if (senderDepartment) {
-          senderWarehouseId = senderDepartment.warehouseId;
+        } else {
+          console.warn('⚠️ Некорректные координаты отправителя, используем основной склад');
         }
       }
       
       if (form.toAddressDelivery && receiverZone.warehousePoint) {
-        const receiverDepartment = await getPekNearestDepartments(
-          form.toAddress || form.toCity,
-          {
-            latitude: receiverZone.warehousePoint.latitude.toString(),
-            longitude: receiverZone.warehousePoint.longitude.toString()
+        const validReceiverCoords = validateCoordinates(receiverZone.warehousePoint);
+        if (validReceiverCoords) {
+          const receiverDepartment = await getPekNearestDepartments(
+            form.toAddress || form.toCity,
+            {
+              latitude: validReceiverCoords.latitude.toString(),
+              longitude: validReceiverCoords.longitude.toString()
+            }
+          );
+          if (receiverDepartment) {
+            receiverWarehouseId = receiverDepartment.warehouseId;
           }
-        );
-        if (receiverDepartment) {
-          receiverWarehouseId = receiverDepartment.warehouseId;
+        } else {
+          console.warn('⚠️ Некорректные координаты получателя, используем основной склад');
         }
       }
 
@@ -1183,16 +1211,18 @@ export default function Home() {
 
       // Добавляем адреса если нужна доставка
       if (form.fromAddressDelivery) {
+        const validSenderCoords = validateCoordinates(senderZone.warehousePoint);
         requestData.pickup = {
           address: form.fromAddress || `Россия, ${form.fromCity}`,
-          coordinates: senderZone.warehousePoint
+          ...(validSenderCoords && { coordinates: validSenderCoords })
         };
       }
       
       if (form.toAddressDelivery) {
+        const validReceiverCoords = validateCoordinates(receiverZone.warehousePoint);
         requestData.delivery = {
           address: form.toAddress || `Россия, ${form.toCity}`,
-          coordinates: receiverZone.warehousePoint
+          ...(validReceiverCoords && { coordinates: validReceiverCoords })
         };
       }
 

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b4db4420018o3UVrDxVcF6f7",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_017yuRaAi38R5LLb7zbmpNxp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 90,
+      "limit": 30
+    },
+    "output": "<file>\n00091| \n00092|   const [form, setForm] = useState<DeliveryForm>(initialFormState);\n00093|   const [isLoaded, setIsLoaded] = useState(false);\n00094| \n00095|   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n00096|   const [showSuggestions, setShowSuggestions] = useState(false);\n00097|   const [activeField, setActiveField] = useState('');\n00098|   const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n00099|   const [calculating, setCalculating] = useState(false);\n00100|   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n00101|   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n00102|   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n00103| \n00104|   // Загрузка сохраненных данных (только на клиенте)\n00105|   useEffect(() => {\n00106|     // Проверяем, что мы на клиенте\n00107|     if (typeof window !== 'undefined' && !isLoaded) {\n00108|       try {\n00109|         const saved = localStorage.getItem('deliveryForm');\n00110|         if (saved) {\n00111|           const savedForm = JSON.parse(saved);\n00112|           // Убеждаемся, что есть хотя бы один груз\n00113|           if (!savedForm.cargos || savedForm.cargos.length === 0) {\n00114|             savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n00115|           }\n00116|           setForm(savedForm);\n00117|           console.log('Загружены сохраненные данные формы:', savedForm);\n00118|         }\n00119|       } catch (error) {\n00120|         console.error('Ошибка загрузки сохраненных данных:', error);\n\n(File has more lines. Use 'offset' parameter to read beyond line 120)\n</file>",
+    "metadata": {
+      "preview": "\n  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n\n  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n  const [showSuggestions, setShowSuggestions] = useState(false);\n  const [activeField, setActiveField] = useState('');\n  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  const [calculating, setCalculating] = useState(false);\n  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n\n  // Загрузка сохраненных данных (только на клиенте)\n  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined' && !isLoaded) {\n      try {\n        const saved = localStorage.getItem('deliveryForm');\n        if (saved) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758978750134,
+      "end": 1758978750139
+    }
+  }
+}

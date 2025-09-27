@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b4d0dee0016pLQfvL3V8C5jM",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01T2cbK7h3G5QNjcGXZXH58g",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "offset": 40,
+      "limit": 10
+    },
+    "output": "<file>\n00041|       case 'findzonebyaddress':\n00042|         urlPath = '/branches/findzonebyaddress/';\n00043|         body = { address: address };\n00044|         break;\n00045|         \n00046|       case 'findzonebycoordinates':\n00047|         urlPath = '/branches/findzonebycoordinates/';\n00048|         body = {\n00049|           longitude: coordinates.longitude,\n00050|           latitude: coordinates.latitude\n\n(File has more lines. Use 'offset' parameter to read beyond line 50)\n</file>",
+    "metadata": {
+      "preview": "      case 'findzonebyaddress':\n        urlPath = '/branches/findzonebyaddress/';\n        body = { address: address };\n        break;\n        \n      case 'findzonebycoordinates':\n        urlPath = '/branches/findzonebycoordinates/';\n        body = {\n          longitude: coordinates.longitude,\n          latitude: coordinates.latitude"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758978707603,
+      "end": 1758978707605
+    }
+  }
+}

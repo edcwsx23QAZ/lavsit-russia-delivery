@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b4d79c0001oYYSAZviEmE4T9",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01NfF1FUzKv8GWK6gyU8nJMB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n \"Collapsible\" app/page.tsx",
+      "description": "Поиск использования Collapsible"
+    },
+    "output": "13:import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\n2101:                          <Collapsible open={expandedDetails[calc.company]}>\n2102:                            <CollapsibleContent className=\"mt-2\">\n2126:                            </CollapsibleContent>\n2127:                          </Collapsible>\n2131:                        <Collapsible open={expandedDebugInfo[calc.company]}>\n2132:                          <CollapsibleContent className=\"mt-2\">\n2184:                          </CollapsibleContent>\n2185:                        </Collapsible>\n",
+    "metadata": {
+      "output": "13:import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\n2101:                          <Collapsible open={expandedDetails[calc.company]}>\n2102:                            <CollapsibleContent className=\"mt-2\">\n2126:                            </CollapsibleContent>\n2127:                          </Collapsible>\n2131:                        <Collapsible open={expandedDebugInfo[calc.company]}>\n2132:                          <CollapsibleContent className=\"mt-2\">\n2184:                          </CollapsibleContent>\n2185:                        </Collapsible>\n",
+      "exit": 0,
+      "description": "Поиск использования Collapsible"
+    },
+    "title": "cd /home/user/project && rg -n \"Collapsible\" app/page.tsx",
+    "time": {
+      "start": 1758978735386,
+      "end": 1758978735403
+    }
+  }
+}

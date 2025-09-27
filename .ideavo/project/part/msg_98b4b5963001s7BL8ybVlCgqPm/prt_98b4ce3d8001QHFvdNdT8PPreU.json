@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b4ce3d8001QHFvdNdT8PPreU",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01NRCvKseYazBt3eXyk5sHvC",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "      case 'findzonebycoordinates':\n        urlPath = '/branches/findzonebycoordinates/';\n        body = {\n          longitude: coordinates.longitude,\n          latitude: coordinates.latitude\n        };\n        break;",
+          "newString": "      case 'findzonebycoordinates':\n        urlPath = '/branches/findzonebycoordinates/';\n        \n        // Валидация координат\n        const lat = Number(coordinates.latitude);\n        const lng = Number(coordinates.longitude);\n        \n        if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n          return NextResponse.json({ \n            error: 'Некорректные координаты',\n            details: `Координаты должны быть: latitude от -90 до 90, longitude от -180 до 180`,\n            received: { latitude: coordinates.latitude, longitude: coordinates.longitude },\n            validated: { latitude: lat, longitude: lng }\n          }, { status: 400 });\n        }\n        \n        body = {\n          longitude: lng,\n          latitude: lat\n        };\n        break;"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/app/api/pek/route.ts before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758978703280,
+      "end": 1758978703283
+    }
+  }
+}

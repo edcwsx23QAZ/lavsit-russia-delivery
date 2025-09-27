@@ -1,0 +1,34 @@
+{
+  "id": "prt_98b4cbd18001gCH44AhvrPU9eQ",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01EUnodKtZeuAWuUcJnLM5vr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "      // Валидация координат\n      const validateCoordinates = (coords: any) => {\n        if (!coords || typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {\n          return null;\n        }\n        \n        const lat = Number(coords.latitude);\n        const lng = Number(coords.longitude);\n        \n        // Проверяем диапазоны\n        if (lat < -90 || lat > 90 || lng < -180 || lng > 180 || isNaN(lat) || isNaN(lng)) {\n          console.warn(`⚠️ Некорректные координаты:`, coords);\n          return null;\n        }\n        \n        return { latitude: lat, longitude: lng };\n      };\n      \n      // Добавляем адреса если нужна доставка",
+          "newString": "      // Добавляем адреса если нужна доставка"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1208,26 +1208,8 @@\n     isElevator: form.hasFreightLift\n   };\n }\n \n-// Валидация координат\n-const validateCoordinates = (coords: any) => {\n-  if (!coords || typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {\n-    return null;\n-  }\n-  \n-  const lat = Number(coords.latitude);\n-  const lng = Number(coords.longitude);\n-  \n-  // Проверяем диапазоны\n-  if (lat < -90 || lat > 90 || lng < -180 || lng > 180 || isNaN(lat) || isNaN(lng)) {\n-    console.warn(`⚠️ Некорректные координаты:`, coords);\n-    return null;\n-  }\n-  \n-  return { latitude: lat, longitude: lng };\n-};\n-\n // Добавляем адреса если нужна доставка\n if (form.fromAddressDelivery) {\n   const validSenderCoords = validateCoordinates(senderZone.warehousePoint);\n   requestData.pickup = {\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758978692772,
+      "end": 1758978692787
+    }
+  }
+}

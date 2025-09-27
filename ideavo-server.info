@@ -4,42 +4,42 @@ $ next dev
   - Environments: .env.local, .env
 
  ✓ Starting...
- ✓ Ready in 1929ms
- ✓ Compiled /middleware in 149ms
+ ✓ Ready in 6.4s
+ ✓ Compiled /middleware in 151ms
  ✓ Compiled (73 modules)
  ○ Compiling / ...
- ✓ Compiled / in 3.5s (543 modules)
- GET / 200 in 4365ms
- ✓ Compiled in 877ms (280 modules)
- GET / 200 in 80ms
+ ✓ Compiled / in 3.3s (543 modules)
+ GET / 200 in 3953ms
+ ✓ Compiled in 631ms (280 modules)
+ GET / 200 in 56ms
  ⚠ Cross origin request detected from 4000-i859b80wqs6c2fhjwbj2w.e2b.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
- ✓ Compiled /api/pek in 330ms (293 modules)
+ ✓ Compiled /api/pek in 376ms (293 modules)
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "findzonebyaddress",
-  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
+  "address": "г Москва, Шмитовский проезд, д 39"
 }
 🌐 Запрос к ПЭК API (официальная версия):
 URL: https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/
 Auth: Basic (логин + API ключ)
 Body: {
-  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
+  "address": "г Москва, Шмитовский проезд, д 39"
 }
 📡 Ответ от ПЭК API:
 Status: 200 OK
 Headers: {
   'cache-control': 'private',
   'content-encoding': 'gzip',
-  'content-length': '540',
+  'content-length': '492',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Fri, 26 Sep 2025 17:02:40 GMT',
-  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
+  date: 'Sat, 27 Sep 2025 13:08:53 GMT',
+  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
-✅ Успешный ответ от ПЭК: {"zoneId":"d68e47fa-66bb-11e5-80cf-003048baa05f","zoneName":"Москва ТТК","branchUID":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","bitrixId":446,"branchCode":"МВ","branchTitle":"Москва Восток","mainWarehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","warehousePoint":{"latitude":55.53300000000000,"longitude":37.57900000000000},"GeoData":{"precision":"exact","kind":"other","Address":{"country_code":"RU","formatted":"Россия, Москва, Шмитовский проезд, 1, подъезд 3, этаж 5, кв. 39","postal_code":"123100",
- POST /api/pek 200 in 1938ms
+✅ Успешный ответ от ПЭК: {"zoneId":"a1dd78b1-66b7-11e5-80cf-003048baa05f","zoneName":"Москва город","branchUID":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","bitrixId":446,"branchCode":"МВ","branchTitle":"Москва Восток","mainWarehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","warehousePoint":{"latitude":55.53300000000000,"longitude":37.57900000000000},"GeoData":{"precision":"near","kind":"house","Address":{"country_code":"RU","formatted":"Россия, Москва, Шмитовский проезд, 39Ас3","postal_code":"123290","Components":[{"kind":
+ POST /api/pek 200 in 2012ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "findzonebyaddress",
@@ -58,13 +58,13 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '494',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Fri, 26 Sep 2025 17:02:41 GMT',
-  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
+  date: 'Sat, 27 Sep 2025 13:08:54 GMT',
+  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
 ✅ Успешный ответ от ПЭК: {"zoneId":"485a244d-92a2-11e5-94cc-00155d668909","zoneName":"Санкт-Петербург город","branchUID":"64adbe2c-a185-11dc-a911-000a5e19ccb4","bitrixId":463,"branchCode":"СП","branchTitle":"Санкт-Петербург","mainWarehouseId":"36cf9b60-a415-11dc-a911-000a5e19ccb4","warehousePoint":{"latitude":59.94281800000000,"longitude":30.44089600000000},"GeoData":{"precision":"exact","kind":"house","Address":{"country_code":"RU","formatted":"Россия, Санкт-Петербург, Невский проспект, 110","postal_code":"191025","Com
- POST /api/pek 200 in 497ms
+ POST /api/pek 200 in 542ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "nearestdepartments",
@@ -97,7 +97,7 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '274',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Fri, 26 Sep 2025 17:02:41 GMT',
+  date: 'Sat, 27 Sep 2025 13:08:55 GMT',
   'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
@@ -125,7 +125,7 @@ Headers: {
   error: null,
   status: 400
 }
- POST /api/pek 400 in 213ms
+ POST /api/pek 400 in 241ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "nearestdepartments",
@@ -158,7 +158,7 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '274',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Fri, 26 Sep 2025 17:02:42 GMT',
+  date: 'Sat, 27 Sep 2025 13:08:55 GMT',
   'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
@@ -186,7 +186,7 @@ Headers: {
   error: null,
   status: 400
 }
- POST /api/pek 400 in 230ms
+ POST /api/pek 400 in 219ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "calculateprice",
@@ -199,7 +199,7 @@ Headers: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-09-27T17:02:43",
+  "plannedDateTime": "2025-09-28T13:08:50",
   "isInsurance": true,
   "isInsurancePrice": 200000,
   "isPickUp": true,
@@ -220,7 +220,7 @@ Headers: {
     }
   ],
   "pickup": {
-    "address": "г Москва, Шмитовский проезд, д 1, кв 39",
+    "address": "г Москва, Шмитовский проезд, д 39",
     "coordinates": {
       "latitude": 55.533,
       "longitude": 37.579
@@ -247,7 +247,7 @@ Body: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-09-27T17:02:43",
+  "plannedDateTime": "2025-09-28T13:08:50",
   "isInsurance": true,
   "isInsurancePrice": 200000,
   "isPickUp": true,
@@ -268,7 +268,7 @@ Body: {
     }
   ],
   "pickup": {
-    "address": "г Москва, Шмитовский проезд, д 1, кв 39",
+    "address": "г Москва, Шмитовский проезд, д 39",
     "coordinates": {
       "latitude": 55.533,
       "longitude": 37.579
@@ -289,7 +289,7 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '431',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Fri, 26 Sep 2025 17:02:45 GMT',
+  date: 'Sat, 27 Sep 2025 13:08:56 GMT',
   'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
@@ -309,218 +309,4 @@ Headers: {
       "hasError": true,
       "errorMessage": "Exception: The value of the parameter must be from -90.0 to 90.0.\r\nParameter name: Latitude",
  
- POST /api/pek 200 in 1743ms
- ○ Compiling /env-check ...
- ✓ Compiled /env-check in 586ms (627 modules)
- GET /env-check 200 in 834ms
- ○ Compiling /pek-test ...
- ✓ Compiled /pek-test in 503ms (633 modules)
- GET /pek-test 200 in 693ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "test"
-}
-🔧 Тестовый метод прокси
- POST /api/pek 200 in 30ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "findzonebyaddress",
-  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
-}
-🌐 Запрос к ПЭК API (официальная версия):
-URL: https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/
-Auth: Basic (логин + API ключ)
-Body: {
-  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
-}
-📡 Ответ от ПЭК API:
-Status: 200 OK
-Headers: {
-  'cache-control': 'private',
-  'content-encoding': 'gzip',
-  'content-length': '540',
-  'content-type': 'application/json; charset=utf-8',
-  date: 'Fri, 26 Sep 2025 17:03:26 GMT',
-  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
-  'x-aspnetmvc-version': '5.3',
-  'x-powered-by': 'ARR/3.0'
-}
-✅ Успешный ответ от ПЭК: {"zoneId":"d68e47fa-66bb-11e5-80cf-003048baa05f","zoneName":"Москва ТТК","branchUID":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","bitrixId":446,"branchCode":"МВ","branchTitle":"Москва Восток","mainWarehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","warehousePoint":{"latitude":55.53300000000000,"longitude":37.57900000000000},"GeoData":{"precision":"exact","kind":"other","Address":{"country_code":"RU","formatted":"Россия, Москва, Шмитовский проезд, 1, подъезд 3, этаж 5, кв. 39","postal_code":"123100",
- POST /api/pek 200 in 932ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "test"
-}
-🔧 Тестовый метод прокси
- POST /api/pek 200 in 10ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "test"
-}
-🔧 Тестовый метод прокси
- POST /api/pek 200 in 10ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "test"
-}
-🔧 Тестовый метод прокси
- POST /api/pek 200 in 11ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "findzonebyaddress",
-  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
-}
-🌐 Запрос к ПЭК API (официальная версия):
-URL: https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/
-Auth: Basic (логин + API ключ)
-Body: {
-  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
-}
-📡 Ответ от ПЭК API:
-Status: 200 OK
-Headers: {
-  'cache-control': 'private',
-  'content-encoding': 'gzip',
-  'content-length': '540',
-  'content-type': 'application/json; charset=utf-8',
-  date: 'Fri, 26 Sep 2025 17:03:47 GMT',
-  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
-  'x-aspnetmvc-version': '5.3',
-  'x-powered-by': 'ARR/3.0'
-}
-✅ Успешный ответ от ПЭК: {"zoneId":"d68e47fa-66bb-11e5-80cf-003048baa05f","zoneName":"Москва ТТК","branchUID":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","bitrixId":446,"branchCode":"МВ","branchTitle":"Москва Восток","mainWarehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","warehousePoint":{"latitude":55.53300000000000,"longitude":37.57900000000000},"GeoData":{"precision":"exact","kind":"other","Address":{"country_code":"RU","formatted":"Россия, Москва, Шмитовский проезд, 1, подъезд 3, этаж 5, кв. 39","postal_code":"123100",
- POST /api/pek 200 in 1740ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "findzonebyaddress",
-  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
-}
-🌐 Запрос к ПЭК API (официальная версия):
-URL: https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/
-Auth: Basic (логин + API ключ)
-Body: {
-  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
-}
-📡 Ответ от ПЭК API:
-Status: 200 OK
-Headers: {
-  'cache-control': 'private',
-  'content-encoding': 'gzip',
-  'content-length': '540',
-  'content-type': 'application/json; charset=utf-8',
-  date: 'Fri, 26 Sep 2025 17:03:47 GMT',
-  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
-  'x-aspnetmvc-version': '5.3',
-  'x-powered-by': 'ARR/3.0'
-}
-✅ Успешный ответ от ПЭК: {"zoneId":"d68e47fa-66bb-11e5-80cf-003048baa05f","zoneName":"Москва ТТК","branchUID":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","bitrixId":446,"branchCode":"МВ","branchTitle":"Москва Восток","mainWarehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","warehousePoint":{"latitude":55.53300000000000,"longitude":37.57900000000000},"GeoData":{"precision":"exact","kind":"other","Address":{"country_code":"RU","formatted":"Россия, Москва, Шмитовский проезд, 1, подъезд 3, этаж 5, кв. 39","postal_code":"123100",
- POST /api/pek 200 in 233ms
- ✓ Compiled /api/pek-get in 166ms (346 modules)
-🔧 ПЭК GET Тест: Получен запрос
-🌐 GET тест 1: https://kabinet.pecom.ru/api/v1/
-📡 GET ответ 1: 200 OK
-✅ GET успех 1: 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" class="m-standalone">
-<head><title>
-	
-	
-	Общее описание
- 
-	 — Документация по API
-	
- — Личный кабинет клиента «ПЭК»
-</title>
-
-<meta charset="utf-8" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta h
- POST /api/pek-get 200 in 939ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "test"
-}
-🔧 Тестовый метод прокси
- POST /api/pek 200 in 13ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "test"
-}
-🔧 Тестовый метод прокси
- POST /api/pek 200 in 11ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "findzonebyaddress",
-  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
-}
-🌐 Запрос к ПЭК API (официальная версия):
-URL: https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/
-Auth: Basic (логин + API ключ)
-Body: {
-  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
-}
-📡 Ответ от ПЭК API:
-Status: 200 OK
-Headers: {
-  'cache-control': 'private',
-  'content-encoding': 'gzip',
-  'content-length': '540',
-  'content-type': 'application/json; charset=utf-8',
-  date: 'Fri, 26 Sep 2025 17:04:10 GMT',
-  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
-  'x-aspnetmvc-version': '5.3',
-  'x-powered-by': 'ARR/3.0'
-}
-✅ Успешный ответ от ПЭК: {"zoneId":"d68e47fa-66bb-11e5-80cf-003048baa05f","zoneName":"Москва ТТК","branchUID":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","bitrixId":446,"branchCode":"МВ","branchTitle":"Москва Восток","mainWarehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","warehousePoint":{"latitude":55.53300000000000,"longitude":37.57900000000000},"GeoData":{"precision":"exact","kind":"other","Address":{"country_code":"RU","formatted":"Россия, Москва, Шмитовский проезд, 1, подъезд 3, этаж 5, кв. 39","postal_code":"123100",
- POST /api/pek 200 in 792ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "findzonebyaddress",
-  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
-}
-🌐 Запрос к ПЭК API (официальная версия):
-URL: https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/
-Auth: Basic (логин + API ключ)
-Body: {
-  "address": "г Москва, Шмитовский проезд, д 1, кв 39"
-}
-📡 Ответ от ПЭК API:
-Status: 200 OK
-Headers: {
-  'cache-control': 'private',
-  'content-encoding': 'gzip',
-  'content-length': '540',
-  'content-type': 'application/json; charset=utf-8',
-  date: 'Fri, 26 Sep 2025 17:04:11 GMT',
-  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
-  'x-aspnetmvc-version': '5.3',
-  'x-powered-by': 'ARR/3.0'
-}
-✅ Успешный ответ от ПЭК: {"zoneId":"d68e47fa-66bb-11e5-80cf-003048baa05f","zoneName":"Москва ТТК","branchUID":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","bitrixId":446,"branchCode":"МВ","branchTitle":"Москва Восток","mainWarehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","warehousePoint":{"latitude":55.53300000000000,"longitude":37.57900000000000},"GeoData":{"precision":"exact","kind":"other","Address":{"country_code":"RU","formatted":"Россия, Москва, Шмитовский проезд, 1, подъезд 3, этаж 5, кв. 39","postal_code":"123100",
- POST /api/pek 200 in 220ms
-🔧 ПЭК GET Тест: Получен запрос
-🌐 GET тест 1: https://kabinet.pecom.ru/api/v1/
-📡 GET ответ 1: 200 OK
-✅ GET успех 1: 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" class="m-standalone">
-<head><title>
-	
-	
-	Общее описание
- 
-	 — Документация по API
-	
- — Личный кабинет клиента «ПЭК»
-</title>
-
-<meta charset="utf-8" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta h
- POST /api/pek-get 200 in 552ms
+ POST /api/pek 200 in 659ms

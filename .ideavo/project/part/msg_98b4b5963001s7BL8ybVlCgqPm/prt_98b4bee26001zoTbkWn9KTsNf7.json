@@ -1,0 +1,34 @@
+{
+  "id": "prt_98b4bee26001zoTbkWn9KTsNf7",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01HcsHCYnBmcdefwDSVkxyKo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "      // Добавляем адреса если нужна доставка\n      if (form.fromAddressDelivery) {\n        requestData.pickup = {\n          address: form.fromAddress || `Россия, ${form.fromCity}`,\n          coordinates: senderZone.warehousePoint\n        };\n      }\n      \n      if (form.toAddressDelivery) {\n        requestData.delivery = {\n          address: form.toAddress || `Россия, ${form.toCity}`,\n          coordinates: receiverZone.warehousePoint\n        };\n      }",
+          "newString": "      // Валидация координат\n      const validateCoordinates = (coords: any) => {\n        if (!coords || typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {\n          return null;\n        }\n        \n        const lat = Number(coords.latitude);\n        const lng = Number(coords.longitude);\n        \n        // Проверяем диапазоны\n        if (lat < -90 || lat > 90 || lng < -180 || lng > 180 || isNaN(lat) || isNaN(lng)) {\n          console.warn(`⚠️ Некорректные координаты:`, coords);\n          return null;\n        }\n        \n        return { latitude: lat, longitude: lng };\n      };\n      \n      // Добавляем адреса если нужна доставка\n      if (form.fromAddressDelivery) {\n        const validSenderCoords = validateCoordinates(senderZone.warehousePoint);\n        requestData.pickup = {\n          address: form.fromAddress || `Россия, ${form.fromCity}`,\n          ...(validSenderCoords && { coordinates: validSenderCoords })\n        };\n      }\n      \n      if (form.toAddressDelivery) {\n        const validReceiverCoords = validateCoordinates(receiverZone.warehousePoint);\n        requestData.delivery = {\n          address: form.toAddress || `Россия, ${form.toCity}`,\n          ...(validReceiverCoords && { coordinates: validReceiverCoords })\n        };\n      }"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1180,20 +1180,40 @@\n     isElevator: form.hasFreightLift\n   };\n }\n \n+// Валидация координат\n+const validateCoordinates = (coords: any) => {\n+  if (!coords || typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {\n+    return null;\n+  }\n+  \n+  const lat = Number(coords.latitude);\n+  const lng = Number(coords.longitude);\n+  \n+  // Проверяем диапазоны\n+  if (lat < -90 || lat > 90 || lng < -180 || lng > 180 || isNaN(lat) || isNaN(lng)) {\n+    console.warn(`⚠️ Некорректные координаты:`, coords);\n+    return null;\n+  }\n+  \n+  return { latitude: lat, longitude: lng };\n+};\n+\n // Добавляем адреса если нужна доставка\n if (form.fromAddressDelivery) {\n+  const validSenderCoords = validateCoordinates(senderZone.warehousePoint);\n   requestData.pickup = {\n     address: form.fromAddress || `Россия, ${form.fromCity}`,\n-    coordinates: senderZone.warehousePoint\n+    ...(validSenderCoords && { coordinates: validSenderCoords })\n   };\n }\n \n if (form.toAddressDelivery) {\n+  const validReceiverCoords = validateCoordinates(receiverZone.warehousePoint);\n   requestData.delivery = {\n     address: form.toAddress || `Россия, ${form.toCity}`,\n-    coordinates: receiverZone.warehousePoint\n+    ...(validReceiverCoords && { coordinates: validReceiverCoords })\n   };\n }\n \n console.log('🚀 ПЭК API запрос:', JSON.stringify(requestData, null, 2));\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758978646408,
+      "end": 1758978646439
+    }
+  }
+}

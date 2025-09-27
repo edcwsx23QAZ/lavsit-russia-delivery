@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b4bd87e001LessKf4HJZwGKM",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Pyadwuh2o46FsFmT8vDdyy",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1150,
+      "limit": 50
+    },
+    "output": "<file>\n01151|         senderWarehouseId,\n01152|         receiverWarehouseId,\n01153|         isOpenCarSender: false,\n01154|         isOpenCarReceiver: false,\n01155|         isHyperMarket: false,\n01156|         plannedDateTime,\n01157|         isInsurance: form.needInsurance && form.declaredValue > 0,\n01158|         isInsurancePrice: form.needInsurance ? form.declaredValue : 0,\n01159|         isPickUp: form.fromAddressDelivery,\n01160|         isDelivery: form.toAddressDelivery,\n01161|         needReturnDocuments: false,\n01162|         needArrangeTransportationDocuments: false,\n01163|         senderDistanceType: 0,\n01164|         receiverDistanceType: 0,\n01165|         cargos\n01166|       };\n01167| \n01168|       // Добавляем услуги ПРР если нужно\n01169|       if (form.needCarry) {\n01170|         requestData.pickupServices = {\n01171|           isLoading: true,\n01172|           floor: Math.max(0, form.floor - 1), // ПЭК считает с 0\n01173|           carryingDistance: 0,\n01174|           isElevator: form.hasFreightLift\n01175|         };\n01176|         requestData.deliveryServices = {\n01177|           isLoading: true,\n01178|           floor: Math.max(0, form.floor - 1),\n01179|           carryingDistance: 0,\n01180|           isElevator: form.hasFreightLift\n01181|         };\n01182|       }\n01183| \n01184|       // Добавляем адреса если нужна доставка\n01185|       if (form.fromAddressDelivery) {\n01186|         requestData.pickup = {\n01187|           address: form.fromAddress || `Россия, ${form.fromCity}`,\n01188|           coordinates: senderZone.warehousePoint\n01189|         };\n01190|       }\n01191|       \n01192|       if (form.toAddressDelivery) {\n01193|         requestData.delivery = {\n01194|           address: form.toAddress || `Россия, ${form.toCity}`,\n01195|           coordinates: receiverZone.warehousePoint\n01196|         };\n01197|       }\n01198| \n01199|       console.log('🚀 ПЭК API запрос:', JSON.stringify(requestData, null, 2));\n01200|       console.log('🌐 ПЭК API URL:', apiUrl);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1200)\n</file>",
+    "metadata": {
+      "preview": "        senderWarehouseId,\n        receiverWarehouseId,\n        isOpenCarSender: false,\n        isOpenCarReceiver: false,\n        isHyperMarket: false,\n        plannedDateTime,\n        isInsurance: form.needInsurance && form.declaredValue > 0,\n        isInsurancePrice: form.needInsurance ? form.declaredValue : 0,\n        isPickUp: form.fromAddressDelivery,\n        isDelivery: form.toAddressDelivery,\n        needReturnDocuments: false,\n        needArrangeTransportationDocuments: false,\n        senderDistanceType: 0,\n        receiverDistanceType: 0,\n        cargos\n      };\n\n      // Добавляем услуги ПРР если нужно\n      if (form.needCarry) {\n        requestData.pickupServices = {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758978628271,
+      "end": 1758978628274
+    }
+  }
+}

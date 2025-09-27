@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b4da785001oDycX9xeQSmIsg",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XdSmcFcMU3iPaEbe9cU2F3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 30,
+      "limit": 50
+    },
+    "output": "<file>\n00031|   needLoading: boolean;\n00032|   needCarry: boolean;\n00033|   floor: number;\n00034|   hasFreightLift: boolean;\n00035|   needInsurance: boolean;\n00036|   fromTerminal: boolean;\n00037|   toTerminal: boolean;\n00038|   fromAddressDelivery: boolean;\n00039|   toAddressDelivery: boolean;\n00040| }\n00041| \n00042| interface CalculationResult {\n00043|   company: string;\n00044|   price: number;\n00045|   days: number;\n00046|   details?: any;\n00047|   error?: string;\n00048|   requestData?: any;\n00049|   responseData?: any;\n00050|   apiUrl?: string;\n00051|   sessionId?: string;\n00052| }\n00053| \n00054| interface AddressSuggestion {\n00055|   value: string;\n00056|   unrestricted_value: string;\n00057|   data: {\n00058|     city?: string;\n00059|     street?: string;\n00060|     house?: string;\n00061|   };\n00062| }\n00063| \n00064| const COMPANIES = [\n00065|   { name: 'Деловые Линии', logo: '📦', connected: true },\n00066|   { name: 'ПЭК', logo: '🚛', connected: true },\n00067|   { name: 'Nord Wheel', logo: '🌐', connected: true },\n00068|   { name: 'Rail Continent', logo: '🚂', connected: true }\n00069| ];\n00070| \n00071| export default function Home() {\n00072|   // Начальное состояние формы\n00073|   const initialFormState: DeliveryForm = {\n00074|     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00075|     fromCity: '',\n00076|     toCity: '',\n00077|     fromAddress: '',\n00078|     toAddress: '',\n00079|     declaredValue: 0,\n00080|     needPackaging: false,\n\n(File has more lines. Use 'offset' parameter to read beyond line 80)\n</file>",
+    "metadata": {
+      "preview": "  needLoading: boolean;\n  needCarry: boolean;\n  floor: number;\n  hasFreightLift: boolean;\n  needInsurance: boolean;\n  fromTerminal: boolean;\n  toTerminal: boolean;\n  fromAddressDelivery: boolean;\n  toAddressDelivery: boolean;\n}\n\ninterface CalculationResult {\n  company: string;\n  price: number;\n  days: number;\n  details?: any;\n  error?: string;\n  requestData?: any;\n  responseData?: any;\n  apiUrl?: string;"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758978746950,
+      "end": 1758978746953
+    }
+  }
+}

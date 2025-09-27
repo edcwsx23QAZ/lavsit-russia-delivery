@@ -1,0 +1,11 @@
+{
+  "id": "prt_98b4be6d30012mA4ojbOcNjSVM",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Нашел проблему! В строках 1188 и 1195 мы передаем `coordinates: senderZone.warehousePoint` и `coordinates: receiverZone.warehousePoint`. Эти координаты могут содержать некорректные значения latitude. \n\nДавайте добавим валидацию координат:",
+  "time": {
+    "start": 1758978633253,
+    "end": 1758978633253
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "prt_98b4b56cd001nEj5cSC3WKIAbS",
+  "type": "text",
+  "text": "Сейчас выпадает следующая ошибка ПЭК в консоли. Исправь:\n\napp-index.js:33 🚨 Критическая ошибка ПЭК API: Error: Exception: The value of the parameter must be from -90.0 to 90.0.\nParameter name: Latitude\n    at calculatePEK (page.tsx:1293:17)\n    at async Promise.all (4000-i859b80wqs6c2fh…j2w.e2b.app/index 1)\n    at async handleCalculate (page.tsx:1433:23)\nwindow.console.error\t@\tapp-index.js:33\napp-index.js:33 🚨 ПЭК: Ошибка API ПЭК. Переходим к фоллбэк расчету\nindex.mjs:34 Collapsible is changing from uncontrolled to controlled. Components should not switch from controlled to uncontrolled (or vice versa). Decide between using a controlled or uncontrolled value for the lifetime of the component.",
+  "messageID": "msg_98b4b56cb001VJHVBPldMMk5Zp",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14"
+}

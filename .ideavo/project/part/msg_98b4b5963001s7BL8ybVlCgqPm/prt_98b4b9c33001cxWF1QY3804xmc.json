@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b4b9c33001cxWF1QY3804xmc",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_018dr8yuyCARyoAXNdvLKfz9",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A10 -B5 \"calculatePEK\" app/page.tsx",
+      "description": "Поиск функции calculatePEK"
+    },
+    "output": "1057-      return null;\n1058-    }\n1059-  };\n1060-\n1061-  // Расчет для ПЭК через официальный API v1/calculateprice/\n1062:  const calculatePEK = async (): Promise<CalculationResult> => {\n1063-    const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n1064-    \n1065-    try {\n1066-      // Получаем информацию о зонах и складах по адресам\n1067-      console.log(`🚀 ПЭК: начинаем расчет`);\n1068-      console.log(`📍 От: ${form.fromAddress || form.fromCity}`);\n1069-      console.log(`📍 До: ${form.toAddress || form.toCity}`);\n1070-      \n1071-      const senderZone = await getPekZoneByAddress(form.fromAddress || `г ${form.fromCity}`);\n1072-      const receiverZone = await getPekZoneByAddress(form.toAddress || `г ${form.toCity}`);\n--\n1430-    localStorage.setItem('deliveryForm', JSON.stringify(form));\n1431-    \n1432-    try {\n1433-      const results = await Promise.all([\n1434-        calculateDellin(),\n1435:        calculatePEK(),\n1436-        calculateNordWheel(),\n1437-        calculateRailContinent()\n1438-      ]);\n1439-      \n1440-      // Сортировка по цене\n1441-      const sortedResults = results\n1442-        .filter(result => !result.error)\n1443-        .sort((a, b) => a.price - b.price)\n1444-        .concat(results.filter(result => result.error));\n1445-      \n",
+    "metadata": {
+      "output": "1057-      return null;\n1058-    }\n1059-  };\n1060-\n1061-  // Расчет для ПЭК через официальный API v1/calculateprice/\n1062:  const calculatePEK = async (): Promise<CalculationResult> => {\n1063-    const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n1064-    \n1065-    try {\n1066-      // Получаем информацию о зонах и складах по адресам\n1067-      console.log(`🚀 ПЭК: начинаем расчет`);\n1068-      console.log(`📍 От: ${form.fromAddress || form.fromCity}`);\n1069-      console.log(`📍 До: ${form.toAddress || form.toCity}`);\n1070-      \n1071-      const senderZone = await getPekZoneByAddress(form.fromAddress || `г ${form.fromCity}`);\n1072-      const receiverZone = await getPekZoneByAddress(form.toAddress || `г ${form.toCity}`);\n--\n1430-    localStorage.setItem('deliveryForm', JSON.stringify(form));\n1431-    \n1432-    try {\n1433-      const results = await Promise.all([\n1434-        calculateDellin(),\n1435:        calculatePEK(),\n1436-        calculateNordWheel(),\n1437-        calculateRailContinent()\n1438-      ]);\n1439-      \n1440-      // Сортировка по цене\n1441-      const sortedResults = results\n1442-        .filter(result => !result.error)\n1443-        .sort((a, b) => a.price - b.price)\n1444-        .concat(results.filter(result => result.error));\n1445-      \n",
+      "exit": 0,
+      "description": "Поиск функции calculatePEK"
+    },
+    "title": "cd /home/user/project && rg -n -A10 -B5 \"calculatePEK\" app/page.tsx",
+    "time": {
+      "start": 1758978612921,
+      "end": 1758978612939
+    }
+  }
+}

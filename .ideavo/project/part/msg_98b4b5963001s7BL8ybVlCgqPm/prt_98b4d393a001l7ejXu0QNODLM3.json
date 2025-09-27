@@ -1,0 +1,34 @@
+{
+  "id": "prt_98b4d393a001l7ejXu0QNODLM3",
+  "messageID": "msg_98b4b5963001s7BL8ybVlCgqPm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_014B9KvgQm622wxVKAobNCRd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "      case 'calculateprice':\n        urlPath = '/calculator/calculateprice/';\n        const { method: methodName, ...calculationData } = requestData;\n        body = calculationData;\n        break;",
+          "newString": "      case 'calculateprice':\n        urlPath = '/calculator/calculateprice/';\n        const { method: methodName, ...calculationData } = requestData;\n        \n        // Валидация координат в адресах доставки\n        if (calculationData.pickup?.coordinates) {\n          const lat = Number(calculationData.pickup.coordinates.latitude);\n          const lng = Number(calculationData.pickup.coordinates.longitude);\n          \n          if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n            console.warn('⚠️ Некорректные координаты pickup:', calculationData.pickup.coordinates);\n            // Удаляем некорректные координаты вместо ошибки\n            delete calculationData.pickup.coordinates;\n          } else {\n            calculationData.pickup.coordinates = { latitude: lat, longitude: lng };\n          }\n        }\n        \n        if (calculationData.delivery?.coordinates) {\n          const lat = Number(calculationData.delivery.coordinates.latitude);\n          const lng = Number(calculationData.delivery.coordinates.longitude);\n          \n          if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n            console.warn('⚠️ Некорректные координаты delivery:', calculationData.delivery.coordinates);\n            // Удаляем некорректные координаты вместо ошибки\n            delete calculationData.delivery.coordinates;\n          } else {\n            calculationData.delivery.coordinates = { latitude: lat, longitude: lng };\n          }\n        }\n        \n        body = calculationData;\n        break;"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -67,8 +67,36 @@\n   \n case 'calculateprice':\n   urlPath = '/calculator/calculateprice/';\n   const { method: methodName, ...calculationData } = requestData;\n+  \n+  // Валидация координат в адресах доставки\n+  if (calculationData.pickup?.coordinates) {\n+    const lat = Number(calculationData.pickup.coordinates.latitude);\n+    const lng = Number(calculationData.pickup.coordinates.longitude);\n+    \n+    if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n+      console.warn('⚠️ Некорректные координаты pickup:', calculationData.pickup.coordinates);\n+      // Удаляем некорректные координаты вместо ошибки\n+      delete calculationData.pickup.coordinates;\n+    } else {\n+      calculationData.pickup.coordinates = { latitude: lat, longitude: lng };\n+    }\n+  }\n+  \n+  if (calculationData.delivery?.coordinates) {\n+    const lat = Number(calculationData.delivery.coordinates.latitude);\n+    const lng = Number(calculationData.delivery.coordinates.longitude);\n+    \n+    if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n+      console.warn('⚠️ Некорректные координаты delivery:', calculationData.delivery.coordinates);\n+      // Удаляем некорректные координаты вместо ошибки\n+      delete calculationData.delivery.coordinates;\n+    } else {\n+      calculationData.delivery.coordinates = { latitude: lat, longitude: lng };\n+    }\n+  }\n+  \n   body = calculationData;\n   break;\n   \n case 'nearestdepartments':\n"
+        }
+      ]
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758978730792,
+      "end": 1758978730798
+    }
+  }
+}
