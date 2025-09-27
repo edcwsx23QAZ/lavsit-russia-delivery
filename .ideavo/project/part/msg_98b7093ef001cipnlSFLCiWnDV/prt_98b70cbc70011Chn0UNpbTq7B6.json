@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b70cbc70011Chn0UNpbTq7B6",
+  "messageID": "msg_98b7093ef001cipnlSFLCiWnDV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01RWZjnEdLiKdvcq9FU4ybhv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 560,
+      "limit": 30
+    },
+    "output": "<file>\n00561| \n00562|       const data = await response.json();\n00563|       console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n00564|       console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n00565|       console.log('🚀 ОТВЕТ ДЛ data:', data);\n00566|       \n00567|       // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n00568|       console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n00569|       console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));\n00570|       \n00571|       // Поиск всех полей связанных со страховкой\n00572|       console.log('💳 ПОИСК КОМПОНЕНТОВ СТРАХОВКИ:');\n00573|       console.log('💳 data.data.insurance:', data.data?.insurance);\n00574|       console.log('💳 data.data.cargoInsurance:', data.data?.cargoInsurance);\n00575|       console.log('💳 data.data.termInsurance:', data.data?.termInsurance);\n00576|       console.log('💳 data.data.insuranceDetails:', data.data?.insuranceDetails);\n00577|       console.log('💳 data.data.services:', data.data?.services);\n00578|       console.log('💳 data.data.additionalServices:', data.data?.additionalServices);\n00579|       \n00580|       // Поиск страховки в других разделах\n00581|       if (data.data.derival) {\n00582|         console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival.insurance);\n00583|       }\n00584|       if (data.data.arrival) {\n00585|         console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival.insurance);\n00586|       }\n00587|       if (data.data.intercity) {\n00588|         console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);\n00589|       }\n00590|       \n\n(File has more lines. Use 'offset' parameter to read beyond line 590)\n</file>",
+    "metadata": {
+      "preview": "\n      const data = await response.json();\n      console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n      console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n      console.log('🚀 ОТВЕТ ДЛ data:', data);\n      \n      // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n      console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n      console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));\n      \n      // Поиск всех полей связанных со страховкой\n      console.log('💳 ПОИСК КОМПОНЕНТОВ СТРАХОВКИ:');\n      console.log('💳 data.data.insurance:', data.data?.insurance);\n      console.log('💳 data.data.cargoInsurance:', data.data?.cargoInsurance);\n      console.log('💳 data.data.termInsurance:', data.data?.termInsurance);\n      console.log('💳 data.data.insuranceDetails:', data.data?.insuranceDetails);\n      console.log('💳 data.data.services:', data.data?.services);\n      console.log('💳 data.data.additionalServices:', data.data?.additionalServices);\n      \n      // Поиск страховки в других разделах"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758981050066,
+      "end": 1758981050070
+    }
+  }
+}

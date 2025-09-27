@@ -1,0 +1,11 @@
+{
+  "id": "prt_98b715460002cOf0r0y08pY9mU",
+  "messageID": "msg_98b7093ef001cipnlSFLCiWnDV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Вижу проблему! В строке 1430 используется `requestData`, но оно определено внутри функции `tryCalculateWithDate`. Нужно заменить на правильную переменную:",
+  "time": {
+    "start": 1758981085109,
+    "end": 1758981085109
+  }
+}

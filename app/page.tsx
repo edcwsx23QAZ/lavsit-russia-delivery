@@ -564,6 +564,13 @@ export default function Home() {
       console.log('🚀 ОТВЕТ ДЛ status:', response.status);
       console.log('🚀 ОТВЕТ ДЛ data:', data);
       
+      // Проверка на ошибку 400
+      if (!response.ok) {
+        console.error('❌ ДЛ: Ошибка API:', response.status, response.statusText);
+        console.error('❌ ДЛ: Текст ошибки:', data);
+        throw new Error(`API Деловых Линий вернул ошибку ${response.status}: ${data.error || data.message || 'Неизвестная ошибка'}`);
+      }
+      
       // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ
       console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');
       console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));
@@ -1420,7 +1427,7 @@ export default function Home() {
                 warehouseId: receiverWarehouseId
               }
             },
-            requestData,
+            requestData: finalRequestData,
             responseData: data,
             apiUrl
               };

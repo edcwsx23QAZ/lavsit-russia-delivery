@@ -1,0 +1,49 @@
+{
+  "id": "prt_98b70a3e0001sqY6mpqybgV7bn",
+  "messageID": "msg_98b7093ef001cipnlSFLCiWnDV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01W1MZe9KnmtUUn5mGzH15yu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Исправить ошибку Деловых Линий - data.data равно undefined",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "fix-dellin-undefined"
+        },
+        {
+          "content": "Исправить ошибку ПЭК - requestData is not defined",
+          "status": "pending",
+          "priority": "high",
+          "id": "fix-pek-requestdata"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Исправить ошибку Деловых Линий - data.data равно undefined\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"fix-dellin-undefined\"\n  },\n  {\n    \"content\": \"Исправить ошибку ПЭК - requestData is not defined\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"fix-pek-requestdata\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Исправить ошибку Деловых Линий - data.data равно undefined",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "fix-dellin-undefined"
+        },
+        {
+          "content": "Исправить ошибку ПЭК - requestData is not defined",
+          "status": "pending",
+          "priority": "high",
+          "id": "fix-pek-requestdata"
+        }
+      ]
+    },
+    "title": "2 todos",
+    "time": {
+      "start": 1758981043265,
+      "end": 1758981043266
+    }
+  }
+}

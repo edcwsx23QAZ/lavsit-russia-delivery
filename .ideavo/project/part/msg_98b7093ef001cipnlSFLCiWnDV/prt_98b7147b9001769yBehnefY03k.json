@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b7147b9001769yBehnefY03k",
+  "messageID": "msg_98b7093ef001cipnlSFLCiWnDV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01EKNLmBWKEPkSoNcBj6sZVu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1425,
+      "limit": 15
+    },
+    "output": "<file>\n01426|                 zone: receiverZone.zoneName,\n01427|                 warehouseId: receiverWarehouseId\n01428|               }\n01429|             },\n01430|             requestData,\n01431|             responseData: data,\n01432|             apiUrl\n01433|               };\n01434|             } else {\n01435|               // Проверяем, является ли ошибка проблемой с датой\n01436|               const errorMessage = transfer.errorMessage || 'Ошибка расчета тарифа ПЭК';\n01437|               if (errorMessage.includes('забор груза невозможен') || errorMessage.includes('выбранной даты')) {\n01438|                 console.log(`📅 ПЭК: ${errorMessage}. Пробуем следующий день...`);\n01439|                 lastError = new Error(errorMessage);\n01440|                 // Переходим к следующему дню\n\n(File has more lines. Use 'offset' parameter to read beyond line 1440)\n</file>",
+    "metadata": {
+      "preview": "                zone: receiverZone.zoneName,\n                warehouseId: receiverWarehouseId\n              }\n            },\n            requestData,\n            responseData: data,\n            apiUrl\n              };\n            } else {\n              // Проверяем, является ли ошибка проблемой с датой\n              const errorMessage = transfer.errorMessage || 'Ошибка расчета тарифа ПЭК';\n              if (errorMessage.includes('забор груза невозможен') || errorMessage.includes('выбранной даты')) {\n                console.log(`📅 ПЭК: ${errorMessage}. Пробуем следующий день...`);\n                lastError = new Error(errorMessage);\n                // Переходим к следующему дню"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758981081599,
+      "end": 1758981081602
+    }
+  }
+}
