@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d0f4f53002F9VrfOucIJu2LB",
+  "messageID": "msg_98d0f073b001MS3rclNqNwCGpG",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_019RuxCLBGYQn2igGZNQY8Du",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1480,
+      "limit": 50
+    },
+    "output": "<file>\n01481|           console.log('📍 ПЭК: добавляем блок pickup для забора');\n01482|           requestData.pickup = {\n01483|             address: form.fromAddress || `Россия, ${form.fromCity}`\n01484|             // coordinates можно добавить позже для точности\n01485|           };\n01486|         }\n01487|         \n01488|         if (form.toAddressDelivery) {\n01489|           console.log('📍 ПЭК: добавляем блок delivery для доставки');\n01490|           requestData.delivery = {\n01491|             address: form.toAddress || `Россия, ${form.toCity}`\n01492|             // coordinates можно добавить позже для точности\n01493|           };\n01494|         }\n01495| \n01496|         // Валидация обязательных полей согласно документации\n01497|         const requiredFields = ['types', 'senderWarehouseId', 'receiverWarehouseId', 'plannedDateTime', 'cargos'];\n01498|         const missingFields = requiredFields.filter(field => !requestData[field]);\n01499|         \n01500|         if (missingFields.length > 0) {\n01501|           throw new Error(`ПЭК: отсутствуют обязательные поля: ${missingFields.join(', ')}`);\n01502|         }\n01503|         \n01504|         if (!Array.isArray(requestData.types) || requestData.types.length === 0) {\n01505|           throw new Error('ПЭК: поле types должно быть непустым массивом');\n01506|         }\n01507|         \n01508|         if (!Array.isArray(requestData.cargos) || requestData.cargos.length === 0) {\n01509|           throw new Error('ПЭК: поле cargos должно быть непустым массивом');\n01510|         }\n01511|         \n01512|         console.log('✅ ПЭК: валидация обязательных полей пройдена');\n01513| \n01514|         // Сохраняем финальный запрос в переменной области видимости функции\n01515|         finalRequestData = {\n01516|           method: 'calculateprice',\n01517|           ...requestData\n01518|         };\n01519|         \n01520|         console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n01521|         console.log('🌐 ПЭК API URL:', apiUrl);\n01522|         console.log('📋 ПЭК: количество типов тарифов:', requestData.types.length);\n01523|         console.log('📋 ПЭК: количество грузов:', requestData.cargos.length);\n01524|       \n01525|       // Проверяем координаты перед отправкой\n01526|       if (finalRequestData.pickup?.coordinates) {\n01527|         console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);\n01528|       }\n01529|       if (finalRequestData.delivery?.coordinates) {\n01530|         console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1530)\n</file>",
+    "metadata": {
+      "preview": "          console.log('📍 ПЭК: добавляем блок pickup для забора');\n          requestData.pickup = {\n            address: form.fromAddress || `Россия, ${form.fromCity}`\n            // coordinates можно добавить позже для точности\n          };\n        }\n        \n        if (form.toAddressDelivery) {\n          console.log('📍 ПЭК: добавляем блок delivery для доставки');\n          requestData.delivery = {\n            address: form.toAddress || `Россия, ${form.toCity}`\n            // coordinates можно добавить позже для точности\n          };\n        }\n\n        // Валидация обязательных полей согласно документации\n        const requiredFields = ['types', 'senderWarehouseId', 'receiverWarehouseId', 'plannedDateTime', 'cargos'];\n        const missingFields = requiredFields.filter(field => !requestData[field]);\n        \n        if (missingFields.length > 0) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759008215501,
+      "end": 1759008215503
+    }
+  }
+}

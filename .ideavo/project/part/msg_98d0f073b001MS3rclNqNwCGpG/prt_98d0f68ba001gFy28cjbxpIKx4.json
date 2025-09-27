@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d0f68ba001gFy28cjbxpIKx4",
+  "messageID": "msg_98d0f073b001MS3rclNqNwCGpG",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01YUSKgXxzUBoXxk7LFwoTpd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1991,
+      "limit": 50
+    },
+    "output": "<file>\n01992|     const apiUrl = '/api/vozovoz';\n01993|     \n01994|     try {\n01995|       // Вычисляем основные параметры груза\n01996|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n01997|       const totalVolume = form.cargos.reduce((sum, cargo) => \n01998|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n01999|       );\n02000|       \n02001|       console.log('🚚 Возовоз: подготовка данных...');\n02002|       console.log('   - Общий вес:', totalWeight, 'кг');\n02003|       console.log('   - Общий объем:', totalVolume, 'м³');\n02004|       console.log('   - Откуда:', form.fromCity);\n02005|       console.log('   - Куда:', form.toCity);\n02006|       \n02007|       // Параметры для API Vozovoz\n02008|       const requestData = {\n02009|         object: \"price\",\n02010|         action: \"get\",\n02011|         params: {\n02012|           cargo: {\n02013|             dimension: {\n02014|               quantity: form.cargos.length,\n02015|               volume: totalVolume,\n02016|               weight: totalWeight\n02017|             },\n02018|             ...(form.needInsurance && form.declaredValue > 0 ? {\n02019|               insurance: form.declaredValue\n02020|             } : {}),\n02021|             ...(form.needPackaging ? {\n02022|               wrapping: {\n02023|                 palletCollar: totalVolume // Обрешетка по объему\n02024|               }\n02025|             } : {})\n02026|           },\n02027|           gateway: {\n02028|             dispatch: {\n02029|               point: {\n02030|                 location: form.fromCity || 'Москва',\n02031|                 ...(form.fromAddressDelivery ? {\n02032|                   address: form.fromAddress || \"адрес отправления\"\n02033|                 } : {\n02034|                   terminal: \"default\"\n02035|                 })\n02036|               }\n02037|             },\n02038|             destination: {\n02039|               point: {\n02040|                 location: form.toCity || 'Санкт-Петербург',\n02041|                 ...(form.toAddressDelivery ? {\n\n(File has more lines. Use 'offset' parameter to read beyond line 2041)\n</file>",
+    "metadata": {
+      "preview": "    const apiUrl = '/api/vozovoz';\n    \n    try {\n      // Вычисляем основные параметры груза\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n      \n      console.log('🚚 Возовоз: подготовка данных...');\n      console.log('   - Общий вес:', totalWeight, 'кг');\n      console.log('   - Общий объем:', totalVolume, 'м³');\n      console.log('   - Откуда:', form.fromCity);\n      console.log('   - Куда:', form.toCity);\n      \n      // Параметры для API Vozovoz\n      const requestData = {\n        object: \"price\",\n        action: \"get\",\n        params: {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759008221891,
+      "end": 1759008221893
+    }
+  }
+}

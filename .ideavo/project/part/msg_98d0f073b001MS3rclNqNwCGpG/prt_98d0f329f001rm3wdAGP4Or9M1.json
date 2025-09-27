@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d0f329f001rm3wdAGP4Or9M1",
+  "messageID": "msg_98d0f073b001MS3rclNqNwCGpG",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_014cMjvYi5FtiZMULELBV4DT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "form\\.cargos",
+      "path": "/home/user/project/app"
+    },
+    "output": "Found 25 matches\n/home/user/project/app/page.tsx:\n  Line 429:     const newId = (form.cargos.length + 1).toString();\n  Line 446:     if (form.cargos.length > 1) {\n  Line 628:       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n  Line 629:       const totalVolume = form.cargos.reduce((sum, cargo) => \n  Line 632:       const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n  Line 633:       const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n  Line 634:       const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;\n  Line 752:           quantity: form.cargos.length,\n  Line 1420:       const cargos = form.cargos.map(cargo => {\n  Line 1712:       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n  Line 1713:       const totalVolume = form.cargos.reduce((sum, cargo) => \n  Line 1808:       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n  Line 1809:       const totalVolume = form.cargos.reduce((sum, cargo) => \n  Line 1814:       const maxLength = Math.max(...form.cargos.map(c => c.length));\n  Line 1815:       const maxWidth = Math.max(...form.cargos.map(c => c.width));\n  Line 1816:       const maxHeight = Math.max(...form.cargos.map(c => c.height));\n  Line 1996:       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n  Line 1997:       const totalVolume = form.cargos.reduce((sum, cargo) => \n  Line 2014:               quantity: form.cargos.length,\n  Line 2189:       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n  Line 2190:       const totalVolume = form.cargos.reduce((sum, cargo) => \n  Line 2203:         packageCount: form.cargos.length.toString(),\n  Line 2524:         const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n  Line 2567:                 {form.cargos.map((cargo, index) => (\n  Line 2571:                       {form.cargos.length > 1 && (",
+    "metadata": {
+      "matches": 25,
+      "truncated": false
+    },
+    "title": "form\\.cargos",
+    "time": {
+      "start": 1759008208327,
+      "end": 1759008208337
+    }
+  }
+}

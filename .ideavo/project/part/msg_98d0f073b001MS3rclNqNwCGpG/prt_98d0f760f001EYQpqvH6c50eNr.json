@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d0f760f001EYQpqvH6c50eNr",
+  "messageID": "msg_98d0f073b001MS3rclNqNwCGpG",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GPVFNaoPkksj6tgLbKgYmz",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2185,
+      "limit": 30
+    },
+    "output": "<file>\n02186|     const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n02187|     \n02188|     try {\n02189|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n02190|       const totalVolume = form.cargos.reduce((sum, cargo) => \n02191|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n02192|       );\n02193| \n02194|       const params = new URLSearchParams({\n02195|         from: '91', // Москва (нужно будет получать ID города)\n02196|         to: '92', // СПб (нужно будет получать ID города)\n02197|         pickup: form.fromAddressDelivery ? '1' : '0',\n02198|         deliver: form.toAddressDelivery ? '1' : '0',\n02199|         weight: totalWeight.toString(),\n02200|         volume: totalVolume.toString(),\n02201|         oversized: '0',\n02202|         package: form.needPackaging ? '1' : '0',\n02203|         packageCount: form.cargos.length.toString(),\n02204|         insurance: form.needInsurance ? '1' : '0',\n02205|         sum: form.declaredValue.toString(),\n02206|         documentsReturn: '0',\n02207|         fragile: '1'\n02208|       });\n02209| \n02210|       const requestData = Object.fromEntries(params);\n02211|       const fullUrl = `${apiUrl}?${params.toString()}`;\n02212| \n02213|       const response = await fetch(fullUrl);\n02214|       const data = await response.json();\n02215| \n\n(File has more lines. Use 'offset' parameter to read beyond line 2215)\n</file>",
+    "metadata": {
+      "preview": "    const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n    \n    try {\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n\n      const params = new URLSearchParams({\n        from: '91', // Москва (нужно будет получать ID города)\n        to: '92', // СПб (нужно будет получать ID города)\n        pickup: form.fromAddressDelivery ? '1' : '0',\n        deliver: form.toAddressDelivery ? '1' : '0',\n        weight: totalWeight.toString(),\n        volume: totalVolume.toString(),\n        oversized: '0',\n        package: form.needPackaging ? '1' : '0',\n        packageCount: form.cargos.length.toString(),\n        insurance: form.needInsurance ? '1' : '0',\n        sum: form.declaredValue.toString(),"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759008225365,
+      "end": 1759008225367
+    }
+  }
+}
