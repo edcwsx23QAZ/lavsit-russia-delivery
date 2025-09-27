@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b619a88002As2ewZvKnsh2Zg",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_0169eVP3wi8NCpxsYmGmNjT2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {\n        const transfer = data.transfers[0]; // берем первый тариф (авто)\n        \n        if (!transfer.hasError) {",
+      "newString": "        return { response, data };\n      };\n\n      // Цикл попыток с разными датами (максимум 7 дней)\n      const maxRetries = 7;\n      let lastError = null;\n      \n      for (let attempt = 0; attempt < maxRetries; attempt++) {\n        try {\n          console.log(`📅 ПЭК: попытка ${attempt + 1}/${maxRetries}, дата: ${plannedDateTime}`);\n          \n          const { response, data } = await tryCalculateWithDate(plannedDateTime);\n          \n          if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {\n            const transfer = data.transfers[0]; // берем первый тариф (авто)\n            \n            if (!transfer.hasError) {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1313,12 +1313,25 @@\n   console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);\n   throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);\n }\n \n-if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {\n-  const transfer = data.transfers[0]; // берем первый тариф (авто)\n-  \n-  if (!transfer.hasError) {\n+  return { response, data };\n+};\n+\n+// Цикл попыток с разными датами (максимум 7 дней)\n+const maxRetries = 7;\n+let lastError = null;\n+\n+for (let attempt = 0; attempt < maxRetries; attempt++) {\n+  try {\n+    console.log(`📅 ПЭК: попытка ${attempt + 1}/${maxRetries}, дата: ${plannedDateTime}`);\n+    \n+    const { response, data } = await tryCalculateWithDate(plannedDateTime);\n+    \n+    if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {\n+      const transfer = data.transfers[0]; // берем первый тариф (авто)\n+      \n+      if (!transfer.hasError) {\n     // Обрабатываем детальную структуру услуг\n     const services: { name: string; description: string; price: number }[] = [];\n     let totalCalculated = 0;\n \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980056363,
+      "end": 1758980056374
+    }
+  }
+}

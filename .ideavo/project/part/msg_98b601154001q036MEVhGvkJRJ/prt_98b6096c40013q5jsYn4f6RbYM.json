@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b6096c40013q5jsYn4f6RbYM",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Swy5jiEvnEnsZNoAaBF3YB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Формируем дату завтра для забора\n      const tomorrow = new Date();\n      tomorrow.setDate(tomorrow.getDate() + 1);\n      const plannedDateTime = tomorrow.toISOString().slice(0, 19); // 2025-09-28T14:00:00",
+      "newString": "      // Функция для получения даты N дней от сегодня\n      const getDateForCalculation = (daysFromToday: number): string => {\n        const date = new Date();\n        date.setDate(date.getDate() + daysFromToday);\n        return date.toISOString().slice(0, 19); // 2025-09-28T14:00:00\n      };\n\n      // Начинаем с завтрашнего дня\n      let currentDayOffset = 1;\n      let plannedDateTime = getDateForCalculation(currentDayOffset);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1191,13 +1191,19 @@\n     console.warn('⚠️ Некорректные координаты получателя, используем основной склад');\n   }\n }\n \n-// Формируем дату завтра для забора\n-const tomorrow = new Date();\n-tomorrow.setDate(tomorrow.getDate() + 1);\n-const plannedDateTime = tomorrow.toISOString().slice(0, 19); // 2025-09-28T14:00:00\n+// Функция для получения даты N дней от сегодня\n+const getDateForCalculation = (daysFromToday: number): string => {\n+  const date = new Date();\n+  date.setDate(date.getDate() + daysFromToday);\n+  return date.toISOString().slice(0, 19); // 2025-09-28T14:00:00\n+};\n \n+// Начинаем с завтрашнего дня\n+let currentDayOffset = 1;\n+let plannedDateTime = getDateForCalculation(currentDayOffset);\n+\n // Формируем массив грузов (без координат)\n const cargos = form.cargos.map(cargo => {\n   const cargoData = {\n     length: cargo.length / 100, // переводим см в метры\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979990475,
+      "end": 1758979990493
+    }
+  }
+}

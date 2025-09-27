@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b61b1e4001DxcPfPwU7mGE9H",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01L3xMBptSFMPX3Ne81zCKDX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1377,
+      "limit": 20
+    },
+    "output": "<file>\n01378|               services,\n01379|               senderZone: {\n01380|                 title: senderZone.branchTitle,\n01381|                 zone: senderZone.zoneName,\n01382|                 warehouseId: senderWarehouseId\n01383|               },\n01384|               receiverZone: {\n01385|                 title: receiverZone.branchTitle,\n01386|                 zone: receiverZone.zoneName,\n01387|                 warehouseId: receiverWarehouseId\n01388|               }\n01389|             },\n01390|             requestData,\n01391|             responseData: data,\n01392|             apiUrl\n01393|           };\n01394|         } else {\n01395|           throw new Error(transfer.errorMessage || 'Ошибка расчета тарифа ПЭК');\n01396|         }\n01397|       } else {\n\n(File has more lines. Use 'offset' parameter to read beyond line 1397)\n</file>",
+    "metadata": {
+      "preview": "              services,\n              senderZone: {\n                title: senderZone.branchTitle,\n                zone: senderZone.zoneName,\n                warehouseId: senderWarehouseId\n              },\n              receiverZone: {\n                title: receiverZone.branchTitle,\n                zone: receiverZone.zoneName,\n                warehouseId: receiverWarehouseId\n              }\n            },\n            requestData,\n            responseData: data,\n            apiUrl\n          };\n        } else {\n          throw new Error(transfer.errorMessage || 'Ошибка расчета тарифа ПЭК');\n        }\n      } else {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980060266,
+      "end": 1758980060268
+    }
+  }
+}

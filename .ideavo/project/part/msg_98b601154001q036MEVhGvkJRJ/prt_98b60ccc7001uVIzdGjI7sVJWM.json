@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b60ccc7001uVIzdGjI7sVJWM",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01WYNukdHpoyiFhnr1i7D8kp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1400,
+      "limit": 30
+    },
+    "output": "<file>\n01401|       \n01402|       console.error(`🚨 ПЭК: ${errorDescription}. Переходим к фоллбэк расчету`);\n01403|       \n01404|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n01405|       const totalVolume = form.cargos.reduce((sum, cargo) => \n01406|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n01407|       );\n01408|       \n01409|       // Более точный фоллбэк расчет на основе веса и объема\n01410|       let basePrice = Math.max(\n01411|         totalWeight * 18, // 18 руб за кг\n01412|         totalVolume * 4500 // 4500 руб за м3\n01413|       );\n01414|       \n01415|       // Добавляем услуги\n01416|       const services = [];\n01417|       \n01418|       services.push({\n01419|         name: 'Транспортировка',\n01420|         description: `${form.fromCity} - ${form.toCity} (${totalWeight} кг, ${totalVolume.toFixed(3)} м³)`,\n01421|         price: Math.round(basePrice)\n01422|       });\n01423|       \n01424|       if (form.fromAddressDelivery) {\n01425|         const pickupCost = 600;\n01426|         basePrice += pickupCost;\n01427|         services.push({\n01428|           name: 'Забор груза',\n01429|           description: 'От адреса отправителя',\n01430|           price: pickupCost\n\n(File has more lines. Use 'offset' parameter to read beyond line 1430)\n</file>",
+    "metadata": {
+      "preview": "      \n      console.error(`🚨 ПЭК: ${errorDescription}. Переходим к фоллбэк расчету`);\n      \n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n      \n      // Более точный фоллбэк расчет на основе веса и объема\n      let basePrice = Math.max(\n        totalWeight * 18, // 18 руб за кг\n        totalVolume * 4500 // 4500 руб за м3\n      );\n      \n      // Добавляем услуги\n      const services = [];\n      \n      services.push({\n        name: 'Транспортировка',\n        description: `${form.fromCity} - ${form.toCity} (${totalWeight} кг, ${totalVolume.toFixed(3)} м³)`,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980001440,
+      "end": 1758980001443
+    }
+  }
+}

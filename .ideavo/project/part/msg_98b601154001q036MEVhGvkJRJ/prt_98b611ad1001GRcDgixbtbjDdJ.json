@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b611ad1001GRcDgixbtbjDdJ",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Lq8P3r4GkudNUg6N9PukZj",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Добавляем услуги ПРР если нужно\n      if (form.needCarry) {\n        requestData.pickupServices = {\n          isLoading: true,\n          floor: Math.max(0, form.floor - 1), // ПЭК считает с 0\n          carryingDistance: 0,\n          isElevator: form.hasFreightLift\n        };\n        requestData.deliveryServices = {\n          isLoading: true,\n          floor: Math.max(0, form.floor - 1),\n          carryingDistance: 0,\n          isElevator: form.hasFreightLift\n        };\n      }",
+      "newString": "        // Добавляем услуги ПРР если нужно\n        if (form.needCarry) {\n          requestData.pickupServices = {\n            isLoading: true,\n            floor: Math.max(0, form.floor - 1), // ПЭК считает с 0\n            carryingDistance: 0,\n            isElevator: form.hasFreightLift\n          };\n          requestData.deliveryServices = {\n            isLoading: true,\n            floor: Math.max(0, form.floor - 1),\n            carryingDistance: 0,\n            isElevator: form.hasFreightLift\n          };\n        }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1241,23 +1241,23 @@\n     receiverDistanceType: 0,\n     cargos\n   };\n \n-// Добавляем услуги ПРР если нужно\n-if (form.needCarry) {\n-  requestData.pickupServices = {\n-    isLoading: true,\n-    floor: Math.max(0, form.floor - 1), // ПЭК считает с 0\n-    carryingDistance: 0,\n-    isElevator: form.hasFreightLift\n-  };\n-  requestData.deliveryServices = {\n-    isLoading: true,\n-    floor: Math.max(0, form.floor - 1),\n-    carryingDistance: 0,\n-    isElevator: form.hasFreightLift\n-  };\n-}\n+  // Добавляем услуги ПРР если нужно\n+  if (form.needCarry) {\n+    requestData.pickupServices = {\n+      isLoading: true,\n+      floor: Math.max(0, form.floor - 1), // ПЭК считает с 0\n+      carryingDistance: 0,\n+      isElevator: form.hasFreightLift\n+    };\n+    requestData.deliveryServices = {\n+      isLoading: true,\n+      floor: Math.max(0, form.floor - 1),\n+      carryingDistance: 0,\n+      isElevator: form.hasFreightLift\n+    };\n+  }\n \n // Добавляем адреса без координат (временно для отладки)\n if (form.fromAddressDelivery) {\n   console.warn('📍 Отключаем координаты pickup для отладки');\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980025707,
+      "end": 1758980025721
+    }
+  }
+}

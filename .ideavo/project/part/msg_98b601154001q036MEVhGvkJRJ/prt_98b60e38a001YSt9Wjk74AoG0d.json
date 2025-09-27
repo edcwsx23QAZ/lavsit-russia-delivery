@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b60e38a001YSt9Wjk74AoG0d",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01UChFaUuo9NwibXY9w5qtBA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1480,
+      "limit": 20
+    },
+    "output": "<file>\n01481|           totalWeight,\n01482|           totalVolume,\n01483|           errorInfo: error.message\n01484|         },\n01485|         requestData: null,\n01486|         responseData: null,\n01487|         apiUrl,\n01488|         error: `${errorDescription}. Показан примерный расчет по базовым тарифам.`\n01489|       };\n01490|     }\n01491|   };\n01492| \n01493| \n01494| \n01495|   const calculateRailContinent = async (): Promise<CalculationResult> => {\n01496|     await new Promise(resolve => setTimeout(resolve, 1200));\n01497|     const basePrice = form.cargos.reduce((sum, cargo) => sum + cargo.weight * 12, 0);\n01498|     let totalPrice = basePrice;\n01499|     \n01500|     if (form.needInsurance) totalPrice += form.declaredValue * 0.025;\n\n(File has more lines. Use 'offset' parameter to read beyond line 1500)\n</file>",
+    "metadata": {
+      "preview": "          totalWeight,\n          totalVolume,\n          errorInfo: error.message\n        },\n        requestData: null,\n        responseData: null,\n        apiUrl,\n        error: `${errorDescription}. Показан примерный расчет по базовым тарифам.`\n      };\n    }\n  };\n\n\n\n  const calculateRailContinent = async (): Promise<CalculationResult> => {\n    await new Promise(resolve => setTimeout(resolve, 1200));\n    const basePrice = form.cargos.reduce((sum, cargo) => sum + cargo.weight * 12, 0);\n    let totalPrice = basePrice;\n    \n    if (form.needInsurance) totalPrice += form.declaredValue * 0.025;"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980007363,
+      "end": 1758980007365
+    }
+  }
+}

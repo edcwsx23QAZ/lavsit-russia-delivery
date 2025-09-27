@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b60af9e001OnE3EHTS76cPuE",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_019PVwrFreqacbLjLzAGytt6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1280,
+      "limit": 50
+    },
+    "output": "<file>\n01281|       console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n01282|       console.log('🌐 ПЭК API URL:', apiUrl);\n01283|       \n01284|       // Проверяем координаты перед отправкой\n01285|       if (finalRequestData.pickup?.coordinates) {\n01286|         console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);\n01287|       }\n01288|       if (finalRequestData.delivery?.coordinates) {\n01289|         console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);\n01290|       }\n01291| \n01292|       const response = await fetch('/api/pek', {\n01293|         method: 'POST',\n01294|         headers: {\n01295|           'Content-Type': 'application/json',\n01296|         },\n01297|         body: JSON.stringify(finalRequestData)\n01298|       });\n01299| \n01300|       console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n01301|       console.log(`📡 ПЭК API URL: ${response.url}`);\n01302|       \n01303|       const responseText = await response.text();\n01304|       console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));\n01305|       \n01306|       let data;\n01307|       try {\n01308|         data = JSON.parse(responseText);\n01309|         console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));\n01310|       } catch (parseError) {\n01311|         console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);\n01312|         throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);\n01313|       }\n01314| \n01315|       if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {\n01316|         const transfer = data.transfers[0]; // берем первый тариф (авто)\n01317|         \n01318|         if (!transfer.hasError) {\n01319|           // Обрабатываем детальную структуру услуг\n01320|           const services: { name: string; description: string; price: number }[] = [];\n01321|           let totalCalculated = 0;\n01322| \n01323|           const processServices = (servicesList: any[], parentName = '') => {\n01324|             servicesList.forEach(service => {\n01325|               const serviceName = parentName ? `${parentName} - ${service.info}` : service.info;\n01326|               const serviceCost = parseFloat(service.cost) || 0;\n01327|               \n01328|               if (serviceCost > 0) {\n01329|                 services.push({\n01330|                   name: serviceName,\n\n(File has more lines. Use 'offset' parameter to read beyond line 1330)\n</file>",
+    "metadata": {
+      "preview": "      console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n      console.log('🌐 ПЭК API URL:', apiUrl);\n      \n      // Проверяем координаты перед отправкой\n      if (finalRequestData.pickup?.coordinates) {\n        console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);\n      }\n      if (finalRequestData.delivery?.coordinates) {\n        console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);\n      }\n\n      const response = await fetch('/api/pek', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(finalRequestData)\n      });\n\n      console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979994124,
+      "end": 1758979994126
+    }
+  }
+}

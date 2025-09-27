@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b6045a5001gvkTFV67vmeHnt",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_019EDJfivSNYXFByb7QuwZCE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1365,
+      "limit": 30
+    },
+    "output": "<file>\n01366|                 warehouseId: receiverWarehouseId\n01367|               }\n01368|             },\n01369|             requestData,\n01370|             responseData: data,\n01371|             apiUrl\n01372|           };\n01373|         } else {\n01374|           throw new Error(transfer.errorMessage || 'Ошибка расчета тарифа ПЭК');\n01375|         }\n01376|       } else {\n01377|         throw new Error(data.errorMessage || data.message || 'Ошибка API ПЭК');\n01378|       }\n01379|       \n01380|     } catch (error: any) {\n01381|       console.error('🚨 Критическая ошибка ПЭК API:', error);\n01382|       \n01383|       // Определяем тип ошибки\n01384|       let errorDescription = 'Ошибка API ПЭК';\n01385|       \n01386|       if (error.message?.includes('Failed to fetch')) {\n01387|         errorDescription = 'API ПЭК недоступен';\n01388|       } else if (error.message?.includes('401')) {\n01389|         errorDescription = 'Ошибка авторизации ПЭК';\n01390|       } else if (error.message?.includes('400')) {\n01391|         errorDescription = 'Некорректные параметры запроса';\n01392|       } else if (error.message?.includes('timeout')) {\n01393|         errorDescription = 'Тайм-аут запроса к API';\n01394|       }\n01395|       \n\n(File has more lines. Use 'offset' parameter to read beyond line 1395)\n</file>",
+    "metadata": {
+      "preview": "                warehouseId: receiverWarehouseId\n              }\n            },\n            requestData,\n            responseData: data,\n            apiUrl\n          };\n        } else {\n          throw new Error(transfer.errorMessage || 'Ошибка расчета тарифа ПЭК');\n        }\n      } else {\n        throw new Error(data.errorMessage || data.message || 'Ошибка API ПЭК');\n      }\n      \n    } catch (error: any) {\n      console.error('🚨 Критическая ошибка ПЭК API:', error);\n      \n      // Определяем тип ошибки\n      let errorDescription = 'Ошибка API ПЭК';\n      "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979966981,
+      "end": 1758979966983
+    }
+  }
+}

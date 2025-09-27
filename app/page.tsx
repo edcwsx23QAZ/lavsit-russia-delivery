@@ -1192,10 +1192,16 @@ export default function Home() {
         }
       }
 
-      // Формируем дату завтра для забора
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      const plannedDateTime = tomorrow.toISOString().slice(0, 19); // 2025-09-28T14:00:00
+      // Функция для получения даты N дней от сегодня
+      const getDateForCalculation = (daysFromToday: number): string => {
+        const date = new Date();
+        date.setDate(date.getDate() + daysFromToday);
+        return date.toISOString().slice(0, 19); // 2025-09-28T14:00:00
+      };
+
+      // Начинаем с завтрашнего дня
+      let currentDayOffset = 1;
+      let plannedDateTime = getDateForCalculation(currentDayOffset);
 
       // Формируем массив грузов (без координат)
       const cargos = form.cargos.map(cargo => {
@@ -1213,42 +1219,44 @@ export default function Home() {
         return cargoData;
       });
 
-      // Формируем запрос к API ПЭК
-      const requestData: any = {
-        currencyCode: "643", // рубли
-        types: [3], // только авто перевозка
-        senderWarehouseId,
-        receiverWarehouseId,
-        isOpenCarSender: false,
-        isOpenCarReceiver: false,
-        isHyperMarket: false,
-        plannedDateTime,
-        isInsurance: form.needInsurance && form.declaredValue > 0,
-        isInsurancePrice: form.needInsurance ? form.declaredValue : 0,
-        isPickUp: form.fromAddressDelivery,
-        isDelivery: form.toAddressDelivery,
-        needReturnDocuments: false,
-        needArrangeTransportationDocuments: false,
-        senderDistanceType: 0,
-        receiverDistanceType: 0,
-        cargos
-      };
+      // Функция для попытки расчета с конкретной датой
+      const tryCalculateWithDate = async (plannedDateTime: string): Promise<any> => {
+        // Формируем запрос к API ПЭК
+        const requestData: any = {
+          currencyCode: "643", // рубли
+          types: [3], // только авто перевозка
+          senderWarehouseId,
+          receiverWarehouseId,
+          isOpenCarSender: false,
+          isOpenCarReceiver: false,
+          isHyperMarket: false,
+          plannedDateTime,
+          isInsurance: form.needInsurance && form.declaredValue > 0,
+          isInsurancePrice: form.needInsurance ? form.declaredValue : 0,
+          isPickUp: form.fromAddressDelivery,
+          isDelivery: form.toAddressDelivery,
+          needReturnDocuments: false,
+          needArrangeTransportationDocuments: false,
+          senderDistanceType: 0,
+          receiverDistanceType: 0,
+          cargos
+        };
 
-      // Добавляем услуги ПРР если нужно
-      if (form.needCarry) {
-        requestData.pickupServices = {
-          isLoading: true,
-          floor: Math.max(0, form.floor - 1), // ПЭК считает с 0
-          carryingDistance: 0,
-          isElevator: form.hasFreightLift
-        };
-        requestData.deliveryServices = {
-          isLoading: true,
-          floor: Math.max(0, form.floor - 1),
-          carryingDistance: 0,
-          isElevator: form.hasFreightLift
-        };
-      }
+        // Добавляем услуги ПРР если нужно
+        if (form.needCarry) {
+          requestData.pickupServices = {
+            isLoading: true,
+            floor: Math.max(0, form.floor - 1), // ПЭК считает с 0
+            carryingDistance: 0,
+            isElevator: form.hasFreightLift
+          };
+          requestData.deliveryServices = {
+            isLoading: true,
+            floor: Math.max(0, form.floor - 1),
+            carryingDistance: 0,
+            isElevator: form.hasFreightLift
+          };
+        }
 
       // Добавляем адреса без координат (временно для отладки)
       if (form.fromAddressDelivery) {
@@ -1267,13 +1275,13 @@ export default function Home() {
         };
       }
 
-      const finalRequestData = {
-        method: 'calculateprice',
-        ...requestData
-      };
-      
-      console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));
-      console.log('🌐 ПЭК API URL:', apiUrl);
+        const finalRequestData = {
+          method: 'calculateprice',
+          ...requestData
+        };
+        
+        console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));
+        console.log('🌐 ПЭК API URL:', apiUrl);
       
       // Проверяем координаты перед отправкой
       if (finalRequestData.pickup?.coordinates) {
@@ -1306,10 +1314,23 @@ export default function Home() {
         throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);
       }
 
-      if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {
-        const transfer = data.transfers[0]; // берем первый тариф (авто)
-        
-        if (!transfer.hasError) {
+        return { response, data };
+      };
+
+      // Цикл попыток с разными датами (максимум 7 дней)
+      const maxRetries = 7;
+      let lastError = null;
+      
+      for (let attempt = 0; attempt < maxRetries; attempt++) {
+        try {
+          console.log(`📅 ПЭК: попытка ${attempt + 1}/${maxRetries}, дата: ${plannedDateTime}`);
+          
+          const { response, data } = await tryCalculateWithDate(plannedDateTime);
+          
+          if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {
+            const transfer = data.transfers[0]; // берем первый тариф (авто)
+            
+            if (!transfer.hasError) {
           // Обрабатываем детальную структуру услуг
           const services: { name: string; description: string; price: number }[] = [];
           let totalCalculated = 0;
@@ -1369,13 +1390,56 @@ export default function Home() {
             requestData,
             responseData: data,
             apiUrl
-          };
-        } else {
-          throw new Error(transfer.errorMessage || 'Ошибка расчета тарифа ПЭК');
+              };
+            } else {
+              // Проверяем, является ли ошибка проблемой с датой
+              const errorMessage = transfer.errorMessage || 'Ошибка расчета тарифа ПЭК';
+              if (errorMessage.includes('забор груза невозможен') || errorMessage.includes('выбранной даты')) {
+                console.log(`📅 ПЭК: ${errorMessage}. Пробуем следующий день...`);
+                lastError = new Error(errorMessage);
+                // Переходим к следующему дню
+                currentDayOffset++;
+                plannedDateTime = getDateForCalculation(currentDayOffset);
+                continue; // Пробуем следующую дату
+              } else {
+                throw new Error(errorMessage);
+              }
+            }
+          } else {
+            // Проверяем ошибку на уровне данных
+            const errorMessage = data.errorMessage || data.message || 'Ошибка API ПЭК';
+            if (errorMessage.includes('забор груза невозможен') || errorMessage.includes('выбранной даты')) {
+              console.log(`📅 ПЭК: ${errorMessage}. Пробуем следующий день...`);
+              lastError = new Error(errorMessage);
+              // Переходим к следующему дню
+              currentDayOffset++;
+              plannedDateTime = getDateForCalculation(currentDayOffset);
+              continue; // Пробуем следующую дату
+            } else {
+              throw new Error(errorMessage);
+            }
+          }
+        } catch (error: any) {
+          console.error(`❌ ПЭК: ошибка на попытке ${attempt + 1}:`, error.message);
+          
+          // Проверяем, является ли ошибка проблемой с датой
+          if (error.message?.includes('забор груза невозможен') || error.message?.includes('выбранной даты')) {
+            console.log(`📅 ПЭК: проблема с датой. Пробуем следующий день...`);
+            lastError = error;
+            // Переходим к следующему дню
+            currentDayOffset++;
+            plannedDateTime = getDateForCalculation(currentDayOffset);
+            continue; // Пробуем следующую дату
+          } else {
+            // Другая ошибка - выбрасываем сразу
+            throw error;
+          }
         }
-      } else {
-        throw new Error(data.errorMessage || data.message || 'Ошибка API ПЭК');
       }
+      
+      // Если дошли до сюда - все попытки исчерпаны
+      console.error(`❌ ПЭК: все ${maxRetries} попыток исчерпаны. Последняя ошибка:`, lastError?.message);
+      throw lastError || new Error('Не удалось найти доступную дату для забора груза');
       
     } catch (error: any) {
       console.error('🚨 Критическая ошибка ПЭК API:', error);

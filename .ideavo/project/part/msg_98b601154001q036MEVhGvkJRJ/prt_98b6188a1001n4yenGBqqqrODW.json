@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b6188a1001n4yenGBqqqrODW",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_018MPDjsFt4BiE58UiNhM1yE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      const finalRequestData = {\n        method: 'calculateprice',\n        ...requestData\n      };\n      \n      console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n      console.log('🌐 ПЭК API URL:', apiUrl);",
+      "newString": "        const finalRequestData = {\n          method: 'calculateprice',\n          ...requestData\n        };\n        \n        console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n        console.log('🌐 ПЭК API URL:', apiUrl);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1274,16 +1274,16 @@\n     // Координаты временно отключены\n   };\n }\n \n-const finalRequestData = {\n-  method: 'calculateprice',\n-  ...requestData\n-};\n+  const finalRequestData = {\n+    method: 'calculateprice',\n+    ...requestData\n+  };\n+  \n+  console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n+  console.log('🌐 ПЭК API URL:', apiUrl);\n \n-console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n-console.log('🌐 ПЭК API URL:', apiUrl);\n-\n // Проверяем координаты перед отправкой\n if (finalRequestData.pickup?.coordinates) {\n   console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);\n }\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980051185,
+      "end": 1758980051196
+    }
+  }
+}

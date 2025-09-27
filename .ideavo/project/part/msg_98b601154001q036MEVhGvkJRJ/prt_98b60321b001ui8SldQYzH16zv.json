@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b60321b001ui8SldQYzH16zv",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01MdA4pdbZfqvyJHb9p8zspv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1290,
+      "limit": 50
+    },
+    "output": "<file>\n01291|         body: JSON.stringify(finalRequestData)\n01292|       });\n01293| \n01294|       console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n01295|       console.log(`📡 ПЭК API URL: ${response.url}`);\n01296|       \n01297|       const responseText = await response.text();\n01298|       console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));\n01299|       \n01300|       let data;\n01301|       try {\n01302|         data = JSON.parse(responseText);\n01303|         console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));\n01304|       } catch (parseError) {\n01305|         console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);\n01306|         throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);\n01307|       }\n01308| \n01309|       if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {\n01310|         const transfer = data.transfers[0]; // берем первый тариф (авто)\n01311|         \n01312|         if (!transfer.hasError) {\n01313|           // Обрабатываем детальную структуру услуг\n01314|           const services: { name: string; description: string; price: number }[] = [];\n01315|           let totalCalculated = 0;\n01316| \n01317|           const processServices = (servicesList: any[], parentName = '') => {\n01318|             servicesList.forEach(service => {\n01319|               const serviceName = parentName ? `${parentName} - ${service.info}` : service.info;\n01320|               const serviceCost = parseFloat(service.cost) || 0;\n01321|               \n01322|               if (serviceCost > 0) {\n01323|                 services.push({\n01324|                   name: serviceName,\n01325|                   description: service.serviceType || '',\n01326|                   price: serviceCost\n01327|                 });\n01328|                 totalCalculated += serviceCost;\n01329|               }\n01330| \n01331|               // Обрабатываем вложенные услуги\n01332|               if (service.services && Array.isArray(service.services)) {\n01333|                 processServices(service.services, serviceName);\n01334|               }\n01335|             });\n01336|           };\n01337| \n01338|           if (transfer.services) {\n01339|             processServices(transfer.services);\n01340|           }\n\n(File has more lines. Use 'offset' parameter to read beyond line 1340)\n</file>",
+    "metadata": {
+      "preview": "        body: JSON.stringify(finalRequestData)\n      });\n\n      console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n      console.log(`📡 ПЭК API URL: ${response.url}`);\n      \n      const responseText = await response.text();\n      console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));\n      \n      let data;\n      try {\n        data = JSON.parse(responseText);\n        console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));\n      } catch (parseError) {\n        console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);\n        throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);\n      }\n\n      if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {\n        const transfer = data.transfers[0]; // берем первый тариф (авто)"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979961725,
+      "end": 1758979961730
+    }
+  }
+}

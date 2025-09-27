@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b617d39001xQxcaKPo3zc95G",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01CzXQ59TrVYxJfMU24Xv95D",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1265,
+      "limit": 20
+    },
+    "output": "<file>\n01266|           // Координаты временно отключены\n01267|         };\n01268|       }\n01269|       \n01270|       if (form.toAddressDelivery) {\n01271|         console.warn('📍 Отключаем координаты delivery для отладки');\n01272|         requestData.delivery = {\n01273|           address: form.toAddress || `Россия, ${form.toCity}`\n01274|           // Координаты временно отключены\n01275|         };\n01276|       }\n01277| \n01278|       const finalRequestData = {\n01279|         method: 'calculateprice',\n01280|         ...requestData\n01281|       };\n01282|       \n01283|       console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n01284|       console.log('🌐 ПЭК API URL:', apiUrl);\n01285|       \n\n(File has more lines. Use 'offset' parameter to read beyond line 1285)\n</file>",
+    "metadata": {
+      "preview": "          // Координаты временно отключены\n        };\n      }\n      \n      if (form.toAddressDelivery) {\n        console.warn('📍 Отключаем координаты delivery для отладки');\n        requestData.delivery = {\n          address: form.toAddress || `Россия, ${form.toCity}`\n          // Координаты временно отключены\n        };\n      }\n\n      const finalRequestData = {\n        method: 'calculateprice',\n        ...requestData\n      };\n      \n      console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n      console.log('🌐 ПЭК API URL:', apiUrl);\n      "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980046952,
+      "end": 1758980046954
+    }
+  }
+}

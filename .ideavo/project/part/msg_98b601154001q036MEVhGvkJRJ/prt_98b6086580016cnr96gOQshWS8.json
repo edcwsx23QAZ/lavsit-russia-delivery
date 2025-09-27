@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b6086580016cnr96gOQshWS8",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01WwTJ2Dj4tSafeEsovsWMht",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1190,
+      "limit": 40
+    },
+    "output": "<file>\n01191|           console.warn('⚠️ Некорректные координаты получателя, используем основной склад');\n01192|         }\n01193|       }\n01194| \n01195|       // Формируем дату завтра для забора\n01196|       const tomorrow = new Date();\n01197|       tomorrow.setDate(tomorrow.getDate() + 1);\n01198|       const plannedDateTime = tomorrow.toISOString().slice(0, 19); // 2025-09-28T14:00:00\n01199| \n01200|       // Формируем массив грузов (без координат)\n01201|       const cargos = form.cargos.map(cargo => {\n01202|         const cargoData = {\n01203|           length: cargo.length / 100, // переводим см в метры\n01204|           width: cargo.width / 100,\n01205|           height: cargo.height / 100,\n01206|           volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n01207|           weight: cargo.weight,\n01208|           isHP: form.needPackaging, // защитная упаковка\n01209|           sealingPositionsCount: 0\n01210|         };\n01211|         \n01212|         console.log('📦 Груз для ПЭК:', cargoData);\n01213|         return cargoData;\n01214|       });\n01215| \n01216|       // Формируем запрос к API ПЭК\n01217|       const requestData: any = {\n01218|         currencyCode: \"643\", // рубли\n01219|         types: [3], // только авто перевозка\n01220|         senderWarehouseId,\n01221|         receiverWarehouseId,\n01222|         isOpenCarSender: false,\n01223|         isOpenCarReceiver: false,\n01224|         isHyperMarket: false,\n01225|         plannedDateTime,\n01226|         isInsurance: form.needInsurance && form.declaredValue > 0,\n01227|         isInsurancePrice: form.needInsurance ? form.declaredValue : 0,\n01228|         isPickUp: form.fromAddressDelivery,\n01229|         isDelivery: form.toAddressDelivery,\n01230|         needReturnDocuments: false,\n\n(File has more lines. Use 'offset' parameter to read beyond line 1230)\n</file>",
+    "metadata": {
+      "preview": "          console.warn('⚠️ Некорректные координаты получателя, используем основной склад');\n        }\n      }\n\n      // Формируем дату завтра для забора\n      const tomorrow = new Date();\n      tomorrow.setDate(tomorrow.getDate() + 1);\n      const plannedDateTime = tomorrow.toISOString().slice(0, 19); // 2025-09-28T14:00:00\n\n      // Формируем массив грузов (без координат)\n      const cargos = form.cargos.map(cargo => {\n        const cargoData = {\n          length: cargo.length / 100, // переводим см в метры\n          width: cargo.width / 100,\n          height: cargo.height / 100,\n          volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n          weight: cargo.weight,\n          isHP: form.needPackaging, // защитная упаковка\n          sealingPositionsCount: 0\n        };"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979983566,
+      "end": 1758979983568
+    }
+  }
+}

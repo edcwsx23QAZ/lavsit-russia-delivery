@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b6079c10018AQHBfRlOOQcYT",
+  "messageID": "msg_98b601154001q036MEVhGvkJRJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01KEzJA9nkeyLH3g2615ZXN1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1165,
+      "limit": 20
+    },
+    "output": "<file>\n01166|           }\n01167|         } else {\n01168|           console.warn('⚠️ Некорректные координаты отправителя, используем основной склад');\n01169|         }\n01170|       }\n01171|       \n01172|       if (form.toAddressDelivery && receiverZone.warehousePoint) {\n01173|         const validReceiverCoords = validateCoordinates(receiverZone.warehousePoint);\n01174|         if (validReceiverCoords) {\n01175|           try {\n01176|             const receiverDepartment = await getPekNearestDepartments(\n01177|               form.toAddress || form.toCity,\n01178|               {\n01179|                 latitude: validReceiverCoords.latitude.toString(),\n01180|                 longitude: validReceiverCoords.longitude.toString()\n01181|               }\n01182|             );\n01183|             if (receiverDepartment) {\n01184|               receiverWarehouseId = receiverDepartment.warehouseId;\n01185|               console.log('✅ Найден ближайший склад получателя:', receiverDepartment.warehouseId);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1185)\n</file>",
+    "metadata": {
+      "preview": "          }\n        } else {\n          console.warn('⚠️ Некорректные координаты отправителя, используем основной склад');\n        }\n      }\n      \n      if (form.toAddressDelivery && receiverZone.warehousePoint) {\n        const validReceiverCoords = validateCoordinates(receiverZone.warehousePoint);\n        if (validReceiverCoords) {\n          try {\n            const receiverDepartment = await getPekNearestDepartments(\n              form.toAddress || form.toCity,\n              {\n                latitude: validReceiverCoords.latitude.toString(),\n                longitude: validReceiverCoords.longitude.toString()\n              }\n            );\n            if (receiverDepartment) {\n              receiverWarehouseId = receiverDepartment.warehouseId;\n              console.log('✅ Найден ближайший склад получателя:', receiverDepartment.warehouseId);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979980298,
+      "end": 1758979980300
+    }
+  }
+}
