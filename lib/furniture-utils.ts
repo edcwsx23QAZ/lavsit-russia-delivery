@@ -127,8 +127,8 @@ export function calculateTotalValue(productsInForm: ProductInForm[]): number {
 /**
  * Генерация уникального ID для груза
  */
-export function generateCargoId(productId: string, placeNumber: number, timestamp: number): string {
-  return `${productId}_p${placeNumber}_${timestamp}`;
+export function generateCargoId(productId: string, placeNumber: number, baseTimestamp: number, quantity: number = 1): string {
+  return `cargo_${productId}_${baseTimestamp}_p${placeNumber}_q${quantity}`;
 }
 
 /**
@@ -141,10 +141,12 @@ export function createCargosForProduct(
 ): CargoWithMetadata[] {
   const cargos: CargoWithMetadata[] = [];
   
-  for (let q = 0; q < quantity; q++) {
+  for (let q = 1; q <= quantity; q++) {
     product.cargoPlaces.forEach(place => {
-      const uniqueId = generateCargoId(product.id, place.placeNumber, timestamp + q * 1000 + place.placeNumber);
+      const uniqueId = generateCargoId(product.id, place.placeNumber, timestamp, q);
       const cargo = cargoPlaceToFormCargo(place, product.id, uniqueId);
+      // Добавляем timestamp для более надежной идентификации
+      cargo.addedAt = timestamp;
       cargos.push(cargo);
     });
   }
@@ -163,7 +165,8 @@ export function findCargoIndexesForProduct(
   const indexes: number[] = [];
   
   cargos.forEach((cargo, index) => {
-    if (cargo.productId === productId && cargo.id.includes(`_${addedAt}`)) {
+    if (cargo.productId === productId && 
+        (cargo.addedAt === addedAt || cargo.id.includes(`_${productId}_${addedAt}_`))) {
       indexes.push(index);
     }
   });
@@ -180,7 +183,11 @@ export function removeCargosForProduct(
   addedAt: number
 ): CargoWithMetadata[] {
   return cargos.filter(cargo => {
-    return !(cargo.productId === productId && cargo.id.includes(`_${addedAt}`));
+    // Проверяем и по addedAt и по паттерну в ID для надежности
+    const matchesProduct = cargo.productId === productId;
+    const matchesTimestamp = cargo.addedAt === addedAt || cargo.id.includes(`_${productId}_${addedAt}_`);
+    
+    return !(matchesProduct && matchesTimestamp);
   });
 }
 

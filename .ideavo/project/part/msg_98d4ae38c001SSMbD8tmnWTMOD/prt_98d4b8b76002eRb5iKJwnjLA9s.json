@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d4b8b76002eRb5iKJwnjLA9s",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01VjnhTChHzYDyzxMpufnsA6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "oldString": "/**\n * Удаление всех грузов товара\n */\nexport function removeCargosForProduct(\n  cargos: CargoWithMetadata[], \n  productId: string, \n  addedAt: number\n): CargoWithMetadata[] {\n  return cargos.filter(cargo => {\n    return !(cargo.productId === productId && cargo.id.includes(`_${addedAt}`));\n  });\n}",
+      "newString": "/**\n * Удаление всех грузов товара\n */\nexport function removeCargosForProduct(\n  cargos: CargoWithMetadata[], \n  productId: string, \n  addedAt: number\n): CargoWithMetadata[] {\n  return cargos.filter(cargo => {\n    // Проверяем и по addedAt и по паттерну в ID для надежности\n    const matchesProduct = cargo.productId === productId;\n    const matchesTimestamp = cargo.addedAt === addedAt || cargo.id.includes(`_${productId}_${addedAt}_`);\n    \n    return !(matchesProduct && matchesTimestamp);\n  });\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/furniture-utils.ts\n===================================================================\n--- /home/user/project/lib/furniture-utils.ts\n+++ /home/user/project/lib/furniture-utils.ts\n@@ -182,9 +182,13 @@\n   productId: string, \n   addedAt: number\n ): CargoWithMetadata[] {\n   return cargos.filter(cargo => {\n-    return !(cargo.productId === productId && cargo.id.includes(`_${addedAt}`));\n+    // Проверяем и по addedAt и по паттерну в ID для надежности\n+    const matchesProduct = cargo.productId === productId;\n+    const matchesTimestamp = cargo.addedAt === addedAt || cargo.id.includes(`_${productId}_${addedAt}_`);\n+    \n+    return !(matchesProduct && matchesTimestamp);\n   });\n }\n \n /**\n"
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759012166100,
+      "end": 1759012166106
+    }
+  }
+}

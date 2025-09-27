@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d4b22a8001NRsHEdUfcMeL5R",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_014xHEW4ZfjkMzNvAR8J4ayF",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "offset": 120,
+      "limit": 35
+    },
+    "output": "<file>\n00121| export function calculateTotalValue(productsInForm: ProductInForm[]): number {\n00122|   return productsInForm.reduce((total, item) => {\n00123|     return total + (item.product.retailPrice * item.quantity);\n00124|   }, 0);\n00125| }\n00126| \n00127| /**\n00128|  * Генерация уникального ID для груза\n00129|  */\n00130| export function generateCargoId(productId: string, placeNumber: number, timestamp: number): string {\n00131|   return `${productId}_p${placeNumber}_${timestamp}`;\n00132| }\n00133| \n00134| /**\n00135|  * Создание грузовых мест для товара с учетом количества\n00136|  */\n00137| export function createCargosForProduct(\n00138|   product: FurnitureProduct, \n00139|   quantity: number, \n00140|   timestamp: number\n00141| ): CargoWithMetadata[] {\n00142|   const cargos: CargoWithMetadata[] = [];\n00143|   \n00144|   for (let q = 0; q < quantity; q++) {\n00145|     product.cargoPlaces.forEach(place => {\n00146|       const uniqueId = generateCargoId(product.id, place.placeNumber, timestamp + q * 1000 + place.placeNumber);\n00147|       const cargo = cargoPlaceToFormCargo(place, product.id, uniqueId);\n00148|       cargos.push(cargo);\n00149|     });\n00150|   }\n00151|   \n00152|   return cargos;\n00153| }\n00154| \n00155| /**\n\n(File has more lines. Use 'offset' parameter to read beyond line 155)\n</file>",
+    "metadata": {
+      "preview": "export function calculateTotalValue(productsInForm: ProductInForm[]): number {\n  return productsInForm.reduce((total, item) => {\n    return total + (item.product.retailPrice * item.quantity);\n  }, 0);\n}\n\n/**\n * Генерация уникального ID для груза\n */\nexport function generateCargoId(productId: string, placeNumber: number, timestamp: number): string {\n  return `${productId}_p${placeNumber}_${timestamp}`;\n}\n\n/**\n * Создание грузовых мест для товара с учетом количества\n */\nexport function createCargosForProduct(\n  product: FurnitureProduct, \n  quantity: number, \n  timestamp: number"
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759012136157,
+      "end": 1759012136158
+    }
+  }
+}

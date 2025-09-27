@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d4b72f8001Gj8qszyCvtVMX6",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01QLQ3PfNhFV1CqD6YJd4Q48",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "oldString": "/**\n * Поиск индексов грузов, принадлежащих конкретному товару\n */\nexport function findCargoIndexesForProduct(\n  cargos: CargoWithMetadata[], \n  productId: string, \n  addedAt: number\n): number[] {\n  const indexes: number[] = [];\n  \n  cargos.forEach((cargo, index) => {\n    if (cargo.productId === productId && cargo.id.includes(`_${addedAt}`)) {\n      indexes.push(index);\n    }\n  });\n  \n  return indexes;\n}",
+      "newString": "/**\n * Поиск индексов грузов, принадлежащих конкретному товару\n */\nexport function findCargoIndexesForProduct(\n  cargos: CargoWithMetadata[], \n  productId: string, \n  addedAt: number\n): number[] {\n  const indexes: number[] = [];\n  \n  cargos.forEach((cargo, index) => {\n    if (cargo.productId === productId && \n        (cargo.addedAt === addedAt || cargo.id.includes(`_${productId}_${addedAt}_`))) {\n      indexes.push(index);\n    }\n  });\n  \n  return indexes;\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/furniture-utils.ts\n===================================================================\n--- /home/user/project/lib/furniture-utils.ts\n+++ /home/user/project/lib/furniture-utils.ts\n@@ -164,9 +164,10 @@\n ): number[] {\n   const indexes: number[] = [];\n   \n   cargos.forEach((cargo, index) => {\n-    if (cargo.productId === productId && cargo.id.includes(`_${addedAt}`)) {\n+    if (cargo.productId === productId && \n+        (cargo.addedAt === addedAt || cargo.id.includes(`_${productId}_${addedAt}_`))) {\n       indexes.push(index);\n     }\n   });\n   \n"
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759012159899,
+      "end": 1759012159906
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "prt_98d4b3cb2002BkBjtn4QnDenYq",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Я вижу проблему! В функции `generateCargoId` создается ID в формате `${productId}_p${placeNumber}_${timestamp}`, но в функциях поиска и удаления мы ищем по `_${addedAt}`, где `addedAt` это базовый timestamp. Проблема в том, что при создании грузов мы добавляем к timestamp дополнительные значения (`timestamp + q * 1000 + place.placeNumber`), поэтому поиск не работает корректно.\n\nИсправлю эту логику:",
+  "time": {
+    "start": 1759012145157,
+    "end": 1759012145157
+  }
+}

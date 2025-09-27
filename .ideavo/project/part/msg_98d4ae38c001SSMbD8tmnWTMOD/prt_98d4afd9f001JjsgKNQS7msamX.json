@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d4afd9f001JjsgKNQS7msamX",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01SgxCVKTLWMpp4SSiJv2Mgt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "offset": 140,
+      "limit": 20
+    },
+    "output": "<file>\n00141| ): CargoWithMetadata[] {\n00142|   const cargos: CargoWithMetadata[] = [];\n00143|   \n00144|   for (let q = 0; q < quantity; q++) {\n00145|     product.cargoPlaces.forEach(place => {\n00146|       const uniqueId = generateCargoId(product.id, place.placeNumber, timestamp + q * 1000 + place.placeNumber);\n00147|       const cargo = cargoPlaceToFormCargo(place, product.id, uniqueId);\n00148|       cargos.push(cargo);\n00149|     });\n00150|   }\n00151|   \n00152|   return cargos;\n00153| }\n00154| \n00155| /**\n00156|  * Поиск индексов грузов, принадлежащих конкретному товару\n00157|  */\n00158| export function findCargoIndexesForProduct(\n00159|   cargos: CargoWithMetadata[], \n00160|   productId: string, \n\n(File has more lines. Use 'offset' parameter to read beyond line 160)\n</file>",
+    "metadata": {
+      "preview": "): CargoWithMetadata[] {\n  const cargos: CargoWithMetadata[] = [];\n  \n  for (let q = 0; q < quantity; q++) {\n    product.cargoPlaces.forEach(place => {\n      const uniqueId = generateCargoId(product.id, place.placeNumber, timestamp + q * 1000 + place.placeNumber);\n      const cargo = cargoPlaceToFormCargo(place, product.id, uniqueId);\n      cargos.push(cargo);\n    });\n  }\n  \n  return cargos;\n}\n\n/**\n * Поиск индексов грузов, принадлежащих конкретному товару\n */\nexport function findCargoIndexesForProduct(\n  cargos: CargoWithMetadata[], \n  productId: string, "
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759012126975,
+      "end": 1759012126978
+    }
+  }
+}

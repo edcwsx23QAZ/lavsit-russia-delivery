@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d4c7600001YwXPg8B2oqF6lx",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_014RWBC9GmMtqdPsMYEdrVX5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);",
+      "newString": "    console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);\n    console.log('Финальное состояние грузов:', newCargos.length);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -513,8 +513,9 @@\n     };\n   });\n   \n   console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);\n+  console.log('Финальное состояние грузов:', newCargos.length);\n };\n \n const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n   setForm(prev => {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759012224329,
+      "end": 1759012224342
+    }
+  }
+}

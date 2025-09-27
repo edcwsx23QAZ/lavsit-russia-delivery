@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d4bc565001jvgOazYUbLOUqH",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_019ApxUTS46CbkwQYR5AVRhd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 558,
+      "limit": 25
+    },
+    "output": "<file>\n00559|   const handleProductRemove = (productId: string, addedAt: number) => {\n00560|     setForm(prev => {\n00561|       // Удаляем грузы товара\n00562|       const cargosWithoutProduct = removeCargosForProduct(\n00563|         prev.cargos as CargoWithMetadata[], \n00564|         productId, \n00565|         addedAt\n00566|       );\n00567|       \n00568|       // Удаляем товар из списка\n00569|       const selectedProducts = prev.selectedProducts || [];\n00570|       const updatedProducts = selectedProducts.filter(p => \n00571|         !(p.product.id === productId && p.addedAt === addedAt)\n00572|       );\n00573|       \n00574|       // Пересчитываем объявленную стоимость\n00575|       const newDeclaredValue = calculateTotalValue(updatedProducts);\n00576|       \n00577|       // Убеждаемся, что остался хотя бы один груз (если нет товаров)\n00578|       const finalCargos = cargosWithoutProduct.length === 0 \n00579|         ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n00580|         : cargosWithoutProduct;\n00581|       \n00582|       return {\n00583|         ...prev,\n\n(File has more lines. Use 'offset' parameter to read beyond line 583)\n</file>",
+    "metadata": {
+      "preview": "  const handleProductRemove = (productId: string, addedAt: number) => {\n    setForm(prev => {\n      // Удаляем грузы товара\n      const cargosWithoutProduct = removeCargosForProduct(\n        prev.cargos as CargoWithMetadata[], \n        productId, \n        addedAt\n      );\n      \n      // Удаляем товар из списка\n      const selectedProducts = prev.selectedProducts || [];\n      const updatedProducts = selectedProducts.filter(p => \n        !(p.product.id === productId && p.addedAt === addedAt)\n      );\n      \n      // Пересчитываем объявленную стоимость\n      const newDeclaredValue = calculateTotalValue(updatedProducts);\n      \n      // Убеждаемся, что остался хотя бы один груз (если нет товаров)\n      const finalCargos = cargosWithoutProduct.length === 0 "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759012178017,
+      "end": 1759012178020
+    }
+  }
+}

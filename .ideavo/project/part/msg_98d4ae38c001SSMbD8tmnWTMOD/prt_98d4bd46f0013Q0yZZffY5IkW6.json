@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d4bd46f0013Q0yZZffY5IkW6",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01M9rJ7Z5EFsY6hC6D4hinCq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const handleProductRemove = (productId: string, addedAt: number) => {\n    setForm(prev => {\n      // Удаляем грузы товара\n      const cargosWithoutProduct = removeCargosForProduct(\n        prev.cargos as CargoWithMetadata[], \n        productId, \n        addedAt\n      );",
+      "newString": "  const handleProductRemove = (productId: string, addedAt: number) => {\n    setForm(prev => {\n      console.log(`🗑️ Удаление товара ${productId} (addedAt: ${addedAt})`);\n      console.log('Грузы до удаления:', prev.cargos.length);\n      \n      // Удаляем грузы товара\n      const cargosWithoutProduct = removeCargosForProduct(\n        prev.cargos as CargoWithMetadata[], \n        productId, \n        addedAt\n      );\n      \n      console.log('Грузы после удаления:', cargosWithoutProduct.length);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -557,15 +557,20 @@\n };\n \n const handleProductRemove = (productId: string, addedAt: number) => {\n   setForm(prev => {\n+    console.log(`🗑️ Удаление товара ${productId} (addedAt: ${addedAt})`);\n+    console.log('Грузы до удаления:', prev.cargos.length);\n+    \n     // Удаляем грузы товара\n     const cargosWithoutProduct = removeCargosForProduct(\n       prev.cargos as CargoWithMetadata[], \n       productId, \n       addedAt\n     );\n     \n+    console.log('Грузы после удаления:', cargosWithoutProduct.length);\n+    \n     // Удаляем товар из списка\n     const selectedProducts = prev.selectedProducts || [];\n     const updatedProducts = selectedProducts.filter(p => \n       !(p.product.id === productId && p.addedAt === addedAt)\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759012184080,
+      "end": 1759012184093
+    }
+  }
+}

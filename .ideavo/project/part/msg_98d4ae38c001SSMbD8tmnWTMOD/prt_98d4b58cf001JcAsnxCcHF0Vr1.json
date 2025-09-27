@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d4b58cf001JcAsnxCcHF0Vr1",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01EoSVTHu1sZFxdRUZ1SFDVu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "oldString": "/**\n * Создание грузовых мест для товара с учетом количества\n */\nexport function createCargosForProduct(\n  product: FurnitureProduct, \n  quantity: number, \n  timestamp: number\n): CargoWithMetadata[] {\n  const cargos: CargoWithMetadata[] = [];\n  \n  for (let q = 0; q < quantity; q++) {\n    product.cargoPlaces.forEach(place => {\n      const uniqueId = generateCargoId(product.id, place.placeNumber, timestamp + q * 1000 + place.placeNumber);\n      const cargo = cargoPlaceToFormCargo(place, product.id, uniqueId);\n      cargos.push(cargo);\n    });\n  }\n  \n  return cargos;\n}",
+      "newString": "/**\n * Создание грузовых мест для товара с учетом количества\n */\nexport function createCargosForProduct(\n  product: FurnitureProduct, \n  quantity: number, \n  timestamp: number\n): CargoWithMetadata[] {\n  const cargos: CargoWithMetadata[] = [];\n  \n  for (let q = 1; q <= quantity; q++) {\n    product.cargoPlaces.forEach(place => {\n      const uniqueId = generateCargoId(product.id, place.placeNumber, timestamp, q);\n      const cargo = cargoPlaceToFormCargo(place, product.id, uniqueId);\n      // Добавляем timestamp для более надежной идентификации\n      cargo.addedAt = timestamp;\n      cargos.push(cargo);\n    });\n  }\n  \n  return cargos;\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/furniture-utils.ts\n===================================================================\n--- /home/user/project/lib/furniture-utils.ts\n+++ /home/user/project/lib/furniture-utils.ts\n@@ -140,12 +140,14 @@\n   timestamp: number\n ): CargoWithMetadata[] {\n   const cargos: CargoWithMetadata[] = [];\n   \n-  for (let q = 0; q < quantity; q++) {\n+  for (let q = 1; q <= quantity; q++) {\n     product.cargoPlaces.forEach(place => {\n-      const uniqueId = generateCargoId(product.id, place.placeNumber, timestamp + q * 1000 + place.placeNumber);\n+      const uniqueId = generateCargoId(product.id, place.placeNumber, timestamp, q);\n       const cargo = cargoPlaceToFormCargo(place, product.id, uniqueId);\n+      // Добавляем timestamp для более надежной идентификации\n+      cargo.addedAt = timestamp;\n       cargos.push(cargo);\n     });\n   }\n   \n"
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759012154067,
+      "end": 1759012154071
+    }
+  }
+}

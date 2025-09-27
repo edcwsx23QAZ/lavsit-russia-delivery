@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d4b31dd0019tifoWZJtvucBp",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01BSFRNZ2HT3oCC7sMEwiuRN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "offset": 155,
+      "limit": 20
+    },
+    "output": "<file>\n00156|  * Поиск индексов грузов, принадлежащих конкретному товару\n00157|  */\n00158| export function findCargoIndexesForProduct(\n00159|   cargos: CargoWithMetadata[], \n00160|   productId: string, \n00161|   addedAt: number\n00162| ): number[] {\n00163|   const indexes: number[] = [];\n00164|   \n00165|   cargos.forEach((cargo, index) => {\n00166|     if (cargo.productId === productId && cargo.id.includes(`_${addedAt}`)) {\n00167|       indexes.push(index);\n00168|     }\n00169|   });\n00170|   \n00171|   return indexes;\n00172| }\n00173| \n00174| /**\n00175|  * Удаление всех грузов товара\n\n(File has more lines. Use 'offset' parameter to read beyond line 175)\n</file>",
+    "metadata": {
+      "preview": " * Поиск индексов грузов, принадлежащих конкретному товару\n */\nexport function findCargoIndexesForProduct(\n  cargos: CargoWithMetadata[], \n  productId: string, \n  addedAt: number\n): number[] {\n  const indexes: number[] = [];\n  \n  cargos.forEach((cargo, index) => {\n    if (cargo.productId === productId && cargo.id.includes(`_${addedAt}`)) {\n      indexes.push(index);\n    }\n  });\n  \n  return indexes;\n}\n\n/**\n * Удаление всех грузов товара"
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759012140064,
+      "end": 1759012140066
+    }
+  }
+}

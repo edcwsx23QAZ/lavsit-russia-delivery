@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d4b081f0019DrfyANUFkR63h",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PKB1hJ38f1tmRACkrMsw83",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "offset": 170,
+      "limit": 30
+    },
+    "output": "<file>\n00171|   return indexes;\n00172| }\n00173| \n00174| /**\n00175|  * Удаление всех грузов товара\n00176|  */\n00177| export function removeCargosForProduct(\n00178|   cargos: CargoWithMetadata[], \n00179|   productId: string, \n00180|   addedAt: number\n00181| ): CargoWithMetadata[] {\n00182|   return cargos.filter(cargo => {\n00183|     return !(cargo.productId === productId && cargo.id.includes(`_${addedAt}`));\n00184|   });\n00185| }\n00186| \n00187| /**\n00188|  * Форматирование цены\n00189|  */\n00190| export function formatPrice(price: number): string {\n00191|   return new Intl.NumberFormat('ru-RU', {\n00192|     style: 'currency',\n00193|     currency: 'RUB',\n00194|     minimumFractionDigits: 0,\n00195|     maximumFractionDigits: 0\n00196|   }).format(price);\n00197| }\n00198| \n00199| /**\n00200|  * Форматирование габаритов\n\n(File has more lines. Use 'offset' parameter to read beyond line 200)\n</file>",
+    "metadata": {
+      "preview": "  return indexes;\n}\n\n/**\n * Удаление всех грузов товара\n */\nexport function removeCargosForProduct(\n  cargos: CargoWithMetadata[], \n  productId: string, \n  addedAt: number\n): CargoWithMetadata[] {\n  return cargos.filter(cargo => {\n    return !(cargo.productId === productId && cargo.id.includes(`_${addedAt}`));\n  });\n}\n\n/**\n * Форматирование цены\n */\nexport function formatPrice(price: number): string {"
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759012129419,
+      "end": 1759012129421
+    }
+  }
+}

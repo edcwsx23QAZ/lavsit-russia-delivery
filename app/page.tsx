@@ -471,8 +471,13 @@ export default function Home() {
   const handleProductAdd = (product: FurnitureProduct) => {
     const timestamp = Date.now();
     
+    console.log(`➕ Добавление товара: ${product.name} (${product.cargoPlaces.length} грузовых мест)`);
+    
     // Создаем грузовые места для товара
     const newCargos = createCargosForProduct(product, 1, timestamp);
+    
+    console.log('Создано новых грузов:', newCargos.length);
+    console.log('Новые грузы:', newCargos.map(c => ({ id: c.id, productId: c.productId, addedAt: c.addedAt })));
     
     // Создаем объект товара в форме
     const productInForm: ProductInForm = {
@@ -487,9 +492,13 @@ export default function Home() {
       // Добавляем новые грузы
       const updatedCargos = [...prev.cargos, ...newCargos];
       
+      console.log('Общее количество грузов после добавления:', updatedCargos.length);
+      
       // Находим индексы новых грузов
       const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);
       productInForm.cargoIndexes = cargoIndexes;
+      
+      console.log('Найденные индексы грузов:', cargoIndexes);
       
       // Пересчитываем объявленную стоимость
       const prevSelectedProducts = prev.selectedProducts || [];
@@ -505,19 +514,26 @@ export default function Home() {
     });
     
     console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);
+    console.log('Финальное состояние грузов:', newCargos.length);
   };
 
   const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {
     setForm(prev => {
+      console.log(`🔢 Изменение количества товара ${productId} с ${prev.selectedProducts?.find(p => p.product.id === productId && p.addedAt === addedAt)?.quantity || 0} на ${newQuantity}`);
+      
       // Находим товар
       const selectedProducts = prev.selectedProducts || [];
       const productIndex = selectedProducts.findIndex(p => 
         p.product.id === productId && p.addedAt === addedAt
       );
       
-      if (productIndex === -1) return prev;
+      if (productIndex === -1) {
+        console.warn('❌ Товар не найден для изменения количества');
+        return prev;
+      }
       
       const product = selectedProducts[productIndex];
+      console.log('Грузы до изменения количества:', prev.cargos.length);
       
       // Удаляем старые грузы этого товара
       const cargosWithoutProduct = removeCargosForProduct(
@@ -526,9 +542,13 @@ export default function Home() {
         addedAt
       );
       
+      console.log('Грузы после удаления старых:', cargosWithoutProduct.length);
+      
       // Создаем новые грузы с новым количеством
       const newCargos = createCargosForProduct(product.product, newQuantity, addedAt);
       const updatedCargos = [...cargosWithoutProduct, ...newCargos];
+      
+      console.log('Грузы после добавления новых:', updatedCargos.length);
       
       // Обновляем товар
       const updatedProduct = {
@@ -558,12 +578,17 @@ export default function Home() {
 
   const handleProductRemove = (productId: string, addedAt: number) => {
     setForm(prev => {
+      console.log(`🗑️ Удаление товара ${productId} (addedAt: ${addedAt})`);
+      console.log('Грузы до удаления:', prev.cargos.length);
+      
       // Удаляем грузы товара
       const cargosWithoutProduct = removeCargosForProduct(
         prev.cargos as CargoWithMetadata[], 
         productId, 
         addedAt
       );
+      
+      console.log('Грузы после удаления:', cargosWithoutProduct.length);
       
       // Удаляем товар из списка
       const selectedProducts = prev.selectedProducts || [];

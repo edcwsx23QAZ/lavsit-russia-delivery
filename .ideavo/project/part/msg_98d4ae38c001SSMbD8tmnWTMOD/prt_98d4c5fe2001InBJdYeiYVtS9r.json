@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d4c5fe2001InBJdYeiYVtS9r",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01F7U2mbNSMV7j6syy9gm1cW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 495,
+      "limit": 15
+    },
+    "output": "<file>\n00496|       \n00497|       // Находим индексы новых грузов\n00498|       const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n00499|       productInForm.cargoIndexes = cargoIndexes;\n00500|       \n00501|       console.log('Найденные индексы грузов:', cargoIndexes);\n00502|       \n00503|       // Пересчитываем объявленную стоимость\n00504|       const prevSelectedProducts = prev.selectedProducts || [];\n00505|       const newSelectedProducts = [...prevSelectedProducts, productInForm];\n00506|       const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n00507|       \n00508|       return {\n00509|         ...prev,\n00510|         cargos: updatedCargos,\n\n(File has more lines. Use 'offset' parameter to read beyond line 510)\n</file>",
+    "metadata": {
+      "preview": "      \n      // Находим индексы новых грузов\n      const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n      productInForm.cargoIndexes = cargoIndexes;\n      \n      console.log('Найденные индексы грузов:', cargoIndexes);\n      \n      // Пересчитываем объявленную стоимость\n      const prevSelectedProducts = prev.selectedProducts || [];\n      const newSelectedProducts = [...prevSelectedProducts, productInForm];\n      const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n      \n      return {\n        ...prev,\n        cargos: updatedCargos,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759012217540,
+      "end": 1759012217542
+    }
+  }
+}

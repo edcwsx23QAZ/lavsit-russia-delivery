@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d4b17aa00128MwQzIA0d0mBo",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01J8f8n4YMdZadLkVVVa1u6e",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "offset": 95,
+      "limit": 25
+    },
+    "output": "<file>\n00096|   // Проверяем грузовые места\n00097|   product.cargoPlaces?.forEach((place, index) => {\n00098|     if (place.weight <= 0 && place.length <= 0 && place.depth <= 0 && place.height <= 0) {\n00099|       errors.push(`Грузовое место №${place.placeNumber} не содержит размеров`);\n00100|     }\n00101|     \n00102|     if (place.weight > 10000) {\n00103|       errors.push(`Грузовое место №${place.placeNumber} имеет слишком большой вес: ${place.weight}кг`);\n00104|     }\n00105|     \n00106|     const maxDimension = Math.max(place.length, place.depth, place.height);\n00107|     if (maxDimension > 1000) {\n00108|       errors.push(`Грузовое место №${place.placeNumber} имеет слишком большие размеры: ${maxDimension}см`);\n00109|     }\n00110|   });\n00111|   \n00112|   return {\n00113|     isValid: errors.length === 0,\n00114|     errors\n00115|   };\n00116| }\n00117| \n00118| /**\n00119|  * Расчет общей стоимости товаров\n00120|  */\n\n(File has more lines. Use 'offset' parameter to read beyond line 120)\n</file>",
+    "metadata": {
+      "preview": "  // Проверяем грузовые места\n  product.cargoPlaces?.forEach((place, index) => {\n    if (place.weight <= 0 && place.length <= 0 && place.depth <= 0 && place.height <= 0) {\n      errors.push(`Грузовое место №${place.placeNumber} не содержит размеров`);\n    }\n    \n    if (place.weight > 10000) {\n      errors.push(`Грузовое место №${place.placeNumber} имеет слишком большой вес: ${place.weight}кг`);\n    }\n    \n    const maxDimension = Math.max(place.length, place.depth, place.height);\n    if (maxDimension > 1000) {\n      errors.push(`Грузовое место №${place.placeNumber} имеет слишком большие размеры: ${maxDimension}см`);\n    }\n  });\n  \n  return {\n    isValid: errors.length === 0,\n    errors\n  };"
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759012133411,
+      "end": 1759012133413
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d4c6bcd001M2LHEQIMvQ35RB",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011Ctpk4k2Th3Dfk9FsMyLrq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 510,
+      "limit": 10
+    },
+    "output": "<file>\n00511|         selectedProducts: newSelectedProducts,\n00512|         declaredValue: newDeclaredValue\n00513|       };\n00514|     });\n00515|     \n00516|     console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);\n00517|   };\n00518| \n00519|   const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n00520|     setForm(prev => {\n\n(File has more lines. Use 'offset' parameter to read beyond line 520)\n</file>",
+    "metadata": {
+      "preview": "        selectedProducts: newSelectedProducts,\n        declaredValue: newDeclaredValue\n      };\n    });\n    \n    console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);\n  };\n\n  const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n    setForm(prev => {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759012220333,
+      "end": 1759012220335
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d4bfd05001JzzC4TO43Z1iP2",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Scs6vKsvBD8VB78i1UVwmt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 509,
+      "limit": 35
+    },
+    "output": "<file>\n00510|   const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n00511|     setForm(prev => {\n00512|       // Находим товар\n00513|       const selectedProducts = prev.selectedProducts || [];\n00514|       const productIndex = selectedProducts.findIndex(p => \n00515|         p.product.id === productId && p.addedAt === addedAt\n00516|       );\n00517|       \n00518|       if (productIndex === -1) return prev;\n00519|       \n00520|       const product = selectedProducts[productIndex];\n00521|       \n00522|       // Удаляем старые грузы этого товара\n00523|       const cargosWithoutProduct = removeCargosForProduct(\n00524|         prev.cargos as CargoWithMetadata[], \n00525|         productId, \n00526|         addedAt\n00527|       );\n00528|       \n00529|       // Создаем новые грузы с новым количеством\n00530|       const newCargos = createCargosForProduct(product.product, newQuantity, addedAt);\n00531|       const updatedCargos = [...cargosWithoutProduct, ...newCargos];\n00532|       \n00533|       // Обновляем товар\n00534|       const updatedProduct = {\n00535|         ...product,\n00536|         quantity: newQuantity,\n00537|         totalPrice: product.product.retailPrice * newQuantity,\n00538|         cargoIndexes: findCargoIndexesForProduct(updatedCargos, productId, addedAt)\n00539|       };\n00540|       \n00541|       const updatedProducts = selectedProducts.map((p, index) => \n00542|         index === productIndex ? updatedProduct : p\n00543|       );\n00544|       \n\n(File has more lines. Use 'offset' parameter to read beyond line 544)\n</file>",
+    "metadata": {
+      "preview": "  const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n    setForm(prev => {\n      // Находим товар\n      const selectedProducts = prev.selectedProducts || [];\n      const productIndex = selectedProducts.findIndex(p => \n        p.product.id === productId && p.addedAt === addedAt\n      );\n      \n      if (productIndex === -1) return prev;\n      \n      const product = selectedProducts[productIndex];\n      \n      // Удаляем старые грузы этого товара\n      const cargosWithoutProduct = removeCargosForProduct(\n        prev.cargos as CargoWithMetadata[], \n        productId, \n        addedAt\n      );\n      \n      // Создаем новые грузы с новым количеством"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759012192201,
+      "end": 1759012192206
+    }
+  }
+}

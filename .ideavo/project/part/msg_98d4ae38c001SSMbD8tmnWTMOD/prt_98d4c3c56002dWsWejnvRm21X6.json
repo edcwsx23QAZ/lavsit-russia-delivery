@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d4c3c56002dWsWejnvRm21X6",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01X8UQJzGZ6Sjx4X9eC2dquV",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const handleProductAdd = (product: FurnitureProduct) => {\n    const timestamp = Date.now();\n    \n    // Создаем грузовые места для товара\n    const newCargos = createCargosForProduct(product, 1, timestamp);\n    \n    // Создаем объект товара в форме\n    const productInForm: ProductInForm = {\n      product,\n      quantity: 1,\n      totalPrice: product.retailPrice,\n      cargoIndexes: [], // Заполним после добавления грузов\n      addedAt: timestamp\n    };\n    \n    setForm(prev => {\n      // Добавляем новые грузы\n      const updatedCargos = [...prev.cargos, ...newCargos];\n      \n      // Находим индексы новых грузов\n      const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n      productInForm.cargoIndexes = cargoIndexes;",
+      "newString": "  const handleProductAdd = (product: FurnitureProduct) => {\n    const timestamp = Date.now();\n    \n    console.log(`➕ Добавление товара: ${product.name} (${product.cargoPlaces.length} грузовых мест)`);\n    \n    // Создаем грузовые места для товара\n    const newCargos = createCargosForProduct(product, 1, timestamp);\n    \n    console.log('Создано новых грузов:', newCargos.length);\n    console.log('Новые грузы:', newCargos.map(c => ({ id: c.id, productId: c.productId, addedAt: c.addedAt })));\n    \n    // Создаем объект товара в форме\n    const productInForm: ProductInForm = {\n      product,\n      quantity: 1,\n      totalPrice: product.retailPrice,\n      cargoIndexes: [], // Заполним после добавления грузов\n      addedAt: timestamp\n    };\n    \n    setForm(prev => {\n      // Добавляем новые грузы\n      const updatedCargos = [...prev.cargos, ...newCargos];\n      \n      console.log('Общее количество грузов после добавления:', updatedCargos.length);\n      \n      // Находим индексы новых грузов\n      const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n      productInForm.cargoIndexes = cargoIndexes;\n      \n      console.log('Найденные индексы грузов:', cargoIndexes);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -470,11 +470,16 @@\n // 🔧 Функции управления товарами\n const handleProductAdd = (product: FurnitureProduct) => {\n   const timestamp = Date.now();\n   \n+  console.log(`➕ Добавление товара: ${product.name} (${product.cargoPlaces.length} грузовых мест)`);\n+  \n   // Создаем грузовые места для товара\n   const newCargos = createCargosForProduct(product, 1, timestamp);\n   \n+  console.log('Создано новых грузов:', newCargos.length);\n+  console.log('Новые грузы:', newCargos.map(c => ({ id: c.id, productId: c.productId, addedAt: c.addedAt })));\n+  \n   // Создаем объект товара в форме\n   const productInForm: ProductInForm = {\n     product,\n     quantity: 1,\n@@ -486,12 +491,16 @@\n   setForm(prev => {\n     // Добавляем новые грузы\n     const updatedCargos = [...prev.cargos, ...newCargos];\n     \n+    console.log('Общее количество грузов после добавления:', updatedCargos.length);\n+    \n     // Находим индексы новых грузов\n     const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n     productInForm.cargoIndexes = cargoIndexes;\n     \n+    console.log('Найденные индексы грузов:', cargoIndexes);\n+    \n     // Пересчитываем объявленную стоимость\n     const prevSelectedProducts = prev.selectedProducts || [];\n     const newSelectedProducts = [...prevSelectedProducts, productInForm];\n     const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759012214121,
+      "end": 1759012214134
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d4c092e001zZ10TqH20FJlCp",
+  "messageID": "msg_98d4ae38c001SSMbD8tmnWTMOD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Dy5mnAo5V5188hAGgRXKsd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n    setForm(prev => {\n      // Находим товар\n      const selectedProducts = prev.selectedProducts || [];\n      const productIndex = selectedProducts.findIndex(p => \n        p.product.id === productId && p.addedAt === addedAt\n      );\n      \n      if (productIndex === -1) return prev;\n      \n      const product = selectedProducts[productIndex];\n      \n      // Удаляем старые грузы этого товара\n      const cargosWithoutProduct = removeCargosForProduct(\n        prev.cargos as CargoWithMetadata[], \n        productId, \n        addedAt\n      );\n      \n      // Создаем новые грузы с новым количеством\n      const newCargos = createCargosForProduct(product.product, newQuantity, addedAt);\n      const updatedCargos = [...cargosWithoutProduct, ...newCargos];",
+      "newString": "  const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n    setForm(prev => {\n      console.log(`🔢 Изменение количества товара ${productId} с ${prev.selectedProducts?.find(p => p.product.id === productId && p.addedAt === addedAt)?.quantity || 0} на ${newQuantity}`);\n      \n      // Находим товар\n      const selectedProducts = prev.selectedProducts || [];\n      const productIndex = selectedProducts.findIndex(p => \n        p.product.id === productId && p.addedAt === addedAt\n      );\n      \n      if (productIndex === -1) {\n        console.warn('❌ Товар не найден для изменения количества');\n        return prev;\n      }\n      \n      const product = selectedProducts[productIndex];\n      console.log('Грузы до изменения количества:', prev.cargos.length);\n      \n      // Удаляем старые грузы этого товара\n      const cargosWithoutProduct = removeCargosForProduct(\n        prev.cargos as CargoWithMetadata[], \n        productId, \n        addedAt\n      );\n      \n      console.log('Грузы после удаления старых:', cargosWithoutProduct.length);\n      \n      // Создаем новые грузы с новым количеством\n      const newCargos = createCargosForProduct(product.product, newQuantity, addedAt);\n      const updatedCargos = [...cargosWithoutProduct, ...newCargos];\n      \n      console.log('Грузы после добавления новых:', updatedCargos.length);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -508,29 +508,39 @@\n };\n \n const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n   setForm(prev => {\n+    console.log(`🔢 Изменение количества товара ${productId} с ${prev.selectedProducts?.find(p => p.product.id === productId && p.addedAt === addedAt)?.quantity || 0} на ${newQuantity}`);\n+    \n     // Находим товар\n     const selectedProducts = prev.selectedProducts || [];\n     const productIndex = selectedProducts.findIndex(p => \n       p.product.id === productId && p.addedAt === addedAt\n     );\n     \n-    if (productIndex === -1) return prev;\n+    if (productIndex === -1) {\n+      console.warn('❌ Товар не найден для изменения количества');\n+      return prev;\n+    }\n     \n     const product = selectedProducts[productIndex];\n+    console.log('Грузы до изменения количества:', prev.cargos.length);\n     \n     // Удаляем старые грузы этого товара\n     const cargosWithoutProduct = removeCargosForProduct(\n       prev.cargos as CargoWithMetadata[], \n       productId, \n       addedAt\n     );\n     \n+    console.log('Грузы после удаления старых:', cargosWithoutProduct.length);\n+    \n     // Создаем новые грузы с новым количеством\n     const newCargos = createCargosForProduct(product.product, newQuantity, addedAt);\n     const updatedCargos = [...cargosWithoutProduct, ...newCargos];\n     \n+    console.log('Грузы после добавления новых:', updatedCargos.length);\n+    \n     // Обновляем товар\n     const updatedProduct = {\n       ...product,\n       quantity: newQuantity,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759012201447,
+      "end": 1759012201462
+    }
+  }
+}

@@ -44,6 +44,7 @@ export interface CargoWithMetadata {
   productId?: string;
   placeNumber?: number;
   isFromProduct?: boolean;
+  addedAt?: number; // timestamp добавления товара для надежной связи
 }
 
 // Утилиты для работы с данными
