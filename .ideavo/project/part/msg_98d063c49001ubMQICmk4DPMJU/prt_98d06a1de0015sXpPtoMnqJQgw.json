@@ -1,0 +1,11 @@
+{
+  "id": "prt_98d06a1de0015sXpPtoMnqJQgw",
+  "messageID": "msg_98d063c49001ubMQICmk4DPMJU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Вот проблема! Функция `calculateDellin` использует:\n- **URL:** `https://api.dellin.ru/v3/auth/login.json`\n- **Настоящие данные:** `appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'`, `login: 'service@lavsit.ru'`, `password: 'edcwsx123QAZ'`\n\nА проверка статуса использует:\n- **URL:** `https://api.dellin.ru/v2/customers/login.json`\n- **Тестовые данные:** `appkey: 'demo'`, `login: 'demo'`, `password: 'demo'`\n\nЭто разные endpoints и разные учетные данные! Исправим проверку статуса:",
+  "time": {
+    "start": 1759007649380,
+    "end": 1759007649380
+  }
+}

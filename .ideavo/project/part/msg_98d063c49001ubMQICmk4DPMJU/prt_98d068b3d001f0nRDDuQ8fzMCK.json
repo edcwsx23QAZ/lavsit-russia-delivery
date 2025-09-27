@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d068b3d001f0nRDDuQ8fzMCK",
+  "messageID": "msg_98d063c49001ubMQICmk4DPMJU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01CTb72jSvF7htrabhmx7d2p",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "getDellinSessionId",
+      "path": "/home/user/project/app"
+    },
+    "output": "Found 4 matches\n/home/user/project/app/page.tsx:\n  Line 454:   const getDellinSessionId = async (): Promise<string | null> => {\n  Line 559:           const newSessionId = await getDellinSessionId();\n  Line 612:       let sessionID = await getDellinSessionId();\n  Line 820:           const newSessionId = await getDellinSessionId();",
+    "metadata": {
+      "matches": 4,
+      "truncated": false
+    },
+    "title": "getDellinSessionId",
+    "time": {
+      "start": 1759007641100,
+      "end": 1759007641109
+    }
+  }
+}

@@ -229,19 +229,20 @@ export default function Home() {
       
       checkAPIStatus('dellin', async () => {
         try {
-          // Тестируем получение sessionID для Деловых Линий
-          const authResponse = await fetch('https://api.dellin.ru/v2/customers/login.json', {
+          // Тестируем получение sessionID для Деловых Линий (тот же метод что в calculateDellin)
+          const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              appkey: 'demo',
-              login: 'demo',
-              password: 'demo'
+              appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
+              login: 'service@lavsit.ru',
+              password: 'edcwsx123QAZ'
             })
           });
           const authData = await authResponse.json();
           
-          if (authData && authData.data && authData.data.sessionID) {
+          // Проверяем все возможные пути к sessionID как в calculateDellin
+          if (authData.data?.sessionID || authData.sessionID || authData.data?.session) {
             return { success: true };
           } else {
             return { error: true };

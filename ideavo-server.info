@@ -4,19 +4,25 @@ $ next dev
   - Environments: .env.local, .env
 
  ✓ Starting...
- ✓ Ready in 1919ms
- ✓ Compiled /middleware in 151ms
+ ✓ Ready in 1936ms
+ ✓ Compiled /middleware in 161ms
  ✓ Compiled (73 modules)
  ○ Compiling / ...
- ✓ Compiled / in 3.9s (545 modules)
- GET / 200 in 4583ms
- ✓ Compiled in 676ms (281 modules)
- GET / 200 in 50ms
+ ✓ Compiled / in 3.6s (545 modules)
+ GET / 200 in 4249ms
+ ✓ Compiled in 632ms (281 modules)
+ GET / 200 in 48ms
  ⚠ Cross origin request detected from 4000-i859b80wqs6c2fhjwbj2w.e2b.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
- ✓ Compiled /api/vozovoz in 370ms (294 modules)
- ✓ Compiled (300 modules)
- POST /api/dellin-packages 405 in 685ms
+ ✓ Compiled /api/rail-continent in 324ms (294 modules)
+ ✓ Compiled (298 modules)
+🔧 ПЭК Прокси: Получен запрос (по официальной документации)
+📝 Данные запроса: {
+  "method": "test"
+}
+🔧 Тестовый метод прокси
+ POST /api/pek 200 in 655ms
+🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
 🚚 Vozovoz API запрос: {
   "object": "price",
   "action": "get",
@@ -45,28 +51,6 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
   }
 }
 🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp
-🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "fromCity": "Москва",
-  "toCity": "Санкт-Петербург",
-  "cargos": [
-    {
-      "id": "1",
-      "length": 100,
-      "width": 100,
-      "height": 100,
-      "weight": 10
-    }
-  ],
-  "declaredValue": 50000,
-  "fromAddressDelivery": false,
-  "toAddressDelivery": false,
-  "needPackaging": false,
-  "needInsurance": false
-}
-❌ Неизвестный метод: undefined
- POST /api/pek 400 in 731ms
 🚂 Rail Continent API ответ: {
   "result": "success",
   "data": {
@@ -198,7 +182,7 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     "train_fast_temp": false
   }
 }
- POST /api/rail-continent 200 in 1590ms
+ POST /api/rail-continent 200 in 1427ms
 🚚 Vozovoz API статус: 200 OK
 🚚 Vozovoz API ответ: {
   "response": {
@@ -235,7 +219,7 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     ]
   }
 }
- POST /api/vozovoz 200 in 1940ms
+ POST /api/vozovoz 200 in 1860ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "findzonebyaddress",
@@ -281,6 +265,7 @@ EXACT BODY TO PEK: {
   }
 }
 🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp
+ ✓ Compiled /api/dellin-packages in 113ms (300 modules)
 🚂 Rail Continent API ответ: {
   "result": "success",
   "data": {
@@ -412,7 +397,7 @@ EXACT BODY TO PEK: {
     "train_fast_temp": false
   }
 }
- POST /api/rail-continent 200 in 919ms
+ POST /api/rail-continent 200 in 833ms
 📡 Ответ от ПЭК API:
 Status: 200 OK
 Headers: {
@@ -420,41 +405,13 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '492',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Sat, 27 Sep 2025 21:09:06 GMT',
-  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
-  'x-aspnetmvc-version': '5.3',
-  'x-powered-by': 'ARR/3.0'
-}
-✅ Успешный ответ от ПЭК: {"zoneId":"a1dd78b1-66b7-11e5-80cf-003048baa05f","zoneName":"Москва город","branchUID":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","bitrixId":446,"branchCode":"МВ","branchTitle":"Москва Восток","mainWarehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","warehousePoint":{"latitude":55.53300000000000,"longitude":37.57900000000000},"GeoData":{"precision":"near","kind":"house","Address":{"country_code":"RU","formatted":"Россия, Москва, Шмитовский проезд, 39Ас3","postal_code":"123290","Components":[{"kind":
- POST /api/pek 200 in 961ms
-❌ Ошибка от API Деловых Линий: 401 Unauthorized
- GET /api/dellin-packages 401 in 728ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "findzonebyaddress",
-  "address": "г Санкт-Петербург, Невский пр-кт, д 110"
-}
-🔍 ПЭК API: findzonebyaddress для адреса: г Санкт-Петербург, Невский пр-кт, д 110
-🌐 Запрос к ПЭК API (официальная версия):
-URL: https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/
-Auth: Basic (логин + API ключ)
-EXACT BODY TO PEK: {
-  "address": "г Санкт-Петербург, Невский пр-кт, д 110"
-}
-📡 Ответ от ПЭК API:
-Status: 200 OK
-Headers: {
-  'cache-control': 'private',
-  'content-encoding': 'gzip',
-  'content-length': '494',
-  'content-type': 'application/json; charset=utf-8',
-  date: 'Sat, 27 Sep 2025 21:09:06 GMT',
+  date: 'Sat, 27 Sep 2025 21:12:22 GMT',
   'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
-✅ Успешный ответ от ПЭК: {"zoneId":"485a244d-92a2-11e5-94cc-00155d668909","zoneName":"Санкт-Петербург город","branchUID":"64adbe2c-a185-11dc-a911-000a5e19ccb4","bitrixId":463,"branchCode":"СП","branchTitle":"Санкт-Петербург","mainWarehouseId":"36cf9b60-a415-11dc-a911-000a5e19ccb4","warehousePoint":{"latitude":59.94281800000000,"longitude":30.44089600000000},"GeoData":{"precision":"exact","kind":"house","Address":{"country_code":"RU","formatted":"Россия, Санкт-Петербург, Невский проспект, 110","postal_code":"191025","Com
- POST /api/pek 200 in 250ms
+✅ Успешный ответ от ПЭК: {"zoneId":"a1dd78b1-66b7-11e5-80cf-003048baa05f","zoneName":"Москва город","branchUID":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","bitrixId":446,"branchCode":"МВ","branchTitle":"Москва Восток","mainWarehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","warehousePoint":{"latitude":55.53300000000000,"longitude":37.57900000000000},"GeoData":{"precision":"near","kind":"house","Address":{"country_code":"RU","formatted":"Россия, Москва, Шмитовский проезд, 39Ас3","postal_code":"123290","Components":[{"kind":
+ POST /api/pek 200 in 967ms
 🚚 Vozovoz API статус: 200 OK
 🚚 Vozovoz API ответ: {
   "response": {
@@ -506,7 +463,37 @@ Headers: {
     ]
   }
 }
- POST /api/vozovoz 200 in 1224ms
+ POST /api/vozovoz 200 in 1072ms
+❌ Ошибка от API Деловых Линий: 401 Unauthorized
+ GET /api/dellin-packages 401 in 914ms
+🔧 ПЭК Прокси: Получен запрос (по официальной документации)
+📝 Данные запроса: {
+  "method": "findzonebyaddress",
+  "address": "г Санкт-Петербург, Невский пр-кт, д 110"
+}
+🔍 ПЭК API: findzonebyaddress для адреса: г Санкт-Петербург, Невский пр-кт, д 110
+🌐 Запрос к ПЭК API (официальная версия):
+URL: https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/
+Auth: Basic (логин + API ключ)
+EXACT BODY TO PEK: {
+  "address": "г Санкт-Петербург, Невский пр-кт, д 110"
+}
+📡 Ответ от ПЭК API:
+Status: 200 OK
+Headers: {
+  'cache-control': 'private',
+  'content-encoding': 'gzip',
+  'content-length': '494',
+  'content-type': 'application/json; charset=utf-8',
+  date: 'Sat, 27 Sep 2025 21:12:22 GMT',
+  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
+  'x-aspnetmvc-version': '5.3',
+  'x-powered-by': 'ARR/3.0'
+}
+✅ Успешный ответ от ПЭК: {"zoneId":"485a244d-92a2-11e5-94cc-00155d668909","zoneName":"Санкт-Петербург город","branchUID":"64adbe2c-a185-11dc-a911-000a5e19ccb4","bitrixId":463,"branchCode":"СП","branchTitle":"Санкт-Петербург","mainWarehouseId":"36cf9b60-a415-11dc-a911-000a5e19ccb4","warehousePoint":{"latitude":59.94281800000000,"longitude":30.44089600000000},"GeoData":{"precision":"exact","kind":"house","Address":{"country_code":"RU","formatted":"Россия, Санкт-Петербург, Невский проспект, 110","postal_code":"191025","Com
+ POST /api/pek 200 in 239ms
+❌ Ошибка от API Деловых Линий: 401 Unauthorized
+ GET /api/dellin-packages 401 in 203ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "nearestdepartments",
@@ -536,8 +523,6 @@ EXACT BODY TO PEK: {
 }
 🚨 ОБНАРУЖЕНЫ КООРДИНАТЫ В ЗАПРОСЕ К ПЭК!
 Full body string: {"departmentOperation":3,"type":3,"searchRadius":50,"limit":5,"address":"г Москва, Шмитовский проезд, д 39","coordinates":{"latitude":"55.533","longitude":"37.579"}}
-❌ Ошибка от API Деловых Линий: 401 Unauthorized
- GET /api/dellin-packages 401 in 219ms
 📡 Ответ от ПЭК API:
 Status: 200 OK
 Headers: {
@@ -545,13 +530,13 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '1574',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Sat, 27 Sep 2025 21:09:07 GMT',
-  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
+  date: 'Sat, 27 Sep 2025 21:12:24 GMT',
+  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
 ✅ Успешный ответ от ПЭК: {"freeDepartments":[{"warehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","departmentType":"Основное отделение филиала компании","departmentTypeId":4,"branchId":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","branchName":"Москва Восток","divisionName":"Москва Бутово","isActive":true,"address":"Россия, Москва, 2-я Мелитопольская улица, 12Ас1","coordinates":{"latitude":55.534204,"longitude":37.578127},"timeZone":"03:00:00","townBitrixId":446,"email":"pecom@pecom.ru","phone":"8(495) 660-11-11","priority":9
- POST /api/pek 200 in 255ms
+ POST /api/pek 200 in 293ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "nearestdepartments",
@@ -588,13 +573,13 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '1429',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Sat, 27 Sep 2025 21:09:07 GMT',
-  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
+  date: 'Sat, 27 Sep 2025 21:12:24 GMT',
+  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
 ✅ Успешный ответ от ПЭК: {"freeDepartments":[{"warehouseId":"36cf9b60-a415-11dc-a911-000a5e19ccb4","departmentType":"Основное отделение филиала компании","departmentTypeId":4,"branchId":"64adbe2c-a185-11dc-a911-000a5e19ccb4","branchName":"Санкт-Петербург","divisionName":"Санкт-Петербург","isActive":true,"address":"Россия, Санкт-Петербург, улица Якорная, 17, литер Ш","coordinates":{"latitude":59.942818,"longitude":30.440896},"timeZone":"03:00:00","townBitrixId":463,"email":"pecom@pecom.ru","phone":"8(812) 458-09-02, 8(81
- POST /api/pek 200 in 250ms
+ POST /api/pek 200 in 245ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "calculateprice",
@@ -607,7 +592,7 @@ Headers: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-09-28T21:09:06",
+  "plannedDateTime": "2025-09-28T21:12:23",
   "isInsurance": true,
   "isInsurancePrice": 200000,
   "isPickUp": true,
@@ -645,7 +630,7 @@ Headers: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-09-28T21:09:06",
+  "plannedDateTime": "2025-09-28T21:12:23",
   "isInsurance": true,
   "isInsurancePrice": 200000,
   "isPickUp": true,
@@ -685,7 +670,7 @@ EXACT BODY TO PEK: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-09-28T21:09:06",
+  "plannedDateTime": "2025-09-28T21:12:23",
   "isInsurance": true,
   "isInsurancePrice": 200000,
   "isPickUp": true,
@@ -719,8 +704,8 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '422',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Sat, 27 Sep 2025 21:09:08 GMT',
-  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
+  date: 'Sat, 27 Sep 2025 21:12:25 GMT',
+  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
@@ -740,7 +725,7 @@ Headers: {
       "errorMessage": "Для выбранной даты, забор груза невозможен",
       "costTotal": 0,
       "estDeliveryTime": null
- POST /api/pek 200 in 775ms
+ POST /api/pek 200 in 662ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "calculateprice",
@@ -753,7 +738,7 @@ Headers: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-09-29T21:09:08",
+  "plannedDateTime": "2025-09-29T21:12:24",
   "isInsurance": true,
   "isInsurancePrice": 200000,
   "isPickUp": true,
@@ -791,7 +776,7 @@ Headers: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-09-29T21:09:08",
+  "plannedDateTime": "2025-09-29T21:12:24",
   "isInsurance": true,
   "isInsurancePrice": 200000,
   "isPickUp": true,
@@ -831,7 +816,7 @@ EXACT BODY TO PEK: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-09-29T21:09:08",
+  "plannedDateTime": "2025-09-29T21:12:24",
   "isInsurance": true,
   "isInsurancePrice": 200000,
   "isPickUp": true,
@@ -865,8 +850,8 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '680',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Sat, 27 Sep 2025 21:09:10 GMT',
-  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
+  date: 'Sat, 27 Sep 2025 21:12:26 GMT',
+  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
@@ -889,4 +874,4 @@ Headers: {
       "services": [
         {
  
- POST /api/pek 200 in 818ms
+ POST /api/pek 200 in 664ms

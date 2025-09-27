@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d06e538001yS3I3y5zVG09wS",
+  "messageID": "msg_98d063c49001ubMQICmk4DPMJU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01CT7S53XHRYtpxyPEAqWcLe",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      checkAPIStatus('dellin', async () => {\n        try {\n          // Тестируем получение sessionID для Деловых Линий\n          const authResponse = await fetch('https://api.dellin.ru/v2/customers/login.json', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({\n              appkey: 'demo',\n              login: 'demo',\n              password: 'demo'\n            })\n          });\n          const authData = await authResponse.json();\n          \n          if (authData && authData.data && authData.data.sessionID) {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      }),",
+      "newString": "      checkAPIStatus('dellin', async () => {\n        try {\n          // Тестируем получение sessionID для Деловых Линий (тот же метод что в calculateDellin)\n          const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({\n              appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n              login: 'service@lavsit.ru',\n              password: 'edcwsx123QAZ'\n            })\n          });\n          const authData = await authResponse.json();\n          \n          // Проверяем все возможные пути к sessionID как в calculateDellin\n          if (authData.data?.sessionID || authData.sessionID || authData.data?.session) {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      }),"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -228,21 +228,22 @@\n }),\n \n checkAPIStatus('dellin', async () => {\n   try {\n-    // Тестируем получение sessionID для Деловых Линий\n-    const authResponse = await fetch('https://api.dellin.ru/v2/customers/login.json', {\n+    // Тестируем получение sessionID для Деловых Линий (тот же метод что в calculateDellin)\n+    const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n       method: 'POST',\n       headers: { 'Content-Type': 'application/json' },\n       body: JSON.stringify({\n-        appkey: 'demo',\n-        login: 'demo',\n-        password: 'demo'\n+        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n+        login: 'service@lavsit.ru',\n+        password: 'edcwsx123QAZ'\n       })\n     });\n     const authData = await authResponse.json();\n     \n-    if (authData && authData.data && authData.data.sessionID) {\n+    // Проверяем все возможные пути к sessionID как в calculateDellin\n+    if (authData.data?.sessionID || authData.sessionID || authData.data?.session) {\n       return { success: true };\n     } else {\n       return { error: true };\n     }\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759007671198,
+      "end": 1759007671229
+    }
+  }
+}
