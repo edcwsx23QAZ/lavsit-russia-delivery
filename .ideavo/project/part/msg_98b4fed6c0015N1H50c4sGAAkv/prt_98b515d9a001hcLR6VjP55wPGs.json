@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b515d9a001hcLR6VjP55wPGs",
+  "messageID": "msg_98b4fed6c0015N1H50c4sGAAkv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01MQjA2B6ywFwkH8jPQPvkxo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "oldString": "        if (calculationData.delivery?.coordinates) {\n          const lat = Number(calculationData.delivery.coordinates.latitude);\n          const lng = Number(calculationData.delivery.coordinates.longitude);\n          \n          if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n            console.warn('⚠️ Некорректные координаты delivery:', calculationData.delivery.coordinates);\n            // Удаляем некорректные координаты вместо ошибки\n            delete calculationData.delivery.coordinates;\n          } else {\n            calculationData.delivery.coordinates = { latitude: lat, longitude: lng };\n          }\n        }\n        \n        body = calculationData;",
+      "newString": "        if (calculationData.delivery?.coordinates) {\n          console.log('📍 API Прокси: delivery.coordinates =', calculationData.delivery.coordinates);\n          const lat = Number(calculationData.delivery.coordinates.latitude);\n          const lng = Number(calculationData.delivery.coordinates.longitude);\n          \n          console.log('📍 API Прокси: delivery преобразованно: lat=' + lat + ', lng=' + lng);\n          \n          if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n            console.warn('⚠️ API Прокси: Некорректные координаты delivery:', calculationData.delivery.coordinates);\n            console.warn('⚠️ API Прокси: Удаляем delivery.coordinates');\n            delete calculationData.delivery.coordinates;\n          } else {\n            console.log('✅ API Прокси: delivery.coordinates валидны');\n            calculationData.delivery.coordinates = { latitude: lat, longitude: lng };\n          }\n        }\n        \n        console.log('🚀 API Прокси: Окончательные данные для ПЭК:', JSON.stringify(calculationData, null, 2));\n        body = calculationData;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -89,20 +89,25 @@\n     }\n   }\n   \n   if (calculationData.delivery?.coordinates) {\n+    console.log('📍 API Прокси: delivery.coordinates =', calculationData.delivery.coordinates);\n     const lat = Number(calculationData.delivery.coordinates.latitude);\n     const lng = Number(calculationData.delivery.coordinates.longitude);\n     \n+    console.log('📍 API Прокси: delivery преобразованно: lat=' + lat + ', lng=' + lng);\n+    \n     if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n-      console.warn('⚠️ Некорректные координаты delivery:', calculationData.delivery.coordinates);\n-      // Удаляем некорректные координаты вместо ошибки\n+      console.warn('⚠️ API Прокси: Некорректные координаты delivery:', calculationData.delivery.coordinates);\n+      console.warn('⚠️ API Прокси: Удаляем delivery.coordinates');\n       delete calculationData.delivery.coordinates;\n     } else {\n+      console.log('✅ API Прокси: delivery.coordinates валидны');\n       calculationData.delivery.coordinates = { latitude: lat, longitude: lng };\n     }\n   }\n   \n+  console.log('🚀 API Прокси: Окончательные данные для ПЭК:', JSON.stringify(calculationData, null, 2));\n   body = calculationData;\n   break;\n   \n case 'nearestdepartments':\n"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758978994480,
+      "end": 1758978994488
+    }
+  }
+}

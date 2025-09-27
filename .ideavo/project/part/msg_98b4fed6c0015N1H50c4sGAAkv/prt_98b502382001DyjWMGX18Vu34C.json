@@ -1,0 +1,11 @@
+{
+  "id": "prt_98b502382001DyjWMGX18Vu34C",
+  "messageID": "msg_98b4fed6c0015N1H50c4sGAAkv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Проблема в том, что логируется `requestData`, но в API отправляется объект `{ method: 'calculateprice', ...requestData }`. Нужно добавить логирование именно того, что отправляется в API. Также добавим логирование работы валидации координат:",
+  "time": {
+    "start": 1758978910716,
+    "end": 1758978910716
+  }
+}

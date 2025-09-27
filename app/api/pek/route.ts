@@ -70,32 +70,74 @@ export async function POST(request: NextRequest) {
         const { method: methodName, ...calculationData } = requestData;
         
         // Валидация координат в адресах доставки
+        console.log('🧪 API Прокси: Проверка координат в calculateprice');
+        
         if (calculationData.pickup?.coordinates) {
+          console.log('📍 API Прокси: pickup.coordinates =', calculationData.pickup.coordinates);
           const lat = Number(calculationData.pickup.coordinates.latitude);
           const lng = Number(calculationData.pickup.coordinates.longitude);
           
+          console.log('📍 API Прокси: pickup преобразованно: lat=' + lat + ', lng=' + lng);
+          
           if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
-            console.warn('⚠️ Некорректные координаты pickup:', calculationData.pickup.coordinates);
-            // Удаляем некорректные координаты вместо ошибки
+            console.warn('⚠️ API Прокси: Некорректные координаты pickup:', calculationData.pickup.coordinates);
+            console.warn('⚠️ API Прокси: Удаляем pickup.coordinates');
             delete calculationData.pickup.coordinates;
           } else {
+            console.log('✅ API Прокси: pickup.coordinates валидны');
             calculationData.pickup.coordinates = { latitude: lat, longitude: lng };
           }
         }
         
         if (calculationData.delivery?.coordinates) {
+          console.log('📍 API Прокси: delivery.coordinates =', calculationData.delivery.coordinates);
           const lat = Number(calculationData.delivery.coordinates.latitude);
           const lng = Number(calculationData.delivery.coordinates.longitude);
           
+          console.log('📍 API Прокси: delivery преобразованно: lat=' + lat + ', lng=' + lng);
+          
           if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
-            console.warn('⚠️ Некорректные координаты delivery:', calculationData.delivery.coordinates);
-            // Удаляем некорректные координаты вместо ошибки
+            console.warn('⚠️ API Прокси: Некорректные координаты delivery:', calculationData.delivery.coordinates);
+            console.warn('⚠️ API Прокси: Удаляем delivery.coordinates');
             delete calculationData.delivery.coordinates;
           } else {
+            console.log('✅ API Прокси: delivery.coordinates валидны');
             calculationData.delivery.coordinates = { latitude: lat, longitude: lng };
           }
         }
         
+        // Поиск координат в любых полях (глубокая проверка)
+        const removeInvalidCoordinates = (obj: any, path = '') => {
+          if (obj && typeof obj === 'object') {
+            for (const [key, value] of Object.entries(obj)) {
+              const currentPath = path ? `${path}.${key}` : key;
+              
+              if (key === 'coordinates' && value && typeof value === 'object') {
+                const coords = value as any;
+                if (coords.latitude !== undefined || coords.longitude !== undefined) {
+                  const lat = Number(coords.latitude);
+                  const lng = Number(coords.longitude);
+                  
+                  console.log(`📍 API Прокси: Найдены координаты в ${currentPath}:`, coords);
+                  
+                  if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {
+                    console.warn(`⚠️ API Прокси: Удаляем некорректные координаты в ${currentPath}`);
+                    delete obj[key];
+                  } else {
+                    console.log(`✅ API Прокси: Координаты в ${currentPath} валидны`);
+                    obj[key] = { latitude: lat, longitude: lng };
+                  }
+                }
+              } else if (typeof value === 'object' && value !== null) {
+                removeInvalidCoordinates(value, currentPath);
+              }
+            }
+          }
+        };
+        
+        removeInvalidCoordinates(calculationData);
+        
+        console.log('🚀 API Прокси: Окончательные данные для ПЭК:', JSON.stringify(calculationData, null, 2));
         body = calculationData;
         break;
         

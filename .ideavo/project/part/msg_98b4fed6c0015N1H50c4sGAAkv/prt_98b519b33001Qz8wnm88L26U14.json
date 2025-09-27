@@ -1,0 +1,34 @@
+{
+  "id": "prt_98b519b33001Qz8wnm88L26U14",
+  "messageID": "msg_98b4fed6c0015N1H50c4sGAAkv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_016p7ut27ph2Tc7vKnRd2vpV",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "        console.log('🚀 API Прокси: Окончательные данные для ПЭК:', JSON.stringify(calculationData, null, 2));\n        body = calculationData;",
+          "newString": "        // Поиск координат в любых полях (глубокая проверка)\n        const removeInvalidCoordinates = (obj: any, path = '') => {\n          if (obj && typeof obj === 'object') {\n            for (const [key, value] of Object.entries(obj)) {\n              const currentPath = path ? `${path}.${key}` : key;\n              \n              if (key === 'coordinates' && value && typeof value === 'object') {\n                const coords = value as any;\n                if (coords.latitude !== undefined || coords.longitude !== undefined) {\n                  const lat = Number(coords.latitude);\n                  const lng = Number(coords.longitude);\n                  \n                  console.log(`📍 API Прокси: Найдены координаты в ${currentPath}:`, coords);\n                  \n                  if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n                    console.warn(`⚠️ API Прокси: Удаляем некорректные координаты в ${currentPath}`);\n                    delete obj[key];\n                  } else {\n                    console.log(`✅ API Прокси: Координаты в ${currentPath} валидны`);\n                    obj[key] = { latitude: lat, longitude: lng };\n                  }\n                }\n              } else if (typeof value === 'object' && value !== null) {\n                removeInvalidCoordinates(value, currentPath);\n              }\n            }\n          }\n        };\n        \n        removeInvalidCoordinates(calculationData);\n        \n        console.log('🚀 API Прокси: Окончательные данные для ПЭК:', JSON.stringify(calculationData, null, 2));\n        body = calculationData;"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -105,8 +105,39 @@\n     calculationData.delivery.coordinates = { latitude: lat, longitude: lng };\n   }\n }\n \n+// Поиск координат в любых полях (глубокая проверка)\n+const removeInvalidCoordinates = (obj: any, path = '') => {\n+  if (obj && typeof obj === 'object') {\n+    for (const [key, value] of Object.entries(obj)) {\n+      const currentPath = path ? `${path}.${key}` : key;\n+      \n+      if (key === 'coordinates' && value && typeof value === 'object') {\n+        const coords = value as any;\n+        if (coords.latitude !== undefined || coords.longitude !== undefined) {\n+          const lat = Number(coords.latitude);\n+          const lng = Number(coords.longitude);\n+          \n+          console.log(`📍 API Прокси: Найдены координаты в ${currentPath}:`, coords);\n+          \n+          if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n+            console.warn(`⚠️ API Прокси: Удаляем некорректные координаты в ${currentPath}`);\n+            delete obj[key];\n+          } else {\n+            console.log(`✅ API Прокси: Координаты в ${currentPath} валидны`);\n+            obj[key] = { latitude: lat, longitude: lng };\n+          }\n+        }\n+      } else if (typeof value === 'object' && value !== null) {\n+        removeInvalidCoordinates(value, currentPath);\n+      }\n+    }\n+  }\n+};\n+\n+removeInvalidCoordinates(calculationData);\n+\n console.log('🚀 API Прокси: Окончательные данные для ПЭК:', JSON.stringify(calculationData, null, 2));\n body = calculationData;\n break;\n \n"
+        }
+      ]
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758979021449,
+      "end": 1758979021456
+    }
+  }
+}

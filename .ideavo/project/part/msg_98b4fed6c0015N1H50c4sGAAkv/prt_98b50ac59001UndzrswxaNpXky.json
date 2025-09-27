@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b50ac59001UndzrswxaNpXky",
+  "messageID": "msg_98b4fed6c0015N1H50c4sGAAkv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01N1DutY6x95PtZTsaqvUUWF",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "        // Валидация координат в адресах доставки\n        if (calculationData.pickup?.coordinates) {\n          const lat = Number(calculationData.pickup.coordinates.latitude);\n          const lng = Number(calculationData.pickup.coordinates.longitude);\n          \n          if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n            console.warn('⚠️ Некорректные координаты pickup:', calculationData.pickup.coordinates);\n            // Удаляем некорректные координаты вместо ошибки\n            delete calculationData.pickup.coordinates;\n          } else {\n            calculationData.pickup.coordinates = { latitude: lat, longitude: lng };\n          }\n        }\n        \n        if (calculationData.delivery?.coordinates) {\n          const lat = Number(calculationData.delivery.coordinates.latitude);\n          const lng = Number(calculationData.delivery.coordinates.longitude);\n          \n          if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n            console.warn('⚠️ Некорректные координаты delivery:', calculationData.delivery.coordinates);\n            // Удаляем некорректные координаты вместо ошибки\n            delete calculationData.delivery.coordinates;\n          } else {\n            calculationData.delivery.coordinates = { latitude: lat, longitude: lng };\n          }\n        }",
+          "newString": "        // Валидация координат в адресах доставки\n        console.log('🧪 API Прокси: Проверка координат в calculateprice');\n        \n        if (calculationData.pickup?.coordinates) {\n          console.log('📍 API Прокси: pickup.coordinates =', calculationData.pickup.coordinates);\n          const lat = Number(calculationData.pickup.coordinates.latitude);\n          const lng = Number(calculationData.pickup.coordinates.longitude);\n          \n          console.log('📍 API Прокси: pickup преобразованно: lat=' + lat + ', lng=' + lng);\n          \n          if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n            console.warn('⚠️ API Прокси: Некорректные координаты pickup:', calculationData.pickup.coordinates);\n            console.warn('⚠️ API Прокси: Удаляем pickup.coordinates');\n            delete calculationData.pickup.coordinates;\n          } else {\n            console.log('✅ API Прокси: pickup.coordinates валидны');\n            calculationData.pickup.coordinates = { latitude: lat, longitude: lng };\n          }\n        }\n        \n        if (calculationData.delivery?.coordinates) {\n          console.log('📍 API Прокси: delivery.coordinates =', calculationData.delivery.coordinates);\n          const lat = Number(calculationData.delivery.coordinates.latitude);\n          const lng = Number(calculationData.delivery.coordinates.longitude);\n          \n          console.log('📍 API Прокси: delivery преобразованно: lat=' + lat + ', lng=' + lng);\n          \n          if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n            console.warn('⚠️ API Прокси: Некорректные координаты delivery:', calculationData.delivery.coordinates);\n            console.warn('⚠️ API Прокси: Удаляем delivery.coordinates');\n            delete calculationData.delivery.coordinates;\n          } else {\n            console.log('✅ API Прокси: delivery.coordinates валидны');\n            calculationData.delivery.coordinates = { latitude: lat, longitude: lng };\n          }\n        }\n        \n        console.log('🚀 API Прокси: Окончательные данные для ПЭК:', JSON.stringify(calculationData, null, 2));"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/app/api/pek/route.ts before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1758978970332,
+      "end": 1758978970334
+    }
+  }
+}

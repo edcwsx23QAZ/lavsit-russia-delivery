@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b518383001752Xvy8esMuBJj",
+  "messageID": "msg_98b4fed6c0015N1H50c4sGAAkv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01QBi5QCks3S1WC9XWw4vahV",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A10 -B10 \"latitude\\|Latitude\" app/page.tsx",
+      "description": "Поиск всех упоминаний latitude в коде"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Поиск всех упоминаний latitude в коде"
+    },
+    "title": "cd /home/user/project && rg -n -A10 -B10 \"latitude\\|Latitude\" app/page.tsx",
+    "time": {
+      "start": 1758979000224,
+      "end": 1758979000246
+    }
+  }
+}

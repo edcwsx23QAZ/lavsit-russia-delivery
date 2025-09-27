@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b500768001iDanEHzjsUZ7R8",
+  "messageID": "msg_98b4fed6c0015N1H50c4sGAAkv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PkRU1ygFmpBdDG5oZ8ANhT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1240,
+      "limit": 20
+    },
+    "output": "<file>\n01241|       });\n01242| \n01243|       console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n01244|       console.log(`📡 ПЭК API URL: ${response.url}`);\n01245|       \n01246|       const responseText = await response.text();\n01247|       console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));\n01248|       \n01249|       let data;\n01250|       try {\n01251|         data = JSON.parse(responseText);\n01252|         console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));\n01253|       } catch (parseError) {\n01254|         console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);\n01255|         throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);\n01256|       }\n01257| \n01258|       if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {\n01259|         const transfer = data.transfers[0]; // берем первый тариф (авто)\n01260|         \n\n(File has more lines. Use 'offset' parameter to read beyond line 1260)\n</file>",
+    "metadata": {
+      "preview": "      });\n\n      console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n      console.log(`📡 ПЭК API URL: ${response.url}`);\n      \n      const responseText = await response.text();\n      console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));\n      \n      let data;\n      try {\n        data = JSON.parse(responseText);\n        console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));\n      } catch (parseError) {\n        console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);\n        throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);\n      }\n\n      if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {\n        const transfer = data.transfers[0]; // берем первый тариф (авто)\n        "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758978902709,
+      "end": 1758978902715
+    }
+  }
+}

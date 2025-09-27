@@ -1064,19 +1064,41 @@ export default function Home() {
     
     // Валидация координат
     const validateCoordinates = (coords: any) => {
-      if (!coords || typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {
+      console.log('🧪 Проверка координат:', coords);
+      
+      if (!coords) {
+        console.log('⚠️ Координаты отсутствуют');
+        return null;
+      }
+      
+      if (typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {
+        console.warn(`⚠️ Координаты не являются числами:`, { 
+          lat: coords.latitude, 
+          lng: coords.longitude,
+          latType: typeof coords.latitude,
+          lngType: typeof coords.longitude
+        });
         return null;
       }
       
       const lat = Number(coords.latitude);
       const lng = Number(coords.longitude);
       
+      console.log(`📍 Преобразованные координаты: lat=${lat}, lng=${lng}`);
+      
       // Проверяем диапазоны
       if (lat < -90 || lat > 90 || lng < -180 || lng > 180 || isNaN(lat) || isNaN(lng)) {
-        console.warn(`⚠️ Некорректные координаты:`, coords);
+        console.warn(`⚠️ Координаты вне допустимого диапазона:`, { 
+          lat, lng, 
+          latValid: lat >= -90 && lat <= 90,
+          lngValid: lng >= -180 && lng <= 180,
+          latIsNaN: isNaN(lat),
+          lngIsNaN: isNaN(lng)
+        });
         return null;
       }
       
+      console.log('✅ Координаты валидны:', { latitude: lat, longitude: lng });
       return { latitude: lat, longitude: lng };
     };
     
@@ -1226,18 +1248,28 @@ export default function Home() {
         };
       }
 
-      console.log('🚀 ПЭК API запрос:', JSON.stringify(requestData, null, 2));
+      const finalRequestData = {
+        method: 'calculateprice',
+        ...requestData
+      };
+      
+      console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));
       console.log('🌐 ПЭК API URL:', apiUrl);
+      
+      // Проверяем координаты перед отправкой
+      if (finalRequestData.pickup?.coordinates) {
+        console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);
+      }
+      if (finalRequestData.delivery?.coordinates) {
+        console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);
+      }
 
       const response = await fetch('/api/pek', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          method: 'calculateprice',
-          ...requestData
-        })
+        body: JSON.stringify(finalRequestData)
       });
 
       console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);

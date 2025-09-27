@@ -1,0 +1,34 @@
+{
+  "id": "prt_98b505b96001Aeo9ZnDZe7VSzL",
+  "messageID": "msg_98b4fed6c0015N1H50c4sGAAkv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_013L5W1QqiNti5x7RL5i5gGG",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "    // Валидация координат\n    const validateCoordinates = (coords: any) => {\n      if (!coords || typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {\n        return null;\n      }\n      \n      const lat = Number(coords.latitude);\n      const lng = Number(coords.longitude);\n      \n      // Проверяем диапазоны\n      if (lat < -90 || lat > 90 || lng < -180 || lng > 180 || isNaN(lat) || isNaN(lng)) {\n        console.warn(`⚠️ Некорректные координаты:`, coords);\n        return null;\n      }\n      \n      return { latitude: lat, longitude: lng };\n    };",
+          "newString": "    // Валидация координат\n    const validateCoordinates = (coords: any) => {\n      console.log('🧪 Проверка координат:', coords);\n      \n      if (!coords) {\n        console.log('⚠️ Координаты отсутствуют');\n        return null;\n      }\n      \n      if (typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {\n        console.warn(`⚠️ Координаты не являются числами:`, { \n          lat: coords.latitude, \n          lng: coords.longitude,\n          latType: typeof coords.latitude,\n          lngType: typeof coords.longitude\n        });\n        return null;\n      }\n      \n      const lat = Number(coords.latitude);\n      const lng = Number(coords.longitude);\n      \n      console.log(`📍 Преобразованные координаты: lat=${lat}, lng=${lng}`);\n      \n      // Проверяем диапазоны\n      if (lat < -90 || lat > 90 || lng < -180 || lng > 180 || isNaN(lat) || isNaN(lng)) {\n        console.warn(`⚠️ Координаты вне допустимого диапазона:`, { \n          lat, lng, \n          latValid: lat >= -90 && lat <= 90,\n          lngValid: lng >= -180 && lng <= 180,\n          latIsNaN: isNaN(lat),\n          lngIsNaN: isNaN(lng)\n        });\n        return null;\n      }\n      \n      console.log('✅ Координаты валидны:', { latitude: lat, longitude: lng });\n      return { latitude: lat, longitude: lng };\n    };"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1063,21 +1063,43 @@\n const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n \n // Валидация координат\n const validateCoordinates = (coords: any) => {\n-  if (!coords || typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {\n+  console.log('🧪 Проверка координат:', coords);\n+  \n+  if (!coords) {\n+    console.log('⚠️ Координаты отсутствуют');\n     return null;\n   }\n   \n+  if (typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {\n+    console.warn(`⚠️ Координаты не являются числами:`, { \n+      lat: coords.latitude, \n+      lng: coords.longitude,\n+      latType: typeof coords.latitude,\n+      lngType: typeof coords.longitude\n+    });\n+    return null;\n+  }\n+  \n   const lat = Number(coords.latitude);\n   const lng = Number(coords.longitude);\n   \n+  console.log(`📍 Преобразованные координаты: lat=${lat}, lng=${lng}`);\n+  \n   // Проверяем диапазоны\n   if (lat < -90 || lat > 90 || lng < -180 || lng > 180 || isNaN(lat) || isNaN(lng)) {\n-    console.warn(`⚠️ Некорректные координаты:`, coords);\n+    console.warn(`⚠️ Координаты вне допустимого диапазона:`, { \n+      lat, lng, \n+      latValid: lat >= -90 && lat <= 90,\n+      lngValid: lng >= -180 && lng <= 180,\n+      latIsNaN: isNaN(lat),\n+      lngIsNaN: isNaN(lng)\n+    });\n     return null;\n   }\n   \n+  console.log('✅ Координаты валидны:', { latitude: lat, longitude: lng });\n   return { latitude: lat, longitude: lng };\n };\n \n try {\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758978940479,
+      "end": 1758978940488
+    }
+  }
+}

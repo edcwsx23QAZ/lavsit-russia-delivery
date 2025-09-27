@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b511e4b001On3p3E82pgum05",
+  "messageID": "msg_98b4fed6c0015N1H50c4sGAAkv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01SCFAVLC1Za5qDniAFq5eFw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "offset": 65,
+      "limit": 20
+    },
+    "output": "<file>\n00066|         break;\n00067|         \n00068|       case 'calculateprice':\n00069|         urlPath = '/calculator/calculateprice/';\n00070|         const { method: methodName, ...calculationData } = requestData;\n00071|         \n00072|         // Валидация координат в адресах доставки\n00073|         if (calculationData.pickup?.coordinates) {\n00074|           const lat = Number(calculationData.pickup.coordinates.latitude);\n00075|           const lng = Number(calculationData.pickup.coordinates.longitude);\n00076|           \n00077|           if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n00078|             console.warn('⚠️ Некорректные координаты pickup:', calculationData.pickup.coordinates);\n00079|             // Удаляем некорректные координаты вместо ошибки\n00080|             delete calculationData.pickup.coordinates;\n00081|           } else {\n00082|             calculationData.pickup.coordinates = { latitude: lat, longitude: lng };\n00083|           }\n00084|         }\n00085|         \n\n(File has more lines. Use 'offset' parameter to read beyond line 85)\n</file>",
+    "metadata": {
+      "preview": "        break;\n        \n      case 'calculateprice':\n        urlPath = '/calculator/calculateprice/';\n        const { method: methodName, ...calculationData } = requestData;\n        \n        // Валидация координат в адресах доставки\n        if (calculationData.pickup?.coordinates) {\n          const lat = Number(calculationData.pickup.coordinates.latitude);\n          const lng = Number(calculationData.pickup.coordinates.longitude);\n          \n          if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n            console.warn('⚠️ Некорректные координаты pickup:', calculationData.pickup.coordinates);\n            // Удаляем некорректные координаты вместо ошибки\n            delete calculationData.pickup.coordinates;\n          } else {\n            calculationData.pickup.coordinates = { latitude: lat, longitude: lng };\n          }\n        }\n        "
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758978974010,
+      "end": 1758978974013
+    }
+  }
+}
