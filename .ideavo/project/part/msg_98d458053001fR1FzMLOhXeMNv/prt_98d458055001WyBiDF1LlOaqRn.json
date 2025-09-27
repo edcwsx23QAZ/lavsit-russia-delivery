@@ -1,0 +1,7 @@
+{
+  "id": "prt_98d458055001WyBiDF1LlOaqRn",
+  "type": "text",
+  "text": "При нажатии на товар в подсказке выпадает следующая ошибка. Вместо ошибки товар просто должен подтянуть полные данные, чтобы можно было нажать кнопку \"добавить товар\"\n\n1 of 1 error\nNext.js (14.2.31) is outdated (learn more)\n\nUnhandled Runtime Error\nTypeError: prev.selectedProducts is not iterable\n\nSource\napp/page.tsx (495:44) @ selectedProducts\n\n  493 |       \n  494 |       // Пересчитываем объявленную стоимость\n> 495 |       const newSelectedProducts = [...prev.selectedProducts, productInForm];\n      |                                            ^\n  496 |       const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n  497 |       \n  498 |       return {\nCall Stack\nShow collapsed frames",
+  "messageID": "msg_98d458053001fR1FzMLOhXeMNv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14"
+}

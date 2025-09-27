@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d45b5d4001gKAkyQwg6kvi8S",
+  "messageID": "msg_98d45840e001OpwIAdZLshQpUN",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_019sLBf8Y3A5XZ8tGhitsfAN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "selectedProducts.*=",
+      "path": "/home/user/project/app"
+    },
+    "output": "Found 3 matches\n/home/user/project/app/page.tsx:\n  Line 512:       const productIndex = prev.selectedProducts.findIndex(p => \n  Line 539:       const updatedProducts = prev.selectedProducts.map((p, index) => \n  Line 567:       const updatedProducts = prev.selectedProducts.filter(p =>",
+    "metadata": {
+      "matches": 3,
+      "truncated": false
+    },
+    "title": "selectedProducts.*=",
+    "time": {
+      "start": 1759011780559,
+      "end": 1759011780570
+    }
+  }
+}

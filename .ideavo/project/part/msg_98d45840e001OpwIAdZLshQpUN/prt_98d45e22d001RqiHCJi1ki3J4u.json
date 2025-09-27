@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d45e22d001RqiHCJi1ki3J4u",
+  "messageID": "msg_98d45840e001OpwIAdZLshQpUN",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QpVkcwZ5n2ZgUmSmULiu4c",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 508,
+      "limit": 30
+    },
+    "output": "<file>\n00509| \n00510|   const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n00511|     setForm(prev => {\n00512|       // Находим товар\n00513|       const productIndex = prev.selectedProducts.findIndex(p => \n00514|         p.product.id === productId && p.addedAt === addedAt\n00515|       );\n00516|       \n00517|       if (productIndex === -1) return prev;\n00518|       \n00519|       const product = prev.selectedProducts[productIndex];\n00520|       \n00521|       // Удаляем старые грузы этого товара\n00522|       const cargosWithoutProduct = removeCargosForProduct(\n00523|         prev.cargos as CargoWithMetadata[], \n00524|         productId, \n00525|         addedAt\n00526|       );\n00527|       \n00528|       // Создаем новые грузы с новым количеством\n00529|       const newCargos = createCargosForProduct(product.product, newQuantity, addedAt);\n00530|       const updatedCargos = [...cargosWithoutProduct, ...newCargos];\n00531|       \n00532|       // Обновляем товар\n00533|       const updatedProduct = {\n00534|         ...product,\n00535|         quantity: newQuantity,\n00536|         totalPrice: product.product.retailPrice * newQuantity,\n00537|         cargoIndexes: findCargoIndexesForProduct(updatedCargos, productId, addedAt)\n00538|       };\n\n(File has more lines. Use 'offset' parameter to read beyond line 538)\n</file>",
+    "metadata": {
+      "preview": "\n  const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n    setForm(prev => {\n      // Находим товар\n      const productIndex = prev.selectedProducts.findIndex(p => \n        p.product.id === productId && p.addedAt === addedAt\n      );\n      \n      if (productIndex === -1) return prev;\n      \n      const product = prev.selectedProducts[productIndex];\n      \n      // Удаляем старые грузы этого товара\n      const cargosWithoutProduct = removeCargosForProduct(\n        prev.cargos as CargoWithMetadata[], \n        productId, \n        addedAt\n      );\n      \n      // Создаем новые грузы с новым количеством"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759011792046,
+      "end": 1759011792049
+    }
+  }
+}

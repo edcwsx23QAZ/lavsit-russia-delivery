@@ -492,7 +492,8 @@ export default function Home() {
       productInForm.cargoIndexes = cargoIndexes;
       
       // Пересчитываем объявленную стоимость
-      const newSelectedProducts = [...prev.selectedProducts, productInForm];
+      const prevSelectedProducts = prev.selectedProducts || [];
+      const newSelectedProducts = [...prevSelectedProducts, productInForm];
       const newDeclaredValue = calculateTotalValue(newSelectedProducts);
       
       return {
@@ -509,13 +510,14 @@ export default function Home() {
   const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {
     setForm(prev => {
       // Находим товар
-      const productIndex = prev.selectedProducts.findIndex(p => 
+      const selectedProducts = prev.selectedProducts || [];
+      const productIndex = selectedProducts.findIndex(p => 
         p.product.id === productId && p.addedAt === addedAt
       );
       
       if (productIndex === -1) return prev;
       
-      const product = prev.selectedProducts[productIndex];
+      const product = selectedProducts[productIndex];
       
       // Удаляем старые грузы этого товара
       const cargosWithoutProduct = removeCargosForProduct(
@@ -536,7 +538,7 @@ export default function Home() {
         cargoIndexes: findCargoIndexesForProduct(updatedCargos, productId, addedAt)
       };
       
-      const updatedProducts = prev.selectedProducts.map((p, index) => 
+      const updatedProducts = selectedProducts.map((p, index) => 
         index === productIndex ? updatedProduct : p
       );
       
@@ -564,7 +566,8 @@ export default function Home() {
       );
       
       // Удаляем товар из списка
-      const updatedProducts = prev.selectedProducts.filter(p => 
+      const selectedProducts = prev.selectedProducts || [];
+      const updatedProducts = selectedProducts.filter(p => 
         !(p.product.id === productId && p.addedAt === addedAt)
       );
       

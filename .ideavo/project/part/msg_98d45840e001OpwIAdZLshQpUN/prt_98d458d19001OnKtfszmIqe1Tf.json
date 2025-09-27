@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d458d19001OnKtfszmIqe1Tf",
+  "messageID": "msg_98d45840e001OpwIAdZLshQpUN",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GFBuyvd2gbqZGXQkSwrFKY",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 485,
+      "limit": 20
+    },
+    "output": "<file>\n00486|     setForm(prev => {\n00487|       // Добавляем новые грузы\n00488|       const updatedCargos = [...prev.cargos, ...newCargos];\n00489|       \n00490|       // Находим индексы новых грузов\n00491|       const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n00492|       productInForm.cargoIndexes = cargoIndexes;\n00493|       \n00494|       // Пересчитываем объявленную стоимость\n00495|       const newSelectedProducts = [...prev.selectedProducts, productInForm];\n00496|       const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n00497|       \n00498|       return {\n00499|         ...prev,\n00500|         cargos: updatedCargos,\n00501|         selectedProducts: newSelectedProducts,\n00502|         declaredValue: newDeclaredValue\n00503|       };\n00504|     });\n00505|     \n\n(File has more lines. Use 'offset' parameter to read beyond line 505)\n</file>",
+    "metadata": {
+      "preview": "    setForm(prev => {\n      // Добавляем новые грузы\n      const updatedCargos = [...prev.cargos, ...newCargos];\n      \n      // Находим индексы новых грузов\n      const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n      productInForm.cargoIndexes = cargoIndexes;\n      \n      // Пересчитываем объявленную стоимость\n      const newSelectedProducts = [...prev.selectedProducts, productInForm];\n      const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n      \n      return {\n        ...prev,\n        cargos: updatedCargos,\n        selectedProducts: newSelectedProducts,\n        declaredValue: newDeclaredValue\n      };\n    });\n    "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759011770445,
+      "end": 1759011770450
+    }
+  }
+}

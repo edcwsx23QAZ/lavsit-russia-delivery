@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d45c1920011WAx69UQylDT1K",
+  "messageID": "msg_98d45840e001OpwIAdZLshQpUN",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0155DMXY36nXc8vZnbQDRkEv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 480,
+      "limit": 40
+    },
+    "output": "<file>\n00481|       totalPrice: product.retailPrice,\n00482|       cargoIndexes: [], // Заполним после добавления грузов\n00483|       addedAt: timestamp\n00484|     };\n00485|     \n00486|     setForm(prev => {\n00487|       // Добавляем новые грузы\n00488|       const updatedCargos = [...prev.cargos, ...newCargos];\n00489|       \n00490|       // Находим индексы новых грузов\n00491|       const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n00492|       productInForm.cargoIndexes = cargoIndexes;\n00493|       \n00494|       // Пересчитываем объявленную стоимость\n00495|       const newSelectedProducts = [...prev.selectedProducts, productInForm];\n00496|       const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n00497|       \n00498|       return {\n00499|         ...prev,\n00500|         cargos: updatedCargos,\n00501|         selectedProducts: newSelectedProducts,\n00502|         declaredValue: newDeclaredValue\n00503|       };\n00504|     });\n00505|     \n00506|     console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);\n00507|   };\n00508| \n00509|   const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n00510|     setForm(prev => {\n00511|       // Находим товар\n00512|       const productIndex = prev.selectedProducts.findIndex(p => \n00513|         p.product.id === productId && p.addedAt === addedAt\n00514|       );\n00515|       \n00516|       if (productIndex === -1) return prev;\n00517|       \n00518|       const product = prev.selectedProducts[productIndex];\n00519|       \n00520|       // Удаляем старые грузы этого товара\n\n(File has more lines. Use 'offset' parameter to read beyond line 520)\n</file>",
+    "metadata": {
+      "preview": "      totalPrice: product.retailPrice,\n      cargoIndexes: [], // Заполним после добавления грузов\n      addedAt: timestamp\n    };\n    \n    setForm(prev => {\n      // Добавляем новые грузы\n      const updatedCargos = [...prev.cargos, ...newCargos];\n      \n      // Находим индексы новых грузов\n      const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n      productInForm.cargoIndexes = cargoIndexes;\n      \n      // Пересчитываем объявленную стоимость\n      const newSelectedProducts = [...prev.selectedProducts, productInForm];\n      const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n      \n      return {\n        ...prev,\n        cargos: updatedCargos,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759011783703,
+      "end": 1759011783708
+    }
+  }
+}

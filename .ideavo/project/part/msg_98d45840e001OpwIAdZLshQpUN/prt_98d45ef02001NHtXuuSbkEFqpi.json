@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d45ef02001NHtXuuSbkEFqpi",
+  "messageID": "msg_98d45840e001OpwIAdZLshQpUN",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01811tkJa7YKC4nvbG9BXt7T",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 538,
+      "limit": 30
+    },
+    "output": "<file>\n00539|       \n00540|       const updatedProducts = prev.selectedProducts.map((p, index) => \n00541|         index === productIndex ? updatedProduct : p\n00542|       );\n00543|       \n00544|       // Пересчитываем объявленную стоимость\n00545|       const newDeclaredValue = calculateTotalValue(updatedProducts);\n00546|       \n00547|       return {\n00548|         ...prev,\n00549|         cargos: updatedCargos,\n00550|         selectedProducts: updatedProducts,\n00551|         declaredValue: newDeclaredValue\n00552|       };\n00553|     });\n00554|     \n00555|     console.log(`🔄 Изменено количество товара ${productId}: ${newQuantity} шт.`);\n00556|   };\n00557| \n00558|   const handleProductRemove = (productId: string, addedAt: number) => {\n00559|     setForm(prev => {\n00560|       // Удаляем грузы товара\n00561|       const cargosWithoutProduct = removeCargosForProduct(\n00562|         prev.cargos as CargoWithMetadata[], \n00563|         productId, \n00564|         addedAt\n00565|       );\n00566|       \n00567|       // Удаляем товар из списка\n00568|       const updatedProducts = prev.selectedProducts.filter(p => \n\n(File has more lines. Use 'offset' parameter to read beyond line 568)\n</file>",
+    "metadata": {
+      "preview": "      \n      const updatedProducts = prev.selectedProducts.map((p, index) => \n        index === productIndex ? updatedProduct : p\n      );\n      \n      // Пересчитываем объявленную стоимость\n      const newDeclaredValue = calculateTotalValue(updatedProducts);\n      \n      return {\n        ...prev,\n        cargos: updatedCargos,\n        selectedProducts: updatedProducts,\n        declaredValue: newDeclaredValue\n      };\n    });\n    \n    console.log(`🔄 Изменено количество товара ${productId}: ${newQuantity} шт.`);\n  };\n\n  const handleProductRemove = (productId: string, addedAt: number) => {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759011795179,
+      "end": 1759011795182
+    }
+  }
+}

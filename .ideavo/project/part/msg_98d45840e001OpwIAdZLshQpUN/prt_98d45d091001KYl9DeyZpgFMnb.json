@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d45d091001KYl9DeyZpgFMnb",
+  "messageID": "msg_98d45840e001OpwIAdZLshQpUN",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01MLmRCSmKxL8qakPVGVtow9",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Пересчитываем объявленную стоимость\n      const newSelectedProducts = [...prev.selectedProducts, productInForm];\n      const newDeclaredValue = calculateTotalValue(newSelectedProducts);",
+      "newString": "      // Пересчитываем объявленную стоимость\n      const prevSelectedProducts = prev.selectedProducts || [];\n      const newSelectedProducts = [...prevSelectedProducts, productInForm];\n      const newDeclaredValue = calculateTotalValue(newSelectedProducts);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -491,9 +491,10 @@\n const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n productInForm.cargoIndexes = cargoIndexes;\n \n // Пересчитываем объявленную стоимость\n-const newSelectedProducts = [...prev.selectedProducts, productInForm];\n+const prevSelectedProducts = prev.selectedProducts || [];\n+const newSelectedProducts = [...prevSelectedProducts, productInForm];\n const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n \n return {\n   ...prev,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759011788718,
+      "end": 1759011788737
+    }
+  }
+}

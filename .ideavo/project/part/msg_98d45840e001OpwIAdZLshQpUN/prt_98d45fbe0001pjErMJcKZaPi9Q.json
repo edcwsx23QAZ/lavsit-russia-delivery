@@ -1,0 +1,58 @@
+{
+  "id": "prt_98d45fbe0001pjErMJcKZaPi9Q",
+  "messageID": "msg_98d45840e001OpwIAdZLshQpUN",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01AgtxekQkwYhFrMTpTFba6u",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "      // Находим товар\n      const productIndex = prev.selectedProducts.findIndex(p => \n        p.product.id === productId && p.addedAt === addedAt\n      );",
+          "newString": "      // Находим товар\n      const selectedProducts = prev.selectedProducts || [];\n      const productIndex = selectedProducts.findIndex(p => \n        p.product.id === productId && p.addedAt === addedAt\n      );"
+        },
+        {
+          "oldString": "      const product = prev.selectedProducts[productIndex];",
+          "newString": "      const product = selectedProducts[productIndex];"
+        },
+        {
+          "oldString": "      const updatedProducts = prev.selectedProducts.map((p, index) => \n        index === productIndex ? updatedProduct : p\n      );",
+          "newString": "      const updatedProducts = selectedProducts.map((p, index) => \n        index === productIndex ? updatedProduct : p\n      );"
+        },
+        {
+          "oldString": "      // Удаляем товар из списка\n      const updatedProducts = prev.selectedProducts.filter(p =>",
+          "newString": "      // Удаляем товар из списка\n      const selectedProducts = prev.selectedProducts || [];\n      const updatedProducts = selectedProducts.filter(p =>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -509,9 +509,10 @@\n \n const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n   setForm(prev => {\n     // Находим товар\n-    const productIndex = prev.selectedProducts.findIndex(p => \n+    const selectedProducts = prev.selectedProducts || [];\n+    const productIndex = selectedProducts.findIndex(p => \n       p.product.id === productId && p.addedAt === addedAt\n     );\n     \n     if (productIndex === -1) return prev;\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -516,9 +516,9 @@\n );\n \n if (productIndex === -1) return prev;\n \n-const product = prev.selectedProducts[productIndex];\n+const product = selectedProducts[productIndex];\n \n // Удаляем старые грузы этого товара\n const cargosWithoutProduct = removeCargosForProduct(\n   prev.cargos as CargoWithMetadata[], \n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -537,9 +537,9 @@\n   totalPrice: product.product.retailPrice * newQuantity,\n   cargoIndexes: findCargoIndexesForProduct(updatedCargos, productId, addedAt)\n };\n \n-const updatedProducts = prev.selectedProducts.map((p, index) => \n+const updatedProducts = selectedProducts.map((p, index) => \n   index === productIndex ? updatedProduct : p\n );\n \n // Пересчитываем объявленную стоимость\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -565,9 +565,10 @@\n   addedAt\n );\n \n // Удаляем товар из списка\n-const updatedProducts = prev.selectedProducts.filter(p => \n+const selectedProducts = prev.selectedProducts || [];\n+const updatedProducts = selectedProducts.filter(p => \n   !(p.product.id === productId && p.addedAt === addedAt)\n );\n \n // Пересчитываем объявленную стоимость\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759011802138,
+      "end": 1759011802192
+    }
+  }
+}

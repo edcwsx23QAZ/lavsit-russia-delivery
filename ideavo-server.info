@@ -4,25 +4,24 @@ $ next dev
   - Environments: .env.local, .env
 
  ✓ Starting...
- ✓ Ready in 1800ms
- ✓ Compiled /middleware in 142ms
+ ✓ Ready in 1817ms
+ ✓ Compiled /middleware in 136ms
  ✓ Compiled (73 modules)
  ○ Compiling / ...
- ✓ Compiled / in 3.2s (567 modules)
- GET / 200 in 3751ms
- ✓ Compiled in 587ms (292 modules)
- GET / 200 in 49ms
+ ✓ Compiled / in 3.6s (569 modules)
+ GET / 200 in 4139ms
+ ✓ Compiled in 586ms (293 modules)
+ GET / 200 in 50ms
  ⚠ Cross origin request detected from 4000-i859b80wqs6c2fhjwbj2w.e2b.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
- ○ Compiling /api/vozovoz ...
- ✓ Compiled /api/vozovoz in 564ms (305 modules)
- ✓ Compiled (311 modules)
+ ✓ Compiled /api/rail-continent in 421ms (306 modules)
+ ✓ Compiled (312 modules)
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "test"
 }
 🔧 Тестовый метод прокси
- POST /api/pek 200 in 739ms
+ POST /api/pek 200 in 639ms
 🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
 🚚 Vozovoz API запрос: {
   "object": "price",
@@ -58,8 +57,8 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
 📋 Количество строк: 1890
 ✅ Успешно обработано 1889 товаров
 🛋️ Обработано товаров: 1889
- GET /api/furniture-products 200 in 881ms
- GET /api/furniture-products 200 in 11ms
+ GET /api/furniture-products 200 in 756ms
+ GET /api/furniture-products 200 in 17ms
 🚂 Rail Continent API ответ: {
   "result": "success",
   "data": {
@@ -191,7 +190,7 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     "train_fast_temp": false
   }
 }
- POST /api/rail-continent 200 in 1588ms
+ POST /api/rail-continent 200 in 1521ms
 🚚 Vozovoz API статус: 200 OK
 🚚 Vozovoz API ответ: {
   "response": {
@@ -228,4 +227,211 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     ]
   }
 }
- POST /api/vozovoz 200 in 2134ms
+ POST /api/vozovoz 200 in 1636ms
+ GET / 200 in 191ms
+ GET /api/furniture-products 200 in 24ms
+🔧 ПЭК Прокси: Получен запрос (по официальной документации)
+📝 Данные запроса: {
+  "method": "test"
+}
+🔧 Тестовый метод прокси
+ POST /api/pek 200 in 17ms
+🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
+🚚 Vozovoz API запрос: {
+  "object": "price",
+  "action": "get",
+  "params": {
+    "cargo": {
+      "dimension": {
+        "quantity": 1,
+        "volume": 0.1,
+        "weight": 10
+      }
+    },
+    "gateway": {
+      "dispatch": {
+        "point": {
+          "location": "Москва",
+          "terminal": "default"
+        }
+      },
+      "destination": {
+        "point": {
+          "location": "Санкт-Петербург",
+          "terminal": "default"
+        }
+      }
+    }
+  }
+}
+🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp
+ GET /api/furniture-products 200 in 25ms
+🚂 Rail Continent API ответ: {
+  "result": "success",
+  "data": {
+    "auto": {
+      "method": "_calcUsual",
+      "id": "6282027",
+      "sbornaya": 1000,
+      "sbornayaPack": 1200,
+      "price_terminal_enter1": "195",
+      "price_terminal_enter2": 0,
+      "price": 1195,
+      "pricePickup": "0",
+      "priceDelivery": "0",
+      "pricePackage": "600",
+      "priceDocuments": 400,
+      "priceInsurance": 0.16,
+      "price_with_out_sale": 1000,
+      "sale": 0,
+      "discount_params": {
+        "amount": 0,
+        "volume": 0,
+        "weight": 0
+      },
+      "duration": "4",
+      "type": "АВТО",
+      "rsClass": "АВТО",
+      "rsType": "ТЕНТ 82М3",
+      "temp": "БЕЗ ТЕПЛ",
+      "service": "СБОРНАЯ",
+      "velocity": "АВТОМОБИЛЬНАЯ",
+      "terminalEnter1": "195",
+      "terminalEnter2": 0,
+      "priceTotal": 1195
+    },
+    "train": {
+      "method": "_calcUsual",
+      "id": "6283320",
+      "sbornaya": 2700,
+      "sbornayaPack": 2700,
+      "price_terminal_enter1": "195",
+      "price_terminal_enter2": 0,
+      "price": 2895,
+      "pricePickup": "800",
+      "priceDelivery": "800",
+      "pricePackage": "600",
+      "priceDocuments": 400,
+      "priceInsurance": 0.16,
+      "price_with_out_sale": 2700,
+      "sale": 0,
+      "discount_params": {
+        "amount": 0,
+        "volume": 0,
+        "weight": 0
+      },
+      "duration": "14",
+      "type": "ЖД",
+      "rsClass": "ВАГОН",
+      "rsType": "КРЫТЫЙ",
+      "temp": "БЕЗ ТЕПЛ",
+      "service": "СБОРНАЯ",
+      "velocity": "ЖД",
+      "terminalEnter1": "195",
+      "terminalEnter2": 0,
+      "priceTotal": 2895
+    },
+    "train_fast": false,
+    "auto_temp": {
+      "method": "_calcUsual",
+      "id": "6292626",
+      "sbornaya": 1000,
+      "sbornayaPack": 1200,
+      "price_terminal_enter1": "195",
+      "price_terminal_enter2": 0,
+      "price": 1195,
+      "pricePickup": "0",
+      "priceDelivery": "0",
+      "pricePackage": "600",
+      "priceDocuments": 400,
+      "priceInsurance": 0.16,
+      "price_with_out_sale": 1000,
+      "sale": 0,
+      "discount_params": {
+        "amount": 0,
+        "volume": 0,
+        "weight": 0
+      },
+      "duration": "4",
+      "type": "АВТО",
+      "rsClass": "АВТО",
+      "rsType": "РЕФ 86 М3",
+      "temp": "ТЕПЛЫЙ",
+      "service": "СБОРНАЯ",
+      "velocity": "АВТОМОБИЛЬНАЯ",
+      "terminalEnter1": "195",
+      "terminalEnter2": 0,
+      "priceTotal": 1195
+    },
+    "train_temp": {
+      "method": "_calcUsual",
+      "id": "6299178",
+      "sbornaya": 1800,
+      "sbornayaPack": 1800,
+      "price_terminal_enter1": "195",
+      "price_terminal_enter2": 0,
+      "price": 1995,
+      "pricePickup": "800",
+      "priceDelivery": "800",
+      "pricePackage": "600",
+      "priceDocuments": 400,
+      "priceInsurance": 0.16,
+      "price_with_out_sale": 1800,
+      "sale": 0,
+      "discount_params": {
+        "amount": 0,
+        "volume": 0,
+        "weight": 0
+      },
+      "duration": "8",
+      "type": "ЖД",
+      "rsClass": "ВАГОН",
+      "rsType": "ИВ-ТЕРМОС",
+      "temp": "ТЕПЛЫЙ",
+      "service": "СБОРНАЯ",
+      "velocity": "ЖД",
+      "terminalEnter1": "195",
+      "terminalEnter2": 0,
+      "priceTotal": 1995
+    },
+    "train_fast_temp": false
+  }
+}
+ POST /api/rail-continent 200 in 902ms
+🚚 Vozovoz API статус: 200 OK
+🚚 Vozovoz API ответ: {
+  "response": {
+    "basePrice": 1190,
+    "price": 1170,
+    "service": [
+      {
+        "basePrice": 100,
+        "name": "Платный въезд (отправитель)",
+        "price": 100
+      },
+      {
+        "basePrice": 981,
+        "name": "Перевозка между городами",
+        "price": 961
+      },
+      {
+        "basePrice": 49,
+        "name": "Страхование груза без объявленной стоимости",
+        "price": 49
+      },
+      {
+        "basePrice": 60,
+        "name": "Складская обработка",
+        "price": 60
+      }
+    ],
+    "deliveryTime": {
+      "from": 1,
+      "to": 1
+    },
+    "warnings": [
+      "Данные узла \"gateway.dispatch.location\" по запросу \"Москва\" не содержат уникального значения"
+    ]
+  }
+}
+ POST /api/vozovoz 200 in 1268ms
