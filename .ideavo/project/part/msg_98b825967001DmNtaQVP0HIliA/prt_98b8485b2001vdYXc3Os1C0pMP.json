@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b8485b2001vdYXc3Os1C0pMP",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0138rnL3bR1RGHMJzMzTn6yk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 620,
+      "limit": 50
+    },
+    "output": "<file>\n00621|         \n00622|         if (response.status === 400 && data?.errors) {\n00623|           console.log('=== АНАЛИЗ ОШИБКИ 400 ===');\n00624|           console.log('🔍 Ошибки:', data.errors);\n00625|           data.errors.forEach((error: any, index: number) => {\n00626|             console.log(`🔍 Ошибка ${index + 1}:`, error);\n00627|             console.log(`   - Поле: ${error.field || 'не указано'}`);\n00628|             console.log(`   - Сообщение: ${error.detail || error.message || 'не указано'}`);\n00629|           });\n00630|           console.log('=== КОНЕЦ АНАЛИЗА ОШИБКИ 400 ===');\n00631|         }\n00632| \n00633|         // Если запрос успешный или не связан с авторизацией, продолжаем обработку\n00634|         break;\n00635| \n00636|       const response = await fetch(apiUrl, {\n00637|         method: 'POST',\n00638|         headers: {\n00639|           'Content-Type': 'application/json',\n00640|           'Accept': 'application/json'\n00641|         },\n00642|         body: JSON.stringify(requestData)\n00643|       });\n00644| \n00645|       const data = await response.json();\n00646|       console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n00647|       console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n00648|       console.log('🚀 ОТВЕТ ДЛ data:', data);\n00649|       \n00650| \n00651|       \n00652|       // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n00653|       console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n00654|       console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));\n00655|       \n00656|       // Поиск всех полей связанных со страховкой\n00657|       console.log('💳 ПОИСК КОМПОНЕНТОВ СТРАХОВКИ:');\n00658|       console.log('💳 data.data.insurance:', data.data?.insurance);\n00659|       console.log('💳 data.data.cargoInsurance:', data.data?.cargoInsurance);\n00660|       console.log('💳 data.data.termInsurance:', data.data?.termInsurance);\n00661|       console.log('💳 data.data.insuranceDetails:', data.data?.insuranceDetails);\n00662|       console.log('💳 data.data.services:', data.data?.services);\n00663|       console.log('💳 data.data.additionalServices:', data.data?.additionalServices);\n00664|       \n00665|       // Поиск страховки в других разделах\n00666|       if (data.data.derival) {\n00667|         console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival.insurance);\n00668|       }\n00669|       if (data.data.arrival) {\n00670|         console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival.insurance);\n\n(File has more lines. Use 'offset' parameter to read beyond line 670)\n</file>",
+    "metadata": {
+      "preview": "        \n        if (response.status === 400 && data?.errors) {\n          console.log('=== АНАЛИЗ ОШИБКИ 400 ===');\n          console.log('🔍 Ошибки:', data.errors);\n          data.errors.forEach((error: any, index: number) => {\n            console.log(`🔍 Ошибка ${index + 1}:`, error);\n            console.log(`   - Поле: ${error.field || 'не указано'}`);\n            console.log(`   - Сообщение: ${error.detail || error.message || 'не указано'}`);\n          });\n          console.log('=== КОНЕЦ АНАЛИЗА ОШИБКИ 400 ===');\n        }\n\n        // Если запрос успешный или не связан с авторизацией, продолжаем обработку\n        break;\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Accept': 'application/json'"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758982342837,
+      "end": 1758982342839
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b840615001hmzIQrofsd6dJw",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Sr2gDfJ6jiiDmawqnYzTDX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 570,
+      "limit": 20
+    },
+    "output": "<file>\n00571|       if (requestData.delivery.packages) {\n00572|         console.log('✅ PACKAGES НАЙДЕН В ЗАПРОСЕ:', requestData.delivery.packages);\n00573|       } else {\n00574|         console.log('❌ PACKAGES НЕ НАЙДЕН В ЗАПРОСЕ');\n00575|         console.log('   form.needPackaging =', form.needPackaging);\n00576|         console.log('   packageUid =', packageUid);\n00577|         console.log('   Условие:', form.needPackaging && packageUid);\n00578|       }\n00579| \n00580|       const response = await fetch(apiUrl, {\n00581|         method: 'POST',\n00582|         headers: {\n00583|           'Content-Type': 'application/json',\n00584|           'Accept': 'application/json'\n00585|         },\n00586|         body: JSON.stringify(requestData)\n00587|       });\n00588| \n00589|       const data = await response.json();\n00590|       console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n\n(File has more lines. Use 'offset' parameter to read beyond line 590)\n</file>",
+    "metadata": {
+      "preview": "      if (requestData.delivery.packages) {\n        console.log('✅ PACKAGES НАЙДЕН В ЗАПРОСЕ:', requestData.delivery.packages);\n      } else {\n        console.log('❌ PACKAGES НЕ НАЙДЕН В ЗАПРОСЕ');\n        console.log('   form.needPackaging =', form.needPackaging);\n        console.log('   packageUid =', packageUid);\n        console.log('   Условие:', form.needPackaging && packageUid);\n      }\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Accept': 'application/json'\n        },\n        body: JSON.stringify(requestData)\n      });\n\n      const data = await response.json();\n      console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758982310260,
+      "end": 1758982310264
+    }
+  }
+}

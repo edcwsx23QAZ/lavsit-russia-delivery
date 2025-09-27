@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b8353f2001P2hy1tUdRkrnn1",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01AvsUpNfLSpw1vMMdDXGrTA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 240,
+      "limit": 50
+    },
+    "output": "<file>\n00241|       }));\n00242|     }\n00243|   };\n00244| \n00245|   // Получение sessionID для Деловых Линий\n00246|   const getDellinSessionId = async (): Promise<string | null> => {\n00247|     try {\n00248|       const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n00249|         method: 'POST',\n00250|         headers: {\n00251|           'Content-Type': 'application/json'\n00252|         },\n00253|         body: JSON.stringify({\n00254|           appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n00255|           login: 'service@lavsit.ru',\n00256|           password: 'edcwsx123QAZ'\n00257|         })\n00258|       });\n00259| \n00260|       const authData = await authResponse.json();\n00261|       console.log('🔑 АВТОРИЗАЦИЯ ДЛ response.ok:', authResponse.ok);\n00262|       console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData:', authData);\n00263|       console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data:', authData.data);\n00264|       console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data?.sessionID:', authData.data?.sessionID);\n00265|       \n00266|       // Проверяем разные возможные пути к sessionID\n00267|       let sessionID = null;\n00268|       \n00269|       if (authData.data?.sessionID) {\n00270|         sessionID = authData.data.sessionID;\n00271|         console.log('✅ SessionID найден в data.sessionID:', sessionID);\n00272|       } else if (authData.sessionID) {\n00273|         sessionID = authData.sessionID;\n00274|         console.log('✅ SessionID найден в sessionID:', sessionID);\n00275|       } else if (authData.data?.session) {\n00276|         sessionID = authData.data.session;\n00277|         console.log('✅ SessionID найден в data.session:', sessionID);\n00278|       }\n00279|       \n00280|       if (authResponse.ok && sessionID) {\n00281|         return sessionID;\n00282|       } else {\n00283|         console.error('❌ Ошибка авторизации Деловые Линии:', authData);\n00284|         console.error('❌ Статус ответа:', authResponse.status);\n00285|         console.error('❌ Текст ответа:', authResponse.statusText);\n00286|         return null;\n00287|       }\n00288|     } catch (error) {\n00289|       console.error('Ошибка соединения с авторизацией Деловые Линии:', error);\n00290|     }\n\n(File has more lines. Use 'offset' parameter to read beyond line 290)\n</file>",
+    "metadata": {
+      "preview": "      }));\n    }\n  };\n\n  // Получение sessionID для Деловых Линий\n  const getDellinSessionId = async (): Promise<string | null> => {\n    try {\n      const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json'\n        },\n        body: JSON.stringify({\n          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n          login: 'service@lavsit.ru',\n          password: 'edcwsx123QAZ'\n        })\n      });\n\n      const authData = await authResponse.json();"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758982264369,
+      "end": 1758982264371
+    }
+  }
+}

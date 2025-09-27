@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b83e30e001ENS0H8lzfGVOvt",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Qo5MjCEssKrB3HeFH8Vme2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  // Расчет для Деловых Линий через корректный API v2/calculator.json\n  const calculateDellin = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';",
+      "newString": "  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n  const calculateDellin = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n    const maxRetries = 2;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -394,11 +394,12 @@\n   console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');\n   return null;\n };\n \n-// Расчет для Деловых Линий через корректный API v2/calculator.json\n+// Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n const calculateDellin = async (): Promise<CalculationResult> => {\n   const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n+  const maxRetries = 2;\n   \n   try {\n     const sessionID = await getDellinSessionId();\n     \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758982302677,
+      "end": 1758982302687
+    }
+  }
+}

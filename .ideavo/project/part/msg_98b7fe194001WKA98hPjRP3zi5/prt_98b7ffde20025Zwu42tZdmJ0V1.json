@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b7ffde20025Zwu42tZdmJ0V1",
+  "messageID": "msg_98b7fe194001WKA98hPjRP3zi5",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01CHeiTukWszjckfDm88jAQB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1340,
+      "limit": 50
+    },
+    "output": "<file>\n01341|         return { response, data };\n01342|       };\n01343| \n01344|       // Добавляем диагностику перед началом расчета\n01345|       console.log('🔧 ПЭК: готовим данные для расчета...');\n01346|       console.log('📍 senderWarehouseId:', senderWarehouseId);\n01347|       console.log('📍 receiverWarehouseId:', receiverWarehouseId);\n01348|       console.log('📅 Начальная дата:', plannedDateTime);\n01349|       console.log('📦 Количество грузов:', cargos.length);\n01350|       console.log('🔧 form.fromAddressDelivery:', form.fromAddressDelivery);\n01351|       console.log('🔧 form.toAddressDelivery:', form.toAddressDelivery);\n01352|       \n01353|       // Цикл попыток с разными датами (максимум 7 дней)\n01354|       const maxRetries = 7;\n01355|       let lastError = null;\n01356|       \n01357|       console.log('🚀 ПЭК: запускаем цикл расчета...');\n01358|       \n01359|       for (let attempt = 0; attempt < maxRetries; attempt++) {\n01360|         try {\n01361|           console.log(`📅 ПЭК: попытка ${attempt + 1}/${maxRetries}, дата: ${plannedDateTime}`);\n01362|           \n01363|           const { response, data } = await tryCalculateWithDate(plannedDateTime);\n01364|           \n01365|           if (response.ok && !data.hasError && data.transfers && data.transfers.length > 0) {\n01366|             const transfer = data.transfers[0]; // берем первый тариф (авто)\n01367|             \n01368|             if (!transfer.hasError) {\n01369|           // Обрабатываем детальную структуру услуг\n01370|           const services: { name: string; description: string; price: number }[] = [];\n01371|           let totalCalculated = 0;\n01372| \n01373|           const processServices = (servicesList: any[], parentName = '') => {\n01374|             servicesList.forEach(service => {\n01375|               const serviceName = parentName ? `${parentName} - ${service.info}` : service.info;\n01376|               const serviceCost = parseFloat(service.cost) || 0;\n01377|               \n01378|               if (serviceCost > 0) {\n01379|                 services.push({\n01380|                   name: serviceName,\n01381|                   description: service.serviceType || '',\n01382|                   price: serviceCost\n01383|                 });\n01384|                 totalCalculated += serviceCost;\n01385|               }\n01386| \n01387|               // Обрабатываем вложенные услуги\n01388|               if (service.services && Array.isArray(service.services)) {\n01389|                 processServices(service.services, serviceName);\n01390|               }\n\n(File has more lines. Use 'offset' parameter to read beyond line 1390)\n</file>",
+    "metadata": {
+      "preview": "        return { response, data };\n      };\n\n      // Добавляем диагностику перед началом расчета\n      console.log('🔧 ПЭК: готовим данные для расчета...');\n      console.log('📍 senderWarehouseId:', senderWarehouseId);\n      console.log('📍 receiverWarehouseId:', receiverWarehouseId);\n      console.log('📅 Начальная дата:', plannedDateTime);\n      console.log('📦 Количество грузов:', cargos.length);\n      console.log('🔧 form.fromAddressDelivery:', form.fromAddressDelivery);\n      console.log('🔧 form.toAddressDelivery:', form.toAddressDelivery);\n      \n      // Цикл попыток с разными датами (максимум 7 дней)\n      const maxRetries = 7;\n      let lastError = null;\n      \n      console.log('🚀 ПЭК: запускаем цикл расчета...');\n      \n      for (let attempt = 0; attempt < maxRetries; attempt++) {\n        try {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758982046268,
+      "end": 1758982046277
+    }
+  }
+}

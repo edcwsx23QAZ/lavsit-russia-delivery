@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b842245002a7CQIa5az8QNk2",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01FSEHnkYZAw2GiqrXyBUaGn",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 780,
+      "limit": 20
+    },
+    "output": "<file>\n00781|       }\n00782|     } catch (error: any) {\n00783|       return {\n00784|         company: 'Деловые Линии',\n00785|         price: 0,\n00786|         days: 0,\n00787|         error: `Ошибка соединения: ${error.message}`,\n00788|         requestData: null,\n00789|         responseData: null,\n00790|         apiUrl\n00791|       };\n00792|     }\n00793|   };\n00794| \n00795|   // Расчет для Nord Wheel\n00796|   const calculateNordWheel = async (): Promise<CalculationResult> => {\n00797|     const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n00798|     \n00799|     try {\n00800|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n\n(File has more lines. Use 'offset' parameter to read beyond line 800)\n</file>",
+    "metadata": {
+      "preview": "      }\n    } catch (error: any) {\n      return {\n        company: 'Деловые Линии',\n        price: 0,\n        days: 0,\n        error: `Ошибка соединения: ${error.message}`,\n        requestData: null,\n        responseData: null,\n        apiUrl\n      };\n    }\n  };\n\n  // Расчет для Nord Wheel\n  const calculateNordWheel = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n    \n    try {\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758982317241,
+      "end": 1758982317244
+    }
+  }
+}

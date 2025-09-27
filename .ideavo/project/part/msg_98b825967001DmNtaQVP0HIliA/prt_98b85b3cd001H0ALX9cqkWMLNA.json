@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b85b3cd001H0ALX9cqkWMLNA",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01GLyhTFxj1T1tFj2GJeEw46",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Проверка сборки после исправления переменных"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1510:17\nType error: Type 'Error' is not assignable to type 'null'.\n\n\u001b[0m \u001b[90m 1508 |\u001b[39m               \u001b[36mif\u001b[39m (errorMessage\u001b[33m.\u001b[39mincludes(\u001b[32m'забор груза невозможен'\u001b[39m) \u001b[33m||\u001b[39m errorMessage\u001b[33m.\u001b[39mincludes(\u001b[32m'выбранной даты'\u001b[39m)) {\u001b[0m\n\u001b[0m \u001b[90m 1509 |\u001b[39m                 console\u001b[33m.\u001b[39mlog(\u001b[32m`📅 ПЭК: ${errorMessage}. Пробуем следующий день...`\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1510 |\u001b[39m                 lastError \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(errorMessage)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1511 |\u001b[39m                 \u001b[90m// Переходим к следующему дню\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1512 |\u001b[39m                 currentDayOffset\u001b[33m++\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1513 |\u001b[39m                 plannedDateTime \u001b[33m=\u001b[39m getDateForCalculation(currentDayOffset)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1510:17\nType error: Type 'Error' is not assignable to type 'null'.\n\n\u001b[0m \u001b[90m 1508 |\u001b[39m               \u001b[36mif\u001b[39m (errorMessage\u001b[33m.\u001b[39mincludes(\u001b[32m'забор груза невозможен'\u001b[39m) \u001b[33m||\u001b[39m errorMessage\u001b[33m.\u001b[39mincludes(\u001b[32m'выбранной даты'\u001b[39m)) {\u001b[0m\n\u001b[0m \u001b[90m 1509 |\u001b[39m                 console\u001b[33m.\u001b[39mlog(\u001b[32m`📅 ПЭК: ${errorMessage}. Пробуем следующий день...`\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1510 |\u001b[39m                 lastError \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(errorMessage)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1511 |\u001b[39m                 \u001b[90m// Переходим к следующему дню\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1512 |\u001b[39m                 currentDayOffset\u001b[33m++\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1513 |\u001b[39m                 plannedDateTime \u001b[33m=\u001b[39m getDateForCalculation(currentDayOffset)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Проверка сборки после исправления переменных"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1758982420360,
+      "end": 1758982434144
+    }
+  }
+}

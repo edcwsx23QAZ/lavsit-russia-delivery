@@ -325,56 +325,83 @@ export default function Home() {
     }
   };
 
-  // Получение UID упаковки "crate_with_bubble" из справочника упаковок Деловые Линии
+  // Получение UID упаковки "crate_with_bubble" из справочника упаковок Деловые Линии с повторной авторизацией
   const getDellinCrateWithBubbleUid = async (): Promise<string | null> => {
-    try {
-      const response = await fetch('/api/dellin-packages', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+    const maxRetries = 2;
+    
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
+      try {
+        console.log(`📦 СПРАВОЧНИК УПАКОВОК: попытка ${attempt}/${maxRetries}`);
+        
+        const response = await fetch('/api/dellin-packages', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
 
-      const data = await response.json();
-      console.log('📦 СПРАВОЧНИК УПАКОВОК response.ok:', response.ok);
-      console.log('📦 СПРАВОЧНИК УПАКОВОК status:', response.status);
-      console.log('📦 СПРАВОЧНИК УПАКОВОК data:', data);
-      
-      if (response.ok && data.data && Array.isArray(data.data)) {
-        console.log('📦 Количество упаковок в справочнике:', data.data.length);
-        console.log('📦 Первые 3 упаковки:', data.data.slice(0, 3).map(p => ({name: p.name, uid: p.uid})));
+        const data = await response.json();
+        console.log('📦 СПРАВОЧНИК УПАКОВОК response.ok:', response.ok);
+        console.log('📦 СПРАВОЧНИК УПАКОВОК status:', response.status);
+        console.log('📦 СПРАВОЧНИК УПАКОВОК data:', data);
         
-        // Находим упаковку с name "crate_with_bubble"
-        const crateWithBubble = data.data.find((pkg: any) => 
-          pkg.name === 'crate_with_bubble'
-        );
-        
-        console.log('📦 Поиск crate_with_bubble результат:', crateWithBubble);
-        
-        if (crateWithBubble && crateWithBubble.uid) {
-          console.log('✅ Найден UID для crate_with_bubble:', crateWithBubble.uid);
-          return crateWithBubble.uid;
-        } else {
-          console.log('❌ crate_with_bubble не найден или нет UID');
+        // Если 401 Unauthorized - пробуем переавторизоваться
+        if (response.status === 401 && attempt < maxRetries) {
+          console.log('🔄 СПРАВОЧНИК УПАКОВОК: получили 401, выполняем повторную авторизацию...');
+          const newSessionId = await getDellinSessionId();
+          if (newSessionId) {
+            console.log('✅ СПРАВОЧНИК УПАКОВОК: получен новый SessionID, повторяем запрос...');
+            continue; // Пробуем еще раз с новой авторизацией
+          } else {
+            console.error('❌ СПРАВОЧНИК УПАКОВОК: не удалось получить новый SessionID');
+            return null;
+          }
         }
-      } else {
-        console.log('❌ Ошибка структуры ответа API упаковок');
+        
+        if (response.ok && data.data && Array.isArray(data.data)) {
+          console.log('📦 Количество упаковок в справочнике:', data.data.length);
+          console.log('📦 Первые 3 упаковки:', data.data.slice(0, 3).map(p => ({name: p.name, uid: p.uid})));
+          
+          // Находим упаковку с name "crate_with_bubble"
+          const crateWithBubble = data.data.find((pkg: any) => 
+            pkg.name === 'crate_with_bubble'
+          );
+          
+          console.log('📦 Поиск crate_with_bubble результат:', crateWithBubble);
+          
+          if (crateWithBubble && crateWithBubble.uid) {
+            console.log('✅ Найден UID для crate_with_bubble:', crateWithBubble.uid);
+            return crateWithBubble.uid;
+          } else {
+            console.log('❌ crate_with_bubble не найден или нет UID');
+          }
+        } else {
+          console.log('❌ Ошибка структуры ответа API упаковок');
+        }
+        
+        // Если дошли сюда, значит не нашли упаковку или была другая ошибка
+        break;
+        
+      } catch (error) {
+        console.error(`❌ СПРАВОЧНИК УПАКОВОК: ошибка на попытке ${attempt}:`, error);
+        if (attempt === maxRetries) {
+          console.error('❌ СПРАВОЧНИК УПАКОВОК: исчерпаны все попытки');
+          return null;
+        }
       }
-      
-      console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');
-      return null;
-    } catch (error) {
-      console.error('Ошибка получения справочника упаковок Деловые Линии:', error);
-      return null;
     }
+    
+    console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');
+    return null;
   };
 
-  // Расчет для Деловых Линий через корректный API v2/calculator.json
+  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией
   const calculateDellin = async (): Promise<CalculationResult> => {
     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';
+    const maxRetries = 2;
     
     try {
-      const sessionID = await getDellinSessionId();
+      let sessionID = await getDellinSessionId();
       
       if (!sessionID) {
         return {
@@ -550,20 +577,65 @@ export default function Home() {
         console.log('   Условие:', form.needPackaging && packageUid);
       }
 
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(requestData)
-      });
-
-      const data = await response.json();
-      console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);
-      console.log('🚀 ОТВЕТ ДЛ status:', response.status);
-      console.log('🚀 ОТВЕТ ДЛ data:', data);
+      // Попытки запроса с повторной авторизацией при ошибках
+      let response: any = null;
+      let data: any = null;
       
+      for (let attempt = 1; attempt <= maxRetries; attempt++) {
+        console.log(`🔄 ДЛ: попытка запроса ${attempt}/${maxRetries}`);
+        
+        response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(requestData)
+        });
+
+        data = await response.json();
+        console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);
+        console.log('🚀 ОТВЕТ ДЛ status:', response.status);
+        console.log('🚀 ОТВЕТ ДЛ data:', data);
+        
+        // Проверяем различные типы ошибок авторизации
+        const isAuthError = response.status === 401 || 
+                           response.status === 403 ||
+                           (response.status === 400 && data?.errors?.some((err: any) => 
+                             err.detail?.toLowerCase()?.includes('session') ||
+                             err.detail?.toLowerCase()?.includes('auth') ||
+                             err.detail?.toLowerCase()?.includes('invalid')
+                           ));
+
+        if (isAuthError && attempt < maxRetries) {
+          console.log('🔄 ДЛ: обнаружена ошибка авторизации, выполняем повторную авторизацию...');
+          const newSessionId = await getDellinSessionId();
+          if (newSessionId) {
+            console.log('✅ ДЛ: получен новый SessionID, обновляем запрос...');
+            // Обновляем sessionID в запросе
+            requestData.sessionID = newSessionId;
+            sessionID = newSessionId;
+            continue; // Пробуем еще раз с новой авторизацией
+          } else {
+            console.error('❌ ДЛ: не удалось получить новый SessionID');
+            break;
+          }
+        }
+        
+        if (response.status === 400 && data?.errors) {
+          console.log('=== АНАЛИЗ ОШИБКИ 400 ===');
+          console.log('🔍 Ошибки:', data.errors);
+          data.errors.forEach((error: any, index: number) => {
+            console.log(`🔍 Ошибка ${index + 1}:`, error);
+            console.log(`   - Поле: ${error.field || 'не указано'}`);
+            console.log(`   - Сообщение: ${error.detail || error.message || 'не указано'}`);
+          });
+          console.log('=== КОНЕЦ АНАЛИЗА ОШИБКИ 400 ===');
+        }
+
+        // Если запрос успешный или не связан с авторизацией, продолжаем обработку
+        break;
+      }
 
       
       // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ
@@ -1221,6 +1293,9 @@ export default function Home() {
         return cargoData;
       });
 
+      // Переменная для хранения финального запроса (нужна для возврата в результате)
+      let finalRequestData: any = null;
+      
       // Функция для попытки расчета с конкретной датой
       const tryCalculateWithDate = async (plannedDateTime: string): Promise<any> => {
         // Формируем запрос к API ПЭК согласно документации
@@ -1297,7 +1372,8 @@ export default function Home() {
         
         console.log('✅ ПЭК: валидация обязательных полей пройдена');
 
-        const finalRequestData = {
+        // Сохраняем финальный запрос в переменной области видимости функции
+        finalRequestData = {
           method: 'calculateprice',
           ...requestData
         };
@@ -1352,7 +1428,7 @@ export default function Home() {
       
       // Цикл попыток с разными датами (максимум 7 дней)
       const maxRetries = 7;
-      let lastError = null;
+      let lastError: Error | null = null;
       
       console.log('🚀 ПЭК: запускаем цикл расчета...');
       
@@ -1506,7 +1582,7 @@ export default function Home() {
       );
       
       // Добавляем услуги
-      const services = [];
+      const services: { name: string; description: string; price: number }[] = [];
       
       services.push({
         name: 'Транспортировка',

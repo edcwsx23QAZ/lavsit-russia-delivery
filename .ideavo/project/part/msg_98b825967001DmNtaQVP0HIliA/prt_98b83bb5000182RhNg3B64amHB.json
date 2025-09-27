@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b83bb5000182RhNg3B64amHB",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01M89aVuUiWJDJHTYE9GzsD3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 540,
+      "limit": 50
+    },
+    "output": "<file>\n00541|         cargo: {\n00542|           quantity: form.cargos.length,\n00543|           length: maxLength,\n00544|           width: maxWidth,\n00545|           height: maxHeight,\n00546|           weight: totalWeight,\n00547|           totalVolume: totalVolume,\n00548|           totalWeight: totalWeight,\n00549|           oversizedWeight: 0,\n00550|           oversizedVolume: 0,\n00551|           hazardClass: 0,  // Всегда 0 если нет опасных грузов\n00552|           ...(form.needInsurance && form.declaredValue > 0 ? {\n00553|             insurance: {\n00554|               statedValue: form.declaredValue,\n00555|               term: true  // Всегда true при наличии страхования\n00556|             }\n00557|           } : {})\n00558|         },\n00559|         payment: {\n00560|           type: 'noncash',  // Всегда \"noncash\"\n00561|           paymentCitySearch: {\n00562|             search: form.fromCity  // Город оплаты\n00563|           }\n00564|         }\n00565|       };\n00566| \n00567|       console.log('🚀 ИТОГОВЫЙ ЗАПРОС К ДЛ:', JSON.stringify(requestData, null, 2));\n00568|       \n00569|       // Специальная проверка блока packages\n00570|       if (requestData.delivery.packages) {\n00571|         console.log('✅ PACKAGES НАЙДЕН В ЗАПРОСЕ:', requestData.delivery.packages);\n00572|       } else {\n00573|         console.log('❌ PACKAGES НЕ НАЙДЕН В ЗАПРОСЕ');\n00574|         console.log('   form.needPackaging =', form.needPackaging);\n00575|         console.log('   packageUid =', packageUid);\n00576|         console.log('   Условие:', form.needPackaging && packageUid);\n00577|       }\n00578| \n00579|       const response = await fetch(apiUrl, {\n00580|         method: 'POST',\n00581|         headers: {\n00582|           'Content-Type': 'application/json',\n00583|           'Accept': 'application/json'\n00584|         },\n00585|         body: JSON.stringify(requestData)\n00586|       });\n00587| \n00588|       const data = await response.json();\n00589|       console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n00590|       console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n\n(File has more lines. Use 'offset' parameter to read beyond line 590)\n</file>",
+    "metadata": {
+      "preview": "        cargo: {\n          quantity: form.cargos.length,\n          length: maxLength,\n          width: maxWidth,\n          height: maxHeight,\n          weight: totalWeight,\n          totalVolume: totalVolume,\n          totalWeight: totalWeight,\n          oversizedWeight: 0,\n          oversizedVolume: 0,\n          hazardClass: 0,  // Всегда 0 если нет опасных грузов\n          ...(form.needInsurance && form.declaredValue > 0 ? {\n            insurance: {\n              statedValue: form.declaredValue,\n              term: true  // Всегда true при наличии страхования\n            }\n          } : {})\n        },\n        payment: {\n          type: 'noncash',  // Всегда \"noncash\""
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758982291098,
+      "end": 1758982291100
+    }
+  }
+}

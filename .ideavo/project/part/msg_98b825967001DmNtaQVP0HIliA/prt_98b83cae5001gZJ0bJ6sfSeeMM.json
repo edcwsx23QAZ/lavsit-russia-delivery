@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b83cae5001gZJ0bJ6sfSeeMM",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01N3pwApg3JNCFEdHsLJCUEZ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 370,
+      "limit": 30
+    },
+    "output": "<file>\n00371|           \n00372|           if (crateWithBubble && crateWithBubble.uid) {\n00373|             console.log('✅ Найден UID для crate_with_bubble:', crateWithBubble.uid);\n00374|             return crateWithBubble.uid;\n00375|           } else {\n00376|             console.log('❌ crate_with_bubble не найден или нет UID');\n00377|           }\n00378|         } else {\n00379|           console.log('❌ Ошибка структуры ответа API упаковок');\n00380|         }\n00381|         \n00382|         // Если дошли сюда, значит не нашли упаковку или была другая ошибка\n00383|         break;\n00384|         \n00385|       } catch (error) {\n00386|         console.error(`❌ СПРАВОЧНИК УПАКОВОК: ошибка на попытке ${attempt}:`, error);\n00387|         if (attempt === maxRetries) {\n00388|           console.error('❌ СПРАВОЧНИК УПАКОВОК: исчерпаны все попытки');\n00389|           return null;\n00390|         }\n00391|       }\n00392|     }\n00393|     \n00394|     console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');\n00395|     return null;\n00396|   };\n00397| \n00398|   // Расчет для Деловых Линий через корректный API v2/calculator.json\n00399|   const calculateDellin = async (): Promise<CalculationResult> => {\n00400|     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n\n(File has more lines. Use 'offset' parameter to read beyond line 400)\n</file>",
+    "metadata": {
+      "preview": "          \n          if (crateWithBubble && crateWithBubble.uid) {\n            console.log('✅ Найден UID для crate_with_bubble:', crateWithBubble.uid);\n            return crateWithBubble.uid;\n          } else {\n            console.log('❌ crate_with_bubble не найден или нет UID');\n          }\n        } else {\n          console.log('❌ Ошибка структуры ответа API упаковок');\n        }\n        \n        // Если дошли сюда, значит не нашли упаковку или была другая ошибка\n        break;\n        \n      } catch (error) {\n        console.error(`❌ СПРАВОЧНИК УПАКОВОК: ошибка на попытке ${attempt}:`, error);\n        if (attempt === maxRetries) {\n          console.error('❌ СПРАВОЧНИК УПАКОВОК: исчерпаны все попытки');\n          return null;\n        }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758982294791,
+      "end": 1758982294794
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b841672001FOicnC9MaknHxf",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_019Z24oQNUMC8UFRNxTui3MD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 750,
+      "limit": 30
+    },
+    "output": "<file>\n00751|         }\n00752| \n00753|         console.log('💰 ФИНАЛЬНАЯ ИТОГОВАЯ СТОИМОСТЬ:', Math.round(totalPrice));\n00754|         \n00755|         return {\n00756|           company: 'Деловые Линии',\n00757|           price: Math.round(totalPrice),\n00758|           days: deliveryDays || 0,\n00759|           details: data.data,\n00760|           requestData,\n00761|           responseData: data,\n00762|           apiUrl,\n00763|           sessionId: sessionID\n00764|         };\n00765|       } else {\n00766|         const errorMessage = data.metadata?.detail || \n00767|                            data.metadata?.message || \n00768|                            data.errors?.[0]?.detail || \n00769|                            (data.metadata?.status !== 200 ? `HTTP ${data.metadata?.status}` : '') ||\n00770|                            'Ошибка расчета Деловые Линии';\n00771|         return {\n00772|           company: 'Деловые Линии',\n00773|           price: 0,\n00774|           days: 0,\n00775|           error: errorMessage,\n00776|           requestData,\n00777|           responseData: data,\n00778|           apiUrl,\n00779|           sessionId: sessionID\n00780|         };\n\n(File has more lines. Use 'offset' parameter to read beyond line 780)\n</file>",
+    "metadata": {
+      "preview": "        }\n\n        console.log('💰 ФИНАЛЬНАЯ ИТОГОВАЯ СТОИМОСТЬ:', Math.round(totalPrice));\n        \n        return {\n          company: 'Деловые Линии',\n          price: Math.round(totalPrice),\n          days: deliveryDays || 0,\n          details: data.data,\n          requestData,\n          responseData: data,\n          apiUrl,\n          sessionId: sessionID\n        };\n      } else {\n        const errorMessage = data.metadata?.detail || \n                           data.metadata?.message || \n                           data.errors?.[0]?.detail || \n                           (data.metadata?.status !== 200 ? `HTTP ${data.metadata?.status}` : '') ||\n                           'Ошибка расчета Деловые Линии';"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758982314138,
+      "end": 1758982314144
+    }
+  }
+}

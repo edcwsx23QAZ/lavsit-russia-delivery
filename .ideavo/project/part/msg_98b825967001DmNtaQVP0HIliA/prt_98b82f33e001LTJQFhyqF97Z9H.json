@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b82f33e001LTJQFhyqF97Z9H",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_017tgeHdVLgDLvA41YvnFjnw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1220,
+      "limit": 40
+    },
+    "output": "<file>\n01221|         return cargoData;\n01222|       });\n01223| \n01224|       // Функция для попытки расчета с конкретной датой\n01225|       const tryCalculateWithDate = async (plannedDateTime: string): Promise<any> => {\n01226|         // Формируем запрос к API ПЭК согласно документации\n01227|         const requestData: any = {\n01228|           currencyCode: \"643\", // рубли\n01229|           types: [3], // только авто перевозка (обязательно массив)\n01230|           senderWarehouseId,\n01231|           receiverWarehouseId,\n01232|           isOpenCarSender: false,\n01233|           isOpenCarReceiver: false,\n01234|           isHyperMarket: false,\n01235|           plannedDateTime,\n01236|           isInsurance: form.needInsurance && form.declaredValue > 0,\n01237|           isInsurancePrice: form.needInsurance ? form.declaredValue : 0,\n01238|           isPickUp: form.fromAddressDelivery,\n01239|           isDelivery: form.toAddressDelivery,\n01240|           needReturnDocuments: false,\n01241|           needArrangeTransportationDocuments: false,\n01242|           senderDistanceType: 0,\n01243|           receiverDistanceType: 0,\n01244|           cargos // массив грузов\n01245|         };\n01246|         \n01247|         console.log('📋 ПЭК: структура requestData:', JSON.stringify(requestData, null, 2));\n01248| \n01249|         // Добавляем услуги ПРР если нужно\n01250|         if (form.needCarry) {\n01251|           requestData.pickupServices = {\n01252|             isLoading: true,\n01253|             floor: Math.max(0, form.floor - 1), // ПЭК считает с 0\n01254|             carryingDistance: 0,\n01255|             isElevator: form.hasFreightLift\n01256|           };\n01257|           requestData.deliveryServices = {\n01258|             isLoading: true,\n01259|             floor: Math.max(0, form.floor - 1),\n01260|             carryingDistance: 0,\n\n(File has more lines. Use 'offset' parameter to read beyond line 1260)\n</file>",
+    "metadata": {
+      "preview": "        return cargoData;\n      });\n\n      // Функция для попытки расчета с конкретной датой\n      const tryCalculateWithDate = async (plannedDateTime: string): Promise<any> => {\n        // Формируем запрос к API ПЭК согласно документации\n        const requestData: any = {\n          currencyCode: \"643\", // рубли\n          types: [3], // только авто перевозка (обязательно массив)\n          senderWarehouseId,\n          receiverWarehouseId,\n          isOpenCarSender: false,\n          isOpenCarReceiver: false,\n          isHyperMarket: false,\n          plannedDateTime,\n          isInsurance: form.needInsurance && form.declaredValue > 0,\n          isInsurancePrice: form.needInsurance ? form.declaredValue : 0,\n          isPickUp: form.fromAddressDelivery,\n          isDelivery: form.toAddressDelivery,\n          needReturnDocuments: false,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758982239833,
+      "end": 1758982239837
+    }
+  }
+}

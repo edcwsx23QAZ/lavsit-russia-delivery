@@ -1,0 +1,11 @@
+{
+  "id": "prt_98b801473001yOZcKl0fTPG9DZ",
+  "messageID": "msg_98b7fe194001WKA98hPjRP3zi5",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Теперь вижу проблему! `finalRequestData` создается внутри функции `tryCalculateWithDate`, но используется в возвращаемом объекте вне этой функции. Нужно исправить область видимости.",
+  "time": {
+    "start": 1758982052308,
+    "end": 1758982052308
+  }
+}

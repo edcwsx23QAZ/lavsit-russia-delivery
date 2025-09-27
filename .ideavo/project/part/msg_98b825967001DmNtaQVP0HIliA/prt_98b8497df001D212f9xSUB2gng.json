@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b8497df001D212f9xSUB2gng",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01PocBgAwhR1aJiKF9exhXYw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        // Если запрос успешный или не связан с авторизацией, продолжаем обработку\n        break;\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Accept': 'application/json'\n        },\n        body: JSON.stringify(requestData)\n      });\n\n      const data = await response.json();\n      console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n      console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n      console.log('🚀 ОТВЕТ ДЛ data:', data);\n      \n\n      ",
+      "newString": "        // Если запрос успешный или не связан с авторизацией, продолжаем обработку\n        break;\n      }\n\n      "
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -631,25 +631,11 @@\n   }\n \n   // Если запрос успешный или не связан с авторизацией, продолжаем обработку\n   break;\n+}\n \n-const response = await fetch(apiUrl, {\n-  method: 'POST',\n-  headers: {\n-    'Content-Type': 'application/json',\n-    'Accept': 'application/json'\n-  },\n-  body: JSON.stringify(requestData)\n-});\n-\n-const data = await response.json();\n-console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n-console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n-console.log('🚀 ОТВЕТ ДЛ data:', data);\n \n-\n-\n // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));\n \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758982349472,
+      "end": 1758982349482
+    }
+  }
+}

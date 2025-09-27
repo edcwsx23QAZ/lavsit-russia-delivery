@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b8613be001CdsHPbWPYQvLPG",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_016gr45pxGBAQML2jYbk7HW6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Финальная проверка сборки"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1587:21\nType error: Argument of type '{ name: string; description: string; price: number; }' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 1585 |\u001b[39m       \u001b[36mconst\u001b[39m services \u001b[33m=\u001b[39m []\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1586 |\u001b[39m       \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1587 |\u001b[39m       services\u001b[33m.\u001b[39mpush({\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1588 |\u001b[39m         name\u001b[33m:\u001b[39m \u001b[32m'Транспортировка'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1589 |\u001b[39m         description\u001b[33m:\u001b[39m \u001b[32m`${form.fromCity} - ${form.toCity} (${totalWeight} кг, ${totalVolume.toFixed(3)} м³)`\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1590 |\u001b[39m         price\u001b[33m:\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround(basePrice)\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1587:21\nType error: Argument of type '{ name: string; description: string; price: number; }' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 1585 |\u001b[39m       \u001b[36mconst\u001b[39m services \u001b[33m=\u001b[39m []\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1586 |\u001b[39m       \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1587 |\u001b[39m       services\u001b[33m.\u001b[39mpush({\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1588 |\u001b[39m         name\u001b[33m:\u001b[39m \u001b[32m'Транспортировка'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1589 |\u001b[39m         description\u001b[33m:\u001b[39m \u001b[32m`${form.fromCity} - ${form.toCity} (${totalWeight} кг, ${totalVolume.toFixed(3)} м³)`\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1590 |\u001b[39m         price\u001b[33m:\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround(basePrice)\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Финальная проверка сборки"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1758982444609,
+      "end": 1758982458175
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b83f6e6001wyHrbZzCoQL92H",
+  "messageID": "msg_98b825967001DmNtaQVP0HIliA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016KYWCo4fp5LbQfWgbn2UMT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 575,
+      "limit": 60
+    },
+    "output": "<file>\n00576|         console.log('   packageUid =', packageUid);\n00577|         console.log('   Условие:', form.needPackaging && packageUid);\n00578|       }\n00579| \n00580|       const response = await fetch(apiUrl, {\n00581|         method: 'POST',\n00582|         headers: {\n00583|           'Content-Type': 'application/json',\n00584|           'Accept': 'application/json'\n00585|         },\n00586|         body: JSON.stringify(requestData)\n00587|       });\n00588| \n00589|       const data = await response.json();\n00590|       console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n00591|       console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n00592|       console.log('🚀 ОТВЕТ ДЛ data:', data);\n00593|       \n00594| \n00595|       \n00596|       // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n00597|       console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n00598|       console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));\n00599|       \n00600|       // Поиск всех полей связанных со страховкой\n00601|       console.log('💳 ПОИСК КОМПОНЕНТОВ СТРАХОВКИ:');\n00602|       console.log('💳 data.data.insurance:', data.data?.insurance);\n00603|       console.log('💳 data.data.cargoInsurance:', data.data?.cargoInsurance);\n00604|       console.log('💳 data.data.termInsurance:', data.data?.termInsurance);\n00605|       console.log('💳 data.data.insuranceDetails:', data.data?.insuranceDetails);\n00606|       console.log('💳 data.data.services:', data.data?.services);\n00607|       console.log('💳 data.data.additionalServices:', data.data?.additionalServices);\n00608|       \n00609|       // Поиск страховки в других разделах\n00610|       if (data.data.derival) {\n00611|         console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival.insurance);\n00612|       }\n00613|       if (data.data.arrival) {\n00614|         console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival.insurance);\n00615|       }\n00616|       if (data.data.intercity) {\n00617|         console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);\n00618|       }\n00619|       \n00620|       // Рекурсивный поиск всех полей содержащих \"insurance\"\n00621|       const findInsuranceFields = (obj: any, path = '') => {\n00622|         if (typeof obj !== 'object' || obj === null) return;\n00623|         \n00624|         Object.keys(obj).forEach(key => {\n00625|           const fullPath = path ? `${path}.${key}` : key;\n00626|           if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {\n00627|             console.log(`💳 НАЙДЕНО ПОЛЕ СТРАХОВКИ [${fullPath}]:`, obj[key]);\n00628|           }\n00629|           if (typeof obj[key] === 'object') {\n00630|             findInsuranceFields(obj[key], fullPath);\n00631|           }\n00632|         });\n00633|       };\n00634|       \n00635|       console.log('💳 РЕКУРСИВНЫЙ ПОИСК ПОЛЕЙ СТРАХОВКИ:');\n\n(File has more lines. Use 'offset' parameter to read beyond line 635)\n</file>",
+    "metadata": {
+      "preview": "        console.log('   packageUid =', packageUid);\n        console.log('   Условие:', form.needPackaging && packageUid);\n      }\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Accept': 'application/json'\n        },\n        body: JSON.stringify(requestData)\n      });\n\n      const data = await response.json();\n      console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n      console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n      console.log('🚀 ОТВЕТ ДЛ data:', data);\n      \n\n      "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758982306157,
+      "end": 1758982306159
+    }
+  }
+}
