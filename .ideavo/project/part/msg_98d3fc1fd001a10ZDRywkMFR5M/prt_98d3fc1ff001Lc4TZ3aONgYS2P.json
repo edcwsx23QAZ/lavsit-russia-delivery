@@ -1,0 +1,7 @@
+{
+  "id": "prt_98d3fc1ff001Lc4TZ3aONgYS2P",
+  "type": "text",
+  "text": "Исправь ошибку отображения приложения\n\nВижу следующий текст:\nUnhandled Runtime Error\nTypeError: Cannot read properties of undefined (reading 'length')\n\nSource\ncomponents/ProductManager.tsx (26:16) @ length\n\n  24 | }: ProductManagerProps) {\n  25 |   \n> 26 |   if (products.length === 0) {\n     |                ^\n  27 |     return (\n  28 |       <div className=\"text-gray-400 text-sm py-3 text-center\">\n  29 |         Товары не добавлены. Используйте поиск выше для добавления мебели.\nCall Stack\nShow collapsed frames",
+  "messageID": "msg_98d3fc1fd001a10ZDRywkMFR5M",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14"
+}

@@ -1,0 +1,11 @@
+{
+  "id": "prt_98d4013cc001pg1XZDZ2lxW9wn",
+  "messageID": "msg_98d3fc50c001PLPXA7nlwsrvNU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Исправил ошибку. Проблема была в том, что компонент `ProductManager` получал `undefined` вместо массива `products`. Добавил проверки на существование массива перед обращением к свойству `length`.",
+  "time": {
+    "start": 1759011411902,
+    "end": 1759011411902
+  }
+}

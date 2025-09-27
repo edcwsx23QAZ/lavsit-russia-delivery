@@ -23,7 +23,7 @@ export default function ProductManager({
   disabled = false 
 }: ProductManagerProps) {
   
-  if (products.length === 0) {
+  if (!products || products.length === 0) {
     return (
       <div className="text-gray-400 text-sm py-3 text-center">
         Товары не добавлены. Используйте поиск выше для добавления мебели.
@@ -33,7 +33,7 @@ export default function ProductManager({
   
   return (
     <div className="space-y-3">
-      {products.map((productInForm) => (
+      {products && products.map((productInForm) => (
         <Card 
           key={`${productInForm.product.id}_${productInForm.addedAt}`}
           className="bg-gray-700 border-gray-600"
@@ -172,7 +172,7 @@ export default function ProductManager({
       ))}
       
       {/* Итоговая статистика */}
-      {products.length > 0 && (
+      {products && products.length > 0 && (
         <Card className="bg-blue-900/20 border-blue-700">
           <CardContent className="p-3">
             <div className="space-y-2">

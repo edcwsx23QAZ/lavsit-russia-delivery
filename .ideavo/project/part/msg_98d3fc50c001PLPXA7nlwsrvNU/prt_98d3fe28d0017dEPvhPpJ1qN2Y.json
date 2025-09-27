@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d3fe28d0017dEPvhPpJ1qN2Y",
+  "messageID": "msg_98d3fc50c001PLPXA7nlwsrvNU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01WTuPL8NMhQuxpmDwepZmKx",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ProductManager.tsx",
+      "oldString": "  if (products.length === 0) {",
+      "newString": "  if (!products || products.length === 0) {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/ProductManager.tsx\n===================================================================\n--- /home/user/project/components/ProductManager.tsx\n+++ /home/user/project/components/ProductManager.tsx\n@@ -22,9 +22,9 @@\n   onProductRemove, \n   disabled = false \n }: ProductManagerProps) {\n   \n-  if (products.length === 0) {\n+  if (!products || products.length === 0) {\n     return (\n       <div className=\"text-gray-400 text-sm py-3 text-center\">\n         Товары не добавлены. Используйте поиск выше для добавления мебели.\n       </div>\n"
+    },
+    "title": "components/ProductManager.tsx",
+    "time": {
+      "start": 1759011399539,
+      "end": 1759011399545
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d3fef4f0016yjeGfHrA6eqXm",
+  "messageID": "msg_98d3fc50c001PLPXA7nlwsrvNU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01361ZSje5ych8uxWyeZScu8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ProductManager.tsx",
+      "oldString": "      {/* Итоговая статистика */}\n      {products.length > 0 && (",
+      "newString": "      {/* Итоговая статистика */}\n      {products && products.length > 0 && ("
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/ProductManager.tsx\n===================================================================\n--- /home/user/project/components/ProductManager.tsx\n+++ /home/user/project/components/ProductManager.tsx\n@@ -171,9 +171,9 @@\n   </Card>\n ))}\n \n {/* Итоговая статистика */}\n-{products.length > 0 && (\n+{products && products.length > 0 && (\n   <Card className=\"bg-blue-900/20 border-blue-700\">\n     <CardContent className=\"p-3\">\n       <div className=\"space-y-2\">\n         <div className=\"flex justify-between items-center\">\n"
+    },
+    "title": "components/ProductManager.tsx",
+    "time": {
+      "start": 1759011402723,
+      "end": 1759011402727
+    }
+  }
+}
