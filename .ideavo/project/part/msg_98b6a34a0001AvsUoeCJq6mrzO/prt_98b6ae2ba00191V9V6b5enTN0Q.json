@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b6ae2ba00191V9V6b5enTN0Q",
+  "messageID": "msg_98b6a34a0001AvsUoeCJq6mrzO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01EN4pRZuHbrfFQdLVWpk84g",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Цикл попыток с разными датами (максимум 7 дней)\n      const maxRetries = 7;\n      let lastError = null;\n      \n      for (let attempt = 0; attempt < maxRetries; attempt++) {",
+      "newString": "      // Добавляем диагностику перед началом расчета\n      console.log('🔧 ПЭК: готовим данные для расчета...');\n      console.log('📍 senderWarehouseId:', senderWarehouseId);\n      console.log('📍 receiverWarehouseId:', receiverWarehouseId);\n      console.log('📅 Начальная дата:', plannedDateTime);\n      console.log('📦 Количество грузов:', cargos.length);\n      console.log('🔧 form.fromAddressDelivery:', form.fromAddressDelivery);\n      console.log('🔧 form.toAddressDelivery:', form.toAddressDelivery);\n      \n      // Цикл попыток с разными датами (максимум 7 дней)\n      const maxRetries = 7;\n      let lastError = null;\n      \n      console.log('🚀 ПЭК: запускаем цикл расчета...');\n      \n      for (let attempt = 0; attempt < maxRetries; attempt++) {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1316,12 +1316,23 @@\n \n   return { response, data };\n };\n \n+// Добавляем диагностику перед началом расчета\n+console.log('🔧 ПЭК: готовим данные для расчета...');\n+console.log('📍 senderWarehouseId:', senderWarehouseId);\n+console.log('📍 receiverWarehouseId:', receiverWarehouseId);\n+console.log('📅 Начальная дата:', plannedDateTime);\n+console.log('📦 Количество грузов:', cargos.length);\n+console.log('🔧 form.fromAddressDelivery:', form.fromAddressDelivery);\n+console.log('🔧 form.toAddressDelivery:', form.toAddressDelivery);\n+\n // Цикл попыток с разными датами (максимум 7 дней)\n const maxRetries = 7;\n let lastError = null;\n \n+console.log('🚀 ПЭК: запускаем цикл расчета...');\n+\n for (let attempt = 0; attempt < maxRetries; attempt++) {\n   try {\n     console.log(`📅 ПЭК: попытка ${attempt + 1}/${maxRetries}, дата: ${plannedDateTime}`);\n     \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980666982,
+      "end": 1758980666996
+    }
+  }
+}

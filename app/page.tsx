@@ -1221,10 +1221,10 @@ export default function Home() {
 
       // Функция для попытки расчета с конкретной датой
       const tryCalculateWithDate = async (plannedDateTime: string): Promise<any> => {
-        // Формируем запрос к API ПЭК
+        // Формируем запрос к API ПЭК согласно документации
         const requestData: any = {
           currencyCode: "643", // рубли
-          types: [3], // только авто перевозка
+          types: [3], // только авто перевозка (обязательно массив)
           senderWarehouseId,
           receiverWarehouseId,
           isOpenCarSender: false,
@@ -1239,8 +1239,10 @@ export default function Home() {
           needArrangeTransportationDocuments: false,
           senderDistanceType: 0,
           receiverDistanceType: 0,
-          cargos
+          cargos // массив грузов
         };
+        
+        console.log('📋 ПЭК: структура requestData:', JSON.stringify(requestData, null, 2));
 
         // Добавляем услуги ПРР если нужно
         if (form.needCarry) {
@@ -1258,22 +1260,40 @@ export default function Home() {
           };
         }
 
-      // Добавляем адреса без координат (временно для отладки)
-      if (form.fromAddressDelivery) {
-        console.warn('📍 Отключаем координаты pickup для отладки');
-        requestData.pickup = {
-          address: form.fromAddress || `Россия, ${form.fromCity}`
-          // Координаты временно отключены
-        };
-      }
-      
-      if (form.toAddressDelivery) {
-        console.warn('📍 Отключаем координаты delivery для отладки');
-        requestData.delivery = {
-          address: form.toAddress || `Россия, ${form.toCity}`
-          // Координаты временно отключены
-        };
-      }
+        // Добавляем блоки pickup/delivery согласно документации ПЭК
+        if (form.fromAddressDelivery) {
+          console.log('📍 ПЭК: добавляем блок pickup для забора');
+          requestData.pickup = {
+            address: form.fromAddress || `Россия, ${form.fromCity}`
+            // coordinates можно добавить позже для точности
+          };
+        }
+        
+        if (form.toAddressDelivery) {
+          console.log('📍 ПЭК: добавляем блок delivery для доставки');
+          requestData.delivery = {
+            address: form.toAddress || `Россия, ${form.toCity}`
+            // coordinates можно добавить позже для точности
+          };
+        }
+
+        // Валидация обязательных полей согласно документации
+        const requiredFields = ['types', 'senderWarehouseId', 'receiverWarehouseId', 'plannedDateTime', 'cargos'];
+        const missingFields = requiredFields.filter(field => !requestData[field]);
+        
+        if (missingFields.length > 0) {
+          throw new Error(`ПЭК: отсутствуют обязательные поля: ${missingFields.join(', ')}`);
+        }
+        
+        if (!Array.isArray(requestData.types) || requestData.types.length === 0) {
+          throw new Error('ПЭК: поле types должно быть непустым массивом');
+        }
+        
+        if (!Array.isArray(requestData.cargos) || requestData.cargos.length === 0) {
+          throw new Error('ПЭК: поле cargos должно быть непустым массивом');
+        }
+        
+        console.log('✅ ПЭК: валидация обязательных полей пройдена');
 
         const finalRequestData = {
           method: 'calculateprice',
@@ -1282,6 +1302,8 @@ export default function Home() {
         
         console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));
         console.log('🌐 ПЭК API URL:', apiUrl);
+        console.log('📋 ПЭК: количество типов тарифов:', requestData.types.length);
+        console.log('📋 ПЭК: количество грузов:', requestData.cargos.length);
       
       // Проверяем координаты перед отправкой
       if (finalRequestData.pickup?.coordinates) {
@@ -1317,9 +1339,20 @@ export default function Home() {
         return { response, data };
       };
 
+      // Добавляем диагностику перед началом расчета
+      console.log('🔧 ПЭК: готовим данные для расчета...');
+      console.log('📍 senderWarehouseId:', senderWarehouseId);
+      console.log('📍 receiverWarehouseId:', receiverWarehouseId);
+      console.log('📅 Начальная дата:', plannedDateTime);
+      console.log('📦 Количество грузов:', cargos.length);
+      console.log('🔧 form.fromAddressDelivery:', form.fromAddressDelivery);
+      console.log('🔧 form.toAddressDelivery:', form.toAddressDelivery);
+      
       // Цикл попыток с разными датами (максимум 7 дней)
       const maxRetries = 7;
       let lastError = null;
+      
+      console.log('🚀 ПЭК: запускаем цикл расчета...');
       
       for (let attempt = 0; attempt < maxRetries; attempt++) {
         try {

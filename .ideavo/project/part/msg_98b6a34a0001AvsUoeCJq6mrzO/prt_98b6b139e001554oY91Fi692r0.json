@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b6b139e001554oY91Fi692r0",
+  "messageID": "msg_98b6a34a0001AvsUoeCJq6mrzO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016KHYdvWx2y4SJNbr83k1wj",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1275,
+      "limit": 10
+    },
+    "output": "<file>\n01276|       }\n01277| \n01278|         const finalRequestData = {\n01279|           method: 'calculateprice',\n01280|           ...requestData\n01281|         };\n01282|         \n01283|         console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n01284|         console.log('🌐 ПЭК API URL:', apiUrl);\n01285|       \n\n(File has more lines. Use 'offset' parameter to read beyond line 1285)\n</file>",
+    "metadata": {
+      "preview": "      }\n\n        const finalRequestData = {\n          method: 'calculateprice',\n          ...requestData\n        };\n        \n        console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n        console.log('🌐 ПЭК API URL:', apiUrl);\n      "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980675119,
+      "end": 1758980675121
+    }
+  }
+}

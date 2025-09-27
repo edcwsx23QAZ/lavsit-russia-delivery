@@ -3,10 +3,13 @@ import { NextRequest, NextResponse } from 'next/server'
 export async function GET() {
   try {
     const response = await fetch('https://api.dellin.ru/v1/references/packages.json', {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify({
+        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'
+      })
     })
 
     if (!response.ok) {

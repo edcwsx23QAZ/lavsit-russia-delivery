@@ -1,0 +1,61 @@
+{
+  "id": "prt_98b6a4b31001lhZ4OrH4v8y3zP",
+  "messageID": "msg_98b6a34a0001AvsUoeCJq6mrzO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01BSecgFuC9tsGwsiCtmtg3F",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Исправить 401 ошибку API Деловых Линий - добавить POST и appkey",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "fix-dellin-401"
+        },
+        {
+          "content": "Найти почему ПЭК API не запускается - добавить логирование",
+          "status": "pending",
+          "priority": "high",
+          "id": "debug-pek-not-starting"
+        },
+        {
+          "content": "Проверить структуру запроса ПЭК согласно документации",
+          "status": "pending",
+          "priority": "high",
+          "id": "fix-pek-request-structure"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Исправить 401 ошибку API Деловых Линий - добавить POST и appkey\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"fix-dellin-401\"\n  },\n  {\n    \"content\": \"Найти почему ПЭК API не запускается - добавить логирование\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"debug-pek-not-starting\"\n  },\n  {\n    \"content\": \"Проверить структуру запроса ПЭК согласно документации\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"fix-pek-request-structure\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Исправить 401 ошибку API Деловых Линий - добавить POST и appkey",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "fix-dellin-401"
+        },
+        {
+          "content": "Найти почему ПЭК API не запускается - добавить логирование",
+          "status": "pending",
+          "priority": "high",
+          "id": "debug-pek-not-starting"
+        },
+        {
+          "content": "Проверить структуру запроса ПЭК согласно документации",
+          "status": "pending",
+          "priority": "high",
+          "id": "fix-pek-request-structure"
+        }
+      ]
+    },
+    "title": "3 todos",
+    "time": {
+      "start": 1758980626136,
+      "end": 1758980626136
+    }
+  }
+}

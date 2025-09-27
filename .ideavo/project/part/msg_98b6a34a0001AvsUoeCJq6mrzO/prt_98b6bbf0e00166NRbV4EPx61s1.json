@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b6bbf0e00166NRbV4EPx61s1",
+  "messageID": "msg_98b6a34a0001AvsUoeCJq6mrzO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01PLpxdzG4iwBzTj4sThzL4G",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        const finalRequestData = {\n          method: 'calculateprice',\n          ...requestData\n        };\n        \n        console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n        console.log('🌐 ПЭК API URL:', apiUrl);",
+      "newString": "        // Валидация обязательных полей согласно документации\n        const requiredFields = ['types', 'senderWarehouseId', 'receiverWarehouseId', 'plannedDateTime', 'cargos'];\n        const missingFields = requiredFields.filter(field => !requestData[field]);\n        \n        if (missingFields.length > 0) {\n          throw new Error(`ПЭК: отсутствуют обязательные поля: ${missingFields.join(', ')}`);\n        }\n        \n        if (!Array.isArray(requestData.types) || requestData.types.length === 0) {\n          throw new Error('ПЭК: поле types должно быть непустым массивом');\n        }\n        \n        if (!Array.isArray(requestData.cargos) || requestData.cargos.length === 0) {\n          throw new Error('ПЭК: поле cargos должно быть непустым массивом');\n        }\n        \n        console.log('✅ ПЭК: валидация обязательных полей пройдена');\n\n        const finalRequestData = {\n          method: 'calculateprice',\n          ...requestData\n        };\n        \n        console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n        console.log('🌐 ПЭК API URL:', apiUrl);\n        console.log('📋 ПЭК: количество типов тарифов:', requestData.types.length);\n        console.log('📋 ПЭК: количество грузов:', requestData.cargos.length);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1276,15 +1276,35 @@\n       // coordinates можно добавить позже для точности\n     };\n   }\n \n+  // Валидация обязательных полей согласно документации\n+  const requiredFields = ['types', 'senderWarehouseId', 'receiverWarehouseId', 'plannedDateTime', 'cargos'];\n+  const missingFields = requiredFields.filter(field => !requestData[field]);\n+  \n+  if (missingFields.length > 0) {\n+    throw new Error(`ПЭК: отсутствуют обязательные поля: ${missingFields.join(', ')}`);\n+  }\n+  \n+  if (!Array.isArray(requestData.types) || requestData.types.length === 0) {\n+    throw new Error('ПЭК: поле types должно быть непустым массивом');\n+  }\n+  \n+  if (!Array.isArray(requestData.cargos) || requestData.cargos.length === 0) {\n+    throw new Error('ПЭК: поле cargos должно быть непустым массивом');\n+  }\n+  \n+  console.log('✅ ПЭК: валидация обязательных полей пройдена');\n+\n   const finalRequestData = {\n     method: 'calculateprice',\n     ...requestData\n   };\n   \n   console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n   console.log('🌐 ПЭК API URL:', apiUrl);\n+  console.log('📋 ПЭК: количество типов тарифов:', requestData.types.length);\n+  console.log('📋 ПЭК: количество грузов:', requestData.cargos.length);\n \n // Проверяем координаты перед отправкой\n if (finalRequestData.pickup?.coordinates) {\n   console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980724949,
+      "end": 1758980724966
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b6b93fd001jAXZcq1vvl4BbW",
+  "messageID": "msg_98b6a34a0001AvsUoeCJq6mrzO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01FL5z2vcksZDgqpA6qGcKaa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1250,
+      "limit": 30
+    },
+    "output": "<file>\n01251|             floor: Math.max(0, form.floor - 1), // ПЭК считает с 0\n01252|             carryingDistance: 0,\n01253|             isElevator: form.hasFreightLift\n01254|           };\n01255|           requestData.deliveryServices = {\n01256|             isLoading: true,\n01257|             floor: Math.max(0, form.floor - 1),\n01258|             carryingDistance: 0,\n01259|             isElevator: form.hasFreightLift\n01260|           };\n01261|         }\n01262| \n01263|       // Добавляем адреса без координат (временно для отладки)\n01264|       if (form.fromAddressDelivery) {\n01265|         console.warn('📍 Отключаем координаты pickup для отладки');\n01266|         requestData.pickup = {\n01267|           address: form.fromAddress || `Россия, ${form.fromCity}`\n01268|           // Координаты временно отключены\n01269|         };\n01270|       }\n01271|       \n01272|       if (form.toAddressDelivery) {\n01273|         console.warn('📍 Отключаем координаты delivery для отладки');\n01274|         requestData.delivery = {\n01275|           address: form.toAddress || `Россия, ${form.toCity}`\n01276|           // Координаты временно отключены\n01277|         };\n01278|       }\n01279| \n01280|         const finalRequestData = {\n\n(File has more lines. Use 'offset' parameter to read beyond line 1280)\n</file>",
+    "metadata": {
+      "preview": "            floor: Math.max(0, form.floor - 1), // ПЭК считает с 0\n            carryingDistance: 0,\n            isElevator: form.hasFreightLift\n          };\n          requestData.deliveryServices = {\n            isLoading: true,\n            floor: Math.max(0, form.floor - 1),\n            carryingDistance: 0,\n            isElevator: form.hasFreightLift\n          };\n        }\n\n      // Добавляем адреса без координат (временно для отладки)\n      if (form.fromAddressDelivery) {\n        console.warn('📍 Отключаем координаты pickup для отладки');\n        requestData.pickup = {\n          address: form.fromAddress || `Россия, ${form.fromCity}`\n          // Координаты временно отключены\n        };\n      }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980707902,
+      "end": 1758980707904
+    }
+  }
+}

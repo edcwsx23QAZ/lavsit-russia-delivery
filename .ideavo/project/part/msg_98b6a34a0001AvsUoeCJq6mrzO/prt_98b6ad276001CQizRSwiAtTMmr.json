@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b6ad276001CQizRSwiAtTMmr",
+  "messageID": "msg_98b6a34a0001AvsUoeCJq6mrzO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01UvbUkpnxWAyExTuScKhzU4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1207,
+      "limit": 30
+    },
+    "output": "<file>\n01208|         const cargoData = {\n01209|           length: cargo.length / 100, // переводим см в метры\n01210|           width: cargo.width / 100,\n01211|           height: cargo.height / 100,\n01212|           volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n01213|           weight: cargo.weight,\n01214|           isHP: form.needPackaging, // защитная упаковка\n01215|           sealingPositionsCount: 0\n01216|         };\n01217|         \n01218|         console.log('📦 Груз для ПЭК:', cargoData);\n01219|         return cargoData;\n01220|       });\n01221| \n01222|       // Функция для попытки расчета с конкретной датой\n01223|       const tryCalculateWithDate = async (plannedDateTime: string): Promise<any> => {\n01224|         // Формируем запрос к API ПЭК\n01225|         const requestData: any = {\n01226|           currencyCode: \"643\", // рубли\n01227|           types: [3], // только авто перевозка\n01228|           senderWarehouseId,\n01229|           receiverWarehouseId,\n01230|           isOpenCarSender: false,\n01231|           isOpenCarReceiver: false,\n01232|           isHyperMarket: false,\n01233|           plannedDateTime,\n01234|           isInsurance: form.needInsurance && form.declaredValue > 0,\n01235|           isInsurancePrice: form.needInsurance ? form.declaredValue : 0,\n01236|           isPickUp: form.fromAddressDelivery,\n01237|           isDelivery: form.toAddressDelivery,\n\n(File has more lines. Use 'offset' parameter to read beyond line 1237)\n</file>",
+    "metadata": {
+      "preview": "        const cargoData = {\n          length: cargo.length / 100, // переводим см в метры\n          width: cargo.width / 100,\n          height: cargo.height / 100,\n          volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n          weight: cargo.weight,\n          isHP: form.needPackaging, // защитная упаковка\n          sealingPositionsCount: 0\n        };\n        \n        console.log('📦 Груз для ПЭК:', cargoData);\n        return cargoData;\n      });\n\n      // Функция для попытки расчета с конкретной датой\n      const tryCalculateWithDate = async (plannedDateTime: string): Promise<any> => {\n        // Формируем запрос к API ПЭК\n        const requestData: any = {\n          currencyCode: \"643\", // рубли\n          types: [3], // только авто перевозка"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980658811,
+      "end": 1758980658814
+    }
+  }
+}

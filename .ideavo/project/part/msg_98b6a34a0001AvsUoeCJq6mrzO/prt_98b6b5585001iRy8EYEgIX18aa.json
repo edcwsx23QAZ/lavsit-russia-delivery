@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b6b5585001iRy8EYEgIX18aa",
+  "messageID": "msg_98b6a34a0001AvsUoeCJq6mrzO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01REBZM2WuCm5LgMUKxC5wuP",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        // Формируем запрос к API ПЭК\n        const requestData: any = {\n          currencyCode: \"643\", // рубли\n          types: [3], // только авто перевозка\n          senderWarehouseId,\n          receiverWarehouseId,\n          isOpenCarSender: false,\n          isOpenCarReceiver: false,\n          isHyperMarket: false,\n          plannedDateTime,\n          isInsurance: form.needInsurance && form.declaredValue > 0,\n          isInsurancePrice: form.needInsurance ? form.declaredValue : 0,\n          isPickUp: form.fromAddressDelivery,\n          isDelivery: form.toAddressDelivery,\n          needReturnDocuments: false,\n          needArrangeTransportationDocuments: false,\n          senderDistanceType: 0,\n          receiverDistanceType: 0,\n          cargos\n        };",
+      "newString": "        // Формируем запрос к API ПЭК согласно документации\n        const requestData: any = {\n          currencyCode: \"643\", // рубли\n          types: [3], // только авто перевозка (обязательно массив)\n          senderWarehouseId,\n          receiverWarehouseId,\n          isOpenCarSender: false,\n          isOpenCarReceiver: false,\n          isHyperMarket: false,\n          plannedDateTime,\n          isInsurance: form.needInsurance && form.declaredValue > 0,\n          isInsurancePrice: form.needInsurance ? form.declaredValue : 0,\n          isPickUp: form.fromAddressDelivery,\n          isDelivery: form.toAddressDelivery,\n          needReturnDocuments: false,\n          needArrangeTransportationDocuments: false,\n          senderDistanceType: 0,\n          receiverDistanceType: 0,\n          cargos // массив грузов\n        };\n        \n        console.log('📋 ПЭК: структура requestData:', JSON.stringify(requestData, null, 2));"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1220,12 +1220,12 @@\n });\n \n // Функция для попытки расчета с конкретной датой\n const tryCalculateWithDate = async (plannedDateTime: string): Promise<any> => {\n-  // Формируем запрос к API ПЭК\n+  // Формируем запрос к API ПЭК согласно документации\n   const requestData: any = {\n     currencyCode: \"643\", // рубли\n-    types: [3], // только авто перевозка\n+    types: [3], // только авто перевозка (обязательно массив)\n     senderWarehouseId,\n     receiverWarehouseId,\n     isOpenCarSender: false,\n     isOpenCarReceiver: false,\n@@ -1238,10 +1238,12 @@\n     needReturnDocuments: false,\n     needArrangeTransportationDocuments: false,\n     senderDistanceType: 0,\n     receiverDistanceType: 0,\n-    cargos\n+    cargos // массив грузов\n   };\n+  \n+  console.log('📋 ПЭК: структура requestData:', JSON.stringify(requestData, null, 2));\n \n   // Добавляем услуги ПРР если нужно\n   if (form.needCarry) {\n     requestData.pickupServices = {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758980699816,
+      "end": 1758980699831
+    }
+  }
+}
