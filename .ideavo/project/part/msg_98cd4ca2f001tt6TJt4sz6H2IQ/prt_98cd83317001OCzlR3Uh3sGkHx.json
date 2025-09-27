@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cd83317001OCzlR3Uh3sGkHx",
+  "messageID": "msg_98cd4ca2f001tt6TJt4sz6H2IQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_019pCpCaTFHf7D8JdM3bfPAR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Проверка сборки приложения"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1736:27\nType error: Argument of type '{ name: string; description: string; price: number; }' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 1734 |\u001b[39m             \u001b[36mconst\u001b[39m deliveryPrice \u001b[33m=\u001b[39m parseFloat(autoTariff\u001b[33m.\u001b[39mprice_with_out_sale)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1735 |\u001b[39m             console\u001b[33m.\u001b[39mlog(\u001b[32m'🚂 Доставка груза:'\u001b[39m\u001b[33m,\u001b[39m deliveryPrice)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1736 |\u001b[39m             services\u001b[33m.\u001b[39mpush({\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1737 |\u001b[39m               name\u001b[33m:\u001b[39m \u001b[32m'Доставка груза'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1738 |\u001b[39m               description\u001b[33m:\u001b[39m \u001b[32m`${autoTariff.type} (${autoTariff.rsType})`\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1739 |\u001b[39m               price\u001b[33m:\u001b[39m deliveryPrice\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1736:27\nType error: Argument of type '{ name: string; description: string; price: number; }' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 1734 |\u001b[39m             \u001b[36mconst\u001b[39m deliveryPrice \u001b[33m=\u001b[39m parseFloat(autoTariff\u001b[33m.\u001b[39mprice_with_out_sale)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1735 |\u001b[39m             console\u001b[33m.\u001b[39mlog(\u001b[32m'🚂 Доставка груза:'\u001b[39m\u001b[33m,\u001b[39m deliveryPrice)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1736 |\u001b[39m             services\u001b[33m.\u001b[39mpush({\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1737 |\u001b[39m               name\u001b[33m:\u001b[39m \u001b[32m'Доставка груза'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1738 |\u001b[39m               description\u001b[33m:\u001b[39m \u001b[32m`${autoTariff.type} (${autoTariff.rsType})`\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1739 |\u001b[39m               price\u001b[33m:\u001b[39m deliveryPrice\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Проверка сборки приложения"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759004603940,
+      "end": 1759004619865
+    }
+  }
+}

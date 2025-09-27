@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cd7dabe001LU4YNX91zPn9JR",
+  "messageID": "msg_98cd4ca2f001tt6TJt4sz6H2IQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_013et55F3G4ndpjZ34wgqSA9",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                <strong className=\"text-blue-300\">🚚 Калькулятор доставки готов!</strong> Добавлены ТК: ПЭК, Деловые Линии, Rail Continent",
+      "newString": "                <strong className=\"text-blue-300\">🚚 Калькулятор доставки готов!</strong> Добавлены ТК: ПЭК, Деловые Линии, Rail Continent, Возовоз"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2266,9 +2266,9 @@\n <div className=\"flex-1\">\n   <Alert className=\"border-blue-500 bg-blue-900/20\">\n     <Building2 className=\"h-4 w-4 text-blue-400\" />\n     <AlertDescription className=\"text-blue-100\">\n-      <strong className=\"text-blue-300\">🚚 Калькулятор доставки готов!</strong> Добавлены ТК: ПЭК, Деловые Линии, Rail Continent\n+      <strong className=\"text-blue-300\">🚚 Калькулятор доставки готов!</strong> Добавлены ТК: ПЭК, Деловые Линии, Rail Continent, Возовоз\n     </AlertDescription>\n   </Alert>\n </div>\n <Button \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004582948,
+      "end": 1759004582959
+    }
+  }
+}

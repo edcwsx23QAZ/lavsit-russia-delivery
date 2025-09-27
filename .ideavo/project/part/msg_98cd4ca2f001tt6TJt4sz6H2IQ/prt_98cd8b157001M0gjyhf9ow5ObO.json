@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cd8b157001M0gjyhf9ow5ObO",
+  "messageID": "msg_98cd4ca2f001tt6TJt4sz6H2IQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016kR3iPkFikSEfeUTsXRjzU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1920,
+      "limit": 10
+    },
+    "output": "<file>\n01921|         // Собираем детали по услугам\n01922|         const services = [];\n01923|         let totalPrice = responseData.price || responseData.basePrice || 0;\n01924|         \n01925|         // Добавляем основные услуги\n01926|         if (responseData.service && Array.isArray(responseData.service)) {\n01927|           responseData.service.forEach((service: any) => {\n01928|             services.push({\n01929|               name: service.name,\n01930|               description: '',\n\n(File has more lines. Use 'offset' parameter to read beyond line 1930)\n</file>",
+    "metadata": {
+      "preview": "        // Собираем детали по услугам\n        const services = [];\n        let totalPrice = responseData.price || responseData.basePrice || 0;\n        \n        // Добавляем основные услуги\n        if (responseData.service && Array.isArray(responseData.service)) {\n          responseData.service.forEach((service: any) => {\n            services.push({\n              name: service.name,\n              description: '',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004636113,
+      "end": 1759004636115
+    }
+  }
+}

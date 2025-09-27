@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cd4f737001od9RUx8ch1q2UZ",
+  "messageID": "msg_98cd4ca2f001tt6TJt4sz6H2IQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01D5XwS92cW5bZEizY8qThsT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 100,
+      "limit": 50
+    },
+    "output": "<file>\n00101|   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n00102|   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n00103| \n00104|   // Загрузка сохраненных данных (только на клиенте)\n00105|   useEffect(() => {\n00106|     // Проверяем, что мы на клиенте\n00107|     if (typeof window !== 'undefined' && !isLoaded) {\n00108|       try {\n00109|         const saved = localStorage.getItem('deliveryForm');\n00110|         if (saved) {\n00111|           const savedForm = JSON.parse(saved);\n00112|           // Убеждаемся, что есть хотя бы один груз\n00113|           if (!savedForm.cargos || savedForm.cargos.length === 0) {\n00114|             savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n00115|           }\n00116|           setForm(savedForm);\n00117|           console.log('Загружены сохраненные данные формы:', savedForm);\n00118|           \n00119|           // Диагностика времени для Supabase\n00120|           const currentTime = Math.floor(Date.now() / 1000);\n00121|           console.log('🕒 Текущее время (timestamp):', currentTime);\n00122|           console.log('🕒 Текущее время (ISO):', new Date().toISOString());\n00123|         }\n00124|       } catch (error) {\n00125|         console.error('Ошибка загрузки сохраненных данных:', error);\n00126|         // В случае ошибки оставляем начальное состояние\n00127|       } finally {\n00128|         setIsLoaded(true);\n00129|       }\n00130|     }\n00131|   }, [isLoaded]);\n00132| \n00133|   // Сохранение данных при изменении (только на клиенте)\n00134|   useEffect(() => {\n00135|     if (typeof window !== 'undefined' && isLoaded) {\n00136|       try {\n00137|         localStorage.setItem('deliveryForm', JSON.stringify(form));\n00138|         console.log('Сохранены данные формы в localStorage');\n00139|       } catch (error) {\n00140|         console.error('Ошибка сохранения данных:', error);\n00141|       }\n00142|     }\n00143|   }, [form, isLoaded]);\n00144| \n00145|   // Автоматическая страховка при указании стоимости\n00146|   useEffect(() => {\n00147|     if (form.declaredValue > 0) {\n00148|       setForm(prev => ({ ...prev, needInsurance: true }));\n00149|     }\n00150|   }, [form.declaredValue]);\n\n(File has more lines. Use 'offset' parameter to read beyond line 150)\n</file>",
+    "metadata": {
+      "preview": "  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n\n  // Загрузка сохраненных данных (только на клиенте)\n  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined' && !isLoaded) {\n      try {\n        const saved = localStorage.getItem('deliveryForm');\n        if (saved) {\n          const savedForm = JSON.parse(saved);\n          // Убеждаемся, что есть хотя бы один груз\n          if (!savedForm.cargos || savedForm.cargos.length === 0) {\n            savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n          }\n          setForm(savedForm);\n          console.log('Загружены сохраненные данные формы:', savedForm);\n          \n          // Диагностика времени для Supabase\n          const currentTime = Math.floor(Date.now() / 1000);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004392149,
+      "end": 1759004392154
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cd50832001qBQpL0M2szlfnK",
+  "messageID": "msg_98cd4ca2f001tt6TJt4sz6H2IQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_013KmrWxKo98v5KFYhKfy1yZ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "needInsurance|needPackaging",
+      "include": "*.tsx"
+    },
+    "output": "Found 39 matches\n/home/user/project/app/page.tsx:\n  Line 30:   needPackaging: boolean;\n  Line 35:   needInsurance: boolean;\n  Line 80:     needPackaging: false,\n  Line 85:     needInsurance: false,\n  Line 148:       setForm(prev => ({ ...prev, needInsurance: true }));\n  Line 434:       console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);\n  Line 435:       console.log('🔍 ОТЛАДКА УПАКОВКИ: typeof form.needPackaging =', typeof form.needPackaging);\n  Line 437:       if (form.needPackaging) {\n  Line 470:       console.log('🔍 form.needPackaging =', form.needPackaging, '(тип:', typeof form.needPackaging, ')');\n  Line 473:       console.log('🔍 Условие (form.needPackaging && packageUid) =', form.needPackaging && packageUid);\n  Line 475:       if (form.needPackaging && packageUid) {\n  Line 479:         if (!form.needPackaging) console.log('  - form.needPackaging = false');\n  Line 535:           ...(form.needPackaging && packageUid ? {\n  Line 553:           ...(form.needInsurance && form.declaredValue > 0 ? {\n  Line 575:         console.log('   form.needPackaging =', form.needPackaging);\n  Line 577:         console.log('   Условие:', form.needPackaging && packageUid);\n  Line 713:         console.log('💰 form.needPackaging =', form.needPackaging);\n  Line 715:         if (data.data.packages && form.needPackaging) {\n  Line 858:         package: form.needPackaging ? '1' : '0',\n  Line 860:         insurance: form.needInsurance ? '1' : '0',\n  Line 1288:           isHP: form.needPackaging, // защитная упаковка\n  Line 1311:           isInsurance: form.needInsurance && form.declaredValue > 0,\n  Line 1312:           isInsurancePrice: form.needInsurance ? form.declaredValue : 0,\n  Line 1613:       if (form.needInsurance && form.declaredValue > 0) {\n  Line 1623:       if (form.needPackaging) {\n  Line 1691:         packaging: form.needPackaging ? '1' : '0',\n  Line 1692:         insurance: form.needInsurance ? '1' : '0',\n  Line 1722:             needPackaging: form.needPackaging,\n  Line 1723:             needInsurance: form.needInsurance,\n  Line 1740:           if (form.needPackaging && autoTariff.pricePackage) {\n  Line 1752:           if (form.needInsurance && autoTariff.priceInsurance) {\n  Line 1964:       if (form.needPackaging && calc.details.packages) {\n  Line 2003:       if (form.needInsurance && calc.details.insurance) {\n  Line 2094:       if (form.needInsurance && form.declaredValue > 0) {\n  Line 2102:       if (form.needPackaging) {\n  Line 2339:                       checked={form.needPackaging}\n  Line 2340:                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needPackaging: checked as boolean }))}\n  Line 2349:                       checked={form.needInsurance}\n  Line 2350:                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needInsurance: checked as boolean }))}",
+    "metadata": {
+      "matches": 39,
+      "truncated": false
+    },
+    "title": "needInsurance|needPackaging",
+    "time": {
+      "start": 1759004396153,
+      "end": 1759004396173
+    }
+  }
+}

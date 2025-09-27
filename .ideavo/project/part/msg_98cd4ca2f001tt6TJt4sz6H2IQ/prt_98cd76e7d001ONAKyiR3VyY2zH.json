@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cd76e7d001ONAKyiR3VyY2zH",
+  "messageID": "msg_98cd4ca2f001tt6TJt4sz6H2IQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016e4MageKxLNT8xqPPQRwuf",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1850,
+      "limit": 30
+    },
+    "output": "<file>\n01851| \n01852|   const handleCalculate = async () => {\n01853|     setCalculating(true);\n01854|     setCalculations([]);\n01855|     \n01856|     // Сохраняем данные формы после расчета\n01857|     localStorage.setItem('deliveryForm', JSON.stringify(form));\n01858|     \n01859|     try {\n01860|       const results = await Promise.all([\n01861|         calculateDellin(),\n01862|         calculatePEK(),\n01863|         calculateNordWheel(),\n01864|         calculateRailContinent()\n01865|       ]);\n01866|       \n01867|       // Сортировка по цене\n01868|       const sortedResults = results\n01869|         .filter(result => !result.error)\n01870|         .sort((a, b) => a.price - b.price)\n01871|         .concat(results.filter(result => result.error));\n01872|       \n01873|       setCalculations(sortedResults);\n01874|     } catch (error) {\n01875|       console.error('Ошибка при расчете:', error);\n01876|     } finally {\n01877|       setCalculating(false);\n01878|     }\n01879|   };\n01880| \n\n(File has more lines. Use 'offset' parameter to read beyond line 1880)\n</file>",
+    "metadata": {
+      "preview": "\n  const handleCalculate = async () => {\n    setCalculating(true);\n    setCalculations([]);\n    \n    // Сохраняем данные формы после расчета\n    localStorage.setItem('deliveryForm', JSON.stringify(form));\n    \n    try {\n      const results = await Promise.all([\n        calculateDellin(),\n        calculatePEK(),\n        calculateNordWheel(),\n        calculateRailContinent()\n      ]);\n      \n      // Сортировка по цене\n      const sortedResults = results\n        .filter(result => !result.error)\n        .sort((a, b) => a.price - b.price)"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004553415,
+      "end": 1759004553417
+    }
+  }
+}

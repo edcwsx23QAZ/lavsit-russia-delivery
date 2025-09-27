@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cd529ea001FAhtNU9rSj43QC",
+  "messageID": "msg_98cd4ca2f001tt6TJt4sz6H2IQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_019agSnYnku2Ae4n9t2NkAjW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          console.log('🚂 Rail Continent детали тарифа:', {\n            price_with_out_sale: autoTariff.price_with_out_sale,\n            pricePackage: autoTariff.pricePackage,\n            priceInsurance: autoTariff.priceInsurance,\n            needPackaging: form.needPackaging,\n            needInsurance: form.needInsurance,\n            declaredValue: form.declaredValue\n          });",
+      "newString": "          console.log('🚂 Rail Continent детали тарифа:', {\n            price_with_out_sale: autoTariff.price_with_out_sale,\n            pricePackage: autoTariff.pricePackage,\n            priceInsurance: autoTariff.priceInsurance,\n            needPackaging: form.needPackaging,\n            needInsurance: form.needInsurance,\n            declaredValue: form.declaredValue\n          });\n          \n          console.log('🚂 Rail Continent чекбоксы состояние:');\n          console.log('   - Упаковка требуется:', form.needPackaging);\n          console.log('   - Страхование требуется:', form.needInsurance);\n          console.log('   - Заявленная стоимость:', form.declaredValue);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1723,8 +1723,13 @@\n   needInsurance: form.needInsurance,\n   declaredValue: form.declaredValue\n });\n \n+console.log('🚂 Rail Continent чекбоксы состояние:');\n+console.log('   - Упаковка требуется:', form.needPackaging);\n+console.log('   - Страхование требуется:', form.needInsurance);\n+console.log('   - Заявленная стоимость:', form.declaredValue);\n+\n // Основная стоимость доставки груза\n if (autoTariff.price_with_out_sale) {\n   const deliveryPrice = parseFloat(autoTariff.price_with_out_sale);\n   console.log('🚂 Доставка груза:', deliveryPrice);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004408352,
+      "end": 1759004408382
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cd760f0001sIOlLh4Be9EY4p",
+  "messageID": "msg_98cd4ca2f001tt6TJt4sz6H2IQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PTtTqAUCL9CGARiJToGMdL",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1820,
+      "limit": 30
+    },
+    "output": "<file>\n01821|             price: 0,\n01822|             days: 0,\n01823|             error: 'Автомобильный тариф недоступен для данного маршрута',\n01824|             requestData,\n01825|             responseData: data,\n01826|             apiUrl\n01827|           };\n01828|         }\n01829|       } else {\n01830|         return {\n01831|           company: 'Rail Continent',\n01832|           price: 0,\n01833|           days: 0,\n01834|           error: data.error || 'Ошибка расчета Rail Continent',\n01835|           requestData,\n01836|           responseData: data,\n01837|           apiUrl\n01838|         };\n01839|       }\n01840|     } catch (error: any) {\n01841|       console.error('🚂 Rail Continent ошибка:', error);\n01842|       return {\n01843|         company: 'Rail Continent',\n01844|         price: 0,\n01845|         days: 0,\n01846|         error: `Ошибка соединения: ${error.message}`,\n01847|         apiUrl\n01848|       };\n01849|     }\n01850|   };\n\n(File has more lines. Use 'offset' parameter to read beyond line 1850)\n</file>",
+    "metadata": {
+      "preview": "            price: 0,\n            days: 0,\n            error: 'Автомобильный тариф недоступен для данного маршрута',\n            requestData,\n            responseData: data,\n            apiUrl\n          };\n        }\n      } else {\n        return {\n          company: 'Rail Continent',\n          price: 0,\n          days: 0,\n          error: data.error || 'Ошибка расчета Rail Continent',\n          requestData,\n          responseData: data,\n          apiUrl\n        };\n      }\n    } catch (error: any) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004550413,
+      "end": 1759004550415
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_98cd6e57c0018mTmGJNfD2mged",
+  "messageID": "msg_98cd4ca2f001tt6TJt4sz6H2IQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_019KaMYjUunJMTSqUuDDYCJF",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz/route.ts",
+      "content": "import { NextRequest, NextResponse } from 'next/server';\n\n// Токен Возовоз API\nconst VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    \n    // Строим URL для API Vozovoz с токеном\n    const apiUrl = `https://vozovoz.org/api/?token=${VOZOVOZ_TOKEN}`;\n\n    console.log('🚚 Vozovoz API запрос:', JSON.stringify(body, null, 2));\n    console.log('🚚 Vozovoz API URL:', apiUrl);\n\n    const response = await fetch(apiUrl, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'Accept': 'application/json',\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n      },\n      body: JSON.stringify(body)\n    });\n\n    console.log(`🚚 Vozovoz API статус: ${response.status} ${response.statusText}`);\n\n    if (!response.ok) {\n      console.error('🚚 Vozovoz API ошибка:', response.status, response.statusText);\n      \n      const errorText = await response.text();\n      console.error('🚚 Vozovoz API ошибка тело:', errorText);\n      \n      return NextResponse.json({\n        success: false,\n        error: `API ошибка: ${response.status} ${response.statusText}`,\n        details: errorText\n      }, { status: response.status });\n    }\n\n    const data = await response.json();\n    console.log('🚚 Vozovoz API ответ:', JSON.stringify(data, null, 2));\n\n    // Проверяем на наличие ошибок в ответе Vozovoz\n    if (data.error) {\n      console.error('🚚 Vozovoz API вернул ошибку:', data.error);\n      return NextResponse.json({\n        success: false,\n        error: data.error.message || 'Vozovoz API error',\n        details: data.error\n      }, { status: 400 });\n    }\n\n    return NextResponse.json(data);\n\n  } catch (error: any) {\n    console.error('🚚 Vozovoz API критическая ошибка:', error);\n    return NextResponse.json({\n      success: false,\n      error: error.message || 'Внутренняя ошибка сервера',\n      details: error.stack\n    }, { status: 500 });\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/api/vozovoz/route.ts",
+      "exists": false
+    },
+    "title": "app/api/vozovoz/route.ts",
+    "time": {
+      "start": 1759004528207,
+      "end": 1759004528209
+    }
+  }
+}

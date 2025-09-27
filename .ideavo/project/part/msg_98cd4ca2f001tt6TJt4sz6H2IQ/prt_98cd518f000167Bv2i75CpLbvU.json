@@ -1,0 +1,25 @@
+{
+  "id": "prt_98cd518f000167Bv2i75CpLbvU",
+  "messageID": "msg_98cd4ca2f001tt6TJt4sz6H2IQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01DvZCTSNioYFRzZ8HgknCB6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1735,
+      "limit": 25
+    },
+    "output": "<file>\n01736|             totalPrice += deliveryPrice;\n01737|           }\n01738|           \n01739|           // Упаковка\n01740|           if (form.needPackaging && autoTariff.pricePackage) {\n01741|             const packagingPrice = parseFloat(autoTariff.pricePackage);\n01742|             console.log('🚂 Упаковка груза:', packagingPrice);\n01743|             services.push({\n01744|               name: 'Упаковка груза',\n01745|               description: 'Профессиональная упаковка',\n01746|               price: packagingPrice\n01747|             });\n01748|             totalPrice += packagingPrice;\n01749|           }\n01750|           \n01751|           // Страхование\n01752|           if (form.needInsurance && autoTariff.priceInsurance) {\n01753|             const insuranceCost = Math.round(form.declaredValue * parseFloat(autoTariff.priceInsurance) / 100);\n01754|             console.log('🚂 Страхование груза:', insuranceCost, '(', form.declaredValue, '*', autoTariff.priceInsurance, '%)');\n01755|             services.push({\n01756|               name: 'Страхование груза',\n01757|               description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n01758|               price: insuranceCost\n01759|             });\n01760|             totalPrice += insuranceCost;\n\n(File has more lines. Use 'offset' parameter to read beyond line 1760)\n</file>",
+    "metadata": {
+      "preview": "            totalPrice += deliveryPrice;\n          }\n          \n          // Упаковка\n          if (form.needPackaging && autoTariff.pricePackage) {\n            const packagingPrice = parseFloat(autoTariff.pricePackage);\n            console.log('🚂 Упаковка груза:', packagingPrice);\n            services.push({\n              name: 'Упаковка груза',\n              description: 'Профессиональная упаковка',\n              price: packagingPrice\n            });\n            totalPrice += packagingPrice;\n          }\n          \n          // Страхование\n          if (form.needInsurance && autoTariff.priceInsurance) {\n            const insuranceCost = Math.round(form.declaredValue * parseFloat(autoTariff.priceInsurance) / 100);\n            console.log('🚂 Страхование груза:', insuranceCost, '(', form.declaredValue, '*', autoTariff.priceInsurance, '%)');\n            services.push({"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759004400723,
+      "end": 1759004400725
+    }
+  }
+}

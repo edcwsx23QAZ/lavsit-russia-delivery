@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Plus, Truck, Building2, Map } from 'lucide-react';
+import { Plus, Truck, Building2, Map, Settings } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -1712,7 +1712,7 @@ export default function Home() {
         
         if (autoTariff) {
           // Собираем детали по услугам для расчета стоимости
-          const services = [];
+          const services: { name: string; description: string; price: number }[] = [];
           let totalPrice = 0;
           
           console.log('🚂 Rail Continent детали тарифа:', {
@@ -1723,6 +1723,11 @@ export default function Home() {
             needInsurance: form.needInsurance,
             declaredValue: form.declaredValue
           });
+          
+          console.log('🚂 Rail Continent чекбоксы состояние:');
+          console.log('   - Упаковка требуется:', form.needPackaging);
+          console.log('   - Страхование требуется:', form.needInsurance);
+          console.log('   - Заявленная стоимость:', form.declaredValue);
           
           // Основная стоимость доставки груза
           if (autoTariff.price_with_out_sale) {
@@ -1764,7 +1769,7 @@ export default function Home() {
           console.log('🚂 Rail Continent услуги:', services);
 
           // Дополнительные услуги (показываем, но не включаем в общую стоимость)
-          const additionalServices = [];
+          const additionalServices: { name: string; description: string; price: number }[] = [];
           
           // Терминальные сборы
           if (autoTariff.terminalEnter1) {
@@ -1844,6 +1849,142 @@ export default function Home() {
     }
   };
 
+  const calculateVozovoz = async (): Promise<CalculationResult> => {
+    const apiUrl = '/api/vozovoz';
+    
+    try {
+      // Вычисляем основные параметры груза
+      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
+      const totalVolume = form.cargos.reduce((sum, cargo) => 
+        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+      );
+      
+      console.log('🚚 Возовоз: подготовка данных...');
+      console.log('   - Общий вес:', totalWeight, 'кг');
+      console.log('   - Общий объем:', totalVolume, 'м³');
+      console.log('   - Откуда:', form.fromCity);
+      console.log('   - Куда:', form.toCity);
+      
+      // Параметры для API Vozovoz
+      const requestData = {
+        object: "price",
+        action: "get",
+        params: {
+          cargo: {
+            dimension: {
+              quantity: form.cargos.length,
+              volume: totalVolume,
+              weight: totalWeight
+            },
+            ...(form.needInsurance && form.declaredValue > 0 ? {
+              insurance: form.declaredValue
+            } : {}),
+            ...(form.needPackaging ? {
+              wrapping: {
+                box1: 1 // Базовая упаковка
+              }
+            } : {})
+          },
+          gateway: {
+            dispatch: {
+              point: {
+                location: form.fromCity || 'Москва',
+                terminal: "default"
+              }
+            },
+            destination: {
+              point: {
+                location: form.toCity || 'Санкт-Петербург', 
+                terminal: "default"
+              }
+            }
+          }
+        }
+      };
+
+      console.log('🚚 Возовоз запрос:', JSON.stringify(requestData, null, 2));
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData)
+      });
+
+      const data = await response.json();
+      console.log('🚚 Возовоз ответ:', JSON.stringify(data, null, 2));
+
+      if (response.ok && data.response) {
+        const responseData = data.response;
+        
+        // Собираем детали по услугам
+        const services: { name: string; description: string; price: number }[] = [];
+        let totalPrice = responseData.price || responseData.basePrice || 0;
+        
+        // Добавляем основные услуги
+        if (responseData.service && Array.isArray(responseData.service)) {
+          responseData.service.forEach((service: any) => {
+            services.push({
+              name: service.name,
+              description: '',
+              price: service.price
+            });
+          });
+        }
+        
+        // Если услуг нет, добавляем общую стоимость
+        if (services.length === 0) {
+          services.push({
+            name: 'Доставка груза',
+            description: `${form.fromCity} - ${form.toCity}`,
+            price: totalPrice
+          });
+        }
+
+        console.log('🚚 Возовоз итоговая стоимость:', totalPrice);
+        console.log('🚚 Возовоз услуги:', services);
+
+        return {
+          company: 'Возовоз',
+          price: Math.round(totalPrice),
+          days: responseData.deliveryTime?.to || responseData.deliveryTime?.from || 3,
+          details: {
+            note: `Доставка ${form.fromCity} - ${form.toCity}`,
+            services,
+            basePrice: responseData.basePrice,
+            finalPrice: responseData.price,
+            deliveryTime: responseData.deliveryTime,
+            weight: totalWeight,
+            volume: totalVolume
+          },
+          requestData,
+          responseData: data,
+          apiUrl
+        };
+      } else {
+        return {
+          company: 'Возовоз',
+          price: 0,
+          days: 0,
+          error: data.error || 'Ошибка расчета Возовоз',
+          requestData,
+          responseData: data,
+          apiUrl
+        };
+      }
+    } catch (error: any) {
+      console.error('🚚 Возовоз ошибка:', error);
+      return {
+        company: 'Возовоз',
+        price: 0,
+        days: 0,
+        error: `Ошибка соединения: ${error.message}`,
+        apiUrl
+      };
+    }
+  };
+
   const handleCalculate = async () => {
     setCalculating(true);
     setCalculations([]);
@@ -1856,7 +1997,8 @@ export default function Home() {
         calculateDellin(),
         calculatePEK(),
         calculateNordWheel(),
-        calculateRailContinent()
+        calculateRailContinent(),
+        calculateVozovoz()
       ]);
       
       // Сортировка по цене
@@ -2119,21 +2261,25 @@ export default function Home() {
           Междугородняя доставка Лавсит
         </h1>
         
-        {/* Уведомление о настройке API */}
-        <Alert className="border-blue-500 bg-blue-900/20 mb-4">
-          <Building2 className="h-4 w-4 text-blue-400" />
-          <AlertDescription className="text-blue-100">
-            <strong className="text-blue-300">🚚 Калькулятор ПЭК готов!</strong> Для получения реальных тарифов настройте API ПЭК.
-            <br />
-            <a href="/env-check" className="text-blue-400 underline font-medium hover:text-blue-300">
-              Проверить настройки ПЭК API →
-            </a>
-            {' | '}
-            <a href="/pek-test" className="text-blue-400 underline font-medium hover:text-blue-300">
-              Диагностика API →
-            </a>
-          </AlertDescription>
-        </Alert>
+        {/* Кнопка диагностики */}
+        <div className="flex justify-between items-center mb-4">
+          <div className="flex-1">
+            <Alert className="border-blue-500 bg-blue-900/20">
+              <Building2 className="h-4 w-4 text-blue-400" />
+              <AlertDescription className="text-blue-100">
+                <strong className="text-blue-300">🚚 Калькулятор доставки готов!</strong> Добавлены ТК: ПЭК, Деловые Линии, Rail Continent, Возовоз
+              </AlertDescription>
+            </Alert>
+          </div>
+          <Button 
+            onClick={() => window.open('/diagnostic', '_blank')}
+            variant="outline" 
+            className="ml-4 border-blue-500 text-blue-400 hover:bg-blue-900/20"
+          >
+            <Settings className="h-4 w-4 mr-2" />
+            Диагностика
+          </Button>
+        </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[90vh]">
           {/* Левая часть - форма */}
