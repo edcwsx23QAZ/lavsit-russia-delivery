@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b7798b3001hNVAa5qQ7ncTbF",
+  "messageID": "msg_98b7578740011ioC0GUHex09qj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GQhBdzD9UUT27A9yBGkHMD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1300,
+      "limit": 25
+    },
+    "output": "<file>\n01301|           method: 'calculateprice',\n01302|           ...requestData\n01303|         };\n01304|         \n01305|         console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n01306|         console.log('🌐 ПЭК API URL:', apiUrl);\n01307|         console.log('📋 ПЭК: количество типов тарифов:', requestData.types.length);\n01308|         console.log('📋 ПЭК: количество грузов:', requestData.cargos.length);\n01309|       \n01310|       // Проверяем координаты перед отправкой\n01311|       if (finalRequestData.pickup?.coordinates) {\n01312|         console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);\n01313|       }\n01314|       if (finalRequestData.delivery?.coordinates) {\n01315|         console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);\n01316|       }\n01317| \n01318|       const response = await fetch('/api/pek', {\n01319|         method: 'POST',\n01320|         headers: {\n01321|           'Content-Type': 'application/json',\n01322|         },\n01323|         body: JSON.stringify(finalRequestData)\n01324|       });\n01325| \n\n(File has more lines. Use 'offset' parameter to read beyond line 1325)\n</file>",
+    "metadata": {
+      "preview": "          method: 'calculateprice',\n          ...requestData\n        };\n        \n        console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n        console.log('🌐 ПЭК API URL:', apiUrl);\n        console.log('📋 ПЭК: количество типов тарифов:', requestData.types.length);\n        console.log('📋 ПЭК: количество грузов:', requestData.cargos.length);\n      \n      // Проверяем координаты перед отправкой\n      if (finalRequestData.pickup?.coordinates) {\n        console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);\n      }\n      if (finalRequestData.delivery?.coordinates) {\n        console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);\n      }\n\n      const response = await fetch('/api/pek', {\n        method: 'POST',\n        headers: {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758981495555,
+      "end": 1758981495557
+    }
+  }
+}

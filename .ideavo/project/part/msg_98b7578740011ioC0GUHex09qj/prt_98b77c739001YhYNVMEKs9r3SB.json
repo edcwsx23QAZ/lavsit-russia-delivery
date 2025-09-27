@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b77c739001YhYNVMEKs9r3SB",
+  "messageID": "msg_98b7578740011ioC0GUHex09qj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01KzGEKKfYg2a7SPPEN2iHjB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1290,
+      "limit": 25
+    },
+    "output": "<file>\n01291|           throw new Error('ПЭК: поле types должно быть непустым массивом');\n01292|         }\n01293|         \n01294|         if (!Array.isArray(requestData.cargos) || requestData.cargos.length === 0) {\n01295|           throw new Error('ПЭК: поле cargos должно быть непустым массивом');\n01296|         }\n01297|         \n01298|         console.log('✅ ПЭК: валидация обязательных полей пройдена');\n01299| \n01300|         const finalRequestData = {\n01301|           method: 'calculateprice',\n01302|           ...requestData\n01303|         };\n01304|         \n01305|         console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n01306|         console.log('🌐 ПЭК API URL:', apiUrl);\n01307|         console.log('📋 ПЭК: количество типов тарифов:', requestData.types.length);\n01308|         console.log('📋 ПЭК: количество грузов:', requestData.cargos.length);\n01309|       \n01310|       // Проверяем координаты перед отправкой\n01311|       if (finalRequestData.pickup?.coordinates) {\n01312|         console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);\n01313|       }\n01314|       if (finalRequestData.delivery?.coordinates) {\n01315|         console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1315)\n</file>",
+    "metadata": {
+      "preview": "          throw new Error('ПЭК: поле types должно быть непустым массивом');\n        }\n        \n        if (!Array.isArray(requestData.cargos) || requestData.cargos.length === 0) {\n          throw new Error('ПЭК: поле cargos должно быть непустым массивом');\n        }\n        \n        console.log('✅ ПЭК: валидация обязательных полей пройдена');\n\n        const finalRequestData = {\n          method: 'calculateprice',\n          ...requestData\n        };\n        \n        console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n        console.log('🌐 ПЭК API URL:', apiUrl);\n        console.log('📋 ПЭК: количество типов тарифов:', requestData.types.length);\n        console.log('📋 ПЭК: количество грузов:', requestData.cargos.length);\n      \n      // Проверяем координаты перед отправкой"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758981507437,
+      "end": 1758981507439
+    }
+  }
+}

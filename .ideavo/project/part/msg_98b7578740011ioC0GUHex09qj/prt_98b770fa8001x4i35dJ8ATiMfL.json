@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b770fa8001x4i35dJ8ATiMfL",
+  "messageID": "msg_98b7578740011ioC0GUHex09qj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01SphV59K4orvKnNEE9vsPE7",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Проверка на ошибку 400\n      if (!response.ok) {\n        console.error('❌ ДЛ: Ошибка API:', response.status, response.statusText);\n        console.error('❌ ДЛ: Текст ошибки:', data);\n        throw new Error(`API Деловых Линий вернул ошибку ${response.status}: ${data.error || data.message || 'Неизвестная ошибка'}`);\n      }",
+      "newString": ""
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -563,14 +563,9 @@\n console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n console.log('🚀 ОТВЕТ ДЛ data:', data);\n \n-// Проверка на ошибку 400\n-if (!response.ok) {\n-  console.error('❌ ДЛ: Ошибка API:', response.status, response.statusText);\n-  console.error('❌ ДЛ: Текст ошибки:', data);\n-  throw new Error(`API Деловых Линий вернул ошибку ${response.status}: ${data.error || data.message || 'Неизвестная ошибка'}`);\n-}\n+\n \n // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758981461462,
+      "end": 1758981461475
+    }
+  }
+}

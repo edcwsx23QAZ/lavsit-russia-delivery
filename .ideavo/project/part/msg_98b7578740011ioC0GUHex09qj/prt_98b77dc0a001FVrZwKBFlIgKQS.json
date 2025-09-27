@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b77dc0a001FVrZwKBFlIgKQS",
+  "messageID": "msg_98b7578740011ioC0GUHex09qj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016NmEiuMWCYUJh4ooxpFRLT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1310,
+      "limit": 20
+    },
+    "output": "<file>\n01311|       if (finalRequestData.pickup?.coordinates) {\n01312|         console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);\n01313|       }\n01314|       if (finalRequestData.delivery?.coordinates) {\n01315|         console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);\n01316|       }\n01317| \n01318|       const response = await fetch('/api/pek', {\n01319|         method: 'POST',\n01320|         headers: {\n01321|           'Content-Type': 'application/json',\n01322|         },\n01323|         body: JSON.stringify(finalRequestData)\n01324|       });\n01325| \n01326|       console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n01327|       console.log(`📡 ПЭК API URL: ${response.url}`);\n01328|       \n01329|       const responseText = await response.text();\n01330|       console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));\n\n(File has more lines. Use 'offset' parameter to read beyond line 1330)\n</file>",
+    "metadata": {
+      "preview": "      if (finalRequestData.pickup?.coordinates) {\n        console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);\n      }\n      if (finalRequestData.delivery?.coordinates) {\n        console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);\n      }\n\n      const response = await fetch('/api/pek', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(finalRequestData)\n      });\n\n      console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n      console.log(`📡 ПЭК API URL: ${response.url}`);\n      \n      const responseText = await response.text();\n      console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758981512836,
+      "end": 1758981512838
+    }
+  }
+}
