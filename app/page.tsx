@@ -1662,20 +1662,99 @@ export default function Home() {
 
 
   const calculateRailContinent = async (): Promise<CalculationResult> => {
-    await new Promise(resolve => setTimeout(resolve, 1200));
-    const basePrice = form.cargos.reduce((sum, cargo) => sum + cargo.weight * 12, 0);
-    let totalPrice = basePrice;
+    const apiUrl = 'http://railcontinent.ru/ajax/api.php';
     
-    if (form.needInsurance) totalPrice += form.declaredValue * 0.025;
-    if (form.needPackaging) totalPrice += basePrice * 0.08;
-    
-    return {
-      company: 'Rail Continent',
-      price: totalPrice,
-      days: 5,
-      apiUrl: 'https://www.railcontinent.ru/services/prochie-gruzoperevozki/forshop/api-manual/',
-      details: { note: 'Заглушка - API не реализован' }
-    };
+    try {
+      // Вычисляем основные параметры груза
+      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
+      const totalVolume = form.cargos.reduce((sum, cargo) => 
+        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+      );
+      
+      // Находим максимальные габариты
+      const maxLength = Math.max(...form.cargos.map(c => c.length));
+      const maxWidth = Math.max(...form.cargos.map(c => c.width));
+      const maxHeight = Math.max(...form.cargos.map(c => c.height));
+      
+      // Параметры для API Rail Continent
+      const params = new URLSearchParams({
+        city_sender: form.fromCity || 'Москва',
+        city_receiver: form.toCity || 'Санкт-Петербург',
+        weight: totalWeight.toString(),
+        volume: totalVolume.toString(),
+        length: (maxLength / 100).toString(), // переводим см в метры
+        width: (maxWidth / 100).toString(),
+        height: (maxHeight / 100).toString(),
+        declared_cost: form.declaredValue.toString(),
+        pickup: form.fromAddressDelivery ? '1' : '0',
+        delivery: form.toAddressDelivery ? '1' : '0',
+        packaging: form.needPackaging ? '1' : '0',
+        insurance: form.needInsurance ? '1' : '0',
+        tariff: 'auto' // Автоматический выбор оптимального тарифа
+      });
+
+      const requestData = Object.fromEntries(params);
+      const fullUrl = `${apiUrl}?${params.toString()}`;
+
+      const response = await fetch(fullUrl, {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+        }
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        // Если есть несколько тарифов, выбираем самый дешевый
+        let selectedTariff = data.tariffs?.[0];
+        if (data.tariffs && data.tariffs.length > 1) {
+          selectedTariff = data.tariffs.reduce((cheapest: any, current: any) => 
+            current.cost < cheapest.cost ? current : cheapest
+          );
+        }
+
+        return {
+          company: 'Rail Continent',
+          price: Math.round(selectedTariff?.cost || data.cost || 0),
+          days: selectedTariff?.days || data.days || 5,
+          details: {
+            tariff: selectedTariff?.name || data.tariff_name || 'Автоматический',
+            weight: totalWeight,
+            volume: totalVolume,
+            route: `${form.fromCity} - ${form.toCity}`,
+            services: {
+              pickup: form.fromAddressDelivery,
+              delivery: form.toAddressDelivery,
+              packaging: form.needPackaging,
+              insurance: form.needInsurance
+            },
+            allTariffs: data.tariffs || []
+          },
+          requestData,
+          responseData: data,
+          apiUrl: fullUrl
+        };
+      } else {
+        return {
+          company: 'Rail Continent',
+          price: 0,
+          days: 0,
+          error: data.error || 'Ошибка расчета Rail Continent',
+          requestData,
+          responseData: data,
+          apiUrl: fullUrl
+        };
+      }
+    } catch (error: any) {
+      return {
+        company: 'Rail Continent',
+        price: 0,
+        days: 0,
+        error: `Ошибка соединения: ${error.message}`,
+        apiUrl
+      };
+    }
   };
 
   const handleCalculate = async () => {
