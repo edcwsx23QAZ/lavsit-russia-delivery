@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b582cdb001e7TbSd6uhPYQKW",
+  "messageID": "msg_98b54d675001IlmM2SnJtrDwZH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_012CGwMdSvfJu66Bk7LWuNDi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "offset": 50,
+      "limit": 50
+    },
+    "output": "<file>\n00051|         const lng = Number(coordinates.longitude);\n00052|         \n00053|         if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n00054|           return NextResponse.json({ \n00055|             error: 'Некорректные координаты',\n00056|             details: `Координаты должны быть: latitude от -90 до 90, longitude от -180 до 180`,\n00057|             received: { latitude: coordinates.latitude, longitude: coordinates.longitude },\n00058|             validated: { latitude: lat, longitude: lng }\n00059|           }, { status: 400 });\n00060|         }\n00061|         \n00062|         body = {\n00063|           longitude: lng,\n00064|           latitude: lat\n00065|         };\n00066|         break;\n00067|         \n00068|       case 'calculateprice':\n00069|         urlPath = '/calculator/calculateprice/';\n00070|         const { method: methodName, ...calculationData } = requestData;\n00071|         \n00072|         // Валидация координат в адресах доставки\n00073|         console.log('🧪 API Прокси: Проверка координат в calculateprice');\n00074|         \n00075|         if (calculationData.pickup?.coordinates) {\n00076|           console.log('📍 API Прокси: pickup.coordinates =', calculationData.pickup.coordinates);\n00077|           const lat = Number(calculationData.pickup.coordinates.latitude);\n00078|           const lng = Number(calculationData.pickup.coordinates.longitude);\n00079|           \n00080|           console.log('📍 API Прокси: pickup преобразованно: lat=' + lat + ', lng=' + lng);\n00081|           \n00082|           if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n00083|             console.warn('⚠️ API Прокси: Некорректные координаты pickup:', calculationData.pickup.coordinates);\n00084|             console.warn('⚠️ API Прокси: Удаляем pickup.coordinates');\n00085|             delete calculationData.pickup.coordinates;\n00086|           } else {\n00087|             console.log('✅ API Прокси: pickup.coordinates валидны');\n00088|             calculationData.pickup.coordinates = { latitude: lat, longitude: lng };\n00089|           }\n00090|         }\n00091|         \n00092|         if (calculationData.delivery?.coordinates) {\n00093|           console.log('📍 API Прокси: delivery.coordinates =', calculationData.delivery.coordinates);\n00094|           const lat = Number(calculationData.delivery.coordinates.latitude);\n00095|           const lng = Number(calculationData.delivery.coordinates.longitude);\n00096|           \n00097|           console.log('📍 API Прокси: delivery преобразованно: lat=' + lat + ', lng=' + lng);\n00098|           \n00099|           if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n00100|             console.warn('⚠️ API Прокси: Некорректные координаты delivery:', calculationData.delivery.coordinates);\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "metadata": {
+      "preview": "        const lng = Number(coordinates.longitude);\n        \n        if (isNaN(lat) || isNaN(lng) || lat < -90 || lat > 90 || lng < -180 || lng > 180) {\n          return NextResponse.json({ \n            error: 'Некорректные координаты',\n            details: `Координаты должны быть: latitude от -90 до 90, longitude от -180 до 180`,\n            received: { latitude: coordinates.latitude, longitude: coordinates.longitude },\n            validated: { latitude: lat, longitude: lng }\n          }, { status: 400 });\n        }\n        \n        body = {\n          longitude: lng,\n          latitude: lat\n        };\n        break;\n        \n      case 'calculateprice':\n        urlPath = '/calculator/calculateprice/';\n        const { method: methodName, ...calculationData } = requestData;"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758979436606,
+      "end": 1758979436608
+    }
+  }
+}

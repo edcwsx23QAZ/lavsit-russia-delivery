@@ -978,12 +978,14 @@ export default function Home() {
         limit: 5
       };
       
+      // ПЭК API требует и адрес, и координаты одновременно
+      requestBody.address = address;
+      
       if (coordinates) {
         requestBody.coordinates = coordinates;
-        console.log(`📍 ПЭК: поиск по координатам`, coordinates);
+        console.log(`📍 ПЭК: поиск по адресу "${address}" и координатам`, coordinates);
       } else {
-        requestBody.address = address;
-        console.log(`📍 ПЭК: поиск по адресу "${address}"`);
+        console.log(`📍 ПЭК: поиск только по адресу "${address}"`);
       }
       
       const response = await fetch('/api/pek', {
@@ -1145,15 +1147,20 @@ export default function Home() {
       if (form.fromAddressDelivery && senderZone.warehousePoint) {
         const validSenderCoords = validateCoordinates(senderZone.warehousePoint);
         if (validSenderCoords) {
-          const senderDepartment = await getPekNearestDepartments(
-            form.fromAddress || form.fromCity,
-            {
-              latitude: validSenderCoords.latitude.toString(),
-              longitude: validSenderCoords.longitude.toString()
+          try {
+            const senderDepartment = await getPekNearestDepartments(
+              form.fromAddress || form.fromCity,
+              {
+                latitude: validSenderCoords.latitude.toString(),
+                longitude: validSenderCoords.longitude.toString()
+              }
+            );
+            if (senderDepartment) {
+              senderWarehouseId = senderDepartment.warehouseId;
+              console.log('✅ Найден ближайший склад отправителя:', senderDepartment.warehouseId);
             }
-          );
-          if (senderDepartment) {
-            senderWarehouseId = senderDepartment.warehouseId;
+          } catch (error) {
+            console.warn('⚠️ Ошибка поиска ближайших отделений отправителя, используем основной склад:', error);
           }
         } else {
           console.warn('⚠️ Некорректные координаты отправителя, используем основной склад');
@@ -1163,15 +1170,20 @@ export default function Home() {
       if (form.toAddressDelivery && receiverZone.warehousePoint) {
         const validReceiverCoords = validateCoordinates(receiverZone.warehousePoint);
         if (validReceiverCoords) {
-          const receiverDepartment = await getPekNearestDepartments(
-            form.toAddress || form.toCity,
-            {
-              latitude: validReceiverCoords.latitude.toString(),
-              longitude: validReceiverCoords.longitude.toString()
+          try {
+            const receiverDepartment = await getPekNearestDepartments(
+              form.toAddress || form.toCity,
+              {
+                latitude: validReceiverCoords.latitude.toString(),
+                longitude: validReceiverCoords.longitude.toString()
+              }
+            );
+            if (receiverDepartment) {
+              receiverWarehouseId = receiverDepartment.warehouseId;
+              console.log('✅ Найден ближайший склад получателя:', receiverDepartment.warehouseId);
             }
-          );
-          if (receiverDepartment) {
-            receiverWarehouseId = receiverDepartment.warehouseId;
+          } catch (error) {
+            console.warn('⚠️ Ошибка поиска ближайших отделений получателя, используем основной склад:', error);
           }
         } else {
           console.warn('⚠️ Некорректные координаты получателя, используем основной склад');
@@ -1183,16 +1195,21 @@ export default function Home() {
       tomorrow.setDate(tomorrow.getDate() + 1);
       const plannedDateTime = tomorrow.toISOString().slice(0, 19); // 2025-09-28T14:00:00
 
-      // Формируем массив грузов
-      const cargos = form.cargos.map(cargo => ({
-        length: cargo.length / 100, // переводим см в метры
-        width: cargo.width / 100,
-        height: cargo.height / 100,
-        volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3
-        weight: cargo.weight,
-        isHP: form.needPackaging, // защитная упаковка
-        sealingPositionsCount: 0
-      }));
+      // Формируем массив грузов (без координат)
+      const cargos = form.cargos.map(cargo => {
+        const cargoData = {
+          length: cargo.length / 100, // переводим см в метры
+          width: cargo.width / 100,
+          height: cargo.height / 100,
+          volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3
+          weight: cargo.weight,
+          isHP: form.needPackaging, // защитная упаковка
+          sealingPositionsCount: 0
+        };
+        
+        console.log('📦 Груз для ПЭК:', cargoData);
+        return cargoData;
+      });
 
       // Формируем запрос к API ПЭК
       const requestData: any = {
@@ -1231,20 +1248,20 @@ export default function Home() {
         };
       }
 
-      // Добавляем адреса если нужна доставка
+      // Добавляем адреса без координат (временно для отладки)
       if (form.fromAddressDelivery) {
-        const validSenderCoords = validateCoordinates(senderZone.warehousePoint);
+        console.warn('📍 Отключаем координаты pickup для отладки');
         requestData.pickup = {
-          address: form.fromAddress || `Россия, ${form.fromCity}`,
-          ...(validSenderCoords && { coordinates: validSenderCoords })
+          address: form.fromAddress || `Россия, ${form.fromCity}`
+          // Координаты временно отключены
         };
       }
       
       if (form.toAddressDelivery) {
-        const validReceiverCoords = validateCoordinates(receiverZone.warehousePoint);
+        console.warn('📍 Отключаем координаты delivery для отладки');
         requestData.delivery = {
-          address: form.toAddress || `Россия, ${form.toCity}`,
-          ...(validReceiverCoords && { coordinates: validReceiverCoords })
+          address: form.toAddress || `Россия, ${form.toCity}`
+          // Координаты временно отключены
         };
       }
 

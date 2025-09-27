@@ -1,0 +1,73 @@
+{
+  "id": "prt_98b57936c001fimvNK5e7woQcx",
+  "messageID": "msg_98b54d675001IlmM2SnJtrDwZH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_019a2JdQ2TGX9jh1XESxK5Wp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Исправить ошибку с адресами в nearestdepartments API",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Найти источник некорректных координат в ПЭК API",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Добавить fallback для случаев когда nearestdepartments не работает",
+          "status": "completed",
+          "priority": "medium",
+          "id": "3"
+        },
+        {
+          "content": "Временно отключить координаты для изоляции проблемы",
+          "status": "completed",
+          "priority": "high",
+          "id": "4"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Исправить ошибку с адресами в nearestdepartments API\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"1\"\n  },\n  {\n    \"content\": \"Найти источник некорректных координат в ПЭК API\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"2\"\n  },\n  {\n    \"content\": \"Добавить fallback для случаев когда nearestdepartments не работает\",\n    \"status\": \"completed\",\n    \"priority\": \"medium\",\n    \"id\": \"3\"\n  },\n  {\n    \"content\": \"Временно отключить координаты для изоляции проблемы\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"4\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Исправить ошибку с адресами в nearestdepartments API",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Найти источник некорректных координат в ПЭК API",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Добавить fallback для случаев когда nearestdepartments не работает",
+          "status": "completed",
+          "priority": "medium",
+          "id": "3"
+        },
+        {
+          "content": "Временно отключить координаты для изоляции проблемы",
+          "status": "completed",
+          "priority": "high",
+          "id": "4"
+        }
+      ]
+    },
+    "title": "1 todos",
+    "time": {
+      "start": 1758979400345,
+      "end": 1758979400345
+    }
+  }
+}

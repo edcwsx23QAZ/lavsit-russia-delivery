@@ -171,7 +171,14 @@ export async function POST(request: NextRequest) {
     console.log('🌐 Запрос к ПЭК API (официальная версия):');
     console.log('URL:', fullUrl);
     console.log('Auth: Basic (логин + API ключ)');
-    console.log('Body:', JSON.stringify(body, null, 2));
+    console.log('EXACT BODY TO PEK:', JSON.stringify(body, null, 2));
+    
+    // Поиск любых слов latitude/longitude в JSON
+    const bodyStr = JSON.stringify(body);
+    if (bodyStr.includes('latitude') || bodyStr.includes('longitude')) {
+      console.warn('🚨 ОБНАРУЖЕНЫ КООРДИНАТЫ В ЗАПРОСЕ К ПЭК!');
+      console.warn('Full body string:', bodyStr);
+    }
     
     try {
       const response = await fetch(fullUrl, {

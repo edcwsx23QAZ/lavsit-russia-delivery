@@ -1,0 +1,25 @@
+{
+  "id": "prt_98b5522df001B7ezBj0cblCxjJ",
+  "messageID": "msg_98b54d675001IlmM2SnJtrDwZH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01EvAZsvH2WaxctEtjrrqq8z",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 970,
+      "limit": 30
+    },
+    "output": "<file>\n00971|     try {\n00972|       console.log(`🏢 ПЭК: поиск ближайших отделений для \"${address}\"`);\n00973|       \n00974|       const requestBody: any = {\n00975|         departmentOperation: 3, // выдача грузов\n00976|         type: 3, // авто-транспорт\n00977|         searchRadius: 50, // км\n00978|         limit: 5\n00979|       };\n00980|       \n00981|       if (coordinates) {\n00982|         requestBody.coordinates = coordinates;\n00983|         console.log(`📍 ПЭК: поиск по координатам`, coordinates);\n00984|       } else {\n00985|         requestBody.address = address;\n00986|         console.log(`📍 ПЭК: поиск по адресу \"${address}\"`);\n00987|       }\n00988|       \n00989|       const response = await fetch('/api/pek', {\n00990|         method: 'POST',\n00991|         headers: {\n00992|           'Content-Type': 'application/json',\n00993|         },\n00994|         body: JSON.stringify({\n00995|           method: 'nearestdepartments',\n00996|           ...requestBody\n00997|         })\n00998|       });\n00999| \n01000|       console.log(`📡 ПЭК отделения API статус: ${response.status}`);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1000)\n</file>",
+    "metadata": {
+      "preview": "    try {\n      console.log(`🏢 ПЭК: поиск ближайших отделений для \"${address}\"`);\n      \n      const requestBody: any = {\n        departmentOperation: 3, // выдача грузов\n        type: 3, // авто-транспорт\n        searchRadius: 50, // км\n        limit: 5\n      };\n      \n      if (coordinates) {\n        requestBody.coordinates = coordinates;\n        console.log(`📍 ПЭК: поиск по координатам`, coordinates);\n      } else {\n        requestBody.address = address;\n        console.log(`📍 ПЭК: поиск по адресу \"${address}\"`);\n      }\n      \n      const response = await fetch('/api/pek', {\n        method: 'POST',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979237250,
+      "end": 1758979237255
+    }
+  }
+}

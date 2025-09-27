@@ -1,0 +1,34 @@
+{
+  "id": "prt_98b56911a001tY4yjWWlSJaZMX",
+  "messageID": "msg_98b54d675001IlmM2SnJtrDwZH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01Gw1ekU7ApUt7Bkb5yBubgv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "      // Добавляем адреса если нужна доставка\n      if (form.fromAddressDelivery) {\n        const validSenderCoords = validateCoordinates(senderZone.warehousePoint);\n        requestData.pickup = {\n          address: form.fromAddress || `Россия, ${form.fromCity}`,\n          ...(validSenderCoords && { coordinates: validSenderCoords })\n        };\n      }\n      \n      if (form.toAddressDelivery) {\n        const validReceiverCoords = validateCoordinates(receiverZone.warehousePoint);\n        requestData.delivery = {\n          address: form.toAddress || `Россия, ${form.toCity}`,\n          ...(validReceiverCoords && { coordinates: validReceiverCoords })\n        };\n      }",
+          "newString": "      // Добавляем адреса без координат (временно для отладки)\n      if (form.fromAddressDelivery) {\n        console.warn('📍 Отключаем координаты pickup для отладки');\n        requestData.pickup = {\n          address: form.fromAddress || `Россия, ${form.fromCity}`\n          // Координаты временно отключены\n        };\n      }\n      \n      if (form.toAddressDelivery) {\n        console.warn('📍 Отключаем координаты delivery для отладки');\n        requestData.delivery = {\n          address: form.toAddress || `Россия, ${form.toCity}`\n          // Координаты временно отключены\n        };\n      }"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1242,22 +1242,22 @@\n     isElevator: form.hasFreightLift\n   };\n }\n \n-// Добавляем адреса если нужна доставка\n+// Добавляем адреса без координат (временно для отладки)\n if (form.fromAddressDelivery) {\n-  const validSenderCoords = validateCoordinates(senderZone.warehousePoint);\n+  console.warn('📍 Отключаем координаты pickup для отладки');\n   requestData.pickup = {\n-    address: form.fromAddress || `Россия, ${form.fromCity}`,\n-    ...(validSenderCoords && { coordinates: validSenderCoords })\n+    address: form.fromAddress || `Россия, ${form.fromCity}`\n+    // Координаты временно отключены\n   };\n }\n \n if (form.toAddressDelivery) {\n-  const validReceiverCoords = validateCoordinates(receiverZone.warehousePoint);\n+  console.warn('📍 Отключаем координаты delivery для отладки');\n   requestData.delivery = {\n-    address: form.toAddress || `Россия, ${form.toCity}`,\n-    ...(validReceiverCoords && { coordinates: validReceiverCoords })\n+    address: form.toAddress || `Россия, ${form.toCity}`\n+    // Координаты временно отключены\n   };\n }\n \n const finalRequestData = {\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979344075,
+      "end": 1758979344086
+    }
+  }
+}

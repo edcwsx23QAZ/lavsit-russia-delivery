@@ -1,0 +1,34 @@
+{
+  "id": "prt_98b57b2e4001XUo4Hqv1z0LoZ5",
+  "messageID": "msg_98b54d675001IlmM2SnJtrDwZH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01SSvdy8K917Yw6Z7vaEyAvx",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "      // Формируем массив грузов\n      const cargos = form.cargos.map(cargo => ({\n        length: cargo.length / 100, // переводим см в метры\n        width: cargo.width / 100,\n        height: cargo.height / 100,\n        volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n        weight: cargo.weight,\n        isHP: form.needPackaging, // защитная упаковка\n        sealingPositionsCount: 0\n      }));",
+          "newString": "      // Формируем массив грузов (без координат)\n      const cargos = form.cargos.map(cargo => {\n        const cargoData = {\n          length: cargo.length / 100, // переводим см в метры\n          width: cargo.width / 100,\n          height: cargo.height / 100,\n          volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n          weight: cargo.weight,\n          isHP: form.needPackaging, // защитная упаковка\n          sealingPositionsCount: 0\n        };\n        \n        console.log('📦 Груз для ПЭК:', cargoData);\n        return cargoData;\n      });"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1194,18 +1194,23 @@\n const tomorrow = new Date();\n tomorrow.setDate(tomorrow.getDate() + 1);\n const plannedDateTime = tomorrow.toISOString().slice(0, 19); // 2025-09-28T14:00:00\n \n-// Формируем массив грузов\n-const cargos = form.cargos.map(cargo => ({\n-  length: cargo.length / 100, // переводим см в метры\n-  width: cargo.width / 100,\n-  height: cargo.height / 100,\n-  volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n-  weight: cargo.weight,\n-  isHP: form.needPackaging, // защитная упаковка\n-  sealingPositionsCount: 0\n-}));\n+// Формируем массив грузов (без координат)\n+const cargos = form.cargos.map(cargo => {\n+  const cargoData = {\n+    length: cargo.length / 100, // переводим см в метры\n+    width: cargo.width / 100,\n+    height: cargo.height / 100,\n+    volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n+    weight: cargo.weight,\n+    isHP: form.needPackaging, // защитная упаковка\n+    sealingPositionsCount: 0\n+  };\n+  \n+  console.log('📦 Груз для ПЭК:', cargoData);\n+  return cargoData;\n+});\n \n // Формируем запрос к API ПЭК\n const requestData: any = {\n   currencyCode: \"643\", // рубли\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979416015,
+      "end": 1758979416029
+    }
+  }
+}

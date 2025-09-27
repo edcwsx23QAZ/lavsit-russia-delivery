@@ -1,0 +1,34 @@
+{
+  "id": "prt_98b5842cf001i7vYdcMwePVeH2",
+  "messageID": "msg_98b54d675001IlmM2SnJtrDwZH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01Rb13FPQZiUeh68eshhqnru",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "edits": [
+        {
+          "oldString": "    console.log('🌐 Запрос к ПЭК API (официальная версия):');\n    console.log('URL:', fullUrl);\n    console.log('Auth: Basic (логин + API ключ)');\n    console.log('Body:', JSON.stringify(body, null, 2));",
+          "newString": "    console.log('🌐 Запрос к ПЭК API (официальная версия):');\n    console.log('URL:', fullUrl);\n    console.log('Auth: Basic (логин + API ключ)');\n    console.log('EXACT BODY TO PEK:', JSON.stringify(body, null, 2));\n    \n    // Поиск любых слов latitude/longitude в JSON\n    const bodyStr = JSON.stringify(body);\n    if (bodyStr.includes('latitude') || bodyStr.includes('longitude')) {\n      console.warn('🚨 ОБНАРУЖЕНЫ КООРДИНАТЫ В ЗАПРОСЕ К ПЭК!');\n      console.warn('Full body string:', bodyStr);\n    }"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -170,10 +170,17 @@\n \n console.log('🌐 Запрос к ПЭК API (официальная версия):');\n console.log('URL:', fullUrl);\n console.log('Auth: Basic (логин + API ключ)');\n-console.log('Body:', JSON.stringify(body, null, 2));\n+console.log('EXACT BODY TO PEK:', JSON.stringify(body, null, 2));\n \n+// Поиск любых слов latitude/longitude в JSON\n+const bodyStr = JSON.stringify(body);\n+if (bodyStr.includes('latitude') || bodyStr.includes('longitude')) {\n+  console.warn('🚨 ОБНАРУЖЕНЫ КООРДИНАТЫ В ЗАПРОСЕ К ПЭК!');\n+  console.warn('Full body string:', bodyStr);\n+}\n+\n try {\n   const response = await fetch(fullUrl, {\n     method: 'POST',\n     headers: {\n"
+        }
+      ]
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1758979453384,
+      "end": 1758979453389
+    }
+  }
+}

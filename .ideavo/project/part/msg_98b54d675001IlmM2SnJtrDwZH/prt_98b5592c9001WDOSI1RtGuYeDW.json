@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b5592c9001WDOSI1RtGuYeDW",
+  "messageID": "msg_98b54d675001IlmM2SnJtrDwZH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01LrE9fnBCiNiowucSxgmhYr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      if (coordinates) {\n        requestBody.coordinates = coordinates;\n        console.log(`📍 ПЭК: поиск по координатам`, coordinates);\n      } else {\n        requestBody.address = address;\n        console.log(`📍 ПЭК: поиск по адресу \"${address}\"`);\n      }",
+      "newString": "      // ПЭК API требует и адрес, и координаты одновременно\n      requestBody.address = address;\n      \n      if (coordinates) {\n        requestBody.coordinates = coordinates;\n        console.log(`📍 ПЭК: поиск по адресу \"${address}\" и координатам`, coordinates);\n      } else {\n        console.log(`📍 ПЭК: поиск только по адресу \"${address}\"`);\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -977,14 +977,16 @@\n   searchRadius: 50, // км\n   limit: 5\n };\n \n+// ПЭК API требует и адрес, и координаты одновременно\n+requestBody.address = address;\n+\n if (coordinates) {\n   requestBody.coordinates = coordinates;\n-  console.log(`📍 ПЭК: поиск по координатам`, coordinates);\n+  console.log(`📍 ПЭК: поиск по адресу \"${address}\" и координатам`, coordinates);\n } else {\n-  requestBody.address = address;\n-  console.log(`📍 ПЭК: поиск по адресу \"${address}\"`);\n+  console.log(`📍 ПЭК: поиск только по адресу \"${address}\"`);\n }\n \n const response = await fetch('/api/pek', {\n   method: 'POST',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1758979267838,
+      "end": 1758979267859
+    }
+  }
+}

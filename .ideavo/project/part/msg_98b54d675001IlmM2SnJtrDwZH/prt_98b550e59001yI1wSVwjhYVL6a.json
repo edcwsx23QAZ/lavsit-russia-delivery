@@ -1,0 +1,26 @@
+{
+  "id": "prt_98b550e59001yI1wSVwjhYVL6a",
+  "messageID": "msg_98b54d675001IlmM2SnJtrDwZH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01YF9jBsLuF1zLGyyHQHjoGU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A10 -B5 \"nearestdepartments.*address\" app/page.tsx",
+      "description": "Поиск проблемы с адресом в nearestdepartments"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Поиск проблемы с адресом в nearestdepartments"
+    },
+    "title": "cd /home/user/project && rg -n -A10 -B5 \"nearestdepartments.*address\" app/page.tsx",
+    "time": {
+      "start": 1758979232667,
+      "end": 1758979232694
+    }
+  }
+}
