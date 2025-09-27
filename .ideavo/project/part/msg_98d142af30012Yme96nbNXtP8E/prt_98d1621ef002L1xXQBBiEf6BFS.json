@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d1621ef002L1xXQBBiEf6BFS",
+  "messageID": "msg_98d142af30012Yme96nbNXtP8E",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01AJw6fPK5KmDsCvkzmzipQJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2240,
+      "limit": 40
+    },
+    "output": "<file>\n02241|             deliveryTime: responseData.deliveryTime,\n02242|             weight: totalWeight,\n02243|             volume: totalVolume\n02244|           },\n02245|           requestData,\n02246|           responseData: data,\n02247|           apiUrl\n02248|         };\n02249|       } else {\n02250|         return {\n02251|           company: 'Возовоз',\n02252|           price: 0,\n02253|           days: 0,\n02254|           error: data.error || 'Ошибка расчета Возовоз',\n02255|           requestData,\n02256|           responseData: data,\n02257|           apiUrl\n02258|         };\n02259|       }\n02260|     } catch (error: any) {\n02261|       console.error('🚚 Возовоз ошибка:', error);\n02262|       return {\n02263|         company: 'Возовоз',\n02264|         price: 0,\n02265|         days: 0,\n02266|         error: `Ошибка соединения: ${error.message}`,\n02267|         apiUrl\n02268|       };\n02269|     }\n02270|   };\n02271| \n02272|   // Расчет для Nord Wheel\n02273|   const calculateNordWheel = async (): Promise<CalculationResult> => {\n02274|     const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n02275|     \n02276|     try {\n02277|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n02278|       const totalVolume = form.cargos.reduce((sum, cargo) => \n02279|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n02280|       );\n\n(File has more lines. Use 'offset' parameter to read beyond line 2280)\n</file>",
+    "metadata": {
+      "preview": "            deliveryTime: responseData.deliveryTime,\n            weight: totalWeight,\n            volume: totalVolume\n          },\n          requestData,\n          responseData: data,\n          apiUrl\n        };\n      } else {\n        return {\n          company: 'Возовоз',\n          price: 0,\n          days: 0,\n          error: data.error || 'Ошибка расчета Возовоз',\n          requestData,\n          responseData: data,\n          apiUrl\n        };\n      }\n    } catch (error: any) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759008663001,
+      "end": 1759008663004
+    }
+  }
+}

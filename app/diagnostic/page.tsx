@@ -5,13 +5,15 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle } from 'lucide-react';
+import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle } from 'lucide-react';
 
 export default function DiagnosticPage() {
   const [isTestingPEK, setIsTestingPEK] = useState(false);
   const [isTestingDellin, setIsTestingDellin] = useState(false);
   const [isTestingRailContinent, setIsTestingRailContinent] = useState(false);
   const [isTestingVozovoz, setIsTestingVozovoz] = useState(false);
+  const [isTestingNordWheel, setIsTestingNordWheel] = useState(false);
+  const [isFullTesting, setIsFullTesting] = useState(false);
   
   const [diagnosticResults, setDiagnosticResults] = useState<{
     [key: string]: {
@@ -23,6 +25,16 @@ export default function DiagnosticPage() {
       timing?: number;
     }
   }>({});
+
+  const [fullTestResults, setFullTestResults] = useState<{
+    summary: {
+      totalTests: number;
+      successful: number;
+      failed: number;
+      errors: string[];
+    };
+    details: any[];
+  } | null>(null);
 
   const updateResult = (service: string, result: any) => {
     setDiagnosticResults(prev => ({
@@ -308,13 +320,423 @@ export default function DiagnosticPage() {
     }
   };
 
+  const testNordWheelAPI = async () => {
+    setIsTestingNordWheel(true);
+    const startTime = Date.now();
+    
+    try {
+      console.log('🔧 Начинаем диагностику Nord Wheel API...');
+      
+      const params = new URLSearchParams({
+        from: '91', // Москва
+        to: '92', // СПб
+        pickup: '0',
+        deliver: '0',
+        weight: '10',
+        volume: '0.1',
+        oversized: '0',
+        package: '0',
+        packageCount: '1',
+        insurance: '0',
+        sum: '50000',
+        documentsReturn: '0',
+        fragile: '1',
+        length: '1',
+        width: '1',
+        height: '1'
+      });
+
+      const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';
+      const fullUrl = `${apiUrl}?${params.toString()}`;
+      
+      const response = await fetch(fullUrl);
+      const data = await response.json();
+      const timing = Date.now() - startTime;
+
+      console.log('🔧 Nord Wheel API ответ:', data);
+
+      if (response.ok && data.status === 'success' && data.data) {
+        updateResult('nordwheel', {
+          status: 'success',
+          message: `Nord Wheel API работает корректно. Получен тариф: ${data.data?.total || 'N/A'} ₽`,
+          details: data.data,
+          response: data,
+          requestData: Object.fromEntries(params),
+          timing
+        });
+      } else {
+        updateResult('nordwheel', {
+          status: 'warning',
+          message: `Nord Wheel API вернул ошибку: ${data.error || data.message || 'Неизвестная ошибка'}`,
+          details: data.details,
+          response: data,
+          requestData: Object.fromEntries(params),
+          timing
+        });
+      }
+    } catch (error: any) {
+      console.error('🔧 Nord Wheel API ошибка:', error);
+      updateResult('nordwheel', {
+        status: 'error',
+        message: `Критическая ошибка Nord Wheel API: ${error.message}`,
+        details: error,
+        timing: Date.now() - startTime
+      });
+    } finally {
+      setIsTestingNordWheel(false);
+    }
+  };
+
   const testAllAPIs = async () => {
     await Promise.all([
       testPEKAPI(),
       testDellinAPI(), 
       testRailContinentAPI(),
-      testVozovozAPI()
+      testVozovozAPI(),
+      testNordWheelAPI()
     ]);
+  };
+
+  // 🔧 Генератор тестовых данных для множественных грузовых мест
+  const generateTestCargos = (count: number) => {
+    const cargos = [];
+    for (let i = 0; i < count; i++) {
+      cargos.push({
+        length: 50 + Math.floor(Math.random() * 150), // 50-200 см
+        width: 30 + Math.floor(Math.random() * 120),  // 30-150 см  
+        height: 20 + Math.floor(Math.random() * 180), // 20-200 см
+        weight: 5 + Math.floor(Math.random() * 95)    // 5-100 кг
+      });
+    }
+    return cargos;
+  };
+
+  // 🔧 Генератор всех комбинаций опций
+  const generateOptionsCombinations = () => {
+    const combinations = [];
+    const options = [
+      { name: 'fromAddressDelivery', values: [true, false] },
+      { name: 'toAddressDelivery', values: [true, false] },
+      { name: 'needPackaging', values: [true, false] },
+      { name: 'needInsurance', values: [true, false] }
+    ];
+
+    // Генерируем все возможные комбинации (2^4 = 16 комбинаций)
+    for (let i = 0; i < Math.pow(2, options.length); i++) {
+      const combination: any = {
+        fromCity: 'Москва',
+        toCity: 'Санкт-Петербург',
+        fromAddress: 'ул. Тверская, 1',
+        toAddress: 'Невский проспект, 1',
+        declaredValue: 50000
+      };
+      
+      options.forEach((option, index) => {
+        combination[option.name] = Boolean(i & (1 << index));
+      });
+      
+      combinations.push(combination);
+    }
+    
+    return combinations;
+  };
+
+  // 🔧 Функция тестирования одной ТК с определенными параметрами
+  const testSingleTK = async (tkName: string, testData: any) => {
+    const startTime = Date.now();
+    let apiUrl = '';
+    let requestData: any = {};
+    
+    try {
+      switch (tkName) {
+        case 'pek':
+          apiUrl = '/api/pek';
+          requestData = { method: 'calculateprice', ...testData };
+          break;
+        case 'dellin':
+          // Используем прямой расчет как в главном калькуляторе
+          apiUrl = 'DELLIN_DIRECT';
+          requestData = testData;
+          break;
+        case 'railcontinent':
+          apiUrl = '/api/rail-continent';
+          requestData = {
+            city_sender: testData.fromCity,
+            city_receiver: testData.toCity,
+            weight: testData.cargos.reduce((sum: number, cargo: any) => sum + cargo.weight, 0),
+            volume: testData.cargos.reduce((sum: number, cargo: any) => 
+              sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+            ),
+            quantity: testData.cargos.length, // 🔧 Новый параметр
+            length: Math.max(...testData.cargos.map((c: any) => c.length)) / 100,
+            width: Math.max(...testData.cargos.map((c: any) => c.width)) / 100,
+            height: Math.max(...testData.cargos.map((c: any) => c.height)) / 100,
+            declared_cost: testData.declaredValue,
+            pickup: testData.fromAddressDelivery ? '1' : '0',
+            delivery: testData.toAddressDelivery ? '1' : '0',
+            packaging: testData.needPackaging ? '1' : '0',
+            insurance: testData.needInsurance ? '1' : '0',
+            tariff: 'auto'
+          };
+          break;
+        case 'vozovoz':
+          apiUrl = '/api/vozovoz';
+          requestData = {
+            object: "price",
+            action: "get",
+            params: {
+              cargo: {
+                dimension: {
+                  quantity: testData.cargos.length,
+                  volume: testData.cargos.reduce((sum: number, cargo: any) => 
+                    sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+                  ),
+                  weight: testData.cargos.reduce((sum: number, cargo: any) => sum + cargo.weight, 0)
+                },
+                ...(testData.needInsurance && testData.declaredValue > 0 ? {
+                  insurance: testData.declaredValue
+                } : {}),
+                ...(testData.needPackaging ? {
+                  wrapping: {
+                    palletCollar: testData.cargos.reduce((sum: number, cargo: any) => 
+                      sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+                    )
+                  }
+                } : {})
+              },
+              gateway: {
+                dispatch: {
+                  point: {
+                    location: testData.fromCity,
+                    ...(testData.fromAddressDelivery ? {
+                      address: testData.fromAddress || "адрес отправления"
+                    } : {
+                      terminal: "default"
+                    })
+                  }
+                },
+                destination: {
+                  point: {
+                    location: testData.toCity,
+                    ...(testData.toAddressDelivery ? {
+                      address: testData.toAddress || "адрес получения"
+                    } : {
+                      terminal: "default"
+                    })
+                  }
+                }
+              }
+            }
+          };
+          break;
+        case 'nordwheel':
+          const totalWeight = testData.cargos.reduce((sum: number, cargo: any) => sum + cargo.weight, 0);
+          const totalVolume = testData.cargos.reduce((sum: number, cargo: any) => 
+            sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+          );
+          const maxLength = Math.max(...testData.cargos.map((c: any) => c.length));
+          const maxWidth = Math.max(...testData.cargos.map((c: any) => c.width));
+          const maxHeight = Math.max(...testData.cargos.map((c: any) => c.height));
+          const isOversized = maxLength > 200 || maxWidth > 200 || maxHeight > 200 || totalWeight > 1000;
+          
+          const params = new URLSearchParams({
+            from: '91',
+            to: '92',
+            pickup: testData.fromAddressDelivery ? '1' : '0',
+            deliver: testData.toAddressDelivery ? '1' : '0',
+            weight: totalWeight.toString(),
+            volume: totalVolume.toString(),
+            oversized: isOversized ? '1' : '0',
+            package: testData.needPackaging ? '1' : '0',
+            packageCount: testData.cargos.length.toString(),
+            insurance: testData.needInsurance ? '1' : '0',
+            sum: testData.declaredValue.toString(),
+            documentsReturn: '0',
+            fragile: '1',
+            length: (maxLength / 100).toString(),
+            width: (maxWidth / 100).toString(),
+            height: (maxHeight / 100).toString(),
+            multiplePackages: testData.cargos.length > 1 ? '1' : '0'
+          });
+          
+          apiUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;
+          requestData = Object.fromEntries(params);
+          break;
+      }
+
+      let response: any;
+      let data: any;
+
+      if (tkName === 'nordwheel') {
+        response = await fetch(apiUrl);
+        data = await response.json();
+      } else if (tkName === 'dellin') {
+        // Пропускаем Деловые Линии в массовом тестировании из-за сложности авторизации
+        return {
+          tk: tkName,
+          status: 'skipped',
+          message: 'Пропущено (сложная авторизация)',
+          timing: Date.now() - startTime,
+          requestData,
+          cargoCount: testData.cargos.length
+        };
+      } else {
+        response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestData)
+        });
+        data = await response.json();
+      }
+
+      const timing = Date.now() - startTime;
+
+      // Проверяем успешность ответа в зависимости от ТК
+      let isSuccess = false;
+      let price = 0;
+      
+      switch (tkName) {
+        case 'pek':
+          isSuccess = response.ok && data.success;
+          price = data.data?.price || 0;
+          break;
+        case 'railcontinent':
+          isSuccess = response.ok && data.result === 'success';
+          price = data.data?.auto?.priceTotal || 0;
+          break;
+        case 'vozovoz':
+          isSuccess = response.ok && data.response;
+          price = data.response?.price || 0;
+          break;
+        case 'nordwheel':
+          isSuccess = response.ok && data.status === 'success' && data.data;
+          price = data.data?.total || 0;
+          break;
+      }
+
+      return {
+        tk: tkName,
+        status: isSuccess ? 'success' : 'error',
+        message: isSuccess ? `Тариф: ${price} ₽` : (data.error || data.message || 'Ошибка'),
+        timing,
+        price,
+        requestData,
+        responseData: data,
+        cargoCount: testData.cargos.length
+      };
+
+    } catch (error: any) {
+      return {
+        tk: tkName,
+        status: 'error',
+        message: `Критическая ошибка: ${error.message}`,
+        timing: Date.now() - startTime,
+        requestData,
+        cargoCount: testData.cargos.length,
+        error: error.message
+      };
+    }
+  };
+
+  // 🔧 ПОЛНОЕ ТЕСТИРОВАНИЕ
+  const runFullTesting = async () => {
+    setIsFullTesting(true);
+    setFullTestResults(null);
+    
+    const allResults: any[] = [];
+    const errors: string[] = [];
+    let totalTests = 0;
+    let successful = 0;
+    
+    console.log('🧪 ===== НАЧАЛО ПОЛНОГО ТЕСТИРОВАНИЯ =====');
+    
+    try {
+      const transportCompanies = ['pek', 'railcontinent', 'vozovoz', 'nordwheel'];
+      const cargoCountTests = [1, 2, 3, 5, 10, 20, 50]; // Тестируем до 50 грузовых мест
+      const optionCombinations = generateOptionsCombinations();
+      
+      console.log(`🧪 Планируется тестов: ${transportCompanies.length} ТК × ${cargoCountTests.length} вариантов мест × ${optionCombinations.length} комбинаций опций = ${transportCompanies.length * cargoCountTests.length * optionCombinations.length}`);
+      
+      // Ограничиваем количество тестов для производительности
+      const maxTestsPerTK = 20; // 20 тестов на ТК (вместо всех комбинаций)
+      
+      for (const tk of transportCompanies) {
+        console.log(`🧪 Тестирование ${tk.toUpperCase()}...`);
+        let testsForTK = 0;
+        
+        // Тестируем различное количество грузовых мест
+        for (const cargoCount of cargoCountTests) {
+          if (testsForTK >= maxTestsPerTK) break;
+          
+          // Выбираем несколько комбинаций опций (не все, для экономии времени)
+          const selectedCombinations = optionCombinations.slice(0, Math.min(3, Math.floor(maxTestsPerTK / cargoCountTests.length)));
+          
+          for (const options of selectedCombinations) {
+            if (testsForTK >= maxTestsPerTK) break;
+            
+            const testData = {
+              ...options,
+              cargos: generateTestCargos(cargoCount)
+            };
+            
+            console.log(`🧪 ${tk}: ${cargoCount} мест, опции: [${Object.entries(options).filter(([k, v]) => typeof v === 'boolean' && v).map(([k, v]) => k).join(', ') || 'базовые'}]`);
+            
+            const result = await testSingleTK(tk, testData);
+            allResults.push(result);
+            totalTests++;
+            testsForTK++;
+            
+            if (result.status === 'success') {
+              successful++;
+              console.log(`✅ ${tk}: ${result.message} (${result.timing}ms)`);
+            } else if (result.status === 'skipped') {
+              console.log(`⏭️ ${tk}: ${result.message}`);
+            } else {
+              console.log(`❌ ${tk}: ${result.message} (${result.timing}ms)`);
+              errors.push(`${tk}: ${result.message}`);
+            }
+            
+            // Небольшая пауза между запросами
+            await new Promise(resolve => setTimeout(resolve, 100));
+          }
+        }
+      }
+      
+      const summary = {
+        totalTests,
+        successful,
+        failed: totalTests - successful,
+        errors
+      };
+      
+      setFullTestResults({
+        summary,
+        details: allResults
+      });
+      
+      console.log('🧪 ===== РЕЗУЛЬТАТЫ ПОЛНОГО ТЕСТИРОВАНИЯ =====');
+      console.log(`📊 Всего тестов: ${totalTests}`);
+      console.log(`✅ Успешных: ${successful}`);
+      console.log(`❌ Неудачных: ${totalTests - successful}`);
+      console.log(`📈 Процент успеха: ${((successful / totalTests) * 100).toFixed(1)}%`);
+      
+      if (errors.length > 0) {
+        console.log('❌ Ошибки:');
+        errors.forEach(error => console.log(`   - ${error}`));
+      }
+      
+    } catch (error: any) {
+      console.error('🧪 Критическая ошибка полного тестирования:', error);
+      errors.push(`Критическая ошибка: ${error.message}`);
+      
+      setFullTestResults({
+        summary: { totalTests, successful, failed: totalTests - successful, errors },
+        details: allResults
+      });
+    } finally {
+      setIsFullTesting(false);
+      console.log('🧪 ===== КОНЕЦ ПОЛНОГО ТЕСТИРОВАНИЯ =====');
+    }
   };
 
   const getStatusIcon = (status: string) => {
@@ -343,10 +765,18 @@ export default function DiagnosticPage() {
           <p className="text-gray-400">Проверка работоспособности API всех подключенных ТК</p>
         </div>
 
-        <div className="flex gap-4 mb-6">
+        <div className="flex gap-4 mb-6 flex-wrap">
           <Button onClick={testAllAPIs} className="bg-blue-600 hover:bg-blue-700">
             <Activity className="h-4 w-4 mr-2" />
             Тестировать все API
+          </Button>
+          <Button 
+            onClick={runFullTesting} 
+            disabled={isFullTesting}
+            className="bg-purple-600 hover:bg-purple-700"
+          >
+            <TestTube className="h-4 w-4 mr-2" />
+            {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}
           </Button>
           <Button onClick={() => window.open('/env-check', '_blank')} variant="outline">
             <Building2 className="h-4 w-4 mr-2" />
@@ -357,7 +787,67 @@ export default function DiagnosticPage() {
           </Button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Результаты полного тестирования */}
+        {fullTestResults && (
+          <Card className="border-gray-700 bg-gray-900 mb-6">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <TestTube className="h-5 w-5 text-purple-400" />
+                Результаты полного тестирования
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-blue-400">{fullTestResults.summary.totalTests}</div>
+                  <div className="text-sm text-gray-400">Всего тестов</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-green-400">{fullTestResults.summary.successful}</div>
+                  <div className="text-sm text-gray-400">Успешных</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-red-400">{fullTestResults.summary.failed}</div>
+                  <div className="text-sm text-gray-400">Неудачных</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-yellow-400">
+                    {((fullTestResults.summary.successful / fullTestResults.summary.totalTests) * 100).toFixed(1)}%
+                  </div>
+                  <div className="text-sm text-gray-400">Успешность</div>
+                </div>
+              </div>
+              
+              {fullTestResults.summary.errors.length > 0 && (
+                <Alert className="border-red-500 bg-red-900/20 mb-4">
+                  <AlertCircle className="h-4 w-4" />
+                  <AlertDescription>
+                    <div className="font-medium mb-2">Найденные ошибки:</div>
+                    <ul className="list-disc list-inside text-sm space-y-1">
+                      {fullTestResults.summary.errors.slice(0, 10).map((error, index) => (
+                        <li key={index}>{error}</li>
+                      ))}
+                      {fullTestResults.summary.errors.length > 10 && (
+                        <li>... и еще {fullTestResults.summary.errors.length - 10} ошибок</li>
+                      )}
+                    </ul>
+                  </AlertDescription>
+                </Alert>
+              )}
+              
+              <details className="mt-4">
+                <summary className="cursor-pointer text-sm font-medium">Подробные результаты</summary>
+                <div className="mt-2 max-h-96 overflow-y-auto">
+                  <pre className="text-xs p-2 bg-gray-800 rounded">
+                    {JSON.stringify(fullTestResults.details, null, 2)}
+                  </pre>
+                </div>
+              </details>
+            </CardContent>
+          </Card>
+        )}
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {/* ПЭК */}
           <Card className="border-gray-700 bg-gray-900">
             <CardHeader>
@@ -550,6 +1040,55 @@ export default function DiagnosticPage() {
                 </Alert>
               ) : (
                 <p className="text-gray-400">Нажмите "Тест" для проверки API Возовоз</p>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Nord Wheel */}
+          <Card className="border-gray-700 bg-gray-900">
+            <CardHeader>
+              <CardTitle className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Truck className="h-5 w-5 text-cyan-400" />
+                  Nord Wheel
+                </div>
+                <Button 
+                  onClick={testNordWheelAPI} 
+                  disabled={isTestingNordWheel}
+                  size="sm"
+                  variant="outline"
+                >
+                  {isTestingNordWheel ? 'Тестирование...' : 'Тест'}
+                </Button>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {diagnosticResults.nordwheel ? (
+                <Alert className={getStatusColor(diagnosticResults.nordwheel.status)}>
+                  <div className="flex items-start gap-2">
+                    {getStatusIcon(diagnosticResults.nordwheel.status)}
+                    <div className="flex-1">
+                      <AlertDescription>
+                        <div className="font-medium mb-2">{diagnosticResults.nordwheel.message}</div>
+                        {diagnosticResults.nordwheel.timing && (
+                          <Badge variant="outline" className="mb-2">
+                            Время ответа: {diagnosticResults.nordwheel.timing}мс
+                          </Badge>
+                        )}
+                        {diagnosticResults.nordwheel.details && (
+                          <details className="mt-2">
+                            <summary className="cursor-pointer text-sm">Подробности</summary>
+                            <pre className="text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto">
+                              {JSON.stringify(diagnosticResults.nordwheel.details, null, 2)}
+                            </pre>
+                          </details>
+                        )}
+                      </AlertDescription>
+                    </div>
+                  </div>
+                </Alert>
+              ) : (
+                <p className="text-gray-400">Нажмите "Тест" для проверки API Nord Wheel</p>
               )}
             </CardContent>
           </Card>

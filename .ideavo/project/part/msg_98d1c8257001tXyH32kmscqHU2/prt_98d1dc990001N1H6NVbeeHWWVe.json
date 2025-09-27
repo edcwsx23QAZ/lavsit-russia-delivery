@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d1dc990001N1H6NVbeeHWWVe",
+  "messageID": "msg_98d1c8257001tXyH32kmscqHU2",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01TxRBrQkv4vLdGWksNTFAb1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2185,
+      "limit": 30
+    },
+    "output": "<file>\n02186|           services.push({\n02187|             name: 'Доставка до адреса',\n02188|             description: `Доставка до: ${form.toAddress || 'адрес получения'}`,\n02189|             price: responseData.deliveryPrice\n02190|           });\n02191|         }\n02192|         \n02193|         // Упаковка (обрешетка)\n02194|         if (form.needPackaging && responseData.wrappingPrice) {\n02195|           services.push({\n02196|             name: 'Упаковка груза',\n02197|             description: 'Обрешетка груза',\n02198|             price: responseData.wrappingPrice\n02199|           });\n02200|         }\n02201|         \n02202|         // Страхование\n02203|         if (form.needInsurance && responseData.insurancePrice) {\n02204|           services.push({\n02205|             name: 'Страхование груза',\n02206|             description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n02207|             price: responseData.insurancePrice\n02208|           });\n02209|         }\n02210|         \n02211|         // Если услуг нет, добавляем общую стоимость\n02212|         if (services.length === 0) {\n02213|           services.push({\n02214|             name: 'Доставка груза',\n02215|             description: `${form.fromCity} - ${form.toCity}`,\n\n(File has more lines. Use 'offset' parameter to read beyond line 2215)\n</file>",
+    "metadata": {
+      "preview": "          services.push({\n            name: 'Доставка до адреса',\n            description: `Доставка до: ${form.toAddress || 'адрес получения'}`,\n            price: responseData.deliveryPrice\n          });\n        }\n        \n        // Упаковка (обрешетка)\n        if (form.needPackaging && responseData.wrappingPrice) {\n          services.push({\n            name: 'Упаковка груза',\n            description: 'Обрешетка груза',\n            price: responseData.wrappingPrice\n          });\n        }\n        \n        // Страхование\n        if (form.needInsurance && responseData.insurancePrice) {\n          services.push({\n            name: 'Страхование груза',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759009164666,
+      "end": 1759009164668
+    }
+  }
+}

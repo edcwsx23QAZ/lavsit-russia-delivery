@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d153603001tVTzRw4Qah9GQv",
+  "messageID": "msg_98d142af30012Yme96nbNXtP8E",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01HQgxHdv11sAgRbbb2idysU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1790,
+      "limit": 20
+    },
+    "output": "<file>\n01791|           errorInfo: error.message\n01792|         },\n01793|         requestData: null,\n01794|         responseData: null,\n01795|         apiUrl,\n01796|         error: `${errorDescription}. Показан примерный расчет по базовым тарифам.`\n01797|       };\n01798|     }\n01799|   };\n01800| \n01801| \n01802| \n01803|   const calculateRailContinent = async (): Promise<CalculationResult> => {\n01804|     const apiUrl = '/api/rail-continent';\n01805|     \n01806|     try {\n01807|       // Вычисляем основные параметры груза\n01808|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n01809|       const totalVolume = form.cargos.reduce((sum, cargo) => \n01810|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n\n(File has more lines. Use 'offset' parameter to read beyond line 1810)\n</file>",
+    "metadata": {
+      "preview": "          errorInfo: error.message\n        },\n        requestData: null,\n        responseData: null,\n        apiUrl,\n        error: `${errorDescription}. Показан примерный расчет по базовым тарифам.`\n      };\n    }\n  };\n\n\n\n  const calculateRailContinent = async (): Promise<CalculationResult> => {\n    const apiUrl = '/api/rail-continent';\n    \n    try {\n      // Вычисляем основные параметры груза\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759008602253,
+      "end": 1759008602256
+    }
+  }
+}

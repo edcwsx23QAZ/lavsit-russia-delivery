@@ -1,0 +1,26 @@
+{
+  "id": "prt_98d21b0c6001Eq162cPvQ7JR6c",
+  "messageID": "msg_98d1c8257001tXyH32kmscqHU2",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_012WYHMKVaaa55efkJyuFTaq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Проверка сборки после внесения всех изменений"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/diagnostic/page.tsx:404:19\nType error: Argument of type '{ length: number; width: number; height: number; weight: number; }' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 402 |\u001b[39m     \u001b[36mconst\u001b[39m cargos \u001b[33m=\u001b[39m []\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 403 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mlet\u001b[39m i \u001b[33m=\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m i \u001b[33m<\u001b[39m count\u001b[33m;\u001b[39m i\u001b[33m++\u001b[39m) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 404 |\u001b[39m       cargos\u001b[33m.\u001b[39mpush({\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 405 |\u001b[39m         length\u001b[33m:\u001b[39m \u001b[35m50\u001b[39m \u001b[33m+\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mfloor(\u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mrandom() \u001b[33m*\u001b[39m \u001b[35m150\u001b[39m)\u001b[33m,\u001b[39m \u001b[90m// 50-200 см\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 406 |\u001b[39m         width\u001b[33m:\u001b[39m \u001b[35m30\u001b[39m \u001b[33m+\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mfloor(\u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mrandom() \u001b[33m*\u001b[39m \u001b[35m120\u001b[39m)\u001b[33m,\u001b[39m  \u001b[90m// 30-150 см  \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 407 |\u001b[39m         height\u001b[33m:\u001b[39m \u001b[35m20\u001b[39m \u001b[33m+\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mfloor(\u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mrandom() \u001b[33m*\u001b[39m \u001b[35m180\u001b[39m)\u001b[33m,\u001b[39m \u001b[90m// 20-200 см\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/diagnostic/page.tsx:404:19\nType error: Argument of type '{ length: number; width: number; height: number; weight: number; }' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 402 |\u001b[39m     \u001b[36mconst\u001b[39m cargos \u001b[33m=\u001b[39m []\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 403 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mlet\u001b[39m i \u001b[33m=\u001b[39m \u001b[35m0\u001b[39m\u001b[33m;\u001b[39m i \u001b[33m<\u001b[39m count\u001b[33m;\u001b[39m i\u001b[33m++\u001b[39m) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 404 |\u001b[39m       cargos\u001b[33m.\u001b[39mpush({\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 405 |\u001b[39m         length\u001b[33m:\u001b[39m \u001b[35m50\u001b[39m \u001b[33m+\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mfloor(\u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mrandom() \u001b[33m*\u001b[39m \u001b[35m150\u001b[39m)\u001b[33m,\u001b[39m \u001b[90m// 50-200 см\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 406 |\u001b[39m         width\u001b[33m:\u001b[39m \u001b[35m30\u001b[39m \u001b[33m+\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mfloor(\u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mrandom() \u001b[33m*\u001b[39m \u001b[35m120\u001b[39m)\u001b[33m,\u001b[39m  \u001b[90m// 30-150 см  \u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 407 |\u001b[39m         height\u001b[33m:\u001b[39m \u001b[35m20\u001b[39m \u001b[33m+\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mfloor(\u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mrandom() \u001b[33m*\u001b[39m \u001b[35m180\u001b[39m)\u001b[33m,\u001b[39m \u001b[90m// 20-200 см\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Проверка сборки после внесения всех изменений"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759009420111,
+      "end": 1759009434831
+    }
+  }
+}

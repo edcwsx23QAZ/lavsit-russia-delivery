@@ -1800,30 +1800,109 @@ export default function Home() {
 
 
 
+  // 🔧 Функции для расчета оптимальных габаритов при множественных местах
+  const calculateOptimalLength = (cargos: typeof form.cargos) => {
+    if (cargos.length === 1) {
+      return cargos[0].length / 100; // Одно место - точные габариты
+    }
+    
+    // Для множественных мест:
+    const maxLength = Math.max(...cargos.map(c => c.length)) / 100;
+    const totalLength = cargos.reduce((sum, c) => sum + c.length, 0) / 100;
+    
+    // Если мест много (>3), используем суммарную длину (места в ряд)
+    // Иначе - максимальную (места отдельно)
+    return cargos.length > 3 ? totalLength : maxLength;
+  };
+
+  const calculateOptimalWidth = (cargos: typeof form.cargos) => {
+    // Для ширины логично использовать максимальную
+    return Math.max(...cargos.map(c => c.width)) / 100;
+  };
+
+  const calculateOptimalHeight = (cargos: typeof form.cargos) => {
+    if (cargos.length === 1) {
+      return cargos[0].height / 100;
+    }
+    
+    const maxHeight = Math.max(...cargos.map(c => c.height)) / 100;
+    const totalHeight = cargos.reduce((sum, c) => sum + c.height, 0) / 100;
+    
+    // Если много мелких мест - можем стакировать
+    const avgHeight = totalHeight / cargos.length;
+    return avgHeight < 0.5 ? totalHeight : maxHeight; // 50см порог для стакирования
+  };
+
+  // 🔧 Валидация множественных грузовых мест
+  const validateMultipleCargos = (cargos: typeof form.cargos) => {
+    if (!cargos || cargos.length === 0) {
+      throw new Error('Отсутствуют грузовые места');
+    }
+    
+    if (cargos.length > 50) {
+      throw new Error(`Слишком много грузовых мест (${cargos.length}). Максимум: 50`);
+    }
+    
+    const totalVolume = cargos.reduce((sum, cargo) => 
+      sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+    );
+    
+    if (totalVolume > 100) {
+      console.warn('⚠️ Очень большой объем груза (>100 м³). Возможны ограничения.');
+    }
+    
+    return true;
+  };
+
   const calculateRailContinent = async (): Promise<CalculationResult> => {
     const apiUrl = '/api/rail-continent';
     
     try {
+      // 🔧 Валидация множественных мест
+      validateMultipleCargos(form.cargos);
+      
       // Вычисляем основные параметры груза
       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
       const totalVolume = form.cargos.reduce((sum, cargo) => 
         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
       );
       
-      // Находим максимальные габариты
-      const maxLength = Math.max(...form.cargos.map(c => c.length));
-      const maxWidth = Math.max(...form.cargos.map(c => c.width));
-      const maxHeight = Math.max(...form.cargos.map(c => c.height));
+      // 🔧 ИСПРАВЛЕНО: Умные габариты для множественных мест
+      const optimalLength = calculateOptimalLength(form.cargos);
+      const optimalWidth = calculateOptimalWidth(form.cargos);
+      const optimalHeight = calculateOptimalHeight(form.cargos);
       
-      // Параметры для API Rail Continent
+      // 🔧 Детальное логирование множественных мест
+      console.log('🚂 Rail Continent: Анализ множественных грузовых мест:');
+      console.log(`   - Количество мест: ${form.cargos.length}`);
+      console.log(`   - Общий вес: ${totalWeight} кг`);
+      console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);
+      
+      form.cargos.forEach((cargo, index) => {
+        console.log(`   📦 Место ${index + 1}:`);
+        console.log(`     - Габариты: ${cargo.length}×${cargo.width}×${cargo.height} см`);
+        console.log(`     - Вес: ${cargo.weight} кг`);
+        console.log(`     - Объем: ${((cargo.length * cargo.width * cargo.height) / 1000000).toFixed(3)} м³`);
+      });
+      
+      if (form.cargos.length > 1) {
+        const maxLength = Math.max(...form.cargos.map(c => c.length));
+        const maxWidth = Math.max(...form.cargos.map(c => c.width));
+        const maxHeight = Math.max(...form.cargos.map(c => c.height));
+        console.log(`   📐 Максимальные габариты: ${maxLength}×${maxWidth}×${maxHeight} см`);
+        console.log(`   🔧 Оптимальные габариты: ${(optimalLength*100).toFixed(0)}×${(optimalWidth*100).toFixed(0)}×${(optimalHeight*100).toFixed(0)} см`);
+      }
+      
+      // 🔧 ИСПРАВЛЕНО: Добавлен параметр quantity и улучшенные габариты
       const requestData = {
         city_sender: form.fromCity || 'Москва',
         city_receiver: form.toCity || 'Санкт-Петербург',
         weight: totalWeight,
         volume: totalVolume,
-        length: maxLength / 100, // переводим см в метры
-        width: maxWidth / 100,
-        height: maxHeight / 100,
+        quantity: form.cargos.length, // 🔧 ДОБАВЛЕНО: Количество мест
+        length: optimalLength,        // 🔧 ИСПРАВЛЕНО: Оптимальная длина
+        width: optimalWidth,          // 🔧 ИСПРАВЛЕНО: Оптимальная ширина  
+        height: optimalHeight,        // 🔧 ИСПРАВЛЕНО: Оптимальная высота
         declared_cost: form.declaredValue,
         pickup: form.fromAddressDelivery ? '1' : '0',
         delivery: form.toAddressDelivery ? '1' : '0',
@@ -2186,11 +2265,41 @@ export default function Home() {
     const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';
     
     try {
+      // 🔧 Валидация множественных мест
+      validateMultipleCargos(form.cargos);
+      
       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
       const totalVolume = form.cargos.reduce((sum, cargo) => 
         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
       );
 
+      // 🔧 ДОБАВЛЕНО: Расчет габаритов для множественных мест
+      const maxLength = Math.max(...form.cargos.map(c => c.length));
+      const maxWidth = Math.max(...form.cargos.map(c => c.width));
+      const maxHeight = Math.max(...form.cargos.map(c => c.height));
+      
+      // 🔧 ДОБАВЛЕНО: Проверка на негабарит (>2м по любому измерению)
+      const isOversized = maxLength > 200 || maxWidth > 200 || maxHeight > 200 || totalWeight > 1000;
+      
+      // 🔧 Детальное логирование множественных мест
+      console.log('🌐 Nord Wheel: Анализ множественных грузовых мест:');
+      console.log(`   - Количество мест: ${form.cargos.length}`);
+      console.log(`   - Общий вес: ${totalWeight} кг`);
+      console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);
+      
+      form.cargos.forEach((cargo, index) => {
+        console.log(`   📦 Место ${index + 1}:`);
+        console.log(`     - Габариты: ${cargo.length}×${cargo.width}×${cargo.height} см`);
+        console.log(`     - Вес: ${cargo.weight} кг`);
+        console.log(`     - Объем: ${((cargo.length * cargo.width * cargo.height) / 1000000).toFixed(3)} м³`);
+      });
+      
+      if (form.cargos.length > 1) {
+        console.log(`   📐 Максимальные габариты: ${maxLength}×${maxWidth}×${maxHeight} см`);
+        console.log(`   🚛 Негабарит: ${isOversized ? 'ДА' : 'НЕТ'}`);
+      }
+
+      // 🔧 ИСПРАВЛЕНО: Добавлены габаритные параметры и улучшенная логика негабарита
       const params = new URLSearchParams({
         from: '91', // Москва (нужно будет получать ID города)
         to: '92', // СПб (нужно будет получать ID города)
@@ -2198,13 +2307,19 @@ export default function Home() {
         deliver: form.toAddressDelivery ? '1' : '0',
         weight: totalWeight.toString(),
         volume: totalVolume.toString(),
-        oversized: '0',
+        oversized: isOversized ? '1' : '0', // 🔧 ИСПРАВЛЕНО: Правильное определение негабарита
         package: form.needPackaging ? '1' : '0',
         packageCount: form.cargos.length.toString(),
         insurance: form.needInsurance ? '1' : '0',
         sum: form.declaredValue.toString(),
         documentsReturn: '0',
-        fragile: '1'
+        fragile: '1',
+        // 🔧 ДОБАВЛЕНО: Габаритные параметры
+        length: (maxLength / 100).toString(),      // в метрах
+        width: (maxWidth / 100).toString(),        // в метрах
+        height: (maxHeight / 100).toString(),      // в метрах
+        // 🔧 ДОБАВЛЕНО: Флаг множественных мест
+        multiplePackages: form.cargos.length > 1 ? '1' : '0'
       });
 
       const requestData = Object.fromEntries(params);

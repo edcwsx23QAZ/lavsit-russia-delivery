@@ -1,0 +1,25 @@
+{
+  "id": "prt_98d1de47c00108EfLGx823d6tw",
+  "messageID": "msg_98d1c8257001tXyH32kmscqHU2",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01CNhSUpCfaafohricRWxZyB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2264,
+      "limit": 50
+    },
+    "output": "<file>\n02265|     const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n02266|     \n02267|     try {\n02268|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n02269|       const totalVolume = form.cargos.reduce((sum, cargo) => \n02270|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n02271|       );\n02272| \n02273|       const params = new URLSearchParams({\n02274|         from: '91', // Москва (нужно будет получать ID города)\n02275|         to: '92', // СПб (нужно будет получать ID города)\n02276|         pickup: form.fromAddressDelivery ? '1' : '0',\n02277|         deliver: form.toAddressDelivery ? '1' : '0',\n02278|         weight: totalWeight.toString(),\n02279|         volume: totalVolume.toString(),\n02280|         oversized: '0',\n02281|         package: form.needPackaging ? '1' : '0',\n02282|         packageCount: form.cargos.length.toString(),\n02283|         insurance: form.needInsurance ? '1' : '0',\n02284|         sum: form.declaredValue.toString(),\n02285|         documentsReturn: '0',\n02286|         fragile: '1'\n02287|       });\n02288| \n02289|       const requestData = Object.fromEntries(params);\n02290|       const fullUrl = `${apiUrl}?${params.toString()}`;\n02291| \n02292|       const response = await fetch(fullUrl);\n02293|       const data = await response.json();\n02294| \n02295|       if (response.ok && data.status === 'success' && data.data) {\n02296|         return {\n02297|           company: 'Nord Wheel',\n02298|           price: data.data.total || 0,\n02299|           days: data.data.days || 0,\n02300|           details: {\n02301|             ...data.data,\n02302|             totalCost: data.data.total,\n02303|             deliveryCost: data.data.door,\n02304|             terminalCost: data.data.terminal,\n02305|             pickupCost: data.data.pick,\n02306|             deliveryToDoorCost: data.data.deliver,\n02307|             additionalServices: (data.data.total || 0) - (data.data.door || 0)\n02308|           },\n02309|           requestData,\n02310|           responseData: data,\n02311|           apiUrl: fullUrl\n02312|         };\n02313|       } else {\n02314|         return {\n\n(File has more lines. Use 'offset' parameter to read beyond line 2314)\n</file>",
+    "metadata": {
+      "preview": "    const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n    \n    try {\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n\n      const params = new URLSearchParams({\n        from: '91', // Москва (нужно будет получать ID города)\n        to: '92', // СПб (нужно будет получать ID города)\n        pickup: form.fromAddressDelivery ? '1' : '0',\n        deliver: form.toAddressDelivery ? '1' : '0',\n        weight: totalWeight.toString(),\n        volume: totalVolume.toString(),\n        oversized: '0',\n        package: form.needPackaging ? '1' : '0',\n        packageCount: form.cargos.length.toString(),\n        insurance: form.needInsurance ? '1' : '0',\n        sum: form.declaredValue.toString(),"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759009171133,
+      "end": 1759009171136
+    }
+  }
+}
