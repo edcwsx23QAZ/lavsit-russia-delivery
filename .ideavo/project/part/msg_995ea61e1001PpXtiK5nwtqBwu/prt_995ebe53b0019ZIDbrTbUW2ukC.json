@@ -1,0 +1,34 @@
+{
+  "id": "prt_995ebe53b0019ZIDbrTbUW2ukC",
+  "messageID": "msg_995ea61e1001PpXtiK5nwtqBwu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_015VJHVdkA1XnfwEfwUtV5ch",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "          <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\">\n            <Building2 className=\"h-4 w-4 mr-2\" />\n            Проверить переменные окружения\n          </Button>\n          <Button onClick={() => window.close()} variant=\"outline\">\n            Закрыть\n          </Button>",
+          "newString": "          <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n            <Building2 className=\"h-4 w-4 mr-2\" />\n            Проверить переменные окружения\n          </Button>\n          <Button onClick={() => window.close()} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n            Закрыть\n          </Button>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1034,13 +1034,13 @@\n   >\n     <TestTube className=\"h-4 w-4 mr-2\" />\n     {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}\n   </Button>\n-  <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\">\n+  <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n     <Building2 className=\"h-4 w-4 mr-2\" />\n     Проверить переменные окружения\n   </Button>\n-  <Button onClick={() => window.close()} variant=\"outline\">\n+  <Button onClick={() => window.close()} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n     Закрыть\n   </Button>\n </div>\n \n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759156894565,
+      "end": 1759156894574
+    }
+  }
+}

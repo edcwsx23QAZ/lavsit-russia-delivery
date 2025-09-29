@@ -1,0 +1,25 @@
+{
+  "id": "prt_995eb4033001D0Idi8BHRM0H7H",
+  "messageID": "msg_995ea61e1001PpXtiK5nwtqBwu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01LZpb5Xoogm32818v8ViDhr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 590,
+      "limit": 30
+    },
+    "output": "<file>\n00591| \n00592|   return (\n00593|     <Card className=\"bg-gray-800 border-gray-700\">\n00594|       <CardHeader className=\"pb-3\">\n00595|         <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n00596|           <Truck className=\"h-4 w-4\" />\n00597|           Интерактивная 3D визуализация грузовика с размещением груза\n00598|         </CardTitle>\n00599|       </CardHeader>\n00600|       <CardContent>\n00601|         {/* Одноколоночная структура для оптимальной визуализации */}\n00602|         <div className=\"space-y-6\">\n00603|           {/* Компактная панель управления 3D моделью */}\n00604|           <div className=\"bg-gray-800 p-4 rounded-lg\">\n00605|             <div className=\"flex items-center justify-between mb-4\">\n00606|               <h4 className=\"text-white font-medium flex items-center gap-2\">\n00607|                 <Rotate3d className=\"h-4 w-4\" />\n00608|                 🎮 Управление 3D моделью\n00609|               </h4>\n00610|               <div className=\"flex gap-2\">\n00611|                 <Button\n00612|                   variant=\"outline\"\n00613|                   size=\"sm\"\n00614|                   onClick={() => setShowControls(!showControls)}\n00615|                   className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n00616|                 >\n00617|                   {showControls ? 'Скрыть' : 'Покрутить'}\n00618|                 </Button>\n00619|                 <Button\n00620|                   variant=\"outline\"\n\n(File has more lines. Use 'offset' parameter to read beyond line 620)\n</file>",
+    "metadata": {
+      "preview": "\n  return (\n    <Card className=\"bg-gray-800 border-gray-700\">\n      <CardHeader className=\"pb-3\">\n        <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n          <Truck className=\"h-4 w-4\" />\n          Интерактивная 3D визуализация грузовика с размещением груза\n        </CardTitle>\n      </CardHeader>\n      <CardContent>\n        {/* Одноколоночная структура для оптимальной визуализации */}\n        <div className=\"space-y-6\">\n          {/* Компактная панель управления 3D моделью */}\n          <div className=\"bg-gray-800 p-4 rounded-lg\">\n            <div className=\"flex items-center justify-between mb-4\">\n              <h4 className=\"text-white font-medium flex items-center gap-2\">\n                <Rotate3d className=\"h-4 w-4\" />\n                🎮 Управление 3D моделью\n              </h4>\n              <div className=\"flex gap-2\">"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759156847111,
+      "end": 1759156847112
+    }
+  }
+}

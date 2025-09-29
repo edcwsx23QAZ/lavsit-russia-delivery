@@ -1,0 +1,26 @@
+{
+  "id": "prt_995eb22dd001mDLjpdla5K4guo",
+  "messageID": "msg_995ea61e1001PpXtiK5nwtqBwu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01VZx9DsND5ekRmrr2ED1g8w",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Тип автомобиля",
+      "path": "/home/user/project",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/components/TruckVisualization.tsx:\n  Line 740:                 🚚 Тип автомобиля",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "Тип автомобиля",
+    "time": {
+      "start": 1759156839787,
+      "end": 1759156839797
+    }
+  }
+}

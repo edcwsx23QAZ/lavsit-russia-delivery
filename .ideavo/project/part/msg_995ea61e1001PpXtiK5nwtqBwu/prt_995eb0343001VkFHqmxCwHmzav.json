@@ -1,0 +1,26 @@
+{
+  "id": "prt_995eb0343001VkFHqmxCwHmzav",
+  "messageID": "msg_995ea61e1001PpXtiK5nwtqBwu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01ALUs9awanFdtFdAVa1dS5a",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Покрутить",
+      "path": "/home/user/project",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/components/TruckVisualization.tsx:\n  Line 617:                   {showControls ? 'Скрыть' : 'Покрутить'}",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "Покрутить",
+    "time": {
+      "start": 1759156831646,
+      "end": 1759156831659
+    }
+  }
+}

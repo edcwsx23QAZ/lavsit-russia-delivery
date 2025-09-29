@@ -1,0 +1,25 @@
+{
+  "id": "prt_995ebd3c6002tVS4udvw4ca1Pr",
+  "messageID": "msg_995ea61e1001PpXtiK5nwtqBwu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01N1J3tNK9Sv3Ef1BXW5QZ9g",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 1030,
+      "limit": 15
+    },
+    "output": "<file>\n01031|             onClick={runFullTesting} \n01032|             disabled={isFullTesting}\n01033|             className=\"bg-purple-600 hover:bg-purple-700\"\n01034|           >\n01035|             <TestTube className=\"h-4 w-4 mr-2\" />\n01036|             {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}\n01037|           </Button>\n01038|           <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\">\n01039|             <Building2 className=\"h-4 w-4 mr-2\" />\n01040|             Проверить переменные окружения\n01041|           </Button>\n01042|           <Button onClick={() => window.close()} variant=\"outline\">\n01043|             Закрыть\n01044|           </Button>\n01045|         </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 1045)\n</file>",
+    "metadata": {
+      "preview": "            onClick={runFullTesting} \n            disabled={isFullTesting}\n            className=\"bg-purple-600 hover:bg-purple-700\"\n          >\n            <TestTube className=\"h-4 w-4 mr-2\" />\n            {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}\n          </Button>\n          <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\">\n            <Building2 className=\"h-4 w-4 mr-2\" />\n            Проверить переменные окружения\n          </Button>\n          <Button onClick={() => window.close()} variant=\"outline\">\n            Закрыть\n          </Button>\n        </div>"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759156885026,
+      "end": 1759156885028
+    }
+  }
+}

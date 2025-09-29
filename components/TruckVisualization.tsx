@@ -600,37 +600,60 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
       <CardContent>
         {/* Одноколоночная структура для оптимальной визуализации */}
         <div className="space-y-6">
-          {/* Компактная панель управления 3D моделью */}
+          {/* Объединённая панель управления */}
           <div className="bg-gray-800 p-4 rounded-lg">
             <div className="flex items-center justify-between mb-4">
-              <h4 className="text-white font-medium flex items-center gap-2">
-                <Rotate3d className="h-4 w-4" />
-                🎮 Управление 3D моделью
-              </h4>
-              <div className="flex gap-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => setShowControls(!showControls)}
-                  className="text-black bg-white border-gray-300 hover:bg-gray-100"
-                >
-                  {showControls ? 'Скрыть' : 'Покрутить'}
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    setRotationX(-90);
-                    setRotationY(55);
-                    setRotationZ(0);
-                    setPositionX(51);
-                    setPositionY(35);
-                    setScale(70);
-                  }}
-                  className="text-black bg-white border-gray-300 hover:bg-gray-100"
-                >
-                  Сброс
-                </Button>
+              {/* Левая часть - Управление 3D */}
+              <div className="flex items-center gap-4">
+                <h4 className="text-white font-medium flex items-center gap-2">
+                  <Rotate3d className="h-4 w-4" />
+                  🎮 Управление 3D моделью
+                </h4>
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setShowControls(!showControls)}
+                    className="text-black bg-white border-gray-300 hover:bg-gray-100"
+                  >
+                    {showControls ? 'Скрыть' : 'Покрутить'}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      setRotationX(-90);
+                      setRotationY(55);
+                      setRotationZ(0);
+                      setPositionX(51);
+                      setPositionY(35);
+                      setScale(70);
+                    }}
+                    className="text-black bg-white border-gray-300 hover:bg-gray-100"
+                  >
+                    Сброс
+                  </Button>
+                </div>
+              </div>
+              
+              {/* Правая часть - Тип автомобиля */}
+              <div className="flex items-center gap-4">
+                <h4 className="text-white font-medium flex items-center gap-2">
+                  <Truck className="h-4 w-4" />
+                  🚚 Тип автомобиля
+                </h4>
+                <Select value={selectedVehicleType} onValueChange={(value) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES)}>
+                  <SelectTrigger className="w-64 bg-gray-700 border-gray-600 text-white">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="bg-gray-700 border-gray-600">
+                    {Object.entries(VEHICLE_TYPES).map(([key, vehicle]) => (
+                      <SelectItem key={key} value={key} className="text-white hover:bg-gray-600">
+                        {vehicle.name} ({vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height} мм)
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
             </div>
             
@@ -730,28 +753,6 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
               </div>
               </div>
             )}
-          </div>
-
-          {/* Выбор типа автомобиля */}
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <div className="flex items-center gap-4">
-              <h4 className="text-white font-medium flex items-center gap-2">
-                <Truck className="h-4 w-4" />
-                🚚 Тип автомобиля
-              </h4>
-              <Select value={selectedVehicleType} onValueChange={(value) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES)}>
-                <SelectTrigger className="w-64 bg-gray-700 border-gray-600 text-white">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent className="bg-gray-700 border-gray-600">
-                  {Object.entries(VEHICLE_TYPES).map(([key, vehicle]) => (
-                    <SelectItem key={key} value={key} className="text-white hover:bg-gray-600">
-                      {vehicle.name} ({vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height} мм)
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
           </div>
 
           {/* 3D SVG визуализация кузова - увеличенная на всю ширину */}

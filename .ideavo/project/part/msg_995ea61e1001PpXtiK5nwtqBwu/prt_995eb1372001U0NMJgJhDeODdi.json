@@ -1,0 +1,25 @@
+{
+  "id": "prt_995eb1372001U0NMJgJhDeODdi",
+  "messageID": "msg_995ea61e1001PpXtiK5nwtqBwu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01RXEcXjg3TVcXET5GPAomn9",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 610,
+      "limit": 20
+    },
+    "output": "<file>\n00611|                 <Button\n00612|                   variant=\"outline\"\n00613|                   size=\"sm\"\n00614|                   onClick={() => setShowControls(!showControls)}\n00615|                   className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n00616|                 >\n00617|                   {showControls ? 'Скрыть' : 'Покрутить'}\n00618|                 </Button>\n00619|                 <Button\n00620|                   variant=\"outline\"\n00621|                   size=\"sm\"\n00622|                   onClick={() => {\n00623|                     setRotationX(-90);\n00624|                     setRotationY(55);\n00625|                     setRotationZ(0);\n00626|                     setPositionX(51);\n00627|                     setPositionY(35);\n00628|                     setScale(70);\n00629|                   }}\n00630|                   className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n\n(File has more lines. Use 'offset' parameter to read beyond line 630)\n</file>",
+    "metadata": {
+      "preview": "                <Button\n                  variant=\"outline\"\n                  size=\"sm\"\n                  onClick={() => setShowControls(!showControls)}\n                  className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n                >\n                  {showControls ? 'Скрыть' : 'Покрутить'}\n                </Button>\n                <Button\n                  variant=\"outline\"\n                  size=\"sm\"\n                  onClick={() => {\n                    setRotationX(-90);\n                    setRotationY(55);\n                    setRotationZ(0);\n                    setPositionX(51);\n                    setPositionY(35);\n                    setScale(70);\n                  }}\n                  className=\"text-black bg-white border-gray-300 hover:bg-gray-100\""
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759156835773,
+      "end": 1759156835778
+    }
+  }
+}

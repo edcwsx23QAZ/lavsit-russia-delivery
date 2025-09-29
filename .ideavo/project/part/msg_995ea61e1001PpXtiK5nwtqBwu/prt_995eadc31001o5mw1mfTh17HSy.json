@@ -1,0 +1,25 @@
+{
+  "id": "prt_995eadc31001o5mw1mfTh17HSy",
+  "messageID": "msg_995ea61e1001PpXtiK5nwtqBwu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0125DYsAttG3EArWvk37z1pT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 250,
+      "limit": 30
+    },
+    "output": "<file>\n00251|         }\n00252|         \n00253|         if (chairLevels > 2) {\n00254|           return false;\n00255|         }\n00256|       } else {\n00257|         // Обычные грузы нельзя ставить на стулья\n00258|         const hasChairSupport = supportingCargos.some(p => \n00259|           isChairOrSeat(p.cargo.productName)\n00260|         );\n00261|         \n00262|         if (hasChairSupport) {\n00263|           return false;\n00264|         }\n00265|       }\n00266|     }\n00267| \n00268|     return true;\n00269|   };\n00270| \n00271|   // Расчет площади пола, занимаемой размещениями\n00272|   const calculateFloorArea = (placements: CargoPlacement[], newPlacement?: CargoPlacement) => {\n00273|     const allPlacements = newPlacement ? [...placements, newPlacement] : placements;\n00274|     \n00275|     if (allPlacements.length === 0) return 0;\n00276| \n00277|     let minX = Infinity, maxX = 0, minY = Infinity, maxY = 0;\n00278| \n00279|     allPlacements.forEach(p => {\n00280|       const rad = (p.orientation.rotationAngle * Math.PI) / 180;\n\n(File has more lines. Use 'offset' parameter to read beyond line 280)\n</file>",
+    "metadata": {
+      "preview": "        }\n        \n        if (chairLevels > 2) {\n          return false;\n        }\n      } else {\n        // Обычные грузы нельзя ставить на стулья\n        const hasChairSupport = supportingCargos.some(p => \n          isChairOrSeat(p.cargo.productName)\n        );\n        \n        if (hasChairSupport) {\n          return false;\n        }\n      }\n    }\n\n    return true;\n  };\n"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759156821823,
+      "end": 1759156821826
+    }
+  }
+}

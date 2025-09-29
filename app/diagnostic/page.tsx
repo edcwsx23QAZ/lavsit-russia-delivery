@@ -1035,11 +1035,11 @@ export default function DiagnosticPage() {
             <TestTube className="h-4 w-4 mr-2" />
             {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}
           </Button>
-          <Button onClick={() => window.open('/env-check', '_blank')} variant="outline">
+          <Button onClick={() => window.open('/env-check', '_blank')} variant="outline" className="text-black bg-white border-gray-300 hover:bg-gray-100">
             <Building2 className="h-4 w-4 mr-2" />
             Проверить переменные окружения
           </Button>
-          <Button onClick={() => window.close()} variant="outline">
+          <Button onClick={() => window.close()} variant="outline" className="text-black bg-white border-gray-300 hover:bg-gray-100">
             Закрыть
           </Button>
         </div>

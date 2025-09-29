@@ -1,0 +1,25 @@
+{
+  "id": "prt_995eb2fbf001kdnamJGL77gkOL",
+  "messageID": "msg_995ea61e1001PpXtiK5nwtqBwu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Y5E3HRpJQGCagVnHEYAUkL",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 735,
+      "limit": 20
+    },
+    "output": "<file>\n00736|           <div className=\"bg-gray-800 p-4 rounded-lg\">\n00737|             <div className=\"flex items-center gap-4\">\n00738|               <h4 className=\"text-white font-medium flex items-center gap-2\">\n00739|                 <Truck className=\"h-4 w-4\" />\n00740|                 🚚 Тип автомобиля\n00741|               </h4>\n00742|               <Select value={selectedVehicleType} onValueChange={(value) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES)}>\n00743|                 <SelectTrigger className=\"w-64 bg-gray-700 border-gray-600 text-white\">\n00744|                   <SelectValue />\n00745|                 </SelectTrigger>\n00746|                 <SelectContent className=\"bg-gray-700 border-gray-600\">\n00747|                   {Object.entries(VEHICLE_TYPES).map(([key, vehicle]) => (\n00748|                     <SelectItem key={key} value={key} className=\"text-white hover:bg-gray-600\">\n00749|                       {vehicle.name} ({vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height} мм)\n00750|                     </SelectItem>\n00751|                   ))}\n00752|                 </SelectContent>\n00753|               </Select>\n00754|             </div>\n00755|           </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 755)\n</file>",
+    "metadata": {
+      "preview": "          <div className=\"bg-gray-800 p-4 rounded-lg\">\n            <div className=\"flex items-center gap-4\">\n              <h4 className=\"text-white font-medium flex items-center gap-2\">\n                <Truck className=\"h-4 w-4\" />\n                🚚 Тип автомобиля\n              </h4>\n              <Select value={selectedVehicleType} onValueChange={(value) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES)}>\n                <SelectTrigger className=\"w-64 bg-gray-700 border-gray-600 text-white\">\n                  <SelectValue />\n                </SelectTrigger>\n                <SelectContent className=\"bg-gray-700 border-gray-600\">\n                  {Object.entries(VEHICLE_TYPES).map(([key, vehicle]) => (\n                    <SelectItem key={key} value={key} className=\"text-white hover:bg-gray-600\">\n                      {vehicle.name} ({vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height} мм)\n                    </SelectItem>\n                  ))}\n                </SelectContent>\n              </Select>\n            </div>\n          </div>"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759156843004,
+      "end": 1759156843005
+    }
+  }
+}
