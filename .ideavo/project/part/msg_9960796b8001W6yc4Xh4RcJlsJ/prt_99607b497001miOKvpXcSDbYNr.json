@@ -1,0 +1,26 @@
+{
+  "id": "prt_99607b497001miOKvpXcSDbYNr",
+  "messageID": "msg_9960796b8001W6yc4Xh4RcJlsJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_011JyYwexss6L9vrDbVD25xD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "git reset --hard HEAD~2",
+      "description": "Reset to commit before last two changes"
+    },
+    "output": "HEAD is now at 08f0a07 Commit by Ideavo AI\n",
+    "metadata": {
+      "output": "HEAD is now at 08f0a07 Commit by Ideavo AI\n",
+      "exit": 0,
+      "description": "Reset to commit before last two changes"
+    },
+    "title": "git reset --hard HEAD~2",
+    "time": {
+      "start": 1759158711737,
+      "end": 1759158711795
+    }
+  }
+}
