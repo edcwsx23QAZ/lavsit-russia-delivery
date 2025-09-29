@@ -1,0 +1,50 @@
+{
+  "id": "prt_99522e3b90012anKVDVOPtI9yy",
+  "messageID": "msg_995224e5d001Y8Mw3xK5yof1sx",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_018XYiBdzfrTxhLpQoKukkvM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "  // Проекция 3D точек на 2D плоскость с учетом позиции и масштаба\n  const project3DTo2D = (vertices: number[][]) => {\n    const currentScale = (scale / 100) * 0.15; // Базовый масштаб\n    const svgWidth = 600;\n    const svgHeight = 400;\n    const offsetX = (positionX / 100) * svgWidth;\n    const offsetY = (positionY / 100) * svgHeight;",
+          "newString": "  // Проекция 3D точек на 2D плоскость с учетом позиции и масштаба\n  const project3DTo2D = (vertices: number[][]) => {\n    const currentScale = (scale / 100) * 0.15; // Базовый масштаб\n    const svgWidth = 1200; // Увеличил ширину в 2 раза\n    const svgHeight = 400;\n    const offsetX = (positionX / 100) * svgWidth;\n    const offsetY = (positionY / 100) * svgHeight;"
+        },
+        {
+          "oldString": "                viewBox=\"0 0 600 400\"",
+          "newString": "                viewBox=\"0 0 1200 400\""
+        },
+        {
+          "oldString": "                <text x=\"300\" y=\"20\" textAnchor=\"middle\" fill=\"#9CA3AF\" fontSize=\"12\" fontWeight=\"bold\">",
+          "newString": "                <text x=\"600\" y=\"20\" textAnchor=\"middle\" fill=\"#9CA3AF\" fontSize=\"12\" fontWeight=\"bold\">"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -309,9 +309,9 @@\n \n // Проекция 3D точек на 2D плоскость с учетом позиции и масштаба\n const project3DTo2D = (vertices: number[][]) => {\n   const currentScale = (scale / 100) * 0.15; // Базовый масштаб\n-  const svgWidth = 600;\n+  const svgWidth = 1200; // Увеличил ширину в 2 раза\n   const svgHeight = 400;\n   const offsetX = (positionX / 100) * svgWidth;\n   const offsetY = (positionY / 100) * svgHeight;\n   \n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -766,9 +766,9 @@\n \n {/* 3D SVG визуализация кузова */}\n <div className=\"bg-gray-900 p-4 rounded-lg\">\n   <svg \n-    viewBox=\"0 0 600 400\" \n+    viewBox=\"0 0 1200 400\" \n     className=\"w-full h-96 border border-gray-600 bg-gray-950\"\n     style={{ maxHeight: '480px' }}\n   >\n     {/* Размеры кузова */}\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -771,9 +771,9 @@\n   className=\"w-full h-96 border border-gray-600 bg-gray-950\"\n   style={{ maxHeight: '480px' }}\n >\n   {/* Размеры кузова */}\n-  <text x=\"300\" y=\"20\" textAnchor=\"middle\" fill=\"#9CA3AF\" fontSize=\"12\" fontWeight=\"bold\">\n+  <text x=\"600\" y=\"20\" textAnchor=\"middle\" fill=\"#9CA3AF\" fontSize=\"12\" fontWeight=\"bold\">\n     🚛 Грузовик с кузовом 4200×2025×2025 мм\n   </text>\n   \n   {/* Кабина грузовика */}\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759143720845,
+      "end": 1759143720862
+    }
+  }
+}

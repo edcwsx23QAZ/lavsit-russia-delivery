@@ -58,7 +58,7 @@ const CARGO_COLORS = [
 export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {
   // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)
   const [rotationX, setRotationX] = useState(0);   // Поворот по оси X (0° - пол параллелен X)
-  const [rotationY, setRotationY] = useState(-45); // Поворот по оси Y (изометрический вид 3/4)
+  const [rotationY, setRotationY] = useState(50); // Поворот по оси Y (изометрический вид 3/4)
   const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z
   const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)
   const [positionY, setPositionY] = useState(50);  // Позиция по Y (центрированная)
@@ -310,7 +310,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
   // Проекция 3D точек на 2D плоскость с учетом позиции и масштаба
   const project3DTo2D = (vertices: number[][]) => {
     const currentScale = (scale / 100) * 0.15; // Базовый масштаб
-    const svgWidth = 600;
+    const svgWidth = 1200; // Увеличил ширину в 2 раза
     const svgHeight = 400;
     const offsetX = (positionX / 100) * svgWidth;
     const offsetY = (positionY / 100) * svgHeight;
@@ -611,35 +611,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
               </div>
             )}
 
-            {/* Легенда грузов */}
-            {placements.length > 0 && (
-              <div className="bg-gray-800 p-4 rounded-lg">
-                <h4 className="font-medium text-white mb-3">📦 Размещенные грузы</h4>
-                <div className="grid grid-cols-1 gap-2 text-xs max-h-80 overflow-y-auto">
-                  {placements.map((placement, index) => (
-                    <div key={`legend-${index}`} className="flex items-center gap-2 p-2 bg-gray-700 rounded">
-                      <div 
-                        className="w-4 h-4 rounded flex-shrink-0"
-                        style={{ backgroundColor: placement.color }}
-                      />
-                      <span className="text-gray-300 flex-1">
-                        <span className="font-medium">Груз {index + 1}</span>
-                        {getProductShortName(placement.cargo.productName) && (
-                          <span className="text-blue-300"> "{getProductShortName(placement.cargo.productName)}"</span>
-                        )}
-                        <br />
-                        <span className="text-xs text-gray-400">
-                          {Math.round(placement.orientation.length)}×{Math.round(placement.orientation.width)}×{Math.round(placement.orientation.height)} мм
-                          {placement.orientation.rotationAngle !== 0 && (
-                            <span className="text-blue-300"> (повернут {placement.orientation.rotationAngle}°)</span>
-                          )}
-                        </span>
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
+
           </div>
 
           {/* Правая колонка: 3D Визуализация */}
@@ -656,7 +628,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                   size="sm"
                   onClick={() => {
                     setRotationX(0);
-                    setRotationY(-45);
+                    setRotationY(50);
                     setRotationZ(0);
                     setPositionX(50);
                     setPositionY(50);
@@ -767,12 +739,12 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
             {/* 3D SVG визуализация кузова */}
             <div className="bg-gray-900 p-4 rounded-lg">
               <svg 
-                viewBox="0 0 600 400" 
+                viewBox="0 0 1200 400" 
                 className="w-full h-96 border border-gray-600 bg-gray-950"
                 style={{ maxHeight: '480px' }}
               >
                 {/* Размеры кузова */}
-                <text x="300" y="20" textAnchor="middle" fill="#9CA3AF" fontSize="12" fontWeight="bold">
+                <text x="600" y="20" textAnchor="middle" fill="#9CA3AF" fontSize="12" fontWeight="bold">
                   🚛 Грузовик с кузовом 4200×2025×2025 мм
                 </text>
                 
@@ -926,6 +898,36 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                 })}
               </svg>
             </div>
+            
+            {/* Легенда грузов под 3D визуализацией */}
+            {placements.length > 0 && (
+              <div className="bg-gray-800 p-4 rounded-lg">
+                <h4 className="font-medium text-white mb-3">📦 Размещенные грузы</h4>
+                <div className="grid grid-cols-1 gap-2 text-xs max-h-80 overflow-y-auto">
+                  {placements.map((placement, index) => (
+                    <div key={`legend-${index}`} className="flex items-center gap-2 p-2 bg-gray-700 rounded">
+                      <div 
+                        className="w-4 h-4 rounded flex-shrink-0"
+                        style={{ backgroundColor: placement.color }}
+                      />
+                      <span className="text-gray-300 flex-1">
+                        <span className="font-medium">Груз {index + 1}</span>
+                        {getProductShortName(placement.cargo.productName) && (
+                          <span className="text-blue-300"> "{getProductShortName(placement.cargo.productName)}"</span>
+                        )}
+                        <br />
+                        <span className="text-xs text-gray-400">
+                          {Math.round(placement.orientation.length)}×{Math.round(placement.orientation.width)}×{Math.round(placement.orientation.height)} мм
+                          {placement.orientation.rotationAngle !== 0 && (
+                            <span className="text-blue-300"> (повернут {placement.orientation.rotationAngle}°)</span>
+                          )}
+                        </span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </CardContent>

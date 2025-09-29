@@ -1,0 +1,25 @@
+{
+  "id": "prt_99522d5cb002a6gEY8vC7vMZ5H",
+  "messageID": "msg_995224e5d001Y8Mw3xK5yof1sx",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01TQLSRP1Az6eejA4ZJ8jJes",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 765,
+      "limit": 20
+    },
+    "output": "<file>\n00766| \n00767|             {/* 3D SVG визуализация кузова */}\n00768|             <div className=\"bg-gray-900 p-4 rounded-lg\">\n00769|               <svg \n00770|                 viewBox=\"0 0 600 400\" \n00771|                 className=\"w-full h-96 border border-gray-600 bg-gray-950\"\n00772|                 style={{ maxHeight: '480px' }}\n00773|               >\n00774|                 {/* Размеры кузова */}\n00775|                 <text x=\"300\" y=\"20\" textAnchor=\"middle\" fill=\"#9CA3AF\" fontSize=\"12\" fontWeight=\"bold\">\n00776|                   🚛 Грузовик с кузовом 4200×2025×2025 мм\n00777|                 </text>\n00778|                 \n00779|                 {/* Кабина грузовика */}\n00780|                 <g stroke=\"#10B981\" strokeWidth=\"2\" fill=\"#065F46\" fillOpacity=\"0.3\">\n00781|                   {/* Передняя стенка кабины */}\n00782|                   <polygon \n00783|                     points={`${truckComponents.cabin[0].x},${truckComponents.cabin[0].y} ${truckComponents.cabin[1].x},${truckComponents.cabin[1].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y} ${truckComponents.cabin[4].x},${truckComponents.cabin[4].y}`}\n00784|                   />\n00785|                   \n\n(File has more lines. Use 'offset' parameter to read beyond line 785)\n</file>",
+    "metadata": {
+      "preview": "\n            {/* 3D SVG визуализация кузова */}\n            <div className=\"bg-gray-900 p-4 rounded-lg\">\n              <svg \n                viewBox=\"0 0 600 400\" \n                className=\"w-full h-96 border border-gray-600 bg-gray-950\"\n                style={{ maxHeight: '480px' }}\n              >\n                {/* Размеры кузова */}\n                <text x=\"300\" y=\"20\" textAnchor=\"middle\" fill=\"#9CA3AF\" fontSize=\"12\" fontWeight=\"bold\">\n                  🚛 Грузовик с кузовом 4200×2025×2025 мм\n                </text>\n                \n                {/* Кабина грузовика */}\n                <g stroke=\"#10B981\" strokeWidth=\"2\" fill=\"#065F46\" fillOpacity=\"0.3\">\n                  {/* Передняя стенка кабины */}\n                  <polygon \n                    points={`${truckComponents.cabin[0].x},${truckComponents.cabin[0].y} ${truckComponents.cabin[1].x},${truckComponents.cabin[1].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y} ${truckComponents.cabin[4].x},${truckComponents.cabin[4].y}`}\n                  />\n                  "
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759143712732,
+      "end": 1759143712734
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_99522c839001YkQEOiAiD8RJ1q",
+  "messageID": "msg_995224e5d001Y8Mw3xK5yof1sx",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01YTF42drzUsuC29RCjj1mkc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 310,
+      "limit": 20
+    },
+    "output": "<file>\n00311|   const project3DTo2D = (vertices: number[][]) => {\n00312|     const currentScale = (scale / 100) * 0.15; // Базовый масштаб\n00313|     const svgWidth = 600;\n00314|     const svgHeight = 400;\n00315|     const offsetX = (positionX / 100) * svgWidth;\n00316|     const offsetY = (positionY / 100) * svgHeight;\n00317|     \n00318|     return vertices.map(([x, y, z]) => {\n00319|       // Простая ортогональная проекция с перспективой\n00320|       const perspective = 1 + z * 0.0001;\n00321|       const projX = (x * currentScale / perspective) + offsetX;\n00322|       const projY = offsetY - (y * currentScale / perspective) - (z * currentScale * 0.7 / perspective);\n00323|       \n00324|       return { x: projX, y: projY };\n00325|     });\n00326|   };\n00327| \n00328|   // Основной алгоритм размещения\n00329|   const calculateCargoPlacement = (): CargoPlacement[] => {\n00330|     if (!cargos.length) return [];\n\n(File has more lines. Use 'offset' parameter to read beyond line 330)\n</file>",
+    "metadata": {
+      "preview": "  const project3DTo2D = (vertices: number[][]) => {\n    const currentScale = (scale / 100) * 0.15; // Базовый масштаб\n    const svgWidth = 600;\n    const svgHeight = 400;\n    const offsetX = (positionX / 100) * svgWidth;\n    const offsetY = (positionY / 100) * svgHeight;\n    \n    return vertices.map(([x, y, z]) => {\n      // Простая ортогональная проекция с перспективой\n      const perspective = 1 + z * 0.0001;\n      const projX = (x * currentScale / perspective) + offsetX;\n      const projY = offsetY - (y * currentScale / perspective) - (z * currentScale * 0.7 / perspective);\n      \n      return { x: projX, y: projY };\n    });\n  };\n\n  // Основной алгоритм размещения\n  const calculateCargoPlacement = (): CargoPlacement[] => {\n    if (!cargos.length) return [];"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759143709745,
+      "end": 1759143709747
+    }
+  }
+}

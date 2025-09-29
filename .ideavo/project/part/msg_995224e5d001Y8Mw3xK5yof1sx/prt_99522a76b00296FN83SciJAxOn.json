@@ -1,0 +1,42 @@
+{
+  "id": "prt_99522a76b00296FN83SciJAxOn",
+  "messageID": "msg_995224e5d001Y8Mw3xK5yof1sx",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01AbJ78qGu4A8FdCEsR5monm",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "  const [rotationY, setRotationY] = useState(-45); // Поворот по оси Y (изометрический вид 3/4)",
+          "newString": "  const [rotationY, setRotationY] = useState(50); // Поворот по оси Y (изометрический вид 3/4)"
+        },
+        {
+          "oldString": "                    setRotationY(-45);",
+          "newString": "                    setRotationY(50);"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -57,9 +57,9 @@\n \n export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {\n   // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n   const [rotationX, setRotationX] = useState(0);   // Поворот по оси X (0° - пол параллелен X)\n-  const [rotationY, setRotationY] = useState(-45); // Поворот по оси Y (изометрический вид 3/4)\n+  const [rotationY, setRotationY] = useState(50); // Поворот по оси Y (изометрический вид 3/4)\n   const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n   const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)\n   const [positionY, setPositionY] = useState(50);  // Позиция по Y (центрированная)\n   const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -655,9 +655,9 @@\n variant=\"outline\"\n size=\"sm\"\n onClick={() => {\n   setRotationX(0);\n-  setRotationY(-45);\n+  setRotationY(50);\n   setRotationZ(0);\n   setPositionX(50);\n   setPositionY(50);\n   setScale(70);\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759143702419,
+      "end": 1759143702439
+    }
+  }
+}
