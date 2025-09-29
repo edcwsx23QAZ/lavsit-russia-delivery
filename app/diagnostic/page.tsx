@@ -962,6 +962,56 @@ export default function DiagnosticPage() {
           </Button>
         </div>
 
+        {/* Правила размещения грузов */}
+        <Card className="border-green-500 bg-green-900/20 mb-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Truck className="h-5 w-5 text-green-400" />
+              Правила размещения грузов в кузове фургона
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-3">
+              <div className="bg-gray-800 p-3 rounded">
+                <h3 className="font-medium text-green-400 mb-2">Габариты кузова:</h3>
+                <ul className="text-sm space-y-1 text-gray-300">
+                  <li>• Длина: 4200 мм</li>
+                  <li>• Ширина: 2025 мм</li>
+                  <li>• Высота: 2025 мм</li>
+                </ul>
+              </div>
+              
+              <div className="bg-gray-800 p-3 rounded">
+                <h3 className="font-medium text-green-400 mb-2">Правила размещения:</h3>
+                <div className="text-sm space-y-2 text-gray-300">
+                  <div>
+                    <strong>1. Поворот и штабелирование:</strong>
+                    <p className="ml-4">• Грузы можно складывать друг на друга и поворачивать любой стороной</p>
+                  </div>
+                  
+                  <div>
+                    <strong>2. Правило по весу:</strong>
+                    <p className="ml-4">• Грузы с большим весом нельзя складывать на грузы с меньшим весом</p>
+                  </div>
+                  
+                  <div>
+                    <strong>3. Ограничения для стульев и кресел:</strong>
+                    <p className="ml-4">• Грузы с ключевыми словами "стул" или "кресло" нельзя поворачивать относительно горизонтальной оси</p>
+                    <p className="ml-4">• На такие грузы можно складывать только другие грузы с теми же ключевыми словами</p>
+                    <p className="ml-4">• Друг на друге не может быть больше двух таких грузов</p>
+                  </div>
+                  
+                  <div>
+                    <strong>4. Цель оптимизации:</strong>
+                    <p className="ml-4">• Минимизация занятой площади пола</p>
+                    <p className="ml-4">• Максимально компактное размещение</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
         {/* Прогресс полного тестирования */}
         {testProgress && (
           <Card className="border-blue-500 bg-blue-900/20 mb-6">

@@ -13,6 +13,7 @@ import { Separator } from '@/components/ui/separator';
 import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';
 import ProductSearch from '@/components/ProductSearch';
 import ProductManager from '@/components/ProductManager';
+import TruckVisualization from '@/components/TruckVisualization';
 import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';
 import { 
   createCargosForProduct, 
@@ -3515,6 +3516,23 @@ export default function Home() {
                   </Card>
                 ))}
               </div>
+            )}
+
+            {/* Визуализация кузова */}
+            {calculations.length > 0 && (
+              <TruckVisualization 
+                cargos={form.cargos.map(cargo => ({
+                  id: cargo.id,
+                  length: cargo.length,
+                  width: cargo.width,
+                  height: cargo.height,
+                  weight: cargo.weight,
+                  productName: form.selectedProducts?.find(p => 
+                    p.cargoIndexes.includes(form.cargos.indexOf(cargo))
+                  )?.product.name
+                }))}
+                isVisible={true}
+              />
             )}
             
             {/* Список подключенных ТК */}

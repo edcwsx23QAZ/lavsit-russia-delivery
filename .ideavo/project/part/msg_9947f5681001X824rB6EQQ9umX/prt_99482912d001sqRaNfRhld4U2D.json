@@ -1,0 +1,25 @@
+{
+  "id": "prt_99482912d001sqRaNfRhld4U2D",
+  "messageID": "msg_9947f5681001X824rB6EQQ9umX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01NJCydftHcRNmBCtCgKUR8f",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3500,
+      "limit": 20
+    },
+    "output": "<file>\n03501|                                   </pre>\n03502|                                 </div>\n03503|                               )}\n03504|                               \n03505|                               {calc.error && (\n03506|                                 <div className=\"mb-3\">\n03507|                                   <h5 className=\"font-bold mb-1 text-red-400\">Информация об ошибке:</h5>\n03508|                                   <p className=\"text-red-300 text-xs\">{calc.error}</p>\n03509|                                 </div>\n03510|                               )}\n03511|                             </div>\n03512|                           </CollapsibleContent>\n03513|                         </Collapsible>\n03514|                       </div>\n03515|                     </CardContent>\n03516|                   </Card>\n03517|                 ))}\n03518|               </div>\n03519|             )}\n03520|             \n\n(File has more lines. Use 'offset' parameter to read beyond line 3520)\n</file>",
+    "metadata": {
+      "preview": "                                  </pre>\n                                </div>\n                              )}\n                              \n                              {calc.error && (\n                                <div className=\"mb-3\">\n                                  <h5 className=\"font-bold mb-1 text-red-400\">Информация об ошибке:</h5>\n                                  <p className=\"text-red-300 text-xs\">{calc.error}</p>\n                                </div>\n                              )}\n                            </div>\n                          </CollapsibleContent>\n                        </Collapsible>\n                      </div>\n                    </CardContent>\n                  </Card>\n                ))}\n              </div>\n            )}\n            "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759133209530,
+      "end": 1759133209533
+    }
+  }
+}

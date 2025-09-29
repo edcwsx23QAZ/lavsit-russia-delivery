@@ -1,0 +1,25 @@
+{
+  "id": "prt_99480627e001BQugjY8xrI0tci",
+  "messageID": "msg_9947f5681001X824rB6EQQ9umX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_012sUU78gFYma8NfBLuheyrR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 935,
+      "limit": 30
+    },
+    "output": "<file>\n00936|     <div className=\"min-h-screen bg-gray-950 text-white p-6\">\n00937|       <div className=\"max-w-6xl mx-auto\">\n00938|         <div className=\"mb-6\">\n00939|           <h1 className=\"text-3xl font-bold mb-2\">Диагностика транспортных компаний</h1>\n00940|           <p className=\"text-gray-400\">Проверка работоспособности API всех подключенных ТК</p>\n00941|         </div>\n00942| \n00943|         <div className=\"flex gap-4 mb-6 flex-wrap\">\n00944|           <Button onClick={testAllAPIs} className=\"bg-blue-600 hover:bg-blue-700\">\n00945|             <Activity className=\"h-4 w-4 mr-2\" />\n00946|             Тестировать все API\n00947|           </Button>\n00948|           <Button \n00949|             onClick={runFullTesting} \n00950|             disabled={isFullTesting}\n00951|             className=\"bg-purple-600 hover:bg-purple-700\"\n00952|           >\n00953|             <TestTube className=\"h-4 w-4 mr-2\" />\n00954|             {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}\n00955|           </Button>\n00956|           <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\">\n00957|             <Building2 className=\"h-4 w-4 mr-2\" />\n00958|             Проверить переменные окружения\n00959|           </Button>\n00960|           <Button onClick={() => window.close()} variant=\"outline\">\n00961|             Закрыть\n00962|           </Button>\n00963|         </div>\n00964| \n00965|         {/* Прогресс полного тестирования */}\n\n(File has more lines. Use 'offset' parameter to read beyond line 965)\n</file>",
+    "metadata": {
+      "preview": "    <div className=\"min-h-screen bg-gray-950 text-white p-6\">\n      <div className=\"max-w-6xl mx-auto\">\n        <div className=\"mb-6\">\n          <h1 className=\"text-3xl font-bold mb-2\">Диагностика транспортных компаний</h1>\n          <p className=\"text-gray-400\">Проверка работоспособности API всех подключенных ТК</p>\n        </div>\n\n        <div className=\"flex gap-4 mb-6 flex-wrap\">\n          <Button onClick={testAllAPIs} className=\"bg-blue-600 hover:bg-blue-700\">\n            <Activity className=\"h-4 w-4 mr-2\" />\n            Тестировать все API\n          </Button>\n          <Button \n            onClick={runFullTesting} \n            disabled={isFullTesting}\n            className=\"bg-purple-600 hover:bg-purple-700\"\n          >\n            <TestTube className=\"h-4 w-4 mr-2\" />\n            {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}\n          </Button>"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759133066707,
+      "end": 1759133066711
+    }
+  }
+}

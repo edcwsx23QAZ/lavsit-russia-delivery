@@ -1,0 +1,26 @@
+{
+  "id": "prt_994824d81001nOd1O1htQfIuuX",
+  "messageID": "msg_9947f5681001X824rB6EQQ9umX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01LhRnp4yvfc9DXZD2sg33Xe",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -C 3 \"\\}\\)\\)\" app/page.tsx | tail -20",
+      "description": "Find closing braces"
+    },
+    "output": "3301:                      onCheckedChange={(checked) => setForm(prev => ({ ...prev, needCarry: checked as boolean }))}\n3302-                      className=\"border-white data-[state=checked]:bg-white data-[state=checked]:text-black\"\n3303-                    />\n3304-                    <Label htmlFor=\"carry\" className=\"text-white text-xs\">Требуется подъем</Label>\n--\n3311-                        <Input\n3312-                          type=\"number\"\n3313-                          value={form.floor}\n3314:                          onChange={(e) => setForm(prev => ({ ...prev, floor: Number(e.target.value) }))}\n3315-                          className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n3316-                        />\n3317-                      </div>\n--\n3319-                        <Checkbox\n3320-                          id=\"freightLift\"\n3321-                          checked={form.hasFreightLift}\n3322:                          onCheckedChange={(checked) => setForm(prev => ({ ...prev, hasFreightLift: checked as boolean }))}\n3323-                        />\n3324-                        <Label htmlFor=\"freightLift\" className=\"text-white text-xs\">Наличие грузового лифта</Label>\n3325-                      </div>\n",
+    "metadata": {
+      "output": "3301:                      onCheckedChange={(checked) => setForm(prev => ({ ...prev, needCarry: checked as boolean }))}\n3302-                      className=\"border-white data-[state=checked]:bg-white data-[state=checked]:text-black\"\n3303-                    />\n3304-                    <Label htmlFor=\"carry\" className=\"text-white text-xs\">Требуется подъем</Label>\n--\n3311-                        <Input\n3312-                          type=\"number\"\n3313-                          value={form.floor}\n3314:                          onChange={(e) => setForm(prev => ({ ...prev, floor: Number(e.target.value) }))}\n3315-                          className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n3316-                        />\n3317-                      </div>\n--\n3319-                        <Checkbox\n3320-                          id=\"freightLift\"\n3321-                          checked={form.hasFreightLift}\n3322:                          onCheckedChange={(checked) => setForm(prev => ({ ...prev, hasFreightLift: checked as boolean }))}\n3323-                        />\n3324-                        <Label htmlFor=\"freightLift\" className=\"text-white text-xs\">Наличие грузового лифта</Label>\n3325-                      </div>\n",
+      "exit": 0,
+      "description": "Find closing braces"
+    },
+    "title": "cd /home/user/project && rg -n -C 3 \"\\}\\)\\)\" app/page.tsx | tail -20",
+    "time": {
+      "start": 1759133192348,
+      "end": 1759133192364
+    }
+  }
+}

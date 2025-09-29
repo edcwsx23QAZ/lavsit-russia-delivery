@@ -1,0 +1,25 @@
+{
+  "id": "prt_9948075a10014KjtagbzN6pHX1",
+  "messageID": "msg_9947f5681001X824rB6EQQ9umX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GQ3weRSPY9BwVcomTJA9gx",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 960,
+      "limit": 50
+    },
+    "output": "<file>\n00961|             Закрыть\n00962|           </Button>\n00963|         </div>\n00964| \n00965|         {/* Прогресс полного тестирования */}\n00966|         {testProgress && (\n00967|           <Card className=\"border-blue-500 bg-blue-900/20 mb-6\">\n00968|             <CardHeader>\n00969|               <CardTitle className=\"flex items-center gap-2\">\n00970|                 <PlayCircle className=\"h-5 w-5 text-blue-400 animate-pulse\" />\n00971|                 Выполняется тестирование\n00972|               </CardTitle>\n00973|             </CardHeader>\n00974|             <CardContent>\n00975|               <div className=\"space-y-3\">\n00976|                 <div className=\"flex justify-between text-sm\">\n00977|                   <span>Текущая ТК: <strong>{testProgress.currentTK}</strong></span>\n00978|                   <span>{testProgress.completedTests}/{testProgress.totalPlannedTests} тестов</span>\n00979|                 </div>\n00980|                 <div className=\"w-full bg-gray-700 rounded-full h-2\">\n00981|                   <div \n00982|                     className=\"bg-blue-500 h-2 rounded-full transition-all duration-300\"\n00983|                     style={{\n00984|                       width: `${(testProgress.completedTests / testProgress.totalPlannedTests) * 100}%`\n00985|                     }}\n00986|                   ></div>\n00987|                 </div>\n00988|                 <div className=\"text-xs text-gray-400\">\n00989|                   Этап: {testProgress.stage}\n00990|                 </div>\n00991|               </div>\n00992|             </CardContent>\n00993|           </Card>\n00994|         )}\n00995| \n00996|         {/* Результаты полного тестирования */}\n00997|         {fullTestResults && (\n00998|           <Card className=\"border-gray-700 bg-gray-900 mb-6\">\n00999|             <CardHeader>\n01000|               <CardTitle className=\"flex items-center gap-2\">\n01001|                 <TestTube className=\"h-5 w-5 text-purple-400\" />\n01002|                 Результаты расширенного полного тестирования\n01003|               </CardTitle>\n01004|             </CardHeader>\n01005|             <CardContent>\n01006|               <div className=\"grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-4\">\n01007|                 <div className=\"text-center\">\n01008|                   <div className=\"text-2xl font-bold text-blue-400\">{fullTestResults.summary.totalTests}</div>\n01009|                   <div className=\"text-sm text-gray-400\">Всего тестов</div>\n01010|                 </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 1010)\n</file>",
+    "metadata": {
+      "preview": "            Закрыть\n          </Button>\n        </div>\n\n        {/* Прогресс полного тестирования */}\n        {testProgress && (\n          <Card className=\"border-blue-500 bg-blue-900/20 mb-6\">\n            <CardHeader>\n              <CardTitle className=\"flex items-center gap-2\">\n                <PlayCircle className=\"h-5 w-5 text-blue-400 animate-pulse\" />\n                Выполняется тестирование\n              </CardTitle>\n            </CardHeader>\n            <CardContent>\n              <div className=\"space-y-3\">\n                <div className=\"flex justify-between text-sm\">\n                  <span>Текущая ТК: <strong>{testProgress.currentTK}</strong></span>\n                  <span>{testProgress.completedTests}/{testProgress.totalPlannedTests} тестов</span>\n                </div>\n                <div className=\"w-full bg-gray-700 rounded-full h-2\">"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759133071336,
+      "end": 1759133071339
+    }
+  }
+}

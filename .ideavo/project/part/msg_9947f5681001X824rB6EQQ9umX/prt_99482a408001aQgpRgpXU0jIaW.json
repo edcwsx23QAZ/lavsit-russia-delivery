@@ -1,0 +1,26 @@
+{
+  "id": "prt_99482a408001aQgpRgpXU0jIaW",
+  "messageID": "msg_9947f5681001X824rB6EQQ9umX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01WVeJKGr8gQ5NZ7fetDKWs5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                ))}\n              </div>\n            )}\n            ",
+      "newString": "                ))}\n              </div>\n            )}\n\n            {/* Визуализация кузова */}\n            {calculations.length > 0 && (\n              <TruckVisualization \n                cargos={form.cargos.map(cargo => ({\n                  id: cargo.id,\n                  length: cargo.length,\n                  width: cargo.width,\n                  height: cargo.height,\n                  weight: cargo.weight,\n                  productName: form.selectedProducts?.find(p => \n                    p.cargoIndexes.includes(form.cargos.indexOf(cargo))\n                  )?.product.name\n                }))}\n                isVisible={true}\n              />\n            )}\n            "
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3516,8 +3516,25 @@\n       </Card>\n     ))}\n   </div>\n )}\n+\n+{/* Визуализация кузова */}\n+{calculations.length > 0 && (\n+  <TruckVisualization \n+    cargos={form.cargos.map(cargo => ({\n+      id: cargo.id,\n+      length: cargo.length,\n+      width: cargo.width,\n+      height: cargo.height,\n+      weight: cargo.weight,\n+      productName: form.selectedProducts?.find(p => \n+        p.cargoIndexes.includes(form.cargos.indexOf(cargo))\n+      )?.product.name\n+    }))}\n+    isVisible={true}\n+  />\n+)}\n \n {/* Список подключенных ТК */}\n <Card className=\"bg-gray-800 border-gray-700\">\n   <CardHeader className=\"pb-2\">\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759133217317,
+      "end": 1759133217332
+    }
+  }
+}

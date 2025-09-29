@@ -1,0 +1,26 @@
+{
+  "id": "prt_99484a5b6001EASSGPIzL1f4r4",
+  "messageID": "msg_9947f5681001X824rB6EQQ9umX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01DQErESWL64uKCBdGJCtmUd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Build project to check for errors"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./components/TruckVisualization.tsx:186:25\nType error: Type 'Set<number>' can only be iterated through when using the '--downlevelIteration' flag or with a '--target' of 'es2015' or higher.\n\n\u001b[0m \u001b[90m 184 |\u001b[39m     \u001b[0m\n\u001b[0m \u001b[90m 185 |\u001b[39m     \u001b[90m// Удаляем дубликаты и сортируем\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 186 |\u001b[39m     \u001b[36mconst\u001b[39m sortedZ \u001b[33m=\u001b[39m [\u001b[33m...\u001b[39m\u001b[36mnew\u001b[39m \u001b[33mSet\u001b[39m(possibleZ)]\u001b[33m.\u001b[39msort((a\u001b[33m,\u001b[39m b) \u001b[33m=>\u001b[39m a \u001b[33m-\u001b[39m b)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 187 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 188 |\u001b[39m     \u001b[90m// Ищем позицию с приоритетом: сначала по Z (снизу вверх), потом по Y и X\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 189 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m z \u001b[36mof\u001b[39m sortedZ) {\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./components/TruckVisualization.tsx:186:25\nType error: Type 'Set<number>' can only be iterated through when using the '--downlevelIteration' flag or with a '--target' of 'es2015' or higher.\n\n\u001b[0m \u001b[90m 184 |\u001b[39m     \u001b[0m\n\u001b[0m \u001b[90m 185 |\u001b[39m     \u001b[90m// Удаляем дубликаты и сортируем\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 186 |\u001b[39m     \u001b[36mconst\u001b[39m sortedZ \u001b[33m=\u001b[39m [\u001b[33m...\u001b[39m\u001b[36mnew\u001b[39m \u001b[33mSet\u001b[39m(possibleZ)]\u001b[33m.\u001b[39msort((a\u001b[33m,\u001b[39m b) \u001b[33m=>\u001b[39m a \u001b[33m-\u001b[39m b)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 187 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 188 |\u001b[39m     \u001b[90m// Ищем позицию с приоритетом: сначала по Z (снизу вверх), потом по Y и X\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 189 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m z \u001b[36mof\u001b[39m sortedZ) {\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build project to check for errors"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759133345722,
+      "end": 1759133358844
+    }
+  }
+}

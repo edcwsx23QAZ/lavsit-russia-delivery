@@ -1,0 +1,25 @@
+{
+  "id": "prt_994819400001s45dcs6OoLkX3q",
+  "messageID": "msg_9947f5681001X824rB6EQQ9umX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GJ7XMzsfDYASoorjunNy7B",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 13,
+      "limit": 10
+    },
+    "output": "<file>\n00014| import ProductSearch from '@/components/ProductSearch';\n00015| import ProductManager from '@/components/ProductManager';\n00016| import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\n00017| import { \n00018|   createCargosForProduct, \n00019|   removeCargosForProduct, \n00020|   calculateTotalValue,\n00021|   findCargoIndexesForProduct \n00022| } from '@/lib/furniture-utils';\n00023| \n\n(File has more lines. Use 'offset' parameter to read beyond line 23)\n</file>",
+    "metadata": {
+      "preview": "import ProductSearch from '@/components/ProductSearch';\nimport ProductManager from '@/components/ProductManager';\nimport { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\nimport { \n  createCargosForProduct, \n  removeCargosForProduct, \n  calculateTotalValue,\n  findCargoIndexesForProduct \n} from '@/lib/furniture-utils';\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759133144698,
+      "end": 1759133144701
+    }
+  }
+}

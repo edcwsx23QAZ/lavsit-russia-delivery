@@ -1,0 +1,26 @@
+{
+  "id": "prt_99481dbd0001Jjd5NxJulnS0IY",
+  "messageID": "msg_9947f5681001X824rB6EQQ9umX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_017G4xYBkmyjZc7DAKkHdfFG",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A 5 -B 5 \"calculations\\.map.*calc.*index\" app/page.tsx",
+      "description": "Find calculations mapping"
+    },
+    "output": "3363-                  >\n3364-                    Сохранить в PDF\n3365-                  </Button>\n3366-                </div>\n3367-                \n3368:                {calculations.map((calc, index) => (\n3369-                  <Card key={index} className=\"bg-gray-800 border-gray-700\">\n3370-                    <CardHeader className=\"pb-2\">\n3371-                      <div className=\"flex justify-between items-center\">\n3372-                        <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n3373-                          <Building2 className=\"h-4 w-4\" />\n",
+    "metadata": {
+      "output": "3363-                  >\n3364-                    Сохранить в PDF\n3365-                  </Button>\n3366-                </div>\n3367-                \n3368:                {calculations.map((calc, index) => (\n3369-                  <Card key={index} className=\"bg-gray-800 border-gray-700\">\n3370-                    <CardHeader className=\"pb-2\">\n3371-                      <div className=\"flex justify-between items-center\">\n3372-                        <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n3373-                          <Building2 className=\"h-4 w-4\" />\n",
+      "exit": 0,
+      "description": "Find calculations mapping"
+    },
+    "title": "cd /home/user/project && rg -n -A 5 -B 5 \"calculations\\.map.*calc.*index\" app/page.tsx",
+    "time": {
+      "start": 1759133163470,
+      "end": 1759133163485
+    }
+  }
+}
