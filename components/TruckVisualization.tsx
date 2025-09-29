@@ -58,7 +58,7 @@ const CARGO_COLORS = [
 export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {
   // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)
   const [rotationX, setRotationX] = useState(0);   // Поворот по оси X (0° - пол параллелен X)
-  const [rotationY, setRotationY] = useState(-45); // Поворот по оси Y (изометрический вид 3/4)
+  const [rotationY, setRotationY] = useState(35); // Поворот по оси Y (изометрический вид 3/4)
   const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z
   const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)
   const [positionY, setPositionY] = useState(50);  // Позиция по Y (центрированная)
@@ -582,9 +582,9 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {/* Основная сетка: слева результаты, справа 3D */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-          {/* Левая колонка: Результаты расчета */}
+        {/* Основная сетка: три колонки - форма, результаты, 3D */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          {/* Вторая колонка: Результаты расчета */}
           <div className="space-y-4">
             {/* Статистика размещения */}
             {stats && (
@@ -642,7 +642,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
             )}
           </div>
 
-          {/* Правая колонка: 3D Визуализация */}
+          {/* Третья колонка: 3D Визуализация */}
           <div className="space-y-4">
             {/* Панель управления 3D моделью */}
             <div className="bg-gray-800 p-4 rounded-lg space-y-4">
@@ -656,7 +656,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                   size="sm"
                   onClick={() => {
                     setRotationX(0);
-                    setRotationY(-45);
+                    setRotationY(35);
                     setRotationZ(0);
                     setPositionX(50);
                     setPositionY(50);
