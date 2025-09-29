@@ -649,348 +649,365 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {/* Панель управления 3D моделью */}
-        <div className="bg-gray-800 p-4 rounded-lg mb-4 space-y-4">
-          <div className="flex items-center justify-between">
-            <h4 className="text-white font-medium flex items-center gap-2">
-              <Rotate3d className="h-4 w-4" />
-              Управление 3D моделью
-            </h4>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                setRotationX(0);
-                setRotationY(-45);
-                setRotationZ(0);
-                setPositionX(50);
-                setPositionY(50);
-                setScale(70);
-              }}
-              className="text-white border-gray-600 hover:bg-gray-700"
-            >
-              Сброс
-            </Button>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {/* Джойстик для поворотов */}
-            <div className="space-y-2">
-              <label className="text-sm text-gray-300 flex items-center gap-2">
-                <Rotate3d className="h-3 w-3" />
-                Поворот (X: {rotationX.toFixed(0)}°, Y: {rotationY.toFixed(0)}°)
-              </label>
-              <div className="flex justify-center">
-                <svg
-                  ref={joystickRef}
-                  width="80"
-                  height="80"
-                  className="border border-gray-600 rounded-full bg-gray-900 cursor-move"
-                  onMouseDown={handleJoystickStart}
-                  onMouseMove={handleJoystickMove}
-                  onMouseUp={handleJoystickEnd}
-                >
-                  {/* Внешний круг */}
-                  <circle cx="40" cy="40" r="35" fill="none" stroke="#4B5563" strokeWidth="2" />
-                  
-                  {/* Центральные оси */}
-                  <line x1="40" y1="10" x2="40" y2="70" stroke="#6B7280" strokeWidth="1" strokeDashArray="2,2" />
-                  <line x1="10" y1="40" x2="70" y2="40" stroke="#6B7280" strokeWidth="1" strokeDashArray="2,2" />
-                  
-                  {/* Джойстик */}
-                  <circle 
-                    cx={40 + (rotationY / 90) * 25} 
-                    cy={40 + (rotationX / 90) * 25} 
-                    r="8" 
-                    fill={isDragging ? '#3B82F6' : '#6B7280'} 
-                    stroke="white" 
-                    strokeWidth="2"
-                    className="transition-colors"
-                  />
-                  
-                  {/* Указатели осей */}
-                  <text x="40" y="8" textAnchor="middle" fill="#9CA3AF" fontSize="8">-X</text>
-                  <text x="40" y="76" textAnchor="middle" fill="#9CA3AF" fontSize="8">+X</text>
-                  <text x="8" y="44" textAnchor="middle" fill="#9CA3AF" fontSize="8">-Y</text>
-                  <text x="72" y="44" textAnchor="middle" fill="#9CA3AF" fontSize="8">+Y</text>
-                </svg>
-              </div>
-            </div>
-            
-            {/* Слайдеры позиции */}
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <label className="text-sm text-gray-300 flex items-center gap-2">
-                  <Move className="h-3 w-3" />
-                  Позиция X: {positionX.toFixed(0)}%
-                </label>
-                <Slider
-                  value={[positionX]}
-                  onValueChange={(value) => setPositionX(value[0])}
-                  max={100}
-                  min={0}
-                  step={1}
-                  className="w-full"
-                />
-              </div>
-              
-              <div className="space-y-2">
-                <label className="text-sm text-gray-300">
-                  Позиция Y: {positionY.toFixed(0)}%
-                </label>
-                <Slider
-                  value={[positionY]}
-                  onValueChange={(value) => setPositionY(value[0])}
-                  max={100}
-                  min={0}
-                  step={1}
-                  className="w-full"
-                />
-              </div>
-            </div>
-            
-            {/* Слайдеры масштаба и Z-поворота */}
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <label className="text-sm text-gray-300">
-                  Масштаб: {scale.toFixed(0)}%
-                </label>
-                <Slider
-                  value={[scale]}
-                  onValueChange={(value) => setScale(value[0])}
-                  max={100}
-                  min={10}
-                  step={1}
-                  className="w-full"
-                />
-              </div>
-              
-              <div className="space-y-2">
-                <label className="text-sm text-gray-300">
-                  Поворот Z: {rotationZ.toFixed(0)}°
-                </label>
-                <Slider
-                  value={[rotationZ]}
-                  onValueChange={(value) => setRotationZ(value[0])}
-                  max={180}
-                  min={-180}
-                  step={5}
-                  className="w-full"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* 3D SVG визуализация кузова */}
-        <div className="bg-gray-900 p-4 rounded-lg mb-4">
-          <svg 
-            viewBox="0 0 600 400" 
-            className="w-full h-96 border border-gray-600 bg-gray-950"
-            style={{ maxHeight: '480px' }}
-          >
-            {/* Размеры кузова */}
-            <text x="300" y="20" textAnchor="middle" fill="#9CA3AF" fontSize="12" fontWeight="bold">
-              Грузовик с кузовом 4200×2025×2025 мм
-            </text>
-            
-            {/* Кабина грузовика */}
-            <g stroke="#10B981" strokeWidth="2" fill="#065F46" fillOpacity="0.3">
-              {/* Передняя стенка кабины */}
-              <polygon 
-                points={`${truckComponents.cabin[0].x},${truckComponents.cabin[0].y} ${truckComponents.cabin[1].x},${truckComponents.cabin[1].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y} ${truckComponents.cabin[4].x},${truckComponents.cabin[4].y}`}
-              />
-              
-              {/* Правая боковая стенка кабины */}
-              <polygon 
-                points={`${truckComponents.cabin[1].x},${truckComponents.cabin[1].y} ${truckComponents.cabin[2].x},${truckComponents.cabin[2].y} ${truckComponents.cabin[6].x},${truckComponents.cabin[6].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y}`}
-                fillOpacity="0.4"
-              />
-              
-              {/* Верх кабины */}
-              <polygon 
-                points={`${truckComponents.cabin[4].x},${truckComponents.cabin[4].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y} ${truckComponents.cabin[6].x},${truckComponents.cabin[6].y} ${truckComponents.cabin[7].x},${truckComponents.cabin[7].y}`}
-                fillOpacity="0.5"
-              />
-              
-              {/* Левая стенка кабины */}
-              <polygon 
-                points={`${truckComponents.cabin[3].x},${truckComponents.cabin[3].y} ${truckComponents.cabin[0].x},${truckComponents.cabin[0].y} ${truckComponents.cabin[4].x},${truckComponents.cabin[4].y} ${truckComponents.cabin[7].x},${truckComponents.cabin[7].y}`}
-                fillOpacity="0.2"
-              />
-            </g>
-            
-            {/* Шасси */}
-            <g stroke="#374151" strokeWidth="3" fill="#1F2937">
-              {/* Шасси под кабиной */}
-              <polygon 
-                points={`${truckComponents.chassis[0].x},${truckComponents.chassis[0].y} ${truckComponents.chassis[1].x},${truckComponents.chassis[1].y} ${truckComponents.chassis[2].x},${truckComponents.chassis[2].y} ${truckComponents.chassis[3].x},${truckComponents.chassis[3].y}`}
-              />
-              
-              {/* Шасси под кузовом */}
-              <polygon 
-                points={`${truckComponents.chassis[4].x},${truckComponents.chassis[4].y} ${truckComponents.chassis[5].x},${truckComponents.chassis[5].y} ${truckComponents.chassis[6].x},${truckComponents.chassis[6].y} ${truckComponents.chassis[7].x},${truckComponents.chassis[7].y}`}
-              />
-            </g>
-            
-            {/* Колеса */}
-            <g fill="#1F2937" stroke="#374151" strokeWidth="2">
-              {truckComponents.wheels.map((wheel, index) => (
-                <circle 
-                  key={`wheel-${index}`}
-                  cx={wheel.x} 
-                  cy={wheel.y} 
-                  r={Math.max(truckComponents.wheelRadius, 3)}
-                />
-              ))}
-            </g>
-            
-            {/* Контур кузова в изометрии */}
-            <g stroke="#EF4444" strokeWidth="2" fill="none">
-              {/* Пол кузова */}
-              <polygon 
-                points={`${truckVertices[0].x},${truckVertices[0].y} ${truckVertices[1].x},${truckVertices[1].y} ${truckVertices[2].x},${truckVertices[2].y} ${truckVertices[3].x},${truckVertices[3].y}`}
-                fill="#7F1D1D" 
-                fillOpacity="0.3" 
-              />
-              
-              {/* Задняя стенка */}
-              <polygon 
-                points={`${truckVertices[0].x},${truckVertices[0].y} ${truckVertices[1].x},${truckVertices[1].y} ${truckVertices[5].x},${truckVertices[5].y} ${truckVertices[4].x},${truckVertices[4].y}`}
-                strokeDasharray="3,3" 
-              />
-              
-              {/* Правая боковая стенка */}
-              <polygon 
-                points={`${truckVertices[1].x},${truckVertices[1].y} ${truckVertices[2].x},${truckVertices[2].y} ${truckVertices[6].x},${truckVertices[6].y} ${truckVertices[5].x},${truckVertices[5].y}`}
-                strokeDasharray="3,3" 
-              />
-              
-              {/* Передняя стенка */}
-              <polygon 
-                points={`${truckVertices[2].x},${truckVertices[2].y} ${truckVertices[3].x},${truckVertices[3].y} ${truckVertices[7].x},${truckVertices[7].y} ${truckVertices[6].x},${truckVertices[6].y}`}
-                strokeDasharray="3,3" 
-              />
-              
-              {/* Левая боковая стенка */}
-              <polygon 
-                points={`${truckVertices[3].x},${truckVertices[3].y} ${truckVertices[0].x},${truckVertices[0].y} ${truckVertices[4].x},${truckVertices[4].y} ${truckVertices[7].x},${truckVertices[7].y}`}
-                strokeDasharray="3,3" 
-              />
-              
-              {/* Верх кузова */}
-              <polygon 
-                points={`${truckVertices[4].x},${truckVertices[4].y} ${truckVertices[5].x},${truckVertices[5].y} ${truckVertices[6].x},${truckVertices[6].y} ${truckVertices[7].x},${truckVertices[7].y}`}
-                strokeDasharray="3,3" 
-              />
-            </g>
-            
-            {/* Отображение размещенных грузов */}
-            {placements.map((placement, index) => {
-              const vertices = placement.projectedVertices;
-              if (vertices.length < 8) return null;
-
-              return (
-                <g key={`cargo-3d-${index}`}>
-                  {/* Нижняя грань */}
-                  <polygon
-                    points={`${vertices[0].x},${vertices[0].y} ${vertices[1].x},${vertices[1].y} ${vertices[2].x},${vertices[2].y} ${vertices[3].x},${vertices[3].y}`}
-                    fill={placement.color}
-                    fillOpacity="0.6"
-                    stroke={placement.color}
-                    strokeWidth="1"
-                  />
-                  
-                  {/* Верхняя грань */}
-                  <polygon
-                    points={`${vertices[4].x},${vertices[4].y} ${vertices[5].x},${vertices[5].y} ${vertices[6].x},${vertices[6].y} ${vertices[7].x},${vertices[7].y}`}
-                    fill={placement.color}
-                    fillOpacity="0.8"
-                    stroke={placement.color}
-                    strokeWidth="1"
-                  />
-                  
-                  {/* Боковые грани */}
-                  <polygon
-                    points={`${vertices[1].x},${vertices[1].y} ${vertices[2].x},${vertices[2].y} ${vertices[6].x},${vertices[6].y} ${vertices[5].x},${vertices[5].y}`}
-                    fill={placement.color}
-                    fillOpacity="0.7"
-                    stroke={placement.color}
-                    strokeWidth="1"
-                  />
-                  
-                  <polygon
-                    points={`${vertices[2].x},${vertices[2].y} ${vertices[3].x},${vertices[3].y} ${vertices[7].x},${vertices[7].y} ${vertices[6].x},${vertices[6].y}`}
-                    fill={placement.color}
-                    fillOpacity="0.5"
-                    stroke={placement.color}
-                    strokeWidth="1"
-                  />
-
-                  {/* Номер груза */}
-                  <text
-                    x={(vertices[4].x + vertices[6].x) / 2}
-                    y={(vertices[4].y + vertices[6].y) / 2}
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    fill="white"
-                    fontSize="8"
-                    fontWeight="bold"
-                  >
-                    {index + 1}
-                  </text>
-                </g>
-              );
-            })}
-          </svg>
-        </div>
-
-        {/* Статистика размещения */}
-        {stats && (
-          <div className="grid grid-cols-2 gap-4 text-sm">
-            <div className="space-y-2">
-              <h4 className="font-medium text-white">Занятые размеры:</h4>
-              <div className="text-gray-300 space-y-1">
-                <div>Длина: {stats.dimensions.length} м</div>
-                <div>Ширина: {stats.dimensions.width} м</div>
-                <div>Высота: {stats.dimensions.height} м</div>
-              </div>
-            </div>
-            <div className="space-y-2">
-              <h4 className="font-medium text-white">Использование:</h4>
-              <div className="text-gray-300 space-y-1">
-                <div>Площадь пола: {stats.occupiedFloorArea} м²</div>
-                <div>Объем: {stats.occupiedVolume} м³</div>
-                <div>Загрузка пола: {stats.floorUtilization}%</div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Легенда грузов */}
-        {placements.length > 0 && (
-          <div className="mt-4">
-            <h4 className="font-medium text-white mb-2">Размещенные грузы:</h4>
-            <div className="grid grid-cols-1 gap-2 text-xs max-h-32 overflow-y-auto">
-              {placements.map((placement, index) => (
-                <div key={`legend-${index}`} className="flex items-center gap-2">
-                  <div 
-                    className="w-3 h-3 rounded"
-                    style={{ backgroundColor: placement.color }}
-                  />
-                  <span className="text-gray-300">
-                    Груз {index + 1}{getProductShortName(placement.cargo.productName) && (
-                      <span className="text-blue-300"> "{getProductShortName(placement.cargo.productName)}"</span>
-                    )}: {Math.round(placement.orientation.length)}×{Math.round(placement.orientation.width)}×{Math.round(placement.orientation.height)} мм
-                    {placement.orientation.rotationAngle !== 0 && (
-                      <span className="text-blue-300"> (повернут {placement.orientation.rotationAngle}°)</span>
-                    )}
-                  </span>
+        {/* Основная сетка: слева результаты, справа 3D */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          {/* Левая колонка: Результаты расчета */}
+          <div className="space-y-4">
+            {/* Статистика размещения */}
+            {stats && (
+              <div className="bg-gray-800 p-4 rounded-lg">
+                <h4 className="font-medium text-white mb-4">📊 Результаты размещения</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                  <div className="space-y-2">
+                    <h5 className="font-medium text-gray-300">Занятые размеры:</h5>
+                    <div className="text-gray-400 space-y-1">
+                      <div>Длина: {stats.dimensions.length} м</div>
+                      <div>Ширина: {stats.dimensions.width} м</div>
+                      <div>Высота: {stats.dimensions.height} м</div>
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <h5 className="font-medium text-gray-300">Использование:</h5>
+                    <div className="text-gray-400 space-y-1">
+                      <div>Площадь пола: {stats.occupiedFloorArea} м²</div>
+                      <div>Объем: {stats.occupiedVolume} м³</div>
+                      <div>Загрузка пола: {stats.floorUtilization}%</div>
+                    </div>
+                  </div>
                 </div>
-              ))}
+              </div>
+            )}
+
+            {/* Легенда грузов */}
+            {placements.length > 0 && (
+              <div className="bg-gray-800 p-4 rounded-lg">
+                <h4 className="font-medium text-white mb-3">📦 Размещенные грузы</h4>
+                <div className="grid grid-cols-1 gap-2 text-xs max-h-80 overflow-y-auto">
+                  {placements.map((placement, index) => (
+                    <div key={`legend-${index}`} className="flex items-center gap-2 p-2 bg-gray-700 rounded">
+                      <div 
+                        className="w-4 h-4 rounded flex-shrink-0"
+                        style={{ backgroundColor: placement.color }}
+                      />
+                      <span className="text-gray-300 flex-1">
+                        <span className="font-medium">Груз {index + 1}</span>
+                        {getProductShortName(placement.cargo.productName) && (
+                          <span className="text-blue-300"> "{getProductShortName(placement.cargo.productName)}"</span>
+                        )}
+                        <br />
+                        <span className="text-xs text-gray-400">
+                          {Math.round(placement.orientation.length)}×{Math.round(placement.orientation.width)}×{Math.round(placement.orientation.height)} мм
+                          {placement.orientation.rotationAngle !== 0 && (
+                            <span className="text-blue-300"> (повернут {placement.orientation.rotationAngle}°)</span>
+                          )}
+                        </span>
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Правая колонка: 3D Визуализация */}
+          <div className="space-y-4">
+            {/* Панель управления 3D моделью */}
+            <div className="bg-gray-800 p-4 rounded-lg space-y-4">
+              <div className="flex items-center justify-between">
+                <h4 className="text-white font-medium flex items-center gap-2">
+                  <Rotate3d className="h-4 w-4" />
+                  🎮 Управление 3D моделью
+                </h4>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setRotationX(0);
+                    setRotationY(-45);
+                    setRotationZ(0);
+                    setPositionX(50);
+                    setPositionY(50);
+                    setScale(70);
+                  }}
+                  className="text-white border-gray-600 hover:bg-gray-700"
+                >
+                  Сброс
+                </Button>
+              </div>
+              
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                {/* Джойстик для поворотов */}
+                <div className="space-y-2">
+                  <label className="text-sm text-gray-300 flex items-center gap-2">
+                    <Rotate3d className="h-3 w-3" />
+                    Поворот (X: {rotationX.toFixed(0)}°, Y: {rotationY.toFixed(0)}°)
+                  </label>
+                  <div className="flex justify-center">
+                    <svg
+                      ref={joystickRef}
+                      width="80"
+                      height="80"
+                      className="border border-gray-600 rounded-full bg-gray-900 cursor-move"
+                      onMouseDown={handleJoystickStart}
+                      onMouseMove={handleJoystickMove}
+                      onMouseUp={handleJoystickEnd}
+                    >
+                      {/* Внешний круг */}
+                      <circle cx="40" cy="40" r="35" fill="none" stroke="#4B5563" strokeWidth="2" />
+                      
+                      {/* Центральные оси */}
+                      <line x1="40" y1="10" x2="40" y2="70" stroke="#6B7280" strokeWidth="1" strokeDashArray="2,2" />
+                      <line x1="10" y1="40" x2="70" y2="40" stroke="#6B7280" strokeWidth="1" strokeDashArray="2,2" />
+                      
+                      {/* Джойстик */}
+                      <circle 
+                        cx={40 + (rotationY / 90) * 25} 
+                        cy={40 + (rotationX / 90) * 25} 
+                        r="8" 
+                        fill={isDragging ? '#3B82F6' : '#6B7280'} 
+                        stroke="white" 
+                        strokeWidth="2"
+                        className="transition-colors"
+                      />
+                      
+                      {/* Указатели осей */}
+                      <text x="40" y="8" textAnchor="middle" fill="#9CA3AF" fontSize="8">-X</text>
+                      <text x="40" y="76" textAnchor="middle" fill="#9CA3AF" fontSize="8">+X</text>
+                      <text x="8" y="44" textAnchor="middle" fill="#9CA3AF" fontSize="8">-Y</text>
+                      <text x="72" y="44" textAnchor="middle" fill="#9CA3AF" fontSize="8">+Y</text>
+                    </svg>
+                  </div>
+                </div>
+                
+                {/* Слайдеры позиции */}
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-300 flex items-center gap-2">
+                      <Move className="h-3 w-3" />
+                      Позиция X: {positionX.toFixed(0)}%
+                    </label>
+                    <Slider
+                      value={[positionX]}
+                      onValueChange={(value) => setPositionX(value[0])}
+                      max={100}
+                      min={0}
+                      step={1}
+                      className="w-full"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-300">
+                      Позиция Y: {positionY.toFixed(0)}%
+                    </label>
+                    <Slider
+                      value={[positionY]}
+                      onValueChange={(value) => setPositionY(value[0])}
+                      max={100}
+                      min={0}
+                      step={1}
+                      className="w-full"
+                    />
+                  </div>
+                </div>
+                
+                {/* Слайдеры масштаба и Z-поворота */}
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-300">
+                      Масштаб: {scale.toFixed(0)}%
+                    </label>
+                    <Slider
+                      value={[scale]}
+                      onValueChange={(value) => setScale(value[0])}
+                      max={100}
+                      min={10}
+                      step={1}
+                      className="w-full"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-300">
+                      Поворот Z: {rotationZ.toFixed(0)}°
+                    </label>
+                    <Slider
+                      value={[rotationZ]}
+                      onValueChange={(value) => setRotationZ(value[0])}
+                      max={180}
+                      min={-180}
+                      step={5}
+                      className="w-full"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 3D SVG визуализация кузова */}
+            <div className="bg-gray-900 p-4 rounded-lg">
+              <svg 
+                viewBox="0 0 600 400" 
+                className="w-full h-96 border border-gray-600 bg-gray-950"
+                style={{ maxHeight: '480px' }}
+              >
+                {/* Размеры кузова */}
+                <text x="300" y="20" textAnchor="middle" fill="#9CA3AF" fontSize="12" fontWeight="bold">
+                  🚛 Грузовик с кузовом 4200×2025×2025 мм
+                </text>
+                
+                {/* Кабина грузовика */}
+                <g stroke="#10B981" strokeWidth="2" fill="#065F46" fillOpacity="0.3">
+                  {/* Передняя стенка кабины */}
+                  <polygon 
+                    points={`${truckComponents.cabin[0].x},${truckComponents.cabin[0].y} ${truckComponents.cabin[1].x},${truckComponents.cabin[1].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y} ${truckComponents.cabin[4].x},${truckComponents.cabin[4].y}`}
+                  />
+                  
+                  {/* Правая боковая стенка кабины */}
+                  <polygon 
+                    points={`${truckComponents.cabin[1].x},${truckComponents.cabin[1].y} ${truckComponents.cabin[2].x},${truckComponents.cabin[2].y} ${truckComponents.cabin[6].x},${truckComponents.cabin[6].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y}`}
+                    fillOpacity="0.4"
+                  />
+                  
+                  {/* Верх кабины */}
+                  <polygon 
+                    points={`${truckComponents.cabin[4].x},${truckComponents.cabin[4].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y} ${truckComponents.cabin[6].x},${truckComponents.cabin[6].y} ${truckComponents.cabin[7].x},${truckComponents.cabin[7].y}`}
+                    fillOpacity="0.5"
+                  />
+                  
+                  {/* Левая стенка кабины */}
+                  <polygon 
+                    points={`${truckComponents.cabin[3].x},${truckComponents.cabin[3].y} ${truckComponents.cabin[0].x},${truckComponents.cabin[0].y} ${truckComponents.cabin[4].x},${truckComponents.cabin[4].y} ${truckComponents.cabin[7].x},${truckComponents.cabin[7].y}`}
+                    fillOpacity="0.2"
+                  />
+                </g>
+                
+                {/* Шасси */}
+                <g stroke="#374151" strokeWidth="3" fill="#1F2937">
+                  {/* Шасси под кабиной */}
+                  <polygon 
+                    points={`${truckComponents.chassis[0].x},${truckComponents.chassis[0].y} ${truckComponents.chassis[1].x},${truckComponents.chassis[1].y} ${truckComponents.chassis[2].x},${truckComponents.chassis[2].y} ${truckComponents.chassis[3].x},${truckComponents.chassis[3].y}`}
+                  />
+                  
+                  {/* Шасси под кузовом */}
+                  <polygon 
+                    points={`${truckComponents.chassis[4].x},${truckComponents.chassis[4].y} ${truckComponents.chassis[5].x},${truckComponents.chassis[5].y} ${truckComponents.chassis[6].x},${truckComponents.chassis[6].y} ${truckComponents.chassis[7].x},${truckComponents.chassis[7].y}`}
+                  />
+                </g>
+                
+                {/* Колеса */}
+                <g fill="#1F2937" stroke="#374151" strokeWidth="2">
+                  {truckComponents.wheels.map((wheel, index) => (
+                    <circle 
+                      key={`wheel-${index}`}
+                      cx={wheel.x} 
+                      cy={wheel.y} 
+                      r={Math.max(truckComponents.wheelRadius, 3)}
+                    />
+                  ))}
+                </g>
+                
+                {/* Контур кузова в изометрии */}
+                <g stroke="#EF4444" strokeWidth="2" fill="none">
+                  {/* Пол кузова */}
+                  <polygon 
+                    points={`${truckVertices[0].x},${truckVertices[0].y} ${truckVertices[1].x},${truckVertices[1].y} ${truckVertices[2].x},${truckVertices[2].y} ${truckVertices[3].x},${truckVertices[3].y}`}
+                    fill="#7F1D1D" 
+                    fillOpacity="0.3" 
+                  />
+                  
+                  {/* Задняя стенка */}
+                  <polygon 
+                    points={`${truckVertices[0].x},${truckVertices[0].y} ${truckVertices[1].x},${truckVertices[1].y} ${truckVertices[5].x},${truckVertices[5].y} ${truckVertices[4].x},${truckVertices[4].y}`}
+                    strokeDasharray="3,3" 
+                  />
+                  
+                  {/* Правая боковая стенка */}
+                  <polygon 
+                    points={`${truckVertices[1].x},${truckVertices[1].y} ${truckVertices[2].x},${truckVertices[2].y} ${truckVertices[6].x},${truckVertices[6].y} ${truckVertices[5].x},${truckVertices[5].y}`}
+                    strokeDasharray="3,3" 
+                  />
+                  
+                  {/* Передняя стенка */}
+                  <polygon 
+                    points={`${truckVertices[2].x},${truckVertices[2].y} ${truckVertices[3].x},${truckVertices[3].y} ${truckVertices[7].x},${truckVertices[7].y} ${truckVertices[6].x},${truckVertices[6].y}`}
+                    strokeDasharray="3,3" 
+                  />
+                  
+                  {/* Левая боковая стенка */}
+                  <polygon 
+                    points={`${truckVertices[3].x},${truckVertices[3].y} ${truckVertices[0].x},${truckVertices[0].y} ${truckVertices[4].x},${truckVertices[4].y} ${truckVertices[7].x},${truckVertices[7].y}`}
+                    strokeDasharray="3,3" 
+                  />
+                  
+                  {/* Верх кузова */}
+                  <polygon 
+                    points={`${truckVertices[4].x},${truckVertices[4].y} ${truckVertices[5].x},${truckVertices[5].y} ${truckVertices[6].x},${truckVertices[6].y} ${truckVertices[7].x},${truckVertices[7].y}`}
+                    strokeDasharray="3,3" 
+                  />
+                </g>
+                
+                {/* Отображение размещенных грузов */}
+                {placements.map((placement, index) => {
+                  const vertices = placement.projectedVertices;
+                  if (vertices.length < 8) return null;
+
+                  return (
+                    <g key={`cargo-3d-${index}`}>
+                      {/* Нижняя грань */}
+                      <polygon
+                        points={`${vertices[0].x},${vertices[0].y} ${vertices[1].x},${vertices[1].y} ${vertices[2].x},${vertices[2].y} ${vertices[3].x},${vertices[3].y}`}
+                        fill={placement.color}
+                        fillOpacity="0.6"
+                        stroke={placement.color}
+                        strokeWidth="1"
+                      />
+                      
+                      {/* Верхняя грань */}
+                      <polygon
+                        points={`${vertices[4].x},${vertices[4].y} ${vertices[5].x},${vertices[5].y} ${vertices[6].x},${vertices[6].y} ${vertices[7].x},${vertices[7].y}`}
+                        fill={placement.color}
+                        fillOpacity="0.8"
+                        stroke={placement.color}
+                        strokeWidth="1"
+                      />
+                      
+                      {/* Боковые грани */}
+                      <polygon
+                        points={`${vertices[1].x},${vertices[1].y} ${vertices[2].x},${vertices[2].y} ${vertices[6].x},${vertices[6].y} ${vertices[5].x},${vertices[5].y}`}
+                        fill={placement.color}
+                        fillOpacity="0.7"
+                        stroke={placement.color}
+                        strokeWidth="1"
+                      />
+                      
+                      <polygon
+                        points={`${vertices[2].x},${vertices[2].y} ${vertices[3].x},${vertices[3].y} ${vertices[7].x},${vertices[7].y} ${vertices[6].x},${vertices[6].y}`}
+                        fill={placement.color}
+                        fillOpacity="0.5"
+                        stroke={placement.color}
+                        strokeWidth="1"
+                      />
+
+                      {/* Номер груза */}
+                      <text
+                        x={(vertices[4].x + vertices[6].x) / 2}
+                        y={(vertices[4].y + vertices[6].y) / 2}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        fill="white"
+                        fontSize="8"
+                        fontWeight="bold"
+                      >
+                        {index + 1}
+                      </text>
+                    </g>
+                  );
+                })}
+              </svg>
             </div>
           </div>
-        )}
+        </div>
       </CardContent>
     </Card>
   );

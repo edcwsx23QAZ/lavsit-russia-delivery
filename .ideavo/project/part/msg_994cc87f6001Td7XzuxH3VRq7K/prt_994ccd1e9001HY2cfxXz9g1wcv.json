@@ -1,0 +1,26 @@
+{
+  "id": "prt_994ccd1e9001HY2cfxXz9g1wcv",
+  "messageID": "msg_994cc87f6001Td7XzuxH3VRq7K",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01DDQ9PLyoqq6Jrc7krafRU1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -n \"CardContent\" /home/user/project/components/TruckVisualization.tsx",
+      "description": "Find CardContent section"
+    },
+    "output": "4:import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n651:      <CardContent>\n994:      </CardContent>\n",
+    "metadata": {
+      "output": "4:import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n651:      <CardContent>\n994:      </CardContent>\n",
+      "exit": 0,
+      "description": "Find CardContent section"
+    },
+    "title": "grep -n \"CardContent\" /home/user/project/components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759138075645,
+      "end": 1759138075654
+    }
+  }
+}

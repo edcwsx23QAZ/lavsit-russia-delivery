@@ -1,0 +1,26 @@
+{
+  "id": "prt_994ccade9001UbCgfaOpsP71Fz",
+  "messageID": "msg_994cc87f6001Td7XzuxH3VRq7K",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01UxndZN2WTEGxhbKbaH8brc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -n \"Статистика размещения\" /home/user/project/components/TruckVisualization.tsx",
+      "description": "Find the stats section"
+    },
+    "output": "948:        {/* Статистика размещения */}\n",
+    "metadata": {
+      "output": "948:        {/* Статистика размещения */}\n",
+      "exit": 0,
+      "description": "Find the stats section"
+    },
+    "title": "grep -n \"Статистика размещения\" /home/user/project/components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759138066938,
+      "end": 1759138066952
+    }
+  }
+}

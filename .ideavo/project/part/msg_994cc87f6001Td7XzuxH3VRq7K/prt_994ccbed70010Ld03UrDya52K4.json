@@ -1,0 +1,25 @@
+{
+  "id": "prt_994ccbed70010Ld03UrDya52K4",
+  "messageID": "msg_994cc87f6001Td7XzuxH3VRq7K",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_014TUSCb73jcdiznxS8hF2wQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 945,
+      "limit": 50
+    },
+    "output": "<file>\n00946|         </div>\n00947| \n00948|         {/* Статистика размещения */}\n00949|         {stats && (\n00950|           <div className=\"grid grid-cols-2 gap-4 text-sm\">\n00951|             <div className=\"space-y-2\">\n00952|               <h4 className=\"font-medium text-white\">Занятые размеры:</h4>\n00953|               <div className=\"text-gray-300 space-y-1\">\n00954|                 <div>Длина: {stats.dimensions.length} м</div>\n00955|                 <div>Ширина: {stats.dimensions.width} м</div>\n00956|                 <div>Высота: {stats.dimensions.height} м</div>\n00957|               </div>\n00958|             </div>\n00959|             <div className=\"space-y-2\">\n00960|               <h4 className=\"font-medium text-white\">Использование:</h4>\n00961|               <div className=\"text-gray-300 space-y-1\">\n00962|                 <div>Площадь пола: {stats.occupiedFloorArea} м²</div>\n00963|                 <div>Объем: {stats.occupiedVolume} м³</div>\n00964|                 <div>Загрузка пола: {stats.floorUtilization}%</div>\n00965|               </div>\n00966|             </div>\n00967|           </div>\n00968|         )}\n00969| \n00970|         {/* Легенда грузов */}\n00971|         {placements.length > 0 && (\n00972|           <div className=\"mt-4\">\n00973|             <h4 className=\"font-medium text-white mb-2\">Размещенные грузы:</h4>\n00974|             <div className=\"grid grid-cols-1 gap-2 text-xs max-h-32 overflow-y-auto\">\n00975|               {placements.map((placement, index) => (\n00976|                 <div key={`legend-${index}`} className=\"flex items-center gap-2\">\n00977|                   <div \n00978|                     className=\"w-3 h-3 rounded\"\n00979|                     style={{ backgroundColor: placement.color }}\n00980|                   />\n00981|                   <span className=\"text-gray-300\">\n00982|                     Груз {index + 1}{getProductShortName(placement.cargo.productName) && (\n00983|                       <span className=\"text-blue-300\"> \"{getProductShortName(placement.cargo.productName)}\"</span>\n00984|                     )}: {Math.round(placement.orientation.length)}×{Math.round(placement.orientation.width)}×{Math.round(placement.orientation.height)} мм\n00985|                     {placement.orientation.rotationAngle !== 0 && (\n00986|                       <span className=\"text-blue-300\"> (повернут {placement.orientation.rotationAngle}°)</span>\n00987|                     )}\n00988|                   </span>\n00989|                 </div>\n00990|               ))}\n00991|             </div>\n00992|           </div>\n00993|         )}\n00994|       </CardContent>\n00995|     </Card>\n\n(File has more lines. Use 'offset' parameter to read beyond line 995)\n</file>",
+    "metadata": {
+      "preview": "        </div>\n\n        {/* Статистика размещения */}\n        {stats && (\n          <div className=\"grid grid-cols-2 gap-4 text-sm\">\n            <div className=\"space-y-2\">\n              <h4 className=\"font-medium text-white\">Занятые размеры:</h4>\n              <div className=\"text-gray-300 space-y-1\">\n                <div>Длина: {stats.dimensions.length} м</div>\n                <div>Ширина: {stats.dimensions.width} м</div>\n                <div>Высота: {stats.dimensions.height} м</div>\n              </div>\n            </div>\n            <div className=\"space-y-2\">\n              <h4 className=\"font-medium text-white\">Использование:</h4>\n              <div className=\"text-gray-300 space-y-1\">\n                <div>Площадь пола: {stats.occupiedFloorArea} м²</div>\n                <div>Объем: {stats.occupiedVolume} м³</div>\n                <div>Загрузка пола: {stats.floorUtilization}%</div>\n              </div>"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759138071153,
+      "end": 1759138071155
+    }
+  }
+}
