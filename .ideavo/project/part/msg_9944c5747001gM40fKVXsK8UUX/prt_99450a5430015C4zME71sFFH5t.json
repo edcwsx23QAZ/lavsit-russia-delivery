@@ -1,0 +1,25 @@
+{
+  "id": "prt_99450a5430015C4zME71sFFH5t",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01JtQmHXkGANbaRK57ywZ3o1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 900,
+      "limit": 50
+    },
+    "output": "<file>\n00901|               worktimeEnd: '18:00',\n00902|               breakStart: '13:00',\n00903|               breakEnd: '14:00',\n00904|               exactTime: false\n00905|             },\n00906|             // handling в arrival заполняется только если требуется подъем\n00907|             ...(form.needCarry ? {\n00908|               handling: {\n00909|                 freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n00910|                 toFloor: form.floor, // этаж из формы\n00911|                 carry: 0\n00912|               }\n00913|             } : {})\n00914|           },\n00915|           ...(form.needPackaging && packageUid ? {\n00916|             packages: [{\n00917|               uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n00918|               count: 1  // По умолчанию 1\n00919|             }]\n00920|           } : {})\n00921|         },\n00922|         cargo: {\n00923|           quantity: form.cargos.length,\n00924|           length: maxLength,\n00925|           width: maxWidth,\n00926|           height: maxHeight,\n00927|           weight: totalWeight,\n00928|           totalVolume: totalVolume,\n00929|           totalWeight: totalWeight,\n00930|           oversizedWeight: 0,\n00931|           oversizedVolume: 0,\n00932|           hazardClass: 0,  // Всегда 0 если нет опасных грузов\n00933|           ...(form.needInsurance && form.declaredValue > 0 ? {\n00934|             insurance: {\n00935|               statedValue: form.declaredValue,\n00936|               term: true  // Всегда true при наличии страхования\n00937|             }\n00938|           } : {})\n00939|         },\n00940|         payment: {\n00941|           type: 'noncash',  // Всегда \"noncash\"\n00942|           paymentCitySearch: {\n00943|             search: form.fromCity  // Город оплаты\n00944|           }\n00945|         }\n00946|       };\n00947| \n00948|       console.log('🚀 ИТОГОВЫЙ ЗАПРОС К ДЛ:', JSON.stringify(requestData, null, 2));\n00949|       \n00950|       // Специальная проверка блока packages\n\n(File has more lines. Use 'offset' parameter to read beyond line 950)\n</file>",
+    "metadata": {
+      "preview": "              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            },\n            // handling в arrival заполняется только если требуется подъем\n            ...(form.needCarry ? {\n              handling: {\n                freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n                toFloor: form.floor, // этаж из формы\n                carry: 0\n              }\n            } : {})\n          },\n          ...(form.needPackaging && packageUid ? {\n            packages: [{\n              uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n              count: 1  // По умолчанию 1\n            }]\n          } : {})"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129937748,
+      "end": 1759129937752
+    }
+  }
+}

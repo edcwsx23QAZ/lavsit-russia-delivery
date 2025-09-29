@@ -1,0 +1,26 @@
+{
+  "id": "prt_9944f78be0012NeMzyBX0Eix19",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01NMYetHTTWKkbrcugUymgCp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -A 15 \"params.*toString\" app/page.tsx",
+      "description": "Find Nord Wheel URL params formation"
+    },
+    "output": "          const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n          const response = await fetch(fullUrl);\n          const data = await response.json();\n          \n          if (response.ok && data.status === 'success') {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      })\n    ]).finally(() => {\n      // Восстанавливаем исходное состояние формы\n      setForm(currentForm);\n--\n      const fullUrl = `${apiUrl}?${params.toString()}`;\n\n      const response = await fetch(fullUrl);\n      const data = await response.json();\n\n      if (response.ok && data.status === 'success' && data.data) {\n        return {\n          company: 'Nord Wheel',\n          price: data.data.total || 0,\n          days: data.data.days || 0,\n          details: {\n            ...data.data,\n            totalCost: data.data.total,\n            deliveryCost: data.data.door,\n            terminalCost: data.data.terminal,\n            pickupCost: data.data.pick,\n",
+    "metadata": {
+      "output": "          const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n          const response = await fetch(fullUrl);\n          const data = await response.json();\n          \n          if (response.ok && data.status === 'success') {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      })\n    ]).finally(() => {\n      // Восстанавливаем исходное состояние формы\n      setForm(currentForm);\n--\n      const fullUrl = `${apiUrl}?${params.toString()}`;\n\n      const response = await fetch(fullUrl);\n      const data = await response.json();\n\n      if (response.ok && data.status === 'success' && data.data) {\n        return {\n          company: 'Nord Wheel',\n          price: data.data.total || 0,\n          days: data.data.days || 0,\n          details: {\n            ...data.data,\n            totalCost: data.data.total,\n            deliveryCost: data.data.door,\n            terminalCost: data.data.terminal,\n            pickupCost: data.data.pick,\n",
+      "exit": 0,
+      "description": "Find Nord Wheel URL params formation"
+    },
+    "title": "cd /home/user/project && rg -A 15 \"params.*toString\" app/page.tsx",
+    "time": {
+      "start": 1759129861436,
+      "end": 1759129861452
+    }
+  }
+}

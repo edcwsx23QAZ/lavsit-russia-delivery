@@ -1,0 +1,26 @@
+{
+  "id": "prt_9944d5203001i4X6mC5wDJxLQ4",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01TRs7g69XsD88wZMuEZNA86",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Формируем массив грузов (без координат)\n      const cargos = form.cargos.map(cargo => {\n        const cargoData = {\n          length: cargo.length / 100, // переводим см в метры\n          width: cargo.width / 100,\n          height: cargo.height / 100,\n          volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n          weight: cargo.weight,\n          isHP: form.needPackaging, // защитная упаковка\n          sealingPositionsCount: 0\n        };\n        \n        console.log('📦 Груз для ПЭК:', cargoData);\n        return cargoData;\n      });",
+      "newString": "      // Группируем грузы по одинаковым габаритам\n      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n      console.log('📦 Сгруппированные грузы для ПЭК:', groupedCargos);\n      \n      // Формируем массив грузов с учетом группировки\n      const cargos = groupedCargos.map((group, index) => {\n        const cargoData = {\n          length: group.length / 100, // переводим см в метры\n          width: group.width / 100,\n          height: group.height / 100,\n          volume: (group.length * group.width * group.height * group.quantity) / 1000000, // м3 с учетом количества\n          weight: group.weight * group.quantity, // общий вес группы\n          isHP: form.needPackaging, // защитная упаковка\n          sealingPositionsCount: 0,\n          quantity: group.quantity // добавляем количество одинаковых мест\n        };\n        \n        console.log(`📦 Группа ${index + 1} для ПЭК (${group.quantity} шт):`, cargoData);\n        return cargoData;\n      });"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1581,21 +1581,26 @@\n // Начинаем с завтрашнего дня\n let currentDayOffset = 1;\n let plannedDateTime = getDateForCalculation(currentDayOffset);\n \n-// Формируем массив грузов (без координат)\n-const cargos = form.cargos.map(cargo => {\n+// Группируем грузы по одинаковым габаритам\n+const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n+console.log('📦 Сгруппированные грузы для ПЭК:', groupedCargos);\n+\n+// Формируем массив грузов с учетом группировки\n+const cargos = groupedCargos.map((group, index) => {\n   const cargoData = {\n-    length: cargo.length / 100, // переводим см в метры\n-    width: cargo.width / 100,\n-    height: cargo.height / 100,\n-    volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n-    weight: cargo.weight,\n+    length: group.length / 100, // переводим см в метры\n+    width: group.width / 100,\n+    height: group.height / 100,\n+    volume: (group.length * group.width * group.height * group.quantity) / 1000000, // м3 с учетом количества\n+    weight: group.weight * group.quantity, // общий вес группы\n     isHP: form.needPackaging, // защитная упаковка\n-    sealingPositionsCount: 0\n+    sealingPositionsCount: 0,\n+    quantity: group.quantity // добавляем количество одинаковых мест\n   };\n   \n-  console.log('📦 Груз для ПЭК:', cargoData);\n+  console.log(`📦 Группа ${index + 1} для ПЭК (${group.quantity} шт):`, cargoData);\n   return cargoData;\n });\n \n // Переменная для хранения финального запроса (нужна для возврата в результате)\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129726106,
+      "end": 1759129726119
+    }
+  }
+}

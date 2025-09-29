@@ -1,0 +1,26 @@
+{
+  "id": "prt_9944fa6d7001YppYH26GePaHtw",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Y7M39kVWSUcpCB8ibHZYG8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        packageCount: form.cargos.length.toString(),",
+      "newString": "        packageCount: totalQuantity.toString(),"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2496,9 +2496,9 @@\n weight: totalWeight.toString(),\n volume: totalVolume.toString(),\n oversized: isOversized ? '1' : '0', // 🔧 ИСПРАВЛЕНО: Правильное определение негабарита\n package: form.needPackaging ? '1' : '0',\n-packageCount: form.cargos.length.toString(),\n+packageCount: totalQuantity.toString(),\n insurance: form.needInsurance ? '1' : '0',\n sum: form.declaredValue.toString(),\n documentsReturn: '0',\n fragile: '1',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129873049,
+      "end": 1759129873067
+    }
+  }
+}

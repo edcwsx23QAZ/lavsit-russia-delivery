@@ -1,0 +1,21 @@
+{
+  "id": "prt_9944f2be7002IHeNzeU2HRcjan",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_013ii8Mi3HEqj4hEirxgQVJD",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );",
+      "newString": "      // Группируем грузы по одинаковым габаритам\n      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n      console.log('🌐 Сгруппированные грузы для Nord Wheel:', groupedCargos);\n      \n      const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);\n      const totalVolume = groupedCargos.reduce((sum, group) => \n        sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0\n      );\n      const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);"
+    },
+    "error": "Error: oldString found multiple times and requires more code context to uniquely identify the intended match",
+    "time": {
+      "start": 1759129844592,
+      "end": 1759129844649
+    }
+  }
+}

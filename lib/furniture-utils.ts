@@ -234,6 +234,66 @@ function getPlaceWord(count: number): string {
 }
 
 /**
+ * Группировка грузов по одинаковым габаритам и весу
+ */
+export interface GroupedCargo {
+  length: number;
+  width: number;
+  height: number;
+  weight: number;
+  quantity: number;
+  originalIds: string[];
+}
+
+export function groupCargosByDimensions(cargos: CargoWithMetadata[]): GroupedCargo[] {
+  const groups = new Map<string, GroupedCargo>();
+  
+  cargos.forEach(cargo => {
+    // Создаем ключ для группировки на основе габаритов и веса
+    const key = `${cargo.length}_${cargo.width}_${cargo.height}_${cargo.weight}`;
+    
+    if (groups.has(key)) {
+      const existing = groups.get(key)!;
+      existing.quantity += 1;
+      existing.originalIds.push(cargo.id);
+    } else {
+      groups.set(key, {
+        length: cargo.length,
+        width: cargo.width,
+        height: cargo.height,
+        weight: cargo.weight,
+        quantity: 1,
+        originalIds: [cargo.id]
+      });
+    }
+  });
+  
+  return Array.from(groups.values()).sort((a, b) => {
+    // Сортируем по убыванию количества, затем по убыванию веса
+    if (a.quantity !== b.quantity) {
+      return b.quantity - a.quantity;
+    }
+    return b.weight - a.weight;
+  });
+}
+
+/**
+ * Преобразование сгруппированных грузов в формат для API
+ */
+export function groupedCargosToApiFormat(groupedCargos: GroupedCargo[]): any[] {
+  return groupedCargos.map((group, index) => ({
+    id: `group_${index + 1}`,
+    length: group.length,
+    width: group.width,
+    height: group.height,
+    weight: group.weight,
+    quantity: group.quantity,
+    isGrouped: true,
+    originalIds: group.originalIds
+  }));
+}
+
+/**
  * Кэширование продуктов в localStorage
  */
 export function cacheProducts(products: FurnitureProduct[]): void {

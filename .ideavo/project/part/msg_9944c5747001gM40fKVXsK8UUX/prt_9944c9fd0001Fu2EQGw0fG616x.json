@@ -1,0 +1,25 @@
+{
+  "id": "prt_9944c9fd0001Fu2EQGw0fG616x",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01MhZTqFbMzTwr51ZGo9Zzg8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1965,
+      "limit": 30
+    },
+    "output": "<file>\n01966| \n01967|   // 🔧 Функции для расчета оптимальных габаритов при множественных местах\n01968|   const calculateOptimalLength = (cargos: typeof form.cargos) => {\n01969|     if (cargos.length === 1) {\n01970|       return cargos[0].length / 100; // Одно место - точные габариты\n01971|     }\n01972|     \n01973|     // Для множественных мест:\n01974|     const maxLength = Math.max(...cargos.map(c => c.length)) / 100;\n01975|     const totalLength = cargos.reduce((sum, c) => sum + c.length, 0) / 100;\n01976|     \n01977|     // Если мест много (>3), используем суммарную длину (места в ряд)\n01978|     // Иначе - максимальную (места отдельно)\n01979|     return cargos.length > 3 ? totalLength : maxLength;\n01980|   };\n01981| \n01982|   const calculateOptimalWidth = (cargos: typeof form.cargos) => {\n01983|     // Для ширины логично использовать максимальную\n01984|     return Math.max(...cargos.map(c => c.width)) / 100;\n01985|   };\n01986| \n01987|   const calculateOptimalHeight = (cargos: typeof form.cargos) => {\n01988|     if (cargos.length === 1) {\n01989|       return cargos[0].height / 100;\n01990|     }\n01991|     \n01992|     const maxHeight = Math.max(...cargos.map(c => c.height)) / 100;\n01993|     const totalHeight = cargos.reduce((sum, c) => sum + c.height, 0) / 100;\n01994|     \n01995|     // Если много мелких мест - можем стакировать\n\n(File has more lines. Use 'offset' parameter to read beyond line 1995)\n</file>",
+    "metadata": {
+      "preview": "\n  // 🔧 Функции для расчета оптимальных габаритов при множественных местах\n  const calculateOptimalLength = (cargos: typeof form.cargos) => {\n    if (cargos.length === 1) {\n      return cargos[0].length / 100; // Одно место - точные габариты\n    }\n    \n    // Для множественных мест:\n    const maxLength = Math.max(...cargos.map(c => c.length)) / 100;\n    const totalLength = cargos.reduce((sum, c) => sum + c.length, 0) / 100;\n    \n    // Если мест много (>3), используем суммарную длину (места в ряд)\n    // Иначе - максимальную (места отдельно)\n    return cargos.length > 3 ? totalLength : maxLength;\n  };\n\n  const calculateOptimalWidth = (cargos: typeof form.cargos) => {\n    // Для ширины логично использовать максимальную\n    return Math.max(...cargos.map(c => c.width)) / 100;\n  };"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129674432,
+      "end": 1759129674438
+    }
+  }
+}

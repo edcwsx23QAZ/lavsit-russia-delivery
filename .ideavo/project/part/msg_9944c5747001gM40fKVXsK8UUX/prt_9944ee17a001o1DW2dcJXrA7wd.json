@@ -1,0 +1,26 @@
+{
+  "id": "prt_9944ee17a001o1DW2dcJXrA7wd",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01HV9226j2Q2PNKgomDPV9dT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Вычисляем основные параметры груза\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );",
+      "newString": "      // Группируем грузы по одинаковым габаритам\n      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n      console.log('🚚 Сгруппированные грузы для Vozovoz:', groupedCargos);\n      \n      // Вычисляем основные параметры груза с учетом группировки\n      const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);\n      const totalVolume = groupedCargos.reduce((sum, group) => \n        sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0\n      );\n      const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2247,13 +2247,18 @@\n const calculateVozovoz = async (): Promise<CalculationResult> => {\n   const apiUrl = '/api/vozovoz';\n   \n   try {\n-    // Вычисляем основные параметры груза\n-    const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n-    const totalVolume = form.cargos.reduce((sum, cargo) => \n-      sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n+    // Группируем грузы по одинаковым габаритам\n+    const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n+    console.log('🚚 Сгруппированные грузы для Vozovoz:', groupedCargos);\n+    \n+    // Вычисляем основные параметры груза с учетом группировки\n+    const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);\n+    const totalVolume = groupedCargos.reduce((sum, group) => \n+      sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0\n     );\n+    const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);\n     \n     console.log('🚚 Возовоз: подготовка данных...');\n     console.log('   - Общий вес:', totalWeight, 'кг');\n     console.log('   - Общий объем:', totalVolume, 'м³');\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129825025,
+      "end": 1759129825041
+    }
+  }
+}

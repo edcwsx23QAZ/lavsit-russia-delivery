@@ -1,0 +1,25 @@
+{
+  "id": "prt_9944ed113001CLdRHCH9KG94fp",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01V5kMRd5w1V9CmFhfWDssGK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2240,
+      "limit": 30
+    },
+    "output": "<file>\n02241|         error: `Ошибка соединения: ${error.message}`,\n02242|         apiUrl\n02243|       };\n02244|     }\n02245|   };\n02246| \n02247|   const calculateVozovoz = async (): Promise<CalculationResult> => {\n02248|     const apiUrl = '/api/vozovoz';\n02249|     \n02250|     try {\n02251|       // Вычисляем основные параметры груза\n02252|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n02253|       const totalVolume = form.cargos.reduce((sum, cargo) => \n02254|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n02255|       );\n02256|       \n02257|       console.log('🚚 Возовоз: подготовка данных...');\n02258|       console.log('   - Общий вес:', totalWeight, 'кг');\n02259|       console.log('   - Общий объем:', totalVolume, 'м³');\n02260|       console.log('   - Откуда:', form.fromCity);\n02261|       console.log('   - Куда:', form.toCity);\n02262|       \n02263|       // Параметры для API Vozovoz\n02264|       const requestData = {\n02265|         object: \"price\",\n02266|         action: \"get\",\n02267|         params: {\n02268|           cargo: {\n02269|             dimension: {\n02270|               quantity: form.cargos.length,\n\n(File has more lines. Use 'offset' parameter to read beyond line 2270)\n</file>",
+    "metadata": {
+      "preview": "        error: `Ошибка соединения: ${error.message}`,\n        apiUrl\n      };\n    }\n  };\n\n  const calculateVozovoz = async (): Promise<CalculationResult> => {\n    const apiUrl = '/api/vozovoz';\n    \n    try {\n      // Вычисляем основные параметры груза\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n      \n      console.log('🚚 Возовоз: подготовка данных...');\n      console.log('   - Общий вес:', totalWeight, 'кг');\n      console.log('   - Общий объем:', totalVolume, 'м³');\n      console.log('   - Откуда:', form.fromCity);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129818170,
+      "end": 1759129818172
+    }
+  }
+}

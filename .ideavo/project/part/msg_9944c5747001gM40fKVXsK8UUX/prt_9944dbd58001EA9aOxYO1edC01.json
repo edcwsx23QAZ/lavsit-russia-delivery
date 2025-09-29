@@ -1,0 +1,25 @@
+{
+  "id": "prt_9944dbd58001EA9aOxYO1edC01",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_018K11EETgPhHzhC3NHbcx43",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2070,
+      "limit": 40
+    },
+    "output": "<file>\n02071|         weight: totalWeight,\n02072|         volume: totalVolume,\n02073|         quantity: form.cargos.length, // 🔧 ДОБАВЛЕНО: Количество мест\n02074|         length: optimalLength,        // 🔧 ИСПРАВЛЕНО: Оптимальная длина\n02075|         width: optimalWidth,          // 🔧 ИСПРАВЛЕНО: Оптимальная ширина  \n02076|         height: optimalHeight,        // 🔧 ИСПРАВЛЕНО: Оптимальная высота\n02077|         declared_cost: form.declaredValue,\n02078|         pickup: form.fromAddressDelivery ? '1' : '0',\n02079|         delivery: form.toAddressDelivery ? '1' : '0',\n02080|         packaging: form.needPackaging ? '1' : '0',\n02081|         insurance: form.needInsurance ? '1' : '0',\n02082|         tariff: 'auto' // Автоматический выбор оптимального тарифа\n02083|       };\n02084| \n02085|       console.log('🚂 Rail Continent запрос:', requestData);\n02086| \n02087|       const response = await fetch(apiUrl, {\n02088|         method: 'POST',\n02089|         headers: {\n02090|           'Content-Type': 'application/json',\n02091|         },\n02092|         body: JSON.stringify(requestData)\n02093|       });\n02094| \n02095|       const data = await response.json();\n02096|       console.log('🚂 Rail Continent ответ:', data);\n02097| \n02098|       if (response.ok && data.result === 'success' && data.data) {\n02099|         // Выбираем автомобильный тариф как основной (самый быстрый)\n02100|         const autoTariff = data.data.auto;\n02101|         \n02102|         if (autoTariff) {\n02103|           // Собираем детали по услугам для расчета стоимости\n02104|           const services: { name: string; description: string; price: number }[] = [];\n02105|           let totalPrice = 0;\n02106|           \n02107|           console.log('🚂 Rail Continent детали тарифа:', {\n02108|             price_with_out_sale: autoTariff.price_with_out_sale,\n02109|             pricePackage: autoTariff.pricePackage,\n02110|             priceInsurance: autoTariff.priceInsurance,\n\n(File has more lines. Use 'offset' parameter to read beyond line 2110)\n</file>",
+    "metadata": {
+      "preview": "        weight: totalWeight,\n        volume: totalVolume,\n        quantity: form.cargos.length, // 🔧 ДОБАВЛЕНО: Количество мест\n        length: optimalLength,        // 🔧 ИСПРАВЛЕНО: Оптимальная длина\n        width: optimalWidth,          // 🔧 ИСПРАВЛЕНО: Оптимальная ширина  \n        height: optimalHeight,        // 🔧 ИСПРАВЛЕНО: Оптимальная высота\n        declared_cost: form.declaredValue,\n        pickup: form.fromAddressDelivery ? '1' : '0',\n        delivery: form.toAddressDelivery ? '1' : '0',\n        packaging: form.needPackaging ? '1' : '0',\n        insurance: form.needInsurance ? '1' : '0',\n        tariff: 'auto' // Автоматический выбор оптимального тарифа\n      };\n\n      console.log('🚂 Rail Continent запрос:', requestData);\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129747371,
+      "end": 1759129747379
+    }
+  }
+}

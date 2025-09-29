@@ -1,0 +1,26 @@
+{
+  "id": "prt_9944e6890001XOMxoMbbB3wOzo",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01A6F8Yw65emSjnuZZdz2M1z",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A 10 -B 5 \"Груз.*№\" app/page.tsx",
+      "description": "Find cargo display with line numbers"
+    },
+    "output": "2882-              </CardHeader>\n2883-              <CardContent className=\"space-y-3\">\n2884-                {form.cargos.map((cargo, index) => (\n2885-                  <div key={cargo.id} className=\"border border-gray-600 rounded p-3\">\n2886-                    <div className=\"flex justify-between items-center mb-2\">\n2887:                      <h4 className=\"text-sm font-medium text-white\">Груз №{index + 1}</h4>\n2888-                      {form.cargos.length > 1 && (\n2889-                        <Button\n2890-                          variant=\"destructive\"\n2891-                          size=\"sm\"\n2892-                          onClick={() => removeCargo(cargo.id)}\n2893-                          className=\"h-6 text-xs\"\n2894-                        >\n2895-                          Удалить\n2896-                        </Button>\n2897-                      )}\n",
+    "metadata": {
+      "output": "2882-              </CardHeader>\n2883-              <CardContent className=\"space-y-3\">\n2884-                {form.cargos.map((cargo, index) => (\n2885-                  <div key={cargo.id} className=\"border border-gray-600 rounded p-3\">\n2886-                    <div className=\"flex justify-between items-center mb-2\">\n2887:                      <h4 className=\"text-sm font-medium text-white\">Груз №{index + 1}</h4>\n2888-                      {form.cargos.length > 1 && (\n2889-                        <Button\n2890-                          variant=\"destructive\"\n2891-                          size=\"sm\"\n2892-                          onClick={() => removeCargo(cargo.id)}\n2893-                          className=\"h-6 text-xs\"\n2894-                        >\n2895-                          Удалить\n2896-                        </Button>\n2897-                      )}\n",
+      "exit": 0,
+      "description": "Find cargo display with line numbers"
+    },
+    "title": "cd /home/user/project && rg -n -A 10 -B 5 \"Груз.*№\" app/page.tsx",
+    "time": {
+      "start": 1759129791570,
+      "end": 1759129791584
+    }
+  }
+}

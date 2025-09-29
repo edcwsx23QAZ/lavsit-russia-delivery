@@ -1,0 +1,25 @@
+{
+  "id": "prt_9944fd584001Sz2IIriQnEZeeG",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01ReVN5ZUTQ4uP8NtRcN5Fr1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 770,
+      "limit": 40
+    },
+    "output": "<file>\n00771|   };\n00772| \n00773|   // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n00774|   const calculateDellin = async (): Promise<CalculationResult> => {\n00775|     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n00776|     const maxRetries = 2;\n00777|     \n00778|     try {\n00779|       let sessionID = await getDellinSessionId();\n00780|       \n00781|       if (!sessionID) {\n00782|         return {\n00783|           company: 'Деловые Линии',\n00784|           price: 0,\n00785|           days: 0,\n00786|           error: 'Не удалось получить sessionID',\n00787|           apiUrl,\n00788|           requestData: null,\n00789|           responseData: null\n00790|         };\n00791|       }\n00792| \n00793|       // Вычисляем размеры и объемы\n00794|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n00795|       const totalVolume = form.cargos.reduce((sum, cargo) => \n00796|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n00797|       );\n00798|       const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n00799|       const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n00800|       const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;\n00801| \n00802|       // Получаем терминалы для городов (если нужно)\n00803|       const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n00804|       const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;\n00805| \n00806|       // Получаем UID упаковки crate_with_bubble (если нужна упаковка)\n00807|       let packageUid: string | null = null;\n00808|       console.log('=== НАЧАЛО ОТЛАДКИ УПАКОВКИ ===');\n00809|       console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);\n00810|       console.log('🔍 ОТЛАДКА УПАКОВКИ: typeof form.needPackaging =', typeof form.needPackaging);\n\n(File has more lines. Use 'offset' parameter to read beyond line 810)\n</file>",
+    "metadata": {
+      "preview": "  };\n\n  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n  const calculateDellin = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n    const maxRetries = 2;\n    \n    try {\n      let sessionID = await getDellinSessionId();\n      \n      if (!sessionID) {\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: 'Не удалось получить sessionID',\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129884721,
+      "end": 1759129884730
+    }
+  }
+}

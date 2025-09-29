@@ -1,0 +1,25 @@
+{
+  "id": "prt_9944c87b3001HYRmwMrqCR3hci",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01CtbEAzvPgYqb6B4iqVk5Xv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "calculateLogistics|calculate|api.*route\"",
+      "path": "/home/user/project/app"
+    },
+    "output": "Found 35 matches\n/home/user/project/app/page.tsx:\n  Line 20:   calculateTotalValue,\n  Line 248:           // Тестируем получение sessionID для Деловых Линий (тот же метод что в calculateDellin)\n  Line 260:           // Проверяем все возможные пути к sessionID как в calculateDellin\n  Line 358:           const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n  Line 506:       const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n  Line 566:       const newDeclaredValue = calculateTotalValue(updatedProducts);\n  Line 600:       const newDeclaredValue = calculateTotalValue(updatedProducts);\n  Line 772:   const calculateDellin = async (): Promise<CalculationResult> => {\n  Line 1442:   // Расчет для ПЭК через официальный API v1/calculateprice/\n  Line 1443:   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 1444:     const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n  Line 1680:           method: 'calculateprice',\n  Line 1968:   const calculateOptimalLength = (cargos: typeof form.cargos) => {\n  Line 1982:   const calculateOptimalWidth = (cargos: typeof form.cargos) => {\n  Line 1987:   const calculateOptimalHeight = (cargos: typeof form.cargos) => {\n  Line 2021:   const calculateRailContinent = async (): Promise<CalculationResult> => {\n  Line 2035:       const optimalLength = calculateOptimalLength(form.cargos);\n  Line 2036:       const optimalWidth = calculateOptimalWidth(form.cargos);\n  Line 2037:       const optimalHeight = calculateOptimalHeight(form.cargos);\n  Line 2234:   const calculateVozovoz = async (): Promise<CalculationResult> => {\n  Line 2428:   const calculateNordWheel = async (): Promise<CalculationResult> => {\n  Line 2429:     const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n  Line 2544:         calculateDellin(),\n  Line 2545:         calculatePEK(),\n  Line 2546:         calculateNordWheel(),\n  Line 2547:         calculateRailContinent(),\n  Line 2548:         calculateVozovoz()\n  Line 2720:       const calculatedSum = intercityPrice + derivalPrice + arrivalPrice + packagingPrice + insurancePrice + 15;\n  Line 2721:       const remainder = basePrice - calculatedSum;\n\n/home/user/project/app/diagnostic/page.tsx:\n  Line 365:       const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n  Line 512:           requestData = { method: 'calculateprice', ...testData };\n  Line 620:           apiUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n\n/home/user/project/app/api/pek/route.ts:\n  Line 69:       case 'calculateprice':\n  Line 70:         urlPath = '/calculator/calculateprice/';\n  Line 74:         console.log('🧪 API Прокси: Проверка координат в calculateprice');",
+    "metadata": {
+      "matches": 35,
+      "truncated": false
+    },
+    "title": "calculateLogistics|calculate|api.*route\"",
+    "time": {
+      "start": 1759129668271,
+      "end": 1759129668285
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_994502fdf001ylXb4t9K9sGx7I",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01B5v525ScbtQFxHSmzUyjAy",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -A 20 -B 5 \"requestData.*cargo\" app/page.tsx",
+      "description": "Find Dellin cargo formation"
+    },
+    "output": "        \n        if (!Array.isArray(requestData.types) || requestData.types.length === 0) {\n          throw new Error('ПЭК: поле types должно быть непустым массивом');\n        }\n        \n        if (!Array.isArray(requestData.cargos) || requestData.cargos.length === 0) {\n          throw new Error('ПЭК: поле cargos должно быть непустым массивом');\n        }\n        \n        console.log('✅ ПЭК: валидация обязательных полей пройдена');\n\n        // Сохраняем финальный запрос в переменной области видимости функции\n        finalRequestData = {\n          method: 'calculateprice',\n          ...requestData\n        };\n        \n        console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n        console.log('🌐 ПЭК API URL:', apiUrl);\n        console.log('📋 ПЭК: количество типов тарифов:', requestData.types.length);\n        console.log('📋 ПЭК: количество грузов:', requestData.cargos.length);\n      \n      // Проверяем координаты перед отправкой\n      if (finalRequestData.pickup?.coordinates) {\n        console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);\n      }\n      if (finalRequestData.delivery?.coordinates) {\n        console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);\n      }\n\n      const response = await fetch('/api/pek', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(finalRequestData)\n      });\n\n      console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n      console.log(`📡 ПЭК API URL: ${response.url}`);\n      \n",
+    "metadata": {
+      "output": "        \n        if (!Array.isArray(requestData.types) || requestData.types.length === 0) {\n          throw new Error('ПЭК: поле types должно быть непустым массивом');\n        }\n        \n        if (!Array.isArray(requestData.cargos) || requestData.cargos.length === 0) {\n          throw new Error('ПЭК: поле cargos должно быть непустым массивом');\n        }\n        \n        console.log('✅ ПЭК: валидация обязательных полей пройдена');\n\n        // Сохраняем финальный запрос в переменной области видимости функции\n        finalRequestData = {\n          method: 'calculateprice',\n          ...requestData\n        };\n        \n        console.log('🚀 ПЭК API окончательный запрос:', JSON.stringify(finalRequestData, null, 2));\n        console.log('🌐 ПЭК API URL:', apiUrl);\n        console.log('📋 ПЭК: количество типов тарифов:', requestData.types.length);\n        console.log('📋 ПЭК: количество грузов:', requestData.cargos.length);\n      \n      // Проверяем координаты перед отправкой\n      if (finalRequestData.pickup?.coordinates) {\n        console.log('📍 Координаты pickup:', finalRequestData.pickup.coordinates);\n      }\n      if (finalRequestData.delivery?.coordinates) {\n        console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);\n      }\n\n      const response = await fetch('/api/pek', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(finalRequestData)\n      });\n\n      console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n      console.log(`📡 ПЭК API URL: ${response.url}`);\n      \n",
+      "exit": 0,
+      "description": "Find Dellin cargo formation"
+    },
+    "title": "cd /home/user/project && rg -A 20 -B 5 \"requestData.*cargo\" app/page.tsx",
+    "time": {
+      "start": 1759129908217,
+      "end": 1759129908231
+    }
+  }
+}

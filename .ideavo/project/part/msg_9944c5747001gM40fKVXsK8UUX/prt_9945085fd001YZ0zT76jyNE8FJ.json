@@ -1,0 +1,26 @@
+{
+  "id": "prt_9945085fd001YZ0zT76jyNE8FJ",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_011JEmxAyJfz1svtNswrpf9R",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A 30 \"v2/calculator\" app/page.tsx",
+      "description": "Find Dellin calculation code section"
+    },
+    "output": "773:  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n774-  const calculateDellin = async (): Promise<CalculationResult> => {\n775:    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n776-    const maxRetries = 2;\n777-    \n778-    try {\n779-      let sessionID = await getDellinSessionId();\n780-      \n781-      if (!sessionID) {\n782-        return {\n783-          company: 'Деловые Линии',\n784-          price: 0,\n785-          days: 0,\n786-          error: 'Не удалось получить sessionID',\n787-          apiUrl,\n788-          requestData: null,\n789-          responseData: null\n790-        };\n791-      }\n792-\n793-      // Группируем грузы по одинаковым габаритам\n794-      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n795-      console.log('📦 Сгруппированные грузы для Деловых Линий:', groupedCargos);\n796-      \n797-      // Вычисляем размеры и объемы с учетом группировки\n798-      const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);\n799-      const totalVolume = groupedCargos.reduce((sum, group) => \n800-        sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0\n801-      );\n802-      const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);\n803-      const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n804-      const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n805-      const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;\n",
+    "metadata": {
+      "output": "773:  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n774-  const calculateDellin = async (): Promise<CalculationResult> => {\n775:    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n776-    const maxRetries = 2;\n777-    \n778-    try {\n779-      let sessionID = await getDellinSessionId();\n780-      \n781-      if (!sessionID) {\n782-        return {\n783-          company: 'Деловые Линии',\n784-          price: 0,\n785-          days: 0,\n786-          error: 'Не удалось получить sessionID',\n787-          apiUrl,\n788-          requestData: null,\n789-          responseData: null\n790-        };\n791-      }\n792-\n793-      // Группируем грузы по одинаковым габаритам\n794-      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n795-      console.log('📦 Сгруппированные грузы для Деловых Линий:', groupedCargos);\n796-      \n797-      // Вычисляем размеры и объемы с учетом группировки\n798-      const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);\n799-      const totalVolume = groupedCargos.reduce((sum, group) => \n800-        sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0\n801-      );\n802-      const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);\n803-      const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n804-      const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n805-      const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;\n",
+      "exit": 0,
+      "description": "Find Dellin calculation code section"
+    },
+    "title": "cd /home/user/project && rg -n -A 30 \"v2/calculator\" app/page.tsx",
+    "time": {
+      "start": 1759129929968,
+      "end": 1759129929983
+    }
+  }
+}

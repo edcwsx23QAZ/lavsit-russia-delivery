@@ -1,0 +1,26 @@
+{
+  "id": "prt_9944e8895001BOlLwpdfergH2I",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01G9X2EyKCkv5tmZZMPxdquM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                ))}\n                <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">\n                  <Plus className=\"h-3 w-3 mr-1\" />",
+      "newString": "                ))}\n                \n                {/* Отображение группировки грузов */}\n                {form.cargos.length > 1 && (\n                  <div className=\"border-t border-gray-600 pt-3 mt-3\">\n                    <h5 className=\"text-sm font-medium text-blue-300 mb-2\">📊 Группировка для расчета:</h5>\n                    {(() => {\n                      const grouped = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n                      return grouped.map((group, index) => (\n                        <div key={index} className=\"text-xs text-gray-300 bg-blue-900/20 p-2 rounded mb-1\">\n                          <div className=\"flex justify-between items-center\">\n                            <span className=\"font-medium\">\n                              {group.length}×{group.width}×{group.height} см, {group.weight} кг\n                            </span>\n                            <Badge variant=\"secondary\" className=\"text-xs\">\n                              {group.quantity} шт.\n                            </Badge>\n                          </div>\n                          {group.quantity > 1 && (\n                            <div className=\"text-gray-400 mt-1\">\n                              Общий вес: {(group.weight * group.quantity).toFixed(1)} кг, \n                              объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³\n                            </div>\n                          )}\n                        </div>\n                      ));\n                    })()}\n                  </div>\n                )}\n                \n                <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">\n                  <Plus className=\"h-3 w-3 mr-1\" />"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2935,8 +2935,37 @@\n       </div>\n     </div>\n   </div>\n ))}\n+\n+{/* Отображение группировки грузов */}\n+{form.cargos.length > 1 && (\n+  <div className=\"border-t border-gray-600 pt-3 mt-3\">\n+    <h5 className=\"text-sm font-medium text-blue-300 mb-2\">📊 Группировка для расчета:</h5>\n+    {(() => {\n+      const grouped = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n+      return grouped.map((group, index) => (\n+        <div key={index} className=\"text-xs text-gray-300 bg-blue-900/20 p-2 rounded mb-1\">\n+          <div className=\"flex justify-between items-center\">\n+            <span className=\"font-medium\">\n+              {group.length}×{group.width}×{group.height} см, {group.weight} кг\n+            </span>\n+            <Badge variant=\"secondary\" className=\"text-xs\">\n+              {group.quantity} шт.\n+            </Badge>\n+          </div>\n+          {group.quantity > 1 && (\n+            <div className=\"text-gray-400 mt-1\">\n+              Общий вес: {(group.weight * group.quantity).toFixed(1)} кг, \n+              объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³\n+            </div>\n+          )}\n+        </div>\n+      ));\n+    })()}\n+  </div>\n+)}\n+\n <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">\n   <Plus className=\"h-3 w-3 mr-1\" />\n   Добавить груз\n </Button>\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129805787,
+      "end": 1759129805804
+    }
+  }
+}

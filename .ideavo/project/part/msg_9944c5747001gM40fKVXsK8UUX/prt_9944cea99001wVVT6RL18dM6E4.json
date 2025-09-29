@@ -1,0 +1,25 @@
+{
+  "id": "prt_9944cea99001wVVT6RL18dM6E4",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PiCSvhrTuy1n2D7BMa6wtV",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1440,
+      "limit": 40
+    },
+    "output": "<file>\n01441| \n01442|   // Расчет для ПЭК через официальный API v1/calculateprice/\n01443|   const calculatePEK = async (): Promise<CalculationResult> => {\n01444|     const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n01445|     \n01446|     // Валидация координат\n01447|     const validateCoordinates = (coords: any) => {\n01448|       console.log('🧪 Проверка координат:', coords);\n01449|       \n01450|       if (!coords) {\n01451|         console.log('⚠️ Координаты отсутствуют');\n01452|         return null;\n01453|       }\n01454|       \n01455|       if (typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {\n01456|         console.warn(`⚠️ Координаты не являются числами:`, { \n01457|           lat: coords.latitude, \n01458|           lng: coords.longitude,\n01459|           latType: typeof coords.latitude,\n01460|           lngType: typeof coords.longitude\n01461|         });\n01462|         return null;\n01463|       }\n01464|       \n01465|       const lat = Number(coords.latitude);\n01466|       const lng = Number(coords.longitude);\n01467|       \n01468|       console.log(`📍 Преобразованные координаты: lat=${lat}, lng=${lng}`);\n01469|       \n01470|       // Проверяем диапазоны\n01471|       if (lat < -90 || lat > 90 || lng < -180 || lng > 180 || isNaN(lat) || isNaN(lng)) {\n01472|         console.warn(`⚠️ Координаты вне допустимого диапазона:`, { \n01473|           lat, lng, \n01474|           latValid: lat >= -90 && lat <= 90,\n01475|           lngValid: lng >= -180 && lng <= 180,\n01476|           latIsNaN: isNaN(lat),\n01477|           lngIsNaN: isNaN(lng)\n01478|         });\n01479|         return null;\n01480|       }\n\n(File has more lines. Use 'offset' parameter to read beyond line 1480)\n</file>",
+    "metadata": {
+      "preview": "\n  // Расчет для ПЭК через официальный API v1/calculateprice/\n  const calculatePEK = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://kabinet.pecom.ru/api/v1/calculateprice/';\n    \n    // Валидация координат\n    const validateCoordinates = (coords: any) => {\n      console.log('🧪 Проверка координат:', coords);\n      \n      if (!coords) {\n        console.log('⚠️ Координаты отсутствуют');\n        return null;\n      }\n      \n      if (typeof coords.latitude !== 'number' || typeof coords.longitude !== 'number') {\n        console.warn(`⚠️ Координаты не являются числами:`, { \n          lat: coords.latitude, \n          lng: coords.longitude,\n          latType: typeof coords.latitude,\n          lngType: typeof coords.longitude"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129693575,
+      "end": 1759129693577
+    }
+  }
+}

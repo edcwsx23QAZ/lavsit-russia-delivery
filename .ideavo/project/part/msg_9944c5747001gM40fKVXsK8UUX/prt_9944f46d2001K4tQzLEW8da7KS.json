@@ -1,0 +1,26 @@
+{
+  "id": "prt_9944f46d2001K4tQzLEW8da7KS",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01MdWa6nd8T4RKYbpD2Uy5we",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // 🔧 Валидация множественных мест\n      validateMultipleCargos(form.cargos);\n      \n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );",
+      "newString": "      // 🔧 Валидация множественных мест\n      validateMultipleCargos(form.cargos);\n      \n      // Группируем грузы по одинаковым габаритам\n      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n      console.log('🌐 Сгруппированные грузы для Nord Wheel:', groupedCargos);\n      \n      const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);\n      const totalVolume = groupedCargos.reduce((sum, group) => \n        sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0\n      );\n      const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2449,12 +2449,17 @@\n try {\n   // 🔧 Валидация множественных мест\n   validateMultipleCargos(form.cargos);\n   \n-  const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n-  const totalVolume = form.cargos.reduce((sum, cargo) => \n-    sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n+  // Группируем грузы по одинаковым габаритам\n+  const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n+  console.log('🌐 Сгруппированные грузы для Nord Wheel:', groupedCargos);\n+  \n+  const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);\n+  const totalVolume = groupedCargos.reduce((sum, group) => \n+    sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0\n   );\n+  const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);\n \n   // 🔧 ДОБАВЛЕНО: Расчет габаритов для множественных мест\n   const maxLength = Math.max(...form.cargos.map(c => c.length));\n   const maxWidth = Math.max(...form.cargos.map(c => c.width));\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129850687,
+      "end": 1759129850701
+    }
+  }
+}

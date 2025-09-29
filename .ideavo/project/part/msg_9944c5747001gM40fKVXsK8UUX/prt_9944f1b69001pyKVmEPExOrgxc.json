@@ -1,0 +1,25 @@
+{
+  "id": "prt_9944f1b69001pyKVmEPExOrgxc",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01N5E1bHj9k1MCnHoXphcKyA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2440,
+      "limit": 30
+    },
+    "output": "<file>\n02441|       };\n02442|     }\n02443|   };\n02444| \n02445|   // Расчет для Nord Wheel\n02446|   const calculateNordWheel = async (): Promise<CalculationResult> => {\n02447|     const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n02448|     \n02449|     try {\n02450|       // 🔧 Валидация множественных мест\n02451|       validateMultipleCargos(form.cargos);\n02452|       \n02453|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n02454|       const totalVolume = form.cargos.reduce((sum, cargo) => \n02455|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n02456|       );\n02457| \n02458|       // 🔧 ДОБАВЛЕНО: Расчет габаритов для множественных мест\n02459|       const maxLength = Math.max(...form.cargos.map(c => c.length));\n02460|       const maxWidth = Math.max(...form.cargos.map(c => c.width));\n02461|       const maxHeight = Math.max(...form.cargos.map(c => c.height));\n02462|       \n02463|       // 🔧 ДОБАВЛЕНО: Проверка на негабарит (>2м по любому измерению)\n02464|       const isOversized = maxLength > 200 || maxWidth > 200 || maxHeight > 200 || totalWeight > 1000;\n02465|       \n02466|       // 🔧 Детальное логирование множественных мест\n02467|       console.log('🌐 Nord Wheel: Анализ множественных грузовых мест:');\n02468|       console.log(`   - Количество мест: ${form.cargos.length}`);\n02469|       console.log(`   - Общий вес: ${totalWeight} кг`);\n02470|       console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);\n\n(File has more lines. Use 'offset' parameter to read beyond line 2470)\n</file>",
+    "metadata": {
+      "preview": "      };\n    }\n  };\n\n  // Расчет для Nord Wheel\n  const calculateNordWheel = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n    \n    try {\n      // 🔧 Валидация множественных мест\n      validateMultipleCargos(form.cargos);\n      \n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n\n      // 🔧 ДОБАВЛЕНО: Расчет габаритов для множественных мест\n      const maxLength = Math.max(...form.cargos.map(c => c.length));\n      const maxWidth = Math.max(...form.cargos.map(c => c.width));"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129837068,
+      "end": 1759129837071
+    }
+  }
+}

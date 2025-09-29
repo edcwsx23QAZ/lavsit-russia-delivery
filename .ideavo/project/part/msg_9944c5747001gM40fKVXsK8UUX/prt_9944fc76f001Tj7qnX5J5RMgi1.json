@@ -1,0 +1,26 @@
+{
+  "id": "prt_9944fc76f001Tj7qnX5J5RMgi1",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_016Yqs8C2guzPTxj1G5ignko",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -A 10 -B 5 \"calculateDellin\" app/page.tsx",
+      "description": "Find Dellin calculation function"
+    },
+    "output": "        }\n      }),\n      \n      checkAPIStatus('dellin', async () => {\n        try {\n          // Тестируем получение sessionID для Деловых Линий (тот же метод что в calculateDellin)\n          const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({\n              appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n              login: 'service@lavsit.ru',\n              password: 'edcwsx123QAZ'\n            })\n          });\n          const authData = await authResponse.json();\n          \n          // Проверяем все возможные пути к sessionID как в calculateDellin\n          if (authData.data?.sessionID || authData.sessionID || authData.data?.session) {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      }),\n      \n--\n    console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');\n    return null;\n  };\n\n  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n  const calculateDellin = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n    const maxRetries = 2;\n    \n    try {\n      let sessionID = await getDellinSessionId();\n      \n      if (!sessionID) {\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n--\n    // Сохраняем данные формы после расчета\n    localStorage.setItem('deliveryForm', JSON.stringify(form));\n    \n    try {\n      const results = await Promise.all([\n        calculateDellin(),\n        calculatePEK(),\n        calculateNordWheel(),\n        calculateRailContinent(),\n        calculateVozovoz()\n      ]);\n      \n      // Сортировка по цене\n      const sortedResults = results\n        .filter(result => !result.error)\n        .sort((a, b) => a.price - b.price)\n",
+    "metadata": {
+      "output": "        }\n      }),\n      \n      checkAPIStatus('dellin', async () => {\n        try {\n          // Тестируем получение sessionID для Деловых Линий (тот же метод что в calculateDellin)\n          const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({\n              appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n              login: 'service@lavsit.ru',\n              password: 'edcwsx123QAZ'\n            })\n          });\n          const authData = await authResponse.json();\n          \n          // Проверяем все возможные пути к sessionID как в calculateDellin\n          if (authData.data?.sessionID || authData.sessionID || authData.data?.session) {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      }),\n      \n--\n    console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');\n    return null;\n  };\n\n  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n  const calculateDellin = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n    const maxRetries = 2;\n    \n    try {\n      let sessionID = await getDellinSessionId();\n      \n      if (!sessionID) {\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n--\n    // Сохраняем данные формы после расчета\n    localStorage.setItem('deliveryForm', JSON.stringify(form));\n    \n    try {\n      const results = await Promise.all([\n        calculateDellin(),\n        calculatePEK(),\n        calculateNordWheel(),\n        calculateRailContinent(),\n        calculateVozovoz()\n      ]);\n      \n      // Сортировка по цене\n      const sortedResults = results\n        .filter(result => !result.error)\n        .sort((a, b) => a.price - b.price)\n",
+      "exit": 0,
+      "description": "Find Dellin calculation function"
+    },
+    "title": "cd /home/user/project && rg -A 10 -B 5 \"calculateDellin\" app/page.tsx",
+    "time": {
+      "start": 1759129881510,
+      "end": 1759129881528
+    }
+  }
+}

@@ -18,7 +18,9 @@ import {
   createCargosForProduct, 
   removeCargosForProduct, 
   calculateTotalValue,
-  findCargoIndexesForProduct 
+  findCargoIndexesForProduct,
+  groupCargosByDimensions,
+  GroupedCargo 
 } from '@/lib/furniture-utils';
 
 interface Cargo {
@@ -788,11 +790,16 @@ export default function Home() {
         };
       }
 
-      // Вычисляем размеры и объемы
-      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
-      const totalVolume = form.cargos.reduce((sum, cargo) => 
-        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+      // Группируем грузы по одинаковым габаритам
+      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);
+      console.log('📦 Сгруппированные грузы для Деловых Линий:', groupedCargos);
+      
+      // Вычисляем размеры и объемы с учетом группировки
+      const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);
+      const totalVolume = groupedCargos.reduce((sum, group) => 
+        sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0
       );
+      const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);
       const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах
       const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;
       const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;
@@ -913,7 +920,7 @@ export default function Home() {
           } : {})
         },
         cargo: {
-          quantity: form.cargos.length,
+          quantity: totalQuantity, // Общее количество мест с учетом группировки
           length: maxLength,
           width: maxWidth,
           height: maxHeight,
@@ -1580,19 +1587,24 @@ export default function Home() {
       let currentDayOffset = 1;
       let plannedDateTime = getDateForCalculation(currentDayOffset);
 
-      // Формируем массив грузов (без координат)
-      const cargos = form.cargos.map(cargo => {
+      // Группируем грузы по одинаковым габаритам
+      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);
+      console.log('📦 Сгруппированные грузы для ПЭК:', groupedCargos);
+      
+      // Формируем массив грузов с учетом группировки
+      const cargos = groupedCargos.map((group, index) => {
         const cargoData = {
-          length: cargo.length / 100, // переводим см в метры
-          width: cargo.width / 100,
-          height: cargo.height / 100,
-          volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3
-          weight: cargo.weight,
+          length: group.length / 100, // переводим см в метры
+          width: group.width / 100,
+          height: group.height / 100,
+          volume: (group.length * group.width * group.height * group.quantity) / 1000000, // м3 с учетом количества
+          weight: group.weight * group.quantity, // общий вес группы
           isHP: form.needPackaging, // защитная упаковка
-          sealingPositionsCount: 0
+          sealingPositionsCount: 0,
+          quantity: group.quantity // добавляем количество одинаковых мест
         };
         
-        console.log('📦 Груз для ПЭК:', cargoData);
+        console.log(`📦 Группа ${index + 1} для ПЭК (${group.quantity} шт):`, cargoData);
         return cargoData;
       });
 
@@ -2025,20 +2037,26 @@ export default function Home() {
       // 🔧 Валидация множественных мест
       validateMultipleCargos(form.cargos);
       
-      // Вычисляем основные параметры груза
-      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
-      const totalVolume = form.cargos.reduce((sum, cargo) => 
-        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+      // Группируем грузы по одинаковым габаритам
+      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);
+      console.log('🚂 Сгруппированные грузы для Rail Continent:', groupedCargos);
+      
+      // Вычисляем основные параметры груза с учетом группировки
+      const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);
+      const totalVolume = groupedCargos.reduce((sum, group) => 
+        sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0
       );
+      const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);
       
       // 🔧 ИСПРАВЛЕНО: Умные габариты для множественных мест
       const optimalLength = calculateOptimalLength(form.cargos);
       const optimalWidth = calculateOptimalWidth(form.cargos);
       const optimalHeight = calculateOptimalHeight(form.cargos);
       
-      // 🔧 Детальное логирование множественных мест
-      console.log('🚂 Rail Continent: Анализ множественных грузовых мест:');
-      console.log(`   - Количество мест: ${form.cargos.length}`);
+      // 🔧 Детальное логирование множественных мест с группировкой
+      console.log('🚂 Rail Continent: Анализ сгруппированных грузовых мест:');
+      console.log(`   - Групп одинаковых мест: ${groupedCargos.length}`);
+      console.log(`   - Общее количество мест: ${totalQuantity}`);
       console.log(`   - Общий вес: ${totalWeight} кг`);
       console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);
       
@@ -2063,7 +2081,7 @@ export default function Home() {
         city_receiver: form.toCity || 'Санкт-Петербург',
         weight: totalWeight,
         volume: totalVolume,
-        quantity: form.cargos.length, // 🔧 ДОБАВЛЕНО: Количество мест
+        quantity: totalQuantity, // 🔧 ДОБАВЛЕНО: Общее количество мест с учетом группировки
         length: optimalLength,        // 🔧 ИСПРАВЛЕНО: Оптимальная длина
         width: optimalWidth,          // 🔧 ИСПРАВЛЕНО: Оптимальная ширина  
         height: optimalHeight,        // 🔧 ИСПРАВЛЕНО: Оптимальная высота
@@ -2235,11 +2253,16 @@ export default function Home() {
     const apiUrl = '/api/vozovoz';
     
     try {
-      // Вычисляем основные параметры груза
-      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
-      const totalVolume = form.cargos.reduce((sum, cargo) => 
-        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+      // Группируем грузы по одинаковым габаритам
+      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);
+      console.log('🚚 Сгруппированные грузы для Vozovoz:', groupedCargos);
+      
+      // Вычисляем основные параметры груза с учетом группировки
+      const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);
+      const totalVolume = groupedCargos.reduce((sum, group) => 
+        sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0
       );
+      const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);
       
       console.log('🚚 Возовоз: подготовка данных...');
       console.log('   - Общий вес:', totalWeight, 'кг');
@@ -2254,7 +2277,7 @@ export default function Home() {
         params: {
           cargo: {
             dimension: {
-              quantity: form.cargos.length,
+              quantity: totalQuantity,
               volume: totalVolume,
               weight: totalWeight
             },
@@ -2432,10 +2455,15 @@ export default function Home() {
       // 🔧 Валидация множественных мест
       validateMultipleCargos(form.cargos);
       
-      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
-      const totalVolume = form.cargos.reduce((sum, cargo) => 
-        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+      // Группируем грузы по одинаковым габаритам
+      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);
+      console.log('🌐 Сгруппированные грузы для Nord Wheel:', groupedCargos);
+      
+      const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);
+      const totalVolume = groupedCargos.reduce((sum, group) => 
+        sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0
       );
+      const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);
 
       // 🔧 ДОБАВЛЕНО: Расчет габаритов для множественных мест
       const maxLength = Math.max(...form.cargos.map(c => c.length));
@@ -2445,9 +2473,10 @@ export default function Home() {
       // 🔧 ДОБАВЛЕНО: Проверка на негабарит (>2м по любому измерению)
       const isOversized = maxLength > 200 || maxWidth > 200 || maxHeight > 200 || totalWeight > 1000;
       
-      // 🔧 Детальное логирование множественных мест
-      console.log('🌐 Nord Wheel: Анализ множественных грузовых мест:');
-      console.log(`   - Количество мест: ${form.cargos.length}`);
+      // 🔧 Детальное логирование множественных мест с группировкой
+      console.log('🌐 Nord Wheel: Анализ сгруппированных грузовых мест:');
+      console.log(`   - Групп одинаковых мест: ${groupedCargos.length}`);
+      console.log(`   - Общее количество мест: ${totalQuantity}`);
       console.log(`   - Общий вес: ${totalWeight} кг`);
       console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);
       
@@ -2473,7 +2502,7 @@ export default function Home() {
         volume: totalVolume.toString(),
         oversized: isOversized ? '1' : '0', // 🔧 ИСПРАВЛЕНО: Правильное определение негабарита
         package: form.needPackaging ? '1' : '0',
-        packageCount: form.cargos.length.toString(),
+        packageCount: totalQuantity.toString(),
         insurance: form.needInsurance ? '1' : '0',
         sum: form.declaredValue.toString(),
         documentsReturn: '0',
@@ -2483,7 +2512,7 @@ export default function Home() {
         width: (maxWidth / 100).toString(),        // в метрах
         height: (maxHeight / 100).toString(),      // в метрах
         // 🔧 ДОБАВЛЕНО: Флаг множественных мест
-        multiplePackages: form.cargos.length > 1 ? '1' : '0'
+        multiplePackages: totalQuantity > 1 ? '1' : '0'
       });
 
       const requestData = Object.fromEntries(params);
@@ -2923,6 +2952,35 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
+                
+                {/* Отображение группировки грузов */}
+                {form.cargos.length > 1 && (
+                  <div className="border-t border-gray-600 pt-3 mt-3">
+                    <h5 className="text-sm font-medium text-blue-300 mb-2">📊 Группировка для расчета:</h5>
+                    {(() => {
+                      const grouped = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);
+                      return grouped.map((group, index) => (
+                        <div key={index} className="text-xs text-gray-300 bg-blue-900/20 p-2 rounded mb-1">
+                          <div className="flex justify-between items-center">
+                            <span className="font-medium">
+                              {group.length}×{group.width}×{group.height} см, {group.weight} кг
+                            </span>
+                            <Badge variant="secondary" className="text-xs">
+                              {group.quantity} шт.
+                            </Badge>
+                          </div>
+                          {group.quantity > 1 && (
+                            <div className="text-gray-400 mt-1">
+                              Общий вес: {(group.weight * group.quantity).toFixed(1)} кг, 
+                              объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³
+                            </div>
+                          )}
+                        </div>
+                      ));
+                    })()}
+                  </div>
+                )}
+                
                 <Button onClick={addCargo} className="w-full h-8" variant="outline">
                   <Plus className="h-3 w-3 mr-1" />
                   Добавить груз

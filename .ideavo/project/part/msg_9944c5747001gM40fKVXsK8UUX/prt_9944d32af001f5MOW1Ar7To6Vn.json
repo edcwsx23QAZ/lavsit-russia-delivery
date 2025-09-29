@@ -1,0 +1,25 @@
+{
+  "id": "prt_9944d32af001f5MOW1Ar7To6Vn",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016ooPCSHPycghVX62FaBECX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 16,
+      "limit": 10
+    },
+    "output": "<file>\n00017| import { \n00018|   createCargosForProduct, \n00019|   removeCargosForProduct, \n00020|   calculateTotalValue,\n00021|   findCargoIndexesForProduct \n00022| } from '@/lib/furniture-utils';\n00023| \n00024| interface Cargo {\n00025|   id: string;\n00026|   length: number;\n\n(File has more lines. Use 'offset' parameter to read beyond line 26)\n</file>",
+    "metadata": {
+      "preview": "import { \n  createCargosForProduct, \n  removeCargosForProduct, \n  calculateTotalValue,\n  findCargoIndexesForProduct \n} from '@/lib/furniture-utils';\n\ninterface Cargo {\n  id: string;\n  length: number;"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129711797,
+      "end": 1759129711799
+    }
+  }
+}

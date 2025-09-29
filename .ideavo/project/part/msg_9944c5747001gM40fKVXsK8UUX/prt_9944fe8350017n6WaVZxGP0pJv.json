@@ -1,0 +1,26 @@
+{
+  "id": "prt_9944fe8350017n6WaVZxGP0pJv",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01MGFUPWkBuzMEtQ79UeEa6u",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Вычисляем размеры и объемы\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n      const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n      const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n      const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;",
+      "newString": "      // Группируем грузы по одинаковым габаритам\n      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n      console.log('📦 Сгруппированные грузы для Деловых Линий:', groupedCargos);\n      \n      // Вычисляем размеры и объемы с учетом группировки\n      const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);\n      const totalVolume = groupedCargos.reduce((sum, group) => \n        sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0\n      );\n      const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);\n      const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n      const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n      const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -789,13 +789,18 @@\n     responseData: null\n   };\n }\n \n-// Вычисляем размеры и объемы\n-const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n-const totalVolume = form.cargos.reduce((sum, cargo) => \n-  sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n+// Группируем грузы по одинаковым габаритам\n+const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n+console.log('📦 Сгруппированные грузы для Деловых Линий:', groupedCargos);\n+\n+// Вычисляем размеры и объемы с учетом группировки\n+const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);\n+const totalVolume = groupedCargos.reduce((sum, group) => \n+  sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0\n );\n+const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);\n const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;\n \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129894339,
+      "end": 1759129894355
+    }
+  }
+}

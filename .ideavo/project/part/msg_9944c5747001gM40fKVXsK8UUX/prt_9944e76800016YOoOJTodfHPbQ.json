@@ -1,0 +1,25 @@
+{
+  "id": "prt_9944e76800016YOoOJTodfHPbQ",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01X5HDo3yVvKkGhMVSgnxSu3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2880,
+      "limit": 60
+    },
+    "output": "<file>\n02881|                 </CardTitle>\n02882|               </CardHeader>\n02883|               <CardContent className=\"space-y-3\">\n02884|                 {form.cargos.map((cargo, index) => (\n02885|                   <div key={cargo.id} className=\"border border-gray-600 rounded p-3\">\n02886|                     <div className=\"flex justify-between items-center mb-2\">\n02887|                       <h4 className=\"text-sm font-medium text-white\">Груз №{index + 1}</h4>\n02888|                       {form.cargos.length > 1 && (\n02889|                         <Button\n02890|                           variant=\"destructive\"\n02891|                           size=\"sm\"\n02892|                           onClick={() => removeCargo(cargo.id)}\n02893|                           className=\"h-6 text-xs\"\n02894|                         >\n02895|                           Удалить\n02896|                         </Button>\n02897|                       )}\n02898|                     </div>\n02899|                     <div className=\"grid grid-cols-2 gap-2\">\n02900|                       <div>\n02901|                         <Label className=\"text-white text-xs\">Длина (см)</Label>\n02902|                         <Input\n02903|                           type=\"number\"\n02904|                           value={cargo.length || ''}\n02905|                           onChange={(e) => updateCargo(cargo.id, 'length', Number(e.target.value))}\n02906|                           className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n02907|                         />\n02908|                       </div>\n02909|                       <div>\n02910|                         <Label className=\"text-white text-xs\">Ширина (см)</Label>\n02911|                         <Input\n02912|                           type=\"number\"\n02913|                           value={cargo.width || ''}\n02914|                           onChange={(e) => updateCargo(cargo.id, 'width', Number(e.target.value))}\n02915|                           className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n02916|                         />\n02917|                       </div>\n02918|                       <div>\n02919|                         <Label className=\"text-white text-xs\">Высота (см)</Label>\n02920|                         <Input\n02921|                           type=\"number\"\n02922|                           value={cargo.height || ''}\n02923|                           onChange={(e) => updateCargo(cargo.id, 'height', Number(e.target.value))}\n02924|                           className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n02925|                         />\n02926|                       </div>\n02927|                       <div>\n02928|                         <Label className=\"text-white text-xs\">Вес (кг)</Label>\n02929|                         <Input\n02930|                           type=\"number\"\n02931|                           value={cargo.weight || ''}\n02932|                           onChange={(e) => updateCargo(cargo.id, 'weight', Number(e.target.value))}\n02933|                           className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n02934|                         />\n02935|                       </div>\n02936|                     </div>\n02937|                   </div>\n02938|                 ))}\n02939|                 <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">\n02940|                   <Plus className=\"h-3 w-3 mr-1\" />\n\n(File has more lines. Use 'offset' parameter to read beyond line 2940)\n</file>",
+    "metadata": {
+      "preview": "                </CardTitle>\n              </CardHeader>\n              <CardContent className=\"space-y-3\">\n                {form.cargos.map((cargo, index) => (\n                  <div key={cargo.id} className=\"border border-gray-600 rounded p-3\">\n                    <div className=\"flex justify-between items-center mb-2\">\n                      <h4 className=\"text-sm font-medium text-white\">Груз №{index + 1}</h4>\n                      {form.cargos.length > 1 && (\n                        <Button\n                          variant=\"destructive\"\n                          size=\"sm\"\n                          onClick={() => removeCargo(cargo.id)}\n                          className=\"h-6 text-xs\"\n                        >\n                          Удалить\n                        </Button>\n                      )}\n                    </div>\n                    <div className=\"grid grid-cols-2 gap-2\">\n                      <div>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129794873,
+      "end": 1759129794877
+    }
+  }
+}

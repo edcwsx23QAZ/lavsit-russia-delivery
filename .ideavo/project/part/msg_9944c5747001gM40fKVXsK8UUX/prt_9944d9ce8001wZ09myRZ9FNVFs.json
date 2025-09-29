@@ -1,0 +1,26 @@
+{
+  "id": "prt_9944d9ce8001wZ09myRZ9FNVFs",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01RDwU3VoZUZMAhKChMG9KCi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -A 15 -B 5 \"Rail Continent.*requestData\" app/page.tsx",
+      "description": "Find Rail Continent request data formation"
+    },
+    "output": "        packaging: form.needPackaging ? '1' : '0',\n        insurance: form.needInsurance ? '1' : '0',\n        tariff: 'auto' // Автоматический выбор оптимального тарифа\n      };\n\n      console.log('🚂 Rail Continent запрос:', requestData);\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(requestData)\n      });\n\n      const data = await response.json();\n      console.log('🚂 Rail Continent ответ:', data);\n\n      if (response.ok && data.result === 'success' && data.data) {\n        // Выбираем автомобильный тариф как основной (самый быстрый)\n        const autoTariff = data.data.auto;\n",
+    "metadata": {
+      "output": "        packaging: form.needPackaging ? '1' : '0',\n        insurance: form.needInsurance ? '1' : '0',\n        tariff: 'auto' // Автоматический выбор оптимального тарифа\n      };\n\n      console.log('🚂 Rail Continent запрос:', requestData);\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(requestData)\n      });\n\n      const data = await response.json();\n      console.log('🚂 Rail Continent ответ:', data);\n\n      if (response.ok && data.result === 'success' && data.data) {\n        // Выбираем автомобильный тариф как основной (самый быстрый)\n        const autoTariff = data.data.auto;\n",
+      "exit": 0,
+      "description": "Find Rail Continent request data formation"
+    },
+    "title": "cd /home/user/project && rg -A 15 -B 5 \"Rail Continent.*requestData\" app/page.tsx",
+    "time": {
+      "start": 1759129739436,
+      "end": 1759129739452
+    }
+  }
+}

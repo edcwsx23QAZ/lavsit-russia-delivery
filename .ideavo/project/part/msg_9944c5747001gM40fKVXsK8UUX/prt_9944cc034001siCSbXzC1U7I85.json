@@ -1,0 +1,26 @@
+{
+  "id": "prt_9944cc034001siCSbXzC1U7I85",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Nd2rAL73CbEyVni5hHQA41",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "oldString": "/**\n * Кэширование продуктов в localStorage\n */\nexport function cacheProducts(products: FurnitureProduct[]): void {",
+      "newString": "/**\n * Группировка грузов по одинаковым габаритам и весу\n */\nexport interface GroupedCargo {\n  length: number;\n  width: number;\n  height: number;\n  weight: number;\n  quantity: number;\n  originalIds: string[];\n}\n\nexport function groupCargosByDimensions(cargos: CargoWithMetadata[]): GroupedCargo[] {\n  const groups = new Map<string, GroupedCargo>();\n  \n  cargos.forEach(cargo => {\n    // Создаем ключ для группировки на основе габаритов и веса\n    const key = `${cargo.length}_${cargo.width}_${cargo.height}_${cargo.weight}`;\n    \n    if (groups.has(key)) {\n      const existing = groups.get(key)!;\n      existing.quantity += 1;\n      existing.originalIds.push(cargo.id);\n    } else {\n      groups.set(key, {\n        length: cargo.length,\n        width: cargo.width,\n        height: cargo.height,\n        weight: cargo.weight,\n        quantity: 1,\n        originalIds: [cargo.id]\n      });\n    }\n  });\n  \n  return Array.from(groups.values()).sort((a, b) => {\n    // Сортируем по убыванию количества, затем по убыванию веса\n    if (a.quantity !== b.quantity) {\n      return b.quantity - a.quantity;\n    }\n    return b.weight - a.weight;\n  });\n}\n\n/**\n * Преобразование сгруппированных грузов в формат для API\n */\nexport function groupedCargosToApiFormat(groupedCargos: GroupedCargo[]): any[] {\n  return groupedCargos.map((group, index) => ({\n    id: `group_${index + 1}`,\n    length: group.length,\n    width: group.width,\n    height: group.height,\n    weight: group.weight,\n    quantity: group.quantity,\n    isGrouped: true,\n    originalIds: group.originalIds\n  }));\n}\n\n/**\n * Кэширование продуктов в localStorage\n */\nexport function cacheProducts(products: FurnitureProduct[]): void {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/furniture-utils.ts\n===================================================================\n--- /home/user/project/lib/furniture-utils.ts\n+++ /home/user/project/lib/furniture-utils.ts\n@@ -233,8 +233,68 @@\n   }\n }\n \n /**\n+ * Группировка грузов по одинаковым габаритам и весу\n+ */\n+export interface GroupedCargo {\n+  length: number;\n+  width: number;\n+  height: number;\n+  weight: number;\n+  quantity: number;\n+  originalIds: string[];\n+}\n+\n+export function groupCargosByDimensions(cargos: CargoWithMetadata[]): GroupedCargo[] {\n+  const groups = new Map<string, GroupedCargo>();\n+  \n+  cargos.forEach(cargo => {\n+    // Создаем ключ для группировки на основе габаритов и веса\n+    const key = `${cargo.length}_${cargo.width}_${cargo.height}_${cargo.weight}`;\n+    \n+    if (groups.has(key)) {\n+      const existing = groups.get(key)!;\n+      existing.quantity += 1;\n+      existing.originalIds.push(cargo.id);\n+    } else {\n+      groups.set(key, {\n+        length: cargo.length,\n+        width: cargo.width,\n+        height: cargo.height,\n+        weight: cargo.weight,\n+        quantity: 1,\n+        originalIds: [cargo.id]\n+      });\n+    }\n+  });\n+  \n+  return Array.from(groups.values()).sort((a, b) => {\n+    // Сортируем по убыванию количества, затем по убыванию веса\n+    if (a.quantity !== b.quantity) {\n+      return b.quantity - a.quantity;\n+    }\n+    return b.weight - a.weight;\n+  });\n+}\n+\n+/**\n+ * Преобразование сгруппированных грузов в формат для API\n+ */\n+export function groupedCargosToApiFormat(groupedCargos: GroupedCargo[]): any[] {\n+  return groupedCargos.map((group, index) => ({\n+    id: `group_${index + 1}`,\n+    length: group.length,\n+    width: group.width,\n+    height: group.height,\n+    weight: group.weight,\n+    quantity: group.quantity,\n+    isGrouped: true,\n+    originalIds: group.originalIds\n+  }));\n+}\n+\n+/**\n  * Кэширование продуктов в localStorage\n  */\n export function cacheProducts(products: FurnitureProduct[]): void {\n   try {\n"
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759129689231,
+      "end": 1759129689248
+    }
+  }
+}

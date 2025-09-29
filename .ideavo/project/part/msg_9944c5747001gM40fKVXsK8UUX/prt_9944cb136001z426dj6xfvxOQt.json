@@ -1,0 +1,25 @@
+{
+  "id": "prt_9944cb136001z426dj6xfvxOQt",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_018oCRzS7boYTpu2TR9r3nez",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "offset": 230,
+      "limit": 10
+    },
+    "output": "<file>\n00231|   } else {\n00232|     return 'мест';\n00233|   }\n00234| }\n00235| \n00236| /**\n00237|  * Кэширование продуктов в localStorage\n00238|  */\n00239| export function cacheProducts(products: FurnitureProduct[]): void {\n00240|   try {\n\n(File has more lines. Use 'offset' parameter to read beyond line 240)\n</file>",
+    "metadata": {
+      "preview": "  } else {\n    return 'мест';\n  }\n}\n\n/**\n * Кэширование продуктов в localStorage\n */\nexport function cacheProducts(products: FurnitureProduct[]): void {\n  try {"
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759129678833,
+      "end": 1759129678836
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9944fb632001mpITLRQGL53uuz",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01V4SoL7xbS45bQ7kvwPaMeB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        // 🔧 ДОБАВЛЕНО: Флаг множественных мест\n        multiplePackages: form.cargos.length > 1 ? '1' : '0'",
+      "newString": "        // 🔧 ДОБАВЛЕНО: Флаг множественных мест\n        multiplePackages: totalQuantity > 1 ? '1' : '0'"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2506,9 +2506,9 @@\n   length: (maxLength / 100).toString(),      // в метрах\n   width: (maxWidth / 100).toString(),        // в метрах\n   height: (maxHeight / 100).toString(),      // в метрах\n   // 🔧 ДОБАВЛЕНО: Флаг множественных мест\n-  multiplePackages: form.cargos.length > 1 ? '1' : '0'\n+  multiplePackages: totalQuantity > 1 ? '1' : '0'\n });\n \n const requestData = Object.fromEntries(params);\n const fullUrl = `${apiUrl}?${params.toString()}`;\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759129877365,
+      "end": 1759129877380
+    }
+  }
+}

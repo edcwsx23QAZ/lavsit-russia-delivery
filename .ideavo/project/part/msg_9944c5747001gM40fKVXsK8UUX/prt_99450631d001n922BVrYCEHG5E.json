@@ -1,0 +1,26 @@
+{
+  "id": "prt_99450631d001n922BVrYCEHG5E",
+  "messageID": "msg_9944c5747001gM40fKVXsK8UUX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01RxVmDfNisoEZZXxZwPGHWi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A 30 \"cargo.*form\\.cargos\\.map\\|cargos.*map.*length\" app/page.tsx",
+      "description": "Find cargo mapping in Dellin"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Find cargo mapping in Dellin"
+    },
+    "title": "cd /home/user/project && rg -n -A 30 \"cargo.*form\\.cargos\\.map\\|cargos.*map.*length\" app/page.tsx",
+    "time": {
+      "start": 1759129921830,
+      "end": 1759129921848
+    }
+  }
+}
