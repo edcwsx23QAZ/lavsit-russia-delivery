@@ -1,0 +1,34 @@
+{
+  "id": "prt_995e5cc63001DEeuhemlmNRKd3",
+  "messageID": "msg_995e4aed8001GmF55mdw2x2Sud",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01T6ra3bGkJcTy8hFn8rGNeC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "              <CardTitle className=\"flex items-center gap-2\">\n                <Truck className=\"h-5 w-5 text-blue-400\" />\n                Типы автомобилей\n              </CardTitle>",
+          "newString": "              <CardTitle className=\"flex items-center gap-2\">\n                <Truck className=\"h-5 w-5 text-blue-400\" />\n                Типы автомобилей\n                {hasUnsavedChanges && (\n                  <Badge variant=\"outline\" className=\"text-orange-400 border-orange-400\">\n                    Есть несохранённые изменения\n                  </Badge>\n                )}\n              </CardTitle>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1464,8 +1464,13 @@\n <div className=\"flex items-center justify-between\">\n   <CardTitle className=\"flex items-center gap-2\">\n     <Truck className=\"h-5 w-5 text-blue-400\" />\n     Типы автомобилей\n+    {hasUnsavedChanges && (\n+      <Badge variant=\"outline\" className=\"text-orange-400 border-orange-400\">\n+        Есть несохранённые изменения\n+      </Badge>\n+    )}\n   </CardTitle>\n   <Button \n     onClick={saveVehicleTypes}\n     disabled={!hasUnsavedChanges || isSaving}\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759156494563,
+      "end": 1759156494570
+    }
+  }
+}

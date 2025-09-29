@@ -1,0 +1,25 @@
+{
+  "id": "prt_995e57689001XRbO95RmcZmb9N",
+  "messageID": "msg_995e4aed8001GmF55mdw2x2Sud",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016ME3qnYkZpLHa2M1Q3AnvH",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 1430,
+      "limit": 15
+    },
+    "output": "<file>\n01431|                 <Alert className={getStatusColor(diagnosticResults.nordwheel.status)}>\n01432|                   <div className=\"flex items-start gap-2\">\n01433|                     {getStatusIcon(diagnosticResults.nordwheel.status)}\n01434|                     <div className=\"flex-1\">\n01435|                       <AlertDescription>\n01436|                         <div className=\"font-medium mb-2\">{diagnosticResults.nordwheel.message}</div>\n01437|                         {diagnosticResults.nordwheel.timing && (\n01438|                           <Badge variant=\"outline\" className=\"mb-2\">\n01439|                             Время ответа: {diagnosticResults.nordwheel.timing}мс\n01440|                           </Badge>\n01441|                         )}\n01442|                         {diagnosticResults.nordwheel.details && (\n01443|                           <details className=\"mt-2\">\n01444|                             <summary className=\"cursor-pointer text-sm\">Подробности</summary>\n01445|                             <pre className=\"text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 1445)\n</file>",
+    "metadata": {
+      "preview": "                <Alert className={getStatusColor(diagnosticResults.nordwheel.status)}>\n                  <div className=\"flex items-start gap-2\">\n                    {getStatusIcon(diagnosticResults.nordwheel.status)}\n                    <div className=\"flex-1\">\n                      <AlertDescription>\n                        <div className=\"font-medium mb-2\">{diagnosticResults.nordwheel.message}</div>\n                        {diagnosticResults.nordwheel.timing && (\n                          <Badge variant=\"outline\" className=\"mb-2\">\n                            Время ответа: {diagnosticResults.nordwheel.timing}мс\n                          </Badge>\n                        )}\n                        {diagnosticResults.nordwheel.details && (\n                          <details className=\"mt-2\">\n                            <summary className=\"cursor-pointer text-sm\">Подробности</summary>\n                            <pre className=\"text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto\">"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759156468335,
+      "end": 1759156468337
+    }
+  }
+}

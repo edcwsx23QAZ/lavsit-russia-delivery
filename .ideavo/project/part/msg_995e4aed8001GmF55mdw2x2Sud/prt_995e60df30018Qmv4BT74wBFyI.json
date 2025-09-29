@@ -1,0 +1,42 @@
+{
+  "id": "prt_995e60df30018Qmv4BT74wBFyI",
+  "messageID": "msg_995e4aed8001GmF55mdw2x2Sud",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01YNTRYd6AMKrXV97WRMEX5o",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "import React, { useState } from 'react';",
+          "newString": "import React, { useState, useEffect } from 'react';"
+        },
+        {
+          "oldString": "  const [isSaving, setIsSaving] = useState(false);\n  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);",
+          "newString": "  const [isSaving, setIsSaving] = useState(false);\n  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);\n  \n  // Загружаем сохранённые типы автомобилей при инициализации\n  useEffect(() => {\n    try {\n      const saved = localStorage.getItem('vehicleTypes');\n      if (saved) {\n        const parsedVehicleTypes = JSON.parse(saved);\n        setVehicleTypes(parsedVehicleTypes);\n      }\n    } catch (error) {\n      console.error('Ошибка загрузки сохранённых типов автомобилей:', error);\n    }\n  }, []);"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1,7 +1,7 @@\n 'use client';\n \n-import React, { useState } from 'react';\n+import React, { useState, useEffect } from 'react';\n import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n import { Button } from '@/components/ui/button';\n import { Alert, AlertDescription } from '@/components/ui/alert';\n import { Badge } from '@/components/ui/badge';\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -61,8 +61,21 @@\n ]);\n const [newVehicle, setNewVehicle] = useState({ name: '', length: '', width: '', height: '' });\n const [isSaving, setIsSaving] = useState(false);\n const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);\n+\n+// Загружаем сохранённые типы автомобилей при инициализации\n+useEffect(() => {\n+  try {\n+    const saved = localStorage.getItem('vehicleTypes');\n+    if (saved) {\n+      const parsedVehicleTypes = JSON.parse(saved);\n+      setVehicleTypes(parsedVehicleTypes);\n+    }\n+  } catch (error) {\n+    console.error('Ошибка загрузки сохранённых типов автомобилей:', error);\n+  }\n+}, []);\n \n // Функции управления типами автомобилей\n const addVehicleType = () => {\n   if (!newVehicle.name || !newVehicle.length || !newVehicle.width || !newVehicle.height) {\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759156513039,
+      "end": 1759156513059
+    }
+  }
+}

@@ -1,11 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2 } from 'lucide-react';
+import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2, Save } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
@@ -60,6 +60,22 @@ export default function DiagnosticPage() {
     { id: '2', name: 'Фура 18м3', length: 4200, width: 2200, height: 2000 }
   ]);
   const [newVehicle, setNewVehicle] = useState({ name: '', length: '', width: '', height: '' });
+  const [isSaving, setIsSaving] = useState(false);
+  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
+  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'success' | 'error'>('idle');
+  
+  // Загружаем сохранённые типы автомобилей при инициализации
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('vehicleTypes');
+      if (saved) {
+        const parsedVehicleTypes = JSON.parse(saved);
+        setVehicleTypes(parsedVehicleTypes);
+      }
+    } catch (error) {
+      console.error('Ошибка загрузки сохранённых типов автомобилей:', error);
+    }
+  }, []);
 
   // Функции управления типами автомобилей
   const addVehicleType = () => {
@@ -79,16 +95,43 @@ export default function DiagnosticPage() {
     
     setVehicleTypes([...vehicleTypes, vehicleToAdd]);
     setNewVehicle({ name: '', length: '', width: '', height: '' });
+    setHasUnsavedChanges(true);
   };
   
   const removeVehicleType = (id: string) => {
     setVehicleTypes(vehicleTypes.filter(vehicle => vehicle.id !== id));
+    setHasUnsavedChanges(true);
   };
   
   const updateVehicleType = (id: string, field: string, value: string | number) => {
     setVehicleTypes(vehicleTypes.map(vehicle => 
       vehicle.id === id ? { ...vehicle, [field]: value } : vehicle
     ));
+    setHasUnsavedChanges(true);
+  };
+  
+  const saveVehicleTypes = async () => {
+    setIsSaving(true);
+    setSaveStatus('saving');
+    try {
+      // Имитация сохранения (в реальном приложении здесь бы был API запрос)
+      localStorage.setItem('vehicleTypes', JSON.stringify(vehicleTypes));
+      
+      // Имитация задержки сетевого запроса
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      setHasUnsavedChanges(false);
+      setSaveStatus('success');
+      
+      // Автоматически скрываем сообщение об успехе через 3 секунды
+      setTimeout(() => setSaveStatus('idle'), 3000);
+    } catch (error) {
+      console.error('Ошибка сохранения:', error);
+      setSaveStatus('error');
+      setTimeout(() => setSaveStatus('idle'), 5000);
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const updateResult = (service: string, result: any) => {
@@ -1439,12 +1482,45 @@ export default function DiagnosticPage() {
         {/* Управление типами автомобилей */}
         <Card className="border-blue-500 bg-blue-900/20 mt-6">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Truck className="h-5 w-5 text-blue-400" />
-              Типы автомобилей
-            </CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle className="flex items-center gap-2">
+                <Truck className="h-5 w-5 text-blue-400" />
+                Типы автомобилей
+                {hasUnsavedChanges && (
+                  <Badge variant="outline" className="text-orange-400 border-orange-400">
+                    Есть несохранённые изменения
+                  </Badge>
+                )}
+              </CardTitle>
+              <Button 
+                onClick={saveVehicleTypes}
+                disabled={!hasUnsavedChanges || isSaving}
+                className={
+                  saveStatus === 'success' 
+                    ? "bg-green-600 hover:bg-green-700 text-white" 
+                    : saveStatus === 'error'
+                    ? "bg-red-600 hover:bg-red-700 text-white"
+                    : "bg-green-600 hover:bg-green-700 disabled:bg-gray-600"
+                }
+                size="sm"
+              >
+                <Save className="h-4 w-4 mr-2" />
+                {saveStatus === 'saving' && 'Сохранение...'}
+                {saveStatus === 'success' && 'Сохранено!'}
+                {saveStatus === 'error' && 'Ошибка'}
+                {saveStatus === 'idle' && 'Сохранить'}
+              </Button>
+            </div>
           </CardHeader>
           <CardContent>
+            {/* Информационное сообщение */}
+            <Alert className="border-blue-500 bg-blue-900/20 mb-4">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>
+                Изменения в размерах и названиях типов автомобилей будут сохранены локально в браузере. Нажмите "Сохранить" для применения изменений.
+              </AlertDescription>
+            </Alert>
+            
             {/* Список существующих автомобилей */}
             <div className="space-y-4 mb-6">
               <h3 className="text-lg font-medium text-white">Существующие типы:</h3>

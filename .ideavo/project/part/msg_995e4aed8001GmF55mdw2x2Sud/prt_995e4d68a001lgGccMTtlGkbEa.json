@@ -1,0 +1,25 @@
+{
+  "id": "prt_995e4d68a001lgGccMTtlGkbEa",
+  "messageID": "msg_995e4aed8001GmF55mdw2x2Sud",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0135WMVZqbKZhGkPzabgE7Pq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 50,
+      "limit": 20
+    },
+    "output": "<file>\n00051|     currentTK: string;\n00052|     completedTests: number;\n00053|     totalPlannedTests: number;\n00054|     stage: string;\n00055|   } | null>(null);\n00056| \n00057|   // Состояние для управления типами автомобилей\n00058|   const [vehicleTypes, setVehicleTypes] = useState([\n00059|     { id: '1', name: 'Форд Транзит', length: 4200, width: 2025, height: 2025 },\n00060|     { id: '2', name: 'Фура 18м3', length: 4200, width: 2200, height: 2000 }\n00061|   ]);\n00062|   const [newVehicle, setNewVehicle] = useState({ name: '', length: '', width: '', height: '' });\n00063| \n00064|   // Функции управления типами автомобилей\n00065|   const addVehicleType = () => {\n00066|     if (!newVehicle.name || !newVehicle.length || !newVehicle.width || !newVehicle.height) {\n00067|       alert('Пожалуйста, заполните все поля');\n00068|       return;\n00069|     }\n00070|     \n\n(File has more lines. Use 'offset' parameter to read beyond line 70)\n</file>",
+    "metadata": {
+      "preview": "    currentTK: string;\n    completedTests: number;\n    totalPlannedTests: number;\n    stage: string;\n  } | null>(null);\n\n  // Состояние для управления типами автомобилей\n  const [vehicleTypes, setVehicleTypes] = useState([\n    { id: '1', name: 'Форд Транзит', length: 4200, width: 2025, height: 2025 },\n    { id: '2', name: 'Фура 18м3', length: 4200, width: 2200, height: 2000 }\n  ]);\n  const [newVehicle, setNewVehicle] = useState({ name: '', length: '', width: '', height: '' });\n\n  // Функции управления типами автомобилей\n  const addVehicleType = () => {\n    if (!newVehicle.name || !newVehicle.length || !newVehicle.width || !newVehicle.height) {\n      alert('Пожалуйста, заполните все поля');\n      return;\n    }\n    "
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759156427934,
+      "end": 1759156427938
+    }
+  }
+}

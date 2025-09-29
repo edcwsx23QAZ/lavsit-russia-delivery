@@ -1,0 +1,42 @@
+{
+  "id": "prt_995e63d07001VIXp0jpyXCfJ6G",
+  "messageID": "msg_995e4aed8001GmF55mdw2x2Sud",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01PkbcAAeq4zvR1dS8itcmrw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);",
+          "newString": "  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);\n  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'success' | 'error'>('idle');"
+        },
+        {
+          "oldString": "  const saveVehicleTypes = async () => {\n    setIsSaving(true);\n    try {\n      // Имитация сохранения (в реальном приложении здесь бы был API запрос)\n      localStorage.setItem('vehicleTypes', JSON.stringify(vehicleTypes));\n      \n      // Имитация задержки сетевого запроса\n      await new Promise(resolve => setTimeout(resolve, 1000));\n      \n      setHasUnsavedChanges(false);\n      alert('Типы автомобилей успешно сохранены!');\n    } catch (error) {\n      console.error('Ошибка сохранения:', error);\n      alert('Ошибка при сохранении. Попробуйте ещё раз.');\n    } finally {\n      setIsSaving(false);\n    }\n  };",
+          "newString": "  const saveVehicleTypes = async () => {\n    setIsSaving(true);\n    setSaveStatus('saving');\n    try {\n      // Имитация сохранения (в реальном приложении здесь бы был API запрос)\n      localStorage.setItem('vehicleTypes', JSON.stringify(vehicleTypes));\n      \n      // Имитация задержки сетевого запроса\n      await new Promise(resolve => setTimeout(resolve, 1000));\n      \n      setHasUnsavedChanges(false);\n      setSaveStatus('success');\n      \n      // Автоматически скрываем сообщение об успехе через 3 секунды\n      setTimeout(() => setSaveStatus('idle'), 3000);\n    } catch (error) {\n      console.error('Ошибка сохранения:', error);\n      setSaveStatus('error');\n      setTimeout(() => setSaveStatus('idle'), 5000);\n    } finally {\n      setIsSaving(false);\n    }\n  };"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -61,8 +61,9 @@\n ]);\n const [newVehicle, setNewVehicle] = useState({ name: '', length: '', width: '', height: '' });\n const [isSaving, setIsSaving] = useState(false);\n const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);\n+const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'success' | 'error'>('idle');\n \n // Загружаем сохранённые типы автомобилей при инициализации\n useEffect(() => {\n   try {\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -111,20 +111,25 @@\n };\n \n const saveVehicleTypes = async () => {\n   setIsSaving(true);\n+  setSaveStatus('saving');\n   try {\n     // Имитация сохранения (в реальном приложении здесь бы был API запрос)\n     localStorage.setItem('vehicleTypes', JSON.stringify(vehicleTypes));\n     \n     // Имитация задержки сетевого запроса\n     await new Promise(resolve => setTimeout(resolve, 1000));\n     \n     setHasUnsavedChanges(false);\n-    alert('Типы автомобилей успешно сохранены!');\n+    setSaveStatus('success');\n+    \n+    // Автоматически скрываем сообщение об успехе через 3 секунды\n+    setTimeout(() => setSaveStatus('idle'), 3000);\n   } catch (error) {\n     console.error('Ошибка сохранения:', error);\n-    alert('Ошибка при сохранении. Попробуйте ещё раз.');\n+    setSaveStatus('error');\n+    setTimeout(() => setSaveStatus('idle'), 5000);\n   } finally {\n     setIsSaving(false);\n   }\n };\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759156537149,
+      "end": 1759156537171
+    }
+  }
+}

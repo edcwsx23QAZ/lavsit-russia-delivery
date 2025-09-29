@@ -1,0 +1,34 @@
+{
+  "id": "prt_995e522900010c5csda4BfYAxp",
+  "messageID": "msg_995e4aed8001GmF55mdw2x2Sud",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01RnhXwgDzY5EvmihUctyLB3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "  const updateVehicleType = (id: string, field: string, value: string | number) => {\n    setVehicleTypes(vehicleTypes.map(vehicle => \n      vehicle.id === id ? { ...vehicle, [field]: value } : vehicle\n    ));\n  };",
+          "newString": "  const updateVehicleType = (id: string, field: string, value: string | number) => {\n    setVehicleTypes(vehicleTypes.map(vehicle => \n      vehicle.id === id ? { ...vehicle, [field]: value } : vehicle\n    ));\n    setHasUnsavedChanges(true);\n  };\n  \n  const saveVehicleTypes = async () => {\n    setIsSaving(true);\n    try {\n      // Имитация сохранения (в реальном приложении здесь бы был API запрос)\n      localStorage.setItem('vehicleTypes', JSON.stringify(vehicleTypes));\n      \n      // Имитация задержки сетевого запроса\n      await new Promise(resolve => setTimeout(resolve, 1000));\n      \n      setHasUnsavedChanges(false);\n      alert('Типы автомобилей успешно сохранены!');\n    } catch (error) {\n      console.error('Ошибка сохранения:', error);\n      alert('Ошибка при сохранении. Попробуйте ещё раз.');\n    } finally {\n      setIsSaving(false);\n    }\n  };"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -90,9 +90,29 @@\n const updateVehicleType = (id: string, field: string, value: string | number) => {\n   setVehicleTypes(vehicleTypes.map(vehicle => \n     vehicle.id === id ? { ...vehicle, [field]: value } : vehicle\n   ));\n+  setHasUnsavedChanges(true);\n };\n+\n+const saveVehicleTypes = async () => {\n+  setIsSaving(true);\n+  try {\n+    // Имитация сохранения (в реальном приложении здесь бы был API запрос)\n+    localStorage.setItem('vehicleTypes', JSON.stringify(vehicleTypes));\n+    \n+    // Имитация задержки сетевого запроса\n+    await new Promise(resolve => setTimeout(resolve, 1000));\n+    \n+    setHasUnsavedChanges(false);\n+    alert('Типы автомобилей успешно сохранены!');\n+  } catch (error) {\n+    console.error('Ошибка сохранения:', error);\n+    alert('Ошибка при сохранении. Попробуйте ещё раз.');\n+  } finally {\n+    setIsSaving(false);\n+  }\n+};\n \n const updateResult = (service: string, result: any) => {\n   setDiagnosticResults(prev => ({\n     ...prev,\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759156462463,
+      "end": 1759156462476
+    }
+  }
+}

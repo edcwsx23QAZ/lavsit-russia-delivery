@@ -1,0 +1,34 @@
+{
+  "id": "prt_995e5a2c50014wv8C41Ud04Wi5",
+  "messageID": "msg_995e4aed8001GmF55mdw2x2Sud",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01MPwqfeFc4mCVPhPEbFszVR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "          <CardHeader>\n            <CardTitle className=\"flex items-center gap-2\">\n              <Truck className=\"h-5 w-5 text-blue-400\" />\n              Типы автомобилей\n            </CardTitle>\n          </CardHeader>",
+          "newString": "          <CardHeader>\n            <div className=\"flex items-center justify-between\">\n              <CardTitle className=\"flex items-center gap-2\">\n                <Truck className=\"h-5 w-5 text-blue-400\" />\n                Типы автомобилей\n              </CardTitle>\n              <Button \n                onClick={saveVehicleTypes}\n                disabled={!hasUnsavedChanges || isSaving}\n                className=\"bg-green-600 hover:bg-green-700 disabled:bg-gray-600\"\n                size=\"sm\"\n              >\n                <Save className=\"h-4 w-4 mr-2\" />\n                {isSaving ? 'Сохранение...' : 'Сохранить'}\n              </Button>\n            </div>\n          </CardHeader>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1460,12 +1460,23 @@\n \n {/* Управление типами автомобилей */}\n <Card className=\"border-blue-500 bg-blue-900/20 mt-6\">\n   <CardHeader>\n-    <CardTitle className=\"flex items-center gap-2\">\n-      <Truck className=\"h-5 w-5 text-blue-400\" />\n-      Типы автомобилей\n-    </CardTitle>\n+    <div className=\"flex items-center justify-between\">\n+      <CardTitle className=\"flex items-center gap-2\">\n+        <Truck className=\"h-5 w-5 text-blue-400\" />\n+        Типы автомобилей\n+      </CardTitle>\n+      <Button \n+        onClick={saveVehicleTypes}\n+        disabled={!hasUnsavedChanges || isSaving}\n+        className=\"bg-green-600 hover:bg-green-700 disabled:bg-gray-600\"\n+        size=\"sm\"\n+      >\n+        <Save className=\"h-4 w-4 mr-2\" />\n+        {isSaving ? 'Сохранение...' : 'Сохранить'}\n+      </Button>\n+    </div>\n   </CardHeader>\n   <CardContent>\n     {/* Список существующих автомобилей */}\n     <div className=\"space-y-4 mb-6\">\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759156485235,
+      "end": 1759156485244
+    }
+  }
+}

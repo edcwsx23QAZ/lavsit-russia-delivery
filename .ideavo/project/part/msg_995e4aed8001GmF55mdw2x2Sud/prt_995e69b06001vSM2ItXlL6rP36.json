@@ -1,0 +1,34 @@
+{
+  "id": "prt_995e69b06001vSM2ItXlL6rP36",
+  "messageID": "msg_995e4aed8001GmF55mdw2x2Sud",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01C8vgHN8dBcY9mFMFSdEwF9",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "              <Button \n                onClick={saveVehicleTypes}\n                disabled={!hasUnsavedChanges || isSaving}\n                className=\"bg-green-600 hover:bg-green-700 disabled:bg-gray-600\"\n                size=\"sm\"\n              >\n                <Save className=\"h-4 w-4 mr-2\" />\n                {isSaving ? 'Сохранение...' : 'Сохранить'}\n              </Button>",
+          "newString": "              <Button \n                onClick={saveVehicleTypes}\n                disabled={!hasUnsavedChanges || isSaving}\n                className={\n                  saveStatus === 'success' \n                    ? \"bg-green-600 hover:bg-green-700 text-white\" \n                    : saveStatus === 'error'\n                    ? \"bg-red-600 hover:bg-red-700 text-white\"\n                    : \"bg-green-600 hover:bg-green-700 disabled:bg-gray-600\"\n                }\n                size=\"sm\"\n              >\n                <Save className=\"h-4 w-4 mr-2\" />\n                {saveStatus === 'saving' && 'Сохранение...'}\n                {saveStatus === 'success' && 'Сохранено!'}\n                {saveStatus === 'error' && 'Ошибка'}\n                {saveStatus === 'idle' && 'Сохранить'}\n              </Button>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1494,13 +1494,22 @@\n     </CardTitle>\n     <Button \n       onClick={saveVehicleTypes}\n       disabled={!hasUnsavedChanges || isSaving}\n-      className=\"bg-green-600 hover:bg-green-700 disabled:bg-gray-600\"\n+      className={\n+        saveStatus === 'success' \n+          ? \"bg-green-600 hover:bg-green-700 text-white\" \n+          : saveStatus === 'error'\n+          ? \"bg-red-600 hover:bg-red-700 text-white\"\n+          : \"bg-green-600 hover:bg-green-700 disabled:bg-gray-600\"\n+      }\n       size=\"sm\"\n     >\n       <Save className=\"h-4 w-4 mr-2\" />\n-      {isSaving ? 'Сохранение...' : 'Сохранить'}\n+      {saveStatus === 'saving' && 'Сохранение...'}\n+      {saveStatus === 'success' && 'Сохранено!'}\n+      {saveStatus === 'error' && 'Ошибка'}\n+      {saveStatus === 'idle' && 'Сохранить'}\n     </Button>\n   </div>\n </CardHeader>\n <CardContent>\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759156548966,
+      "end": 1759156548982
+    }
+  }
+}
