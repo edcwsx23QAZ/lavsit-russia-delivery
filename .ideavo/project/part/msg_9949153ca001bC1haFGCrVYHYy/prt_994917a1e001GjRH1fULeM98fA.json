@@ -1,0 +1,21 @@
+{
+  "id": "prt_994917a1e001GjRH1fULeM98fA",
+  "messageID": "msg_9949153ca001bC1haFGCrVYHYy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01RsP3cJ3jxx8T9Thzw9cM45",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "oldString": "// Размеры кузова в мм\nconst TRUCK_DIMENSIONS = {\n  length: 4200,\n  width: 2025,\n  height: 2025\n};",
+      "newString": "// Размеры кузова в мм\nconst TRUCK_DIMENSIONS = {\n  length: 4200,\n  width: 2025,\n  height: 2025\n};\n\n// Углы поворота для размещения грузов\nconst ROTATION_ANGLES = [0, 45, 90, 135, 180, 225, 270, 315];\n\ninterface Orientation {\n  length: number;\n  width: number;\n  height: number;\n  rotationAngle: number; // в градусах\n  flipped: boolean; // перевернут ли груз\n}"
+    },
+    "error": "Error: You must read the file /home/user/project/components/TruckVisualization.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1759134189862,
+      "end": 1759134189865
+    }
+  }
+}

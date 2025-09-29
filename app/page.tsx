@@ -3523,9 +3523,9 @@ export default function Home() {
               <TruckVisualization 
                 cargos={form.cargos.map(cargo => ({
                   id: cargo.id,
-                  length: cargo.length,
-                  width: cargo.width,
-                  height: cargo.height,
+                  length: cargo.length * 10, // Переводим см в мм
+                  width: cargo.width * 10,   // Переводим см в мм
+                  height: cargo.height * 10, // Переводим см в мм
                   weight: cargo.weight,
                   productName: form.selectedProducts?.find(p => 
                     p.cargoIndexes.includes(form.cargos.indexOf(cargo))

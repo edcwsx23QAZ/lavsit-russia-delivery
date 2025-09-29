@@ -1,0 +1,25 @@
+{
+  "id": "prt_994954b7b001GBZbHJ85App6Sj",
+  "messageID": "msg_9949153ca001bC1haFGCrVYHYy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01P3s8nqbN8xCzJeD6bhrHw6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 70,
+      "limit": 30
+    },
+    "output": "<file>\n00071|         fromCity: 'Москва',\n00072|         toCity: 'Санкт-Петербург',\n00073|         cargos: [{\n00074|           length: 100,\n00075|           width: 100,\n00076|           height: 100,\n00077|           weight: 10\n00078|         }],\n00079|         declaredValue: 50000,\n00080|         fromAddressDelivery: false,\n00081|         toAddressDelivery: false,\n00082|         needPackaging: false,\n00083|         needInsurance: false\n00084|       };\n00085| \n00086|       const response = await fetch('/api/pek', {\n00087|         method: 'POST',\n00088|         headers: { 'Content-Type': 'application/json' },\n00089|         body: JSON.stringify(testData)\n00090|       });\n00091| \n00092|       const data = await response.json();\n00093|       const timing = Date.now() - startTime;\n00094| \n00095|       console.log('🔧 ПЭК API ответ:', data);\n00096| \n00097|       if (response.ok && data.success) {\n00098|         updateResult('pek', {\n00099|           status: 'success',\n00100|           message: `ПЭК API работает корректно. Получен тариф: ${data.data?.price || 'N/A'} ₽`,\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "metadata": {
+      "preview": "        fromCity: 'Москва',\n        toCity: 'Санкт-Петербург',\n        cargos: [{\n          length: 100,\n          width: 100,\n          height: 100,\n          weight: 10\n        }],\n        declaredValue: 50000,\n        fromAddressDelivery: false,\n        toAddressDelivery: false,\n        needPackaging: false,\n        needInsurance: false\n      };\n\n      const response = await fetch('/api/pek', {\n        method: 'POST',\n        headers: { 'Content-Type': 'application/json' },\n        body: JSON.stringify(testData)\n      });"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759134436971,
+      "end": 1759134436974
+    }
+  }
+}

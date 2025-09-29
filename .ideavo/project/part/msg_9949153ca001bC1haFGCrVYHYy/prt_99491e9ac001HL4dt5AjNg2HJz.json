@@ -1,0 +1,25 @@
+{
+  "id": "prt_99491e9ac001HL4dt5AjNg2HJz",
+  "messageID": "msg_9949153ca001bC1haFGCrVYHYy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XyoCaPbjyeVs33ckjXtkWd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 0,
+      "limit": 50
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import React from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Truck } from 'lucide-react';\n00006| \n00007| interface Cargo {\n00008|   id: string;\n00009|   length: number;\n00010|   width: number;\n00011|   height: number;\n00012|   weight: number;\n00013|   productName?: string;\n00014| }\n00015| \n00016| interface CargoPlacement {\n00017|   cargo: Cargo;\n00018|   x: number;\n00019|   y: number;\n00020|   z: number;\n00021|   rotatedLength: number;\n00022|   rotatedWidth: number;\n00023|   rotatedHeight: number;\n00024|   color: string;\n00025| }\n00026| \n00027| interface TruckVisualizationProps {\n00028|   cargos: Cargo[];\n00029|   isVisible?: boolean;\n00030| }\n00031| \n00032| // Размеры кузова в мм\n00033| const TRUCK_DIMENSIONS = {\n00034|   length: 4200,\n00035|   width: 2025,\n00036|   height: 2025\n00037| };\n00038| \n00039| // Цвета для разных грузов\n00040| const CARGO_COLORS = [\n00041|   '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FECA57',\n00042|   '#FF9FF3', '#54A0FF', '#5F27CD', '#00D2D3', '#FF9F43',\n00043|   '#10AC84', '#EE5A24', '#0984E3', '#6C5CE7', '#FD79A8'\n00044| ];\n00045| \n00046| export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {\n00047|   // Функция проверки ключевых слов\n00048|   const isChairOrSeat = (productName?: string) => {\n00049|     if (!productName) return false;\n00050|     const lowerName = productName.toLowerCase();\n\n(File has more lines. Use 'offset' parameter to read beyond line 50)\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport React from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Truck } from 'lucide-react';\n\ninterface Cargo {\n  id: string;\n  length: number;\n  width: number;\n  height: number;\n  weight: number;\n  productName?: string;\n}\n\ninterface CargoPlacement {\n  cargo: Cargo;\n  x: number;\n  y: number;\n  z: number;"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759134215355,
+      "end": 1759134215361
+    }
+  }
+}

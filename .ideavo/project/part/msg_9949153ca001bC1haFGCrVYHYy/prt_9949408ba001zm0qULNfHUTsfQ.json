@@ -1,0 +1,25 @@
+{
+  "id": "prt_9949408ba001zm0qULNfHUTsfQ",
+  "messageID": "msg_9949153ca001bC1haFGCrVYHYy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_018PECK3MZPVsd4GmGSXtQVJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3520,
+      "limit": 20
+    },
+    "output": "<file>\n03521|             {/* Визуализация кузова */}\n03522|             {calculations.length > 0 && (\n03523|               <TruckVisualization \n03524|                 cargos={form.cargos.map(cargo => ({\n03525|                   id: cargo.id,\n03526|                   length: cargo.length,\n03527|                   width: cargo.width,\n03528|                   height: cargo.height,\n03529|                   weight: cargo.weight,\n03530|                   productName: form.selectedProducts?.find(p => \n03531|                     p.cargoIndexes.includes(form.cargos.indexOf(cargo))\n03532|                   )?.product.name\n03533|                 }))}\n03534|                 isVisible={true}\n03535|               />\n03536|             )}\n03537|             \n03538|             {/* Список подключенных ТК */}\n03539|             <Card className=\"bg-gray-800 border-gray-700\">\n03540|               <CardHeader className=\"pb-2\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 3540)\n</file>",
+    "metadata": {
+      "preview": "            {/* Визуализация кузова */}\n            {calculations.length > 0 && (\n              <TruckVisualization \n                cargos={form.cargos.map(cargo => ({\n                  id: cargo.id,\n                  length: cargo.length,\n                  width: cargo.width,\n                  height: cargo.height,\n                  weight: cargo.weight,\n                  productName: form.selectedProducts?.find(p => \n                    p.cargoIndexes.includes(form.cargos.indexOf(cargo))\n                  )?.product.name\n                }))}\n                isVisible={true}\n              />\n            )}\n            \n            {/* Список подключенных ТК */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-2\">"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759134354404,
+      "end": 1759134354407
+    }
+  }
+}
