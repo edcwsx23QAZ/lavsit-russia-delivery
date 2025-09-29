@@ -1,0 +1,23 @@
+{
+  "id": "prt_994b19d4e001cKMbE0YjRvuLZq",
+  "messageID": "msg_994af0ade001eZFeIj9XDJ123G",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01CKRVBjrpDvTA5GtRo7EG7n",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ui/slider.tsx"
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import * as React from 'react';\n00004| import * as SliderPrimitive from '@radix-ui/react-slider';\n00005| \n00006| import { cn } from '@/lib/utils';\n00007| \n00008| const Slider = React.forwardRef<\n00009|   React.ElementRef<typeof SliderPrimitive.Root>,\n00010|   React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>\n00011| >(({ className, ...props }, ref) => (\n00012|   <SliderPrimitive.Root\n00013|     ref={ref}\n00014|     className={cn(\n00015|       'relative flex w-full touch-none select-none items-center',\n00016|       className\n00017|     )}\n00018|     {...props}\n00019|   >\n00020|     <SliderPrimitive.Track className=\"relative h-2 w-full grow overflow-hidden rounded-full bg-secondary\">\n00021|       <SliderPrimitive.Range className=\"absolute h-full bg-primary\" />\n00022|     </SliderPrimitive.Track>\n00023|     <SliderPrimitive.Thumb className=\"block h-5 w-5 rounded-full border-2 border-primary bg-background ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50\" />\n00024|   </SliderPrimitive.Root>\n00025| ));\n00026| Slider.displayName = SliderPrimitive.Root.displayName;\n00027| \n00028| export { Slider };\n00029| \n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport * as React from 'react';\nimport * as SliderPrimitive from '@radix-ui/react-slider';\n\nimport { cn } from '@/lib/utils';\n\nconst Slider = React.forwardRef<\n  React.ElementRef<typeof SliderPrimitive.Root>,\n  React.ComponentPropsWithoutRef<typeof SliderPrimitive.Root>\n>(({ className, ...props }, ref) => (\n  <SliderPrimitive.Root\n    ref={ref}\n    className={cn(\n      'relative flex w-full touch-none select-none items-center',\n      className\n    )}\n    {...props}\n  >\n    <SliderPrimitive.Track className=\"relative h-2 w-full grow overflow-hidden rounded-full bg-secondary\">"
+    },
+    "title": "components/ui/slider.tsx",
+    "time": {
+      "start": 1759136292551,
+      "end": 1759136292555
+    }
+  }
+}
