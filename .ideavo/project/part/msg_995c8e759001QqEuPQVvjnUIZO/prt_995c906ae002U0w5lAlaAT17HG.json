@@ -1,0 +1,25 @@
+{
+  "id": "prt_995c906ae002U0w5lAlaAT17HG",
+  "messageID": "msg_995c8e759001QqEuPQVvjnUIZO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_019BK3jY9EK33JSG6DrdgAfE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 575,
+      "limit": 20
+    },
+    "output": "<file>\n00576|   return (\n00577|     <Card className=\"bg-gray-800 border-gray-700\">\n00578|       <CardHeader className=\"pb-3\">\n00579|         <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n00580|           <Truck className=\"h-4 w-4\" />\n00581|           Интерактивная 3D визуализация грузовика с размещением груза\n00582|         </CardTitle>\n00583|       </CardHeader>\n00584|       <CardContent>\n00585|         {/* Основная сетка: слева результаты, справа 3D */}\n00586|         <div className=\"grid grid-cols-1 xl:grid-cols-2 gap-6\">\n00587|           {/* Левая колонка: Результаты расчета */}\n00588|           <div className=\"space-y-4\">\n00589|             {/* Статистика размещения */}\n00590|             {stats && (\n00591|               <div className=\"bg-gray-800 p-4 rounded-lg\">\n00592|                 <h4 className=\"font-medium text-white mb-4\">📊 Результаты размещения</h4>\n00593|                 <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4 text-sm\">\n00594|                   <div className=\"space-y-2\">\n00595|                     <h5 className=\"font-medium text-gray-300\">Занятые размеры:</h5>\n\n(File has more lines. Use 'offset' parameter to read beyond line 595)\n</file>",
+    "metadata": {
+      "preview": "  return (\n    <Card className=\"bg-gray-800 border-gray-700\">\n      <CardHeader className=\"pb-3\">\n        <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n          <Truck className=\"h-4 w-4\" />\n          Интерактивная 3D визуализация грузовика с размещением груза\n        </CardTitle>\n      </CardHeader>\n      <CardContent>\n        {/* Основная сетка: слева результаты, справа 3D */}\n        <div className=\"grid grid-cols-1 xl:grid-cols-2 gap-6\">\n          {/* Левая колонка: Результаты расчета */}\n          <div className=\"space-y-4\">\n            {/* Статистика размещения */}\n            {stats && (\n              <div className=\"bg-gray-800 p-4 rounded-lg\">\n                <h4 className=\"font-medium text-white mb-4\">📊 Результаты размещения</h4>\n                <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4 text-sm\">\n                  <div className=\"space-y-2\">\n                    <h5 className=\"font-medium text-gray-300\">Занятые размеры:</h5>"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759154604289,
+      "end": 1759154604297
+    }
+  }
+}
