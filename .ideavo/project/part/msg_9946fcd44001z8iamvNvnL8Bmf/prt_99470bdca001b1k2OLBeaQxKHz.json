@@ -1,0 +1,25 @@
+{
+  "id": "prt_99470bdca001b1k2OLBeaQxKHz",
+  "messageID": "msg_9946fcd44001z8iamvNvnL8Bmf",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01EfJm5ffgfwCaWt9W3yHxAC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 645,
+      "limit": 20
+    },
+    "output": "<file>\n00646|       \n00647|       console.log('Индексы заполненных грузов:', cargoIndexes);\n00648|       console.log('Общее количество грузов после добавления:', updatedCargos.length);\n00649|       \n00650|       // Пересчитываем объявленную стоимость\n00651|       const prevSelectedProducts = prev.selectedProducts || [];\n00652|       const newSelectedProducts = [...prevSelectedProducts, productInForm];\n00653|       const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n00654|       \n00655|       return {\n00656|         ...prev,\n00657|         cargos: updatedCargos,\n00658|         selectedProducts: newSelectedProducts,\n00659|         declaredValue: newDeclaredValue\n00660|       };\n00661|     });\n00662|     \n00663|     console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);\n00664|     console.log('Финальное состояние грузов:', newCargos.length);\n00665|   };\n\n(File has more lines. Use 'offset' parameter to read beyond line 665)\n</file>",
+    "metadata": {
+      "preview": "      \n      console.log('Индексы заполненных грузов:', cargoIndexes);\n      console.log('Общее количество грузов после добавления:', updatedCargos.length);\n      \n      // Пересчитываем объявленную стоимость\n      const prevSelectedProducts = prev.selectedProducts || [];\n      const newSelectedProducts = [...prevSelectedProducts, productInForm];\n      const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n      \n      return {\n        ...prev,\n        cargos: updatedCargos,\n        selectedProducts: newSelectedProducts,\n        declaredValue: newDeclaredValue\n      };\n    });\n    \n    console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);\n    console.log('Финальное состояние грузов:', newCargos.length);\n  };"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759132041513,
+      "end": 1759132041515
+    }
+  }
+}

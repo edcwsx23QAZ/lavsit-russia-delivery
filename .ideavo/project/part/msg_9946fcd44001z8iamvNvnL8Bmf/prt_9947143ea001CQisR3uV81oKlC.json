@@ -1,0 +1,26 @@
+{
+  "id": "prt_9947143ea001CQisR3uV81oKlC",
+  "messageID": "msg_9946fcd44001z8iamvNvnL8Bmf",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Ppjnne4NobhnPJuDbggaPm",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const updateCargo = (id: string, field: string, value: number) => {\n    setForm(prev => ({\n      ...prev,\n      cargos: prev.cargos.map(cargo => \n        cargo.id === id ? { ...cargo, [field]: value } : cargo\n      )\n    }));\n  };",
+      "newString": "  const updateCargo = (id: string, field: string, value: number) => {\n    setForm(prev => {\n      const updatedCargos = prev.cargos.map(cargo => \n        cargo.id === id ? { ...cargo, [field]: value } : cargo\n      );\n      \n      // Очищаем пустые грузы согласно новой логике\n      const cleanResult = cleanEmptyCargos(updatedCargos, prev.selectedProducts || []);\n      \n      return {\n        ...prev,\n        cargos: cleanResult.cargos,\n        selectedProducts: cleanResult.products\n      };\n    });\n  };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -450,14 +450,22 @@\n   }));\n };\n \n const updateCargo = (id: string, field: string, value: number) => {\n-  setForm(prev => ({\n-    ...prev,\n-    cargos: prev.cargos.map(cargo => \n+  setForm(prev => {\n+    const updatedCargos = prev.cargos.map(cargo => \n       cargo.id === id ? { ...cargo, [field]: value } : cargo\n-    )\n-  }));\n+    );\n+    \n+    // Очищаем пустые грузы согласно новой логике\n+    const cleanResult = cleanEmptyCargos(updatedCargos, prev.selectedProducts || []);\n+    \n+    return {\n+      ...prev,\n+      cargos: cleanResult.cargos,\n+      selectedProducts: cleanResult.products\n+    };\n+  });\n };\n \n const removeCargo = (id: string) => {\n   if (form.cargos.length > 1) {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759132077531,
+      "end": 1759132077545
+    }
+  }
+}

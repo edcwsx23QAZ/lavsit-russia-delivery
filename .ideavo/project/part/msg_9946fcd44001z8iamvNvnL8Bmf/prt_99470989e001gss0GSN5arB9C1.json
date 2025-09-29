@@ -1,0 +1,26 @@
+{
+  "id": "prt_99470989e001gss0GSN5arB9C1",
+  "messageID": "msg_9946fcd44001z8iamvNvnL8Bmf",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01B2X12D5CbNpkRUeR7RVun8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      return {\n        ...prev,\n        cargos: finalCargos,\n        selectedProducts: updatedProductsWithNewIndexes,\n        declaredValue: newDeclaredValue\n      };",
+      "newString": "      return {\n        ...prev,\n        cargos: cleanResult.cargos,\n        selectedProducts: cleanResult.products,\n        declaredValue: newDeclaredValue\n      };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -771,10 +771,10 @@\n   console.log('Удалено пустых грузов:', updatedCargos.length - cleanResult.cargos.length);\n   \n   return {\n     ...prev,\n-    cargos: finalCargos,\n-    selectedProducts: updatedProductsWithNewIndexes,\n+    cargos: cleanResult.cargos,\n+    selectedProducts: cleanResult.products,\n     declaredValue: newDeclaredValue\n   };\n });\n \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759132032480,
+      "end": 1759132032497
+    }
+  }
+}

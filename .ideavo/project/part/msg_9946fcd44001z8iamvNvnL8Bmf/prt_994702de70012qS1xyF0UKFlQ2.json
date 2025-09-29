@@ -1,0 +1,25 @@
+{
+  "id": "prt_994702de70012qS1xyF0UKFlQ2",
+  "messageID": "msg_9946fcd44001z8iamvNvnL8Bmf",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GcnFrV3aiufUJ3E7E6Tv84",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 725,
+      "limit": 25
+    },
+    "output": "<file>\n00726|       // Создаем массив маппинга старых индексов к новым\n00727|       const oldToNewIndexMap = new globalThis.Map<number, number>();\n00728|       let newIndex = 0;\n00729|       \n00730|       updatedCargos.forEach((cargo, oldIndex) => {\n00731|         if (!isEmptyCargo(cargo) || oldIndex === 0) {\n00732|           oldToNewIndexMap.set(oldIndex, newIndex);\n00733|           newIndex++;\n00734|         }\n00735|       });\n00736|       \n00737|       // Удаляем пустые грузы, но оставляем минимум один (первый)\n00738|       const nonEmptyCargos = updatedCargos.filter((cargo, index) => \n00739|         !isEmptyCargo(cargo) || index === 0\n00740|       );\n00741|       \n00742|       // Если все грузы оказались пустыми, оставляем только первый\n00743|       const finalCargos = nonEmptyCargos.length === 0 \n00744|         ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n00745|         : nonEmptyCargos;\n00746|       \n00747|       // Обновляем индексы грузов у всех оставшихся товаров\n00748|       const updatedProductsWithNewIndexes = updatedProducts.map(productItem => ({\n00749|         ...productItem,\n00750|         cargoIndexes: productItem.cargoIndexes\n\n(File has more lines. Use 'offset' parameter to read beyond line 750)\n</file>",
+    "metadata": {
+      "preview": "      // Создаем массив маппинга старых индексов к новым\n      const oldToNewIndexMap = new globalThis.Map<number, number>();\n      let newIndex = 0;\n      \n      updatedCargos.forEach((cargo, oldIndex) => {\n        if (!isEmptyCargo(cargo) || oldIndex === 0) {\n          oldToNewIndexMap.set(oldIndex, newIndex);\n          newIndex++;\n        }\n      });\n      \n      // Удаляем пустые грузы, но оставляем минимум один (первый)\n      const nonEmptyCargos = updatedCargos.filter((cargo, index) => \n        !isEmptyCargo(cargo) || index === 0\n      );\n      \n      // Если все грузы оказались пустыми, оставляем только первый\n      const finalCargos = nonEmptyCargos.length === 0 \n        ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n        : nonEmptyCargos;"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759132004907,
+      "end": 1759132004915
+    }
+  }
+}

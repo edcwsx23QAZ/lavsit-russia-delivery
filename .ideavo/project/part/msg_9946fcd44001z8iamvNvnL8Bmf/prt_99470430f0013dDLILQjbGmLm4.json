@@ -1,0 +1,26 @@
+{
+  "id": "prt_99470430f0013dDLILQjbGmLm4",
+  "messageID": "msg_9946fcd44001z8iamvNvnL8Bmf",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01VFC44i9gC9j56fUnTwGLtD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  // 🔧 Функция для проверки пустых грузов (все поля равны 0)\n  const isEmptyCargo = (cargo: Cargo) => {\n    return cargo.length === 0 && cargo.width === 0 && cargo.height === 0 && cargo.weight === 0;\n  };",
+      "newString": "  // 🔧 Функция для проверки пустых грузов (все поля равны 0)\n  const isEmptyCargo = (cargo: Cargo) => {\n    return cargo.length === 0 && cargo.width === 0 && cargo.height === 0 && cargo.weight === 0;\n  };\n\n  // 🔧 Функция очистки пустых грузов\n  const cleanEmptyCargos = (cargos: Cargo[], selectedProducts: ProductInForm[]) => {\n    // Проверяем есть ли хотя бы один заполненный груз\n    const hasFilledCargos = cargos.some(cargo => !isEmptyCargo(cargo));\n    \n    if (!hasFilledCargos) {\n      // Если нет заполненных грузов, оставляем только первый пустой\n      return {\n        cargos: cargos.length > 0 ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }] : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n        products: selectedProducts\n      };\n    }\n\n    // Создаем маппинг старых индексов к новым\n    const oldToNewIndexMap = new globalThis.Map<number, number>();\n    let newIndex = 0;\n    \n    cargos.forEach((cargo, oldIndex) => {\n      if (!isEmptyCargo(cargo)) {\n        oldToNewIndexMap.set(oldIndex, newIndex);\n        newIndex++;\n      }\n    });\n    \n    // Оставляем только заполненные грузы\n    const filledCargos = cargos.filter(cargo => !isEmptyCargo(cargo));\n    \n    // Обновляем индексы у товаров\n    const updatedProducts = selectedProducts.map(productItem => ({\n      ...productItem,\n      cargoIndexes: productItem.cargoIndexes\n        .map(oldIndex => oldToNewIndexMap.get(oldIndex))\n        .filter(newIdx => newIdx !== undefined) as number[]\n    }));\n    \n    return {\n      cargos: filledCargos,\n      products: updatedProducts\n    };\n  };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -472,8 +472,49 @@\n const isEmptyCargo = (cargo: Cargo) => {\n   return cargo.length === 0 && cargo.width === 0 && cargo.height === 0 && cargo.weight === 0;\n };\n \n+// 🔧 Функция очистки пустых грузов\n+const cleanEmptyCargos = (cargos: Cargo[], selectedProducts: ProductInForm[]) => {\n+  // Проверяем есть ли хотя бы один заполненный груз\n+  const hasFilledCargos = cargos.some(cargo => !isEmptyCargo(cargo));\n+  \n+  if (!hasFilledCargos) {\n+    // Если нет заполненных грузов, оставляем только первый пустой\n+    return {\n+      cargos: cargos.length > 0 ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }] : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n+      products: selectedProducts\n+    };\n+  }\n+\n+  // Создаем маппинг старых индексов к новым\n+  const oldToNewIndexMap = new globalThis.Map<number, number>();\n+  let newIndex = 0;\n+  \n+  cargos.forEach((cargo, oldIndex) => {\n+    if (!isEmptyCargo(cargo)) {\n+      oldToNewIndexMap.set(oldIndex, newIndex);\n+      newIndex++;\n+    }\n+  });\n+  \n+  // Оставляем только заполненные грузы\n+  const filledCargos = cargos.filter(cargo => !isEmptyCargo(cargo));\n+  \n+  // Обновляем индексы у товаров\n+  const updatedProducts = selectedProducts.map(productItem => ({\n+    ...productItem,\n+    cargoIndexes: productItem.cargoIndexes\n+      .map(oldIndex => oldToNewIndexMap.get(oldIndex))\n+      .filter(newIdx => newIdx !== undefined) as number[]\n+  }));\n+  \n+  return {\n+    cargos: filledCargos,\n+    products: updatedProducts\n+  };\n+};\n+\n // 🔧 Функция группировки грузов для отображения\n interface GroupedCargoDisplay {\n   length: number;\n   width: number;\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759132017262,
+      "end": 1759132017284
+    }
+  }
+}

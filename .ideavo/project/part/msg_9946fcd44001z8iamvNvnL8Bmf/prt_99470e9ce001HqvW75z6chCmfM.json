@@ -1,0 +1,25 @@
+{
+  "id": "prt_99470e9ce001HqvW75z6chCmfM",
+  "messageID": "msg_9946fcd44001z8iamvNvnL8Bmf",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011hHCVbYK6me9pWbPCw5ioG",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 695,
+      "limit": 25
+    },
+    "output": "<file>\n00696|       \n00697|       // Создаем новые грузы с новым количеством\n00698|       const newCargos = createCargosForProduct(product.product, newQuantity, addedAt);\n00699|       const updatedCargos = [...cargosWithoutProduct, ...newCargos];\n00700|       \n00701|       console.log('Грузы после добавления новых:', updatedCargos.length);\n00702|       \n00703|       // Обновляем товар\n00704|       const updatedProduct = {\n00705|         ...product,\n00706|         quantity: newQuantity,\n00707|         totalPrice: product.product.retailPrice * newQuantity,\n00708|         cargoIndexes: findCargoIndexesForProduct(updatedCargos, productId, addedAt)\n00709|       };\n00710|       \n00711|       const updatedProducts = selectedProducts.map((p, index) => \n00712|         index === productIndex ? updatedProduct : p\n00713|       );\n00714|       \n00715|       // Пересчитываем объявленную стоимость\n00716|       const newDeclaredValue = calculateTotalValue(updatedProducts);\n00717|       \n00718|       return {\n00719|         ...prev,\n00720|         cargos: updatedCargos,\n\n(File has more lines. Use 'offset' parameter to read beyond line 720)\n</file>",
+    "metadata": {
+      "preview": "      \n      // Создаем новые грузы с новым количеством\n      const newCargos = createCargosForProduct(product.product, newQuantity, addedAt);\n      const updatedCargos = [...cargosWithoutProduct, ...newCargos];\n      \n      console.log('Грузы после добавления новых:', updatedCargos.length);\n      \n      // Обновляем товар\n      const updatedProduct = {\n        ...product,\n        quantity: newQuantity,\n        totalPrice: product.product.retailPrice * newQuantity,\n        cargoIndexes: findCargoIndexesForProduct(updatedCargos, productId, addedAt)\n      };\n      \n      const updatedProducts = selectedProducts.map((p, index) => \n        index === productIndex ? updatedProduct : p\n      );\n      \n      // Пересчитываем объявленную стоимость"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759132052595,
+      "end": 1759132052598
+    }
+  }
+}

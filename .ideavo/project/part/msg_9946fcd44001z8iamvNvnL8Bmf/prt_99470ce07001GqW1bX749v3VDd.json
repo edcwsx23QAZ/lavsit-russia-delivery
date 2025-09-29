@@ -1,0 +1,26 @@
+{
+  "id": "prt_99470ce07001GqW1bX749v3VDd",
+  "messageID": "msg_9946fcd44001z8iamvNvnL8Bmf",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01FddrFgM9JXZGV2tK62UkZr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Пересчитываем объявленную стоимость\n      const prevSelectedProducts = prev.selectedProducts || [];\n      const newSelectedProducts = [...prevSelectedProducts, productInForm];\n      const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n      \n      return {\n        ...prev,\n        cargos: updatedCargos,\n        selectedProducts: newSelectedProducts,\n        declaredValue: newDeclaredValue\n      };",
+      "newString": "      // Пересчитываем объявленную стоимость\n      const prevSelectedProducts = prev.selectedProducts || [];\n      const newSelectedProducts = [...prevSelectedProducts, productInForm];\n      const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n      \n      // Очищаем пустые грузы согласно новой логике\n      const cleanResult = cleanEmptyCargos(updatedCargos, newSelectedProducts);\n      \n      return {\n        ...prev,\n        cargos: cleanResult.cargos,\n        selectedProducts: cleanResult.products,\n        declaredValue: newDeclaredValue\n      };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -651,12 +651,15 @@\n   const prevSelectedProducts = prev.selectedProducts || [];\n   const newSelectedProducts = [...prevSelectedProducts, productInForm];\n   const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n   \n+  // Очищаем пустые грузы согласно новой логике\n+  const cleanResult = cleanEmptyCargos(updatedCargos, newSelectedProducts);\n+  \n   return {\n     ...prev,\n-    cargos: updatedCargos,\n-    selectedProducts: newSelectedProducts,\n+    cargos: cleanResult.cargos,\n+    selectedProducts: cleanResult.products,\n     declaredValue: newDeclaredValue\n   };\n });\n \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759132047706,
+      "end": 1759132047723
+    }
+  }
+}

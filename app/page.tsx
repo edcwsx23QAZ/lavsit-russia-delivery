@@ -451,12 +451,20 @@ export default function Home() {
   };
 
   const updateCargo = (id: string, field: string, value: number) => {
-    setForm(prev => ({
-      ...prev,
-      cargos: prev.cargos.map(cargo => 
+    setForm(prev => {
+      const updatedCargos = prev.cargos.map(cargo => 
         cargo.id === id ? { ...cargo, [field]: value } : cargo
-      )
-    }));
+      );
+      
+      // Очищаем пустые грузы согласно новой логике
+      const cleanResult = cleanEmptyCargos(updatedCargos, prev.selectedProducts || []);
+      
+      return {
+        ...prev,
+        cargos: cleanResult.cargos,
+        selectedProducts: cleanResult.products
+      };
+    });
   };
 
   const removeCargo = (id: string) => {
@@ -471,6 +479,47 @@ export default function Home() {
   // 🔧 Функция для проверки пустых грузов (все поля равны 0)
   const isEmptyCargo = (cargo: Cargo) => {
     return cargo.length === 0 && cargo.width === 0 && cargo.height === 0 && cargo.weight === 0;
+  };
+
+  // 🔧 Функция очистки пустых грузов
+  const cleanEmptyCargos = (cargos: Cargo[], selectedProducts: ProductInForm[]) => {
+    // Проверяем есть ли хотя бы один заполненный груз
+    const hasFilledCargos = cargos.some(cargo => !isEmptyCargo(cargo));
+    
+    if (!hasFilledCargos) {
+      // Если нет заполненных грузов, оставляем только первый пустой
+      return {
+        cargos: cargos.length > 0 ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }] : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],
+        products: selectedProducts
+      };
+    }
+
+    // Создаем маппинг старых индексов к новым
+    const oldToNewIndexMap = new globalThis.Map<number, number>();
+    let newIndex = 0;
+    
+    cargos.forEach((cargo, oldIndex) => {
+      if (!isEmptyCargo(cargo)) {
+        oldToNewIndexMap.set(oldIndex, newIndex);
+        newIndex++;
+      }
+    });
+    
+    // Оставляем только заполненные грузы
+    const filledCargos = cargos.filter(cargo => !isEmptyCargo(cargo));
+    
+    // Обновляем индексы у товаров
+    const updatedProducts = selectedProducts.map(productItem => ({
+      ...productItem,
+      cargoIndexes: productItem.cargoIndexes
+        .map(oldIndex => oldToNewIndexMap.get(oldIndex))
+        .filter(newIdx => newIdx !== undefined) as number[]
+    }));
+    
+    return {
+      cargos: filledCargos,
+      products: updatedProducts
+    };
   };
 
   // 🔧 Функция группировки грузов для отображения
@@ -611,10 +660,13 @@ export default function Home() {
       const newSelectedProducts = [...prevSelectedProducts, productInForm];
       const newDeclaredValue = calculateTotalValue(newSelectedProducts);
       
+      // Очищаем пустые грузы согласно новой логике
+      const cleanResult = cleanEmptyCargos(updatedCargos, newSelectedProducts);
+      
       return {
         ...prev,
-        cargos: updatedCargos,
-        selectedProducts: newSelectedProducts,
+        cargos: cleanResult.cargos,
+        selectedProducts: cleanResult.products,
         declaredValue: newDeclaredValue
       };
     });
@@ -671,10 +723,13 @@ export default function Home() {
       // Пересчитываем объявленную стоимость
       const newDeclaredValue = calculateTotalValue(updatedProducts);
       
+      // Очищаем пустые грузы согласно новой логике
+      const cleanResult = cleanEmptyCargos(updatedCargos, updatedProducts);
+      
       return {
         ...prev,
-        cargos: updatedCargos,
-        selectedProducts: updatedProducts,
+        cargos: cleanResult.cargos,
+        selectedProducts: cleanResult.products,
         declaredValue: newDeclaredValue
       };
     });
@@ -723,43 +778,16 @@ export default function Home() {
       // Пересчитываем объявленную стоимость
       const newDeclaredValue = calculateTotalValue(updatedProducts);
       
-      // Создаем массив маппинга старых индексов к новым
-      const oldToNewIndexMap = new globalThis.Map<number, number>();
-      let newIndex = 0;
+      // Очищаем пустые грузы согласно новой логике
+      const cleanResult = cleanEmptyCargos(updatedCargos, updatedProducts);
       
-      updatedCargos.forEach((cargo, oldIndex) => {
-        if (!isEmptyCargo(cargo) || oldIndex === 0) {
-          oldToNewIndexMap.set(oldIndex, newIndex);
-          newIndex++;
-        }
-      });
-      
-      // Удаляем пустые грузы, но оставляем минимум один (первый)
-      const nonEmptyCargos = updatedCargos.filter((cargo, index) => 
-        !isEmptyCargo(cargo) || index === 0
-      );
-      
-      // Если все грузы оказались пустыми, оставляем только первый
-      const finalCargos = nonEmptyCargos.length === 0 
-        ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]
-        : nonEmptyCargos;
-      
-      // Обновляем индексы грузов у всех оставшихся товаров
-      const updatedProductsWithNewIndexes = updatedProducts.map(productItem => ({
-        ...productItem,
-        cargoIndexes: productItem.cargoIndexes
-          .map(oldIndex => oldToNewIndexMap.get(oldIndex))
-          .filter(newIdx => newIdx !== undefined) as number[]
-      }));
-      
-      console.log('Грузы после очистки и удаления пустых:', finalCargos.length);
-      console.log('Удалено пустых грузов:', updatedCargos.length - finalCargos.length);
-      console.log('Обновлены индексы товаров:', updatedProductsWithNewIndexes.length);
+      console.log('Грузы после очистки:', cleanResult.cargos.length);
+      console.log('Удалено пустых грузов:', updatedCargos.length - cleanResult.cargos.length);
       
       return {
         ...prev,
-        cargos: finalCargos,
-        selectedProducts: updatedProductsWithNewIndexes,
+        cargos: cleanResult.cargos,
+        selectedProducts: cleanResult.products,
         declaredValue: newDeclaredValue
       };
     });

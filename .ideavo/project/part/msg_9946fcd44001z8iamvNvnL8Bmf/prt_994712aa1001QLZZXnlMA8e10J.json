@@ -1,0 +1,26 @@
+{
+  "id": "prt_994712aa1001QLZZXnlMA8e10J",
+  "messageID": "msg_9946fcd44001z8iamvNvnL8Bmf",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01E4FQ76Akb8yhvU66AcypAD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A 10 \"const updateCargo\" app/page.tsx",
+      "description": "Find updateCargo function"
+    },
+    "output": "453:  const updateCargo = (id: string, field: string, value: number) => {\n454-    setForm(prev => ({\n455-      ...prev,\n456-      cargos: prev.cargos.map(cargo => \n457-        cargo.id === id ? { ...cargo, [field]: value } : cargo\n458-      )\n459-    }));\n460-  };\n461-\n462-  const removeCargo = (id: string) => {\n463-    if (form.cargos.length > 1) {\n",
+    "metadata": {
+      "output": "453:  const updateCargo = (id: string, field: string, value: number) => {\n454-    setForm(prev => ({\n455-      ...prev,\n456-      cargos: prev.cargos.map(cargo => \n457-        cargo.id === id ? { ...cargo, [field]: value } : cargo\n458-      )\n459-    }));\n460-  };\n461-\n462-  const removeCargo = (id: string) => {\n463-    if (form.cargos.length > 1) {\n",
+      "exit": 0,
+      "description": "Find updateCargo function"
+    },
+    "title": "cd /home/user/project && rg -n -A 10 \"const updateCargo\" app/page.tsx",
+    "time": {
+      "start": 1759132069491,
+      "end": 1759132069513
+    }
+  }
+}

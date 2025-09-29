@@ -1,0 +1,26 @@
+{
+  "id": "prt_994710fa3002RBWApyeT44W8v0",
+  "messageID": "msg_9946fcd44001z8iamvNvnL8Bmf",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01K4UJBBTJhTdW3sAQ9UqiUG",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Пересчитываем объявленную стоимость\n      const newDeclaredValue = calculateTotalValue(updatedProducts);\n      \n      return {\n        ...prev,\n        cargos: updatedCargos,\n        selectedProducts: updatedProducts,\n        declaredValue: newDeclaredValue\n      };",
+      "newString": "      // Пересчитываем объявленную стоимость\n      const newDeclaredValue = calculateTotalValue(updatedProducts);\n      \n      // Очищаем пустые грузы согласно новой логике\n      const cleanResult = cleanEmptyCargos(updatedCargos, updatedProducts);\n      \n      return {\n        ...prev,\n        cargos: cleanResult.cargos,\n        selectedProducts: cleanResult.products,\n        declaredValue: newDeclaredValue\n      };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -714,12 +714,15 @@\n   \n   // Пересчитываем объявленную стоимость\n   const newDeclaredValue = calculateTotalValue(updatedProducts);\n   \n+  // Очищаем пустые грузы согласно новой логике\n+  const cleanResult = cleanEmptyCargos(updatedCargos, updatedProducts);\n+  \n   return {\n     ...prev,\n-    cargos: updatedCargos,\n-    selectedProducts: updatedProducts,\n+    cargos: cleanResult.cargos,\n+    selectedProducts: cleanResult.products,\n     declaredValue: newDeclaredValue\n   };\n });\n \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759132063933,
+      "end": 1759132063948
+    }
+  }
+}
