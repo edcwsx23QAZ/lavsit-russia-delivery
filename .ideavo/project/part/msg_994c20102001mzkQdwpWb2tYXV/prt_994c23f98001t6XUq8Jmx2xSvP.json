@@ -1,0 +1,24 @@
+{
+  "id": "prt_994c23f98001t6XUq8Jmx2xSvP",
+  "messageID": "msg_994c20102001mzkQdwpWb2tYXV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QMkPkxgxjLwYtRrgDKavib",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "limit": 70
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import React, { useState, useRef, useEffect } from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Slider } from '@/components/ui/slider';\n00007| import { Truck, Move, RotateCw as Rotate3d } from 'lucide-react';\n00008| \n00009| interface Cargo {\n00010|   id: string;\n00011|   length: number; // в мм\n00012|   width: number;  // в мм\n00013|   height: number; // в мм\n00014|   weight: number;\n00015|   productName?: string;\n00016| }\n00017| \n00018| interface Orientation {\n00019|   length: number;\n00020|   width: number;\n00021|   height: number;\n00022|   rotationAngle: number; // в градусах\n00023|   flipped: boolean; // перевернут ли груз по высоте\n00024| }\n00025| \n00026| interface CargoPlacement {\n00027|   cargo: Cargo;\n00028|   x: number;\n00029|   y: number;\n00030|   z: number;\n00031|   orientation: Orientation;\n00032|   color: string;\n00033|   projectedVertices: Array<{x: number, y: number}>; // Для 3D отображения\n00034| }\n00035| \n00036| interface TruckVisualizationProps {\n00037|   cargos: Cargo[];\n00038|   isVisible?: boolean;\n00039| }\n00040| \n00041| // Размеры кузова в мм\n00042| const TRUCK_DIMENSIONS = {\n00043|   length: 4200,\n00044|   width: 2025,\n00045|   height: 2025\n00046| };\n00047| \n00048| // Углы поворота для размещения грузов (в градусах)\n00049| const ROTATION_ANGLES = [0, 45, 90, 135, 180, 225, 270, 315];\n00050| \n00051| // Цвета для разных грузов\n00052| const CARGO_COLORS = [\n00053|   '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FECA57',\n00054|   '#FF9FF3', '#54A0FF', '#5F27CD', '#00D2D3', '#FF9F43',\n00055|   '#10AC84', '#EE5A24', '#0984E3', '#6C5CE7', '#FD79A8'\n00056| ];\n00057| \n00058| export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {\n00059|   // Состояние для 3D трансформаций\n00060|   const [rotationX, setRotationX] = useState(15); // Поворот по оси X (наклон)\n00061|   const [rotationY, setRotationY] = useState(25); // Поворот по оси Y (горизонтальный)\n00062|   const [rotationZ, setRotationZ] = useState(0);  // Поворот по оси Z\n00063|   const [positionX, setPositionX] = useState(50); // Позиция по X (0-100%)\n00064|   const [positionY, setPositionY] = useState(50); // Позиция по Y (0-100%)\n00065|   const [scale, setScale] = useState(50); // Масштаб (0-100%)\n00066|   \n00067|   // Состояние джойстика\n00068|   const [isDragging, setIsDragging] = useState(false);\n00069|   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });\n00070|   const joystickRef = useRef<SVGSVGElement>(null);\n\n(File has more lines. Use 'offset' parameter to read beyond line 70)\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport React, { useState, useRef, useEffect } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Slider } from '@/components/ui/slider';\nimport { Truck, Move, RotateCw as Rotate3d } from 'lucide-react';\n\ninterface Cargo {\n  id: string;\n  length: number; // в мм\n  width: number;  // в мм\n  height: number; // в мм\n  weight: number;\n  productName?: string;\n}\n\ninterface Orientation {\n  length: number;\n  width: number;"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759137383103,
+      "end": 1759137383107
+    }
+  }
+}

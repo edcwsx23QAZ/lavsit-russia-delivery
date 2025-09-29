@@ -1,0 +1,25 @@
+{
+  "id": "prt_994c26d25001yMG5VwdTfAFcDv",
+  "messageID": "msg_994c20102001mzkQdwpWb2tYXV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0131Uq9tSKBAVcPqeeGC6oyP",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 500,
+      "limit": 50
+    },
+    "output": "<file>\n00501|       [0, cabinWidth * 0.8, -chassisHeight]\n00502|     ];\n00503| \n00504|     // Колеса\n00505|     const wheelRadius = 200;\n00506|     const wheelVertices = [\n00507|       // Передние колеса\n00508|       [-cabinLength * 0.8, 0, -chassisHeight],\n00509|       [-cabinLength * 0.8, cabinWidth, -chassisHeight],\n00510|       // Задние колеса\n00511|       [TRUCK_DIMENSIONS.length * 0.8, 0, -chassisHeight],\n00512|       [TRUCK_DIMENSIONS.length * 0.8, cabinWidth, -chassisHeight]\n00513|     ];\n00514| \n00515|     const rotatedCabin = applyRotations(cabinVertices);\n00516|     const rotatedChassis = applyRotations(chassisVertices);\n00517|     const rotatedWheels = applyRotations(wheelVertices);\n00518|     \n00519|     return {\n00520|       cabin: project3DTo2D(rotatedCabin),\n00521|       chassis: project3DTo2D(rotatedChassis),\n00522|       wheels: project3DTo2D(rotatedWheels),\n00523|       wheelRadius: wheelRadius * (scale / 100) * 0.15\n00524|     };\n00525|   };\n00526| \n00527|   // Обработчики джойстика\n00528|   const handleJoystickStart = (event: React.MouseEvent<SVGSVGElement>) => {\n00529|     setIsDragging(true);\n00530|     const rect = joystickRef.current?.getBoundingClientRect();\n00531|     if (rect) {\n00532|       setDragStart({\n00533|         x: event.clientX - rect.left,\n00534|         y: event.clientY - rect.top\n00535|       });\n00536|     }\n00537|   };\n00538| \n00539|   const handleJoystickMove = (event: React.MouseEvent<SVGSVGElement>) => {\n00540|     if (!isDragging || !joystickRef.current) return;\n00541|     \n00542|     const rect = joystickRef.current.getBoundingClientRect();\n00543|     const centerX = rect.width / 2;\n00544|     const centerY = rect.height / 2;\n00545|     const currentX = event.clientX - rect.left;\n00546|     const currentY = event.clientY - rect.top;\n00547|     \n00548|     const deltaX = (currentX - centerX) / centerX; // -1 до 1\n00549|     const deltaY = (currentY - centerY) / centerY; // -1 до 1\n00550|     \n\n(File has more lines. Use 'offset' parameter to read beyond line 550)\n</file>",
+    "metadata": {
+      "preview": "      [0, cabinWidth * 0.8, -chassisHeight]\n    ];\n\n    // Колеса\n    const wheelRadius = 200;\n    const wheelVertices = [\n      // Передние колеса\n      [-cabinLength * 0.8, 0, -chassisHeight],\n      [-cabinLength * 0.8, cabinWidth, -chassisHeight],\n      // Задние колеса\n      [TRUCK_DIMENSIONS.length * 0.8, 0, -chassisHeight],\n      [TRUCK_DIMENSIONS.length * 0.8, cabinWidth, -chassisHeight]\n    ];\n\n    const rotatedCabin = applyRotations(cabinVertices);\n    const rotatedChassis = applyRotations(chassisVertices);\n    const rotatedWheels = applyRotations(wheelVertices);\n    \n    return {\n      cabin: project3DTo2D(rotatedCabin),"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759137394713,
+      "end": 1759137394715
+    }
+  }
+}

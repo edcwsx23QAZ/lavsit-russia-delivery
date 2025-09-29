@@ -1,0 +1,25 @@
+{
+  "id": "prt_994c28e2b001dpYPvteQGbvy9q",
+  "messageID": "msg_994c20102001mzkQdwpWb2tYXV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01WVkreoojrdgJK1cDkc3poK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 660,
+      "limit": 10
+    },
+    "output": "<file>\n00661|               size=\"sm\"\n00662|               onClick={() => {\n00663|                 setRotationX(15);\n00664|                 setRotationY(25);\n00665|                 setRotationZ(0);\n00666|                 setPositionX(50);\n00667|                 setPositionY(50);\n00668|                 setScale(50);\n00669|               }}\n00670|               className=\"text-white border-gray-600 hover:bg-gray-700\"\n\n(File has more lines. Use 'offset' parameter to read beyond line 670)\n</file>",
+    "metadata": {
+      "preview": "              size=\"sm\"\n              onClick={() => {\n                setRotationX(15);\n                setRotationY(25);\n                setRotationZ(0);\n                setPositionX(50);\n                setPositionY(50);\n                setScale(50);\n              }}\n              className=\"text-white border-gray-600 hover:bg-gray-700\""
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759137402550,
+      "end": 1759137402552
+    }
+  }
+}

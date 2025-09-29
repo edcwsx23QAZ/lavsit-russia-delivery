@@ -1,0 +1,21 @@
+{
+  "id": "prt_994c21822001cQit1js4xCyVyt",
+  "messageID": "msg_994c20102001mzkQdwpWb2tYXV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Y6SHrZ3DmeZb1WreujM11H",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "oldString": "  // Состояние для 3D трансформаций\n  const [rotationX, setRotationX] = useState(15); // Поворот по оси X (наклон)\n  const [rotationY, setRotationY] = useState(25); // Поворот по оси Y (горизонтальный)\n  const [rotationZ, setRotationZ] = useState(0);  // Поворот по оси Z\n  const [positionX, setPositionX] = useState(50); // Позиция по X (0-100%)\n  const [positionY, setPositionY] = useState(50); // Позиция по Y (0-100%)\n  const [scale, setScale] = useState(50); // Масштаб (0-100%)",
+      "newString": "  // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n  const [rotationX, setRotationX] = useState(-15); // Поворот по оси X (наклон вверх для вида сзади-сверху)\n  const [rotationY, setRotationY] = useState(-135); // Поворот по оси Y (поворот для вида сзади 3/4)\n  const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n  const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)\n  const [positionY, setPositionY] = useState(70);  // Позиция по Y (немного ниже для лучшего вида)\n  const [scale, setScale] = useState(65); // Увеличенный масштаб для лучшей видимости"
+    },
+    "error": "Error: You must read the file /home/user/project/components/TruckVisualization.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1759137379390,
+      "end": 1759137379397
+    }
+  }
+}

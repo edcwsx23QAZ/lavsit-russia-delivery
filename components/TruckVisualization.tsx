@@ -56,13 +56,13 @@ const CARGO_COLORS = [
 ];
 
 export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {
-  // Состояние для 3D трансформаций
-  const [rotationX, setRotationX] = useState(15); // Поворот по оси X (наклон)
-  const [rotationY, setRotationY] = useState(25); // Поворот по оси Y (горизонтальный)
-  const [rotationZ, setRotationZ] = useState(0);  // Поворот по оси Z
-  const [positionX, setPositionX] = useState(50); // Позиция по X (0-100%)
-  const [positionY, setPositionY] = useState(50); // Позиция по Y (0-100%)
-  const [scale, setScale] = useState(50); // Масштаб (0-100%)
+  // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)
+  const [rotationX, setRotationX] = useState(-15); // Поворот по оси X (наклон вверх для вида сзади-сверху)
+  const [rotationY, setRotationY] = useState(-135); // Поворот по оси Y (поворот для вида сзади 3/4)
+  const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z
+  const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)
+  const [positionY, setPositionY] = useState(70);  // Позиция по Y (немного ниже для лучшего вида)
+  const [scale, setScale] = useState(65); // Увеличенный масштаб для лучшей видимости
   
   // Состояние джойстика
   const [isDragging, setIsDragging] = useState(false);
@@ -660,12 +660,12 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
               variant="outline"
               size="sm"
               onClick={() => {
-                setRotationX(15);
-                setRotationY(25);
+                setRotationX(-15);
+                setRotationY(-135);
                 setRotationZ(0);
                 setPositionX(50);
-                setPositionY(50);
-                setScale(50);
+                setPositionY(70);
+                setScale(65);
               }}
               className="text-white border-gray-600 hover:bg-gray-700"
             >
