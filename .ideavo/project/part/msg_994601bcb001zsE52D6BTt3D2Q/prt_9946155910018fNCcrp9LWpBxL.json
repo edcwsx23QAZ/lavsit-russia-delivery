@@ -1,0 +1,26 @@
+{
+  "id": "prt_9946155910018fNCcrp9LWpBxL",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_013xfFZi4Xm2ogCmjiXULmz6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -B 10 -A 5 \"onClick.*removeCargo\" app/page.tsx",
+      "description": "Find removeCargo function call"
+    },
+    "output": "2869-              </CardHeader>\n2870-              <CardContent className=\"space-y-3\">\n2871-                {form.cargos.map((cargo, index) => (\n2872-                  <div key={cargo.id} className=\"border border-gray-600 rounded p-3\">\n2873-                    <div className=\"flex justify-between items-center mb-2\">\n2874-                      <h4 className=\"text-sm font-medium text-white\">Груз №{index + 1}</h4>\n2875-                      {form.cargos.length > 1 && (\n2876-                        <Button\n2877-                          variant=\"destructive\"\n2878-                          size=\"sm\"\n2879:                          onClick={() => removeCargo(cargo.id)}\n2880-                          className=\"h-6 text-xs\"\n2881-                        >\n2882-                          Удалить\n2883-                        </Button>\n2884-                      )}\n",
+    "metadata": {
+      "output": "2869-              </CardHeader>\n2870-              <CardContent className=\"space-y-3\">\n2871-                {form.cargos.map((cargo, index) => (\n2872-                  <div key={cargo.id} className=\"border border-gray-600 rounded p-3\">\n2873-                    <div className=\"flex justify-between items-center mb-2\">\n2874-                      <h4 className=\"text-sm font-medium text-white\">Груз №{index + 1}</h4>\n2875-                      {form.cargos.length > 1 && (\n2876-                        <Button\n2877-                          variant=\"destructive\"\n2878-                          size=\"sm\"\n2879:                          onClick={() => removeCargo(cargo.id)}\n2880-                          className=\"h-6 text-xs\"\n2881-                        >\n2882-                          Удалить\n2883-                        </Button>\n2884-                      )}\n",
+      "exit": 0,
+      "description": "Find removeCargo function call"
+    },
+    "title": "cd /home/user/project && rg -n -B 10 -A 5 \"onClick.*removeCargo\" app/page.tsx",
+    "time": {
+      "start": 1759131031723,
+      "end": 1759131031734
+    }
+  }
+}

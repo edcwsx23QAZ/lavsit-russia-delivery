@@ -1,0 +1,25 @@
+{
+  "id": "prt_99460cf0e00171NS7WyvI9TcrE",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016yS7ZYmw2T5zqaeu1NM6bC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 470,
+      "limit": 60
+    },
+    "output": "<file>\n00471|   const handleProductAdd = (product: FurnitureProduct) => {\n00472|     const timestamp = Date.now();\n00473|     \n00474|     console.log(`➕ Добавление товара: ${product.name} (${product.cargoPlaces.length} грузовых мест)`);\n00475|     \n00476|     // Создаем грузовые места для товара\n00477|     const newCargos = createCargosForProduct(product, 1, timestamp);\n00478|     \n00479|     console.log('Создано новых грузов:', newCargos.length);\n00480|     console.log('Новые грузы:', newCargos.map(c => ({ id: c.id, productId: c.productId, addedAt: c.addedAt })));\n00481|     \n00482|     // Создаем объект товара в форме\n00483|     const productInForm: ProductInForm = {\n00484|       product,\n00485|       quantity: 1,\n00486|       totalPrice: product.retailPrice,\n00487|       cargoIndexes: [], // Заполним после добавления грузов\n00488|       addedAt: timestamp\n00489|     };\n00490|     \n00491|     setForm(prev => {\n00492|       // Добавляем новые грузы\n00493|       const updatedCargos = [...prev.cargos, ...newCargos];\n00494|       \n00495|       console.log('Общее количество грузов после добавления:', updatedCargos.length);\n00496|       \n00497|       // Находим индексы новых грузов\n00498|       const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n00499|       productInForm.cargoIndexes = cargoIndexes;\n00500|       \n00501|       console.log('Найденные индексы грузов:', cargoIndexes);\n00502|       \n00503|       // Пересчитываем объявленную стоимость\n00504|       const prevSelectedProducts = prev.selectedProducts || [];\n00505|       const newSelectedProducts = [...prevSelectedProducts, productInForm];\n00506|       const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n00507|       \n00508|       return {\n00509|         ...prev,\n00510|         cargos: updatedCargos,\n00511|         selectedProducts: newSelectedProducts,\n00512|         declaredValue: newDeclaredValue\n00513|       };\n00514|     });\n00515|     \n00516|     console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);\n00517|     console.log('Финальное состояние грузов:', newCargos.length);\n00518|   };\n00519| \n00520|   const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n00521|     setForm(prev => {\n00522|       console.log(`🔢 Изменение количества товара ${productId} с ${prev.selectedProducts?.find(p => p.product.id === productId && p.addedAt === addedAt)?.quantity || 0} на ${newQuantity}`);\n00523|       \n00524|       // Находим товар\n00525|       const selectedProducts = prev.selectedProducts || [];\n00526|       const productIndex = selectedProducts.findIndex(p => \n00527|         p.product.id === productId && p.addedAt === addedAt\n00528|       );\n00529|       \n00530|       if (productIndex === -1) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 530)\n</file>",
+    "metadata": {
+      "preview": "  const handleProductAdd = (product: FurnitureProduct) => {\n    const timestamp = Date.now();\n    \n    console.log(`➕ Добавление товара: ${product.name} (${product.cargoPlaces.length} грузовых мест)`);\n    \n    // Создаем грузовые места для товара\n    const newCargos = createCargosForProduct(product, 1, timestamp);\n    \n    console.log('Создано новых грузов:', newCargos.length);\n    console.log('Новые грузы:', newCargos.map(c => ({ id: c.id, productId: c.productId, addedAt: c.addedAt })));\n    \n    // Создаем объект товара в форме\n    const productInForm: ProductInForm = {\n      product,\n      quantity: 1,\n      totalPrice: product.retailPrice,\n      cargoIndexes: [], // Заполним после добавления грузов\n      addedAt: timestamp\n    };\n    "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759130997073,
+      "end": 1759130997077
+    }
+  }
+}

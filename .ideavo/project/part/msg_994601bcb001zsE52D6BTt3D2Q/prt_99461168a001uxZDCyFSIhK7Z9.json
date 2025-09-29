@@ -1,0 +1,26 @@
+{
+  "id": "prt_99461168a001uxZDCyFSIhK7Z9",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_018QWpQ1ou3QfPeLVoVBSeek",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A 10 \"setForm.*prev\" app/page.tsx | head -30",
+      "description": "Find setForm functions to locate remove handlers"
+    },
+    "output": "173:      setForm(prev => ({ ...prev, needInsurance: true }));\n174-    }\n175-  }, [form.declaredValue]);\n176-\n177-  // Проверка статуса API при загрузке страницы\n178-  useEffect(() => {\n179-    if (typeof window !== 'undefined' && isLoaded) {\n180-      checkAllAPIStatus();\n181-    }\n182-  }, [isLoaded]);\n183-\n--\n430:    setForm(prev => ({ ...prev, [field]: value }));\n431-    \n432-    clearTimeout(debounceTimer.current);\n433-    debounceTimer.current = setTimeout(() => {\n434-      searchAddresses(value, field, element);\n435-    }, 50);\n436-  };\n437-\n438-  const selectSuggestion = (suggestion: AddressSuggestion) => {\n439:    setForm(prev => ({ ...prev, [activeField]: suggestion.value }));\n440-    setShowSuggestions(false);\n441-    setSuggestions([]);\n442-  };\n443-\n444-  const addCargo = () => {\n445-    const newId = (form.cargos.length + 1).toString();\n446:    setForm(prev => ({\n447-      ...prev,\n",
+    "metadata": {
+      "output": "173:      setForm(prev => ({ ...prev, needInsurance: true }));\n174-    }\n175-  }, [form.declaredValue]);\n176-\n177-  // Проверка статуса API при загрузке страницы\n178-  useEffect(() => {\n179-    if (typeof window !== 'undefined' && isLoaded) {\n180-      checkAllAPIStatus();\n181-    }\n182-  }, [isLoaded]);\n183-\n--\n430:    setForm(prev => ({ ...prev, [field]: value }));\n431-    \n432-    clearTimeout(debounceTimer.current);\n433-    debounceTimer.current = setTimeout(() => {\n434-      searchAddresses(value, field, element);\n435-    }, 50);\n436-  };\n437-\n438-  const selectSuggestion = (suggestion: AddressSuggestion) => {\n439:    setForm(prev => ({ ...prev, [activeField]: suggestion.value }));\n440-    setShowSuggestions(false);\n441-    setSuggestions([]);\n442-  };\n443-\n444-  const addCargo = () => {\n445-    const newId = (form.cargos.length + 1).toString();\n446:    setForm(prev => ({\n447-      ...prev,\n",
+      "exit": 0,
+      "description": "Find setForm functions to locate remove handlers"
+    },
+    "title": "cd /home/user/project && rg -n -A 10 \"setForm.*prev\" app/page.tsx | head -30",
+    "time": {
+      "start": 1759131015829,
+      "end": 1759131015839
+    }
+  }
+}

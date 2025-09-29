@@ -1,0 +1,25 @@
+{
+  "id": "prt_99461a531001gQAC55TUvC2p7S",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01JN7gqiQxMYPu9jEkEXe3WW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 490,
+      "limit": 30
+    },
+    "output": "<file>\n00491|     setForm(prev => {\n00492|       // Добавляем новые грузы\n00493|       const updatedCargos = [...prev.cargos, ...newCargos];\n00494|       \n00495|       console.log('Общее количество грузов после добавления:', updatedCargos.length);\n00496|       \n00497|       // Находим индексы новых грузов\n00498|       const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n00499|       productInForm.cargoIndexes = cargoIndexes;\n00500|       \n00501|       console.log('Найденные индексы грузов:', cargoIndexes);\n00502|       \n00503|       // Пересчитываем объявленную стоимость\n00504|       const prevSelectedProducts = prev.selectedProducts || [];\n00505|       const newSelectedProducts = [...prevSelectedProducts, productInForm];\n00506|       const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n00507|       \n00508|       return {\n00509|         ...prev,\n00510|         cargos: updatedCargos,\n00511|         selectedProducts: newSelectedProducts,\n00512|         declaredValue: newDeclaredValue\n00513|       };\n00514|     });\n00515|     \n00516|     console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);\n00517|     console.log('Финальное состояние грузов:', newCargos.length);\n00518|   };\n00519| \n00520|   const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {\n\n(File has more lines. Use 'offset' parameter to read beyond line 520)\n</file>",
+    "metadata": {
+      "preview": "    setForm(prev => {\n      // Добавляем новые грузы\n      const updatedCargos = [...prev.cargos, ...newCargos];\n      \n      console.log('Общее количество грузов после добавления:', updatedCargos.length);\n      \n      // Находим индексы новых грузов\n      const cargoIndexes = findCargoIndexesForProduct(updatedCargos as CargoWithMetadata[], product.id, timestamp);\n      productInForm.cargoIndexes = cargoIndexes;\n      \n      console.log('Найденные индексы грузов:', cargoIndexes);\n      \n      // Пересчитываем объявленную стоимость\n      const prevSelectedProducts = prev.selectedProducts || [];\n      const newSelectedProducts = [...prevSelectedProducts, productInForm];\n      const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n      \n      return {\n        ...prev,\n        cargos: updatedCargos,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131052196,
+      "end": 1759131052198
+    }
+  }
+}

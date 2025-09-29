@@ -1,0 +1,26 @@
+{
+  "id": "prt_99461658a0012QTDbYhK3Tw7hl",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01XXAX1Yx6BbdZgrwFtaPLpu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -B 5 -A 15 \"const removeCargo\" app/page.tsx",
+      "description": "Find removeCargo function definition"
+    },
+    "output": "456-        cargo.id === id ? { ...cargo, [field]: value } : cargo\n457-      )\n458-    }));\n459-  };\n460-\n461:  const removeCargo = (id: string) => {\n462-    if (form.cargos.length > 1) {\n463-      setForm(prev => ({\n464-        ...prev,\n465-        cargos: prev.cargos.filter(cargo => cargo.id !== id)\n466-      }));\n467-    }\n468-  };\n469-\n470-  // 🔧 Функции управления товарами\n471-  const handleProductAdd = (product: FurnitureProduct) => {\n472-    const timestamp = Date.now();\n473-    \n474-    console.log(`➕ Добавление товара: ${product.name} (${product.cargoPlaces.length} грузовых мест)`);\n475-    \n476-    // Создаем грузовые места для товара\n",
+    "metadata": {
+      "output": "456-        cargo.id === id ? { ...cargo, [field]: value } : cargo\n457-      )\n458-    }));\n459-  };\n460-\n461:  const removeCargo = (id: string) => {\n462-    if (form.cargos.length > 1) {\n463-      setForm(prev => ({\n464-        ...prev,\n465-        cargos: prev.cargos.filter(cargo => cargo.id !== id)\n466-      }));\n467-    }\n468-  };\n469-\n470-  // 🔧 Функции управления товарами\n471-  const handleProductAdd = (product: FurnitureProduct) => {\n472-    const timestamp = Date.now();\n473-    \n474-    console.log(`➕ Добавление товара: ${product.name} (${product.cargoPlaces.length} грузовых мест)`);\n475-    \n476-    // Создаем грузовые места для товара\n",
+      "exit": 0,
+      "description": "Find removeCargo function definition"
+    },
+    "title": "cd /home/user/project && rg -n -B 5 -A 15 \"const removeCargo\" app/page.tsx",
+    "time": {
+      "start": 1759131035688,
+      "end": 1759131035702
+    }
+  }
+}

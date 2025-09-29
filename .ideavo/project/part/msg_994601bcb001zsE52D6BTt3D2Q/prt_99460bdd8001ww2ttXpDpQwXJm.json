@@ -1,0 +1,26 @@
+{
+  "id": "prt_99460bdd8001ww2ttXpDpQwXJm",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_015KjghYnjdR377D5MqRmiJJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && git checkout HEAD -- app/page.tsx lib/furniture-utils.ts",
+      "description": "Revert changes to original state"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Revert changes to original state"
+    },
+    "title": "cd /home/user/project && git checkout HEAD -- app/page.tsx lib/furniture-utils.ts",
+    "time": {
+      "start": 1759130992732,
+      "end": 1759130992755
+    }
+  }
+}

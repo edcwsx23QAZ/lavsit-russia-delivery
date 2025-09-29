@@ -1,0 +1,25 @@
+{
+  "id": "prt_994645c10001cUqj9whwjq6yE3",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01SecLEVgkt9rFgjMyXX3KvK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 468,
+      "limit": 10
+    },
+    "output": "<file>\n00469| \n00470|   // 🔧 Функции управления товарами\n00471|   const handleProductAdd = (product: FurnitureProduct) => {\n00472|     const timestamp = Date.now();\n00473|     \n00474|     console.log(`➕ Добавление товара: ${product.name} (${product.cargoPlaces.length} грузовых мест)`);\n00475|     \n00476|     // Создаем грузовые места для товара\n00477|     const newCargos = createCargosForProduct(product, 1, timestamp);\n00478|     \n\n(File has more lines. Use 'offset' parameter to read beyond line 478)\n</file>",
+    "metadata": {
+      "preview": "\n  // 🔧 Функции управления товарами\n  const handleProductAdd = (product: FurnitureProduct) => {\n    const timestamp = Date.now();\n    \n    console.log(`➕ Добавление товара: ${product.name} (${product.cargoPlaces.length} грузовых мест)`);\n    \n    // Создаем грузовые места для товара\n    const newCargos = createCargosForProduct(product, 1, timestamp);\n    "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131229790,
+      "end": 1759131229792
+    }
+  }
+}

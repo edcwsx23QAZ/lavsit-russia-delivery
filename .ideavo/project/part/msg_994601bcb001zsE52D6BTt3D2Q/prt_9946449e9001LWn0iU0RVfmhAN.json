@@ -1,0 +1,26 @@
+{
+  "id": "prt_9946449e9001LWn0iU0RVfmhAN",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01WHeurkcZveCGbpYarz5s3T",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && git checkout HEAD -- app/page.tsx",
+      "description": "Reset page.tsx to working version"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Reset page.tsx to working version"
+    },
+    "title": "cd /home/user/project && git checkout HEAD -- app/page.tsx",
+    "time": {
+      "start": 1759131225312,
+      "end": 1759131225334
+    }
+  }
+}

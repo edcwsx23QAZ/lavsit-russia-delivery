@@ -1,0 +1,26 @@
+{
+  "id": "prt_99465c6a40013d3T4iSTn8otKK",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_016g9kLCQaMSbnuVQgNvtwou",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Check if project builds"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:585:11\nType error: Object literal may only specify known properties, and 'addedAt' does not exist in type 'Cargo'.\n\n\u001b[0m \u001b[90m 583 |\u001b[39m           placeNumber\u001b[33m:\u001b[39m newCargoData\u001b[33m.\u001b[39mplaceNumber\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 584 |\u001b[39m           isFromProduct\u001b[33m:\u001b[39m newCargoData\u001b[33m.\u001b[39misFromProduct\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 585 |\u001b[39m           addedAt\u001b[33m:\u001b[39m newCargoData\u001b[33m.\u001b[39maddedAt\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 586 |\u001b[39m         }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 587 |\u001b[39m         \u001b[0m\n\u001b[0m \u001b[90m 588 |\u001b[39m         cargoIndexes\u001b[33m.\u001b[39mpush(emptyCargoIndex)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:585:11\nType error: Object literal may only specify known properties, and 'addedAt' does not exist in type 'Cargo'.\n\n\u001b[0m \u001b[90m 583 |\u001b[39m           placeNumber\u001b[33m:\u001b[39m newCargoData\u001b[33m.\u001b[39mplaceNumber\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 584 |\u001b[39m           isFromProduct\u001b[33m:\u001b[39m newCargoData\u001b[33m.\u001b[39misFromProduct\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 585 |\u001b[39m           addedAt\u001b[33m:\u001b[39m newCargoData\u001b[33m.\u001b[39maddedAt\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 586 |\u001b[39m         }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 587 |\u001b[39m         \u001b[0m\n\u001b[0m \u001b[90m 588 |\u001b[39m         cargoIndexes\u001b[33m.\u001b[39mpush(emptyCargoIndex)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Check if project builds"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759131322452,
+      "end": 1759131338354
+    }
+  }
+}

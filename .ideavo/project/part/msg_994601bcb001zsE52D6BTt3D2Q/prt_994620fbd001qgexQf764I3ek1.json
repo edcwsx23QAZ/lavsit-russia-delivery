@@ -1,0 +1,25 @@
+{
+  "id": "prt_994620fbd001qgexQf764I3ek1",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01BsLUtsPpjxZdhq4PnFSV46",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 630,
+      "limit": 40
+    },
+    "output": "<file>\n00631|       const updatedProducts = selectedProducts.map((p, index) => \n00632|         index === productIndex ? updatedProduct : p\n00633|       );\n00634|       \n00635|       // Пересчитываем объявленную стоимость\n00636|       const newDeclaredValue = calculateTotalValue(updatedProducts);\n00637|       \n00638|       return {\n00639|         ...prev,\n00640|         cargos: updatedCargos,\n00641|         selectedProducts: updatedProducts,\n00642|         declaredValue: newDeclaredValue\n00643|       };\n00644|     });\n00645|     \n00646|     console.log(`🔄 Изменено количество товара ${productId}: ${newQuantity} шт.`);\n00647|   };\n00648| \n00649|   const handleProductRemove = (productId: string, addedAt: number) => {\n00650|     setForm(prev => {\n00651|       console.log(`🗑️ Удаление товара ${productId} (addedAt: ${addedAt})`);\n00652|       console.log('Грузы до удаления:', prev.cargos.length);\n00653|       \n00654|       // Удаляем грузы товара\n00655|       const cargosWithoutProduct = removeCargosForProduct(\n00656|         prev.cargos as CargoWithMetadata[], \n00657|         productId, \n00658|         addedAt\n00659|       );\n00660|       \n00661|       console.log('Грузы после удаления:', cargosWithoutProduct.length);\n00662|       \n00663|       // Удаляем товар из списка\n00664|       const selectedProducts = prev.selectedProducts || [];\n00665|       const updatedProducts = selectedProducts.filter(p => \n00666|         !(p.product.id === productId && p.addedAt === addedAt)\n00667|       );\n00668|       \n00669|       // Пересчитываем объявленную стоимость\n00670|       const newDeclaredValue = calculateTotalValue(updatedProducts);\n\n(File has more lines. Use 'offset' parameter to read beyond line 670)\n</file>",
+    "metadata": {
+      "preview": "      const updatedProducts = selectedProducts.map((p, index) => \n        index === productIndex ? updatedProduct : p\n      );\n      \n      // Пересчитываем объявленную стоимость\n      const newDeclaredValue = calculateTotalValue(updatedProducts);\n      \n      return {\n        ...prev,\n        cargos: updatedCargos,\n        selectedProducts: updatedProducts,\n        declaredValue: newDeclaredValue\n      };\n    });\n    \n    console.log(`🔄 Изменено количество товара ${productId}: ${newQuantity} шт.`);\n  };\n\n  const handleProductRemove = (productId: string, addedAt: number) => {\n    setForm(prev => {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131079346,
+      "end": 1759131079348
+    }
+  }
+}

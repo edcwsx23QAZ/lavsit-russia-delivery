@@ -1,0 +1,26 @@
+{
+  "id": "prt_994655404001sQwMmzEepil9VR",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_014Xya7YxuqgRGb6m7JqF8g5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const groupCargosForDisplay = (cargos: Cargo[]): GroupedCargoDisplay[] => {\n    const groups = new Map<string, GroupedCargoDisplay>();",
+      "newString": "  const groupCargosForDisplay = (cargos: Cargo[]): GroupedCargoDisplay[] => {\n    const groups: Map<string, GroupedCargoDisplay> = new Map();"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -483,9 +483,9 @@\n   isEmpty: boolean;\n }\n \n const groupCargosForDisplay = (cargos: Cargo[]): GroupedCargoDisplay[] => {\n-  const groups = new Map<string, GroupedCargoDisplay>();\n+  const groups: Map<string, GroupedCargoDisplay> = new Map();\n   \n   cargos.forEach((cargo, index) => {\n     const isEmpty = isEmptyCargo(cargo);\n     \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131294149,
+      "end": 1759131294168
+    }
+  }
+}

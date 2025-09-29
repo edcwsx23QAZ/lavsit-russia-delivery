@@ -1,0 +1,25 @@
+{
+  "id": "prt_994621d4d0010NP4KgbNwpvPKR",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016YqAD72zxoiZQo5WXr8GAd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 670,
+      "limit": 20
+    },
+    "output": "<file>\n00671|       \n00672|       // Убеждаемся, что остался хотя бы один груз (если нет товаров)\n00673|       const finalCargos = cargosWithoutProduct.length === 0 \n00674|         ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n00675|         : cargosWithoutProduct;\n00676|       \n00677|       return {\n00678|         ...prev,\n00679|         cargos: finalCargos,\n00680|         selectedProducts: updatedProducts,\n00681|         declaredValue: newDeclaredValue\n00682|       };\n00683|     });\n00684|     \n00685|     console.log(`🗑️ Удален товар ${productId}`);\n00686|   };\n00687| \n00688|   // Получение sessionID для Деловых Линий\n00689|   const getDellinSessionId = async (): Promise<string | null> => {\n00690|     try {\n\n(File has more lines. Use 'offset' parameter to read beyond line 690)\n</file>",
+    "metadata": {
+      "preview": "      \n      // Убеждаемся, что остался хотя бы один груз (если нет товаров)\n      const finalCargos = cargosWithoutProduct.length === 0 \n        ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n        : cargosWithoutProduct;\n      \n      return {\n        ...prev,\n        cargos: finalCargos,\n        selectedProducts: updatedProducts,\n        declaredValue: newDeclaredValue\n      };\n    });\n    \n    console.log(`🗑️ Удален товар ${productId}`);\n  };\n\n  // Получение sessionID для Деловых Линий\n  const getDellinSessionId = async (): Promise<string | null> => {\n    try {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131082640,
+      "end": 1759131082645
+    }
+  }
+}

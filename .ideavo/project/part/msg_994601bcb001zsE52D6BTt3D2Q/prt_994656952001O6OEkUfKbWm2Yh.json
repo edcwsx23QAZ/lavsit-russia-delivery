@@ -1,0 +1,26 @@
+{
+  "id": "prt_994656952001O6OEkUfKbWm2Yh",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01LNznwywJiC2AQSeQFbuk2E",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Check if project builds"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:487:54\nType error: Only a void function can be called with the 'new' keyword.\n\n\u001b[0m \u001b[90m 485 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 486 |\u001b[39m   \u001b[36mconst\u001b[39m groupCargosForDisplay \u001b[33m=\u001b[39m (cargos\u001b[33m:\u001b[39m \u001b[33mCargo\u001b[39m[])\u001b[33m:\u001b[39m \u001b[33mGroupedCargoDisplay\u001b[39m[] \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 487 |\u001b[39m     \u001b[36mconst\u001b[39m groups\u001b[33m:\u001b[39m \u001b[33mMap\u001b[39m\u001b[33m<\u001b[39m\u001b[33mstring\u001b[39m\u001b[33m,\u001b[39m \u001b[33mGroupedCargoDisplay\u001b[39m\u001b[33m>\u001b[39m \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mMap\u001b[39m()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 488 |\u001b[39m     \u001b[0m\n\u001b[0m \u001b[90m 489 |\u001b[39m     cargos\u001b[33m.\u001b[39mforEach((cargo\u001b[33m,\u001b[39m index) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 490 |\u001b[39m       \u001b[36mconst\u001b[39m isEmpty \u001b[33m=\u001b[39m isEmptyCargo(cargo)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:487:54\nType error: Only a void function can be called with the 'new' keyword.\n\n\u001b[0m \u001b[90m 485 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 486 |\u001b[39m   \u001b[36mconst\u001b[39m groupCargosForDisplay \u001b[33m=\u001b[39m (cargos\u001b[33m:\u001b[39m \u001b[33mCargo\u001b[39m[])\u001b[33m:\u001b[39m \u001b[33mGroupedCargoDisplay\u001b[39m[] \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 487 |\u001b[39m     \u001b[36mconst\u001b[39m groups\u001b[33m:\u001b[39m \u001b[33mMap\u001b[39m\u001b[33m<\u001b[39m\u001b[33mstring\u001b[39m\u001b[33m,\u001b[39m \u001b[33mGroupedCargoDisplay\u001b[39m\u001b[33m>\u001b[39m \u001b[33m=\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mMap\u001b[39m()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 488 |\u001b[39m     \u001b[0m\n\u001b[0m \u001b[90m 489 |\u001b[39m     cargos\u001b[33m.\u001b[39mforEach((cargo\u001b[33m,\u001b[39m index) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 490 |\u001b[39m       \u001b[36mconst\u001b[39m isEmpty \u001b[33m=\u001b[39m isEmptyCargo(cargo)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Check if project builds"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759131298548,
+      "end": 1759131314037
+    }
+  }
+}

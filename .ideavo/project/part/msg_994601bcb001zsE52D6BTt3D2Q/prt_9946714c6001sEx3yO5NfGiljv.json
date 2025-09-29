@@ -1,0 +1,25 @@
+{
+  "id": "prt_9946714c6001sEx3yO5NfGiljv",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XxAKALPeUfdPVXnyEDftJT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2996,
+      "limit": 60
+    },
+    "output": "<file>\n02997|                 {form.cargos.map((cargo, index) => (\n02998|                   <div key={cargo.id} className=\"border border-gray-600 rounded p-3\">\n02999|                     <div className=\"flex justify-between items-center mb-2\">\n03000|                       <h4 className=\"text-sm font-medium text-white\">Груз №{index + 1}</h4>\n03001|                       {form.cargos.length > 1 && (\n03002|                         <Button\n03003|                           variant=\"destructive\"\n03004|                           size=\"sm\"\n03005|                           onClick={() => removeCargo(cargo.id)}\n03006|                           className=\"h-6 text-xs\"\n03007|                         >\n03008|                           Удалить\n03009|                         </Button>\n03010|                       )}\n03011|                     </div>\n03012|                     <div className=\"grid grid-cols-2 gap-2\">\n03013|                       <div>\n03014|                         <Label className=\"text-white text-xs\">Длина (см)</Label>\n03015|                         <Input\n03016|                           type=\"number\"\n03017|                           value={cargo.length || ''}\n03018|                           onChange={(e) => updateCargo(cargo.id, 'length', Number(e.target.value))}\n03019|                           className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n03020|                         />\n03021|                       </div>\n03022|                       <div>\n03023|                         <Label className=\"text-white text-xs\">Ширина (см)</Label>\n03024|                         <Input\n03025|                           type=\"number\"\n03026|                           value={cargo.width || ''}\n03027|                           onChange={(e) => updateCargo(cargo.id, 'width', Number(e.target.value))}\n03028|                           className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n03029|                         />\n03030|                       </div>\n03031|                       <div>\n03032|                         <Label className=\"text-white text-xs\">Высота (см)</Label>\n03033|                         <Input\n03034|                           type=\"number\"\n03035|                           value={cargo.height || ''}\n03036|                           onChange={(e) => updateCargo(cargo.id, 'height', Number(e.target.value))}\n03037|                           className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n03038|                         />\n03039|                       </div>\n03040|                       <div>\n03041|                         <Label className=\"text-white text-xs\">Вес (кг)</Label>\n03042|                         <Input\n03043|                           type=\"number\"\n03044|                           value={cargo.weight || ''}\n03045|                           onChange={(e) => updateCargo(cargo.id, 'weight', Number(e.target.value))}\n03046|                           className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n03047|                         />\n03048|                       </div>\n03049|                     </div>\n03050|                   </div>\n03051|                 ))}\n03052|                 <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">\n03053|                   <Plus className=\"h-3 w-3 mr-1\" />\n03054|                   Добавить груз\n03055|                 </Button>\n03056|               </CardContent>\n\n(File has more lines. Use 'offset' parameter to read beyond line 3056)\n</file>",
+    "metadata": {
+      "preview": "                {form.cargos.map((cargo, index) => (\n                  <div key={cargo.id} className=\"border border-gray-600 rounded p-3\">\n                    <div className=\"flex justify-between items-center mb-2\">\n                      <h4 className=\"text-sm font-medium text-white\">Груз №{index + 1}</h4>\n                      {form.cargos.length > 1 && (\n                        <Button\n                          variant=\"destructive\"\n                          size=\"sm\"\n                          onClick={() => removeCargo(cargo.id)}\n                          className=\"h-6 text-xs\"\n                        >\n                          Удалить\n                        </Button>\n                      )}\n                    </div>\n                    <div className=\"grid grid-cols-2 gap-2\">\n                      <div>\n                        <Label className=\"text-white text-xs\">Длина (см)</Label>\n                        <Input\n                          type=\"number\""
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131408314,
+      "end": 1759131408317
+    }
+  }
+}

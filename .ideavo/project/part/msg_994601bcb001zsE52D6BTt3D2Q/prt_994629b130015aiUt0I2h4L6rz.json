@@ -1,0 +1,25 @@
+{
+  "id": "prt_994629b130015aiUt0I2h4L6rz",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QTNFBqepe8mZLLdjQWK2uC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2870,
+      "limit": 60
+    },
+    "output": "<file>\n02871|       // Если есть расхождение между суммой компонентов и общей стоимостью, добавляем остаток\n02872|       const calculatedSum = intercityPrice + derivalPrice + arrivalPrice + packagingPrice + insurancePrice + 15;\n02873|       const remainder = basePrice - calculatedSum;\n02874|       \n02875|       if (Math.abs(remainder) > 1) { // Если расхождение больше 1 рубля\n02876|         details.push({\n02877|           service: remainder > 0 ? 'Прочие услуги' : 'Скидка',\n02878|           description: 'Дополнительные сборы и корректировки',\n02879|           price: remainder\n02880|         });\n02881|       }\n02882|     } else if (calc.company === 'Nord Wheel' && calc.details) {\n02883|       // Расшифровка для Nord Wheel согласно требованиям\n02884|       if (calc.details.totalCost) {\n02885|         details.push({\n02886|           service: 'Общая стоимость доставки',\n02887|           description: '',\n02888|           price: calc.details.totalCost\n02889|         });\n02890|       }\n02891|       if (calc.details.deliveryCost) {\n02892|         details.push({\n02893|           service: 'Стоимость перевозки',\n02894|           description: '',\n02895|           price: calc.details.deliveryCost\n02896|         });\n02897|       }\n02898|       if (calc.details.terminalCost) {\n02899|         details.push({\n02900|           service: 'Стоимость межтерминальной перевозки',\n02901|           description: '',\n02902|           price: calc.details.terminalCost\n02903|         });\n02904|       }\n02905|       if (calc.details.pickupCost) {\n02906|         details.push({\n02907|           service: 'Стоимость забора',\n02908|           description: '',\n02909|           price: calc.details.pickupCost\n02910|         });\n02911|       }\n02912|       if (calc.details.deliveryToDoorCost) {\n02913|         details.push({\n02914|           service: 'Стоимость доставки до двери',\n02915|           description: '',\n02916|           price: calc.details.deliveryToDoorCost\n02917|         });\n02918|       }\n02919|       if (calc.details.additionalServices && calc.details.additionalServices > 0) {\n02920|         details.push({\n02921|           service: 'Стоимость доп.услуг',\n02922|           description: '',\n02923|           price: calc.details.additionalServices\n02924|         });\n02925|       }\n02926| \n02927|     } else if (calc.company === 'ПЭК' && calc.details?.services) {\n02928|       // Для ПЭК используем данные из API\n02929|       calc.details.services.forEach((service: any) => {\n02930|         if (service.price > 0) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 2930)\n</file>",
+    "metadata": {
+      "preview": "      // Если есть расхождение между суммой компонентов и общей стоимостью, добавляем остаток\n      const calculatedSum = intercityPrice + derivalPrice + arrivalPrice + packagingPrice + insurancePrice + 15;\n      const remainder = basePrice - calculatedSum;\n      \n      if (Math.abs(remainder) > 1) { // Если расхождение больше 1 рубля\n        details.push({\n          service: remainder > 0 ? 'Прочие услуги' : 'Скидка',\n          description: 'Дополнительные сборы и корректировки',\n          price: remainder\n        });\n      }\n    } else if (calc.company === 'Nord Wheel' && calc.details) {\n      // Расшифровка для Nord Wheel согласно требованиям\n      if (calc.details.totalCost) {\n        details.push({\n          service: 'Общая стоимость доставки',\n          description: '',\n          price: calc.details.totalCost\n        });\n      }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131114891,
+      "end": 1759131114893
+    }
+  }
+}

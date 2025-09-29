@@ -1,0 +1,26 @@
+{
+  "id": "prt_99461377a001mVWJrP8YbLWEVm",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_019jd6bzq1buvsmMoiEGErg3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n -A 15 \"addCargo\" app/page.tsx",
+      "description": "Find addCargo function"
+    },
+    "output": "444:  const addCargo = () => {\n445-    const newId = (form.cargos.length + 1).toString();\n446-    setForm(prev => ({\n447-      ...prev,\n448-      cargos: [...prev.cargos, { id: newId, length: 0, width: 0, height: 0, weight: 0 }]\n449-    }));\n450-  };\n451-\n452-  const updateCargo = (id: string, field: string, value: number) => {\n453-    setForm(prev => ({\n454-      ...prev,\n455-      cargos: prev.cargos.map(cargo => \n456-        cargo.id === id ? { ...cargo, [field]: value } : cargo\n457-      )\n458-    }));\n459-  };\n--\n2926:                <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">\n2927-                  <Plus className=\"h-3 w-3 mr-1\" />\n2928-                  Добавить груз\n2929-                </Button>\n2930-              </CardContent>\n2931-            </Card>\n2932-\n2933-            {/* Маршрут */}\n2934-            <Card className=\"bg-gray-800 border-gray-700\">\n2935-              <CardHeader className=\"pb-3\">\n2936-                <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n2937-                  <Map className=\"h-4 w-4\" />\n2938-                  Маршрут\n2939-                </CardTitle>\n2940-              </CardHeader>\n2941-              <CardContent className=\"space-y-3\">\n",
+    "metadata": {
+      "output": "444:  const addCargo = () => {\n445-    const newId = (form.cargos.length + 1).toString();\n446-    setForm(prev => ({\n447-      ...prev,\n448-      cargos: [...prev.cargos, { id: newId, length: 0, width: 0, height: 0, weight: 0 }]\n449-    }));\n450-  };\n451-\n452-  const updateCargo = (id: string, field: string, value: number) => {\n453-    setForm(prev => ({\n454-      ...prev,\n455-      cargos: prev.cargos.map(cargo => \n456-        cargo.id === id ? { ...cargo, [field]: value } : cargo\n457-      )\n458-    }));\n459-  };\n--\n2926:                <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">\n2927-                  <Plus className=\"h-3 w-3 mr-1\" />\n2928-                  Добавить груз\n2929-                </Button>\n2930-              </CardContent>\n2931-            </Card>\n2932-\n2933-            {/* Маршрут */}\n2934-            <Card className=\"bg-gray-800 border-gray-700\">\n2935-              <CardHeader className=\"pb-3\">\n2936-                <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n2937-                  <Map className=\"h-4 w-4\" />\n2938-                  Маршрут\n2939-                </CardTitle>\n2940-              </CardHeader>\n2941-              <CardContent className=\"space-y-3\">\n",
+      "exit": 0,
+      "description": "Find addCargo function"
+    },
+    "title": "cd /home/user/project && rg -n -A 15 \"addCargo\" app/page.tsx",
+    "time": {
+      "start": 1759131023344,
+      "end": 1759131023355
+    }
+  }
+}

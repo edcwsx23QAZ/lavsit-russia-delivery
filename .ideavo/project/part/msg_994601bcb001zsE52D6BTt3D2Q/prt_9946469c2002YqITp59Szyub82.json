@@ -1,0 +1,26 @@
+{
+  "id": "prt_9946469c2002YqITp59Szyub82",
+  "messageID": "msg_994601bcb001zsE52D6BTt3D2Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01QhcMUdEerQ1StKr4HCQrJZ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  // 🔧 Функции управления товарами",
+      "newString": "  // 🔧 Функция для проверки пустых грузов (все поля равны 0)\n  const isEmptyCargo = (cargo: Cargo) => {\n    return cargo.length === 0 && cargo.width === 0 && cargo.height === 0 && cargo.weight === 0;\n  };\n\n  // 🔧 Функции управления товарами"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -466,8 +466,13 @@\n     }));\n   }\n };\n \n+// 🔧 Функция для проверки пустых грузов (все поля равны 0)\n+const isEmptyCargo = (cargo: Cargo) => {\n+  return cargo.length === 0 && cargo.width === 0 && cargo.height === 0 && cargo.weight === 0;\n+};\n+\n // 🔧 Функции управления товарами\n const handleProductAdd = (product: FurnitureProduct) => {\n   const timestamp = Date.now();\n   \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131234914,
+      "end": 1759131234930
+    }
+  }
+}
