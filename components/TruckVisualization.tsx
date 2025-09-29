@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
@@ -64,10 +64,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
   const [positionY, setPositionY] = useState(50);  // Позиция по Y (центрированная)
   const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации
   
-  // Состояние джойстика
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  const joystickRef = useRef<SVGSVGElement>(null);
+
   
   // Функция проверки ключевых слов
   const isChairOrSeat = (productName?: string) => {
@@ -524,71 +521,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
     };
   };
 
-  // Обработчики джойстика
-  const handleJoystickStart = (event: React.MouseEvent<SVGSVGElement>) => {
-    setIsDragging(true);
-    const rect = joystickRef.current?.getBoundingClientRect();
-    if (rect) {
-      setDragStart({
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top
-      });
-    }
-  };
 
-  const handleJoystickMove = (event: React.MouseEvent<SVGSVGElement>) => {
-    if (!isDragging || !joystickRef.current) return;
-    
-    const rect = joystickRef.current.getBoundingClientRect();
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const currentX = event.clientX - rect.left;
-    const currentY = event.clientY - rect.top;
-    
-    const deltaX = (currentX - centerX) / centerX; // -1 до 1
-    const deltaY = (currentY - centerY) / centerY; // -1 до 1
-    
-    // Плавное обновление углов поворота
-    setRotationY(prev => Math.max(-90, Math.min(90, prev + deltaX * 2)));
-    setRotationX(prev => Math.max(-90, Math.min(90, prev + deltaY * 2)));
-  };
-
-  const handleJoystickEnd = () => {
-    setIsDragging(false);
-  };
-
-  // Эффект для обработки движения мыши вне джойстика
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      if (isDragging && joystickRef.current) {
-        const rect = joystickRef.current.getBoundingClientRect();
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const currentX = event.clientX - rect.left;
-        const currentY = event.clientY - rect.top;
-        
-        const deltaX = (currentX - centerX) / centerX;
-        const deltaY = (currentY - centerY) / centerY;
-        
-        setRotationY(prev => Math.max(-90, Math.min(90, prev + deltaX * 2)));
-        setRotationX(prev => Math.max(-90, Math.min(90, prev + deltaY * 2)));
-      }
-    };
-
-    const handleMouseUp = () => {
-      setIsDragging(false);
-    };
-
-    if (isDragging) {
-      document.addEventListener('mousemove', handleMouseMove);
-      document.addEventListener('mouseup', handleMouseUp);
-    }
-
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, [isDragging]);
 
   // Функция для получения первых двух слов из названия товара
   const getProductShortName = (productName?: string) => {
@@ -735,51 +668,55 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                 </Button>
               </div>
               
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                {/* Джойстик для поворотов */}
-                <div className="space-y-2">
-                  <label className="text-sm text-gray-300 flex items-center gap-2">
-                    <Rotate3d className="h-3 w-3" />
-                    Поворот (X: {rotationX.toFixed(0)}°, Y: {rotationY.toFixed(0)}°)
-                  </label>
-                  <div className="flex justify-center">
-                    <svg
-                      ref={joystickRef}
-                      width="80"
-                      height="80"
-                      className="border border-gray-600 rounded-full bg-gray-900 cursor-move"
-                      onMouseDown={handleJoystickStart}
-                      onMouseMove={handleJoystickMove}
-                      onMouseUp={handleJoystickEnd}
-                    >
-                      {/* Внешний круг */}
-                      <circle cx="40" cy="40" r="35" fill="none" stroke="#4B5563" strokeWidth="2" />
-                      
-                      {/* Центральные оси */}
-                      <line x1="40" y1="10" x2="40" y2="70" stroke="#6B7280" strokeWidth="1" strokeDashArray="2,2" />
-                      <line x1="10" y1="40" x2="70" y2="40" stroke="#6B7280" strokeWidth="1" strokeDashArray="2,2" />
-                      
-                      {/* Джойстик */}
-                      <circle 
-                        cx={40 + (rotationY / 90) * 25} 
-                        cy={40 + (rotationX / 90) * 25} 
-                        r="8" 
-                        fill={isDragging ? '#3B82F6' : '#6B7280'} 
-                        stroke="white" 
-                        strokeWidth="2"
-                        className="transition-colors"
-                      />
-                      
-                      {/* Указатели осей */}
-                      <text x="40" y="8" textAnchor="middle" fill="#9CA3AF" fontSize="8">-X</text>
-                      <text x="40" y="76" textAnchor="middle" fill="#9CA3AF" fontSize="8">+X</text>
-                      <text x="8" y="44" textAnchor="middle" fill="#9CA3AF" fontSize="8">-Y</text>
-                      <text x="72" y="44" textAnchor="middle" fill="#9CA3AF" fontSize="8">+Y</text>
-                    </svg>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                {/* Слайдеры поворотов */}
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-300 flex items-center gap-2">
+                      <Rotate3d className="h-3 w-3" />
+                      Поворот вокруг оси X: {rotationX.toFixed(0)}°
+                    </label>
+                    <Slider
+                      value={[rotationX]}
+                      onValueChange={(value) => setRotationX(value[0])}
+                      max={360}
+                      min={-360}
+                      step={5}
+                      className="w-full"
+                    />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-300 flex items-center gap-2">
+                      <Rotate3d className="h-3 w-3" />
+                      Поворот вокруг оси Y: {rotationY.toFixed(0)}°
+                    </label>
+                    <Slider
+                      value={[rotationY]}
+                      onValueChange={(value) => setRotationY(value[0])}
+                      max={360}
+                      min={-360}
+                      step={5}
+                      className="w-full"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-sm text-gray-300">
+                      Поворот вокруг оси Z: {rotationZ.toFixed(0)}°
+                    </label>
+                    <Slider
+                      value={[rotationZ]}
+                      onValueChange={(value) => setRotationZ(value[0])}
+                      max={360}
+                      min={-360}
+                      step={5}
+                      className="w-full"
+                    />
                   </div>
                 </div>
                 
-                {/* Слайдеры позиции */}
+                {/* Слайдеры позиции и масштаба */}
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <label className="text-sm text-gray-300 flex items-center gap-2">
@@ -809,10 +746,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                       className="w-full"
                     />
                   </div>
-                </div>
-                
-                {/* Слайдеры масштаба и Z-поворота */}
-                <div className="space-y-4">
+
                   <div className="space-y-2">
                     <label className="text-sm text-gray-300">
                       Масштаб: {scale.toFixed(0)}%
@@ -823,20 +757,6 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                       max={100}
                       min={10}
                       step={1}
-                      className="w-full"
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-300">
-                      Поворот Z: {rotationZ.toFixed(0)}°
-                    </label>
-                    <Slider
-                      value={[rotationZ]}
-                      onValueChange={(value) => setRotationZ(value[0])}
-                      max={180}
-                      min={-180}
-                      step={5}
                       className="w-full"
                     />
                   </div>

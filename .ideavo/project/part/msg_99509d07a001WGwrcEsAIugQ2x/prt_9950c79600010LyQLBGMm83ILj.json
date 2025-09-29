@@ -1,0 +1,26 @@
+{
+  "id": "prt_9950c79600010LyQLBGMm83ILj",
+  "messageID": "msg_99509d07a001WGwrcEsAIugQ2x",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01DocHoTVx192raAaA3xVjW8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -n \"calculations\\|Результаты расчетов\\|results\" /home/user/project/app/page.tsx",
+      "description": "Find calculation results display"
+    },
+    "output": "118:  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n2724:      const results = await Promise.all([\n2733:      const sortedResults = results\n2736:        .concat(results.filter(result => result.error));\n2749:      const allExpanded = calculations.reduce((acc, calc) => {\n3354:            {calculations.length > 0 && (\n3368:                {calculations.map((calc, index) => (\n3522:            {calculations.length > 0 && (\n",
+    "metadata": {
+      "output": "118:  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n2724:      const results = await Promise.all([\n2733:      const sortedResults = results\n2736:        .concat(results.filter(result => result.error));\n2749:      const allExpanded = calculations.reduce((acc, calc) => {\n3354:            {calculations.length > 0 && (\n3368:                {calculations.map((calc, index) => (\n3522:            {calculations.length > 0 && (\n",
+      "exit": 0,
+      "description": "Find calculation results display"
+    },
+    "title": "grep -n \"calculations\\|Результаты расчетов\\|results\" /home/user/project/app/page.tsx",
+    "time": {
+      "start": 1759142248223,
+      "end": 1759142248228
+    }
+  }
+}

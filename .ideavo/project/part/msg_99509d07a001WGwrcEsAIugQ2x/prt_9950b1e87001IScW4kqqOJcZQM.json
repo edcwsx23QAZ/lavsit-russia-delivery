@@ -1,0 +1,26 @@
+{
+  "id": "prt_9950b1e87001IScW4kqqOJcZQM",
+  "messageID": "msg_99509d07a001WGwrcEsAIugQ2x",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_011TKR6h1Ndmn6QQCRgEaFeE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "oldString": "import React, { useState, useRef, useEffect } from 'react';",
+      "newString": "import React, { useState } from 'react';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -1,7 +1,7 @@\n 'use client';\n \n-import React, { useState, useRef, useEffect } from 'react';\n+import React, { useState } from 'react';\n import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n import { Button } from '@/components/ui/button';\n import { Slider } from '@/components/ui/slider';\n import { Truck, Move, RotateCw as Rotate3d } from 'lucide-react';\n"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759142159171,
+      "end": 1759142159180
+    }
+  }
+}

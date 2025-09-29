@@ -1,0 +1,26 @@
+{
+  "id": "prt_9950a00bd001Mg168rU3phcG31",
+  "messageID": "msg_99509d07a001WGwrcEsAIugQ2x",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_015MpsSx2Z48Y1cQaTVsSXae",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -n \"handleJoystick\" /home/user/project/components/TruckVisualization.tsx",
+      "description": "Find joystick handler functions"
+    },
+    "output": "528:  const handleJoystickStart = (event: React.MouseEvent<SVGSVGElement>) => {\n539:  const handleJoystickMove = (event: React.MouseEvent<SVGSVGElement>) => {\n556:  const handleJoystickEnd = () => {\n751:                      onMouseDown={handleJoystickStart}\n752:                      onMouseMove={handleJoystickMove}\n753:                      onMouseUp={handleJoystickEnd}\n",
+    "metadata": {
+      "output": "528:  const handleJoystickStart = (event: React.MouseEvent<SVGSVGElement>) => {\n539:  const handleJoystickMove = (event: React.MouseEvent<SVGSVGElement>) => {\n556:  const handleJoystickEnd = () => {\n751:                      onMouseDown={handleJoystickStart}\n752:                      onMouseMove={handleJoystickMove}\n753:                      onMouseUp={handleJoystickEnd}\n",
+      "exit": 0,
+      "description": "Find joystick handler functions"
+    },
+    "title": "grep -n \"handleJoystick\" /home/user/project/components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759142085946,
+      "end": 1759142085964
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "prt_9950b77a9001RwMZznAZb54tEl",
+  "messageID": "msg_99509d07a001WGwrcEsAIugQ2x",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01HeJj4zdiM5X1xUyDVnZbBv",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "oldString": "                <Button\n                  variant=\"outline\"\n                  size=\"sm\"\n                  onClick={() => {\n                    setRotationX(0);\n                    setRotationY(-45);\n                    setRotationZ(0);\n                    setPositionX(50);\n                    setPositionY(50);\n                    setScale(70);\n                  }}\n                  className=\"text-white border-gray-600 hover:bg-gray-700\"\n                >\n                  Сброс\n                </Button>",
+      "newString": "                <Button\n                  variant=\"outline\"\n                  size=\"sm\"\n                  onClick={() => {\n                    setRotationX(0);\n                    setRotationY(-45);\n                    setRotationZ(0);\n                    setPositionX(50);\n                    setPositionY(50);\n                    setScale(70);\n                  }}\n                  className=\"text-white border-gray-600 hover:bg-gray-700\"\n                >\n                  Сброс\n                </Button>"
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1759142183876,
+      "end": 1759142183876
+    }
+  }
+}
