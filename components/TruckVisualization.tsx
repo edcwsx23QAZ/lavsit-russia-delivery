@@ -60,9 +60,10 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
   const [rotationX, setRotationX] = useState(0);   // Поворот по оси X (0° - пол параллелен X)
   const [rotationY, setRotationY] = useState(50); // Поворот по оси Y (изометрический вид 3/4)
   const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z
-  const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)
-  const [positionY, setPositionY] = useState(50);  // Позиция по Y (центрированная)
+  const [positionX, setPositionX] = useState(38);  // Позиция по X (0-100%)
+  const [positionY, setPositionY] = useState(71);  // Позиция по Y (центрированная)
   const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации
+  const [showControls, setShowControls] = useState(false); // Показывать ли элементы управления
   
 
   
@@ -591,24 +592,35 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                 <Rotate3d className="h-4 w-4" />
                 🎮 Управление 3D моделью
               </h4>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => {
-                  setRotationX(0);
-                  setRotationY(50);
-                  setRotationZ(0);
-                  setPositionX(50);
-                  setPositionY(50);
-                  setScale(70);
-                }}
-                className="text-white border-gray-600 hover:bg-gray-700"
-              >
-                Сброс
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowControls(!showControls)}
+                  className="text-white border-gray-600 hover:bg-gray-700"
+                >
+                  {showControls ? 'Скрыть' : 'Покрутить'}
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setRotationX(0);
+                    setRotationY(50);
+                    setRotationZ(0);
+                    setPositionX(38);
+                    setPositionY(71);
+                    setScale(70);
+                  }}
+                  className="text-black bg-white border-gray-300 hover:bg-gray-100"
+                >
+                  Сброс
+                </Button>
+              </div>
             </div>
             
-            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+            {showControls && (
+              <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mt-4">
               {/* Поворот X */}
               <div className="space-y-2">
                 <label className="text-xs text-gray-300 flex items-center gap-1">
@@ -701,7 +713,8 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                   className="w-full"
                 />
               </div>
-            </div>
+              </div>
+            )}
           </div>
 
 
@@ -710,7 +723,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
             <svg 
               viewBox="0 0 1200 600" 
               className="w-full h-[600px] border border-gray-600 bg-gray-950"
-                style={{ maxHeight: '480px' }}
+
               >
                 {/* Размеры кузова */}
                 <text x="600" y="20" textAnchor="middle" fill="#9CA3AF" fontSize="12" fontWeight="bold">

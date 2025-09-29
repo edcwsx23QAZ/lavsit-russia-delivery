@@ -1,0 +1,50 @@
+{
+  "id": "prt_995d40f1c001qzFHPJ62qynAPS",
+  "messageID": "msg_995d36273001IAF85dqpchHrN0",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01BCKRhEWG1Xu7rfpPtru6PN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "                  setPositionX(50);\n                  setPositionY(50);",
+          "newString": "                  setPositionX(38);\n                  setPositionY(71);"
+        },
+        {
+          "oldString": "              <Button\n                variant=\"outline\"\n                size=\"sm\"\n                onClick={() => {\n                  setRotationX(0);\n                  setRotationY(50);\n                  setRotationZ(0);\n                  setPositionX(38);\n                  setPositionY(71);\n                  setScale(70);\n                }}\n                className=\"text-white border-gray-600 hover:bg-gray-700\"\n              >\n                Сброс\n              </Button>",
+          "newString": "              <div className=\"flex gap-2\">\n                <Button\n                  variant=\"outline\"\n                  size=\"sm\"\n                  onClick={() => setShowControls(!showControls)}\n                  className=\"text-white border-gray-600 hover:bg-gray-700\"\n                >\n                  {showControls ? 'Скрыть' : 'Покрутить'}\n                </Button>\n                <Button\n                  variant=\"outline\"\n                  size=\"sm\"\n                  onClick={() => {\n                    setRotationX(0);\n                    setRotationY(50);\n                    setRotationZ(0);\n                    setPositionX(38);\n                    setPositionY(71);\n                    setScale(70);\n                  }}\n                  className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n                >\n                  Сброс\n                </Button>\n              </div>"
+        },
+        {
+          "oldString": "            <div className=\"grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4\">",
+          "newString": "            {showControls && (\n              <div className=\"grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mt-4\">"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -598,10 +598,10 @@\n   onClick={() => {\n     setRotationX(0);\n     setRotationY(50);\n     setRotationZ(0);\n-    setPositionX(50);\n-    setPositionY(50);\n+    setPositionX(38);\n+    setPositionY(71);\n     setScale(70);\n   }}\n   className=\"text-white border-gray-600 hover:bg-gray-700\"\n >\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -591,23 +591,33 @@\n   <h4 className=\"text-white font-medium flex items-center gap-2\">\n     <Rotate3d className=\"h-4 w-4\" />\n     🎮 Управление 3D моделью\n   </h4>\n-  <Button\n-    variant=\"outline\"\n-    size=\"sm\"\n-    onClick={() => {\n-      setRotationX(0);\n-      setRotationY(50);\n-      setRotationZ(0);\n-      setPositionX(38);\n-      setPositionY(71);\n-      setScale(70);\n-    }}\n-    className=\"text-white border-gray-600 hover:bg-gray-700\"\n-  >\n-    Сброс\n-  </Button>\n+  <div className=\"flex gap-2\">\n+    <Button\n+      variant=\"outline\"\n+      size=\"sm\"\n+      onClick={() => setShowControls(!showControls)}\n+      className=\"text-white border-gray-600 hover:bg-gray-700\"\n+    >\n+      {showControls ? 'Скрыть' : 'Покрутить'}\n+    </Button>\n+    <Button\n+      variant=\"outline\"\n+      size=\"sm\"\n+      onClick={() => {\n+        setRotationX(0);\n+        setRotationY(50);\n+        setRotationZ(0);\n+        setPositionX(38);\n+        setPositionY(71);\n+        setScale(70);\n+      }}\n+      className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n+    >\n+      Сброс\n+    </Button>\n+  </div>\n </div>\n \n <div className=\"grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4\">\n   {/* Поворот X */}\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -618,9 +618,10 @@\n     </Button>\n   </div>\n </div>\n \n-<div className=\"grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4\">\n+{showControls && (\n+  <div className=\"grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mt-4\">\n   {/* Поворот X */}\n   <div className=\"space-y-2\">\n     <label className=\"text-xs text-gray-300 flex items-center gap-1\">\n       <Rotate3d className=\"h-3 w-3\" />\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155335665,
+      "end": 1759155335694
+    }
+  }
+}

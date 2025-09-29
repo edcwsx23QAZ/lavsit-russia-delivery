@@ -1,0 +1,25 @@
+{
+  "id": "prt_995d44316001cIkpFwBQg1FZJZ",
+  "messageID": "msg_995d36273001IAF85dqpchHrN0",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01NFAEKBrFprb56jWtn48aSS",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 720,
+      "limit": 30
+    },
+    "output": "<file>\n00721|           <div className=\"bg-gray-900 p-4 rounded-lg\">\n00722|             <svg \n00723|               viewBox=\"0 0 1200 600\" \n00724|               className=\"w-full h-[600px] border border-gray-600 bg-gray-950\"\n00725|                 style={{ maxHeight: '480px' }}\n00726|               >\n00727|                 {/* Размеры кузова */}\n00728|                 <text x=\"600\" y=\"20\" textAnchor=\"middle\" fill=\"#9CA3AF\" fontSize=\"12\" fontWeight=\"bold\">\n00729|                   🚛 Грузовик с кузовом 4200×2025×2025 мм\n00730|                 </text>\n00731|                 \n00732|                 {/* Кабина грузовика */}\n00733|                 <g stroke=\"#10B981\" strokeWidth=\"2\" fill=\"#065F46\" fillOpacity=\"0.3\">\n00734|                   {/* Передняя стенка кабины */}\n00735|                   <polygon \n00736|                     points={`${truckComponents.cabin[0].x},${truckComponents.cabin[0].y} ${truckComponents.cabin[1].x},${truckComponents.cabin[1].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y} ${truckComponents.cabin[4].x},${truckComponents.cabin[4].y}`}\n00737|                   />\n00738|                   \n00739|                   {/* Правая боковая стенка кабины */}\n00740|                   <polygon \n00741|                     points={`${truckComponents.cabin[1].x},${truckComponents.cabin[1].y} ${truckComponents.cabin[2].x},${truckComponents.cabin[2].y} ${truckComponents.cabin[6].x},${truckComponents.cabin[6].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y}`}\n00742|                     fillOpacity=\"0.4\"\n00743|                   />\n00744|                   \n00745|                   {/* Верх кабины */}\n00746|                   <polygon \n00747|                     points={`${truckComponents.cabin[4].x},${truckComponents.cabin[4].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y} ${truckComponents.cabin[6].x},${truckComponents.cabin[6].y} ${truckComponents.cabin[7].x},${truckComponents.cabin[7].y}`}\n00748|                     fillOpacity=\"0.5\"\n00749|                   />\n00750|                   \n\n(File has more lines. Use 'offset' parameter to read beyond line 750)\n</file>",
+    "metadata": {
+      "preview": "          <div className=\"bg-gray-900 p-4 rounded-lg\">\n            <svg \n              viewBox=\"0 0 1200 600\" \n              className=\"w-full h-[600px] border border-gray-600 bg-gray-950\"\n                style={{ maxHeight: '480px' }}\n              >\n                {/* Размеры кузова */}\n                <text x=\"600\" y=\"20\" textAnchor=\"middle\" fill=\"#9CA3AF\" fontSize=\"12\" fontWeight=\"bold\">\n                  🚛 Грузовик с кузовом 4200×2025×2025 мм\n                </text>\n                \n                {/* Кабина грузовика */}\n                <g stroke=\"#10B981\" strokeWidth=\"2\" fill=\"#065F46\" fillOpacity=\"0.3\">\n                  {/* Передняя стенка кабины */}\n                  <polygon \n                    points={`${truckComponents.cabin[0].x},${truckComponents.cabin[0].y} ${truckComponents.cabin[1].x},${truckComponents.cabin[1].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y} ${truckComponents.cabin[4].x},${truckComponents.cabin[4].y}`}\n                  />\n                  \n                  {/* Правая боковая стенка кабины */}\n                  <polygon "
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155340630,
+      "end": 1759155340633
+    }
+  }
+}

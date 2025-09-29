@@ -1,0 +1,25 @@
+{
+  "id": "prt_995d45291001qmderemhIiSSBu",
+  "messageID": "msg_995d36273001IAF85dqpchHrN0",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01W44Q3jabAKc7nKjff6VnTs",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 710,
+      "limit": 15
+    },
+    "output": "<file>\n00711|                   min={10}\n00712|                   step={1}\n00713|                   className=\"w-full\"\n00714|                 />\n00715|               </div>\n00716|             </div>\n00717|           </div>\n00718| \n00719| \n00720|           {/* 3D SVG визуализация кузова - увеличенная на всю ширину */}\n00721|           <div className=\"bg-gray-900 p-4 rounded-lg\">\n00722|             <svg \n00723|               viewBox=\"0 0 1200 600\" \n00724|               className=\"w-full h-[600px] border border-gray-600 bg-gray-950\"\n00725|                 style={{ maxHeight: '480px' }}\n\n(File has more lines. Use 'offset' parameter to read beyond line 725)\n</file>",
+    "metadata": {
+      "preview": "                  min={10}\n                  step={1}\n                  className=\"w-full\"\n                />\n              </div>\n            </div>\n          </div>\n\n\n          {/* 3D SVG визуализация кузова - увеличенная на всю ширину */}\n          <div className=\"bg-gray-900 p-4 rounded-lg\">\n            <svg \n              viewBox=\"0 0 1200 600\" \n              className=\"w-full h-[600px] border border-gray-600 bg-gray-950\"\n                style={{ maxHeight: '480px' }}"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155344682,
+      "end": 1759155344700
+    }
+  }
+}

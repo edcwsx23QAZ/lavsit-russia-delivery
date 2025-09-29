@@ -1,0 +1,25 @@
+{
+  "id": "prt_995d38690001a6n3msKU67PWK8",
+  "messageID": "msg_995d36273001IAF85dqpchHrN0",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Bh4ZCy6fno8xYWoJhh1pTv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 58,
+      "limit": 15
+    },
+    "output": "<file>\n00059|   // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n00060|   const [rotationX, setRotationX] = useState(0);   // Поворот по оси X (0° - пол параллелен X)\n00061|   const [rotationY, setRotationY] = useState(50); // Поворот по оси Y (изометрический вид 3/4)\n00062|   const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n00063|   const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)\n00064|   const [positionY, setPositionY] = useState(50);  // Позиция по Y (центрированная)\n00065|   const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации\n00066|   \n00067| \n00068|   \n00069|   // Функция проверки ключевых слов\n00070|   const isChairOrSeat = (productName?: string) => {\n00071|     if (!productName) return false;\n00072|     const lowerName = productName.toLowerCase();\n00073|     return lowerName.includes('стул') || lowerName.includes('кресло');\n\n(File has more lines. Use 'offset' parameter to read beyond line 73)\n</file>",
+    "metadata": {
+      "preview": "  // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n  const [rotationX, setRotationX] = useState(0);   // Поворот по оси X (0° - пол параллелен X)\n  const [rotationY, setRotationY] = useState(50); // Поворот по оси Y (изометрический вид 3/4)\n  const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n  const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)\n  const [positionY, setPositionY] = useState(50);  // Позиция по Y (центрированная)\n  const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации\n  \n\n  \n  // Функция проверки ключевых слов\n  const isChairOrSeat = (productName?: string) => {\n    if (!productName) return false;\n    const lowerName = productName.toLowerCase();\n    return lowerName.includes('стул') || lowerName.includes('кресло');"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155292884,
+      "end": 1759155292888
+    }
+  }
+}

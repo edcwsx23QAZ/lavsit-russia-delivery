@@ -1,0 +1,42 @@
+{
+  "id": "prt_995d46221001WMK44kt90OMJVT",
+  "messageID": "msg_995d36273001IAF85dqpchHrN0",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01XU22LgG9GWWmEMBMAoShaP",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "              </div>\n            </div>\n          </div>",
+          "newString": "              </div>\n              </div>\n            )}\n          </div>"
+        },
+        {
+          "oldString": "                style={{ maxHeight: '480px' }}",
+          "newString": ""
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -712,9 +712,10 @@\n         step={1}\n         className=\"w-full\"\n       />\n     </div>\n-  </div>\n+    </div>\n+  )}\n </div>\n \n \n {/* 3D SVG визуализация кузова - увеличенная на всю ширину */}\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -722,9 +722,9 @@\n <div className=\"bg-gray-900 p-4 rounded-lg\">\n   <svg \n     viewBox=\"0 0 1200 600\" \n     className=\"w-full h-[600px] border border-gray-600 bg-gray-950\"\n-      style={{ maxHeight: '480px' }}\n+\n     >\n       {/* Размеры кузова */}\n       <text x=\"600\" y=\"20\" textAnchor=\"middle\" fill=\"#9CA3AF\" fontSize=\"12\" fontWeight=\"bold\">\n         🚛 Грузовик с кузовом 4200×2025×2025 мм\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155349668,
+      "end": 1759155349689
+    }
+  }
+}

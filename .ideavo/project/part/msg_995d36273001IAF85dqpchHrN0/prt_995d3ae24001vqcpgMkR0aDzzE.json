@@ -1,0 +1,42 @@
+{
+  "id": "prt_995d3ae24001vqcpgMkR0aDzzE",
+  "messageID": "msg_995d36273001IAF85dqpchHrN0",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_016rAKgQrnycHqX3d8MNyiJh",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "  const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)\n  const [positionY, setPositionY] = useState(50);  // Позиция по Y (центрированная)",
+          "newString": "  const [positionX, setPositionX] = useState(38);  // Позиция по X (0-100%)\n  const [positionY, setPositionY] = useState(71);  // Позиция по Y (центрированная)"
+        },
+        {
+          "oldString": "  const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации",
+          "newString": "  const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации\n  const [showControls, setShowControls] = useState(false); // Показывать ли элементы управления"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -59,10 +59,10 @@\n // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n const [rotationX, setRotationX] = useState(0);   // Поворот по оси X (0° - пол параллелен X)\n const [rotationY, setRotationY] = useState(50); // Поворот по оси Y (изометрический вид 3/4)\n const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n-const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)\n-const [positionY, setPositionY] = useState(50);  // Позиция по Y (центрированная)\n+const [positionX, setPositionX] = useState(38);  // Позиция по X (0-100%)\n+const [positionY, setPositionY] = useState(71);  // Позиция по Y (центрированная)\n const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации\n \n \n \n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -62,8 +62,9 @@\n const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n const [positionX, setPositionX] = useState(38);  // Позиция по X (0-100%)\n const [positionY, setPositionY] = useState(71);  // Позиция по Y (центрированная)\n const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации\n+const [showControls, setShowControls] = useState(false); // Показывать ли элементы управления\n \n \n \n // Функция проверки ключевых слов\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155311972,
+      "end": 1759155311998
+    }
+  }
+}

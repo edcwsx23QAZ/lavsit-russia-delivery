@@ -1,0 +1,25 @@
+{
+  "id": "prt_995d3fc61001sCRQAD2kMQEXej",
+  "messageID": "msg_995d36273001IAF85dqpchHrN0",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_014LuuW5QQqY77Ud6iKEvbWo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 588,
+      "limit": 40
+    },
+    "output": "<file>\n00589|           <div className=\"bg-gray-800 p-4 rounded-lg\">\n00590|             <div className=\"flex items-center justify-between mb-4\">\n00591|               <h4 className=\"text-white font-medium flex items-center gap-2\">\n00592|                 <Rotate3d className=\"h-4 w-4\" />\n00593|                 🎮 Управление 3D моделью\n00594|               </h4>\n00595|               <Button\n00596|                 variant=\"outline\"\n00597|                 size=\"sm\"\n00598|                 onClick={() => {\n00599|                   setRotationX(0);\n00600|                   setRotationY(50);\n00601|                   setRotationZ(0);\n00602|                   setPositionX(50);\n00603|                   setPositionY(50);\n00604|                   setScale(70);\n00605|                 }}\n00606|                 className=\"text-white border-gray-600 hover:bg-gray-700\"\n00607|               >\n00608|                 Сброс\n00609|               </Button>\n00610|             </div>\n00611|             \n00612|             <div className=\"grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4\">\n00613|               {/* Поворот X */}\n00614|               <div className=\"space-y-2\">\n00615|                 <label className=\"text-xs text-gray-300 flex items-center gap-1\">\n00616|                   <Rotate3d className=\"h-3 w-3\" />\n00617|                   Поворот X: {rotationX.toFixed(0)}°\n00618|                 </label>\n00619|                 <Slider\n00620|                   value={[rotationX]}\n00621|                   onValueChange={(value) => setRotationX(value[0])}\n00622|                   max={360}\n00623|                   min={-360}\n00624|                   step={5}\n00625|                   className=\"w-full\"\n00626|                 />\n00627|               </div>\n00628|               \n\n(File has more lines. Use 'offset' parameter to read beyond line 628)\n</file>",
+    "metadata": {
+      "preview": "          <div className=\"bg-gray-800 p-4 rounded-lg\">\n            <div className=\"flex items-center justify-between mb-4\">\n              <h4 className=\"text-white font-medium flex items-center gap-2\">\n                <Rotate3d className=\"h-4 w-4\" />\n                🎮 Управление 3D моделью\n              </h4>\n              <Button\n                variant=\"outline\"\n                size=\"sm\"\n                onClick={() => {\n                  setRotationX(0);\n                  setRotationY(50);\n                  setRotationZ(0);\n                  setPositionX(50);\n                  setPositionY(50);\n                  setScale(70);\n                }}\n                className=\"text-white border-gray-600 hover:bg-gray-700\"\n              >\n                Сброс"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155323124,
+      "end": 1759155323130
+    }
+  }
+}
