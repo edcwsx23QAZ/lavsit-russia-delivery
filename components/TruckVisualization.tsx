@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Truck } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Truck, RotateCcw, RotateCw } from 'lucide-react';
 
 interface Cargo {
   id: string;
@@ -54,6 +55,7 @@ const CARGO_COLORS = [
 ];
 
 export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {
+  const [rotationAngle, setRotationAngle] = useState(0); // Угол поворота в градусах
   
   // Функция проверки ключевых слов
   const isChairOrSeat = (productName?: string) => {
@@ -383,11 +385,21 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
       [x - orientation.width * Math.sin(angle), y + orientation.width * Math.cos(angle), z + orientation.height]
     ];
 
-    // Изометрическая проекция (вид сзади 3/4)
-    return vertices3D.map(([x3d, y3d, z3d]) => {
+    // Применяем поворот камеры
+    const cameraAngle = rotationAngle * Math.PI / 180;
+    const rotatedVertices = vertices3D.map(([x3d, y3d, z3d]) => {
+      const rotX = x3d * Math.cos(cameraAngle) - y3d * Math.sin(cameraAngle);
+      const rotY = x3d * Math.sin(cameraAngle) + y3d * Math.cos(cameraAngle);
+      return [rotX, rotY, z3d];
+    });
+
+    // Изометрическая проекция с центрированием
+    return rotatedVertices.map(([x3d, y3d, z3d]) => {
       const scale = 0.08; // Масштаб для отображения
-      const offsetX = 50;
-      const offsetY = 300;
+      const svgWidth = 600;
+      const svgHeight = 400;
+      const offsetX = svgWidth / 2; // Центрируем по горизонтали
+      const offsetY = svgHeight * 0.75; // Смещаем вниз для лучшего вида
       
       // Изометрия: поворот на 45° по Y, потом наклон на 30°
       const projX = (x3d - y3d) * Math.cos(Math.PI / 6) * scale + offsetX;
@@ -395,6 +407,51 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
       
       return { x: projX, y: projY };
     });
+  };
+
+  // Вычисление вершин кузова с учетом поворота
+  const calculateTruckVertices = () => {
+    const vertices3D = [
+      // Нижние вершины кузова
+      [0, 0, 0],
+      [TRUCK_DIMENSIONS.length, 0, 0],
+      [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, 0],
+      [0, TRUCK_DIMENSIONS.width, 0],
+      // Верхние вершины кузова
+      [0, 0, TRUCK_DIMENSIONS.height],
+      [TRUCK_DIMENSIONS.length, 0, TRUCK_DIMENSIONS.height],
+      [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height],
+      [0, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height]
+    ];
+
+    // Применяем поворот камеры
+    const cameraAngle = rotationAngle * Math.PI / 180;
+    const rotatedVertices = vertices3D.map(([x3d, y3d, z3d]) => {
+      const rotX = x3d * Math.cos(cameraAngle) - y3d * Math.sin(cameraAngle);
+      const rotY = x3d * Math.sin(cameraAngle) + y3d * Math.cos(cameraAngle);
+      return [rotX, rotY, z3d];
+    });
+
+    // Изометрическая проекция с центрированием
+    return rotatedVertices.map(([x3d, y3d, z3d]) => {
+      const scale = 0.08;
+      const svgWidth = 600;
+      const svgHeight = 400;
+      const offsetX = svgWidth / 2;
+      const offsetY = svgHeight * 0.75;
+      
+      const projX = (x3d - y3d) * Math.cos(Math.PI / 6) * scale + offsetX;
+      const projY = offsetY - ((x3d + y3d) * Math.sin(Math.PI / 6) + z3d) * scale;
+      
+      return { x: projX, y: projY };
+    });
+  };
+
+  // Функция для получения первых двух слов из названия товара
+  const getProductShortName = (productName?: string) => {
+    if (!productName) return '';
+    const words = productName.trim().split(/\s+/);
+    return words.slice(0, 2).join(' ');
   };
 
   const placements = calculateCargoPlacement();
@@ -435,6 +492,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
   };
 
   const stats = calculateStats();
+  const truckVertices = calculateTruckVertices();
 
   if (!isVisible) return null;
 
@@ -447,6 +505,36 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
         </CardTitle>
       </CardHeader>
       <CardContent>
+        {/* Кнопки управления поворотом */}
+        <div className="flex justify-center gap-4 mb-4">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setRotationAngle(prev => prev - 45)}
+            className="flex items-center gap-2 text-white border-gray-600 hover:bg-gray-700"
+          >
+            <RotateCcw className="h-4 w-4" />
+            Повернуть влево
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setRotationAngle(0)}
+            className="text-white border-gray-600 hover:bg-gray-700"
+          >
+            Сброс
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setRotationAngle(prev => prev + 45)}
+            className="flex items-center gap-2 text-white border-gray-600 hover:bg-gray-700"
+          >
+            <RotateCw className="h-4 w-4" />
+            Повернуть вправо
+          </Button>
+        </div>
+
         {/* 3D SVG визуализация кузова */}
         <div className="bg-gray-900 p-4 rounded-lg mb-4">
           <svg 
@@ -456,26 +544,50 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
           >
             {/* Контур кузова в изометрии */}
             <g stroke="#4B5563" strokeWidth="2" fill="none">
+              {/* Пол кузова */}
+              <polygon 
+                points={`${truckVertices[0].x},${truckVertices[0].y} ${truckVertices[1].x},${truckVertices[1].y} ${truckVertices[2].x},${truckVertices[2].y} ${truckVertices[3].x},${truckVertices[3].y}`}
+                fill="#374151" 
+                fillOpacity="0.3" 
+              />
+              
               {/* Задняя стенка */}
-              <rect x="50" y="100" width="163" height="163" strokeDasharray="3,3" />
+              <polygon 
+                points={`${truckVertices[0].x},${truckVertices[0].y} ${truckVertices[1].x},${truckVertices[1].y} ${truckVertices[5].x},${truckVertices[5].y} ${truckVertices[4].x},${truckVertices[4].y}`}
+                strokeDasharray="3,3" 
+              />
               
               {/* Правая боковая стенка */}
-              <polygon points="213,100 350,50 350,213 213,263" strokeDasharray="3,3" />
+              <polygon 
+                points={`${truckVertices[1].x},${truckVertices[1].y} ${truckVertices[2].x},${truckVertices[2].y} ${truckVertices[6].x},${truckVertices[6].y} ${truckVertices[5].x},${truckVertices[5].y}`}
+                strokeDasharray="3,3" 
+              />
               
-              {/* Пол */}
-              <polygon points="50,263 213,263 350,213 187,213" fill="#374151" fillOpacity="0.3" />
+              {/* Передняя стенка */}
+              <polygon 
+                points={`${truckVertices[2].x},${truckVertices[2].y} ${truckVertices[3].x},${truckVertices[3].y} ${truckVertices[7].x},${truckVertices[7].y} ${truckVertices[6].x},${truckVertices[6].y}`}
+                strokeDasharray="3,3" 
+              />
               
-              {/* Верх */}
-              <polygon points="50,100 213,100 350,50 187,50" strokeDasharray="3,3" />
+              {/* Левая боковая стенка */}
+              <polygon 
+                points={`${truckVertices[3].x},${truckVertices[3].y} ${truckVertices[0].x},${truckVertices[0].y} ${truckVertices[4].x},${truckVertices[4].y} ${truckVertices[7].x},${truckVertices[7].y}`}
+                strokeDasharray="3,3" 
+              />
               
-              {/* Левая стенка (видимая часть) */}
-              <line x1="50" y1="100" x2="187" y2="50" strokeDasharray="3,3" />
-              <line x1="50" y1="263" x2="187" y2="213" strokeDasharray="3,3" />
+              {/* Верх кузова */}
+              <polygon 
+                points={`${truckVertices[4].x},${truckVertices[4].y} ${truckVertices[5].x},${truckVertices[5].y} ${truckVertices[6].x},${truckVertices[6].y} ${truckVertices[7].x},${truckVertices[7].y}`}
+                strokeDasharray="3,3" 
+              />
             </g>
             
             {/* Размеры кузова */}
-            <text x="300" y="40" textAnchor="middle" fill="#9CA3AF" fontSize="10">
+            <text x="300" y="30" textAnchor="middle" fill="#9CA3AF" fontSize="12" fontWeight="bold">
               4200×2025×2025 мм
+            </text>
+            <text x="300" y="45" textAnchor="middle" fill="#6B7280" fontSize="10">
+              Поворот: {rotationAngle}°
             </text>
             
             {/* Отображение размещенных грузов */}
@@ -572,7 +684,9 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                     style={{ backgroundColor: placement.color }}
                   />
                   <span className="text-gray-300">
-                    Груз {index + 1}: {Math.round(placement.orientation.length)}×{Math.round(placement.orientation.width)}×{Math.round(placement.orientation.height)} мм
+                    Груз {index + 1}{getProductShortName(placement.cargo.productName) && (
+                      <span className="text-blue-300"> "{getProductShortName(placement.cargo.productName)}"</span>
+                    )}: {Math.round(placement.orientation.length)}×{Math.round(placement.orientation.width)}×{Math.round(placement.orientation.height)} мм
                     {placement.orientation.rotationAngle !== 0 && (
                       <span className="text-blue-300"> (повернут {placement.orientation.rotationAngle}°)</span>
                     )}
