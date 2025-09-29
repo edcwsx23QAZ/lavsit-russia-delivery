@@ -1,0 +1,42 @@
+{
+  "id": "prt_995dcddf0001m75cJ8FbqHzFRX",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01C6puWBjM2vwq1Uvgjew7bB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "                  className=\"text-white border-gray-600 hover:bg-gray-700\"",
+          "newString": "                  className=\"text-black bg-white border-gray-300 hover:bg-gray-100\""
+        },
+        {
+          "oldString": "                  onClick={() => {\n                    setRotationX(0);\n                    setRotationY(50);\n                    setRotationZ(0);\n                    setPositionX(38);\n                    setPositionY(71);\n                    setScale(70);\n                  }}",
+          "newString": "                  onClick={() => {\n                    setRotationX(-90);\n                    setRotationY(55);\n                    setRotationZ(0);\n                    setPositionX(51);\n                    setPositionY(35);\n                    setScale(70);\n                  }}"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -596,9 +596,9 @@\n <Button\n   variant=\"outline\"\n   size=\"sm\"\n   onClick={() => setShowControls(!showControls)}\n-  className=\"text-white border-gray-600 hover:bg-gray-700\"\n+  className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n >\n   {showControls ? 'Скрыть' : 'Покрутить'}\n </Button>\n <Button\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -604,13 +604,13 @@\n <Button\n   variant=\"outline\"\n   size=\"sm\"\n   onClick={() => {\n-    setRotationX(0);\n-    setRotationY(50);\n+    setRotationX(-90);\n+    setRotationY(55);\n     setRotationZ(0);\n-    setPositionX(38);\n-    setPositionY(71);\n+    setPositionX(51);\n+    setPositionY(35);\n     setScale(70);\n   }}\n   className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n >\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155906833,
+      "end": 1759155906858
+    }
+  }
+}

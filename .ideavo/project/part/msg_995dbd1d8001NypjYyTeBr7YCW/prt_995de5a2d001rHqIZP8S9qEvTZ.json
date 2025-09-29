@@ -1,0 +1,25 @@
+{
+  "id": "prt_995de5a2d001rHqIZP8S9qEvTZ",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01G8f3ndh6BUqHqTLM4wRNzi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 480,
+      "limit": 30
+    },
+    "output": "<file>\n00481|   const calculateCabinAndChassisVertices = () => {\n00482|     const cabinLength = 2000; // 2 метра\n00483|     const cabinHeight = 2500; // 2.5 метра  \n00484|     const cabinWidth = TRUCK_DIMENSIONS.width;\n00485|     const chassisHeight = 300; // Высота шасси\n00486|     \n00487|     // Кабина (впереди кузова)\n00488|     const cabinVertices = [\n00489|       // Нижние вершины кабины\n00490|       [-cabinLength, 0, 0],\n00491|       [0, 0, 0],\n00492|       [0, cabinWidth, 0],\n00493|       [-cabinLength, cabinWidth, 0],\n00494|       // Верхние вершины кабины\n00495|       [-cabinLength, 0, cabinHeight],\n00496|       [0, 0, cabinHeight],\n00497|       [0, cabinWidth, cabinHeight],\n00498|       [-cabinLength, cabinWidth, cabinHeight]\n00499|     ];\n00500| \n00501|     // Шасси (под кабиной и кузовом)\n00502|     const chassisVertices = [\n00503|       // Шасси под кабиной\n00504|       [-cabinLength, cabinWidth * 0.2, -chassisHeight],\n00505|       [0, cabinWidth * 0.2, -chassisHeight],\n00506|       [0, cabinWidth * 0.8, -chassisHeight],\n00507|       [-cabinLength, cabinWidth * 0.8, -chassisHeight],\n00508|       // Шасси под кузовом\n00509|       [0, cabinWidth * 0.2, -chassisHeight],\n00510|       [TRUCK_DIMENSIONS.length, cabinWidth * 0.2, -chassisHeight],\n\n(File has more lines. Use 'offset' parameter to read beyond line 510)\n</file>",
+    "metadata": {
+      "preview": "  const calculateCabinAndChassisVertices = () => {\n    const cabinLength = 2000; // 2 метра\n    const cabinHeight = 2500; // 2.5 метра  \n    const cabinWidth = TRUCK_DIMENSIONS.width;\n    const chassisHeight = 300; // Высота шасси\n    \n    // Кабина (впереди кузова)\n    const cabinVertices = [\n      // Нижние вершины кабины\n      [-cabinLength, 0, 0],\n      [0, 0, 0],\n      [0, cabinWidth, 0],\n      [-cabinLength, cabinWidth, 0],\n      // Верхние вершины кабины\n      [-cabinLength, 0, cabinHeight],\n      [0, 0, cabinHeight],\n      [0, cabinWidth, cabinHeight],\n      [-cabinLength, cabinWidth, cabinHeight]\n    ];\n"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759156001834,
+      "end": 1759156001836
+    }
+  }
+}

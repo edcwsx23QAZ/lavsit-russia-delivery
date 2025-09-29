@@ -1,0 +1,25 @@
+{
+  "id": "prt_995dc75a5001kqaswtjyEZJlLr",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01TJKEg1MrZWJQsHEZ4Ct5QR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 58,
+      "limit": 15
+    },
+    "output": "<file>\n00059|   // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n00060|   const [rotationX, setRotationX] = useState(0);   // Поворот по оси X (0° - пол параллелен X)\n00061|   const [rotationY, setRotationY] = useState(50); // Поворот по оси Y (изометрический вид 3/4)\n00062|   const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n00063|   const [positionX, setPositionX] = useState(38);  // Позиция по X (0-100%)\n00064|   const [positionY, setPositionY] = useState(71);  // Позиция по Y (центрированная)\n00065|   const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации\n00066|   const [showControls, setShowControls] = useState(false); // Показывать ли элементы управления\n00067|   \n00068| \n00069|   \n00070|   // Функция проверки ключевых слов\n00071|   const isChairOrSeat = (productName?: string) => {\n00072|     if (!productName) return false;\n00073|     const lowerName = productName.toLowerCase();\n\n(File has more lines. Use 'offset' parameter to read beyond line 73)\n</file>",
+    "metadata": {
+      "preview": "  // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n  const [rotationX, setRotationX] = useState(0);   // Поворот по оси X (0° - пол параллелен X)\n  const [rotationY, setRotationY] = useState(50); // Поворот по оси Y (изометрический вид 3/4)\n  const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n  const [positionX, setPositionX] = useState(38);  // Позиция по X (0-100%)\n  const [positionY, setPositionY] = useState(71);  // Позиция по Y (центрированная)\n  const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации\n  const [showControls, setShowControls] = useState(false); // Показывать ли элементы управления\n  \n\n  \n  // Функция проверки ключевых слов\n  const isChairOrSeat = (productName?: string) => {\n    if (!productName) return false;\n    const lowerName = productName.toLowerCase();"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155878056,
+      "end": 1759155878060
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "id": "prt_995df85cd001jL46HHG5ziIA5Z",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01VjVWk92JNUr8qdEGEdWJcq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle } from 'lucide-react';",
+          "newString": "import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2 } from 'lucide-react';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';"
+        },
+        {
+          "oldString": "  const [testProgress, setTestProgress] = useState<{\n    currentTK: string;\n    completedTests: number;\n    totalPlannedTests: number;\n    stage: string;\n  } | null>(null);",
+          "newString": "  const [testProgress, setTestProgress] = useState<{\n    currentTK: string;\n    completedTests: number;\n    totalPlannedTests: number;\n    stage: string;\n  } | null>(null);\n\n  // Состояние для управления типами автомобилей\n  const [vehicleTypes, setVehicleTypes] = useState([\n    { id: '1', name: 'Форд Транзит', length: 4200, width: 2025, height: 2025 },\n    { id: '2', name: 'Фура 18м3', length: 4200, width: 2200, height: 2000 }\n  ]);\n  const [newVehicle, setNewVehicle] = useState({ name: '', length: '', width: '', height: '' });"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -4,9 +4,11 @@\n import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n import { Button } from '@/components/ui/button';\n import { Alert, AlertDescription } from '@/components/ui/alert';\n import { Badge } from '@/components/ui/badge';\n-import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle } from 'lucide-react';\n+import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2 } from 'lucide-react';\n+import { Input } from '@/components/ui/input';\n+import { Label } from '@/components/ui/label';\n \n export default function DiagnosticPage() {\n   const [isTestingPEK, setIsTestingPEK] = useState(false);\n   const [isTestingDellin, setIsTestingDellin] = useState(false);\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -53,8 +53,15 @@\n   totalPlannedTests: number;\n   stage: string;\n } | null>(null);\n \n+// Состояние для управления типами автомобилей\n+const [vehicleTypes, setVehicleTypes] = useState([\n+  { id: '1', name: 'Форд Транзит', length: 4200, width: 2025, height: 2025 },\n+  { id: '2', name: 'Фура 18м3', length: 4200, width: 2200, height: 2000 }\n+]);\n+const [newVehicle, setNewVehicle] = useState({ name: '', length: '', width: '', height: '' });\n+\n const updateResult = (service: string, result: any) => {\n   setDiagnosticResults(prev => ({\n     ...prev,\n     [service]: result\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759156088235,
+      "end": 1759156088263
+    }
+  }
+}

@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
-import { Truck, Move, RotateCw as Rotate3d } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Truck, Move, RotateCw as Rotate3d, ChevronDown } from 'lucide-react';
 
 interface Cargo {
   id: string;
@@ -38,12 +39,20 @@ interface TruckVisualizationProps {
   isVisible?: boolean;
 }
 
-// Размеры кузова в мм
-const TRUCK_DIMENSIONS = {
-  length: 4200,
-  width: 2025,
-  height: 2025
+// Типы автомобилей
+const VEHICLE_TYPES = {
+  'ford-transit': {
+    name: 'Форд Транзит',
+    dimensions: { length: 4200, width: 2025, height: 2025 }
+  },
+  'truck-18m3': {
+    name: 'Фура 18м3',
+    dimensions: { length: 4200, width: 2200, height: 2000 }
+  }
 };
+
+// Размеры кузова в мм (по умолчанию)
+const TRUCK_DIMENSIONS = VEHICLE_TYPES['ford-transit'].dimensions;
 
 // Углы поворота для размещения грузов (в градусах)
 const ROTATION_ANGLES = [0, 45, 90, 135, 180, 225, 270, 315];
@@ -57,15 +66,17 @@ const CARGO_COLORS = [
 
 export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {
   // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)
-  const [rotationX, setRotationX] = useState(0);   // Поворот по оси X (0° - пол параллелен X)
-  const [rotationY, setRotationY] = useState(50); // Поворот по оси Y (изометрический вид 3/4)
-  const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z
-  const [positionX, setPositionX] = useState(38);  // Позиция по X (0-100%)
-  const [positionY, setPositionY] = useState(71);  // Позиция по Y (центрированная)
+  const [rotationX, setRotationX] = useState(-90);   // Поворот по оси X
+  const [rotationY, setRotationY] = useState(55); // Поворот по оси Y
+  const [rotationZ, setRotationZ] = useState(0);   // Поворот по си Z
+  const [positionX, setPositionX] = useState(51);  // Позиция по X (0-100%)
+  const [positionY, setPositionY] = useState(35);  // Позиция по Y
   const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации
   const [showControls, setShowControls] = useState(false); // Показывать ли элементы управления
+  const [selectedVehicleType, setSelectedVehicleType] = useState<keyof typeof VEHICLE_TYPES>('ford-transit'); // Выбранный тип автомобиля
   
-
+  // Получение размеров выбранного автомобиля
+  const getCurrentVehicleDimensions = () => VEHICLE_TYPES[selectedVehicleType].dimensions;
   
   // Функция проверки ключевых слов
   const isChairOrSeat = (productName?: string) => {
@@ -163,9 +174,10 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
     const effectiveLength = orientation.length * cos + orientation.width * sin;
     const effectiveWidth = orientation.length * sin + orientation.width * cos;
     
-    if (x + effectiveLength > TRUCK_DIMENSIONS.length || 
-        y + effectiveWidth > TRUCK_DIMENSIONS.width ||
-        z + orientation.height > TRUCK_DIMENSIONS.height) {
+    const vehicleDimensions = getCurrentVehicleDimensions();
+    if (x + effectiveLength > vehicleDimensions.length || 
+        y + effectiveWidth > vehicleDimensions.width ||
+        z + orientation.height > vehicleDimensions.height) {
       return false;
     }
 
@@ -366,7 +378,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
       const possibleZ = [0];
       placements.forEach(p => {
         const topZ = p.z + p.orientation.height;
-        if (topZ <= TRUCK_DIMENSIONS.height - 100) { // Минимум 100мм сверху
+        if (topZ <= getCurrentVehicleDimensions().height - 100) { // Минимум 100мм сверху
           possibleZ.push(topZ);
         }
       });
@@ -377,13 +389,13 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
       // Перебираем все ориентации и позиции
       for (const orientation of orientations) {
         for (const z of sortedZ) {
-          if (z + orientation.height > TRUCK_DIMENSIONS.height) continue;
+          if (z + orientation.height > getCurrentVehicleDimensions().height) continue;
 
           // Более частая сетка для точного размещения
           const step = 25; // 25мм шаг
           
-          for (let y = 0; y <= TRUCK_DIMENSIONS.width - 50; y += step) {
-            for (let x = 0; x <= TRUCK_DIMENSIONS.length - 50; x += step) {
+          for (let y = 0; y <= getCurrentVehicleDimensions().width - 50; y += step) {
+            for (let x = 0; x <= getCurrentVehicleDimensions().length - 50; x += step) {
               
               if (isPositionValid(x, y, z, orientation, placements, cargo)) {
                 const testPlacement: CargoPlacement = {
@@ -447,17 +459,18 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
 
   // Вычисление вершин кузова
   const calculateTruckVertices = () => {
+    const vehicleDimensions = getCurrentVehicleDimensions();
     const vertices3D = [
       // Нижние вершины кузова
       [0, 0, 0],
-      [TRUCK_DIMENSIONS.length, 0, 0],
-      [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, 0],
-      [0, TRUCK_DIMENSIONS.width, 0],
+      [vehicleDimensions.length, 0, 0],
+      [vehicleDimensions.length, vehicleDimensions.width, 0],
+      [0, vehicleDimensions.width, 0],
       // Верхние вершины кузова
-      [0, 0, TRUCK_DIMENSIONS.height],
-      [TRUCK_DIMENSIONS.length, 0, TRUCK_DIMENSIONS.height],
-      [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height],
-      [0, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height]
+      [0, 0, vehicleDimensions.height],
+      [vehicleDimensions.length, 0, vehicleDimensions.height],
+      [vehicleDimensions.length, vehicleDimensions.width, vehicleDimensions.height],
+      [0, vehicleDimensions.width, vehicleDimensions.height]
     ];
 
     const rotatedVertices = applyRotations(vertices3D);
@@ -466,9 +479,10 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
 
   // Вычисление вершин кабины и шасси
   const calculateCabinAndChassisVertices = () => {
+    const vehicleDimensions = getCurrentVehicleDimensions();
     const cabinLength = 2000; // 2 метра
     const cabinHeight = 2500; // 2.5 метра  
-    const cabinWidth = TRUCK_DIMENSIONS.width;
+    const cabinWidth = vehicleDimensions.width;
     const chassisHeight = 300; // Высота шасси
     
     // Кабина (впереди кузова)
@@ -494,8 +508,8 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
       [-cabinLength, cabinWidth * 0.8, -chassisHeight],
       // Шасси под кузовом
       [0, cabinWidth * 0.2, -chassisHeight],
-      [TRUCK_DIMENSIONS.length, cabinWidth * 0.2, -chassisHeight],
-      [TRUCK_DIMENSIONS.length, cabinWidth * 0.8, -chassisHeight],
+      [vehicleDimensions.length, cabinWidth * 0.2, -chassisHeight],
+      [vehicleDimensions.length, cabinWidth * 0.8, -chassisHeight],
       [0, cabinWidth * 0.8, -chassisHeight]
     ];
 
@@ -506,8 +520,8 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
       [-cabinLength * 0.8, 0, -chassisHeight],
       [-cabinLength * 0.8, cabinWidth, -chassisHeight],
       // Задние колеса
-      [TRUCK_DIMENSIONS.length * 0.8, 0, -chassisHeight],
-      [TRUCK_DIMENSIONS.length * 0.8, cabinWidth, -chassisHeight]
+      [vehicleDimensions.length * 0.8, 0, -chassisHeight],
+      [vehicleDimensions.length * 0.8, cabinWidth, -chassisHeight]
     ];
 
     const rotatedCabin = applyRotations(cabinVertices);
@@ -554,7 +568,8 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
     });
 
     const occupiedVolume = (maxX * maxY * maxZ) / 1000000000; // в м³
-    const floorUtilization = (floorArea / ((TRUCK_DIMENSIONS.length * TRUCK_DIMENSIONS.width))) * 100;
+    const vehicleDimensions = getCurrentVehicleDimensions();
+    const floorUtilization = (floorArea / ((vehicleDimensions.length * vehicleDimensions.width))) * 100;
 
     return {
       occupiedFloorArea: (floorArea / 1000000).toFixed(2), // в м²
@@ -597,7 +612,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                   variant="outline"
                   size="sm"
                   onClick={() => setShowControls(!showControls)}
-                  className="text-white border-gray-600 hover:bg-gray-700"
+                  className="text-black bg-white border-gray-300 hover:bg-gray-100"
                 >
                   {showControls ? 'Скрыть' : 'Покрутить'}
                 </Button>
@@ -605,11 +620,11 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                   variant="outline"
                   size="sm"
                   onClick={() => {
-                    setRotationX(0);
-                    setRotationY(50);
+                    setRotationX(-90);
+                    setRotationY(55);
                     setRotationZ(0);
-                    setPositionX(38);
-                    setPositionY(71);
+                    setPositionX(51);
+                    setPositionY(35);
                     setScale(70);
                   }}
                   className="text-black bg-white border-gray-300 hover:bg-gray-100"
@@ -717,6 +732,27 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
             )}
           </div>
 
+          {/* Выбор типа автомобиля */}
+          <div className="bg-gray-800 p-4 rounded-lg">
+            <div className="flex items-center gap-4">
+              <h4 className="text-white font-medium flex items-center gap-2">
+                <Truck className="h-4 w-4" />
+                🚚 Тип автомобиля
+              </h4>
+              <Select value={selectedVehicleType} onValueChange={(value) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES)}>
+                <SelectTrigger className="w-64 bg-gray-700 border-gray-600 text-white">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-gray-700 border-gray-600">
+                  {Object.entries(VEHICLE_TYPES).map(([key, vehicle]) => (
+                    <SelectItem key={key} value={key} className="text-white hover:bg-gray-600">
+                      {vehicle.name} ({vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height} мм)
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
 
           {/* 3D SVG визуализация кузова - увеличенная на всю ширину */}
           <div className="bg-gray-900 p-4 rounded-lg">
@@ -727,7 +763,7 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
               >
                 {/* Размеры кузова */}
                 <text x="600" y="20" textAnchor="middle" fill="#9CA3AF" fontSize="12" fontWeight="bold">
-                  🚛 Грузовик с кузовом 4200×2025×2025 мм
+                  🚛 {VEHICLE_TYPES[selectedVehicleType].name} - Кузов {getCurrentVehicleDimensions().length}×{getCurrentVehicleDimensions().width}×{getCurrentVehicleDimensions().height} мм
                 </text>
                 
                 {/* Кабина грузовика */}

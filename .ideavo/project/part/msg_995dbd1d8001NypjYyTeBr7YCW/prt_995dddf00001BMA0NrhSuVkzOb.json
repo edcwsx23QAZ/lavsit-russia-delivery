@@ -1,0 +1,26 @@
+{
+  "id": "prt_995dddf00001BMA0NrhSuVkzOb",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01JrvBAs4HDqUyX87zcRTecz",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "TRUCK_DIMENSIONS",
+      "path": "/home/user/project",
+      "include": "*.tsx"
+    },
+    "output": "Found 18 matches\n/home/user/project/components/TruckVisualization.tsx:\n  Line 55: const TRUCK_DIMENSIONS = VEHICLE_TYPES['ford-transit'].dimensions;\n  Line 381:         if (topZ <= TRUCK_DIMENSIONS.height - 100) { // Минимум 100мм сверху\n  Line 392:           if (z + orientation.height > TRUCK_DIMENSIONS.height) continue;\n  Line 397:           for (let y = 0; y <= TRUCK_DIMENSIONS.width - 50; y += step) {\n  Line 398:             for (let x = 0; x <= TRUCK_DIMENSIONS.length - 50; x += step) {\n  Line 465:       [TRUCK_DIMENSIONS.length, 0, 0],\n  Line 466:       [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, 0],\n  Line 467:       [0, TRUCK_DIMENSIONS.width, 0],\n  Line 469:       [0, 0, TRUCK_DIMENSIONS.height],\n  Line 470:       [TRUCK_DIMENSIONS.length, 0, TRUCK_DIMENSIONS.height],\n  Line 471:       [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height],\n  Line 472:       [0, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height]\n  Line 483:     const cabinWidth = TRUCK_DIMENSIONS.width;\n  Line 509:       [TRUCK_DIMENSIONS.length, cabinWidth * 0.2, -chassisHeight],\n  Line 510:       [TRUCK_DIMENSIONS.length, cabinWidth * 0.8, -chassisHeight],\n  Line 521:       [TRUCK_DIMENSIONS.length * 0.8, 0, -chassisHeight],\n  Line 522:       [TRUCK_DIMENSIONS.length * 0.8, cabinWidth, -chassisHeight]\n  Line 569:     const floorUtilization = (floorArea / ((TRUCK_DIMENSIONS.length * TRUCK_DIMENSIONS.width))) * 100;",
+    "metadata": {
+      "matches": 18,
+      "truncated": false
+    },
+    "title": "TRUCK_DIMENSIONS",
+    "time": {
+      "start": 1759155970495,
+      "end": 1759155970511
+    }
+  }
+}

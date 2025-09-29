@@ -1,0 +1,34 @@
+{
+  "id": "prt_995deaafa0013LWGCdfmCTLGe7",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01NNm7PXfMSHshCjxbAKgY8G",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "    const floorUtilization = (floorArea / ((TRUCK_DIMENSIONS.length * TRUCK_DIMENSIONS.width))) * 100;",
+          "newString": "    const vehicleDimensions = getCurrentVehicleDimensions();\n    const floorUtilization = (floorArea / ((vehicleDimensions.length * vehicleDimensions.width))) * 100;"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -567,9 +567,10 @@\n   maxZ = Math.max(maxZ, p.z + p.orientation.height);\n });\n \n const occupiedVolume = (maxX * maxY * maxZ) / 1000000000; // в м³\n-const floorUtilization = (floorArea / ((TRUCK_DIMENSIONS.length * TRUCK_DIMENSIONS.width))) * 100;\n+const vehicleDimensions = getCurrentVehicleDimensions();\n+const floorUtilization = (floorArea / ((vehicleDimensions.length * vehicleDimensions.width))) * 100;\n \n return {\n   occupiedFloorArea: (floorArea / 1000000).toFixed(2), // в м²\n   occupiedVolume: occupiedVolume.toFixed(3),\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759156023873,
+      "end": 1759156023881
+    }
+  }
+}

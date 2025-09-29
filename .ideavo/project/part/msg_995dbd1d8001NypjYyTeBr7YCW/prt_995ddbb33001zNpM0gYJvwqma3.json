@@ -1,0 +1,25 @@
+{
+  "id": "prt_995ddbb33001zNpM0gYJvwqma3",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_014vc76piWGKBma9Q5H24Xmq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 175,
+      "limit": 15
+    },
+    "output": "<file>\n00176|     \n00177|     if (x + effectiveLength > TRUCK_DIMENSIONS.length || \n00178|         y + effectiveWidth > TRUCK_DIMENSIONS.width ||\n00179|         z + orientation.height > TRUCK_DIMENSIONS.height) {\n00180|       return false;\n00181|     }\n00182| \n00183|     // Проверяем пересечения с уже размещенными грузами\n00184|     for (const placement of placements) {\n00185|       // Проверка по высоте\n00186|       if (!(z >= placement.z + placement.orientation.height || \n00187|             z + orientation.height <= placement.z)) {\n00188|         \n00189|         // Если высоты пересекаются, проверяем пересечение по площади\n00190|         if (checkCollision(\n\n(File has more lines. Use 'offset' parameter to read beyond line 190)\n</file>",
+    "metadata": {
+      "preview": "    \n    if (x + effectiveLength > TRUCK_DIMENSIONS.length || \n        y + effectiveWidth > TRUCK_DIMENSIONS.width ||\n        z + orientation.height > TRUCK_DIMENSIONS.height) {\n      return false;\n    }\n\n    // Проверяем пересечения с уже размещенными грузами\n    for (const placement of placements) {\n      // Проверка по высоте\n      if (!(z >= placement.z + placement.orientation.height || \n            z + orientation.height <= placement.z)) {\n        \n        // Если высоты пересекаются, проверяем пересечение по площади\n        if (checkCollision("
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155961271,
+      "end": 1759155961273
+    }
+  }
+}

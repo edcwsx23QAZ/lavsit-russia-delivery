@@ -1,0 +1,25 @@
+{
+  "id": "prt_995dcf6c3001tcurc8AOs81hj3",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01SZDsYGW8zKQYDwKvBf3udE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 1,
+      "limit": 10
+    },
+    "output": "<file>\n00002| \n00003| import React, { useState } from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Slider } from '@/components/ui/slider';\n00007| import { Truck, Move, RotateCw as Rotate3d } from 'lucide-react';\n00008| \n00009| interface Cargo {\n00010|   id: string;\n00011|   length: number; // в мм\n\n(File has more lines. Use 'offset' parameter to read beyond line 11)\n</file>",
+    "metadata": {
+      "preview": "\nimport React, { useState } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Slider } from '@/components/ui/slider';\nimport { Truck, Move, RotateCw as Rotate3d } from 'lucide-react';\n\ninterface Cargo {\n  id: string;\n  length: number; // в мм"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155911034,
+      "end": 1759155911037
+    }
+  }
+}

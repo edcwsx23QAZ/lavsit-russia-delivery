@@ -1,0 +1,34 @@
+{
+  "id": "prt_995ddca5f001tyVxs4s3yuc8MF",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01EXE42Z7UsiqD8T5oMgJEJS",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "    if (x + effectiveLength > TRUCK_DIMENSIONS.length || \n        y + effectiveWidth > TRUCK_DIMENSIONS.width ||\n        z + orientation.height > TRUCK_DIMENSIONS.height) {\n      return false;\n    }",
+          "newString": "    const vehicleDimensions = getCurrentVehicleDimensions();\n    if (x + effectiveLength > vehicleDimensions.length || \n        y + effectiveWidth > vehicleDimensions.width ||\n        z + orientation.height > vehicleDimensions.height) {\n      return false;\n    }"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -173,11 +173,12 @@\n \n const effectiveLength = orientation.length * cos + orientation.width * sin;\n const effectiveWidth = orientation.length * sin + orientation.width * cos;\n \n-if (x + effectiveLength > TRUCK_DIMENSIONS.length || \n-    y + effectiveWidth > TRUCK_DIMENSIONS.width ||\n-    z + orientation.height > TRUCK_DIMENSIONS.height) {\n+const vehicleDimensions = getCurrentVehicleDimensions();\n+if (x + effectiveLength > vehicleDimensions.length || \n+    y + effectiveWidth > vehicleDimensions.width ||\n+    z + orientation.height > vehicleDimensions.height) {\n   return false;\n }\n \n // Проверяем пересечения с уже размещенными грузами\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155966495,
+      "end": 1759155966507
+    }
+  }
+}

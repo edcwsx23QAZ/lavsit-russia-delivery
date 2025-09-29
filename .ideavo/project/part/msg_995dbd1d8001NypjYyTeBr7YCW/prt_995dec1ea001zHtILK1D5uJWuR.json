@@ -1,0 +1,25 @@
+{
+  "id": "prt_995dec1ea001zHtILK1D5uJWuR",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016hv9yU2V7sguCYRXyuurUg",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 720,
+      "limit": 15
+    },
+    "output": "<file>\n00721|                 </label>\n00722|                 <Slider\n00723|                   value={[scale]}\n00724|                   onValueChange={(value) => setScale(value[0])}\n00725|                   max={100}\n00726|                   min={10}\n00727|                   step={1}\n00728|                   className=\"w-full\"\n00729|                 />\n00730|               </div>\n00731|               </div>\n00732|             )}\n00733|           </div>\n00734| \n00735| \n\n(File has more lines. Use 'offset' parameter to read beyond line 735)\n</file>",
+    "metadata": {
+      "preview": "                </label>\n                <Slider\n                  value={[scale]}\n                  onValueChange={(value) => setScale(value[0])}\n                  max={100}\n                  min={10}\n                  step={1}\n                  className=\"w-full\"\n                />\n              </div>\n              </div>\n            )}\n          </div>\n\n"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759156028514,
+      "end": 1759156028516
+    }
+  }
+}

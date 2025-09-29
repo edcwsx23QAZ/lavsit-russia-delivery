@@ -1,0 +1,25 @@
+{
+  "id": "prt_995dd229d001bF01tA3mc6OyqF",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_015dWoy8HVAPUxhmjEV2npRR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 40,
+      "limit": 15
+    },
+    "output": "<file>\n00041| \n00042| // Размеры кузова в мм\n00043| const TRUCK_DIMENSIONS = {\n00044|   length: 4200,\n00045|   width: 2025,\n00046|   height: 2025\n00047| };\n00048| \n00049| // Углы поворота для размещения грузов (в градусах)\n00050| const ROTATION_ANGLES = [0, 45, 90, 135, 180, 225, 270, 315];\n00051| \n00052| // Цвета для разных грузов\n00053| const CARGO_COLORS = [\n00054|   '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FECA57',\n00055|   '#FF9FF3', '#54A0FF', '#5F27CD', '#00D2D3', '#FF9F43',\n\n(File has more lines. Use 'offset' parameter to read beyond line 55)\n</file>",
+    "metadata": {
+      "preview": "\n// Размеры кузова в мм\nconst TRUCK_DIMENSIONS = {\n  length: 4200,\n  width: 2025,\n  height: 2025\n};\n\n// Углы поворота для размещения грузов (в градусах)\nconst ROTATION_ANGLES = [0, 45, 90, 135, 180, 225, 270, 315];\n\n// Цвета для разных грузов\nconst CARGO_COLORS = [\n  '#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FECA57',\n  '#FF9FF3', '#54A0FF', '#5F27CD', '#00D2D3', '#FF9F43',"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155922153,
+      "end": 1759155922156
+    }
+  }
+}

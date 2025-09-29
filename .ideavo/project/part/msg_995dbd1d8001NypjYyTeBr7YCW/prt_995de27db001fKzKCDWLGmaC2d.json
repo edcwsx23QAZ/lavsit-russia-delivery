@@ -1,0 +1,34 @@
+{
+  "id": "prt_995de27db001fKzKCDWLGmaC2d",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01MhZ3Bz4YNZXxPbkC2pkG6b",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "  const calculateTruckVertices = () => {\n    const vertices3D = [\n      // Нижние вершины кузова\n      [0, 0, 0],\n      [TRUCK_DIMENSIONS.length, 0, 0],\n      [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, 0],\n      [0, TRUCK_DIMENSIONS.width, 0],\n      // Верхние вершины кузова\n      [0, 0, TRUCK_DIMENSIONS.height],\n      [TRUCK_DIMENSIONS.length, 0, TRUCK_DIMENSIONS.height],\n      [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height],\n      [0, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height]\n    ];",
+          "newString": "  const calculateTruckVertices = () => {\n    const vehicleDimensions = getCurrentVehicleDimensions();\n    const vertices3D = [\n      // Нижние вершины кузова\n      [0, 0, 0],\n      [vehicleDimensions.length, 0, 0],\n      [vehicleDimensions.length, vehicleDimensions.width, 0],\n      [0, vehicleDimensions.width, 0],\n      // Верхние вершины кузова\n      [0, 0, vehicleDimensions.height],\n      [vehicleDimensions.length, 0, vehicleDimensions.height],\n      [vehicleDimensions.length, vehicleDimensions.width, vehicleDimensions.height],\n      [0, vehicleDimensions.width, vehicleDimensions.height]\n    ];"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -458,19 +458,20 @@\n };\n \n // Вычисление вершин кузова\n const calculateTruckVertices = () => {\n+  const vehicleDimensions = getCurrentVehicleDimensions();\n   const vertices3D = [\n     // Нижние вершины кузова\n     [0, 0, 0],\n-    [TRUCK_DIMENSIONS.length, 0, 0],\n-    [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, 0],\n-    [0, TRUCK_DIMENSIONS.width, 0],\n+    [vehicleDimensions.length, 0, 0],\n+    [vehicleDimensions.length, vehicleDimensions.width, 0],\n+    [0, vehicleDimensions.width, 0],\n     // Верхние вершины кузова\n-    [0, 0, TRUCK_DIMENSIONS.height],\n-    [TRUCK_DIMENSIONS.length, 0, TRUCK_DIMENSIONS.height],\n-    [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height],\n-    [0, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height]\n+    [0, 0, vehicleDimensions.height],\n+    [vehicleDimensions.length, 0, vehicleDimensions.height],\n+    [vehicleDimensions.length, vehicleDimensions.width, vehicleDimensions.height],\n+    [0, vehicleDimensions.width, vehicleDimensions.height]\n   ];\n \n   const rotatedVertices = applyRotations(vertices3D);\n   return project3DTo2D(rotatedVertices);\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155997962,
+      "end": 1759155997971
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "prt_995dd0999001ZtqTAaxTU6dclb",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_018NkVuZxyAJ99rq1RNVARna",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Slider } from '@/components/ui/slider';\nimport { Truck, Move, RotateCw as Rotate3d } from 'lucide-react';",
+          "newString": "import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Slider } from '@/components/ui/slider';\nimport { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';\nimport { Truck, Move, RotateCw as Rotate3d, ChevronDown } from 'lucide-react';"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -3,9 +3,10 @@\n import React, { useState } from 'react';\n import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n import { Button } from '@/components/ui/button';\n import { Slider } from '@/components/ui/slider';\n-import { Truck, Move, RotateCw as Rotate3d } from 'lucide-react';\n+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';\n+import { Truck, Move, RotateCw as Rotate3d, ChevronDown } from 'lucide-react';\n \n interface Cargo {\n   id: string;\n   length: number; // в мм\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155917760,
+      "end": 1759155917766
+    }
+  }
+}

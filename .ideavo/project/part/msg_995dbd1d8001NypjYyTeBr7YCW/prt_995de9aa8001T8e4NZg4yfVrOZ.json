@@ -1,0 +1,25 @@
+{
+  "id": "prt_995de9aa8001T8e4NZg4yfVrOZ",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01C8hcGWWK9o1jgRfzpC55rb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 565,
+      "limit": 10
+    },
+    "output": "<file>\n00566|       maxY = Math.max(maxY, p.y + effectiveWidth);\n00567|       maxZ = Math.max(maxZ, p.z + p.orientation.height);\n00568|     });\n00569| \n00570|     const occupiedVolume = (maxX * maxY * maxZ) / 1000000000; // в м³\n00571|     const floorUtilization = (floorArea / ((TRUCK_DIMENSIONS.length * TRUCK_DIMENSIONS.width))) * 100;\n00572| \n00573|     return {\n00574|       occupiedFloorArea: (floorArea / 1000000).toFixed(2), // в м²\n00575|       occupiedVolume: occupiedVolume.toFixed(3),\n\n(File has more lines. Use 'offset' parameter to read beyond line 575)\n</file>",
+    "metadata": {
+      "preview": "      maxY = Math.max(maxY, p.y + effectiveWidth);\n      maxZ = Math.max(maxZ, p.z + p.orientation.height);\n    });\n\n    const occupiedVolume = (maxX * maxY * maxZ) / 1000000000; // в м³\n    const floorUtilization = (floorArea / ((TRUCK_DIMENSIONS.length * TRUCK_DIMENSIONS.width))) * 100;\n\n    return {\n      occupiedFloorArea: (floorArea / 1000000).toFixed(2), // в м²\n      occupiedVolume: occupiedVolume.toFixed(3),"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759156018470,
+      "end": 1759156018471
+    }
+  }
+}

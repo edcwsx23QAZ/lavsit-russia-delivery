@@ -1,0 +1,25 @@
+{
+  "id": "prt_995dd826c001CGH5o0yQmx754V",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01RM5dqfzG7LqP7UkUFqcEVF",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 150,
+      "limit": 20
+    },
+    "output": "<file>\n00151|       maxX: x2 + length2 * cos2 + width2 * sin2,\n00152|       minY: y2,\n00153|       maxY: y2 + length2 * sin2 + width2 * cos2\n00154|     };\n00155| \n00156|     return !(bbox1.maxX <= bbox2.minX || bbox2.maxX <= bbox1.minX ||\n00157|              bbox1.maxY <= bbox2.minY || bbox2.maxY <= bbox1.minY);\n00158|   };\n00159| \n00160|   // Проверка валидности позиции\n00161|   const isPositionValid = (\n00162|     x: number, y: number, z: number,\n00163|     orientation: Orientation,\n00164|     placements: CargoPlacement[],\n00165|     cargo: Cargo\n00166|   ): boolean => {\n00167|     \n00168|     // Проверяем границы кузова\n00169|     const rad = (orientation.rotationAngle * Math.PI) / 180;\n00170|     const cos = Math.abs(Math.cos(rad));\n\n(File has more lines. Use 'offset' parameter to read beyond line 170)\n</file>",
+    "metadata": {
+      "preview": "      maxX: x2 + length2 * cos2 + width2 * sin2,\n      minY: y2,\n      maxY: y2 + length2 * sin2 + width2 * cos2\n    };\n\n    return !(bbox1.maxX <= bbox2.minX || bbox2.maxX <= bbox1.minX ||\n             bbox1.maxY <= bbox2.minY || bbox2.maxY <= bbox1.minY);\n  };\n\n  // Проверка валидности позиции\n  const isPositionValid = (\n    x: number, y: number, z: number,\n    orientation: Orientation,\n    placements: CargoPlacement[],\n    cargo: Cargo\n  ): boolean => {\n    \n    // Проверяем границы кузова\n    const rad = (orientation.rotationAngle * Math.PI) / 180;\n    const cos = Math.abs(Math.cos(rad));"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155946590,
+      "end": 1759155946596
+    }
+  }
+}

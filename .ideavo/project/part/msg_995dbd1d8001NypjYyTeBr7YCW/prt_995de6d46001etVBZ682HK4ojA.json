@@ -1,0 +1,50 @@
+{
+  "id": "prt_995de6d46001etVBZ682HK4ojA",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01Rjqu2DEMTkr4YqmpcxQzwK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "  const calculateCabinAndChassisVertices = () => {\n    const cabinLength = 2000; // 2 метра\n    const cabinHeight = 2500; // 2.5 метра  \n    const cabinWidth = TRUCK_DIMENSIONS.width;\n    const chassisHeight = 300; // Высота шасси",
+          "newString": "  const calculateCabinAndChassisVertices = () => {\n    const vehicleDimensions = getCurrentVehicleDimensions();\n    const cabinLength = 2000; // 2 метра\n    const cabinHeight = 2500; // 2.5 метра  \n    const cabinWidth = vehicleDimensions.width;\n    const chassisHeight = 300; // Высота шасси"
+        },
+        {
+          "oldString": "      [TRUCK_DIMENSIONS.length, cabinWidth * 0.2, -chassisHeight],\n      [TRUCK_DIMENSIONS.length, cabinWidth * 0.8, -chassisHeight],",
+          "newString": "      [vehicleDimensions.length, cabinWidth * 0.2, -chassisHeight],\n      [vehicleDimensions.length, cabinWidth * 0.8, -chassisHeight],"
+        },
+        {
+          "oldString": "      [TRUCK_DIMENSIONS.length * 0.8, 0, -chassisHeight],\n      [TRUCK_DIMENSIONS.length * 0.8, cabinWidth, -chassisHeight]",
+          "newString": "      [vehicleDimensions.length * 0.8, 0, -chassisHeight],\n      [vehicleDimensions.length * 0.8, cabinWidth, -chassisHeight]"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -478,11 +478,12 @@\n };\n \n // Вычисление вершин кабины и шасси\n const calculateCabinAndChassisVertices = () => {\n+  const vehicleDimensions = getCurrentVehicleDimensions();\n   const cabinLength = 2000; // 2 метра\n   const cabinHeight = 2500; // 2.5 метра  \n-  const cabinWidth = TRUCK_DIMENSIONS.width;\n+  const cabinWidth = vehicleDimensions.width;\n   const chassisHeight = 300; // Высота шасси\n   \n   // Кабина (впереди кузова)\n   const cabinVertices = [\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -507,10 +507,10 @@\n   [0, cabinWidth * 0.8, -chassisHeight],\n   [-cabinLength, cabinWidth * 0.8, -chassisHeight],\n   // Шасси под кузовом\n   [0, cabinWidth * 0.2, -chassisHeight],\n-  [TRUCK_DIMENSIONS.length, cabinWidth * 0.2, -chassisHeight],\n-  [TRUCK_DIMENSIONS.length, cabinWidth * 0.8, -chassisHeight],\n+  [vehicleDimensions.length, cabinWidth * 0.2, -chassisHeight],\n+  [vehicleDimensions.length, cabinWidth * 0.8, -chassisHeight],\n   [0, cabinWidth * 0.8, -chassisHeight]\n ];\n \n // Колеса\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -519,10 +519,10 @@\n   // Передние колеса\n   [-cabinLength * 0.8, 0, -chassisHeight],\n   [-cabinLength * 0.8, cabinWidth, -chassisHeight],\n   // Задние колеса\n-  [TRUCK_DIMENSIONS.length * 0.8, 0, -chassisHeight],\n-  [TRUCK_DIMENSIONS.length * 0.8, cabinWidth, -chassisHeight]\n+  [vehicleDimensions.length * 0.8, 0, -chassisHeight],\n+  [vehicleDimensions.length * 0.8, cabinWidth, -chassisHeight]\n ];\n \n const rotatedCabin = applyRotations(cabinVertices);\n const rotatedChassis = applyRotations(chassisVertices);\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759156013580,
+      "end": 1759156013603
+    }
+  }
+}

@@ -5,7 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle } from 'lucide-react';
+import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2 } from 'lucide-react';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 export default function DiagnosticPage() {
   const [isTestingPEK, setIsTestingPEK] = useState(false);
@@ -51,6 +53,43 @@ export default function DiagnosticPage() {
     totalPlannedTests: number;
     stage: string;
   } | null>(null);
+
+  // Состояние для управления типами автомобилей
+  const [vehicleTypes, setVehicleTypes] = useState([
+    { id: '1', name: 'Форд Транзит', length: 4200, width: 2025, height: 2025 },
+    { id: '2', name: 'Фура 18м3', length: 4200, width: 2200, height: 2000 }
+  ]);
+  const [newVehicle, setNewVehicle] = useState({ name: '', length: '', width: '', height: '' });
+
+  // Функции управления типами автомобилей
+  const addVehicleType = () => {
+    if (!newVehicle.name || !newVehicle.length || !newVehicle.width || !newVehicle.height) {
+      alert('Пожалуйста, заполните все поля');
+      return;
+    }
+    
+    const newId = (vehicleTypes.length + 1).toString();
+    const vehicleToAdd = {
+      id: newId,
+      name: newVehicle.name,
+      length: parseInt(newVehicle.length),
+      width: parseInt(newVehicle.width),
+      height: parseInt(newVehicle.height)
+    };
+    
+    setVehicleTypes([...vehicleTypes, vehicleToAdd]);
+    setNewVehicle({ name: '', length: '', width: '', height: '' });
+  };
+  
+  const removeVehicleType = (id: string) => {
+    setVehicleTypes(vehicleTypes.filter(vehicle => vehicle.id !== id));
+  };
+  
+  const updateVehicleType = (id: string, field: string, value: string | number) => {
+    setVehicleTypes(vehicleTypes.map(vehicle => 
+      vehicle.id === id ? { ...vehicle, [field]: value } : vehicle
+    ));
+  };
 
   const updateResult = (service: string, result: any) => {
     setDiagnosticResults(prev => ({
@@ -1396,6 +1435,145 @@ export default function DiagnosticPage() {
             </CardContent>
           </Card>
         </div>
+
+        {/* Управление типами автомобилей */}
+        <Card className="border-blue-500 bg-blue-900/20 mt-6">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Truck className="h-5 w-5 text-blue-400" />
+              Типы автомобилей
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            {/* Список существующих автомобилей */}
+            <div className="space-y-4 mb-6">
+              <h3 className="text-lg font-medium text-white">Существующие типы:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {vehicleTypes.map((vehicle) => (
+                  <div key={vehicle.id} className="bg-gray-800 p-4 rounded-lg border border-gray-600">
+                    <div className="space-y-3">
+                      <div>
+                        <Label className="text-sm text-gray-300">Название</Label>
+                        <Input
+                          value={vehicle.name}
+                          onChange={(e) => updateVehicleType(vehicle.id, 'name', e.target.value)}
+                          className="bg-gray-700 border-gray-600 text-white"
+                        />
+                      </div>
+                      
+                      <div className="grid grid-cols-3 gap-2">
+                        <div>
+                          <Label className="text-xs text-gray-400">Длина (мм)</Label>
+                          <Input
+                            type="number"
+                            value={vehicle.length}
+                            onChange={(e) => updateVehicleType(vehicle.id, 'length', parseInt(e.target.value) || 0)}
+                            className="bg-gray-700 border-gray-600 text-white text-xs"
+                          />
+                        </div>
+                        <div>
+                          <Label className="text-xs text-gray-400">Ширина (мм)</Label>
+                          <Input
+                            type="number"
+                            value={vehicle.width}
+                            onChange={(e) => updateVehicleType(vehicle.id, 'width', parseInt(e.target.value) || 0)}
+                            className="bg-gray-700 border-gray-600 text-white text-xs"
+                          />
+                        </div>
+                        <div>
+                          <Label className="text-xs text-gray-400">Высота (мм)</Label>
+                          <Input
+                            type="number"
+                            value={vehicle.height}
+                            onChange={(e) => updateVehicleType(vehicle.id, 'height', parseInt(e.target.value) || 0)}
+                            className="bg-gray-700 border-gray-600 text-white text-xs"
+                          />
+                        </div>
+                      </div>
+                      
+                      <div className="flex justify-between items-center pt-2">
+                        <div className="text-xs text-gray-400">
+                          Объём: {((vehicle.length * vehicle.width * vehicle.height) / 1000000000).toFixed(1)} м³
+                        </div>
+                        <Button
+                          onClick={() => removeVehicleType(vehicle.id)}
+                          variant="outline"
+                          size="sm"
+                          className="text-red-400 border-red-400 hover:bg-red-400 hover:text-white"
+                        >
+                          <Trash2 className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Добавление нового автомобиля */}
+            <div className="bg-gray-800 p-4 rounded-lg border-2 border-dashed border-gray-600">
+              <h3 className="text-lg font-medium text-white mb-4">Добавить новый тип:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                <div>
+                  <Label className="text-sm text-gray-300">Название</Label>
+                  <Input
+                    placeholder="напр. Мерседес Спринтер"
+                    value={newVehicle.name}
+                    onChange={(e) => setNewVehicle({ ...newVehicle, name: e.target.value })}
+                    className="bg-gray-700 border-gray-600 text-white"
+                  />
+                </div>
+                <div>
+                  <Label className="text-sm text-gray-300">Длина кузова (внутри), мм</Label>
+                  <Input
+                    type="number"
+                    placeholder="4200"
+                    value={newVehicle.length}
+                    onChange={(e) => setNewVehicle({ ...newVehicle, length: e.target.value })}
+                    className="bg-gray-700 border-gray-600 text-white"
+                  />
+                </div>
+                <div>
+                  <Label className="text-sm text-gray-300">Ширина кузова (внутри), мм</Label>
+                  <Input
+                    type="number"
+                    placeholder="2025"
+                    value={newVehicle.width}
+                    onChange={(e) => setNewVehicle({ ...newVehicle, width: e.target.value })}
+                    className="bg-gray-700 border-gray-600 text-white"
+                  />
+                </div>
+                <div>
+                  <Label className="text-sm text-gray-300">Высота кузова (внутри), мм</Label>
+                  <Input
+                    type="number"
+                    placeholder="2025"
+                    value={newVehicle.height}
+                    onChange={(e) => setNewVehicle({ ...newVehicle, height: e.target.value })}
+                    className="bg-gray-700 border-gray-600 text-white"
+                  />
+                </div>
+              </div>
+              
+              <div className="flex justify-between items-center">
+                <div className="text-sm text-gray-400">
+                  {newVehicle.length && newVehicle.width && newVehicle.height && (
+                    <span>
+                      Прогнозируемый объём: {((parseInt(newVehicle.length) * parseInt(newVehicle.width) * parseInt(newVehicle.height)) / 1000000000).toFixed(1)} м³
+                    </span>
+                  )}
+                </div>
+                <Button 
+                  onClick={addVehicleType}
+                  className="bg-blue-600 hover:bg-blue-700"
+                >
+                  <Plus className="h-4 w-4 mr-2" />
+                  Добавить
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

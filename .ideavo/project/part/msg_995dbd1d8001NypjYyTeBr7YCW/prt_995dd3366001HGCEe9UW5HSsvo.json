@@ -1,0 +1,34 @@
+{
+  "id": "prt_995dd3366001HGCEe9UW5HSsvo",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_017pz7N5QSBeDY7qZeEUEMiZ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "// Размеры кузова в мм\nconst TRUCK_DIMENSIONS = {\n  length: 4200,\n  width: 2025,\n  height: 2025\n};",
+          "newString": "// Типы автомобилей\nconst VEHICLE_TYPES = {\n  'ford-transit': {\n    name: 'Форд Транзит',\n    dimensions: { length: 4200, width: 2025, height: 2025 }\n  },\n  'truck-18m3': {\n    name: 'Фура 18м3',\n    dimensions: { length: 4200, width: 2200, height: 2000 }\n  }\n};\n\n// Размеры кузова в мм (по умолчанию)\nconst TRUCK_DIMENSIONS = VEHICLE_TYPES['ford-transit'].dimensions;"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -38,15 +38,23 @@\n   cargos: Cargo[];\n   isVisible?: boolean;\n }\n \n-// Размеры кузова в мм\n-const TRUCK_DIMENSIONS = {\n-  length: 4200,\n-  width: 2025,\n-  height: 2025\n+// Типы автомобилей\n+const VEHICLE_TYPES = {\n+  'ford-transit': {\n+    name: 'Форд Транзит',\n+    dimensions: { length: 4200, width: 2025, height: 2025 }\n+  },\n+  'truck-18m3': {\n+    name: 'Фура 18м3',\n+    dimensions: { length: 4200, width: 2200, height: 2000 }\n+  }\n };\n \n+// Размеры кузова в мм (по умолчанию)\n+const TRUCK_DIMENSIONS = VEHICLE_TYPES['ford-transit'].dimensions;\n+\n // Углы поворота для размещения грузов (в градусах)\n const ROTATION_ANGLES = [0, 45, 90, 135, 180, 225, 270, 315];\n \n // Цвета для разных грузов\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155932787,
+      "end": 1759155932812
+    }
+  }
+}

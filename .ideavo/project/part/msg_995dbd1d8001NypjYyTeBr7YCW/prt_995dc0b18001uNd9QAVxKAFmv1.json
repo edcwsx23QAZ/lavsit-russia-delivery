@@ -1,0 +1,33 @@
+{
+  "id": "prt_995dc0b18001uNd9QAVxKAFmv1",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_016k9rEv3GtQQEvroWVbeF5h",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "  // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n  const [rotationX, setRotationX] = useState(0);   // Поворот по оси X (0° - пол параллелен X)\n  const [rotationY, setRotationY] = useState(50); // Поворот по оси Y (изометрический вид 3/4)\n  const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n  const [positionX, setPositionX] = useState(38);  // Позиция по X (0-100%)\n  const [positionY, setPositionY] = useState(71);  // Позиция по Y (центрированная)\n  const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации",
+          "newString": "  // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n  const [rotationX, setRotationX] = useState(-90);   // Поворот по оси X\n  const [rotationY, setRotationY] = useState(55); // Поворот по оси Y\n  const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n  const [positionX, setPositionX] = useState(51);  // Позиция по X (0-100%)\n  const [positionY, setPositionY] = useState(35);  // Позиция по Y\n  const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации"
+        },
+        {
+          "oldString": "                <Button\n                  variant=\"outline\"\n                  size=\"sm\"\n                  onClick={() => setShowControls(!showControls)}\n                  className=\"text-white border-gray-600 hover:bg-gray-700\"\n                >\n                  {showControls ? 'Скрыть' : 'Покрутить'}\n                </Button>",
+          "newString": "                <Button\n                  variant=\"outline\"\n                  size=\"sm\"\n                  onClick={() => setShowControls(!showControls)}\n                  className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n                >\n                  {showControls ? 'Скрыть' : 'Покрутить'}\n                </Button>"
+        },
+        {
+          "oldString": "                  onClick={() => {\n                    setRotationX(0);\n                    setRotationY(50);\n                    setRotationZ(0);\n                    setPositionX(38);\n                    setPositionY(71);\n                    setScale(70);\n                  }}",
+          "newString": "                  onClick={() => {\n                    setRotationX(-90);\n                    setRotationY(55);\n                    setRotationZ(0);\n                    setPositionX(51);\n                    setPositionY(35);\n                    setScale(70);\n                  }}"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/components/TruckVisualization.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1759155873711,
+      "end": 1759155873715
+    }
+  }
+}

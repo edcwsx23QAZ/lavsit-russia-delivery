@@ -1,0 +1,50 @@
+{
+  "id": "prt_995ddf1f6001iEz4oPQ4rYrO6b",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01Pt6UGJSvj1YFSzJmPLG7yg",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "        if (topZ <= TRUCK_DIMENSIONS.height - 100) { // Минимум 100мм сверху",
+          "newString": "        if (topZ <= getCurrentVehicleDimensions().height - 100) { // Минимум 100мм сверху"
+        },
+        {
+          "oldString": "          if (z + orientation.height > TRUCK_DIMENSIONS.height) continue;",
+          "newString": "          if (z + orientation.height > getCurrentVehicleDimensions().height) continue;"
+        },
+        {
+          "oldString": "          for (let y = 0; y <= TRUCK_DIMENSIONS.width - 50; y += step) {\n            for (let x = 0; x <= TRUCK_DIMENSIONS.length - 50; x += step) {",
+          "newString": "          for (let y = 0; y <= getCurrentVehicleDimensions().width - 50; y += step) {\n            for (let x = 0; x <= getCurrentVehicleDimensions().length - 50; x += step) {"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -377,9 +377,9 @@\n // Генерируем возможные Z позиции\n const possibleZ = [0];\n placements.forEach(p => {\n   const topZ = p.z + p.orientation.height;\n-  if (topZ <= TRUCK_DIMENSIONS.height - 100) { // Минимум 100мм сверху\n+  if (topZ <= getCurrentVehicleDimensions().height - 100) { // Минимум 100мм сверху\n     possibleZ.push(topZ);\n   }\n });\n \n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -388,9 +388,9 @@\n \n // Перебираем все ориентации и позиции\n for (const orientation of orientations) {\n   for (const z of sortedZ) {\n-    if (z + orientation.height > TRUCK_DIMENSIONS.height) continue;\n+    if (z + orientation.height > getCurrentVehicleDimensions().height) continue;\n \n     // Более частая сетка для точного размещения\n     const step = 25; // 25мм шаг\n     \n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -393,10 +393,10 @@\n \n // Более частая сетка для точного размещения\n const step = 25; // 25мм шаг\n \n-for (let y = 0; y <= TRUCK_DIMENSIONS.width - 50; y += step) {\n-  for (let x = 0; x <= TRUCK_DIMENSIONS.length - 50; x += step) {\n+for (let y = 0; y <= getCurrentVehicleDimensions().width - 50; y += step) {\n+  for (let x = 0; x <= getCurrentVehicleDimensions().length - 50; x += step) {\n     \n     if (isPositionValid(x, y, z, orientation, placements, cargo)) {\n       const testPlacement: CargoPlacement = {\n         cargo,\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155979231,
+      "end": 1759155979262
+    }
+  }
+}

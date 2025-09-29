@@ -1,0 +1,25 @@
+{
+  "id": "prt_995dcca56001SVApgCEDuRVu5U",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0196i827bKmyZD27b92e8HjN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 595,
+      "limit": 25
+    },
+    "output": "<file>\n00596|                 <Button\n00597|                   variant=\"outline\"\n00598|                   size=\"sm\"\n00599|                   onClick={() => setShowControls(!showControls)}\n00600|                   className=\"text-white border-gray-600 hover:bg-gray-700\"\n00601|                 >\n00602|                   {showControls ? 'Скрыть' : 'Покрутить'}\n00603|                 </Button>\n00604|                 <Button\n00605|                   variant=\"outline\"\n00606|                   size=\"sm\"\n00607|                   onClick={() => {\n00608|                     setRotationX(0);\n00609|                     setRotationY(50);\n00610|                     setRotationZ(0);\n00611|                     setPositionX(38);\n00612|                     setPositionY(71);\n00613|                     setScale(70);\n00614|                   }}\n00615|                   className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n00616|                 >\n00617|                   Сброс\n00618|                 </Button>\n00619|               </div>\n00620|             </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 620)\n</file>",
+    "metadata": {
+      "preview": "                <Button\n                  variant=\"outline\"\n                  size=\"sm\"\n                  onClick={() => setShowControls(!showControls)}\n                  className=\"text-white border-gray-600 hover:bg-gray-700\"\n                >\n                  {showControls ? 'Скрыть' : 'Покрутить'}\n                </Button>\n                <Button\n                  variant=\"outline\"\n                  size=\"sm\"\n                  onClick={() => {\n                    setRotationX(0);\n                    setRotationY(50);\n                    setRotationZ(0);\n                    setPositionX(38);\n                    setPositionY(71);\n                    setScale(70);\n                  }}\n                  className=\"text-black bg-white border-gray-300 hover:bg-gray-100\""
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155899878,
+      "end": 1759155899885
+    }
+  }
+}

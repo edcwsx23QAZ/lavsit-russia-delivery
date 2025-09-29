@@ -1,0 +1,34 @@
+{
+  "id": "prt_995e00150001y3m5b8o3uXQQhM",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01MdxKXijYXfX24542tLruVb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "  const [newVehicle, setNewVehicle] = useState({ name: '', length: '', width: '', height: '' });",
+          "newString": "  const [newVehicle, setNewVehicle] = useState({ name: '', length: '', width: '', height: '' });\n\n  // Функции управления типами автомобилей\n  const addVehicleType = () => {\n    if (!newVehicle.name || !newVehicle.length || !newVehicle.width || !newVehicle.height) {\n      alert('Пожалуйста, заполните все поля');\n      return;\n    }\n    \n    const newId = (vehicleTypes.length + 1).toString();\n    const vehicleToAdd = {\n      id: newId,\n      name: newVehicle.name,\n      length: parseInt(newVehicle.length),\n      width: parseInt(newVehicle.width),\n      height: parseInt(newVehicle.height)\n    };\n    \n    setVehicleTypes([...vehicleTypes, vehicleToAdd]);\n    setNewVehicle({ name: '', length: '', width: '', height: '' });\n  };\n  \n  const removeVehicleType = (id: string) => {\n    setVehicleTypes(vehicleTypes.filter(vehicle => vehicle.id !== id));\n  };\n  \n  const updateVehicleType = (id: string, field: string, value: string | number) => {\n    setVehicleTypes(vehicleTypes.map(vehicle => \n      vehicle.id === id ? { ...vehicle, [field]: value } : vehicle\n    ));\n  };"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -60,8 +60,38 @@\n   { id: '2', name: 'Фура 18м3', length: 4200, width: 2200, height: 2000 }\n ]);\n const [newVehicle, setNewVehicle] = useState({ name: '', length: '', width: '', height: '' });\n \n+// Функции управления типами автомобилей\n+const addVehicleType = () => {\n+  if (!newVehicle.name || !newVehicle.length || !newVehicle.width || !newVehicle.height) {\n+    alert('Пожалуйста, заполните все поля');\n+    return;\n+  }\n+  \n+  const newId = (vehicleTypes.length + 1).toString();\n+  const vehicleToAdd = {\n+    id: newId,\n+    name: newVehicle.name,\n+    length: parseInt(newVehicle.length),\n+    width: parseInt(newVehicle.width),\n+    height: parseInt(newVehicle.height)\n+  };\n+  \n+  setVehicleTypes([...vehicleTypes, vehicleToAdd]);\n+  setNewVehicle({ name: '', length: '', width: '', height: '' });\n+};\n+\n+const removeVehicleType = (id: string) => {\n+  setVehicleTypes(vehicleTypes.filter(vehicle => vehicle.id !== id));\n+};\n+\n+const updateVehicleType = (id: string, field: string, value: string | number) => {\n+  setVehicleTypes(vehicleTypes.map(vehicle => \n+    vehicle.id === id ? { ...vehicle, [field]: value } : vehicle\n+  ));\n+};\n+\n const updateResult = (service: string, result: any) => {\n   setDiagnosticResults(prev => ({\n     ...prev,\n     [service]: result\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759156116871,
+      "end": 1759156116887
+    }
+  }
+}

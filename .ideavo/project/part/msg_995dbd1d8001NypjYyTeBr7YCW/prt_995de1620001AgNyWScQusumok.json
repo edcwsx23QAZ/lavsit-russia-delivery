@@ -1,0 +1,25 @@
+{
+  "id": "prt_995de1620001AgNyWScQusumok",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01MJR9amWixqCk6onbzuLH4o",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 460,
+      "limit": 20
+    },
+    "output": "<file>\n00461|   const calculateTruckVertices = () => {\n00462|     const vertices3D = [\n00463|       // Нижние вершины кузова\n00464|       [0, 0, 0],\n00465|       [TRUCK_DIMENSIONS.length, 0, 0],\n00466|       [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, 0],\n00467|       [0, TRUCK_DIMENSIONS.width, 0],\n00468|       // Верхние вершины кузова\n00469|       [0, 0, TRUCK_DIMENSIONS.height],\n00470|       [TRUCK_DIMENSIONS.length, 0, TRUCK_DIMENSIONS.height],\n00471|       [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height],\n00472|       [0, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height]\n00473|     ];\n00474| \n00475|     const rotatedVertices = applyRotations(vertices3D);\n00476|     return project3DTo2D(rotatedVertices);\n00477|   };\n00478| \n00479|   // Вычисление вершин кабины и шасси\n00480|   const calculateCabinAndChassisVertices = () => {\n\n(File has more lines. Use 'offset' parameter to read beyond line 480)\n</file>",
+    "metadata": {
+      "preview": "  const calculateTruckVertices = () => {\n    const vertices3D = [\n      // Нижние вершины кузова\n      [0, 0, 0],\n      [TRUCK_DIMENSIONS.length, 0, 0],\n      [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, 0],\n      [0, TRUCK_DIMENSIONS.width, 0],\n      // Верхние вершины кузова\n      [0, 0, TRUCK_DIMENSIONS.height],\n      [TRUCK_DIMENSIONS.length, 0, TRUCK_DIMENSIONS.height],\n      [TRUCK_DIMENSIONS.length, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height],\n      [0, TRUCK_DIMENSIONS.width, TRUCK_DIMENSIONS.height]\n    ];\n\n    const rotatedVertices = applyRotations(vertices3D);\n    return project3DTo2D(rotatedVertices);\n  };\n\n  // Вычисление вершин кабины и шасси\n  const calculateCabinAndChassisVertices = () => {"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759155984572,
+      "end": 1759155984573
+    }
+  }
+}

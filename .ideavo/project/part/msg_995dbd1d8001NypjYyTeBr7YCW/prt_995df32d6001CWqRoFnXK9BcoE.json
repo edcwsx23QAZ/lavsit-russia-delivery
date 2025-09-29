@@ -1,0 +1,34 @@
+{
+  "id": "prt_995df32d6001CWqRoFnXK9BcoE",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_019z7fa3RZRr1BUtVz5FSaPq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "                <text x=\"600\" y=\"20\" textAnchor=\"middle\" fill=\"#9CA3AF\" fontSize=\"12\" fontWeight=\"bold\">\n                  🚛 Грузовик с кузовом 4200×2025×2025 мм\n                </text>",
+          "newString": "                <text x=\"600\" y=\"20\" textAnchor=\"middle\" fill=\"#9CA3AF\" fontSize=\"12\" fontWeight=\"bold\">\n                  🚛 {VEHICLE_TYPES[selectedVehicleType].name} - Кузов {getCurrentVehicleDimensions().length}×{getCurrentVehicleDimensions().width}×{getCurrentVehicleDimensions().height} мм\n                </text>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -762,9 +762,9 @@\n \n >\n   {/* Размеры кузова */}\n   <text x=\"600\" y=\"20\" textAnchor=\"middle\" fill=\"#9CA3AF\" fontSize=\"12\" fontWeight=\"bold\">\n-    🚛 Грузовик с кузовом 4200×2025×2025 мм\n+    🚛 {VEHICLE_TYPES[selectedVehicleType].name} - Кузов {getCurrentVehicleDimensions().length}×{getCurrentVehicleDimensions().width}×{getCurrentVehicleDimensions().height} мм\n   </text>\n   \n   {/* Кабина грузовика */}\n   <g stroke=\"#10B981\" strokeWidth=\"2\" fill=\"#065F46\" fillOpacity=\"0.3\">\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759156060304,
+      "end": 1759156060316
+    }
+  }
+}

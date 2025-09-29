@@ -1,0 +1,25 @@
+{
+  "id": "prt_995df0f34001nQR1VVGYczE4nS",
+  "messageID": "msg_995dbd1d8001NypjYyTeBr7YCW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0153bZY7htuEJxTpBxVFXEYT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 775,
+      "limit": 10
+    },
+    "output": "<file>\n00776|                   {/* Правая боковая стенка кабины */}\n00777|                   <polygon \n00778|                     points={`${truckComponents.cabin[1].x},${truckComponents.cabin[1].y} ${truckComponents.cabin[2].x},${truckComponents.cabin[2].y} ${truckComponents.cabin[6].x},${truckComponents.cabin[6].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y}`}\n00779|                     fillOpacity=\"0.4\"\n00780|                   />\n00781|                   \n00782|                   {/* Верх кабины */}\n00783|                   <polygon \n00784|                     points={`${truckComponents.cabin[4].x},${truckComponents.cabin[4].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y} ${truckComponents.cabin[6].x},${truckComponents.cabin[6].y} ${truckComponents.cabin[7].x},${truckComponents.cabin[7].y}`}\n00785|                     fillOpacity=\"0.5\"\n\n(File has more lines. Use 'offset' parameter to read beyond line 785)\n</file>",
+    "metadata": {
+      "preview": "                  {/* Правая боковая стенка кабины */}\n                  <polygon \n                    points={`${truckComponents.cabin[1].x},${truckComponents.cabin[1].y} ${truckComponents.cabin[2].x},${truckComponents.cabin[2].y} ${truckComponents.cabin[6].x},${truckComponents.cabin[6].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y}`}\n                    fillOpacity=\"0.4\"\n                  />\n                  \n                  {/* Верх кабины */}\n                  <polygon \n                    points={`${truckComponents.cabin[4].x},${truckComponents.cabin[4].y} ${truckComponents.cabin[5].x},${truckComponents.cabin[5].y} ${truckComponents.cabin[6].x},${truckComponents.cabin[6].y} ${truckComponents.cabin[7].x},${truckComponents.cabin[7].y}`}\n                    fillOpacity=\"0.5\""
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759156048217,
+      "end": 1759156048222
+    }
+  }
+}
