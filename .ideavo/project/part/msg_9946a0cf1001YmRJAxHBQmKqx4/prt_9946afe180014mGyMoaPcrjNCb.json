@@ -1,0 +1,26 @@
+{
+  "id": "prt_9946afe180014mGyMoaPcrjNCb",
+  "messageID": "msg_9946a0cf1001YmRJAxHBQmKqx4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_0124F3pLaE2e63LjfeCPGwcd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Удаляем пустые грузы, но оставляем минимум один\n      const nonEmptyCargos = updatedCargos.filter((cargo, index) => \n        !isEmptyCargo(cargo) || index === 0 // Всегда оставляем первый груз\n      );\n      \n      // Если все грузы оказались пустыми, оставляем только первый\n      const finalCargos = nonEmptyCargos.length === 0 \n        ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n        : nonEmptyCargos;\n      \n      console.log('Грузы после очистки и удаления пустых:', finalCargos.length);\n      console.log('Удалено пустых грузов:', updatedCargos.length - finalCargos.length);",
+      "newString": "      // Создаем массив маппинга старых индексов к новым\n      const oldToNewIndexMap = new globalThis.Map<number, number>();\n      let newIndex = 0;\n      \n      updatedCargos.forEach((cargo, oldIndex) => {\n        if (!isEmptyCargo(cargo) || oldIndex === 0) {\n          oldToNewIndexMap.set(oldIndex, newIndex);\n          newIndex++;\n        }\n      });\n      \n      // Удаляем пустые грузы, но оставляем минимум один (первый)\n      const nonEmptyCargos = updatedCargos.filter((cargo, index) => \n        !isEmptyCargo(cargo) || index === 0\n      );\n      \n      // Если все грузы оказались пустыми, оставляем только первый\n      const finalCargos = nonEmptyCargos.length === 0 \n        ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n        : nonEmptyCargos;\n      \n      // Обновляем индексы грузов у всех оставшихся товаров\n      const updatedProductsWithNewIndexes = updatedProducts.map(productItem => ({\n        ...productItem,\n        cargoIndexes: productItem.cargoIndexes\n          .map(oldIndex => oldToNewIndexMap.get(oldIndex))\n          .filter(newIdx => newIdx !== undefined) as number[]\n      }));\n      \n      console.log('Грузы после очистки и удаления пустых:', finalCargos.length);\n      console.log('Удалено пустых грузов:', updatedCargos.length - finalCargos.length);\n      console.log('Обновлены индексы товаров:', updatedProductsWithNewIndexes.length);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -722,20 +722,40 @@\n \n // Пересчитываем объявленную стоимость\n const newDeclaredValue = calculateTotalValue(updatedProducts);\n \n-// Удаляем пустые грузы, но оставляем минимум один\n+// Создаем массив маппинга старых индексов к новым\n+const oldToNewIndexMap = new globalThis.Map<number, number>();\n+let newIndex = 0;\n+\n+updatedCargos.forEach((cargo, oldIndex) => {\n+  if (!isEmptyCargo(cargo) || oldIndex === 0) {\n+    oldToNewIndexMap.set(oldIndex, newIndex);\n+    newIndex++;\n+  }\n+});\n+\n+// Удаляем пустые грузы, но оставляем минимум один (первый)\n const nonEmptyCargos = updatedCargos.filter((cargo, index) => \n-  !isEmptyCargo(cargo) || index === 0 // Всегда оставляем первый груз\n+  !isEmptyCargo(cargo) || index === 0\n );\n \n // Если все грузы оказались пустыми, оставляем только первый\n const finalCargos = nonEmptyCargos.length === 0 \n   ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n   : nonEmptyCargos;\n \n+// Обновляем индексы грузов у всех оставшихся товаров\n+const updatedProductsWithNewIndexes = updatedProducts.map(productItem => ({\n+  ...productItem,\n+  cargoIndexes: productItem.cargoIndexes\n+    .map(oldIndex => oldToNewIndexMap.get(oldIndex))\n+    .filter(newIdx => newIdx !== undefined) as number[]\n+}));\n+\n console.log('Грузы после очистки и удаления пустых:', finalCargos.length);\n console.log('Удалено пустых грузов:', updatedCargos.length - finalCargos.length);\n+console.log('Обновлены индексы товаров:', updatedProductsWithNewIndexes.length);\n \n return {\n   ...prev,\n   cargos: finalCargos,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131671214,
+      "end": 1759131671234
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9946ae515001yUvZc5vQhJAXcv",
+  "messageID": "msg_9946a0cf1001YmRJAxHBQmKqx4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016WGR5VJYuQDfM4wyK9t6j1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 720,
+      "limit": 25
+    },
+    "output": "<file>\n00721|       );\n00722|       \n00723|       // Пересчитываем объявленную стоимость\n00724|       const newDeclaredValue = calculateTotalValue(updatedProducts);\n00725|       \n00726|       // Удаляем пустые грузы, но оставляем минимум один\n00727|       const nonEmptyCargos = updatedCargos.filter((cargo, index) => \n00728|         !isEmptyCargo(cargo) || index === 0 // Всегда оставляем первый груз\n00729|       );\n00730|       \n00731|       // Если все грузы оказались пустыми, оставляем только первый\n00732|       const finalCargos = nonEmptyCargos.length === 0 \n00733|         ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n00734|         : nonEmptyCargos;\n00735|       \n00736|       console.log('Грузы после очистки и удаления пустых:', finalCargos.length);\n00737|       console.log('Удалено пустых грузов:', updatedCargos.length - finalCargos.length);\n00738|       \n00739|       return {\n00740|         ...prev,\n00741|         cargos: finalCargos,\n00742|         selectedProducts: updatedProducts,\n00743|         declaredValue: newDeclaredValue\n00744|       };\n00745|     });\n\n(File has more lines. Use 'offset' parameter to read beyond line 745)\n</file>",
+    "metadata": {
+      "preview": "      );\n      \n      // Пересчитываем объявленную стоимость\n      const newDeclaredValue = calculateTotalValue(updatedProducts);\n      \n      // Удаляем пустые грузы, но оставляем минимум один\n      const nonEmptyCargos = updatedCargos.filter((cargo, index) => \n        !isEmptyCargo(cargo) || index === 0 // Всегда оставляем первый груз\n      );\n      \n      // Если все грузы оказались пустыми, оставляем только первый\n      const finalCargos = nonEmptyCargos.length === 0 \n        ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n        : nonEmptyCargos;\n      \n      console.log('Грузы после очистки и удаления пустых:', finalCargos.length);\n      console.log('Удалено пустых грузов:', updatedCargos.length - finalCargos.length);\n      \n      return {\n        ...prev,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131658155,
+      "end": 1759131658158
+    }
+  }
+}

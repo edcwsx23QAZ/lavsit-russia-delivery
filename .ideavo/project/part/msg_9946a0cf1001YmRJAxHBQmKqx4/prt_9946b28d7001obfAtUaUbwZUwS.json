@@ -1,0 +1,26 @@
+{
+  "id": "prt_9946b28d7001obfAtUaUbwZUwS",
+  "messageID": "msg_9946a0cf1001YmRJAxHBQmKqx4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01HnRi1Ue8e2feLnyUbSZme2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      return {\n        ...prev,\n        cargos: finalCargos,\n        selectedProducts: updatedProducts,\n        declaredValue: newDeclaredValue\n      };",
+      "newString": "      return {\n        ...prev,\n        cargos: finalCargos,\n        selectedProducts: updatedProductsWithNewIndexes,\n        declaredValue: newDeclaredValue\n      };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -758,9 +758,9 @@\n   \n   return {\n     ...prev,\n     cargos: finalCargos,\n-    selectedProducts: updatedProducts,\n+    selectedProducts: updatedProductsWithNewIndexes,\n     declaredValue: newDeclaredValue\n   };\n });\n \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131675970,
+      "end": 1759131675988
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9946a6c30002oa5IPGCFmzWbhV",
+  "messageID": "msg_9946a0cf1001YmRJAxHBQmKqx4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01WFRXLFBGSKBzsSMJTCTEqz",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Убеждаемся, что есть хотя бы один груз\n      const finalCargos = updatedCargos.length === 0 \n        ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n        : updatedCargos;\n      \n      console.log('Грузы после очистки:', finalCargos.length);",
+      "newString": "      // Удаляем пустые грузы, но оставляем минимум один\n      const nonEmptyCargos = updatedCargos.filter((cargo, index) => \n        !isEmptyCargo(cargo) || index === 0 // Всегда оставляем первый груз\n      );\n      \n      // Если все грузы оказались пустыми, оставляем только первый\n      const finalCargos = nonEmptyCargos.length === 0 \n        ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n        : nonEmptyCargos;\n      \n      console.log('Грузы после очистки и удаления пустых:', finalCargos.length);\n      console.log('Удалено пустых грузов:', updatedCargos.length - finalCargos.length);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -722,14 +722,20 @@\n \n // Пересчитываем объявленную стоимость\n const newDeclaredValue = calculateTotalValue(updatedProducts);\n \n-// Убеждаемся, что есть хотя бы один груз\n-const finalCargos = updatedCargos.length === 0 \n+// Удаляем пустые грузы, но оставляем минимум один\n+const nonEmptyCargos = updatedCargos.filter((cargo, index) => \n+  !isEmptyCargo(cargo) || index === 0 // Всегда оставляем первый груз\n+);\n+\n+// Если все грузы оказались пустыми, оставляем только первый\n+const finalCargos = nonEmptyCargos.length === 0 \n   ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n-  : updatedCargos;\n+  : nonEmptyCargos;\n \n-console.log('Грузы после очистки:', finalCargos.length);\n+console.log('Грузы после очистки и удаления пустых:', finalCargos.length);\n+console.log('Удалено пустых грузов:', updatedCargos.length - finalCargos.length);\n \n return {\n   ...prev,\n   cargos: finalCargos,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131629852,
+      "end": 1759131629877
+    }
+  }
+}

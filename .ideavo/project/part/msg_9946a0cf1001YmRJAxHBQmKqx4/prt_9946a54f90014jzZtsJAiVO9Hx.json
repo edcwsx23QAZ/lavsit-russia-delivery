@@ -1,0 +1,25 @@
+{
+  "id": "prt_9946a54f90014jzZtsJAiVO9Hx",
+  "messageID": "msg_9946a0cf1001YmRJAxHBQmKqx4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_019wKdMuGfPFTrzwDGGqZWP1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 725,
+      "limit": 15
+    },
+    "output": "<file>\n00726|       // Убеждаемся, что есть хотя бы один груз\n00727|       const finalCargos = updatedCargos.length === 0 \n00728|         ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n00729|         : updatedCargos;\n00730|       \n00731|       console.log('Грузы после очистки:', finalCargos.length);\n00732|       \n00733|       return {\n00734|         ...prev,\n00735|         cargos: finalCargos,\n00736|         selectedProducts: updatedProducts,\n00737|         declaredValue: newDeclaredValue\n00738|       };\n00739|     });\n00740|     \n\n(File has more lines. Use 'offset' parameter to read beyond line 740)\n</file>",
+    "metadata": {
+      "preview": "      // Убеждаемся, что есть хотя бы один груз\n      const finalCargos = updatedCargos.length === 0 \n        ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]\n        : updatedCargos;\n      \n      console.log('Грузы после очистки:', finalCargos.length);\n      \n      return {\n        ...prev,\n        cargos: finalCargos,\n        selectedProducts: updatedProducts,\n        declaredValue: newDeclaredValue\n      };\n    });\n    "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759131620852,
+      "end": 1759131620861
+    }
+  }
+}

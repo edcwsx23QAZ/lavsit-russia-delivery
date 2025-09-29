@@ -723,17 +723,43 @@ export default function Home() {
       // Пересчитываем объявленную стоимость
       const newDeclaredValue = calculateTotalValue(updatedProducts);
       
-      // Убеждаемся, что есть хотя бы один груз
-      const finalCargos = updatedCargos.length === 0 
-        ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]
-        : updatedCargos;
+      // Создаем массив маппинга старых индексов к новым
+      const oldToNewIndexMap = new globalThis.Map<number, number>();
+      let newIndex = 0;
       
-      console.log('Грузы после очистки:', finalCargos.length);
+      updatedCargos.forEach((cargo, oldIndex) => {
+        if (!isEmptyCargo(cargo) || oldIndex === 0) {
+          oldToNewIndexMap.set(oldIndex, newIndex);
+          newIndex++;
+        }
+      });
+      
+      // Удаляем пустые грузы, но оставляем минимум один (первый)
+      const nonEmptyCargos = updatedCargos.filter((cargo, index) => 
+        !isEmptyCargo(cargo) || index === 0
+      );
+      
+      // Если все грузы оказались пустыми, оставляем только первый
+      const finalCargos = nonEmptyCargos.length === 0 
+        ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]
+        : nonEmptyCargos;
+      
+      // Обновляем индексы грузов у всех оставшихся товаров
+      const updatedProductsWithNewIndexes = updatedProducts.map(productItem => ({
+        ...productItem,
+        cargoIndexes: productItem.cargoIndexes
+          .map(oldIndex => oldToNewIndexMap.get(oldIndex))
+          .filter(newIdx => newIdx !== undefined) as number[]
+      }));
+      
+      console.log('Грузы после очистки и удаления пустых:', finalCargos.length);
+      console.log('Удалено пустых грузов:', updatedCargos.length - finalCargos.length);
+      console.log('Обновлены индексы товаров:', updatedProductsWithNewIndexes.length);
       
       return {
         ...prev,
         cargos: finalCargos,
-        selectedProducts: updatedProducts,
+        selectedProducts: updatedProductsWithNewIndexes,
         declaredValue: newDeclaredValue
       };
     });
