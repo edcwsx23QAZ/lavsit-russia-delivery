@@ -1,0 +1,25 @@
+{
+  "id": "prt_994c625ff001A3bRVdvICgEQRG",
+  "messageID": "msg_994c5f077001BlYLmVIUsqAMxK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_014A68WDyQhKRXmCfCpZBbxB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 59,
+      "limit": 10
+    },
+    "output": "<file>\n00060|   const [rotationX, setRotationX] = useState(-15); // Поворот по оси X (наклон вверх для вида сзади-сверху)\n00061|   const [rotationY, setRotationY] = useState(-135); // Поворот по оси Y (поворот для вида сзади 3/4)\n00062|   const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n00063|   const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)\n00064|   const [positionY, setPositionY] = useState(70);  // Позиция по Y (немного ниже для лучшего вида)\n00065|   const [scale, setScale] = useState(65); // Увеличенный масштаб для лучшей видимости\n00066|   \n00067|   // Состояние джойстика\n00068|   const [isDragging, setIsDragging] = useState(false);\n00069|   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });\n\n(File has more lines. Use 'offset' parameter to read beyond line 69)\n</file>",
+    "metadata": {
+      "preview": "  const [rotationX, setRotationX] = useState(-15); // Поворот по оси X (наклон вверх для вида сзади-сверху)\n  const [rotationY, setRotationY] = useState(-135); // Поворот по оси Y (поворот для вида сзади 3/4)\n  const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n  const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)\n  const [positionY, setPositionY] = useState(70);  // Позиция по Y (немного ниже для лучшего вида)\n  const [scale, setScale] = useState(65); // Увеличенный масштаб для лучшей видимости\n  \n  // Состояние джойстика\n  const [isDragging, setIsDragging] = useState(false);\n  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759137638539,
+      "end": 1759137638543
+    }
+  }
+}
