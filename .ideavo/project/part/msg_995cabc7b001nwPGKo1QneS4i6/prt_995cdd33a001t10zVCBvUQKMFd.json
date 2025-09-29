@@ -1,0 +1,25 @@
+{
+  "id": "prt_995cdd33a001t10zVCBvUQKMFd",
+  "messageID": "msg_995cabc7b001nwPGKo1QneS4i6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QhowzWJmnRJL2JB5rEBMED",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 850,
+      "limit": 50
+    },
+    "output": "<file>\n00851|                       />\n00852| \n00853|                       {/* Номер груза */}\n00854|                       <text\n00855|                         x={(vertices[4].x + vertices[6].x) / 2}\n00856|                         y={(vertices[4].y + vertices[6].y) / 2}\n00857|                         textAnchor=\"middle\"\n00858|                         dominantBaseline=\"middle\"\n00859|                         fill=\"white\"\n00860|                         fontSize=\"8\"\n00861|                         fontWeight=\"bold\"\n00862|                       >\n00863|                         {index + 1}\n00864|                       </text>\n00865|                     </g>\n00866|                   );\n00867|                 })}\n00868|               </svg>\n00869|             </div>\n00870|             \n00871|             {/* Легенда грузов под 3D визуализацией */}\n00872|             {placements.length > 0 && (\n00873|               <div className=\"bg-gray-800 p-4 rounded-lg\">\n00874|                 <h4 className=\"font-medium text-white mb-3\">📦 Размещенные грузы</h4>\n00875|                 <div className=\"grid grid-cols-1 gap-2 text-xs max-h-80 overflow-y-auto\">\n00876|                   {placements.map((placement, index) => (\n00877|                     <div key={`legend-${index}`} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n00878|                       <div \n00879|                         className=\"w-4 h-4 rounded flex-shrink-0\"\n00880|                         style={{ backgroundColor: placement.color }}\n00881|                       />\n00882|                       <span className=\"text-gray-300 flex-1\">\n00883|                         <span className=\"font-medium\">Груз {index + 1}</span>\n00884|                         {getProductShortName(placement.cargo.productName) && (\n00885|                           <span className=\"text-blue-300\"> \"{getProductShortName(placement.cargo.productName)}\"</span>\n00886|                         )}\n00887|                         <br />\n00888|                         <span className=\"text-xs text-gray-400\">\n00889|                           {Math.round(placement.orientation.length)}×{Math.round(placement.orientation.width)}×{Math.round(placement.orientation.height)} мм\n00890|                           {placement.orientation.rotationAngle !== 0 && (\n00891|                             <span className=\"text-blue-300\"> (повернут {placement.orientation.rotationAngle}°)</span>\n00892|                           )}\n00893|                         </span>\n00894|                       </span>\n00895|                     </div>\n00896|                   ))}\n00897|                 </div>\n00898|               </div>\n00899|             )}\n00900|           </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 900)\n</file>",
+    "metadata": {
+      "preview": "                      />\n\n                      {/* Номер груза */}\n                      <text\n                        x={(vertices[4].x + vertices[6].x) / 2}\n                        y={(vertices[4].y + vertices[6].y) / 2}\n                        textAnchor=\"middle\"\n                        dominantBaseline=\"middle\"\n                        fill=\"white\"\n                        fontSize=\"8\"\n                        fontWeight=\"bold\"\n                      >\n                        {index + 1}\n                      </text>\n                    </g>\n                  );\n                })}\n              </svg>\n            </div>\n            "
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759154918997,
+      "end": 1759154918998
+    }
+  }
+}

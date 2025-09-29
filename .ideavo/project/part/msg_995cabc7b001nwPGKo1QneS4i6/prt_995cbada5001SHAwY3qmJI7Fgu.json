@@ -1,0 +1,25 @@
+{
+  "id": "prt_995cbada5001SHAwY3qmJI7Fgu",
+  "messageID": "msg_995cabc7b001nwPGKo1QneS4i6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011xrmKUvSRS8h4VxWwTgsZM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 580,
+      "limit": 25
+    },
+    "output": "<file>\n00581|           Интерактивная 3D визуализация грузовика с размещением груза\n00582|         </CardTitle>\n00583|       </CardHeader>\n00584|       <CardContent>\n00585|         {/* Основная сетка: слева результаты, справа 3D */}\n00586|         <div className=\"grid grid-cols-1 xl:grid-cols-2 gap-6\">\n00587|           {/* Левая колонка: Результаты расчета */}\n00588|           <div className=\"space-y-4\">\n00589|             {/* Статистика размещения */}\n00590|             {stats && (\n00591|               <div className=\"bg-gray-800 p-4 rounded-lg\">\n00592|                 <h4 className=\"font-medium text-white mb-4\">📊 Результаты размещения</h4>\n00593|                 <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4 text-sm\">\n00594|                   <div className=\"space-y-2\">\n00595|                     <h5 className=\"font-medium text-gray-300\">Занятые размеры:</h5>\n00596|                     <div className=\"text-gray-400 space-y-1\">\n00597|                       <div>Длина: {stats.dimensions.length} м</div>\n00598|                       <div>Ширина: {stats.dimensions.width} м</div>\n00599|                       <div>Высота: {stats.dimensions.height} м</div>\n00600|                     </div>\n00601|                   </div>\n00602|                   <div className=\"space-y-2\">\n00603|                     <h5 className=\"font-medium text-gray-300\">Использование:</h5>\n00604|                     <div className=\"text-gray-400 space-y-1\">\n00605|                       <div>Площадь пола: {stats.occupiedFloorArea} м²</div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 605)\n</file>",
+    "metadata": {
+      "preview": "          Интерактивная 3D визуализация грузовика с размещением груза\n        </CardTitle>\n      </CardHeader>\n      <CardContent>\n        {/* Основная сетка: слева результаты, справа 3D */}\n        <div className=\"grid grid-cols-1 xl:grid-cols-2 gap-6\">\n          {/* Левая колонка: Результаты расчета */}\n          <div className=\"space-y-4\">\n            {/* Статистика размещения */}\n            {stats && (\n              <div className=\"bg-gray-800 p-4 rounded-lg\">\n                <h4 className=\"font-medium text-white mb-4\">📊 Результаты размещения</h4>\n                <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4 text-sm\">\n                  <div className=\"space-y-2\">\n                    <h5 className=\"font-medium text-gray-300\">Занятые размеры:</h5>\n                    <div className=\"text-gray-400 space-y-1\">\n                      <div>Длина: {stats.dimensions.length} м</div>\n                      <div>Ширина: {stats.dimensions.width} м</div>\n                      <div>Высота: {stats.dimensions.height} м</div>\n                    </div>"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759154778252,
+      "end": 1759154778256
+    }
+  }
+}

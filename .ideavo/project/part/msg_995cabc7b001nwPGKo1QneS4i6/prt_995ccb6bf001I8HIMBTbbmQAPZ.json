@@ -1,0 +1,25 @@
+{
+  "id": "prt_995ccb6bf001I8HIMBTbbmQAPZ",
+  "messageID": "msg_995cabc7b001nwPGKo1QneS4i6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01CBzFX4ZBtTnLiNPkK8ZWFa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 800,
+      "limit": 30
+    },
+    "output": "<file>\n00801|                       onValueChange={(value) => setPositionY(value[0])}\n00802|                       max={100}\n00803|                       min={0}\n00804|                       step={1}\n00805|                       className=\"w-full\"\n00806|                     />\n00807|                   </div>\n00808| \n00809|                   <div className=\"space-y-2\">\n00810|                     <label className=\"text-sm text-gray-300\">\n00811|                       Масштаб: {scale.toFixed(0)}%\n00812|                     </label>\n00813|                     <Slider\n00814|                       value={[scale]}\n00815|                       onValueChange={(value) => setScale(value[0])}\n00816|                       max={100}\n00817|                       min={10}\n00818|                       step={1}\n00819|                       className=\"w-full\"\n00820|                     />\n00821|                   </div>\n00822|                 </div>\n00823|               </div>\n00824|             </div>\n00825| \n00826|             {/* 3D SVG визуализация кузова */}\n00827|             <div className=\"bg-gray-900 p-4 rounded-lg\">\n00828|               <svg \n00829|                 viewBox=\"0 0 1200 400\" \n00830|                 className=\"w-full h-96 border border-gray-600 bg-gray-950\"\n\n(File has more lines. Use 'offset' parameter to read beyond line 830)\n</file>",
+    "metadata": {
+      "preview": "                      onValueChange={(value) => setPositionY(value[0])}\n                      max={100}\n                      min={0}\n                      step={1}\n                      className=\"w-full\"\n                    />\n                  </div>\n\n                  <div className=\"space-y-2\">\n                    <label className=\"text-sm text-gray-300\">\n                      Масштаб: {scale.toFixed(0)}%\n                    </label>\n                    <Slider\n                      value={[scale]}\n                      onValueChange={(value) => setScale(value[0])}\n                      max={100}\n                      min={10}\n                      step={1}\n                      className=\"w-full\"\n                    />"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759154845921,
+      "end": 1759154845923
+    }
+  }
+}

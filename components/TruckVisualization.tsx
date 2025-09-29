@@ -582,165 +582,134 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
         </CardTitle>
       </CardHeader>
       <CardContent>
-        {/* Основная сетка: слева результаты, справа 3D */}
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-          {/* Левая колонка: Результаты расчета */}
-          <div className="space-y-4">
-            {/* Статистика размещения */}
-            {stats && (
-              <div className="bg-gray-800 p-4 rounded-lg">
-                <h4 className="font-medium text-white mb-4">📊 Результаты размещения</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                  <div className="space-y-2">
-                    <h5 className="font-medium text-gray-300">Занятые размеры:</h5>
-                    <div className="text-gray-400 space-y-1">
-                      <div>Длина: {stats.dimensions.length} м</div>
-                      <div>Ширина: {stats.dimensions.width} м</div>
-                      <div>Высота: {stats.dimensions.height} м</div>
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <h5 className="font-medium text-gray-300">Использование:</h5>
-                    <div className="text-gray-400 space-y-1">
-                      <div>Площадь пола: {stats.occupiedFloorArea} м²</div>
-                      <div>Объем: {stats.occupiedVolume} м³</div>
-                      <div>Загрузка пола: {stats.floorUtilization}%</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-
-          </div>
-
-          {/* Правая колонка: 3D Визуализация */}
-          <div className="space-y-4">
-            {/* Панель управления 3D моделью */}
-            <div className="bg-gray-800 p-4 rounded-lg space-y-4">
-              <div className="flex items-center justify-between">
-                <h4 className="text-white font-medium flex items-center gap-2">
-                  <Rotate3d className="h-4 w-4" />
-                  🎮 Управление 3D моделью
-                </h4>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    setRotationX(0);
-                    setRotationY(50);
-                    setRotationZ(0);
-                    setPositionX(50);
-                    setPositionY(50);
-                    setScale(70);
-                  }}
-                  className="text-white border-gray-600 hover:bg-gray-700"
-                >
-                  Сброс
-                </Button>
+        {/* Одноколоночная структура для оптимальной визуализации */}
+        <div className="space-y-6">
+          {/* Компактная панель управления 3D моделью */}
+          <div className="bg-gray-800 p-4 rounded-lg">
+            <div className="flex items-center justify-between mb-4">
+              <h4 className="text-white font-medium flex items-center gap-2">
+                <Rotate3d className="h-4 w-4" />
+                🎮 Управление 3D моделью
+              </h4>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => {
+                  setRotationX(0);
+                  setRotationY(50);
+                  setRotationZ(0);
+                  setPositionX(50);
+                  setPositionY(50);
+                  setScale(70);
+                }}
+                className="text-white border-gray-600 hover:bg-gray-700"
+              >
+                Сброс
+              </Button>
+            </div>
+            
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+              {/* Поворот X */}
+              <div className="space-y-2">
+                <label className="text-xs text-gray-300 flex items-center gap-1">
+                  <Rotate3d className="h-3 w-3" />
+                  Поворот X: {rotationX.toFixed(0)}°
+                </label>
+                <Slider
+                  value={[rotationX]}
+                  onValueChange={(value) => setRotationX(value[0])}
+                  max={360}
+                  min={-360}
+                  step={5}
+                  className="w-full"
+                />
               </div>
               
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                {/* Слайдеры поворотов */}
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-300 flex items-center gap-2">
-                      <Rotate3d className="h-3 w-3" />
-                      Поворот вокруг оси X: {rotationX.toFixed(0)}°
-                    </label>
-                    <Slider
-                      value={[rotationX]}
-                      onValueChange={(value) => setRotationX(value[0])}
-                      max={360}
-                      min={-360}
-                      step={5}
-                      className="w-full"
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-300 flex items-center gap-2">
-                      <Rotate3d className="h-3 w-3" />
-                      Поворот вокруг оси Y: {rotationY.toFixed(0)}°
-                    </label>
-                    <Slider
-                      value={[rotationY]}
-                      onValueChange={(value) => setRotationY(value[0])}
-                      max={360}
-                      min={-360}
-                      step={5}
-                      className="w-full"
-                    />
-                  </div>
+              {/* Поворот Y */}
+              <div className="space-y-2">
+                <label className="text-xs text-gray-300 flex items-center gap-1">
+                  <Rotate3d className="h-3 w-3" />
+                  Поворот Y: {rotationY.toFixed(0)}°
+                </label>
+                <Slider
+                  value={[rotationY]}
+                  onValueChange={(value) => setRotationY(value[0])}
+                  max={360}
+                  min={-360}
+                  step={5}
+                  className="w-full"
+                />
+              </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-300">
-                      Поворот вокруг оси Z: {rotationZ.toFixed(0)}°
-                    </label>
-                    <Slider
-                      value={[rotationZ]}
-                      onValueChange={(value) => setRotationZ(value[0])}
-                      max={360}
-                      min={-360}
-                      step={5}
-                      className="w-full"
-                    />
-                  </div>
-                </div>
-                
-                {/* Слайдеры позиции и масштаба */}
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-300 flex items-center gap-2">
-                      <Move className="h-3 w-3" />
-                      Позиция X: {positionX.toFixed(0)}%
-                    </label>
-                    <Slider
-                      value={[positionX]}
-                      onValueChange={(value) => setPositionX(value[0])}
-                      max={100}
-                      min={0}
-                      step={1}
-                      className="w-full"
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-300">
-                      Позиция Y: {positionY.toFixed(0)}%
-                    </label>
-                    <Slider
-                      value={[positionY]}
-                      onValueChange={(value) => setPositionY(value[0])}
-                      max={100}
-                      min={0}
-                      step={1}
-                      className="w-full"
-                    />
-                  </div>
+              {/* Поворот Z */}
+              <div className="space-y-2">
+                <label className="text-xs text-gray-300">
+                  Поворот Z: {rotationZ.toFixed(0)}°
+                </label>
+                <Slider
+                  value={[rotationZ]}
+                  onValueChange={(value) => setRotationZ(value[0])}
+                  max={360}
+                  min={-360}
+                  step={5}
+                  className="w-full"
+                />
+              </div>
+              
+              {/* Позиция X */}
+              <div className="space-y-2">
+                <label className="text-xs text-gray-300 flex items-center gap-1">
+                  <Move className="h-3 w-3" />
+                  Позиция X: {positionX.toFixed(0)}%
+                </label>
+                <Slider
+                  value={[positionX]}
+                  onValueChange={(value) => setPositionX(value[0])}
+                  max={100}
+                  min={0}
+                  step={1}
+                  className="w-full"
+                />
+              </div>
+              
+              {/* Позиция Y */}
+              <div className="space-y-2">
+                <label className="text-xs text-gray-300">
+                  Позиция Y: {positionY.toFixed(0)}%
+                </label>
+                <Slider
+                  value={[positionY]}
+                  onValueChange={(value) => setPositionY(value[0])}
+                  max={100}
+                  min={0}
+                  step={1}
+                  className="w-full"
+                />
+              </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm text-gray-300">
-                      Масштаб: {scale.toFixed(0)}%
-                    </label>
-                    <Slider
-                      value={[scale]}
-                      onValueChange={(value) => setScale(value[0])}
-                      max={100}
-                      min={10}
-                      step={1}
-                      className="w-full"
-                    />
-                  </div>
-                </div>
+              {/* Масштаб */}
+              <div className="space-y-2">
+                <label className="text-xs text-gray-300">
+                  Масштаб: {scale.toFixed(0)}%
+                </label>
+                <Slider
+                  value={[scale]}
+                  onValueChange={(value) => setScale(value[0])}
+                  max={100}
+                  min={10}
+                  step={1}
+                  className="w-full"
+                />
               </div>
             </div>
+          </div>
 
-            {/* 3D SVG визуализация кузова */}
-            <div className="bg-gray-900 p-4 rounded-lg">
-              <svg 
-                viewBox="0 0 1200 400" 
-                className="w-full h-96 border border-gray-600 bg-gray-950"
+
+          {/* 3D SVG визуализация кузова - увеличенная на всю ширину */}
+          <div className="bg-gray-900 p-4 rounded-lg">
+            <svg 
+              viewBox="0 0 1200 600" 
+              className="w-full h-[600px] border border-gray-600 bg-gray-950"
                 style={{ maxHeight: '480px' }}
               >
                 {/* Размеры кузова */}
@@ -897,38 +866,88 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                   );
                 })}
               </svg>
-            </div>
-            
-            {/* Легенда грузов под 3D визуализацией */}
-            {placements.length > 0 && (
-              <div className="bg-gray-800 p-4 rounded-lg">
-                <h4 className="font-medium text-white mb-3">📦 Размещенные грузы</h4>
-                <div className="grid grid-cols-1 gap-2 text-xs max-h-80 overflow-y-auto">
-                  {placements.map((placement, index) => (
-                    <div key={`legend-${index}`} className="flex items-center gap-2 p-2 bg-gray-700 rounded">
-                      <div 
-                        className="w-4 h-4 rounded flex-shrink-0"
-                        style={{ backgroundColor: placement.color }}
-                      />
-                      <span className="text-gray-300 flex-1">
-                        <span className="font-medium">Груз {index + 1}</span>
-                        {getProductShortName(placement.cargo.productName) && (
-                          <span className="text-blue-300"> "{getProductShortName(placement.cargo.productName)}"</span>
-                        )}
-                        <br />
-                        <span className="text-xs text-gray-400">
-                          {Math.round(placement.orientation.length)}×{Math.round(placement.orientation.width)}×{Math.round(placement.orientation.height)} мм
-                          {placement.orientation.rotationAngle !== 0 && (
-                            <span className="text-blue-300"> (повернут {placement.orientation.rotationAngle}°)</span>
-                          )}
-                        </span>
-                      </span>
+          </div>
+          
+          {/* Результаты размещения под 3D визуализацией */}
+          {stats && (
+            <div className="bg-gray-800 p-4 rounded-lg">
+              <h4 className="font-medium text-white mb-4 flex items-center gap-2">
+                📊 Результаты размещения
+              </h4>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 text-sm">
+                <div className="space-y-3">
+                  <h5 className="font-medium text-blue-300 border-b border-blue-300/20 pb-1">Занятые размеры:</h5>
+                  <div className="text-gray-400 space-y-2">
+                    <div className="flex justify-between">
+                      <span>Длина:</span>
+                      <span className="text-white font-medium">{stats.dimensions.length} м</span>
                     </div>
-                  ))}
+                    <div className="flex justify-between">
+                      <span>Ширина:</span>
+                      <span className="text-white font-medium">{stats.dimensions.width} м</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Высота:</span>
+                      <span className="text-white font-medium">{stats.dimensions.height} м</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <h5 className="font-medium text-green-300 border-b border-green-300/20 pb-1">Использование:</h5>
+                  <div className="text-gray-400 space-y-2">
+                    <div className="flex justify-between">
+                      <span>Площадь пола:</span>
+                      <span className="text-white font-medium">{stats.occupiedFloorArea} м²</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Объем:</span>
+                      <span className="text-white font-medium">{stats.occupiedVolume} м³</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Загрузка пола:</span>
+                      <span className="text-white font-medium">{stats.floorUtilization}%</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
+          
+          {/* Легенда грузов */}
+          {placements.length > 0 && (
+            <div className="bg-gray-800 p-4 rounded-lg">
+              <h4 className="font-medium text-white mb-4 flex items-center gap-2">
+                📦 Размещенные грузы
+                <span className="text-xs text-gray-400 ml-auto">{placements.length} из {cargos.length} грузов</span>
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-xs max-h-80 overflow-y-auto">
+                {placements.map((placement, index) => (
+                  <div key={`legend-${index}`} className="flex items-start gap-3 p-3 bg-gray-700 rounded-lg hover:bg-gray-600 transition-colors">
+                    <div 
+                      className="w-5 h-5 rounded-sm flex-shrink-0 mt-0.5 border border-gray-500"
+                      style={{ backgroundColor: placement.color }}
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="font-medium text-white mb-1">Груз {index + 1}</div>
+                      {getProductShortName(placement.cargo.productName) && (
+                        <div className="text-blue-300 mb-1 truncate" title={placement.cargo.productName}>
+                          "{getProductShortName(placement.cargo.productName)}"
+                        </div>
+                      )}
+                      <div className="text-gray-400">
+                        {Math.round(placement.orientation.length)}×{Math.round(placement.orientation.width)}×{Math.round(placement.orientation.height)} мм
+                        {placement.orientation.rotationAngle !== 0 && (
+                          <div className="text-blue-300 mt-1">
+                            🔄 Повернут {placement.orientation.rotationAngle}°
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </CardContent>
     </Card>

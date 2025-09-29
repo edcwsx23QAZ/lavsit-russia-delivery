@@ -1,0 +1,25 @@
+{
+  "id": "prt_995cbfadb001tIV1Yp5JSqK0fT",
+  "messageID": "msg_995cabc7b001nwPGKo1QneS4i6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Eb7SubmvZofVkQEKu7YXjW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 585,
+      "limit": 40
+    },
+    "output": "<file>\n00586|         <div className=\"space-y-6\">\n00587|           {/* Левая колонка: Результаты расчета */}\n00588|           <div className=\"space-y-4\">\n00589|             {/* Статистика размещения */}\n00590|             {stats && (\n00591|               <div className=\"bg-gray-800 p-4 rounded-lg\">\n00592|                 <h4 className=\"font-medium text-white mb-4\">📊 Результаты размещения</h4>\n00593|                 <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4 text-sm\">\n00594|                   <div className=\"space-y-2\">\n00595|                     <h5 className=\"font-medium text-gray-300\">Занятые размеры:</h5>\n00596|                     <div className=\"text-gray-400 space-y-1\">\n00597|                       <div>Длина: {stats.dimensions.length} м</div>\n00598|                       <div>Ширина: {stats.dimensions.width} м</div>\n00599|                       <div>Высота: {stats.dimensions.height} м</div>\n00600|                     </div>\n00601|                   </div>\n00602|                   <div className=\"space-y-2\">\n00603|                     <h5 className=\"font-medium text-gray-300\">Использование:</h5>\n00604|                     <div className=\"text-gray-400 space-y-1\">\n00605|                       <div>Площадь пола: {stats.occupiedFloorArea} м²</div>\n00606|                       <div>Объем: {stats.occupiedVolume} м³</div>\n00607|                       <div>Загрузка пола: {stats.floorUtilization}%</div>\n00608|                     </div>\n00609|                   </div>\n00610|                 </div>\n00611|               </div>\n00612|             )}\n00613| \n00614| \n00615|           </div>\n00616| \n00617|           {/* Правая колонка: 3D Визуализация */}\n00618|           <div className=\"space-y-4\">\n00619|             {/* Панель управления 3D моделью */}\n00620|             <div className=\"bg-gray-800 p-4 rounded-lg space-y-4\">\n00621|               <div className=\"flex items-center justify-between\">\n00622|                 <h4 className=\"text-white font-medium flex items-center gap-2\">\n00623|                   <Rotate3d className=\"h-4 w-4\" />\n00624|                   🎮 Управление 3D моделью\n00625|                 </h4>\n\n(File has more lines. Use 'offset' parameter to read beyond line 625)\n</file>",
+    "metadata": {
+      "preview": "        <div className=\"space-y-6\">\n          {/* Левая колонка: Результаты расчета */}\n          <div className=\"space-y-4\">\n            {/* Статистика размещения */}\n            {stats && (\n              <div className=\"bg-gray-800 p-4 rounded-lg\">\n                <h4 className=\"font-medium text-white mb-4\">📊 Результаты размещения</h4>\n                <div className=\"grid grid-cols-1 md:grid-cols-2 gap-4 text-sm\">\n                  <div className=\"space-y-2\">\n                    <h5 className=\"font-medium text-gray-300\">Занятые размеры:</h5>\n                    <div className=\"text-gray-400 space-y-1\">\n                      <div>Длина: {stats.dimensions.length} м</div>\n                      <div>Ширина: {stats.dimensions.width} м</div>\n                      <div>Высота: {stats.dimensions.height} м</div>\n                    </div>\n                  </div>\n                  <div className=\"space-y-2\">\n                    <h5 className=\"font-medium text-gray-300\">Использование:</h5>\n                    <div className=\"text-gray-400 space-y-1\">\n                      <div>Площадь пола: {stats.occupiedFloorArea} м²</div>"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759154798119,
+      "end": 1759154798124
+    }
+  }
+}
