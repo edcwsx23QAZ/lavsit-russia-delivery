@@ -1,0 +1,25 @@
+{
+  "id": "prt_994573455001OI2DdzDhO64Csj",
+  "messageID": "msg_99455530a001birIUmXF4AR3bv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_014sZVVcadJUNs43F9Ceoj3q",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2945,
+      "limit": 35
+    },
+    "output": "<file>\n02946|                               объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³\n02947|                             </div>\n02948|                           )}\n02949|                         </div>\n02950|                       ));\n02951|                     })()}\n02952|                   </div>\n02953|                 )}\n02954|                 \n02955|                 <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">\n02956|                   <Plus className=\"h-3 w-3 mr-1\" />\n02957|                   Добавить груз\n02958|                 </Button>\n02959|               </CardContent>\n02960|             </Card>\n02961| \n02962|             {/* Маршрут */}\n02963|             <Card className=\"bg-gray-800 border-gray-700\">\n02964|               <CardHeader className=\"pb-3\">\n02965|                 <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n02966|                   <Map className=\"h-4 w-4\" />\n02967|                   Маршрут\n02968|                 </CardTitle>\n02969|               </CardHeader>\n02970|               <CardContent className=\"space-y-3\">\n02971|                 {/* Отправление */}\n02972|                 <div className=\"space-y-2\">\n02973|                   <Label className=\"text-sm font-medium text-white\">Отправление</Label>\n02974|                   <div className=\"flex gap-3\">\n02975|                     <label className=\"flex items-center space-x-1\">\n02976|                       <input\n02977|                         type=\"radio\"\n02978|                         name=\"fromDelivery\"\n02979|                         checked={form.fromTerminal}\n02980|                         onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false }))}\n\n(File has more lines. Use 'offset' parameter to read beyond line 2980)\n</file>",
+    "metadata": {
+      "preview": "                              объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³\n                            </div>\n                          )}\n                        </div>\n                      ));\n                    })()}\n                  </div>\n                )}\n                \n                <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">\n                  <Plus className=\"h-3 w-3 mr-1\" />\n                  Добавить груз\n                </Button>\n              </CardContent>\n            </Card>\n\n            {/* Маршрут */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-3\">\n                <CardTitle className=\"text-white flex items-center gap-2 text-lg\">"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759130367722,
+      "end": 1759130367726
+    }
+  }
+}

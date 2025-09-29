@@ -1,0 +1,25 @@
+{
+  "id": "prt_994579909001YnTmUNtk2077eb",
+  "messageID": "msg_99455530a001birIUmXF4AR3bv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01W3ZqGiXsnxQNrd7eH5Mwgp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "offset": 235,
+      "limit": 30
+    },
+    "output": "<file>\n00236| /**\n00237|  * Группировка грузов по одинаковым габаритам и весу\n00238|  */\n00239| export interface GroupedCargo {\n00240|   length: number;\n00241|   width: number;\n00242|   height: number;\n00243|   weight: number;\n00244|   quantity: number;\n00245|   originalIds: string[];\n00246| }\n00247| \n00248| export function groupCargosByDimensions(cargos: CargoWithMetadata[]): GroupedCargo[] {\n00249|   const groups = new Map<string, GroupedCargo>();\n00250|   \n00251|   cargos.forEach(cargo => {\n00252|     // Создаем ключ для группировки на основе габаритов и веса\n00253|     const key = `${cargo.length}_${cargo.width}_${cargo.height}_${cargo.weight}`;\n00254|     \n00255|     if (groups.has(key)) {\n00256|       const existing = groups.get(key)!;\n00257|       existing.quantity += 1;\n00258|       existing.originalIds.push(cargo.id);\n00259|     } else {\n00260|       groups.set(key, {\n00261|         length: cargo.length,\n00262|         width: cargo.width,\n00263|         height: cargo.height,\n00264|         weight: cargo.weight,\n00265|         quantity: 1,\n\n(File has more lines. Use 'offset' parameter to read beyond line 265)\n</file>",
+    "metadata": {
+      "preview": "/**\n * Группировка грузов по одинаковым габаритам и весу\n */\nexport interface GroupedCargo {\n  length: number;\n  width: number;\n  height: number;\n  weight: number;\n  quantity: number;\n  originalIds: string[];\n}\n\nexport function groupCargosByDimensions(cargos: CargoWithMetadata[]): GroupedCargo[] {\n  const groups = new Map<string, GroupedCargo>();\n  \n  cargos.forEach(cargo => {\n    // Создаем ключ для группировки на основе габаритов и веса\n    const key = `${cargo.length}_${cargo.width}_${cargo.height}_${cargo.weight}`;\n    \n    if (groups.has(key)) {"
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759130393467,
+      "end": 1759130393473
+    }
+  }
+}

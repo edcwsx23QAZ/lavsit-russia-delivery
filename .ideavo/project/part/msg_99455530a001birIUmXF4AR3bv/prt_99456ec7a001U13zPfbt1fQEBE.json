@@ -1,0 +1,26 @@
+{
+  "id": "prt_99456ec7a001U13zPfbt1fQEBE",
+  "messageID": "msg_99455530a001birIUmXF4AR3bv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01CrzkWW2AvN9LvDezsqQP5e",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // 🔧 Детальное логирование множественных мест с группировкой\n      console.log('🌐 Nord Wheel: Анализ сгруппированных грузовых мест:');\n      console.log(`   - Групп одинаковых мест: ${groupedCargos.length}`);\n      console.log(`   - Общее количество мест: ${totalQuantity}`);\n      console.log(`   - Общий вес: ${totalWeight} кг`);\n      console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);",
+      "newString": "      // 🔧 Детальное логирование множественных мест\n      console.log('🌐 Nord Wheel: Анализ множественных грузовых мест:');\n      console.log(`   - Количество мест: ${form.cargos.length}`);\n      console.log(`   - Общий вес: ${totalWeight} кг`);\n      console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2444,12 +2444,11 @@\n \n // 🔧 ДОБАВЛЕНО: Проверка на негабарит (>2м по любому измерению)\n const isOversized = maxLength > 200 || maxWidth > 200 || maxHeight > 200 || totalWeight > 1000;\n \n-// 🔧 Детальное логирование множественных мест с группировкой\n-console.log('🌐 Nord Wheel: Анализ сгруппированных грузовых мест:');\n-console.log(`   - Групп одинаковых мест: ${groupedCargos.length}`);\n-console.log(`   - Общее количество мест: ${totalQuantity}`);\n+// 🔧 Детальное логирование множественных мест\n+console.log('🌐 Nord Wheel: Анализ множественных грузовых мест:');\n+console.log(`   - Количество мест: ${form.cargos.length}`);\n console.log(`   - Общий вес: ${totalWeight} кг`);\n console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);\n \n form.cargos.forEach((cargo, index) => {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759130351590,
+      "end": 1759130351609
+    }
+  }
+}

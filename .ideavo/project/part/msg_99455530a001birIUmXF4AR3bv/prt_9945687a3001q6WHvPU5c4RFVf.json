@@ -1,0 +1,25 @@
+{
+  "id": "prt_9945687a3001q6WHvPU5c4RFVf",
+  "messageID": "msg_99455530a001birIUmXF4AR3bv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PtQRDjbtR8wM483S2J7bb5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2250,
+      "limit": 20
+    },
+    "output": "<file>\n02251|       console.log('   - Общий объем:', totalVolume, 'м³');\n02252|       console.log('   - Откуда:', form.fromCity);\n02253|       console.log('   - Куда:', form.toCity);\n02254|       \n02255|       // Параметры для API Vozovoz\n02256|       const requestData = {\n02257|         object: \"price\",\n02258|         action: \"get\",\n02259|         params: {\n02260|           cargo: {\n02261|             dimension: {\n02262|               quantity: totalQuantity,\n02263|               volume: totalVolume,\n02264|               weight: totalWeight\n02265|             },\n02266|             ...(form.needInsurance && form.declaredValue > 0 ? {\n02267|               insurance: form.declaredValue\n02268|             } : {}),\n02269|             ...(form.needPackaging ? {\n02270|               wrapping: {\n\n(File has more lines. Use 'offset' parameter to read beyond line 2270)\n</file>",
+    "metadata": {
+      "preview": "      console.log('   - Общий объем:', totalVolume, 'м³');\n      console.log('   - Откуда:', form.fromCity);\n      console.log('   - Куда:', form.toCity);\n      \n      // Параметры для API Vozovoz\n      const requestData = {\n        object: \"price\",\n        action: \"get\",\n        params: {\n          cargo: {\n            dimension: {\n              quantity: totalQuantity,\n              volume: totalVolume,\n              weight: totalWeight\n            },\n            ...(form.needInsurance && form.declaredValue > 0 ? {\n              insurance: form.declaredValue\n            } : {}),\n            ...(form.needPackaging ? {\n              wrapping: {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759130323582,
+      "end": 1759130323584
+    }
+  }
+}

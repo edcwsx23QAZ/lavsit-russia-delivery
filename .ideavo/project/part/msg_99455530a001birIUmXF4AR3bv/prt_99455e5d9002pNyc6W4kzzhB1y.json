@@ -1,0 +1,25 @@
+{
+  "id": "prt_99455e5d9002pNyc6W4kzzhB1y",
+  "messageID": "msg_99455530a001birIUmXF4AR3bv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GWp3WSEz9x9n2WLUvaAqt5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 922,
+      "limit": 5
+    },
+    "output": "<file>\n00923|           oversizedWeight: 0,\n00924|           oversizedVolume: 0,\n00925|           hazardClass: 0,  // Всегда 0 если нет опасных грузов\n00926|           ...(form.needInsurance && form.declaredValue > 0 ? {\n00927|             insurance: {\n\n(File has more lines. Use 'offset' parameter to read beyond line 927)\n</file>",
+    "metadata": {
+      "preview": "          oversizedWeight: 0,\n          oversizedVolume: 0,\n          hazardClass: 0,  // Всегда 0 если нет опасных грузов\n          ...(form.needInsurance && form.declaredValue > 0 ? {\n            insurance: {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759130282244,
+      "end": 1759130282246
+    }
+  }
+}

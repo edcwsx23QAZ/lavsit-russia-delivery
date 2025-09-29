@@ -1,0 +1,25 @@
+{
+  "id": "prt_99457a8e8001TGR7JzIN7WukA3",
+  "messageID": "msg_99455530a001birIUmXF4AR3bv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_018LQJQ7tyUCqNSYW8jC1aDU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-utils.ts",
+      "offset": 265,
+      "limit": 40
+    },
+    "output": "<file>\n00266|         originalIds: [cargo.id]\n00267|       });\n00268|     }\n00269|   });\n00270|   \n00271|   return Array.from(groups.values()).sort((a, b) => {\n00272|     // Сортируем по убыванию количества, затем по убыванию веса\n00273|     if (a.quantity !== b.quantity) {\n00274|       return b.quantity - a.quantity;\n00275|     }\n00276|     return b.weight - a.weight;\n00277|   });\n00278| }\n00279| \n00280| /**\n00281|  * Преобразование сгруппированных грузов в формат для API\n00282|  */\n00283| export function groupedCargosToApiFormat(groupedCargos: GroupedCargo[]): any[] {\n00284|   return groupedCargos.map((group, index) => ({\n00285|     id: `group_${index + 1}`,\n00286|     length: group.length,\n00287|     width: group.width,\n00288|     height: group.height,\n00289|     weight: group.weight,\n00290|     quantity: group.quantity,\n00291|     isGrouped: true,\n00292|     originalIds: group.originalIds\n00293|   }));\n00294| }\n00295| \n00296| /**\n00297|  * Кэширование продуктов в localStorage\n00298|  */\n00299| export function cacheProducts(products: FurnitureProduct[]): void {\n00300|   try {\n00301|     const cacheData = {\n00302|       products,\n00303|       timestamp: Date.now()\n00304|     };\n00305|     localStorage.setItem('furniture_products_cache', JSON.stringify(cacheData));\n\n(File has more lines. Use 'offset' parameter to read beyond line 305)\n</file>",
+    "metadata": {
+      "preview": "        originalIds: [cargo.id]\n      });\n    }\n  });\n  \n  return Array.from(groups.values()).sort((a, b) => {\n    // Сортируем по убыванию количества, затем по убыванию веса\n    if (a.quantity !== b.quantity) {\n      return b.quantity - a.quantity;\n    }\n    return b.weight - a.weight;\n  });\n}\n\n/**\n * Преобразование сгруппированных грузов в формат для API\n */\nexport function groupedCargosToApiFormat(groupedCargos: GroupedCargo[]): any[] {\n  return groupedCargos.map((group, index) => ({\n    id: `group_${index + 1}`,"
+    },
+    "title": "lib/furniture-utils.ts",
+    "time": {
+      "start": 1759130396972,
+      "end": 1759130396975
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_994560a92001rUaUPBx71Ql6HV",
+  "messageID": "msg_99455530a001birIUmXF4AR3bv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01FLz7ATY11WPsxPBHF7Mtz8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1583,
+      "limit": 20
+    },
+    "output": "<file>\n01584|       const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n01585|       console.log('📦 Сгруппированные грузы для ПЭК:', groupedCargos);\n01586|       \n01587|       // Формируем массив грузов с учетом группировки\n01588|       const cargos = groupedCargos.map((group, index) => {\n01589|         const cargoData = {\n01590|           length: group.length / 100, // переводим см в метры\n01591|           width: group.width / 100,\n01592|           height: group.height / 100,\n01593|           volume: (group.length * group.width * group.height * group.quantity) / 1000000, // м3 с учетом количества\n01594|           weight: group.weight * group.quantity, // общий вес группы\n01595|           isHP: form.needPackaging, // защитная упаковка\n01596|           sealingPositionsCount: 0,\n01597|           quantity: group.quantity // добавляем количество одинаковых мест\n01598|         };\n01599|         \n01600|         console.log(`📦 Группа ${index + 1} для ПЭК (${group.quantity} шт):`, cargoData);\n01601|         return cargoData;\n01602|       });\n01603| \n\n(File has more lines. Use 'offset' parameter to read beyond line 1603)\n</file>",
+    "metadata": {
+      "preview": "      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n      console.log('📦 Сгруппированные грузы для ПЭК:', groupedCargos);\n      \n      // Формируем массив грузов с учетом группировки\n      const cargos = groupedCargos.map((group, index) => {\n        const cargoData = {\n          length: group.length / 100, // переводим см в метры\n          width: group.width / 100,\n          height: group.height / 100,\n          volume: (group.length * group.width * group.height * group.quantity) / 1000000, // м3 с учетом количества\n          weight: group.weight * group.quantity, // общий вес группы\n          isHP: form.needPackaging, // защитная упаковка\n          sealingPositionsCount: 0,\n          quantity: group.quantity // добавляем количество одинаковых мест\n        };\n        \n        console.log(`📦 Группа ${index + 1} для ПЭК (${group.quantity} шт):`, cargoData);\n        return cargoData;\n      });\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759130291406,
+      "end": 1759130291408
+    }
+  }
+}

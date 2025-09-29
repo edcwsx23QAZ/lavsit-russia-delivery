@@ -1,0 +1,26 @@
+{
+  "id": "prt_994575437001dhXuwcwNjUMJTb",
+  "messageID": "msg_99455530a001birIUmXF4AR3bv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01D5aj18mT6M8CNJwnmGjWyM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                ))}\n                \n                {/* Отображение группировки грузов */}\n                {form.cargos.length > 1 && (\n                  <div className=\"border-t border-gray-600 pt-3 mt-3\">\n                    <h5 className=\"text-sm font-medium text-blue-300 mb-2\">📊 Группировка для расчета:</h5>\n                    {(() => {\n                      const grouped = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n                      return grouped.map((group, index) => (\n                        <div key={index} className=\"text-xs text-gray-300 bg-blue-900/20 p-2 rounded mb-1\">\n                          <div className=\"flex justify-between items-center\">\n                            <span className=\"font-medium\">\n                              {group.length}×{group.width}×{group.height} см, {group.weight} кг\n                            </span>\n                            <Badge variant=\"secondary\" className=\"text-xs\">\n                              {group.quantity} шт.\n                            </Badge>\n                          </div>\n                          {group.quantity > 1 && (\n                            <div className=\"text-gray-400 mt-1\">\n                              Общий вес: {(group.weight * group.quantity).toFixed(1)} кг, \n                              объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³\n                            </div>\n                          )}\n                        </div>\n                      ));\n                    })()}\n                  </div>\n                )}\n                \n                <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">",
+      "newString": "                ))}\n                <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2922,37 +2922,8 @@\n       </div>\n     </div>\n   </div>\n ))}\n-\n-{/* Отображение группировки грузов */}\n-{form.cargos.length > 1 && (\n-  <div className=\"border-t border-gray-600 pt-3 mt-3\">\n-    <h5 className=\"text-sm font-medium text-blue-300 mb-2\">📊 Группировка для расчета:</h5>\n-    {(() => {\n-      const grouped = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n-      return grouped.map((group, index) => (\n-        <div key={index} className=\"text-xs text-gray-300 bg-blue-900/20 p-2 rounded mb-1\">\n-          <div className=\"flex justify-between items-center\">\n-            <span className=\"font-medium\">\n-              {group.length}×{group.width}×{group.height} см, {group.weight} кг\n-            </span>\n-            <Badge variant=\"secondary\" className=\"text-xs\">\n-              {group.quantity} шт.\n-            </Badge>\n-          </div>\n-          {group.quantity > 1 && (\n-            <div className=\"text-gray-400 mt-1\">\n-              Общий вес: {(group.weight * group.quantity).toFixed(1)} кг, \n-              объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³\n-            </div>\n-          )}\n-        </div>\n-      ));\n-    })()}\n-  </div>\n-)}\n-\n <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">\n   <Plus className=\"h-3 w-3 mr-1\" />\n   Добавить груз\n </Button>\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759130380749,
+      "end": 1759130380765
+    }
+  }
+}

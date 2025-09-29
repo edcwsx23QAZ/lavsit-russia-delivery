@@ -1,0 +1,26 @@
+{
+  "id": "prt_99456d1fe001LH8j3JiN5Bw86f",
+  "messageID": "msg_99455530a001birIUmXF4AR3bv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01DSdQUf9Eu4wdjUoPHX8TRk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Группируем грузы по одинаковым габаритам\n      const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n      console.log('🌐 Сгруппированные грузы для Nord Wheel:', groupedCargos);\n      \n      const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);\n      const totalVolume = groupedCargos.reduce((sum, group) => \n        sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0\n      );\n      const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);",
+      "newString": "      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2431,17 +2431,12 @@\n try {\n   // 🔧 Валидация множественных мест\n   validateMultipleCargos(form.cargos);\n   \n-  // Группируем грузы по одинаковым габаритам\n-  const groupedCargos = groupCargosByDimensions(form.cargos as CargoWithMetadata[]);\n-  console.log('🌐 Сгруппированные грузы для Nord Wheel:', groupedCargos);\n-  \n-  const totalWeight = groupedCargos.reduce((sum, group) => sum + (group.weight * group.quantity), 0);\n-  const totalVolume = groupedCargos.reduce((sum, group) => \n-    sum + (group.length * group.width * group.height * group.quantity) / 1000000, 0\n+  const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n+  const totalVolume = form.cargos.reduce((sum, cargo) => \n+    sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n   );\n-  const totalQuantity = groupedCargos.reduce((sum, group) => sum + group.quantity, 0);\n \n   // 🔧 ДОБАВЛЕНО: Расчет габаритов для множественных мест\n   const maxLength = Math.max(...form.cargos.map(c => c.length));\n   const maxWidth = Math.max(...form.cargos.map(c => c.width));\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759130345485,
+      "end": 1759130345499
+    }
+  }
+}
