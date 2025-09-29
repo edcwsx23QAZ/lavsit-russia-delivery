@@ -1,0 +1,24 @@
+{
+  "id": "prt_9951f1bf8001OYHEEIpZPUSkn4",
+  "messageID": "msg_9951edeb9001DXHMIAmbr5XN1T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01P93kdhHa2ycPEdHKKCJq51",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "limit": 10
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import React, { useState } from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Slider } from '@/components/ui/slider';\n00007| import { Truck, Move, RotateCw as Rotate3d } from 'lucide-react';\n00008| \n00009| interface Cargo {\n00010|   id: string;\n\n(File has more lines. Use 'offset' parameter to read beyond line 10)\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport React, { useState } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Slider } from '@/components/ui/slider';\nimport { Truck, Move, RotateCw as Rotate3d } from 'lucide-react';\n\ninterface Cargo {\n  id: string;"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759143468727,
+      "end": 1759143468731
+    }
+  }
+}

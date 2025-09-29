@@ -1,0 +1,66 @@
+{
+  "id": "prt_9951f3676001YGo8GzZEo6YPTu",
+  "messageID": "msg_9951edeb9001DXHMIAmbr5XN1T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_013JfegcfAGMLYs9vh8Bkqff",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "  const [rotationY, setRotationY] = useState(35); // Поворот по оси Y (изометрический вид 3/4)",
+          "newString": "  const [rotationY, setRotationY] = useState(-45); // Поворот по оси Y (изометрический вид 3/4)"
+        },
+        {
+          "oldString": "                    setRotationY(35);",
+          "newString": "                    setRotationY(-45);"
+        },
+        {
+          "oldString": "        {/* Основная сетка: три колонки - форма, результаты, 3D */}\n        <div className=\"grid grid-cols-1 xl:grid-cols-3 gap-6\">",
+          "newString": "        {/* Основная сетка: слева результаты, справа 3D */}\n        <div className=\"grid grid-cols-1 xl:grid-cols-2 gap-6\">"
+        },
+        {
+          "oldString": "          {/* Вторая колонка: Результаты расчета */}\n          <div className=\"space-y-4\">",
+          "newString": "          {/* Левая колонка: Результаты расчета */}\n          <div className=\"space-y-4\">"
+        },
+        {
+          "oldString": "          {/* Третья колонка: 3D Визуализация */}\n          <div className=\"space-y-4\">",
+          "newString": "          {/* Правая колонка: 3D Визуализация */}\n          <div className=\"space-y-4\">"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -57,9 +57,9 @@\n \n export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {\n   // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n   const [rotationX, setRotationX] = useState(0);   // Поворот по оси X (0° - пол параллелен X)\n-  const [rotationY, setRotationY] = useState(35); // Поворот по оси Y (изометрический вид 3/4)\n+  const [rotationY, setRotationY] = useState(-45); // Поворот по оси Y (изометрический вид 3/4)\n   const [rotationZ, setRotationZ] = useState(0);   // Поворот по оси Z\n   const [positionX, setPositionX] = useState(50);  // Позиция по X (0-100%)\n   const [positionY, setPositionY] = useState(50);  // Позиция по Y (центрированная)\n   const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -655,9 +655,9 @@\n variant=\"outline\"\n size=\"sm\"\n onClick={() => {\n   setRotationX(0);\n-  setRotationY(35);\n+  setRotationY(-45);\n   setRotationZ(0);\n   setPositionX(50);\n   setPositionY(50);\n   setScale(70);\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -581,10 +581,10 @@\n     Интерактивная 3D визуализация грузовика с размещением груза\n   </CardTitle>\n </CardHeader>\n <CardContent>\n-  {/* Основная сетка: три колонки - форма, результаты, 3D */}\n-  <div className=\"grid grid-cols-1 xl:grid-cols-3 gap-6\">\n+  {/* Основная сетка: слева результаты, справа 3D */}\n+  <div className=\"grid grid-cols-1 xl:grid-cols-2 gap-6\">\n     {/* Вторая колонка: Результаты расчета */}\n     <div className=\"space-y-4\">\n       {/* Статистика размещения */}\n       {stats && (\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -583,9 +583,9 @@\n </CardHeader>\n <CardContent>\n   {/* Основная сетка: слева результаты, справа 3D */}\n   <div className=\"grid grid-cols-1 xl:grid-cols-2 gap-6\">\n-    {/* Вторая колонка: Результаты расчета */}\n+    {/* Левая колонка: Результаты расчета */}\n     <div className=\"space-y-4\">\n       {/* Статистика размещения */}\n       {stats && (\n         <div className=\"bg-gray-800 p-4 rounded-lg\">\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -641,9 +641,9 @@\n     </div>\n   )}\n </div>\n \n-{/* Третья колонка: 3D Визуализация */}\n+{/* Правая колонка: 3D Визуализация */}\n <div className=\"space-y-4\">\n   {/* Панель управления 3D моделью */}\n   <div className=\"bg-gray-800 p-4 rounded-lg space-y-4\">\n     <div className=\"flex items-center justify-between\">\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759143479661,
+      "end": 1759143479691
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "id": "prt_9951ef8c2001G23AGucgZMX6Nm",
+  "messageID": "msg_9951edeb9001DXHMIAmbr5XN1T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01YRDbgvESjL31jNoirhF44a",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "  const [rotationY, setRotationY] = useState(35); // Поворот по оси Y (изометрический вид 3/4)",
+          "newString": "  const [rotationY, setRotationY] = useState(-45); // Поворот по оси Y (изометрический вид 3/4)"
+        },
+        {
+          "oldString": "                    setRotationY(35);",
+          "newString": "                    setRotationY(-45);"
+        },
+        {
+          "oldString": "        {/* Основная сетка: три колонки - форма, результаты, 3D */}\n        <div className=\"grid grid-cols-1 xl:grid-cols-3 gap-6\">",
+          "newString": "        {/* Основная сетка: слева результаты, справа 3D */}\n        <div className=\"grid grid-cols-1 xl:grid-cols-2 gap-6\">"
+        },
+        {
+          "oldString": "          {/* Вторая колонка: Результаты расчета */}\n          <div className=\"space-y-4\">",
+          "newString": "          {/* Левая колонка: Результаты расчета */}\n          <div className=\"space-y-4\">"
+        },
+        {
+          "oldString": "          {/* Третья колонка: 3D Визуализация */}\n          <div className=\"space-y-4\">",
+          "newString": "          {/* Правая колонка: 3D Визуализация */}\n          <div className=\"space-y-4\">"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/components/TruckVisualization.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1759143465069,
+      "end": 1759143465071
+    }
+  }
+}
