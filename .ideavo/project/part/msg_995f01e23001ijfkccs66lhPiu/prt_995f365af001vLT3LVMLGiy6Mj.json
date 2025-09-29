@@ -1,0 +1,42 @@
+{
+  "id": "prt_995f365af001vLT3LVMLGiy6Mj",
+  "messageID": "msg_995f01e23001ijfkccs66lhPiu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01EKqNxjhUeo7UzFBfvk8Hfx",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "                  <span className=\"text-white text-sm font-medium whitespace-nowrap\">Управление 3D</span>",
+          "newString": "                  <span className=\"text-white text-xs font-medium whitespace-nowrap\">Управление</span>"
+        },
+        {
+          "oldString": "                  <span className=\"text-white text-sm font-medium whitespace-nowrap\">Тип авто</span>",
+          "newString": "                  <span className=\"text-white text-xs font-medium whitespace-nowrap\">Авто</span>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -607,9 +607,9 @@\n {/* Блок управления 3D */}\n <div className=\"flex flex-col sm:flex-row sm:items-center gap-2 min-w-0\">\n   <div className=\"flex items-center gap-2\">\n     <Rotate3d className=\"h-4 w-4 text-blue-400\" />\n-    <span className=\"text-white text-sm font-medium whitespace-nowrap\">Управление 3D</span>\n+    <span className=\"text-white text-xs font-medium whitespace-nowrap\">Управление</span>\n   </div>\n   <div className=\"flex gap-2\">\n     <Button\n       variant=\"outline\"\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -640,9 +640,9 @@\n {/* Блок выбора типа автомобиля */}\n <div className=\"flex flex-col sm:flex-row sm:items-center gap-2 min-w-0 sm:flex-shrink-0\">\n   <div className=\"flex items-center gap-2\">\n     <Truck className=\"h-4 w-4 text-green-400\" />\n-    <span className=\"text-white text-sm font-medium whitespace-nowrap\">Тип авто</span>\n+    <span className=\"text-white text-xs font-medium whitespace-nowrap\">Авто</span>\n   </div>\n   <Select value={selectedVehicleType} onValueChange={(value) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES)}>\n     <SelectTrigger className=\"w-full sm:w-36 lg:w-44 bg-gray-700 border-gray-600 text-white text-sm h-7\">\n       <SelectValue />\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759157383696,
+      "end": 1759157383709
+    }
+  }
+}

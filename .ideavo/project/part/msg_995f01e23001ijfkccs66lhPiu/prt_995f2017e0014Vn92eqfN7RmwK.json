@@ -1,0 +1,25 @@
+{
+  "id": "prt_995f2017e0014Vn92eqfN7RmwK",
+  "messageID": "msg_995f01e23001ijfkccs66lhPiu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_012sEaKudxAF8RrtcsdcDM6y",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 650,
+      "limit": 15
+    },
+    "output": "<file>\n00651|                     {Object.entries(VEHICLE_TYPES).map(([key, vehicle]) => (\n00652|                       <SelectItem key={key} value={key} className=\"text-white hover:bg-gray-600 text-sm\">\n00653|                         <div className=\"flex flex-col\">\n00654|                           <span className=\"font-medium text-sm\">{vehicle.name}</span>\n00655|                           <span className=\"text-xs text-gray-400\">{vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height}</span>\n00656|                         </div>\n00657|                       </SelectItem>\n00658|                     ))}\n00659|                   </SelectContent>\n00660|                 </Select>\n00661|               </div>\n00662|             </div>\n00663|             \n00664|             {showControls && (\n00665|               <div className=\"grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mt-4\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 665)\n</file>",
+    "metadata": {
+      "preview": "                    {Object.entries(VEHICLE_TYPES).map(([key, vehicle]) => (\n                      <SelectItem key={key} value={key} className=\"text-white hover:bg-gray-600 text-sm\">\n                        <div className=\"flex flex-col\">\n                          <span className=\"font-medium text-sm\">{vehicle.name}</span>\n                          <span className=\"text-xs text-gray-400\">{vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height}</span>\n                        </div>\n                      </SelectItem>\n                    ))}\n                  </SelectContent>\n                </Select>\n              </div>\n            </div>\n            \n            {showControls && (\n              <div className=\"grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 mt-4\">"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759157289927,
+      "end": 1759157289928
+    }
+  }
+}

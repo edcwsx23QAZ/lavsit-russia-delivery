@@ -1,0 +1,25 @@
+{
+  "id": "prt_995f03d87001C6fn4z4EOMKlR9",
+  "messageID": "msg_995f01e23001ijfkccs66lhPiu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01YZDrB5GBxdVsKC9CfN31xP",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "offset": 643,
+      "limit": 15
+    },
+    "output": "<file>\n00644|                 </h4>\n00645|                 <Select value={selectedVehicleType} onValueChange={(value) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES)}>\n00646|                   <SelectTrigger className=\"w-64 bg-gray-700 border-gray-600 text-white\">\n00647|                     <SelectValue />\n00648|                   </SelectTrigger>\n00649|                   <SelectContent className=\"bg-gray-700 border-gray-600\">\n00650|                     {Object.entries(VEHICLE_TYPES).map(([key, vehicle]) => (\n00651|                       <SelectItem key={key} value={key} className=\"text-white hover:bg-gray-600\">\n00652|                         {vehicle.name} ({vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height} мм)\n00653|                       </SelectItem>\n00654|                     ))}\n00655|                   </SelectContent>\n00656|                 </Select>\n00657|               </div>\n00658|             </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 658)\n</file>",
+    "metadata": {
+      "preview": "                </h4>\n                <Select value={selectedVehicleType} onValueChange={(value) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES)}>\n                  <SelectTrigger className=\"w-64 bg-gray-700 border-gray-600 text-white\">\n                    <SelectValue />\n                  </SelectTrigger>\n                  <SelectContent className=\"bg-gray-700 border-gray-600\">\n                    {Object.entries(VEHICLE_TYPES).map(([key, vehicle]) => (\n                      <SelectItem key={key} value={key} className=\"text-white hover:bg-gray-600\">\n                        {vehicle.name} ({vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height} мм)\n                      </SelectItem>\n                    ))}\n                  </SelectContent>\n                </Select>\n              </div>\n            </div>"
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759157174232,
+      "end": 1759157174239
+    }
+  }
+}

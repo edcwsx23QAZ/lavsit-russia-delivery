@@ -1,0 +1,33 @@
+{
+  "id": "prt_995f182d9001DgeBG3yyM4RVCo",
+  "messageID": "msg_995f01e23001ijfkccs66lhPiu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01Xisqtwd2CzyEpnQoswL85F",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "            <div className=\"flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-4\">\n              {/* Блок управления 3D */}\n              <div className=\"flex flex-col sm:flex-row sm:items-center gap-3\">\n                <div className=\"flex items-center gap-2\">\n                  <Rotate3d className=\"h-4 w-4 text-blue-400\" />\n                  <span className=\"text-white text-sm font-medium\">Управление 3D</span>\n                </div>",
+          "newString": "            <div className=\"flex flex-col xl:flex-row xl:items-center xl:justify-between gap-3 mb-3\">\n              {/* Блок управления 3D */}\n              <div className=\"flex flex-col sm:flex-row sm:items-center gap-2 min-w-0\">\n                <div className=\"flex items-center gap-2\">\n                  <Rotate3d className=\"h-4 w-4 text-blue-400\" />\n                  <span className=\"text-white text-sm font-medium whitespace-nowrap\">Управление 3D</span>\n                </div>"
+        },
+        {
+          "oldString": "              {/* Блок выбора типа автомобиля */}\n              <div className=\"flex flex-col sm:flex-row sm:items-center gap-3\">\n                <div className=\"flex items-center gap-2\">\n                  <Truck className=\"h-4 w-4 text-green-400\" />\n                  <span className=\"text-white text-sm font-medium\">Тип авто</span>\n                </div>",
+          "newString": "              {/* Блок выбора типа автомобиля */}\n              <div className=\"flex flex-col sm:flex-row sm:items-center gap-2 min-w-0 sm:flex-shrink-0\">\n                <div className=\"flex items-center gap-2\">\n                  <Truck className=\"h-4 w-4 text-green-400\" />\n                  <span className=\"text-white text-sm font-medium whitespace-nowrap\">Тип авто</span>\n                </div>"
+        },
+        {
+          "oldString": "                <Select value={selectedVehicleType} onValueChange={(value) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES)}>\n                  <SelectTrigger className=\"w-full sm:w-48 bg-gray-700 border-gray-600 text-white text-sm\">\n                    <SelectValue />\n                  </SelectTrigger>\n                  <SelectContent className=\"bg-gray-700 border-gray-600\">\n                    {Object.entries(VEHICLE_TYPES).map(([key, vehicle]) => (\n                      <SelectItem key={key} value={key} className=\"text-white hover:bg-gray-600 text-sm\">\n                        <div className=\"flex flex-col\">\n                          <span className=\"font-medium\">{vehicle.name}</span>\n                          <span className=\"text-xs text-gray-300\">{vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height} мм</span>\n                        </div>\n                      </SelectItem>\n                    ))}\n                  </SelectContent>\n                </Select>",
+          "newString": "                <Select value={selectedVehicleType} onValueChange={(value) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES)}>\n                  <SelectTrigger className=\"w-full sm:w-44 lg:w-52 bg-gray-700 border-gray-600 text-white text-sm\">\n                    <SelectValue />\n                  </SelectTrigger>\n                  <SelectContent className=\"bg-gray-700 border-gray-600\">\n                    {Object.entries(VEHICLE_TYPES).map(([key, vehicle]) => (\n                      <SelectItem key={key} value={key} className=\"text-white hover:bg-gray-600 text-sm\">\n                        <div className=\"flex flex-col\">\n                          <span className=\"font-medium text-sm\">{vehicle.name}</span>\n                          <span className=\"text-xs text-gray-400\">{vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height}</span>\n                        </div>\n                      </SelectItem>\n                    ))}\n                  </SelectContent>\n                </Select>"
+        }
+      ]
+    },
+    "error": "Error: oldString not found in content",
+    "time": {
+      "start": 1759157271501,
+      "end": 1759157271533
+    }
+  }
+}

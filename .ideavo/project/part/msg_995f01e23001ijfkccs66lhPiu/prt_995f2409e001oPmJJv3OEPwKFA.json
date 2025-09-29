@@ -1,0 +1,34 @@
+{
+  "id": "prt_995f2409e001oPmJJv3OEPwKFA",
+  "messageID": "msg_995f01e23001ijfkccs66lhPiu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_015VF1yuZibA3DfndktEpnit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "                  <Button\n                    variant=\"outline\"\n                    size=\"sm\"\n                    onClick={() => setShowControls(!showControls)}\n                    className=\"text-black bg-white border-gray-300 hover:bg-gray-100 text-xs px-3 py-1\"\n                  >\n                    {showControls ? 'Скрыть' : 'Покрутить'}\n                  </Button>\n                  <Button\n                    variant=\"outline\"\n                    size=\"sm\"\n                    onClick={() => {\n                      setRotationX(-90);\n                      setRotationY(55);\n                      setRotationZ(0);\n                      setPositionX(51);\n                      setPositionY(35);\n                      setScale(70);\n                    }}\n                    className=\"text-black bg-white border-gray-300 hover:bg-gray-100 text-xs px-3 py-1\"\n                  >\n                    Сброс\n                  </Button>",
+          "newString": "                  <Button\n                    variant=\"outline\"\n                    size=\"sm\"\n                    onClick={() => setShowControls(!showControls)}\n                    className=\"text-black bg-white border-gray-300 hover:bg-gray-100 text-xs px-2 py-1 h-7\"\n                  >\n                    {showControls ? 'Скрыть' : 'Покрутить'}\n                  </Button>\n                  <Button\n                    variant=\"outline\"\n                    size=\"sm\"\n                    onClick={() => {\n                      setRotationX(-90);\n                      setRotationY(55);\n                      setRotationZ(0);\n                      setPositionX(51);\n                      setPositionY(35);\n                      setScale(70);\n                    }}\n                    className=\"text-black bg-white border-gray-300 hover:bg-gray-100 text-xs px-2 py-1 h-7\"\n                  >\n                    Сброс\n                  </Button>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -614,9 +614,9 @@\n   <Button\n     variant=\"outline\"\n     size=\"sm\"\n     onClick={() => setShowControls(!showControls)}\n-    className=\"text-black bg-white border-gray-300 hover:bg-gray-100 text-xs px-3 py-1\"\n+    className=\"text-black bg-white border-gray-300 hover:bg-gray-100 text-xs px-2 py-1 h-7\"\n   >\n     {showControls ? 'Скрыть' : 'Покрутить'}\n   </Button>\n   <Button\n@@ -629,9 +629,9 @@\n       setPositionX(51);\n       setPositionY(35);\n       setScale(70);\n     }}\n-    className=\"text-black bg-white border-gray-300 hover:bg-gray-100 text-xs px-3 py-1\"\n+    className=\"text-black bg-white border-gray-300 hover:bg-gray-100 text-xs px-2 py-1 h-7\"\n   >\n     Сброс\n   </Button>\n </div>\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759157313669,
+      "end": 1759157313677
+    }
+  }
+}

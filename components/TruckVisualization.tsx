@@ -600,21 +600,22 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
       <CardContent>
         {/* Одноколоночная структура для оптимальной визуализации */}
         <div className="space-y-6">
-          {/* Объединённая панель управления */}
-          <div className="bg-gray-800 p-4 rounded-lg">
-            <div className="flex items-center justify-between mb-4">
-              {/* Левая часть - Управление 3D */}
-              <div className="flex items-center gap-4">
-                <h4 className="text-white font-medium flex items-center gap-2">
-                  <Rotate3d className="h-4 w-4" />
-                  🎮 Управление 3D моделью
-                </h4>
+          {/* Оптимизированная панель управления */}
+          <div className="bg-gray-800 p-2 rounded-lg overflow-hidden">
+            {/* Компактный адаптивный лайаут */}
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 mb-2">
+              {/* Блок управления 3D */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 min-w-0">
+                <div className="flex items-center gap-2">
+                  <Rotate3d className="h-4 w-4 text-blue-400" />
+                  <span className="text-white text-xs font-medium whitespace-nowrap">Управление</span>
+                </div>
                 <div className="flex gap-2">
                   <Button
                     variant="outline"
                     size="sm"
                     onClick={() => setShowControls(!showControls)}
-                    className="text-black bg-white border-gray-300 hover:bg-gray-100"
+                    className="text-black bg-white border-gray-300 hover:bg-gray-100 text-xs px-2 py-1 h-7"
                   >
                     {showControls ? 'Скрыть' : 'Покрутить'}
                   </Button>
@@ -629,27 +630,30 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
                       setPositionY(35);
                       setScale(70);
                     }}
-                    className="text-black bg-white border-gray-300 hover:bg-gray-100"
+                    className="text-black bg-white border-gray-300 hover:bg-gray-100 text-xs px-2 py-1 h-7"
                   >
                     Сброс
                   </Button>
                 </div>
               </div>
               
-              {/* Правая часть - Тип автомобиля */}
-              <div className="flex items-center gap-4">
-                <h4 className="text-white font-medium flex items-center gap-2">
-                  <Truck className="h-4 w-4" />
-                  🚚 Тип автомобиля
-                </h4>
+              {/* Блок выбора типа автомобиля */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 min-w-0 sm:flex-shrink-0">
+                <div className="flex items-center gap-2">
+                  <Truck className="h-4 w-4 text-green-400" />
+                  <span className="text-white text-xs font-medium whitespace-nowrap">Авто</span>
+                </div>
                 <Select value={selectedVehicleType} onValueChange={(value) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES)}>
-                  <SelectTrigger className="w-64 bg-gray-700 border-gray-600 text-white">
+                  <SelectTrigger className="w-full sm:w-36 lg:w-44 bg-gray-700 border-gray-600 text-white text-sm h-7">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent className="bg-gray-700 border-gray-600">
                     {Object.entries(VEHICLE_TYPES).map(([key, vehicle]) => (
-                      <SelectItem key={key} value={key} className="text-white hover:bg-gray-600">
-                        {vehicle.name} ({vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height} мм)
+                      <SelectItem key={key} value={key} className="text-white hover:bg-gray-600 text-xs py-1">
+                        <div className="flex flex-col leading-tight">
+                          <span className="font-medium text-xs">{vehicle.name}</span>
+                          <span className="text-[10px] text-gray-400">{vehicle.dimensions.length}×{vehicle.dimensions.width}×{vehicle.dimensions.height}</span>
+                        </div>
                       </SelectItem>
                     ))}
                   </SelectContent>

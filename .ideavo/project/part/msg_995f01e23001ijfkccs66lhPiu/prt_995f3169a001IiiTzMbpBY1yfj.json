@@ -1,0 +1,34 @@
+{
+  "id": "prt_995f3169a001IiiTzMbpBY1yfj",
+  "messageID": "msg_995f01e23001ijfkccs66lhPiu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01658f6Es92fMyE8yXWayFZp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "edits": [
+        {
+          "oldString": "            {/* Компактный адаптивный лайаут */}\n            <div className=\"flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-3\">",
+          "newString": "            {/* Компактный адаптивный лайаут */}\n            <div className=\"flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 mb-2\">"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -602,9 +602,9 @@\n <div className=\"space-y-6\">\n   {/* Оптимизированная панель управления */}\n   <div className=\"bg-gray-800 p-3 rounded-lg overflow-hidden\">\n     {/* Компактный адаптивный лайаут */}\n-    <div className=\"flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3 mb-3\">\n+    <div className=\"flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 mb-2\">\n       {/* Блок управления 3D */}\n       <div className=\"flex flex-col sm:flex-row sm:items-center gap-2 min-w-0\">\n         <div className=\"flex items-center gap-2\">\n           <Rotate3d className=\"h-4 w-4 text-blue-400\" />\n"
+        }
+      ]
+    },
+    "title": "components/TruckVisualization.tsx",
+    "time": {
+      "start": 1759157365152,
+      "end": 1759157365159
+    }
+  }
+}
