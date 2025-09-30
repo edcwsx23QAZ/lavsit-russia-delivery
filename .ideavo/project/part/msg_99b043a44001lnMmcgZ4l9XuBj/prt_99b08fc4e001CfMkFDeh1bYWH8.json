@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b08fc4e001CfMkFDeh1bYWH8",
+  "messageID": "msg_99b043a44001lnMmcgZ4l9XuBj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01FJCF57LhZVGksMLw16PY4f",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "pkill -f \"next dev\" 2>/dev/null || true",
+      "description": "Stop any running dev servers"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Stop any running dev servers"
+    },
+    "title": "pkill -f \"next dev\" 2>/dev/null || true",
+    "time": {
+      "start": 1759242682408,
+      "end": 1759242683242
+    }
+  }
+}

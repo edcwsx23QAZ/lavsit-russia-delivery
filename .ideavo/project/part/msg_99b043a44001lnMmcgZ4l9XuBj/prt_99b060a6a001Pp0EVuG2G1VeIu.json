@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b060a6a001Pp0EVuG2G1VeIu",
+  "messageID": "msg_99b043a44001lnMmcgZ4l9XuBj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01SXVBkBybJWaY8wAzvxz3cv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -s -X POST http://localhost:3000/api/pek -H \"Content-Type: application/json\" -d '{\"fromCity\":\"Москва\",\"toCity\":\"Санкт-Петербург\",\"cargos\":[{\"length\":100,\"width\":100,\"height\":100,\"weight\":10}],\"declaredValue\":50000}' -w \"\\nStatus: %{http_code}\\nTime: %{time_total}s\\n\"",
+      "description": "Test PEK API endpoint"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Test PEK API endpoint"
+    },
+    "title": "curl -s -X POST http://localhost:3000/api/pek -H \"Content-Type: application/json\" -d '{\"fromCity\":\"Москва\",\"toCity\":\"Санкт-Петербург\",\"cargos\":[{\"length\":100,\"width\":100,\"height\":100,\"weight\":10}],\"declaredValue\":50000}' -w \"\\nStatus: %{http_code}\\nTime: %{time_total}s\\n\"",
+    "time": {
+      "start": 1759242490240,
+      "end": 1759242545279
+    }
+  }
+}

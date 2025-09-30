@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b0601e3001BKK0CUlrZFSiwH",
+  "messageID": "msg_99b043a44001lnMmcgZ4l9XuBj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Bs85spusY4RUqmwhK4woKo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -s -X GET http://localhost:3000/api/test -w \"\\nStatus: %{http_code}\\nTime: %{time_total}s\\n\"",
+      "description": "Test API test endpoint"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Test API test endpoint"
+    },
+    "title": "curl -s -X GET http://localhost:3000/api/test -w \"\\nStatus: %{http_code}\\nTime: %{time_total}s\\n\"",
+    "time": {
+      "start": 1759242487544,
+      "end": 1759242542897
+    }
+  }
+}

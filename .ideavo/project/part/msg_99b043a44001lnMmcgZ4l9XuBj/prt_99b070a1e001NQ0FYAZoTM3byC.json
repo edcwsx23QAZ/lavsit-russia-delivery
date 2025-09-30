@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b070a1e001NQ0FYAZoTM3byC",
+  "messageID": "msg_99b043a44001lnMmcgZ4l9XuBj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01CyqMJeX8iiq8gF6Q5RFWG1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "lsof -i :3000 || echo \"Port 3000 not in use\"",
+      "description": "Check port 3000 usage"
+    },
+    "output": "COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME\ncurl    1631 user    6u  IPv4   7562      0t0  TCP localhost:48960->localhost:3000 (ESTABLISHED)\ncurl    1633 user    6u  IPv4   7567      0t0  TCP localhost:48968->localhost:3000 (ESTABLISHED)\ncurl    1639 user    6u  IPv4   4793      0t0  TCP localhost:57604->localhost:3000 (ESTABLISHED)\n",
+    "metadata": {
+      "output": "COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME\ncurl    1631 user    6u  IPv4   7562      0t0  TCP localhost:48960->localhost:3000 (ESTABLISHED)\ncurl    1633 user    6u  IPv4   7567      0t0  TCP localhost:48968->localhost:3000 (ESTABLISHED)\ncurl    1639 user    6u  IPv4   4793      0t0  TCP localhost:57604->localhost:3000 (ESTABLISHED)\n",
+      "exit": 0,
+      "description": "Check port 3000 usage"
+    },
+    "title": "lsof -i :3000 || echo \"Port 3000 not in use\"",
+    "time": {
+      "start": 1759242554581,
+      "end": 1759242554617
+    }
+  }
+}

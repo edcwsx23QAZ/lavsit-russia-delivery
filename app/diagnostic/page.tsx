@@ -1191,7 +1191,7 @@ export default function DiagnosticPage() {
             <TestTube className="h-4 w-4 mr-2" />
             {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}
           </Button>
-          <Button onClick={() => window.open('/env-check', '_blank')} variant="outline" className="text-black bg-white border-gray-300 hover:bg-gray-100">
+          <Button onClick={() => window.open('/env-check', '_blank')} variant="outline" className="text-white bg-gray-700 border-gray-500 hover:bg-gray-600">
             <Building2 className="h-4 w-4 mr-2" />
             Проверить переменные окружения
           </Button>
@@ -1229,7 +1229,7 @@ export default function DiagnosticPage() {
             {updateStatus === 'error' && 'Ошибка'}
             {updateStatus === 'idle' && 'Обновить данные'}
           </Button>
-          <Button onClick={() => window.close()} variant="outline" className="text-black bg-white border-gray-300 hover:bg-gray-100">
+          <Button onClick={() => window.close()} variant="outline" className="text-white bg-gray-700 border-gray-500 hover:bg-gray-600">
             Закрыть
           </Button>
         </div>
@@ -1352,34 +1352,34 @@ export default function DiagnosticPage() {
                 <div className="text-sm space-y-2 text-gray-300">
                   <div>
                     <strong>1. Поворот и штабелирование:</strong>
-                    <p className="ml-4">• Грузы можно складывать друг на друга и поворачивать любой стороной</p>
+                    <p className="ml-4 text-gray-300">• Грузы можно складывать друг на друга и поворачивать любой стороной</p>
                   </div>
                   
                   <div>
                     <strong>2. Правило по весу:</strong>
-                    <p className="ml-4">• Грузы с большим весом нельзя складывать на грузы с меньшим весом</p>
+                    <p className="ml-4 text-gray-300">• Грузы с большим весом нельзя складывать на грузы с меньшим весом</p>
                   </div>
                   
                   <div>
                     <strong>3. Ограничения для стульев и кресел:</strong>
-                    <p className="ml-4">• Грузы с ключевыми словами "стул" или "кресло" нельзя поворачивать относительно горизонтальной оси</p>
-                    <p className="ml-4">• На такие грузы можно складывать только другие грузы с теми же ключевыми словами</p>
-                    <p className="ml-4">• Друг на друге не может быть больше двух таких грузов</p>
+                    <p className="ml-4 text-gray-300">• Грузы с ключевыми словами "стул" или "кресло" нельзя поворачивать относительно горизонтальной оси</p>
+                    <p className="ml-4 text-gray-300">• На такие грузы можно складывать только другие грузы с теми же ключевыми словами</p>
+                    <p className="ml-4 text-gray-300">• Друг на друге не может быть больше двух таких грузов</p>
                   </div>
                   
                   <div>
                     <strong>4. Цель оптимизации:</strong>
-                    <p className="ml-4">• Минимизация занятой площади пола</p>
-                    <p className="ml-4">• Максимально компактное размещение</p>
+                    <p className="ml-4 text-gray-300">• Минимизация занятой площади пола</p>
+                    <p className="ml-4 text-gray-300">• Максимально компактное размещение</p>
                   </div>
                   
                   <div>
                     <strong>5. Алгоритм размещения 3D:</strong>
-                    <p className="ml-4">• Поддержка поворотов грузов под углами: 0°, 45°, 90°, 135°, 180°, 225°, 270°, 315°</p>
-                    <p className="ml-4">• Диагональное размещение для оптимизации пространства</p>
-                    <p className="ml-4">• 6 базовых ориентаций + вращение = до 48 вариантов размещения на груз</p>
-                    <p className="ml-4">• Сетка размещения с шагом 25мм для точного позиционирования</p>
-                    <p className="ml-4">• Приоритет: площадь пола → высота размещения → общий объем</p>
+                    <p className="ml-4 text-gray-300">• Поддержка поворотов грузов под углами: 0°, 45°, 90°, 135°, 180°, 225°, 270°, 315°</p>
+                    <p className="ml-4 text-gray-300">• Диагональное размещение для оптимизации пространства</p>
+                    <p className="ml-4 text-gray-300">• 6 базовых ориентаций + вращение = до 48 вариантов размещения на груз</p>
+                    <p className="ml-4 text-gray-300">• Сетка размещения с шагом 25мм для точного позиционирования</p>
+                    <p className="ml-4 text-gray-300">• Приоритет: площадь пола → высота размещения → общий объем</p>
                   </div>
                 </div>
               </div>
@@ -1459,7 +1459,7 @@ export default function DiagnosticPage() {
               
               {/* Статистика по ТК */}
               <div className="mb-4">
-                <h4 className="font-medium mb-2">Статистика по транспортным компаниям:</h4>
+                <h4 className="font-medium mb-2 text-white">Статистика по транспортным компаниям:</h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
                   {['PEK', 'RAILCONTINENT', 'VOZOVOZ', 'NORDWHEEL', 'DELLIN'].map(tk => {
                     const tkResults = fullTestResults.details.filter((r: any) => r.tk === tk.toLowerCase());
@@ -1483,7 +1483,7 @@ export default function DiagnosticPage() {
                 <Alert className="border-red-500 bg-red-900/20 mb-4">
                   <AlertCircle className="h-4 w-4" />
                   <AlertDescription>
-                    <div className="font-medium mb-2">Найденные ошибки ({fullTestResults.summary.errors.length}):</div>
+                    <div className="font-medium mb-2 text-white">Найденные ошибки ({fullTestResults.summary.errors.length}):</div>
                     <ul className="list-disc list-inside text-sm space-y-1">
                       {fullTestResults.summary.errors.slice(0, 15).map((error, index) => (
                         <li key={index}>{error}</li>
@@ -1497,7 +1497,7 @@ export default function DiagnosticPage() {
               )}
               
               <details className="mt-4">
-                <summary className="cursor-pointer text-sm font-medium">Подробные результаты ({fullTestResults.details.length} записей)</summary>
+                <summary className="cursor-pointer text-sm font-medium text-white">Подробные результаты ({fullTestResults.details.length} записей)</summary>
                 <div className="mt-2 max-h-96 overflow-y-auto">
                   <pre className="text-xs p-2 bg-gray-800 rounded">
                     {JSON.stringify(fullTestResults.details.map(detail => ({
@@ -1550,7 +1550,7 @@ export default function DiagnosticPage() {
                         )}
                         {diagnosticResults.pek.details && (
                           <details className="mt-2">
-                            <summary className="cursor-pointer text-sm">Подробности</summary>
+                            <summary className="cursor-pointer text-sm text-gray-300">Подробности</summary>
                             <pre className="text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto">
                               {JSON.stringify(diagnosticResults.pek.details, null, 2)}
                             </pre>
@@ -1599,7 +1599,7 @@ export default function DiagnosticPage() {
                         )}
                         {diagnosticResults.dellin.details && (
                           <details className="mt-2">
-                            <summary className="cursor-pointer text-sm">Подробности</summary>
+                            <summary className="cursor-pointer text-sm text-gray-300">Подробности</summary>
                             <pre className="text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto">
                               {JSON.stringify(diagnosticResults.dellin.details, null, 2)}
                             </pre>
@@ -1648,7 +1648,7 @@ export default function DiagnosticPage() {
                         )}
                         {diagnosticResults.railcontinent.details && (
                           <details className="mt-2">
-                            <summary className="cursor-pointer text-sm">Подробности</summary>
+                            <summary className="cursor-pointer text-sm text-gray-300">Подробности</summary>
                             <pre className="text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto">
                               {JSON.stringify(diagnosticResults.railcontinent.details, null, 2)}
                             </pre>
@@ -1697,7 +1697,7 @@ export default function DiagnosticPage() {
                         )}
                         {diagnosticResults.vozovoz.details && (
                           <details className="mt-2">
-                            <summary className="cursor-pointer text-sm">Подробности</summary>
+                            <summary className="cursor-pointer text-sm text-gray-300">Подробности</summary>
                             <pre className="text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto">
                               {JSON.stringify(diagnosticResults.vozovoz.details, null, 2)}
                             </pre>
@@ -1746,7 +1746,7 @@ export default function DiagnosticPage() {
                         )}
                         {diagnosticResults.nordwheel.details && (
                           <details className="mt-2">
-                            <summary className="cursor-pointer text-sm">Подробности</summary>
+                            <summary className="cursor-pointer text-sm text-gray-300">Подробности</summary>
                             <pre className="text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto">
                               {JSON.stringify(diagnosticResults.nordwheel.details, null, 2)}
                             </pre>

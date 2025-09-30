@@ -1,0 +1,35 @@
+{
+  "id": "prt_99b0547d6002u7iITwjBIHsR3J",
+  "messageID": "msg_99b043a44001lnMmcgZ4l9XuBj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01QtoY1txLmjRYVCMNmU3dL3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "                            <summary className=\"cursor-pointer text-sm\">Подробности</summary>",
+          "newString": "                            <summary className=\"cursor-pointer text-sm text-gray-300\">Подробности</summary>",
+          "replaceAll": true
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1549,9 +1549,9 @@\n   </Badge>\n )}\n {diagnosticResults.pek.details && (\n   <details className=\"mt-2\">\n-    <summary className=\"cursor-pointer text-sm\">Подробности</summary>\n+    <summary className=\"cursor-pointer text-sm text-gray-300\">Подробности</summary>\n     <pre className=\"text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto\">\n       {JSON.stringify(diagnosticResults.pek.details, null, 2)}\n     </pre>\n   </details>\n@@ -1598,9 +1598,9 @@\n   </Badge>\n )}\n {diagnosticResults.dellin.details && (\n   <details className=\"mt-2\">\n-    <summary className=\"cursor-pointer text-sm\">Подробности</summary>\n+    <summary className=\"cursor-pointer text-sm text-gray-300\">Подробности</summary>\n     <pre className=\"text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto\">\n       {JSON.stringify(diagnosticResults.dellin.details, null, 2)}\n     </pre>\n   </details>\n@@ -1647,9 +1647,9 @@\n   </Badge>\n )}\n {diagnosticResults.railcontinent.details && (\n   <details className=\"mt-2\">\n-    <summary className=\"cursor-pointer text-sm\">Подробности</summary>\n+    <summary className=\"cursor-pointer text-sm text-gray-300\">Подробности</summary>\n     <pre className=\"text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto\">\n       {JSON.stringify(diagnosticResults.railcontinent.details, null, 2)}\n     </pre>\n   </details>\n@@ -1696,9 +1696,9 @@\n   </Badge>\n )}\n {diagnosticResults.vozovoz.details && (\n   <details className=\"mt-2\">\n-    <summary className=\"cursor-pointer text-sm\">Подробности</summary>\n+    <summary className=\"cursor-pointer text-sm text-gray-300\">Подробности</summary>\n     <pre className=\"text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto\">\n       {JSON.stringify(diagnosticResults.vozovoz.details, null, 2)}\n     </pre>\n   </details>\n@@ -1745,9 +1745,9 @@\n   </Badge>\n )}\n {diagnosticResults.nordwheel.details && (\n   <details className=\"mt-2\">\n-    <summary className=\"cursor-pointer text-sm\">Подробности</summary>\n+    <summary className=\"cursor-pointer text-sm text-gray-300\">Подробности</summary>\n     <pre className=\"text-xs mt-2 p-2 bg-gray-800 rounded overflow-auto\">\n       {JSON.stringify(diagnosticResults.nordwheel.details, null, 2)}\n     </pre>\n   </details>\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759242440836,
+      "end": 1759242440843
+    }
+  }
+}

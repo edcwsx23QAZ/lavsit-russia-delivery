@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b0707a5001Mk1Q3g0ru1wVG3",
+  "messageID": "msg_99b043a44001lnMmcgZ4l9XuBj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01CE6PU57acyV9p3wPyvSCPi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "ps aux | grep -E \"(next|node)\" | grep -v grep",
+      "description": "Check if server is running"
+    },
+    "output": "user        1600  0.0  0.0   2584   924 ?        S    14:27   0:00 sh -c next dev\nuser        1601  0.6  1.6 11526924 67284 ?      Sl   14:27   0:00 node /home/user/project/node_modules/.bin/next dev\nuser        1612  127 46.2 56817656 1865804 ?    Rl   14:27   1:34 next-server (v14.2.31)\n",
+    "metadata": {
+      "output": "user        1600  0.0  0.0   2584   924 ?        S    14:27   0:00 sh -c next dev\nuser        1601  0.6  1.6 11526924 67284 ?      Sl   14:27   0:00 node /home/user/project/node_modules/.bin/next dev\nuser        1612  127 46.2 56817656 1865804 ?    Rl   14:27   1:34 next-server (v14.2.31)\n",
+      "exit": 0,
+      "description": "Check if server is running"
+    },
+    "title": "ps aux | grep -E \"(next|node)\" | grep -v grep",
+    "time": {
+      "start": 1759242553886,
+      "end": 1759242553988
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b0722b0001koAPS1moj6V0Nn",
+  "messageID": "msg_99b043a44001lnMmcgZ4l9XuBj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01UqibJi9is4JiSu1gR2t5qM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -m 10 -X GET http://localhost:3000/api/test 2>/dev/null | head -200",
+      "description": "Test API test endpoint with timeout"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Test API test endpoint with timeout"
+    },
+    "title": "curl -m 10 -X GET http://localhost:3000/api/test 2>/dev/null | head -200",
+    "time": {
+      "start": 1759242560884,
+      "end": 1759242570904
+    }
+  }
+}

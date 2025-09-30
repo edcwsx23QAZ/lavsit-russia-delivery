@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b0a329b001mmSs64M0q0kEH8",
+  "messageID": "msg_99b043a44001lnMmcgZ4l9XuBj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01DZn31Kdf3wLpGCqafEj88W",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "pkill -f \"next dev\" 2>/dev/null || true",
+      "description": "Clean up dev server"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Clean up dev server"
+    },
+    "title": "pkill -f \"next dev\" 2>/dev/null || true",
+    "time": {
+      "start": 1759242761616,
+      "end": 1759242761632
+    }
+  }
+}
