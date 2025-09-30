@@ -1,0 +1,26 @@
+{
+  "id": "prt_99afa01d20012WjKTT5Zg02pQN",
+  "messageID": "msg_99af9d766001Uge5VEW6LGC4ev",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01JQW41gUt6UCenArPfAY3Nz",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build 2>&1 | head -20",
+      "description": "Check for build errors that might indicate parsing issues"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/14) ...\n   Generating static pages (3/14) \r\n   Generating static pages (6/14) \r\n   Generating static pages (10/14) \r\n ✓ Generating static pages (14/14)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/14) ...\n   Generating static pages (3/14) \r\n   Generating static pages (6/14) \r\n   Generating static pages (10/14) \r\n ✓ Generating static pages (14/14)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n",
+      "exit": 0,
+      "description": "Check for build errors that might indicate parsing issues"
+    },
+    "title": "npm run build 2>&1 | head -20",
+    "time": {
+      "start": 1759241700605,
+      "end": 1759241744461
+    }
+  }
+}
