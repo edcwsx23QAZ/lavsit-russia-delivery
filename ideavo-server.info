@@ -4,18 +4,18 @@ $ next dev
   - Environments: .env.local, .env
 
  ✓ Starting...
- ✓ Ready in 2.7s
- ✓ Compiled /middleware in 196ms
+ ✓ Ready in 2.3s
+ ✓ Compiled /middleware in 157ms
  ✓ Compiled (73 modules)
  ○ Compiling / ...
- ✓ Compiled / in 4.7s (708 modules)
- GET / 200 in 5509ms
- ✓ Compiled in 878ms (366 modules)
- GET / 200 in 53ms
+ ✓ Compiled / in 5.8s (708 modules)
+ GET / 200 in 6542ms
+ ✓ Compiled in 810ms (366 modules)
+ GET / 200 in 43ms
  ⚠ Cross origin request detected from 4000-i859b80wqs6c2fhjwbj2w.e2b.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
  ○ Compiling /api/vozovoz ...
- ✓ Compiled /api/vozovoz in 571ms (372 modules)
+ ✓ Compiled /api/vozovoz in 646ms (372 modules)
  ✓ Compiled (378 modules)
 🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
@@ -23,7 +23,7 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
   "method": "test"
 }
 🔧 Тестовый метод прокси
- POST /api/pek 200 in 827ms
+ POST /api/pek 200 in 853ms
 🚚 Vozovoz API запрос: {
   "object": "price",
   "action": "get",
@@ -58,8 +58,8 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
 📋 Количество строк: 1890
 ✅ Успешно обработано 1889 товаров
 🛋️ Обработано товаров: 1889
- GET /api/furniture-products 200 in 999ms
- GET /api/furniture-products 200 in 25ms
+ GET /api/furniture-products 200 in 1080ms
+ GET /api/furniture-products 200 in 24ms
 🚂 Rail Continent API ответ: {
   "result": "success",
   "data": {
@@ -191,7 +191,7 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     "train_fast_temp": false
   }
 }
- POST /api/rail-continent 200 in 1621ms
+ POST /api/rail-continent 200 in 1740ms
 🚚 Vozovoz API статус: 200 OK
 🚚 Vozovoz API ответ: {
   "response": {
@@ -228,10 +228,8 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     ]
   }
 }
- POST /api/vozovoz 200 in 3304ms
+ POST /api/vozovoz 200 in 2036ms
  ○ Compiling /diagnostic ...
- ✓ Compiled /diagnostic in 871ms (754 modules)
- GET /diagnostic 200 in 1158ms
- ○ Compiling /env-check ...
- ✓ Compiled /env-check in 770ms (822 modules)
- GET /env-check 200 in 1065ms
+ ✓ Compiled /diagnostic in 1419ms (756 modules)
+ GET /diagnostic 200 in 1663ms
+ GET /diagnostic 200 in 39ms

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99a284efb001cBs0p1fFPV4Pqf",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01PWLx4KBfJBF2WQYzaxmnmQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "грузовых мест",
+      "path": "/home/user/project",
+      "include": "*.tsx"
+    },
+    "output": "Found 11 matches\n/home/user/project/app/diagnostic/page.tsx:\n  Line 547:   // 🔧 Генератор тестовых данных для множественных грузовых мест\n  Line 847:       // Расширенный набор тестирования количества грузовых мест\n  Line 870:         // Тестируем различное количество грузовых мест\n  Line 881:             stage: `Тестирование ${cargoCount} грузовых мест`\n\n/home/user/project/app/page.tsx:\n  Line 592:     console.log(`➕ Добавление товара: ${product.name} (${product.cargoPlaces.length} грузовых мест)`);\n  Line 675:     console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);\n  Line 2181:   // 🔧 Валидация множественных грузовых мест\n  Line 2188:       throw new Error(`Слишком много грузовых мест (${cargos.length}). Максимум: 50`);\n  Line 2221:       console.log('🚂 Rail Continent: Анализ множественных грузовых мест:');\n  Line 2630:       console.log('🌐 Nord Wheel: Анализ множественных грузовых мест:');\n\n/home/user/project/components/ProductManager.tsx:\n  Line 149:               {/* Детали грузовых мест */}",
+    "metadata": {
+      "matches": 11,
+      "truncated": false
+    },
+    "title": "грузовых мест",
+    "time": {
+      "start": 1759227957798,
+      "end": 1759227957816
+    }
+  }
+}

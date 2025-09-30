@@ -1,0 +1,34 @@
+{
+  "id": "prt_99a2de779001XTeM4XWV8CWYFy",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01RqFDys1h86dLA7ANtmcNuw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "      // Очищаем localStorage от старых данных о товарах\n      const keysToRemove = [];\n      for (let i = 0; i < localStorage.length; i++) {\n        const key = localStorage.key(i);\n        if (key && (key.startsWith('furniture_') || key.startsWith('product_') || key.includes('cargo'))) {\n          keysToRemove.push(key);\n        }\n      }\n      keysToRemove.forEach(key => localStorage.removeItem(key));",
+          "newString": "      // Очищаем localStorage от старых данных о товарах\n      const keysToRemove: string[] = [];\n      for (let i = 0; i < localStorage.length; i++) {\n        const key = localStorage.key(i);\n        if (key && (key.startsWith('furniture_') || key.startsWith('product_') || key.includes('cargo'))) {\n          keysToRemove.push(key);\n        }\n      }\n      keysToRemove.forEach(key => localStorage.removeItem(key));"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -177,9 +177,9 @@\n   console.log('📡 Отправлено сообщение в главное окно об обновлении товаров');\n }\n \n // Очищаем localStorage от старых данных о товарах\n-const keysToRemove = [];\n+const keysToRemove: string[] = [];\n for (let i = 0; i < localStorage.length; i++) {\n   const key = localStorage.key(i);\n   if (key && (key.startsWith('furniture_') || key.startsWith('product_') || key.includes('cargo'))) {\n     keysToRemove.push(key);\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759228329771,
+      "end": 1759228329791
+    }
+  }
+}

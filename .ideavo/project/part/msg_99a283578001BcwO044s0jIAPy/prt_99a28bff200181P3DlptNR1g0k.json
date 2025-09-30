@@ -1,0 +1,25 @@
+{
+  "id": "prt_99a28bff200181P3DlptNR1g0k",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011zC9aufZdy685W2eh8ViYu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ProductSearch.tsx",
+      "offset": 20,
+      "limit": 40
+    },
+    "output": "<file>\n00021|     suggestions: [],\n00022|     showSuggestions: false,\n00023|     selectedIndex: -1\n00024|   });\n00025|   \n00026|   const [allProducts, setAllProducts] = useState<FurnitureProduct[]>([]);\n00027|   const [isLoadingProducts, setIsLoadingProducts] = useState(false);\n00028|   const inputRef = useRef<HTMLInputElement>(null);\n00029|   const suggestionsRef = useRef<HTMLDivElement>(null);\n00030|   \n00031|   // Загрузка продуктов при монтировании\n00032|   useEffect(() => {\n00033|     loadProducts();\n00034|   }, []);\n00035|   \n00036|   // Загрузка продуктов с сервера (включая обновление кэша)\n00037|   const loadProducts = async (forceUpdate = false) => {\n00038|     setIsLoadingProducts(true);\n00039|     try {\n00040|       // Добавляем параметр для принудительного обновления кэша\n00041|       const url = forceUpdate \n00042|         ? '/api/furniture-products?update=true' \n00043|         : '/api/furniture-products';\n00044|         \n00045|       const response = await fetch(url);\n00046|       const data = await response.json();\n00047|       \n00048|       if (data.success) {\n00049|         setAllProducts(data.data);\n00050|         console.log(`✅ Загружено ${data.data.length} товаров`);\n00051|         if (forceUpdate) {\n00052|           console.log('🔄 Принудительное обновление товарной матрицы завершено');\n00053|         }\n00054|       } else {\n00055|         console.error('❌ Ошибка загрузки товаров:', data.error);\n00056|       }\n00057|     } catch (error) {\n00058|       console.error('❌ Ошибка загрузки товаров:', error);\n00059|     } finally {\n00060|       setIsLoadingProducts(false);\n\n(File has more lines. Use 'offset' parameter to read beyond line 60)\n</file>",
+    "metadata": {
+      "preview": "    suggestions: [],\n    showSuggestions: false,\n    selectedIndex: -1\n  });\n  \n  const [allProducts, setAllProducts] = useState<FurnitureProduct[]>([]);\n  const [isLoadingProducts, setIsLoadingProducts] = useState(false);\n  const inputRef = useRef<HTMLInputElement>(null);\n  const suggestionsRef = useRef<HTMLDivElement>(null);\n  \n  // Загрузка продуктов при монтировании\n  useEffect(() => {\n    loadProducts();\n  }, []);\n  \n  // Загрузка продуктов с сервера (включая обновление кэша)\n  const loadProducts = async (forceUpdate = false) => {\n    setIsLoadingProducts(true);\n    try {\n      // Добавляем параметр для принудительного обновления кэша"
+    },
+    "title": "components/ProductSearch.tsx",
+    "time": {
+      "start": 1759227986593,
+      "end": 1759227986595
+    }
+  }
+}

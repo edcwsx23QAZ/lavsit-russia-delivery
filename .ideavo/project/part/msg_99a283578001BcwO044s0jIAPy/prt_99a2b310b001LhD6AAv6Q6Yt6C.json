@@ -1,0 +1,34 @@
+{
+  "id": "prt_99a2b310b001LhD6AAv6Q6Yt6C",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01MKevvgW2Ep5aoHHbvEdz1U",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "  }, [form.declaredValue]);\n\n  // Проверка статуса API при загрузке страницы\n  useEffect(() => {",
+          "newString": "  }, [form.declaredValue]);\n\n  // Обработка сообщений об обновлении данных товаров\n  useEffect(() => {\n    const handleMessage = (event: MessageEvent) => {\n      if (event.data && event.data.type === 'PRODUCTS_UPDATED') {\n        console.log('📨 Получено сообщение об обновлении товаров:', event.data.data);\n        \n        // Очищаем локальные кэши товаров\n        const keysToRemove: string[] = [];\n        for (let i = 0; i < localStorage.length; i++) {\n          const key = localStorage.key(i);\n          if (key && (key.startsWith('furniture_') || key.startsWith('product_') || key.includes('ProductSearch'))) {\n            keysToRemove.push(key);\n          }\n        }\n        keysToRemove.forEach(key => localStorage.removeItem(key));\n        console.log(`🧽 Очищено ${keysToRemove.length} ключей кэша товаров`);\n        \n        // Отправляем сообщение компоненту ProductSearch о необходимости обновления\n        window.dispatchEvent(new CustomEvent('forceProductsReload', {\n          detail: event.data.data\n        }));\n      }\n    };\n    \n    window.addEventListener('message', handleMessage);\n    \n    return () => {\n      window.removeEventListener('message', handleMessage);\n    };\n  }, []);\n\n  // Проверка статуса API при загрузке страницы\n  useEffect(() => {"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -175,8 +175,39 @@\n     setForm(prev => ({ ...prev, needInsurance: true }));\n   }\n }, [form.declaredValue]);\n \n+// Обработка сообщений об обновлении данных товаров\n+useEffect(() => {\n+  const handleMessage = (event: MessageEvent) => {\n+    if (event.data && event.data.type === 'PRODUCTS_UPDATED') {\n+      console.log('📨 Получено сообщение об обновлении товаров:', event.data.data);\n+      \n+      // Очищаем локальные кэши товаров\n+      const keysToRemove: string[] = [];\n+      for (let i = 0; i < localStorage.length; i++) {\n+        const key = localStorage.key(i);\n+        if (key && (key.startsWith('furniture_') || key.startsWith('product_') || key.includes('ProductSearch'))) {\n+          keysToRemove.push(key);\n+        }\n+      }\n+      keysToRemove.forEach(key => localStorage.removeItem(key));\n+      console.log(`🧽 Очищено ${keysToRemove.length} ключей кэша товаров`);\n+      \n+      // Отправляем сообщение компоненту ProductSearch о необходимости обновления\n+      window.dispatchEvent(new CustomEvent('forceProductsReload', {\n+        detail: event.data.data\n+      }));\n+    }\n+  };\n+  \n+  window.addEventListener('message', handleMessage);\n+  \n+  return () => {\n+    window.removeEventListener('message', handleMessage);\n+  };\n+}, []);\n+\n // Проверка статуса API при загрузке страницы\n useEffect(() => {\n   if (typeof window !== 'undefined' && isLoaded) {\n     checkAllAPIStatus();\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759228163743,
+      "end": 1759228163771
+    }
+  }
+}

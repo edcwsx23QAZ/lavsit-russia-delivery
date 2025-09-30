@@ -1,0 +1,26 @@
+{
+  "id": "prt_99a288591001RORwJxq067HsT3",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01YAFBge6AADTgeBBHHadp8U",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "google.*sheet",
+      "path": "/home/user/project",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/diagnostic/page.tsx:\n  Line 1093:               window.open('https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/edit?gid=0#gid=0', '_blank');",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "google.*sheet",
+    "time": {
+      "start": 1759227971554,
+      "end": 1759227971567
+    }
+  }
+}

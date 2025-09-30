@@ -149,22 +149,46 @@ export default function DiagnosticPage() {
     setUpdateStatus('updating');
     
     try {
-      // В реальном приложении здесь был бы запрос к Google Sheets API
-      // Для демонстрации имитируем получение данных
+      console.log('🔄 Начинаем обновление базы товаров из Google Sheets...');
       
-      // Имитация сетевого запроса
-      await new Promise(resolve => setTimeout(resolve, 2000));
+      // Очищаем кэш товаров через принудительное обновление API
+      const response = await fetch('/api/furniture-products?update=true');
+      const result = await response.json();
       
-      // Примерные обновленные данные товаров (в реальности получались бы из Google Sheets)
-      const updatedProducts = [
-        { id: '1', name: 'Обновленный Форд Транзит', length: 4300, width: 2100, height: 2050 },
-        { id: '2', name: 'Обновленная Фура 20м3', length: 4500, width: 2300, height: 2100 },
-        { id: '3', name: 'Новый Газель Next', length: 3200, width: 1800, height: 1900 }
-      ];
+      if (!result.success) {
+        throw new Error(result.error || 'Ошибка обновления данных');
+      }
       
-      // Обновляем локальные данные
-      setVehicleTypes(updatedProducts);
-      localStorage.setItem('vehicleTypes', JSON.stringify(updatedProducts));
+      console.log(`✅ Обновлено ${result.data.length} товаров из Google Sheets`);
+      console.log(`🕰️ Последнее обновление: ${result.lastUpdated}`);
+      
+      // Обновляем данные автомобилей (оставляем как есть, т.к. это отдельная сущность)
+      // Основная цель - обновить кэш товаров, которые используются в компоненте ProductSearch
+      
+      // Отправляем сообщение в главное окно для обновления компонентов
+      if (window.opener) {
+        window.opener.postMessage({
+          type: 'PRODUCTS_UPDATED',
+          data: {
+            productsCount: result.data.length,
+            lastUpdated: result.lastUpdated
+          }
+        }, '*');
+        console.log('📡 Отправлено сообщение в главное окно об обновлении товаров');
+      }
+      
+      // Очищаем localStorage от старых данных о товарах
+      const keysToRemove: string[] = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key && (key.startsWith('furniture_') || key.startsWith('product_') || key.includes('cargo'))) {
+          keysToRemove.push(key);
+        }
+      }
+      keysToRemove.forEach(key => localStorage.removeItem(key));
+      console.log(`🧽 Очищено ${keysToRemove.length} ключей из localStorage`);
+      
+      // Обновляем время последнего обновления
       localStorage.setItem('lastProductDataUpdate', new Date().toISOString());
       
       setUpdateStatus('success');
@@ -175,7 +199,7 @@ export default function DiagnosticPage() {
       setTimeout(() => setUpdateStatus('idle'), 3000);
       
     } catch (error) {
-      console.error('Ошибка обновления данных:', error);
+      console.error('❌ Ошибка обновления данных:', error);
       setUpdateStatus('error');
       setTimeout(() => setUpdateStatus('idle'), 5000);
     } finally {
@@ -1133,7 +1157,7 @@ export default function DiagnosticPage() {
           <AlertDescription>
             <strong>База товаров и размеров:</strong> Кликните кнопку "База товаров" для открытия Google Sheets с полной базой данных о товарах.
             <br /><br />
-            <strong>Обновление данных:</strong> Нажмите "Обновить данные" для синхронизации местных данных с актуальной информацией из Google Sheets.
+<strong>Обновление данных:</strong> Нажмите "Обновить данные" для принудительного парсинга и обновления кэша всех товаров с актуальными данными из Google Sheets. Это очистит все кэшированные грузовые места и перезагрузит всю товарную матрицу с новыми размерами.
             {lastUpdateTime && (
               <><br /><strong>Последнее обновление:</strong> {lastUpdateTime}</>
             )}

@@ -1,0 +1,34 @@
+{
+  "id": "prt_99a2b9440001YMc12E3eKHfqHy",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_012EGfdgPJJuFrgdrEoetMQo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ProductSearch.tsx",
+      "edits": [
+        {
+          "oldString": "  // Загрузка продуктов при монтировании\n  useEffect(() => {\n    loadProducts();\n  }, []);",
+          "newString": "  // Загрузка продуктов при монтировании\n  useEffect(() => {\n    loadProducts();\n  }, []);\n  \n  // Обработка принудительного обновления товаров\n  useEffect(() => {\n    const handleForceReload = (event: CustomEvent) => {\n      console.log('🔄 ProductSearch: Получен сигнал о принудительном обновлении товаров');\n      // Принудительно перезагружаем товары\n      loadProducts(true);\n      \n      // Очищаем текущий поиск\n      setSearchState({\n        query: '',\n        isLoading: false,\n        suggestions: [],\n        showSuggestions: false,\n        selectedIndex: -1\n      });\n    };\n    \n    window.addEventListener('forceProductsReload', handleForceReload as EventListener);\n    \n    return () => {\n      window.removeEventListener('forceProductsReload', handleForceReload as EventListener);\n    };\n  }, []);"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/ProductSearch.tsx\n===================================================================\n--- /home/user/project/components/ProductSearch.tsx\n+++ /home/user/project/components/ProductSearch.tsx\n@@ -32,8 +32,32 @@\n useEffect(() => {\n   loadProducts();\n }, []);\n \n+// Обработка принудительного обновления товаров\n+useEffect(() => {\n+  const handleForceReload = (event: CustomEvent) => {\n+    console.log('🔄 ProductSearch: Получен сигнал о принудительном обновлении товаров');\n+    // Принудительно перезагружаем товары\n+    loadProducts(true);\n+    \n+    // Очищаем текущий поиск\n+    setSearchState({\n+      query: '',\n+      isLoading: false,\n+      suggestions: [],\n+      showSuggestions: false,\n+      selectedIndex: -1\n+    });\n+  };\n+  \n+  window.addEventListener('forceProductsReload', handleForceReload as EventListener);\n+  \n+  return () => {\n+    window.removeEventListener('forceProductsReload', handleForceReload as EventListener);\n+  };\n+}, []);\n+\n // Загрузка продуктов с сервера (включая обновление кэша)\n const loadProducts = async (forceUpdate = false) => {\n   setIsLoadingProducts(true);\n   try {\n"
+        }
+      ]
+    },
+    "title": "components/ProductSearch.tsx",
+    "time": {
+      "start": 1759228184304,
+      "end": 1759228184308
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_99a29fd35001xgREW6kMVVlOhV",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01BvePbK94XDpWrseJoKWFE5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 140,
+      "limit": 40
+    },
+    "output": "<file>\n00141|     } finally {\n00142|       setIsSaving(false);\n00143|     }\n00144|   };\n00145| \n00146|   // Функция обновления данных из Google Sheets\n00147|   const updateProductData = async () => {\n00148|     setIsUpdatingData(true);\n00149|     setUpdateStatus('updating');\n00150|     \n00151|     try {\n00152|       // В реальном приложении здесь был бы запрос к Google Sheets API\n00153|       // Для демонстрации имитируем получение данных\n00154|       \n00155|       // Имитация сетевого запроса\n00156|       await new Promise(resolve => setTimeout(resolve, 2000));\n00157|       \n00158|       // Примерные обновленные данные товаров (в реальности получались бы из Google Sheets)\n00159|       const updatedProducts = [\n00160|         { id: '1', name: 'Обновленный Форд Транзит', length: 4300, width: 2100, height: 2050 },\n00161|         { id: '2', name: 'Обновленная Фура 20м3', length: 4500, width: 2300, height: 2100 },\n00162|         { id: '3', name: 'Новый Газель Next', length: 3200, width: 1800, height: 1900 }\n00163|       ];\n00164|       \n00165|       // Обновляем локальные данные\n00166|       setVehicleTypes(updatedProducts);\n00167|       localStorage.setItem('vehicleTypes', JSON.stringify(updatedProducts));\n00168|       localStorage.setItem('lastProductDataUpdate', new Date().toISOString());\n00169|       \n00170|       setUpdateStatus('success');\n00171|       setLastUpdateTime(new Date().toLocaleString('ru-RU'));\n00172|       setHasUnsavedChanges(false);\n00173|       \n00174|       // Автоматически скрываем статус через 3 секунды\n00175|       setTimeout(() => setUpdateStatus('idle'), 3000);\n00176|       \n00177|     } catch (error) {\n00178|       console.error('Ошибка обновления данных:', error);\n00179|       setUpdateStatus('error');\n00180|       setTimeout(() => setUpdateStatus('idle'), 5000);\n\n(File has more lines. Use 'offset' parameter to read beyond line 180)\n</file>",
+    "metadata": {
+      "preview": "    } finally {\n      setIsSaving(false);\n    }\n  };\n\n  // Функция обновления данных из Google Sheets\n  const updateProductData = async () => {\n    setIsUpdatingData(true);\n    setUpdateStatus('updating');\n    \n    try {\n      // В реальном приложении здесь был бы запрос к Google Sheets API\n      // Для демонстрации имитируем получение данных\n      \n      // Имитация сетевого запроса\n      await new Promise(resolve => setTimeout(resolve, 2000));\n      \n      // Примерные обновленные данные товаров (в реальности получались бы из Google Sheets)\n      const updatedProducts = [\n        { id: '1', name: 'Обновленный Форд Транзит', length: 4300, width: 2100, height: 2050 },"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759228067887,
+      "end": 1759228067889
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99a2893d60016eFHx6ayf9ND4l",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01V3gThQKf4z3n1UhfcHyrLX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "парсинг",
+      "path": "/home/user/project",
+      "include": "*.tsx"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 1339:               console.error('Деловые Линии - Невалидные даты после парсинга');\n  Line 1897:         console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "парсинг",
+    "time": {
+      "start": 1759227974925,
+      "end": 1759227974937
+    }
+  }
+}

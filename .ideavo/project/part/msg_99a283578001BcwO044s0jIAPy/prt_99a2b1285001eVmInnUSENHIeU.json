@@ -1,0 +1,25 @@
+{
+  "id": "prt_99a2b1285001eVmInnUSENHIeU",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_013xsEkzGd8SJF5ZRmyDWGA4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 100,
+      "limit": 40
+    },
+    "output": "<file>\n00101|     needCarry: false,\n00102|     floor: 1,\n00103|     hasFreightLift: false,\n00104|     needInsurance: false,\n00105|     fromTerminal: true,\n00106|     toTerminal: true,\n00107|     fromAddressDelivery: false,\n00108|     toAddressDelivery: false,\n00109|     selectedProducts: []\n00110|   };\n00111| \n00112|   const [form, setForm] = useState<DeliveryForm>(initialFormState);\n00113|   const [isLoaded, setIsLoaded] = useState(false);\n00114| \n00115|   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n00116|   const [showSuggestions, setShowSuggestions] = useState(false);\n00117|   const [activeField, setActiveField] = useState('');\n00118|   const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n00119|   const [calculating, setCalculating] = useState(false);\n00120|   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n00121|   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n00122|   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n00123|   const [apiStatus, setApiStatus] = useState({\n00124|     pek: 'проверка...',\n00125|     dellin: 'проверка...',\n00126|     railcontinent: 'проверка...',\n00127|     vozovoz: 'проверка...',\n00128|     nordwheel: 'проверка...'\n00129|   });\n00130| \n00131|   // Загрузка сохраненных данных (только на клиенте)\n00132|   useEffect(() => {\n00133|     // Проверяем, что мы на клиенте\n00134|     if (typeof window !== 'undefined' && !isLoaded) {\n00135|       try {\n00136|         const saved = localStorage.getItem('deliveryForm');\n00137|         if (saved) {\n00138|           const savedForm = JSON.parse(saved);\n00139|           // Убеждаемся, что есть хотя бы один груз\n00140|           if (!savedForm.cargos || savedForm.cargos.length === 0) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 140)\n</file>",
+    "metadata": {
+      "preview": "    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false,\n    selectedProducts: []\n  };\n\n  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n\n  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n  const [showSuggestions, setShowSuggestions] = useState(false);\n  const [activeField, setActiveField] = useState('');\n  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  const [calculating, setCalculating] = useState(false);\n  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759228138702,
+      "end": 1759228138708
+    }
+  }
+}

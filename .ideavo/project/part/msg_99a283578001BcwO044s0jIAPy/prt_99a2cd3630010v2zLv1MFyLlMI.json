@@ -1,0 +1,34 @@
+{
+  "id": "prt_99a2cd3630010v2zLv1MFyLlMI",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01AAHHoBRAEjfG44JfhhisSE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "            <strong>Обновление данных:</strong> Нажмите \"Обновить данные\" для синхронизации местных данных с актуальной информацией из Google Sheets.",
+          "newString": "<strong>Обновление данных:</strong> Нажмите \"Обновить данные\" для принудительного парсинга и обновления кэша всех товаров с актуальными данными из Google Sheets. Это очистит все кэшированные грузовые места и перезагрузит всю товарную матрицу с новыми размерами."
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1156,9 +1156,9 @@\n           <ExternalLink className=\"h-4 w-4\" />\n           <AlertDescription>\n             <strong>База товаров и размеров:</strong> Кликните кнопку \"База товаров\" для открытия Google Sheets с полной базой данных о товарах.\n             <br /><br />\n-            <strong>Обновление данных:</strong> Нажмите \"Обновить данные\" для синхронизации местных данных с актуальной информацией из Google Sheets.\n+<strong>Обновление данных:</strong> Нажмите \"Обновить данные\" для принудительного парсинга и обновления кэша всех товаров с актуальными данными из Google Sheets. Это очистит все кэшированные грузовые места и перезагрузит всю товарную матрицу с новыми размерами.\n             {lastUpdateTime && (\n               <><br /><strong>Последнее обновление:</strong> {lastUpdateTime}</>\n             )}\n             <br /><br />\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759228268787,
+      "end": 1759228268798
+    }
+  }
+}

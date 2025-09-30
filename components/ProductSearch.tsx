@@ -33,6 +33,30 @@ export default function ProductSearch({ onProductAdd, disabled = false }: Produc
     loadProducts();
   }, []);
   
+  // Обработка принудительного обновления товаров
+  useEffect(() => {
+    const handleForceReload = (event: CustomEvent) => {
+      console.log('🔄 ProductSearch: Получен сигнал о принудительном обновлении товаров');
+      // Принудительно перезагружаем товары
+      loadProducts(true);
+      
+      // Очищаем текущий поиск
+      setSearchState({
+        query: '',
+        isLoading: false,
+        suggestions: [],
+        showSuggestions: false,
+        selectedIndex: -1
+      });
+    };
+    
+    window.addEventListener('forceProductsReload', handleForceReload as EventListener);
+    
+    return () => {
+      window.removeEventListener('forceProductsReload', handleForceReload as EventListener);
+    };
+  }, []);
+  
   // Загрузка продуктов с сервера (включая обновление кэша)
   const loadProducts = async (forceUpdate = false) => {
     setIsLoadingProducts(true);

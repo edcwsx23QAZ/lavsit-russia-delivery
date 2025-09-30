@@ -1,0 +1,23 @@
+{
+  "id": "prt_99a28b254001cebxBxXngjn9QN",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XsSrBQiNA9gTZgicY1ZSE5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/furniture-types.ts"
+    },
+    "output": "<file>\n00001| // 🔧 Типы для интеграции мебельного каталога\n00002| \n00003| export interface CargoPlace {\n00004|   placeNumber: number;\n00005|   weight: number; // кг\n00006|   height: number; // см\n00007|   depth: number;  // см (ширина в форме)\n00008|   length: number; // см\n00009| }\n00010| \n00011| export interface FurnitureProduct {\n00012|   id: string;\n00013|   externalCode: string;\n00014|   name: string;\n00015|   retailPrice: number;\n00016|   isActive: boolean;\n00017|   cargoPlaces: CargoPlace[];\n00018| }\n00019| \n00020| export interface ProductInForm {\n00021|   product: FurnitureProduct;\n00022|   quantity: number;\n00023|   totalPrice: number;\n00024|   cargoIndexes: number[]; // индексы соответствующих мест в form.cargos\n00025|   addedAt: number; // timestamp для уникальности\n00026| }\n00027| \n00028| export interface ProductSearchState {\n00029|   query: string;\n00030|   isLoading: boolean;\n00031|   suggestions: FurnitureProduct[];\n00032|   showSuggestions: boolean;\n00033|   selectedIndex: number;\n00034| }\n00035| \n00036| // Расширение существующего интерфейса Cargo\n00037| export interface CargoWithMetadata {\n00038|   id: string;\n00039|   length: number;\n00040|   width: number;  // в форме это width, в данных depth\n00041|   height: number;\n00042|   weight: number;\n00043|   // Метаданные для связи с товарами\n00044|   productId?: string;\n00045|   placeNumber?: number;\n00046|   isFromProduct?: boolean;\n00047|   addedAt?: number; // timestamp добавления товара для надежной связи\n00048| }\n00049| \n00050| // Утилиты для работы с данными\n00051| export interface FurnitureDataUtils {\n00052|   // Преобразование CargoPlace в Cargo для формы\n00053|   cargoPlaceToFormCargo: (place: CargoPlace, productId: string, uniqueId: string) => CargoWithMetadata;\n00054|   \n00055|   // Поиск товаров\n00056|   searchProducts: (products: FurnitureProduct[], query: string) => FurnitureProduct[];\n00057|   \n00058|   // Валидация товара\n00059|   validateProduct: (product: FurnitureProduct) => { isValid: boolean; errors: string[] };\n00060|   \n00061|   // Расчет общей стоимости\n00062|   calculateTotalValue: (productsInForm: ProductInForm[]) => number;\n00063| }\n</file>",
+    "metadata": {
+      "preview": "// 🔧 Типы для интеграции мебельного каталога\n\nexport interface CargoPlace {\n  placeNumber: number;\n  weight: number; // кг\n  height: number; // см\n  depth: number;  // см (ширина в форме)\n  length: number; // см\n}\n\nexport interface FurnitureProduct {\n  id: string;\n  externalCode: string;\n  name: string;\n  retailPrice: number;\n  isActive: boolean;\n  cargoPlaces: CargoPlace[];\n}\n\nexport interface ProductInForm {"
+    },
+    "title": "lib/furniture-types.ts",
+    "time": {
+      "start": 1759227982615,
+      "end": 1759227982619
+    }
+  }
+}

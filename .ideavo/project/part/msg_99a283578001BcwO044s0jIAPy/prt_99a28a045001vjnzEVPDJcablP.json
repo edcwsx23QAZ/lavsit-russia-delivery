@@ -1,0 +1,26 @@
+{
+  "id": "prt_99a28a045001vjnzEVPDJcablP",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01SQD5g7oXwYHYA4SurABF7v",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "FurnitureProduct",
+      "path": "/home/user/project",
+      "include": "*.tsx"
+    },
+    "output": "Found 6 matches\n/home/user/project/components/ProductSearch.tsx:\n  Line 9: import { FurnitureProduct, ProductSearchState } from '@/lib/furniture-types';\n  Line 13:   onProductAdd: (product: FurnitureProduct) => void;\n  Line 26:   const [allProducts, setAllProducts] = useState<FurnitureProduct[]>([]);\n  Line 89:   const handleProductSelect = (product: FurnitureProduct) => {\n\n/home/user/project/app/page.tsx:\n  Line 17: import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\n  Line 589:   const handleProductAdd = (product: FurnitureProduct) => {",
+    "metadata": {
+      "matches": 6,
+      "truncated": false
+    },
+    "title": "FurnitureProduct",
+    "time": {
+      "start": 1759227978403,
+      "end": 1759227978412
+    }
+  }
+}

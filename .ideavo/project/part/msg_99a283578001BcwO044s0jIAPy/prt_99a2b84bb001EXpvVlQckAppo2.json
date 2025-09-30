@@ -1,0 +1,25 @@
+{
+  "id": "prt_99a2b84bb001EXpvVlQckAppo2",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01CwWPkL3Wq1SD7PgQrvPAAX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ProductSearch.tsx",
+      "offset": 60,
+      "limit": 30
+    },
+    "output": "<file>\n00061|     }\n00062|   };\n00063|   \n00064|   // Обработка поискового запроса\n00065|   const handleQueryChange = useCallback((query: string) => {\n00066|     setSearchState(prev => ({\n00067|       ...prev,\n00068|       query,\n00069|       selectedIndex: -1\n00070|     }));\n00071|     \n00072|     if (query.trim().length >= 2) {\n00073|       const filtered = searchProducts(allProducts, query);\n00074|       setSearchState(prev => ({\n00075|         ...prev,\n00076|         suggestions: filtered,\n00077|         showSuggestions: true\n00078|       }));\n00079|     } else {\n00080|       setSearchState(prev => ({\n00081|         ...prev,\n00082|         suggestions: [],\n00083|         showSuggestions: false\n00084|       }));\n00085|     }\n00086|   }, [allProducts]);\n00087|   \n00088|   // Обработка выбора товара\n00089|   const handleProductSelect = (product: FurnitureProduct) => {\n00090|     onProductAdd(product);\n\n(File has more lines. Use 'offset' parameter to read beyond line 90)\n</file>",
+    "metadata": {
+      "preview": "    }\n  };\n  \n  // Обработка поискового запроса\n  const handleQueryChange = useCallback((query: string) => {\n    setSearchState(prev => ({\n      ...prev,\n      query,\n      selectedIndex: -1\n    }));\n    \n    if (query.trim().length >= 2) {\n      const filtered = searchProducts(allProducts, query);\n      setSearchState(prev => ({\n        ...prev,\n        suggestions: filtered,\n        showSuggestions: true\n      }));\n    } else {\n      setSearchState(prev => ({"
+    },
+    "title": "components/ProductSearch.tsx",
+    "time": {
+      "start": 1759228168232,
+      "end": 1759228168234
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "prt_99a2c8f4d001PUZGhX9bGMF5g9",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "invalid",
+  "callID": "toolu_01Kn3ra3TF2PL9GYfrTEpNzc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "tool": "read",
+      "error": "Invalid input for tool read: Type validation failed: Value: {\"filePath\":\"/home/user/project/app/diagnostic/page.tsx\",\"offset\":\">1155\",\"limit\":20}.\nError message: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"number\",\n    \"received\": \"nan\",\n    \"path\": [\n      \"offset\"\n    ],\n    \"message\": \"Expected number, received nan\"\n  }\n]"
+    },
+    "output": "The arguments provided to the tool are invalid: Invalid input for tool read: Type validation failed: Value: {\"filePath\":\"/home/user/project/app/diagnostic/page.tsx\",\"offset\":\">1155\",\"limit\":20}.\nError message: [\n  {\n    \"code\": \"invalid_type\",\n    \"expected\": \"number\",\n    \"received\": \"nan\",\n    \"path\": [\n      \"offset\"\n    ],\n    \"message\": \"Expected number, received nan\"\n  }\n]",
+    "metadata": {},
+    "title": "Invalid Tool",
+    "time": {
+      "start": 1759228235998,
+      "end": 1759228235999
+    }
+  }
+}

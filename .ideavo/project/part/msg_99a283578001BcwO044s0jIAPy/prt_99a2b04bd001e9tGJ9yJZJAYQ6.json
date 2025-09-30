@@ -1,0 +1,25 @@
+{
+  "id": "prt_99a2b04bd001e9tGJ9yJZJAYQ6",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_017PW3Psx6A8RDZLdPgdJxXy",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 80,
+      "limit": 20
+    },
+    "output": "<file>\n00081| // Определим базовую структуру компаний\n00082| const COMPANIES_BASE = [\n00083|   { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n00084|   { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n00085|   { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n00086|   { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },\n00087|   { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' }\n00088| ];\n00089| \n00090| export default function Home() {\n00091|   // Начальное состояние формы\n00092|   const initialFormState: DeliveryForm = {\n00093|     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00094|     fromCity: '',\n00095|     toCity: '',\n00096|     fromAddress: '',\n00097|     toAddress: '',\n00098|     declaredValue: 0,\n00099|     needPackaging: false,\n00100|     needLoading: false,\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "metadata": {
+      "preview": "// Определим базовую структуру компаний\nconst COMPANIES_BASE = [\n  { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n  { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n  { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n  { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },\n  { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' }\n];\n\nexport default function Home() {\n  // Начальное состояние формы\n  const initialFormState: DeliveryForm = {\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759228134895,
+      "end": 1759228134899
+    }
+  }
+}

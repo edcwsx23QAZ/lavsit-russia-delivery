@@ -1,0 +1,25 @@
+{
+  "id": "prt_99a2c6905001TdJcJk36DxA9xk",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01TjuHZMZ2Ahs7Z6MgVrVR9K",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 1130,
+      "limit": 15
+    },
+    "output": "<file>\n01131|               updateStatus === 'success' \n01132|                 ? \"bg-green-600 hover:bg-green-700 text-white border-green-600\" \n01133|                 : updateStatus === 'error'\n01134|                 ? \"bg-red-600 hover:bg-red-700 text-white border-red-600\"\n01135|                 : \"bg-blue-600 hover:bg-blue-700 text-white border-blue-600\"\n01136|             }\n01137|             title=\"Обновить данные о товарах из Google Sheets\"\n01138|           >\n01139|             {updateStatus === 'updating' ? (\n01140|               <RefreshCw className=\"h-4 w-4 mr-2 animate-spin\" />\n01141|             ) : (\n01142|               <Download className=\"h-4 w-4 mr-2\" />\n01143|             )}\n01144|             {updateStatus === 'updating' && 'Обновление...'}\n01145|             {updateStatus === 'success' && 'Обновлено!'}\n\n(File has more lines. Use 'offset' parameter to read beyond line 1145)\n</file>",
+    "metadata": {
+      "preview": "              updateStatus === 'success' \n                ? \"bg-green-600 hover:bg-green-700 text-white border-green-600\" \n                : updateStatus === 'error'\n                ? \"bg-red-600 hover:bg-red-700 text-white border-red-600\"\n                : \"bg-blue-600 hover:bg-blue-700 text-white border-blue-600\"\n            }\n            title=\"Обновить данные о товарах из Google Sheets\"\n          >\n            {updateStatus === 'updating' ? (\n              <RefreshCw className=\"h-4 w-4 mr-2 animate-spin\" />\n            ) : (\n              <Download className=\"h-4 w-4 mr-2\" />\n            )}\n            {updateStatus === 'updating' && 'Обновление...'}\n            {updateStatus === 'success' && 'Обновлено!'}"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759228226805,
+      "end": 1759228226808
+    }
+  }
+}

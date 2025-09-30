@@ -1,0 +1,25 @@
+{
+  "id": "prt_99a2b2137001CoTYxPtO4wMZUU",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01H5CfmjJRGjkTPqxaFWcUn3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 150,
+      "limit": 30
+    },
+    "output": "<file>\n00151|       } catch (error) {\n00152|         console.error('Ошибка загрузки сохраненных данных:', error);\n00153|         // В случае ошибки оставляем начальное состояние\n00154|       } finally {\n00155|         setIsLoaded(true);\n00156|       }\n00157|     }\n00158|   }, [isLoaded]);\n00159| \n00160|   // Сохранение данных при изменении (только на клиенте)\n00161|   useEffect(() => {\n00162|     if (typeof window !== 'undefined' && isLoaded) {\n00163|       try {\n00164|         localStorage.setItem('deliveryForm', JSON.stringify(form));\n00165|         console.log('Сохранены данные формы в localStorage');\n00166|       } catch (error) {\n00167|         console.error('Ошибка сохранения данных:', error);\n00168|       }\n00169|     }\n00170|   }, [form, isLoaded]);\n00171| \n00172|   // Автоматическая страховка при указании стоимости\n00173|   useEffect(() => {\n00174|     if (form.declaredValue > 0) {\n00175|       setForm(prev => ({ ...prev, needInsurance: true }));\n00176|     }\n00177|   }, [form.declaredValue]);\n00178| \n00179|   // Проверка статуса API при загрузке страницы\n00180|   useEffect(() => {\n\n(File has more lines. Use 'offset' parameter to read beyond line 180)\n</file>",
+    "metadata": {
+      "preview": "      } catch (error) {\n        console.error('Ошибка загрузки сохраненных данных:', error);\n        // В случае ошибки оставляем начальное состояние\n      } finally {\n        setIsLoaded(true);\n      }\n    }\n  }, [isLoaded]);\n\n  // Сохранение данных при изменении (только на клиенте)\n  useEffect(() => {\n    if (typeof window !== 'undefined' && isLoaded) {\n      try {\n        localStorage.setItem('deliveryForm', JSON.stringify(form));\n        console.log('Сохранены данные формы в localStorage');\n      } catch (error) {\n        console.error('Ошибка сохранения данных:', error);\n      }\n    }\n  }, [form, isLoaded]);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759228142515,
+      "end": 1759228142519
+    }
+  }
+}

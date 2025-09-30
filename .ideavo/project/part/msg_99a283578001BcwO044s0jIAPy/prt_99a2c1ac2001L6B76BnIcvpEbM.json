@@ -1,0 +1,25 @@
+{
+  "id": "prt_99a2c1ac2001L6B76BnIcvpEbM",
+  "messageID": "msg_99a283578001BcwO044s0jIAPy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01RHxtsALK3yvd3wBYPAkvRQ",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "            <strong>Обновление данных:</strong> Нажмите \"Обновить данные\" для принудительного обновления кэша товаров с актуальными данными из Google Sheets. Это очистит все кэшированные данные и перезагрузит всю товарную матрицу.",
+          "newString": "Обновление данных: Нажмите \"Обновить данные\" для принудительного парсинга и обновления кэша всех товаров с актуальными данными из Google Sheets. Это очистит все кэшированные грузовые места и перезагрузит всю товарную матрицу с новыми размерами."
+        }
+      ]
+    },
+    "error": "Error: oldString not found in content",
+    "time": {
+      "start": 1759228222932,
+      "end": 1759228222954
+    }
+  }
+}

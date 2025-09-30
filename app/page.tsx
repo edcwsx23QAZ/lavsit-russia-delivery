@@ -176,6 +176,37 @@ export default function Home() {
     }
   }, [form.declaredValue]);
 
+  // Обработка сообщений об обновлении данных товаров
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data && event.data.type === 'PRODUCTS_UPDATED') {
+        console.log('📨 Получено сообщение об обновлении товаров:', event.data.data);
+        
+        // Очищаем локальные кэши товаров
+        const keysToRemove: string[] = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i);
+          if (key && (key.startsWith('furniture_') || key.startsWith('product_') || key.includes('ProductSearch'))) {
+            keysToRemove.push(key);
+          }
+        }
+        keysToRemove.forEach(key => localStorage.removeItem(key));
+        console.log(`🧽 Очищено ${keysToRemove.length} ключей кэша товаров`);
+        
+        // Отправляем сообщение компоненту ProductSearch о необходимости обновления
+        window.dispatchEvent(new CustomEvent('forceProductsReload', {
+          detail: event.data.data
+        }));
+      }
+    };
+    
+    window.addEventListener('message', handleMessage);
+    
+    return () => {
+      window.removeEventListener('message', handleMessage);
+    };
+  }, []);
+
   // Проверка статуса API при загрузке страницы
   useEffect(() => {
     if (typeof window !== 'undefined' && isLoaded) {
