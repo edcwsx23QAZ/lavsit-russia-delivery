@@ -1,0 +1,18 @@
+{
+  "id": "prt_99a69baba0018ThxLfc43i42JU",
+  "messageID": "msg_99a69abf8001X4pFLjWir543yO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01YMdQXvjhA4egFWxzRawxGT",
+  "state": {
+    "status": "running",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | head -50",
+      "description": "Проверить сборку на предмет ошибок парсинга"
+    },
+    "time": {
+      "start": 1759232245397
+    }
+  }
+}
