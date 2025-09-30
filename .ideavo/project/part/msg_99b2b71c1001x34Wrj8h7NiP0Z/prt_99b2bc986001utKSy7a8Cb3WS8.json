@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b2bc986001utKSy7a8Cb3WS8",
+  "messageID": "msg_99b2b71c1001x34Wrj8h7NiP0Z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_0127SYczHUnYxY7UbqefCD2A",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/dellin-packages/route.ts",
+      "oldString": "import { NextRequest, NextResponse } from 'next/server'",
+      "newString": "import { NextRequest, NextResponse } from 'next/server'\nimport { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils'"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/dellin-packages/route.ts\n===================================================================\n--- /home/user/project/app/api/dellin-packages/route.ts\n+++ /home/user/project/app/api/dellin-packages/route.ts\n@@ -1,5 +1,6 @@\n import { NextRequest, NextResponse } from 'next/server'\n+import { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils'\n \n export async function GET() {\n   try {\n     const response = await fetch('https://api.dellin.ru/v1/references/packages.json', {\n"
+    },
+    "title": "app/api/dellin-packages/route.ts",
+    "time": {
+      "start": 1759244964311,
+      "end": 1759244964317
+    }
+  }
+}

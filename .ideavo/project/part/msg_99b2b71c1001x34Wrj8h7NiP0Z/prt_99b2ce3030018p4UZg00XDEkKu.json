@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b2ce3030018p4UZg00XDEkKu",
+  "messageID": "msg_99b2b71c1001x34Wrj8h7NiP0Z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_012K513g1F2PBcAdb3z2PJrY",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1246,
+      "limit": 10
+    },
+    "output": "<file>\n01247|         console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);\n01248|       }\n01249|       \n01250|       // Рекурсивный поиск всех полей содержащих \"insurance\"\n01251|       const findInsuranceFields = (obj: any, path = '') => {\n01252|         if (typeof obj !== 'object' || obj === null) return;\n01253|         \n01254|         Object.keys(obj).forEach(key => {\n01255|           const fullPath = path ? `${path}.${key}` : key;\n01256|           if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 1256)\n</file>",
+    "metadata": {
+      "preview": "        console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);\n      }\n      \n      // Рекурсивный поиск всех полей содержащих \"insurance\"\n      const findInsuranceFields = (obj: any, path = '') => {\n        if (typeof obj !== 'object' || obj === null) return;\n        \n        Object.keys(obj).forEach(key => {\n          const fullPath = path ? `${path}.${key}` : key;\n          if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245034962,
+      "end": 1759245034963
+    }
+  }
+}

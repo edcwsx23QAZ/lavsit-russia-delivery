@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b2c985c001NLdhf0rVanZyOy",
+  "messageID": "msg_99b2b71c1001x34Wrj8h7NiP0Z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01KNdhirWzfhfHk1he6wZEMz",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2830,
+      "limit": 30
+    },
+    "output": "<file>\n02831|     const details: { service: string; description: string; price: number }[] = [];\n02832|     \n02833|     if (calc.company === 'Деловые Линии' && calc.details) {\n02834|       // Основная стоимость доставки (уже включает все базовые услуги и упаковку)\n02835|       let basePrice = calc.details.price || calc.price || 0;\n02836|       \n02837|       // Разбиваем основную стоимость на компоненты если возможно\n02838|       let intercityPrice = 0;\n02839|       let derivalPrice = 0;\n02840|       let arrivalPrice = 0;\n02841|       let packagingPrice = 0;\n02842|       // packagingPremiums больше не используются - надбавки включены в pkg.price\n02843|       let insurancePrice = 0;\n02844|       \n02845|       // Межтерминальная перевозка\n02846|       if (calc.details.intercity?.price) {\n02847|         intercityPrice = calc.details.intercity.price;\n02848|         details.push({\n02849|           service: 'Межтерминальная перевозка',\n02850|           description: `${form.fromCity} - ${form.toCity}`,\n02851|           price: intercityPrice\n02852|         });\n02853|       }\n02854|       \n02855|       // Забор груза\n02856|       if (calc.details.derival?.price) {\n02857|         derivalPrice = calc.details.derival.price;\n02858|         details.push({\n02859|           service: 'Забор груза',\n02860|           description: 'От адреса',\n\n(File has more lines. Use 'offset' parameter to read beyond line 2860)\n</file>",
+    "metadata": {
+      "preview": "    const details: { service: string; description: string; price: number }[] = [];\n    \n    if (calc.company === 'Деловые Линии' && calc.details) {\n      // Основная стоимость доставки (уже включает все базовые услуги и упаковку)\n      let basePrice = calc.details.price || calc.price || 0;\n      \n      // Разбиваем основную стоимость на компоненты если возможно\n      let intercityPrice = 0;\n      let derivalPrice = 0;\n      let arrivalPrice = 0;\n      let packagingPrice = 0;\n      // packagingPremiums больше не используются - надбавки включены в pkg.price\n      let insurancePrice = 0;\n      \n      // Межтерминальная перевозка\n      if (calc.details.intercity?.price) {\n        intercityPrice = calc.details.intercity.price;\n        details.push({\n          service: 'Межтерминальная перевозка',\n          description: `${form.fromCity} - ${form.toCity}`,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245015739,
+      "end": 1759245015742
+    }
+  }
+}

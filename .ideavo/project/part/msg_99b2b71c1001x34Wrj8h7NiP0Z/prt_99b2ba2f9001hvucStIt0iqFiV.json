@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b2ba2f9001hvucStIt0iqFiV",
+  "messageID": "msg_99b2b71c1001x34Wrj8h7NiP0Z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01JWaqQ47ys31wCTspu1r4Ro",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "dellin-packages",
+      "path": "/home/user/project/app/diagnostic"
+    },
+    "output": "Found 5 matches\n/home/user/project/app/diagnostic/page.tsx:\n  Line 78:     testAPI('Dellin', '/api/dellin-packages', { method: 'test' });\n  Line 124:       { service: 'Деловые Линии', endpoint: '/api/dellin-packages', data: { method: 'test' } },\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 390:       const response = await fetch('/api/dellin-packages', {\n\n/home/user/project/app/diagnostic/optimized-page.tsx:\n  Line 78:     testAPI('Dellin', '/api/dellin-packages', { method: 'test' });\n  Line 124:       { service: 'Деловые Линии', endpoint: '/api/dellin-packages', data: { method: 'test' } },",
+    "metadata": {
+      "matches": 5,
+      "truncated": false
+    },
+    "title": "dellin-packages",
+    "time": {
+      "start": 1759244952857,
+      "end": 1759244952864
+    }
+  }
+}

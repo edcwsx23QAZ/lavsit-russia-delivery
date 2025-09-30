@@ -1,0 +1,11 @@
+{
+  "id": "prt_99b2c4a9e001WgHbeY7upAQ84s",
+  "messageID": "msg_99b2b71c1001x34Wrj8h7NiP0Z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Проблема в том, что код пытается обратиться к `calc.details.derival`, но `calc.details` может быть `undefined`. Нужно добавить проверку на существование `calc.details`. Давайте найдем где именно это происходит:",
+  "time": {
+    "start": 1759244996202,
+    "end": 1759244996202
+  }
+}

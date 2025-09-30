@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b2c7540002vZGbjmlDELeKOG",
+  "messageID": "msg_99b2b71c1001x34Wrj8h7NiP0Z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_017AaAok4DbjuhiSN1rP1HRq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n \"calc\\.details\" app/page.tsx",
+      "description": "Find calc.details usage in page.tsx"
+    },
+    "output": "2833:    if (calc.company === 'Деловые Линии' && calc.details) {\n2835:      let basePrice = calc.details.price || calc.price || 0;\n2846:      if (calc.details.intercity?.price) {\n2847:        intercityPrice = calc.details.intercity.price;\n2856:      if (calc.details.derival?.price) {\n2857:        derivalPrice = calc.details.derival.price;\n2866:      if (calc.details.arrival?.price) {\n2867:        arrivalPrice = calc.details.arrival.price;\n2876:      if (form.needPackaging && calc.details.packages) {\n2877:        Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n2915:      if (form.needInsurance && calc.details.insurance) {\n2916:        insurancePrice = calc.details.insurance;\n2942:    } else if (calc.company === 'Nord Wheel' && calc.details) {\n2944:      if (calc.details.totalCost) {\n2948:          price: calc.details.totalCost\n2951:      if (calc.details.deliveryCost) {\n2955:          price: calc.details.deliveryCost\n2958:      if (calc.details.terminalCost) {\n2962:          price: calc.details.terminalCost\n2965:      if (calc.details.pickupCost) {\n2969:          price: calc.details.pickupCost\n2972:      if (calc.details.deliveryToDoorCost) {\n2976:          price: calc.details.deliveryToDoorCost\n2979:      if (calc.details.additionalServices && calc.details.additionalServices > 0) {\n2983:          price: calc.details.additionalServices\n2987:    } else if (calc.company === 'ПЭК' && calc.details?.services) {\n2989:      calc.details.services.forEach((service: any) => {\n3527:                              {calc.details && (\n3531:                                    {JSON.stringify(calc.details, null, 2)}\n",
+    "metadata": {
+      "output": "2833:    if (calc.company === 'Деловые Линии' && calc.details) {\n2835:      let basePrice = calc.details.price || calc.price || 0;\n2846:      if (calc.details.intercity?.price) {\n2847:        intercityPrice = calc.details.intercity.price;\n2856:      if (calc.details.derival?.price) {\n2857:        derivalPrice = calc.details.derival.price;\n2866:      if (calc.details.arrival?.price) {\n2867:        arrivalPrice = calc.details.arrival.price;\n2876:      if (form.needPackaging && calc.details.packages) {\n2877:        Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n2915:      if (form.needInsurance && calc.details.insurance) {\n2916:        insurancePrice = calc.details.insurance;\n2942:    } else if (calc.company === 'Nord Wheel' && calc.details) {\n2944:      if (calc.details.totalCost) {\n2948:          price: calc.details.totalCost\n2951:      if (calc.details.deliveryCost) {\n2955:          price: calc.details.deliveryCost\n2958:      if (calc.details.terminalCost) {\n2962:          price: calc.details.terminalCost\n2965:      if (calc.details.pickupCost) {\n2969:          price: calc.details.pickupCost\n2972:      if (calc.details.deliveryToDoorCost) {\n2976:          price: calc.details.deliveryToDoorCost\n2979:      if (calc.details.additionalServices && calc.details.additionalServices > 0) {\n2983:          price: calc.details.additionalServices\n2987:    } else if (calc.company === 'ПЭК' && calc.details?.services) {\n2989:      calc.details.services.forEach((service: any) => {\n3527:                              {calc.details && (\n3531:                                    {JSON.stringify(calc.details, null, 2)}\n",
+      "exit": 0,
+      "description": "Find calc.details usage in page.tsx"
+    },
+    "title": "cd /home/user/project && grep -n \"calc\\.details\" app/page.tsx",
+    "time": {
+      "start": 1759245006860,
+      "end": 1759245006875
+    }
+  }
+}

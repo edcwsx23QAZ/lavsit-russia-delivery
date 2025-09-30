@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b2c3ee20018g4dzQ6yDOevom",
+  "messageID": "msg_99b2b71c1001x34Wrj8h7NiP0Z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01ShZxsK7TZPdJm7EG54cHko",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2850,
+      "limit": 15
+    },
+    "output": "<file>\n02851|           price: intercityPrice\n02852|         });\n02853|       }\n02854|       \n02855|       // Забор груза\n02856|       if (calc.details.derival?.price) {\n02857|         derivalPrice = calc.details.derival.price;\n02858|         details.push({\n02859|           service: 'Забор груза',\n02860|           description: 'От адреса',\n02861|           price: derivalPrice\n02862|         });\n02863|       }\n02864|       \n02865|       // Доставка груза\n\n(File has more lines. Use 'offset' parameter to read beyond line 2865)\n</file>",
+    "metadata": {
+      "preview": "          price: intercityPrice\n        });\n      }\n      \n      // Забор груза\n      if (calc.details.derival?.price) {\n        derivalPrice = calc.details.derival.price;\n        details.push({\n          service: 'Забор груза',\n          description: 'От адреса',\n          price: derivalPrice\n        });\n      }\n      \n      // Доставка груза"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759244992872,
+      "end": 1759244992874
+    }
+  }
+}

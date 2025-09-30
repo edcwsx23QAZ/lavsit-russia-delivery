@@ -1,0 +1,21 @@
+{
+  "id": "prt_99b2cf0ec001RxN6xQY0ykWYp2",
+  "messageID": "msg_99b2b71c1001x34Wrj8h7NiP0Z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01PQRgcjBaF6HSdz7BXeBiNs",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      if (data.data && data.data.intercity) {\n        console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);\n      }",
+      "newString": "      if (data.data && data.data.intercity) {\n        console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);\n      }"
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1759245039126,
+      "end": 1759245039127
+    }
+  }
+}

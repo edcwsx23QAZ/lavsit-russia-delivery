@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b2c1547001KifqHCWlSM1UUW",
+  "messageID": "msg_99b2b71c1001x34Wrj8h7NiP0Z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01P1xmKNcqorarZ1GBAo1cDf",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/dellin-packages/route.ts",
+      "oldString": "      'Access-Control-Allow-Methods': 'GET',",
+      "newString": "      'Access-Control-Allow-Methods': 'GET, POST',"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/dellin-packages/route.ts\n===================================================================\n--- /home/user/project/app/api/dellin-packages/route.ts\n+++ /home/user/project/app/api/dellin-packages/route.ts\n@@ -22,9 +22,9 @@\n \n return NextResponse.json(data, {\n   headers: {\n     'Access-Control-Allow-Origin': '*',\n-    'Access-Control-Allow-Methods': 'GET',\n+  'Access-Control-Allow-Methods': 'GET, POST',\n     'Access-Control-Allow-Headers': 'Content-Type',\n   },\n })\n \n"
+    },
+    "title": "app/api/dellin-packages/route.ts",
+    "time": {
+      "start": 1759244982650,
+      "end": 1759244982653
+    }
+  }
+}

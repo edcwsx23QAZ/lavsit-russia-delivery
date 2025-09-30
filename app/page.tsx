@@ -1237,13 +1237,13 @@ export default function Home() {
       console.log('💳 data.data.additionalServices:', data.data?.additionalServices);
       
       // Поиск страховки в других разделах
-      if (data.data.derival) {
+      if (data.data && data.data.derival) {
         console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival.insurance);
       }
-      if (data.data.arrival) {
+      if (data.data && data.data.arrival) {
         console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival.insurance);
       }
-      if (data.data.intercity) {
+      if (data.data && data.data.intercity) {
         console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);
       }
       

@@ -1,0 +1,11 @@
+{
+  "id": "prt_99b2c928f001lJqvDNEnpTW2NA",
+  "messageID": "msg_99b2b71c1001x34Wrj8h7NiP0Z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Отлично! Я вижу, что на строке 2833 уже есть проверка `calc.company === 'Деловые Линии' && calc.details`, но проблема в том, что внутри этого блока не все обращения к `calc.details` защищены от `undefined`. Давайте исправим это:",
+  "time": {
+    "start": 1759245015130,
+    "end": 1759245015130
+  }
+}
