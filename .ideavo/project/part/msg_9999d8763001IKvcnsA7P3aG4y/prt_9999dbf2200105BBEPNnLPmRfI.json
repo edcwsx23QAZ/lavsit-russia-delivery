@@ -1,0 +1,34 @@
+{
+  "id": "prt_9999dbf2200105BBEPNnLPmRfI",
+  "messageID": "msg_9999d8763001IKvcnsA7P3aG4y",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01EtoMqRGEtfbqimi2jYeC7F",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "            onClick={() => {\n              // В реальном проекте здесь бы была ссылка на вашу реальную Google Sheets\n              window.open('https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0', '_blank');\n            }}",
+          "newString": "            onClick={() => {\n              window.open('https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/edit?gid=0#gid=0', '_blank');\n            }}"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1040,10 +1040,9 @@\n   Проверить переменные окружения\n </Button>\n <Button \n   onClick={() => {\n-    // В реальном проекте здесь бы была ссылка на вашу реальную Google Sheets\n-    window.open('https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0', '_blank');\n+    window.open('https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/edit?gid=0#gid=0', '_blank');\n   }} \n   variant=\"outline\" \n   className=\"bg-green-600 hover:bg-green-700 text-white border-green-600\"\n   title=\"Открыть Google Sheets с базой товаров и размеров\"\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759218879495,
+      "end": 1759218879510
+    }
+  }
+}

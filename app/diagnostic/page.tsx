@@ -1041,8 +1041,7 @@ export default function DiagnosticPage() {
           </Button>
           <Button 
             onClick={() => {
-              // В реальном проекте здесь бы была ссылка на вашу реальную Google Sheets
-              window.open('https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0', '_blank');
+              window.open('https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/edit?gid=0#gid=0', '_blank');
             }} 
             variant="outline" 
             className="bg-green-600 hover:bg-green-700 text-white border-green-600"
