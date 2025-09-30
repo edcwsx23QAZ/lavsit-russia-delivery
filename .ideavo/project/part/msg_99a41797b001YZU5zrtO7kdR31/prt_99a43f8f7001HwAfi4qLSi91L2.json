@@ -1,0 +1,26 @@
+{
+  "id": "prt_99a43f8f7001HwAfi4qLSi91L2",
+  "messageID": "msg_99a41797b001YZU5zrtO7kdR31",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01HD4z1442TaoshCScJFF1ix",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Проверить сборку проекта после добавления правил"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/14) ...\n   Generating static pages (3/14) \r\n   Generating static pages (6/14) \r\n   Generating static pages (10/14) \r\n ✓ Generating static pages (14/14)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    60.6 kB         155 kB\n├ ○ /_not-found                          873 B            88 kB\n├ ƒ /api/dellin-packages                 0 B                0 B\n├ ƒ /api/furniture-products              0 B                0 B\n├ ƒ /api/pek                             0 B                0 B\n├ ƒ /api/pek-get                         0 B                0 B\n├ ƒ /api/pek-simple                      0 B                0 B\n├ ƒ /api/rail-continent                  0 B                0 B\n├ ƒ /api/test                            0 B                0 B\n├ ƒ /api/vozovoz                         0 B                0 B\n├ ○ /diagnostic                          15.8 kB         111 kB\n├ ○ /env-check                           8.88 kB          96 kB\n└ ○ /pek-test                            3.08 kB        97.9 kB\n+ First Load JS shared by all            87.1 kB\n  ├ chunks/117-ca7da71026a889af.js       31.6 kB\n  ├ chunks/fd9d1056-9e191f0896c1d560.js  53.6 kB\n  └ other shared chunks (total)          1.86 kB\n\n\nƒ Middleware                             27.1 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/14) ...\n   Generating static pages (3/14) \r\n   Generating static pages (6/14) \r\n   Generating static pages (10/14) \r\n ✓ Generating static pages (14/14)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    60.6 kB         155 kB\n├ ○ /_not-found                          873 B            88 kB\n├ ƒ /api/dellin-packages                 0 B                0 B\n├ ƒ /api/furniture-products              0 B                0 B\n├ ƒ /api/pek                             0 B                0 B\n├ ƒ /api/pek-get                         0 B                0 B\n├ ƒ /api/pek-simple                      0 B                0 B\n├ ƒ /api/rail-continent                  0 B                0 B\n├ ƒ /api/test                            0 B                0 B\n├ ƒ /api/vozovoz                         0 B                0 B\n├ ○ /diagnostic                          15.8 kB         111 kB\n├ ○ /env-check                           8.88 kB          96 kB\n└ ○ /pek-test                            3.08 kB        97.9 kB\n+ First Load JS shared by all            87.1 kB\n  ├ chunks/117-ca7da71026a889af.js       31.6 kB\n  ├ chunks/fd9d1056-9e191f0896c1d560.js  53.6 kB\n  └ other shared chunks (total)          1.86 kB\n\n\nƒ Middleware                             27.1 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+      "exit": 0,
+      "description": "Проверить сборку проекта после добавления правил"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759229770848,
+      "end": 1759229805808
+    }
+  }
+}

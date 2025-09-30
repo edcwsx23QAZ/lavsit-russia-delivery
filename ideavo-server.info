@@ -4,19 +4,25 @@ $ next dev
   - Environments: .env.local, .env
 
  ✓ Starting...
- ✓ Ready in 2.3s
- ✓ Compiled /middleware in 209ms
+ ✓ Ready in 2.4s
+ ✓ Compiled /middleware in 181ms
  ✓ Compiled (73 modules)
  ○ Compiling / ...
- ✓ Compiled / in 6.6s (708 modules)
- GET / 200 in 7500ms
- ✓ Compiled in 973ms (366 modules)
- GET / 200 in 52ms
- ○ Compiling /api/pek ...
+ ✓ Compiled / in 5.6s (708 modules)
+ GET / 200 in 6444ms
+ ✓ Compiled in 861ms (366 modules)
+ GET / 200 in 59ms
  ⚠ Cross origin request detected from 4000-i859b80wqs6c2fhjwbj2w.e2b.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
- ✓ Compiled /api/pek in 750ms (372 modules)
+ ○ Compiling /api/vozovoz ...
+ ✓ Compiled /api/vozovoz in 755ms (372 modules)
  ✓ Compiled (378 modules)
+🔧 ПЭК Прокси: Получен запрос (по официальной документации)
+📝 Данные запроса: {
+  "method": "test"
+}
+🔧 Тестовый метод прокси
+ POST /api/pek 200 in 998ms
 🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
 🚚 Vozovoz API запрос: {
   "object": "price",
@@ -46,20 +52,13 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
   }
 }
 🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "test"
-}
-🔧 Тестовый метод прокси
- POST /api/pek 200 in 1094ms
 🔄 Обновляем кэш данных мебели...
 📊 Загружаем данные из Google Sheets: https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/export?format=csv&gid=0
-📄 Получены CSV данные, размер: 307649
-📋 Количество строк: 1890
-✅ Успешно обработано 1889 товаров
-🛋️ Обработано товаров: 1889
- GET /api/furniture-products 200 in 1245ms
- GET /api/furniture-products 200 in 22ms
+📄 Получены CSV данные, размер: 306684
+📋 Количество строк: 1883
+✅ Успешно обработано 1882 товаров
+🛋️ Обработано товаров: 1882
+ GET /api/furniture-products 200 in 1783ms
 🚂 Rail Continent API ответ: {
   "result": "success",
   "data": {
@@ -191,7 +190,8 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     "train_fast_temp": false
   }
 }
- POST /api/rail-continent 200 in 2197ms
+ POST /api/rail-continent 200 in 1872ms
+ GET /api/furniture-products 200 in 22ms
 🚚 Vozovoz API статус: 200 OK
 🚚 Vozovoz API ответ: {
   "response": {
@@ -228,33 +228,43 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     ]
   }
 }
- POST /api/vozovoz 200 in 3585ms
+ POST /api/vozovoz 200 in 2304ms
  ○ Compiling /diagnostic ...
- ✓ Compiled /diagnostic in 1591ms (756 modules)
- GET /diagnostic 200 in 1853ms
+ ✓ Compiled /diagnostic in 2.2s (720 modules)
+ GET /diagnostic 200 in 2522ms
+ ✓ Compiled /api/furniture-products in 234ms (386 modules)
 🔄 Принудительное обновление товарной матрицы...
 📊 Загружаем данные из Google Sheets: https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/export?format=csv&gid=0
-📄 Получены CSV данные, размер: 307649
-📋 Количество строк: 1890
-✅ Успешно обработано 1889 товаров
-🛋️ Обработано товаров: 1889
- GET /api/furniture-products?update=true 200 in 114ms
+📄 Получены CSV данные, размер: 306602
+📋 Количество строк: 1883
+✅ Успешно обработано 1882 товаров
+🛋️ Обработано товаров: 1882
+ GET /api/furniture-products?update=true&force=true&timestamp=1759229077234 200 in 1090ms
+🔄 POST /api/furniture-products - Принудительное обновление кэша
+📊 Загружаем данные из Google Sheets: https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/export?format=csv&gid=0
+📄 Получены CSV данные, размер: 306602
+📋 Количество строк: 1883
+✅ Успешно обработано 1882 товаров
+🛋️ Обработано товаров: 1882
+✅ Принудительное обновление кэша завершено: { productsCount: 1882, timestamp: '30.09.2025, 10:44:40' }
+ POST /api/furniture-products 200 in 1128ms
 🔄 Принудительное обновление товарной матрицы...
 📊 Загружаем данные из Google Sheets: https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/export?format=csv&gid=0
-📄 Получены CSV данные, размер: 307649
-📋 Количество строк: 1890
-✅ Успешно обработано 1889 товаров
-🛋️ Обработано товаров: 1889
- GET /api/furniture-products?update=true 200 in 81ms
- GET / 200 in 123ms
- GET /api/furniture-products 200 in 29ms
+📄 Получены CSV данные, размер: 306602
+📋 Количество строк: 1883
+✅ Успешно обработано 1882 товаров
+🛋️ Обработано товаров: 1882
+ GET /api/furniture-products?update=true 200 in 562ms
+ GET / 200 in 243ms
+ GET /api/furniture-products 200 in 22ms
+ ✓ Compiled /api/vozovoz in 202ms (388 modules)
+ ✓ Compiled in 0ms (392 modules)
+ ✓ Compiled in 1ms (392 modules)
+🔄 Обновляем кэш данных мебели...
+📊 Загружаем данные из Google Sheets: https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/export?format=csv&gid=0
+ ✓ Compiled in 0ms (392 modules)
 🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "test"
-}
-🔧 Тестовый метод прокси
- POST /api/pek 200 in 32ms
 🚚 Vozovoz API запрос: {
   "object": "price",
   "action": "get",
@@ -283,6 +293,237 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
   }
 }
 🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp
+📝 Данные запроса: {
+  "method": "test"
+}
+🔧 Тестовый метод прокси
+ POST /api/pek 200 in 1271ms
+📄 Получены CSV данные, размер: 306602
+📋 Количество строк: 1883
+✅ Успешно обработано 1882 товаров
+🛋️ Обработано товаров: 1882
+ GET /api/furniture-products 200 in 1211ms
+🚂 Rail Continent API ответ: {
+  "result": "success",
+  "data": {
+    "auto": {
+      "method": "_calcUsual",
+      "id": "6282027",
+      "sbornaya": 1000,
+      "sbornayaPack": 1200,
+      "price_terminal_enter1": "195",
+      "price_terminal_enter2": 0,
+      "price": 1195,
+      "pricePickup": "0",
+      "priceDelivery": "0",
+      "pricePackage": "600",
+      "priceDocuments": 400,
+      "priceInsurance": 0.16,
+      "price_with_out_sale": 1000,
+      "sale": 0,
+      "discount_params": {
+        "amount": 0,
+        "volume": 0,
+        "weight": 0
+      },
+      "duration": "4",
+      "type": "АВТО",
+      "rsClass": "АВТО",
+      "rsType": "ТЕНТ 82М3",
+      "temp": "БЕЗ ТЕПЛ",
+      "service": "СБОРНАЯ",
+      "velocity": "АВТОМОБИЛЬНАЯ",
+      "terminalEnter1": "195",
+      "terminalEnter2": 0,
+      "priceTotal": 1195
+    },
+    "train": {
+      "method": "_calcUsual",
+      "id": "6283320",
+      "sbornaya": 2700,
+      "sbornayaPack": 2700,
+      "price_terminal_enter1": "195",
+      "price_terminal_enter2": 0,
+      "price": 2895,
+      "pricePickup": "800",
+      "priceDelivery": "800",
+      "pricePackage": "600",
+      "priceDocuments": 400,
+      "priceInsurance": 0.16,
+      "price_with_out_sale": 2700,
+      "sale": 0,
+      "discount_params": {
+        "amount": 0,
+        "volume": 0,
+        "weight": 0
+      },
+      "duration": "14",
+      "type": "ЖД",
+      "rsClass": "ВАГОН",
+      "rsType": "КРЫТЫЙ",
+      "temp": "БЕЗ ТЕПЛ",
+      "service": "СБОРНАЯ",
+      "velocity": "ЖД",
+      "terminalEnter1": "195",
+      "terminalEnter2": 0,
+      "priceTotal": 2895
+    },
+    "train_fast": false,
+    "auto_temp": {
+      "method": "_calcUsual",
+      "id": "6292626",
+      "sbornaya": 1000,
+      "sbornayaPack": 1200,
+      "price_terminal_enter1": "195",
+      "price_terminal_enter2": 0,
+      "price": 1195,
+      "pricePickup": "0",
+      "priceDelivery": "0",
+      "pricePackage": "600",
+      "priceDocuments": 400,
+      "priceInsurance": 0.16,
+      "price_with_out_sale": 1000,
+      "sale": 0,
+      "discount_params": {
+        "amount": 0,
+        "volume": 0,
+        "weight": 0
+      },
+      "duration": "4",
+      "type": "АВТО",
+      "rsClass": "АВТО",
+      "rsType": "РЕФ 86 М3",
+      "temp": "ТЕПЛЫЙ",
+      "service": "СБОРНАЯ",
+      "velocity": "АВТОМОБИЛЬНАЯ",
+      "terminalEnter1": "195",
+      "terminalEnter2": 0,
+      "priceTotal": 1195
+    },
+    "train_temp": {
+      "method": "_calcUsual",
+      "id": "6299178",
+      "sbornaya": 1800,
+      "sbornayaPack": 1800,
+      "price_terminal_enter1": "195",
+      "price_terminal_enter2": 0,
+      "price": 1995,
+      "pricePickup": "800",
+      "priceDelivery": "800",
+      "pricePackage": "600",
+      "priceDocuments": 400,
+      "priceInsurance": 0.16,
+      "price_with_out_sale": 1800,
+      "sale": 0,
+      "discount_params": {
+        "amount": 0,
+        "volume": 0,
+        "weight": 0
+      },
+      "duration": "8",
+      "type": "ЖД",
+      "rsClass": "ВАГОН",
+      "rsType": "ИВ-ТЕРМОС",
+      "temp": "ТЕПЛЫЙ",
+      "service": "СБОРНАЯ",
+      "velocity": "ЖД",
+      "terminalEnter1": "195",
+      "terminalEnter2": 0,
+      "priceTotal": 1995
+    },
+    "train_fast_temp": false
+  }
+}
+ POST /api/rail-continent 200 in 2000ms
+🚚 Vozovoz API статус: 200 OK
+🚚 Vozovoz API ответ: {
+  "response": {
+    "basePrice": 1000,
+    "price": 980,
+    "service": [
+      {
+        "basePrice": 100,
+        "name": "Платный въезд (отправитель)",
+        "price": 100
+      },
+      {
+        "basePrice": 791,
+        "name": "Перевозка между городами",
+        "price": 771
+      },
+      {
+        "basePrice": 49,
+        "name": "Страхование груза без объявленной стоимости",
+        "price": 49
+      },
+      {
+        "basePrice": 60,
+        "name": "Складская обработка",
+        "price": 60
+      }
+    ],
+    "deliveryTime": {
+      "from": 1,
+      "to": 1
+    },
+    "warnings": [
+      "Данные узла \"gateway.dispatch.location\" по запросу \"Москва\" не содержат уникального значения"
+    ]
+  }
+}
+ POST /api/vozovoz 200 in 2700ms
+🔄 Принудительное обновление товарной матрицы...
+📊 Загружаем данные из Google Sheets: https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/export?format=csv&gid=0
+📄 Получены CSV данные, размер: 306618
+📋 Количество строк: 1883
+✅ Успешно обработано 1882 товаров
+🛋️ Обработано товаров: 1882
+ GET /api/furniture-products?update=true&force=true&timestamp=1759229106521 200 in 570ms
+🔄 POST /api/furniture-products - Принудительное обновление кэша
+📊 Загружаем данные из Google Sheets: https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/export?format=csv&gid=0
+📄 Получены CSV данные, размер: 306618
+📋 Количество строк: 1883
+✅ Успешно обработано 1882 товаров
+🛋️ Обработано товаров: 1882
+✅ Принудительное обновление кэша завершено: { productsCount: 1882, timestamp: '30.09.2025, 10:45:08' }
+ POST /api/furniture-products 200 in 538ms
+ GET / 200 in 195ms
+ GET /api/furniture-products 200 in 31ms
+🔧 ПЭК Прокси: Получен запрос (по официальной документации)
+📝 Данные запроса: {
+  "method": "test"
+}
+🔧 Тестовый метод прокси
+ POST /api/pek 200 in 37ms
+🚚 Vozovoz API запрос: {
+  "object": "price",
+  "action": "get",
+  "params": {
+    "cargo": {
+      "dimension": {
+        "quantity": 1,
+        "volume": 0.1,
+        "weight": 10
+      }
+    },
+    "gateway": {
+      "dispatch": {
+        "point": {
+          "location": "Москва",
+          "terminal": "default"
+        }
+      },
+      "destination": {
+        "point": {
+          "location": "Санкт-Петербург",
+          "terminal": "default"
+        }
+      }
+    }
+  }
+}
+🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp
+🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
  GET /api/furniture-products 200 in 22ms
 🚂 Rail Continent API ответ: {
   "result": "success",
@@ -415,7 +656,7 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     "train_fast_temp": false
   }
 }
- POST /api/rail-continent 200 in 934ms
+ POST /api/rail-continent 200 in 909ms
 🚚 Vozovoz API статус: 200 OK
 🚚 Vozovoz API ответ: {
   "response": {
@@ -452,5 +693,4 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     ]
   }
 }
- POST /api/vozovoz 200 in 1452ms
- GET /diagnostic 200 in 79ms
+ POST /api/vozovoz 200 in 1385ms

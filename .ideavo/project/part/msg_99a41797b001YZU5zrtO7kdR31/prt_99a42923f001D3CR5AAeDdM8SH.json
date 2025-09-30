@@ -1,0 +1,73 @@
+{
+  "id": "prt_99a42923f001D3CR5AAeDdM8SH",
+  "messageID": "msg_99a41797b001YZU5zrtO7kdR31",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01WSs3Cn72sotwcQ2d19VJAQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Создать раздел 'Правила' в диагностической странице",
+          "status": "completed",
+          "priority": "high",
+          "id": "rules-1"
+        },
+        {
+          "content": "Сохранить все предоставленные правила в проекте",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "rules-2"
+        },
+        {
+          "content": "Интегрировать правила в интерфейс диагностики",
+          "status": "completed",
+          "priority": "medium",
+          "id": "rules-3"
+        },
+        {
+          "content": "Создать файл project.todo.md для отслеживания задач",
+          "status": "pending",
+          "priority": "medium",
+          "id": "rules-4"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Создать раздел 'Правила' в диагностической странице\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"rules-1\"\n  },\n  {\n    \"content\": \"Сохранить все предоставленные правила в проекте\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"rules-2\"\n  },\n  {\n    \"content\": \"Интегрировать правила в интерфейс диагностики\",\n    \"status\": \"completed\",\n    \"priority\": \"medium\",\n    \"id\": \"rules-3\"\n  },\n  {\n    \"content\": \"Создать файл project.todo.md для отслеживания задач\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"rules-4\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Создать раздел 'Правила' в диагностической странице",
+          "status": "completed",
+          "priority": "high",
+          "id": "rules-1"
+        },
+        {
+          "content": "Сохранить все предоставленные правила в проекте",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "rules-2"
+        },
+        {
+          "content": "Интегрировать правила в интерфейс диагностики",
+          "status": "completed",
+          "priority": "medium",
+          "id": "rules-3"
+        },
+        {
+          "content": "Создать файл project.todo.md для отслеживания задач",
+          "status": "pending",
+          "priority": "medium",
+          "id": "rules-4"
+        }
+      ]
+    },
+    "title": "2 todos",
+    "time": {
+      "start": 1759229678223,
+      "end": 1759229678224
+    }
+  }
+}

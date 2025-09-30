@@ -1,0 +1,25 @@
+{
+  "id": "prt_99a420b3c0013Qda3ycYSZw3jc",
+  "messageID": "msg_99a41797b001YZU5zrtO7kdR31",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01BbiQizmMgwzRwtikd4LE5e",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 1150,
+      "limit": 50
+    },
+    "output": "<file>\n01151|       console.log('🧪 ===== КОНЕЦ РАСШИРЕННОГО ПОЛНОГО ТЕСТИРОВАНИЯ =====');\n01152|     }\n01153|   };\n01154| \n01155|   const getStatusIcon = (status: string) => {\n01156|     switch (status) {\n01157|       case 'success': return <CheckCircle className=\"h-4 w-4 text-green-400\" />;\n01158|       case 'warning': return <AlertCircle className=\"h-4 w-4 text-yellow-400\" />;\n01159|       case 'error': return <XCircle className=\"h-4 w-4 text-red-400\" />;\n01160|       default: return <Activity className=\"h-4 w-4 text-gray-400\" />;\n01161|     }\n01162|   };\n01163| \n01164|   const getStatusColor = (status: string) => {\n01165|     switch (status) {\n01166|       case 'success': return 'border-green-500 bg-green-900/20';\n01167|       case 'warning': return 'border-yellow-500 bg-yellow-900/20';\n01168|       case 'error': return 'border-red-500 bg-red-900/20';\n01169|       default: return 'border-gray-500 bg-gray-900/20';\n01170|     }\n01171|   };\n01172| \n01173|   return (\n01174|     <div className=\"min-h-screen bg-gray-950 text-white p-6\">\n01175|       <div className=\"max-w-6xl mx-auto\">\n01176|         <div className=\"mb-6\">\n01177|           <h1 className=\"text-3xl font-bold mb-2\">Диагностика транспортных компаний</h1>\n01178|           <p className=\"text-gray-400\">Проверка работоспособности API всех подключенных ТК</p>\n01179|         </div>\n01180| \n01181|         <div className=\"flex gap-4 mb-6 flex-wrap\">\n01182|           <Button onClick={testAllAPIs} className=\"bg-blue-600 hover:bg-blue-700\">\n01183|             <Activity className=\"h-4 w-4 mr-2\" />\n01184|             Тестировать все API\n01185|           </Button>\n01186|           <Button \n01187|             onClick={runFullTesting} \n01188|             disabled={isFullTesting}\n01189|             className=\"bg-purple-600 hover:bg-purple-700\"\n01190|           >\n01191|             <TestTube className=\"h-4 w-4 mr-2\" />\n01192|             {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}\n01193|           </Button>\n01194|           <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n01195|             <Building2 className=\"h-4 w-4 mr-2\" />\n01196|             Проверить переменные окружения\n01197|           </Button>\n01198|           <Button \n01199|             onClick={() => {\n01200|               window.open('https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/edit?gid=0#gid=0', '_blank');\n\n(File has more lines. Use 'offset' parameter to read beyond line 1200)\n</file>",
+    "metadata": {
+      "preview": "      console.log('🧪 ===== КОНЕЦ РАСШИРЕННОГО ПОЛНОГО ТЕСТИРОВАНИЯ =====');\n    }\n  };\n\n  const getStatusIcon = (status: string) => {\n    switch (status) {\n      case 'success': return <CheckCircle className=\"h-4 w-4 text-green-400\" />;\n      case 'warning': return <AlertCircle className=\"h-4 w-4 text-yellow-400\" />;\n      case 'error': return <XCircle className=\"h-4 w-4 text-red-400\" />;\n      default: return <Activity className=\"h-4 w-4 text-gray-400\" />;\n    }\n  };\n\n  const getStatusColor = (status: string) => {\n    switch (status) {\n      case 'success': return 'border-green-500 bg-green-900/20';\n      case 'warning': return 'border-yellow-500 bg-yellow-900/20';\n      case 'error': return 'border-red-500 bg-red-900/20';\n      default: return 'border-gray-500 bg-gray-900/20';\n    }"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759229644412,
+      "end": 1759229644423
+    }
+  }
+}
