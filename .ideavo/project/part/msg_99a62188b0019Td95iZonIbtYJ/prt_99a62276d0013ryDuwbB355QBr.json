@@ -1,0 +1,18 @@
+{
+  "id": "prt_99a62276d0013ryDuwbB355QBr",
+  "messageID": "msg_99a62188b0019Td95iZonIbtYJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01TeryfbQfjQhadvtsGJ7T3w",
+  "state": {
+    "status": "running",
+    "input": {
+      "command": "find /home/user/project -type f -name \"*.md\" -o -name \"*.json\" -o -name \"*.ts\" -o -name \"*.tsx\" | head -20",
+      "description": "Проверка ключевых файлов проекта"
+    },
+    "time": {
+      "start": 1759231749047
+    }
+  }
+}
