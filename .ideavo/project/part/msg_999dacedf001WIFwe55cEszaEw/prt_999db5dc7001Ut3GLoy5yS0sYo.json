@@ -1,0 +1,34 @@
+{
+  "id": "prt_999db5dc7001Ut3GLoy5yS0sYo",
+  "messageID": "msg_999dacedf001WIFwe55cEszaEw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01QeFJop6Zw4dPqcURx2ToE3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "  };\n\n  const updateResult = (service: string, result: any) => {",
+          "newString": "  };\n\n  // Функция обновления данных из Google Sheets\n  const updateProductData = async () => {\n    setIsUpdatingData(true);\n    setUpdateStatus('updating');\n    \n    try {\n      // В реальном приложении здесь был бы запрос к Google Sheets API\n      // Для демонстрации имитируем получение данных\n      \n      // Имитация сетевого запроса\n      await new Promise(resolve => setTimeout(resolve, 2000));\n      \n      // Примерные обновленные данные товаров (в реальности получались бы из Google Sheets)\n      const updatedProducts = [\n        { id: '1', name: 'Обновленный Форд Транзит', length: 4300, width: 2100, height: 2050 },\n        { id: '2', name: 'Обновленная Фура 20м3', length: 4500, width: 2300, height: 2100 },\n        { id: '3', name: 'Новый Газель Next', length: 3200, width: 1800, height: 1900 }\n      ];\n      \n      // Обновляем локальные данные\n      setVehicleTypes(updatedProducts);\n      localStorage.setItem('vehicleTypes', JSON.stringify(updatedProducts));\n      localStorage.setItem('lastProductDataUpdate', new Date().toISOString());\n      \n      setUpdateStatus('success');\n      setLastUpdateTime(new Date().toLocaleString('ru-RU'));\n      setHasUnsavedChanges(false);\n      \n      // Автоматически скрываем статус через 3 секунды\n      setTimeout(() => setUpdateStatus('idle'), 3000);\n      \n    } catch (error) {\n      console.error('Ошибка обновления данных:', error);\n      setUpdateStatus('error');\n      setTimeout(() => setUpdateStatus('idle'), 5000);\n    } finally {\n      setIsUpdatingData(false);\n    }\n  };\n\n  const updateResult = (service: string, result: any) => {"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -136,8 +136,48 @@\n     setIsSaving(false);\n   }\n };\n \n+// Функция обновления данных из Google Sheets\n+const updateProductData = async () => {\n+  setIsUpdatingData(true);\n+  setUpdateStatus('updating');\n+  \n+  try {\n+    // В реальном приложении здесь был бы запрос к Google Sheets API\n+    // Для демонстрации имитируем получение данных\n+    \n+    // Имитация сетевого запроса\n+    await new Promise(resolve => setTimeout(resolve, 2000));\n+    \n+    // Примерные обновленные данные товаров (в реальности получались бы из Google Sheets)\n+    const updatedProducts = [\n+      { id: '1', name: 'Обновленный Форд Транзит', length: 4300, width: 2100, height: 2050 },\n+      { id: '2', name: 'Обновленная Фура 20м3', length: 4500, width: 2300, height: 2100 },\n+      { id: '3', name: 'Новый Газель Next', length: 3200, width: 1800, height: 1900 }\n+    ];\n+    \n+    // Обновляем локальные данные\n+    setVehicleTypes(updatedProducts);\n+    localStorage.setItem('vehicleTypes', JSON.stringify(updatedProducts));\n+    localStorage.setItem('lastProductDataUpdate', new Date().toISOString());\n+    \n+    setUpdateStatus('success');\n+    setLastUpdateTime(new Date().toLocaleString('ru-RU'));\n+    setHasUnsavedChanges(false);\n+    \n+    // Автоматически скрываем статус через 3 секунды\n+    setTimeout(() => setUpdateStatus('idle'), 3000);\n+    \n+  } catch (error) {\n+    console.error('Ошибка обновления данных:', error);\n+    setUpdateStatus('error');\n+    setTimeout(() => setUpdateStatus('idle'), 5000);\n+  } finally {\n+    setIsUpdatingData(false);\n+  }\n+};\n+\n const updateResult = (service: string, result: any) => {\n   setDiagnosticResults(prev => ({\n     ...prev,\n     [service]: result\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759222922714,
+      "end": 1759222922744
+    }
+  }
+}

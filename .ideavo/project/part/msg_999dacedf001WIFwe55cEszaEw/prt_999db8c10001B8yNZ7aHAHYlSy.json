@@ -1,0 +1,34 @@
+{
+  "id": "prt_999db8c10001B8yNZ7aHAHYlSy",
+  "messageID": "msg_999dacedf001WIFwe55cEszaEw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01UsRGvBCWsnxaw7taqnc8jS",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "  useEffect(() => {\n    try {\n      const saved = localStorage.getItem('vehicleTypes');\n      if (saved) {\n        const parsedVehicleTypes = JSON.parse(saved);\n        setVehicleTypes(parsedVehicleTypes);\n      }\n    } catch (error) {\n      console.error('Ошибка загрузки сохранённых типов автомобилей:', error);\n    }\n  }, []);",
+          "newString": "  useEffect(() => {\n    try {\n      const saved = localStorage.getItem('vehicleTypes');\n      if (saved) {\n        const parsedVehicleTypes = JSON.parse(saved);\n        setVehicleTypes(parsedVehicleTypes);\n      }\n      \n      // Загружаем время последнего обновления\n      const lastUpdate = localStorage.getItem('lastProductDataUpdate');\n      if (lastUpdate) {\n        setLastUpdateTime(new Date(lastUpdate).toLocaleString('ru-RU'));\n      }\n    } catch (error) {\n      console.error('Ошибка загрузки сохранённых данных:', error);\n    }\n  }, []);"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -74,10 +74,16 @@\n     if (saved) {\n       const parsedVehicleTypes = JSON.parse(saved);\n       setVehicleTypes(parsedVehicleTypes);\n     }\n+    \n+    // Загружаем время последнего обновления\n+    const lastUpdate = localStorage.getItem('lastProductDataUpdate');\n+    if (lastUpdate) {\n+      setLastUpdateTime(new Date(lastUpdate).toLocaleString('ru-RU'));\n+    }\n   } catch (error) {\n-    console.error('Ошибка загрузки сохранённых типов автомобилей:', error);\n+    console.error('Ошибка загрузки сохранённых данных:', error);\n   }\n }, []);\n \n // Функции управления типами автомобилей\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759222934424,
+      "end": 1759222934433
+    }
+  }
+}

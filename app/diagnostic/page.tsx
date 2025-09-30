@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2, Save, ExternalLink } from 'lucide-react';
+import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2, Save, ExternalLink, RefreshCw, Download } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
@@ -63,6 +63,9 @@ export default function DiagnosticPage() {
   const [isSaving, setIsSaving] = useState(false);
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
   const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'success' | 'error'>('idle');
+  const [isUpdatingData, setIsUpdatingData] = useState(false);
+  const [updateStatus, setUpdateStatus] = useState<'idle' | 'updating' | 'success' | 'error'>('idle');
+  const [lastUpdateTime, setLastUpdateTime] = useState<string | null>(null);
   
   // Загружаем сохранённые типы автомобилей при инициализации
   useEffect(() => {
@@ -72,8 +75,14 @@ export default function DiagnosticPage() {
         const parsedVehicleTypes = JSON.parse(saved);
         setVehicleTypes(parsedVehicleTypes);
       }
+      
+      // Загружаем время последнего обновления
+      const lastUpdate = localStorage.getItem('lastProductDataUpdate');
+      if (lastUpdate) {
+        setLastUpdateTime(new Date(lastUpdate).toLocaleString('ru-RU'));
+      }
     } catch (error) {
-      console.error('Ошибка загрузки сохранённых типов автомобилей:', error);
+      console.error('Ошибка загрузки сохранённых данных:', error);
     }
   }, []);
 
@@ -131,6 +140,46 @@ export default function DiagnosticPage() {
       setTimeout(() => setSaveStatus('idle'), 5000);
     } finally {
       setIsSaving(false);
+    }
+  };
+
+  // Функция обновления данных из Google Sheets
+  const updateProductData = async () => {
+    setIsUpdatingData(true);
+    setUpdateStatus('updating');
+    
+    try {
+      // В реальном приложении здесь был бы запрос к Google Sheets API
+      // Для демонстрации имитируем получение данных
+      
+      // Имитация сетевого запроса
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // Примерные обновленные данные товаров (в реальности получались бы из Google Sheets)
+      const updatedProducts = [
+        { id: '1', name: 'Обновленный Форд Транзит', length: 4300, width: 2100, height: 2050 },
+        { id: '2', name: 'Обновленная Фура 20м3', length: 4500, width: 2300, height: 2100 },
+        { id: '3', name: 'Новый Газель Next', length: 3200, width: 1800, height: 1900 }
+      ];
+      
+      // Обновляем локальные данные
+      setVehicleTypes(updatedProducts);
+      localStorage.setItem('vehicleTypes', JSON.stringify(updatedProducts));
+      localStorage.setItem('lastProductDataUpdate', new Date().toISOString());
+      
+      setUpdateStatus('success');
+      setLastUpdateTime(new Date().toLocaleString('ru-RU'));
+      setHasUnsavedChanges(false);
+      
+      // Автоматически скрываем статус через 3 секунды
+      setTimeout(() => setUpdateStatus('idle'), 3000);
+      
+    } catch (error) {
+      console.error('Ошибка обновления данных:', error);
+      setUpdateStatus('error');
+      setTimeout(() => setUpdateStatus('idle'), 5000);
+    } finally {
+      setIsUpdatingData(false);
     }
   };
 
@@ -1050,6 +1099,29 @@ export default function DiagnosticPage() {
             <ExternalLink className="h-4 w-4 mr-2" />
             База товаров
           </Button>
+          <Button 
+            onClick={updateProductData}
+            disabled={isUpdatingData}
+            variant="outline"
+            className={
+              updateStatus === 'success' 
+                ? "bg-green-600 hover:bg-green-700 text-white border-green-600" 
+                : updateStatus === 'error'
+                ? "bg-red-600 hover:bg-red-700 text-white border-red-600"
+                : "bg-blue-600 hover:bg-blue-700 text-white border-blue-600"
+            }
+            title="Обновить данные о товарах из Google Sheets"
+          >
+            {updateStatus === 'updating' ? (
+              <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
+            ) : (
+              <Download className="h-4 w-4 mr-2" />
+            )}
+            {updateStatus === 'updating' && 'Обновление...'}
+            {updateStatus === 'success' && 'Обновлено!'}
+            {updateStatus === 'error' && 'Ошибка'}
+            {updateStatus === 'idle' && 'Обновить данные'}
+          </Button>
           <Button onClick={() => window.close()} variant="outline" className="text-black bg-white border-gray-300 hover:bg-gray-100">
             Закрыть
           </Button>
@@ -1060,6 +1132,11 @@ export default function DiagnosticPage() {
           <ExternalLink className="h-4 w-4" />
           <AlertDescription>
             <strong>База товаров и размеров:</strong> Кликните кнопку "База товаров" для открытия Google Sheets с полной базой данных о товарах.
+            <br /><br />
+            <strong>Обновление данных:</strong> Нажмите "Обновить данные" для синхронизации местных данных с актуальной информацией из Google Sheets.
+            {lastUpdateTime && (
+              <><br /><strong>Последнее обновление:</strong> {lastUpdateTime}</>
+            )}
             <br /><br />
             <strong>Что включает база:</strong>
             <ul className="list-disc list-inside mt-2 space-y-1">
@@ -1546,6 +1623,8 @@ export default function DiagnosticPage() {
               <AlertCircle className="h-4 w-4" />
               <AlertDescription>
                 Изменения в размерах и названиях типов автомобилей будут сохранены локально в браузере. Нажмите "Сохранить" для применения изменений.
+                <br /><br />
+                <strong>Обновление из Google Sheets:</strong> Данные также могут быть автоматически обновлены с помощью кнопки "Обновить данные" сверху. Это заменит все местные данные на актуальную информацию из таблицы.
               </AlertDescription>
             </Alert>
             

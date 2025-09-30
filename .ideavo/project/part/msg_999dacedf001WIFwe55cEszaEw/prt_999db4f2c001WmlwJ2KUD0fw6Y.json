@@ -1,0 +1,25 @@
+{
+  "id": "prt_999db4f2c001WmlwJ2KUD0fw6Y",
+  "messageID": "msg_999dacedf001WIFwe55cEszaEw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_012LatcQ4RAAzBvjcjDNY2tH",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 130,
+      "limit": 15
+    },
+    "output": "<file>\n00131|     } catch (error) {\n00132|       console.error('Ошибка сохранения:', error);\n00133|       setSaveStatus('error');\n00134|       setTimeout(() => setSaveStatus('idle'), 5000);\n00135|     } finally {\n00136|       setIsSaving(false);\n00137|     }\n00138|   };\n00139| \n00140|   const updateResult = (service: string, result: any) => {\n00141|     setDiagnosticResults(prev => ({\n00142|       ...prev,\n00143|       [service]: result\n00144|     }));\n00145|   };\n\n(File has more lines. Use 'offset' parameter to read beyond line 145)\n</file>",
+    "metadata": {
+      "preview": "    } catch (error) {\n      console.error('Ошибка сохранения:', error);\n      setSaveStatus('error');\n      setTimeout(() => setSaveStatus('idle'), 5000);\n    } finally {\n      setIsSaving(false);\n    }\n  };\n\n  const updateResult = (service: string, result: any) => {\n    setDiagnosticResults(prev => ({\n      ...prev,\n      [service]: result\n    }));\n  };"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759222911413,
+      "end": 1759222911416
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_999dc03c5001M4xKvL67bmWZcP",
+  "messageID": "msg_999dacedf001WIFwe55cEszaEw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_015ETJaWVh1GV9jEQFz7mxNE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 1100,
+      "limit": 15
+    },
+    "output": "<file>\n01101|           </Button>\n01102|           <Button \n01103|             onClick={updateProductData}\n01104|             disabled={isUpdatingData}\n01105|             variant=\"outline\"\n01106|             className={\n01107|               updateStatus === 'success' \n01108|                 ? \"bg-green-600 hover:bg-green-700 text-white border-green-600\" \n01109|                 : updateStatus === 'error'\n01110|                 ? \"bg-red-600 hover:bg-red-700 text-white border-red-600\"\n01111|                 : \"bg-blue-600 hover:bg-blue-700 text-white border-blue-600\"\n01112|             }\n01113|             title=\"Обновить данные о товарах из Google Sheets\"\n01114|           >\n01115|             {updateStatus === 'updating' ? (\n\n(File has more lines. Use 'offset' parameter to read beyond line 1115)\n</file>",
+    "metadata": {
+      "preview": "          </Button>\n          <Button \n            onClick={updateProductData}\n            disabled={isUpdatingData}\n            variant=\"outline\"\n            className={\n              updateStatus === 'success' \n                ? \"bg-green-600 hover:bg-green-700 text-white border-green-600\" \n                : updateStatus === 'error'\n                ? \"bg-red-600 hover:bg-red-700 text-white border-red-600\"\n                : \"bg-blue-600 hover:bg-blue-700 text-white border-blue-600\"\n            }\n            title=\"Обновить данные о товарах из Google Sheets\"\n          >\n            {updateStatus === 'updating' ? ("
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759222958159,
+      "end": 1759222958161
+    }
+  }
+}

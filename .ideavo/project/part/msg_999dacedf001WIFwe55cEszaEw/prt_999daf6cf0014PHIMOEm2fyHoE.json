@@ -1,0 +1,25 @@
+{
+  "id": "prt_999daf6cf0014PHIMOEm2fyHoE",
+  "messageID": "msg_999dacedf001WIFwe55cEszaEw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01LfWTkUSDxvcKCEP7jzQjRm",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 8,
+      "limit": 3
+    },
+    "output": "<file>\n00009| import { Input } from '@/components/ui/input';\n00010| import { Label } from '@/components/ui/label';\n00011| \n\n(File has more lines. Use 'offset' parameter to read beyond line 11)\n</file>",
+    "metadata": {
+      "preview": "import { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\n"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759222888790,
+      "end": 1759222888792
+    }
+  }
+}

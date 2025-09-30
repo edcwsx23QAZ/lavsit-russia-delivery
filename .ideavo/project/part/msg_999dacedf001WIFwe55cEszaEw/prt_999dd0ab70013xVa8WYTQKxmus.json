@@ -1,0 +1,25 @@
+{
+  "id": "prt_999dd0ab70013xVa8WYTQKxmus",
+  "messageID": "msg_999dacedf001WIFwe55cEszaEw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PQxAaytUvysfS8BjHywnrW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 1550,
+      "limit": 15
+    },
+    "output": "<file>\n01551|                   {isTestingNordWheel ? 'Тестирование...' : 'Тест'}\n01552|                 </Button>\n01553|               </CardTitle>\n01554|             </CardHeader>\n01555|             <CardContent>\n01556|               {diagnosticResults.nordwheel ? (\n01557|                 <Alert className={getStatusColor(diagnosticResults.nordwheel.status)}>\n01558|                   <div className=\"flex items-start gap-2\">\n01559|                     {getStatusIcon(diagnosticResults.nordwheel.status)}\n01560|                     <div className=\"flex-1\">\n01561|                       <AlertDescription>\n01562|                         <div className=\"font-medium mb-2\">{diagnosticResults.nordwheel.message}</div>\n01563|                         {diagnosticResults.nordwheel.timing && (\n01564|                           <Badge variant=\"outline\" className=\"mb-2\">\n01565|                             Время ответа: {diagnosticResults.nordwheel.timing}мс\n\n(File has more lines. Use 'offset' parameter to read beyond line 1565)\n</file>",
+    "metadata": {
+      "preview": "                  {isTestingNordWheel ? 'Тестирование...' : 'Тест'}\n                </Button>\n              </CardTitle>\n            </CardHeader>\n            <CardContent>\n              {diagnosticResults.nordwheel ? (\n                <Alert className={getStatusColor(diagnosticResults.nordwheel.status)}>\n                  <div className=\"flex items-start gap-2\">\n                    {getStatusIcon(diagnosticResults.nordwheel.status)}\n                    <div className=\"flex-1\">\n                      <AlertDescription>\n                        <div className=\"font-medium mb-2\">{diagnosticResults.nordwheel.message}</div>\n                        {diagnosticResults.nordwheel.timing && (\n                          <Badge variant=\"outline\" className=\"mb-2\">\n                            Время ответа: {diagnosticResults.nordwheel.timing}мс"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759223025179,
+      "end": 1759223025183
+    }
+  }
+}
