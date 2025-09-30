@@ -1,0 +1,61 @@
+{
+  "id": "prt_99b40836b001T2NmCQQd2XL9gn",
+  "messageID": "msg_99b3fd2850018Rt3ZnloXPlc1D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_018YMLHNPFKq9HfsmicyjrPv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Исправить проблему с терминалами Dellin API - terminalID равен null",
+          "status": "completed",
+          "priority": "high",
+          "id": "fix-terminal-null"
+        },
+        {
+          "content": "Добавить обработку ошибки 400 от Dellin API",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "handle-400-error"
+        },
+        {
+          "content": "Протестировать исправление",
+          "status": "pending",
+          "priority": "medium",
+          "id": "test-fix"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Исправить проблему с терминалами Dellin API - terminalID равен null\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"fix-terminal-null\"\n  },\n  {\n    \"content\": \"Добавить обработку ошибки 400 от Dellin API\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"handle-400-error\"\n  },\n  {\n    \"content\": \"Протестировать исправление\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"test-fix\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Исправить проблему с терминалами Dellin API - terminalID равен null",
+          "status": "completed",
+          "priority": "high",
+          "id": "fix-terminal-null"
+        },
+        {
+          "content": "Добавить обработку ошибки 400 от Dellin API",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "handle-400-error"
+        },
+        {
+          "content": "Протестировать исправление",
+          "status": "pending",
+          "priority": "medium",
+          "id": "test-fix"
+        }
+      ]
+    },
+    "title": "2 todos",
+    "time": {
+      "start": 1759246326865,
+      "end": 1759246326865
+    }
+  }
+}

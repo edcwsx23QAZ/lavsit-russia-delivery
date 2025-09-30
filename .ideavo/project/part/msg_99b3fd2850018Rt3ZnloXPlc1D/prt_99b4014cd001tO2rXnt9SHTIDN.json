@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b4014cd001tO2rXnt9SHTIDN",
+  "messageID": "msg_99b3fd2850018Rt3ZnloXPlc1D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01BWMAdHMHh5WS2MPvVtrQ8f",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n -A5 -B5 \"getDellinTerminal\" app/page.tsx",
+      "description": "Find getDellinTerminal function calls"
+    },
+    "output": "875-    }\n876-    return null;\n877-  };\n878-\n879-  // Получение терминалов Деловые Линии для города\n880:  const getDellinTerminal = async (citySearch: string): Promise<string | null> => {\n881-    try {\n882-      const response = await fetch('https://api.dellin.ru/v3/public/terminals.json', {\n883-        method: 'POST',\n884-        headers: {\n885-          'Content-Type': 'application/json'\n--\n1011-      const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n1012-      const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n1013-      const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;\n1014-\n1015-      // Получаем терминалы для городов (если нужно)\n1016:      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n1017:      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;\n1018-      \n1019-      console.log('🏢 ТЕРМИНАЛЫ ДЛ:');\n1020-      console.log('🏢 form.fromAddressDelivery:', form.fromAddressDelivery);\n1021-      console.log('🏢 form.toAddressDelivery:', form.toAddressDelivery);\n1022-      console.log('🏢 fromTerminalId:', fromTerminalId);\n",
+    "metadata": {
+      "output": "875-    }\n876-    return null;\n877-  };\n878-\n879-  // Получение терминалов Деловые Линии для города\n880:  const getDellinTerminal = async (citySearch: string): Promise<string | null> => {\n881-    try {\n882-      const response = await fetch('https://api.dellin.ru/v3/public/terminals.json', {\n883-        method: 'POST',\n884-        headers: {\n885-          'Content-Type': 'application/json'\n--\n1011-      const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n1012-      const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n1013-      const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;\n1014-\n1015-      // Получаем терминалы для городов (если нужно)\n1016:      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n1017:      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;\n1018-      \n1019-      console.log('🏢 ТЕРМИНАЛЫ ДЛ:');\n1020-      console.log('🏢 form.fromAddressDelivery:', form.fromAddressDelivery);\n1021-      console.log('🏢 form.toAddressDelivery:', form.toAddressDelivery);\n1022-      console.log('🏢 fromTerminalId:', fromTerminalId);\n",
+      "exit": 0,
+      "description": "Find getDellinTerminal function calls"
+    },
+    "title": "cd /home/user/project && grep -n -A5 -B5 \"getDellinTerminal\" app/page.tsx",
+    "time": {
+      "start": 1759246293093,
+      "end": 1759246293108
+    }
+  }
+}

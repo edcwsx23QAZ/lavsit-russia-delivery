@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b413935001iUgvll7RvOfe0M",
+  "messageID": "msg_99b3fd2850018Rt3ZnloXPlc1D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_018FmWKDmb99twsAsijfBsD3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1508,
+      "limit": 10
+    },
+    "output": "<file>\n01509|           details: data.data || {},\n01510|           requestData,\n01511|           responseData: data,\n01512|           apiUrl,\n01513|           sessionId: sessionID\n01514|         };\n01515|       } else {\n01516|         const errorMessage = data.metadata?.detail || \n01517|                            data.metadata?.message || \n01518|                            data.errors?.[0]?.detail || \n\n(File has more lines. Use 'offset' parameter to read beyond line 1518)\n</file>",
+    "metadata": {
+      "preview": "          details: data.data || {},\n          requestData,\n          responseData: data,\n          apiUrl,\n          sessionId: sessionID\n        };\n      } else {\n        const errorMessage = data.metadata?.detail || \n                           data.metadata?.message || \n                           data.errors?.[0]?.detail || "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759246367670,
+      "end": 1759246367672
+    }
+  }
+}

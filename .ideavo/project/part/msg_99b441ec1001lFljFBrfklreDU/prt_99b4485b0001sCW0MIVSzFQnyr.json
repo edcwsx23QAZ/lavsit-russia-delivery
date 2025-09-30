@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b4485b0001sCW0MIVSzFQnyr",
+  "messageID": "msg_99b441ec1001lFljFBrfklreDU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Qj5TJqVGUYxmYJp5aP1muW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1275,
+      "limit": 10
+    },
+    "output": "<file>\n01276|       // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n01277|       console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n01278|       console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');\n01279|       console.log('🔍 data:', data ? 'существует' : 'undefined/null');\n01280|       console.log('🔍 typeof data:', typeof data);\n01281|       console.log('🔍 data.data:', data?.data ? 'существует' : 'undefined/null');\n01282|       console.log('🔍 typeof data.data:', typeof data?.data);\n01283|       \n01284|       // Безопасная проверка свойств data.data\n01285|       if (data?.data) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 1285)\n</file>",
+    "metadata": {
+      "preview": "      // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n      console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n      console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');\n      console.log('🔍 data:', data ? 'существует' : 'undefined/null');\n      console.log('🔍 typeof data:', typeof data);\n      console.log('🔍 data.data:', data?.data ? 'существует' : 'undefined/null');\n      console.log('🔍 typeof data.data:', typeof data?.data);\n      \n      // Безопасная проверка свойств data.data\n      if (data?.data) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759246583722,
+      "end": 1759246583724
+    }
+  }
+}

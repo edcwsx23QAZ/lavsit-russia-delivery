@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b40b7b7001d9Zi4YqS6BHnqL",
+  "messageID": "msg_99b3fd2850018Rt3ZnloXPlc1D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0132s5N5NKXL69hrcmw4DB5k",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1390,
+      "limit": 20
+    },
+    "output": "<file>\n01391|           console.log('📦 Содержимое packages:', JSON.stringify(data.data.packages, null, 2));\n01392|         } catch (jsonError) {\n01393|           console.error('❌ Ошибка JSON.stringify для packages:', jsonError);\n01394|           console.log('📦 packages (toString):', data.data.packages?.toString?.() || 'Не удалось преобразовать');\n01395|         }\n01396|       } else {\n01397|         console.log('❌ PACKAGES НЕ НАЙДЕН В ОТВЕТЕ');\n01398|       }\n01399|       console.log('=== КОНЕЦ ПОИСКА PACKAGES ===');\n01400| \n01401|       if (response.ok && data.data && data.metadata?.status === 200) {\n01402|         let totalPrice = data.data.price || 0;\n01403|         console.log('💰 РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ:');\n01404|         console.log('💰 Базовая стоимость data.data.price (УЖЕ ВКЛЮЧАЕТ ВСЕ):', totalPrice);\n01405|         \n01406|         // СТРАХОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно\n01407|         if (data.data.insurance) {\n01408|           console.log('💰 Страховка data.data.insurance (УЖЕ включена в базовую стоимость):', data.data.insurance);\n01409|           console.log('💰 НЕ добавляем страховку повторно');\n01410|         } else {\n\n(File has more lines. Use 'offset' parameter to read beyond line 1410)\n</file>",
+    "metadata": {
+      "preview": "          console.log('📦 Содержимое packages:', JSON.stringify(data.data.packages, null, 2));\n        } catch (jsonError) {\n          console.error('❌ Ошибка JSON.stringify для packages:', jsonError);\n          console.log('📦 packages (toString):', data.data.packages?.toString?.() || 'Не удалось преобразовать');\n        }\n      } else {\n        console.log('❌ PACKAGES НЕ НАЙДЕН В ОТВЕТЕ');\n      }\n      console.log('=== КОНЕЦ ПОИСКА PACKAGES ===');\n\n      if (response.ok && data.data && data.metadata?.status === 200) {\n        let totalPrice = data.data.price || 0;\n        console.log('💰 РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ:');\n        console.log('💰 Базовая стоимость data.data.price (УЖЕ ВКЛЮЧАЕТ ВСЕ):', totalPrice);\n        \n        // СТРАХОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно\n        if (data.data.insurance) {\n          console.log('💰 Страховка data.data.insurance (УЖЕ включена в базовую стоимость):', data.data.insurance);\n          console.log('💰 НЕ добавляем страховку повторно');\n        } else {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759246334435,
+      "end": 1759246334437
+    }
+  }
+}

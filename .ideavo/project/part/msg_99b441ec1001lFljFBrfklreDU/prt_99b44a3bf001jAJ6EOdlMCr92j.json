@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b44a3bf001jAJ6EOdlMCr92j",
+  "messageID": "msg_99b441ec1001lFljFBrfklreDU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Eh1bXMpUDHCkiYEfJCtprT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        // Если запрос успешный или не связан с авторизацией, продолжаем обработку\n        break;\n      }\n\n      \n      // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ",
+      "newString": "        // Если запрос успешный или не связан с авторизацией, продолжаем обработку\n        break;\n      }\n\n      // Проверяем на ошибки ПЕРЕД анализом данных\n      if (!response.ok || !data.data) {\n        console.log('❌ Ошибочный ответ API - пропускаем анализ данных');\n        const errorMessage = data.metadata?.detail || \n                           data.metadata?.message || \n                           data.errors?.[0]?.detail || \n                           (data.metadata?.status !== 200 ? `HTTP ${data.metadata?.status}` : '') ||\n                           `HTTP ${response.status} - ${response.statusText}` ||\n                           'Ошибка расчета Деловые Линии';\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: errorMessage,\n          requestData,\n          responseData: data,\n          apiUrl,\n          sessionId: sessionID\n        };\n      }\n      \n      // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ (только для успешного ответа)"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1271,10 +1271,30 @@\n   // Если запрос успешный или не связан с авторизацией, продолжаем обработку\n   break;\n }\n \n+// Проверяем на ошибки ПЕРЕД анализом данных\n+if (!response.ok || !data.data) {\n+  console.log('❌ Ошибочный ответ API - пропускаем анализ данных');\n+  const errorMessage = data.metadata?.detail || \n+                     data.metadata?.message || \n+                     data.errors?.[0]?.detail || \n+                     (data.metadata?.status !== 200 ? `HTTP ${data.metadata?.status}` : '') ||\n+                     `HTTP ${response.status} - ${response.statusText}` ||\n+                     'Ошибка расчета Деловые Линии';\n+  return {\n+    company: 'Деловые Линии',\n+    price: 0,\n+    days: 0,\n+    error: errorMessage,\n+    requestData,\n+    responseData: data,\n+    apiUrl,\n+    sessionId: sessionID\n+  };\n+}\n \n-// ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n+// ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ (только для успешного ответа)\n console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');\n console.log('🔍 data:', data ? 'существует' : 'undefined/null');\n console.log('🔍 typeof data:', typeof data);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759246596899,
+      "end": 1759246596919
+    }
+  }
+}

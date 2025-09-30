@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b4474b800113kAXnQnmCfwDQ",
+  "messageID": "msg_99b441ec1001lFljFBrfklreDU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01TyGBwS4Cre7BWGvV8WwLvT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n \"=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===\" app/page.tsx",
+      "description": "Find insurance analysis start"
+    },
+    "output": "1277:      console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n",
+    "metadata": {
+      "output": "1277:      console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n",
+      "exit": 0,
+      "description": "Find insurance analysis start"
+    },
+    "title": "cd /home/user/project && grep -n \"=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===\" app/page.tsx",
+    "time": {
+      "start": 1759246579743,
+      "end": 1759246579762
+    }
+  }
+}

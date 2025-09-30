@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b403eeb001KswHat9rtqvoHB",
+  "messageID": "msg_99b3fd2850018Rt3ZnloXPlc1D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016UmajBnTi7K6seyDpdxVtA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1116,
+      "limit": 20
+    },
+    "output": "<file>\n01117|                 search: form.fromAddress || form.fromCity\n01118|               }\n01119|             } : (fromTerminalId ? {\n01120|               terminalID: fromTerminalId\n01121|             } : {\n01122|               address: {\n01123|                 search: form.fromCity\n01124|               }\n01125|             })),\n01126|             time: {\n01127|               worktimeStart: '10:00',\n01128|               worktimeEnd: '18:00',\n01129|               breakStart: '13:00',\n01130|               breakEnd: '14:00',\n01131|               exactTime: false\n01132|             }\n01133|             // handling в derival всегда пропускается согласно инструкции\n01134|           },\n01135|           arrival: {\n01136|             variant: form.toAddressDelivery ? 'address' : 'terminal',\n\n(File has more lines. Use 'offset' parameter to read beyond line 1136)\n</file>",
+    "metadata": {
+      "preview": "                search: form.fromAddress || form.fromCity\n              }\n            } : (fromTerminalId ? {\n              terminalID: fromTerminalId\n            } : {\n              address: {\n                search: form.fromCity\n              }\n            })),\n            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            }\n            // handling в derival всегда пропускается согласно инструкции\n          },\n          arrival: {\n            variant: form.toAddressDelivery ? 'address' : 'terminal',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759246303592,
+      "end": 1759246303594
+    }
+  }
+}

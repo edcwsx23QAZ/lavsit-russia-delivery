@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b410d56001ePcPR0wI9fQBcF",
+  "messageID": "msg_99b3fd2850018Rt3ZnloXPlc1D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_017iCnvGxjAAPCevk97EpA7i",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n      console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n      console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');\n      console.log('🔍 data:', data ? 'существует' : 'undefined/null');\n      console.log('🔍 typeof data:', typeof data);\n      console.log('🔍 data.data:', data?.data ? 'существует' : 'undefined/null');\n      console.log('🔍 typeof data.data:', typeof data?.data);",
+      "newString": "      // Проверяем успешность ответа ПЕРЕД анализом\n      if (response.ok && data.data && data.metadata?.status === 200) {\n        // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ (только для успешного ответа)\n        console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n        console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');\n        console.log('🔍 data:', data ? 'существует' : 'undefined/null');\n        console.log('🔍 typeof data:', typeof data);\n        console.log('🔍 data.data:', data?.data ? 'существует' : 'undefined/null');\n        console.log('🔍 typeof data.data:', typeof data?.data);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1272,15 +1272,17 @@\n   break;\n }\n \n \n-// ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n-console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n-console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');\n-console.log('🔍 data:', data ? 'существует' : 'undefined/null');\n-console.log('🔍 typeof data:', typeof data);\n-console.log('🔍 data.data:', data?.data ? 'существует' : 'undefined/null');\n-console.log('🔍 typeof data.data:', typeof data?.data);\n+// Проверяем успешность ответа ПЕРЕД анализом\n+if (response.ok && data.data && data.metadata?.status === 200) {\n+  // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ (только для успешного ответа)\n+  console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n+  console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');\n+  console.log('🔍 data:', data ? 'существует' : 'undefined/null');\n+  console.log('🔍 typeof data:', typeof data);\n+  console.log('🔍 data.data:', data?.data ? 'существует' : 'undefined/null');\n+  console.log('🔍 typeof data.data:', typeof data?.data);\n \n // Безопасная проверка свойств data.data\n if (data?.data) {\n   console.log('🔍 Проверяем свойства data.data:');\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759246359577,
+      "end": 1759246359592
+    }
+  }
+}

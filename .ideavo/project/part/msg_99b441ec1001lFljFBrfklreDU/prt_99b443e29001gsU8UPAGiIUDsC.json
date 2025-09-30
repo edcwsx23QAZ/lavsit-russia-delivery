@@ -1,0 +1,61 @@
+{
+  "id": "prt_99b443e29001gsU8UPAGiIUDsC",
+  "messageID": "msg_99b441ec1001lFljFBrfklreDU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01Dky12s2VhJG913QeicEEXh",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Полностью перенести анализ страховки в блок успешного ответа",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "move-insurance-analysis"
+        },
+        {
+          "content": "Добавить раннее возвращение при ошибке 400",
+          "status": "pending",
+          "priority": "high",
+          "id": "early-return-400"
+        },
+        {
+          "content": "Протестировать исправление",
+          "status": "pending",
+          "priority": "medium",
+          "id": "test-fix"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Полностью перенести анализ страховки в блок успешного ответа\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"move-insurance-analysis\"\n  },\n  {\n    \"content\": \"Добавить раннее возвращение при ошибке 400\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"early-return-400\"\n  },\n  {\n    \"content\": \"Протестировать исправление\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"test-fix\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Полностью перенести анализ страховки в блок успешного ответа",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "move-insurance-analysis"
+        },
+        {
+          "content": "Добавить раннее возвращение при ошибке 400",
+          "status": "pending",
+          "priority": "high",
+          "id": "early-return-400"
+        },
+        {
+          "content": "Протестировать исправление",
+          "status": "pending",
+          "priority": "medium",
+          "id": "test-fix"
+        }
+      ]
+    },
+    "title": "3 todos",
+    "time": {
+      "start": 1759246572016,
+      "end": 1759246572017
+    }
+  }
+}

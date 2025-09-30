@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b40748000131owv5ltm0e4sV",
+  "messageID": "msg_99b3fd2850018Rt3ZnloXPlc1D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0182vioT3G1WkDLeKiyKp5Dc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1137,
+      "limit": 15
+    },
+    "output": "<file>\n01138|               address: {\n01139|                 search: form.toAddress || form.toCity\n01140|               }\n01141|             } : (toTerminalId ? {\n01142|               terminalID: toTerminalId\n01143|             } : {\n01144|               address: {\n01145|                 search: form.toCity\n01146|               }\n01147|             })),\n01148|             time: {\n01149|               worktimeStart: '10:00',\n01150|               worktimeEnd: '18:00',\n01151|               breakStart: '13:00',\n01152|               breakEnd: '14:00',\n\n(File has more lines. Use 'offset' parameter to read beyond line 1152)\n</file>",
+    "metadata": {
+      "preview": "              address: {\n                search: form.toAddress || form.toCity\n              }\n            } : (toTerminalId ? {\n              terminalID: toTerminalId\n            } : {\n              address: {\n                search: form.toCity\n              }\n            })),\n            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759246317281,
+      "end": 1759246317283
+    }
+  }
+}

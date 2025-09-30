@@ -1,0 +1,61 @@
+{
+  "id": "prt_99b44c539001JQGqDzEZYpPFRN",
+  "messageID": "msg_99b441ec1001lFljFBrfklreDU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01WUpDMwg3fQ9mGsAVeG6kX7",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Полностью перенести анализ страховки в блок успешного ответа",
+          "status": "completed",
+          "priority": "high",
+          "id": "move-insurance-analysis"
+        },
+        {
+          "content": "Добавить раннее возвращение при ошибке 400",
+          "status": "completed",
+          "priority": "high",
+          "id": "early-return-400"
+        },
+        {
+          "content": "Протестировать исправление",
+          "status": "in_progress",
+          "priority": "medium",
+          "id": "test-fix"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Полностью перенести анализ страховки в блок успешного ответа\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"move-insurance-analysis\"\n  },\n  {\n    \"content\": \"Добавить раннее возвращение при ошибке 400\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"early-return-400\"\n  },\n  {\n    \"content\": \"Протестировать исправление\",\n    \"status\": \"in_progress\",\n    \"priority\": \"medium\",\n    \"id\": \"test-fix\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Полностью перенести анализ страховки в блок успешного ответа",
+          "status": "completed",
+          "priority": "high",
+          "id": "move-insurance-analysis"
+        },
+        {
+          "content": "Добавить раннее возвращение при ошибке 400",
+          "status": "completed",
+          "priority": "high",
+          "id": "early-return-400"
+        },
+        {
+          "content": "Протестировать исправление",
+          "status": "in_progress",
+          "priority": "medium",
+          "id": "test-fix"
+        }
+      ]
+    },
+    "title": "1 todos",
+    "time": {
+      "start": 1759246606934,
+      "end": 1759246606935
+    }
+  }
+}

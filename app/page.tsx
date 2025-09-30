@@ -1272,8 +1272,28 @@ export default function Home() {
         break;
       }
 
+      // Проверяем на ошибки ПЕРЕД анализом данных
+      if (!response.ok || !data.data) {
+        console.log('❌ Ошибочный ответ API - пропускаем анализ данных');
+        const errorMessage = data.metadata?.detail || 
+                           data.metadata?.message || 
+                           data.errors?.[0]?.detail || 
+                           (data.metadata?.status !== 200 ? `HTTP ${data.metadata?.status}` : '') ||
+                           `HTTP ${response.status} - ${response.statusText}` ||
+                           'Ошибка расчета Деловые Линии';
+        return {
+          company: 'Деловые Линии',
+          price: 0,
+          days: 0,
+          error: errorMessage,
+          requestData,
+          responseData: data,
+          apiUrl,
+          sessionId: sessionID
+        };
+      }
       
-      // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ
+      // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ (только для успешного ответа)
       console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');
       console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');
       console.log('🔍 data:', data ? 'существует' : 'undefined/null');

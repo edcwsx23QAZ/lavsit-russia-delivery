@@ -1,0 +1,11 @@
+{
+  "id": "prt_99b404c0e001OTJ58q1jBz6g0G",
+  "messageID": "msg_99b3fd2850018Rt3ZnloXPlc1D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Я вижу что fallback логика уже есть в строках 1119-1125. Проблема в том, что в строке 1136 все еще остается `variant: 'terminal'` даже когда терминал не найден.\n\nВот проблема! Нужно исправить `variant`:",
+  "time": {
+    "start": 1759246308382,
+    "end": 1759246308382
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "prt_99b40206a002njscm0NxQc2lsP",
+  "messageID": "msg_99b3fd2850018Rt3ZnloXPlc1D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Я вижу что функция `getDellinTerminal` вызывается, но из лога видно что `fromTerminalId` и `toTerminalId` равны `null`. Это значит что функция `getDellinTerminal` возвращает `null` для городов \"Осеево\" и \"Санкт-Петербург\".\n\nПосмотрим на функцию `getDellinTerminal`:",
+  "time": {
+    "start": 1759246296891,
+    "end": 1759246296891
+  }
+}

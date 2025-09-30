@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b4065cd001i3onJYqXmOT8RK",
+  "messageID": "msg_99b3fd2850018Rt3ZnloXPlc1D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_018hTetPf5s4Ku1R19Gxy71j",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          arrival: {\n            variant: form.toAddressDelivery ? 'address' : 'terminal',",
+      "newString": "          arrival: {\n            variant: form.toAddressDelivery ? 'address' : (toTerminalId ? 'terminal' : 'address'),"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1132,9 +1132,9 @@\n   }\n   // handling в derival всегда пропускается согласно инструкции\n },\n arrival: {\n-  variant: form.toAddressDelivery ? 'address' : 'terminal',\n+  variant: form.toAddressDelivery ? 'address' : (toTerminalId ? 'terminal' : 'address'),\n   ...(form.toAddressDelivery ? {\n     address: {\n       search: form.toAddress || form.toCity\n     }\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759246314028,
+      "end": 1759246314043
+    }
+  }
+}

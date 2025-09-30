@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b446702001z5wTe0HJcSaYgc",
+  "messageID": "msg_99b441ec1001lFljFBrfklreDU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01HqcsdpdzzsD2GVKAB17gaz",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1225,
+      "limit": 15
+    },
+    "output": "<file>\n01226|           data = await response.json();\n01227|         } catch (parseError) {\n01228|           console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);\n01229|           throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);\n01230|         }\n01231|         \n01232|         console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n01233|         console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n01234|         console.log('🚀 ОТВЕТ ДЛ data:', data);\n01235|         \n01236|         // Проверяем различные типы ошибок авторизации\n01237|         const isAuthError = response.status === 401 || \n01238|                            response.status === 403 ||\n01239|                            (response.status === 400 && data?.errors?.some((err: any) => \n01240|                              err.detail?.toLowerCase()?.includes('session') ||\n\n(File has more lines. Use 'offset' parameter to read beyond line 1240)\n</file>",
+    "metadata": {
+      "preview": "          data = await response.json();\n        } catch (parseError) {\n          console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);\n          throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);\n        }\n        \n        console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n        console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n        console.log('🚀 ОТВЕТ ДЛ data:', data);\n        \n        // Проверяем различные типы ошибок авторизации\n        const isAuthError = response.status === 401 || \n                           response.status === 403 ||\n                           (response.status === 400 && data?.errors?.some((err: any) => \n                             err.detail?.toLowerCase()?.includes('session') ||"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759246576193,
+      "end": 1759246576197
+    }
+  }
+}

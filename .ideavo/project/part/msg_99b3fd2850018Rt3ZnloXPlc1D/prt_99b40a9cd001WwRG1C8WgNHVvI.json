@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b40a9cd001WwRG1C8WgNHVvI",
+  "messageID": "msg_99b3fd2850018Rt3ZnloXPlc1D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XXJDv6Nh3ZTQoR7NEHgvDr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1322,
+      "limit": 20
+    },
+    "output": "<file>\n01323|         console.log('💳 Проверяем derival...');\n01324|         if (data.data?.derival) {\n01325|           console.log('💳 derival найден, проверяем insurance...');\n01326|           console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival?.insurance);\n01327|         } else {\n01328|           console.log('💳 derival не найден или null');\n01329|         }\n01330|         \n01331|         console.log('💳 Проверяем arrival...');\n01332|         if (data.data?.arrival) {\n01333|           console.log('💳 arrival найден, проверяем insurance...');\n01334|           console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);\n01335|         } else {\n01336|           console.log('💳 arrival не найден или null');\n01337|         }\n01338|         \n01339|         console.log('💳 Проверяем intercity...');\n01340|         if (data.data?.intercity) {\n01341|           console.log('💳 intercity найден, проверяем insurance...');\n01342|           console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1342)\n</file>",
+    "metadata": {
+      "preview": "        console.log('💳 Проверяем derival...');\n        if (data.data?.derival) {\n          console.log('💳 derival найден, проверяем insurance...');\n          console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival?.insurance);\n        } else {\n          console.log('💳 derival не найден или null');\n        }\n        \n        console.log('💳 Проверяем arrival...');\n        if (data.data?.arrival) {\n          console.log('💳 arrival найден, проверяем insurance...');\n          console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);\n        } else {\n          console.log('💳 arrival не найден или null');\n        }\n        \n        console.log('💳 Проверяем intercity...');\n        if (data.data?.intercity) {\n          console.log('💳 intercity найден, проверяем insurance...');\n          console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759246330951,
+      "end": 1759246330955
+    }
+  }
+}
