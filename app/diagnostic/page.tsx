@@ -143,65 +143,148 @@ export default function DiagnosticPage() {
     }
   };
 
-  // Функция обновления данных из Google Sheets
+  // Функция полного обновления данных из Google Sheets
   const updateProductData = async () => {
     setIsUpdatingData(true);
     setUpdateStatus('updating');
     
     try {
-      console.log('🔄 Начинаем обновление базы товаров из Google Sheets...');
+      console.log('🔄 Начинаем полное обновление базы товаров из Google Sheets...');
+      console.log('🧹 Этап 1: Очистка всех старых данных о товарах и грузовых местах');
       
-      // Очищаем кэш товаров через принудительное обновление API
-      const response = await fetch('/api/furniture-products?update=true');
-      const result = await response.json();
-      
-      if (!result.success) {
-        throw new Error(result.error || 'Ошибка обновления данных');
-      }
-      
-      console.log(`✅ Обновлено ${result.data.length} товаров из Google Sheets`);
-      console.log(`🕰️ Последнее обновление: ${result.lastUpdated}`);
-      
-      // Обновляем данные автомобилей (оставляем как есть, т.к. это отдельная сущность)
-      // Основная цель - обновить кэш товаров, которые используются в компоненте ProductSearch
-      
-      // Отправляем сообщение в главное окно для обновления компонентов
-      if (window.opener) {
-        window.opener.postMessage({
-          type: 'PRODUCTS_UPDATED',
-          data: {
-            productsCount: result.data.length,
-            lastUpdated: result.lastUpdated
-          }
-        }, '*');
-        console.log('📡 Отправлено сообщение в главное окно об обновлении товаров');
-      }
-      
-      // Очищаем localStorage от старых данных о товарах
+      // ПОЛНАЯ ОЧИСТКА ВСЕХ ДАННЫХ О ТОВАРАХ И ГРУЗОВЫХ МЕСТАХ
       const keysToRemove: string[] = [];
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
-        if (key && (key.startsWith('furniture_') || key.startsWith('product_') || key.includes('cargo'))) {
+        if (key && (
+          key.startsWith('furniture_') || 
+          key.startsWith('product_') || 
+          key.startsWith('cargo_') ||
+          key.startsWith('cargoPlaces_') ||
+          key.includes('cargo') ||
+          key.includes('furniture') ||
+          key.includes('product') ||
+          key.includes('dimension') ||
+          key.includes('size') ||
+          key.includes('weight') ||
+          key.includes('place')
+        )) {
           keysToRemove.push(key);
         }
       }
-      keysToRemove.forEach(key => localStorage.removeItem(key));
+      
+      // Удаляем все найденные ключи
+      keysToRemove.forEach(key => {
+        localStorage.removeItem(key);
+        console.log(`🗑️ Удален ключ: ${key}`);
+      });
       console.log(`🧽 Очищено ${keysToRemove.length} ключей из localStorage`);
       
-      // Обновляем время последнего обновления
+      // Очищаем кэш браузера для API данных (принудительная перезагрузка)
+      if ('caches' in window) {
+        const cacheNames = await caches.keys();
+        await Promise.all(
+          cacheNames.map(cacheName => 
+            caches.delete(cacheName).then(() => 
+              console.log(`🗑️ Очищен кэш: ${cacheName}`)
+            )
+          )
+        );
+      }
+      
+      console.log('📥 Этап 2: Загрузка новых данных из Google Sheets');
+      
+      // Принудительное обновление через API с очисткой кэша
+      const response = await fetch('/api/furniture-products?update=true&force=true&timestamp=' + Date.now(), {
+        method: 'GET',
+        headers: {
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        }
+      });
+      
+      const result = await response.json();
+      
+      if (!result.success) {
+        throw new Error(result.error || 'Ошибка обновления данных из Google Sheets');
+      }
+      
+      console.log(`✅ Успешно загружено ${result.data.length} товаров из Google Sheets`);
+      console.log(`🕰️ Время загрузки: ${result.lastUpdated}`);
+      console.log(`📊 Примеры товаров:`, result.data.slice(0, 3).map((p: any) => ({
+        name: p.name,
+        cargoPlaces: p.cargoPlaces?.length || 0
+      })));
+      
+      // Принудительно обновляем кэш через POST запрос
+      console.log('🔄 Этап 3: Принудительное обновление серверного кэша');
+      try {
+        const postResponse = await fetch('/api/furniture-products', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache'
+          },
+          body: JSON.stringify({ forceUpdate: true })
+        });
+        
+        if (postResponse.ok) {
+          const postResult = await postResponse.json();
+          console.log('✅ Серверный кэш принудительно обновлен:', postResult.data?.length || 0, 'товаров');
+        }
+      } catch (postError) {
+        console.warn('⚠️ Не удалось обновить через POST, но GET обновление прошло успешно');
+      }
+      
+      // Отправляем сообщение в главное окно для полной перезагрузки компонентов
+      if (window.opener) {
+        window.opener.postMessage({
+          type: 'PRODUCTS_FULLY_UPDATED',
+          data: {
+            productsCount: result.data.length,
+            lastUpdated: result.lastUpdated,
+            forceReload: true,
+            clearAllCache: true
+          }
+        }, '*');
+        console.log('📡 Отправлено сообщение в главное окно о полном обновлении товаров');
+      }
+      
+      // Отправляем событие для принудительной перезагрузки всех компонентов с товарами
+      window.dispatchEvent(new CustomEvent('furnitureDataUpdated', {
+        detail: {
+          productsCount: result.data.length,
+          lastUpdated: result.lastUpdated,
+          fullReset: true
+        }
+      }));
+      
+      // Сохраняем время последнего обновления
       localStorage.setItem('lastProductDataUpdate', new Date().toISOString());
+      localStorage.setItem('productDataForceUpdate', 'true');
       
       setUpdateStatus('success');
       setLastUpdateTime(new Date().toLocaleString('ru-RU'));
       setHasUnsavedChanges(false);
       
-      // Автоматически скрываем статус через 3 секунды
-      setTimeout(() => setUpdateStatus('idle'), 3000);
+      console.log('🎉 Полное обновление данных завершено успешно!');
       
-    } catch (error) {
-      console.error('❌ Ошибка обновления данных:', error);
-      setUpdateStatus('error');
+      // Автоматически скрываем статус через 5 секунд (дольше, чтобы пользователь увидел успех)
       setTimeout(() => setUpdateStatus('idle'), 5000);
+      
+    } catch (error: any) {
+      console.error('❌ Ошибка полного обновления данных:', error);
+      setUpdateStatus('error');
+      
+      // Показываем подробную ошибку в консоли
+      console.error('❌ Детали ошибки:', {
+        message: error.message,
+        stack: error.stack,
+        timestamp: new Date().toISOString()
+      });
+      
+      setTimeout(() => setUpdateStatus('idle'), 8000);
     } finally {
       setIsUpdatingData(false);
     }
@@ -1157,18 +1240,25 @@ export default function DiagnosticPage() {
           <AlertDescription>
             <strong>База товаров и размеров:</strong> Кликните кнопку "База товаров" для открытия Google Sheets с полной базой данных о товарах.
             <br /><br />
-<strong>Обновление данных:</strong> Нажмите "Обновить данные" для принудительного парсинга и обновления кэша всех товаров с актуальными данными из Google Sheets. Это очистит все кэшированные грузовые места и перезагрузит всю товарную матрицу с новыми размерами.
+            <strong>🔄 ПОЛНОЕ ОБНОВЛЕНИЕ ДАННЫХ:</strong> Кнопка "Обновить данные" выполняет ПОЛНУЮ ОЧИСТКУ всех старых данных о товарах и грузовых местах, затем заново парсит всю информацию из Google Sheets. Это включает:
+            <ul className="list-disc list-inside mt-2 mb-2 space-y-1">
+              <li>🧹 Удаление всех кэшированных данных о товарах из localStorage</li>
+              <li>🗑️ Очистка кэша браузера и серверного кэша API</li>
+              <li>📥 Новый парсинг всех товаров из Google Sheets CSV</li>
+              <li>🔄 Принудительное обновление всех компонентов с товарами</li>
+              <li>📡 Уведомление главного окна о полном обновлении</li>
+            </ul>
             {lastUpdateTime && (
-              <><br /><strong>Последнее обновление:</strong> {lastUpdateTime}</>
+              <><strong>Последнее обновление:</strong> {lastUpdateTime}<br /><br /></>
             )}
-            <br /><br />
-            <strong>Что включает база:</strong>
+            <strong>Структура данных в Google Sheets:</strong>
             <ul className="list-disc list-inside mt-2 space-y-1">
-              <li>Названия и категории товаров</li>
-              <li>Точные размеры (длина × ширина × высота)</li>
-              <li>Вес и объём товаров</li>
-              <li>Особенности упаковки и размещения</li>
-              <li>Рекомендации по транспортировке</li>
+              <li>ID товара и внешний код</li>
+              <li>Название товара и активность</li>
+              <li>Цена и категория</li>
+              <li>До 7 грузовых мест для каждого товара</li>
+              <li>Для каждого места: вес, высота, глубина, длина</li>
+              <li>Автоматическое определение правил размещения</li>
             </ul>
           </AlertDescription>
         </Alert>

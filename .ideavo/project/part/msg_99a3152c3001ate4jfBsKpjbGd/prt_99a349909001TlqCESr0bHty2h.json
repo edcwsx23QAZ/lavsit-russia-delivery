@@ -1,0 +1,27 @@
+{
+  "id": "prt_99a349909001TlqCESr0bHty2h",
+  "messageID": "msg_99a3152c3001ate4jfBsKpjbGd",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01TA93LPTuP7FuG7HcKG5LVe",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -s -w \"HTTP Status: %{http_code}\\n\" \"http://localhost:3000/api/furniture-products\" | head -50",
+      "timeout": 15000,
+      "description": "Test API with status code output"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Test API with status code output"
+    },
+    "title": "curl -s -w \"HTTP Status: %{http_code}\\n\" \"http://localhost:3000/api/furniture-products\" | head -50",
+    "time": {
+      "start": 1759228763601,
+      "end": 1759228778607
+    }
+  }
+}

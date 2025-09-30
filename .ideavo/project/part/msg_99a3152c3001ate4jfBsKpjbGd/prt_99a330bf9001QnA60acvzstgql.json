@@ -1,0 +1,26 @@
+{
+  "id": "prt_99a330bf9001QnA60acvzstgql",
+  "messageID": "msg_99a3152c3001ate4jfBsKpjbGd",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_013S8XN2Pvj1zwZctJu43Nc3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/furniture-products/route.ts",
+      "oldString": "  // Сортируем по имени\n  products.sort((a, b) => a.name.localeCompare(b.name, 'ru'));\n  \n  console.log(`✅ Успешно обработано ${products.length} товаров`);\n  return products;\n}",
+      "newString": "  // Сортируем по имени\n  products.sort((a, b) => a.name.localeCompare(b.name, 'ru'));\n  \n  console.log(`✅ Успешно обработано ${products.length} товаров`);\n  return products;\n}\n\n// POST метод для принудительного обновления кэша\nexport async function POST(request: NextRequest) {\n  try {\n    console.log('🔄 POST /api/furniture-products - Принудительное обновление кэша');\n    \n    // Полностью очищаем кэш\n    cachedData = null;\n    \n    // Загружаем свежие данные\n    const freshData = await fetchFurnitureData();\n    cachedData = freshData;\n    \n    console.log('✅ Принудительное обновление кэша завершено:', {\n      productsCount: cachedData.products.length,\n      timestamp: new Date(cachedData.lastUpdated).toLocaleString('ru-RU')\n    });\n\n    return NextResponse.json({\n      success: true,\n      message: 'Кэш товаров принудительно обновлен из Google Sheets',\n      data: cachedData.products,\n      total: cachedData.products.length,\n      lastUpdated: new Date(cachedData.lastUpdated).toISOString(),\n      forceUpdate: true\n    });\n\n  } catch (error: any) {\n    console.error('❌ Ошибка принудительного обновления кэша:', error);\n    \n    return NextResponse.json({\n      success: false,\n      error: error.message || 'Ошибка принудительного обновления',\n      data: cachedData?.products || [],\n      total: cachedData?.products.length || 0\n    }, { status: 500 });\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/furniture-products/route.ts\n===================================================================\n--- /home/user/project/app/api/furniture-products/route.ts\n+++ /home/user/project/app/api/furniture-products/route.ts\n@@ -237,5 +237,43 @@\n   products.sort((a, b) => a.name.localeCompare(b.name, 'ru'));\n   \n   console.log(`✅ Успешно обработано ${products.length} товаров`);\n   return products;\n+}\n+\n+// POST метод для принудительного обновления кэша\n+export async function POST(request: NextRequest) {\n+  try {\n+    console.log('🔄 POST /api/furniture-products - Принудительное обновление кэша');\n+    \n+    // Полностью очищаем кэш\n+    cachedData = null;\n+    \n+    // Загружаем свежие данные\n+    const freshData = await fetchFurnitureData();\n+    cachedData = freshData;\n+    \n+    console.log('✅ Принудительное обновление кэша завершено:', {\n+      productsCount: cachedData.products.length,\n+      timestamp: new Date(cachedData.lastUpdated).toLocaleString('ru-RU')\n+    });\n+\n+    return NextResponse.json({\n+      success: true,\n+      message: 'Кэш товаров принудительно обновлен из Google Sheets',\n+      data: cachedData.products,\n+      total: cachedData.products.length,\n+      lastUpdated: new Date(cachedData.lastUpdated).toISOString(),\n+      forceUpdate: true\n+    });\n+\n+  } catch (error: any) {\n+    console.error('❌ Ошибка принудительного обновления кэша:', error);\n+    \n+    return NextResponse.json({\n+      success: false,\n+      error: error.message || 'Ошибка принудительного обновления',\n+      data: cachedData?.products || [],\n+      total: cachedData?.products.length || 0\n+    }, { status: 500 });\n+  }\n }\n\\ No newline at end of file\n"
+    },
+    "title": "app/api/furniture-products/route.ts",
+    "time": {
+      "start": 1759228667856,
+      "end": 1759228667865
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99a340da6001zwP1sOEM3Kj6Jk",
+  "messageID": "msg_99a3152c3001ate4jfBsKpjbGd",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_018D98yPWMiaDAa5qgs6KMWQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && curl -s \"https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/export?format=csv&gid=0\" | head -20",
+      "description": "Test Google Sheets CSV export URL"
+    },
+    "output": "<HTML>\n<HEAD>\n<TITLE>Temporary Redirect</TITLE>\n</HEAD>\n<BODY BGCOLOR=\"#FFFFFF\" TEXT=\"#000000\">\n<!-- GSE Default Error -->\n<H1>Temporary Redirect</H1>\nThe document has moved <A HREF=\"https://doc-04-74-sheets.googleusercontent.com/export/54bogvaave6cua4cdnls17ksc4/k3s3qj8kg4qjh4g8n5gjht7nhg/1759228730000/104542268856984517191/*/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y?format=csv&amp;gid=0\">here</A>.\n</BODY>\n</HTML>\n",
+    "metadata": {
+      "output": "<HTML>\n<HEAD>\n<TITLE>Temporary Redirect</TITLE>\n</HEAD>\n<BODY BGCOLOR=\"#FFFFFF\" TEXT=\"#000000\">\n<!-- GSE Default Error -->\n<H1>Temporary Redirect</H1>\nThe document has moved <A HREF=\"https://doc-04-74-sheets.googleusercontent.com/export/54bogvaave6cua4cdnls17ksc4/k3s3qj8kg4qjh4g8n5gjht7nhg/1759228730000/104542268856984517191/*/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y?format=csv&amp;gid=0\">here</A>.\n</BODY>\n</HTML>\n",
+      "exit": 0,
+      "description": "Test Google Sheets CSV export URL"
+    },
+    "title": "cd /home/user/project && curl -s \"https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/export?format=csv&gid=0\" | head -20",
+    "time": {
+      "start": 1759228729883,
+      "end": 1759228730142
+    }
+  }
+}

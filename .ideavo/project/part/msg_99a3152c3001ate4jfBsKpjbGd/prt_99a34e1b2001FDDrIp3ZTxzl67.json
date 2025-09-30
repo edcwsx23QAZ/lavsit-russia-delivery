@@ -1,0 +1,26 @@
+{
+  "id": "prt_99a34e1b2001FDDrIp3ZTxzl67",
+  "messageID": "msg_99a3152c3001ate4jfBsKpjbGd",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01B4wSJb2tM53uhpcyrJ7wd8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "ps aux | grep \"next\"",
+      "description": "Check if Next.js development server is running"
+    },
+    "output": "user       64395  0.0  0.0   2580   904 ?        S    10:38   0:00 sh -c next dev\nuser       64396  1.2  1.6 11526920 67236 ?      Sl   10:38   0:00 node /home/user/project/node_modules/.bin/next dev\nuser       64407 99.1 24.8 55920000 1001988 ?    Rl   10:38   0:41 next-server (v14.2.31)\nuser       64453  0.0  0.0   2580   900 ?        S    10:39   0:00 /bin/sh -c ps aux | grep \"next\"\nuser       64455  0.0  0.0   3328  1568 ?        S    10:39   0:00 grep next\n",
+    "metadata": {
+      "output": "user       64395  0.0  0.0   2580   904 ?        S    10:38   0:00 sh -c next dev\nuser       64396  1.2  1.6 11526920 67236 ?      Sl   10:38   0:00 node /home/user/project/node_modules/.bin/next dev\nuser       64407 99.1 24.8 55920000 1001988 ?    Rl   10:38   0:41 next-server (v14.2.31)\nuser       64453  0.0  0.0   2580   900 ?        S    10:39   0:00 /bin/sh -c ps aux | grep \"next\"\nuser       64455  0.0  0.0   3328  1568 ?        S    10:39   0:00 grep next\n",
+      "exit": 0,
+      "description": "Check if Next.js development server is running"
+    },
+    "title": "ps aux | grep \"next\"",
+    "time": {
+      "start": 1759228781542,
+      "end": 1759228781582
+    }
+  }
+}

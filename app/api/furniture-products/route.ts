@@ -239,3 +239,41 @@ async function parseProductsFromRows(rows: string[][]): Promise<FurnitureProduct
   console.log(`✅ Успешно обработано ${products.length} товаров`);
   return products;
 }
+
+// POST метод для принудительного обновления кэша
+export async function POST(request: NextRequest) {
+  try {
+    console.log('🔄 POST /api/furniture-products - Принудительное обновление кэша');
+    
+    // Полностью очищаем кэш
+    cachedData = null;
+    
+    // Загружаем свежие данные
+    const freshData = await fetchFurnitureData();
+    cachedData = freshData;
+    
+    console.log('✅ Принудительное обновление кэша завершено:', {
+      productsCount: cachedData.products.length,
+      timestamp: new Date(cachedData.lastUpdated).toLocaleString('ru-RU')
+    });
+
+    return NextResponse.json({
+      success: true,
+      message: 'Кэш товаров принудительно обновлен из Google Sheets',
+      data: cachedData.products,
+      total: cachedData.products.length,
+      lastUpdated: new Date(cachedData.lastUpdated).toISOString(),
+      forceUpdate: true
+    });
+
+  } catch (error: any) {
+    console.error('❌ Ошибка принудительного обновления кэша:', error);
+    
+    return NextResponse.json({
+      success: false,
+      error: error.message || 'Ошибка принудительного обновления',
+      data: cachedData?.products || [],
+      total: cachedData?.products.length || 0
+    }, { status: 500 });
+  }
+}

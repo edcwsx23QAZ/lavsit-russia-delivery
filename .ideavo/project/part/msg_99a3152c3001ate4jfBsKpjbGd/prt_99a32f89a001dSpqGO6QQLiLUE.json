@@ -1,0 +1,21 @@
+{
+  "id": "prt_99a32f89a001dSpqGO6QQLiLUE",
+  "messageID": "msg_99a3152c3001ate4jfBsKpjbGd",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Qav5kYUrdkzK2ZXvVdSLkr",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/api/furniture-products/route.ts",
+      "oldString": "// Кэш для данных (обновляется каждые 30 минут)\nlet cachedData: {\n  products: FurnitureProduct[];\n  lastUpdated: number;\n} | null = null;\n\nconst CACHE_DURATION = 30 * 60 * 1000; // 30 минут",
+      "newString": "// Кэш для данных (обновляется каждые 30 минут)\nlet cachedData: {\n  products: FurnitureProduct[];\n  lastUpdated: number;\n} | null = null;\n\nconst CACHE_DURATION = 30 * 60 * 1000; // 30 минут"
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1759228658597,
+      "end": 1759228658597
+    }
+  }
+}

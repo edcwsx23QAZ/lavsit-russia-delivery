@@ -1,0 +1,26 @@
+{
+  "id": "prt_99a35218c001VK3G1ruXZgEI2V",
+  "messageID": "msg_99a3152c3001ate4jfBsKpjbGd",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_0163Da86ZxQxw97sAGDUpiZX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "pkill -f \"next dev\" && sleep 2",
+      "description": "Stop any running Next.js development servers"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Stop any running Next.js development servers"
+    },
+    "title": "pkill -f \"next dev\" && sleep 2",
+    "time": {
+      "start": 1759228798029,
+      "end": 1759228798063
+    }
+  }
+}
