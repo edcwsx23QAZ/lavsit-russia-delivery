@@ -1,0 +1,18 @@
+{
+  "id": "prt_99a5c9339001zAtKcyFmD2pYVD",
+  "messageID": "msg_99a5c7674001hMq3QApu4aWuRR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Bf61WzTCJkiFzF7a1w9Mhs",
+  "state": {
+    "status": "running",
+    "input": {
+      "command": "find /home/user/project -name \"*.md\" -type f | sort",
+      "description": "Найти все markdown файлы в проекте"
+    },
+    "time": {
+      "start": 1759231383123
+    }
+  }
+}
