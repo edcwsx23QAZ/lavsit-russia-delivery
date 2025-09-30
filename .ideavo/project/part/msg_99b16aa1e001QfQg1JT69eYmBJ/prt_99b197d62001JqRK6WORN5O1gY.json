@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b197d62001JqRK6WORN5O1gY",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01TkgJYquy33UT7x6nizkfJK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz/route.ts",
+      "oldString": "export async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();",
+      "newString": "export async function POST(request: NextRequest) {\n  const endTiming = PerformanceMonitor.startMeasurement('vozovoz_api_total');\n  \n  try {\n    const body = await request.json();\n    \n    // Input validation for Vozovoz API\n    if (body.method && typeof body.method !== 'string') {\n      endTiming();\n      return NextResponse.json({ \n        error: 'Invalid method parameter',\n        details: 'method must be a string'\n      }, { status: 400 });\n    }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/vozovoz/route.ts\n===================================================================\n--- /home/user/project/app/api/vozovoz/route.ts\n+++ /home/user/project/app/api/vozovoz/route.ts\n@@ -4,11 +4,22 @@\n // Токен Возовоз API\n const VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n \n export async function POST(request: NextRequest) {\n+  const endTiming = PerformanceMonitor.startMeasurement('vozovoz_api_total');\n+  \n   try {\n     const body = await request.json();\n     \n+    // Input validation for Vozovoz API\n+    if (body.method && typeof body.method !== 'string') {\n+      endTiming();\n+      return NextResponse.json({ \n+        error: 'Invalid method parameter',\n+        details: 'method must be a string'\n+      }, { status: 400 });\n+    }\n+    \n     // Строим URL для API Vozovoz с токеном\n     const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;\n \n     console.log('🚚 Vozovoz API запрос:', JSON.stringify(body, null, 2));\n"
+    },
+    "title": "app/api/vozovoz/route.ts",
+    "time": {
+      "start": 1759243765836,
+      "end": 1759243765839
+    }
+  }
+}

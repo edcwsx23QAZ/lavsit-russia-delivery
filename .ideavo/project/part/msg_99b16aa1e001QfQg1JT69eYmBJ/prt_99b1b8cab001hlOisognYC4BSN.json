@@ -1,0 +1,27 @@
+{
+  "id": "prt_99b1b8cab001hlOisognYC4BSN",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_019mDmU7AuYkKzzECMcaHvqY",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "timeout": 120000,
+      "description": "Build optimized application"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./components/diagnostic/DiagnosticHeader.tsx\nError: \n  \u001b[31mx\u001b[0m Unexpected eof\n    ,-[\u001b[36;1;4m/home/user/project/components/diagnostic/DiagnosticHeader.tsx\u001b[0m:89:1]\n \u001b[2m89\u001b[0m |       </div>\n \u001b[2m90\u001b[0m |     </div>\n \u001b[2m91\u001b[0m |   );\n \u001b[2m92\u001b[0m | }\n    `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./components/diagnostic/DiagnosticHeader.tsx\n./app/diagnostic/page.tsx\n\n\n> Build failed because of webpack errors\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./components/diagnostic/DiagnosticHeader.tsx\nError: \n  \u001b[31mx\u001b[0m Unexpected eof\n    ,-[\u001b[36;1;4m/home/user/project/components/diagnostic/DiagnosticHeader.tsx\u001b[0m:89:1]\n \u001b[2m89\u001b[0m |       </div>\n \u001b[2m90\u001b[0m |     </div>\n \u001b[2m91\u001b[0m |   );\n \u001b[2m92\u001b[0m | }\n    `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./components/diagnostic/DiagnosticHeader.tsx\n./app/diagnostic/page.tsx\n\n\n> Build failed because of webpack errors\n",
+      "exit": 1,
+      "description": "Build optimized application"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759243898779,
+      "end": 1759243906925
+    }
+  }
+}

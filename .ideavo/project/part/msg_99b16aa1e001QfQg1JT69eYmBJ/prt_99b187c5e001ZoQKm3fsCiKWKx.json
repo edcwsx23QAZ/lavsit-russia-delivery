@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b187c5e001ZoQKm3fsCiKWKx",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01B76EGUs3Qie7VhytAfd8cT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/api-utils.ts",
+      "content": "export interface ApiRequestConfig {\n  timeout?: number;\n  retries?: number;\n  retryDelay?: number;\n}\n\nexport class ApiTimeoutError extends Error {\n  constructor(message: string, public readonly timeoutMs: number) {\n    super(message);\n    this.name = 'ApiTimeoutError';\n  }\n}\n\nexport class ApiValidationError extends Error {\n  constructor(message: string, public readonly field?: string) {\n    super(message);\n    this.name = 'ApiValidationError';\n  }\n}\n\nexport async function apiRequestWithTimeout(\n  url: string,\n  options: RequestInit = {},\n  config: ApiRequestConfig = {}\n): Promise<Response> {\n  const { timeout = 10000, retries = 1, retryDelay = 1000 } = config;\n  \n  const controller = new AbortController();\n  const timeoutId = setTimeout(() => controller.abort(), timeout);\n  \n  const requestOptions: RequestInit = {\n    ...options,\n    signal: controller.signal,\n  };\n\n  for (let attempt = 0; attempt <= retries; attempt++) {\n    try {\n      const response = await fetch(url, requestOptions);\n      clearTimeout(timeoutId);\n      return response;\n    } catch (error) {\n      clearTimeout(timeoutId);\n      \n      if (error instanceof Error && error.name === 'AbortError') {\n        throw new ApiTimeoutError(`Request timeout after ${timeout}ms`, timeout);\n      }\n      \n      if (attempt === retries) {\n        throw error;\n      }\n      \n      // Wait before retry\n      await new Promise(resolve => setTimeout(resolve, retryDelay));\n    }\n  }\n  \n  throw new Error('Max retries exceeded');\n}\n\nexport function validateApiInput(data: any, rules: Record<string, (value: any) => string | null>): void {\n  for (const [field, validator] of Object.entries(rules)) {\n    const error = validator(data[field]);\n    if (error) {\n      throw new ApiValidationError(error, field);\n    }\n  }\n}\n\n// Common validation rules\nexport const validationRules = {\n  required: (field: string) => (value: any) => \n    value == null || value === '' ? `${field} is required` : null,\n  \n  minLength: (field: string, min: number) => (value: string) =>\n    value && value.length < min ? `${field} must be at least ${min} characters` : null,\n  \n  maxLength: (field: string, max: number) => (value: string) =>\n    value && value.length > max ? `${field} must be less than ${max} characters` : null,\n  \n  number: (field: string) => (value: any) =>\n    value != null && isNaN(Number(value)) ? `${field} must be a number` : null,\n  \n  positive: (field: string) => (value: number) =>\n    value != null && value <= 0 ? `${field} must be positive` : null,\n  \n  email: (field: string) => (value: string) =>\n    value && !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value) ? `${field} must be a valid email` : null,\n};\n\n// Performance monitoring utilities\nexport class PerformanceMonitor {\n  private static measurements: Map<string, number[]> = new Map();\n  \n  static startMeasurement(key: string): () => number {\n    const start = performance.now();\n    return () => {\n      const duration = performance.now() - start;\n      this.recordMeasurement(key, duration);\n      return duration;\n    };\n  }\n  \n  static recordMeasurement(key: string, duration: number): void {\n    if (!this.measurements.has(key)) {\n      this.measurements.set(key, []);\n    }\n    const measurements = this.measurements.get(key)!;\n    measurements.push(duration);\n    \n    // Keep only last 100 measurements to prevent memory leaks\n    if (measurements.length > 100) {\n      measurements.shift();\n    }\n  }\n  \n  static getAverageTime(key: string): number {\n    const measurements = this.measurements.get(key) || [];\n    if (measurements.length === 0) return 0;\n    return measurements.reduce((sum, time) => sum + time, 0) / measurements.length;\n  }\n  \n  static getMetrics(): Record<string, { average: number; count: number; latest: number }> {\n    const metrics: Record<string, { average: number; count: number; latest: number }> = {};\n    \n    this.measurements.forEach((measurements, key) => {\n      if (measurements.length > 0) {\n        const average = measurements.reduce((sum, time) => sum + time, 0) / measurements.length;\n        metrics[key] = {\n          average: Math.round(average * 100) / 100,\n          count: measurements.length,\n          latest: Math.round(measurements[measurements.length - 1] * 100) / 100,\n        };\n      }\n    });\n    \n    return metrics;\n  }\n  \n  static clearMetrics(): void {\n    this.measurements.clear();\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/lib/api-utils.ts",
+      "exists": false
+    },
+    "title": "lib/api-utils.ts",
+    "time": {
+      "start": 1759243710718,
+      "end": 1759243710720
+    }
+  }
+}

@@ -1,11 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils';
 
 // Токен Возовоз API
 const VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';
 
 export async function POST(request: NextRequest) {
+  const endTiming = PerformanceMonitor.startMeasurement('vozovoz_api_total');
+  
   try {
     const body = await request.json();
+    
+    // Input validation for Vozovoz API
+    if (body.method && typeof body.method !== 'string') {
+      endTiming();
+      return NextResponse.json({ 
+        error: 'Invalid method parameter',
+        details: 'method must be a string'
+      }, { status: 400 });
+    }
     
     // Строим URL для API Vozovoz с токеном
     const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;
@@ -13,7 +25,7 @@ export async function POST(request: NextRequest) {
     console.log('🚚 Vozovoz API запрос:', JSON.stringify(body, null, 2));
     console.log('🚚 Vozovoz API URL:', apiUrl);
 
-    const response = await fetch(apiUrl, {
+    const response = await apiRequestWithTimeout(apiUrl, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -21,7 +33,7 @@ export async function POST(request: NextRequest) {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
       },
       body: JSON.stringify(body)
-    });
+    }, { timeout: 12000, retries: 1 });
 
     console.log(`🚚 Vozovoz API статус: ${response.status} ${response.statusText}`);
 

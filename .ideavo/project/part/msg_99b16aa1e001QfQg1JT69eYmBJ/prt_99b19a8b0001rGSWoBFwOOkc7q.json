@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b19a8b0001rGSWoBFwOOkc7q",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_015eXonLSXpjevwm7sgVhrME",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/LazyLoadedComponents.tsx",
+      "content": "'use client';\n\nimport React, { lazy, Suspense } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Loader2 } from 'lucide-react';\n\n// Lazy load heavy components\nconst FullTestingResults = lazy(() => import('./FullTestingResults'));\nconst VehicleManagement = lazy(() => import('./VehicleManagement'));\n\n// Loading fallback component\nconst ComponentLoader = React.memo(function ComponentLoader({ title }: { title: string }) {\n  return (\n    <Card className=\"border-gray-700 bg-gray-900 animate-pulse\">\n      <CardHeader>\n        <CardTitle className=\"flex items-center gap-2\">\n          <Loader2 className=\"h-5 w-5 animate-spin text-gray-400\" />\n          <span className=\"text-white\">Загрузка {title}...</span>\n        </CardTitle>\n      </CardHeader>\n      <CardContent>\n        <div className=\"space-y-3\">\n          <div className=\"h-4 bg-gray-700 rounded animate-pulse\"></div>\n          <div className=\"h-4 bg-gray-700 rounded animate-pulse w-3/4\"></div>\n          <div className=\"h-4 bg-gray-700 rounded animate-pulse w-1/2\"></div>\n        </div>\n      </CardContent>\n    </Card>\n  );\n});\n\n// Wrapper components with suspense\nexport const LazyFullTestingResults = React.memo(function LazyFullTestingResults(props: any) {\n  return (\n    <Suspense fallback={<ComponentLoader title=\"результатов тестирования\" />}>\n      <FullTestingResults {...props} />\n    </Suspense>\n  );\n});\n\nexport const LazyVehicleManagement = React.memo(function LazyVehicleManagement(props: any) {\n  return (\n    <Suspense fallback={<ComponentLoader title=\"управления автомобилями\" />}>\n      <VehicleManagement {...props} />\n    </Suspense>\n  );\n});"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/components/diagnostic/LazyLoadedComponents.tsx",
+      "exists": false
+    },
+    "title": "components/diagnostic/LazyLoadedComponents.tsx",
+    "time": {
+      "start": 1759243780730,
+      "end": 1759243780731
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b1bb9ea001HQuH1A1zHGjYeO",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QiRRFkAK7FKtYom4K8V9pS",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/DiagnosticHeader.tsx",
+      "offset": 85,
+      "limit": 10
+    },
+    "output": "<file>\n00086|         <Button onClick={() => window.close()} variant=\"outline\" className=\"text-white bg-gray-700 border-gray-500 hover:bg-gray-600\">\n00087|           Закрыть\n00088|         </Button>\n00089|       </div>\n00090|     </div>\n00091|   );\n00092| }\n</file>",
+    "metadata": {
+      "preview": "        <Button onClick={() => window.close()} variant=\"outline\" className=\"text-white bg-gray-700 border-gray-500 hover:bg-gray-600\">\n          Закрыть\n        </Button>\n      </div>\n    </div>\n  );\n}"
+    },
+    "title": "components/diagnostic/DiagnosticHeader.tsx",
+    "time": {
+      "start": 1759243910297,
+      "end": 1759243910299
+    }
+  }
+}

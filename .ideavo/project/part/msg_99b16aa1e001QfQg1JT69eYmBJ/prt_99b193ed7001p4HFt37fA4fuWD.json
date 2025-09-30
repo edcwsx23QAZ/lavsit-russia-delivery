@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b193ed7001p4HFt37fA4fuWD",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01RbTetsxSZyduNx1Xztz8eW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "oldString": "    } catch (error) {\n    console.error('❌ Критическая ошибка прокси ПЭК API:', error);\n    \n    if (error instanceof Error) {\n      console.error('Stack trace:', error.stack);\n    }\n    \n    return NextResponse.json({ \n      error: 'Критическая ошибка сервера',\n      details: error instanceof Error ? error.message : 'Неизвестная ошибка',\n      type: error instanceof Error ? error.name : 'Unknown',\n      stack: error instanceof Error ? error.stack : undefined\n    }, { status: 500 });\n  }",
+      "newString": "    } catch (error) {\n    endTiming();\n    console.error('❌ Критическая ошибка прокси ПЭК API:', error);\n    \n    if (error instanceof Error) {\n      console.error('Stack trace:', error.stack);\n    }\n    \n    return NextResponse.json({ \n      error: 'Критическая ошибка сервера',\n      details: error instanceof Error ? error.message : 'Неизвестная ошибка',\n      type: error instanceof Error ? error.name : 'Unknown',\n      stack: error instanceof Error ? error.stack : undefined\n    }, { status: 500 });\n  }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -283,9 +283,10 @@\n       url: fullUrl\n     }, { status: 503 });\n   }\n   \n-} catch (error) {\n+  } catch (error) {\n+  endTiming();\n   console.error('❌ Критическая ошибка прокси ПЭК API:', error);\n   \n   if (error instanceof Error) {\n     console.error('Stack trace:', error.stack);\n"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1759243750560,
+      "end": 1759243750567
+    }
+  }
+}

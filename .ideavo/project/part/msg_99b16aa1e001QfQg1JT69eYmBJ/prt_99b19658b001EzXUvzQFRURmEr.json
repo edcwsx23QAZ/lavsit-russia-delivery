@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b19658b001EzXUvzQFRURmEr",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01V4yLnGbmiUwq4E5SF7fQiJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz/route.ts",
+      "oldString": "import { NextRequest, NextResponse } from 'next/server';",
+      "newString": "import { NextRequest, NextResponse } from 'next/server';\nimport { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/vozovoz/route.ts\n===================================================================\n--- /home/user/project/app/api/vozovoz/route.ts\n+++ /home/user/project/app/api/vozovoz/route.ts\n@@ -1,5 +1,6 @@\n import { NextRequest, NextResponse } from 'next/server';\n+import { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils';\n \n // Токен Возовоз API\n const VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n \n"
+    },
+    "title": "app/api/vozovoz/route.ts",
+    "time": {
+      "start": 1759243758692,
+      "end": 1759243758698
+    }
+  }
+}

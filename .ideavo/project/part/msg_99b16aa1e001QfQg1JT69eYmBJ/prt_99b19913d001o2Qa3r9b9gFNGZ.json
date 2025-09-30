@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b19913d001o2Qa3r9b9gFNGZ",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01AchGESwK28nmgZUAnYPhTj",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz/route.ts",
+      "oldString": "    const response = await fetch(apiUrl, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'Accept': 'application/json',\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n      },\n      body: JSON.stringify(body)\n    });",
+      "newString": "    const response = await apiRequestWithTimeout(apiUrl, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'Accept': 'application/json',\n        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n      },\n      body: JSON.stringify(body)\n    }, { timeout: 12000, retries: 1 });"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/vozovoz/route.ts\n===================================================================\n--- /home/user/project/app/api/vozovoz/route.ts\n+++ /home/user/project/app/api/vozovoz/route.ts\n@@ -24,17 +24,17 @@\n \n console.log('🚚 Vozovoz API запрос:', JSON.stringify(body, null, 2));\n console.log('🚚 Vozovoz API URL:', apiUrl);\n \n-const response = await fetch(apiUrl, {\n+const response = await apiRequestWithTimeout(apiUrl, {\n   method: 'POST',\n   headers: {\n     'Content-Type': 'application/json',\n     'Accept': 'application/json',\n     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n   },\n   body: JSON.stringify(body)\n-});\n+}, { timeout: 12000, retries: 1 });\n \n console.log(`🚚 Vozovoz API статус: ${response.status} ${response.statusText}`);\n \n if (!response.ok) {\n"
+    },
+    "title": "app/api/vozovoz/route.ts",
+    "time": {
+      "start": 1759243770867,
+      "end": 1759243770871
+    }
+  }
+}

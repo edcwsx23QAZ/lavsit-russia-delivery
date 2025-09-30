@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b181a83001TZhxCZls3C23qQ",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QwqUjq3dE8LYKgba72zvR4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/ApiTestingSection.tsx",
+      "offset": 125,
+      "limit": 10
+    },
+    "output": "<file>\n00126|       {renderApiCard('dellin', 'Деловые Линии', 'text-green-400', testStates.isTestingDellin, onTestDellin, 'dellin')}\n00127|       {renderApiCard('railcontinent', 'Rail Continent', 'text-purple-400', testStates.isTestingRailContinent, onTestRailContinent, 'railcontinent')}\n00128|       {renderApiCard('vozovoz', 'Возовоз', 'text-orange-400', testStates.isTestingVozovoz, onTestVozovoz, 'vozovoz')}\n00129|       {renderApiCard('nordwheel', 'Nord Wheel', 'text-cyan-400', testStates.isTestingNordWheel, onTestNordWheel, 'nordwheel')}\n00130|     </div>\n00131|   );\n00132| }\n</file>",
+    "metadata": {
+      "preview": "      {renderApiCard('dellin', 'Деловые Линии', 'text-green-400', testStates.isTestingDellin, onTestDellin, 'dellin')}\n      {renderApiCard('railcontinent', 'Rail Continent', 'text-purple-400', testStates.isTestingRailContinent, onTestRailContinent, 'railcontinent')}\n      {renderApiCard('vozovoz', 'Возовоз', 'text-orange-400', testStates.isTestingVozovoz, onTestVozovoz, 'vozovoz')}\n      {renderApiCard('nordwheel', 'Nord Wheel', 'text-cyan-400', testStates.isTestingNordWheel, onTestNordWheel, 'nordwheel')}\n    </div>\n  );\n}"
+    },
+    "title": "components/diagnostic/ApiTestingSection.tsx",
+    "time": {
+      "start": 1759243672766,
+      "end": 1759243672770
+    }
+  }
+}

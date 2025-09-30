@@ -1,0 +1,33 @@
+{
+  "id": "prt_99b17cc8b001dME5jB1PLoxGdh",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01BicmcoMq6hYkgSv1hfDLUT",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/DiagnosticHeader.tsx",
+      "edits": [
+        {
+          "oldString": "'use client';\n\nimport { Button } from '@/components/ui/button';\nimport { Building2, Activity, TestTube, ExternalLink, Download, RefreshCw } from 'lucide-react';",
+          "newString": "'use client';\n\nimport React from 'react';\nimport { Button } from '@/components/ui/button';\nimport { Building2, Activity, TestTube, ExternalLink, Download, RefreshCw } from 'lucide-react';"
+        },
+        {
+          "oldString": "export default function DiagnosticHeader({",
+          "newString": "const DiagnosticHeader = React.memo(function DiagnosticHeader({"
+        },
+        {
+          "oldString": "  );\n}",
+          "newString": "  );\n});\n\nexport default DiagnosticHeader;"
+        }
+      ]
+    },
+    "error": "Error: oldString not found in content",
+    "time": {
+      "start": 1759243654296,
+      "end": 1759243654304
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b19122b001tdfxRe7ixgZn2G",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_013Zmw8H58VYFE1VonYbJ3Gj",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "oldString": "    try {\n      const response = await fetch(fullUrl, {\n        method: 'POST',\n        headers: {\n          // Заголовки согласно официальной документации\n          'Content-Type': 'application/json;charset=utf-8',\n          'Accept': 'application/json',\n          // 'Accept-Encoding': 'gzip', // Убираем для упрощения отладки\n          'Authorization': `Basic ${credentials}`,\n        },\n        body: JSON.stringify(body)\n      });",
+      "newString": "    try {\n      const response = await apiRequestWithTimeout(fullUrl, {\n        method: 'POST',\n        headers: {\n          // Заголовки согласно официальной документации\n          'Content-Type': 'application/json;charset=utf-8',\n          'Accept': 'application/json',\n          // 'Accept-Encoding': 'gzip', // Убираем для упрощения отладки\n          'Authorization': `Basic ${credentials}`,\n        },\n        body: JSON.stringify(body)\n      }, { timeout: 15000, retries: 2 });"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -189,9 +189,9 @@\n   console.warn('Full body string:', bodyStr);\n }\n \n try {\n-  const response = await fetch(fullUrl, {\n+  const response = await apiRequestWithTimeout(fullUrl, {\n     method: 'POST',\n     headers: {\n       // Заголовки согласно официальной документации\n       'Content-Type': 'application/json;charset=utf-8',\n@@ -199,9 +199,9 @@\n       // 'Accept-Encoding': 'gzip', // Убираем для упрощения отладки\n       'Authorization': `Basic ${credentials}`,\n     },\n     body: JSON.stringify(body)\n-  });\n+  }, { timeout: 15000, retries: 2 });\n   \n   console.log('📡 Ответ от ПЭК API:');\n   console.log('Status:', response.status, response.statusText);\n   console.log('Headers:', Object.fromEntries(response.headers.entries()));\n"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1759243739192,
+      "end": 1759243739195
+    }
+  }
+}

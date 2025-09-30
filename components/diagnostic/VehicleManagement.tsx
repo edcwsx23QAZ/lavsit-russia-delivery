@@ -31,7 +31,7 @@ interface VehicleManagementProps {
   onSetNewVehicle: (vehicle: { name: string; length: string; width: string; height: string }) => void;
 }
 
-export default function VehicleManagement({
+const VehicleManagement = React.memo(function VehicleManagement({
   vehicleTypes,
   newVehicle,
   hasUnsavedChanges,
@@ -223,4 +223,6 @@ export default function VehicleManagement({
       </CardContent>
     </Card>
   );
-}
+});
+
+export default VehicleManagement;

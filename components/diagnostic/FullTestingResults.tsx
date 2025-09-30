@@ -34,7 +34,7 @@ interface FullTestingResultsProps {
   isFullTesting: boolean;
 }
 
-export default function FullTestingResults({
+const FullTestingResults = React.memo(function FullTestingResults({
   fullTestResults,
   testProgress,
   isFullTesting
@@ -195,4 +195,6 @@ export default function FullTestingResults({
       </CardContent>
     </Card>
   );
-}
+});
+
+export default FullTestingResults;

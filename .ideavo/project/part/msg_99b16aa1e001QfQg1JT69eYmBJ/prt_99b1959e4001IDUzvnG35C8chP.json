@@ -1,0 +1,24 @@
+{
+  "id": "prt_99b1959e4001IDUzvnG35C8chP",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_018JNsE3b9cEGQ6YcYqGvhPn",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz/route.ts",
+      "limit": 30
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server';\n00002| \n00003| // Токен Возовоз API\n00004| const VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n00005| \n00006| export async function POST(request: NextRequest) {\n00007|   try {\n00008|     const body = await request.json();\n00009|     \n00010|     // Строим URL для API Vozovoz с токеном\n00011|     const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;\n00012| \n00013|     console.log('🚚 Vozovoz API запрос:', JSON.stringify(body, null, 2));\n00014|     console.log('🚚 Vozovoz API URL:', apiUrl);\n00015| \n00016|     const response = await fetch(apiUrl, {\n00017|       method: 'POST',\n00018|       headers: {\n00019|         'Content-Type': 'application/json',\n00020|         'Accept': 'application/json',\n00021|         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n00022|       },\n00023|       body: JSON.stringify(body)\n00024|     });\n00025| \n00026|     console.log(`🚚 Vozovoz API статус: ${response.status} ${response.statusText}`);\n00027| \n00028|     if (!response.ok) {\n00029|       console.error('🚚 Vozovoz API ошибка:', response.status, response.statusText);\n00030|       \n\n(File has more lines. Use 'offset' parameter to read beyond line 30)\n</file>",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server';\n\n// Токен Возовоз API\nconst VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    \n    // Строим URL для API Vozovoz с токеном\n    const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;\n\n    console.log('🚚 Vozovoz API запрос:', JSON.stringify(body, null, 2));\n    console.log('🚚 Vozovoz API URL:', apiUrl);\n\n    const response = await fetch(apiUrl, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'Accept': 'application/json',"
+    },
+    "title": "app/api/vozovoz/route.ts",
+    "time": {
+      "start": 1759243754433,
+      "end": 1759243754434
+    }
+  }
+}

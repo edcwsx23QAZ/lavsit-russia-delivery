@@ -1,5 +1,6 @@
 'use client';
 
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Building2, Activity, TestTube, ExternalLink, Download, RefreshCw } from 'lucide-react';
 
@@ -12,7 +13,7 @@ interface DiagnosticHeaderProps {
   updateStatus: 'idle' | 'updating' | 'success' | 'error';
 }
 
-export default function DiagnosticHeader({
+const DiagnosticHeader = React.memo(function DiagnosticHeader({
   onTestAllAPIs,
   onRunFullTesting,
   onUpdateProductData,
@@ -88,4 +89,6 @@ export default function DiagnosticHeader({
       </div>
     </div>
   );
-}
+});
+
+export default DiagnosticHeader;

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b1835e2001ohBUPyll78kfQ1",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_016qyjm4XyC2NnRd3kaQpvpb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/FullTestingResults.tsx",
+      "oldString": "export default function FullTestingResults({",
+      "newString": "const FullTestingResults = React.memo(function FullTestingResults({"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/diagnostic/FullTestingResults.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/FullTestingResults.tsx\n+++ /home/user/project/components/diagnostic/FullTestingResults.tsx\n@@ -33,9 +33,9 @@\n   testProgress: number;\n   isFullTesting: boolean;\n }\n \n-export default function FullTestingResults({\n+const FullTestingResults = React.memo(function FullTestingResults({\n   fullTestResults,\n   testProgress,\n   isFullTesting\n }: FullTestingResultsProps) {\n"
+    },
+    "title": "components/diagnostic/FullTestingResults.tsx",
+    "time": {
+      "start": 1759243680039,
+      "end": 1759243680045
+    }
+  }
+}

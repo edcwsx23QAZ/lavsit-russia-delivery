@@ -1,0 +1,24 @@
+{
+  "id": "prt_99b16cfbd001vLHc9PDx553ClJ",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0142ES5sXpz3SVwrYPvypg1x",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "limit": 50
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import React, { useState, useEffect } from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Alert, AlertDescription } from '@/components/ui/alert';\n00007| import { Badge } from '@/components/ui/badge';\n00008| import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2, Save, ExternalLink, RefreshCw, Download } from 'lucide-react';\n00009| import { Input } from '@/components/ui/input';\n00010| import { Label } from '@/components/ui/label';\n00011| \n00012| export default function DiagnosticPage() {\n00013|   const [isTestingPEK, setIsTestingPEK] = useState(false);\n00014|   const [isTestingDellin, setIsTestingDellin] = useState(false);\n00015|   const [isTestingRailContinent, setIsTestingRailContinent] = useState(false);\n00016|   const [isTestingVozovoz, setIsTestingVozovoz] = useState(false);\n00017|   const [isTestingNordWheel, setIsTestingNordWheel] = useState(false);\n00018|   const [isFullTesting, setIsFullTesting] = useState(false);\n00019|   \n00020|   const [diagnosticResults, setDiagnosticResults] = useState<{\n00021|     [key: string]: {\n00022|       status: 'success' | 'warning' | 'error' | 'pending';\n00023|       message: string;\n00024|       details?: any;\n00025|       response?: any;\n00026|       requestData?: any;\n00027|       timing?: number;\n00028|     }\n00029|   }>({});\n00030| \n00031|   const [fullTestResults, setFullTestResults] = useState<{\n00032|     summary: {\n00033|       totalTests: number;\n00034|       successful: number;\n00035|       failed: number;\n00036|       skipped: number;\n00037|       errors: string[];\n00038|       averageResponseTime: number;\n00039|       successRate: number;\n00040|     };\n00041|     details: any[];\n00042|     progressInfo: {\n00043|       currentTK: string;\n00044|       completedTests: number;\n00045|       totalPlannedTests: number;\n00046|       stage: string;\n00047|     } | null;\n00048|   } | null>(null);\n00049| \n00050|   const [testProgress, setTestProgress] = useState<{\n\n(File has more lines. Use 'offset' parameter to read beyond line 50)\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport React, { useState, useEffect } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Alert, AlertDescription } from '@/components/ui/alert';\nimport { Badge } from '@/components/ui/badge';\nimport { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2, Save, ExternalLink, RefreshCw, Download } from 'lucide-react';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\n\nexport default function DiagnosticPage() {\n  const [isTestingPEK, setIsTestingPEK] = useState(false);\n  const [isTestingDellin, setIsTestingDellin] = useState(false);\n  const [isTestingRailContinent, setIsTestingRailContinent] = useState(false);\n  const [isTestingVozovoz, setIsTestingVozovoz] = useState(false);\n  const [isTestingNordWheel, setIsTestingNordWheel] = useState(false);\n  const [isFullTesting, setIsFullTesting] = useState(false);\n  \n  const [diagnosticResults, setDiagnosticResults] = useState<{"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759243588313,
+      "end": 1759243588317
+    }
+  }
+}

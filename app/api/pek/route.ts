@@ -1,11 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils';
 
 export async function POST(request: NextRequest) {
+  const endTiming = PerformanceMonitor.startMeasurement('pek_api_total');
+  
   try {
     console.log('🔧 ПЭК Прокси: Получен запрос (по официальной документации)');
     
     const requestData = await request.json();
     console.log('📝 Данные запроса:', JSON.stringify(requestData, null, 2));
+    
+    // Input validation
+    validateApiInput(requestData, {
+      method: validationRules.required('method'),
+    });
     
     const { method, address, coordinates } = requestData;
     
@@ -182,7 +190,7 @@ export async function POST(request: NextRequest) {
     }
     
     try {
-      const response = await fetch(fullUrl, {
+      const response = await apiRequestWithTimeout(fullUrl, {
         method: 'POST',
         headers: {
           // Заголовки согласно официальной документации
@@ -192,7 +200,7 @@ export async function POST(request: NextRequest) {
           'Authorization': `Basic ${credentials}`,
         },
         body: JSON.stringify(body)
-      });
+      }, { timeout: 15000, retries: 2 });
       
       console.log('📡 Ответ от ПЭК API:');
       console.log('Status:', response.status, response.statusText);
@@ -256,9 +264,11 @@ export async function POST(request: NextRequest) {
           }, { status: 400 });
         }
         
-        return NextResponse.json(data);
+        const timing = endTiming();
+        return NextResponse.json({ ...data, timing });
       } catch (parseError) {
         console.error('❌ Ошибка парсинга JSON:', parseError);
+        endTiming();
         return NextResponse.json({ 
           error: 'Ошибка парсинга ответа',
           details: responseText.substring(0, 1000)
@@ -274,7 +284,8 @@ export async function POST(request: NextRequest) {
       }, { status: 503 });
     }
     
-  } catch (error) {
+    } catch (error) {
+    endTiming();
     console.error('❌ Критическая ошибка прокси ПЭК API:', error);
     
     if (error instanceof Error) {

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b18e455001Gpx2LuwwJKRSDI",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01M9piR8ArdgDHVCTnXrx7Kt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "oldString": "import { NextRequest, NextResponse } from 'next/server';",
+      "newString": "import { NextRequest, NextResponse } from 'next/server';\nimport { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -1,5 +1,6 @@\n import { NextRequest, NextResponse } from 'next/server';\n+import { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils';\n \n export async function POST(request: NextRequest) {\n   try {\n     console.log('🔧 ПЭК Прокси: Получен запрос (по официальной документации)');\n"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1759243725900,
+      "end": 1759243725906
+    }
+  }
+}

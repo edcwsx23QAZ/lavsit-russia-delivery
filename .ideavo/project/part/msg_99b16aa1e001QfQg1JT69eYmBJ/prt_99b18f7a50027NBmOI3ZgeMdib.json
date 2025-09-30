@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b18f7a50027NBmOI3ZgeMdib",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_016HmUYog5wzAqmQC7UKVgk2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "oldString": "export async function POST(request: NextRequest) {\n  try {\n    console.log('🔧 ПЭК Прокси: Получен запрос (по официальной документации)');\n    \n    const requestData = await request.json();\n    console.log('📝 Данные запроса:', JSON.stringify(requestData, null, 2));\n    \n    const { method, address, coordinates } = requestData;",
+      "newString": "export async function POST(request: NextRequest) {\n  const endTiming = PerformanceMonitor.startMeasurement('pek_api_total');\n  \n  try {\n    console.log('🔧 ПЭК Прокси: Получен запрос (по официальной документации)');\n    \n    const requestData = await request.json();\n    console.log('📝 Данные запроса:', JSON.stringify(requestData, null, 2));\n    \n    // Input validation\n    validateApiInput(requestData, {\n      method: validationRules.required('method'),\n    });\n    \n    const { method, address, coordinates } = requestData;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -1,14 +1,21 @@\n import { NextRequest, NextResponse } from 'next/server';\n import { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils';\n \n export async function POST(request: NextRequest) {\n+  const endTiming = PerformanceMonitor.startMeasurement('pek_api_total');\n+  \n   try {\n     console.log('🔧 ПЭК Прокси: Получен запрос (по официальной документации)');\n     \n     const requestData = await request.json();\n     console.log('📝 Данные запроса:', JSON.stringify(requestData, null, 2));\n     \n+    // Input validation\n+    validateApiInput(requestData, {\n+      method: validationRules.required('method'),\n+    });\n+    \n     const { method, address, coordinates } = requestData;\n     \n     // Данные авторизации согласно документации ПЭК\n     const PEK_API_KEY = process.env.PEK_API_KEY || '624FC93CA677B23673BB476D4982294DC27E246F';\n"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1759243733366,
+      "end": 1759243733373
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b19278700256n5H6peY8n4yx",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_011PeuCwehwXbVWzdo25V2WS",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/pek/route.ts",
+      "oldString": "        \n        return NextResponse.json(data);\n      } catch (parseError) {\n        console.error('❌ Ошибка парсинга JSON:', parseError);\n        return NextResponse.json({ \n          error: 'Ошибка парсинга ответа',\n          details: responseText.substring(0, 1000)\n        }, { status: 500 });\n      }",
+      "newString": "        \n        const timing = endTiming();\n        return NextResponse.json({ ...data, timing });\n      } catch (parseError) {\n        console.error('❌ Ошибка парсинга JSON:', parseError);\n        endTiming();\n        return NextResponse.json({ \n          error: 'Ошибка парсинга ответа',\n          details: responseText.substring(0, 1000)\n        }, { status: 500 });\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/pek/route.ts\n===================================================================\n--- /home/user/project/app/api/pek/route.ts\n+++ /home/user/project/app/api/pek/route.ts\n@@ -263,11 +263,13 @@\n       originalError: data.error\n     }, { status: 400 });\n   }\n   \n-  return NextResponse.json(data);\n+  const timing = endTiming();\n+  return NextResponse.json({ ...data, timing });\n } catch (parseError) {\n   console.error('❌ Ошибка парсинга JSON:', parseError);\n+  endTiming();\n   return NextResponse.json({ \n     error: 'Ошибка парсинга ответа',\n     details: responseText.substring(0, 1000)\n   }, { status: 500 });\n"
+    },
+    "title": "app/api/pek/route.ts",
+    "time": {
+      "start": 1759243743935,
+      "end": 1759243743944
+    }
+  }
+}

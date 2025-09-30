@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b17f5b9001gHzy6TbxXDpAM4",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QJ2YrGXhCamGhC4HgdhxU5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/DiagnosticHeader.tsx",
+      "offset": 14,
+      "limit": 5
+    },
+    "output": "<file>\n00015| \n00016| const DiagnosticHeader = React.memo(function DiagnosticHeader({\n00017|   onTestAllAPIs,\n00018|   onRunFullTesting,\n00019|   onUpdateProductData,\n\n(File has more lines. Use 'offset' parameter to read beyond line 19)\n</file>",
+    "metadata": {
+      "preview": "\nconst DiagnosticHeader = React.memo(function DiagnosticHeader({\n  onTestAllAPIs,\n  onRunFullTesting,\n  onUpdateProductData,"
+    },
+    "title": "components/diagnostic/DiagnosticHeader.tsx",
+    "time": {
+      "start": 1759243663297,
+      "end": 1759243663298
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b18c885001Bf9hNnP0MEGvX3",
+  "messageID": "msg_99b16aa1e001QfQg1JT69eYmBJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01Dsx3tS5zugV7H4yrGsar7B",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "export async function POST",
+      "path": "/home/user/project/app/api"
+    },
+    "output": "Found 7 matches\n/home/user/project/app/api/furniture-products/route.ts:\n  Line 244: export async function POST(request: NextRequest) {\n\n/home/user/project/app/api/vozovoz/route.ts:\n  Line 6: export async function POST(request: NextRequest) {\n\n/home/user/project/app/api/rail-continent/route.ts:\n  Line 3: export async function POST(request: NextRequest) {\n\n/home/user/project/app/api/pek/route.ts:\n  Line 3: export async function POST(request: NextRequest) {\n\n/home/user/project/app/api/test/route.ts:\n  Line 7: export async function POST(request: NextRequest) {\n\n/home/user/project/app/api/pek-simple/route.ts:\n  Line 3: export async function POST(request: NextRequest) {\n\n/home/user/project/app/api/pek-get/route.ts:\n  Line 4: export async function POST(request: NextRequest) {",
+    "metadata": {
+      "matches": 7,
+      "truncated": false
+    },
+    "title": "export async function POST",
+    "time": {
+      "start": 1759243717333,
+      "end": 1759243717349
+    }
+  }
+}

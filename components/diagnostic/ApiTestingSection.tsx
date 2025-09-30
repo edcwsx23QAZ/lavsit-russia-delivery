@@ -32,7 +32,7 @@ interface ApiTestingSectionProps {
   onTestNordWheel: () => void;
 }
 
-export default function ApiTestingSection({
+const ApiTestingSection = React.memo(function ApiTestingSection({
   diagnosticResults,
   testStates,
   onTestPEK,
@@ -129,4 +129,6 @@ export default function ApiTestingSection({
       {renderApiCard('nordwheel', 'Nord Wheel', 'text-cyan-400', testStates.isTestingNordWheel, onTestNordWheel, 'nordwheel')}
     </div>
   );
-}
+});
+
+export default ApiTestingSection;
