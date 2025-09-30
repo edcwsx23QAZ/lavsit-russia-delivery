@@ -1,0 +1,26 @@
+{
+  "id": "prt_99ac62058002BUM5K0eZj0b3Dk",
+  "messageID": "msg_99ac48482001X0R5WX1bO1yFRW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_011NEhwaMPne314o2oJA8pDG",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && curl -s -I \"http://localhost:3000/api/furniture-products\"",
+      "description": "Проверить Content-Type и headers ответа API"
+    },
+    "output": "HTTP/1.1 200 OK\r\nvary: RSC, Next-Router-State-Tree, Next-Router-Prefetch\r\ncontent-type: application/json\r\nDate: Tue, 30 Sep 2025 13:18:20 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n",
+    "metadata": {
+      "output": "HTTP/1.1 200 OK\r\nvary: RSC, Next-Router-State-Tree, Next-Router-Prefetch\r\ncontent-type: application/json\r\nDate: Tue, 30 Sep 2025 13:18:20 GMT\r\nConnection: keep-alive\r\nKeep-Alive: timeout=5\r\n\r\n",
+      "exit": 0,
+      "description": "Проверить Content-Type и headers ответа API"
+    },
+    "title": "cd /home/user/project && curl -s -I \"http://localhost:3000/api/furniture-products\"",
+    "time": {
+      "start": 1759238300486,
+      "end": 1759238300565
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99ac661c90012H0Q6sMBEhesN0",
+  "messageID": "msg_99ac48482001X0R5WX1bO1yFRW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01DTXP2L5Vcw4g1ehLYXqe38",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && curl -s \"http://localhost:3000/api/orders\" | python3 -m json.tool > /dev/null && echo \"orders API: JSON валиден\" || echo \"orders API: JSON невалиден\"",
+      "description": "Проверить валидность JSON ответа orders API"
+    },
+    "output": "Expecting value: line 1 column 1 (char 0)\norders API: JSON невалиден\n",
+    "metadata": {
+      "output": "Expecting value: line 1 column 1 (char 0)\norders API: JSON невалиден\n",
+      "exit": 0,
+      "description": "Проверить валидность JSON ответа orders API"
+    },
+    "title": "cd /home/user/project && curl -s \"http://localhost:3000/api/orders\" | python3 -m json.tool > /dev/null && echo \"orders API: JSON валиден\" || echo \"orders API: JSON невалиден\"",
+    "time": {
+      "start": 1759238317618,
+      "end": 1759238330522
+    }
+  }
+}

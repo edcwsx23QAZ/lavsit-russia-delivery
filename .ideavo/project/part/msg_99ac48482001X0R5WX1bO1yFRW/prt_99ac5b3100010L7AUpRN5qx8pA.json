@@ -1,0 +1,97 @@
+{
+  "id": "prt_99ac5b3100010L7AUpRN5qx8pA",
+  "messageID": "msg_99ac48482001X0R5WX1bO1yFRW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_013qjhp31bCh6ivDLLXpha3i",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Проверить логи и найти stack trace ошибки",
+          "status": "completed",
+          "priority": "high",
+          "id": "debug-1"
+        },
+        {
+          "content": "Проверить JSON валидность в API endpoints",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "debug-2"
+        },
+        {
+          "content": "Проверить размер данных и лимиты",
+          "status": "pending",
+          "priority": "medium",
+          "id": "debug-3"
+        },
+        {
+          "content": "Проверить Content-Type и headers",
+          "status": "pending",
+          "priority": "medium",
+          "id": "debug-4"
+        },
+        {
+          "content": "Проверить кодировку UTF-8",
+          "status": "pending",
+          "priority": "medium",
+          "id": "debug-5"
+        },
+        {
+          "content": "Протестировать с минимальными данными",
+          "status": "pending",
+          "priority": "medium",
+          "id": "debug-6"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Проверить логи и найти stack trace ошибки\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"debug-1\"\n  },\n  {\n    \"content\": \"Проверить JSON валидность в API endpoints\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"debug-2\"\n  },\n  {\n    \"content\": \"Проверить размер данных и лимиты\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"debug-3\"\n  },\n  {\n    \"content\": \"Проверить Content-Type и headers\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"debug-4\"\n  },\n  {\n    \"content\": \"Проверить кодировку UTF-8\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"debug-5\"\n  },\n  {\n    \"content\": \"Протестировать с минимальными данными\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"debug-6\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Проверить логи и найти stack trace ошибки",
+          "status": "completed",
+          "priority": "high",
+          "id": "debug-1"
+        },
+        {
+          "content": "Проверить JSON валидность в API endpoints",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "debug-2"
+        },
+        {
+          "content": "Проверить размер данных и лимиты",
+          "status": "pending",
+          "priority": "medium",
+          "id": "debug-3"
+        },
+        {
+          "content": "Проверить Content-Type и headers",
+          "status": "pending",
+          "priority": "medium",
+          "id": "debug-4"
+        },
+        {
+          "content": "Проверить кодировку UTF-8",
+          "status": "pending",
+          "priority": "medium",
+          "id": "debug-5"
+        },
+        {
+          "content": "Протестировать с минимальными данными",
+          "status": "pending",
+          "priority": "medium",
+          "id": "debug-6"
+        }
+      ]
+    },
+    "title": "5 todos",
+    "time": {
+      "start": 1759238275413,
+      "end": 1759238275415
+    }
+  }
+}

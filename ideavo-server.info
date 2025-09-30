@@ -4,19 +4,26 @@ $ next dev
   - Environments: .env.local, .env
 
  ✓ Starting...
- ✓ Ready in 2.9s
- ✓ Compiled /middleware in 367ms
+ ✓ Ready in 2.7s
+ ✓ Compiled /middleware in 238ms
  ✓ Compiled (73 modules)
  ○ Compiling / ...
- ✓ Compiled / in 7.6s (708 modules)
- GET / 200 in 8758ms
- ✓ Compiled in 1292ms (366 modules)
- GET / 200 in 180ms
+ ✓ Compiled / in 8.1s (708 modules)
+ GET / 200 in 9202ms
+ ✓ Compiled in 1128ms (366 modules)
+ GET / 200 in 191ms
  ⚠ Cross origin request detected from 4000-i859b80wqs6c2fhjwbj2w.e2b.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
- ○ Compiling /api/vozovoz ...
- ✓ Compiled /api/pek in 989ms (372 modules)
+ ○ Compiling /api/furniture-products ...
+ ✓ Compiled /api/vozovoz in 771ms (372 modules)
  ✓ Compiled (378 modules)
+🔧 ПЭК Прокси: Получен запрос (по официальной документации)
+📝 Данные запроса: {
+  "method": "test"
+}
+🔧 Тестовый метод прокси
+ POST /api/pek 200 in 758ms
+🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
 🚚 Vozovoz API запрос: {
   "object": "price",
   "action": "get",
@@ -45,13 +52,6 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
   }
 }
 🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp
-🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "test"
-}
-🔧 Тестовый метод прокси
- POST /api/pek 200 in 1204ms
 🔄 Обновляем кэш данных мебели...
 📊 Загружаем данные из Google Sheets: https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/export?format=csv&gid=0
 🚂 Rail Continent API ответ: {
@@ -185,13 +185,7 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     "train_fast_temp": false
   }
 }
- POST /api/rail-continent 200 in 2324ms
-📄 Получены CSV данные, размер: 306650
-📋 Количество строк: 1883
-✅ Успешно обработано 1882 товаров
-🛋️ Обработано товаров: 1882
- GET /api/furniture-products 200 in 2765ms
- GET /api/furniture-products 200 in 44ms
+ POST /api/rail-continent 200 in 1817ms
 🚚 Vozovoz API статус: 200 OK
 🚚 Vozovoz API ответ: {
   "response": {
@@ -228,4 +222,10 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     ]
   }
 }
- POST /api/vozovoz 200 in 3627ms
+ POST /api/vozovoz 200 in 2008ms
+📄 Получены CSV данные, размер: 306585
+📋 Количество строк: 1883
+✅ Успешно обработано 1882 товаров
+🛋️ Обработано товаров: 1882
+ GET /api/furniture-products 200 in 2773ms
+ GET /api/furniture-products 200 in 39ms

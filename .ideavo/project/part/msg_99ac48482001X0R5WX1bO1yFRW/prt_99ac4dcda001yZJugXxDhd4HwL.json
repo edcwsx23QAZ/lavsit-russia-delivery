@@ -1,0 +1,26 @@
+{
+  "id": "prt_99ac4dcda001yZJugXxDhd4HwL",
+  "messageID": "msg_99ac48482001X0R5WX1bO1yFRW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_018iHsGjoqxXBrt1cxT6cgqw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "sleep 5 && cd /home/user/project && tail -20 dev.log",
+      "description": "Проверить логи сервера разработки"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ✓ Ready in 3.3s\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ✓ Ready in 3.3s\n",
+      "exit": 0,
+      "description": "Проверить логи сервера разработки"
+    },
+    "title": "sleep 5 && cd /home/user/project && tail -20 dev.log",
+    "time": {
+      "start": 1759238217745,
+      "end": 1759238222811
+    }
+  }
+}

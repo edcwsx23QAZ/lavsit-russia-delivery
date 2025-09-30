@@ -1,0 +1,26 @@
+{
+  "id": "prt_99ac60d85001es4J5jicSnJzVv",
+  "messageID": "msg_99ac48482001X0R5WX1bO1yFRW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_013Zp7ZAouF2jtPtcbb91AqR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && curl -s \"http://localhost:3000/api/furniture-products\" | python3 -m json.tool > /dev/null && echo \"JSON валиден\" || echo \"JSON невалиден\"",
+      "description": "Проверить валидность JSON ответа через Python"
+    },
+    "output": "JSON валиден\n",
+    "metadata": {
+      "output": "JSON валиден\n",
+      "exit": 0,
+      "description": "Проверить валидность JSON ответа через Python"
+    },
+    "title": "cd /home/user/project && curl -s \"http://localhost:3000/api/furniture-products\" | python3 -m json.tool > /dev/null && echo \"JSON валиден\" || echo \"JSON невалиден\"",
+    "time": {
+      "start": 1759238295894,
+      "end": 1759238296158
+    }
+  }
+}

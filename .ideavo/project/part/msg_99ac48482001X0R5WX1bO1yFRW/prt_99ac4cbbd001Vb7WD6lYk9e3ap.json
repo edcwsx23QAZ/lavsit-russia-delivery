@@ -1,0 +1,27 @@
+{
+  "id": "prt_99ac4cbbd001Vb7WD6lYk9e3ap",
+  "messageID": "msg_99ac48482001X0R5WX1bO1yFRW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01RGphAJFc5sVeNyL5sJXLBR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run dev > dev.log 2>&1 &",
+      "timeout": 3000,
+      "description": "Запуск dev сервера с логированием"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Запуск dev сервера с логированием"
+    },
+    "title": "cd /home/user/project && npm run dev > dev.log 2>&1 &",
+    "time": {
+      "start": 1759238213750,
+      "end": 1759238213810
+    }
+  }
+}
