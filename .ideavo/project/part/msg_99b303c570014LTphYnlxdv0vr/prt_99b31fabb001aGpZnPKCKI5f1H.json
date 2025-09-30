@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b31fabb001aGpZnPKCKI5f1H",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01UMvDVc2hJFcrLsHrL3t2Zn",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2885,
+      "limit": 15
+    },
+    "output": "<file>\n02886|       // Доставка груза\n02887|       if (calc.details.arrival?.price) {\n02888|         arrivalPrice = calc.details.arrival.price;\n02889|         details.push({\n02890|           service: 'Отвоз груза',\n02891|           description: 'До адреса',\n02892|           price: arrivalPrice\n02893|         });\n02894|       }\n02895|       \n02896|       // Упаковка (надбавки уже включены в pkg.price, но показываем их для детализации)\n02897|       if (form.needPackaging && calc.details.packages) {\n02898|         Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n02899|           if (pkg.price && pkg.price > 0) {\n02900|             // Вычисляем базовую цену упаковки (без надбавок) для отображения\n\n(File has more lines. Use 'offset' parameter to read beyond line 2900)\n</file>",
+    "metadata": {
+      "preview": "      // Доставка груза\n      if (calc.details.arrival?.price) {\n        arrivalPrice = calc.details.arrival.price;\n        details.push({\n          service: 'Отвоз груза',\n          description: 'До адреса',\n          price: arrivalPrice\n        });\n      }\n      \n      // Упаковка (надбавки уже включены в pkg.price, но показываем их для детализации)\n      if (form.needPackaging && calc.details.packages) {\n        Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {\n          if (pkg.price && pkg.price > 0) {\n            // Вычисляем базовую цену упаковки (без надбавок) для отображения"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245368655,
+      "end": 1759245368657
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3271a30019JecEdBfW6fIh9",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01YJHYQDab2bzXbkAWvca9Gg",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      if (form.needInsurance && calc.details.insurance) {\n        insurancePrice = calc.details.insurance;",
+      "newString": "      if (form.needInsurance && calc.details?.insurance) {\n        insurancePrice = calc.details.insurance;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2932,9 +2932,9 @@\n   });\n }\n \n // Страхование\n-if (form.needInsurance && calc.details.insurance) {\n+if (form.needInsurance && calc.details?.insurance) {\n   insurancePrice = calc.details.insurance;\n   details.push({\n     service: 'Страхование груза',\n     description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245399179,
+      "end": 1759245399197
+    }
+  }
+}

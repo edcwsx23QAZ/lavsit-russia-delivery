@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b327f63001GFeMYze9DUc3SZ",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01L9urGbyJz8iKxFY869nTk4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2960,
+      "limit": 30
+    },
+    "output": "<file>\n02961|         });\n02962|       }\n02963|     } else if (calc.company === 'Nord Wheel' && calc.details) {\n02964|       // Расшифровка для Nord Wheel согласно требованиям\n02965|       if (calc.details.totalCost) {\n02966|         details.push({\n02967|           service: 'Общая стоимость доставки',\n02968|           description: '',\n02969|           price: calc.details.totalCost\n02970|         });\n02971|       }\n02972|       if (calc.details.deliveryCost) {\n02973|         details.push({\n02974|           service: 'Стоимость перевозки',\n02975|           description: '',\n02976|           price: calc.details.deliveryCost\n02977|         });\n02978|       }\n02979|       if (calc.details.terminalCost) {\n02980|         details.push({\n02981|           service: 'Стоимость межтерминальной перевозки',\n02982|           description: '',\n02983|           price: calc.details.terminalCost\n02984|         });\n02985|       }\n02986|       if (calc.details.pickupCost) {\n02987|         details.push({\n02988|           service: 'Стоимость забора',\n02989|           description: '',\n02990|           price: calc.details.pickupCost\n\n(File has more lines. Use 'offset' parameter to read beyond line 2990)\n</file>",
+    "metadata": {
+      "preview": "        });\n      }\n    } else if (calc.company === 'Nord Wheel' && calc.details) {\n      // Расшифровка для Nord Wheel согласно требованиям\n      if (calc.details.totalCost) {\n        details.push({\n          service: 'Общая стоимость доставки',\n          description: '',\n          price: calc.details.totalCost\n        });\n      }\n      if (calc.details.deliveryCost) {\n        details.push({\n          service: 'Стоимость перевозки',\n          description: '',\n          price: calc.details.deliveryCost\n        });\n      }\n      if (calc.details.terminalCost) {\n        details.push({"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245402591,
+      "end": 1759245402593
+    }
+  }
+}

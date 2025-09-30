@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b337a96001L1eWzdc8K8sr76",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01DpxK65Y48Y96BMa4b91JN8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1076,
+      "limit": 25
+    },
+    "output": "<file>\n01077|             produceDate: produceDate,  // Обязательная дата отправления\n01078|             variant: form.fromAddressDelivery ? 'address' : 'terminal',\n01079|             ...(form.fromAddressDelivery ? {\n01080|               address: {\n01081|                 search: form.fromAddress || form.fromCity\n01082|               }\n01083|             } : {\n01084|               terminalID: fromTerminalId\n01085|             }),\n01086|             time: {\n01087|               worktimeStart: '10:00',\n01088|               worktimeEnd: '18:00',\n01089|               breakStart: '13:00',\n01090|               breakEnd: '14:00',\n01091|               exactTime: false\n01092|             }\n01093|             // handling в derival всегда пропускается согласно инструкции\n01094|           },\n01095|           arrival: {\n01096|             variant: form.toAddressDelivery ? 'address' : 'terminal',\n01097|             ...(form.toAddressDelivery ? {\n01098|               address: {\n01099|                 search: form.toAddress || form.toCity\n01100|               }\n01101|             } : {\n\n(File has more lines. Use 'offset' parameter to read beyond line 1101)\n</file>",
+    "metadata": {
+      "preview": "            produceDate: produceDate,  // Обязательная дата отправления\n            variant: form.fromAddressDelivery ? 'address' : 'terminal',\n            ...(form.fromAddressDelivery ? {\n              address: {\n                search: form.fromAddress || form.fromCity\n              }\n            } : {\n              terminalID: fromTerminalId\n            }),\n            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            }\n            // handling в derival всегда пропускается согласно инструкции\n          },\n          arrival: {\n            variant: form.toAddressDelivery ? 'address' : 'terminal',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245466879,
+      "end": 1759245466882
+    }
+  }
+}

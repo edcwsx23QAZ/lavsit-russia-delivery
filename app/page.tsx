@@ -1012,6 +1012,39 @@ export default function Home() {
       // Получаем терминалы для городов (если нужно)
       const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;
       const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;
+      
+      console.log('🏢 ТЕРМИНАЛЫ ДЛ:');
+      console.log('🏢 form.fromAddressDelivery:', form.fromAddressDelivery);
+      console.log('🏢 form.toAddressDelivery:', form.toAddressDelivery);
+      console.log('🏢 fromTerminalId:', fromTerminalId);
+      console.log('🏢 toTerminalId:', toTerminalId);
+      
+      // Проверяем что терминалы найдены для терминальной доставки
+      if (!form.fromAddressDelivery && !fromTerminalId) {
+        console.error('❌ Не найден терминал отправления для города:', form.fromCity);
+        return {
+          company: 'Деловые Линии',
+          price: 0,
+          days: 0,
+          error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,
+          apiUrl,
+          requestData: null,
+          responseData: null
+        };
+      }
+      
+      if (!form.toAddressDelivery && !toTerminalId) {
+        console.error('❌ Не найден терминал назначения для города:', form.toCity);
+        return {
+          company: 'Деловые Линии',
+          price: 0,
+          days: 0,
+          error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,
+          apiUrl,
+          requestData: null,
+          responseData: null
+        };
+      }
 
       // Получаем UID упаковки crate_with_bubble (если нужна упаковка)
       let packageUid: string | null = null;
@@ -1080,9 +1113,13 @@ export default function Home() {
               address: {
                 search: form.fromAddress || form.fromCity
               }
-            } : {
+            } : (fromTerminalId ? {
               terminalID: fromTerminalId
-            }),
+            } : {
+              address: {
+                search: form.fromCity
+              }
+            })),
             time: {
               worktimeStart: '10:00',
               worktimeEnd: '18:00',
@@ -1098,9 +1135,13 @@ export default function Home() {
               address: {
                 search: form.toAddress || form.toCity
               }
-            } : {
+            } : (toTerminalId ? {
               terminalID: toTerminalId
-            }),
+            } : {
+              address: {
+                search: form.toCity
+              }
+            })),
             time: {
               worktimeStart: '10:00',
               worktimeEnd: '18:00',
@@ -1178,7 +1219,13 @@ export default function Home() {
           body: JSON.stringify(requestData)
         });
 
-        data = await response.json();
+        try {
+          data = await response.json();
+        } catch (parseError) {
+          console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);
+          throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);
+        }
+        
         console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);
         console.log('🚀 ОТВЕТ ДЛ status:', response.status);
         console.log('🚀 ОТВЕТ ДЛ data:', data);
@@ -1225,6 +1272,23 @@ export default function Home() {
       
       // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ
       console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');
+      console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');
+      console.log('🔍 data:', data ? 'существует' : 'undefined/null');
+      console.log('🔍 data.data:', data?.data ? 'существует' : 'undefined/null');
+      
+      if (!data) {
+        console.error('❌ КРИТИЧЕСКАЯ ОШИБКА: data undefined/null');
+        return {
+          company: 'Деловые Линии',
+          price: 0,
+          days: 0,
+          error: 'Ошибка обработки ответа API: данные не получены',
+          apiUrl,
+          requestData,
+          responseData: null
+        };
+      }
+      
       console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));
       
       // Поиск всех полей связанных со страховкой
@@ -1249,21 +1313,29 @@ export default function Home() {
       
       // Рекурсивный поиск всех полей содержащих "insurance"
       const findInsuranceFields = (obj: any, path = '') => {
-        if (typeof obj !== 'object' || obj === null) return;
+        if (typeof obj !== 'object' || obj === null || obj === undefined) return;
         
-        Object.keys(obj).forEach(key => {
-          const fullPath = path ? `${path}.${key}` : key;
-          if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {
-            console.log(`💳 НАЙДЕНО ПОЛЕ СТРАХОВКИ [${fullPath}]:`, obj[key]);
-          }
-          if (typeof obj[key] === 'object') {
-            findInsuranceFields(obj[key], fullPath);
-          }
-        });
+        try {
+          Object.keys(obj).forEach(key => {
+            const fullPath = path ? `${path}.${key}` : key;
+            if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {
+              console.log(`💳 НАЙДЕНО ПОЛЕ СТРАХОВКИ [${fullPath}]:`, obj[key]);
+            }
+            if (typeof obj[key] === 'object' && obj[key] !== null && obj[key] !== undefined) {
+              findInsuranceFields(obj[key], fullPath);
+            }
+          });
+        } catch (error) {
+          console.error(`💳 Ошибка в findInsuranceFields для пути ${path}:`, error);
+        }
       };
       
       console.log('💳 РЕКУРСИВНЫЙ ПОИСК ПОЛЕЙ СТРАХОВКИ:');
-      findInsuranceFields(data.data, 'data.data');
+      if (data && data.data) {
+        findInsuranceFields(data.data, 'data.data');
+      } else {
+        console.log('💳 Пропуск рекурсивного поиска: data.data недоступен');
+      }
       console.log('=== КОНЕЦ АНАЛИЗА СТРАХОВКИ ===');
       
       // Специально проверяем наличие packages в ответе
@@ -1386,7 +1458,7 @@ export default function Home() {
           company: 'Деловые Линии',
           price: Math.round(totalPrice),
           days: deliveryDays || 0,
-          details: data.data,
+          details: data.data || {},
           requestData,
           responseData: data,
           apiUrl,
@@ -2832,7 +2904,7 @@ export default function Home() {
     
     if (calc.company === 'Деловые Линии' && calc.details) {
       // Основная стоимость доставки (уже включает все базовые услуги и упаковку)
-      let basePrice = calc.details.price || calc.price || 0;
+      let basePrice = calc.details?.price || calc.price || 0;
       
       // Разбиваем основную стоимость на компоненты если возможно
       let intercityPrice = 0;
@@ -2843,7 +2915,7 @@ export default function Home() {
       let insurancePrice = 0;
       
       // Межтерминальная перевозка
-      if (calc.details.intercity?.price) {
+      if (calc.details?.intercity?.price) {
         intercityPrice = calc.details.intercity.price;
         details.push({
           service: 'Межтерминальная перевозка',
@@ -2853,7 +2925,7 @@ export default function Home() {
       }
       
       // Забор груза
-      if (calc.details.derival?.price) {
+      if (calc.details?.derival?.price) {
         derivalPrice = calc.details.derival.price;
         details.push({
           service: 'Забор груза',
@@ -2863,7 +2935,7 @@ export default function Home() {
       }
       
       // Доставка груза
-      if (calc.details.arrival?.price) {
+      if (calc.details?.arrival?.price) {
         arrivalPrice = calc.details.arrival.price;
         details.push({
           service: 'Отвоз груза',
@@ -2873,8 +2945,8 @@ export default function Home() {
       }
       
       // Упаковка (надбавки уже включены в pkg.price, но показываем их для детализации)
-      if (form.needPackaging && calc.details.packages) {
-        Object.entries(calc.details.packages).forEach(([key, pkg]: [string, any]) => {
+      if (form.needPackaging && calc.details?.packages) {
+        Object.entries(calc.details?.packages || {}).forEach(([key, pkg]: [string, any]) => {
           if (pkg.price && pkg.price > 0) {
             // Вычисляем базовую цену упаковки (без надбавок) для отображения
             let basePkgPrice = pkg.price;
@@ -2912,7 +2984,7 @@ export default function Home() {
       }
       
       // Страхование
-      if (form.needInsurance && calc.details.insurance) {
+      if (form.needInsurance && calc.details?.insurance) {
         insurancePrice = calc.details.insurance;
         details.push({
           service: 'Страхование груза',

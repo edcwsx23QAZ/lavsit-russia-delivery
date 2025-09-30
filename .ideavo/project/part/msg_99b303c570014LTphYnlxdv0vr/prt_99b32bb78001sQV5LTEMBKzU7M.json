@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b32bb78001sQV5LTEMBKzU7M",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Xr5imLTdcvzrWSNykiryMi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      let basePrice = calc.details.price || calc.price || 0;",
+      "newString": "      let basePrice = calc.details?.price || calc.price || 0;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2852,9 +2852,9 @@\n const details: { service: string; description: string; price: number }[] = [];\n \n if (calc.company === 'Деловые Линии' && calc.details) {\n   // Основная стоимость доставки (уже включает все базовые услуги и упаковку)\n-  let basePrice = calc.details.price || calc.price || 0;\n+  let basePrice = calc.details?.price || calc.price || 0;\n   \n   // Разбиваем основную стоимость на компоненты если возможно\n   let intercityPrice = 0;\n   let derivalPrice = 0;\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245418253,
+      "end": 1759245418272
+    }
+  }
+}

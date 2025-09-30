@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b33f310001A5yDXaHis1IW7P",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01SXgq7yJtaebusaS3jLPsUy",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Получаем терминалы для городов (если нужно)\n      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;",
+      "newString": "      // Получаем терминалы для городов (если нужно)\n      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;\n      \n      console.log('🏢 ТЕРМИНАЛЫ ДЛ:');\n      console.log('🏢 form.fromAddressDelivery:', form.fromAddressDelivery);\n      console.log('🏢 form.toAddressDelivery:', form.toAddressDelivery);\n      console.log('🏢 fromTerminalId:', fromTerminalId);\n      console.log('🏢 toTerminalId:', toTerminalId);\n      \n      // Проверяем что терминалы найдены для терминальной доставки\n      if (!form.fromAddressDelivery && !fromTerminalId) {\n        console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }\n      \n      if (!form.toAddressDelivery && !toTerminalId) {\n        console.error('❌ Не найден терминал назначения для города:', form.toCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1011,8 +1011,41 @@\n \n // Получаем терминалы для городов (если нужно)\n const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;\n+\n+console.log('🏢 ТЕРМИНАЛЫ ДЛ:');\n+console.log('🏢 form.fromAddressDelivery:', form.fromAddressDelivery);\n+console.log('🏢 form.toAddressDelivery:', form.toAddressDelivery);\n+console.log('🏢 fromTerminalId:', fromTerminalId);\n+console.log('🏢 toTerminalId:', toTerminalId);\n+\n+// Проверяем что терминалы найдены для терминальной доставки\n+if (!form.fromAddressDelivery && !fromTerminalId) {\n+  console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n+  return {\n+    company: 'Деловые Линии',\n+    price: 0,\n+    days: 0,\n+    error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,\n+    apiUrl,\n+    requestData: null,\n+    responseData: null\n+  };\n+}\n+\n+if (!form.toAddressDelivery && !toTerminalId) {\n+  console.error('❌ Не найден терминал назначения для города:', form.toCity);\n+  return {\n+    company: 'Деловые Линии',\n+    price: 0,\n+    days: 0,\n+    error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,\n+    apiUrl,\n+    requestData: null,\n+    responseData: null\n+  };\n+}\n \n // Получаем UID упаковки crate_with_bubble (если нужна упаковка)\n let packageUid: string | null = null;\n console.log('=== НАЧАЛО ОТЛАДКИ УПАКОВКИ ===');\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245504068,
+      "end": 1759245504082
+    }
+  }
+}

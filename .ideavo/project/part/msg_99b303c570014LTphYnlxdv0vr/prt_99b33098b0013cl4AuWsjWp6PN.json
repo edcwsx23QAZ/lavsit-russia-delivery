@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b33098b0013cl4AuWsjWp6PN",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_0187XLZQmeTARXBC28rQYXaW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      const findInsuranceFields = (obj: any, path = '') => {\n        if (typeof obj !== 'object' || obj === null) return;\n        \n        Object.keys(obj).forEach(key => {\n          const fullPath = path ? `${path}.${key}` : key;\n          if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {\n            console.log(`💳 НАЙДЕНО ПОЛЕ СТРАХОВКИ [${fullPath}]:`, obj[key]);\n          }\n          if (typeof obj[key] === 'object') {\n            findInsuranceFields(obj[key], fullPath);\n          }\n        });\n      };",
+      "newString": "      const findInsuranceFields = (obj: any, path = '') => {\n        if (typeof obj !== 'object' || obj === null || obj === undefined) return;\n        \n        try {\n          Object.keys(obj).forEach(key => {\n            const fullPath = path ? `${path}.${key}` : key;\n            if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {\n              console.log(`💳 НАЙДЕНО ПОЛЕ СТРАХОВКИ [${fullPath}]:`, obj[key]);\n            }\n            if (typeof obj[key] === 'object' && obj[key] !== null && obj[key] !== undefined) {\n              findInsuranceFields(obj[key], fullPath);\n            }\n          });\n        } catch (error) {\n          console.error(`💳 Ошибка в findInsuranceFields для пути ${path}:`, error);\n        }\n      };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1265,19 +1265,23 @@\n }\n \n // Рекурсивный поиск всех полей содержащих \"insurance\"\n const findInsuranceFields = (obj: any, path = '') => {\n-  if (typeof obj !== 'object' || obj === null) return;\n+  if (typeof obj !== 'object' || obj === null || obj === undefined) return;\n   \n-  Object.keys(obj).forEach(key => {\n-    const fullPath = path ? `${path}.${key}` : key;\n-    if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {\n-      console.log(`💳 НАЙДЕНО ПОЛЕ СТРАХОВКИ [${fullPath}]:`, obj[key]);\n-    }\n-    if (typeof obj[key] === 'object') {\n-      findInsuranceFields(obj[key], fullPath);\n-    }\n-  });\n+  try {\n+    Object.keys(obj).forEach(key => {\n+      const fullPath = path ? `${path}.${key}` : key;\n+      if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {\n+        console.log(`💳 НАЙДЕНО ПОЛЕ СТРАХОВКИ [${fullPath}]:`, obj[key]);\n+      }\n+      if (typeof obj[key] === 'object' && obj[key] !== null && obj[key] !== undefined) {\n+        findInsuranceFields(obj[key], fullPath);\n+      }\n+    });\n+  } catch (error) {\n+    console.error(`💳 Ошибка в findInsuranceFields для пути ${path}:`, error);\n+  }\n };\n \n console.log('💳 РЕКУРСИВНЫЙ ПОИСК ПОЛЕЙ СТРАХОВКИ:');\n if (data && data.data) {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245442044,
+      "end": 1759245442062
+    }
+  }
+}

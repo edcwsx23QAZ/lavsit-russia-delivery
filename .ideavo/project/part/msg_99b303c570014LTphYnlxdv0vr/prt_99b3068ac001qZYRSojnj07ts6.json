@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b3068ac001qZYRSojnj07ts6",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01DQ82BxYqNBBycjYiw8HDYp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "api.dellin.ru/v2/calculator",
+      "path": "/home/user/project"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 985:     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "api.dellin.ru/v2/calculator",
+    "time": {
+      "start": 1759245265675,
+      "end": 1759245265684
+    }
+  }
+}

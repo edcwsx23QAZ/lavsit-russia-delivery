@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b31e1f6001wmhWx8NYtOjEul",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01YSCKTXa88KXusJJyhT5aHu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Забор груза\n      if (calc.details.derival?.price) {\n        derivalPrice = calc.details.derival.price;\n        details.push({\n          service: 'Забор груза',\n          description: 'От адреса',\n          price: derivalPrice\n        });\n      }",
+      "newString": "      // Забор груза\n      if (calc.details?.derival?.price) {\n        derivalPrice = calc.details.derival.price;\n        details.push({\n          service: 'Забор груза',\n          description: 'От адреса',\n          price: derivalPrice\n        });\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2873,9 +2873,9 @@\n   });\n }\n \n // Забор груза\n-if (calc.details.derival?.price) {\n+if (calc.details?.derival?.price) {\n   derivalPrice = calc.details.derival.price;\n   details.push({\n     service: 'Забор груза',\n     description: 'От адреса',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245363567,
+      "end": 1759245363583
+    }
+  }
+}

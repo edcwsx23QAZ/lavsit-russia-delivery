@@ -1,0 +1,11 @@
+{
+  "id": "prt_99b32b39f001BoAnJMYaYe8RqZ",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Здесь есть проверка на строке 2854: `if (calc.company === 'Деловые Линии' && calc.details)`. Значит проблема не здесь.\n\nНо я заметил потенциальную проблему! В строке 2856 есть `calc.details.price`, но если `calc.details` может быть `null` (но не `undefined`), то это может вызвать ошибку. Давайте исправим это:",
+  "time": {
+    "start": 1759245417334,
+    "end": 1759245417334
+  }
+}

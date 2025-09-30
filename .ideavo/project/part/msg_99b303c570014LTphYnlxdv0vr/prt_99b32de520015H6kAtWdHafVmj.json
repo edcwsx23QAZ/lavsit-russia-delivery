@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b32de520015H6kAtWdHafVmj",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01FWFXwrjdodmtE2FuWTDyqt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n -A10 -B5 \"return.*company.*Деловые Линии\" app/page.tsx",
+      "description": "Find where Dellin result object is returned"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Find where Dellin result object is returned"
+    },
+    "title": "cd /home/user/project && grep -n -A10 -B5 \"return.*company.*Деловые Линии\" app/page.tsx",
+    "time": {
+      "start": 1759245427757,
+      "end": 1759245427764
+    }
+  }
+}

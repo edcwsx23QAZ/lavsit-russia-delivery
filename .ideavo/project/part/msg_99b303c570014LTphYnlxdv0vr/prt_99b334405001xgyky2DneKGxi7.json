@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b334405001xgyky2DneKGxi7",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01R1MiFZop1niH96JJRVnS72",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        data = await response.json();\n        console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n        console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n        console.log('🚀 ОТВЕТ ДЛ data:', data);",
+      "newString": "        try {\n          data = await response.json();\n        } catch (parseError) {\n          console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);\n          throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);\n        }\n        \n        console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n        console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n        console.log('🚀 ОТВЕТ ДЛ data:', data);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1177,9 +1177,15 @@\n   },\n   body: JSON.stringify(requestData)\n });\n \n-data = await response.json();\n+try {\n+  data = await response.json();\n+} catch (parseError) {\n+  console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);\n+  throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);\n+}\n+\n console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n console.log('🚀 ОТВЕТ ДЛ data:', data);\n \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245455658,
+      "end": 1759245455675
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b338a7f00143W2Jrq0fpQ2hZ",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01JaFiKj9Hczponv6aXGuSJ8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1101,
+      "limit": 10
+    },
+    "output": "<file>\n01102|               terminalID: toTerminalId\n01103|             }),\n01104|             time: {\n01105|               worktimeStart: '10:00',\n01106|               worktimeEnd: '18:00',\n01107|               breakStart: '13:00',\n01108|               breakEnd: '14:00',\n01109|               exactTime: false\n01110|             },\n01111|             // handling в arrival заполняется только если требуется подъем\n\n(File has more lines. Use 'offset' parameter to read beyond line 1111)\n</file>",
+    "metadata": {
+      "preview": "              terminalID: toTerminalId\n            }),\n            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            },\n            // handling в arrival заполняется только если требуется подъем"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245470860,
+      "end": 1759245470868
+    }
+  }
+}

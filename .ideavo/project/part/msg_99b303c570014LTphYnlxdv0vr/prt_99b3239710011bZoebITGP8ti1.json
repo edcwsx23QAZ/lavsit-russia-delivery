@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3239710011bZoebITGP8ti1",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_017ux2u13z7Xpgs2YrUeiKky",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Межтерминальная перевозка\n      if (calc.details.intercity?.price) {\n        intercityPrice = calc.details.intercity.price;\n        details.push({\n          service: 'Межтерминальная перевозка',\n          description: `${form.fromCity} - ${form.toCity}`,\n          price: intercityPrice\n        });\n      }",
+      "newString": "      // Межтерминальная перевозка\n      if (calc.details?.intercity?.price) {\n        intercityPrice = calc.details.intercity.price;\n        details.push({\n          service: 'Межтерминальная перевозка',\n          description: `${form.fromCity} - ${form.toCity}`,\n          price: intercityPrice\n        });\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2863,9 +2863,9 @@\n // packagingPremiums больше не используются - надбавки включены в pkg.price\n let insurancePrice = 0;\n \n // Межтерминальная перевозка\n-if (calc.details.intercity?.price) {\n+if (calc.details?.intercity?.price) {\n   intercityPrice = calc.details.intercity.price;\n   details.push({\n     service: 'Межтерминальная перевозка',\n     description: `${form.fromCity} - ${form.toCity}`,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245386325,
+      "end": 1759245386342
+    }
+  }
+}

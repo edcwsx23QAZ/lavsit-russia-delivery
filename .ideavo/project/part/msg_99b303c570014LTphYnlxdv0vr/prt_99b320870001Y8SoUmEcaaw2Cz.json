@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b320870001Y8SoUmEcaaw2Cz",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01P1VAX68gBvzaopLMQnoJBm",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Доставка груза\n      if (calc.details.arrival?.price) {\n        arrivalPrice = calc.details.arrival.price;\n        details.push({\n          service: 'Отвоз груза',\n          description: 'До адреса',\n          price: arrivalPrice\n        });\n      }",
+      "newString": "      // Доставка груза\n      if (calc.details?.arrival?.price) {\n        arrivalPrice = calc.details.arrival.price;\n        details.push({\n          service: 'Отвоз груза',\n          description: 'До адреса',\n          price: arrivalPrice\n        });\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2883,9 +2883,9 @@\n   });\n }\n \n // Доставка груза\n-if (calc.details.arrival?.price) {\n+if (calc.details?.arrival?.price) {\n   arrivalPrice = calc.details.arrival.price;\n   details.push({\n     service: 'Отвоз груза',\n     description: 'До адреса',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245373137,
+      "end": 1759245373150
+    }
+  }
+}

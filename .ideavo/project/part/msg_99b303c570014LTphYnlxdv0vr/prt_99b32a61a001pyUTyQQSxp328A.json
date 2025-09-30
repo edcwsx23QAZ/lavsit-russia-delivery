@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b32a61a001pyUTyQQSxp328A",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_017M8FDywpwLUGYF6M9QuoyV",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n -B5 -A15 \"calc\\.company === 'Деловые Линии'\" app/page.tsx",
+      "description": "Find where calc object is processed for Dellin"
+    },
+    "output": "2849-\n2850-  // Парсер деталей расчета для читаемого формата\n2851-  const parseCalculationDetails = (calc: CalculationResult) => {\n2852-    const details: { service: string; description: string; price: number }[] = [];\n2853-    \n2854:    if (calc.company === 'Деловые Линии' && calc.details) {\n2855-      // Основная стоимость доставки (уже включает все базовые услуги и упаковку)\n2856-      let basePrice = calc.details.price || calc.price || 0;\n2857-      \n2858-      // Разбиваем основную стоимость на компоненты если возможно\n2859-      let intercityPrice = 0;\n2860-      let derivalPrice = 0;\n2861-      let arrivalPrice = 0;\n2862-      let packagingPrice = 0;\n2863-      // packagingPremiums больше не используются - надбавки включены в pkg.price\n2864-      let insurancePrice = 0;\n2865-      \n2866-      // Межтерминальная перевозка\n2867-      if (calc.details?.intercity?.price) {\n2868-        intercityPrice = calc.details.intercity.price;\n2869-        details.push({\n",
+    "metadata": {
+      "output": "2849-\n2850-  // Парсер деталей расчета для читаемого формата\n2851-  const parseCalculationDetails = (calc: CalculationResult) => {\n2852-    const details: { service: string; description: string; price: number }[] = [];\n2853-    \n2854:    if (calc.company === 'Деловые Линии' && calc.details) {\n2855-      // Основная стоимость доставки (уже включает все базовые услуги и упаковку)\n2856-      let basePrice = calc.details.price || calc.price || 0;\n2857-      \n2858-      // Разбиваем основную стоимость на компоненты если возможно\n2859-      let intercityPrice = 0;\n2860-      let derivalPrice = 0;\n2861-      let arrivalPrice = 0;\n2862-      let packagingPrice = 0;\n2863-      // packagingPremiums больше не используются - надбавки включены в pkg.price\n2864-      let insurancePrice = 0;\n2865-      \n2866-      // Межтерминальная перевозка\n2867-      if (calc.details?.intercity?.price) {\n2868-        intercityPrice = calc.details.intercity.price;\n2869-        details.push({\n",
+      "exit": 0,
+      "description": "Find where calc object is processed for Dellin"
+    },
+    "title": "cd /home/user/project && grep -n -B5 -A15 \"calc\\.company === 'Деловые Линии'\" app/page.tsx",
+    "time": {
+      "start": 1759245413222,
+      "end": 1759245413232
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b33317b001fa4OmizxpOOcgc",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_017ZupTZrA39N5SJbw3pBvXG",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        return {\n          company: 'Деловые Линии',\n          price: Math.round(totalPrice),\n          days: deliveryDays || 0,\n          details: data.data,\n          requestData,\n          responseData: data,\n          apiUrl,\n          sessionId: sessionID\n        };",
+      "newString": "        return {\n          company: 'Деловые Линии',\n          price: Math.round(totalPrice),\n          days: deliveryDays || 0,\n          details: data.data || {},\n          requestData,\n          responseData: data,\n          apiUrl,\n          sessionId: sessionID\n        };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1410,9 +1410,9 @@\n return {\n   company: 'Деловые Линии',\n   price: Math.round(totalPrice),\n   days: deliveryDays || 0,\n-  details: data.data,\n+  details: data.data || {},\n   requestData,\n   responseData: data,\n   apiUrl,\n   sessionId: sessionID\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245449388,
+      "end": 1759245449402
+    }
+  }
+}

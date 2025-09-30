@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3508d6001szlLdxMKilXgh6",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01NAsnHWoiY7CRYTgJNqYC3S",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "            ...(form.toAddressDelivery ? {\n              address: {\n                search: form.toAddress || form.toCity\n              }\n            } : {\n              terminalID: toTerminalId\n            }),",
+      "newString": "            ...(form.toAddressDelivery ? {\n              address: {\n                search: form.toAddress || form.toCity\n              }\n            } : (toTerminalId ? {\n              terminalID: toTerminalId\n            } : {\n              address: {\n                search: form.toCity\n              }\n            })),"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1134,11 +1134,15 @@\n ...(form.toAddressDelivery ? {\n   address: {\n     search: form.toAddress || form.toCity\n   }\n-} : {\n+} : (toTerminalId ? {\n   terminalID: toTerminalId\n-}),\n+} : {\n+  address: {\n+    search: form.toCity\n+  }\n+})),\n time: {\n   worktimeStart: '10:00',\n   worktimeEnd: '18:00',\n   breakStart: '13:00',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245569682,
+      "end": 1759245569696
+    }
+  }
+}

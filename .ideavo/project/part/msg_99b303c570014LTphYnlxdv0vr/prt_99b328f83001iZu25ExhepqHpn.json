@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b328f83001iZu25ExhepqHpn",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Mx57jQEwQ9ggbTsTGbGJpf",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2990,
+      "limit": 25
+    },
+    "output": "<file>\n02991|         });\n02992|       }\n02993|       if (calc.details.deliveryToDoorCost) {\n02994|         details.push({\n02995|           service: 'Стоимость доставки до двери',\n02996|           description: '',\n02997|           price: calc.details.deliveryToDoorCost\n02998|         });\n02999|       }\n03000|       if (calc.details.additionalServices && calc.details.additionalServices > 0) {\n03001|         details.push({\n03002|           service: 'Стоимость доп.услуг',\n03003|           description: '',\n03004|           price: calc.details.additionalServices\n03005|         });\n03006|       }\n03007| \n03008|     } else if (calc.company === 'ПЭК' && calc.details?.services) {\n03009|       // Для ПЭК используем данные из API\n03010|       calc.details.services.forEach((service: any) => {\n03011|         if (service.price > 0) {\n03012|           details.push({\n03013|             service: service.name || 'Услуга ПЭК',\n03014|             description: service.description || '',\n03015|             price: service.price\n\n(File has more lines. Use 'offset' parameter to read beyond line 3015)\n</file>",
+    "metadata": {
+      "preview": "        });\n      }\n      if (calc.details.deliveryToDoorCost) {\n        details.push({\n          service: 'Стоимость доставки до двери',\n          description: '',\n          price: calc.details.deliveryToDoorCost\n        });\n      }\n      if (calc.details.additionalServices && calc.details.additionalServices > 0) {\n        details.push({\n          service: 'Стоимость доп.услуг',\n          description: '',\n          price: calc.details.additionalServices\n        });\n      }\n\n    } else if (calc.company === 'ПЭК' && calc.details?.services) {\n      // Для ПЭК используем данные из API\n      calc.details.services.forEach((service: any) => {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245406618,
+      "end": 1759245406620
+    }
+  }
+}

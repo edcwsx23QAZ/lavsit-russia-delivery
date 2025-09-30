@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b30ead2001gLCZeFGMssCOUE",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_016HGC7VCocfhAgVL8JuZAgg",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n -A20 -B5 \"calculator.json\" app/page.tsx",
+      "description": "Find calculator API call and response handling"
+    },
+    "output": "978-    \n979-    console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');\n980-    return null;\n981-  };\n982-\n983:  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n984-  const calculateDellin = async (): Promise<CalculationResult> => {\n985:    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n986-    const maxRetries = 2;\n987-    \n988-    try {\n989-      let sessionID = await getDellinSessionId();\n990-      \n991-      if (!sessionID) {\n992-        return {\n993-          company: 'Деловые Линии',\n994-          price: 0,\n995-          days: 0,\n996-          error: 'Не удалось получить sessionID',\n997-          apiUrl,\n998-          requestData: null,\n999-          responseData: null\n1000-        };\n1001-      }\n1002-\n1003-      // Вычисляем размеры и объемы\n1004-      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n1005-      const totalVolume = form.cargos.reduce((sum, cargo) => \n",
+    "metadata": {
+      "output": "978-    \n979-    console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');\n980-    return null;\n981-  };\n982-\n983:  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n984-  const calculateDellin = async (): Promise<CalculationResult> => {\n985:    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n986-    const maxRetries = 2;\n987-    \n988-    try {\n989-      let sessionID = await getDellinSessionId();\n990-      \n991-      if (!sessionID) {\n992-        return {\n993-          company: 'Деловые Линии',\n994-          price: 0,\n995-          days: 0,\n996-          error: 'Не удалось получить sessionID',\n997-          apiUrl,\n998-          requestData: null,\n999-          responseData: null\n1000-        };\n1001-      }\n1002-\n1003-      // Вычисляем размеры и объемы\n1004-      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n1005-      const totalVolume = form.cargos.reduce((sum, cargo) => \n",
+      "exit": 0,
+      "description": "Find calculator API call and response handling"
+    },
+    "title": "cd /home/user/project && grep -n -A20 -B5 \"calculator.json\" app/page.tsx",
+    "time": {
+      "start": 1759245299554,
+      "end": 1759245299561
+    }
+  }
+}

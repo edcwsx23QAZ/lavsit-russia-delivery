@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3097d2001HgpQZhbCg9frTm",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01VR5V37cF1jZtZ4gMBia8Cd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n -A10 -B5 \"derival\" app/page.tsx | head -30",
+      "description": "Find derival usage around line numbers"
+    },
+    "output": "1071-        sessionID: sessionID,\n1072-        delivery: {\n1073-          deliveryType: {\n1074-            type: 'auto'  // Всегда \"auto\" по умолчанию\n1075-          },\n1076:          derival: {\n1077-            produceDate: produceDate,  // Обязательная дата отправления\n1078-            variant: form.fromAddressDelivery ? 'address' : 'terminal',\n1079-            ...(form.fromAddressDelivery ? {\n1080-              address: {\n1081-                search: form.fromAddress || form.fromCity\n1082-              }\n1083-            } : {\n1084-              terminalID: fromTerminalId\n1085-            }),\n1086-            time: {\n--\n1088-              worktimeEnd: '18:00',\n1089-              breakStart: '13:00',\n1090-              breakEnd: '14:00',\n1091-              exactTime: false\n1092-            }\n1093:            // handling в derival всегда пропускается согласно инструкции\n1094-          },\n1095-          arrival: {\n1096-            variant: form.toAddressDelivery ? 'address' : 'terminal',\n1097-            ...(form.toAddressDelivery ? {\n1098-              address: {\n1099-                search: form.toAddress || form.toCity\n1100-              }\n",
+    "metadata": {
+      "output": "1071-        sessionID: sessionID,\n1072-        delivery: {\n1073-          deliveryType: {\n1074-            type: 'auto'  // Всегда \"auto\" по умолчанию\n1075-          },\n1076:          derival: {\n1077-            produceDate: produceDate,  // Обязательная дата отправления\n1078-            variant: form.fromAddressDelivery ? 'address' : 'terminal',\n1079-            ...(form.fromAddressDelivery ? {\n1080-              address: {\n1081-                search: form.fromAddress || form.fromCity\n1082-              }\n1083-            } : {\n1084-              terminalID: fromTerminalId\n1085-            }),\n1086-            time: {\n--\n1088-              worktimeEnd: '18:00',\n1089-              breakStart: '13:00',\n1090-              breakEnd: '14:00',\n1091-              exactTime: false\n1092-            }\n1093:            // handling в derival всегда пропускается согласно инструкции\n1094-          },\n1095-          arrival: {\n1096-            variant: form.toAddressDelivery ? 'address' : 'terminal',\n1097-            ...(form.toAddressDelivery ? {\n1098-              address: {\n1099-                search: form.toAddress || form.toCity\n1100-              }\n",
+      "exit": 0,
+      "description": "Find derival usage around line numbers"
+    },
+    "title": "cd /home/user/project && grep -n -A10 -B5 \"derival\" app/page.tsx | head -30",
+    "time": {
+      "start": 1759245278110,
+      "end": 1759245278125
+    }
+  }
+}

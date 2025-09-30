@@ -1,0 +1,11 @@
+{
+  "id": "prt_99b33ea32001q5PXzebSRFrlke",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Вот и проблема! В строках 1084 и 1102 происходит `terminalID: fromTerminalId` и `terminalID: toTerminalId`, но если эти значения равны `null` или `undefined`, то API может вернуть ошибку или некорректную структуру данных.\n\nДавайте добавим проверку и логирование терминалов:",
+  "time": {
+    "start": 1759245497103,
+    "end": 1759245497103
+  }
+}

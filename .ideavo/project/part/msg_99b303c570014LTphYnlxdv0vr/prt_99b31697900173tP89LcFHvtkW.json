@@ -1,0 +1,11 @@
+{
+  "id": "prt_99b31697900173tP89LcFHvtkW",
+  "messageID": "msg_99b303c570014LTphYnlxdv0vr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Вижу проблему! В строке 1266 происходит вызов `findInsuranceFields(data.data, 'data.data')`, но если `data` или `data.data` равны `undefined`, это вызовет ошибку внутри функции `findInsuranceFields`. Давайте найдем эту функцию:",
+  "time": {
+    "start": 1759245332772,
+    "end": 1759245332772
+  }
+}
