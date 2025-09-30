@@ -1,0 +1,42 @@
+{
+  "id": "prt_9999a62a1001vezMJ4ktmJ5oLf",
+  "messageID": "msg_9999a2cf80016KSn0ofEycUTqo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01GdbxTqSzvJyw2aJkLrKrsf",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2, Save } from 'lucide-react';",
+          "newString": "import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2, Save, ExternalLink } from 'lucide-react';"
+        },
+        {
+          "oldString": "          <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n            <Building2 className=\"h-4 w-4 mr-2\" />\n            Проверить переменные окружения\n          </Button>\n          <Button onClick={() => window.close()} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n            Закрыть\n          </Button>",
+          "newString": "          <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n            <Building2 className=\"h-4 w-4 mr-2\" />\n            Проверить переменные окружения\n          </Button>\n          <Button \n            onClick={() => window.open('https://docs.google.com/spreadsheets/d/1YourSheetID/edit#gid=0', '_blank')} \n            variant=\"outline\" \n            className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n          >\n            <ExternalLink className=\"h-4 w-4 mr-2\" />\n            Товары и размеры\n          </Button>\n          <Button onClick={() => window.close()} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n            Закрыть\n          </Button>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -4,9 +4,9 @@\n import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n import { Button } from '@/components/ui/button';\n import { Alert, AlertDescription } from '@/components/ui/alert';\n import { Badge } from '@/components/ui/badge';\n-import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2, Save } from 'lucide-react';\n+import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2, Save, ExternalLink } from 'lucide-react';\n import { Input } from '@/components/ui/input';\n import { Label } from '@/components/ui/label';\n \n export default function DiagnosticPage() {\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1038,8 +1038,16 @@\n   <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n     <Building2 className=\"h-4 w-4 mr-2\" />\n     Проверить переменные окружения\n   </Button>\n+  <Button \n+    onClick={() => window.open('https://docs.google.com/spreadsheets/d/1YourSheetID/edit#gid=0', '_blank')} \n+    variant=\"outline\" \n+    className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n+  >\n+    <ExternalLink className=\"h-4 w-4 mr-2\" />\n+    Товары и размеры\n+  </Button>\n   <Button onClick={() => window.close()} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n     Закрыть\n   </Button>\n </div>\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759218664512,
+      "end": 1759218664546
+    }
+  }
+}

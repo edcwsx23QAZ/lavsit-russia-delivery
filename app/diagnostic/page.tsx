@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
-import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2, Save } from 'lucide-react';
+import { Building2, Truck, Activity, CheckCircle, AlertCircle, XCircle, TestTube, PlayCircle, Plus, Trash2, Save, ExternalLink } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 
@@ -1039,10 +1039,39 @@ export default function DiagnosticPage() {
             <Building2 className="h-4 w-4 mr-2" />
             Проверить переменные окружения
           </Button>
+          <Button 
+            onClick={() => {
+              // В реальном проекте здесь бы была ссылка на вашу реальную Google Sheets
+              window.open('https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0', '_blank');
+            }} 
+            variant="outline" 
+            className="bg-green-600 hover:bg-green-700 text-white border-green-600"
+            title="Открыть Google Sheets с базой товаров и размеров"
+          >
+            <ExternalLink className="h-4 w-4 mr-2" />
+            База товаров
+          </Button>
           <Button onClick={() => window.close()} variant="outline" className="text-black bg-white border-gray-300 hover:bg-gray-100">
             Закрыть
           </Button>
         </div>
+
+        {/* Информация о Google Sheets */}
+        <Alert className="border-green-500 bg-green-900/20 mb-6">
+          <ExternalLink className="h-4 w-4" />
+          <AlertDescription>
+            <strong>База товаров и размеров:</strong> Кликните кнопку "База товаров" для открытия Google Sheets с полной базой данных о товарах.
+            <br /><br />
+            <strong>Что включает база:</strong>
+            <ul className="list-disc list-inside mt-2 space-y-1">
+              <li>Названия и категории товаров</li>
+              <li>Точные размеры (длина × ширина × высота)</li>
+              <li>Вес и объём товаров</li>
+              <li>Особенности упаковки и размещения</li>
+              <li>Рекомендации по транспортировке</li>
+            </ul>
+          </AlertDescription>
+        </Alert>
 
         {/* Правила размещения грузов */}
         <Card className="border-green-500 bg-green-900/20 mb-6">

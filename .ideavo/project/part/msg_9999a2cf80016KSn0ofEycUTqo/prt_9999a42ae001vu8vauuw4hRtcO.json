@@ -1,0 +1,25 @@
+{
+  "id": "prt_9999a42ae001vu8vauuw4hRtcO",
+  "messageID": "msg_9999a2cf80016KSn0ofEycUTqo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Ub43RvZjSJ7hVJjsYwGiNq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 1025,
+      "limit": 20
+    },
+    "output": "<file>\n01026|           <Button onClick={testAllAPIs} className=\"bg-blue-600 hover:bg-blue-700\">\n01027|             <Activity className=\"h-4 w-4 mr-2\" />\n01028|             Тестировать все API\n01029|           </Button>\n01030|           <Button \n01031|             onClick={runFullTesting} \n01032|             disabled={isFullTesting}\n01033|             className=\"bg-purple-600 hover:bg-purple-700\"\n01034|           >\n01035|             <TestTube className=\"h-4 w-4 mr-2\" />\n01036|             {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}\n01037|           </Button>\n01038|           <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n01039|             <Building2 className=\"h-4 w-4 mr-2\" />\n01040|             Проверить переменные окружения\n01041|           </Button>\n01042|           <Button onClick={() => window.close()} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n01043|             Закрыть\n01044|           </Button>\n01045|         </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 1045)\n</file>",
+    "metadata": {
+      "preview": "          <Button onClick={testAllAPIs} className=\"bg-blue-600 hover:bg-blue-700\">\n            <Activity className=\"h-4 w-4 mr-2\" />\n            Тестировать все API\n          </Button>\n          <Button \n            onClick={runFullTesting} \n            disabled={isFullTesting}\n            className=\"bg-purple-600 hover:bg-purple-700\"\n          >\n            <TestTube className=\"h-4 w-4 mr-2\" />\n            {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}\n          </Button>\n          <Button onClick={() => window.open('/env-check', '_blank')} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n            <Building2 className=\"h-4 w-4 mr-2\" />\n            Проверить переменные окружения\n          </Button>\n          <Button onClick={() => window.close()} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n            Закрыть\n          </Button>\n        </div>"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759218648721,
+      "end": 1759218648727
+    }
+  }
+}

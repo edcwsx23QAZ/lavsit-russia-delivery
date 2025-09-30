@@ -1,0 +1,34 @@
+{
+  "id": "prt_9999a969a001hs8VO5tH7YveRK",
+  "messageID": "msg_9999a2cf80016KSn0ofEycUTqo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01JR6hgDYy4DhzS7TqPM75Fo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "          <Button \n            onClick={() => window.open('https://docs.google.com/spreadsheets/d/1YourSheetID/edit#gid=0', '_blank')} \n            variant=\"outline\" \n            className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n          >\n            <ExternalLink className=\"h-4 w-4 mr-2\" />\n            Товары и размеры\n          </Button>",
+          "newString": "          <Button \n            onClick={() => window.open('https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0', '_blank')} \n            variant=\"outline\" \n            className=\"bg-green-600 hover:bg-green-700 text-white border-green-600\"\n            title=\"Открыть Google Sheets с базой товаров и размеров\"\n          >\n            <ExternalLink className=\"h-4 w-4 mr-2\" />\n            База товаров\n          </Button>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1039,14 +1039,15 @@\n   <Building2 className=\"h-4 w-4 mr-2\" />\n   Проверить переменные окружения\n </Button>\n <Button \n-  onClick={() => window.open('https://docs.google.com/spreadsheets/d/1YourSheetID/edit#gid=0', '_blank')} \n+  onClick={() => window.open('https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0', '_blank')} \n   variant=\"outline\" \n-  className=\"text-black bg-white border-gray-300 hover:bg-gray-100\"\n+  className=\"bg-green-600 hover:bg-green-700 text-white border-green-600\"\n+  title=\"Открыть Google Sheets с базой товаров и размеров\"\n >\n   <ExternalLink className=\"h-4 w-4 mr-2\" />\n-  Товары и размеры\n+  База товаров\n </Button>\n <Button onClick={() => window.close()} variant=\"outline\" className=\"text-black bg-white border-gray-300 hover:bg-gray-100\">\n   Закрыть\n </Button>\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759218674896,
+      "end": 1759218674909
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "prt_9999ac605001oyche73xUOOVmQ",
+  "messageID": "msg_9999a2cf80016KSn0ofEycUTqo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01C1b6z9x3zh75mQaRCE7QGV",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "        </div>\n\n        {/* Правила размещения грузов */}",
+          "newString": "        </div>\n\n        {/* Информация о Google Sheets */}\n        <Alert className=\"border-green-500 bg-green-900/20 mb-6\">\n          <ExternalLink className=\"h-4 w-4\" />\n          <AlertDescription>\n            <strong>База товаров и размеров:</strong> Кликните кнопку \"База товаров\" для открытия Google Sheets с полной базой данных о товарах, их размерах, весе и других характеристиках для оптимального размещения в грузовике.\n          </AlertDescription>\n        </Alert>\n\n        {/* Правила размещения грузов */}"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1052,8 +1052,16 @@\n     Закрыть\n   </Button>\n </div>\n \n+{/* Информация о Google Sheets */}\n+<Alert className=\"border-green-500 bg-green-900/20 mb-6\">\n+  <ExternalLink className=\"h-4 w-4\" />\n+  <AlertDescription>\n+    <strong>База товаров и размеров:</strong> Кликните кнопку \"База товаров\" для открытия Google Sheets с полной базой данных о товарах, их размерах, весе и других характеристиках для оптимального размещения в грузовике.\n+  </AlertDescription>\n+</Alert>\n+\n {/* Правила размещения грузов */}\n <Card className=\"border-green-500 bg-green-900/20 mb-6\">\n   <CardHeader>\n     <CardTitle className=\"flex items-center gap-2\">\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759218694259,
+      "end": 1759218694272
+    }
+  }
+}

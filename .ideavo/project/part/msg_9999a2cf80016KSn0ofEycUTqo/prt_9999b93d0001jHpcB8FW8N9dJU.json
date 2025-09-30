@@ -1,0 +1,34 @@
+{
+  "id": "prt_9999b93d0001jHpcB8FW8N9dJU",
+  "messageID": "msg_9999a2cf80016KSn0ofEycUTqo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_014tos47x9zFjy5P4fVBvSUk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "edits": [
+        {
+          "oldString": "            onClick={() => window.open('https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0', '_blank')}",
+          "newString": "            onClick={() => {\n              // В реальном проекте здесь бы была ссылка на вашу реальную Google Sheets\n              window.open('https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0', '_blank');\n            }}"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1039,9 +1039,12 @@\n   <Building2 className=\"h-4 w-4 mr-2\" />\n   Проверить переменные окружения\n </Button>\n <Button \n-  onClick={() => window.open('https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0', '_blank')} \n+  onClick={() => {\n+    // В реальном проекте здесь бы была ссылка на вашу реальную Google Sheets\n+    window.open('https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit#gid=0', '_blank');\n+  }} \n   variant=\"outline\" \n   className=\"bg-green-600 hover:bg-green-700 text-white border-green-600\"\n   title=\"Открыть Google Sheets с базой товаров и размеров\"\n >\n"
+        }
+      ]
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759218739357,
+      "end": 1759218739368
+    }
+  }
+}
