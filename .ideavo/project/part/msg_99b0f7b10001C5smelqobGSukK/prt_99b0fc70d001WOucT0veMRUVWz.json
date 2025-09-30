@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b0fc70d001WOucT0veMRUVWz",
+  "messageID": "msg_99b0f7b10001C5smelqobGSukK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01DKni6jHMbDiGP63sUyNkjd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/DiagnosticHeader.tsx",
+      "content": "'use client';\n\nimport { Button } from '@/components/ui/button';\nimport { Building2, Activity, TestTube, ExternalLink, Download, RefreshCw } from 'lucide-react';\n\ninterface DiagnosticHeaderProps {\n  onTestAllAPIs: () => void;\n  onRunFullTesting: () => void;\n  onUpdateProductData: () => void;\n  isFullTesting: boolean;\n  isUpdatingData: boolean;\n  updateStatus: 'idle' | 'updating' | 'success' | 'error';\n}\n\nexport default function DiagnosticHeader({\n  onTestAllAPIs,\n  onRunFullTesting,\n  onUpdateProductData,\n  isFullTesting,\n  isUpdatingData,\n  updateStatus\n}: DiagnosticHeaderProps) {\n  return (\n    <div className=\"mb-6\">\n      <div className=\"mb-6\">\n        <h1 className=\"text-3xl font-bold mb-2 text-white\">Диагностика транспортных компаний</h1>\n        <p className=\"text-gray-400\">Проверка работоспособности API всех подключенных ТК</p>\n      </div>\n\n      <div className=\"flex gap-4 mb-6 flex-wrap\">\n        <Button onClick={onTestAllAPIs} className=\"bg-blue-600 hover:bg-blue-700\">\n          <Activity className=\"h-4 w-4 mr-2\" />\n          Тестировать все API\n        </Button>\n        <Button \n          onClick={onRunFullTesting} \n          disabled={isFullTesting}\n          className=\"bg-purple-600 hover:bg-purple-700\"\n        >\n          <TestTube className=\"h-4 w-4 mr-2\" />\n          {isFullTesting ? 'Полное тестирование...' : 'Полное тестирование'}\n        </Button>\n        <Button \n          onClick={() => window.open('/env-check', '_blank')} \n          variant=\"outline\" \n          className=\"text-white bg-gray-700 border-gray-500 hover:bg-gray-600\"\n        >\n          <Building2 className=\"h-4 w-4 mr-2\" />\n          Проверить переменные окружения\n        </Button>\n        <Button \n          onClick={() => {\n            window.open('https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/edit?gid=0#gid=0', '_blank');\n          }} \n          variant=\"outline\" \n          className=\"bg-green-600 hover:bg-green-700 text-white border-green-600\"\n          title=\"Открыть Google Sheets с базой товаров и размеров\"\n        >\n          <ExternalLink className=\"h-4 w-4 mr-2\" />\n          База товаров\n        </Button>\n        <Button \n          onClick={onUpdateProductData}\n          disabled={isUpdatingData}\n          variant=\"outline\"\n          className={\n            updateStatus === 'success' \n              ? \"bg-green-600 hover:bg-green-700 text-white border-green-600\" \n              : updateStatus === 'error'\n              ? \"bg-red-600 hover:bg-red-700 text-white border-red-600\"\n              : \"bg-blue-600 hover:bg-blue-700 text-white border-blue-600\"\n          }\n          title=\"Обновить данные о товарах из Google Sheets\"\n        >\n          {updateStatus === 'updating' ? (\n            <RefreshCw className=\"h-4 w-4 mr-2 animate-spin\" />\n          ) : (\n            <Download className=\"h-4 w-4 mr-2\" />\n          )}\n          {updateStatus === 'updating' && 'Обновление...'}\n          {updateStatus === 'success' && 'Обновлено!'}\n          {updateStatus === 'error' && 'Ошибка'}\n          {updateStatus === 'idle' && 'Обновить данные'}\n        </Button>\n        <Button onClick={() => window.close()} variant=\"outline\" className=\"text-white bg-gray-700 border-gray-500 hover:bg-gray-600\">\n          Закрыть\n        </Button>\n      </div>\n    </div>\n  );\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/components/diagnostic/DiagnosticHeader.tsx",
+      "exists": false
+    },
+    "title": "components/diagnostic/DiagnosticHeader.tsx",
+    "time": {
+      "start": 1759243142106,
+      "end": 1759243142109
+    }
+  }
+}

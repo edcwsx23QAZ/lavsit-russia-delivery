@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b13fabc001EEZc85yWGY5BX8",
+  "messageID": "msg_99b0f7b10001C5smelqobGSukK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01HYoYzZJX15FgpBW1q11mgL",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/hooks/useDiagnostic.ts",
+      "content": "'use client';\n\nimport { useState, useCallback, useMemo } from 'react';\nimport { useDebouncedCallback } from 'use-debounce';\n\nexport interface DiagnosticResult {\n  status: 'success' | 'warning' | 'error' | 'pending';\n  message: string;\n  details?: any;\n  response?: any;\n  requestData?: any;\n  timing?: number;\n}\n\nexport interface TestResult {\n  company: string;\n  status: 'passed' | 'failed' | 'timeout' | 'skipped';\n  message: string;\n  details?: any;\n  timing: number;\n  timestamp: string;\n}\n\ninterface TestSummary {\n  total: number;\n  passed: number;\n  failed: number;\n  skipped: number;\n  averageTime: number;\n  successRate: number;\n  errors: string[];\n}\n\nexport const useDiagnostic = () => {\n  const [diagnosticResults, setDiagnosticResults] = useState<{ [key: string]: DiagnosticResult }>({});\n  const [fullTestResults, setFullTestResults] = useState<{\n    summary: TestSummary;\n    details: TestResult[];\n  } | null>(null);\n  const [testProgress, setTestProgress] = useState(0);\n  const [isFullTesting, setIsFullTesting] = useState(false);\n\n  // Debounced update for diagnostic results\n  const updateDiagnosticResult = useDebouncedCallback(\n    (key: string, result: DiagnosticResult) => {\n      setDiagnosticResults(prev => ({\n        ...prev,\n        [key]: result\n      }));\n    },\n    100\n  );\n\n  const clearResults = useCallback(() => {\n    setDiagnosticResults({});\n    setFullTestResults(null);\n    setTestProgress(0);\n  }, []);\n\n  const updateProgress = useCallback((progress: number) => {\n    setTestProgress(Math.min(100, Math.max(0, progress)));\n  }, []);\n\n  const setFullTestingState = useCallback((testing: boolean) => {\n    setIsFullTesting(testing);\n    if (!testing) {\n      setTestProgress(0);\n    }\n  }, []);\n\n  // Memoized calculated values\n  const resultsStats = useMemo(() => {\n    const results = Object.values(diagnosticResults);\n    const total = results.length;\n    const success = results.filter(r => r.status === 'success').length;\n    const errors = results.filter(r => r.status === 'error').length;\n    const warnings = results.filter(r => r.status === 'warning').length;\n    \n    return {\n      total,\n      success,\n      errors,\n      warnings,\n      successRate: total > 0 ? (success / total) * 100 : 0\n    };\n  }, [diagnosticResults]);\n\n  return {\n    diagnosticResults,\n    fullTestResults,\n    testProgress,\n    isFullTesting,\n    resultsStats,\n    updateDiagnosticResult,\n    setFullTestResults,\n    updateProgress,\n    setFullTestingState,\n    clearResults\n  };\n};"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/hooks/useDiagnostic.ts",
+      "exists": false
+    },
+    "title": "hooks/useDiagnostic.ts",
+    "time": {
+      "start": 1759243411506,
+      "end": 1759243411507
+    }
+  }
+}

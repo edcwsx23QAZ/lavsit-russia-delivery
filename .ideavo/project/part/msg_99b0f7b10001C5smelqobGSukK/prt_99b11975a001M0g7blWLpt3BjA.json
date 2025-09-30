@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b11975a001M0g7blWLpt3BjA",
+  "messageID": "msg_99b0f7b10001C5smelqobGSukK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01DbDkdQBBVZiQhRZNoahRNg",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npx shadcn-ui@latest add progress",
+      "description": "Add Progress component"
+    },
+    "output": "npm warn exec The following package was not found and will be installed: shadcn-ui@0.9.5\nThe 'shadcn-ui' package is deprecated. Please use the 'shadcn' package instead:\n\n  npx shadcn@latest add progress\n\nFor more information, visit: https://ui.shadcn.com/docs/cli\n\n",
+    "metadata": {
+      "output": "npm warn exec The following package was not found and will be installed: shadcn-ui@0.9.5\nThe 'shadcn-ui' package is deprecated. Please use the 'shadcn' package instead:\n\n  npx shadcn@latest add progress\n\nFor more information, visit: https://ui.shadcn.com/docs/cli\n\n",
+      "exit": 0,
+      "description": "Add Progress component"
+    },
+    "title": "cd /home/user/project && npx shadcn-ui@latest add progress",
+    "time": {
+      "start": 1759243246102,
+      "end": 1759243247621
+    }
+  }
+}

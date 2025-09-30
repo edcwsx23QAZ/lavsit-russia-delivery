@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b142995002LxnKoCeplwoXlS",
+  "messageID": "msg_99b0f7b10001C5smelqobGSukK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01LPo4AdY5r2Sm3hrZgdbsph",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/hooks/useVehicleManagement.ts",
+      "content": "'use client';\n\nimport { useState, useEffect, useCallback } from 'react';\n\nexport interface VehicleType {\n  id: string;\n  name: string;\n  length: number;\n  width: number;\n  height: number;\n}\n\nconst initialVehicleTypes: VehicleType[] = [\n  { id: '1', name: 'Форд Транзит', length: 4200, width: 2025, height: 2025 },\n  { id: '2', name: 'Фура 18м3', length: 4200, width: 2200, height: 2000 }\n];\n\nexport const useVehicleManagement = () => {\n  const [vehicleTypes, setVehicleTypes] = useState<VehicleType[]>(initialVehicleTypes);\n  const [newVehicle, setNewVehicle] = useState({ name: '', length: '', width: '', height: '' });\n  const [isSaving, setIsSaving] = useState(false);\n  const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);\n  const [saveStatus, setSaveStatus] = useState<'idle' | 'saving' | 'success' | 'error'>('idle');\n  const [lastUpdateTime, setLastUpdateTime] = useState<string | null>(null);\n\n  // Load saved vehicle types on mount\n  useEffect(() => {\n    try {\n      const saved = localStorage.getItem('vehicleTypes');\n      if (saved) {\n        const parsedVehicleTypes = JSON.parse(saved);\n        setVehicleTypes(parsedVehicleTypes);\n      }\n      \n      const lastUpdate = localStorage.getItem('lastProductDataUpdate');\n      if (lastUpdate) {\n        setLastUpdateTime(new Date(lastUpdate).toLocaleString('ru-RU'));\n      }\n    } catch (error) {\n      console.error('Ошибка загрузки сохранённых данных:', error);\n    }\n  }, []);\n\n  const addVehicleType = useCallback(() => {\n    if (!newVehicle.name || !newVehicle.length || !newVehicle.width || !newVehicle.height) {\n      alert('Пожалуйста, заполните все поля');\n      return;\n    }\n    \n    const newId = (vehicleTypes.length + 1).toString();\n    const vehicleToAdd: VehicleType = {\n      id: newId,\n      name: newVehicle.name,\n      length: parseInt(newVehicle.length),\n      width: parseInt(newVehicle.width),\n      height: parseInt(newVehicle.height)\n    };\n    \n    setVehicleTypes(prev => [...prev, vehicleToAdd]);\n    setNewVehicle({ name: '', length: '', width: '', height: '' });\n    setHasUnsavedChanges(true);\n  }, [newVehicle, vehicleTypes.length]);\n  \n  const removeVehicleType = useCallback((id: string) => {\n    setVehicleTypes(prev => prev.filter(vehicle => vehicle.id !== id));\n    setHasUnsavedChanges(true);\n  }, []);\n  \n  const updateVehicleType = useCallback((id: string, field: string, value: string | number) => {\n    setVehicleTypes(prev => prev.map(vehicle => \n      vehicle.id === id ? { ...vehicle, [field]: value } : vehicle\n    ));\n    setHasUnsavedChanges(true);\n  }, []);\n  \n  const saveVehicleTypes = useCallback(async () => {\n    setIsSaving(true);\n    setSaveStatus('saving');\n    \n    try {\n      localStorage.setItem('vehicleTypes', JSON.stringify(vehicleTypes));\n      \n      // Simulate network delay\n      await new Promise(resolve => setTimeout(resolve, 1000));\n      \n      setHasUnsavedChanges(false);\n      setSaveStatus('success');\n      \n      // Auto-hide success message\n      setTimeout(() => setSaveStatus('idle'), 3000);\n    } catch (error) {\n      console.error('Ошибка сохранения:', error);\n      setSaveStatus('error');\n      setTimeout(() => setSaveStatus('idle'), 5000);\n    } finally {\n      setIsSaving(false);\n    }\n  }, [vehicleTypes]);\n\n  return {\n    vehicleTypes,\n    newVehicle,\n    isSaving,\n    hasUnsavedChanges,\n    saveStatus,\n    lastUpdateTime,\n    setNewVehicle,\n    addVehicleType,\n    removeVehicleType,\n    updateVehicleType,\n    saveVehicleTypes,\n    setLastUpdateTime\n  };\n};"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/hooks/useVehicleManagement.ts",
+      "exists": false
+    },
+    "title": "hooks/useVehicleManagement.ts",
+    "time": {
+      "start": 1759243426112,
+      "end": 1759243426113
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b11d9af001vqi7R4kR7w09FU",
+  "messageID": "msg_99b0f7b10001C5smelqobGSukK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01FN3yKLNWB5ARxtjJ6o18rv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npx shadcn@latest add progress",
+      "description": "Add Progress component with correct CLI"
+    },
+    "output": "npm warn exec The following package was not found and will be installed: shadcn@3.3.1\nnpm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead\n- Checking registry.\n✔ Checking registry.\n- Installing dependencies.\n- Installing dependencies.\n✔ Installing dependencies.\n- Updating files.\n\u001b[?25l\u001b[2K\u001b[1G\u001b[36m?\u001b[39m \u001b[1mThe file progress.tsx already exists. Would you like to overwrite?\u001b[22m \u001b[90m›\u001b[39m \u001b[90m(y/N)\u001b[39m",
+    "metadata": {
+      "output": "npm warn exec The following package was not found and will be installed: shadcn@3.3.1\nnpm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead\n- Checking registry.\n✔ Checking registry.\n- Installing dependencies.\n- Installing dependencies.\n✔ Installing dependencies.\n- Updating files.\n\u001b[?25l\u001b[2K\u001b[1G\u001b[36m?\u001b[39m \u001b[1mThe file progress.tsx already exists. Would you like to overwrite?\u001b[22m \u001b[90m›\u001b[39m \u001b[90m(y/N)\u001b[39m",
+      "exit": null,
+      "description": "Add Progress component with correct CLI"
+    },
+    "title": "cd /home/user/project && npx shadcn@latest add progress",
+    "time": {
+      "start": 1759243266013,
+      "end": 1759243321533
+    }
+  }
+}
