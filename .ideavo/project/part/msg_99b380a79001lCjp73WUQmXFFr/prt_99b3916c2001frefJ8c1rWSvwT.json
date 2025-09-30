@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3916c2001frefJ8c1rWSvwT",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01PAfMbcJ2SnBWaYo29GgUsF",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Поиск страховки в других разделах\n      if (data.data?.derival) {\n        console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival.insurance);\n      }\n      if (data.data?.arrival) {\n        console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival.insurance);\n      }\n      if (data.data?.intercity) {\n        console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);\n      }",
+      "newString": "      // Поиск страховки в других разделах\n      if (data.data?.derival) {\n        console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival?.insurance);\n      }\n      if (data.data?.arrival) {\n        console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);\n      }\n      if (data.data?.intercity) {\n        console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1301,15 +1301,15 @@\n console.log('💳 data.data.additionalServices:', data.data?.additionalServices);\n \n // Поиск страховки в других разделах\n if (data.data?.derival) {\n-  console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival.insurance);\n+  console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival?.insurance);\n }\n if (data.data?.arrival) {\n-  console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival.insurance);\n+  console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);\n }\n if (data.data?.intercity) {\n-  console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);\n+  console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);\n }\n \n // Рекурсивный поиск всех полей содержащих \"insurance\"\n const findInsuranceFields = (obj: any, path = '') => {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245836832,
+      "end": 1759245836845
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "prt_99b39815a002LCeIWDTrdZtA2F",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Но возможно проблема не в этих местах. Ошибка \"Cannot read properties of undefined (reading 'derival')\" означает что что-то пытается обратиться к `undefined.derival`. Давайте найдем все места где может происходить обращение к чему-то с `derival` без явного указания объекта:",
+  "time": {
+    "start": 1759245863423,
+    "end": 1759245863423
+  }
+}

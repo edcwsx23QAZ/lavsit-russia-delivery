@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b38dde0001C456hnlIWDq3jk",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01DmDaydBRvZqTRWt9USBson",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1302,
+      "limit": 10
+    },
+    "output": "<file>\n01303|       // Поиск страховки в других разделах\n01304|       if (data.data && data.data.derival) {\n01305|         console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival.insurance);\n01306|       }\n01307|       if (data.data && data.data.arrival) {\n01308|         console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival.insurance);\n01309|       }\n01310|       if (data.data && data.data.intercity) {\n01311|         console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);\n01312|       }\n\n(File has more lines. Use 'offset' parameter to read beyond line 1312)\n</file>",
+    "metadata": {
+      "preview": "      // Поиск страховки в других разделах\n      if (data.data && data.data.derival) {\n        console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival.insurance);\n      }\n      if (data.data && data.data.arrival) {\n        console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival.insurance);\n      }\n      if (data.data && data.data.intercity) {\n        console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);\n      }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245820004,
+      "end": 1759245820008
+    }
+  }
+}

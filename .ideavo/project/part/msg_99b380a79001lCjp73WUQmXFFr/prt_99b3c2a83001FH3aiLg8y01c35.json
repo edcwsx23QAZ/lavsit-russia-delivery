@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3c2a83001FH3aiLg8y01c35",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_0197sGNg7nxLrXRWTJzGSgrX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    console.error('❌ Стек ошибки:', globalError.stack);",
+      "newString": "    console.error('❌ Стек ошибки:', globalError instanceof Error ? globalError.stack : 'Нет стека');"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3148,9 +3148,9 @@\n   \n   return details;\n } catch (globalError) {\n   console.error('❌ ГЛОБАЛЬНАЯ ОШИБКА в parseCalculationDetails:', globalError);\n-  console.error('❌ Стек ошибки:', globalError.stack);\n+  console.error('❌ Стек ошибки:', globalError instanceof Error ? globalError.stack : 'Нет стека');\n   console.log('❌ calc object:', calc);\n   // Возвращаем минимальные данные при любой ошибке\n   return [{\n     service: 'Доставка',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759246036579,
+      "end": 1759246036593
+    }
+  }
+}

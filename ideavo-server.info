@@ -4,23 +4,25 @@ $ next dev
   - Environments: .env.local, .env
 
  ✓ Starting...
- ✓ Ready in 1836ms
- ✓ Compiled /middleware in 142ms
+ ✓ Ready in 1931ms
+ ✓ Compiled /middleware in 151ms
  ✓ Compiled (73 modules)
  ○ Compiling / ...
- ✓ Compiled / in 4.3s (711 modules)
- GET / 200 in 4879ms
- ✓ Compiled in 633ms (367 modules)
+ ✓ Compiled / in 3.4s (711 modules)
+ GET / 200 in 4072ms
+ ✓ Compiled in 749ms (367 modules)
  ⚠ Cross origin request detected from 4000-i1t5vg9xkun6y21zpyvgj.e2b.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
 Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
- ✓ Compiled /api/furniture-products in 327ms (374 modules)
- ✓ Compiled (381 modules)
+ ○ Compiling /api/rail-continent ...
+ ✓ Compiled /api/rail-continent in 532ms (375 modules)
+ ✓ Compiled (379 modules)
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "test"
 }
 🔧 Тестовый метод прокси
- POST /api/pek 200 in 692ms
+ POST /api/pek 200 in 817ms
+🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
 🚚 Vozovoz API запрос: {
   "object": "price",
   "action": "get",
@@ -49,9 +51,6 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
   }
 }
 🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp
-🔄 Обновляем кэш данных мебели...
-📊 Загружаем данные из Google Sheets: https://docs.google.com/spreadsheets/d/1e0P91PfGKVIuSWDY0ceWkIE7jD-vzD_xrIesBeQno1Y/export?format=csv&gid=0
-🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto
 🚂 Rail Continent API ответ: {
   "result": "success",
   "data": {
@@ -183,13 +182,7 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     "train_fast_temp": false
   }
 }
- POST /api/rail-continent 200 in 1565ms
-📄 Получены CSV данные, размер: 306524
-📋 Количество строк: 1883
-✅ Успешно обработано 1882 товаров
-🛋️ Обработано товаров: 1882
- GET /api/furniture-products 200 in 1896ms
- GET /api/furniture-products 200 in 19ms
+ POST /api/rail-continent 200 in 1857ms
 🚚 Vozovoz API статус: 200 OK
 🚚 Vozovoz API ответ: {
   "response": {
@@ -226,33 +219,20 @@ Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allow
     ]
   }
 }
- POST /api/vozovoz 200 in 2099ms
-🔧 ПЭК Прокси: Получен запрос (по официальной документации)
-📝 Данные запроса: {
-  "method": "findzonebyaddress",
-  "address": "Осеево "
-}
-🔍 ПЭК API: findzonebyaddress для адреса: Осеево 
-🌐 Запрос к ПЭК API (официальная версия):
-URL: https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/
-Auth: Basic (логин + API ключ)
-EXACT BODY TO PEK: {
-  "address": "Осеево "
-}
-🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=129&volume=4.136324999999999&quantity=7&length=5.78&width=1&height=1&declared_cost=212500&pickup=0&delivery=0&packaging=1&insurance=1&tariff=auto
+ POST /api/vozovoz 200 in 2361ms
 🚚 Vozovoz API запрос: {
   "object": "price",
   "action": "get",
   "params": {
     "cargo": {
       "dimension": {
-        "quantity": 7,
-        "volume": 4.136324999999999,
-        "weight": 129
+        "quantity": 1,
+        "volume": 1,
+        "weight": 10
       },
-      "insurance": 212500,
+      "insurance": 50000,
       "wrapping": {
-        "palletCollar": 4.136324999999999
+        "palletCollar": 1
       }
     },
     "gateway": {
@@ -272,24 +252,78 @@ EXACT BODY TO PEK: {
   }
 }
 🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp
- ✓ Compiled /api/dellin-packages in 144ms (383 modules)
+🔧 ПЭК Прокси: Получен запрос (по официальной документации)
+📝 Данные запроса: {
+  "method": "findzonebyaddress",
+  "address": "Осеево "
+}
+🔍 ПЭК API: findzonebyaddress для адреса: Осеево 
+🌐 Запрос к ПЭК API (официальная версия):
+URL: https://kabinet.pecom.ru/api/v1/branches/findzonebyaddress/
+Auth: Basic (логин + API ключ)
+EXACT BODY TO PEK: {
+  "address": "Осеево "
+}
+🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=1&quantity=1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=1&insurance=1&tariff=auto
+🚚 Vozovoz API статус: 200 OK
+🚚 Vozovoz API ответ: {
+  "response": {
+    "basePrice": 6950,
+    "price": 6840,
+    "service": [
+      {
+        "basePrice": 100,
+        "name": "Платный въезд (отправитель)",
+        "price": 100
+      },
+      {
+        "basePrice": 5318,
+        "name": "Перевозка между городами",
+        "price": 5208
+      },
+      {
+        "basePrice": 526,
+        "name": "Складская обработка",
+        "price": 526
+      },
+      {
+        "basePrice": 109,
+        "name": "Страхование груза",
+        "price": 109
+      },
+      {
+        "basePrice": 897,
+        "name": "Паллетный борт",
+        "price": 897
+      }
+    ],
+    "deliveryTime": {
+      "from": 1,
+      "to": 1
+    },
+    "warnings": [
+      "Данные узла \"gateway.dispatch.location\" по запросу \"Москва\" не содержат уникального значения"
+    ]
+  }
+}
+ POST /api/vozovoz 200 in 712ms
 🚂 Rail Continent API ответ: {
   "result": "success",
   "data": {
     "auto": {
       "method": "_calcUsual",
-      "id": "6282031",
-      "sbornaya": 9840.317174999998,
-      "sbornayaPack": 11808.380609999998,
+      "id": "6282029",
+      "sbornaya": 2379,
+      "sbornayaPack": 2854.7999999999997,
       "price_terminal_enter1": "195",
       "price_terminal_enter2": 0,
-      "price": 10035.317174999998,
+      "price": 2574,
       "pricePickup": "0",
       "priceDelivery": "0",
-      "pricePackage": 3722.692499999999,
+      "pricePackage": 900,
       "priceDocuments": 400,
       "priceInsurance": 0.16,
-      "price_with_out_sale": 9840.317174999998,
+      "price_with_out_sale": 2379,
       "sale": 0,
       "discount_params": {
         "amount": 0,
@@ -305,22 +339,22 @@ EXACT BODY TO PEK: {
       "velocity": "АВТОМОБИЛЬНАЯ",
       "terminalEnter1": "195",
       "terminalEnter2": 0,
-      "priceTotal": 10035.32
+      "priceTotal": 2574
     },
     "train": {
       "method": "_calcUsual",
-      "id": "6283324",
-      "sbornaya": 21095.257499999996,
-      "sbornayaPack": 21095.257499999996,
+      "id": "6283322",
+      "sbornaya": 5310,
+      "sbornayaPack": 5310,
       "price_terminal_enter1": "195",
       "price_terminal_enter2": 0,
-      "price": 21290.257499999996,
+      "price": 5505,
       "pricePickup": "800",
       "priceDelivery": "800",
-      "pricePackage": 3722.692499999999,
+      "pricePackage": 900,
       "priceDocuments": 400,
       "priceInsurance": 0.16,
-      "price_with_out_sale": 21095.257499999996,
+      "price_with_out_sale": 5310,
       "sale": 0,
       "discount_params": {
         "amount": 0,
@@ -336,23 +370,23 @@ EXACT BODY TO PEK: {
       "velocity": "ЖД",
       "terminalEnter1": "195",
       "terminalEnter2": 0,
-      "priceTotal": 21290.26
+      "priceTotal": 5505
     },
     "train_fast": false,
     "auto_temp": {
       "method": "_calcUsual",
-      "id": "6292630",
-      "sbornaya": 23949.321749999996,
-      "sbornayaPack": 28739.186099999995,
+      "id": "6292628",
+      "sbornaya": 6090,
+      "sbornayaPack": 7308,
       "price_terminal_enter1": "195",
       "price_terminal_enter2": 0,
-      "price": 24144.321749999996,
+      "price": 6285,
       "pricePickup": "0",
       "priceDelivery": "0",
-      "pricePackage": 3722.692499999999,
+      "pricePackage": 900,
       "priceDocuments": 400,
       "priceInsurance": 0.16,
-      "price_with_out_sale": 23949.321749999996,
+      "price_with_out_sale": 6090,
       "sale": 0,
       "discount_params": {
         "amount": 0,
@@ -368,22 +402,22 @@ EXACT BODY TO PEK: {
       "velocity": "АВТОМОБИЛЬНАЯ",
       "terminalEnter1": "195",
       "terminalEnter2": 0,
-      "priceTotal": 24144.32
+      "priceTotal": 6285
     },
     "train_temp": {
       "method": "_calcUsual",
-      "id": "6299182",
-      "sbornaya": 22460.244749999998,
-      "sbornayaPack": 22460.244749999998,
+      "id": "6299180",
+      "sbornaya": 5700,
+      "sbornayaPack": 5700,
       "price_terminal_enter1": "195",
       "price_terminal_enter2": 0,
-      "price": 22655.244749999998,
+      "price": 5895,
       "pricePickup": "800",
       "priceDelivery": "800",
-      "pricePackage": 3722.692499999999,
+      "pricePackage": 900,
       "priceDocuments": 400,
       "priceInsurance": 0.16,
-      "price_with_out_sale": 22460.244749999998,
+      "price_with_out_sale": 5700,
       "sale": 0,
       "discount_params": {
         "amount": 0,
@@ -399,54 +433,13 @@ EXACT BODY TO PEK: {
       "velocity": "ЖД",
       "terminalEnter1": "195",
       "terminalEnter2": 0,
-      "priceTotal": 22655.24
+      "priceTotal": 5895
     },
     "train_fast_temp": false
   }
 }
- POST /api/rail-continent 200 in 804ms
-🚚 Vozovoz API статус: 200 OK
-🚚 Vozovoz API ответ: {
-  "response": {
-    "basePrice": 26891,
-    "price": 26480,
-    "service": [
-      {
-        "basePrice": 100,
-        "name": "Платный въезд (отправитель)",
-        "price": 100
-      },
-      {
-        "basePrice": 20729.25,
-        "name": "Перевозка между городами",
-        "price": 20318.25
-      },
-      {
-        "basePrice": 2160,
-        "name": "Складская обработка",
-        "price": 2160
-      },
-      {
-        "basePrice": 318.75,
-        "name": "Страхование груза",
-        "price": 318.75
-      },
-      {
-        "basePrice": 3583,
-        "name": "Паллетный борт",
-        "price": 3583
-      }
-    ],
-    "deliveryTime": {
-      "from": 1,
-      "to": 1
-    },
-    "warnings": [
-      "Данные узла \"gateway.dispatch.location\" по запросу \"Москва\" не содержат уникального значения"
-    ]
-  }
-}
- POST /api/vozovoz 200 in 807ms
+ POST /api/rail-continent 200 in 848ms
+ ✓ Compiled /api/dellin-packages in 357ms (381 modules)
 📡 Ответ от ПЭК API:
 Status: 200 OK
 Headers: {
@@ -454,13 +447,13 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '517',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Tue, 30 Sep 2025 15:06:35 GMT',
-  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
+  date: 'Tue, 30 Sep 2025 15:16:37 GMT',
+  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
 ✅ Успешный ответ от ПЭК: {"zoneId":"6877301b-bad8-11ea-80ce-00155d4a0436","zoneName":"Москва малое кольцо","branchUID":"b473ce9f-dd68-44ea-a4b2-4cb63b6e970d","bitrixId":446,"branchCode":"МВ","branchTitle":"Москва Восток","mainWarehouseId":"a678333f-2a2a-11e9-80ce-00155d713b38","warehousePoint":{"latitude":55.53300000000000,"longitude":37.57900000000000},"GeoData":{"precision":"bad","kind":"locality","Address":{"country_code":"RU","formatted":"Россия, Московская область, городской округ Лосино-Петровский, деревня Осеево"
- POST /api/pek 200 in 850ms
+ POST /api/pek 200 in 939ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "findzonebyaddress",
@@ -480,15 +473,13 @@ Headers: {
   'content-encoding': 'gzip',
   'content-length': '494',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Tue, 30 Sep 2025 15:06:35 GMT',
-  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
+  date: 'Tue, 30 Sep 2025 15:16:37 GMT',
+  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
 ✅ Успешный ответ от ПЭК: {"zoneId":"485a244d-92a2-11e5-94cc-00155d668909","zoneName":"Санкт-Петербург город","branchUID":"64adbe2c-a185-11dc-a911-000a5e19ccb4","bitrixId":463,"branchCode":"СП","branchTitle":"Санкт-Петербург","mainWarehouseId":"36cf9b60-a415-11dc-a911-000a5e19ccb4","warehousePoint":{"latitude":59.94281800000000,"longitude":30.44089600000000},"GeoData":{"precision":"exact","kind":"house","Address":{"country_code":"RU","formatted":"Россия, Санкт-Петербург, Невский проспект, 110","postal_code":"191025","Com
- POST /api/pek 200 in 214ms
-❌ Ошибка от API Деловых Линий: 401 Unauthorized
- GET /api/dellin-packages 401 in 727ms
+ POST /api/pek 200 in 225ms
 🔧 ПЭК Прокси: Получен запрос (по официальной документации)
 📝 Данные запроса: {
   "method": "calculateprice",
@@ -501,9 +492,9 @@ Headers: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-10-01T15:06:36",
+  "plannedDateTime": "2025-10-01T15:16:38",
   "isInsurance": true,
-  "isInsurancePrice": 212500,
+  "isInsurancePrice": 50000,
   "isPickUp": false,
   "isDelivery": false,
   "needReturnDocuments": false,
@@ -516,60 +507,6 @@ Headers: {
       "width": 1,
       "height": 1,
       "volume": 1,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 1.53,
-      "width": 1,
-      "height": 0.94,
-      "volume": 1.4382,
-      "weight": 69,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
       "weight": 10,
       "isHP": true,
       "sealingPositionsCount": 0
@@ -587,9 +524,9 @@ Headers: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-10-01T15:06:36",
+  "plannedDateTime": "2025-10-01T15:16:38",
   "isInsurance": true,
-  "isInsurancePrice": 212500,
+  "isInsurancePrice": 50000,
   "isPickUp": false,
   "isDelivery": false,
   "needReturnDocuments": false,
@@ -602,60 +539,6 @@ Headers: {
       "width": 1,
       "height": 1,
       "volume": 1,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 1.53,
-      "width": 1,
-      "height": 0.94,
-      "volume": 1.4382,
-      "weight": 69,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
       "weight": 10,
       "isHP": true,
       "sealingPositionsCount": 0
@@ -675,9 +558,9 @@ EXACT BODY TO PEK: {
   "isOpenCarSender": false,
   "isOpenCarReceiver": false,
   "isHyperMarket": false,
-  "plannedDateTime": "2025-10-01T15:06:36",
+  "plannedDateTime": "2025-10-01T15:16:38",
   "isInsurance": true,
-  "isInsurancePrice": 212500,
+  "isInsurancePrice": 50000,
   "isPickUp": false,
   "isDelivery": false,
   "needReturnDocuments": false,
@@ -693,74 +576,22 @@ EXACT BODY TO PEK: {
       "weight": 10,
       "isHP": true,
       "sealingPositionsCount": 0
-    },
-    {
-      "length": 1.53,
-      "width": 1,
-      "height": 0.94,
-      "volume": 1.4382,
-      "weight": 69,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
-    },
-    {
-      "length": 0.65,
-      "width": 0.55,
-      "height": 0.95,
-      "volume": 0.339625,
-      "weight": 10,
-      "isHP": true,
-      "sealingPositionsCount": 0
     }
   ]
 }
 ❌ Ошибка от API Деловых Линий: 401 Unauthorized
- GET /api/dellin-packages 401 in 190ms
+ GET /api/dellin-packages 401 in 1099ms
+❌ Ошибка от API Деловых Линий: 401 Unauthorized
+ GET /api/dellin-packages 401 in 202ms
 📡 Ответ от ПЭК API:
 Status: 200 OK
 Headers: {
   'cache-control': 'private',
   'content-encoding': 'gzip',
-  'content-length': '651',
+  'content-length': '646',
   'content-type': 'application/json; charset=utf-8',
-  date: 'Tue, 30 Sep 2025 15:06:36 GMT',
-  'set-cookie': 'ARRAffinity=83f49fa4307fd116655febaa309b5e5190dcdcb73ddd30aae12c345702f204c3;Path=/;Domain=kabinet.pecom.ru',
+  date: 'Tue, 30 Sep 2025 15:16:38 GMT',
+  'set-cookie': 'ARRAffinity=d7d2ebe6b48903ce63ce9c0c34fa2c44fd5f328baa27c198d123492f1378c8fb;Path=/;Domain=kabinet.pecom.ru',
   'x-aspnetmvc-version': '5.3',
   'x-powered-by': 'ARR/3.0'
 }
@@ -778,9 +609,9 @@ Headers: {
       "transportingType": null,
       "hasError": false,
       "errorMessage": null,
-      "costTotal": 34056.77,
+      "costTotal": 8418.6,
       "estDeliveryTime": 2,
       "services": [
         {
-
- POST /api/pek 200 in 690ms
+  
+ POST /api/pek 200 in 618ms

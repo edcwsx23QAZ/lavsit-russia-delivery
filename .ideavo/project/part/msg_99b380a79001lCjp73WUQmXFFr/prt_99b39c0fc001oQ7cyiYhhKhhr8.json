@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b39c0fc001oQ7cyiYhhKhhr8",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01R7Hdz1fZomtSmSxQKp9AL8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));",
+      "newString": "      try {\n        console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));\n      } catch (jsonError) {\n        console.error('❌ Ошибка JSON.stringify для data.data:', jsonError);\n        console.log('🔍 data.data (toString):', data.data?.toString?.() || 'Не удалось преобразовать');\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1288,9 +1288,14 @@\n     responseData: null\n   };\n }\n \n-console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));\n+try {\n+  console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));\n+} catch (jsonError) {\n+  console.error('❌ Ошибка JSON.stringify для data.data:', jsonError);\n+  console.log('🔍 data.data (toString):', data.data?.toString?.() || 'Не удалось преобразовать');\n+}\n \n // Поиск всех полей связанных со страховкой\n console.log('💳 ПОИСК КОМПОНЕНТОВ СТРАХОВКИ:');\n console.log('💳 data.data.insurance:', data.data?.insurance);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245879461,
+      "end": 1759245879472
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3af4c1001HxQ9sNIaF4Ofz6",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01NAm4SRkDecRHyPNxUT6FSk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    return details;\n  };",
+      "newString": "    return details;\n  } catch (globalError) {\n    console.error('❌ ГЛОБАЛЬНАЯ ОШИБКА в parseCalculationDetails:', globalError);\n    console.error('❌ Стек ошибки:', globalError.stack);\n    console.log('❌ calc object:', calc);\n    // Возвращаем минимальные данные при любой ошибке\n    return [{\n      service: 'Доставка',\n      description: 'Ошибка обработки деталей расчета',\n      price: calc?.price || 0\n    }];\n  }\n};"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3157,9 +3157,20 @@\n       }\n     }\n     \n     return details;\n-  };\n+  } catch (globalError) {\n+    console.error('❌ ГЛОБАЛЬНАЯ ОШИБКА в parseCalculationDetails:', globalError);\n+    console.error('❌ Стек ошибки:', globalError.stack);\n+    console.log('❌ calc object:', calc);\n+    // Возвращаем минимальные данные при любой ошибке\n+    return [{\n+      service: 'Доставка',\n+      description: 'Ошибка обработки деталей расчета',\n+      price: calc?.price || 0\n+    }];\n+  }\n+};\n \n   return (\n     <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n       <div className=\"max-w-7xl mx-auto\">\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245958411,
+      "end": 1759245958427
+    }
+  }
+}

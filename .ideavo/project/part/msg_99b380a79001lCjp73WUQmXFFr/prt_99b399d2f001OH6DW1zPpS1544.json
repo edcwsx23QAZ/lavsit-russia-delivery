@@ -1,0 +1,21 @@
+{
+  "id": "prt_99b399d2f001OH6DW1zPpS1544",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01M9vrC3StA5sWB8VNhyFGRo",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Забор груза\n      if (calc.details?.derival?.price) {\n        derivalPrice = calc.details.derival.price;\n        details.push({\n          service: 'Забор груза',\n          description: 'От адреса',\n          price: derivalPrice\n        });\n      }",
+      "newString": "      // Забор груза\n      if (calc.details?.derival?.price) {\n        derivalPrice = calc.details.derival.price;\n        details.push({\n          service: 'Забор груза',\n          description: 'От адреса',\n          price: derivalPrice\n        });\n      }"
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1759245870022,
+      "end": 1759245870023
+    }
+  }
+}

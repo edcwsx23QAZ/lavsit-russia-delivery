@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3945f0001F22AffGSqKnQKu",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01B47f66kHZZhEgwbnBn7Upt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Поиск страховки в других разделах\n      if (data.data?.derival) {\n        console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival?.insurance);\n      }\n      if (data.data?.arrival) {\n        console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);\n      }\n      if (data.data?.intercity) {\n        console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);\n      }",
+      "newString": "      // Поиск страховки в других разделах\n      try {\n        console.log('💳 Проверяем derival...');\n        if (data.data?.derival) {\n          console.log('💳 derival найден, проверяем insurance...');\n          console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival?.insurance);\n        } else {\n          console.log('💳 derival не найден или null');\n        }\n        \n        console.log('💳 Проверяем arrival...');\n        if (data.data?.arrival) {\n          console.log('💳 arrival найден, проверяем insurance...');\n          console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);\n        } else {\n          console.log('💳 arrival не найден или null');\n        }\n        \n        console.log('💳 Проверяем intercity...');\n        if (data.data?.intercity) {\n          console.log('💳 intercity найден, проверяем insurance...');\n          console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);\n        } else {\n          console.log('💳 intercity не найден или null');\n        }\n      } catch (error) {\n        console.error('❌ ОШИБКА при проверке секций страховки:', error);\n        console.error('❌ Стек ошибки:', error.stack);\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1300,17 +1300,36 @@\n console.log('💳 data.data.services:', data.data?.services);\n console.log('💳 data.data.additionalServices:', data.data?.additionalServices);\n \n // Поиск страховки в других разделах\n-if (data.data?.derival) {\n-  console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival?.insurance);\n+try {\n+  console.log('💳 Проверяем derival...');\n+  if (data.data?.derival) {\n+    console.log('💳 derival найден, проверяем insurance...');\n+    console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival?.insurance);\n+  } else {\n+    console.log('💳 derival не найден или null');\n+  }\n+  \n+  console.log('💳 Проверяем arrival...');\n+  if (data.data?.arrival) {\n+    console.log('💳 arrival найден, проверяем insurance...');\n+    console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);\n+  } else {\n+    console.log('💳 arrival не найден или null');\n+  }\n+  \n+  console.log('💳 Проверяем intercity...');\n+  if (data.data?.intercity) {\n+    console.log('💳 intercity найден, проверяем insurance...');\n+    console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);\n+  } else {\n+    console.log('💳 intercity не найден или null');\n+  }\n+} catch (error) {\n+  console.error('❌ ОШИБКА при проверке секций страховки:', error);\n+  console.error('❌ Стек ошибки:', error.stack);\n }\n-if (data.data?.arrival) {\n-  console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);\n-}\n-if (data.data?.intercity) {\n-  console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);\n-}\n \n // Рекурсивный поиск всех полей содержащих \"insurance\"\n const findInsuranceFields = (obj: any, path = '') => {\n   if (typeof obj !== 'object' || obj === null || obj === undefined) return;\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245851766,
+      "end": 1759245851783
+    }
+  }
+}

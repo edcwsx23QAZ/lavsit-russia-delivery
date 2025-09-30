@@ -1,0 +1,11 @@
+{
+  "id": "prt_99b38ed430018bPcwJQiq5GIbB",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Да! Вот проблема! В строке 1305 есть проверка `if (data.data && data.data.derival)`, но если `data.data.derival` равен `null` (а не `undefined`), то условие пройдет, но затем `data.data.derival.insurance` выдаст ошибку \"Cannot read properties of null\".\n\nТо же самое может быть в строках 1308 и 1311. Давайте исправим это:",
+  "time": {
+    "start": 1759245826057,
+    "end": 1759245826057
+  }
+}

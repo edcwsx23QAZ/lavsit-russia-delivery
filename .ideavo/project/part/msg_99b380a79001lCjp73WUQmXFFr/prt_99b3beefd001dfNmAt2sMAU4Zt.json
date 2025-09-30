@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3beefd001dfNmAt2sMAU4Zt",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01XSgYinGnxNfG5F37qrfbnK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      } catch (error) {\n        console.error('❌ ОШИБКА при проверке секций страховки:', error);\n        console.error('❌ Стек ошибки:', error.stack);\n      }",
+      "newString": "      } catch (error) {\n        console.error('❌ ОШИБКА при проверке секций страховки:', error);\n        console.error('❌ Стек ошибки:', error instanceof Error ? error.stack : 'Нет стека');\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1344,9 +1344,9 @@\n     console.log('💳 intercity не найден или null');\n   }\n } catch (error) {\n   console.error('❌ ОШИБКА при проверке секций страховки:', error);\n-  console.error('❌ Стек ошибки:', error.stack);\n+  console.error('❌ Стек ошибки:', error instanceof Error ? error.stack : 'Нет стека');\n }\n \n // Рекурсивный поиск всех полей содержащих \"insurance\"\n const findInsuranceFields = (obj: any, path = '') => {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759246022018,
+      "end": 1759246022036
+    }
+  }
+}

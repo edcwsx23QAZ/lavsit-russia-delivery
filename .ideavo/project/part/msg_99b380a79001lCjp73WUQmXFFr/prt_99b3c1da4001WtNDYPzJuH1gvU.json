@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3c1da4001WtNDYPzJuH1gvU",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01P98mGzfgMx2mdcpNGchPLU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n \"\\.stack\" app/page.tsx",
+      "description": "Find all error.stack usages to fix"
+    },
+    "output": "1348:        console.error('❌ Стек ошибки:', error instanceof Error ? error.stack : 'Нет стека');\n1379:        console.error('❌ Стек ошибки:', error instanceof Error ? error.stack : 'Нет стека');\n3152:    console.error('❌ Стек ошибки:', globalError.stack);\n",
+    "metadata": {
+      "output": "1348:        console.error('❌ Стек ошибки:', error instanceof Error ? error.stack : 'Нет стека');\n1379:        console.error('❌ Стек ошибки:', error instanceof Error ? error.stack : 'Нет стека');\n3152:    console.error('❌ Стек ошибки:', globalError.stack);\n",
+      "exit": 0,
+      "description": "Find all error.stack usages to fix"
+    },
+    "title": "cd /home/user/project && grep -n \"\\.stack\" app/page.tsx",
+    "time": {
+      "start": 1759246032807,
+      "end": 1759246032815
+    }
+  }
+}

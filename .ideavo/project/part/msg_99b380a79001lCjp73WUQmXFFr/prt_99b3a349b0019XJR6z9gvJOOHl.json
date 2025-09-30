@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3a349b0019XJR6z9gvJOOHl",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_018YctMnDDvzuF4qnvh51bVW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n      console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n      console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');\n      console.log('🔍 data:', data ? 'существует' : 'undefined/null');\n      console.log('🔍 data.data:', data?.data ? 'существует' : 'undefined/null');",
+      "newString": "      // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n      console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n      console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');\n      console.log('🔍 data:', data ? 'существует' : 'undefined/null');\n      console.log('🔍 typeof data:', typeof data);\n      console.log('🔍 data.data:', data?.data ? 'существует' : 'undefined/null');\n      console.log('🔍 typeof data.data:', typeof data?.data);\n      \n      // Безопасная проверка свойств data.data\n      if (data?.data) {\n        console.log('🔍 Проверяем свойства data.data:');\n        console.log('🔍 data.data.derival:', typeof data.data.derival, data.data.derival);\n        console.log('🔍 data.data.arrival:', typeof data.data.arrival, data.data.arrival);\n        console.log('🔍 data.data.intercity:', typeof data.data.intercity, data.data.intercity);\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1276,10 +1276,20 @@\n // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ\n console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');\n console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');\n console.log('🔍 data:', data ? 'существует' : 'undefined/null');\n+console.log('🔍 typeof data:', typeof data);\n console.log('🔍 data.data:', data?.data ? 'существует' : 'undefined/null');\n+console.log('🔍 typeof data.data:', typeof data?.data);\n \n+// Безопасная проверка свойств data.data\n+if (data?.data) {\n+  console.log('🔍 Проверяем свойства data.data:');\n+  console.log('🔍 data.data.derival:', typeof data.data.derival, data.data.derival);\n+  console.log('🔍 data.data.arrival:', typeof data.data.arrival, data.data.arrival);\n+  console.log('🔍 data.data.intercity:', typeof data.data.intercity, data.data.intercity);\n+}\n+\n if (!data) {\n   console.error('❌ КРИТИЧЕСКАЯ ОШИБКА: data undefined/null');\n   return {\n     company: 'Деловые Линии',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245912446,
+      "end": 1759245912460
+    }
+  }
+}

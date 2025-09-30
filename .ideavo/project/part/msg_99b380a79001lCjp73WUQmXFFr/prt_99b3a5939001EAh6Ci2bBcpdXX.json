@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3a5939001EAh6Ci2bBcpdXX",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01WBDG7ARwt3AKfBGXLESj8C",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n -B5 -A5 \"parseCalculationDetails\" app/page.tsx",
+      "description": "Find parseCalculationDetails usage"
+    },
+    "output": "2944-      console.log('Форма сброшена к начальному состоянию');\n2945-    }\n2946-  };\n2947-\n2948-  // Парсер деталей расчета для читаемого формата\n2949:  const parseCalculationDetails = (calc: CalculationResult) => {\n2950-    const details: { service: string; description: string; price: number }[] = [];\n2951-    \n2952-    if (calc.company === 'Деловые Линии' && calc.details) {\n2953-      // Основная стоимость доставки (уже включает все базовые услуги и упаковку)\n2954-      let basePrice = calc.details?.price || calc.price || 0;\n--\n3579-                          <Collapsible open={expandedDetails[calc.company]}>\n3580-                            <CollapsibleContent className=\"mt-2\">\n3581-                              <div className=\"bg-gray-900 p-3 rounded text-xs\">\n3582-                                <h4 className=\"font-bold mb-2 text-white\">Детали расчета:</h4>\n3583-                                {(() => {\n3584:                                  const details = parseCalculationDetails(calc);\n3585-                                  const totalPrice = details.reduce((sum, detail) => sum + detail.price, 0);\n3586-                                  \n3587-                                  return (\n3588-                                    <div className=\"space-y-1\">\n3589-                                      {details.map((detail, idx) => (\n",
+    "metadata": {
+      "output": "2944-      console.log('Форма сброшена к начальному состоянию');\n2945-    }\n2946-  };\n2947-\n2948-  // Парсер деталей расчета для читаемого формата\n2949:  const parseCalculationDetails = (calc: CalculationResult) => {\n2950-    const details: { service: string; description: string; price: number }[] = [];\n2951-    \n2952-    if (calc.company === 'Деловые Линии' && calc.details) {\n2953-      // Основная стоимость доставки (уже включает все базовые услуги и упаковку)\n2954-      let basePrice = calc.details?.price || calc.price || 0;\n--\n3579-                          <Collapsible open={expandedDetails[calc.company]}>\n3580-                            <CollapsibleContent className=\"mt-2\">\n3581-                              <div className=\"bg-gray-900 p-3 rounded text-xs\">\n3582-                                <h4 className=\"font-bold mb-2 text-white\">Детали расчета:</h4>\n3583-                                {(() => {\n3584:                                  const details = parseCalculationDetails(calc);\n3585-                                  const totalPrice = details.reduce((sum, detail) => sum + detail.price, 0);\n3586-                                  \n3587-                                  return (\n3588-                                    <div className=\"space-y-1\">\n3589-                                      {details.map((detail, idx) => (\n",
+      "exit": 0,
+      "description": "Find parseCalculationDetails usage"
+    },
+    "title": "cd /home/user/project && grep -n -B5 -A5 \"parseCalculationDetails\" app/page.tsx",
+    "time": {
+      "start": 1759245917266,
+      "end": 1759245917277
+    }
+  }
+}

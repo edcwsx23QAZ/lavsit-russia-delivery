@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b39699e001sdVqq7F7kkgwto",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01LpgxGBnXr5wdr4kySNoMRA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      console.log('💳 РЕКУРСИВНЫЙ ПОИСК ПОЛЕЙ СТРАХОВКИ:');\n      if (data && data.data) {\n        findInsuranceFields(data.data, 'data.data');\n      } else {\n        console.log('💳 Пропуск рекурсивного поиска: data.data недоступен');\n      }\n      console.log('=== КОНЕЦ АНАЛИЗА СТРАХОВКИ ===');",
+      "newString": "      console.log('💳 РЕКУРСИВНЫЙ ПОИСК ПОЛЕЙ СТРАХОВКИ:');\n      try {\n        if (data && data.data) {\n          findInsuranceFields(data.data, 'data.data');\n        } else {\n          console.log('💳 Пропуск рекурсивного поиска: data.data недоступен');\n        }\n      } catch (error) {\n        console.error('❌ ОШИБКА в рекурсивном поиске:', error);\n        console.error('❌ Стек ошибки:', error.stack);\n      }\n      console.log('=== КОНЕЦ АНАЛИЗА СТРАХОВКИ ===');"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1349,12 +1349,17 @@\n   }\n };\n \n console.log('💳 РЕКУРСИВНЫЙ ПОИСК ПОЛЕЙ СТРАХОВКИ:');\n-if (data && data.data) {\n-  findInsuranceFields(data.data, 'data.data');\n-} else {\n-  console.log('💳 Пропуск рекурсивного поиска: data.data недоступен');\n+try {\n+  if (data && data.data) {\n+    findInsuranceFields(data.data, 'data.data');\n+  } else {\n+    console.log('💳 Пропуск рекурсивного поиска: data.data недоступен');\n+  }\n+} catch (error) {\n+  console.error('❌ ОШИБКА в рекурсивном поиске:', error);\n+  console.error('❌ Стек ошибки:', error.stack);\n }\n console.log('=== КОНЕЦ АНАЛИЗА СТРАХОВКИ ===');\n \n // Специально проверяем наличие packages в ответе\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245858958,
+      "end": 1759245858972
+    }
+  }
+}

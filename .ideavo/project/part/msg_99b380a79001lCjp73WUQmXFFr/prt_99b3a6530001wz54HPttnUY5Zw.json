@@ -1,0 +1,11 @@
+{
+  "id": "prt_99b3a6530001wz54HPttnUY5Zw",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Вот оно! Проблема в строке 3584: `parseCalculationDetails(calc)`. Если объект `calc` имеет неправильную структуру или `calc.details` содержит некорректные данные, то ошибка произойдет в функции `parseCalculationDetails`.\n\nДавайте добавим защиту в начало функции `parseCalculationDetails`:",
+  "time": {
+    "start": 1759245921227,
+    "end": 1759245921227
+  }
+}

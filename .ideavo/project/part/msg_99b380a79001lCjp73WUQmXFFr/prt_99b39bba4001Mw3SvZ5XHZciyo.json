@@ -1,0 +1,11 @@
+{
+  "id": "prt_99b39bba4001Mw3SvZ5XHZciyo",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Ага! Возможно проблема в строке 1292: `JSON.stringify(data.data, null, 2)`. Если в объекте `data.data` есть циклические ссылки или странная структура, это может вызвать ошибку.\n\nДавайте обернем это в try-catch:",
+  "time": {
+    "start": 1759245877499,
+    "end": 1759245877499
+  }
+}

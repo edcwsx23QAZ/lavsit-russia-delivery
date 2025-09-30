@@ -1,0 +1,11 @@
+{
+  "id": "prt_99b39e2a8001xiFrjKsBusXukS",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Но вероятнее всего проблема не в JSON.stringify. Давайте поищем более тщательно. Возможно ошибка происходит в функции `findInsuranceFields` где мы используем `Object.keys(obj)` и затем `obj[key]`:",
+  "time": {
+    "start": 1759245887421,
+    "end": 1759245887421
+  }
+}

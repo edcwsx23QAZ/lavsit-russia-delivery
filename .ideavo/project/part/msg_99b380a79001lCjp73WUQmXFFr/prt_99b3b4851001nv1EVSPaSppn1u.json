@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b3b4851001nv1EVSPaSppn1u",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01WJQemsgg4VqnMT8cWuBYub",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3067,
+      "limit": 15
+    },
+    "output": "<file>\n03068|       console.error('❌ КРИТИЧЕСКАЯ ОШИБКА в parseCalculationDetails для Деловых Линий:', error);\n03069|       console.error('❌ Стек ошибки:', error.stack);\n03070|       console.log('❌ calc object:', calc);\n03071|       // Возвращаем базовую информацию даже при ошибке\n03072|       details.push({\n03073|         service: 'Доставка',\n03074|         description: 'Ошибка обработки деталей расчета',\n03075|         price: calc.price || 0\n03076|       });\n03077|     }\n03078|   } else if (calc.company === 'Nord Wheel' && calc.details) {\n03079|       // Расшифровка для Nord Wheel согласно требованиям\n03080|       if (calc.details.totalCost) {\n03081|         details.push({\n03082|           service: 'Общая стоимость доставки',\n\n(File has more lines. Use 'offset' parameter to read beyond line 3082)\n</file>",
+    "metadata": {
+      "preview": "      console.error('❌ КРИТИЧЕСКАЯ ОШИБКА в parseCalculationDetails для Деловых Линий:', error);\n      console.error('❌ Стек ошибки:', error.stack);\n      console.log('❌ calc object:', calc);\n      // Возвращаем базовую информацию даже при ошибке\n      details.push({\n        service: 'Доставка',\n        description: 'Ошибка обработки деталей расчета',\n        price: calc.price || 0\n      });\n    }\n  } else if (calc.company === 'Nord Wheel' && calc.details) {\n      // Расшифровка для Nord Wheel согласно требованиям\n      if (calc.details.totalCost) {\n        details.push({\n          service: 'Общая стоимость доставки',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245978320,
+      "end": 1759245978322
+    }
+  }
+}

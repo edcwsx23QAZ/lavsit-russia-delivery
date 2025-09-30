@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b39e7be001IdcROT3j6JTMl8",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01R36BfD7AjSG4gB9Ut2LfZu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1320,
+      "limit": 20
+    },
+    "output": "<file>\n01321|           console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);\n01322|         } else {\n01323|           console.log('💳 arrival не найден или null');\n01324|         }\n01325|         \n01326|         console.log('💳 Проверяем intercity...');\n01327|         if (data.data?.intercity) {\n01328|           console.log('💳 intercity найден, проверяем insurance...');\n01329|           console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);\n01330|         } else {\n01331|           console.log('💳 intercity не найден или null');\n01332|         }\n01333|       } catch (error) {\n01334|         console.error('❌ ОШИБКА при проверке секций страховки:', error);\n01335|         console.error('❌ Стек ошибки:', error.stack);\n01336|       }\n01337|       \n01338|       // Рекурсивный поиск всех полей содержащих \"insurance\"\n01339|       const findInsuranceFields = (obj: any, path = '') => {\n01340|         if (typeof obj !== 'object' || obj === null || obj === undefined) return;\n\n(File has more lines. Use 'offset' parameter to read beyond line 1340)\n</file>",
+    "metadata": {
+      "preview": "          console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);\n        } else {\n          console.log('💳 arrival не найден или null');\n        }\n        \n        console.log('💳 Проверяем intercity...');\n        if (data.data?.intercity) {\n          console.log('💳 intercity найден, проверяем insurance...');\n          console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);\n        } else {\n          console.log('💳 intercity не найден или null');\n        }\n      } catch (error) {\n        console.error('❌ ОШИБКА при проверке секций страховки:', error);\n        console.error('❌ Стек ошибки:', error.stack);\n      }\n      \n      // Рекурсивный поиск всех полей содержащих \"insurance\"\n      const findInsuranceFields = (obj: any, path = '') => {\n        if (typeof obj !== 'object' || obj === null || obj === undefined) return;"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245888067,
+      "end": 1759245888069
+    }
+  }
+}

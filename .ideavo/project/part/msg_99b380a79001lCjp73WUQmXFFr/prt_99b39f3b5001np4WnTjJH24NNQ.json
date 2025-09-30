@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b39f3b5001np4WnTjJH24NNQ",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01JRF6zMubFk27aApDBz4aEY",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1340,
+      "limit": 15
+    },
+    "output": "<file>\n01341|         \n01342|         try {\n01343|           Object.keys(obj).forEach(key => {\n01344|             const fullPath = path ? `${path}.${key}` : key;\n01345|             if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {\n01346|               console.log(`💳 НАЙДЕНО ПОЛЕ СТРАХОВКИ [${fullPath}]:`, obj[key]);\n01347|             }\n01348|             if (typeof obj[key] === 'object' && obj[key] !== null && obj[key] !== undefined) {\n01349|               findInsuranceFields(obj[key], fullPath);\n01350|             }\n01351|           });\n01352|         } catch (error) {\n01353|           console.error(`💳 Ошибка в findInsuranceFields для пути ${path}:`, error);\n01354|         }\n01355|       };\n\n(File has more lines. Use 'offset' parameter to read beyond line 1355)\n</file>",
+    "metadata": {
+      "preview": "        \n        try {\n          Object.keys(obj).forEach(key => {\n            const fullPath = path ? `${path}.${key}` : key;\n            if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {\n              console.log(`💳 НАЙДЕНО ПОЛЕ СТРАХОВКИ [${fullPath}]:`, obj[key]);\n            }\n            if (typeof obj[key] === 'object' && obj[key] !== null && obj[key] !== undefined) {\n              findInsuranceFields(obj[key], fullPath);\n            }\n          });\n        } catch (error) {\n          console.error(`💳 Ошибка в findInsuranceFields для пути ${path}:`, error);\n        }\n      };"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245891010,
+      "end": 1759245891013
+    }
+  }
+}

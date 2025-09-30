@@ -1,0 +1,21 @@
+{
+  "id": "prt_99b3b098f001zM0ne1M2QKQfs2",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01MDbDMgke6Db4wHHqhYHTPm",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  // Парсер деталей расчета для читаемого формата\n  const parseCalculationDetails = (calc: CalculationResult) => {\n    console.log('🔍 parseCalculationDetails получил calc:', calc?.company || 'undefined');\n    console.log('🔍 calc.details:', calc?.details ? 'существует' : 'undefined/null');\n    console.log('🔍 typeof calc.details:', typeof calc?.details);\n    \n    const details: { service: string; description: string; price: number }[] = [];\n    \n    try {\n      if (calc.company === 'Деловые Линии' && calc.details) {",
+      "newString": "  // Парсер деталей расчета для читаемого формата\n  const parseCalculationDetails = (calc: CalculationResult) => {\n    console.log('🔍 parseCalculationDetails получил calc:', calc?.company || 'undefined');\n    console.log('🔍 calc.details:', calc?.details ? 'существует' : 'undefined/null');\n    console.log('🔍 typeof calc.details:', typeof calc?.details);\n    \n    const details: { service: string; description: string; price: number }[] = [];\n    \n    try {\n      if (calc.company === 'Деловые Линии' && calc.details) {"
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1759245965298,
+      "end": 1759245965299
+    }
+  }
+}

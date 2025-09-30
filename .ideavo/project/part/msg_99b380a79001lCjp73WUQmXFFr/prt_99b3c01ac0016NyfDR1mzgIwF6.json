@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3c01ac0016NyfDR1mzgIwF6",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_013LYoUnmcxuJJQr1mWrpggB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n \"error\\.stack\" app/page.tsx",
+      "description": "Find other error.stack usages"
+    },
+    "output": "1348:        console.error('❌ Стек ошибки:', error instanceof Error ? error.stack : 'Нет стека');\n1379:        console.error('❌ Стек ошибки:', error.stack);\n",
+    "metadata": {
+      "output": "1348:        console.error('❌ Стек ошибки:', error instanceof Error ? error.stack : 'Нет стека');\n1379:        console.error('❌ Стек ошибки:', error.stack);\n",
+      "exit": 0,
+      "description": "Find other error.stack usages"
+    },
+    "title": "cd /home/user/project && grep -n \"error\\.stack\" app/page.tsx",
+    "time": {
+      "start": 1759246025799,
+      "end": 1759246025864
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_99b3b5c42001vkuDoJsXAyaWhQ",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01HqgSr8RQfjD6bRyQ8g3Ydh",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      }\n    } catch (error) {\n      console.error('❌ КРИТИЧЕСКАЯ ОШИБКА в parseCalculationDetails для Деловых Линий:', error);\n      console.error('❌ Стек ошибки:', error.stack);\n      console.log('❌ calc object:', calc);\n      // Возвращаем базовую информацию даже при ошибке\n      details.push({\n        service: 'Доставка',\n        description: 'Ошибка обработки деталей расчета',\n        price: calc.price || 0\n      });\n    }\n  } else if (calc.company === 'Nord Wheel' && calc.details) {",
+      "newString": "      }\n    } else if (calc.company === 'Nord Wheel' && calc.details) {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3063,20 +3063,9 @@\n         description: 'Дополнительные сборы и корректировки',\n         price: remainder\n       });\n     }\n-  } catch (error) {\n-    console.error('❌ КРИТИЧЕСКАЯ ОШИБКА в parseCalculationDetails для Деловых Линий:', error);\n-    console.error('❌ Стек ошибки:', error.stack);\n-    console.log('❌ calc object:', calc);\n-    // Возвращаем базовую информацию даже при ошибке\n-    details.push({\n-      service: 'Доставка',\n-      description: 'Ошибка обработки деталей расчета',\n-      price: calc.price || 0\n-    });\n-  }\n-} else if (calc.company === 'Nord Wheel' && calc.details) {\n+  } else if (calc.company === 'Nord Wheel' && calc.details) {\n     // Расшифровка для Nord Wheel согласно требованиям\n     if (calc.details.totalCost) {\n       details.push({\n         service: 'Общая стоимость доставки',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245984851,
+      "end": 1759245984866
+    }
+  }
+}

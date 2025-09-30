@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b3b243d001wNDKPfxVOhJDra",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01LoqUYxZ9LvkL3B6kkgodyy",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2954,
+      "limit": 10
+    },
+    "output": "<file>\n02955|     \n02956|     try {\n02957|       if (calc.company === 'Деловые Линии' && calc.details) {\n02958|         console.log('🔍 Начинаем обработку деталей Деловых Линий...');\n02959|       // Основная стоимость доставки (уже включает все базовые услуги и упаковку)\n02960|       let basePrice = calc.details?.price || calc.price || 0;\n02961|       \n02962|       // Разбиваем основную стоимость на компоненты если возможно\n02963|       let intercityPrice = 0;\n02964|       let derivalPrice = 0;\n\n(File has more lines. Use 'offset' parameter to read beyond line 2964)\n</file>",
+    "metadata": {
+      "preview": "    \n    try {\n      if (calc.company === 'Деловые Линии' && calc.details) {\n        console.log('🔍 Начинаем обработку деталей Деловых Линий...');\n      // Основная стоимость доставки (уже включает все базовые услуги и упаковку)\n      let basePrice = calc.details?.price || calc.price || 0;\n      \n      // Разбиваем основную стоимость на компоненты если возможно\n      let intercityPrice = 0;\n      let derivalPrice = 0;"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245969118,
+      "end": 1759245969120
+    }
+  }
+}

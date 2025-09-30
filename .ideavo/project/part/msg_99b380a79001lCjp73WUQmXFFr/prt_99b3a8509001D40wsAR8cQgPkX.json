@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b3a8509001D40wsAR8cQgPkX",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01KZkJMNfsd3deiwFHy4GtSM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3010,
+      "limit": 20
+    },
+    "output": "<file>\n03011|               basePkgPrice = pkg.price - totalPremiums;\n03012|             }\n03013|             \n03014|             packagingPrice += pkg.price; // В общую сумму добавляем полную цену\n03015|             \n03016|             // Показываем базовую упаковку\n03017|             details.push({\n03018|               service: 'Упаковка груза',\n03019|               description: 'Упаковать в комплекс «обрешётка + амортизация»',\n03020|               price: basePkgPrice\n03021|             });\n03022|             \n03023|             // Показываем надбавки отдельно (для детализации, но не добавляем к общей сумме)\n03024|             if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {\n03025|               pkg.premiumDetails.forEach((premium: any) => {\n03026|                 if (premium.value && premium.value > 0) {\n03027|                   details.push({\n03028|                     service: 'Надбавка к упаковке',\n03029|                     description: premium.name || 'Дополнительная надбавка',\n03030|                     price: premium.value\n\n(File has more lines. Use 'offset' parameter to read beyond line 3030)\n</file>",
+    "metadata": {
+      "preview": "              basePkgPrice = pkg.price - totalPremiums;\n            }\n            \n            packagingPrice += pkg.price; // В общую сумму добавляем полную цену\n            \n            // Показываем базовую упаковку\n            details.push({\n              service: 'Упаковка груза',\n              description: 'Упаковать в комплекс «обрешётка + амортизация»',\n              price: basePkgPrice\n            });\n            \n            // Показываем надбавки отдельно (для детализации, но не добавляем к общей сумме)\n            if (pkg.premiumDetails && Array.isArray(pkg.premiumDetails)) {\n              pkg.premiumDetails.forEach((premium: any) => {\n                if (premium.value && premium.value > 0) {\n                  details.push({\n                    service: 'Надбавка к упаковке',\n                    description: premium.name || 'Дополнительная надбавка',\n                    price: premium.value"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245928379,
+      "end": 1759245928382
+    }
+  }
+}

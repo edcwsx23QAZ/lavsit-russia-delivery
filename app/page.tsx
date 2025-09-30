@@ -985,6 +985,9 @@ export default function Home() {
     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';
     const maxRetries = 2;
     
+    console.log('🚀 === НАЧАЛО РАСЧЕТА ДЕЛОВЫХ ЛИНИЙ ===');
+    console.log('🚀 API URL:', apiUrl);
+    
     try {
       let sessionID = await getDellinSessionId();
       
@@ -1274,7 +1277,17 @@ export default function Home() {
       console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');
       console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');
       console.log('🔍 data:', data ? 'существует' : 'undefined/null');
+      console.log('🔍 typeof data:', typeof data);
       console.log('🔍 data.data:', data?.data ? 'существует' : 'undefined/null');
+      console.log('🔍 typeof data.data:', typeof data?.data);
+      
+      // Безопасная проверка свойств data.data
+      if (data?.data) {
+        console.log('🔍 Проверяем свойства data.data:');
+        console.log('🔍 data.data.derival:', typeof data.data.derival, data.data.derival);
+        console.log('🔍 data.data.arrival:', typeof data.data.arrival, data.data.arrival);
+        console.log('🔍 data.data.intercity:', typeof data.data.intercity, data.data.intercity);
+      }
       
       if (!data) {
         console.error('❌ КРИТИЧЕСКАЯ ОШИБКА: data undefined/null');
@@ -1289,7 +1302,12 @@ export default function Home() {
         };
       }
       
-      console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));
+      try {
+        console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));
+      } catch (jsonError) {
+        console.error('❌ Ошибка JSON.stringify для data.data:', jsonError);
+        console.log('🔍 data.data (toString):', data.data?.toString?.() || 'Не удалось преобразовать');
+      }
       
       // Поиск всех полей связанных со страховкой
       console.log('💳 ПОИСК КОМПОНЕНТОВ СТРАХОВКИ:');
@@ -1301,14 +1319,33 @@ export default function Home() {
       console.log('💳 data.data.additionalServices:', data.data?.additionalServices);
       
       // Поиск страховки в других разделах
-      if (data.data && data.data.derival) {
-        console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival.insurance);
-      }
-      if (data.data && data.data.arrival) {
-        console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival.insurance);
-      }
-      if (data.data && data.data.intercity) {
-        console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity.insurance);
+      try {
+        console.log('💳 Проверяем derival...');
+        if (data.data?.derival) {
+          console.log('💳 derival найден, проверяем insurance...');
+          console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival?.insurance);
+        } else {
+          console.log('💳 derival не найден или null');
+        }
+        
+        console.log('💳 Проверяем arrival...');
+        if (data.data?.arrival) {
+          console.log('💳 arrival найден, проверяем insurance...');
+          console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);
+        } else {
+          console.log('💳 arrival не найден или null');
+        }
+        
+        console.log('💳 Проверяем intercity...');
+        if (data.data?.intercity) {
+          console.log('💳 intercity найден, проверяем insurance...');
+          console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);
+        } else {
+          console.log('💳 intercity не найден или null');
+        }
+      } catch (error) {
+        console.error('❌ ОШИБКА при проверке секций страховки:', error);
+        console.error('❌ Стек ошибки:', error instanceof Error ? error.stack : 'Нет стека');
       }
       
       // Рекурсивный поиск всех полей содержащих "insurance"
@@ -1331,10 +1368,15 @@ export default function Home() {
       };
       
       console.log('💳 РЕКУРСИВНЫЙ ПОИСК ПОЛЕЙ СТРАХОВКИ:');
-      if (data && data.data) {
-        findInsuranceFields(data.data, 'data.data');
-      } else {
-        console.log('💳 Пропуск рекурсивного поиска: data.data недоступен');
+      try {
+        if (data && data.data) {
+          findInsuranceFields(data.data, 'data.data');
+        } else {
+          console.log('💳 Пропуск рекурсивного поиска: data.data недоступен');
+        }
+      } catch (error) {
+        console.error('❌ ОШИБКА в рекурсивном поиске:', error);
+        console.error('❌ Стек ошибки:', error instanceof Error ? error.stack : 'Нет стека');
       }
       console.log('=== КОНЕЦ АНАЛИЗА СТРАХОВКИ ===');
       
@@ -1345,7 +1387,12 @@ export default function Home() {
       console.log('📦 Тип data.data.packages:', typeof data.data?.packages);
       if (data.data?.packages) {
         console.log('✅ PACKAGES НАЙДЕН В ОТВЕТЕ!');
-        console.log('📦 Содержимое packages:', JSON.stringify(data.data.packages, null, 2));
+        try {
+          console.log('📦 Содержимое packages:', JSON.stringify(data.data.packages, null, 2));
+        } catch (jsonError) {
+          console.error('❌ Ошибка JSON.stringify для packages:', jsonError);
+          console.log('📦 packages (toString):', data.data.packages?.toString?.() || 'Не удалось преобразовать');
+        }
       } else {
         console.log('❌ PACKAGES НЕ НАЙДЕН В ОТВЕТЕ');
       }
@@ -2900,9 +2947,15 @@ export default function Home() {
 
   // Парсер деталей расчета для читаемого формата
   const parseCalculationDetails = (calc: CalculationResult) => {
+    console.log('🔍 parseCalculationDetails получил calc:', calc?.company || 'undefined');
+    console.log('🔍 calc.details:', calc?.details ? 'существует' : 'undefined/null');
+    console.log('🔍 typeof calc.details:', typeof calc?.details);
+    
     const details: { service: string; description: string; price: number }[] = [];
     
-    if (calc.company === 'Деловые Линии' && calc.details) {
+    try {
+      if (calc.company === 'Деловые Линии' && calc.details) {
+        console.log('🔍 Начинаем обработку деталей Деловых Линий...');
       // Основная стоимость доставки (уже включает все базовые услуги и упаковку)
       let basePrice = calc.details?.price || calc.price || 0;
       
@@ -3094,7 +3147,18 @@ export default function Home() {
     }
     
     return details;
-  };
+  } catch (globalError) {
+    console.error('❌ ГЛОБАЛЬНАЯ ОШИБКА в parseCalculationDetails:', globalError);
+    console.error('❌ Стек ошибки:', globalError instanceof Error ? globalError.stack : 'Нет стека');
+    console.log('❌ calc object:', calc);
+    // Возвращаем минимальные данные при любой ошибке
+    return [{
+      service: 'Доставка',
+      description: 'Ошибка обработки деталей расчета',
+      price: calc?.price || 0
+    }];
+  }
+};
 
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4 relative">

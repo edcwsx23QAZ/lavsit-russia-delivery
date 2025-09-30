@@ -1,0 +1,21 @@
+{
+  "id": "prt_99b3b35c90015vbW4SFXYydRl2",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01T2y3xCh4tzXoEzksj69ZWF",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    const details: { service: string; description: string; price: number }[] = [];\n    \n    try {\n      if (calc.company === 'Деловые Линии' && calc.details) {",
+      "newString": "    const details: { service: string; description: string; price: number }[] = [];\n    \n    try {\n      if (calc.company === 'Деловые Линии' && calc.details) {"
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1759245974420,
+      "end": 1759245974421
+    }
+  }
+}

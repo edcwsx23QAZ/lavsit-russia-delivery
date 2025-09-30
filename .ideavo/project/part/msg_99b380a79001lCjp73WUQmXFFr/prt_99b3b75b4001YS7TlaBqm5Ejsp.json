@@ -1,0 +1,25 @@
+{
+  "id": "prt_99b3b75b4001YS7TlaBqm5Ejsp",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01N6iMLk6QUHBS8dUKEeXXeq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3155,
+      "limit": 15
+    },
+    "output": "<file>\n03156|       service: 'Доставка',\n03157|       description: 'Ошибка обработки деталей расчета',\n03158|       price: calc?.price || 0\n03159|     }];\n03160|   }\n03161| };\n03162| \n03163|   return (\n03164|     <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n03165|       <div className=\"max-w-7xl mx-auto\">\n03166|         <h1 className=\"text-2xl font-bold text-center mb-6 text-blue-400\">\n03167|           Междугородняя доставка Лавсит\n03168|         </h1>\n03169|         \n03170|         {/* Кнопка диагностики */}\n\n(File has more lines. Use 'offset' parameter to read beyond line 3170)\n</file>",
+    "metadata": {
+      "preview": "      service: 'Доставка',\n      description: 'Ошибка обработки деталей расчета',\n      price: calc?.price || 0\n    }];\n  }\n};\n\n  return (\n    <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n      <div className=\"max-w-7xl mx-auto\">\n        <h1 className=\"text-2xl font-bold text-center mb-6 text-blue-400\">\n          Междугородняя доставка Лавсит\n        </h1>\n        \n        {/* Кнопка диагностики */}"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759245989866,
+      "end": 1759245989869
+    }
+  }
+}

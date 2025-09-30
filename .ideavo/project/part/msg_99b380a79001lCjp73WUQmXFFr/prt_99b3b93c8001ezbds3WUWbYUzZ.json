@@ -1,0 +1,27 @@
+{
+  "id": "prt_99b3b93c8001ezbds3WUWbYUzZ",
+  "messageID": "msg_99b380a79001lCjp73WUQmXFFr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01MUifnazKcsr2hGzW4fGh1G",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "timeout": 60000,
+      "description": "Test build after all derival fixes"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1348:41\nType error: 'error' is of type 'unknown'.\n\n\u001b[0m \u001b[90m 1346 |\u001b[39m       } \u001b[36mcatch\u001b[39m (error) {\u001b[0m\n\u001b[0m \u001b[90m 1347 |\u001b[39m         console\u001b[33m.\u001b[39merror(\u001b[32m'❌ ОШИБКА при проверке секций страховки:'\u001b[39m\u001b[33m,\u001b[39m error)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1348 |\u001b[39m         console\u001b[33m.\u001b[39merror(\u001b[32m'❌ Стек ошибки:'\u001b[39m\u001b[33m,\u001b[39m error\u001b[33m.\u001b[39mstack)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1349 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 1350 |\u001b[39m       \u001b[0m\n\u001b[0m \u001b[90m 1351 |\u001b[39m       \u001b[90m// Рекурсивный поиск всех полей содержащих \"insurance\"\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1348:41\nType error: 'error' is of type 'unknown'.\n\n\u001b[0m \u001b[90m 1346 |\u001b[39m       } \u001b[36mcatch\u001b[39m (error) {\u001b[0m\n\u001b[0m \u001b[90m 1347 |\u001b[39m         console\u001b[33m.\u001b[39merror(\u001b[32m'❌ ОШИБКА при проверке секций страховки:'\u001b[39m\u001b[33m,\u001b[39m error)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1348 |\u001b[39m         console\u001b[33m.\u001b[39merror(\u001b[32m'❌ Стек ошибки:'\u001b[39m\u001b[33m,\u001b[39m error\u001b[33m.\u001b[39mstack)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1349 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 1350 |\u001b[39m       \u001b[0m\n\u001b[0m \u001b[90m 1351 |\u001b[39m       \u001b[90m// Рекурсивный поиск всех полей содержащих \"insurance\"\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Test build after all derival fixes"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759245997929,
+      "end": 1759246017874
+    }
+  }
+}
