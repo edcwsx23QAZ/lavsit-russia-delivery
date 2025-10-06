@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b89da76b001HDWVdXPQxTMUsU",
+  "messageID": "msg_9b89d596c001GFeOtaRAC33aoU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0131T9dtCWVTUpFn7Yo67Va2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 130,
+      "limit": 20
+    },
+    "output": "<file>\n00131|   // Загрузка сохраненных данных (только на клиенте)\n00132|   useEffect(() => {\n00133|     // Проверяем, что мы на клиенте\n00134|     if (typeof window !== 'undefined' && !isLoaded) {\n00135|       try {\n00136|         const saved = localStorage.getItem('deliveryForm');\n00137|         if (saved) {\n00138|           const savedForm = JSON.parse(saved);\n00139|           // Убеждаемся, что есть хотя бы один груз\n00140|           if (!savedForm.cargos || savedForm.cargos.length === 0) {\n00141|             savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n00142|           }\n00143|           setForm(savedForm);\n00144|           console.log('Загружены сохраненные данные формы:', savedForm);\n00145|           \n00146|           // Диагностика времени для Supabase\n00147|           const currentTime = Math.floor(Date.now() / 1000);\n00148|           console.log('🕒 Текущее время (timestamp):', currentTime);\n00149|           console.log('🕒 Текущее время (ISO):', new Date().toISOString());\n00150|         }\n\n(File has more lines. Use 'offset' parameter to read beyond line 150)\n</file>",
+    "metadata": {
+      "preview": "  // Загрузка сохраненных данных (только на клиенте)\n  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined' && !isLoaded) {\n      try {\n        const saved = localStorage.getItem('deliveryForm');\n        if (saved) {\n          const savedForm = JSON.parse(saved);\n          // Убеждаемся, что есть хотя бы один груз\n          if (!savedForm.cargos || savedForm.cargos.length === 0) {\n            savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n          }\n          setForm(savedForm);\n          console.log('Загружены сохраненные данные формы:', savedForm);\n          \n          // Диагностика времени для Supabase\n          const currentTime = Math.floor(Date.now() / 1000);\n          console.log('🕒 Текущее время (timestamp):', currentTime);\n          console.log('🕒 Текущее время (ISO):', new Date().toISOString());\n        }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759738964512,
+      "end": 1759738964517
+    }
+  }
+}

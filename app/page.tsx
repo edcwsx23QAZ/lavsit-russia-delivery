@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Switch } from '@/components/ui/switch';
 import { Plus, Truck, Building2, Map, Settings, Package2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
@@ -115,6 +116,15 @@ export default function Home() {
   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [activeField, setActiveField] = useState('');
+  
+  // Состояние для управления включением/выключением транспортных компаний
+  const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({
+    pek: true,
+    dellin: true,
+    railcontinent: true,
+    vozovoz: true,
+    nordwheel: true
+  });
   const [calculations, setCalculations] = useState<CalculationResult[]>([]);
   const [calculating, setCalculating] = useState(false);
   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});
@@ -3728,22 +3738,40 @@ export default function Home() {
                 <CardTitle className="text-white text-sm">Подключенные транспортные компании</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 gap-2">
                   {COMPANIES_BASE.map((company, index) => {
                     const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';
                     const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];
+                    const isEnabled = enabledCompanies[company.apiKey];
                     
                     return (
-                      <div key={index} className="flex items-center gap-2 p-2 bg-gray-700 rounded">
-                        <span className="text-lg">{company.logo}</span>
-                        <div>
-                          <p className="font-medium text-white text-xs">{company.name}</p>
-                          <Badge 
-                            variant={isConnected ? "default" : "destructive"} 
-                            className="text-xs"
-                          >
-                            {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}
-                          </Badge>
+                      <div key={index} className="flex items-center justify-between p-2 bg-gray-700 rounded">
+                        <div className="flex items-center gap-2">
+                          <span className="text-lg">{company.logo}</span>
+                          <div>
+                            <p className="font-medium text-white text-xs">{company.name}</p>
+                            <Badge 
+                              variant={isConnected ? "default" : "destructive"} 
+                              className="text-xs"
+                            >
+                              {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}
+                            </Badge>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs text-gray-300">
+                            {isEnabled ? 'Вкл' : 'Выкл'}
+                          </span>
+                          <Switch
+                            checked={isEnabled}
+                            onCheckedChange={(checked) => {
+                              setEnabledCompanies(prev => ({
+                                ...prev,
+                                [company.apiKey]: checked
+                              }));
+                            }}
+                            disabled={!isConnected}
+                          />
                         </div>
                       </div>
                     );

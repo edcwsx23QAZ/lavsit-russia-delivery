@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b89e4fff001hMB0HuWFunhy3F",
+  "messageID": "msg_9b89d596c001GFeOtaRAC33aoU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_015Ct2BGhfJrPaa1pnubBJsH",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "import { Checkbox } from '@/components/ui/checkbox';\nimport { Plus, Truck, Building2, Map, Settings, Package2 } from 'lucide-react';",
+      "newString": "import { Checkbox } from '@/components/ui/checkbox';\nimport { Switch } from '@/components/ui/switch';\nimport { Plus, Truck, Building2, Map, Settings, Package2 } from 'lucide-react';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -5,8 +5,9 @@\n import { Button } from '@/components/ui/button';\n import { Input } from '@/components/ui/input';\n import { Label } from '@/components/ui/label';\n import { Checkbox } from '@/components/ui/checkbox';\n+import { Switch } from '@/components/ui/switch';\n import { Plus, Truck, Building2, Map, Settings, Package2 } from 'lucide-react';\n import { Alert, AlertDescription } from '@/components/ui/alert';\n import { Badge } from '@/components/ui/badge';\n import { Separator } from '@/components/ui/separator';\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759739008308,
+      "end": 1759739008323
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "prt_9b89ea10a0019OnB2XSkPhK63M",
+  "messageID": "msg_9b89d596c001GFeOtaRAC33aoU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01LRJ3pUyzimDNUGvx3arpK2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Добавить состояние для управления включением/выключением транспортных компаний",
+          "status": "completed",
+          "priority": "high",
+          "id": "add-transport-toggle-state"
+        },
+        {
+          "content": "Создать компонент переключателя вкл/выкл для каждой ТК",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "create-toggle-component"
+        },
+        {
+          "content": "Интегрировать переключатели в блок 'Подключенные транспортные компании'",
+          "status": "pending",
+          "priority": "high",
+          "id": "integrate-toggles"
+        },
+        {
+          "content": "Модифицировать логику расчета для учета включенных/выключенных ТК",
+          "status": "pending",
+          "priority": "medium",
+          "id": "modify-calculation-logic"
+        },
+        {
+          "content": "Протестировать функциональность включения/выключения ТК",
+          "status": "pending",
+          "priority": "medium",
+          "id": "test-toggle-functionality"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Добавить состояние для управления включением/выключением транспортных компаний\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"add-transport-toggle-state\"\n  },\n  {\n    \"content\": \"Создать компонент переключателя вкл/выкл для каждой ТК\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"create-toggle-component\"\n  },\n  {\n    \"content\": \"Интегрировать переключатели в блок 'Подключенные транспортные компании'\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"integrate-toggles\"\n  },\n  {\n    \"content\": \"Модифицировать логику расчета для учета включенных/выключенных ТК\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"modify-calculation-logic\"\n  },\n  {\n    \"content\": \"Протестировать функциональность включения/выключения ТК\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"test-toggle-functionality\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Добавить состояние для управления включением/выключением транспортных компаний",
+          "status": "completed",
+          "priority": "high",
+          "id": "add-transport-toggle-state"
+        },
+        {
+          "content": "Создать компонент переключателя вкл/выкл для каждой ТК",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "create-toggle-component"
+        },
+        {
+          "content": "Интегрировать переключатели в блок 'Подключенные транспортные компании'",
+          "status": "pending",
+          "priority": "high",
+          "id": "integrate-toggles"
+        },
+        {
+          "content": "Модифицировать логику расчета для учета включенных/выключенных ТК",
+          "status": "pending",
+          "priority": "medium",
+          "id": "modify-calculation-logic"
+        },
+        {
+          "content": "Протестировать функциональность включения/выключения ТК",
+          "status": "pending",
+          "priority": "medium",
+          "id": "test-toggle-functionality"
+        }
+      ]
+    },
+    "title": "4 todos",
+    "time": {
+      "start": 1759739042840,
+      "end": 1759739042841
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b89dd023001NgVJnx2bczn5X0",
+  "messageID": "msg_9b89d596c001GFeOtaRAC33aoU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_015paWhFYsvRRv53zxtd8CX7",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n\n  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n  const [showSuggestions, setShowSuggestions] = useState(false);\n  const [activeField, setActiveField] = useState('');",
+      "newString": "  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n\n  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n  const [showSuggestions, setShowSuggestions] = useState(false);\n  const [activeField, setActiveField] = useState('');\n  \n  // Состояние для управления включением/выключением транспортных компаний\n  const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n    pek: true,\n    dellin: true,\n    railcontinent: true,\n    vozovoz: true,\n    nordwheel: true\n  });"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -114,8 +114,17 @@\n \n const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n const [showSuggestions, setShowSuggestions] = useState(false);\n const [activeField, setActiveField] = useState('');\n+\n+// Состояние для управления включением/выключением транспортных компаний\n+const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n+  pek: true,\n+  dellin: true,\n+  railcontinent: true,\n+  vozovoz: true,\n+  nordwheel: true\n+});\n const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n const [calculating, setCalculating] = useState(false);\n const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759738977643,
+      "end": 1759738977664
+    }
+  }
+}

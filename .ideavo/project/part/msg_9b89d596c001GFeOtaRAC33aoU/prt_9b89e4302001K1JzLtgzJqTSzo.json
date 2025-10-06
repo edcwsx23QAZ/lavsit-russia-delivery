@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b89e4302001K1JzLtgzJqTSzo",
+  "messageID": "msg_9b89d596c001GFeOtaRAC33aoU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01SGJqqGWHBpL8R7yD13j9Ud",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1,
+      "limit": 15
+    },
+    "output": "<file>\n00002| \n00003| import React, { useState, useEffect, useCallback } from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Input } from '@/components/ui/input';\n00007| import { Label } from '@/components/ui/label';\n00008| import { Checkbox } from '@/components/ui/checkbox';\n00009| import { Plus, Truck, Building2, Map, Settings, Package2 } from 'lucide-react';\n00010| import { Alert, AlertDescription } from '@/components/ui/alert';\n00011| import { Badge } from '@/components/ui/badge';\n00012| import { Separator } from '@/components/ui/separator';\n00013| import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\n00014| import ProductSearch from '@/components/ProductSearch';\n00015| import ProductManager from '@/components/ProductManager';\n00016| import TruckVisualization from '@/components/TruckVisualization';\n\n(File has more lines. Use 'offset' parameter to read beyond line 16)\n</file>",
+    "metadata": {
+      "preview": "\nimport React, { useState, useEffect, useCallback } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Checkbox } from '@/components/ui/checkbox';\nimport { Plus, Truck, Building2, Map, Settings, Package2 } from 'lucide-react';\nimport { Alert, AlertDescription } from '@/components/ui/alert';\nimport { Badge } from '@/components/ui/badge';\nimport { Separator } from '@/components/ui/separator';\nimport { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\nimport ProductSearch from '@/components/ProductSearch';\nimport ProductManager from '@/components/ProductManager';\nimport TruckVisualization from '@/components/TruckVisualization';"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759739004354,
+      "end": 1759739004358
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b89dc28f002xhtzkOVZ1pGwQM",
+  "messageID": "msg_9b89d596c001GFeOtaRAC33aoU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Ph1KxYdp5QCY9ZqZi6eG4H",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n -A5 \"const \\[form\" app/page.tsx",
+      "description": "Find form state definition"
+    },
+    "output": "112:  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n113-  const [isLoaded, setIsLoaded] = useState(false);\n114-\n115-  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n116-  const [showSuggestions, setShowSuggestions] = useState(false);\n117-  const [activeField, setActiveField] = useState('');\n",
+    "metadata": {
+      "output": "112:  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n113-  const [isLoaded, setIsLoaded] = useState(false);\n114-\n115-  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n116-  const [showSuggestions, setShowSuggestions] = useState(false);\n117-  const [activeField, setActiveField] = useState('');\n",
+      "exit": 0,
+      "description": "Find form state definition"
+    },
+    "title": "cd /home/user/project && grep -n -A5 \"const \\[form\" app/page.tsx",
+    "time": {
+      "start": 1759738971390,
+      "end": 1759738971397
+    }
+  }
+}

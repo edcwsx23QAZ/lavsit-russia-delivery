@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b89ee6e10014xo0BHJdr7jNqC",
+  "messageID": "msg_9b89d596c001GFeOtaRAC33aoU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_019isoVPc9H92Xpdn2Zp1T5d",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3730,
+      "limit": 25
+    },
+    "output": "<file>\n03731|                 isVisible={true}\n03732|               />\n03733|             )}\n03734|             \n03735|             {/* Список подключенных ТК */}\n03736|             <Card className=\"bg-gray-800 border-gray-700\">\n03737|               <CardHeader className=\"pb-2\">\n03738|                 <CardTitle className=\"text-white text-sm\">Подключенные транспортные компании</CardTitle>\n03739|               </CardHeader>\n03740|               <CardContent>\n03741|                 <div className=\"grid grid-cols-2 gap-2\">\n03742|                   {COMPANIES_BASE.map((company, index) => {\n03743|                     const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n03744|                     const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n03745|                     \n03746|                     return (\n03747|                       <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n03748|                         <span className=\"text-lg\">{company.logo}</span>\n03749|                         <div>\n03750|                           <p className=\"font-medium text-white text-xs\">{company.name}</p>\n03751|                           <Badge \n03752|                             variant={isConnected ? \"default\" : \"destructive\"} \n03753|                             className=\"text-xs\"\n03754|                           >\n03755|                             {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}\n\n(File has more lines. Use 'offset' parameter to read beyond line 3755)\n</file>",
+    "metadata": {
+      "preview": "                isVisible={true}\n              />\n            )}\n            \n            {/* Список подключенных ТК */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-2\">\n                <CardTitle className=\"text-white text-sm\">Подключенные транспортные компании</CardTitle>\n              </CardHeader>\n              <CardContent>\n                <div className=\"grid grid-cols-2 gap-2\">\n                  {COMPANIES_BASE.map((company, index) => {\n                    const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n                    const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n                    \n                    return (\n                      <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n                        <span className=\"text-lg\">{company.logo}</span>\n                        <div>\n                          <p className=\"font-medium text-white text-xs\">{company.name}</p>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759739046501,
+      "end": 1759739046504
+    }
+  }
+}

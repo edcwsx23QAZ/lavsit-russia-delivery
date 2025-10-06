@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b89d980a001g6xnfDlba8w27h",
+  "messageID": "msg_9b89d596c001GFeOtaRAC33aoU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Xo6d2fgL4h9fGv7JLEWm8M",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n -A20 \"COMPANIES_BASE\" app/page.tsx",
+      "description": "Find COMPANIES_BASE definition"
+    },
+    "output": "82:const COMPANIES_BASE = [\n83-  { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n84-  { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n85-  { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n86-  { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },\n87-  { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' }\n88-];\n89-\n90-export default function Home() {\n91-  // Начальное состояние формы\n92-  const initialFormState: DeliveryForm = {\n93-    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n94-    fromCity: '',\n95-    toCity: '',\n96-    fromAddress: '',\n97-    toAddress: '',\n98-    declaredValue: 0,\n99-    needPackaging: false,\n100-    needLoading: false,\n101-    needCarry: false,\n102-    floor: 1,\n--\n3732:                  {COMPANIES_BASE.map((company, index) => {\n3733-                    const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n3734-                    const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n3735-                    \n3736-                    return (\n3737-                      <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n3738-                        <span className=\"text-lg\">{company.logo}</span>\n3739-                        <div>\n3740-                          <p className=\"font-medium text-white text-xs\">{company.name}</p>\n3741-                          <Badge \n3742-                            variant={isConnected ? \"default\" : \"destructive\"} \n3743-                            className=\"text-xs\"\n3744-                          >\n3745-                            {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}\n3746-                          </Badge>\n3747-                        </div>\n3748-                      </div>\n3749-                    );\n3750-                  })}\n3751-                </div>\n3752-              </CardContent>\n",
+    "metadata": {
+      "output": "82:const COMPANIES_BASE = [\n83-  { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n84-  { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n85-  { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n86-  { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },\n87-  { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' }\n88-];\n89-\n90-export default function Home() {\n91-  // Начальное состояние формы\n92-  const initialFormState: DeliveryForm = {\n93-    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n94-    fromCity: '',\n95-    toCity: '',\n96-    fromAddress: '',\n97-    toAddress: '',\n98-    declaredValue: 0,\n99-    needPackaging: false,\n100-    needLoading: false,\n101-    needCarry: false,\n102-    floor: 1,\n--\n3732:                  {COMPANIES_BASE.map((company, index) => {\n3733-                    const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n3734-                    const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n3735-                    \n3736-                    return (\n3737-                      <div key={index} className=\"flex items-center gap-2 p-2 bg-gray-700 rounded\">\n3738-                        <span className=\"text-lg\">{company.logo}</span>\n3739-                        <div>\n3740-                          <p className=\"font-medium text-white text-xs\">{company.name}</p>\n3741-                          <Badge \n3742-                            variant={isConnected ? \"default\" : \"destructive\"} \n3743-                            className=\"text-xs\"\n3744-                          >\n3745-                            {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}\n3746-                          </Badge>\n3747-                        </div>\n3748-                      </div>\n3749-                    );\n3750-                  })}\n3751-                </div>\n3752-              </CardContent>\n",
+      "exit": 0,
+      "description": "Find COMPANIES_BASE definition"
+    },
+    "title": "cd /home/user/project && grep -n -A20 \"COMPANIES_BASE\" app/page.tsx",
+    "time": {
+      "start": 1759738960433,
+      "end": 1759738960441
+    }
+  }
+}

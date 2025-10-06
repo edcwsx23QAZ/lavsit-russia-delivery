@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b89de921001NPBIwruQ6aDGcS",
+  "messageID": "msg_9b89d596c001GFeOtaRAC33aoU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01DxexuASqNDCzzACAkggyyc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && ls components/ui/ | grep switch",
+      "description": "Check if Switch component exists"
+    },
+    "output": "switch.tsx\n",
+    "metadata": {
+      "output": "switch.tsx\n",
+      "exit": 0,
+      "description": "Check if Switch component exists"
+    },
+    "title": "cd /home/user/project && ls components/ui/ | grep switch",
+    "time": {
+      "start": 1759738981253,
+      "end": 1759738981447
+    }
+  }
+}

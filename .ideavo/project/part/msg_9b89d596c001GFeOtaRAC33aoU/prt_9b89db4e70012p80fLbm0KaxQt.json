@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b89db4e70012p80fLbm0KaxQt",
+  "messageID": "msg_9b89d596c001GFeOtaRAC33aoU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01RH6ynfFSxBjCBjfUy2W9Wu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n -A10 \"useState.*form\" app/page.tsx",
+      "description": "Find form state definition"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Find form state definition"
+    },
+    "title": "cd /home/user/project && grep -n -A10 \"useState.*form\" app/page.tsx",
+    "time": {
+      "start": 1759738968126,
+      "end": 1759738968148
+    }
+  }
+}
