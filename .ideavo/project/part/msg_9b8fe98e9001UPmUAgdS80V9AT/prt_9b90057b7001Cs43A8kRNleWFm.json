@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b90057b7001Cs43A8kRNleWFm",
+  "messageID": "msg_9b8fe98e9001UPmUAgdS80V9AT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01WZm1Wh521VKbpcwkXUzDTo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ServiceWorkerRegistration.tsx",
+      "oldString": "export default function ServiceWorkerRegistration() {\n  useEffect(() => {\n    if ('serviceWorker' in navigator) {\n      // Более надежная детекция production/development\n      const isProduction = process.env.NODE_ENV === 'production' || \n                          (typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && \n                           !window.location.hostname.includes('127.0.0.1') && \n                           !window.location.hostname.includes('.e2b.app'));\n      \n      if (isProduction) {",
+      "newString": "export default function ServiceWorkerRegistration() {\n  useEffect(() => {\n    if ('serviceWorker' in navigator) {\n      // NUCLEAR APPROACH: Агрессивное детектирование dev режима\n      const isProduction = process.env.NODE_ENV === 'production' && \n                          typeof window !== 'undefined' && \n                          !window.location.hostname.includes('localhost') && \n                          !window.location.hostname.includes('127.0.0.1') && \n                          !window.location.hostname.includes('.e2b.app') &&\n                          !window.location.hostname.includes('ideavo') &&\n                          !window.location.port;\n      \n      if (isProduction) {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/ServiceWorkerRegistration.tsx\n===================================================================\n--- /home/user/project/components/ServiceWorkerRegistration.tsx\n+++ /home/user/project/components/ServiceWorkerRegistration.tsx\n@@ -4,13 +4,16 @@\n \n export default function ServiceWorkerRegistration() {\n   useEffect(() => {\n     if ('serviceWorker' in navigator) {\n-      // Более надежная детекция production/development\n-      const isProduction = process.env.NODE_ENV === 'production' || \n-                          (typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && \n-                           !window.location.hostname.includes('127.0.0.1') && \n-                           !window.location.hostname.includes('.e2b.app'));\n+      // NUCLEAR APPROACH: Агрессивное детектирование dev режима\n+      const isProduction = process.env.NODE_ENV === 'production' && \n+                          typeof window !== 'undefined' && \n+                          !window.location.hostname.includes('localhost') && \n+                          !window.location.hostname.includes('127.0.0.1') && \n+                          !window.location.hostname.includes('.e2b.app') &&\n+                          !window.location.hostname.includes('ideavo') &&\n+                          !window.location.port;\n       \n       if (isProduction) {\n         navigator.serviceWorker\n           .register('/sw.js')\n"
+    },
+    "title": "components/ServiceWorkerRegistration.tsx",
+    "time": {
+      "start": 1759745435561,
+      "end": 1759745435568
+    }
+  }
+}

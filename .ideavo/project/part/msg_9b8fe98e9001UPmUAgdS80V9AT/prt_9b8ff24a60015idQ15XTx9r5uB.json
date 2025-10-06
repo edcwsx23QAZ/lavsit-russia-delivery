@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8ff24a60015idQ15XTx9r5uB",
+  "messageID": "msg_9b8fe98e9001UPmUAgdS80V9AT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01FXuEGCNxV8xMudRsZ9Ped8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rm -rf .next && echo \"Deleted .next build cache\"",
+      "description": "Delete Next.js build cache completely"
+    },
+    "output": "Deleted .next build cache\n",
+    "metadata": {
+      "output": "Deleted .next build cache\n",
+      "exit": 0,
+      "description": "Delete Next.js build cache completely"
+    },
+    "title": "cd /home/user/project && rm -rf .next && echo \"Deleted .next build cache\"",
+    "time": {
+      "start": 1759745354073,
+      "end": 1759745354104
+    }
+  }
+}

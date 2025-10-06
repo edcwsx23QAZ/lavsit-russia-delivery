@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b903c3cc001Wa11Oih3JNgEHL",
+  "messageID": "msg_9b8fe98e9001UPmUAgdS80V9AT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01NhpeSaes6LQj2fb8LKZg5G",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg \"lazy|Lazy|dynamic\" --type-add 'web:*.{tsx,ts,js,jsx}' --type web -B1 -A1",
+      "description": "Search for any lazy/dynamic patterns"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Search for any lazy/dynamic patterns"
+    },
+    "title": "cd /home/user/project && rg \"lazy|Lazy|dynamic\" --type-add 'web:*.{tsx,ts,js,jsx}' --type web -B1 -A1",
+    "time": {
+      "start": 1759745656748,
+      "end": 1759745716787
+    }
+  }
+}

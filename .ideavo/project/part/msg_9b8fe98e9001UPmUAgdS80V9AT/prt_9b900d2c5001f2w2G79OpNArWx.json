@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b900d2c5001f2w2G79OpNArWx",
+  "messageID": "msg_9b8fe98e9001UPmUAgdS80V9AT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01LUoQJZ9GjqbV5bqG33uxZC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Build with fresh cache"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./components/ServiceWorkerRegistration.tsx:72:28\nType error: This expression is not callable.\n  Type 'Timeout' has no call signatures.\n\n\u001b[0m \u001b[90m 70 |\u001b[39m           \u001b[90m// Repeat cache clearing every 2 seconds for 10 seconds\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 71 |\u001b[39m           \u001b[36mconst\u001b[39m clearInterval \u001b[33m=\u001b[39m setInterval(clearAllCaches\u001b[33m,\u001b[39m \u001b[35m2000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 72 |\u001b[39m           setTimeout(() \u001b[33m=>\u001b[39m clearInterval(clearInterval)\u001b[33m,\u001b[39m \u001b[35m10000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 73 |\u001b[39m         }\u001b[0m\n\u001b[0m \u001b[90m 74 |\u001b[39m         \u001b[0m\n\u001b[0m \u001b[90m 75 |\u001b[39m         \u001b[90m// Step 2: Unregister ALL existing SWs aggressively\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./components/ServiceWorkerRegistration.tsx:72:28\nType error: This expression is not callable.\n  Type 'Timeout' has no call signatures.\n\n\u001b[0m \u001b[90m 70 |\u001b[39m           \u001b[90m// Repeat cache clearing every 2 seconds for 10 seconds\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 71 |\u001b[39m           \u001b[36mconst\u001b[39m clearInterval \u001b[33m=\u001b[39m setInterval(clearAllCaches\u001b[33m,\u001b[39m \u001b[35m2000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 72 |\u001b[39m           setTimeout(() \u001b[33m=>\u001b[39m clearInterval(clearInterval)\u001b[33m,\u001b[39m \u001b[35m10000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 73 |\u001b[39m         }\u001b[0m\n\u001b[0m \u001b[90m 74 |\u001b[39m         \u001b[0m\n\u001b[0m \u001b[90m 75 |\u001b[39m         \u001b[90m// Step 2: Unregister ALL existing SWs aggressively\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build with fresh cache"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759745463648,
+      "end": 1759745498260
+    }
+  }
+}

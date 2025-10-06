@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9018e0a001Uuedhpi4k3EGHj",
+  "messageID": "msg_9b8fe98e9001UPmUAgdS80V9AT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01P3ZGEBQrUHyPCJhP7EvvQh",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ServiceWorkerRegistration.tsx",
+      "oldString": "        // Check immediately and periodically\n        setTimeout(checkActiveSW, 5000);\n        const checkInterval = setInterval(checkActiveSW, 5000);\n        setTimeout(() => clearInterval(checkInterval), 30000);",
+      "newString": "        // Check immediately and periodically\n        setTimeout(checkActiveSW, 5000);\n        const checkIntervalId = setInterval(checkActiveSW, 5000);\n        setTimeout(() => clearInterval(checkIntervalId), 30000);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/ServiceWorkerRegistration.tsx\n===================================================================\n--- /home/user/project/components/ServiceWorkerRegistration.tsx\n+++ /home/user/project/components/ServiceWorkerRegistration.tsx\n@@ -109,10 +109,10 @@\n       };\n       \n       // Check immediately and periodically\n       setTimeout(checkActiveSW, 5000);\n-      const checkInterval = setInterval(checkActiveSW, 5000);\n-      setTimeout(() => clearInterval(checkInterval), 30000);\n+      const checkIntervalId = setInterval(checkActiveSW, 5000);\n+      setTimeout(() => clearInterval(checkIntervalId), 30000);\n     }\n   }\n }, []);\n \n"
+    },
+    "title": "components/ServiceWorkerRegistration.tsx",
+    "time": {
+      "start": 1759745512600,
+      "end": 1759745512604
+    }
+  }
+}

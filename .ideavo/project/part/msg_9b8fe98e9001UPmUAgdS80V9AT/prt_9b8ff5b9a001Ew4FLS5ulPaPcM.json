@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8ff5b9a001Ew4FLS5ulPaPcM",
+  "messageID": "msg_9b8fe98e9001UPmUAgdS80V9AT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_015t6zWZzBb1vTCXzPszfBzS",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/public/sw-disabled.js",
+      "content": "// DEVELOPMENT MODE - SERVICE WORKER DISABLED\n// This Service Worker is completely disabled in development\n// to prevent webpack module caching issues\n\nconsole.log('[SW] DEVELOPMENT MODE - SERVICE WORKER DISABLED');\n\n// Immediately unregister self and clear all caches\nself.addEventListener('install', (event) => {\n  console.log('[SW] DEV: Self-destructing on install');\n  event.waitUntil(\n    caches.keys().then(cacheNames => {\n      return Promise.all(\n        cacheNames.map(cacheName => {\n          console.log('[SW] DEV: Deleting cache:', cacheName);\n          return caches.delete(cacheName);\n        })\n      );\n    }).then(() => {\n      console.log('[SW] DEV: Skipping waiting and unregistering');\n      return self.skipWaiting();\n    })\n  );\n});\n\nself.addEventListener('activate', (event) => {\n  console.log('[SW] DEV: Self-destructing on activate');\n  event.waitUntil(\n    caches.keys().then(cacheNames => {\n      return Promise.all(\n        cacheNames.map(cacheName => {\n          console.log('[SW] DEV: Force deleting cache:', cacheName);\n          return caches.delete(cacheName);\n        })\n      );\n    }).then(() => {\n      // Force unregister this service worker\n      return self.registration.unregister();\n    }).then(() => {\n      console.log('[SW] DEV: Service Worker unregistered successfully');\n      // Reload all clients to clear any cached state\n      return self.clients.matchAll();\n    }).then(clients => {\n      clients.forEach(client => {\n        console.log('[SW] DEV: Reloading client:', client.url);\n        client.postMessage({ type: 'SW_DISABLED_RELOAD' });\n      });\n    })\n  );\n});\n\n// Disable all fetch events\nself.addEventListener('fetch', (event) => {\n  console.log('[SW] DEV: Ignoring fetch request (SW disabled):', event.request.url);\n  // Do nothing - let requests go to network\n});\n\n// Handle messages and respond with disabled status\nself.addEventListener('message', (event) => {\n  console.log('[SW] DEV: Message received, responding with disabled status');\n  if (event.ports && event.ports[0]) {\n    event.ports[0].postMessage({ \n      success: false, \n      error: 'Service Worker disabled in development mode' \n    });\n  }\n});"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/public/sw-disabled.js",
+      "exists": false
+    },
+    "title": "public/sw-disabled.js",
+    "time": {
+      "start": 1759745372429,
+      "end": 1759745372432
+    }
+  }
+}

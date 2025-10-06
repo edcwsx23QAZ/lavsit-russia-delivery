@@ -1,0 +1,11 @@
+{
+  "id": "prt_9b903bdfe001kp0Z2kLv4C06x2",
+  "messageID": "msg_9b8fe98e9001UPmUAgdS80V9AT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Проверим ошибку глубже. В стеке указано `at Lazy` - это может быть Next.js внутренний lazy компонент. Проблема может быть в том, что все еще что-то использует lazy loading:",
+  "time": {
+    "start": 1759745655755,
+    "end": 1759745655755
+  }
+}

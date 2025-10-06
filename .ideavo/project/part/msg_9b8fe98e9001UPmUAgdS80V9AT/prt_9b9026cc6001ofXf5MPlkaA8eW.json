@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9026cc6001ofXf5MPlkaA8eW",
+  "messageID": "msg_9b8fe98e9001UPmUAgdS80V9AT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Q5oSbVyPj7KjTrTGMETUiy",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -g \"*.{tsx,ts,js,jsx}\" -B2 -A2 \"Lazy|lazy\\(\" --type-add 'web:*.{tsx,ts,js,jsx}' --type web",
+      "description": "Search for any remaining lazy patterns in source code"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Search for any remaining lazy patterns in source code"
+    },
+    "title": "cd /home/user/project && rg -g \"*.{tsx,ts,js,jsx}\" -B2 -A2 \"Lazy|lazy\\(\" --type-add 'web:*.{tsx,ts,js,jsx}' --type web",
+    "time": {
+      "start": 1759745570207,
+      "end": 1759745630226
+    }
+  }
+}
