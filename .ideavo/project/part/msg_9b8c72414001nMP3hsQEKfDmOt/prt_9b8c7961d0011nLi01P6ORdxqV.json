@@ -1,0 +1,42 @@
+{
+  "id": "prt_9b8c7961d0011nLi01P6ORdxqV",
+  "messageID": "msg_9b8c72414001nMP3hsQEKfDmOt",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01JyzzhKMAGciqW4ahdDxYKz",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "  // Состояние для управления включением/выключением транспортных компаний\n  const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n    pek: true,\n    dellin: true,\n    railcontinent: true,\n    vozovoz: true,\n    nordwheel: true\n  });",
+          "newString": "  // Состояние для управления включением/выключением транспортных компаний\n  const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n    pek: true,\n    dellin: true,\n    railcontinent: true,\n    vozovoz: true,\n    nordwheel: true,\n    cdek: false,\n    newline: false,\n    irtrust: false,\n    majortrans: false,\n    baikalservice: false,\n    adamant: false,\n    energiya: false,\n    cap: false,\n    uraltrans: false,\n    novotek: false,\n    kit: false,\n    karavan: false,\n    zeldor: false,\n    dktransit: false,\n    glavtrassa: false,\n    baltservice: false,\n    ankor: false\n  });"
+        },
+        {
+          "oldString": "  const [apiStatus, setApiStatus] = useState({\n    pek: 'проверка...',\n    dellin: 'проверка...',\n    railcontinent: 'проверка...',\n    vozovoz: 'проверка...',\n    nordwheel: 'проверка...'\n  });",
+          "newString": "  const [apiStatus, setApiStatus] = useState({\n    pek: 'проверка...',\n    dellin: 'проверка...',\n    railcontinent: 'проверка...',\n    vozovoz: 'проверка...',\n    nordwheel: 'проверка...',\n    cdek: 'не подключено',\n    newline: 'не подключено',\n    irtrust: 'не подключено',\n    majortrans: 'не подключено',\n    baikalservice: 'не подключено',\n    adamant: 'не подключено',\n    energiya: 'не подключено',\n    cap: 'не подключено',\n    uraltrans: 'не подключено',\n    novotek: 'не подключено',\n    kit: 'не подключено',\n    karavan: 'не подключено',\n    zeldor: 'не подключено',\n    dktransit: 'не подключено',\n    glavtrassa: 'не подключено',\n    baltservice: 'не подключено',\n    ankor: 'не подключено'\n  });"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -139,9 +139,26 @@\n   pek: true,\n   dellin: true,\n   railcontinent: true,\n   vozovoz: true,\n-  nordwheel: true\n+  nordwheel: true,\n+  cdek: false,\n+  newline: false,\n+  irtrust: false,\n+  majortrans: false,\n+  baikalservice: false,\n+  adamant: false,\n+  energiya: false,\n+  cap: false,\n+  uraltrans: false,\n+  novotek: false,\n+  kit: false,\n+  karavan: false,\n+  zeldor: false,\n+  dktransit: false,\n+  glavtrassa: false,\n+  baltservice: false,\n+  ankor: false\n });\n const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n const [calculating, setCalculating] = useState(false);\n const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -168,9 +168,26 @@\n   pek: 'проверка...',\n   dellin: 'проверка...',\n   railcontinent: 'проверка...',\n   vozovoz: 'проверка...',\n-  nordwheel: 'проверка...'\n+  nordwheel: 'проверка...',\n+  cdek: 'не подключено',\n+  newline: 'не подключено',\n+  irtrust: 'не подключено',\n+  majortrans: 'не подключено',\n+  baikalservice: 'не подключено',\n+  adamant: 'не подключено',\n+  energiya: 'не подключено',\n+  cap: 'не подключено',\n+  uraltrans: 'не подключено',\n+  novotek: 'не подключено',\n+  kit: 'не подключено',\n+  karavan: 'не подключено',\n+  zeldor: 'не подключено',\n+  dktransit: 'не подключено',\n+  glavtrassa: 'не подключено',\n+  baltservice: 'не подключено',\n+  ankor: 'не подключено'\n });\n \n // Загрузка сохраненных данных (только на клиенте)\n useEffect(() => {\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759741720243,
+      "end": 1759741720275
+    }
+  }
+}

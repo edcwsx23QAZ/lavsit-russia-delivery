@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8c74a6d0010JG93UqLOBj0HD",
+  "messageID": "msg_9b8c72414001nMP3hsQEKfDmOt",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01J6NhmU9L1kAhkdaUqUfXSG",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "// Определим базовую структуру компаний\nconst COMPANIES_BASE = [\n  { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n  { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n  { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n  { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },\n  { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' }\n];",
+      "newString": "// Определим базовую структуру компаний\nconst COMPANIES_BASE = [\n  { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n  { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n  { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n  { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },\n  { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' },\n  { name: 'Сдэк', logo: '📮', apiKey: 'cdek' },\n  { name: 'Новая линия', logo: '🛣️', apiKey: 'newline' },\n  { name: 'Ир-Траст', logo: '🏭', apiKey: 'irtrust' },\n  { name: 'Майор транс', logo: '⭐', apiKey: 'majortrans' },\n  { name: 'БАЙКАЛ СЕРВИС', logo: '🌊', apiKey: 'baikalservice' },\n  { name: 'Адамант', logo: '💎', apiKey: 'adamant' },\n  { name: 'ЭНЕРГИЯ', logo: '⚡', apiKey: 'energiya' },\n  { name: 'ЦАП', logo: '🎯', apiKey: 'cap' },\n  { name: 'УралТрансКомпани', logo: '⛰️', apiKey: 'uraltrans' },\n  { name: 'НОВОТЭК', logo: '🔧', apiKey: 'novotek' },\n  { name: 'Кит', logo: '🐋', apiKey: 'kit' },\n  { name: 'Караван', logo: '🐪', apiKey: 'karavan' },\n  { name: 'ЖелДорЭкспедиция', logo: '🚄', apiKey: 'zeldor' },\n  { name: 'ДК Транзит', logo: '🚐', apiKey: 'dktransit' },\n  { name: 'Главтрасса', logo: '🛤️', apiKey: 'glavtrassa' },\n  { name: 'Балтийская Служба Доставки', logo: '⚓', apiKey: 'baltservice' },\n  { name: 'АНКОР', logo: '🔗', apiKey: 'ankor' }\n];"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -84,9 +84,26 @@\n   { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n   { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n   { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n   { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },\n-  { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' }\n+  { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' },\n+  { name: 'Сдэк', logo: '📮', apiKey: 'cdek' },\n+  { name: 'Новая линия', logo: '🛣️', apiKey: 'newline' },\n+  { name: 'Ир-Траст', logo: '🏭', apiKey: 'irtrust' },\n+  { name: 'Майор транс', logo: '⭐', apiKey: 'majortrans' },\n+  { name: 'БАЙКАЛ СЕРВИС', logo: '🌊', apiKey: 'baikalservice' },\n+  { name: 'Адамант', logo: '💎', apiKey: 'adamant' },\n+  { name: 'ЭНЕРГИЯ', logo: '⚡', apiKey: 'energiya' },\n+  { name: 'ЦАП', logo: '🎯', apiKey: 'cap' },\n+  { name: 'УралТрансКомпани', logo: '⛰️', apiKey: 'uraltrans' },\n+  { name: 'НОВОТЭК', logo: '🔧', apiKey: 'novotek' },\n+  { name: 'Кит', logo: '🐋', apiKey: 'kit' },\n+  { name: 'Караван', logo: '🐪', apiKey: 'karavan' },\n+  { name: 'ЖелДорЭкспедиция', logo: '🚄', apiKey: 'zeldor' },\n+  { name: 'ДК Транзит', logo: '🚐', apiKey: 'dktransit' },\n+  { name: 'Главтрасса', logo: '🛤️', apiKey: 'glavtrassa' },\n+  { name: 'Балтийская Служба Доставки', logo: '⚓', apiKey: 'baltservice' },\n+  { name: 'АНКОР', logo: '🔗', apiKey: 'ankor' }\n ];\n \n export default function Home() {\n   // Начальное состояние формы\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759741701122,
+      "end": 1759741701155
+    }
+  }
+}

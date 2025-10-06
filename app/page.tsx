@@ -85,7 +85,24 @@ const COMPANIES_BASE = [
   { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },
   { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },
   { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },
-  { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' }
+  { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' },
+  { name: 'Сдэк', logo: '📮', apiKey: 'cdek' },
+  { name: 'Новая линия', logo: '🛣️', apiKey: 'newline' },
+  { name: 'Ир-Траст', logo: '🏭', apiKey: 'irtrust' },
+  { name: 'Майор транс', logo: '⭐', apiKey: 'majortrans' },
+  { name: 'БАЙКАЛ СЕРВИС', logo: '🌊', apiKey: 'baikalservice' },
+  { name: 'Адамант', logo: '💎', apiKey: 'adamant' },
+  { name: 'ЭНЕРГИЯ', logo: '⚡', apiKey: 'energiya' },
+  { name: 'ЦАП', logo: '🎯', apiKey: 'cap' },
+  { name: 'УралТрансКомпани', logo: '⛰️', apiKey: 'uraltrans' },
+  { name: 'НОВОТЭК', logo: '🔧', apiKey: 'novotek' },
+  { name: 'Кит', logo: '🐋', apiKey: 'kit' },
+  { name: 'Караван', logo: '🐪', apiKey: 'karavan' },
+  { name: 'ЖелДорЭкспедиция', logo: '🚄', apiKey: 'zeldor' },
+  { name: 'ДК Транзит', logo: '🚐', apiKey: 'dktransit' },
+  { name: 'Главтрасса', logo: '🛤️', apiKey: 'glavtrassa' },
+  { name: 'Балтийская Служба Доставки', logo: '⚓', apiKey: 'baltservice' },
+  { name: 'АНКОР', logo: '🔗', apiKey: 'ankor' }
 ];
 
 export default function Home() {
@@ -123,7 +140,24 @@ export default function Home() {
     dellin: true,
     railcontinent: true,
     vozovoz: true,
-    nordwheel: true
+    nordwheel: true,
+    cdek: false,
+    newline: false,
+    irtrust: false,
+    majortrans: false,
+    baikalservice: false,
+    adamant: false,
+    energiya: false,
+    cap: false,
+    uraltrans: false,
+    novotek: false,
+    kit: false,
+    karavan: false,
+    zeldor: false,
+    dktransit: false,
+    glavtrassa: false,
+    baltservice: false,
+    ankor: false
   });
   const [calculations, setCalculations] = useState<CalculationResult[]>([]);
   const [calculating, setCalculating] = useState(false);
@@ -135,7 +169,24 @@ export default function Home() {
     dellin: 'проверка...',
     railcontinent: 'проверка...',
     vozovoz: 'проверка...',
-    nordwheel: 'проверка...'
+    nordwheel: 'проверка...',
+    cdek: 'не подключено',
+    newline: 'не подключено',
+    irtrust: 'не подключено',
+    majortrans: 'не подключено',
+    baikalservice: 'не подключено',
+    adamant: 'не подключено',
+    energiya: 'не подключено',
+    cap: 'не подключено',
+    uraltrans: 'не подключено',
+    novotek: 'не подключено',
+    kit: 'не подключено',
+    karavan: 'не подключено',
+    zeldor: 'не подключено',
+    dktransit: 'не подключено',
+    glavtrassa: 'не подключено',
+    baltservice: 'не подключено',
+    ankor: 'не подключено'
   });
 
   // Загрузка сохраненных данных (только на клиенте)

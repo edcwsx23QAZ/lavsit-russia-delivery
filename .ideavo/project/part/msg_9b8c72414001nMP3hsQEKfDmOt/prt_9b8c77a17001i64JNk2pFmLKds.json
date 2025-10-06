@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8c77a17001i64JNk2pFmLKds",
+  "messageID": "msg_9b8c72414001nMP3hsQEKfDmOt",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_015L8xbu6nDzFxkDvBUPamTa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 120,
+      "limit": 30
+    },
+    "output": "<file>\n00121|     hasFreightLift: false,\n00122|     needInsurance: false,\n00123|     fromTerminal: true,\n00124|     toTerminal: true,\n00125|     fromAddressDelivery: false,\n00126|     toAddressDelivery: false,\n00127|     selectedProducts: []\n00128|   };\n00129| \n00130|   const [form, setForm] = useState<DeliveryForm>(initialFormState);\n00131|   const [isLoaded, setIsLoaded] = useState(false);\n00132| \n00133|   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n00134|   const [showSuggestions, setShowSuggestions] = useState(false);\n00135|   const [activeField, setActiveField] = useState('');\n00136|   \n00137|   // Состояние для управления включением/выключением транспортных компаний\n00138|   const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n00139|     pek: true,\n00140|     dellin: true,\n00141|     railcontinent: true,\n00142|     vozovoz: true,\n00143|     nordwheel: true\n00144|   });\n00145|   const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n00146|   const [calculating, setCalculating] = useState(false);\n00147|   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n00148|   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n00149|   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n00150|   const [apiStatus, setApiStatus] = useState({\n\n(File has more lines. Use 'offset' parameter to read beyond line 150)\n</file>",
+    "metadata": {
+      "preview": "    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false,\n    selectedProducts: []\n  };\n\n  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n\n  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n  const [showSuggestions, setShowSuggestions] = useState(false);\n  const [activeField, setActiveField] = useState('');\n  \n  // Состояние для управления включением/выключением транспортных компаний\n  const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n    pek: true,\n    dellin: true,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759741705438,
+      "end": 1759741705441
+    }
+  }
+}

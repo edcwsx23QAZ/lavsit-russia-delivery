@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8c73b08001Wfoxe7awRwR8YH",
+  "messageID": "msg_9b8c72414001nMP3hsQEKfDmOt",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XK1R7beMQyaSvtwpsV23VJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 80,
+      "limit": 20
+    },
+    "output": "<file>\n00081| \n00082| // Определим базовую структуру компаний\n00083| const COMPANIES_BASE = [\n00084|   { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n00085|   { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n00086|   { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n00087|   { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },\n00088|   { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' }\n00089| ];\n00090| \n00091| export default function Home() {\n00092|   // Начальное состояние формы\n00093|   const initialFormState: DeliveryForm = {\n00094|     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00095|     fromCity: '',\n00096|     toCity: '',\n00097|     fromAddress: '',\n00098|     toAddress: '',\n00099|     declaredValue: 0,\n00100|     needPackaging: false,\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "metadata": {
+      "preview": "\n// Определим базовую структуру компаний\nconst COMPANIES_BASE = [\n  { name: 'ПЭК', logo: '🚛', apiKey: 'pek' },\n  { name: 'Деловые Линии', logo: '📦', apiKey: 'dellin' },\n  { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n  { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },\n  { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' }\n];\n\nexport default function Home() {\n  // Начальное состояние формы\n  const initialFormState: DeliveryForm = {\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759741689437,
+      "end": 1759741689444
+    }
+  }
+}
