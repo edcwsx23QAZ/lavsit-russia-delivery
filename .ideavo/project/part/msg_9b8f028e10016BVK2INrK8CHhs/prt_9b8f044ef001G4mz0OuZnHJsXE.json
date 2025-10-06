@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8f044ef001G4mz0OuZnHJsXE",
+  "messageID": "msg_9b8f028e10016BVK2INrK8CHhs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_013NPi8Pa2fm8j7w3rY1jUBc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "(dynamic|lazy)",
+      "include": "*.{ts,tsx,js,jsx}"
+    },
+    "output": "Found 6 matches\n/home/user/project/performance-test.js:\n  Line 199:             'Implemented lazy loading for heavy components'\n\n/home/user/project/components/diagnostic/LazyLoadedComponents.tsx:\n  Line 3: import React, { lazy, Suspense } from 'react';\n  Line 8: const FullTestingResults = lazy(() => import('./FullTestingResults'));\n  Line 9: const VehicleManagement = lazy(() => import('./VehicleManagement'));\n\n/home/user/project/app/api/furniture-products/route.ts:\n  Line 4: export const dynamic = 'force-dynamic';\n  Line 34:     // Используем nextUrl для избежания ошибки dynamic server usage",
+    "metadata": {
+      "matches": 6,
+      "truncated": false
+    },
+    "title": "(dynamic|lazy)",
+    "time": {
+      "start": 1759744379062,
+      "end": 1759744379079
+    }
+  }
+}

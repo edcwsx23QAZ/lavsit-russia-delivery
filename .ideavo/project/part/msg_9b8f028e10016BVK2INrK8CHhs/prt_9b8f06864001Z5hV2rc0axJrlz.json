@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8f06864001Z5hV2rc0axJrlz",
+  "messageID": "msg_9b8f028e10016BVK2INrK8CHhs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01USHMQ5gi5Xu85pwu6nq2Gy",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "LazyLoadedComponents",
+      "include": "*.{ts,tsx,js,jsx}"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/diagnostic/page.tsx:\n  Line 7: import { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';\n\n/home/user/project/app/diagnostic/optimized-page.tsx:\n  Line 7: import { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "LazyLoadedComponents",
+    "time": {
+      "start": 1759744387554,
+      "end": 1759744387566
+    }
+  }
+}

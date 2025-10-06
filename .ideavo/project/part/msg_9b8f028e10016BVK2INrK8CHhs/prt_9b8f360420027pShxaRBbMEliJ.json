@@ -1,0 +1,11 @@
+{
+  "id": "prt_9b8f360420027pShxaRBbMEliJ",
+  "messageID": "msg_9b8f028e10016BVK2INrK8CHhs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "## ✅ Исправлено полностью\n\n**Проблема:** Ошибка webpack `Cannot read properties of undefined (reading 'call')` была вызвана проблемными lazy-loaded компонентами в `LazyLoadedComponents.tsx`.\n\n**Корневая причина:** React.lazy() импорты создавали конфликты модулей в webpack при рендеринге компонентов.\n\n**Решение:**\n1. **Удалил lazy loading** из `components/diagnostic/LazyLoadedComponents.tsx`\n2. **Заменил на прямые импорты** - `import FullTestingResults from './FullTestingResults'`\n3. **Сохранил обёртки** - `LazyFullTestingResults` и `LazyVehicleManagement` для совместимости\n4. **Упростил webpack конфигурацию** в `next.config.js`\n\n**Результат:**\n- ✅ Build успешный без ошибок\n- ✅ Dev server запускается корректно  \n- ✅ Webpack модули загружаются правильно\n- ✅ Все компоненты доступны без lazy loading\n\nIdeavo preview должен теперь работать без runtime ошибок. Функциональность сохранена, но компоненты загружаются сразу вместо ленивой загрузки.",
+  "time": {
+    "start": 1759744588594,
+    "end": 1759744588594
+  }
+}

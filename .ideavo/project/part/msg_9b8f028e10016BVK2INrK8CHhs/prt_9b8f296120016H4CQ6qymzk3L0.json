@@ -1,0 +1,24 @@
+{
+  "id": "prt_9b8f296120016H4CQ6qymzk3L0",
+  "messageID": "msg_9b8f028e10016BVK2INrK8CHhs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01D5BwLpdvkJk33gtG5c7ruN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/VehicleManagement.tsx",
+      "limit": 5
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import React from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n\n(File has more lines. Use 'offset' parameter to read beyond line 5)\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport React from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';"
+    },
+    "title": "components/diagnostic/VehicleManagement.tsx",
+    "time": {
+      "start": 1759744530395,
+      "end": 1759744530397
+    }
+  }
+}
