@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8ee6571001ribJqXWSkIjOAk",
+  "messageID": "msg_9b8ed67b6001C2SJCdnrFpvxnM",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Bn93LKr7gMxAyNSUQVZVbA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/next.config.js",
+      "oldString": "  // Добавляем заголовки для dev режима\n  async headers() {\n    if (process.env.NODE_ENV === 'development') {\n      return [\n        {\n          source: '/(.*)',\n          headers: [\n            {\n              key: 'Cache-Control',\n              value: 'no-cache, no-store, must-revalidate',\n            },\n            {\n              key: 'Pragma',\n              value: 'no-cache',\n            },\n            {\n              key: 'Expires',\n              value: '0',\n            },\n          ],\n        },\n      ];\n    }\n    return [];\n  },",
+      "newString": "  // Добавляем заголовки для предотвращения кэширования\n  async headers() {\n    return [\n      {\n        source: '/(.*)',\n        headers: [\n          {\n            key: 'Cache-Control',\n            value: process.env.NODE_ENV === 'development' \n              ? 'no-cache, no-store, must-revalidate'\n              : 'public, max-age=3600',\n          },\n        ],\n      },\n    ];\n  },"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/next.config.js\n===================================================================\n--- /home/user/project/next.config.js\n+++ /home/user/project/next.config.js\n@@ -4,32 +4,23 @@\n   \n   // Принудительная перезагрузка при изменениях\n   reactStrictMode: true,\n   \n-  // Добавляем заголовки для dev режима\n+  // Добавляем заголовки для предотвращения кэширования\n   async headers() {\n-    if (process.env.NODE_ENV === 'development') {\n-      return [\n-        {\n-          source: '/(.*)',\n-          headers: [\n-            {\n-              key: 'Cache-Control',\n-              value: 'no-cache, no-store, must-revalidate',\n-            },\n-            {\n-              key: 'Pragma',\n-              value: 'no-cache',\n-            },\n-            {\n-              key: 'Expires',\n-              value: '0',\n-            },\n-          ],\n-        },\n-      ];\n-    }\n-    return [];\n+    return [\n+      {\n+        source: '/(.*)',\n+        headers: [\n+          {\n+            key: 'Cache-Control',\n+            value: process.env.NODE_ENV === 'development' \n+              ? 'no-cache, no-store, must-revalidate'\n+              : 'public, max-age=3600',\n+          },\n+        ],\n+      },\n+    ];\n   },\n };\n \n module.exports = nextConfig;\n"
+    },
+    "title": "next.config.js",
+    "time": {
+      "start": 1759744258501,
+      "end": 1759744258504
+    }
+  }
+}

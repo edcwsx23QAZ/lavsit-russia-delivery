@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8ee4907001xZRAmx7cOzhuTf",
+  "messageID": "msg_9b8ed67b6001C2SJCdnrFpvxnM",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_016mWejhnjh7fNKWabUG8FAX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/next.config.js",
+      "oldString": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  images: { unoptimized: true },\n  \n  // Настройки для лучшего dev experience\n  experimental: {\n    // Отключаем клиентский кэш только в dev режиме\n    optimisticClientCache: process.env.NODE_ENV === 'development' ? false : true,\n  },\n  \n  // Принудительная перезагрузка при изменениях\n  reactStrictMode: true,\n  \n  // Настройки webpack для dev режима (более мягкие)\n  webpack: (config, { dev, isServer }) => {\n    if (dev) {\n      // Используем memory cache вместо полного отключения\n      config.cache = {\n        type: 'memory',\n        maxGenerations: 1,\n      };\n    }\n    \n    return config;\n  },",
+      "newString": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  images: { unoptimized: true },\n  \n  // Принудительная перезагрузка при изменениях\n  reactStrictMode: true,"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/next.config.js\n===================================================================\n--- /home/user/project/next.config.js\n+++ /home/user/project/next.config.js\n@@ -1,30 +1,11 @@\n /** @type {import('next').NextConfig} */\n const nextConfig = {\n   images: { unoptimized: true },\n   \n-  // Настройки для лучшего dev experience\n-  experimental: {\n-    // Отключаем клиентский кэш только в dev режиме\n-    optimisticClientCache: process.env.NODE_ENV === 'development' ? false : true,\n-  },\n-  \n   // Принудительная перезагрузка при изменениях\n   reactStrictMode: true,\n   \n-  // Настройки webpack для dev режима (более мягкие)\n-  webpack: (config, { dev, isServer }) => {\n-    if (dev) {\n-      // Используем memory cache вместо полного отключения\n-      config.cache = {\n-        type: 'memory',\n-        maxGenerations: 1,\n-      };\n-    }\n-    \n-    return config;\n-  },\n-  \n   // Добавляем заголовки для dev режима\n   async headers() {\n     if (process.env.NODE_ENV === 'development') {\n       return [\n"
+    },
+    "title": "next.config.js",
+    "time": {
+      "start": 1759744252964,
+      "end": 1759744252971
+    }
+  }
+}

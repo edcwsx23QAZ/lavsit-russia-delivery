@@ -1,0 +1,11 @@
+{
+  "id": "prt_9b8ef5c5a001OlfBnGQrFCVbTu",
+  "messageID": "msg_9b8ed67b6001C2SJCdnrFpvxnM",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "## ✅ Исправлено\n\n**Проблема:** Ошибка webpack `Cannot read properties of undefined (reading 'call')` была вызвана агрессивными настройками кэширования в `next.config.js`.\n\n**Решение:** Убрал проблематичные настройки:\n- Удалил `optimisticClientCache: false` из experimental\n- Удалил кастомную конфигурацию webpack cache\n- Упростил headers configuration\n\n**Текущая конфигурация:**\n- Сохранены anti-cache заголовки для dev режима\n- Webpack использует стандартные настройки Next.js\n- Build и dev server работают без ошибок\n\nIdeavo preview теперь должен работать корректно без runtime ошибок.",
+  "time": {
+    "start": 1759744322832,
+    "end": 1759744322832
+  }
+}

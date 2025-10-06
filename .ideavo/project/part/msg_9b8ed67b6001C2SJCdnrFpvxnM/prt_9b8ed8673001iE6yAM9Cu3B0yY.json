@@ -1,0 +1,23 @@
+{
+  "id": "prt_9b8ed8673001iE6yAM9Cu3B0yY",
+  "messageID": "msg_9b8ed67b6001C2SJCdnrFpvxnM",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01CeUc6kCGSuFbNqSYWePcVN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/next.config.js"
+    },
+    "output": "<file>\n00001| /** @type {import('next').NextConfig} */\n00002| const nextConfig = {\n00003|   images: { unoptimized: true },\n00004|   \n00005|   // Настройки для лучшего dev experience\n00006|   experimental: {\n00007|     // Отключаем клиентский кэш только в dev режиме\n00008|     optimisticClientCache: process.env.NODE_ENV === 'development' ? false : true,\n00009|   },\n00010|   \n00011|   // Принудительная перезагрузка при изменениях\n00012|   reactStrictMode: true,\n00013|   \n00014|   // Настройки webpack для dev режима (более мягкие)\n00015|   webpack: (config, { dev, isServer }) => {\n00016|     if (dev) {\n00017|       // Используем memory cache вместо полного отключения\n00018|       config.cache = {\n00019|         type: 'memory',\n00020|         maxGenerations: 1,\n00021|       };\n00022|     }\n00023|     \n00024|     return config;\n00025|   },\n00026|   \n00027|   // Добавляем заголовки для dev режима\n00028|   async headers() {\n00029|     if (process.env.NODE_ENV === 'development') {\n00030|       return [\n00031|         {\n00032|           source: '/(.*)',\n00033|           headers: [\n00034|             {\n00035|               key: 'Cache-Control',\n00036|               value: 'no-cache, no-store, must-revalidate',\n00037|             },\n00038|             {\n00039|               key: 'Pragma',\n00040|               value: 'no-cache',\n00041|             },\n00042|             {\n00043|               key: 'Expires',\n00044|               value: '0',\n00045|             },\n00046|           ],\n00047|         },\n00048|       ];\n00049|     }\n00050|     return [];\n00051|   },\n00052| };\n00053| \n00054| module.exports = nextConfig;\n00055| \n</file>",
+    "metadata": {
+      "preview": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  images: { unoptimized: true },\n  \n  // Настройки для лучшего dev experience\n  experimental: {\n    // Отключаем клиентский кэш только в dev режиме\n    optimisticClientCache: process.env.NODE_ENV === 'development' ? false : true,\n  },\n  \n  // Принудительная перезагрузка при изменениях\n  reactStrictMode: true,\n  \n  // Настройки webpack для dev режима (более мягкие)\n  webpack: (config, { dev, isServer }) => {\n    if (dev) {\n      // Используем memory cache вместо полного отключения\n      config.cache = {\n        type: 'memory',\n        maxGenerations: 1,"
+    },
+    "title": "next.config.js",
+    "time": {
+      "start": 1759744198852,
+      "end": 1759744198857
+    }
+  }
+}
