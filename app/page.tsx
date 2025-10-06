@@ -2901,13 +2901,32 @@ export default function Home() {
     localStorage.setItem('deliveryForm', JSON.stringify(form));
     
     try {
-      const results = await Promise.all([
-        calculateDellin(),
-        calculatePEK(),
-        calculateNordWheel(),
-        calculateRailContinent(),
-        calculateVozovoz()
-      ]);
+      // Создаем массив функций расчета только для включенных компаний
+      const calculationFunctions: Promise<CalculationResult>[] = [];
+      
+      if (enabledCompanies.dellin) {
+        calculationFunctions.push(calculateDellin());
+      }
+      if (enabledCompanies.pek) {
+        calculationFunctions.push(calculatePEK());
+      }
+      if (enabledCompanies.nordwheel) {
+        calculationFunctions.push(calculateNordWheel());
+      }
+      if (enabledCompanies.railcontinent) {
+        calculationFunctions.push(calculateRailContinent());
+      }
+      if (enabledCompanies.vozovoz) {
+        calculationFunctions.push(calculateVozovoz());
+      }
+      
+      // Если ни одна компания не включена
+      if (calculationFunctions.length === 0) {
+        setCalculations([]);
+        return;
+      }
+      
+      const results = await Promise.all(calculationFunctions);
       
       // Сортировка по цене
       const sortedResults = results

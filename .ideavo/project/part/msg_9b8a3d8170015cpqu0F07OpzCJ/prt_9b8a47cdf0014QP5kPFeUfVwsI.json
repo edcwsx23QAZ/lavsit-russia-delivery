@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8a47cdf0014QP5kPFeUfVwsI",
+  "messageID": "msg_9b8a3d8170015cpqu0F07OpzCJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01DRwX6tAxgo6eVi4sWEBDrZ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Запускаем сборку проекта"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:2908:35\nType error: Argument of type 'Promise<CalculationResult>' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 2906 |\u001b[39m       \u001b[0m\n\u001b[0m \u001b[90m 2907 |\u001b[39m       \u001b[36mif\u001b[39m (enabledCompanies\u001b[33m.\u001b[39mdellin) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 2908 |\u001b[39m         calculationFunctions\u001b[33m.\u001b[39mpush(calculateDellin())\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 2909 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 2910 |\u001b[39m       \u001b[36mif\u001b[39m (enabledCompanies\u001b[33m.\u001b[39mpek) {\u001b[0m\n\u001b[0m \u001b[90m 2911 |\u001b[39m         calculationFunctions\u001b[33m.\u001b[39mpush(calculatePEK())\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:2908:35\nType error: Argument of type 'Promise<CalculationResult>' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 2906 |\u001b[39m       \u001b[0m\n\u001b[0m \u001b[90m 2907 |\u001b[39m       \u001b[36mif\u001b[39m (enabledCompanies\u001b[33m.\u001b[39mdellin) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 2908 |\u001b[39m         calculationFunctions\u001b[33m.\u001b[39mpush(calculateDellin())\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 2909 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 2910 |\u001b[39m       \u001b[36mif\u001b[39m (enabledCompanies\u001b[33m.\u001b[39mpek) {\u001b[0m\n\u001b[0m \u001b[90m 2911 |\u001b[39m         calculationFunctions\u001b[33m.\u001b[39mpush(calculatePEK())\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Запускаем сборку проекта"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759739412279,
+      "end": 1759739448574
+    }
+  }
+}

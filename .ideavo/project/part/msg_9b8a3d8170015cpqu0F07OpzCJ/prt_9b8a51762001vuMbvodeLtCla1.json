@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8a51762001vuMbvodeLtCla1",
+  "messageID": "msg_9b8a3d8170015cpqu0F07OpzCJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01HJmgqvAzYMFHNBq4M5uteV",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    try {\n      // Создаем массив функций расчета только для включенных компаний\n      const calculationFunctions = [];\n      \n      if (enabledCompanies.dellin) {\n        calculationFunctions.push(calculateDellin());\n      }\n      if (enabledCompanies.pek) {\n        calculationFunctions.push(calculatePEK());\n      }\n      if (enabledCompanies.nordwheel) {\n        calculationFunctions.push(calculateNordWheel());\n      }\n      if (enabledCompanies.railcontinent) {\n        calculationFunctions.push(calculateRailContinent());\n      }\n      if (enabledCompanies.vozovoz) {\n        calculationFunctions.push(calculateVozovoz());\n      }",
+      "newString": "    try {\n      // Создаем массив функций расчета только для включенных компаний\n      const calculationFunctions: Promise<CalculationResult>[] = [];\n      \n      if (enabledCompanies.dellin) {\n        calculationFunctions.push(calculateDellin());\n      }\n      if (enabledCompanies.pek) {\n        calculationFunctions.push(calculatePEK());\n      }\n      if (enabledCompanies.nordwheel) {\n        calculationFunctions.push(calculateNordWheel());\n      }\n      if (enabledCompanies.railcontinent) {\n        calculationFunctions.push(calculateRailContinent());\n      }\n      if (enabledCompanies.vozovoz) {\n        calculationFunctions.push(calculateVozovoz());\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2901,9 +2901,9 @@\n localStorage.setItem('deliveryForm', JSON.stringify(form));\n \n try {\n   // Создаем массив функций расчета только для включенных компаний\n-  const calculationFunctions = [];\n+  const calculationFunctions: Promise<CalculationResult>[] = [];\n   \n   if (enabledCompanies.dellin) {\n     calculationFunctions.push(calculateDellin());\n   }\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759739455397,
+      "end": 1759739455421
+    }
+  }
+}

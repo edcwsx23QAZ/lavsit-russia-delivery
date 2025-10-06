@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8a44f9d001plp6x2pTpfR9Wh",
+  "messageID": "msg_9b8a3d8170015cpqu0F07OpzCJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01TuzYtsKZrApu3tnsboATmN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const handleCalculate = async () => {\n    setCalculating(true);\n    setCalculations([]);\n    \n    // Сохраняем данные формы после расчета\n    localStorage.setItem('deliveryForm', JSON.stringify(form));\n    \n    try {\n      const results = await Promise.all([\n        calculateDellin(),\n        calculatePEK(),\n        calculateNordWheel(),\n        calculateRailContinent(),\n        calculateVozovoz()\n      ]);\n      \n      // Сортировка по цене\n      const sortedResults = results\n        .filter(result => !result.error)\n        .sort((a, b) => a.price - b.price)\n        .concat(results.filter(result => result.error));\n      \n      setCalculations(sortedResults);\n    } catch (error) {\n      console.error('Ошибка при расчете:', error);\n    } finally {\n      setCalculating(false);\n    }\n  };",
+      "newString": "  const handleCalculate = async () => {\n    setCalculating(true);\n    setCalculations([]);\n    \n    // Сохраняем данные формы после расчета\n    localStorage.setItem('deliveryForm', JSON.stringify(form));\n    \n    try {\n      // Создаем массив функций расчета только для включенных компаний\n      const calculationFunctions = [];\n      \n      if (enabledCompanies.dellin) {\n        calculationFunctions.push(calculateDellin());\n      }\n      if (enabledCompanies.pek) {\n        calculationFunctions.push(calculatePEK());\n      }\n      if (enabledCompanies.nordwheel) {\n        calculationFunctions.push(calculateNordWheel());\n      }\n      if (enabledCompanies.railcontinent) {\n        calculationFunctions.push(calculateRailContinent());\n      }\n      if (enabledCompanies.vozovoz) {\n        calculationFunctions.push(calculateVozovoz());\n      }\n      \n      // Если ни одна компания не включена\n      if (calculationFunctions.length === 0) {\n        setCalculations([]);\n        return;\n      }\n      \n      const results = await Promise.all(calculationFunctions);\n      \n      // Сортировка по цене\n      const sortedResults = results\n        .filter(result => !result.error)\n        .sort((a, b) => a.price - b.price)\n        .concat(results.filter(result => result.error));\n      \n      setCalculations(sortedResults);\n    } catch (error) {\n      console.error('Ошибка при расчете:', error);\n    } finally {\n      setCalculating(false);\n    }\n  };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2900,16 +2900,35 @@\n // Сохраняем данные формы после расчета\n localStorage.setItem('deliveryForm', JSON.stringify(form));\n \n try {\n-  const results = await Promise.all([\n-    calculateDellin(),\n-    calculatePEK(),\n-    calculateNordWheel(),\n-    calculateRailContinent(),\n-    calculateVozovoz()\n-  ]);\n+  // Создаем массив функций расчета только для включенных компаний\n+  const calculationFunctions = [];\n   \n+  if (enabledCompanies.dellin) {\n+    calculationFunctions.push(calculateDellin());\n+  }\n+  if (enabledCompanies.pek) {\n+    calculationFunctions.push(calculatePEK());\n+  }\n+  if (enabledCompanies.nordwheel) {\n+    calculationFunctions.push(calculateNordWheel());\n+  }\n+  if (enabledCompanies.railcontinent) {\n+    calculationFunctions.push(calculateRailContinent());\n+  }\n+  if (enabledCompanies.vozovoz) {\n+    calculationFunctions.push(calculateVozovoz());\n+  }\n+  \n+  // Если ни одна компания не включена\n+  if (calculationFunctions.length === 0) {\n+    setCalculations([]);\n+    return;\n+  }\n+  \n+  const results = await Promise.all(calculationFunctions);\n+  \n   // Сортировка по цене\n   const sortedResults = results\n     .filter(result => !result.error)\n     .sort((a, b) => a.price - b.price)\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759739408745,
+      "end": 1759739408765
+    }
+  }
+}
