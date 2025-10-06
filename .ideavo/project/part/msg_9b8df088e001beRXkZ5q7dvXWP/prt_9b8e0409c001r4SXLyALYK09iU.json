@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8e0409c001r4SXLyALYK09iU",
+  "messageID": "msg_9b8df088e001beRXkZ5q7dvXWP",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01FJtukERxuLDvD9pS9pc6vk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ClientDevUtils.tsx",
+      "content": "'use client';\n\nimport { useEffect } from 'react';\n\nexport default function ClientDevUtils() {\n  useEffect(() => {\n    if (process.env.NODE_ENV === 'development') {\n      // Добавляем timestamp к URL для предотвращения кэширования\n      const timestamp = Date.now();\n      document.documentElement.setAttribute('data-timestamp', timestamp.toString());\n      \n      console.log('🔧 DEV: Timestamp добавлен к HTML:', timestamp);\n      \n      // Добавляем meta-теги для отключения кэширования\n      const metaNoCache = document.createElement('meta');\n      metaNoCache.httpEquiv = 'Cache-Control';\n      metaNoCache.content = 'no-cache, no-store, must-revalidate';\n      document.head.appendChild(metaNoCache);\n      \n      const metaPragma = document.createElement('meta');\n      metaPragma.httpEquiv = 'Pragma';\n      metaPragma.content = 'no-cache';\n      document.head.appendChild(metaPragma);\n      \n      const metaExpires = document.createElement('meta');\n      metaExpires.httpEquiv = 'Expires';\n      metaExpires.content = '0';\n      document.head.appendChild(metaExpires);\n      \n      console.log('🔧 DEV: Meta-теги против кэширования добавлены');\n    }\n  }, []);\n\n  return null;\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/components/ClientDevUtils.tsx",
+      "exists": false
+    },
+    "title": "components/ClientDevUtils.tsx",
+    "time": {
+      "start": 1759743333428,
+      "end": 1759743333428
+    }
+  }
+}

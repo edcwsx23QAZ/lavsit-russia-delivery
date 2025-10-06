@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8e1613a0014jPe0E2Jh216TS",
+  "messageID": "msg_9b8df088e001beRXkZ5q7dvXWP",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01D2AntWbHgVk1F5YdA2YZ43",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/next.config.js",
+      "oldString": "  // Быстрая перезагрузка при изменениях\n  fastRefresh: true,",
+      "newString": "  // Быстрая перезагрузка включена по умолчанию в Next.js 14"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/next.config.js\n===================================================================\n--- /home/user/project/next.config.js\n+++ /home/user/project/next.config.js\n@@ -16,10 +16,9 @@\n \n // Принудительная перезагрузка при изменениях\n reactStrictMode: true,\n \n-// Быстрая перезагрузка при изменениях\n-fastRefresh: true,\n+// Быстрая перезагрузка включена по умолчанию в Next.js 14\n \n // Отключаем кэш сборки в dev режиме\n webpack: (config, { dev }) => {\n   if (dev) {\n"
+    },
+    "title": "next.config.js",
+    "time": {
+      "start": 1759743403565,
+      "end": 1759743403568
+    }
+  }
+}

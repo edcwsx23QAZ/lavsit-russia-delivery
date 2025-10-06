@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8dfc45000124vCb1ijgRK8Dt",
+  "messageID": "msg_9b8df088e001beRXkZ5q7dvXWP",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01566arNdbti47PQUnLg7DL6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 192,
+      "limit": 50
+    },
+    "output": "<file>\n00193|   useEffect(() => {\n00194|     // Проверяем, что мы на клиенте\n00195|     if (typeof window !== 'undefined' && !isLoaded) {\n00196|       try {\n00197|         // Проверяем версию для принудительного обновления кэша\n00198|         const currentVersion = 'v2.0.0'; // Версия с новыми ТК\n00199|         const savedVersion = localStorage.getItem('appVersion');\n00200|         \n00201|         if (savedVersion !== currentVersion) {\n00202|           console.log('🔄 Обновление версии приложения, очищаем старые данные');\n00203|           localStorage.clear();\n00204|           localStorage.setItem('appVersion', currentVersion);\n00205|         }\n00206|         \n00207|         const saved = localStorage.getItem('deliveryForm');\n00208|         if (saved) {\n00209|           const savedForm = JSON.parse(saved);\n00210|           // Убеждаемся, что есть хотя бы один груз\n00211|           if (!savedForm.cargos || savedForm.cargos.length === 0) {\n00212|             savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n00213|           }\n00214|           setForm(savedForm);\n00215|           console.log('Загружены сохраненные данные формы:', savedForm);\n00216|           \n00217|           // Диагностика времени для Supabase\n00218|           const currentTime = Math.floor(Date.now() / 1000);\n00219|           console.log('🕒 Текущее время (timestamp):', currentTime);\n00220|           console.log('🕒 Текущее время (ISO):', new Date().toISOString());\n00221|         }\n00222|         \n00223|         // Выводим все доступные ТК для отладки\n00224|         console.log('📋 Всего доступно ТК:', COMPANIES_BASE.length);\n00225|         console.log('📋 Список ТК:', COMPANIES_BASE.map(c => c.name));\n00226|         \n00227|       } catch (error) {\n00228|         console.error('Ошибка загрузки сохраненных данных:', error);\n00229|         // В случае ошибки оставляем начальное состояние\n00230|       } finally {\n00231|         setIsLoaded(true);\n00232|       }\n00233|     }\n00234|   }, [isLoaded]);\n00235| \n00236|   // Сохранение данных при изменении (только на клиенте)\n00237|   useEffect(() => {\n00238|     if (typeof window !== 'undefined' && isLoaded) {\n00239|       try {\n00240|         localStorage.setItem('deliveryForm', JSON.stringify(form));\n00241|         console.log('Сохранены данные формы в localStorage');\n00242|       } catch (error) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 242)\n</file>",
+    "metadata": {
+      "preview": "  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined' && !isLoaded) {\n      try {\n        // Проверяем версию для принудительного обновления кэша\n        const currentVersion = 'v2.0.0'; // Версия с новыми ТК\n        const savedVersion = localStorage.getItem('appVersion');\n        \n        if (savedVersion !== currentVersion) {\n          console.log('🔄 Обновление версии приложения, очищаем старые данные');\n          localStorage.clear();\n          localStorage.setItem('appVersion', currentVersion);\n        }\n        \n        const saved = localStorage.getItem('deliveryForm');\n        if (saved) {\n          const savedForm = JSON.parse(saved);\n          // Убеждаемся, что есть хотя бы один груз\n          if (!savedForm.cargos || savedForm.cargos.length === 0) {\n            savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759743297305,
+      "end": 1759743297308
+    }
+  }
+}

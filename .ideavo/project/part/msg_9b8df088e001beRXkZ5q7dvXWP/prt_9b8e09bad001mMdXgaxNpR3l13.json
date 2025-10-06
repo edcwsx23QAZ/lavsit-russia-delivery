@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8e09bad001mMdXgaxNpR3l13",
+  "messageID": "msg_9b8df088e001beRXkZ5q7dvXWP",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01WfBUTJe4CC6BbG7i4QRYho",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        const currentVersion = 'v2.1.0'; // Версия с anti-cache системой",
+      "newString": "        const currentVersion = 'v2.2.0-anticache'; // Версия с полной anti-cache системой"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -209,9 +209,9 @@\n // Проверяем, что мы на клиенте\n if (typeof window !== 'undefined' && !isLoaded) {\n   try {\n     // Проверяем версию для принудительного обновления кэша\n-    const currentVersion = 'v2.1.0'; // Версия с anti-cache системой\n+    const currentVersion = 'v2.2.0-anticache'; // Версия с полной anti-cache системой\n     const savedVersion = localStorage.getItem('appVersion');\n     \n     if (savedVersion !== currentVersion) {\n       console.log('🔄 Обновление версии приложения, очищаем старые данные');\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759743353406,
+      "end": 1759743353425
+    }
+  }
+}

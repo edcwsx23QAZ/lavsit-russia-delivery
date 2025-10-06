@@ -1,0 +1,23 @@
+{
+  "id": "prt_9b8df3f65001BEZ6o6nxivb4d4",
+  "messageID": "msg_9b8df088e001beRXkZ5q7dvXWP",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GkAvLVV3o39sgWVT8Z9XnB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/middleware.ts"
+    },
+    "output": "<file>\n00001| import { NextResponse } from 'next/server'\n00002| import type { NextRequest } from 'next/server'\n00003| import { checkMissingEnvVars } from '@/lib/env-config'\n00004| \n00005| export function middleware(request: NextRequest) {\n00006|   // Skip middleware for the env-check page itself to avoid infinite redirects\n00007|   if (request.nextUrl.pathname === '/env-check') {\n00008|     return NextResponse.next()\n00009|   }\n00010| \n00011|   // Skip middleware for API routes, static files, and Next.js internals\n00012|   if (\n00013|     request.nextUrl.pathname.startsWith('/api/') ||\n00014|     request.nextUrl.pathname.startsWith('/_next/') ||\n00015|     request.nextUrl.pathname.includes('.')\n00016|   ) {\n00017|     return NextResponse.next()\n00018|   }\n00019| \n00020|   // Check if any required environment variables are missing\n00021|   const missingEnvVars = checkMissingEnvVars()\n00022| \n00023|   // If any env variables are missing, redirect to env-check page\n00024|   if (missingEnvVars.length > 0) {\n00025|     return NextResponse.redirect(new URL('/env-check', request.url))\n00026|   }\n00027| \n00028|   return NextResponse.next()\n00029| }\n00030| \n00031| export const config = {\n00032|   matcher: [\n00033|     /*\n00034|      * Match all request paths except for the ones starting with:\n00035|      * - api (API routes)\n00036|      * - _next/static (static files)\n00037|      * - _next/image (image optimization files)\n00038|      * - favicon.ico (favicon file)\n00039|      */\n00040|     '/((?!api|_next/static|_next/image|favicon.ico).*)',\n00041|   ],\n00042| }\n</file>",
+    "metadata": {
+      "preview": "import { NextResponse } from 'next/server'\nimport type { NextRequest } from 'next/server'\nimport { checkMissingEnvVars } from '@/lib/env-config'\n\nexport function middleware(request: NextRequest) {\n  // Skip middleware for the env-check page itself to avoid infinite redirects\n  if (request.nextUrl.pathname === '/env-check') {\n    return NextResponse.next()\n  }\n\n  // Skip middleware for API routes, static files, and Next.js internals\n  if (\n    request.nextUrl.pathname.startsWith('/api/') ||\n    request.nextUrl.pathname.startsWith('/_next/') ||\n    request.nextUrl.pathname.includes('.')\n  ) {\n    return NextResponse.next()\n  }\n\n  // Check if any required environment variables are missing"
+    },
+    "title": "middleware.ts",
+    "time": {
+      "start": 1759743262850,
+      "end": 1759743262852
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8df227e001SiOzaW0Fp6sku6",
+  "messageID": "msg_9b8df088e001beRXkZ5q7dvXWP",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01LCsFKWVd7utFgSzucpSTTR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/next.config.js",
+      "oldString": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  images: { unoptimized: true }\n};\n\nmodule.exports = nextConfig;",
+      "newString": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  images: { unoptimized: true },\n  \n  // Отключаем кэширование для разработки\n  experimental: {\n    serverActions: {\n      allowedOrigins: ['localhost:3000']\n    },\n    // Более агрессивный hot reload\n    optimisticClientCache: false,\n  },\n  \n  // Отключаем кэш статических файлов\n  assetPrefix: process.env.NODE_ENV === 'development' ? '' : undefined,\n  \n  // Принудительная перезагрузка при изменениях\n  reactStrictMode: true,\n  \n  // Быстрая перезагрузка при изменениях\n  fastRefresh: true,\n  \n  // Отключаем кэш сборки в dev режиме\n  webpack: (config, { dev }) => {\n    if (dev) {\n      config.cache = false;\n    }\n    return config;\n  }\n};\n\nmodule.exports = nextConfig;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/next.config.js\n===================================================================\n--- /home/user/project/next.config.js\n+++ /home/user/project/next.config.js\n@@ -1,6 +1,32 @@\n /** @type {import('next').NextConfig} */\n const nextConfig = {\n-  images: { unoptimized: true }\n+  images: { unoptimized: true },\n+  \n+  // Отключаем кэширование для разработки\n+  experimental: {\n+    serverActions: {\n+      allowedOrigins: ['localhost:3000']\n+    },\n+    // Более агрессивный hot reload\n+    optimisticClientCache: false,\n+  },\n+  \n+  // Отключаем кэш статических файлов\n+  assetPrefix: process.env.NODE_ENV === 'development' ? '' : undefined,\n+  \n+  // Принудительная перезагрузка при изменениях\n+  reactStrictMode: true,\n+  \n+  // Быстрая перезагрузка при изменениях\n+  fastRefresh: true,\n+  \n+  // Отключаем кэш сборки в dev режиме\n+  webpack: (config, { dev }) => {\n+    if (dev) {\n+      config.cache = false;\n+    }\n+    return config;\n+  }\n };\n \n module.exports = nextConfig;\n"
+    },
+    "title": "next.config.js",
+    "time": {
+      "start": 1759743259574,
+      "end": 1759743259582
+    }
+  }
+}

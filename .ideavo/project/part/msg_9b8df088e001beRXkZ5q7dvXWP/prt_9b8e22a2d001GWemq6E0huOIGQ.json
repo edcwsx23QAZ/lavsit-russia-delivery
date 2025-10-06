@@ -1,0 +1,27 @@
+{
+  "id": "prt_9b8e22a2d001GWemq6E0huOIGQ",
+  "messageID": "msg_9b8df088e001beRXkZ5q7dvXWP",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_0184M9fxUGy9gXQAdz5uLC8f",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run dev",
+      "timeout": 10000,
+      "description": "Запускаем сервер с полной anti-cache системой"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n  - Experiments (use with caution):\n    · optimisticClientCache\n\n ✓ Starting...\n ✓ Ready in 1681ms\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n  - Experiments (use with caution):\n    · optimisticClientCache\n\n ✓ Starting...\n ✓ Ready in 1681ms\n",
+      "exit": null,
+      "description": "Запускаем сервер с полной anti-cache системой"
+    },
+    "title": "cd /home/user/project && npm run dev",
+    "time": {
+      "start": 1759743454958,
+      "end": 1759743464982
+    }
+  }
+}

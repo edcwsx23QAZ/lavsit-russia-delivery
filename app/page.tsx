@@ -189,13 +189,28 @@ export default function Home() {
     ankor: 'не подключено'
   });
 
+  // Автоматическая очистка localStorage в dev режиме
+  useEffect(() => {
+    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+      // Очищаем localStorage при каждой перезагрузке в dev режиме
+      const devTimestamp = Date.now().toString();
+      const lastDevTimestamp = localStorage.getItem('devTimestamp');
+      
+      if (lastDevTimestamp !== devTimestamp) {
+        console.log('🧹 DEV: Очистка localStorage для актуальных данных');
+        localStorage.clear();
+        localStorage.setItem('devTimestamp', devTimestamp);
+      }
+    }
+  }, []);
+
   // Загрузка сохраненных данных (только на клиенте)
   useEffect(() => {
     // Проверяем, что мы на клиенте
     if (typeof window !== 'undefined' && !isLoaded) {
       try {
         // Проверяем версию для принудительного обновления кэша
-        const currentVersion = 'v2.0.0'; // Версия с новыми ТК
+        const currentVersion = 'v2.2.0-anticache'; // Версия с полной anti-cache системой
         const savedVersion = localStorage.getItem('appVersion');
         
         if (savedVersion !== currentVersion) {

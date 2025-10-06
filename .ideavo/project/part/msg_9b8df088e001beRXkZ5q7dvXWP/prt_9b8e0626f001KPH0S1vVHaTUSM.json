@@ -1,0 +1,23 @@
+{
+  "id": "prt_9b8e0626f001KPH0S1vVHaTUSM",
+  "messageID": "msg_9b8df088e001beRXkZ5q7dvXWP",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01YCvNLUurjLq2ybwotuNSdr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ServiceWorkerRegistration.tsx"
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import { useEffect } from 'react';\n00004| \n00005| export default function ServiceWorkerRegistration() {\n00006|   useEffect(() => {\n00007|     if ('serviceWorker' in navigator) {\n00008|       navigator.serviceWorker\n00009|         .register('/sw.js')\n00010|         .then((registration) => {\n00011|           console.log('[SW] Service Worker registered successfully:', registration);\n00012|           \n00013|           // Check for updates\n00014|           registration.addEventListener('updatefound', () => {\n00015|             const newWorker = registration.installing;\n00016|             if (newWorker) {\n00017|               newWorker.addEventListener('statechange', () => {\n00018|                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {\n00019|                   console.log('[SW] New version available');\n00020|                   // Could show a notification to user about update\n00021|                 }\n00022|               });\n00023|             }\n00024|           });\n00025|         })\n00026|         .catch((error) => {\n00027|           console.warn('[SW] Service Worker registration failed:', error);\n00028|         });\n00029| \n00030|       // Listen for messages from service worker\n00031|       navigator.serviceWorker.addEventListener('message', (event) => {\n00032|         console.log('[SW] Message from service worker:', event.data);\n00033|       });\n00034|     }\n00035|   }, []);\n00036| \n00037|   return null; // This component renders nothing\n00038| }\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport { useEffect } from 'react';\n\nexport default function ServiceWorkerRegistration() {\n  useEffect(() => {\n    if ('serviceWorker' in navigator) {\n      navigator.serviceWorker\n        .register('/sw.js')\n        .then((registration) => {\n          console.log('[SW] Service Worker registered successfully:', registration);\n          \n          // Check for updates\n          registration.addEventListener('updatefound', () => {\n            const newWorker = registration.installing;\n            if (newWorker) {\n              newWorker.addEventListener('statechange', () => {\n                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {\n                  console.log('[SW] New version available');\n                  // Could show a notification to user about update"
+    },
+    "title": "components/ServiceWorkerRegistration.tsx",
+    "time": {
+      "start": 1759743337477,
+      "end": 1759743337483
+    }
+  }
+}
