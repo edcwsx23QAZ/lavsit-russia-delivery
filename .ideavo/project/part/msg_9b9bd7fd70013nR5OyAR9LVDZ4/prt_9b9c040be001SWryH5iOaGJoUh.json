@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9c040be001SWryH5iOaGJoUh",
+  "messageID": "msg_9b9bd7fd70013nR5OyAR9LVDZ4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01HzsLtwhTqP8jsHqkJ1ewCt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/test-dellin-places.js",
+      "content": "const testDellinPlaces = async () => {\n  console.log('🧪 Тестирование API справочника мест Деловых Линий...');\n\n  try {\n    // Тест 1: Получение cityID для Москвы\n    console.log('\\n📍 Тест 1: Поиск cityID для Москвы');\n    const moscowResponse = await fetch('http://localhost:3000/api/dellin-places', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify({\n        cityName: 'Москва'\n      })\n    });\n\n    const moscowData = await moscowResponse.json();\n    console.log('Москва результат:', moscowData);\n\n    // Тест 2: Получение cityID для Санкт-Петербурга\n    console.log('\\n📍 Тест 2: Поиск cityID для Санкт-Петербурга');\n    const spbResponse = await fetch('http://localhost:3000/api/dellin-places', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify({\n        cityName: 'Санкт-Петербург'\n      })\n    });\n\n    const spbData = await spbResponse.json();\n    console.log('Санкт-Петербург результат:', spbData);\n\n    // Тест 3: Поиск городов (GET запрос)\n    console.log('\\n📍 Тест 3: Поиск городов со словом \"Москва\"');\n    const searchResponse = await fetch('http://localhost:3000/api/dellin-places?search=Москва&limit=5');\n    const searchData = await searchResponse.json();\n    console.log('Поиск результат:', searchData);\n\n    // Тест 4: Тест с городом с префиксом\n    console.log('\\n📍 Тест 4: Поиск cityID для \"г Екатеринбург\"');\n    const ekbResponse = await fetch('http://localhost:3000/api/dellin-places', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify({\n        cityName: 'г Екатеринбург'\n      })\n    });\n\n    const ekbData = await ekbResponse.json();\n    console.log('Екатеринбург результат:', ekbData);\n\n  } catch (error) {\n    console.error('❌ Ошибка тестирования:', error);\n  }\n};\n\n// Запускаем тест\ntestDellinPlaces();"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-dellin-places.js",
+      "exists": false
+    },
+    "title": "test-dellin-places.js",
+    "time": {
+      "start": 1759758017706,
+      "end": 1759758017707
+    }
+  }
+}

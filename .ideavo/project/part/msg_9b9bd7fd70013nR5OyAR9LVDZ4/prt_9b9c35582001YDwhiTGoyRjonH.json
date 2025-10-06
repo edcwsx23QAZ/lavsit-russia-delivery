@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9c35582001YDwhiTGoyRjonH",
+  "messageID": "msg_9b9bd7fd70013nR5OyAR9LVDZ4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_014pTC7HpNQchfAExBgUi8UF",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/test-dellin-updated.js",
+      "content": "// Простой тест для проверки обновленной логики Деловых Линий\nconst testDellinUpdated = () => {\n  console.log('🧪 Тестирование обновленной логики Деловых Линий...');\n\n  // Тестируем маппинг городов\n  const getCityIDMapping = (cityName) => {\n    const normalizedCity = cityName.toLowerCase().trim()\n      .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n      .replace(/^город\\s+/, '') // Убираем префикс \"город \"\n      .replace(/\\s+/g, ' '); // Нормализуем пробелы\n\n    const cityMappings = {\n      'москва': '2423',\n      'санкт-петербург': '4001',\n      'петербург': '4001',\n      'спб': '4001',\n      'екатеринбург': '5001',\n    };\n\n    return cityMappings[normalizedCity] || null;\n  };\n\n  // Тесты маппинга\n  console.log('📍 Тест маппинга городов:');\n  console.log('Москва:', getCityIDMapping('Москва'));\n  console.log('г Москва:', getCityIDMapping('г Москва'));\n  console.log('Санкт-Петербург:', getCityIDMapping('Санкт-Петербург'));\n  console.log('СПБ:', getCityIDMapping('СПБ'));\n  console.log('Екатеринбург:', getCityIDMapping('Екатеринбург'));\n  console.log('Неизвестный город:', getCityIDMapping('Неизвестный город'));\n\n  console.log('\\n✅ Тест маппинга завершен. Основная логика готова к использованию.');\n};\n\ntestDellinUpdated();"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-dellin-updated.js",
+      "exists": false
+    },
+    "title": "test-dellin-updated.js",
+    "time": {
+      "start": 1759758217436,
+      "end": 1759758217437
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9bea97c001gAo1f0J4nOXeIC",
+  "messageID": "msg_9b9bd7fd70013nR5OyAR9LVDZ4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Hx29YAauco2YAUTvkLEQYa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1067,
+      "limit": 30
+    },
+    "output": "<file>\n01068|   const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {\n01069|     try {\n01070|       // Получаем валидный sessionID\n01071|       const sessionID = await getDellinSessionId();\n01072|       if (!sessionID) {\n01073|         console.error(`❌ Не удалось получить sessionID для поиска терминалов ${direction}`);\n01074|         return null;\n01075|       }\n01076| \n01077|       // Нормализуем название города для поиска\n01078|       const normalizedCity = citySearch.toLowerCase().trim()\n01079|         .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n01080|         .replace(/^город\\s+/, '') // Убираем префикс \"город \"\n01081|         .replace(/\\s+/g, ' '); // Нормализуем пробелы\n01082| \n01083|       console.log(`🔍 Поиск терминала ${direction} для города:`, normalizedCity);\n01084|       console.log(`🔑 Используем sessionID:`, sessionID);\n01085| \n01086|       // Используем правильный API endpoint для поиска терминалов\n01087|       // Структура запроса согласно API Деловых Линий\n01088|       const requestBody = {\n01089|         appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n01090|         sessionID: sessionID,\n01091|         search: normalizedCity,\n01092|         direction: direction,\n01093|         maxCargoDimensions: {\n01094|           length: 3.0,\n01095|           width: 3.0,\n01096|           height: 3.0,\n01097|           weight: 3.0,\n\n(File has more lines. Use 'offset' parameter to read beyond line 1097)\n</file>",
+    "metadata": {
+      "preview": "  const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {\n    try {\n      // Получаем валидный sessionID\n      const sessionID = await getDellinSessionId();\n      if (!sessionID) {\n        console.error(`❌ Не удалось получить sessionID для поиска терминалов ${direction}`);\n        return null;\n      }\n\n      // Нормализуем название города для поиска\n      const normalizedCity = citySearch.toLowerCase().trim()\n        .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n        .replace(/^город\\s+/, '') // Убираем префикс \"город \"\n        .replace(/\\s+/g, ' '); // Нормализуем пробелы\n\n      console.log(`🔍 Поиск терминала ${direction} для города:`, normalizedCity);\n      console.log(`🔑 Используем sessionID:`, sessionID);\n\n      // Используем правильный API endpoint для поиска терминалов\n      // Структура запроса согласно API Деловых Линий"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759757905063,
+      "end": 1759757905068
+    }
+  }
+}

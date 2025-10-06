@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9c266ed002D225W6ZcNRDw1j",
+  "messageID": "msg_9b9bd7fd70013nR5OyAR9LVDZ4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01GMopG7vvr6jWwXtdNf7WhQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npx tsc --noEmit",
+      "description": "Check TypeScript compilation after cache clear"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Check TypeScript compilation after cache clear"
+    },
+    "title": "cd /home/user/project && npx tsc --noEmit",
+    "time": {
+      "start": 1759758150163,
+      "end": 1759758154314
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9bf6230001esA2CTvaLzREnR",
+  "messageID": "msg_9b9bd7fd70013nR5OyAR9LVDZ4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01C42rmW1gU7r3vSGz3VsnBT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npx tsc --noEmit",
+      "description": "Check TypeScript compilation for errors"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Check TypeScript compilation for errors"
+    },
+    "title": "cd /home/user/project && npx tsc --noEmit",
+    "time": {
+      "start": 1759757952392,
+      "end": 1759757958533
+    }
+  }
+}
