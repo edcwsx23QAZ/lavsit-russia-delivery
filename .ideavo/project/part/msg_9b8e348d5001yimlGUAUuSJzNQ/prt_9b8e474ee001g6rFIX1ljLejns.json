@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8e474ee001g6rFIX1ljLejns",
+  "messageID": "msg_9b8e348d5001yimlGUAUuSJzNQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01YXzKt9BwkopZsovYhT3rBo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ClientDevUtils.tsx",
+      "oldString": "'use client';\n\nimport { useEffect } from 'react';\n\nexport default function ClientDevUtils() {\n  useEffect(() => {\n    if (process.env.NODE_ENV === 'development') {\n      // Добавляем timestamp к URL для предотвращения кэширования\n      const timestamp = Date.now();\n      document.documentElement.setAttribute('data-timestamp', timestamp.toString());\n      \n      console.log('🔧 DEV: Timestamp добавлен к HTML:', timestamp);\n      \n      // Добавляем meta-теги для отключения кэширования\n      const metaNoCache = document.createElement('meta');\n      metaNoCache.httpEquiv = 'Cache-Control';\n      metaNoCache.content = 'no-cache, no-store, must-revalidate';\n      document.head.appendChild(metaNoCache);\n      \n      const metaPragma = document.createElement('meta');\n      metaPragma.httpEquiv = 'Pragma';\n      metaPragma.content = 'no-cache';\n      document.head.appendChild(metaPragma);\n      \n      const metaExpires = document.createElement('meta');\n      metaExpires.httpEquiv = 'Expires';\n      metaExpires.content = '0';\n      document.head.appendChild(metaExpires);\n      \n      console.log('🔧 DEV: Meta-теги против кэширования добавлены');\n    }\n  }, []);\n\n  return null;\n}",
+      "newString": "'use client';\n\nimport { useEffect } from 'react';\n\nexport default function ClientDevUtils() {\n  useEffect(() => {\n    if (process.env.NODE_ENV === 'development') {\n      try {\n        // Добавляем timestamp к URL для предотвращения кэширования\n        const timestamp = Date.now();\n        document.documentElement.setAttribute('data-timestamp', timestamp.toString());\n        \n        console.log('🔧 DEV: Timestamp добавлен к HTML:', timestamp);\n        console.log('🔧 DEV: ClientDevUtils инициализирован');\n      } catch (error) {\n        console.warn('🔧 DEV: Ошибка в ClientDevUtils:', error);\n      }\n    }\n  }, []);\n\n  return null;\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/ClientDevUtils.tsx\n===================================================================\n--- /home/user/project/components/ClientDevUtils.tsx\n+++ /home/user/project/components/ClientDevUtils.tsx\n@@ -4,31 +4,18 @@\n \n export default function ClientDevUtils() {\n   useEffect(() => {\n     if (process.env.NODE_ENV === 'development') {\n-      // Добавляем timestamp к URL для предотвращения кэширования\n-      const timestamp = Date.now();\n-      document.documentElement.setAttribute('data-timestamp', timestamp.toString());\n-      \n-      console.log('🔧 DEV: Timestamp добавлен к HTML:', timestamp);\n-      \n-      // Добавляем meta-теги для отключения кэширования\n-      const metaNoCache = document.createElement('meta');\n-      metaNoCache.httpEquiv = 'Cache-Control';\n-      metaNoCache.content = 'no-cache, no-store, must-revalidate';\n-      document.head.appendChild(metaNoCache);\n-      \n-      const metaPragma = document.createElement('meta');\n-      metaPragma.httpEquiv = 'Pragma';\n-      metaPragma.content = 'no-cache';\n-      document.head.appendChild(metaPragma);\n-      \n-      const metaExpires = document.createElement('meta');\n-      metaExpires.httpEquiv = 'Expires';\n-      metaExpires.content = '0';\n-      document.head.appendChild(metaExpires);\n-      \n-      console.log('🔧 DEV: Meta-теги против кэширования добавлены');\n+      try {\n+        // Добавляем timestamp к URL для предотвращения кэширования\n+        const timestamp = Date.now();\n+        document.documentElement.setAttribute('data-timestamp', timestamp.toString());\n+        \n+        console.log('🔧 DEV: Timestamp добавлен к HTML:', timestamp);\n+        console.log('🔧 DEV: ClientDevUtils инициализирован');\n+      } catch (error) {\n+        console.warn('🔧 DEV: Ошибка в ClientDevUtils:', error);\n+      }\n     }\n   }, []);\n \n   return null;\n"
+    },
+    "title": "components/ClientDevUtils.tsx",
+    "time": {
+      "start": 1759743609145,
+      "end": 1759743609152
+    }
+  }
+}

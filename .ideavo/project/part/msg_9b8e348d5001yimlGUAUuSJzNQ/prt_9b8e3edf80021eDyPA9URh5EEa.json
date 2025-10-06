@@ -1,0 +1,23 @@
+{
+  "id": "prt_9b8e3edf80021eDyPA9URh5EEa",
+  "messageID": "msg_9b8e348d5001yimlGUAUuSJzNQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_014Ku3jDYVviWS5C4mQpgTLR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/next.config.js"
+    },
+    "output": "<file>\n00001| /** @type {import('next').NextConfig} */\n00002| const nextConfig = {\n00003|   images: { unoptimized: true },\n00004|   \n00005|   // Отключаем кэширование для разработки\n00006|   experimental: {\n00007|     serverActions: {\n00008|       allowedOrigins: ['localhost:3000']\n00009|     },\n00010|     // Более агрессивный hot reload\n00011|     optimisticClientCache: false,\n00012|   },\n00013|   \n00014|   // Отключаем кэш статических файлов\n00015|   assetPrefix: process.env.NODE_ENV === 'development' ? '' : undefined,\n00016|   \n00017|   // Принудительная перезагрузка при изменениях\n00018|   reactStrictMode: true,\n00019|   \n00020|   // Быстрая перезагрузка включена по умолчанию в Next.js 14\n00021|   \n00022|   // Отключаем кэш сборки в dev режиме\n00023|   webpack: (config, { dev }) => {\n00024|     if (dev) {\n00025|       config.cache = false;\n00026|     }\n00027|     return config;\n00028|   }\n00029| };\n00030| \n00031| module.exports = nextConfig;\n00032| \n</file>",
+    "metadata": {
+      "preview": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  images: { unoptimized: true },\n  \n  // Отключаем кэширование для разработки\n  experimental: {\n    serverActions: {\n      allowedOrigins: ['localhost:3000']\n    },\n    // Более агрессивный hot reload\n    optimisticClientCache: false,\n  },\n  \n  // Отключаем кэш статических файлов\n  assetPrefix: process.env.NODE_ENV === 'development' ? '' : undefined,\n  \n  // Принудительная перезагрузка при изменениях\n  reactStrictMode: true,\n  \n  // Быстрая перезагрузка включена по умолчанию в Next.js 14"
+    },
+    "title": "next.config.js",
+    "time": {
+      "start": 1759743569699,
+      "end": 1759743569706
+    }
+  }
+}

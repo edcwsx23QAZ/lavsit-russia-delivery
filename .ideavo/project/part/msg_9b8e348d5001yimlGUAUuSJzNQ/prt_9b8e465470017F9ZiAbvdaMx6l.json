@@ -1,0 +1,23 @@
+{
+  "id": "prt_9b8e465470017F9ZiAbvdaMx6l",
+  "messageID": "msg_9b8e348d5001yimlGUAUuSJzNQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0115M2nReeSB2MCMxwcSK1zT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ClientDevUtils.tsx"
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import { useEffect } from 'react';\n00004| \n00005| export default function ClientDevUtils() {\n00006|   useEffect(() => {\n00007|     if (process.env.NODE_ENV === 'development') {\n00008|       // Добавляем timestamp к URL для предотвращения кэширования\n00009|       const timestamp = Date.now();\n00010|       document.documentElement.setAttribute('data-timestamp', timestamp.toString());\n00011|       \n00012|       console.log('🔧 DEV: Timestamp добавлен к HTML:', timestamp);\n00013|       \n00014|       // Добавляем meta-теги для отключения кэширования\n00015|       const metaNoCache = document.createElement('meta');\n00016|       metaNoCache.httpEquiv = 'Cache-Control';\n00017|       metaNoCache.content = 'no-cache, no-store, must-revalidate';\n00018|       document.head.appendChild(metaNoCache);\n00019|       \n00020|       const metaPragma = document.createElement('meta');\n00021|       metaPragma.httpEquiv = 'Pragma';\n00022|       metaPragma.content = 'no-cache';\n00023|       document.head.appendChild(metaPragma);\n00024|       \n00025|       const metaExpires = document.createElement('meta');\n00026|       metaExpires.httpEquiv = 'Expires';\n00027|       metaExpires.content = '0';\n00028|       document.head.appendChild(metaExpires);\n00029|       \n00030|       console.log('🔧 DEV: Meta-теги против кэширования добавлены');\n00031|     }\n00032|   }, []);\n00033| \n00034|   return null;\n00035| }\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport { useEffect } from 'react';\n\nexport default function ClientDevUtils() {\n  useEffect(() => {\n    if (process.env.NODE_ENV === 'development') {\n      // Добавляем timestamp к URL для предотвращения кэширования\n      const timestamp = Date.now();\n      document.documentElement.setAttribute('data-timestamp', timestamp.toString());\n      \n      console.log('🔧 DEV: Timestamp добавлен к HTML:', timestamp);\n      \n      // Добавляем meta-теги для отключения кэширования\n      const metaNoCache = document.createElement('meta');\n      metaNoCache.httpEquiv = 'Cache-Control';\n      metaNoCache.content = 'no-cache, no-store, must-revalidate';\n      document.head.appendChild(metaNoCache);\n      \n      const metaPragma = document.createElement('meta');"
+    },
+    "title": "components/ClientDevUtils.tsx",
+    "time": {
+      "start": 1759743600552,
+      "end": 1759743600554
+    }
+  }
+}

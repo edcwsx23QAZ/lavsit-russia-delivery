@@ -1,0 +1,21 @@
+{
+  "id": "prt_9b8e36411001mNJMQebHevdaYY",
+  "messageID": "msg_9b8e348d5001yimlGUAUuSJzNQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01CWbFpSwH4EgTH4eJuiwXPv",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/next.config.js",
+      "oldString": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  images: { unoptimized: true },\n  \n  // Отключаем кэширование для разработки\n  experimental: {\n    serverActions: {\n      allowedOrigins: ['localhost:3000']\n    },\n    // Более агрессивный hot reload\n    optimisticClientCache: false,\n  },\n  \n  // Отключаем кэш статических файлов\n  assetPrefix: process.env.NODE_ENV === 'development' ? '' : undefined,\n  \n  // Принудительная перезагрузка при изменениях\n  reactStrictMode: true,\n  \n  // Быстрая перезагрузка включена по умолчанию в Next.js 14\n  \n  // Отключаем кэш сборки в dev режиме\n  webpack: (config, { dev }) => {\n    if (dev) {\n      config.cache = false;\n    }\n    return config;\n  }\n};\n\nmodule.exports = nextConfig;",
+      "newString": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  images: { unoptimized: true },\n  \n  // Настройки для лучшего dev experience\n  experimental: {\n    // Отключаем клиентский кэш только в определенных случаях\n    optimisticClientCache: process.env.NODE_ENV === 'development' ? false : true,\n  },\n  \n  // Принудительная перезагрузка при изменениях\n  reactStrictMode: true,\n  \n  // Настройки webpack для dev режима\n  webpack: (config, { dev, isServer }) => {\n    if (dev) {\n      // Более мягкое отключение кэша - только memory cache\n      config.cache = {\n        type: 'memory',\n        maxGenerations: 1,\n      };\n      \n      // Добавляем timestamp к именам файлов в dev режиме\n      config.output.filename = dev ? 'static/chunks/[name]-[contenthash]-dev.js' : config.output.filename;\n      \n      // Отключаем persistent кэш в dev режиме\n      if (config.cache && typeof config.cache === 'object') {\n        config.cache.buildDependencies = {\n          config: [__filename],\n        };\n      }\n    }\n    \n    return config;\n  },\n  \n  // Добавляем заголовки для dev режима\n  async headers() {\n    if (process.env.NODE_ENV === 'development') {\n      return [\n        {\n          source: '/(.*)',\n          headers: [\n            {\n              key: 'Cache-Control',\n              value: 'no-cache, no-store, must-revalidate',\n            },\n            {\n              key: 'Pragma',\n              value: 'no-cache',\n            },\n            {\n              key: 'Expires',\n              value: '0',\n            },\n          ],\n        },\n      ];\n    }\n    return [];\n  },\n};\n\nmodule.exports = nextConfig;"
+    },
+    "error": "Error: You must read the file /home/user/project/next.config.js before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1759743545222,
+      "end": 1759743545224
+    }
+  }
+}

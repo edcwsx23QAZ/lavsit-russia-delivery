@@ -2,30 +2,53 @@
 const nextConfig = {
   images: { unoptimized: true },
   
-  // Отключаем кэширование для разработки
+  // Настройки для лучшего dev experience
   experimental: {
-    serverActions: {
-      allowedOrigins: ['localhost:3000']
-    },
-    // Более агрессивный hot reload
-    optimisticClientCache: false,
+    // Отключаем клиентский кэш только в dev режиме
+    optimisticClientCache: process.env.NODE_ENV === 'development' ? false : true,
   },
-  
-  // Отключаем кэш статических файлов
-  assetPrefix: process.env.NODE_ENV === 'development' ? '' : undefined,
   
   // Принудительная перезагрузка при изменениях
   reactStrictMode: true,
   
-  // Быстрая перезагрузка включена по умолчанию в Next.js 14
-  
-  // Отключаем кэш сборки в dev режиме
-  webpack: (config, { dev }) => {
+  // Настройки webpack для dev режима (более мягкие)
+  webpack: (config, { dev, isServer }) => {
     if (dev) {
-      config.cache = false;
+      // Используем memory cache вместо полного отключения
+      config.cache = {
+        type: 'memory',
+        maxGenerations: 1,
+      };
     }
+    
     return config;
-  }
+  },
+  
+  // Добавляем заголовки для dev режима
+  async headers() {
+    if (process.env.NODE_ENV === 'development') {
+      return [
+        {
+          source: '/(.*)',
+          headers: [
+            {
+              key: 'Cache-Control',
+              value: 'no-cache, no-store, must-revalidate',
+            },
+            {
+              key: 'Pragma',
+              value: 'no-cache',
+            },
+            {
+              key: 'Expires',
+              value: '0',
+            },
+          ],
+        },
+      ];
+    }
+    return [];
+  },
 };
 
 module.exports = nextConfig;

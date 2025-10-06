@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8e547c3001hKwYq4IWZN0xwf",
+  "messageID": "msg_9b8e348d5001yimlGUAUuSJzNQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01AsM2cF39uEdNs28ATGmQ7s",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rm -rf .next && killall -9 node 2>/dev/null || true",
+      "description": "Очищаем .next и останавливаем все процессы node"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Очищаем .next и останавливаем все процессы node"
+    },
+    "title": "cd /home/user/project && rm -rf .next && killall -9 node 2>/dev/null || true",
+    "time": {
+      "start": 1759743659034,
+      "end": 1759743659076
+    }
+  }
+}
