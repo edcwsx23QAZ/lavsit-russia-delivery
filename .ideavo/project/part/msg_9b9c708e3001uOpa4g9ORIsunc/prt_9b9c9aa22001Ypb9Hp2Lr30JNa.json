@@ -1,0 +1,21 @@
+{
+  "id": "prt_9b9c9aa22001Ypb9Hp2Lr30JNa",
+  "messageID": "msg_9b9c708e3001uOpa4g9ORIsunc",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_018NZjmrUSBaAFzx4JJkRWgY",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const getDellinTerminalByDirection = async (city: string, direction: 'departure' | 'arrival'): Promise<string | null> => {\n    try {\n      const sessionID = await authenticateDellin();\n      if (!sessionID) return null;\n\n      const normalizedCity = city.toLowerCase().trim()\n        .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n        .replace(/^город\\s+/, ''); // Убираем префикс \"город \"\n\n      // Пытаемся найти cityID в локальном маппинге\n      const cityID = getCityIDMapping(normalizedCity);\n\n      console.log(`🔍 Поиск терминала ${direction} для города: ${city}`);\n      if (cityID) {\n        console.log(`🆔 Используем cityID: ${cityID}`);\n      }\n      console.log(`🔑 Используем sessionID: ${sessionID}`);",
+      "newString": "  const getDellinTerminalByDirection = async (city: string, direction: 'departure' | 'arrival'): Promise<string | null> => {\n    try {\n      const sessionID = await authenticateDellin();\n      if (!sessionID) return null;\n\n      const normalizedCity = city.toLowerCase().trim()\n        .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n        .replace(/^город\\s+/, ''); // Убираем префикс \"город \"\n\n      // Пытаемся найти cityID в локальном справочнике\n      const cityID = await getCityIDFromLocal(normalizedCity);\n\n      console.log(`🔍 Поиск терминала ${direction} для города: ${city}`);\n      if (cityID) {\n        console.log(`🆔 Используем cityID из локального справочника: ${cityID}`);\n      } else {\n        console.log(`⚠️ cityID не найден в локальном справочнике, используем поиск по имени`);\n      }\n      console.log(`🔑 Используем sessionID: ${sessionID}`);"
+    },
+    "error": "Error: oldString not found in content",
+    "time": {
+      "start": 1759758632203,
+      "end": 1759758632352
+    }
+  }
+}

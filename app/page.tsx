@@ -1064,44 +1064,52 @@ export default function Home() {
     return null;
   };
 
-  // Маппинг популярных городов к их предполагаемым cityID (можно расширить по мере необходимости)
-  const getCityIDMapping = (cityName: string): string | null => {
-    const normalizedCity = cityName.toLowerCase().trim()
+  // Загрузка локального справочника городов Деловых Линий
+  const loadDellinCities = async () => {
+    try {
+      const response = await fetch('/data/dellin-cities.json');
+      if (!response.ok) {
+        console.error('❌ Не удалось загрузить справочник городов');
+        return null;
+      }
+      const data = await response.json();
+      return data.cities;
+    } catch (error) {
+      console.error('❌ Ошибка загрузки справочника городов:', error);
+      return null;
+    }
+  };
+
+  // Поиск cityID в локальном справочнике
+  const getCityIDFromLocal = async (cityName: string): Promise<string | null> => {
+    const cities = await loadDellinCities();
+    if (!cities) return null;
+
+    const normalizedSearch = cityName.toLowerCase().trim()
       .replace(/^г\s+/, '') // Убираем префикс "г "
       .replace(/^город\s+/, '') // Убираем префикс "город "
       .replace(/\s+/g, ' '); // Нормализуем пробелы
 
-    // Предполагаемые cityID для популярных городов (нужно будет уточнить)
-    const cityMappings: { [key: string]: string } = {
-      'москва': '2423', // Примерный ID для Москвы
-      'санкт-петербург': '4001', // Примерный ID для СПб
-      'петербург': '4001',
-      'спб': '4001',
-      'екатеринбург': '5001', // Примерный ID для Екатеринбурга
-      'новосибирск': '6001', // Примерный ID для Новосибирска
-      'нижний новгород': '7001', // Примерный ID для Н.Новгорода
-      'н.новгород': '7001',
-      'ростов-на-дону': '8001', // Примерный ID для Ростова-на-Дону
-      'ростов': '8001',
-      'казань': '9001', // Примерный ID для Казани
-      'самара': '10001', // Примерный ID для Самары
-      'уфа': '11001', // Примерный ID для Уфы
-      'челябинск': '12001', // Примерный ID для Челябинска
-      'омск': '13001', // Примерный ID для Омска
-      'волгоград': '14001', // Примерный ID для Волгограда
-      'красноярск': '15001', // Примерный ID для Красноярска
-      'воронеж': '16001', // Примерный ID для Воронежа
-      'пермь': '17001', // Примерный ID для Перми
-      'волжский': '18001', // Примерный ID для Волжского
-    };
+    console.log(`🔍 Поиск cityID для города: "${normalizedSearch}"`);
 
-    const cityID = cityMappings[normalizedCity];
-    if (cityID) {
-      console.log(`✅ Найден cityID для города "${normalizedCity}": ${cityID}`);
-      return cityID;
+    // Поиск в справочнике
+    for (const city of cities) {
+      // Проверяем точное совпадение с именем города
+      if (city.name.toLowerCase() === normalizedSearch) {
+        console.log(`✅ Точное совпадение: "${city.name}" -> cityID: ${city.cityID}`);
+        return city.cityID;
+      }
+
+      // Проверяем совпадение с поисковыми строками
+      for (const searchString of city.searchStrings) {
+        if (searchString === normalizedSearch) {
+          console.log(`✅ Найдено в поисковых строках: "${searchString}" для города "${city.name}" -> cityID: ${city.cityID}`);
+          return city.cityID;
+        }
+      }
     }
 
-    console.warn(`⚠️ cityID не найден в маппинге для города: "${normalizedCity}"`);
+    console.warn(`⚠️ cityID не найден в локальном справочнике для города: "${normalizedSearch}"`);
     return null;
   };
 
@@ -1170,6 +1178,17 @@ export default function Home() {
       const data = await response.json();
       console.log(`🚛 Деловые Линии терминалы ${direction} response status:`, response.status);
       console.log(`🚛 Деловые Линии терминалы ${direction} response:`, data);
+      
+      // Детальный анализ структуры ответа
+      console.log(`🔍 Анализ ответа Деловых Линий ${direction}:`);
+      console.log(`   - response.ok: ${response.ok}`);
+      console.log(`   - data тип:`, typeof data);
+      console.log(`   - data.terminals:`, data.terminals);
+      console.log(`   - data.terminals тип:`, typeof data.terminals);
+      console.log(`   - data.terminals.length:`, data.terminals?.length);
+      console.log(`   - data.metadata:`, data.metadata);
+      console.log(`   - data.errors:`, data.errors);
+      console.log(`   - Все ключи data:`, Object.keys(data));
       
       if (response.ok && data.terminals && data.terminals.length > 0) {
         console.log(`🔍 Найденные терминалы ${direction}:`, data.terminals.map((t: any) => ({

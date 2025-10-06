@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9c828f6001Um1b9UeZsyjzr5",
+  "messageID": "msg_9b9c708e3001uOpa4g9ORIsunc",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01NU7zMHb9oC3fk49vDzB19M",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1170,
+      "limit": 20
+    },
+    "output": "<file>\n01171|       console.log(`🚛 Деловые Линии терминалы ${direction} response status:`, response.status);\n01172|       console.log(`🚛 Деловые Линии терминалы ${direction} response:`, data);\n01173|       \n01174|       if (response.ok && data.terminals && data.terminals.length > 0) {\n01175|         console.log(`🔍 Найденные терминалы ${direction}:`, data.terminals.map((t: any) => ({\n01176|           id: t.id,\n01177|           city: t.city,\n01178|           name: t.name,\n01179|           address: t.address,\n01180|           default: t.default\n01181|         })));\n01182|         \n01183|         // Ищем терминал по умолчанию\n01184|         let terminal = data.terminals.find((t: any) => t.default === true);\n01185|         \n01186|         // Если нет терминала по умолчанию, берем первый\n01187|         if (!terminal && data.terminals.length > 0) {\n01188|           terminal = data.terminals[0];\n01189|         }\n01190|         \n\n(File has more lines. Use 'offset' parameter to read beyond line 1190)\n</file>",
+    "metadata": {
+      "preview": "      console.log(`🚛 Деловые Линии терминалы ${direction} response status:`, response.status);\n      console.log(`🚛 Деловые Линии терминалы ${direction} response:`, data);\n      \n      if (response.ok && data.terminals && data.terminals.length > 0) {\n        console.log(`🔍 Найденные терминалы ${direction}:`, data.terminals.map((t: any) => ({\n          id: t.id,\n          city: t.city,\n          name: t.name,\n          address: t.address,\n          default: t.default\n        })));\n        \n        // Ищем терминал по умолчанию\n        let terminal = data.terminals.find((t: any) => t.default === true);\n        \n        // Если нет терминала по умолчанию, берем первый\n        if (!terminal && data.terminals.length > 0) {\n          terminal = data.terminals[0];\n        }\n        "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759758527699,
+      "end": 1759758527703
+    }
+  }
+}
