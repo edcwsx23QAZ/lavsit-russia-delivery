@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba42e5c0001aezrMq26xHe8Js",
+  "messageID": "msg_9ba42d340001dNg2CfHQCCx05y",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01JS95kj3UzZKuizUiPezR3e",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Маршрут|маршрут",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "output": "Found 4 matches\n/home/user/project/app/page.tsx:\n  Line 3005:             error: 'Автомобильный тариф недоступен для данного маршрута',\n  Line 3870:             {/* Маршрут */}\n  Line 3875:                   Маршрут\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 732:       // Тестирование разных маршрутов",
+    "metadata": {
+      "matches": 4,
+      "truncated": false
+    },
+    "title": "Маршрут|маршрут",
+    "time": {
+      "start": 1759766571562,
+      "end": 1759766571572
+    }
+  }
+}

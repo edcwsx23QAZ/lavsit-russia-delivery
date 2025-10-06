@@ -3876,13 +3876,117 @@ export default function Home() {
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-2">
+                {/* Отправление */}
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium text-white">Отправление</Label>
+                  <div className="flex gap-3 flex-wrap">
+                    <label className="flex items-center space-x-1">
+                      <input
+                        type="radio"
+                        name="fromDelivery"
+                        checked={form.fromTerminal}
+                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false, fromLavsiteWarehouse: false }))}
+                      />
+                      <span className="text-white text-xs">От терминала</span>
+                    </label>
+                    <label className="flex items-center space-x-1">
+                      <input
+                        type="radio"
+                        name="fromDelivery"
+                        checked={form.fromAddressDelivery && !form.fromLavsiteWarehouse}
+                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true, fromLavsiteWarehouse: false }))}
+                      />
+                      <span className="text-white text-xs">От адреса</span>
+                    </label>
+                    <label className="flex items-center space-x-1">
+                      <Checkbox
+                        id="lavsiteWarehouse"
+                        checked={form.fromLavsiteWarehouse}
+                        onCheckedChange={handleLavsiteWarehouseChange}
+                      />
+                      <span className="text-white text-xs cursor-pointer">Со склада Лавсит</span>
+                    </label>
+                  </div>
+                  
+                  <div>
+                    <Label className="text-white text-xs">Город отправления</Label>
+                    <Input
+                      value={form.fromCity}
+                      onChange={(e) => !form.fromLavsiteWarehouse && handleAddressChange('fromCity', e.target.value, e.target)}
+                      placeholder="Начните вводить город"
+                      disabled={form.fromLavsiteWarehouse}
+                      className={`bg-gray-700 border-gray-600 h-7 text-white text-xs ${form.fromLavsiteWarehouse ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    />
+                  </div>
+                  
+                  {form.fromAddressDelivery && (
+                    <div>
+                      <Label className="text-white text-xs">Адрес отправления</Label>
+                      <Input
+                        value={form.fromAddress}
+                        onChange={(e) => !form.fromLavsiteWarehouse && handleAddressChange('fromAddress', e.target.value, e.target)}
+                        placeholder="Начните вводить адрес"
+                        disabled={form.fromLavsiteWarehouse}
+                        className={`bg-gray-700 border-gray-600 h-7 text-white text-xs ${form.fromLavsiteWarehouse ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* Назначение */}
+                <div className="space-y-2">
+                  <Label className="text-sm font-medium text-white">Назначение</Label>
+                  <div className="flex gap-3 flex-wrap">
+                    <label className="flex items-center space-x-1">
+                      <input
+                        type="radio"
+                        name="toDelivery"
+                        checked={form.toTerminal}
+                        onChange={() => setForm(prev => ({ ...prev, toTerminal: true, toAddressDelivery: false }))}
+                      />
+                      <span className="text-white text-xs">До терминала</span>
+                    </label>
+                    <label className="flex items-center space-x-1">
+                      <input
+                        type="radio"
+                        name="toDelivery"
+                        checked={form.toAddressDelivery}
+                        onChange={() => setForm(prev => ({ ...prev, toTerminal: false, toAddressDelivery: true }))}
+                      />
+                      <span className="text-white text-xs">До адреса</span>
+                    </label>
+                  </div>
+                  
+                  <div>
+                    <Label className="text-white text-xs">Город назначения</Label>
+                    <Input
+                      value={form.toCity}
+                      onChange={(e) => handleAddressChange('toCity', e.target.value, e.target)}
+                      placeholder="Начните вводить город"
+                      className="bg-gray-700 border-gray-600 h-7 text-white text-xs"
+                    />
+                  </div>
+                  
+                  {form.toAddressDelivery && (
+                    <div>
+                      <Label className="text-white text-xs">Адрес назначения</Label>
+                      <Input
+                        value={form.toAddress}
+                        onChange={(e) => handleAddressChange('toAddress', e.target.value, e.target)}
+                        placeholder="Начните вводить адрес"
+                        className="bg-gray-700 border-gray-600 h-7 text-white text-xs"
+                      />
+                    </div>
+                  )}
+                </div>
+
                 <div>
                   <Label className="text-white text-xs">Объявленная стоимость (руб.)</Label>
                   <Input
                     type="number"
                     value={form.declaredValue || ''}
                     onChange={(e) => setForm(prev => ({ ...prev, declaredValue: Number(e.target.value) }))}
-                    className="bg-gray-700 border-gray-600 h-8 text-white"
+                    className="bg-gray-700 border-gray-600 h-7 text-white text-xs"
                   />
                 </div>
                 
@@ -3935,7 +4039,7 @@ export default function Home() {
                           type="number"
                           value={form.floor}
                           onChange={(e) => setForm(prev => ({ ...prev, floor: Number(e.target.value) }))}
-                          className="bg-gray-700 border-gray-600 h-8 text-white"
+                          className="bg-gray-700 border-gray-600 h-7 text-white text-xs"
                         />
                       </div>
                       <div className="flex items-center space-x-2">
