@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8d2f2cd001AaKvjZPHk2WQTE",
+  "messageID": "msg_9b8d2cf34001g8s0qj2eSMrfWw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_018wwA1HRHTvMfKmpGh8mEAj",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3193,
+      "limit": 20
+    },
+    "output": "<file>\n03194|           price: calc.details.pickupCost\n03195|         });\n03196|       }\n03197|       if (calc.details.deliveryToDoorCost) {\n03198|         details.push({\n03199|           service: 'Стоимость доставки до двери',\n03200|           description: '',\n03201|           price: calc.details.deliveryToDoorCost\n03202|         });\n03203|       }\n03204|       if (calc.details.additionalServices && calc.details.additionalServices > 0) {\n03205|         details.push({\n03206|           service: 'Стоимость доп.услуг',\n03207|           description: '',\n03208|           price: calc.details.additionalServices\n03209|         });\n03210|       }\n03211| \n03212|     } else if (calc.company === 'ПЭК' && calc.details?.services) {\n03213|       // Для ПЭК используем данные из API\n\n(File has more lines. Use 'offset' parameter to read beyond line 3213)\n</file>",
+    "metadata": {
+      "preview": "          price: calc.details.pickupCost\n        });\n      }\n      if (calc.details.deliveryToDoorCost) {\n        details.push({\n          service: 'Стоимость доставки до двери',\n          description: '',\n          price: calc.details.deliveryToDoorCost\n        });\n      }\n      if (calc.details.additionalServices && calc.details.additionalServices > 0) {\n        details.push({\n          service: 'Стоимость доп.услуг',\n          description: '',\n          price: calc.details.additionalServices\n        });\n      }\n\n    } else if (calc.company === 'ПЭК' && calc.details?.services) {\n      // Для ПЭК используем данные из API"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759742457529,
+      "end": 1759742457535
+    }
+  }
+}

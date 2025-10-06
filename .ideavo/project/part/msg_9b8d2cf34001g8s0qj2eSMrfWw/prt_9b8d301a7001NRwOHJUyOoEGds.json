@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8d301a7001NRwOHJUyOoEGds",
+  "messageID": "msg_9b8d2cf34001g8s0qj2eSMrfWw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01VFNfXspUrWH29Z6bUxNubr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3260,
+      "limit": 20
+    },
+    "output": "<file>\n03261| };\n03262| \n03263|   return (\n03264|     <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n03265|       <div className=\"max-w-7xl mx-auto\">\n03266|         <h1 className=\"text-2xl font-bold text-center mb-6 text-blue-400\">\n03267|           Междугородняя доставка Лавсит\n03268|         </h1>\n03269|         \n03270|         {/* Кнопка диагностики */}\n03271|         <div className=\"flex justify-end mb-4\">\n03272|           <Button \n03273|             onClick={() => window.open('/diagnostic', '_blank')}\n03274|             variant=\"outline\" \n03275|             className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n03276|           >\n03277|             <Settings className=\"h-4 w-4 mr-2\" />\n03278|             Диагностика\n03279|           </Button>\n03280|         </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 3280)\n</file>",
+    "metadata": {
+      "preview": "};\n\n  return (\n    <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n      <div className=\"max-w-7xl mx-auto\">\n        <h1 className=\"text-2xl font-bold text-center mb-6 text-blue-400\">\n          Междугородняя доставка Лавсит\n        </h1>\n        \n        {/* Кнопка диагностики */}\n        <div className=\"flex justify-end mb-4\">\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Диагностика\n          </Button>\n        </div>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759742461031,
+      "end": 1759742461034
+    }
+  }
+}

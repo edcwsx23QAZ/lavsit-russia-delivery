@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8d312a0001CwmVBM7Bxv0mKm",
+  "messageID": "msg_9b8d2cf34001g8s0qj2eSMrfWw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01GbfUiY2QKMBBbxRG3u7DvW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  return (\n    <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n      <div className=\"max-w-7xl mx-auto\">\n        <h1 className=\"text-2xl font-bold text-center mb-6 text-blue-400\">\n          Междугородняя доставка Лавсит\n        </h1>\n        \n        {/* Кнопка диагностики */}\n        <div className=\"flex justify-end mb-4\">\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Диагностика\n          </Button>\n        </div>",
+      "newString": "  // Показываем загрузку пока состояние не загрузилось (предотвращает ошибку гидратации)\n  if (!isLoaded) {\n    return (\n      <div className=\"min-h-screen bg-gray-900 text-white p-4 relative flex items-center justify-center\">\n        <div className=\"text-center\">\n          <div className=\"animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400 mx-auto mb-4\"></div>\n          <p className=\"text-blue-400\">Загрузка...</p>\n        </div>\n      </div>\n    );\n  }\n\n  return (\n    <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n      <div className=\"max-w-7xl mx-auto\">\n        <h1 className=\"text-2xl font-bold text-center mb-6 text-blue-400\">\n          Междугородняя доставка Лавсит\n        </h1>\n        \n        {/* Кнопка диагностики */}\n        <div className=\"flex justify-end mb-4\">\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Диагностика\n          </Button>\n        </div>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3259,8 +3259,20 @@\n     }];\n   }\n };\n \n+  // Показываем загрузку пока состояние не загрузилось (предотвращает ошибку гидратации)\n+  if (!isLoaded) {\n+    return (\n+      <div className=\"min-h-screen bg-gray-900 text-white p-4 relative flex items-center justify-center\">\n+        <div className=\"text-center\">\n+          <div className=\"animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400 mx-auto mb-4\"></div>\n+          <p className=\"text-blue-400\">Загрузка...</p>\n+        </div>\n+      </div>\n+    );\n+  }\n+\n   return (\n     <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n       <div className=\"max-w-7xl mx-auto\">\n         <h1 className=\"text-2xl font-bold text-center mb-6 text-blue-400\">\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759742470607,
+      "end": 1759742470636
+    }
+  }
+}

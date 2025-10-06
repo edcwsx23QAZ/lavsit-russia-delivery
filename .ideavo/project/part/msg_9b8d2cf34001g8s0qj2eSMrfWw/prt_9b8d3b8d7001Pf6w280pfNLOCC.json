@@ -1,0 +1,27 @@
+{
+  "id": "prt_9b8d3b8d7001Pf6w280pfNLOCC",
+  "messageID": "msg_9b8d2cf34001g8s0qj2eSMrfWw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_015iQPckDsPsNqU47pTcQ4Fc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run dev",
+      "timeout": 10000,
+      "description": "Запускаем приложение для проверки исправления"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ✓ Ready in 1959ms\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ✓ Ready in 1959ms\n",
+      "exit": null,
+      "description": "Запускаем приложение для проверки исправления"
+    },
+    "title": "cd /home/user/project && npm run dev",
+    "time": {
+      "start": 1759742508184,
+      "end": 1759742518192
+    }
+  }
+}
