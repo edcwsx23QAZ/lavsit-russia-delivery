@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b98c95ee001mONc0mSh9MQrVO",
+  "messageID": "msg_9b98bcdf9001QwwCeAFutGgyl9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01JKMPJdCNXVxhJi8iyfkGJp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Получаем терминалы для городов (если нужно)\n      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;",
+      "newString": "      // Получаем терминалы для городов (если нужно)\n      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminalByDirection(form.fromCity, 'derival') : null;\n      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminalByDirection(form.toCity, 'arrival') : null;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1217,10 +1217,10 @@\n const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;\n \n // Получаем терминалы для городов (если нужно)\n-const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n-const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;\n+const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminalByDirection(form.fromCity, 'derival') : null;\n+const toTerminalId = !form.toAddressDelivery ? await getDellinTerminalByDirection(form.toCity, 'arrival') : null;\n \n console.log('🏢 ТЕРМИНАЛЫ ДЛ:');\n console.log('🏢 form.fromAddressDelivery:', form.fromAddressDelivery);\n console.log('🏢 form.toAddressDelivery:', form.toAddressDelivery);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759754625564,
+      "end": 1759754625579
+    }
+  }
+}

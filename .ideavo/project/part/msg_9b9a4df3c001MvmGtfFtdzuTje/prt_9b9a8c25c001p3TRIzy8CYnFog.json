@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9a8c25c001p3TRIzy8CYnFog",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01JbzzUFQ72GpBms3t5tY2DZ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npx tsc --noEmit",
+      "description": "Check TypeScript compilation for errors"
+    },
+    "output": "lib/form-storage.ts(65,11): error TS2741: Property 'fromLavsiteWarehouse' is missing in type '{ version: string; timestamp: number; cargos: { id: string; length: number; width: number; height: number; weight: number; }[]; fromCity: string; toCity: string; fromAddress: string; toAddress: string; ... 11 more ...; selectedProducts: { ...; }[]; }' but required in type 'StoredFormData'.\n",
+    "metadata": {
+      "output": "lib/form-storage.ts(65,11): error TS2741: Property 'fromLavsiteWarehouse' is missing in type '{ version: string; timestamp: number; cargos: { id: string; length: number; width: number; height: number; weight: number; }[]; fromCity: string; toCity: string; fromAddress: string; toAddress: string; ... 11 more ...; selectedProducts: { ...; }[]; }' but required in type 'StoredFormData'.\n",
+      "exit": 2,
+      "description": "Check TypeScript compilation for errors"
+    },
+    "title": "cd /home/user/project && npx tsc --noEmit",
+    "time": {
+      "start": 1759756469434,
+      "end": 1759756475025
+    }
+  }
+}

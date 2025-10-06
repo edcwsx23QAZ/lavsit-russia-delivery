@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b98d4f96001s2wP0sr40n4FYj",
+  "messageID": "msg_9b98bcdf9001QwwCeAFutGgyl9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01AksA7sxMyTWCqaJ8aFAEWR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && node test-dellin-terminals.js",
+      "description": "Тестирование API терминалов Деловых Линий"
+    },
+    "output": "🧪 Тестируем поиск терминалов Деловых Линий...\n📤 Запрос для Москвы: {\n  \"appkey\": \"E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B\",\n  \"sessionID\": \"00000000-0000-0000-0000-000000000000\",\n  \"search\": \"Москва\",\n  \"direction\": \"derival\",\n  \"maxCargoDimensions\": {\n    \"length\": 3,\n    \"width\": 3,\n    \"height\": 3,\n    \"weight\": 3,\n    \"maxVolume\": 3,\n    \"totalVolume\": 3,\n    \"totalWeight\": 3\n  },\n  \"express\": true,\n  \"freeStorageDays\": \"2\"\n}\n📥 Ответ API: 401 Unauthorized\n📥 Данные: {\n  \"errors\": \"Unauthorized\"\n}\n❌ Терминалы не найдены\n",
+    "metadata": {
+      "output": "🧪 Тестируем поиск терминалов Деловых Линий...\n📤 Запрос для Москвы: {\n  \"appkey\": \"E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B\",\n  \"sessionID\": \"00000000-0000-0000-0000-000000000000\",\n  \"search\": \"Москва\",\n  \"direction\": \"derival\",\n  \"maxCargoDimensions\": {\n    \"length\": 3,\n    \"width\": 3,\n    \"height\": 3,\n    \"weight\": 3,\n    \"maxVolume\": 3,\n    \"totalVolume\": 3,\n    \"totalWeight\": 3\n  },\n  \"express\": true,\n  \"freeStorageDays\": \"2\"\n}\n📥 Ответ API: 401 Unauthorized\n📥 Данные: {\n  \"errors\": \"Unauthorized\"\n}\n❌ Терминалы не найдены\n",
+      "exit": 0,
+      "description": "Тестирование API терминалов Деловых Линий"
+    },
+    "title": "cd /home/user/project && node test-dellin-terminals.js",
+    "time": {
+      "start": 1759754670605,
+      "end": 1759754671728
+    }
+  }
+}

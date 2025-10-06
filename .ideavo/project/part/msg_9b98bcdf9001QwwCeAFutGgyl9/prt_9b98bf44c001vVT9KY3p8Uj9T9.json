@@ -1,0 +1,24 @@
+{
+  "id": "prt_9b98bf44c001vVT9KY3p8Uj9T9",
+  "messageID": "msg_9b98bcdf9001QwwCeAFutGgyl9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01GcAmkpzDkhkkTtbQqNrSBK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Не найден терминал"
+    },
+    "output": "Found 4 matches\n/home/user/project/app/page.tsx:\n  Line 1226:         console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n  Line 1231:           error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,\n  Line 1239:         console.error('❌ Не найден терминал назначения для города:', form.toCity);\n  Line 1244:           error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,",
+    "metadata": {
+      "matches": 4,
+      "truncated": false
+    },
+    "title": "Не найден терминал",
+    "time": {
+      "start": 1759754581498,
+      "end": 1759754581510
+    }
+  }
+}

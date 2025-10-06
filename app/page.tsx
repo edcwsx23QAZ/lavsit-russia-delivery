@@ -54,6 +54,7 @@ interface DeliveryForm {
   toTerminal: boolean;
   fromAddressDelivery: boolean;
   toAddressDelivery: boolean;
+  fromLavsiteWarehouse: boolean;
   // Добавляем поддержку товаров
   selectedProducts: ProductInForm[];
 }
@@ -125,6 +126,7 @@ export default function Home() {
     toTerminal: true,
     fromAddressDelivery: false,
     toAddressDelivery: false,
+    fromLavsiteWarehouse: false,
     selectedProducts: []
   };
 
@@ -265,6 +267,7 @@ export default function Home() {
             toTerminal: savedFormData.toTerminal,
             fromAddressDelivery: savedFormData.fromAddressDelivery,
             toAddressDelivery: savedFormData.toAddressDelivery,
+            fromLavsiteWarehouse: savedFormData.fromLavsiteWarehouse || false,
             selectedProducts: savedFormData.selectedProducts,
           };
           
@@ -327,6 +330,7 @@ export default function Home() {
         toTerminal: form.toTerminal,
         fromAddressDelivery: form.fromAddressDelivery,
         toAddressDelivery: form.toAddressDelivery,
+        fromLavsiteWarehouse: form.fromLavsiteWarehouse,
         selectedProducts: form.selectedProducts,
       });
     }
@@ -634,7 +638,28 @@ export default function Home() {
   const selectSuggestion = (suggestion: AddressSuggestion) => {
     setForm(prev => ({ ...prev, [activeField]: suggestion.value }));
     setShowSuggestions(false);
-    setSuggestions([]);
+    setActiveField('');
+  };
+
+  // Обработчик для чекбокса "Со склада Лавсит"
+  const handleLavsiteWarehouseChange = (checked: boolean) => {
+    if (checked) {
+      setForm(prev => ({
+        ...prev,
+        fromLavsiteWarehouse: true,
+        fromAddressDelivery: true,
+        fromTerminal: false,
+        fromCity: 'Лосино-Петровский',
+        fromAddress: 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область'
+      }));
+    } else {
+      setForm(prev => ({
+        ...prev,
+        fromLavsiteWarehouse: false,
+        fromCity: '',
+        fromAddress: ''
+      }));
+    }
   };
 
   const addCargo = () => {
@@ -1039,74 +1064,100 @@ export default function Home() {
     return null;
   };
 
-  // Получение терминалов Деловые Линии для города
-  const getDellinTerminal = async (citySearch: string): Promise<string | null> => {
+  // Получение терминалов Деловые Линии для города с указанием направления
+  const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {
     try {
-      const response = await fetch('https://api.dellin.ru/v3/public/terminals.json', {
+      // Получаем валидный sessionID
+      const sessionID = await getDellinSessionId();
+      if (!sessionID) {
+        console.error(`❌ Не удалось получить sessionID для поиска терминалов ${direction}`);
+        return null;
+      }
+
+      // Нормализуем название города для поиска
+      const normalizedCity = citySearch.toLowerCase().trim()
+        .replace(/^г\s+/, '') // Убираем префикс "г "
+        .replace(/^город\s+/, '') // Убираем префикс "город "
+        .replace(/\s+/g, ' '); // Нормализуем пробелы
+
+      console.log(`🔍 Поиск терминала ${direction} для города:`, normalizedCity);
+      console.log(`🔑 Используем sessionID:`, sessionID);
+
+      // Используем правильный API endpoint для поиска терминалов
+      // Структура запроса согласно API Деловых Линий
+      const requestBody = {
+        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
+        sessionID: sessionID,
+        search: normalizedCity,
+        direction: direction,
+        maxCargoDimensions: {
+          length: 3.0,
+          width: 3.0,
+          height: 3.0,
+          weight: 3.0,
+          maxVolume: 3.0,
+          totalVolume: 3.0,
+          totalWeight: 3.0
+        },
+        express: true,
+        freeStorageDays: "2"
+      };
+
+      console.log(`📤 Запрос терминалов ${direction}:`, JSON.stringify(requestBody, null, 2));
+
+      const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'
-        })
+        body: JSON.stringify(requestBody)
       });
 
       const data = await response.json();
-      console.log('Деловые Линии терминалы:', data);
+      console.log(`🚛 Деловые Линии терминалы ${direction} response status:`, response.status);
+      console.log(`🚛 Деловые Линии терминалы ${direction} response:`, data);
       
-      if (response.ok && data.terminals) {
-        // Улучшенный поиск терминала в указанном городе
-        const normalizedCity = citySearch.toLowerCase().trim()
-          .replace(/^г\s+/, '') // Убираем префикс "г "
-          .replace(/^город\s+/, '') // Убираем префикс "город "
-          .replace(/\s+/g, ' '); // Нормализуем пробелы
-        
-        console.log('🔍 Поиск терминала для города:', normalizedCity);
-        console.log('🔍 Доступные терминалы:', data.terminals.slice(0, 5).map((t: any) => ({
+      if (response.ok && data.terminals && data.terminals.length > 0) {
+        console.log(`🔍 Найденные терминалы ${direction}:`, data.terminals.map((t: any) => ({
           id: t.id,
           city: t.city,
-          address: t.address
+          name: t.name,
+          address: t.address,
+          default: t.default
         })));
         
-        // Пытаемся найти точное совпадение
-        let terminal = data.terminals.find((t: any) => 
-          t.city?.toLowerCase().trim() === normalizedCity
-        );
+        // Ищем терминал по умолчанию
+        let terminal = data.terminals.find((t: any) => t.default === true);
         
-        // Если не найдено - ищем по вхождению
-        if (!terminal) {
-          terminal = data.terminals.find((t: any) => 
-            t.city?.toLowerCase().includes(normalizedCity) ||
-            normalizedCity.includes(t.city?.toLowerCase().trim())
-          );
-        }
-        
-        // Если до сих пор не найдено - ищем по первому слову
-        if (!terminal) {
-          const firstWord = normalizedCity.split(' ')[0];
-          if (firstWord.length > 2) {
-            terminal = data.terminals.find((t: any) => 
-              t.city?.toLowerCase().includes(firstWord) ||
-              firstWord.includes(t.city?.toLowerCase().split(' ')[0])
-            );
-          }
+        // Если нет терминала по умолчанию, берем первый
+        if (!terminal && data.terminals.length > 0) {
+          terminal = data.terminals[0];
         }
         
         if (terminal) {
-          console.log('✅ Найден терминал:', { id: terminal.id, city: terminal.city });
-          return terminal.id;
-        } else {
-          console.warn('⚠️ Терминал не найден, используем первый доступный');
-          return data.terminals[0]?.id || null;
+          console.log(`✅ Найден терминал ${direction}:`, { 
+            id: terminal.id, 
+            city: terminal.city, 
+            name: terminal.name,
+            default: terminal.default 
+          });
+          return terminal.id.toString();
         }
       }
       
+      console.warn(`⚠️ Терминалы ${direction} не найдены для города:`, normalizedCity);
+      console.warn('⚠️ Response status:', response.status);
+      console.warn('⚠️ Response data:', data);
       return null;
     } catch (error) {
-      console.error('Ошибка получения терминалов Деловые Линии:', error);
+      console.error(`❌ Ошибка получения терминалов ${direction} Деловые Линии:`, error);
       return null;
     }
+  };
+
+  // Получение терминалов Деловые Линии для города (используем функцию с направлением)
+  const getDellinTerminal = async (citySearch: string): Promise<string | null> => {
+    return getDellinTerminalByDirection(citySearch, 'arrival');
   };
 
   // Получение UID упаковки "crate_with_bubble" из справочника упаковок Деловые Линии с повторной авторизацией
@@ -1212,8 +1263,8 @@ export default function Home() {
       const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;
 
       // Получаем терминалы для городов (если нужно)
-      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;
-      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;
+      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminalByDirection(form.fromCity, 'derival') : null;
+      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminalByDirection(form.toCity, 'arrival') : null;
       
       console.log('🏢 ТЕРМИНАЛЫ ДЛ:');
       console.log('🏢 form.fromAddressDelivery:', form.fromAddressDelivery);
@@ -3635,7 +3686,7 @@ export default function Home() {
                         type="radio"
                         name="fromDelivery"
                         checked={form.fromTerminal}
-                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false }))}
+                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false, fromLavsiteWarehouse: false }))}
                       />
                       <span className="text-white text-xs">От терминала</span>
                     </label>
@@ -3643,20 +3694,33 @@ export default function Home() {
                       <input
                         type="radio"
                         name="fromDelivery"
-                        checked={form.fromAddressDelivery}
-                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true }))}
+                        checked={form.fromAddressDelivery && !form.fromLavsiteWarehouse}
+                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true, fromLavsiteWarehouse: false }))}
                       />
                       <span className="text-white text-xs">От адреса</span>
                     </label>
+                  </div>
+                  
+                  {/* Чекбокс склада Лавсит */}
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id="lavsiteWarehouse"
+                      checked={form.fromLavsiteWarehouse}
+                      onCheckedChange={handleLavsiteWarehouseChange}
+                    />
+                    <Label htmlFor="lavsiteWarehouse" className="text-white text-xs cursor-pointer">
+                      Со склада Лавсит
+                    </Label>
                   </div>
                   
                   <div>
                     <Label className="text-white text-xs">Город отправления</Label>
                     <Input
                       value={form.fromCity}
-                      onChange={(e) => handleAddressChange('fromCity', e.target.value, e.target)}
+                      onChange={(e) => !form.fromLavsiteWarehouse && handleAddressChange('fromCity', e.target.value, e.target)}
                       placeholder="Начните вводить город"
-                      className="bg-gray-700 border-gray-600 h-8 text-white"
+                      disabled={form.fromLavsiteWarehouse}
+                      className={`bg-gray-700 border-gray-600 h-8 text-white ${form.fromLavsiteWarehouse ? 'opacity-50 cursor-not-allowed' : ''}`}
                     />
                   </div>
                   
@@ -3665,9 +3729,10 @@ export default function Home() {
                       <Label className="text-white text-xs">Адрес отправления</Label>
                       <Input
                         value={form.fromAddress}
-                        onChange={(e) => handleAddressChange('fromAddress', e.target.value, e.target)}
+                        onChange={(e) => !form.fromLavsiteWarehouse && handleAddressChange('fromAddress', e.target.value, e.target)}
                         placeholder="Начните вводить адрес"
-                        className="bg-gray-700 border-gray-600 h-8 text-white"
+                        disabled={form.fromLavsiteWarehouse}
+                        className={`bg-gray-700 border-gray-600 h-8 text-white ${form.fromLavsiteWarehouse ? 'opacity-50 cursor-not-allowed' : ''}`}
                       />
                     </div>
                   )}

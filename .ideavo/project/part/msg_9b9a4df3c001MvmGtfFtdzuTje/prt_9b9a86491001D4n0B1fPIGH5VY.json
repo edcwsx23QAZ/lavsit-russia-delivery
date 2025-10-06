@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a86491001D4n0B1fPIGH5VY",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PHck6nXpFyo9SLuQue12rt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "offset": 0,
+      "limit": 50
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| // Константы для ключей localStorage\n00004| const FORM_DATA_KEY = 'deliveryFormData';\n00005| const FORM_VERSION = '1.0'; // Для миграции данных при изменении структуры\n00006| \n00007| export interface StoredFormData {\n00008|   version: string;\n00009|   timestamp: number;\n00010|   cargos: Array<{\n00011|     id: string;\n00012|     length: number;\n00013|     width: number;\n00014|     height: number;\n00015|     weight: number;\n00016|   }>;\n00017|   fromCity: string;\n00018|   toCity: string;\n00019|   fromAddress: string;\n00020|   toAddress: string;\n00021|   declaredValue: number;\n00022|   needPackaging: boolean;\n00023|   needLoading: boolean;\n00024|   needCarry: boolean;\n00025|   floor: number;\n00026|   hasFreightLift: boolean;\n00027|   needInsurance: boolean;\n00028|   fromTerminal: boolean;\n00029|   toTerminal: boolean;\n00030|   fromAddressDelivery: boolean;\n00031|   toAddressDelivery: boolean;\n00032|   selectedProducts: Array<{\n00033|     product: {\n00034|       id: string;\n00035|       externalCode: string;\n00036|       name: string;\n00037|       retailPrice: number;\n00038|       isActive: boolean;\n00039|       cargoPlaces: Array<{\n00040|         placeNumber: number;\n00041|         weight: number;\n00042|         height: number;\n00043|         depth: number;\n00044|         length: number;\n00045|       }>;\n00046|     };\n00047|     quantity: number;\n00048|     totalPrice: number;\n00049|     cargoIndexes: number[];\n00050|     addedAt: number;\n\n(File has more lines. Use 'offset' parameter to read beyond line 50)\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\n// Константы для ключей localStorage\nconst FORM_DATA_KEY = 'deliveryFormData';\nconst FORM_VERSION = '1.0'; // Для миграции данных при изменении структуры\n\nexport interface StoredFormData {\n  version: string;\n  timestamp: number;\n  cargos: Array<{\n    id: string;\n    length: number;\n    width: number;\n    height: number;\n    weight: number;\n  }>;\n  fromCity: string;\n  toCity: string;\n  fromAddress: string;\n  toAddress: string;"
+    },
+    "title": "lib/form-storage.ts",
+    "time": {
+      "start": 1759756445632,
+      "end": 1759756445633
+    }
+  }
+}

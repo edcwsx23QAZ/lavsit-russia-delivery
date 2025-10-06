@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9a65fbe001zg9H6oKeS1KawS",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01YZnP7MY882qhWgF6TsTyoA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      debouncedSave({\n        cargos: form.cargos,\n        fromCity: form.fromCity,\n        toCity: form.toCity,\n        fromAddress: form.fromAddress,\n        toAddress: form.toAddress,\n        declaredValue: form.declaredValue,\n        needPackaging: form.needPackaging,\n        needLoading: form.needLoading,\n        needCarry: form.needCarry,\n        floor: form.floor,\n        hasFreightLift: form.hasFreightLift,\n        needInsurance: form.needInsurance,\n        fromTerminal: form.fromTerminal,\n        toTerminal: form.toTerminal,\n        fromAddressDelivery: form.fromAddressDelivery,\n        toAddressDelivery: form.toAddressDelivery,\n        selectedProducts: form.selectedProducts,\n      });",
+      "newString": "      debouncedSave({\n        cargos: form.cargos,\n        fromCity: form.fromCity,\n        toCity: form.toCity,\n        fromAddress: form.fromAddress,\n        toAddress: form.toAddress,\n        declaredValue: form.declaredValue,\n        needPackaging: form.needPackaging,\n        needLoading: form.needLoading,\n        needCarry: form.needCarry,\n        floor: form.floor,\n        hasFreightLift: form.hasFreightLift,\n        needInsurance: form.needInsurance,\n        fromTerminal: form.fromTerminal,\n        toTerminal: form.toTerminal,\n        fromAddressDelivery: form.fromAddressDelivery,\n        toAddressDelivery: form.toAddressDelivery,\n        fromLavsiteWarehouse: form.fromLavsiteWarehouse,\n        selectedProducts: form.selectedProducts,\n      });"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -329,8 +329,9 @@\n       fromTerminal: form.fromTerminal,\n       toTerminal: form.toTerminal,\n       fromAddressDelivery: form.fromAddressDelivery,\n       toAddressDelivery: form.toAddressDelivery,\n+      fromLavsiteWarehouse: form.fromLavsiteWarehouse,\n       selectedProducts: form.selectedProducts,\n     });\n   }\n }, [form, isLoaded, debouncedSave]);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756316709,
+      "end": 1759756316731
+    }
+  }
+}

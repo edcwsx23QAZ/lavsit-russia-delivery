@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9a692bb0015V7HGxP2xtZD8G",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01PceJU9j1AMTSUtEYGc281v",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const selectSuggestion = (suggestion: AddressSuggestion) => {\n    setForm(prev => ({ ...prev, [activeField]: suggestion.value }));\n    setShowSuggestions(false);\n    setActiveField('');\n  };",
+      "newString": "  const selectSuggestion = (suggestion: AddressSuggestion) => {\n    setForm(prev => ({ ...prev, [activeField]: suggestion.value }));\n    setShowSuggestions(false);\n    setActiveField('');\n  };\n\n  // Обработчик для чекбокса \"Со склада Лавсит\"\n  const handleLavsiteWarehouseChange = (checked: boolean) => {\n    if (checked) {\n      setForm(prev => ({\n        ...prev,\n        fromLavsiteWarehouse: true,\n        fromAddressDelivery: true,\n        fromTerminal: false,\n        fromCity: 'Лосино-Петровский',\n        fromAddress: 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область'\n      }));\n    } else {\n      setForm(prev => ({\n        ...prev,\n        fromLavsiteWarehouse: false,\n        fromCity: '',\n        fromAddress: ''\n      }));\n    }\n  };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -637,11 +637,32 @@\n \n const selectSuggestion = (suggestion: AddressSuggestion) => {\n   setForm(prev => ({ ...prev, [activeField]: suggestion.value }));\n   setShowSuggestions(false);\n-  setSuggestions([]);\n+  setActiveField('');\n };\n \n+// Обработчик для чекбокса \"Со склада Лавсит\"\n+const handleLavsiteWarehouseChange = (checked: boolean) => {\n+  if (checked) {\n+    setForm(prev => ({\n+      ...prev,\n+      fromLavsiteWarehouse: true,\n+      fromAddressDelivery: true,\n+      fromTerminal: false,\n+      fromCity: 'Лосино-Петровский',\n+      fromAddress: 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область'\n+    }));\n+  } else {\n+    setForm(prev => ({\n+      ...prev,\n+      fromLavsiteWarehouse: false,\n+      fromCity: '',\n+      fromAddress: ''\n+    }));\n+  }\n+};\n+\n const addCargo = () => {\n   const newId = (form.cargos.length + 1).toString();\n   setForm(prev => ({\n     ...prev,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756330421,
+      "end": 1759756330449
+    }
+  }
+}

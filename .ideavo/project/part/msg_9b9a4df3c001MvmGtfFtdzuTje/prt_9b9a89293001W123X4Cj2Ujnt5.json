@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a89293001W123X4Cj2Ujnt5",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_015D7GSqcpvacyfKNY7ToyeU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "migration|migrate",
+      "include": "lib/form-storage.ts"
+    },
+    "output": "Found 5 matches\n/home/user/project/lib/form-storage.ts:\n  Line 117:       return migrateFormData(parsedData);\n  Line 139: const migrateFormData = (oldData: any): StoredFormData | null => {\n  Line 142:     const migratedData: StoredFormData = {\n  Line 165:     localStorage.setItem(FORM_DATA_KEY, JSON.stringify(migratedData));\n  Line 167:     return migratedData;",
+    "metadata": {
+      "matches": 5,
+      "truncated": false
+    },
+    "title": "migration|migrate",
+    "time": {
+      "start": 1759756457123,
+      "end": 1759756457133
+    }
+  }
+}

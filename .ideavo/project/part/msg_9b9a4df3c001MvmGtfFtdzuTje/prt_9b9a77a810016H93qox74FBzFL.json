@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a77a810016H93qox74FBzFL",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XFVt4vFbjetwdSWukkzMWj",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3770,
+      "limit": 30
+    },
+    "output": "<file>\n03771|                       className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n03772|                     />\n03773|                   </div>\n03774|                   \n03775|                   {form.toAddressDelivery && (\n03776|                     <div>\n03777|                       <Label className=\"text-white text-xs\">Адрес доставки</Label>\n03778|                       <Input\n03779|                         value={form.toAddress}\n03780|                         onChange={(e) => handleAddressChange('toAddress', e.target.value, e.target)}\n03781|                         placeholder=\"Начните вводить адрес\"\n03782|                         className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n03783|                       />\n03784|                     </div>\n03785|                   )}\n03786|                 </div>\n03787|               </CardContent>\n03788|             </Card>\n03789| \n03790|             {/* Дополнительные параметры */}\n03791|             <Card className=\"bg-gray-800 border-gray-700\">\n03792|               <CardHeader className=\"pb-3\">\n03793|                 <CardTitle className=\"text-white text-lg\">Дополнительные услуги</CardTitle>\n03794|               </CardHeader>\n03795|               <CardContent className=\"space-y-3\">\n03796|                 <div>\n03797|                   <Label className=\"text-white text-xs\">Объявленная стоимость (руб.)</Label>\n03798|                   <Input\n03799|                     type=\"number\"\n03800|                     value={form.declaredValue || ''}\n\n(File has more lines. Use 'offset' parameter to read beyond line 3800)\n</file>",
+    "metadata": {
+      "preview": "                      className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n                    />\n                  </div>\n                  \n                  {form.toAddressDelivery && (\n                    <div>\n                      <Label className=\"text-white text-xs\">Адрес доставки</Label>\n                      <Input\n                        value={form.toAddress}\n                        onChange={(e) => handleAddressChange('toAddress', e.target.value, e.target)}\n                        placeholder=\"Начните вводить адрес\"\n                        className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n                      />\n                    </div>\n                  )}\n                </div>\n              </CardContent>\n            </Card>\n\n            {/* Дополнительные параметры */}"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756385853,
+      "end": 1759756385855
+    }
+  }
+}

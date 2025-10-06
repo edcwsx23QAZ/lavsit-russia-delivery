@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a7b3fb0016cbjXqZDU5uIFk",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01A1UFy47YukRtQA5zVtrGGs",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Город отправления",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 3717:                     <Label className=\"text-white text-xs\">Город отправления</Label>",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "Город отправления",
+    "time": {
+      "start": 1759756400210,
+      "end": 1759756400221
+    }
+  }
+}

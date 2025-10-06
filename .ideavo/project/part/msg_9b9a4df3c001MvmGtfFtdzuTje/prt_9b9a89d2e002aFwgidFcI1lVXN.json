@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a89d2e002aFwgidFcI1lVXN",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01BHbJoWaAySCQJLWegzfJtE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "offset": 135,
+      "limit": 40
+    },
+    "output": "<file>\n00136| /**\n00137|  * Миграция данных при изменении версии структуры\n00138|  */\n00139| const migrateFormData = (oldData: any): StoredFormData | null => {\n00140|   try {\n00141|     // Базовая миграция - приводим к текущей структуре\n00142|     const migratedData: StoredFormData = {\n00143|       version: FORM_VERSION,\n00144|       timestamp: Date.now(),\n00145|       cargos: oldData.cargos || [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00146|       fromCity: oldData.fromCity || '',\n00147|       toCity: oldData.toCity || '',\n00148|       fromAddress: oldData.fromAddress || '',\n00149|       toAddress: oldData.toAddress || '',\n00150|       declaredValue: oldData.declaredValue || 0,\n00151|       needPackaging: oldData.needPackaging || false,\n00152|       needLoading: oldData.needLoading || false,\n00153|       needCarry: oldData.needCarry || false,\n00154|       floor: oldData.floor || 1,\n00155|       hasFreightLift: oldData.hasFreightLift || false,\n00156|       needInsurance: oldData.needInsurance || false,\n00157|       fromTerminal: oldData.fromTerminal ?? true,\n00158|       toTerminal: oldData.toTerminal ?? true,\n00159|       fromAddressDelivery: oldData.fromAddressDelivery || false,\n00160|       toAddressDelivery: oldData.toAddressDelivery || false,\n00161|       selectedProducts: oldData.selectedProducts || [],\n00162|     };\n00163| \n00164|     // Сохраняем мигрированные данные\n00165|     localStorage.setItem(FORM_DATA_KEY, JSON.stringify(migratedData));\n00166|     console.log('✅ Данные успешно мигрированы');\n00167|     return migratedData;\n00168|   } catch (error) {\n00169|     console.error('❌ Ошибка миграции данных:', error);\n00170|     return null;\n00171|   }\n00172| };\n00173| \n00174| /**\n00175|  * Очищает сохраненные данные формы\n\n(File has more lines. Use 'offset' parameter to read beyond line 175)\n</file>",
+    "metadata": {
+      "preview": "/**\n * Миграция данных при изменении версии структуры\n */\nconst migrateFormData = (oldData: any): StoredFormData | null => {\n  try {\n    // Базовая миграция - приводим к текущей структуре\n    const migratedData: StoredFormData = {\n      version: FORM_VERSION,\n      timestamp: Date.now(),\n      cargos: oldData.cargos || [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n      fromCity: oldData.fromCity || '',\n      toCity: oldData.toCity || '',\n      fromAddress: oldData.fromAddress || '',\n      toAddress: oldData.toAddress || '',\n      declaredValue: oldData.declaredValue || 0,\n      needPackaging: oldData.needPackaging || false,\n      needLoading: oldData.needLoading || false,\n      needCarry: oldData.needCarry || false,\n      floor: oldData.floor || 1,\n      hasFreightLift: oldData.hasFreightLift || false,"
+    },
+    "title": "lib/form-storage.ts",
+    "time": {
+      "start": 1759756460001,
+      "end": 1759756460002
+    }
+  }
+}

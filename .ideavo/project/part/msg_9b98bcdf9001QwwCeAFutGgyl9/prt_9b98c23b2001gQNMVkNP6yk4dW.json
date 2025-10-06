@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b98c23b2001gQNMVkNP6yk4dW",
+  "messageID": "msg_9b98bcdf9001QwwCeAFutGgyl9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_012nhuJK5wrr2o9qCPFUiSHi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1090,
+      "limit": 50
+    },
+    "output": "<file>\n01091|               firstWord.includes(t.city?.toLowerCase().split(' ')[0])\n01092|             );\n01093|           }\n01094|         }\n01095|         \n01096|         if (terminal) {\n01097|           console.log('✅ Найден терминал:', { id: terminal.id, city: terminal.city });\n01098|           return terminal.id;\n01099|         } else {\n01100|           console.warn('⚠️ Терминал не найден, используем первый доступный');\n01101|           return data.terminals[0]?.id || null;\n01102|         }\n01103|       }\n01104|       \n01105|       return null;\n01106|     } catch (error) {\n01107|       console.error('Ошибка получения терминалов Деловые Линии:', error);\n01108|       return null;\n01109|     }\n01110|   };\n01111| \n01112|   // Получение UID упаковки \"crate_with_bubble\" из справочника упаковок Деловые Линии с повторной авторизацией\n01113|   const getDellinCrateWithBubbleUid = async (): Promise<string | null> => {\n01114|     const maxRetries = 2;\n01115|     \n01116|     for (let attempt = 1; attempt <= maxRetries; attempt++) {\n01117|       try {\n01118|         console.log(`📦 СПРАВОЧНИК УПАКОВОК: попытка ${attempt}/${maxRetries}`);\n01119|         \n01120|         const response = await fetch('/api/dellin-packages', {\n01121|           method: 'GET',\n01122|           headers: {\n01123|             'Content-Type': 'application/json'\n01124|           }\n01125|         });\n01126| \n01127|         const data = await response.json();\n01128|         console.log('📦 СПРАВОЧНИК УПАКОВОК response.ok:', response.ok);\n01129|         console.log('📦 СПРАВОЧНИК УПАКОВОК status:', response.status);\n01130|         console.log('📦 СПРАВОЧНИК УПАКОВОК data:', data);\n01131|         \n01132|         // Если 401 Unauthorized - пробуем переавторизоваться\n01133|         if (response.status === 401 && attempt < maxRetries) {\n01134|           console.log('🔄 СПРАВОЧНИК УПАКОВОК: получили 401, выполняем повторную авторизацию...');\n01135|           const newSessionId = await getDellinSessionId();\n01136|           if (newSessionId) {\n01137|             console.log('✅ СПРАВОЧНИК УПАКОВОК: получен новый SessionID, повторяем запрос...');\n01138|             continue; // Пробуем еще раз с новой авторизацией\n01139|           } else {\n01140|             console.error('❌ СПРАВОЧНИК УПАКОВОК: не удалось получить новый SessionID');\n\n(File has more lines. Use 'offset' parameter to read beyond line 1140)\n</file>",
+    "metadata": {
+      "preview": "              firstWord.includes(t.city?.toLowerCase().split(' ')[0])\n            );\n          }\n        }\n        \n        if (terminal) {\n          console.log('✅ Найден терминал:', { id: terminal.id, city: terminal.city });\n          return terminal.id;\n        } else {\n          console.warn('⚠️ Терминал не найден, используем первый доступный');\n          return data.terminals[0]?.id || null;\n        }\n      }\n      \n      return null;\n    } catch (error) {\n      console.error('Ошибка получения терминалов Деловые Линии:', error);\n      return null;\n    }\n  };"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759754593416,
+      "end": 1759754593419
+    }
+  }
+}

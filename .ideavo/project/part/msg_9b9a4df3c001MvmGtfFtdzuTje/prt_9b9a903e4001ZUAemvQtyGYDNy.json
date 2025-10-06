@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9a903e4001ZUAemvQtyGYDNy",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01DugxNsmngLFSEYhs7rJtam",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "oldString": "      fromTerminal: formData.fromTerminal ?? true,\n      toTerminal: formData.toTerminal ?? true,\n      fromAddressDelivery: formData.fromAddressDelivery || false,\n      toAddressDelivery: formData.toAddressDelivery || false,\n      selectedProducts: formData.selectedProducts || [],",
+      "newString": "      fromTerminal: formData.fromTerminal ?? true,\n      toTerminal: formData.toTerminal ?? true,\n      fromAddressDelivery: formData.fromAddressDelivery || false,\n      toAddressDelivery: formData.toAddressDelivery || false,\n      fromLavsiteWarehouse: formData.fromLavsiteWarehouse || false,\n      selectedProducts: formData.selectedProducts || [],"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/form-storage.ts\n===================================================================\n--- /home/user/project/lib/form-storage.ts\n+++ /home/user/project/lib/form-storage.ts\n@@ -80,8 +80,9 @@\n   fromTerminal: formData.fromTerminal ?? true,\n   toTerminal: formData.toTerminal ?? true,\n   fromAddressDelivery: formData.fromAddressDelivery || false,\n   toAddressDelivery: formData.toAddressDelivery || false,\n+  fromLavsiteWarehouse: formData.fromLavsiteWarehouse || false,\n   selectedProducts: formData.selectedProducts || [],\n };\n \n localStorage.setItem(FORM_DATA_KEY, JSON.stringify(dataToSave));\n"
+    },
+    "title": "lib/form-storage.ts",
+    "time": {
+      "start": 1759756487880,
+      "end": 1759756487885
+    }
+  }
+}

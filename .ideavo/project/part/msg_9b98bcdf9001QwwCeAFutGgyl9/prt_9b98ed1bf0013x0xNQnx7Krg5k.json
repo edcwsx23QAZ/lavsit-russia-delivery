@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b98ed1bf0013x0xNQnx7Krg5k",
+  "messageID": "msg_9b98bcdf9001QwwCeAFutGgyl9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Tt6DojYnRppmCjs2MkTfVF",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && node test-dellin-terminals.js",
+      "description": "Тест обоих вариантов поиска терминалов"
+    },
+    "output": "🧪 Тестируем поиск терминалов Деловых Линий...\n🔑 Получаем sessionID...\n🔑 Авторизация status: 200\n🔑 Авторизация data: {\n  metadata: { status: 200, generated_at: '2025-10-06 15:46:10' },\n  data: { sessionID: 'EA8D7487-762C-4390-8CEC-83007598D54E' }\n}\n✅ SessionID получен: EA8D7487-762C-4390-8CEC-83007598D54E\n\n=== ТЕСТ 1: Москва с cityid ===\n📤 Запрос для Москвы (cityid): {\n  \"appkey\": \"E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B\",\n  \"sessionID\": \"EA8D7487-762C-4390-8CEC-83007598D54E\",\n  \"cityid\": \"2423\",\n  \"direction\": \"derival\",\n  \"maxCargoDimensions\": {\n    \"length\": 3,\n    \"width\": 3,\n    \"height\": 3,\n    \"weight\": 3,\n    \"maxVolume\": 3,\n    \"totalVolume\": 3,\n    \"totalWeight\": 3\n  },\n  \"express\": true,\n  \"freeStorageDays\": \"2\"\n}\n📥 Ответ API (cityid): 200 OK\n📥 Данные (cityid): {\n  \"terminals\": []\n}\n❌ Терминалы не найдены (cityid)\n\n=== ТЕСТ 2: Москва только с search ===\n📤 Запрос для Москвы (search): {\n  \"appkey\": \"E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B\",\n  \"sessionID\": \"EA8D7487-762C-4390-8CEC-83007598D54E\",\n  \"search\": \"Москва\",\n  \"direction\": \"derival\",\n  \"maxCargoDimensions\": {\n    \"length\": 3,\n    \"width\": 3,\n    \"height\": 3,\n    \"weight\": 3,\n    \"maxVolume\": 3,\n    \"totalVolume\": 3,\n    \"totalWeight\": 3\n  },\n  \"express\": true,\n  \"freeStorageDays\": \"2\"\n}\n📥 Ответ API (search): 200 OK\n📥 Данные (search): {\n  \"terminals\": []\n}\n❌ Терминалы не найдены (search)\n",
+    "metadata": {
+      "output": "🧪 Тестируем поиск терминалов Деловых Линий...\n🔑 Получаем sessionID...\n🔑 Авторизация status: 200\n🔑 Авторизация data: {\n  metadata: { status: 200, generated_at: '2025-10-06 15:46:10' },\n  data: { sessionID: 'EA8D7487-762C-4390-8CEC-83007598D54E' }\n}\n✅ SessionID получен: EA8D7487-762C-4390-8CEC-83007598D54E\n\n=== ТЕСТ 1: Москва с cityid ===\n📤 Запрос для Москвы (cityid): {\n  \"appkey\": \"E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B\",\n  \"sessionID\": \"EA8D7487-762C-4390-8CEC-83007598D54E\",\n  \"cityid\": \"2423\",\n  \"direction\": \"derival\",\n  \"maxCargoDimensions\": {\n    \"length\": 3,\n    \"width\": 3,\n    \"height\": 3,\n    \"weight\": 3,\n    \"maxVolume\": 3,\n    \"totalVolume\": 3,\n    \"totalWeight\": 3\n  },\n  \"express\": true,\n  \"freeStorageDays\": \"2\"\n}\n📥 Ответ API (cityid): 200 OK\n📥 Данные (cityid): {\n  \"terminals\": []\n}\n❌ Терминалы не найдены (cityid)\n\n=== ТЕСТ 2: Москва только с search ===\n📤 Запрос для Москвы (search): {\n  \"appkey\": \"E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B\",\n  \"sessionID\": \"EA8D7487-762C-4390-8CEC-83007598D54E\",\n  \"search\": \"Москва\",\n  \"direction\": \"derival\",\n  \"maxCargoDimensions\": {\n    \"length\": 3,\n    \"width\": 3,\n    \"height\": 3,\n    \"weight\": 3,\n    \"maxVolume\": 3,\n    \"totalVolume\": 3,\n    \"totalWeight\": 3\n  },\n  \"express\": true,\n  \"freeStorageDays\": \"2\"\n}\n📥 Ответ API (search): 200 OK\n📥 Данные (search): {\n  \"terminals\": []\n}\n❌ Терминалы не найдены (search)\n",
+      "exit": 0,
+      "description": "Тест обоих вариантов поиска терминалов"
+    },
+    "title": "cd /home/user/project && node test-dellin-terminals.js",
+    "time": {
+      "start": 1759754769626,
+      "end": 1759754771888
+    }
+  }
+}

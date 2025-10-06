@@ -2,7 +2,7 @@
 
 // Константы для ключей localStorage
 const FORM_DATA_KEY = 'deliveryFormData';
-const FORM_VERSION = '1.0'; // Для миграции данных при изменении структуры
+const FORM_VERSION = '1.1'; // Для миграции данных при изменении структуры (добавлен fromLavsiteWarehouse)
 
 export interface StoredFormData {
   version: string;
@@ -29,6 +29,7 @@ export interface StoredFormData {
   toTerminal: boolean;
   fromAddressDelivery: boolean;
   toAddressDelivery: boolean;
+  fromLavsiteWarehouse: boolean;
   selectedProducts: Array<{
     product: {
       id: string;
@@ -80,6 +81,7 @@ export const saveFormData = (formData: Partial<StoredFormData>): boolean => {
       toTerminal: formData.toTerminal ?? true,
       fromAddressDelivery: formData.fromAddressDelivery || false,
       toAddressDelivery: formData.toAddressDelivery || false,
+      fromLavsiteWarehouse: formData.fromLavsiteWarehouse || false,
       selectedProducts: formData.selectedProducts || [],
     };
 
@@ -157,6 +159,7 @@ const migrateFormData = (oldData: any): StoredFormData | null => {
       toTerminal: oldData.toTerminal ?? true,
       fromAddressDelivery: oldData.fromAddressDelivery || false,
       toAddressDelivery: oldData.toAddressDelivery || false,
+      fromLavsiteWarehouse: oldData.fromLavsiteWarehouse || false,
       selectedProducts: oldData.selectedProducts || [],
     };
 

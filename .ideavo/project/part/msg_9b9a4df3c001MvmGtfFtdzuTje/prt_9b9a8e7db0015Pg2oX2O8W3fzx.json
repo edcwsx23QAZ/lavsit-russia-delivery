@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a8e7db0015Pg2oX2O8W3fzx",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01FAZBwHxgjrBoa9doChNa3T",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "offset": 60,
+      "limit": 20
+    },
+    "output": "<file>\n00061|     if (typeof window === 'undefined') {\n00062|       return false; // SSR safe\n00063|     }\n00064| \n00065|     const dataToSave: StoredFormData = {\n00066|       version: FORM_VERSION,\n00067|       timestamp: Date.now(),\n00068|       cargos: formData.cargos || [],\n00069|       fromCity: formData.fromCity || '',\n00070|       toCity: formData.toCity || '',\n00071|       fromAddress: formData.fromAddress || '',\n00072|       toAddress: formData.toAddress || '',\n00073|       declaredValue: formData.declaredValue || 0,\n00074|       needPackaging: formData.needPackaging || false,\n00075|       needLoading: formData.needLoading || false,\n00076|       needCarry: formData.needCarry || false,\n00077|       floor: formData.floor || 1,\n00078|       hasFreightLift: formData.hasFreightLift || false,\n00079|       needInsurance: formData.needInsurance || false,\n00080|       fromTerminal: formData.fromTerminal ?? true,\n\n(File has more lines. Use 'offset' parameter to read beyond line 80)\n</file>",
+    "metadata": {
+      "preview": "    if (typeof window === 'undefined') {\n      return false; // SSR safe\n    }\n\n    const dataToSave: StoredFormData = {\n      version: FORM_VERSION,\n      timestamp: Date.now(),\n      cargos: formData.cargos || [],\n      fromCity: formData.fromCity || '',\n      toCity: formData.toCity || '',\n      fromAddress: formData.fromAddress || '',\n      toAddress: formData.toAddress || '',\n      declaredValue: formData.declaredValue || 0,\n      needPackaging: formData.needPackaging || false,\n      needLoading: formData.needLoading || false,\n      needCarry: formData.needCarry || false,\n      floor: formData.floor || 1,\n      hasFreightLift: formData.hasFreightLift || false,\n      needInsurance: formData.needInsurance || false,\n      fromTerminal: formData.fromTerminal ?? true,"
+    },
+    "title": "lib/form-storage.ts",
+    "time": {
+      "start": 1759756479098,
+      "end": 1759756479100
+    }
+  }
+}

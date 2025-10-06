@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a734ed001iO5Tv6YUyn5l63",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_017pFUY39gRS3FecZXCigNhv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1155,
+      "limit": 50
+    },
+    "output": "<file>\n01156|   };\n01157| \n01158|   // Получение терминалов Деловые Линии для города\n01159|   const getDellinTerminal = async (citySearch: string): Promise<string | null> => {\n01160|     try {\n01161|       // Нормализуем название города для поиска\n01162|       const normalizedCity = citySearch.toLowerCase().trim()\n01163|         .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n01164|         .replace(/^город\\s+/, '') // Убираем префикс \"город \"\n01165|         .replace(/\\s+/g, ' '); // Нормализуем пробелы\n01166| \n01167|       console.log('🔍 Поиск терминала для города:', normalizedCity);\n01168| \n01169|       // Используем правильный API endpoint для поиска терминалов\n01170|       const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n01171|         method: 'POST',\n01172|         headers: {\n01173|           'Content-Type': 'application/json'\n01174|         },\n01175|         body: JSON.stringify({\n01176|           appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n01177|           sessionID: '00000000-0000-0000-0000-000000000000', // Временный sessionID\n01178|           search: normalizedCity,\n01179|           direction: 'arrival', // или 'derival' в зависимости от направления\n01180|           maxCargoDimensions: {\n01181|             length: 3.0,\n01182|             width: 3.0,\n01183|             height: 3.0,\n01184|             weight: 3.0,\n01185|             maxVolume: 3.0,\n01186|             totalVolume: 3.0,\n01187|             totalWeight: 3.0\n01188|           },\n01189|           express: true,\n01190|           freeStorageDays: '2'\n01191|         })\n01192|       });\n01193| \n01194|       const data = await response.json();\n01195|       console.log('🚛 Деловые Линии терминалы response:', data);\n01196|       \n01197|       if (response.ok && data.terminals && data.terminals.length > 0) {\n01198|         console.log('🔍 Найденные терминалы:', data.terminals.map((t: any) => ({\n01199|           id: t.id,\n01200|           city: t.city,\n01201|           name: t.name,\n01202|           address: t.address,\n01203|           default: t.default\n01204|         })));\n01205|         \n\n(File has more lines. Use 'offset' parameter to read beyond line 1205)\n</file>",
+    "metadata": {
+      "preview": "  };\n\n  // Получение терминалов Деловые Линии для города\n  const getDellinTerminal = async (citySearch: string): Promise<string | null> => {\n    try {\n      // Нормализуем название города для поиска\n      const normalizedCity = citySearch.toLowerCase().trim()\n        .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n        .replace(/^город\\s+/, '') // Убираем префикс \"город \"\n        .replace(/\\s+/g, ' '); // Нормализуем пробелы\n\n      console.log('🔍 Поиск терминала для города:', normalizedCity);\n\n      // Используем правильный API endpoint для поиска терминалов\n      const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json'\n        },\n        body: JSON.stringify({"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756367825,
+      "end": 1759756367827
+    }
+  }
+}

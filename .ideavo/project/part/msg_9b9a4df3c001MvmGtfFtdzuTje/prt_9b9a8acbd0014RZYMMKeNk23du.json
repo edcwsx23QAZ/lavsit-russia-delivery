@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9a8acbd0014RZYMMKeNk23du",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01P8x9TXg1nXJK9YtDrZkpba",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "oldString": "      fromTerminal: oldData.fromTerminal ?? true,\n      toTerminal: oldData.toTerminal ?? true,\n      fromAddressDelivery: oldData.fromAddressDelivery || false,\n      toAddressDelivery: oldData.toAddressDelivery || false,\n      selectedProducts: oldData.selectedProducts || [],",
+      "newString": "      fromTerminal: oldData.fromTerminal ?? true,\n      toTerminal: oldData.toTerminal ?? true,\n      fromAddressDelivery: oldData.fromAddressDelivery || false,\n      toAddressDelivery: oldData.toAddressDelivery || false,\n      fromLavsiteWarehouse: oldData.fromLavsiteWarehouse || false,\n      selectedProducts: oldData.selectedProducts || [],"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/form-storage.ts\n===================================================================\n--- /home/user/project/lib/form-storage.ts\n+++ /home/user/project/lib/form-storage.ts\n@@ -157,8 +157,9 @@\n   fromTerminal: oldData.fromTerminal ?? true,\n   toTerminal: oldData.toTerminal ?? true,\n   fromAddressDelivery: oldData.fromAddressDelivery || false,\n   toAddressDelivery: oldData.toAddressDelivery || false,\n+  fromLavsiteWarehouse: oldData.fromLavsiteWarehouse || false,\n   selectedProducts: oldData.selectedProducts || [],\n };\n \n // Сохраняем мигрированные данные\n"
+    },
+    "title": "lib/form-storage.ts",
+    "time": {
+      "start": 1759756465965,
+      "end": 1759756465969
+    }
+  }
+}

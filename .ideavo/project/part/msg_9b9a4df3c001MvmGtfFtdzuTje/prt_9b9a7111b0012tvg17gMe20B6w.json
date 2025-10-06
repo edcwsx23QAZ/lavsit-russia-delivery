@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9a7111b0012tvg17gMe20B6w",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01VSvdZfFNkpuGGXi2vC3gUo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Используем правильный API endpoint для поиска терминалов\n      const requestBody = {\n        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n        sessionID: sessionID,\n        search: normalizedCity,\n        direction: direction\n      };",
+      "newString": "      // Используем правильный API endpoint для поиска терминалов\n      // Структура запроса согласно API Деловых Линий\n      const requestBody = {\n        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n        sessionID: sessionID,\n        search: normalizedCity,\n        direction: direction,\n        maxCargoDimensions: {\n          length: 3.0,\n          width: 3.0,\n          height: 3.0,\n          weight: 3.0,\n          maxVolume: 3.0,\n          totalVolume: 3.0,\n          totalWeight: 3.0\n        },\n        express: true,\n        freeStorageDays: \"2\"\n      };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1083,13 +1083,25 @@\n console.log(`🔍 Поиск терминала ${direction} для города:`, normalizedCity);\n console.log(`🔑 Используем sessionID:`, sessionID);\n \n // Используем правильный API endpoint для поиска терминалов\n+// Структура запроса согласно API Деловых Линий\n const requestBody = {\n   appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n   sessionID: sessionID,\n   search: normalizedCity,\n-  direction: direction\n+  direction: direction,\n+  maxCargoDimensions: {\n+    length: 3.0,\n+    width: 3.0,\n+    height: 3.0,\n+    weight: 3.0,\n+    maxVolume: 3.0,\n+    totalVolume: 3.0,\n+    totalWeight: 3.0\n+  },\n+  express: true,\n+  freeStorageDays: \"2\"\n };\n \n console.log(`📤 Запрос терминалов ${direction}:`, JSON.stringify(requestBody, null, 2));\n \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756363829,
+      "end": 1759756363848
+    }
+  }
+}

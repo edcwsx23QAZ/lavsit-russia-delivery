@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a6b1d70015pHCsvIumbDb7F",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01VpAnsEYs1dTGiy5hokuLWp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3710,
+      "limit": 60
+    },
+    "output": "<file>\n03711|                         <div>Длина: {group.length} см</div>\n03712|                         <div>Ширина: {group.width} см</div>\n03713|                         <div>Высота: {group.height} см</div>\n03714|                         <div>Вес: {group.weight} кг</div>\n03715|                         <div className=\"col-span-2 text-xs text-blue-300 mt-1\">\n03716|                           Общий вес: {(group.weight * group.quantity).toFixed(1)} кг, \n03717|                           объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³\n03718|                         </div>\n03719|                       </div>\n03720|                     )}\n03721|                   </div>\n03722|                 ))}\n03723|                 <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">\n03724|                   <Plus className=\"h-3 w-3 mr-1\" />\n03725|                   Добавить груз\n03726|                 </Button>\n03727|               </CardContent>\n03728|             </Card>\n03729| \n03730|             {/* Маршрут */}\n03731|             <Card className=\"bg-gray-800 border-gray-700\">\n03732|               <CardHeader className=\"pb-3\">\n03733|                 <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n03734|                   <Map className=\"h-4 w-4\" />\n03735|                   Маршрут\n03736|                 </CardTitle>\n03737|               </CardHeader>\n03738|               <CardContent className=\"space-y-3\">\n03739|                 {/* Отправление */}\n03740|                 <div className=\"space-y-2\">\n03741|                   <Label className=\"text-sm font-medium text-white\">Отправление</Label>\n03742|                   <div className=\"flex gap-3\">\n03743|                     <label className=\"flex items-center space-x-1\">\n03744|                       <input\n03745|                         type=\"radio\"\n03746|                         name=\"fromDelivery\"\n03747|                         checked={form.fromTerminal}\n03748|                         onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false }))}\n03749|                       />\n03750|                       <span className=\"text-white text-xs\">От терминала</span>\n03751|                     </label>\n03752|                     <label className=\"flex items-center space-x-1\">\n03753|                       <input\n03754|                         type=\"radio\"\n03755|                         name=\"fromDelivery\"\n03756|                         checked={form.fromAddressDelivery}\n03757|                         onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true }))}\n03758|                       />\n03759|                       <span className=\"text-white text-xs\">От адреса</span>\n03760|                     </label>\n03761|                   </div>\n03762|                   \n03763|                   <div>\n03764|                     <Label className=\"text-white text-xs\">Город отправления</Label>\n03765|                     <Input\n03766|                       value={form.fromCity}\n03767|                       onChange={(e) => handleAddressChange('fromCity', e.target.value, e.target)}\n03768|                       placeholder=\"Начните вводить город\"\n03769|                       className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n03770|                     />\n\n(File has more lines. Use 'offset' parameter to read beyond line 3770)\n</file>",
+    "metadata": {
+      "preview": "                        <div>Длина: {group.length} см</div>\n                        <div>Ширина: {group.width} см</div>\n                        <div>Высота: {group.height} см</div>\n                        <div>Вес: {group.weight} кг</div>\n                        <div className=\"col-span-2 text-xs text-blue-300 mt-1\">\n                          Общий вес: {(group.weight * group.quantity).toFixed(1)} кг, \n                          объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³\n                        </div>\n                      </div>\n                    )}\n                  </div>\n                ))}\n                <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">\n                  <Plus className=\"h-3 w-3 mr-1\" />\n                  Добавить груз\n                </Button>\n              </CardContent>\n            </Card>\n\n            {/* Маршрут */}"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756334239,
+      "end": 1759756334242
+    }
+  }
+}

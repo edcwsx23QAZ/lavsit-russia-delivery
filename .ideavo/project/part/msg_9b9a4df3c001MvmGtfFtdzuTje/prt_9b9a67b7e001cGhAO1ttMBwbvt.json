@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a67b7e001cGhAO1ttMBwbvt",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_012MqRXwtAm6JytRijHsEWge",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 580,
+      "limit": 50
+    },
+    "output": "<file>\n00581|       return;\n00582|     }\n00583| \n00584|     setActiveField(field);\n00585|     \n00586|     // Установка позиции автоподсказок\n00587|     if (element) {\n00588|       const rect = element.getBoundingClientRect();\n00589|       setSuggestionPosition({\n00590|         top: rect.bottom + window.scrollY,\n00591|         left: rect.left + window.scrollX\n00592|       });\n00593|     }\n00594|     \n00595|     try {\n00596|       const response = await fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {\n00597|         method: 'POST',\n00598|         headers: {\n00599|           'Content-Type': 'application/json',\n00600|           'Accept': 'application/json',\n00601|           'Authorization': 'Token eb87bbb3789bb43ed465f796892ea951f9e91008'\n00602|         },\n00603|         body: JSON.stringify({\n00604|           query: query,\n00605|           count: 10,\n00606|           // Ограничение для полей городов - только города\n00607|           ...(field === 'fromCity' || field === 'toCity' ? {\n00608|             restrict_value: true,\n00609|             locations: [{\n00610|               country: 'Россия'\n00611|             }],\n00612|             from_bound: { value: 'city' },\n00613|             to_bound: { value: 'city' }\n00614|           } : {})\n00615|         })\n00616|       });\n00617| \n00618|       if (response.ok) {\n00619|         const data = await response.json();\n00620|         setSuggestions(data.suggestions || []);\n00621|         setShowSuggestions(true);\n00622|       }\n00623|     } catch (error) {\n00624|       console.error('Ошибка получения подсказок:', error);\n00625|     }\n00626|   }, []);\n00627| \n00628|   const debounceTimer = React.useRef<NodeJS.Timeout>();\n00629|   const handleAddressChange = (field: string, value: string, element?: HTMLInputElement) => {\n00630|     setForm(prev => ({ ...prev, [field]: value }));\n\n(File has more lines. Use 'offset' parameter to read beyond line 630)\n</file>",
+    "metadata": {
+      "preview": "      return;\n    }\n\n    setActiveField(field);\n    \n    // Установка позиции автоподсказок\n    if (element) {\n      const rect = element.getBoundingClientRect();\n      setSuggestionPosition({\n        top: rect.bottom + window.scrollY,\n        left: rect.left + window.scrollX\n      });\n    }\n    \n    try {\n      const response = await fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Accept': 'application/json',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756320253,
+      "end": 1759756320255
+    }
+  }
+}

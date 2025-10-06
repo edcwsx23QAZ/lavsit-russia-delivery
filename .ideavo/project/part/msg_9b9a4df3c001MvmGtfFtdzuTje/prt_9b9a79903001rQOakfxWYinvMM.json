@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a79903001rQOakfxWYinvMM",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QAosCXVRMocm5btZKv74He",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3788,
+      "limit": 20
+    },
+    "output": "<file>\n03789| \n03790|             {/* Дополнительные параметры */}\n03791|             <Card className=\"bg-gray-800 border-gray-700\">\n03792|               <CardHeader className=\"pb-3\">\n03793|                 <CardTitle className=\"text-white text-lg\">Дополнительные услуги</CardTitle>\n03794|               </CardHeader>\n03795|               <CardContent className=\"space-y-3\">\n03796|                 <div>\n03797|                   <Label className=\"text-white text-xs\">Объявленная стоимость (руб.)</Label>\n03798|                   <Input\n03799|                     type=\"number\"\n03800|                     value={form.declaredValue || ''}\n03801|                     onChange={(e) => setForm(prev => ({ ...prev, declaredValue: Number(e.target.value) }))}\n03802|                     className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n03803|                   />\n03804|                 </div>\n03805|                 \n03806|                 <div className=\"space-y-2\">\n03807|                   <div className=\"flex items-center space-x-2\">\n03808|                     <Checkbox\n\n(File has more lines. Use 'offset' parameter to read beyond line 3808)\n</file>",
+    "metadata": {
+      "preview": "\n            {/* Дополнительные параметры */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-3\">\n                <CardTitle className=\"text-white text-lg\">Дополнительные услуги</CardTitle>\n              </CardHeader>\n              <CardContent className=\"space-y-3\">\n                <div>\n                  <Label className=\"text-white text-xs\">Объявленная стоимость (руб.)</Label>\n                  <Input\n                    type=\"number\"\n                    value={form.declaredValue || ''}\n                    onChange={(e) => setForm(prev => ({ ...prev, declaredValue: Number(e.target.value) }))}\n                    className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n                  />\n                </div>\n                \n                <div className=\"space-y-2\">\n                  <div className=\"flex items-center space-x-2\">\n                    <Checkbox"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756393248,
+      "end": 1759756393251
+    }
+  }
+}

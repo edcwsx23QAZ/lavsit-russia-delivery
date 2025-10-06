@@ -1,0 +1,24 @@
+{
+  "id": "prt_9b98c0d76001Ni6VrSicIBgv0Q",
+  "messageID": "msg_9b98bcdf9001QwwCeAFutGgyl9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01Bz4xd9iriWLrRqWLSdr3Kn",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "getDellinTerminal"
+    },
+    "output": "Found 3 matches\n/home/user/project/app/page.tsx:\n  Line 1043:   const getDellinTerminal = async (citySearch: string): Promise<string | null> => {\n  Line 1215:       const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n  Line 1216:       const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;",
+    "metadata": {
+      "matches": 3,
+      "truncated": false
+    },
+    "title": "getDellinTerminal",
+    "time": {
+      "start": 1759754587774,
+      "end": 1759754587788
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9a8343b001SXUaRab4ADB5BU",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01CLFaiHAHxxMKy5S1aMxgfN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npx tsc --noEmit",
+      "description": "Check TypeScript compilation for errors"
+    },
+    "output": "app/page.tsx(270,49): error TS2339: Property 'fromLavsiteWarehouse' does not exist on type 'StoredFormData'.\n",
+    "metadata": {
+      "output": "app/page.tsx(270,49): error TS2339: Property 'fromLavsiteWarehouse' does not exist on type 'StoredFormData'.\n",
+      "exit": 2,
+      "description": "Check TypeScript compilation for errors"
+    },
+    "title": "cd /home/user/project && npx tsc --noEmit",
+    "time": {
+      "start": 1759756433049,
+      "end": 1759756441777
+    }
+  }
+}

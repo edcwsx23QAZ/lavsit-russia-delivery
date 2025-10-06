@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a6279d001TsFp7nOZNl7F67",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011bXEZJWj9ArS52FC211bpL",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 250,
+      "limit": 30
+    },
+    "output": "<file>\n00251|         if (savedFormData) {\n00252|           // Конвертируем загруженные данные в формат компонента\n00253|           const restoredForm: DeliveryForm = {\n00254|             cargos: savedFormData.cargos.length > 0 ? savedFormData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00255|             fromCity: savedFormData.fromCity,\n00256|             toCity: savedFormData.toCity,\n00257|             fromAddress: savedFormData.fromAddress,\n00258|             toAddress: savedFormData.toAddress,\n00259|             declaredValue: savedFormData.declaredValue,\n00260|             needPackaging: savedFormData.needPackaging,\n00261|             needLoading: savedFormData.needLoading,\n00262|             needCarry: savedFormData.needCarry,\n00263|             floor: savedFormData.floor,\n00264|             hasFreightLift: savedFormData.hasFreightLift,\n00265|             needInsurance: savedFormData.needInsurance,\n00266|             fromTerminal: savedFormData.fromTerminal,\n00267|             toTerminal: savedFormData.toTerminal,\n00268|             fromAddressDelivery: savedFormData.fromAddressDelivery,\n00269|             toAddressDelivery: savedFormData.toAddressDelivery,\n00270|             selectedProducts: savedFormData.selectedProducts,\n00271|           };\n00272|           \n00273|           setForm(restoredForm);\n00274|           console.log('✅ Данные формы успешно восстановлены из localStorage');\n00275|           \n00276|           // Диагностика времени для Supabase\n00277|           const currentTime = Math.floor(Date.now() / 1000);\n00278|           console.log('🕒 Текущее время (timestamp):', currentTime);\n00279|           console.log('🕒 Текущее время (ISO):', new Date().toISOString());\n00280|         } else {\n\n(File has more lines. Use 'offset' parameter to read beyond line 280)\n</file>",
+    "metadata": {
+      "preview": "        if (savedFormData) {\n          // Конвертируем загруженные данные в формат компонента\n          const restoredForm: DeliveryForm = {\n            cargos: savedFormData.cargos.length > 0 ? savedFormData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n            fromCity: savedFormData.fromCity,\n            toCity: savedFormData.toCity,\n            fromAddress: savedFormData.fromAddress,\n            toAddress: savedFormData.toAddress,\n            declaredValue: savedFormData.declaredValue,\n            needPackaging: savedFormData.needPackaging,\n            needLoading: savedFormData.needLoading,\n            needCarry: savedFormData.needCarry,\n            floor: savedFormData.floor,\n            hasFreightLift: savedFormData.hasFreightLift,\n            needInsurance: savedFormData.needInsurance,\n            fromTerminal: savedFormData.fromTerminal,\n            toTerminal: savedFormData.toTerminal,\n            fromAddressDelivery: savedFormData.fromAddressDelivery,\n            toAddressDelivery: savedFormData.toAddressDelivery,\n            selectedProducts: savedFormData.selectedProducts,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756298831,
+      "end": 1759756298834
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b98e66c40017PlYnuFhaEvEnF",
+  "messageID": "msg_9b98bcdf9001QwwCeAFutGgyl9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01PAFnxoprZJCmzpPibSADYC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && node test-dellin-terminals.js",
+      "description": "Тест с cityid для Москвы"
+    },
+    "output": "🧪 Тестируем поиск терминалов Деловых Линий...\n🔑 Получаем sessionID...\n🔑 Авторизация status: 200\n🔑 Авторизация data: {\n  metadata: { status: 200, generated_at: '2025-10-06 15:45:43' },\n  data: { sessionID: '9DFA2F03-5AAF-4238-8505-3856FF58DFD1' }\n}\n✅ SessionID получен: 9DFA2F03-5AAF-4238-8505-3856FF58DFD1\n📤 Запрос для Москвы: {\n  \"appkey\": \"E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B\",\n  \"sessionID\": \"9DFA2F03-5AAF-4238-8505-3856FF58DFD1\",\n  \"cityid\": \"2423\",\n  \"search\": \"Москва\",\n  \"direction\": \"derival\",\n  \"maxCargoDimensions\": {\n    \"length\": 3,\n    \"width\": 3,\n    \"height\": 3,\n    \"weight\": 3,\n    \"maxVolume\": 3,\n    \"totalVolume\": 3,\n    \"totalWeight\": 3\n  },\n  \"express\": true,\n  \"freeStorageDays\": \"2\"\n}\n📥 Ответ API: 200 OK\n📥 Данные: {\n  \"errors\": {\n    \"cityid\": \"Указаны взаимоисключающие параметры, только один из которых может присутствовать в запросе: cityid, search\",\n    \"search\": \"Указаны взаимоисключающие параметры, только один из которых может присутствовать в запросе: cityid, search\"\n  }\n}\n❌ Терминалы не найдены\n",
+    "metadata": {
+      "output": "🧪 Тестируем поиск терминалов Деловых Линий...\n🔑 Получаем sessionID...\n🔑 Авторизация status: 200\n🔑 Авторизация data: {\n  metadata: { status: 200, generated_at: '2025-10-06 15:45:43' },\n  data: { sessionID: '9DFA2F03-5AAF-4238-8505-3856FF58DFD1' }\n}\n✅ SessionID получен: 9DFA2F03-5AAF-4238-8505-3856FF58DFD1\n📤 Запрос для Москвы: {\n  \"appkey\": \"E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B\",\n  \"sessionID\": \"9DFA2F03-5AAF-4238-8505-3856FF58DFD1\",\n  \"cityid\": \"2423\",\n  \"search\": \"Москва\",\n  \"direction\": \"derival\",\n  \"maxCargoDimensions\": {\n    \"length\": 3,\n    \"width\": 3,\n    \"height\": 3,\n    \"weight\": 3,\n    \"maxVolume\": 3,\n    \"totalVolume\": 3,\n    \"totalWeight\": 3\n  },\n  \"express\": true,\n  \"freeStorageDays\": \"2\"\n}\n📥 Ответ API: 200 OK\n📥 Данные: {\n  \"errors\": {\n    \"cityid\": \"Указаны взаимоисключающие параметры, только один из которых может присутствовать в запросе: cityid, search\",\n    \"search\": \"Указаны взаимоисключающие параметры, только один из которых может присутствовать в запросе: cityid, search\"\n  }\n}\n❌ Терминалы не найдены\n",
+      "exit": 0,
+      "description": "Тест с cityid для Москвы"
+    },
+    "title": "cd /home/user/project && node test-dellin-terminals.js",
+    "time": {
+      "start": 1759754742304,
+      "end": 1759754744380
+    }
+  }
+}

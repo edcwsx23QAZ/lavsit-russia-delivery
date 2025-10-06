@@ -1,0 +1,24 @@
+{
+  "id": "prt_9b9a53dc70017UO1ixwujwkwOn",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01QoBwZnqWLtZYkkvpzLnngi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "request_terminals"
+    },
+    "output": "Found 6 matches\n/home/user/project/app/page.tsx:\n  Line 1071:       const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n  Line 1133:       const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n\n/home/user/project/test-dellin-terminals-simple.js:\n  Line 41:     const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n  Line 54:     const response2 = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n\n/home/user/project/test-dellin-terminals.js:\n  Line 78:     let response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n  Line 124:     response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {",
+    "metadata": {
+      "matches": 6,
+      "truncated": false
+    },
+    "title": "request_terminals",
+    "time": {
+      "start": 1759756238702,
+      "end": 1759756238715
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "id": "prt_9b98bc817001W0NQ40xEn8G2Oa",
+  "type": "text",
+  "text": "Ошибка Деловых Линий повторяется:\nНе найден терминал Деловых Линий в городе отправления: г Москва\n\nНапоминаю, что поиск терминала идет следующим образом:\nАдрес метода: https://api.dellin.ru/v1/public/request_terminals.json\n\n\n{  \n   \"appkey\":\"00000000-0000-0000-0000-000000000000\",\n   \"sessionID\":\"00000000-0000-0000-0000-000000000000\",\n   \"code\":\"7800000000000000000000000\",\n   \"cityid\":\"2423\",\n   \"search\":\"Санкт-Петербург\",\n   \"direction\":\"derival\",\n   \"maxCargoDimensions\":{\n      \"length\":3.0,\n      \"width\":3.0,\n      \"height\":3.0,\n      \"weight\":3.0,\n      \"maxVolume\":3.0,\n      \"totalVolume\":3.0,\n      \"totalWeight\":3.0\n   },\n   \"express\":true,\n   \"freeStorageDays\":\"2\"\n}\n\nЗапрос выше - пример, все переменные, включая Appkey заполнены для примера. Для реального запроса использовать реальные переменные\n\nСтруктура ответа:\n{  \n   \"terminals\":[  \n      {  \n         \"id\":1,\n         \"city\":\"Санкт-Петербург\",\n         \"cityID\":1,\n         \"city_code\":\"7800000000000000000000000\",\n         \"name\":\"Санкт-Петербург-Парнас\",\n         \"address\":\"Санкт-Петербург, 1-й Верхний пер, дом № 12, литера Б\",\n         \"default\":true,\n         \"express\":true\n      }\n   ]\n}",
+  "messageID": "msg_9b98bc8160017WIdECV508rGCC",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14"
+}

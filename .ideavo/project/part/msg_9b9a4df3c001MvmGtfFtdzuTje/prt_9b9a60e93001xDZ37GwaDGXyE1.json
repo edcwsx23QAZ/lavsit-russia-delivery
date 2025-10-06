@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9a60e93001xDZ37GwaDGXyE1",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01VhynJSM1qvPFGJkie5sLo1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  // Начальное состояние формы\n  const initialFormState: DeliveryForm = {\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false,\n    selectedProducts: []\n  };",
+      "newString": "  // Начальное состояние формы\n  const initialFormState: DeliveryForm = {\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false,\n    fromLavsiteWarehouse: false,\n    selectedProducts: []\n  };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -125,8 +125,9 @@\n   fromTerminal: true,\n   toTerminal: true,\n   fromAddressDelivery: false,\n   toAddressDelivery: false,\n+  fromLavsiteWarehouse: false,\n   selectedProducts: []\n };\n \n const [form, setForm] = useState<DeliveryForm>(initialFormState);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756295499,
+      "end": 1759756295517
+    }
+  }
+}

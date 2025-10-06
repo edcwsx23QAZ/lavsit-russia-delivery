@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a7becc0010e0tmlBNoqUCSE",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0197qmGWirKAhEpyi69KPP5D",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3715,
+      "limit": 25
+    },
+    "output": "<file>\n03716|                   <div>\n03717|                     <Label className=\"text-white text-xs\">Город отправления</Label>\n03718|                     <Input\n03719|                       value={form.fromCity}\n03720|                       onChange={(e) => handleAddressChange('fromCity', e.target.value, e.target)}\n03721|                       placeholder=\"Начните вводить город\"\n03722|                       className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n03723|                     />\n03724|                   </div>\n03725|                   \n03726|                   {form.fromAddressDelivery && (\n03727|                     <div>\n03728|                       <Label className=\"text-white text-xs\">Адрес отправления</Label>\n03729|                       <Input\n03730|                         value={form.fromAddress}\n03731|                         onChange={(e) => handleAddressChange('fromAddress', e.target.value, e.target)}\n03732|                         placeholder=\"Начните вводить адрес\"\n03733|                         className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n03734|                       />\n03735|                     </div>\n03736|                   )}\n03737|                 </div>\n03738| \n03739|                 <Separator className=\"bg-gray-600\" />\n03740| \n\n(File has more lines. Use 'offset' parameter to read beyond line 3740)\n</file>",
+    "metadata": {
+      "preview": "                  <div>\n                    <Label className=\"text-white text-xs\">Город отправления</Label>\n                    <Input\n                      value={form.fromCity}\n                      onChange={(e) => handleAddressChange('fromCity', e.target.value, e.target)}\n                      placeholder=\"Начните вводить город\"\n                      className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n                    />\n                  </div>\n                  \n                  {form.fromAddressDelivery && (\n                    <div>\n                      <Label className=\"text-white text-xs\">Адрес отправления</Label>\n                      <Input\n                        value={form.fromAddress}\n                        onChange={(e) => handleAddressChange('fromAddress', e.target.value, e.target)}\n                        placeholder=\"Начните вводить адрес\"\n                        className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n                      />\n                    </div>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756403016,
+      "end": 1759756403018
+    }
+  }
+}

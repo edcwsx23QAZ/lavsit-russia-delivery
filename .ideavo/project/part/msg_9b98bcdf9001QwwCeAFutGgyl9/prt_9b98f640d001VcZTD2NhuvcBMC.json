@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b98f640d001VcZTD2NhuvcBMC",
+  "messageID": "msg_9b98bcdf9001QwwCeAFutGgyl9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01X4Mgod2jXD1Yxff94ctLj8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && pkill -f \"next dev\" || true",
+      "description": "Остановка dev сервера"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Остановка dev сервера"
+    },
+    "title": "cd /home/user/project && pkill -f \"next dev\" || true",
+    "time": {
+      "start": 1759754806915,
+      "end": 1759754806936
+    }
+  }
+}

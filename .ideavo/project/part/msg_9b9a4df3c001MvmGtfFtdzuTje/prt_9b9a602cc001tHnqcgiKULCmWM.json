@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a602cc001tHnqcgiKULCmWM",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01B7rCG31Kh1JAuHn4ct9weX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 110,
+      "limit": 30
+    },
+    "output": "<file>\n00111|   // Начальное состояние формы\n00112|   const initialFormState: DeliveryForm = {\n00113|     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00114|     fromCity: '',\n00115|     toCity: '',\n00116|     fromAddress: '',\n00117|     toAddress: '',\n00118|     declaredValue: 0,\n00119|     needPackaging: false,\n00120|     needLoading: false,\n00121|     needCarry: false,\n00122|     floor: 1,\n00123|     hasFreightLift: false,\n00124|     needInsurance: false,\n00125|     fromTerminal: true,\n00126|     toTerminal: true,\n00127|     fromAddressDelivery: false,\n00128|     toAddressDelivery: false,\n00129|     selectedProducts: []\n00130|   };\n00131| \n00132|   const [form, setForm] = useState<DeliveryForm>(initialFormState);\n00133|   const [isLoaded, setIsLoaded] = useState(false);\n00134|   const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);\n00135|   const [isFormChanged, setIsFormChanged] = useState(false);\n00136|   \n00137|   // Создаем дебаунс функцию для сохранения (сохраняем через 1 секунду после последнего изменения)\n00138|   const debouncedSave = useMemo(() => {\n00139|     const saver = createDebouncedSaver(1000);\n00140|     // Оборачиваем в функцию, которая обновляет индикаторы\n\n(File has more lines. Use 'offset' parameter to read beyond line 140)\n</file>",
+    "metadata": {
+      "preview": "  // Начальное состояние формы\n  const initialFormState: DeliveryForm = {\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false,\n    selectedProducts: []\n  };"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756289247,
+      "end": 1759756289250
+    }
+  }
+}

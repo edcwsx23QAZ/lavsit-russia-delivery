@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a687ba0010i2IxmMWG3Tnbu",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01N2de6qrwXmcR3X8VjGWiUb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 620,
+      "limit": 20
+    },
+    "output": "<file>\n00621|         setShowSuggestions(true);\n00622|       }\n00623|     } catch (error) {\n00624|       console.error('Ошибка получения подсказок:', error);\n00625|     }\n00626|   }, []);\n00627| \n00628|   const debounceTimer = React.useRef<NodeJS.Timeout>();\n00629|   const handleAddressChange = (field: string, value: string, element?: HTMLInputElement) => {\n00630|     setForm(prev => ({ ...prev, [field]: value }));\n00631|     \n00632|     clearTimeout(debounceTimer.current);\n00633|     debounceTimer.current = setTimeout(() => {\n00634|       searchAddresses(value, field, element);\n00635|     }, 50);\n00636|   };\n00637| \n00638|   const selectSuggestion = (suggestion: AddressSuggestion) => {\n00639|     setForm(prev => ({ ...prev, [activeField]: suggestion.value }));\n00640|     setShowSuggestions(false);\n\n(File has more lines. Use 'offset' parameter to read beyond line 640)\n</file>",
+    "metadata": {
+      "preview": "        setShowSuggestions(true);\n      }\n    } catch (error) {\n      console.error('Ошибка получения подсказок:', error);\n    }\n  }, []);\n\n  const debounceTimer = React.useRef<NodeJS.Timeout>();\n  const handleAddressChange = (field: string, value: string, element?: HTMLInputElement) => {\n    setForm(prev => ({ ...prev, [field]: value }));\n    \n    clearTimeout(debounceTimer.current);\n    debounceTimer.current = setTimeout(() => {\n      searchAddresses(value, field, element);\n    }, 50);\n  };\n\n  const selectSuggestion = (suggestion: AddressSuggestion) => {\n    setForm(prev => ({ ...prev, [activeField]: suggestion.value }));\n    setShowSuggestions(false);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756323366,
+      "end": 1759756323368
+    }
+  }
+}

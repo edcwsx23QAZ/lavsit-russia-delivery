@@ -1,0 +1,37 @@
+{
+  "id": "prt_9b9a5a3fe001mYlmKeCnDIUvME",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01KeQxL1QmmmqeAmtVW4iyxm",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "interface DeliveryForm {\n  cargos: Cargo[];\n  fromCity: string;\n  toCity: string;\n  fromAddress: string;\n  toAddress: string;\n  declaredValue: number;\n  needPackaging: boolean;\n  needLoading: boolean;\n  needCarry: boolean;\n  floor: number;\n  hasFreightLift: boolean;\n  needInsurance: boolean;\n  fromTerminal: boolean;\n  toTerminal: boolean;\n  fromAddressDelivery: boolean;\n  toAddressDelivery: boolean;\n  // Добавляем поддержку товаров\n  selectedProducts: ProductInForm[];\n}",
+          "newString": "interface DeliveryForm {\n  cargos: Cargo[];\n  fromCity: string;\n  toCity: string;\n  fromAddress: string;\n  toAddress: string;\n  declaredValue: number;\n  needPackaging: boolean;\n  needLoading: boolean;\n  needCarry: boolean;\n  floor: number;\n  hasFreightLift: boolean;\n  needInsurance: boolean;\n  fromTerminal: boolean;\n  toTerminal: boolean;\n  fromAddressDelivery: boolean;\n  toAddressDelivery: boolean;\n  fromLavsiteWarehouse: boolean;\n  // Добавляем поддержку товаров\n  selectedProducts: ProductInForm[];\n}"
+        },
+        {
+          "oldString": "  const [form, setForm] = useState<DeliveryForm>({\n    cargos: [],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false,\n    selectedProducts: []\n  });",
+          "newString": "  const [form, setForm] = useState<DeliveryForm>({\n    cargos: [],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false,\n    fromLavsiteWarehouse: false,\n    selectedProducts: []\n  });"
+        },
+        {
+          "oldString": "          setForm({\n            cargos: savedFormData.cargos.map(cargo => ({ ...cargo, id: generateId() })),\n            fromCity: savedFormData.fromCity,\n            toCity: savedFormData.toCity,\n            fromAddress: savedFormData.fromAddress,\n            toAddress: savedFormData.toAddress,\n            declaredValue: savedFormData.declaredValue,\n            needPackaging: savedFormData.needPackaging,\n            needLoading: savedFormData.needLoading,\n            needCarry: savedFormData.needCarry,\n            floor: savedFormData.floor,\n            hasFreightLift: savedFormData.hasFreightLift,\n            needInsurance: savedFormData.needInsurance,\n            fromTerminal: savedFormData.fromTerminal,\n            toTerminal: savedFormData.toTerminal,\n            fromAddressDelivery: savedFormData.fromAddressDelivery,\n            toAddressDelivery: savedFormData.toAddressDelivery,\n            selectedProducts: savedFormData.selectedProducts || []\n          });",
+          "newString": "          setForm({\n            cargos: savedFormData.cargos.map(cargo => ({ ...cargo, id: generateId() })),\n            fromCity: savedFormData.fromCity,\n            toCity: savedFormData.toCity,\n            fromAddress: savedFormData.fromAddress,\n            toAddress: savedFormData.toAddress,\n            declaredValue: savedFormData.declaredValue,\n            needPackaging: savedFormData.needPackaging,\n            needLoading: savedFormData.needLoading,\n            needCarry: savedFormData.needCarry,\n            floor: savedFormData.floor,\n            hasFreightLift: savedFormData.hasFreightLift,\n            needInsurance: savedFormData.needInsurance,\n            fromTerminal: savedFormData.fromTerminal,\n            toTerminal: savedFormData.toTerminal,\n            fromAddressDelivery: savedFormData.fromAddressDelivery,\n            toAddressDelivery: savedFormData.toAddressDelivery,\n            fromLavsiteWarehouse: savedFormData.fromLavsiteWarehouse || false,\n            selectedProducts: savedFormData.selectedProducts || []\n          });"
+        },
+        {
+          "oldString": "      const dataToSave = {\n        cargos: form.cargos,\n        fromCity: form.fromCity,\n        toCity: form.toCity,\n        fromAddress: form.fromAddress,\n        toAddress: form.toAddress,\n        declaredValue: form.declaredValue,\n        needPackaging: form.needPackaging,\n        needLoading: form.needLoading,\n        needCarry: form.needCarry,\n        floor: form.floor,\n        hasFreightLift: form.hasFreightLift,\n        needInsurance: form.needInsurance,\n        fromTerminal: form.fromTerminal,\n        toTerminal: form.toTerminal,\n        fromAddressDelivery: form.fromAddressDelivery,\n        toAddressDelivery: form.toAddressDelivery,\n        selectedProducts: form.selectedProducts\n      };",
+          "newString": "      const dataToSave = {\n        cargos: form.cargos,\n        fromCity: form.fromCity,\n        toCity: form.toCity,\n        fromAddress: form.fromAddress,\n        toAddress: form.toAddress,\n        declaredValue: form.declaredValue,\n        needPackaging: form.needPackaging,\n        needLoading: form.needLoading,\n        needCarry: form.needCarry,\n        floor: form.floor,\n        hasFreightLift: form.hasFreightLift,\n        needInsurance: form.needInsurance,\n        fromTerminal: form.fromTerminal,\n        toTerminal: form.toTerminal,\n        fromAddressDelivery: form.fromAddressDelivery,\n        toAddressDelivery: form.toAddressDelivery,\n        fromLavsiteWarehouse: form.fromLavsiteWarehouse,\n        selectedProducts: form.selectedProducts\n      };"
+        }
+      ]
+    },
+    "error": "Error: oldString not found in content",
+    "time": {
+      "start": 1759756281188,
+      "end": 1759756281360
+    }
+  }
+}

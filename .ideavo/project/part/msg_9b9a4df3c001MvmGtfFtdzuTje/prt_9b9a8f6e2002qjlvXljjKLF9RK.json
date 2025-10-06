@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a8f6e2002qjlvXljjKLF9RK",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Lkc6hTu82mqbUQWHeKq1gj",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "offset": 80,
+      "limit": 10
+    },
+    "output": "<file>\n00081|       toTerminal: formData.toTerminal ?? true,\n00082|       fromAddressDelivery: formData.fromAddressDelivery || false,\n00083|       toAddressDelivery: formData.toAddressDelivery || false,\n00084|       selectedProducts: formData.selectedProducts || [],\n00085|     };\n00086| \n00087|     localStorage.setItem(FORM_DATA_KEY, JSON.stringify(dataToSave));\n00088|     console.log('💾 Данные формы сохранены в localStorage:', dataToSave);\n00089|     return true;\n00090|   } catch (error) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 90)\n</file>",
+    "metadata": {
+      "preview": "      toTerminal: formData.toTerminal ?? true,\n      fromAddressDelivery: formData.fromAddressDelivery || false,\n      toAddressDelivery: formData.toAddressDelivery || false,\n      selectedProducts: formData.selectedProducts || [],\n    };\n\n    localStorage.setItem(FORM_DATA_KEY, JSON.stringify(dataToSave));\n    console.log('💾 Данные формы сохранены в localStorage:', dataToSave);\n    return true;\n  } catch (error) {"
+    },
+    "title": "lib/form-storage.ts",
+    "time": {
+      "start": 1759756482854,
+      "end": 1759756482855
+    }
+  }
+}

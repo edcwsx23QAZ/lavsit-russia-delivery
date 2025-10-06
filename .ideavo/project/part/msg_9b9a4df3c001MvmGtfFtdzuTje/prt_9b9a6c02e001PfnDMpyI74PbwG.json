@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9a6c02e001PfnDMpyI74PbwG",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01513ba9wbKmN6cpejEaLzVb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                  <div className=\"flex gap-3\">\n                    <label className=\"flex items-center space-x-1\">\n                      <input\n                        type=\"radio\"\n                        name=\"fromDelivery\"\n                        checked={form.fromTerminal}\n                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false }))}\n                      />\n                      <span className=\"text-white text-xs\">От терминала</span>\n                    </label>\n                    <label className=\"flex items-center space-x-1\">\n                      <input\n                        type=\"radio\"\n                        name=\"fromDelivery\"\n                        checked={form.fromAddressDelivery}\n                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true }))}\n                      />\n                      <span className=\"text-white text-xs\">От адреса</span>\n                    </label>\n                  </div>",
+      "newString": "                  <div className=\"flex gap-3\">\n                    <label className=\"flex items-center space-x-1\">\n                      <input\n                        type=\"radio\"\n                        name=\"fromDelivery\"\n                        checked={form.fromTerminal}\n                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false, fromLavsiteWarehouse: false }))}\n                      />\n                      <span className=\"text-white text-xs\">От терминала</span>\n                    </label>\n                    <label className=\"flex items-center space-x-1\">\n                      <input\n                        type=\"radio\"\n                        name=\"fromDelivery\"\n                        checked={form.fromAddressDelivery && !form.fromLavsiteWarehouse}\n                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true, fromLavsiteWarehouse: false }))}\n                      />\n                      <span className=\"text-white text-xs\">От адреса</span>\n                    </label>\n                  </div>\n                  \n                  {/* Чекбокс склада Лавсит */}\n                  <div className=\"flex items-center space-x-2\">\n                    <Checkbox\n                      id=\"lavsiteWarehouse\"\n                      checked={form.fromLavsiteWarehouse}\n                      onCheckedChange={handleLavsiteWarehouseChange}\n                    />\n                    <Label htmlFor=\"lavsiteWarehouse\" className=\"text-white text-xs cursor-pointer\">\n                      Со склада Лавсит\n                    </Label>\n                  </div>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3744,23 +3744,35 @@\n     <input\n       type=\"radio\"\n       name=\"fromDelivery\"\n       checked={form.fromTerminal}\n-      onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false }))}\n+      onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false, fromLavsiteWarehouse: false }))}\n     />\n     <span className=\"text-white text-xs\">От терминала</span>\n   </label>\n   <label className=\"flex items-center space-x-1\">\n     <input\n       type=\"radio\"\n       name=\"fromDelivery\"\n-      checked={form.fromAddressDelivery}\n-      onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true }))}\n+      checked={form.fromAddressDelivery && !form.fromLavsiteWarehouse}\n+      onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true, fromLavsiteWarehouse: false }))}\n     />\n     <span className=\"text-white text-xs\">От адреса</span>\n   </label>\n </div>\n \n+{/* Чекбокс склада Лавсит */}\n+<div className=\"flex items-center space-x-2\">\n+  <Checkbox\n+    id=\"lavsiteWarehouse\"\n+    checked={form.fromLavsiteWarehouse}\n+    onCheckedChange={handleLavsiteWarehouseChange}\n+  />\n+  <Label htmlFor=\"lavsiteWarehouse\" className=\"text-white text-xs cursor-pointer\">\n+    Со склада Лавсит\n+  </Label>\n+</div>\n+\n <div>\n   <Label className=\"text-white text-xs\">Город отправления</Label>\n   <Input\n     value={form.fromCity}\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756343812,
+      "end": 1759756343828
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9a88249001k6dOAhUohZ6Zik",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_011LTRYDA6pdWwfFyC4pKXqr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "oldString": "const FORM_VERSION = '1.0'; // Для миграции данных при изменении структуры",
+      "newString": "const FORM_VERSION = '1.1'; // Для миграции данных при изменении структуры (добавлен fromLavsiteWarehouse)"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/form-storage.ts\n===================================================================\n--- /home/user/project/lib/form-storage.ts\n+++ /home/user/project/lib/form-storage.ts\n@@ -1,9 +1,9 @@\n 'use client';\n \n // Константы для ключей localStorage\n const FORM_DATA_KEY = 'deliveryFormData';\n-const FORM_VERSION = '1.0'; // Для миграции данных при изменении структуры\n+const FORM_VERSION = '1.1'; // Для миграции данных при изменении структуры (добавлен fromLavsiteWarehouse)\n \n export interface StoredFormData {\n   version: string;\n   timestamp: number;\n"
+    },
+    "title": "lib/form-storage.ts",
+    "time": {
+      "start": 1759756453737,
+      "end": 1759756453740
+    }
+  }
+}

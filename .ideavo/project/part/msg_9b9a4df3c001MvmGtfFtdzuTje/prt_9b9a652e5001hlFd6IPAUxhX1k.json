@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9a652e5001hlFd6IPAUxhX1k",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_013FUwJev9zvdJVnE1PNzDdN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 315,
+      "limit": 30
+    },
+    "output": "<file>\n00316|       debouncedSave({\n00317|         cargos: form.cargos,\n00318|         fromCity: form.fromCity,\n00319|         toCity: form.toCity,\n00320|         fromAddress: form.fromAddress,\n00321|         toAddress: form.toAddress,\n00322|         declaredValue: form.declaredValue,\n00323|         needPackaging: form.needPackaging,\n00324|         needLoading: form.needLoading,\n00325|         needCarry: form.needCarry,\n00326|         floor: form.floor,\n00327|         hasFreightLift: form.hasFreightLift,\n00328|         needInsurance: form.needInsurance,\n00329|         fromTerminal: form.fromTerminal,\n00330|         toTerminal: form.toTerminal,\n00331|         fromAddressDelivery: form.fromAddressDelivery,\n00332|         toAddressDelivery: form.toAddressDelivery,\n00333|         selectedProducts: form.selectedProducts,\n00334|       });\n00335|     }\n00336|   }, [form, isLoaded, debouncedSave]);\n00337| \n00338|   // Автоматическая страховка при указании стоимости\n00339|   useEffect(() => {\n00340|     if (form.declaredValue > 0) {\n00341|       setForm(prev => ({ ...prev, needInsurance: true }));\n00342|     }\n00343|   }, [form.declaredValue]);\n00344| \n00345|   // Обработка сообщений об обновлении данных товаров\n\n(File has more lines. Use 'offset' parameter to read beyond line 345)\n</file>",
+    "metadata": {
+      "preview": "      debouncedSave({\n        cargos: form.cargos,\n        fromCity: form.fromCity,\n        toCity: form.toCity,\n        fromAddress: form.fromAddress,\n        toAddress: form.toAddress,\n        declaredValue: form.declaredValue,\n        needPackaging: form.needPackaging,\n        needLoading: form.needLoading,\n        needCarry: form.needCarry,\n        floor: form.floor,\n        hasFreightLift: form.hasFreightLift,\n        needInsurance: form.needInsurance,\n        fromTerminal: form.fromTerminal,\n        toTerminal: form.toTerminal,\n        fromAddressDelivery: form.fromAddressDelivery,\n        toAddressDelivery: form.toAddressDelivery,\n        selectedProducts: form.selectedProducts,\n      });\n    }"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756309921,
+      "end": 1759756309924
+    }
+  }
+}

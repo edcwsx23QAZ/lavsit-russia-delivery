@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b98eaf70001CaTQUv6WGy8kXb",
+  "messageID": "msg_9b98bcdf9001QwwCeAFutGgyl9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01SbH4AgfUHsPpe53SvE8QdN",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/test-dellin-terminals.js",
+      "oldString": "    console.log('📤 Запрос для Москвы:', JSON.stringify(moscowRequest, null, 2));\n\n    const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify(moscowRequest)\n    });\n\n    const data = await response.json();\n    console.log('📥 Ответ API:', response.status, response.statusText);\n    console.log('📥 Данные:', JSON.stringify(data, null, 2));\n\n    if (data.terminals && data.terminals.length > 0) {\n      console.log('✅ Найдены терминалы:');\n      data.terminals.forEach((terminal, index) => {\n        console.log(`  ${index + 1}. ID: ${terminal.id}, Город: ${terminal.city}, Название: ${terminal.name}`);\n        console.log(`     Адрес: ${terminal.address}`);\n        console.log(`     По умолчанию: ${terminal.default ? 'Да' : 'Нет'}`);\n        console.log('');\n      });\n    } else {\n      console.log('❌ Терминалы не найдены');\n    }",
+      "newString": "    console.log('📤 Запрос для Москвы (search):', JSON.stringify(moscowBySearchRequest, null, 2));\n\n    response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify(moscowBySearchRequest)\n    });\n\n    data = await response.json();\n    console.log('📥 Ответ API (search):', response.status, response.statusText);\n    console.log('📥 Данные (search):', JSON.stringify(data, null, 2));\n\n    if (data.terminals && data.terminals.length > 0) {\n      console.log('✅ Найдены терминалы (search):');\n      data.terminals.forEach((terminal, index) => {\n        console.log(`  ${index + 1}. ID: ${terminal.id}, Город: ${terminal.city}, Название: ${terminal.name}`);\n        console.log(`     Адрес: ${terminal.address}`);\n        console.log(`     По умолчанию: ${terminal.default ? 'Да' : 'Нет'}`);\n        console.log('');\n      });\n    } else {\n      console.log('❌ Терминалы не найдены (search)');\n    }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-dellin-terminals.js\n===================================================================\n--- /home/user/project/test-dellin-terminals.js\n+++ /home/user/project/test-dellin-terminals.js\n@@ -118,32 +118,32 @@\n     express: true,\n     freeStorageDays: '2'\n   };\n \n-  console.log('📤 Запрос для Москвы:', JSON.stringify(moscowRequest, null, 2));\n+  console.log('📤 Запрос для Москвы (search):', JSON.stringify(moscowBySearchRequest, null, 2));\n \n-  const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n+  response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n     method: 'POST',\n     headers: {\n       'Content-Type': 'application/json'\n     },\n-    body: JSON.stringify(moscowRequest)\n+    body: JSON.stringify(moscowBySearchRequest)\n   });\n \n-  const data = await response.json();\n-  console.log('📥 Ответ API:', response.status, response.statusText);\n-  console.log('📥 Данные:', JSON.stringify(data, null, 2));\n+  data = await response.json();\n+  console.log('📥 Ответ API (search):', response.status, response.statusText);\n+  console.log('📥 Данные (search):', JSON.stringify(data, null, 2));\n \n   if (data.terminals && data.terminals.length > 0) {\n-    console.log('✅ Найдены терминалы:');\n+    console.log('✅ Найдены терминалы (search):');\n     data.terminals.forEach((terminal, index) => {\n       console.log(`  ${index + 1}. ID: ${terminal.id}, Город: ${terminal.city}, Название: ${terminal.name}`);\n       console.log(`     Адрес: ${terminal.address}`);\n       console.log(`     По умолчанию: ${terminal.default ? 'Да' : 'Нет'}`);\n       console.log('');\n     });\n   } else {\n-    console.log('❌ Терминалы не найдены');\n+    console.log('❌ Терминалы не найдены (search)');\n   }\n \n } catch (error) {\n   console.error('❌ Ошибка тестирования:', error);\n"
+    },
+    "title": "test-dellin-terminals.js",
+    "time": {
+      "start": 1759754766582,
+      "end": 1759754766586
+    }
+  }
+}

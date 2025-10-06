@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9a63366001m7IRwWcM93I2vM",
+  "messageID": "msg_9b9a4df3c001MvmGtfFtdzuTje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01AoNmogru2paXezjfN1XPxD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          // Конвертируем загруженные данные в формат компонента\n          const restoredForm: DeliveryForm = {\n            cargos: savedFormData.cargos.length > 0 ? savedFormData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n            fromCity: savedFormData.fromCity,\n            toCity: savedFormData.toCity,\n            fromAddress: savedFormData.fromAddress,\n            toAddress: savedFormData.toAddress,\n            declaredValue: savedFormData.declaredValue,\n            needPackaging: savedFormData.needPackaging,\n            needLoading: savedFormData.needLoading,\n            needCarry: savedFormData.needCarry,\n            floor: savedFormData.floor,\n            hasFreightLift: savedFormData.hasFreightLift,\n            needInsurance: savedFormData.needInsurance,\n            fromTerminal: savedFormData.fromTerminal,\n            toTerminal: savedFormData.toTerminal,\n            fromAddressDelivery: savedFormData.fromAddressDelivery,\n            toAddressDelivery: savedFormData.toAddressDelivery,\n            selectedProducts: savedFormData.selectedProducts,\n          };",
+      "newString": "          // Конвертируем загруженные данные в формат компонента\n          const restoredForm: DeliveryForm = {\n            cargos: savedFormData.cargos.length > 0 ? savedFormData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n            fromCity: savedFormData.fromCity,\n            toCity: savedFormData.toCity,\n            fromAddress: savedFormData.fromAddress,\n            toAddress: savedFormData.toAddress,\n            declaredValue: savedFormData.declaredValue,\n            needPackaging: savedFormData.needPackaging,\n            needLoading: savedFormData.needLoading,\n            needCarry: savedFormData.needCarry,\n            floor: savedFormData.floor,\n            hasFreightLift: savedFormData.hasFreightLift,\n            needInsurance: savedFormData.needInsurance,\n            fromTerminal: savedFormData.fromTerminal,\n            toTerminal: savedFormData.toTerminal,\n            fromAddressDelivery: savedFormData.fromAddressDelivery,\n            toAddressDelivery: savedFormData.toAddressDelivery,\n            fromLavsiteWarehouse: savedFormData.fromLavsiteWarehouse || false,\n            selectedProducts: savedFormData.selectedProducts,\n          };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -266,8 +266,9 @@\n   fromTerminal: savedFormData.fromTerminal,\n   toTerminal: savedFormData.toTerminal,\n   fromAddressDelivery: savedFormData.fromAddressDelivery,\n   toAddressDelivery: savedFormData.toAddressDelivery,\n+  fromLavsiteWarehouse: savedFormData.fromLavsiteWarehouse || false,\n   selectedProducts: savedFormData.selectedProducts,\n };\n \n setForm(restoredForm);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759756306494,
+      "end": 1759756306511
+    }
+  }
+}
