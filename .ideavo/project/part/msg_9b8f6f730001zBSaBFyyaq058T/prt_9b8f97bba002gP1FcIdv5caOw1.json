@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8f97bba002gP1FcIdv5caOw1",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01LU91TYasgS1J795sxpptQc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/middleware.ts",
+      "oldString": "    const response = NextResponse.next()\n    \n    // Добавляем заголовки против кэширования в dev режиме\n    if (process.env.NODE_ENV === 'development') {\n      response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')\n      response.headers.set('Pragma', 'no-cache')\n      response.headers.set('Expires', '0')\n    }",
+      "newString": "    const response = NextResponse.next()\n    \n    // Добавляем заголовки против кэширования в dev режиме\n    if (isDev) {\n      response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')\n      response.headers.set('Pragma', 'no-cache')\n      response.headers.set('Expires', '0')\n    }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/middleware.ts\n===================================================================\n--- /home/user/project/middleware.ts\n+++ /home/user/project/middleware.ts\n@@ -28,9 +28,9 @@\n ) {\n   const response = NextResponse.next()\n   \n   // Добавляем заголовки против кэширования в dev режиме\n-  if (process.env.NODE_ENV === 'development') {\n+  if (isDev) {\n     response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')\n     response.headers.set('Pragma', 'no-cache')\n     response.headers.set('Expires', '0')\n   }\n"
+    },
+    "title": "middleware.ts",
+    "time": {
+      "start": 1759744984278,
+      "end": 1759744984284
+    }
+  }
+}

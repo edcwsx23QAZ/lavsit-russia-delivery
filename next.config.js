@@ -13,7 +13,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: process.env.NODE_ENV === 'development' 
+            value: (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined)
               ? 'no-cache, no-store, must-revalidate'
               : 'public, max-age=3600',
           },

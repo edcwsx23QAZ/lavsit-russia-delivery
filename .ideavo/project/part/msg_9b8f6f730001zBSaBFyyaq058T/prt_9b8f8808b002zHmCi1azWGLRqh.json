@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8f8808b002zHmCi1azWGLRqh",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_015ztpX4zHDdweNMaWzWwVyC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {",
+      "newString": "    const isDev = typeof window !== 'undefined' && \n                  (process.env.NODE_ENV === 'development' || \n                   process.env.NODE_ENV === undefined ||\n                   window.location.hostname.includes('localhost') || \n                   window.location.hostname.includes('127.0.0.1') || \n                   window.location.hostname.includes('.e2b.app'));\n    \n    if (isDev) {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -190,9 +190,16 @@\n });\n \n // Автоматическая очистка localStorage в dev режиме\n useEffect(() => {\n-  if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {\n+  const isDev = typeof window !== 'undefined' && \n+                (process.env.NODE_ENV === 'development' || \n+                 process.env.NODE_ENV === undefined ||\n+                 window.location.hostname.includes('localhost') || \n+                 window.location.hostname.includes('127.0.0.1') || \n+                 window.location.hostname.includes('.e2b.app'));\n+  \n+  if (isDev) {\n     // Очищаем localStorage при каждой перезагрузке в dev режиме\n     const devTimestamp = Date.now().toString();\n     const lastDevTimestamp = localStorage.getItem('devTimestamp');\n     \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759744919996,
+      "end": 1759744920015
+    }
+  }
+}

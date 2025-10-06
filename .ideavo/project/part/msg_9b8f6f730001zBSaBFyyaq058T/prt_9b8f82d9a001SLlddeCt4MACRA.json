@@ -1,0 +1,23 @@
+{
+  "id": "prt_9b8f82d9a001SLlddeCt4MACRA",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GhKji6pK2F3m9cxP3oR2hP",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ClientDevUtils.tsx"
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import { useEffect } from 'react';\n00004| \n00005| export default function ClientDevUtils() {\n00006|   useEffect(() => {\n00007|     if (process.env.NODE_ENV === 'development') {\n00008|       try {\n00009|         // Добавляем timestamp к URL для предотвращения кэширования\n00010|         const timestamp = Date.now();\n00011|         document.documentElement.setAttribute('data-timestamp', timestamp.toString());\n00012|         \n00013|         console.log('🔧 DEV: Timestamp добавлен к HTML:', timestamp);\n00014|         console.log('🔧 DEV: ClientDevUtils инициализирован');\n00015|       } catch (error) {\n00016|         console.warn('🔧 DEV: Ошибка в ClientDevUtils:', error);\n00017|       }\n00018|     }\n00019|   }, []);\n00020| \n00021|   return null;\n00022| }\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport { useEffect } from 'react';\n\nexport default function ClientDevUtils() {\n  useEffect(() => {\n    if (process.env.NODE_ENV === 'development') {\n      try {\n        // Добавляем timestamp к URL для предотвращения кэширования\n        const timestamp = Date.now();\n        document.documentElement.setAttribute('data-timestamp', timestamp.toString());\n        \n        console.log('🔧 DEV: Timestamp добавлен к HTML:', timestamp);\n        console.log('🔧 DEV: ClientDevUtils инициализирован');\n      } catch (error) {\n        console.warn('🔧 DEV: Ошибка в ClientDevUtils:', error);\n      }\n    }\n  }, []);\n"
+    },
+    "title": "components/ClientDevUtils.tsx",
+    "time": {
+      "start": 1759744896800,
+      "end": 1759744896803
+    }
+  }
+}

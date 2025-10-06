@@ -1,0 +1,21 @@
+{
+  "id": "prt_9b8f818e1001TG0xLMiNK8fAOy",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01QETbteCQshkW1EMPSRxT6V",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/components/ClientDevUtils.tsx",
+      "oldString": "  useEffect(() => {\n    if (process.env.NODE_ENV === 'development') {",
+      "newString": "  useEffect(() => {\n    // Более надежная детекция dev режима\n    const isDev = process.env.NODE_ENV === 'development' || \n                  (typeof window !== 'undefined' && \n                   (window.location.hostname.includes('localhost') || \n                    window.location.hostname.includes('127.0.0.1') || \n                    window.location.hostname.includes('.e2b.app')));\n    \n    if (isDev) {"
+    },
+    "error": "Error: You must read the file /home/user/project/components/ClientDevUtils.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1759744893835,
+      "end": 1759744893837
+    }
+  }
+}

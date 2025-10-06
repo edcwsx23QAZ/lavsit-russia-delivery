@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8f725c40013fqGKxUoj0Z8Up",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01EqZpR9xJP3ABoDEVoj6QAE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Lazy|lazy|dynamic",
+      "include": "*.{ts,tsx,js,jsx}"
+    },
+    "output": "Found 14 matches\n/home/user/project/components/diagnostic/LazyLoadedComponents.tsx:\n  Line 7: // Direct imports instead of lazy loading to avoid webpack issues\n  Line 8: export const LazyFullTestingResults = React.memo(function LazyFullTestingResults(props: any) {\n  Line 12: export const LazyVehicleManagement = React.memo(function LazyVehicleManagement(props: any) {\n\n/home/user/project/performance-test.js:\n  Line 158:         'Lazy loading for heavy components',\n  Line 199:             'Implemented lazy loading for heavy components'\n  Line 272:         '✅ Lazy loading for heavy components',\n\n/home/user/project/app/diagnostic/page.tsx:\n  Line 7: import { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';\n  Line 307:         <LazyFullTestingResults\n  Line 313:         <LazyVehicleManagement\n\n/home/user/project/app/diagnostic/optimized-page.tsx:\n  Line 7: import { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';\n  Line 307:         <LazyFullTestingResults\n  Line 313:         <LazyVehicleManagement\n\n/home/user/project/app/api/furniture-products/route.ts:\n  Line 4: export const dynamic = 'force-dynamic';\n  Line 34:     // Используем nextUrl для избежания ошибки dynamic server usage",
+    "metadata": {
+      "matches": 14,
+      "truncated": false
+    },
+    "title": "Lazy|lazy|dynamic",
+    "time": {
+      "start": 1759744829917,
+      "end": 1759744829933
+    }
+  }
+}

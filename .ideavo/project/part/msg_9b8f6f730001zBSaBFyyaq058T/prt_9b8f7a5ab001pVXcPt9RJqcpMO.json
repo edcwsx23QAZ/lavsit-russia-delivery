@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8f7a5ab001pVXcPt9RJqcpMO",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01Gu2Mz8kCvfb47DtiAxaNKS",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "process\\.env\\.NODE_ENV",
+      "include": "*.{ts,tsx,js,jsx}"
+    },
+    "output": "Found 7 matches\n/home/user/project/next.config.js:\n  Line 16:             value: process.env.NODE_ENV === 'development' \n\n/home/user/project/components/ClientDevUtils.tsx:\n  Line 7:     if (process.env.NODE_ENV === 'development') {\n\n/home/user/project/app/page.tsx:\n  Line 194:     if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {\n\n/home/user/project/components/ServiceWorkerRegistration.tsx:\n  Line 9:       if (process.env.NODE_ENV === 'production') {\n\n/home/user/project/middleware.ts:\n  Line 11:     if (process.env.NODE_ENV === 'development') {\n  Line 29:     if (process.env.NODE_ENV === 'development') {\n  Line 49:   if (process.env.NODE_ENV === 'development') {",
+    "metadata": {
+      "matches": 7,
+      "truncated": false
+    },
+    "title": "process\\.env\\.NODE_ENV",
+    "time": {
+      "start": 1759744862441,
+      "end": 1759744862456
+    }
+  }
+}

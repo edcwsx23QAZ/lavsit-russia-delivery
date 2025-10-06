@@ -1,0 +1,11 @@
+{
+  "id": "prt_9b8f79b3e001GxjXsfVQ7LUk4X",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "**ВОТ ОНА, ПРИЧИНА!** `NODE_ENV` не установлен в dev режиме, поэтому условие `process.env.NODE_ENV === 'development'` возвращает false, и Service Worker регистрируется как в production!\n\nService Worker кэширует webpack chunks, что приводит к загрузке устаревших модулей. Давайте проверим webpack chunks и найдем другие проблемы:",
+  "time": {
+    "start": 1759744861610,
+    "end": 1759744861610
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8f8759f001tagFs920107zNU",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_017n87rWNpnaVdLPKRkthkZJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 190,
+      "limit": 10
+    },
+    "output": "<file>\n00191| \n00192|   // Автоматическая очистка localStorage в dev режиме\n00193|   useEffect(() => {\n00194|     if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {\n00195|       // Очищаем localStorage при каждой перезагрузке в dev режиме\n00196|       const devTimestamp = Date.now().toString();\n00197|       const lastDevTimestamp = localStorage.getItem('devTimestamp');\n00198|       \n00199|       if (lastDevTimestamp !== devTimestamp) {\n00200|         console.log('🧹 DEV: Очистка localStorage для актуальных данных');\n\n(File has more lines. Use 'offset' parameter to read beyond line 200)\n</file>",
+    "metadata": {
+      "preview": "\n  // Автоматическая очистка localStorage в dev режиме\n  useEffect(() => {\n    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {\n      // Очищаем localStorage при каждой перезагрузке в dev режиме\n      const devTimestamp = Date.now().toString();\n      const lastDevTimestamp = localStorage.getItem('devTimestamp');\n      \n      if (lastDevTimestamp !== devTimestamp) {\n        console.log('🧹 DEV: Очистка localStorage для актуальных данных');"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759744915452,
+      "end": 1759744915455
+    }
+  }
+}

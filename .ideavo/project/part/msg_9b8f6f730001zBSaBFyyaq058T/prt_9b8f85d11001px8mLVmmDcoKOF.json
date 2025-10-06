@@ -1,0 +1,23 @@
+{
+  "id": "prt_9b8f85d11001px8mLVmmDcoKOF",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01S6v2Shio6iqWq5Lok5PzPM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/next.config.js"
+    },
+    "output": "<file>\n00001| /** @type {import('next').NextConfig} */\n00002| const nextConfig = {\n00003|   images: { unoptimized: true },\n00004|   \n00005|   // Принудительная перезагрузка при изменениях\n00006|   reactStrictMode: true,\n00007|   \n00008|   // Добавляем заголовки для предотвращения кэширования\n00009|   async headers() {\n00010|     return [\n00011|       {\n00012|         source: '/(.*)',\n00013|         headers: [\n00014|           {\n00015|             key: 'Cache-Control',\n00016|             value: process.env.NODE_ENV === 'development' \n00017|               ? 'no-cache, no-store, must-revalidate'\n00018|               : 'public, max-age=3600',\n00019|           },\n00020|         ],\n00021|       },\n00022|     ];\n00023|   },\n00024| };\n00025| \n00026| module.exports = nextConfig;\n00027| \n</file>",
+    "metadata": {
+      "preview": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  images: { unoptimized: true },\n  \n  // Принудительная перезагрузка при изменениях\n  reactStrictMode: true,\n  \n  // Добавляем заголовки для предотвращения кэширования\n  async headers() {\n    return [\n      {\n        source: '/(.*)',\n        headers: [\n          {\n            key: 'Cache-Control',\n            value: process.env.NODE_ENV === 'development' \n              ? 'no-cache, no-store, must-revalidate'\n              : 'public, max-age=3600',\n          },\n        ],"
+    },
+    "title": "next.config.js",
+    "time": {
+      "start": 1759744908841,
+      "end": 1759744908842
+    }
+  }
+}

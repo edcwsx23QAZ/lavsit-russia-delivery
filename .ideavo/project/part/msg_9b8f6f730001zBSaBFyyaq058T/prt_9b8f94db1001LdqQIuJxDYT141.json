@@ -1,0 +1,21 @@
+{
+  "id": "prt_9b8f94db1001LdqQIuJxDYT141",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01PRhVA3ztKYxEn8P3NbXGQd",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/middleware.ts",
+      "oldString": "    // Добавляем заголовки против кэширования в dev режиме\n    if (process.env.NODE_ENV === 'development') {\n      response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')\n      response.headers.set('Pragma', 'no-cache')\n      response.headers.set('Expires', '0')\n    }",
+      "newString": "    // Добавляем заголовки против кэширования в dev режиме\n    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined) {\n      response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')\n      response.headers.set('Pragma', 'no-cache')\n      response.headers.set('Expires', '0')\n    }"
+    },
+    "error": "Error: oldString found multiple times and requires more code context to uniquely identify the intended match",
+    "time": {
+      "start": 1759744972509,
+      "end": 1759744972519
+    }
+  }
+}

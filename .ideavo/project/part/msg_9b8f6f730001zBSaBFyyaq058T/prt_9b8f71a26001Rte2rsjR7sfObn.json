@@ -1,0 +1,11 @@
+{
+  "id": "prt_9b8f71a26001Rte2rsjR7sfObn",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Начинаю deep research. Ключевые наблюдения из лога ошибок:\n\n1. **Hydration Error** - есть несоответствие между server и client рендерингом\n2. **mountLazyComponent** - все еще происходят ошибки с lazy компонентами\n3. **Service Worker активен** - может влиять на загрузку модулей\n4. **Ошибка в NotFoundErrorBoundary** - проблема в системных компонентах Next.js\n\nДавайте проведем детальный анализ:",
+  "time": {
+    "start": 1759744828867,
+    "end": 1759744828867
+  }
+}

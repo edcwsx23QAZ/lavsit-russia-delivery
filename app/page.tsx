@@ -191,7 +191,14 @@ export default function Home() {
 
   // Автоматическая очистка localStorage в dev режиме
   useEffect(() => {
-    if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+    const isDev = typeof window !== 'undefined' && 
+                  (process.env.NODE_ENV === 'development' || 
+                   process.env.NODE_ENV === undefined ||
+                   window.location.hostname.includes('localhost') || 
+                   window.location.hostname.includes('127.0.0.1') || 
+                   window.location.hostname.includes('.e2b.app'));
+    
+    if (isDev) {
       // Очищаем localStorage при каждой перезагрузке в dev режиме
       const devTimestamp = Date.now().toString();
       const lastDevTimestamp = localStorage.getItem('devTimestamp');

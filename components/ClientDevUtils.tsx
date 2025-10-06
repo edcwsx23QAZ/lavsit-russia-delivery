@@ -4,7 +4,14 @@ import { useEffect } from 'react';
 
 export default function ClientDevUtils() {
   useEffect(() => {
-    if (process.env.NODE_ENV === 'development') {
+    // Более надежная детекция dev режима
+    const isDev = process.env.NODE_ENV === 'development' || 
+                  (typeof window !== 'undefined' && 
+                   (window.location.hostname.includes('localhost') || 
+                    window.location.hostname.includes('127.0.0.1') || 
+                    window.location.hostname.includes('.e2b.app')));
+    
+    if (isDev) {
       try {
         // Добавляем timestamp к URL для предотвращения кэширования
         const timestamp = Date.now();

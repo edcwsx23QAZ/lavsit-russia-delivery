@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8f7df8d001pjUyCGP0md5NcY",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01543Pw6625NK3vKmBFhEJYT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ServiceWorkerRegistration.tsx",
+      "oldString": "export default function ServiceWorkerRegistration() {\n  useEffect(() => {\n    if ('serviceWorker' in navigator) {\n      // В production регистрируем SW, в development отключаем\n      if (process.env.NODE_ENV === 'production') {",
+      "newString": "export default function ServiceWorkerRegistration() {\n  useEffect(() => {\n    if ('serviceWorker' in navigator) {\n      // Более надежная детекция production/development\n      const isProduction = process.env.NODE_ENV === 'production' || \n                          (typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && \n                           !window.location.hostname.includes('127.0.0.1') && \n                           !window.location.hostname.includes('.e2b.app'));\n      \n      if (isProduction) {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/ServiceWorkerRegistration.tsx\n===================================================================\n--- /home/user/project/components/ServiceWorkerRegistration.tsx\n+++ /home/user/project/components/ServiceWorkerRegistration.tsx\n@@ -4,10 +4,15 @@\n \n export default function ServiceWorkerRegistration() {\n   useEffect(() => {\n     if ('serviceWorker' in navigator) {\n-      // В production регистрируем SW, в development отключаем\n-      if (process.env.NODE_ENV === 'production') {\n+      // Более надежная детекция production/development\n+      const isProduction = process.env.NODE_ENV === 'production' || \n+                          (typeof window !== 'undefined' && !window.location.hostname.includes('localhost') && \n+                           !window.location.hostname.includes('127.0.0.1') && \n+                           !window.location.hostname.includes('.e2b.app'));\n+      \n+      if (isProduction) {\n         navigator.serviceWorker\n           .register('/sw.js')\n           .then((registration) => {\n             console.log('[SW] Service Worker registered successfully:', registration);\n"
+    },
+    "title": "components/ServiceWorkerRegistration.tsx",
+    "time": {
+      "start": 1759744880314,
+      "end": 1759744880321
+    }
+  }
+}

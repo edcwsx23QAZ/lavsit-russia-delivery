@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8f9616b001FB9beoHEvz0Vcj",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01DHYb6CjeA6tU4v6gU7HpFv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/middleware.ts",
+      "oldString": "export function middleware(request: NextRequest) {\n  // Skip middleware for the env-check page itself to avoid infinite redirects\n  if (request.nextUrl.pathname === '/env-check') {\n    const response = NextResponse.next()\n    \n    // Добавляем заголовки против кэширования в dev режиме\n    if (process.env.NODE_ENV === 'development') {\n      response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')\n      response.headers.set('Pragma', 'no-cache')\n      response.headers.set('Expires', '0')\n    }",
+      "newString": "export function middleware(request: NextRequest) {\n  // Детекция dev режима\n  const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined;\n\n  // Skip middleware for the env-check page itself to avoid infinite redirects\n  if (request.nextUrl.pathname === '/env-check') {\n    const response = NextResponse.next()\n    \n    // Добавляем заголовки против кэширования в dev режиме\n    if (isDev) {\n      response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')\n      response.headers.set('Pragma', 'no-cache')\n      response.headers.set('Expires', '0')\n    }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/middleware.ts\n===================================================================\n--- /home/user/project/middleware.ts\n+++ /home/user/project/middleware.ts\n@@ -2,14 +2,17 @@\n import type { NextRequest } from 'next/server'\n import { checkMissingEnvVars } from '@/lib/env-config'\n \n export function middleware(request: NextRequest) {\n+  // Детекция dev режима\n+  const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined;\n+\n   // Skip middleware for the env-check page itself to avoid infinite redirects\n   if (request.nextUrl.pathname === '/env-check') {\n     const response = NextResponse.next()\n     \n     // Добавляем заголовки против кэширования в dev режиме\n-    if (process.env.NODE_ENV === 'development') {\n+    if (isDev) {\n       response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')\n       response.headers.set('Pragma', 'no-cache')\n       response.headers.set('Expires', '0')\n     }\n"
+    },
+    "title": "middleware.ts",
+    "time": {
+      "start": 1759744979286,
+      "end": 1759744979289
+    }
+  }
+}

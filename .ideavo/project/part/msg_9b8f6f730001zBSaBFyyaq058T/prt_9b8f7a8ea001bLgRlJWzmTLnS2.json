@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8f7a8ea001bLgRlJWzmTLnS2",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_0168nEMeEgQD7igfbyPBMdDJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && find . -name \".env*\" -exec cat {} \\;",
+      "description": "Check all env files content"
+    },
+    "output": "# Environment variables\n# Add your environment variables here\n\nDATABASE_URL=\nNEXT_PUBLIC_SUPABASE_URL=\nNEXT_PUBLIC_SUPABASE_ANON_KEY=# Настройки API ПЭК (ОБЯЗАТЕЛЬНО)\n# Получите эти данные в личном кабинете https://kabinet.pecom.ru\n\n# Логин пользователя личного кабинета ПЭК\nPEK_LOGIN=your_username_here\n\n# API ключ из раздела \"Регистрационные данные\" > \"Ключи API\"\nPEK_API_KEY=your_api_key_here\n\n# Пример заполнения:\n# PEK_LOGIN=demo\n# PEK_API_KEY=624FC93CA677B23673BB476D4982294DC27E246F\n\n# ИНСТРУКЦИИ:\n# 1. Скопируйте этот файл в .env.local\n# 2. Замените значения на ваши реальные данные\n# 3. Перезапустите сервер разработки (npm run dev)\n\n# БАЗА ДАННЫХ (опционально)\n# DATABASE_URL=your_database_url\n# NEXT_PUBLIC_SUPABASE_URL=your_supabase_url  \n# NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key# Настройки API ПЭК\nPEK_LOGIN=lavsit\nPEK_API_KEY=228060705100306AF8DA1908F9BDF9AFB1FE185C",
+    "metadata": {
+      "output": "# Environment variables\n# Add your environment variables here\n\nDATABASE_URL=\nNEXT_PUBLIC_SUPABASE_URL=\nNEXT_PUBLIC_SUPABASE_ANON_KEY=# Настройки API ПЭК (ОБЯЗАТЕЛЬНО)\n# Получите эти данные в личном кабинете https://kabinet.pecom.ru\n\n# Логин пользователя личного кабинета ПЭК\nPEK_LOGIN=your_username_here\n\n# API ключ из раздела \"Регистрационные данные\" > \"Ключи API\"\nPEK_API_KEY=your_api_key_here\n\n# Пример заполнения:\n# PEK_LOGIN=demo\n# PEK_API_KEY=624FC93CA677B23673BB476D4982294DC27E246F\n\n# ИНСТРУКЦИИ:\n# 1. Скопируйте этот файл в .env.local\n# 2. Замените значения на ваши реальные данные\n# 3. Перезапустите сервер разработки (npm run dev)\n\n# БАЗА ДАННЫХ (опционально)\n# DATABASE_URL=your_database_url\n# NEXT_PUBLIC_SUPABASE_URL=your_supabase_url  \n# NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key# Настройки API ПЭК\nPEK_LOGIN=lavsit\nPEK_API_KEY=228060705100306AF8DA1908F9BDF9AFB1FE185C",
+      "exit": 0,
+      "description": "Check all env files content"
+    },
+    "title": "cd /home/user/project && find . -name \".env*\" -exec cat {} \\;",
+    "time": {
+      "start": 1759744863149,
+      "end": 1759744863333
+    }
+  }
+}

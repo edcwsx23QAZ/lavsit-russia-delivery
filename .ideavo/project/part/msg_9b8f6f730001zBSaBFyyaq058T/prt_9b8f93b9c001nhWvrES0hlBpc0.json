@@ -1,0 +1,33 @@
+{
+  "id": "prt_9b8f93b9c001nhWvrES0hlBpc0",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01UYhpX3awAuKJoA3DMWNyVi",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/middleware.ts",
+      "edits": [
+        {
+          "oldString": "    if (process.env.NODE_ENV === 'development') {",
+          "newString": "    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined) {"
+        },
+        {
+          "oldString": "    if (process.env.NODE_ENV === 'development') {",
+          "newString": "    if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined) {"
+        },
+        {
+          "oldString": "  if (process.env.NODE_ENV === 'development') {",
+          "newString": "  if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined) {"
+        }
+      ]
+    },
+    "error": "Error: oldString found multiple times and requires more code context to uniquely identify the intended match",
+    "time": {
+      "start": 1759744967901,
+      "end": 1759744967907
+    }
+  }
+}

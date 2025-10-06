@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8f7f7c5001zy6UzElOyOODAo",
+  "messageID": "msg_9b8f6f730001zBSaBFyyaq058T",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Ve5W1PrJ8NrMoS5gwPuqAe",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ServiceWorkerRegistration.tsx",
+      "oldString": "      } else {\n        // Отключаем SW в development\n        console.log('[SW] DEV: Отключение Service Worker в режиме разработки');\n        navigator.serviceWorker.getRegistrations().then(registrations => {\n          registrations.forEach(registration => {\n            registration.unregister().then(() => {\n              console.log('[SW] DEV: Service Worker отключен:', registration);\n            });\n          });\n        });\n      }",
+      "newString": "      } else {\n        // Принудительно отключаем SW в development/preview\n        console.log('[SW] DEV: Принудительное отключение Service Worker');\n        \n        // Очищаем все кэши\n        if ('caches' in window) {\n          caches.keys().then(cacheNames => {\n            cacheNames.forEach(cacheName => {\n              caches.delete(cacheName).then(() => {\n                console.log('[SW] DEV: Кэш удален:', cacheName);\n              });\n            });\n          });\n        }\n        \n        // Отключаем все зарегистрированные SW\n        navigator.serviceWorker.getRegistrations().then(registrations => {\n          registrations.forEach(registration => {\n            registration.unregister().then(() => {\n              console.log('[SW] DEV: Service Worker отключен:', registration);\n            });\n          });\n        });\n        \n        // Перезагружаем страницу если есть активный SW\n        navigator.serviceWorker.ready.then(() => {\n          if (navigator.serviceWorker.controller) {\n            console.log('[SW] DEV: Обнаружен активный SW, перезагрузка страницы...');\n            window.location.reload();\n          }\n        }).catch(() => {\n          // SW не готов, это нормально в dev режиме\n        });\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/ServiceWorkerRegistration.tsx\n===================================================================\n--- /home/user/project/components/ServiceWorkerRegistration.tsx\n+++ /home/user/project/components/ServiceWorkerRegistration.tsx\n@@ -38,17 +38,40 @@\n       navigator.serviceWorker.addEventListener('message', (event) => {\n         console.log('[SW] Message from service worker:', event.data);\n       });\n     } else {\n-      // Отключаем SW в development\n-      console.log('[SW] DEV: Отключение Service Worker в режиме разработки');\n+      // Принудительно отключаем SW в development/preview\n+      console.log('[SW] DEV: Принудительное отключение Service Worker');\n+      \n+      // Очищаем все кэши\n+      if ('caches' in window) {\n+        caches.keys().then(cacheNames => {\n+          cacheNames.forEach(cacheName => {\n+            caches.delete(cacheName).then(() => {\n+              console.log('[SW] DEV: Кэш удален:', cacheName);\n+            });\n+          });\n+        });\n+      }\n+      \n+      // Отключаем все зарегистрированные SW\n       navigator.serviceWorker.getRegistrations().then(registrations => {\n         registrations.forEach(registration => {\n           registration.unregister().then(() => {\n             console.log('[SW] DEV: Service Worker отключен:', registration);\n           });\n         });\n       });\n+      \n+      // Перезагружаем страницу если есть активный SW\n+      navigator.serviceWorker.ready.then(() => {\n+        if (navigator.serviceWorker.controller) {\n+          console.log('[SW] DEV: Обнаружен активный SW, перезагрузка страницы...');\n+          window.location.reload();\n+        }\n+      }).catch(() => {\n+        // SW не готов, это нормально в dev режиме\n+      });\n     }\n   }\n }, []);\n \n"
+    },
+    "title": "components/ServiceWorkerRegistration.tsx",
+    "time": {
+      "start": 1759744888748,
+      "end": 1759744888753
+    }
+  }
+}

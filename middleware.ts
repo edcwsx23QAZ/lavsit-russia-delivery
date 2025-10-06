@@ -3,12 +3,15 @@ import type { NextRequest } from 'next/server'
 import { checkMissingEnvVars } from '@/lib/env-config'
 
 export function middleware(request: NextRequest) {
+  // Детекция dev режима
+  const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined;
+
   // Skip middleware for the env-check page itself to avoid infinite redirects
   if (request.nextUrl.pathname === '/env-check') {
     const response = NextResponse.next()
     
     // Добавляем заголовки против кэширования в dev режиме
-    if (process.env.NODE_ENV === 'development') {
+    if (isDev) {
       response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')
       response.headers.set('Pragma', 'no-cache')
       response.headers.set('Expires', '0')
@@ -26,7 +29,7 @@ export function middleware(request: NextRequest) {
     const response = NextResponse.next()
     
     // Добавляем заголовки против кэширования в dev режиме
-    if (process.env.NODE_ENV === 'development') {
+    if (isDev) {
       response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')
       response.headers.set('Pragma', 'no-cache')
       response.headers.set('Expires', '0')
@@ -46,7 +49,7 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next()
   
   // Добавляем заголовки против кэширования в dev режиме
-  if (process.env.NODE_ENV === 'development') {
+  if (isDev) {
     response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')
     response.headers.set('Pragma', 'no-cache')
     response.headers.set('Expires', '0')
