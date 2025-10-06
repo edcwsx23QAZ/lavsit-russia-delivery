@@ -3734,24 +3734,7 @@ export default function Home() {
               </div>
             )}
 
-            {/* Визуализация кузова */}
-            {calculations.length > 0 && (
-              <TruckVisualization 
-                cargos={form.cargos.map(cargo => ({
-                  id: cargo.id,
-                  length: cargo.length * 10, // Переводим см в мм
-                  width: cargo.width * 10,   // Переводим см в мм
-                  height: cargo.height * 10, // Переводим см в мм
-                  weight: cargo.weight,
-                  productName: form.selectedProducts?.find(p => 
-                    p.cargoIndexes.includes(form.cargos.indexOf(cargo))
-                  )?.product.name
-                }))}
-                isVisible={true}
-              />
-            )}
-            
-            {/* Список подключенных ТК */}
+            {/* Список подключенных ТК - всегда видимый */}
             <Card className="bg-gray-800 border-gray-700">
               <CardHeader className="pb-2">
                 <CardTitle className="text-white text-sm">Подключенные транспортные компании</CardTitle>
@@ -3798,6 +3781,23 @@ export default function Home() {
                 </div>
               </CardContent>
             </Card>
+
+            {/* Визуализация кузова */}
+            {calculations.length > 0 && (
+              <TruckVisualization 
+                cargos={form.cargos.map(cargo => ({
+                  id: cargo.id,
+                  length: cargo.length * 10, // Переводим см в мм
+                  width: cargo.width * 10,   // Переводим см в мм
+                  height: cargo.height * 10, // Переводим см в мм
+                  weight: cargo.weight,
+                  productName: form.selectedProducts?.find(p => 
+                    p.cargoIndexes.includes(form.cargos.indexOf(cargo))
+                  )?.product.name
+                }))}
+                isVisible={true}
+              />
+            )}
           </div>
         </div>
       </div>
