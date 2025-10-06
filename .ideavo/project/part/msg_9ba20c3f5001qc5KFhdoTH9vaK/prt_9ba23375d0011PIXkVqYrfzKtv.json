@@ -1,0 +1,27 @@
+{
+  "id": "prt_9ba23375d0011PIXkVqYrfzKtv",
+  "messageID": "msg_9ba20c3f5001qc5KFhdoTH9vaK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01ESKS1B3CPBjakDbvAEuVk6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run dev",
+      "timeout": 5000,
+      "description": "Test dev server with selective cache clearing"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ⚠ Invalid next.config.js options detected: \n ⚠     Unrecognized key(s) in object: 'runtime', 'serverActionsBodySizeLimit' at \"experimental\"\n ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config\n ✓ Ready in 1681ms\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ⚠ Invalid next.config.js options detected: \n ⚠     Unrecognized key(s) in object: 'runtime', 'serverActionsBodySizeLimit' at \"experimental\"\n ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config\n ✓ Ready in 1681ms\n",
+      "exit": null,
+      "description": "Test dev server with selective cache clearing"
+    },
+    "title": "npm run dev",
+    "time": {
+      "start": 1759764495015,
+      "end": 1759764500020
+    }
+  }
+}

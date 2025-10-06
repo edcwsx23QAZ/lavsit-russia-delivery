@@ -1,0 +1,25 @@
+{
+  "id": "prt_9ba20eaa0001xRTJEtIz64ac2i",
+  "messageID": "msg_9ba20c3f5001qc5KFhdoTH9vaK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01N1TL8XcFrKvn41n2ypupFH",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/public/clear-dev-cache.js",
+      "edits": [
+        {
+          "oldString": "// CRITICAL DEV CACHE CLEARING SCRIPT\n(function() {\n  'use strict';\n  \n  console.log('[CACHE-CLEAR] Starting aggressive cache clearing...');\n  \n  // Clear all possible storage\n  try {\n    if (typeof localStorage !== 'undefined') {\n      localStorage.clear();\n      console.log('[CACHE-CLEAR] localStorage cleared');\n    }\n  } catch (e) {\n    console.warn('[CACHE-CLEAR] localStorage clear failed:', e);\n  }",
+          "newString": "// CRITICAL DEV CACHE CLEARING SCRIPT\n// Очищает ВСЕ кроме данных формы пользователя\n(function() {\n  'use strict';\n  \n  console.log('[CACHE-CLEAR] Starting selective cache clearing...');\n  \n  // Сохраняем пользовательские данные формы перед очисткой\n  let savedFormData = null;\n  let savedAppVersion = null;\n  try {\n    if (typeof localStorage !== 'undefined') {\n      // Сохраняем только данные формы и версию приложения\n      savedFormData = localStorage.getItem('deliveryFormData');\n      savedAppVersion = localStorage.getItem('appVersion');\n      \n      // Полная очистка localStorage\n      localStorage.clear();\n      console.log('[CACHE-CLEAR] localStorage cleared');\n      \n      // Восстанавливаем только пользовательские данные\n      if (savedFormData) {\n        localStorage.setItem('deliveryFormData', savedFormData);\n        console.log('[CACHE-CLEAR] Form data restored');\n      }\n      if (savedAppVersion) {\n        localStorage.setItem('appVersion', savedAppVersion);\n        console.log('[CACHE-CLEAR] App version restored');\n      }\n    }\n  } catch (e) {\n    console.warn('[CACHE-CLEAR] localStorage selective clear failed:', e);\n  }"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/public/clear-dev-cache.js before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1759764350885,
+      "end": 1759764350887
+    }
+  }
+}

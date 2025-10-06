@@ -1,0 +1,29 @@
+{
+  "id": "prt_9ba2225ef001TLA3qfFU7x3mjp",
+  "messageID": "msg_9ba20c3f5001qc5KFhdoTH9vaK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_011VEQcEZjNemNJR6owz5nY7",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/layout.tsx",
+      "edits": [
+        {
+          "oldString": "                console.log('[EMERGENCY] Layout: Killing all service workers and caches...');",
+          "newString": "                console.log('[EMERGENCY] Layout: Selective clearing - preserving form data...');"
+        },
+        {
+          "oldString": "                if ('serviceWorker' in navigator) {\n                  navigator.serviceWorker.getRegistrations().then(registrations => {\n                    registrations.forEach(registration => {\n                      console.log('[EMERGENCY] Layout: Unregistering SW:', registration.scope);\n                      registration.unregister();\n                    });\n                  });\n                }\n                if ('caches' in window) {\n                  caches.keys().then(names => {\n                    names.forEach(name => {\n                      console.log('[EMERGENCY] Layout: Deleting cache:', name);\n                      caches.delete(name);\n                    });\n                  });\n                }",
+          "newString": "                // Очищаем service workers и caches (не трогаем localStorage - его очистит clear-dev-cache.js)\n                if ('serviceWorker' in navigator) {\n                  navigator.serviceWorker.getRegistrations().then(registrations => {\n                    registrations.forEach(registration => {\n                      console.log('[EMERGENCY] Layout: Unregistering SW:', registration.scope);\n                      registration.unregister();\n                    });\n                  });\n                }\n                if ('caches' in window) {\n                  caches.keys().then(names => {\n                    names.forEach(name => {\n                      console.log('[EMERGENCY] Layout: Deleting cache:', name);\n                      caches.delete(name);\n                    });\n                  });\n                }"
+        }
+      ]
+    },
+    "error": "Error: You must read the file /home/user/project/app/layout.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1759764430161,
+      "end": 1759764430162
+    }
+  }
+}

@@ -49,7 +49,7 @@ export default function RootLayout({
             <script src="/clear-dev-cache.js"></script>
             <script dangerouslySetInnerHTML={{
               __html: `
-                console.log('[EMERGENCY] Layout: Killing all service workers and caches...');
+                console.log('[EMERGENCY] Layout: Selective clearing - preserving form data...');
                 if ('serviceWorker' in navigator) {
                   navigator.serviceWorker.getRegistrations().then(registrations => {
                     registrations.forEach(registration => {

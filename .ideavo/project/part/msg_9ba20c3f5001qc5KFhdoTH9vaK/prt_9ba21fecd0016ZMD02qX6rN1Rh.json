@@ -1,0 +1,21 @@
+{
+  "id": "prt_9ba21fecd0016ZMD02qX6rN1Rh",
+  "messageID": "msg_9ba20c3f5001qc5KFhdoTH9vaK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Xf1VbbFwipjjpbAtGzpJDD",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/layout.tsx",
+      "oldString": "            <script dangerouslySetInnerHTML={{\n              __html: `\n                console.log('[EMERGENCY] Layout: Killing all service workers and caches...');\n                if ('serviceWorker' in navigator) {\n                  navigator.serviceWorker.getRegistrations().then(registrations => {\n                    registrations.forEach(registration => {\n                      console.log('[EMERGENCY] Layout: Unregistering SW:', registration.scope);\n                      registration.unregister();\n                    });\n                  });\n                }\n                if ('caches' in window) {\n                  caches.keys().then(names => {\n                    names.forEach(name => {\n                      console.log('[EMERGENCY] Layout: Deleting cache:', name);\n                      caches.delete(name);\n                    });\n                  });\n                }\n              `\n            }} />",
+      "newString": "            <script dangerouslySetInnerHTML={{\n              __html: `\n                console.log('[EMERGENCY] Layout: Selective clearing - preserving form data...');\n                \n                // Сохраняем пользовательские данные формы\n                let savedFormData = null;\n                let savedAppVersion = null;\n                try {\n                  if (typeof localStorage !== 'undefined') {\n                    savedFormData = localStorage.getItem('deliveryFormData');\n                    savedAppVersion = localStorage.getItem('appVersion');\n                  }\n                } catch (e) {\n                  console.warn('[EMERGENCY] Layout: Failed to save form data:', e);\n                }\n                \n                // Очищаем service workers и caches (не трогаем localStorage - его очистит clear-dev-cache.js)\n                if ('serviceWorker' in navigator) {\n                  navigator.serviceWorker.getRegistrations().then(registrations => {\n                    registrations.forEach(registration => {\n                      console.log('[EMERGENCY] Layout: Unregistering SW:', registration.scope);\n                      registration.unregister();\n                    });\n                  });\n                }\n                if ('caches' in window) {\n                  caches.keys().then(names => {\n                    names.forEach(name => {\n                      console.log('[EMERGENCY] Layout: Deleting cache:', name);\n                      caches.delete(name);\n                    });\n                  });\n                }\n              `\n            }} />"
+    },
+    "error": "Error: You must read the file /home/user/project/app/layout.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1759764421531,
+      "end": 1759764421532
+    }
+  }
+}

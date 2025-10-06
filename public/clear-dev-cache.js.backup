@@ -1,35 +1,17 @@
 // CRITICAL DEV CACHE CLEARING SCRIPT
-// Очищает ВСЕ кроме данных формы пользователя
 (function() {
   'use strict';
   
-  console.log('[CACHE-CLEAR] Starting selective cache clearing...');
+  console.log('[CACHE-CLEAR] Starting aggressive cache clearing...');
   
-  // Сохраняем пользовательские данные формы перед очисткой
-  let savedFormData = null;
-  let savedAppVersion = null;
+  // Clear all possible storage
   try {
     if (typeof localStorage !== 'undefined') {
-      // Сохраняем только данные формы и версию приложения
-      savedFormData = localStorage.getItem('deliveryFormData');
-      savedAppVersion = localStorage.getItem('appVersion');
-      
-      // Полная очистка localStorage
       localStorage.clear();
       console.log('[CACHE-CLEAR] localStorage cleared');
-      
-      // Восстанавливаем только пользовательские данные
-      if (savedFormData) {
-        localStorage.setItem('deliveryFormData', savedFormData);
-        console.log('[CACHE-CLEAR] Form data restored');
-      }
-      if (savedAppVersion) {
-        localStorage.setItem('appVersion', savedAppVersion);
-        console.log('[CACHE-CLEAR] App version restored');
-      }
     }
   } catch (e) {
-    console.warn('[CACHE-CLEAR] localStorage selective clear failed:', e);
+    console.warn('[CACHE-CLEAR] localStorage clear failed:', e);
   }
   
   try {
@@ -75,5 +57,5 @@
     });
   }
   
-  console.log('[CACHE-CLEAR] Selective cache clearing completed');
+  console.log('[CACHE-CLEAR] Cache clearing completed');
 })();

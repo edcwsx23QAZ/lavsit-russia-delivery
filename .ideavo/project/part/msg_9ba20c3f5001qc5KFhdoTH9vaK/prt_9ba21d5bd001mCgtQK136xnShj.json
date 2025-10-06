@@ -1,0 +1,61 @@
+{
+  "id": "prt_9ba21d5bd001mCgtQK136xnShj",
+  "messageID": "msg_9ba20c3f5001qc5KFhdoTH9vaK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01AbJzKGgSjM2TMYrZY52hjb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Модифицировать clear-dev-cache.js для сохранения данных формы",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Обновить layout.tsx для селективной очистки",
+          "status": "pending",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Протестировать сохранение только пользовательских данных",
+          "status": "pending",
+          "priority": "medium",
+          "id": "3"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Модифицировать clear-dev-cache.js для сохранения данных формы\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"1\"\n  },\n  {\n    \"content\": \"Обновить layout.tsx для селективной очистки\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"2\"\n  },\n  {\n    \"content\": \"Протестировать сохранение только пользовательских данных\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"3\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Модифицировать clear-dev-cache.js для сохранения данных формы",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "Обновить layout.tsx для селективной очистки",
+          "status": "pending",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "Протестировать сохранение только пользовательских данных",
+          "status": "pending",
+          "priority": "medium",
+          "id": "3"
+        }
+      ]
+    },
+    "title": "2 todos",
+    "time": {
+      "start": 1759764410771,
+      "end": 1759764410771
+    }
+  }
+}
