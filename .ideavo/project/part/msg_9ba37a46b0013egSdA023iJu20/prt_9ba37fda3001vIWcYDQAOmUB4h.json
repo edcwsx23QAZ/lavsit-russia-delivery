@@ -1,0 +1,23 @@
+{
+  "id": "prt_9ba37fda3001vIWcYDQAOmUB4h",
+  "messageID": "msg_9ba37a46b0013egSdA023iJu20",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01NKd7ftmULej5riH8QtcqgW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/layout.tsx"
+    },
+    "output": "<file>\n00001| import './globals.css';\n00002| import type { Metadata } from 'next';\n00003| import { Inter } from 'next/font/google';\n00004| import { WebpackErrorBoundary } from '@/components/WebpackErrorBoundary';\n00005| import ClientDevUtils from '@/components/ClientDevUtils';\n00006| \n00007| const inter = Inter({ subsets: ['latin'] });\n00008| \n00009| export const metadata: Metadata = {\n00010|   title: 'Междугородняя доставка Лавсит',\n00011|   description: 'Система расчета стоимости доставки по всей России',\n00012| };\n00013| \n00014| export default function RootLayout({\n00015|   children,\n00016| }: {\n00017|   children: React.ReactNode;\n00018| }) {\n00019|   const isDev = process.env.NODE_ENV !== 'production';\n00020|   \n00021|   return (\n00022|     <html lang=\"en\">\n00023|       <head>\n00024|         {isDev && (\n00025|           <>\n00026|             <meta name=\"format-detection\" content=\"telephone=no, date=no, email=no, address=no\" />\n00027|             <meta httpEquiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\" />\n00028|             <meta httpEquiv=\"Pragma\" content=\"no-cache\" />\n00029|             <meta httpEquiv=\"Expires\" content=\"0\" />\n00030|           </>\n00031|         )}\n00032|       </head>\n00033|       <body className={inter.className} suppressHydrationWarning={isDev}>\n00034|         {isDev ? (\n00035|           <WebpackErrorBoundary>\n00036|             <ClientDevUtils />\n00037|             {children}\n00038|           </WebpackErrorBoundary>\n00039|         ) : (\n00040|           <>\n00041|             {children}\n00042|           </>\n00043|         )}\n00044|         {/* TODO: Remove iframe-navigation.js in production, should never be removed by AI */}\n00045|         <script src=\"/scripts/iframe-navigation.js\"></script>\n00046|         {/* CRITICAL: Dev cache clearing script - only loads in development */}\n00047|         {isDev && (\n00048|           <>\n00049|             <script src=\"/persistent-form-guardian.js\"></script>\n00050|             <script src=\"/clear-dev-cache.js\"></script>\n00051|             <script dangerouslySetInnerHTML={{\n00052|               __html: `\n00053|                 console.log('[EMERGENCY] Layout: Selective clearing - preserving form data...');\n00054|                 if ('serviceWorker' in navigator) {\n00055|                   navigator.serviceWorker.getRegistrations().then(registrations => {\n00056|                     registrations.forEach(registration => {\n00057|                       console.log('[EMERGENCY] Layout: Unregistering SW:', registration.scope);\n00058|                       registration.unregister();\n00059|                     });\n00060|                   });\n00061|                 }\n00062|                 if ('caches' in window) {\n00063|                   caches.keys().then(names => {\n00064|                     names.forEach(name => {\n00065|                       console.log('[EMERGENCY] Layout: Deleting cache:', name);\n00066|                       caches.delete(name);\n00067|                     });\n00068|                   });\n00069|                 }\n00070|               `\n00071|             }} />\n00072|           </>\n00073|         )}\n00074|       </body>\n00075|     </html>\n00076|   );\n00077| }\n00078| \n</file>",
+    "metadata": {
+      "preview": "import './globals.css';\nimport type { Metadata } from 'next';\nimport { Inter } from 'next/font/google';\nimport { WebpackErrorBoundary } from '@/components/WebpackErrorBoundary';\nimport ClientDevUtils from '@/components/ClientDevUtils';\n\nconst inter = Inter({ subsets: ['latin'] });\n\nexport const metadata: Metadata = {\n  title: 'Междугородняя доставка Лавсит',\n  description: 'Система расчета стоимости доставки по всей России',\n};\n\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  const isDev = process.env.NODE_ENV !== 'production';\n  "
+    },
+    "title": "app/layout.tsx",
+    "time": {
+      "start": 1759765856309,
+      "end": 1759765856312
+    }
+  }
+}
