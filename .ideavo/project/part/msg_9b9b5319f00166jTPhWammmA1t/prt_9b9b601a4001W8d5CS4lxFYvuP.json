@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9b601a4001W8d5CS4lxFYvuP",
+  "messageID": "msg_9b9b5319f00166jTPhWammmA1t",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011xovEPYojCCNRmYPN3ZUGq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1260,
+      "limit": 20
+    },
+    "output": "<file>\n01261|       const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n01262|       const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n01263|       const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;\n01264| \n01265|       // Получаем терминалы для городов (если нужно)\n01266|       const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminalByDirection(form.fromCity, 'derival') : null;\n01267|       const toTerminalId = !form.toAddressDelivery ? await getDellinTerminalByDirection(form.toCity, 'arrival') : null;\n01268|       \n01269|       console.log('🏢 ТЕРМИНАЛЫ ДЛ:');\n01270|       console.log('🏢 form.fromAddressDelivery:', form.fromAddressDelivery);\n01271|       console.log('🏢 form.toAddressDelivery:', form.toAddressDelivery);\n01272|       console.log('🏢 fromTerminalId:', fromTerminalId);\n01273|       console.log('🏢 toTerminalId:', toTerminalId);\n01274|       \n01275|       // Проверяем что терминалы найдены для терминальной доставки\n01276|       if (!form.fromAddressDelivery && !fromTerminalId) {\n01277|         console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n01278|         return {\n01279|           company: 'Деловые Линии',\n01280|           price: 0,\n\n(File has more lines. Use 'offset' parameter to read beyond line 1280)\n</file>",
+    "metadata": {
+      "preview": "      const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n      const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n      const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;\n\n      // Получаем терминалы для городов (если нужно)\n      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminalByDirection(form.fromCity, 'derival') : null;\n      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminalByDirection(form.toCity, 'arrival') : null;\n      \n      console.log('🏢 ТЕРМИНАЛЫ ДЛ:');\n      console.log('🏢 form.fromAddressDelivery:', form.fromAddressDelivery);\n      console.log('🏢 form.toAddressDelivery:', form.toAddressDelivery);\n      console.log('🏢 fromTerminalId:', fromTerminalId);\n      console.log('🏢 toTerminalId:', toTerminalId);\n      \n      // Проверяем что терминалы найдены для терминальной доставки\n      if (!form.fromAddressDelivery && !fromTerminalId) {\n        console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759757337588,
+      "end": 1759757337591
+    }
+  }
+}

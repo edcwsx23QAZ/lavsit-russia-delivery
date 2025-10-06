@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9b56399001igG7Weqj7p0Kww",
+  "messageID": "msg_9b9b5319f00166jTPhWammmA1t",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01WpSLCnTficVetpvU78Q7Pp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3740,
+      "limit": 40
+    },
+    "output": "<file>\n03741|                 <Separator className=\"bg-gray-600\" />\n03742| \n03743|                 {/* Доставка */}\n03744|                 <div className=\"space-y-2\">\n03745|                   <Label className=\"text-sm font-medium text-white\">Доставка</Label>\n03746|                   <div className=\"flex gap-3\">\n03747|                     <label className=\"flex items-center space-x-1\">\n03748|                       <input\n03749|                         type=\"radio\"\n03750|                         name=\"toDelivery\"\n03751|                         checked={form.toTerminal}\n03752|                         onChange={() => setForm(prev => ({ ...prev, toTerminal: true, toAddressDelivery: false }))}\n03753|                       />\n03754|                       <span className=\"text-white text-xs\">До терминала</span>\n03755|                     </label>\n03756|                     <label className=\"flex items-center space-x-1\">\n03757|                       <input\n03758|                         type=\"radio\"\n03759|                         name=\"toDelivery\"\n03760|                         checked={form.toAddressDelivery}\n03761|                         onChange={() => setForm(prev => ({ ...prev, toTerminal: false, toAddressDelivery: true }))}\n03762|                       />\n03763|                       <span className=\"text-white text-xs\">До адреса</span>\n03764|                     </label>\n03765|                   </div>\n03766|                   \n03767|                   <div>\n03768|                     <Label className=\"text-white text-xs\">Город доставки</Label>\n03769|                     <Input\n03770|                       value={form.toCity}\n03771|                       onChange={(e) => handleAddressChange('toCity', e.target.value, e.target)}\n03772|                       placeholder=\"Начните вводить город\"\n03773|                       className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n03774|                     />\n03775|                   </div>\n03776|                   \n03777|                   {form.toAddressDelivery && (\n03778|                     <div>\n03779|                       <Label className=\"text-white text-xs\">Адрес доставки</Label>\n03780|                       <Input\n\n(File has more lines. Use 'offset' parameter to read beyond line 3780)\n</file>",
+    "metadata": {
+      "preview": "                <Separator className=\"bg-gray-600\" />\n\n                {/* Доставка */}\n                <div className=\"space-y-2\">\n                  <Label className=\"text-sm font-medium text-white\">Доставка</Label>\n                  <div className=\"flex gap-3\">\n                    <label className=\"flex items-center space-x-1\">\n                      <input\n                        type=\"radio\"\n                        name=\"toDelivery\"\n                        checked={form.toTerminal}\n                        onChange={() => setForm(prev => ({ ...prev, toTerminal: true, toAddressDelivery: false }))}\n                      />\n                      <span className=\"text-white text-xs\">До терминала</span>\n                    </label>\n                    <label className=\"flex items-center space-x-1\">\n                      <input\n                        type=\"radio\"\n                        name=\"toDelivery\"\n                        checked={form.toAddressDelivery}"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759757297555,
+      "end": 1759757297580
+    }
+  }
+}

@@ -1145,7 +1145,61 @@ export default function Home() {
         }
       }
       
-      console.warn(`⚠️ Терминалы ${direction} не найдены для города:`, normalizedCity);
+      // Если первый запрос не дал результатов, попробуем альтернативные варианты поиска
+      console.warn(`⚠️ Терминалы ${direction} не найдены для города "${normalizedCity}". Пробуем альтернативные варианты...`);
+      
+      // Список альтернативных вариантов названий для популярных городов
+      const alternativeNames: { [key: string]: string[] } = {
+        'санкт-петербург': ['спб', 'санкт петербург', 'петербург', 'ленинград'],
+        'москва': ['московская область', 'мск'],
+        'екатеринбург': ['свердловск', 'екб'],
+        'нижний новгород': ['н.новгород', 'нижний-новгород'],
+        'ростов-на-дону': ['ростов на дону', 'ростов'],
+      };
+      
+      if (alternativeNames[normalizedCity]) {
+        for (const altName of alternativeNames[normalizedCity]) {
+          console.log(`🔄 Пробуем альтернативное название: "${altName}"`);
+          
+          const altRequestBody = {
+            ...requestBody,
+            search: altName
+          };
+          
+          try {
+            const altResponse = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(altRequestBody)
+            });
+            
+            const altData = await altResponse.json();
+            console.log(`🚛 Альтернативный поиск "${altName}" response:`, altData);
+            
+            if (altResponse.ok && altData.terminals && altData.terminals.length > 0) {
+              let terminal = altData.terminals.find((t: any) => t.default === true);
+              if (!terminal && altData.terminals.length > 0) {
+                terminal = altData.terminals[0];
+              }
+              
+              if (terminal) {
+                console.log(`✅ Найден терминал ${direction} по альтернативному названию "${altName}":`, { 
+                  id: terminal.id, 
+                  city: terminal.city, 
+                  name: terminal.name 
+                });
+                return terminal.id.toString();
+              }
+            }
+          } catch (altError) {
+            console.warn(`⚠️ Ошибка альтернативного поиска "${altName}":`, altError);
+          }
+        }
+      }
+      
+      console.warn(`❌ Терминалы ${direction} не найдены для города:`, normalizedCity);
       console.warn('⚠️ Response status:', response.status);
       console.warn('⚠️ Response data:', data);
       return null;
@@ -3680,7 +3734,7 @@ export default function Home() {
                 {/* Отправление */}
                 <div className="space-y-2">
                   <Label className="text-sm font-medium text-white">Отправление</Label>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 flex-wrap">
                     <label className="flex items-center space-x-1">
                       <input
                         type="radio"
@@ -3699,18 +3753,14 @@ export default function Home() {
                       />
                       <span className="text-white text-xs">От адреса</span>
                     </label>
-                  </div>
-                  
-                  {/* Чекбокс склада Лавсит */}
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      id="lavsiteWarehouse"
-                      checked={form.fromLavsiteWarehouse}
-                      onCheckedChange={handleLavsiteWarehouseChange}
-                    />
-                    <Label htmlFor="lavsiteWarehouse" className="text-white text-xs cursor-pointer">
-                      Со склада Лавсит
-                    </Label>
+                    <label className="flex items-center space-x-1">
+                      <Checkbox
+                        id="lavsiteWarehouse"
+                        checked={form.fromLavsiteWarehouse}
+                        onCheckedChange={handleLavsiteWarehouseChange}
+                      />
+                      <span className="text-white text-xs cursor-pointer">Со склада Лавсит</span>
+                    </label>
                   </div>
                   
                   <div>

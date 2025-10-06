@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9b57e5b001bqySXgtS42QAdA",
+  "messageID": "msg_9b9b5319f00166jTPhWammmA1t",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01351hA4cZQwykYDBTECYGrX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3705,
+      "limit": 25
+    },
+    "output": "<file>\n03706|                     <Checkbox\n03707|                       id=\"lavsiteWarehouse\"\n03708|                       checked={form.fromLavsiteWarehouse}\n03709|                       onCheckedChange={handleLavsiteWarehouseChange}\n03710|                     />\n03711|                     <Label htmlFor=\"lavsiteWarehouse\" className=\"text-white text-xs cursor-pointer\">\n03712|                       Со склада Лавсит\n03713|                     </Label>\n03714|                   </div>\n03715|                   \n03716|                   <div>\n03717|                     <Label className=\"text-white text-xs\">Город отправления</Label>\n03718|                     <Input\n03719|                       value={form.fromCity}\n03720|                       onChange={(e) => !form.fromLavsiteWarehouse && handleAddressChange('fromCity', e.target.value, e.target)}\n03721|                       placeholder=\"Начните вводить город\"\n03722|                       disabled={form.fromLavsiteWarehouse}\n03723|                       className={`bg-gray-700 border-gray-600 h-8 text-white ${form.fromLavsiteWarehouse ? 'opacity-50 cursor-not-allowed' : ''}`}\n03724|                     />\n03725|                   </div>\n03726|                   \n03727|                   {form.fromAddressDelivery && (\n03728|                     <div>\n03729|                       <Label className=\"text-white text-xs\">Адрес отправления</Label>\n03730|                       <Input\n\n(File has more lines. Use 'offset' parameter to read beyond line 3730)\n</file>",
+    "metadata": {
+      "preview": "                    <Checkbox\n                      id=\"lavsiteWarehouse\"\n                      checked={form.fromLavsiteWarehouse}\n                      onCheckedChange={handleLavsiteWarehouseChange}\n                    />\n                    <Label htmlFor=\"lavsiteWarehouse\" className=\"text-white text-xs cursor-pointer\">\n                      Со склада Лавсит\n                    </Label>\n                  </div>\n                  \n                  <div>\n                    <Label className=\"text-white text-xs\">Город отправления</Label>\n                    <Input\n                      value={form.fromCity}\n                      onChange={(e) => !form.fromLavsiteWarehouse && handleAddressChange('fromCity', e.target.value, e.target)}\n                      placeholder=\"Начните вводить город\"\n                      disabled={form.fromLavsiteWarehouse}\n                      className={`bg-gray-700 border-gray-600 h-8 text-white ${form.fromLavsiteWarehouse ? 'opacity-50 cursor-not-allowed' : ''}`}\n                    />\n                  </div>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759757304019,
+      "end": 1759757304022
+    }
+  }
+}

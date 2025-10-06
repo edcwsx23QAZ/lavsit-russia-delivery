@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9b5e22a001YNHc2CzUhB24FS",
+  "messageID": "msg_9b9b5319f00166jTPhWammmA1t",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01AfSeN7CaKMj73uDtA1cP3M",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1285,
+      "limit": 20
+    },
+    "output": "<file>\n01286|         };\n01287|       }\n01288|       \n01289|       if (!form.toAddressDelivery && !toTerminalId) {\n01290|         console.error('❌ Не найден терминал назначения для города:', form.toCity);\n01291|         return {\n01292|           company: 'Деловые Линии',\n01293|           price: 0,\n01294|           days: 0,\n01295|           error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,\n01296|           apiUrl,\n01297|           requestData: null,\n01298|           responseData: null\n01299|         };\n01300|       }\n01301| \n01302|       // Получаем UID упаковки crate_with_bubble (если нужна упаковка)\n01303|       let packageUid: string | null = null;\n01304|       console.log('=== НАЧАЛО ОТЛАДКИ УПАКОВКИ ===');\n01305|       console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1305)\n</file>",
+    "metadata": {
+      "preview": "        };\n      }\n      \n      if (!form.toAddressDelivery && !toTerminalId) {\n        console.error('❌ Не найден терминал назначения для города:', form.toCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }\n\n      // Получаем UID упаковки crate_with_bubble (если нужна упаковка)\n      let packageUid: string | null = null;\n      console.log('=== НАЧАЛО ОТЛАДКИ УПАКОВКИ ===');\n      console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759757329716,
+      "end": 1759757329718
+    }
+  }
+}

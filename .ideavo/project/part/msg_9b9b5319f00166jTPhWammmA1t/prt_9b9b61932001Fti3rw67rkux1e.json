@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9b61932001Fti3rw67rkux1e",
+  "messageID": "msg_9b9b5319f00166jTPhWammmA1t",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01MgxNMpRmUyv5s3Wf8QCS7B",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1067,
+      "limit": 50
+    },
+    "output": "<file>\n01068|   const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {\n01069|     try {\n01070|       // Получаем валидный sessionID\n01071|       const sessionID = await getDellinSessionId();\n01072|       if (!sessionID) {\n01073|         console.error(`❌ Не удалось получить sessionID для поиска терминалов ${direction}`);\n01074|         return null;\n01075|       }\n01076| \n01077|       // Нормализуем название города для поиска\n01078|       const normalizedCity = citySearch.toLowerCase().trim()\n01079|         .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n01080|         .replace(/^город\\s+/, '') // Убираем префикс \"город \"\n01081|         .replace(/\\s+/g, ' '); // Нормализуем пробелы\n01082| \n01083|       console.log(`🔍 Поиск терминала ${direction} для города:`, normalizedCity);\n01084|       console.log(`🔑 Используем sessionID:`, sessionID);\n01085| \n01086|       // Используем правильный API endpoint для поиска терминалов\n01087|       // Структура запроса согласно API Деловых Линий\n01088|       const requestBody = {\n01089|         appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n01090|         sessionID: sessionID,\n01091|         search: normalizedCity,\n01092|         direction: direction,\n01093|         maxCargoDimensions: {\n01094|           length: 3.0,\n01095|           width: 3.0,\n01096|           height: 3.0,\n01097|           weight: 3.0,\n01098|           maxVolume: 3.0,\n01099|           totalVolume: 3.0,\n01100|           totalWeight: 3.0\n01101|         },\n01102|         express: true,\n01103|         freeStorageDays: \"2\"\n01104|       };\n01105| \n01106|       console.log(`📤 Запрос терминалов ${direction}:`, JSON.stringify(requestBody, null, 2));\n01107| \n01108|       const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n01109|         method: 'POST',\n01110|         headers: {\n01111|           'Content-Type': 'application/json'\n01112|         },\n01113|         body: JSON.stringify(requestBody)\n01114|       });\n01115| \n01116|       const data = await response.json();\n01117|       console.log(`🚛 Деловые Линии терминалы ${direction} response status:`, response.status);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1117)\n</file>",
+    "metadata": {
+      "preview": "  const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {\n    try {\n      // Получаем валидный sessionID\n      const sessionID = await getDellinSessionId();\n      if (!sessionID) {\n        console.error(`❌ Не удалось получить sessionID для поиска терминалов ${direction}`);\n        return null;\n      }\n\n      // Нормализуем название города для поиска\n      const normalizedCity = citySearch.toLowerCase().trim()\n        .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n        .replace(/^город\\s+/, '') // Убираем префикс \"город \"\n        .replace(/\\s+/g, ' '); // Нормализуем пробелы\n\n      console.log(`🔍 Поиск терминала ${direction} для города:`, normalizedCity);\n      console.log(`🔑 Используем sessionID:`, sessionID);\n\n      // Используем правильный API endpoint для поиска терминалов\n      // Структура запроса согласно API Деловых Линий"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759757343677,
+      "end": 1759757343681
+    }
+  }
+}

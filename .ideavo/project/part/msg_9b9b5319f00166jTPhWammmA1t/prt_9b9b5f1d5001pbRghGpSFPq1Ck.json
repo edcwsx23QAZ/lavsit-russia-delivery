@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9b5f1d5001pbRghGpSFPq1Ck",
+  "messageID": "msg_9b9b5319f00166jTPhWammmA1t",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01VmxArNXieMDgBPPQBNkiDa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1275,
+      "limit": 15
+    },
+    "output": "<file>\n01276|       if (!form.fromAddressDelivery && !fromTerminalId) {\n01277|         console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n01278|         return {\n01279|           company: 'Деловые Линии',\n01280|           price: 0,\n01281|           days: 0,\n01282|           error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,\n01283|           apiUrl,\n01284|           requestData: null,\n01285|           responseData: null\n01286|         };\n01287|       }\n01288|       \n01289|       if (!form.toAddressDelivery && !toTerminalId) {\n01290|         console.error('❌ Не найден терминал назначения для города:', form.toCity);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1290)\n</file>",
+    "metadata": {
+      "preview": "      if (!form.fromAddressDelivery && !fromTerminalId) {\n        console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }\n      \n      if (!form.toAddressDelivery && !toTerminalId) {\n        console.error('❌ Не найден терминал назначения для города:', form.toCity);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759757333582,
+      "end": 1759757333585
+    }
+  }
+}

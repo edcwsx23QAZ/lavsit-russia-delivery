@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9b58bf1001CH5zHyeeppenZ8",
+  "messageID": "msg_9b9b5319f00166jTPhWammmA1t",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01WTcQGmXwRHU5R2LbCSsYS2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3680,
+      "limit": 30
+    },
+    "output": "<file>\n03681|                 <div className=\"space-y-2\">\n03682|                   <Label className=\"text-sm font-medium text-white\">Отправление</Label>\n03683|                   <div className=\"flex gap-3\">\n03684|                     <label className=\"flex items-center space-x-1\">\n03685|                       <input\n03686|                         type=\"radio\"\n03687|                         name=\"fromDelivery\"\n03688|                         checked={form.fromTerminal}\n03689|                         onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false, fromLavsiteWarehouse: false }))}\n03690|                       />\n03691|                       <span className=\"text-white text-xs\">От терминала</span>\n03692|                     </label>\n03693|                     <label className=\"flex items-center space-x-1\">\n03694|                       <input\n03695|                         type=\"radio\"\n03696|                         name=\"fromDelivery\"\n03697|                         checked={form.fromAddressDelivery && !form.fromLavsiteWarehouse}\n03698|                         onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true, fromLavsiteWarehouse: false }))}\n03699|                       />\n03700|                       <span className=\"text-white text-xs\">От адреса</span>\n03701|                     </label>\n03702|                   </div>\n03703|                   \n03704|                   {/* Чекбокс склада Лавсит */}\n03705|                   <div className=\"flex items-center space-x-2\">\n03706|                     <Checkbox\n03707|                       id=\"lavsiteWarehouse\"\n03708|                       checked={form.fromLavsiteWarehouse}\n03709|                       onCheckedChange={handleLavsiteWarehouseChange}\n03710|                     />\n\n(File has more lines. Use 'offset' parameter to read beyond line 3710)\n</file>",
+    "metadata": {
+      "preview": "                <div className=\"space-y-2\">\n                  <Label className=\"text-sm font-medium text-white\">Отправление</Label>\n                  <div className=\"flex gap-3\">\n                    <label className=\"flex items-center space-x-1\">\n                      <input\n                        type=\"radio\"\n                        name=\"fromDelivery\"\n                        checked={form.fromTerminal}\n                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false, fromLavsiteWarehouse: false }))}\n                      />\n                      <span className=\"text-white text-xs\">От терминала</span>\n                    </label>\n                    <label className=\"flex items-center space-x-1\">\n                      <input\n                        type=\"radio\"\n                        name=\"fromDelivery\"\n                        checked={form.fromAddressDelivery && !form.fromLavsiteWarehouse}\n                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true, fromLavsiteWarehouse: false }))}\n                      />\n                      <span className=\"text-white text-xs\">От адреса</span>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759757307532,
+      "end": 1759757307536
+    }
+  }
+}

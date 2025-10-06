@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9b573c3001LgCP6uP0T1KVeb",
+  "messageID": "msg_9b9b5319f00166jTPhWammmA1t",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01Dg7weQ1dAEjVgw8mxhkVJS",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Со склада Лавсит",
+      "include": "*.tsx"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 644:   // Обработчик для чекбокса \"Со склада Лавсит\"\n  Line 3712:                       Со склада Лавсит",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "Со склада Лавсит",
+    "time": {
+      "start": 1759757301213,
+      "end": 1759757301222
+    }
+  }
+}
