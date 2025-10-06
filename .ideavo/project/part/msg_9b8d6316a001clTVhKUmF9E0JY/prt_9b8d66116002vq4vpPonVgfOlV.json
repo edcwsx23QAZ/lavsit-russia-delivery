@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8d66116002vq4vpPonVgfOlV",
+  "messageID": "msg_9b8d6316a001clTVhKUmF9E0JY",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01LW7ztH4VqUaxbBkL4tiVSi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 177,
+      "limit": 20
+    },
+    "output": "<file>\n00178|     adamant: 'не подключено',\n00179|     energiya: 'не подключено',\n00180|     cap: 'не подключено',\n00181|     uraltrans: 'не подключено',\n00182|     novotek: 'не подключено',\n00183|     kit: 'не подключено',\n00184|     karavan: 'не подключено',\n00185|     zeldor: 'не подключено',\n00186|     dktransit: 'не подключено',\n00187|     glavtrassa: 'не подключено',\n00188|     baltservice: 'не подключено',\n00189|     ankor: 'не подключено'\n00190|   });\n00191| \n00192|   // Загрузка сохраненных данных (только на клиенте)\n00193|   useEffect(() => {\n00194|     // Проверяем, что мы на клиенте\n00195|     if (typeof window !== 'undefined' && !isLoaded) {\n00196|       try {\n00197|         const saved = localStorage.getItem('deliveryForm');\n\n(File has more lines. Use 'offset' parameter to read beyond line 197)\n</file>",
+    "metadata": {
+      "preview": "    adamant: 'не подключено',\n    energiya: 'не подключено',\n    cap: 'не подключено',\n    uraltrans: 'не подключено',\n    novotek: 'не подключено',\n    kit: 'не подключено',\n    karavan: 'не подключено',\n    zeldor: 'не подключено',\n    dktransit: 'не подключено',\n    glavtrassa: 'не подключено',\n    baltservice: 'не подключено',\n    ankor: 'не подключено'\n  });\n\n  // Загрузка сохраненных данных (только на клиенте)\n  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined' && !isLoaded) {\n      try {\n        const saved = localStorage.getItem('deliveryForm');"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759742681933,
+      "end": 1759742681935
+    }
+  }
+}

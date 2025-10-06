@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8d7eb51001R9RP2gRAL8FQ1b",
+  "messageID": "msg_9b8d6316a001clTVhKUmF9E0JY",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_016waPNGMKyuXsryqnoJWsdo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "            {/* Список подключенных ТК - всегда видимый */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-2\">\n                <CardTitle className=\"text-white text-sm\">Подключенные транспортные компании</CardTitle>\n              </CardHeader>\n              <CardContent>\n                <div className=\"grid grid-cols-1 gap-2\">\n                  {COMPANIES_BASE.map((company, index) => {\n                    const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n                    const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n                    const isEnabled = enabledCompanies[company.apiKey];",
+      "newString": "            {/* Список подключенных ТК - всегда видимый */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-2\">\n                <CardTitle className=\"text-white text-sm\">\n                  Подключенные транспортные компании ({COMPANIES_BASE.length})\n                </CardTitle>\n              </CardHeader>\n              <CardContent>\n                <div className=\"grid grid-cols-1 gap-2\">\n                  {COMPANIES_BASE.map((company, index) => {\n                    const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n                    const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n                    const isEnabled = enabledCompanies[company.apiKey];\n                    \n                    // Отладка для первых 3 компаний\n                    if (index < 3) {\n                      console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}`);\n                    }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3814,17 +3814,24 @@\n \n {/* Список подключенных ТК - всегда видимый */}\n <Card className=\"bg-gray-800 border-gray-700\">\n   <CardHeader className=\"pb-2\">\n-    <CardTitle className=\"text-white text-sm\">Подключенные транспортные компании</CardTitle>\n+    <CardTitle className=\"text-white text-sm\">\n+      Подключенные транспортные компании ({COMPANIES_BASE.length})\n+    </CardTitle>\n   </CardHeader>\n   <CardContent>\n     <div className=\"grid grid-cols-1 gap-2\">\n       {COMPANIES_BASE.map((company, index) => {\n         const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n         const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n         const isEnabled = enabledCompanies[company.apiKey];\n         \n+        // Отладка для первых 3 компаний\n+        if (index < 3) {\n+          console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}`);\n+        }\n+        \n         return (\n           <div key={index} className=\"flex items-center justify-between p-2 bg-gray-700 rounded\">\n             <div className=\"flex items-center gap-2\">\n               <span className=\"text-lg\">{company.logo}</span>\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759742789258,
+      "end": 1759742789278
+    }
+  }
+}

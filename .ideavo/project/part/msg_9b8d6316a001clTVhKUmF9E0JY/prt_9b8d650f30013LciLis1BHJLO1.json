@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8d650f30013LciLis1BHJLO1",
+  "messageID": "msg_9b8d6316a001clTVhKUmF9E0JY",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01KFwxoiaQH1uEUDkdU3PCwk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 137,
+      "limit": 40
+    },
+    "output": "<file>\n00138|   const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n00139|     pek: true,\n00140|     dellin: true,\n00141|     railcontinent: true,\n00142|     vozovoz: true,\n00143|     nordwheel: true,\n00144|     cdek: false,\n00145|     newline: false,\n00146|     irtrust: false,\n00147|     majortrans: false,\n00148|     baikalservice: false,\n00149|     adamant: false,\n00150|     energiya: false,\n00151|     cap: false,\n00152|     uraltrans: false,\n00153|     novotek: false,\n00154|     kit: false,\n00155|     karavan: false,\n00156|     zeldor: false,\n00157|     dktransit: false,\n00158|     glavtrassa: false,\n00159|     baltservice: false,\n00160|     ankor: false\n00161|   });\n00162|   const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n00163|   const [calculating, setCalculating] = useState(false);\n00164|   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n00165|   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n00166|   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n00167|   const [apiStatus, setApiStatus] = useState({\n00168|     pek: 'проверка...',\n00169|     dellin: 'проверка...',\n00170|     railcontinent: 'проверка...',\n00171|     vozovoz: 'проверка...',\n00172|     nordwheel: 'проверка...',\n00173|     cdek: 'не подключено',\n00174|     newline: 'не подключено',\n00175|     irtrust: 'не подключено',\n00176|     majortrans: 'не подключено',\n00177|     baikalservice: 'не подключено',\n\n(File has more lines. Use 'offset' parameter to read beyond line 177)\n</file>",
+    "metadata": {
+      "preview": "  const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n    pek: true,\n    dellin: true,\n    railcontinent: true,\n    vozovoz: true,\n    nordwheel: true,\n    cdek: false,\n    newline: false,\n    irtrust: false,\n    majortrans: false,\n    baikalservice: false,\n    adamant: false,\n    energiya: false,\n    cap: false,\n    uraltrans: false,\n    novotek: false,\n    kit: false,\n    karavan: false,\n    zeldor: false,\n    dktransit: false,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759742677806,
+      "end": 1759742677810
+    }
+  }
+}

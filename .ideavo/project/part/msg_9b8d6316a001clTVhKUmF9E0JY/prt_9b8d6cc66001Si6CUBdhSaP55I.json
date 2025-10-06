@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b8d6cc66001Si6CUBdhSaP55I",
+  "messageID": "msg_9b8d6316a001clTVhKUmF9E0JY",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_017C5W373Me8VM8wz26zoXY4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3820,
+      "limit": 30
+    },
+    "output": "<file>\n03821|                 <div className=\"grid grid-cols-1 gap-2\">\n03822|                   {COMPANIES_BASE.map((company, index) => {\n03823|                     const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n03824|                     const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n03825|                     const isEnabled = enabledCompanies[company.apiKey];\n03826|                     \n03827|                     return (\n03828|                       <div key={index} className=\"flex items-center justify-between p-2 bg-gray-700 rounded\">\n03829|                         <div className=\"flex items-center gap-2\">\n03830|                           <span className=\"text-lg\">{company.logo}</span>\n03831|                           <div>\n03832|                             <p className=\"font-medium text-white text-xs\">{company.name}</p>\n03833|                             <Badge \n03834|                               variant={isConnected ? \"default\" : \"destructive\"} \n03835|                               className=\"text-xs\"\n03836|                             >\n03837|                               {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}\n03838|                             </Badge>\n03839|                           </div>\n03840|                         </div>\n03841|                         <div className=\"flex items-center gap-2\">\n03842|                           <span className=\"text-xs text-gray-300\">\n03843|                             {isEnabled ? 'Вкл' : 'Выкл'}\n03844|                           </span>\n03845|                           <Switch\n03846|                             checked={isEnabled}\n03847|                             onCheckedChange={(checked) => {\n03848|                               setEnabledCompanies(prev => ({\n03849|                                 ...prev,\n03850|                                 [company.apiKey]: checked\n\n(File has more lines. Use 'offset' parameter to read beyond line 3850)\n</file>",
+    "metadata": {
+      "preview": "                <div className=\"grid grid-cols-1 gap-2\">\n                  {COMPANIES_BASE.map((company, index) => {\n                    const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n                    const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n                    const isEnabled = enabledCompanies[company.apiKey];\n                    \n                    return (\n                      <div key={index} className=\"flex items-center justify-between p-2 bg-gray-700 rounded\">\n                        <div className=\"flex items-center gap-2\">\n                          <span className=\"text-lg\">{company.logo}</span>\n                          <div>\n                            <p className=\"font-medium text-white text-xs\">{company.name}</p>\n                            <Badge \n                              variant={isConnected ? \"default\" : \"destructive\"} \n                              className=\"text-xs\"\n                            >\n                              {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}\n                            </Badge>\n                          </div>\n                        </div>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759742709473,
+      "end": 1759742709477
+    }
+  }
+}

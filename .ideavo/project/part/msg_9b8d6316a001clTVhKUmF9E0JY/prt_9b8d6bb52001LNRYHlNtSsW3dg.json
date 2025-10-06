@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b8d6bb52001LNRYHlNtSsW3dg",
+  "messageID": "msg_9b8d6316a001clTVhKUmF9E0JY",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01EAJdURfsaNCEPfYDNr6dwq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n \"COMPANIES_BASE.map\" app/page.tsx",
+      "description": "Ищем где рендерятся компании"
+    },
+    "output": "225:        console.log('📋 Список ТК:', COMPANIES_BASE.map(c => c.name));\n3822:                  {COMPANIES_BASE.map((company, index) => {\n",
+    "metadata": {
+      "output": "225:        console.log('📋 Список ТК:', COMPANIES_BASE.map(c => c.name));\n3822:                  {COMPANIES_BASE.map((company, index) => {\n",
+      "exit": 0,
+      "description": "Ищем где рендерятся компании"
+    },
+    "title": "cd /home/user/project && grep -n \"COMPANIES_BASE.map\" app/page.tsx",
+    "time": {
+      "start": 1759742705552,
+      "end": 1759742705579
+    }
+  }
+}

@@ -194,6 +194,16 @@ export default function Home() {
     // Проверяем, что мы на клиенте
     if (typeof window !== 'undefined' && !isLoaded) {
       try {
+        // Проверяем версию для принудительного обновления кэша
+        const currentVersion = 'v2.0.0'; // Версия с новыми ТК
+        const savedVersion = localStorage.getItem('appVersion');
+        
+        if (savedVersion !== currentVersion) {
+          console.log('🔄 Обновление версии приложения, очищаем старые данные');
+          localStorage.clear();
+          localStorage.setItem('appVersion', currentVersion);
+        }
+        
         const saved = localStorage.getItem('deliveryForm');
         if (saved) {
           const savedForm = JSON.parse(saved);
@@ -209,6 +219,11 @@ export default function Home() {
           console.log('🕒 Текущее время (timestamp):', currentTime);
           console.log('🕒 Текущее время (ISO):', new Date().toISOString());
         }
+        
+        // Выводим все доступные ТК для отладки
+        console.log('📋 Всего доступно ТК:', COMPANIES_BASE.length);
+        console.log('📋 Список ТК:', COMPANIES_BASE.map(c => c.name));
+        
       } catch (error) {
         console.error('Ошибка загрузки сохраненных данных:', error);
         // В случае ошибки оставляем начальное состояние
@@ -3276,7 +3291,7 @@ export default function Home() {
     <div className="min-h-screen bg-gray-900 text-white p-4 relative">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-2xl font-bold text-center mb-6 text-blue-400">
-          Междугородняя доставка Лавсит
+          Междугородняя доставка Лавсит (ТК: {COMPANIES_BASE.length})
         </h1>
         
         {/* Кнопка диагностики */}
@@ -3800,7 +3815,9 @@ export default function Home() {
             {/* Список подключенных ТК - всегда видимый */}
             <Card className="bg-gray-800 border-gray-700">
               <CardHeader className="pb-2">
-                <CardTitle className="text-white text-sm">Подключенные транспортные компании</CardTitle>
+                <CardTitle className="text-white text-sm">
+                  Подключенные транспортные компании ({COMPANIES_BASE.length})
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-1 gap-2">
@@ -3808,6 +3825,11 @@ export default function Home() {
                     const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';
                     const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];
                     const isEnabled = enabledCompanies[company.apiKey];
+                    
+                    // Отладка для первых 3 компаний
+                    if (index < 3) {
+                      console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}`);
+                    }
                     
                     return (
                       <div key={index} className="flex items-center justify-between p-2 bg-gray-700 rounded">

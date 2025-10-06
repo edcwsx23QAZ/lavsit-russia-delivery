@@ -1,0 +1,27 @@
+{
+  "id": "prt_9b8d7b276001TB3uk9UGFB4RDz",
+  "messageID": "msg_9b8d6316a001clTVhKUmF9E0JY",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01FSYy9p9KydY5W2NmAywZCw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run dev",
+      "timeout": 10000,
+      "description": "Запускаем сервер с очищенным кэшем"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ✓ Ready in 1667ms\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ✓ Ready in 1667ms\n",
+      "exit": null,
+      "description": "Запускаем сервер с очищенным кэшем"
+    },
+    "title": "cd /home/user/project && npm run dev",
+    "time": {
+      "start": 1759742768614,
+      "end": 1759742778625
+    }
+  }
+}
