@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9628fac001yLFP7RBSDJ8LkB",
+  "messageID": "msg_9b96049e4001PIgrQ1UG3nb4Dk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01GVWKq2rbaDQmrrMGHXSEKj",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/FullTestingResults.tsx",
+      "oldString": "                <div className=\"text-2xl font-bold text-purple-400\">{fullTestResults.summary.averageTime}мс</div>",
+      "newString": "                <div className=\"text-2xl font-bold text-purple-400\">{fullTestResults.summary.averageResponseTime}мс</div>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/diagnostic/FullTestingResults.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/FullTestingResults.tsx\n+++ /home/user/project/components/diagnostic/FullTestingResults.tsx\n@@ -108,9 +108,9 @@\n     </div>\n     <div className=\"text-sm text-gray-400\">Успешность</div>\n   </div>\n   <div className=\"bg-gray-800 p-3 rounded text-center\">\n-    <div className=\"text-2xl font-bold text-purple-400\">{fullTestResults.summary.averageTime}мс</div>\n+    <div className=\"text-2xl font-bold text-purple-400\">{fullTestResults.summary.averageResponseTime}мс</div>\n     <div className=\"text-sm text-gray-400\">Среднее время</div>\n   </div>\n </div>\n \n"
+    },
+    "title": "components/diagnostic/FullTestingResults.tsx",
+    "time": {
+      "start": 1759751869598,
+      "end": 1759751869605
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9626168001WqOS7p6xxT0x7t",
+  "messageID": "msg_9b96049e4001PIgrQ1UG3nb4Dk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01HmGq3KEzwsYqkvnecbT7pr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/FullTestingResults.tsx",
+      "oldString": "interface TestSummary {\n  total: number;\n  passed: number;\n  failed: number;\n  skipped: number;\n  averageTime: number;\n  successRate: number;\n  errors: string[];\n}\n\ninterface FullTestingResultsProps {\n  fullTestResults: {\n    summary: TestSummary;\n    details: TestResult[];\n  } | null;",
+      "newString": "interface TestSummary {\n  totalTests: number;\n  successful: number;\n  failed: number;\n  skipped: number;\n  errors: string[];\n  averageResponseTime: number;\n  successRate: number;\n}\n\ninterface FullTestingResultsProps {\n  fullTestResults: {\n    summary: TestSummary;\n    details: TestResult[];\n  } | null;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/diagnostic/FullTestingResults.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/FullTestingResults.tsx\n+++ /home/user/project/components/diagnostic/FullTestingResults.tsx\n@@ -15,15 +15,15 @@\n   timestamp: string;\n }\n \n interface TestSummary {\n-  total: number;\n-  passed: number;\n+  totalTests: number;\n+  successful: number;\n   failed: number;\n   skipped: number;\n-  averageTime: number;\n-  successRate: number;\n   errors: string[];\n+  averageResponseTime: number;\n+  successRate: number;\n }\n \n interface FullTestingResultsProps {\n   fullTestResults: {\n"
+    },
+    "title": "components/diagnostic/FullTestingResults.tsx",
+    "time": {
+      "start": 1759751859273,
+      "end": 1759751859277
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b960a1eb001298NlA46RVnGEw",
+  "messageID": "msg_9b96049e4001PIgrQ1UG3nb4Dk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_018U8jz8fBAbRsru2182QDCY",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/LazyLoadedComponents.tsx",
+      "content": "'use client';\n\nimport React from 'react';\n\n// Импортируем реальные компоненты\nimport FullTestingResults from './FullTestingResults';\nimport VehicleManagement from './VehicleManagement';\n\n// Создаем lazy-обертки с React.lazy\nconst LazyFullTestingResults = React.lazy(() => \n  Promise.resolve({ default: FullTestingResults })\n);\n\nconst LazyVehicleManagement = React.lazy(() => \n  Promise.resolve({ default: VehicleManagement })\n);\n\n// Экспортируем оба lazy компонента\nexport { LazyFullTestingResults, LazyVehicleManagement };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/components/diagnostic/LazyLoadedComponents.tsx",
+      "exists": false
+    },
+    "title": "components/diagnostic/LazyLoadedComponents.tsx",
+    "time": {
+      "start": 1759751745138,
+      "end": 1759751745140
+    }
+  }
+}

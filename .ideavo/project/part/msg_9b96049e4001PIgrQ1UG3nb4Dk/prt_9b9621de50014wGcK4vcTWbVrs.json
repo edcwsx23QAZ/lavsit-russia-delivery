@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9621de50014wGcK4vcTWbVrs",
+  "messageID": "msg_9b96049e4001PIgrQ1UG3nb4Dk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Gc9m4rNP44b3uNQamZxZw6",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/optimized-page.tsx",
+      "offset": 300,
+      "limit": 20
+    },
+    "output": "<file>\n00301|           onTestDellin={testDellin}\n00302|           onTestRailContinent={testRailContinent}\n00303|           onTestVozovoz={testVozovoz}\n00304|           onTestNordWheel={testNordWheel}\n00305|         />\n00306| \n00307|         <LazyFullTestingResults\n00308|           fullTestResults={state.fullTestResults}\n00309|           testProgress={state.testProgress?.progress || 0}\n00310|           isFullTesting={state.isFullTesting}\n00311|         />\n00312| \n00313|         <LazyVehicleManagement\n00314|           vehicleTypes={state.vehicleTypes}\n00315|           newVehicle={state.newVehicle}\n00316|           hasUnsavedChanges={state.hasUnsavedChanges}\n00317|           saveStatus={state.saveStatus}\n00318|           isSaving={state.isSaving}\n00319|           lastUpdateTime={state.lastUpdateTime}\n00320|           onAddVehicleType={addVehicleType}\n\n(File has more lines. Use 'offset' parameter to read beyond line 320)\n</file>",
+    "metadata": {
+      "preview": "          onTestDellin={testDellin}\n          onTestRailContinent={testRailContinent}\n          onTestVozovoz={testVozovoz}\n          onTestNordWheel={testNordWheel}\n        />\n\n        <LazyFullTestingResults\n          fullTestResults={state.fullTestResults}\n          testProgress={state.testProgress?.progress || 0}\n          isFullTesting={state.isFullTesting}\n        />\n\n        <LazyVehicleManagement\n          vehicleTypes={state.vehicleTypes}\n          newVehicle={state.newVehicle}\n          hasUnsavedChanges={state.hasUnsavedChanges}\n          saveStatus={state.saveStatus}\n          isSaving={state.isSaving}\n          lastUpdateTime={state.lastUpdateTime}\n          onAddVehicleType={addVehicleType}"
+    },
+    "title": "app/diagnostic/optimized-page.tsx",
+    "time": {
+      "start": 1759751839928,
+      "end": 1759751839931
+    }
+  }
+}

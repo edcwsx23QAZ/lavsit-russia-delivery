@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b96250a4001Yl6CrbBkQR1ZC2",
+  "messageID": "msg_9b96049e4001PIgrQ1UG3nb4Dk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01RmxFW3TapoUQNdJJRbFJuW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/FullTestingResults.tsx",
+      "offset": 28,
+      "limit": 10
+    },
+    "output": "<file>\n00029|   fullTestResults: {\n00030|     summary: TestSummary;\n00031|     details: TestResult[];\n00032|   } | null;\n00033|   testProgress: number;\n00034|   isFullTesting: boolean;\n00035| }\n00036| \n00037| const FullTestingResults = React.memo(function FullTestingResults({\n00038|   fullTestResults,\n\n(File has more lines. Use 'offset' parameter to read beyond line 38)\n</file>",
+    "metadata": {
+      "preview": "  fullTestResults: {\n    summary: TestSummary;\n    details: TestResult[];\n  } | null;\n  testProgress: number;\n  isFullTesting: boolean;\n}\n\nconst FullTestingResults = React.memo(function FullTestingResults({\n  fullTestResults,"
+    },
+    "title": "components/diagnostic/FullTestingResults.tsx",
+    "time": {
+      "start": 1759751853387,
+      "end": 1759751853388
+    }
+  }
+}

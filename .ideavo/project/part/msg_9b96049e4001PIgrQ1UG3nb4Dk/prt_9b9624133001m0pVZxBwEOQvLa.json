@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9624133001m0pVZxBwEOQvLa",
+  "messageID": "msg_9b96049e4001PIgrQ1UG3nb4Dk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Dnvw5ddAfQYADQrfgpTgDa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/hooks/useDiagnosticState.ts",
+      "offset": 50,
+      "limit": 50
+    },
+    "output": "<file>\n00051|   \n00052|   // Results\n00053|   diagnosticResults: { [key: string]: DiagnosticResult };\n00054|   fullTestResults: FullTestResults | null;\n00055|   testProgress: TestProgress & { progress: number } | null;\n00056|   \n00057|   // Vehicle management\n00058|   vehicleTypes: VehicleType[];\n00059|   newVehicle: { name: string; length: string; width: string; height: string };\n00060|   isSaving: boolean;\n00061|   hasUnsavedChanges: boolean;\n00062|   saveStatus: 'idle' | 'saving' | 'success' | 'error';\n00063|   \n00064|   // Data updating\n00065|   isUpdatingData: boolean;\n00066|   updateStatus: 'idle' | 'updating' | 'success' | 'error';\n00067|   lastUpdateTime: string | null;\n00068| }\n00069| \n00070| type DiagnosticAction =\n00071|   | { type: 'SET_TESTING_STATE'; payload: { service: string; isLoading: boolean } }\n00072|   | { type: 'SET_FULL_TESTING'; payload: boolean }\n00073|   | { type: 'SET_DIAGNOSTIC_RESULT'; payload: { key: string; result: DiagnosticResult } }\n00074|   | { type: 'SET_FULL_TEST_RESULTS'; payload: FullTestResults | null }\n00075|   | { type: 'SET_TEST_PROGRESS'; payload: TestProgress & { progress: number } | null }\n00076|   | { type: 'SET_VEHICLE_TYPES'; payload: VehicleType[] }\n00077|   | { type: 'ADD_VEHICLE_TYPE'; payload: VehicleType }\n00078|   | { type: 'REMOVE_VEHICLE_TYPE'; payload: string }\n00079|   | { type: 'UPDATE_VEHICLE_TYPE'; payload: { id: string; field: string; value: string | number } }\n00080|   | { type: 'SET_NEW_VEHICLE'; payload: { name: string; length: string; width: string; height: string } }\n00081|   | { type: 'SET_SAVING_STATE'; payload: boolean }\n00082|   | { type: 'SET_UNSAVED_CHANGES'; payload: boolean }\n00083|   | { type: 'SET_SAVE_STATUS'; payload: 'idle' | 'saving' | 'success' | 'error' }\n00084|   | { type: 'SET_UPDATING_DATA'; payload: boolean }\n00085|   | { type: 'SET_UPDATE_STATUS'; payload: 'idle' | 'updating' | 'success' | 'error' }\n00086|   | { type: 'SET_LAST_UPDATE_TIME'; payload: string | null }\n00087|   | { type: 'RESET_DIAGNOSTIC_RESULTS' }\n00088|   | { type: 'INITIALIZE_VEHICLE_TYPES'; payload: { vehicleTypes: VehicleType[]; lastUpdateTime: string | null } };\n00089| \n00090| const initialState: DiagnosticState = {\n00091|   isTestingPEK: false,\n00092|   isTestingDellin: false,\n00093|   isTestingRailContinent: false,\n00094|   isTestingVozovoz: false,\n00095|   isTestingNordWheel: false,\n00096|   isFullTesting: false,\n00097|   diagnosticResults: {},\n00098|   fullTestResults: null,\n00099|   testProgress: null,\n00100|   vehicleTypes: [\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "metadata": {
+      "preview": "  \n  // Results\n  diagnosticResults: { [key: string]: DiagnosticResult };\n  fullTestResults: FullTestResults | null;\n  testProgress: TestProgress & { progress: number } | null;\n  \n  // Vehicle management\n  vehicleTypes: VehicleType[];\n  newVehicle: { name: string; length: string; width: string; height: string };\n  isSaving: boolean;\n  hasUnsavedChanges: boolean;\n  saveStatus: 'idle' | 'saving' | 'success' | 'error';\n  \n  // Data updating\n  isUpdatingData: boolean;\n  updateStatus: 'idle' | 'updating' | 'success' | 'error';\n  lastUpdateTime: string | null;\n}\n\ntype DiagnosticAction ="
+    },
+    "title": "hooks/useDiagnosticState.ts",
+    "time": {
+      "start": 1759751848816,
+      "end": 1759751848817
+    }
+  }
+}

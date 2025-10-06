@@ -16,13 +16,13 @@ interface TestResult {
 }
 
 interface TestSummary {
-  total: number;
-  passed: number;
+  totalTests: number;
+  successful: number;
   failed: number;
   skipped: number;
-  averageTime: number;
-  successRate: number;
   errors: string[];
+  averageResponseTime: number;
+  successRate: number;
 }
 
 interface FullTestingResultsProps {
@@ -87,11 +87,11 @@ const FullTestingResults = React.memo(function FullTestingResults({
             {/* Статистика */}
             <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
               <div className="bg-gray-800 p-3 rounded text-center">
-                <div className="text-2xl font-bold text-white">{fullTestResults.summary.total}</div>
+                <div className="text-2xl font-bold text-white">{fullTestResults.summary.totalTests}</div>
                 <div className="text-sm text-gray-400">Всего тестов</div>
               </div>
               <div className="bg-gray-800 p-3 rounded text-center">
-                <div className="text-2xl font-bold text-green-400">{fullTestResults.summary.passed}</div>
+                <div className="text-2xl font-bold text-green-400">{fullTestResults.summary.successful}</div>
                 <div className="text-sm text-gray-400">Успешных</div>
               </div>
               <div className="bg-gray-800 p-3 rounded text-center">
@@ -109,7 +109,7 @@ const FullTestingResults = React.memo(function FullTestingResults({
                 <div className="text-sm text-gray-400">Успешность</div>
               </div>
               <div className="bg-gray-800 p-3 rounded text-center">
-                <div className="text-2xl font-bold text-purple-400">{fullTestResults.summary.averageTime}мс</div>
+                <div className="text-2xl font-bold text-purple-400">{fullTestResults.summary.averageResponseTime}мс</div>
                 <div className="text-sm text-gray-400">Среднее время</div>
               </div>
             </div>
@@ -122,7 +122,7 @@ const FullTestingResults = React.memo(function FullTestingResults({
                   const companyResults = fullTestResults.details.filter(d => d.company === company);
                   const passed = companyResults.filter(r => r.status === 'passed').length;
                   const total = companyResults.length;
-                  const rate = total > 0 ? (passed / total * 100).toFixed(1) : 0;
+                  const rate = total > 0 ? (passed / total * 100).toFixed(1) : '0';
                   
                   return (
                     <div key={company} className="bg-gray-800 p-3 rounded">

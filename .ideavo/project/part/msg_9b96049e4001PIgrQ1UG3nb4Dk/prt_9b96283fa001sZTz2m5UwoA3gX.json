@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b96283fa001sZTz2m5UwoA3gX",
+  "messageID": "msg_9b96049e4001PIgrQ1UG3nb4Dk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_011h3gW1vVU197wL7gBfoF1i",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/FullTestingResults.tsx",
+      "oldString": "                <div className=\"text-2xl font-bold text-green-400\">{fullTestResults.summary.passed}</div>",
+      "newString": "                <div className=\"text-2xl font-bold text-green-400\">{fullTestResults.summary.successful}</div>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/diagnostic/FullTestingResults.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/FullTestingResults.tsx\n+++ /home/user/project/components/diagnostic/FullTestingResults.tsx\n@@ -90,9 +90,9 @@\n   <div className=\"text-2xl font-bold text-white\">{fullTestResults.summary.totalTests}</div>\n   <div className=\"text-sm text-gray-400\">Всего тестов</div>\n </div>\n <div className=\"bg-gray-800 p-3 rounded text-center\">\n-  <div className=\"text-2xl font-bold text-green-400\">{fullTestResults.summary.passed}</div>\n+  <div className=\"text-2xl font-bold text-green-400\">{fullTestResults.summary.successful}</div>\n   <div className=\"text-sm text-gray-400\">Успешных</div>\n </div>\n <div className=\"bg-gray-800 p-3 rounded text-center\">\n   <div className=\"text-2xl font-bold text-red-400\">{fullTestResults.summary.failed}</div>\n"
+    },
+    "title": "components/diagnostic/FullTestingResults.tsx",
+    "time": {
+      "start": 1759751866398,
+      "end": 1759751866405
+    }
+  }
+}

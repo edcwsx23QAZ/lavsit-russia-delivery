@@ -1,3 +1,27 @@
+// CRITICAL DEV CHECK: Stop execution if in development
+if (typeof location !== 'undefined' && (
+  location.hostname.includes('localhost') ||
+  location.hostname.includes('127.0.0.1') ||
+  location.hostname.includes('.e2b.app') ||
+  location.hostname.includes('ideavo') ||
+  location.port !== ''
+)) {
+  console.log('[SW] DEV MODE DETECTED: Service Worker will not execute');
+  // Immediately unregister self
+  self.addEventListener('install', () => {
+    console.log('[SW] DEV: Self-unregistering');
+    self.skipWaiting();
+  });
+  
+  self.addEventListener('activate', () => {
+    console.log('[SW] DEV: Self-destructing');
+    self.registration.unregister();
+  });
+  
+  // Stop all further execution
+  throw new Error('DEV MODE: Service Worker terminated');
+}
+
 const CACHE_NAME = 'transport-diagnostic-v1';
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 

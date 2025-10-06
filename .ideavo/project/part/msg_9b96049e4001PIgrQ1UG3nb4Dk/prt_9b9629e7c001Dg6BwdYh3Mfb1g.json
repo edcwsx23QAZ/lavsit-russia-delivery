@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9629e7c001Dg6BwdYh3Mfb1g",
+  "messageID": "msg_9b96049e4001PIgrQ1UG3nb4Dk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01BzH2wkshFG5J4XnoXRoNFv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/FullTestingResults.tsx",
+      "oldString": "                  const companyResults = fullTestResults.details.filter(d => d.company === company);\n                  const passed = companyResults.filter(r => r.status === 'passed').length;\n                  const total = companyResults.length;\n                  const rate = total > 0 ? (passed / total * 100).toFixed(1) : 0;",
+      "newString": "                  const companyResults = fullTestResults.details.filter(d => d.company === company);\n                  const passed = companyResults.filter(r => r.status === 'passed').length;\n                  const total = companyResults.length;\n                  const rate = total > 0 ? (passed / total * 100).toFixed(1) : '0';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/diagnostic/FullTestingResults.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/FullTestingResults.tsx\n+++ /home/user/project/components/diagnostic/FullTestingResults.tsx\n@@ -121,9 +121,9 @@\n {Array.from(new Set(fullTestResults.details.map(d => d.company))).map(company => {\n   const companyResults = fullTestResults.details.filter(d => d.company === company);\n   const passed = companyResults.filter(r => r.status === 'passed').length;\n   const total = companyResults.length;\n-  const rate = total > 0 ? (passed / total * 100).toFixed(1) : 0;\n+  const rate = total > 0 ? (passed / total * 100).toFixed(1) : '0';\n   \n   return (\n     <div key={company} className=\"bg-gray-800 p-3 rounded\">\n       <div className=\"flex justify-between items-center\">\n"
+    },
+    "title": "components/diagnostic/FullTestingResults.tsx",
+    "time": {
+      "start": 1759751874686,
+      "end": 1759751874689
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b960edae001xI1rAkk50Q4lhT",
+  "messageID": "msg_9b96049e4001PIgrQ1UG3nb4Dk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_013vD4emUejV67QuFhLTDtVw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "oldString": "        <LazyFullTestingResults\n          fullTestResults={state.fullTestResults}\n          testProgress={state.testProgress?.progress || 0}\n          isFullTesting={state.isFullTesting}\n        />\n\n        <LazyVehicleManagement\n          vehicleTypes={state.vehicleTypes}\n          newVehicle={state.newVehicle}\n          hasUnsavedChanges={state.hasUnsavedChanges}\n          saveStatus={state.saveStatus}\n          isSaving={state.isSaving}\n          lastUpdateTime={state.lastUpdateTime}\n          onAddVehicleType={addVehicleType}\n          onRemoveVehicleType={actions.removeVehicleType}\n          onUpdateVehicleType={actions.updateVehicleType}\n          onSaveVehicleTypes={saveVehicleTypes}\n          onSetNewVehicle={actions.setNewVehicle}\n        />",
+      "newString": "        <Suspense fallback={<div className=\"text-white p-4\">Загрузка результатов тестирования...</div>}>\n          <LazyFullTestingResults\n            fullTestResults={state.fullTestResults}\n            testProgress={state.testProgress?.progress || 0}\n            isFullTesting={state.isFullTesting}\n          />\n        </Suspense>\n\n        <Suspense fallback={<div className=\"text-white p-4\">Загрузка управления автомобилями...</div>}>\n          <LazyVehicleManagement\n            vehicleTypes={state.vehicleTypes}\n            newVehicle={state.newVehicle}\n            hasUnsavedChanges={state.hasUnsavedChanges}\n            saveStatus={state.saveStatus}\n            isSaving={state.isSaving}\n            lastUpdateTime={state.lastUpdateTime}\n            onAddVehicleType={addVehicleType}\n            onRemoveVehicleType={actions.removeVehicleType}\n            onUpdateVehicleType={actions.updateVehicleType}\n            onSaveVehicleTypes={saveVehicleTypes}\n            onSetNewVehicle={actions.setNewVehicle}\n          />\n        </Suspense>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -303,27 +303,31 @@\n           onTestVozovoz={testVozovoz}\n           onTestNordWheel={testNordWheel}\n         />\n \n-        <LazyFullTestingResults\n-          fullTestResults={state.fullTestResults}\n-          testProgress={state.testProgress?.progress || 0}\n-          isFullTesting={state.isFullTesting}\n-        />\n+        <Suspense fallback={<div className=\"text-white p-4\">Загрузка результатов тестирования...</div>}>\n+          <LazyFullTestingResults\n+            fullTestResults={state.fullTestResults}\n+            testProgress={state.testProgress?.progress || 0}\n+            isFullTesting={state.isFullTesting}\n+          />\n+        </Suspense>\n \n-        <LazyVehicleManagement\n-          vehicleTypes={state.vehicleTypes}\n-          newVehicle={state.newVehicle}\n-          hasUnsavedChanges={state.hasUnsavedChanges}\n-          saveStatus={state.saveStatus}\n-          isSaving={state.isSaving}\n-          lastUpdateTime={state.lastUpdateTime}\n-          onAddVehicleType={addVehicleType}\n-          onRemoveVehicleType={actions.removeVehicleType}\n-          onUpdateVehicleType={actions.updateVehicleType}\n-          onSaveVehicleTypes={saveVehicleTypes}\n-          onSetNewVehicle={actions.setNewVehicle}\n-        />\n+        <Suspense fallback={<div className=\"text-white p-4\">Загрузка управления автомобилями...</div>}>\n+          <LazyVehicleManagement\n+            vehicleTypes={state.vehicleTypes}\n+            newVehicle={state.newVehicle}\n+            hasUnsavedChanges={state.hasUnsavedChanges}\n+            saveStatus={state.saveStatus}\n+            isSaving={state.isSaving}\n+            lastUpdateTime={state.lastUpdateTime}\n+            onAddVehicleType={addVehicleType}\n+            onRemoveVehicleType={actions.removeVehicleType}\n+            onUpdateVehicleType={actions.updateVehicleType}\n+            onSaveVehicleTypes={saveVehicleTypes}\n+            onSetNewVehicle={actions.setNewVehicle}\n+          />\n+        </Suspense>\n       </div>\n     </div>\n   );\n }\n\\ No newline at end of file\n"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759751768000,
+      "end": 1759751768008
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b963afbf0010FYE3PzWEeGHPF",
+  "messageID": "msg_9b96049e4001PIgrQ1UG3nb4Dk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_013ppRk4xK61sp68XzPHWdRB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run lint",
+      "description": "Запуск линтера для проверки кода"
+    },
+    "output": "npm error Missing script: \"lint\"\nnpm error\nnpm error Did you mean this?\nnpm error   npm link # Symlink a package folder\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: /home/user/.npm/_logs/2025-10-06T11_59_02_733Z-debug-0.log\n",
+    "metadata": {
+      "output": "npm error Missing script: \"lint\"\nnpm error\nnpm error Did you mean this?\nnpm error   npm link # Symlink a package folder\nnpm error\nnpm error To see a list of scripts, run:\nnpm error   npm run\nnpm error A complete log of this run can be found in: /home/user/.npm/_logs/2025-10-06T11_59_02_733Z-debug-0.log\n",
+      "exit": 1,
+      "description": "Запуск линтера для проверки кода"
+    },
+    "title": "cd /home/user/project && npm run lint",
+    "time": {
+      "start": 1759751942639,
+      "end": 1759751943105
+    }
+  }
+}

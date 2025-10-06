@@ -6,13 +6,17 @@ export default function ServiceWorkerRegistration() {
   useEffect(() => {
     if ('serviceWorker' in navigator) {
       // NUCLEAR APPROACH: Агрессивное детектирование dev режима
-      const isProduction = process.env.NODE_ENV === 'production' && 
-                          typeof window !== 'undefined' && 
-                          !window.location.hostname.includes('localhost') && 
-                          !window.location.hostname.includes('127.0.0.1') && 
-                          !window.location.hostname.includes('.e2b.app') &&
-                          !window.location.hostname.includes('ideavo') &&
-                          !window.location.port;
+      const isDevelopment = process.env.NODE_ENV === 'development' || 
+                           process.env.NODE_ENV === undefined ||
+                           typeof window !== 'undefined' && (
+                             window.location.hostname.includes('localhost') || 
+                             window.location.hostname.includes('127.0.0.1') || 
+                             window.location.hostname.includes('.e2b.app') ||
+                             window.location.hostname.includes('ideavo') ||
+                             window.location.port !== ''
+                           );
+      
+      const isProduction = !isDevelopment;
       
       if (isProduction) {
         navigator.serviceWorker

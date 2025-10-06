@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9617acb001B5pVx8cSGEi9a6",
+  "messageID": "msg_9b96049e4001PIgrQ1UG3nb4Dk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01JVMUX7o4bbntarcRk97nL8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/public/sw.js",
+      "oldString": "const CACHE_NAME = 'transport-diagnostic-v1';\nconst CACHE_DURATION = 5 * 60 * 1000; // 5 minutes",
+      "newString": "// CRITICAL DEV CHECK: Stop execution if in development\nif (typeof location !== 'undefined' && (\n  location.hostname.includes('localhost') ||\n  location.hostname.includes('127.0.0.1') ||\n  location.hostname.includes('.e2b.app') ||\n  location.hostname.includes('ideavo') ||\n  location.port !== ''\n)) {\n  console.log('[SW] DEV MODE DETECTED: Service Worker will not execute');\n  // Immediately unregister self\n  self.addEventListener('install', () => {\n    console.log('[SW] DEV: Self-unregistering');\n    self.skipWaiting();\n  });\n  \n  self.addEventListener('activate', () => {\n    console.log('[SW] DEV: Self-destructing');\n    self.registration.unregister();\n  });\n  \n  // Stop all further execution\n  throw new Error('DEV MODE: Service Worker terminated');\n}\n\nconst CACHE_NAME = 'transport-diagnostic-v1';\nconst CACHE_DURATION = 5 * 60 * 1000; // 5 minutes"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/public/sw.js\n===================================================================\n--- /home/user/project/public/sw.js\n+++ /home/user/project/public/sw.js\n@@ -1,4 +1,28 @@\n+// CRITICAL DEV CHECK: Stop execution if in development\n+if (typeof location !== 'undefined' && (\n+  location.hostname.includes('localhost') ||\n+  location.hostname.includes('127.0.0.1') ||\n+  location.hostname.includes('.e2b.app') ||\n+  location.hostname.includes('ideavo') ||\n+  location.port !== ''\n+)) {\n+  console.log('[SW] DEV MODE DETECTED: Service Worker will not execute');\n+  // Immediately unregister self\n+  self.addEventListener('install', () => {\n+    console.log('[SW] DEV: Self-unregistering');\n+    self.skipWaiting();\n+  });\n+  \n+  self.addEventListener('activate', () => {\n+    console.log('[SW] DEV: Self-destructing');\n+    self.registration.unregister();\n+  });\n+  \n+  // Stop all further execution\n+  throw new Error('DEV MODE: Service Worker terminated');\n+}\n+\n const CACHE_NAME = 'transport-diagnostic-v1';\n const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes\n \n // Cache configuration\n"
+    },
+    "title": "public/sw.js",
+    "time": {
+      "start": 1759751803225,
+      "end": 1759751803229
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b961cf82001yHJ0WoDmPH8t1U",
+  "messageID": "msg_9b96049e4001PIgrQ1UG3nb4Dk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01GwjC7FdW2Px1SXbfaKTqHB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Запуск сборки проекта для проверки ошибок"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/diagnostic/optimized-page.tsx:308:11\nType error: Type 'FullTestResults | null' is not assignable to type '{ summary: TestSummary; details: TestResult[]; } | null'.\n\n\u001b[0m \u001b[90m 306 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 307 |\u001b[39m         \u001b[33m<\u001b[39m\u001b[33mLazyFullTestingResults\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 308 |\u001b[39m           fullTestResults\u001b[33m=\u001b[39m{state\u001b[33m.\u001b[39mfullTestResults}\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 309 |\u001b[39m           testProgress\u001b[33m=\u001b[39m{state\u001b[33m.\u001b[39mtestProgress\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mprogress \u001b[33m||\u001b[39m \u001b[35m0\u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 310 |\u001b[39m           isFullTesting\u001b[33m=\u001b[39m{state\u001b[33m.\u001b[39misFullTesting}\u001b[0m\n\u001b[0m \u001b[90m 311 |\u001b[39m         \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/diagnostic/optimized-page.tsx:308:11\nType error: Type 'FullTestResults | null' is not assignable to type '{ summary: TestSummary; details: TestResult[]; } | null'.\n\n\u001b[0m \u001b[90m 306 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 307 |\u001b[39m         \u001b[33m<\u001b[39m\u001b[33mLazyFullTestingResults\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 308 |\u001b[39m           fullTestResults\u001b[33m=\u001b[39m{state\u001b[33m.\u001b[39mfullTestResults}\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 309 |\u001b[39m           testProgress\u001b[33m=\u001b[39m{state\u001b[33m.\u001b[39mtestProgress\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mprogress \u001b[33m||\u001b[39m \u001b[35m0\u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 310 |\u001b[39m           isFullTesting\u001b[33m=\u001b[39m{state\u001b[33m.\u001b[39misFullTesting}\u001b[0m\n\u001b[0m \u001b[90m 311 |\u001b[39m         \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Запуск сборки проекта для проверки ошибок"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759751819952,
+      "end": 1759751835947
+    }
+  }
+}
