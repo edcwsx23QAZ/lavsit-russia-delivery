@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b969b2610011YjpCxdtO8YP2L",
+  "messageID": "msg_9b96984cc001MRg9jRZ64Ths0Y",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_012tPUYFymVo93qNQyYauUxJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && ls -la .next/static/chunks/",
+      "description": "Проверка содержимого webpack chunks"
+    },
+    "output": "total 6196\ndrwxr-xr-x 3 user user    4096 Oct  6 11:59 .\ndrwxr-xr-x 7 user user    4096 Oct  6 11:59 ..\ndrwxr-xr-x 2 user user    4096 Oct  6 11:59 app\n-rw-r--r-- 1 user user  131647 Oct  6 11:59 app-pages-internals.js\n-rw-r--r-- 1 user user 6024605 Oct  6 11:59 main-app.js\n-rw-r--r-- 1 user user  112594 Oct  6 11:59 polyfills.js\n-rw-r--r-- 1 user user   56460 Oct  6 11:59 webpack.js\n",
+    "metadata": {
+      "output": "total 6196\ndrwxr-xr-x 3 user user    4096 Oct  6 11:59 .\ndrwxr-xr-x 7 user user    4096 Oct  6 11:59 ..\ndrwxr-xr-x 2 user user    4096 Oct  6 11:59 app\n-rw-r--r-- 1 user user  131647 Oct  6 11:59 app-pages-internals.js\n-rw-r--r-- 1 user user 6024605 Oct  6 11:59 main-app.js\n-rw-r--r-- 1 user user  112594 Oct  6 11:59 polyfills.js\n-rw-r--r-- 1 user user   56460 Oct  6 11:59 webpack.js\n",
+      "exit": 0,
+      "description": "Проверка содержимого webpack chunks"
+    },
+    "title": "cd /home/user/project && ls -la .next/static/chunks/",
+    "time": {
+      "start": 1759752336761,
+      "end": 1759752336778
+    }
+  }
+}

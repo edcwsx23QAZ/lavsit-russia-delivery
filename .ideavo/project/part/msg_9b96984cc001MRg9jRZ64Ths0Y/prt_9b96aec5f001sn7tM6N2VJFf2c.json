@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b96aec5f001sn7tM6N2VJFf2c",
+  "messageID": "msg_9b96984cc001MRg9jRZ64Ths0Y",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01JX7LyQqnTHa8EFtoEam4k8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ServiceWorkerRegistration.tsx",
+      "offset": 100,
+      "limit": 30
+    },
+    "output": "<file>\n00101|         const unregisterIntervalId = setInterval(unregisterAll, 3000);\n00102|         setTimeout(() => clearInterval(unregisterIntervalId), 15000);\n00103|         \n00104|         // Step 3: Check for active SW and force reload if found\n00105|         const checkActiveSW = () => {\n00106|           if (navigator.serviceWorker.controller) {\n00107|             console.log('[SW] DEV: Active SW detected, force reloading in 3 seconds...');\n00108|             setTimeout(() => {\n00109|               console.log('[SW] DEV: Force reloading page to clear SW state');\n00110|               window.location.reload();\n00111|             }, 3000);\n00112|           }\n00113|         };\n00114|         \n00115|         // Check immediately and periodically\n00116|         setTimeout(checkActiveSW, 5000);\n00117|         const checkIntervalId = setInterval(checkActiveSW, 5000);\n00118|         setTimeout(() => clearInterval(checkIntervalId), 30000);\n00119|       }\n00120|     }\n00121|   }, []);\n00122| \n00123|   return null; // This component renders nothing\n00124| }\n</file>",
+    "metadata": {
+      "preview": "        const unregisterIntervalId = setInterval(unregisterAll, 3000);\n        setTimeout(() => clearInterval(unregisterIntervalId), 15000);\n        \n        // Step 3: Check for active SW and force reload if found\n        const checkActiveSW = () => {\n          if (navigator.serviceWorker.controller) {\n            console.log('[SW] DEV: Active SW detected, force reloading in 3 seconds...');\n            setTimeout(() => {\n              console.log('[SW] DEV: Force reloading page to clear SW state');\n              window.location.reload();\n            }, 3000);\n          }\n        };\n        \n        // Check immediately and periodically\n        setTimeout(checkActiveSW, 5000);\n        const checkIntervalId = setInterval(checkActiveSW, 5000);\n        setTimeout(() => clearInterval(checkIntervalId), 30000);\n      }\n    }"
+    },
+    "title": "components/ServiceWorkerRegistration.tsx",
+    "time": {
+      "start": 1759752417038,
+      "end": 1759752417040
+    }
+  }
+}

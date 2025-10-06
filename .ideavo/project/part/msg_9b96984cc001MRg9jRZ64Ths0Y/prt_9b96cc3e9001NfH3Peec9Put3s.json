@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b96cc3e9001NfH3Peec9Put3s",
+  "messageID": "msg_9b96984cc001MRg9jRZ64Ths0Y",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01PhxEc1EvpJs5p2Ygxp8pHz",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/layout.tsx",
+      "oldString": "export default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  return (\n    <html lang=\"en\">\n      <body className={inter.className}>\n        <ServiceWorkerRegistration />\n        <ClientDevUtils />\n        {children}\n        {/* TODO: Remove iframe-navigation.js in production, should never be removed by AI */}\n        <script src=\"/scripts/iframe-navigation.js\"></script>\n      </body>\n    </html>\n  );\n}",
+      "newString": "export default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  return (\n    <html lang=\"en\">\n      <body className={inter.className}>\n        <ServiceWorkerRegistration />\n        <ClientDevUtils />\n        {children}\n        {/* TODO: Remove iframe-navigation.js in production, should never be removed by AI */}\n        <script src=\"/scripts/iframe-navigation.js\"></script>\n        {/* CRITICAL: Dev cache clearing script - only loads in development */}\n        {process.env.NODE_ENV !== 'production' && (\n          <script src=\"/clear-dev-cache.js\"></script>\n        )}\n      </body>\n    </html>\n  );\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/layout.tsx\n===================================================================\n--- /home/user/project/app/layout.tsx\n+++ /home/user/project/app/layout.tsx\n@@ -23,8 +23,12 @@\n         <ClientDevUtils />\n         {children}\n         {/* TODO: Remove iframe-navigation.js in production, should never be removed by AI */}\n         <script src=\"/scripts/iframe-navigation.js\"></script>\n+        {/* CRITICAL: Dev cache clearing script - only loads in development */}\n+        {process.env.NODE_ENV !== 'production' && (\n+          <script src=\"/clear-dev-cache.js\"></script>\n+        )}\n       </body>\n     </html>\n   );\n }\n"
+    },
+    "title": "app/layout.tsx",
+    "time": {
+      "start": 1759752541822,
+      "end": 1759752541826
+    }
+  }
+}

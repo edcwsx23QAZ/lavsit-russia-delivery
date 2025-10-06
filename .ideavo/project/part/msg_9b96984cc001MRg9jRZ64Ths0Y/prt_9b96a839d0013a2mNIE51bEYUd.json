@@ -1,0 +1,23 @@
+{
+  "id": "prt_9b96a839d0013a2mNIE51bEYUd",
+  "messageID": "msg_9b96984cc001MRg9jRZ64Ths0Y",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01WC8YECre2HWqbgWK8XmVZD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/LazyLoadedComponents.tsx"
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import React from 'react';\n00004| \n00005| // Импортируем реальные компоненты\n00006| import FullTestingResults from './FullTestingResults';\n00007| import VehicleManagement from './VehicleManagement';\n00008| \n00009| // Создаем lazy-обертки с React.lazy\n00010| const LazyFullTestingResults = React.lazy(() => \n00011|   Promise.resolve({ default: FullTestingResults })\n00012| );\n00013| \n00014| const LazyVehicleManagement = React.lazy(() => \n00015|   Promise.resolve({ default: VehicleManagement })\n00016| );\n00017| \n00018| // Экспортируем оба lazy компонента\n00019| export { LazyFullTestingResults, LazyVehicleManagement };\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport React from 'react';\n\n// Импортируем реальные компоненты\nimport FullTestingResults from './FullTestingResults';\nimport VehicleManagement from './VehicleManagement';\n\n// Создаем lazy-обертки с React.lazy\nconst LazyFullTestingResults = React.lazy(() => \n  Promise.resolve({ default: FullTestingResults })\n);\n\nconst LazyVehicleManagement = React.lazy(() => \n  Promise.resolve({ default: VehicleManagement })\n);\n\n// Экспортируем оба lazy компонента\nexport { LazyFullTestingResults, LazyVehicleManagement };"
+    },
+    "title": "components/diagnostic/LazyLoadedComponents.tsx",
+    "time": {
+      "start": 1759752390347,
+      "end": 1759752390349
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b96c9b3c0013Rxe5EngNgEE00",
+  "messageID": "msg_9b96984cc001MRg9jRZ64Ths0Y",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01YQuDmzrGh56huovEoYLMyU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/public/clear-dev-cache.js",
+      "content": "// CRITICAL DEV CACHE CLEARING SCRIPT\n(function() {\n  'use strict';\n  \n  console.log('[CACHE-CLEAR] Starting aggressive cache clearing...');\n  \n  // Clear all possible storage\n  try {\n    if (typeof localStorage !== 'undefined') {\n      localStorage.clear();\n      console.log('[CACHE-CLEAR] localStorage cleared');\n    }\n  } catch (e) {\n    console.warn('[CACHE-CLEAR] localStorage clear failed:', e);\n  }\n  \n  try {\n    if (typeof sessionStorage !== 'undefined') {\n      sessionStorage.clear();\n      console.log('[CACHE-CLEAR] sessionStorage cleared');\n    }\n  } catch (e) {\n    console.warn('[CACHE-CLEAR] sessionStorage clear failed:', e);\n  }\n  \n  // Clear all caches\n  if ('caches' in window) {\n    caches.keys().then(function(cacheNames) {\n      console.log('[CACHE-CLEAR] Found caches:', cacheNames);\n      return Promise.all(\n        cacheNames.map(function(cacheName) {\n          console.log('[CACHE-CLEAR] Deleting cache:', cacheName);\n          return caches.delete(cacheName);\n        })\n      );\n    }).then(function() {\n      console.log('[CACHE-CLEAR] All caches cleared');\n    }).catch(function(error) {\n      console.warn('[CACHE-CLEAR] Cache clearing failed:', error);\n    });\n  }\n  \n  // Unregister all service workers\n  if ('serviceWorker' in navigator) {\n    navigator.serviceWorker.getRegistrations().then(function(registrations) {\n      console.log('[CACHE-CLEAR] Found service workers:', registrations.length);\n      return Promise.all(\n        registrations.map(function(registration) {\n          console.log('[CACHE-CLEAR] Unregistering SW:', registration.scope);\n          return registration.unregister();\n        })\n      );\n    }).then(function() {\n      console.log('[CACHE-CLEAR] All service workers unregistered');\n    }).catch(function(error) {\n      console.warn('[CACHE-CLEAR] SW unregistration failed:', error);\n    });\n  }\n  \n  console.log('[CACHE-CLEAR] Cache clearing completed');\n})();"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/public/clear-dev-cache.js",
+      "exists": false
+    },
+    "title": "public/clear-dev-cache.js",
+    "time": {
+      "start": 1759752533953,
+      "end": 1759752533955
+    }
+  }
+}

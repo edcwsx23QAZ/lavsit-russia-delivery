@@ -24,6 +24,10 @@ export default function RootLayout({
         {children}
         {/* TODO: Remove iframe-navigation.js in production, should never be removed by AI */}
         <script src="/scripts/iframe-navigation.js"></script>
+        {/* CRITICAL: Dev cache clearing script - only loads in development */}
+        {process.env.NODE_ENV !== 'production' && (
+          <script src="/clear-dev-cache.js"></script>
+        )}
       </body>
     </html>
   );

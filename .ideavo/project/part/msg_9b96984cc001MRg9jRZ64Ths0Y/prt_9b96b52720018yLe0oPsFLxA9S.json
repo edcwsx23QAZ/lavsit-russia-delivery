@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b96b52720018yLe0oPsFLxA9S",
+  "messageID": "msg_9b96984cc001MRg9jRZ64Ths0Y",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01EjH1zWC3spSk1sgVJYqsSs",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 300,
+      "limit": 30
+    },
+    "output": "<file>\n00301|           onTestDellin={testDellin}\n00302|           onTestRailContinent={testRailContinent}\n00303|           onTestVozovoz={testVozovoz}\n00304|           onTestNordWheel={testNordWheel}\n00305|         />\n00306| \n00307|         <Suspense fallback={<div className=\"text-white p-4\">Загрузка результатов тестирования...</div>}>\n00308|           <LazyFullTestingResults\n00309|             fullTestResults={state.fullTestResults}\n00310|             testProgress={state.testProgress?.progress || 0}\n00311|             isFullTesting={state.isFullTesting}\n00312|           />\n00313|         </Suspense>\n00314| \n00315|         <Suspense fallback={<div className=\"text-white p-4\">Загрузка управления автомобилями...</div>}>\n00316|           <LazyVehicleManagement\n00317|             vehicleTypes={state.vehicleTypes}\n00318|             newVehicle={state.newVehicle}\n00319|             hasUnsavedChanges={state.hasUnsavedChanges}\n00320|             saveStatus={state.saveStatus}\n00321|             isSaving={state.isSaving}\n00322|             lastUpdateTime={state.lastUpdateTime}\n00323|             onAddVehicleType={addVehicleType}\n00324|             onRemoveVehicleType={actions.removeVehicleType}\n00325|             onUpdateVehicleType={actions.updateVehicleType}\n00326|             onSaveVehicleTypes={saveVehicleTypes}\n00327|             onSetNewVehicle={actions.setNewVehicle}\n00328|           />\n00329|         </Suspense>\n00330|       </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 330)\n</file>",
+    "metadata": {
+      "preview": "          onTestDellin={testDellin}\n          onTestRailContinent={testRailContinent}\n          onTestVozovoz={testVozovoz}\n          onTestNordWheel={testNordWheel}\n        />\n\n        <Suspense fallback={<div className=\"text-white p-4\">Загрузка результатов тестирования...</div>}>\n          <LazyFullTestingResults\n            fullTestResults={state.fullTestResults}\n            testProgress={state.testProgress?.progress || 0}\n            isFullTesting={state.isFullTesting}\n          />\n        </Suspense>\n\n        <Suspense fallback={<div className=\"text-white p-4\">Загрузка управления автомобилями...</div>}>\n          <LazyVehicleManagement\n            vehicleTypes={state.vehicleTypes}\n            newVehicle={state.newVehicle}\n            hasUnsavedChanges={state.hasUnsavedChanges}\n            saveStatus={state.saveStatus}"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759752443096,
+      "end": 1759752443098
+    }
+  }
+}

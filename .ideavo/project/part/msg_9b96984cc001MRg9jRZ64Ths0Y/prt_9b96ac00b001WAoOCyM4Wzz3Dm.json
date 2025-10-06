@@ -1,0 +1,21 @@
+{
+  "id": "prt_9b96ac00b001WAoOCyM4Wzz3Dm",
+  "messageID": "msg_9b96984cc001MRg9jRZ64Ths0Y",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Cf9aaS2SYT88iACtGxcWSA",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/components/ServiceWorkerRegistration.tsx",
+      "oldString": "        // Step 3: Check for active SW and force reload if found\n        const checkActiveSW = () => {\n          if (navigator.serviceWorker.controller) {\n            console.log('[SW] DEV: Active SW detected, force reloading in 3 seconds...');\n            setTimeout(() => {\n              console.log('[SW] DEV: Force reloading page to clear SW state');\n              window.location.reload();\n            }, 3000);\n          }\n        };\n        \n        // Check immediately and periodically\n        setTimeout(checkActiveSW, 5000);\n        const checkIntervalId = setInterval(checkActiveSW, 5000);\n        setTimeout(() => clearInterval(checkIntervalId), 30000);",
+      "newString": "        // Step 3: AGGRESSIVE cache clearing for dev\n        const aggressiveCacheClear = async () => {\n          try {\n            // Clear all possible storage\n            if ('localStorage' in window) {\n              localStorage.clear();\n            }\n            if ('sessionStorage' in window) {\n              sessionStorage.clear();\n            }\n            \n            // Clear IndexedDB\n            if ('indexedDB' in window) {\n              const databases = await indexedDB.databases();\n              await Promise.all(databases.map(db => {\n                if (db.name) {\n                  const deleteReq = indexedDB.deleteDatabase(db.name);\n                  return new Promise((resolve) => {\n                    deleteReq.onsuccess = () => resolve(true);\n                    deleteReq.onerror = () => resolve(false);\n                  });\n                }\n              }));\n            }\n            \n            console.log('[SW] DEV: All storage cleared');\n          } catch (error) {\n            console.warn('[SW] DEV: Error clearing storage:', error);\n          }\n        };\n        \n        aggressiveCacheClear();\n        \n        // Check for active SW and force reload if found\n        const checkActiveSW = () => {\n          if (navigator.serviceWorker.controller) {\n            console.log('[SW] DEV: Active SW detected, force reloading in 3 seconds...');\n            setTimeout(() => {\n              console.log('[SW] DEV: Force reloading page to clear SW state');\n              window.location.reload();\n            }, 3000);\n          }\n        };\n        \n        // Check immediately and periodically\n        setTimeout(checkActiveSW, 5000);\n        const checkIntervalId = setInterval(checkActiveSW, 5000);\n        setTimeout(() => clearInterval(checkIntervalId), 30000);"
+    },
+    "error": "Error: You must read the file /home/user/project/components/ServiceWorkerRegistration.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1759752413794,
+      "end": 1759752413796
+    }
+  }
+}

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useCallback, Suspense } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDiagnosticState } from '@/hooks/useDiagnosticState';
 import DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';
 import ApiTestingSection from '@/components/diagnostic/ApiTestingSection';
@@ -304,29 +304,25 @@ export default function OptimizedDiagnosticPage() {
           onTestNordWheel={testNordWheel}
         />
 
-        <Suspense fallback={<div className="text-white p-4">Загрузка результатов тестирования...</div>}>
-          <LazyFullTestingResults
-            fullTestResults={state.fullTestResults}
-            testProgress={state.testProgress?.progress || 0}
-            isFullTesting={state.isFullTesting}
-          />
-        </Suspense>
+        <LazyFullTestingResults
+          fullTestResults={state.fullTestResults}
+          testProgress={state.testProgress?.progress || 0}
+          isFullTesting={state.isFullTesting}
+        />
 
-        <Suspense fallback={<div className="text-white p-4">Загрузка управления автомобилями...</div>}>
-          <LazyVehicleManagement
-            vehicleTypes={state.vehicleTypes}
-            newVehicle={state.newVehicle}
-            hasUnsavedChanges={state.hasUnsavedChanges}
-            saveStatus={state.saveStatus}
-            isSaving={state.isSaving}
-            lastUpdateTime={state.lastUpdateTime}
-            onAddVehicleType={addVehicleType}
-            onRemoveVehicleType={actions.removeVehicleType}
-            onUpdateVehicleType={actions.updateVehicleType}
-            onSaveVehicleTypes={saveVehicleTypes}
-            onSetNewVehicle={actions.setNewVehicle}
-          />
-        </Suspense>
+        <LazyVehicleManagement
+          vehicleTypes={state.vehicleTypes}
+          newVehicle={state.newVehicle}
+          hasUnsavedChanges={state.hasUnsavedChanges}
+          saveStatus={state.saveStatus}
+          isSaving={state.isSaving}
+          lastUpdateTime={state.lastUpdateTime}
+          onAddVehicleType={addVehicleType}
+          onRemoveVehicleType={actions.removeVehicleType}
+          onUpdateVehicleType={actions.updateVehicleType}
+          onSaveVehicleTypes={saveVehicleTypes}
+          onSetNewVehicle={actions.setNewVehicle}
+        />
       </div>
     </div>
   );

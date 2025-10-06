@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b96b0c70001qWdfC1XUv7lAGx",
+  "messageID": "msg_9b96984cc001MRg9jRZ64Ths0Y",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_019nvCWk7pS7UG19GXzwGHDb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/LazyLoadedComponents.tsx",
+      "oldString": "'use client';\n\nimport React from 'react';\n\n// Создаем ПРАВИЛЬНЫЕ lazy-обертки с динамическими импортами\nconst LazyFullTestingResults = React.lazy(() => \n  import('./FullTestingResults')\n);\n\nconst LazyVehicleManagement = React.lazy(() => \n  import('./VehicleManagement')\n);\n\n// Экспортируем оба lazy компонента\nexport { LazyFullTestingResults, LazyVehicleManagement };",
+      "newString": "'use client';\n\nimport dynamic from 'next/dynamic';\n\n// NUCLEAR SOLUTION: Используем Next.js dynamic с отключенным SSR\nconst LazyFullTestingResults = dynamic(\n  () => import('./FullTestingResults'),\n  { \n    ssr: false,\n    loading: () => <div className=\"text-white p-4\">Загрузка результатов тестирования...</div>\n  }\n);\n\nconst LazyVehicleManagement = dynamic(\n  () => import('./VehicleManagement'),\n  { \n    ssr: false,\n    loading: () => <div className=\"text-white p-4\">Загрузка управления автомобилями...</div>\n  }\n);\n\n// Экспортируем оба компонента\nexport { LazyFullTestingResults, LazyVehicleManagement };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/diagnostic/LazyLoadedComponents.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/LazyLoadedComponents.tsx\n+++ /home/user/project/components/diagnostic/LazyLoadedComponents.tsx\n@@ -1,15 +1,23 @@\n 'use client';\n \n-import React from 'react';\n+import dynamic from 'next/dynamic';\n \n-// Создаем ПРАВИЛЬНЫЕ lazy-обертки с динамическими импортами\n-const LazyFullTestingResults = React.lazy(() => \n-  import('./FullTestingResults')\n+// NUCLEAR SOLUTION: Используем Next.js dynamic с отключенным SSR\n+const LazyFullTestingResults = dynamic(\n+  () => import('./FullTestingResults'),\n+  { \n+    ssr: false,\n+    loading: () => <div className=\"text-white p-4\">Загрузка результатов тестирования...</div>\n+  }\n );\n \n-const LazyVehicleManagement = React.lazy(() => \n-  import('./VehicleManagement')\n+const LazyVehicleManagement = dynamic(\n+  () => import('./VehicleManagement'),\n+  { \n+    ssr: false,\n+    loading: () => <div className=\"text-white p-4\">Загрузка управления автомобилями...</div>\n+  }\n );\n \n-// Экспортируем оба lazy компонента\n+// Экспортируем оба компонента\n export { LazyFullTestingResults, LazyVehicleManagement };\n\\ No newline at end of file\n"
+    },
+    "title": "components/diagnostic/LazyLoadedComponents.tsx",
+    "time": {
+      "start": 1759752430500,
+      "end": 1759752430509
+    }
+  }
+}

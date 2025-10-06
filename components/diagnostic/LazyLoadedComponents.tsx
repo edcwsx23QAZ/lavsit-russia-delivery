@@ -1,19 +1,23 @@
 'use client';
 
-import React from 'react';
+import dynamic from 'next/dynamic';
 
-// Импортируем реальные компоненты
-import FullTestingResults from './FullTestingResults';
-import VehicleManagement from './VehicleManagement';
-
-// Создаем lazy-обертки с React.lazy
-const LazyFullTestingResults = React.lazy(() => 
-  Promise.resolve({ default: FullTestingResults })
+// NUCLEAR SOLUTION: Используем Next.js dynamic с отключенным SSR
+const LazyFullTestingResults = dynamic(
+  () => import('./FullTestingResults'),
+  { 
+    ssr: false,
+    loading: () => <div className="text-white p-4">Загрузка результатов тестирования...</div>
+  }
 );
 
-const LazyVehicleManagement = React.lazy(() => 
-  Promise.resolve({ default: VehicleManagement })
+const LazyVehicleManagement = dynamic(
+  () => import('./VehicleManagement'),
+  { 
+    ssr: false,
+    loading: () => <div className="text-white p-4">Загрузка управления автомобилями...</div>
+  }
 );
 
-// Экспортируем оба lazy компонента
+// Экспортируем оба компонента
 export { LazyFullTestingResults, LazyVehicleManagement };
