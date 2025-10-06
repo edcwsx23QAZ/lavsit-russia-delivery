@@ -1,0 +1,23 @@
+{
+  "id": "prt_9ba1f36f90015PCb9RDLwezwLD",
+  "messageID": "msg_9ba1f0020001LsRNwLDlV5rTwU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01RuF7ZeBaS9Uctf9H4oPDyZ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/public/clear-dev-cache.js"
+    },
+    "output": "<file>\n00001| // CRITICAL DEV CACHE CLEARING SCRIPT\n00002| (function() {\n00003|   'use strict';\n00004|   \n00005|   console.log('[CACHE-CLEAR] Starting aggressive cache clearing...');\n00006|   \n00007|   // Clear all possible storage\n00008|   try {\n00009|     if (typeof localStorage !== 'undefined') {\n00010|       localStorage.clear();\n00011|       console.log('[CACHE-CLEAR] localStorage cleared');\n00012|     }\n00013|   } catch (e) {\n00014|     console.warn('[CACHE-CLEAR] localStorage clear failed:', e);\n00015|   }\n00016|   \n00017|   try {\n00018|     if (typeof sessionStorage !== 'undefined') {\n00019|       sessionStorage.clear();\n00020|       console.log('[CACHE-CLEAR] sessionStorage cleared');\n00021|     }\n00022|   } catch (e) {\n00023|     console.warn('[CACHE-CLEAR] sessionStorage clear failed:', e);\n00024|   }\n00025|   \n00026|   // Clear all caches\n00027|   if ('caches' in window) {\n00028|     caches.keys().then(function(cacheNames) {\n00029|       console.log('[CACHE-CLEAR] Found caches:', cacheNames);\n00030|       return Promise.all(\n00031|         cacheNames.map(function(cacheName) {\n00032|           console.log('[CACHE-CLEAR] Deleting cache:', cacheName);\n00033|           return caches.delete(cacheName);\n00034|         })\n00035|       );\n00036|     }).then(function() {\n00037|       console.log('[CACHE-CLEAR] All caches cleared');\n00038|     }).catch(function(error) {\n00039|       console.warn('[CACHE-CLEAR] Cache clearing failed:', error);\n00040|     });\n00041|   }\n00042|   \n00043|   // Unregister all service workers\n00044|   if ('serviceWorker' in navigator) {\n00045|     navigator.serviceWorker.getRegistrations().then(function(registrations) {\n00046|       console.log('[CACHE-CLEAR] Found service workers:', registrations.length);\n00047|       return Promise.all(\n00048|         registrations.map(function(registration) {\n00049|           console.log('[CACHE-CLEAR] Unregistering SW:', registration.scope);\n00050|           return registration.unregister();\n00051|         })\n00052|       );\n00053|     }).then(function() {\n00054|       console.log('[CACHE-CLEAR] All service workers unregistered');\n00055|     }).catch(function(error) {\n00056|       console.warn('[CACHE-CLEAR] SW unregistration failed:', error);\n00057|     });\n00058|   }\n00059|   \n00060|   console.log('[CACHE-CLEAR] Cache clearing completed');\n00061| })();\n</file>",
+    "metadata": {
+      "preview": "// CRITICAL DEV CACHE CLEARING SCRIPT\n(function() {\n  'use strict';\n  \n  console.log('[CACHE-CLEAR] Starting aggressive cache clearing...');\n  \n  // Clear all possible storage\n  try {\n    if (typeof localStorage !== 'undefined') {\n      localStorage.clear();\n      console.log('[CACHE-CLEAR] localStorage cleared');\n    }\n  } catch (e) {\n    console.warn('[CACHE-CLEAR] localStorage clear failed:', e);\n  }\n  \n  try {\n    if (typeof sessionStorage !== 'undefined') {\n      sessionStorage.clear();\n      console.log('[CACHE-CLEAR] sessionStorage cleared');"
+    },
+    "title": "public/clear-dev-cache.js",
+    "time": {
+      "start": 1759764231960,
+      "end": 1759764231963
+    }
+  }
+}

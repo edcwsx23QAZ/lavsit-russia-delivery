@@ -1,0 +1,10 @@
+{
+  "id": "prt_9ba1f7709002my9LtAyObB8Wop",
+  "messageID": "msg_9ba1f0020001LsRNwLDlV5rTwU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Найдены два места, где происходит агрессивная очистка localStorage:\n\n1. **`/public/clear-dev-cache.js`** - полностью очищает localStorage\n2. **`layout.tsx`** - загружает этот скрипт в dev режиме + дополнительная очистка\n\nНужно исправить логику, чтобы сохранить п",
+  "time": {
+    "start": 1759764248329
+  }
+}
