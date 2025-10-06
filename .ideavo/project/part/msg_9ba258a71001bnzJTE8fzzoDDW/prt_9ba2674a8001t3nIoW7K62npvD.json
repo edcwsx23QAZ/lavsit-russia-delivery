@@ -1,0 +1,25 @@
+{
+  "id": "prt_9ba2674a8001t3nIoW7K62npvD",
+  "messageID": "msg_9ba258a71001bnzJTE8fzzoDDW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01NhkXCtp6fLx7bf15iGWeV7",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 217,
+      "limit": 30
+    },
+    "output": "<file>\n00218|     // Проверяем, что мы на клиенте\n00219|     if (typeof window !== 'undefined' && !isLoaded) {\n00220|       let dataRestored = false;\n00221|       try {\n00222|         setIsRestoring(true); // Блокируем автосохранение во время восстановления\n00223|         \n00224|         // Мягкая проверка версии без очистки пользовательских данных\n00225|         const currentVersion = 'v2.4.0-persistent-storage'; // Версия с постоянным сохранением\n00226|         const savedVersion = localStorage.getItem('appVersion');\n00227|         \n00228|         if (savedVersion !== currentVersion) {\n00229|           console.log('🔄 Обновление версии приложения до', currentVersion);\n00230|           // НЕ очищаем localStorage - сохраняем пользовательские данные\n00231|           localStorage.setItem('appVersion', currentVersion);\n00232|         }\n00233|         \n00234|         // Пытаемся загрузить данные через новую систему\n00235|         const savedFormData = loadFormData();\n00236|         if (savedFormData) {\n00237|           // Конвертируем загруженные данные в формат компонента\n00238|           const restoredForm: DeliveryForm = {\n00239|             cargos: savedFormData.cargos.length > 0 ? savedFormData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00240|             fromCity: savedFormData.fromCity,\n00241|             toCity: savedFormData.toCity,\n00242|             fromAddress: savedFormData.fromAddress,\n00243|             toAddress: savedFormData.toAddress,\n00244|             declaredValue: savedFormData.declaredValue,\n00245|             needPackaging: savedFormData.needPackaging,\n00246|             needLoading: savedFormData.needLoading,\n00247|             needCarry: savedFormData.needCarry,\n\n(File has more lines. Use 'offset' parameter to read beyond line 247)\n</file>",
+    "metadata": {
+      "preview": "    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined' && !isLoaded) {\n      let dataRestored = false;\n      try {\n        setIsRestoring(true); // Блокируем автосохранение во время восстановления\n        \n        // Мягкая проверка версии без очистки пользовательских данных\n        const currentVersion = 'v2.4.0-persistent-storage'; // Версия с постоянным сохранением\n        const savedVersion = localStorage.getItem('appVersion');\n        \n        if (savedVersion !== currentVersion) {\n          console.log('🔄 Обновление версии приложения до', currentVersion);\n          // НЕ очищаем localStorage - сохраняем пользовательские данные\n          localStorage.setItem('appVersion', currentVersion);\n        }\n        \n        // Пытаемся загрузить данные через новую систему\n        const savedFormData = loadFormData();\n        if (savedFormData) {\n          // Конвертируем загруженные данные в формат компонента"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759764707130,
+      "end": 1759764707132
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "prt_9ba25c3e50025h8v64xmnLV80j",
+  "messageID": "msg_9ba258a71001bnzJTE8fzzoDDW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Заголовок `Clear-Site-Data` приходит от сервера и полностью очищает storage. Нужно сделать восстановление данных, которое происходит **после** всех очисток. Решение - использовать `requestIdleCallback` или `setTimeout` для отложенного восстановления.",
+  "time": {
+    "start": 1759764662913,
+    "end": 1759764662913
+  }
+}

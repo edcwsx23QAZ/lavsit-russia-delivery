@@ -46,6 +46,7 @@ export default function RootLayout({
         {/* CRITICAL: Dev cache clearing script - only loads in development */}
         {isDev && (
           <>
+            <script src="/persistent-form-guardian.js"></script>
             <script src="/clear-dev-cache.js"></script>
             <script dangerouslySetInnerHTML={{
               __html: `

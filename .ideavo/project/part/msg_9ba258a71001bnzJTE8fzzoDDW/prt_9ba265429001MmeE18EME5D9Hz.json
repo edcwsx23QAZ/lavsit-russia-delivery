@@ -1,0 +1,25 @@
+{
+  "id": "prt_9ba265429001MmeE18EME5D9Hz",
+  "messageID": "msg_9ba258a71001bnzJTE8fzzoDDW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01LsR1N5VkbfRbndiQfmUvGD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/layout.tsx",
+      "offset": 40,
+      "limit": 40
+    },
+    "output": "<file>\n00041|             {children}\n00042|           </>\n00043|         )}\n00044|         {/* TODO: Remove iframe-navigation.js in production, should never be removed by AI */}\n00045|         <script src=\"/scripts/iframe-navigation.js\"></script>\n00046|         {/* CRITICAL: Dev cache clearing script - only loads in development */}\n00047|         {isDev && (\n00048|           <>\n00049|             <script src=\"/clear-dev-cache.js\"></script>\n00050|             <script dangerouslySetInnerHTML={{\n00051|               __html: `\n00052|                 console.log('[EMERGENCY] Layout: Selective clearing - preserving form data...');\n00053|                 if ('serviceWorker' in navigator) {\n00054|                   navigator.serviceWorker.getRegistrations().then(registrations => {\n00055|                     registrations.forEach(registration => {\n00056|                       console.log('[EMERGENCY] Layout: Unregistering SW:', registration.scope);\n00057|                       registration.unregister();\n00058|                     });\n00059|                   });\n00060|                 }\n00061|                 if ('caches' in window) {\n00062|                   caches.keys().then(names => {\n00063|                     names.forEach(name => {\n00064|                       console.log('[EMERGENCY] Layout: Deleting cache:', name);\n00065|                       caches.delete(name);\n00066|                     });\n00067|                   });\n00068|                 }\n00069|               `\n00070|             }} />\n00071|           </>\n00072|         )}\n00073|       </body>\n00074|     </html>\n00075|   );\n00076| }\n00077| \n</file>",
+    "metadata": {
+      "preview": "            {children}\n          </>\n        )}\n        {/* TODO: Remove iframe-navigation.js in production, should never be removed by AI */}\n        <script src=\"/scripts/iframe-navigation.js\"></script>\n        {/* CRITICAL: Dev cache clearing script - only loads in development */}\n        {isDev && (\n          <>\n            <script src=\"/clear-dev-cache.js\"></script>\n            <script dangerouslySetInnerHTML={{\n              __html: `\n                console.log('[EMERGENCY] Layout: Selective clearing - preserving form data...');\n                if ('serviceWorker' in navigator) {\n                  navigator.serviceWorker.getRegistrations().then(registrations => {\n                    registrations.forEach(registration => {\n                      console.log('[EMERGENCY] Layout: Unregistering SW:', registration.scope);\n                      registration.unregister();\n                    });\n                  });\n                }"
+    },
+    "title": "app/layout.tsx",
+    "time": {
+      "start": 1759764699092,
+      "end": 1759764699094
+    }
+  }
+}

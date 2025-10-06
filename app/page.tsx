@@ -213,6 +213,68 @@ export default function Home() {
   // Защита от потери данных - НЕ очищаем localStorage в dev режиме
   // Пользовательские данные должны сохраняться между перезагрузками
 
+  // Дополнительная проверка восстановления данных после серверной очистки
+  useEffect(() => {
+    if (typeof window !== 'undefined' && isLoaded) {
+      // Проверяем через 2 секунды после загрузки (после Clear-Site-Data)
+      const delayedCheck = setTimeout(() => {
+        const currentFormData = loadFormData();
+        if (!currentFormData) {
+          console.log('🔍 Дополнительная проверка: данные формы отсутствуют, ищем backup...');
+          
+          // Пытаемся найти backup данные
+          const backupKeys = ['formBackup1', 'formBackup2', 'formBackup3'];
+          for (const key of backupKeys) {
+            const backup = localStorage.getItem(key);
+            if (backup) {
+              try {
+                localStorage.setItem('deliveryFormData', backup);
+                console.log('🔄 Восстановлены данные из backup:', key);
+                
+                // Принудительно перезагружаем данные
+                const restoredData = loadFormData();
+                if (restoredData) {
+                  setIsRestoring(true);
+                  const restoredForm: DeliveryForm = {
+                    cargos: restoredData.cargos.length > 0 ? restoredData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],
+                    fromCity: restoredData.fromCity,
+                    toCity: restoredData.toCity,
+                    fromAddress: restoredData.fromAddress,
+                    toAddress: restoredData.toAddress,
+                    declaredValue: restoredData.declaredValue,
+                    needPackaging: restoredData.needPackaging,
+                    needLoading: restoredData.needLoading,
+                    needCarry: restoredData.needCarry,
+                    floor: restoredData.floor,
+                    hasFreightLift: restoredData.hasFreightLift,
+                    needInsurance: restoredData.needInsurance,
+                    fromTerminal: restoredData.fromTerminal,
+                    toTerminal: restoredData.toTerminal,
+                    fromAddressDelivery: restoredData.fromAddressDelivery,
+                    toAddressDelivery: restoredData.toAddressDelivery,
+                    fromLavsiteWarehouse: restoredData.fromLavsiteWarehouse || false,
+                    selectedProducts: restoredData.selectedProducts,
+                  };
+                  setForm(restoredForm);
+                  if (restoredData.enabledCompanies && Object.keys(restoredData.enabledCompanies).length > 0) {
+                    setEnabledCompanies(restoredData.enabledCompanies);
+                  }
+                  setTimeout(() => setIsRestoring(false), 100);
+                  console.log('✅ Данные формы принудительно восстановлены!');
+                }
+                break;
+              } catch (e) {
+                console.warn('⚠️ Ошибка восстановления из backup:', key, e);
+              }
+            }
+          }
+        }
+      }, 2000);
+      
+      return () => clearTimeout(delayedCheck);
+    }
+  }, [isLoaded]);
+
   // Загрузка сохраненных данных (только на клиенте)
   useEffect(() => {
     // Проверяем, что мы на клиенте

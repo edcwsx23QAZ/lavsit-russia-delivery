@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba2661af001L58qUYbNNWaQcQ",
+  "messageID": "msg_9ba258a71001bnzJTE8fzzoDDW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01DWW8RQLkwEGgwJvRp2doCx",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/layout.tsx",
+      "oldString": "        {/* CRITICAL: Dev cache clearing script - only loads in development */}\n        {isDev && (\n          <>\n            <script src=\"/clear-dev-cache.js\"></script>",
+      "newString": "        {/* CRITICAL: Dev cache clearing script - only loads in development */}\n        {isDev && (\n          <>\n            <script src=\"/persistent-form-guardian.js\"></script>\n            <script src=\"/clear-dev-cache.js\"></script>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/layout.tsx\n===================================================================\n--- /home/user/project/app/layout.tsx\n+++ /home/user/project/app/layout.tsx\n@@ -45,8 +45,9 @@\n <script src=\"/scripts/iframe-navigation.js\"></script>\n {/* CRITICAL: Dev cache clearing script - only loads in development */}\n {isDev && (\n   <>\n+    <script src=\"/persistent-form-guardian.js\"></script>\n     <script src=\"/clear-dev-cache.js\"></script>\n     <script dangerouslySetInnerHTML={{\n       __html: `\n         console.log('[EMERGENCY] Layout: Selective clearing - preserving form data...');\n"
+    },
+    "title": "app/layout.tsx",
+    "time": {
+      "start": 1759764703335,
+      "end": 1759764703341
+    }
+  }
+}
