@@ -1,0 +1,34 @@
+{
+  "id": "prt_9ba30b2e6001bhiUen2j2Hq4sH",
+  "messageID": "msg_9ba2f7999001QlhlTMX0E7V729",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_0134JtQK8cj6fu79aJZkM75n",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/middleware.ts",
+      "edits": [
+        {
+          "oldString": "  // EMERGENCY: NUCLEAR CACHE HEADERS FOR DEV\n  if (isDev) {\n    response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate, proxy-revalidate, s-maxage=0, max-age=0')\n    response.headers.set('Pragma', 'no-cache')\n    response.headers.set('Expires', '0')\n    response.headers.set('Last-Modified', new Date().toUTCString())\n    response.headers.set('ETag', `dev-${Date.now()}`)\n    response.headers.set('X-Dev-Mode', 'true')\n    response.headers.set('X-Emergency-No-Cache', 'true')\n    response.headers.set('Clear-Site-Data', '\"cache\", \"storage\"')\n  }",
+          "newString": "  // EMERGENCY: NUCLEAR CACHE HEADERS FOR DEV\n  if (isDev) {\n    response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate, proxy-revalidate, s-maxage=0, max-age=0')\n    response.headers.set('Pragma', 'no-cache')\n    response.headers.set('Expires', '0')\n    response.headers.set('Last-Modified', new Date().toUTCString())\n    response.headers.set('ETag', `dev-${Date.now()}`)\n    response.headers.set('X-Dev-Mode', 'true')\n    response.headers.set('X-Emergency-No-Cache', 'true')\n    // FIXED: Only clear cache, preserve storage for form data persistence\n    response.headers.set('Clear-Site-Data', '\"cache\"')\n  }"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/middleware.ts\n===================================================================\n--- /home/user/project/middleware.ts\n+++ /home/user/project/middleware.ts\n@@ -62,9 +62,10 @@\n     response.headers.set('Last-Modified', new Date().toUTCString())\n     response.headers.set('ETag', `dev-${Date.now()}`)\n     response.headers.set('X-Dev-Mode', 'true')\n     response.headers.set('X-Emergency-No-Cache', 'true')\n-    response.headers.set('Clear-Site-Data', '\"cache\", \"storage\"')\n+    // FIXED: Only clear cache, preserve storage for form data persistence\n+    response.headers.set('Clear-Site-Data', '\"cache\"')\n   }\n   \n   return response\n }\n"
+        }
+      ]
+    },
+    "title": "middleware.ts",
+    "time": {
+      "start": 1759765383644,
+      "end": 1759765383654
+    }
+  }
+}

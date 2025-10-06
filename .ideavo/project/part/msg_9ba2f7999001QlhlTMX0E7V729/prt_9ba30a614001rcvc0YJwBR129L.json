@@ -1,0 +1,24 @@
+{
+  "id": "prt_9ba30a614001rcvc0YJwBR129L",
+  "messageID": "msg_9ba2f7999001QlhlTMX0E7V729",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01SffZw16BLnfLT9juqPLQ8j",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Clear-Site-Data"
+    },
+    "output": "Found 7 matches\n/home/user/project/lib/cookie-storage.ts:\n  Line 3: // Cookie-based storage for form data - survives Clear-Site-Data headers\n\n/home/user/project/public/persistent-form-guardian.js:\n  Line 2: // Защищает данные формы от любых видов очистки, включая Clear-Site-Data\n  Line 228:     // Дополнительное восстановление через 3 секунды (после всех Clear-Site-Data)\n\n/home/user/project/public/persistent-form-guardian.js.backup:\n  Line 122:     // Дополнительное восстановление через 3 секунды (после всех Clear-Site-Data)\n\n/home/user/project/lib/indexeddb-storage.ts:\n  Line 3: // IndexedDB storage for form data - survives Clear-Site-Data headers\n\n/home/user/project/app/page.tsx:\n  Line 219:       // Проверяем через 2 секунды после загрузки (после Clear-Site-Data)\n\n/home/user/project/middleware.ts:\n  Line 66:     response.headers.set('Clear-Site-Data', '\"cache\", \"storage\"')",
+    "metadata": {
+      "matches": 7,
+      "truncated": false
+    },
+    "title": "Clear-Site-Data",
+    "time": {
+      "start": 1759765374740,
+      "end": 1759765374750
+    }
+  }
+}

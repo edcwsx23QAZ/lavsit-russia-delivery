@@ -1,0 +1,23 @@
+{
+  "id": "prt_9ba30a4080018tOli3yblJ4cPz",
+  "messageID": "msg_9ba2f7999001QlhlTMX0E7V729",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_017ikBwmD6x8QQV9y9DCMzCu",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/next.config.js"
+    },
+    "output": "<file>\n00001| /** @type {import('next').NextConfig} */\n00002| const nextConfig = {\n00003|   images: { unoptimized: true },\n00004|   \n00005|   // EMERGENCY: DISABLE STRICT MODE \n00006|   reactStrictMode: false,\n00007|   \n00008|   // EMERGENCY: DISABLE SSR GLOBALLY IN DEV\n00009|   ...(process.env.NODE_ENV !== 'production' && {\n00010|     experimental: {\n00011|       runtime: 'nodejs',\n00012|       serverActionsBodySizeLimit: '2mb',\n00013|     }\n00014|   }),\n00015|   \n00016|   // EMERGENCY: CUSTOM WEBPACK CONFIG\n00017|   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {\n00018|     if (dev) {\n00019|       // Disable caching in development\n00020|       config.cache = false;\n00021|       \n00022|       // Add aggressive error handling\n00023|       config.resolve.fallback = {\n00024|         ...config.resolve.fallback,\n00025|         fs: false,\n00026|         net: false,\n00027|         tls: false,\n00028|       };\n00029|       \n00030|       // Disable chunk splitting in dev\n00031|       config.optimization = {\n00032|         ...config.optimization,\n00033|         splitChunks: false,\n00034|         runtimeChunk: false,\n00035|       };\n00036|       \n00037|       // Add error handler plugin\n00038|       config.plugins.push(\n00039|         new webpack.DefinePlugin({\n00040|           'process.env.FORCE_NO_CACHE': JSON.stringify('true'),\n00041|         })\n00042|       );\n00043|     }\n00044|     \n00045|     return config;\n00046|   },\n00047|   \n00048|   // Добавляем заголовки для предотвращения кэширования\n00049|   async headers() {\n00050|     return [\n00051|       {\n00052|         source: '/(.*)',\n00053|         headers: [\n00054|           {\n00055|             key: 'Cache-Control',\n00056|             value: (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined)\n00057|               ? 'no-cache, no-store, must-revalidate, proxy-revalidate, s-maxage=0'\n00058|               : 'public, max-age=3600',\n00059|           },\n00060|           {\n00061|             key: 'Pragma',\n00062|             value: 'no-cache',\n00063|           },\n00064|           {\n00065|             key: 'Expires',\n00066|             value: '0',\n00067|           },\n00068|         ],\n00069|       },\n00070|     ];\n00071|   },\n00072| };\n00073| \n00074| module.exports = nextConfig;\n00075| \n</file>",
+    "metadata": {
+      "preview": "/** @type {import('next').NextConfig} */\nconst nextConfig = {\n  images: { unoptimized: true },\n  \n  // EMERGENCY: DISABLE STRICT MODE \n  reactStrictMode: false,\n  \n  // EMERGENCY: DISABLE SSR GLOBALLY IN DEV\n  ...(process.env.NODE_ENV !== 'production' && {\n    experimental: {\n      runtime: 'nodejs',\n      serverActionsBodySizeLimit: '2mb',\n    }\n  }),\n  \n  // EMERGENCY: CUSTOM WEBPACK CONFIG\n  webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {\n    if (dev) {\n      // Disable caching in development\n      config.cache = false;"
+    },
+    "title": "next.config.js",
+    "time": {
+      "start": 1759765374484,
+      "end": 1759765374486
+    }
+  }
+}

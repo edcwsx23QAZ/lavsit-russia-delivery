@@ -63,7 +63,8 @@ export function middleware(request: NextRequest) {
     response.headers.set('ETag', `dev-${Date.now()}`)
     response.headers.set('X-Dev-Mode', 'true')
     response.headers.set('X-Emergency-No-Cache', 'true')
-    response.headers.set('Clear-Site-Data', '"cache", "storage"')
+    // FIXED: Only clear cache, preserve storage for form data persistence
+    response.headers.set('Clear-Site-Data', '"cache"')
   }
   
   return response

@@ -1,5 +1,18 @@
 'use client';
 
+import { 
+  saveFormDataToIndexedDB, 
+  loadFormDataFromIndexedDB, 
+  clearFormDataFromIndexedDB,
+  isIndexedDBAvailable 
+} from './indexeddb-storage';
+import { 
+  saveFormDataToCookies, 
+  loadFormDataFromCookies, 
+  clearFormDataFromCookies,
+  isCookieStorageAvailable 
+} from './cookie-storage';
+
 // Константы для ключей localStorage
 const FORM_DATA_KEY = 'deliveryFormData';
 const FORM_VERSION = '1.2'; // Поддержка полного состояния формы + enabledCompanies
@@ -58,7 +71,7 @@ export interface StoredFormData {
 }
 
 /**
- * Сохраняет данные формы в localStorage
+ * Сохраняет данные формы в localStorage, IndexedDB и cookies (тройная защита)
  * НЕ сохраняет результаты расчетов - только пользовательский ввод
  */
 export const saveFormData = (formData: Partial<StoredFormData>): boolean => {
@@ -91,9 +104,47 @@ export const saveFormData = (formData: Partial<StoredFormData>): boolean => {
       enabledCompanies: formData.enabledCompanies || {},
     };
 
-    localStorage.setItem(FORM_DATA_KEY, JSON.stringify(dataToSave));
-    console.log('💾 Данные формы сохранены в localStorage:', dataToSave);
-    return true;
+    const serializedData = JSON.stringify(dataToSave);
+    
+    // Тройная защита: сохраняем в localStorage, IndexedDB и cookies
+    let localStorageSuccess = false;
+    let indexedDBSuccess = false;
+    let cookieSuccess = false;
+    
+    // 1. localStorage (основной метод)
+    try {
+      localStorage.setItem(FORM_DATA_KEY, serializedData);
+      localStorageSuccess = true;
+      console.log('💾 Данные формы сохранены в localStorage');
+    } catch (error) {
+      console.warn('⚠️ Ошибка сохранения в localStorage:', error);
+    }
+    
+    // 2. IndexedDB (защита от Clear-Site-Data для storage)
+    if (isIndexedDBAvailable()) {
+      saveFormDataToIndexedDB(serializedData).then(success => {
+        if (success) {
+          console.log('💾 Данные формы сохранены в IndexedDB');
+        }
+      }).catch(error => {
+        console.warn('⚠️ Ошибка сохранения в IndexedDB:', error);
+      });
+    }
+    
+    // 3. Cookies (дополнительная защита)
+    if (isCookieStorageAvailable()) {
+      try {
+        cookieSuccess = saveFormDataToCookies(serializedData);
+        if (cookieSuccess) {
+          console.log('💾 Данные формы сохранены в cookies');
+        }
+      } catch (error) {
+        console.warn('⚠️ Ошибка сохранения в cookies:', error);
+      }
+    }
+    
+    console.log(`💾 Сохранение: localStorage=${localStorageSuccess}, IndexedDB=async, cookies=${cookieSuccess}`);
+    return localStorageSuccess; // localStorage остается основным критерием успеха
   } catch (error) {
     console.error('❌ Ошибка сохранения данных формы:', error);
     return false;
@@ -101,7 +152,7 @@ export const saveFormData = (formData: Partial<StoredFormData>): boolean => {
 };
 
 /**
- * Загружает сохраненные данные формы из localStorage
+ * Загружает сохраненные данные формы с тройной защитой (localStorage -> IndexedDB -> cookies)
  */
 export const loadFormData = (): StoredFormData | null => {
   try {
@@ -109,9 +160,45 @@ export const loadFormData = (): StoredFormData | null => {
       return null; // SSR safe
     }
 
-    const savedData = localStorage.getItem(FORM_DATA_KEY);
+    let savedData = localStorage.getItem(FORM_DATA_KEY);
+    let dataSource = 'localStorage';
+    
+    // Если данных нет в localStorage, пробуем восстановить из других источников
     if (!savedData) {
-      console.log('📝 Сохраненные данные формы не найдены');
+      console.log('📝 Данные не найдены в localStorage, проверяем другие источники...');
+      
+      // Пробуем восстановить из IndexedDB (асинхронно)
+      loadFormDataFromIndexedDB().then(indexedData => {
+        if (indexedData) {
+          console.log('📂 Восстановлены данные из IndexedDB');
+          try {
+            localStorage.setItem(FORM_DATA_KEY, indexedData);
+            console.log('💾 Данные восстановлены в localStorage из IndexedDB');
+          } catch (error) {
+            console.warn('⚠️ Не удалось восстановить localStorage из IndexedDB:', error);
+          }
+        }
+      }).catch(error => {
+        console.warn('⚠️ Ошибка восстановления из IndexedDB:', error);
+      });
+      
+      // Пробуем восстановить из cookies (синхронно)
+      const cookieData = loadFormDataFromCookies();
+      if (cookieData) {
+        savedData = cookieData;
+        dataSource = 'cookies';
+        console.log('📂 Восстановлены данные из cookies');
+        try {
+          localStorage.setItem(FORM_DATA_KEY, cookieData);
+          console.log('💾 Данные восстановлены в localStorage из cookies');
+        } catch (error) {
+          console.warn('⚠️ Не удалось восстановить localStorage из cookies:', error);
+        }
+      }
+    }
+    
+    if (!savedData) {
+      console.log('📝 Сохраненные данные формы не найдены ни в одном источнике');
       return null;
     }
 
@@ -132,7 +219,7 @@ export const loadFormData = (): StoredFormData | null => {
       return null;
     }
 
-    console.log('📂 Данные формы загружены из localStorage:', parsedData);
+    console.log(`📂 Данные формы загружены из ${dataSource}:`, parsedData);
     return parsedData;
   } catch (error) {
     console.error('❌ Ошибка загрузки данных формы:', error);
@@ -181,7 +268,7 @@ const migrateFormData = (oldData: any): StoredFormData | null => {
 };
 
 /**
- * Очищает сохраненные данные формы
+ * Очищает сохраненные данные формы из всех источников (localStorage, IndexedDB, cookies)
  */
 export const clearFormData = (): boolean => {
   try {
@@ -189,9 +276,44 @@ export const clearFormData = (): boolean => {
       return false;
     }
 
-    localStorage.removeItem(FORM_DATA_KEY);
-    console.log('🗑️ Данные формы удалены из localStorage');
-    return true;
+    let localStorageSuccess = false;
+    let indexedDBSuccess = false;
+    let cookieSuccess = false;
+    
+    // Очищаем localStorage
+    try {
+      localStorage.removeItem(FORM_DATA_KEY);
+      localStorageSuccess = true;
+      console.log('🗑️ Данные формы удалены из localStorage');
+    } catch (error) {
+      console.warn('⚠️ Ошибка удаления из localStorage:', error);
+    }
+    
+    // Очищаем IndexedDB
+    if (isIndexedDBAvailable()) {
+      clearFormDataFromIndexedDB().then(success => {
+        if (success) {
+          console.log('🗑️ Данные формы удалены из IndexedDB');
+        }
+      }).catch(error => {
+        console.warn('⚠️ Ошибка удаления из IndexedDB:', error);
+      });
+    }
+    
+    // Очищаем cookies
+    if (isCookieStorageAvailable()) {
+      try {
+        cookieSuccess = clearFormDataFromCookies();
+        if (cookieSuccess) {
+          console.log('🗑️ Данные формы удалены из cookies');
+        }
+      } catch (error) {
+        console.warn('⚠️ Ошибка удаления из cookies:', error);
+      }
+    }
+    
+    console.log(`🗑️ Удаление: localStorage=${localStorageSuccess}, IndexedDB=async, cookies=${cookieSuccess}`);
+    return localStorageSuccess;
   } catch (error) {
     console.error('❌ Ошибка удаления данных формы:', error);
     return false;
@@ -199,7 +321,7 @@ export const clearFormData = (): boolean => {
 };
 
 /**
- * Проверяет, есть ли сохраненные данные
+ * Проверяет, есть ли сохраненные данные в любом из источников
  */
 export const hasStoredFormData = (): boolean => {
   try {
@@ -207,7 +329,30 @@ export const hasStoredFormData = (): boolean => {
       return false;
     }
 
-    return localStorage.getItem(FORM_DATA_KEY) !== null;
+    // Проверяем localStorage
+    const hasLocalStorage = localStorage.getItem(FORM_DATA_KEY) !== null;
+    if (hasLocalStorage) {
+      return true;
+    }
+    
+    // Проверяем cookies
+    if (isCookieStorageAvailable()) {
+      const hasCookies = loadFormDataFromCookies() !== null;
+      if (hasCookies) {
+        return true;
+      }
+    }
+    
+    // IndexedDB проверяем асинхронно (не влияет на результат)
+    if (isIndexedDBAvailable()) {
+      loadFormDataFromIndexedDB().then(data => {
+        if (data) {
+          console.log('📂 Найдены данные в IndexedDB для будущего восстановления');
+        }
+      }).catch(() => {});
+    }
+    
+    return false;
   } catch (error) {
     return false;
   }
