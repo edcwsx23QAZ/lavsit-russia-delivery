@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b98219f3001VY2ROrGRQ5YjAk",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01VBT5JVNqB2wYZhhzsX6EBr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n  \n  // Создаем дебаунс функцию для сохранения (сохраняем через 1 секунду после последнего изменения)\n  const debouncedSave = useMemo(() => createDebouncedSaver(1000), []);",
+      "newString": "  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n  const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);\n  const [isFormChanged, setIsFormChanged] = useState(false);\n  \n  // Создаем дебаунс функцию для сохранения (сохраняем через 1 секунду после последнего изменения)\n  const debouncedSave = useMemo(() => {\n    const saver = createDebouncedSaver(1000);\n    // Оборачиваем в функцию, которая обновляет индикаторы\n    return (formData: any) => {\n      setIsFormChanged(true);\n      saver(formData);\n      // Обновляем время последнего сохранения через небольшую задержку\n      setTimeout(() => {\n        setLastSaveTime(new Date());\n        setIsFormChanged(false);\n      }, 1100);\n    };\n  }, []);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -129,11 +129,25 @@\n };\n \n const [form, setForm] = useState<DeliveryForm>(initialFormState);\n const [isLoaded, setIsLoaded] = useState(false);\n+const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);\n+const [isFormChanged, setIsFormChanged] = useState(false);\n \n // Создаем дебаунс функцию для сохранения (сохраняем через 1 секунду после последнего изменения)\n-const debouncedSave = useMemo(() => createDebouncedSaver(1000), []);\n+const debouncedSave = useMemo(() => {\n+  const saver = createDebouncedSaver(1000);\n+  // Оборачиваем в функцию, которая обновляет индикаторы\n+  return (formData: any) => {\n+    setIsFormChanged(true);\n+    saver(formData);\n+    // Обновляем время последнего сохранения через небольшую задержку\n+    setTimeout(() => {\n+      setLastSaveTime(new Date());\n+      setIsFormChanged(false);\n+    }, 1100);\n+  };\n+}, []);\n \n const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n const [showSuggestions, setShowSuggestions] = useState(false);\n const [activeField, setActiveField] = useState('');\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759753939833,
+      "end": 1759753939853
+    }
+  }
+}

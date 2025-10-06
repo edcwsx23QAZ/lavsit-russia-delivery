@@ -1,0 +1,21 @@
+{
+  "id": "prt_9b9807420001roQr3NQKI7z3LL",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01E3ms4KLmtNxJvDr5bqsyR5",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "import { useEffect, useState, useCallback, useMemo } from 'react';\nimport { Search, Truck, Package, MapPin, Calculator, ChevronDown, ChevronUp, Building, AlertCircle, CheckCircle, Loader2, Download, FileDown, Upload, Trash2, Plus, Minus, Home, Copy, RefreshCw, RotateCcw, Settings, X, Edit3, Save, AlertTriangle, ExternalLink, Zap, ArrowRight, Timer, DollarSign, Clipboard, Check } from 'lucide-react';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Checkbox } from '@/components/ui/checkbox';\nimport { Alert, AlertDescription } from '@/components/ui/alert';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Badge } from '@/components/ui/badge';\nimport { Separator } from '@/components/ui/separator';\nimport ProductSearch from '@/components/ProductSearch';\nimport { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';\nimport { ProductManager } from '@/components/ProductManager';\nimport { apiRequestWithTimeout } from '@/lib/api-utils';",
+      "newString": "import { useEffect, useState, useCallback, useMemo } from 'react';\nimport { Search, Truck, Package, MapPin, Calculator, ChevronDown, ChevronUp, Building, AlertCircle, CheckCircle, Loader2, Download, FileDown, Upload, Trash2, Plus, Minus, Home, Copy, RefreshCw, RotateCcw, Settings, X, Edit3, Save, AlertTriangle, ExternalLink, Zap, ArrowRight, Timer, DollarSign, Clipboard, Check } from 'lucide-react';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Checkbox } from '@/components/ui/checkbox';\nimport { Alert, AlertDescription } from '@/components/ui/alert';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Badge } from '@/components/ui/badge';\nimport { Separator } from '@/components/ui/separator';\nimport ProductSearch from '@/components/ProductSearch';\nimport { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';\nimport { ProductManager } from '@/components/ProductManager';\nimport { apiRequestWithTimeout } from '@/lib/api-utils';\nimport { saveFormData, loadFormData, hasStoredFormData, createDebouncedSaver, clearFormData } from '@/lib/form-storage';"
+    },
+    "error": "Error: oldString not found in content",
+    "time": {
+      "start": 1759753835959,
+      "end": 1759753836075
+    }
+  }
+}

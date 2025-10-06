@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9819c92001hurMHgLUwz6IUG",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01NhTLv124o2aapDjH8yXPFk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  // Сохранение данных при изменении (только на клиенте)\n  useEffect(() => {\n    if (typeof window !== 'undefined' && isLoaded) {\n      try {\n        localStorage.setItem('deliveryForm', JSON.stringify(form));\n        console.log('Сохранены данные формы в localStorage');\n      } catch (error) {\n        console.error('Ошибка сохранения данных:', error);\n      }\n    }\n  }, [form, isLoaded]);",
+      "newString": "  // Автоматическое сохранение данных при изменении формы (с дебаунсом)\n  useEffect(() => {\n    if (typeof window !== 'undefined' && isLoaded) {\n      // Используем дебаунс для ограничения частоты сохранения\n      debouncedSave({\n        cargos: form.cargos,\n        fromCity: form.fromCity,\n        toCity: form.toCity,\n        fromAddress: form.fromAddress,\n        toAddress: form.toAddress,\n        declaredValue: form.declaredValue,\n        needPackaging: form.needPackaging,\n        needLoading: form.needLoading,\n        needCarry: form.needCarry,\n        floor: form.floor,\n        hasFreightLift: form.hasFreightLift,\n        needInsurance: form.needInsurance,\n        fromTerminal: form.fromTerminal,\n        toTerminal: form.toTerminal,\n        fromAddressDelivery: form.fromAddressDelivery,\n        toAddressDelivery: form.toAddressDelivery,\n        selectedProducts: form.selectedProducts,\n      });\n    }\n  }, [form, isLoaded, debouncedSave]);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -291,19 +291,33 @@\n     }\n   }\n }, [isLoaded]);\n \n-// Сохранение данных при изменении (только на клиенте)\n+// Автоматическое сохранение данных при изменении формы (с дебаунсом)\n useEffect(() => {\n   if (typeof window !== 'undefined' && isLoaded) {\n-    try {\n-      localStorage.setItem('deliveryForm', JSON.stringify(form));\n-      console.log('Сохранены данные формы в localStorage');\n-    } catch (error) {\n-      console.error('Ошибка сохранения данных:', error);\n-    }\n+    // Используем дебаунс для ограничения частоты сохранения\n+    debouncedSave({\n+      cargos: form.cargos,\n+      fromCity: form.fromCity,\n+      toCity: form.toCity,\n+      fromAddress: form.fromAddress,\n+      toAddress: form.toAddress,\n+      declaredValue: form.declaredValue,\n+      needPackaging: form.needPackaging,\n+      needLoading: form.needLoading,\n+      needCarry: form.needCarry,\n+      floor: form.floor,\n+      hasFreightLift: form.hasFreightLift,\n+      needInsurance: form.needInsurance,\n+      fromTerminal: form.fromTerminal,\n+      toTerminal: form.toTerminal,\n+      fromAddressDelivery: form.fromAddressDelivery,\n+      toAddressDelivery: form.toAddressDelivery,\n+      selectedProducts: form.selectedProducts,\n+    });\n   }\n-}, [form, isLoaded]);\n+}, [form, isLoaded, debouncedSave]);\n \n // Автоматическая страховка при указании стоимости\n useEffect(() => {\n   if (form.declaredValue > 0) {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759753910256,
+      "end": 1759753910276
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9823890001SnUyc6YogWYTzN",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01NjoL6mP1iA6dZhN8qecMU5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "return.*\\(|<div.*className.*container|<Card.*title.*Груз",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "output": "Found 25 matches\n/home/user/project/app/page.tsx:\n  Line 140:     return (formData: any) => {\n  Line 368:     return () => {\n  Line 488:           return await response.json();\n  Line 527:           return await response.json();\n  Line 772:     return Array.from(groups.values()).sort((a, b) => {\n  Line 1769:         return getPekZoneFallback(address);\n  Line 1790:       return getPekZoneFallback(address);\n  Line 1794:       return getPekZoneFallback(address);\n  Line 2090:         return date.toISOString().slice(0, 19); // 2025-09-28T14:00:00\n  Line 2498:     return Math.max(...cargos.map(c => c.width)) / 100;\n  Line 3385:     return (\n  Line 3395:   return (\n  Line 3836:                                   return (\n  Line 3939:                     return (\n\n/home/user/project/app/layout.tsx:\n  Line 21:   return (\n\n/home/user/project/app/layout-dev.tsx:\n  Line 19:   return (\n\n/home/user/project/app/diagnostic/page.tsx:\n  Line 279:   return (\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 1173:   return (\n  Line 1470:                     return (\n\n/home/user/project/app/diagnostic/optimized-page.tsx:\n  Line 279:   return (\n\n/home/user/project/app/pek-test/page.tsx:\n  Line 41:     return (\n  Line 117:   return (\n\n/home/user/project/app/env-check/page.tsx:\n  Line 42:   return (\n  Line 43:     <div className=\"container mx-auto p-6 max-w-4xl\">\n  Line 103:           return (",
+    "metadata": {
+      "matches": 25,
+      "truncated": false
+    },
+    "title": "return.*\\(|<div.*className.*container|<Card.*title.*Груз",
+    "time": {
+      "start": 1759753944599,
+      "end": 1759753944614
+    }
+  }
+}

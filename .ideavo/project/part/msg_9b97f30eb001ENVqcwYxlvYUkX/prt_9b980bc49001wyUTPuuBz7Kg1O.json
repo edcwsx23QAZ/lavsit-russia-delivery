@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b980bc49001wyUTPuuBz7Kg1O",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01V6psM4gwoWRkW2uNKXtgQH",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';",
+      "newString": "import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\nimport { saveFormData, loadFormData, hasStoredFormData, createDebouncedSaver, clearFormData } from '@/lib/form-storage';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -15,8 +15,9 @@\n import ProductSearch from '@/components/ProductSearch';\n import ProductManager from '@/components/ProductManager';\n import TruckVisualization from '@/components/TruckVisualization';\n import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\n+import { saveFormData, loadFormData, hasStoredFormData, createDebouncedSaver, clearFormData } from '@/lib/form-storage';\n import { \n   createCargosForProduct, \n   removeCargosForProduct, \n   calculateTotalValue,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759753847058,
+      "end": 1759753847085
+    }
+  }
+}

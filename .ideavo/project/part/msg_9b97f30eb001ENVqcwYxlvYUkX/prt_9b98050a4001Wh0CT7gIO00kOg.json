@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b98050a4001Wh0CT7gIO00kOg",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Tr52pbWBvWXsaqF2MeYLY1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 200,
+      "limit": 50
+    },
+    "output": "<file>\n00201|     if (isDev) {\n00202|       // Очищаем localStorage при каждой перезагрузке в dev режиме\n00203|       const devTimestamp = Date.now().toString();\n00204|       const lastDevTimestamp = localStorage.getItem('devTimestamp');\n00205|       \n00206|       if (lastDevTimestamp !== devTimestamp) {\n00207|         console.log('🧹 DEV: Очистка localStorage для актуальных данных');\n00208|         localStorage.clear();\n00209|         localStorage.setItem('devTimestamp', devTimestamp);\n00210|       }\n00211|     }\n00212|   }, []);\n00213| \n00214|   // Загрузка сохраненных данных (только на клиенте)\n00215|   useEffect(() => {\n00216|     // Проверяем, что мы на клиенте\n00217|     if (typeof window !== 'undefined' && !isLoaded) {\n00218|       try {\n00219|         // Проверяем версию для принудительного обновления кэша\n00220|         const currentVersion = 'v2.2.0-anticache'; // Версия с полной anti-cache системой\n00221|         const savedVersion = localStorage.getItem('appVersion');\n00222|         \n00223|         if (savedVersion !== currentVersion) {\n00224|           console.log('🔄 Обновление версии приложения, очищаем старые данные');\n00225|           localStorage.clear();\n00226|           localStorage.setItem('appVersion', currentVersion);\n00227|         }\n00228|         \n00229|         const saved = localStorage.getItem('deliveryForm');\n00230|         if (saved) {\n00231|           const savedForm = JSON.parse(saved);\n00232|           // Убеждаемся, что есть хотя бы один груз\n00233|           if (!savedForm.cargos || savedForm.cargos.length === 0) {\n00234|             savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n00235|           }\n00236|           setForm(savedForm);\n00237|           console.log('Загружены сохраненные данные формы:', savedForm);\n00238|           \n00239|           // Диагностика времени для Supabase\n00240|           const currentTime = Math.floor(Date.now() / 1000);\n00241|           console.log('🕒 Текущее время (timestamp):', currentTime);\n00242|           console.log('🕒 Текущее время (ISO):', new Date().toISOString());\n00243|         }\n00244|         \n00245|         // Выводим все доступные ТК для отладки\n00246|         console.log('📋 Всего доступно ТК:', COMPANIES_BASE.length);\n00247|         console.log('📋 Список ТК:', COMPANIES_BASE.map(c => c.name));\n00248|         \n00249|       } catch (error) {\n00250|         console.error('Ошибка загрузки сохраненных данных:', error);\n\n(File has more lines. Use 'offset' parameter to read beyond line 250)\n</file>",
+    "metadata": {
+      "preview": "    if (isDev) {\n      // Очищаем localStorage при каждой перезагрузке в dev режиме\n      const devTimestamp = Date.now().toString();\n      const lastDevTimestamp = localStorage.getItem('devTimestamp');\n      \n      if (lastDevTimestamp !== devTimestamp) {\n        console.log('🧹 DEV: Очистка localStorage для актуальных данных');\n        localStorage.clear();\n        localStorage.setItem('devTimestamp', devTimestamp);\n      }\n    }\n  }, []);\n\n  // Загрузка сохраненных данных (только на клиенте)\n  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined' && !isLoaded) {\n      try {\n        // Проверяем версию для принудительного обновления кэша\n        const currentVersion = 'v2.2.0-anticache'; // Версия с полной anti-cache системой"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759753819199,
+      "end": 1759753819202
+    }
+  }
+}

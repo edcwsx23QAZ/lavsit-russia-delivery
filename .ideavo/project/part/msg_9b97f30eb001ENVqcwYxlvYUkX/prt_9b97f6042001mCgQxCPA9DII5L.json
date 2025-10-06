@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b97f6042001mCgQxCPA9DII5L",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Csdyc1GdTcvDMd1SQmwC9K",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 200,
+      "limit": 50
+    },
+    "output": "<file>\n00201|   }, [actions]);\n00202| \n00203|   // Vehicle management functions\n00204|   const addVehicleType = useCallback(() => {\n00205|     const { name, length, width, height } = state.newVehicle;\n00206|     \n00207|     if (!name || !length || !width || !height) {\n00208|       alert('Пожалуйста, заполните все поля');\n00209|       return;\n00210|     }\n00211|     \n00212|     const newId = (state.vehicleTypes.length + 1).toString();\n00213|     const vehicleToAdd = {\n00214|       id: newId,\n00215|       name,\n00216|       length: parseInt(length),\n00217|       width: parseInt(width),\n00218|       height: parseInt(height)\n00219|     };\n00220|     \n00221|     actions.addVehicleType(vehicleToAdd);\n00222|   }, [state.newVehicle, state.vehicleTypes.length, actions]);\n00223| \n00224|   const saveVehicleTypes = useCallback(async () => {\n00225|     actions.setSavingState(true);\n00226|     actions.setSaveStatus('saving');\n00227|     \n00228|     try {\n00229|       localStorage.setItem('vehicleTypes', JSON.stringify(state.vehicleTypes));\n00230|       await new Promise(resolve => setTimeout(resolve, 1000));\n00231|       \n00232|       actions.setUnsavedChanges(false);\n00233|       actions.setSaveStatus('success');\n00234|       setTimeout(() => actions.setSaveStatus('idle'), 3000);\n00235|     } catch (error) {\n00236|       console.error('Ошибка сохранения:', error);\n00237|       actions.setSaveStatus('error');\n00238|       setTimeout(() => actions.setSaveStatus('idle'), 5000);\n00239|     } finally {\n00240|       actions.setSavingState(false);\n00241|     }\n00242|   }, [state.vehicleTypes, actions]);\n00243| \n00244|   const updateProductData = useCallback(async () => {\n00245|     actions.setUpdatingData(true);\n00246|     actions.setUpdateStatus('updating');\n00247|     \n00248|     try {\n00249|       const response = await apiRequestWithTimeout('/api/furniture-products?update=true&force=true&timestamp=' + Date.now(), {\n00250|         method: 'GET',\n\n(File has more lines. Use 'offset' parameter to read beyond line 250)\n</file>",
+    "metadata": {
+      "preview": "  }, [actions]);\n\n  // Vehicle management functions\n  const addVehicleType = useCallback(() => {\n    const { name, length, width, height } = state.newVehicle;\n    \n    if (!name || !length || !width || !height) {\n      alert('Пожалуйста, заполните все поля');\n      return;\n    }\n    \n    const newId = (state.vehicleTypes.length + 1).toString();\n    const vehicleToAdd = {\n      id: newId,\n      name,\n      length: parseInt(length),\n      width: parseInt(width),\n      height: parseInt(height)\n    };\n    "
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759753757715,
+      "end": 1759753757718
+    }
+  }
+}

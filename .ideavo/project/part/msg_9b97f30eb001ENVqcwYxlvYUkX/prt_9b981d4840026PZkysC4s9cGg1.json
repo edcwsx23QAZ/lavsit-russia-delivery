@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b981d4840026PZkysC4s9cGg1",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01NCwcUYHZm6Mr4dx35vapSq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "localStorage.setItem.*deliveryForm",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 3040:     localStorage.setItem('deliveryForm', JSON.stringify(form));",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "localStorage.setItem.*deliveryForm",
+    "time": {
+      "start": 1759753918281,
+      "end": 1759753918292
+    }
+  }
+}

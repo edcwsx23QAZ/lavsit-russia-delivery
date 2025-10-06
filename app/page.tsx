@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Switch } from '@/components/ui/switch';
-import { Plus, Truck, Building2, Map, Settings, Package2 } from 'lucide-react';
+import { Plus, Truck, Building2, Map, Settings, Package2, Trash2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -16,6 +16,7 @@ import ProductSearch from '@/components/ProductSearch';
 import ProductManager from '@/components/ProductManager';
 import TruckVisualization from '@/components/TruckVisualization';
 import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';
+import { saveFormData, loadFormData, hasStoredFormData, createDebouncedSaver, clearFormData } from '@/lib/form-storage';
 import { 
   createCargosForProduct, 
   removeCargosForProduct, 
@@ -129,6 +130,23 @@ export default function Home() {
 
   const [form, setForm] = useState<DeliveryForm>(initialFormState);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);
+  const [isFormChanged, setIsFormChanged] = useState(false);
+  
+  // Создаем дебаунс функцию для сохранения (сохраняем через 1 секунду после последнего изменения)
+  const debouncedSave = useMemo(() => {
+    const saver = createDebouncedSaver(1000);
+    // Оборачиваем в функцию, которая обновляет индикаторы
+    return (formData: any) => {
+      setIsFormChanged(true);
+      saver(formData);
+      // Обновляем время последнего сохранения через небольшую задержку
+      setTimeout(() => {
+        setLastSaveTime(new Date());
+        setIsFormChanged(false);
+      }, 1100);
+    };
+  }, []);
 
   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -217,7 +235,7 @@ export default function Home() {
     if (typeof window !== 'undefined' && !isLoaded) {
       try {
         // Проверяем версию для принудительного обновления кэша
-        const currentVersion = 'v2.2.0-anticache'; // Версия с полной anti-cache системой
+        const currentVersion = 'v2.3.0-form-storage'; // Новая версия с улучшенным сохранением
         const savedVersion = localStorage.getItem('appVersion');
         
         if (savedVersion !== currentVersion) {
@@ -226,20 +244,53 @@ export default function Home() {
           localStorage.setItem('appVersion', currentVersion);
         }
         
-        const saved = localStorage.getItem('deliveryForm');
-        if (saved) {
-          const savedForm = JSON.parse(saved);
-          // Убеждаемся, что есть хотя бы один груз
-          if (!savedForm.cargos || savedForm.cargos.length === 0) {
-            savedForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];
-          }
-          setForm(savedForm);
-          console.log('Загружены сохраненные данные формы:', savedForm);
+        // Пытаемся загрузить данные через новую систему
+        const savedFormData = loadFormData();
+        if (savedFormData) {
+          // Конвертируем загруженные данные в формат компонента
+          const restoredForm: DeliveryForm = {
+            cargos: savedFormData.cargos.length > 0 ? savedFormData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],
+            fromCity: savedFormData.fromCity,
+            toCity: savedFormData.toCity,
+            fromAddress: savedFormData.fromAddress,
+            toAddress: savedFormData.toAddress,
+            declaredValue: savedFormData.declaredValue,
+            needPackaging: savedFormData.needPackaging,
+            needLoading: savedFormData.needLoading,
+            needCarry: savedFormData.needCarry,
+            floor: savedFormData.floor,
+            hasFreightLift: savedFormData.hasFreightLift,
+            needInsurance: savedFormData.needInsurance,
+            fromTerminal: savedFormData.fromTerminal,
+            toTerminal: savedFormData.toTerminal,
+            fromAddressDelivery: savedFormData.fromAddressDelivery,
+            toAddressDelivery: savedFormData.toAddressDelivery,
+            selectedProducts: savedFormData.selectedProducts,
+          };
+          
+          setForm(restoredForm);
+          console.log('✅ Данные формы успешно восстановлены из localStorage');
           
           // Диагностика времени для Supabase
           const currentTime = Math.floor(Date.now() / 1000);
           console.log('🕒 Текущее время (timestamp):', currentTime);
           console.log('🕒 Текущее время (ISO):', new Date().toISOString());
+        } else {
+          // Проверяем старый формат данных для миграции
+          const oldSaved = localStorage.getItem('deliveryForm');
+          if (oldSaved) {
+            console.log('🔄 Найдены данные в старом формате, выполняется миграция...');
+            const oldForm = JSON.parse(oldSaved);
+            if (!oldForm.cargos || oldForm.cargos.length === 0) {
+              oldForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];
+            }
+            setForm(oldForm);
+            
+            // Сохраняем в новом формате и удаляем старые данные
+            saveFormData(oldForm);
+            localStorage.removeItem('deliveryForm');
+            console.log('✅ Миграция завершена');
+          }
         }
         
         // Выводим все доступные ТК для отладки
@@ -255,17 +306,31 @@ export default function Home() {
     }
   }, [isLoaded]);
 
-  // Сохранение данных при изменении (только на клиенте)
+  // Автоматическое сохранение данных при изменении формы (с дебаунсом)
   useEffect(() => {
     if (typeof window !== 'undefined' && isLoaded) {
-      try {
-        localStorage.setItem('deliveryForm', JSON.stringify(form));
-        console.log('Сохранены данные формы в localStorage');
-      } catch (error) {
-        console.error('Ошибка сохранения данных:', error);
-      }
+      // Используем дебаунс для ограничения частоты сохранения
+      debouncedSave({
+        cargos: form.cargos,
+        fromCity: form.fromCity,
+        toCity: form.toCity,
+        fromAddress: form.fromAddress,
+        toAddress: form.toAddress,
+        declaredValue: form.declaredValue,
+        needPackaging: form.needPackaging,
+        needLoading: form.needLoading,
+        needCarry: form.needCarry,
+        floor: form.floor,
+        hasFreightLift: form.hasFreightLift,
+        needInsurance: form.needInsurance,
+        fromTerminal: form.fromTerminal,
+        toTerminal: form.toTerminal,
+        fromAddressDelivery: form.fromAddressDelivery,
+        toAddressDelivery: form.toAddressDelivery,
+        selectedProducts: form.selectedProducts,
+      });
     }
-  }, [form, isLoaded]);
+  }, [form, isLoaded, debouncedSave]);
 
   // Автоматическая страховка при указании стоимости
   useEffect(() => {
@@ -2985,8 +3050,26 @@ export default function Home() {
     setCalculating(true);
     setCalculations([]);
     
-    // Сохраняем данные формы после расчета
-    localStorage.setItem('deliveryForm', JSON.stringify(form));
+    // Сохраняем данные формы после расчета (принудительно, без дебаунса)
+    saveFormData({
+      cargos: form.cargos,
+      fromCity: form.fromCity,
+      toCity: form.toCity,
+      fromAddress: form.fromAddress,
+      toAddress: form.toAddress,
+      declaredValue: form.declaredValue,
+      needPackaging: form.needPackaging,
+      needLoading: form.needLoading,
+      needCarry: form.needCarry,
+      floor: form.floor,
+      hasFreightLift: form.hasFreightLift,
+      needInsurance: form.needInsurance,
+      fromTerminal: form.fromTerminal,
+      toTerminal: form.toTerminal,
+      fromAddressDelivery: form.fromAddressDelivery,
+      toAddressDelivery: form.toAddressDelivery,
+      selectedProducts: form.selectedProducts,
+    });
     
     try {
       // Создаем массив функций расчета только для включенных компаний
@@ -3312,9 +3395,51 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4 relative">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-2xl font-bold text-center mb-6 text-blue-400">
-          Междугородняя доставка Лавсит (ТК: {COMPANIES_BASE.length})
-        </h1>
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="text-2xl font-bold text-blue-400">
+            Междугородняя доставка Лавсит (ТК: {COMPANIES_BASE.length})
+          </h1>
+          
+          {/* Индикатор сохранения */}
+          <div className="flex items-center gap-4">
+            {isFormChanged ? (
+              <div className="flex items-center gap-2 text-yellow-400 text-sm">
+                <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                Сохранение...
+              </div>
+            ) : lastSaveTime ? (
+              <div className="flex items-center gap-2 text-green-400 text-sm">
+                <div className="w-2 h-2 bg-green-400 rounded-full"></div>
+                Сохранено {lastSaveTime.toLocaleTimeString()}
+              </div>
+            ) : hasStoredFormData() ? (
+              <div className="flex items-center gap-2 text-blue-400 text-sm">
+                <div className="w-2 h-2 bg-blue-400 rounded-full"></div>
+                Данные восстановлены
+              </div>
+            ) : null}
+            
+            {/* Кнопка очистки данных */}
+            {hasStoredFormData() && (
+              <Button
+                onClick={() => {
+                  if (confirm('Очистить все сохраненные данные формы?')) {
+                    clearFormData();
+                    setForm(initialFormState);
+                    setLastSaveTime(null);
+                    setIsFormChanged(false);
+                  }
+                }}
+                variant="outline"
+                size="sm"
+                className="border-red-500 text-red-400 hover:bg-red-900/20"
+              >
+                <Trash2 className="h-3 w-3 mr-1" />
+                Очистить
+              </Button>
+            )}
+          </div>
+        </div>
         
         {/* Кнопка диагностики */}
         <div className="flex justify-end mb-4">

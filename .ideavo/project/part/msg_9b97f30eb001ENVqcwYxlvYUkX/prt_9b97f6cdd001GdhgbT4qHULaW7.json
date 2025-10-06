@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b97f6cdd001GdhgbT4qHULaW7",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_017djH9WDxRLf1QEGdD8oNXw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "form.*data|input.*value|selected.*product|city.*from|city.*to|declared.*value",
+      "path": "/home/user/project/app/diagnostic",
+      "include": "*.tsx"
+    },
+    "output": "Found 6 matches\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 728:       { ...combinations[0], declaredValue: 10000, testCase: 'low_value' },\n  Line 729:       { ...combinations[0], declaredValue: 100000, testCase: 'medium_value' },\n  Line 730:       { ...combinations[0], declaredValue: 500000, testCase: 'high_value' },\n  Line 731:       { ...combinations[0], declaredValue: 1000000, testCase: 'very_high_value' },\n  Line 760:             city_sender: testData.fromCity,\n  Line 761:             city_receiver: testData.toCity,",
+    "metadata": {
+      "matches": 6,
+      "truncated": false
+    },
+    "title": "form.*data|input.*value|selected.*product|city.*from|city.*to|declared.*value",
+    "time": {
+      "start": 1759753761324,
+      "end": 1759753761338
+    }
+  }
+}

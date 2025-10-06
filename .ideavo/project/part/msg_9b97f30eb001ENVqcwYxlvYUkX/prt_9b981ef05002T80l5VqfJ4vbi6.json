@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b981ef05002T80l5VqfJ4vbi6",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_018EaG7cVsyxL9F69e5FATWb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    // Сохраняем данные формы после расчета\n    localStorage.setItem('deliveryForm', JSON.stringify(form));",
+      "newString": "    // Сохраняем данные формы после расчета (принудительно, без дебаунса)\n    saveFormData({\n      cargos: form.cargos,\n      fromCity: form.fromCity,\n      toCity: form.toCity,\n      fromAddress: form.fromAddress,\n      toAddress: form.toAddress,\n      declaredValue: form.declaredValue,\n      needPackaging: form.needPackaging,\n      needLoading: form.needLoading,\n      needCarry: form.needCarry,\n      floor: form.floor,\n      hasFreightLift: form.hasFreightLift,\n      needInsurance: form.needInsurance,\n      fromTerminal: form.fromTerminal,\n      toTerminal: form.toTerminal,\n      fromAddressDelivery: form.fromAddressDelivery,\n      toAddressDelivery: form.toAddressDelivery,\n      selectedProducts: form.selectedProducts,\n    });"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3035,10 +3035,28 @@\n const handleCalculate = async () => {\n   setCalculating(true);\n   setCalculations([]);\n   \n-  // Сохраняем данные формы после расчета\n-  localStorage.setItem('deliveryForm', JSON.stringify(form));\n+  // Сохраняем данные формы после расчета (принудительно, без дебаунса)\n+  saveFormData({\n+    cargos: form.cargos,\n+    fromCity: form.fromCity,\n+    toCity: form.toCity,\n+    fromAddress: form.fromAddress,\n+    toAddress: form.toAddress,\n+    declaredValue: form.declaredValue,\n+    needPackaging: form.needPackaging,\n+    needLoading: form.needLoading,\n+    needCarry: form.needCarry,\n+    floor: form.floor,\n+    hasFreightLift: form.hasFreightLift,\n+    needInsurance: form.needInsurance,\n+    fromTerminal: form.fromTerminal,\n+    toTerminal: form.toTerminal,\n+    fromAddressDelivery: form.fromAddressDelivery,\n+    toAddressDelivery: form.toAddressDelivery,\n+    selectedProducts: form.selectedProducts,\n+  });\n   \n   try {\n     // Создаем массив функций расчета только для включенных компаний\n     const calculationFunctions: Promise<CalculationResult>[] = [];\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759753927626,
+      "end": 1759753927652
+    }
+  }
+}

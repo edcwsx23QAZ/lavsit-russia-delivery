@@ -1,0 +1,21 @@
+{
+  "id": "prt_9b980abf0002WPkzox8xs7aNCc",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_019ZWuhkwiLpUakkryNh98bx",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "import React, { useState, useEffect, useCallback } from 'react';",
+      "newString": "import React, { useState, useEffect, useCallback } from 'react';"
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1759753842577,
+      "end": 1759753842577
+    }
+  }
+}

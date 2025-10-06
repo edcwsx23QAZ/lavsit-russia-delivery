@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b9820c86001qnTiixfl7CxSRX",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011JWDYt69sJDajeYPsJbHEb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 130,
+      "limit": 30
+    },
+    "output": "<file>\n00131|   const [form, setForm] = useState<DeliveryForm>(initialFormState);\n00132|   const [isLoaded, setIsLoaded] = useState(false);\n00133|   \n00134|   // Создаем дебаунс функцию для сохранения (сохраняем через 1 секунду после последнего изменения)\n00135|   const debouncedSave = useMemo(() => createDebouncedSaver(1000), []);\n00136| \n00137|   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n00138|   const [showSuggestions, setShowSuggestions] = useState(false);\n00139|   const [activeField, setActiveField] = useState('');\n00140|   \n00141|   // Состояние для управления включением/выключением транспортных компаний\n00142|   const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n00143|     pek: true,\n00144|     dellin: true,\n00145|     railcontinent: true,\n00146|     vozovoz: true,\n00147|     nordwheel: true,\n00148|     cdek: false,\n00149|     newline: false,\n00150|     irtrust: false,\n00151|     majortrans: false,\n00152|     baikalservice: false,\n00153|     adamant: false,\n00154|     energiya: false,\n00155|     cap: false,\n00156|     uraltrans: false,\n00157|     novotek: false,\n00158|     kit: false,\n00159|     karavan: false,\n00160|     zeldor: false,\n\n(File has more lines. Use 'offset' parameter to read beyond line 160)\n</file>",
+    "metadata": {
+      "preview": "  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n  \n  // Создаем дебаунс функцию для сохранения (сохраняем через 1 секунду после последнего изменения)\n  const debouncedSave = useMemo(() => createDebouncedSaver(1000), []);\n\n  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n  const [showSuggestions, setShowSuggestions] = useState(false);\n  const [activeField, setActiveField] = useState('');\n  \n  // Состояние для управления включением/выключением транспортных компаний\n  const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n    pek: true,\n    dellin: true,\n    railcontinent: true,\n    vozovoz: true,\n    nordwheel: true,\n    cdek: false,\n    newline: false,\n    irtrust: false,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759753932518,
+      "end": 1759753932521
+    }
+  }
+}

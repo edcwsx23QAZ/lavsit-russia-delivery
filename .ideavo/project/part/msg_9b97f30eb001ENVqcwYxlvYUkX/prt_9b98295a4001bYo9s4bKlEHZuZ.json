@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b98295a4001bYo9s4bKlEHZuZ",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01EjnppY9CaH6jnZq2tx8iSL",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Сборка проекта для проверки типов"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:268:13\nType error: Type '{ product: { id: number; name: string; category: string; length: number; width: number; height: number; weight: number; price: number; }; quantity: number; addedAt: number; }[]' is not assignable to type 'ProductInForm[]'.\n  Type '{ product: { id: number; name: string; category: string; length: number; width: number; height: number; weight: number; price: number; }; quantity: number; addedAt: number; }' is missing the following properties from type 'ProductInForm': totalPrice, cargoIndexes\n\n\u001b[0m \u001b[90m 266 |\u001b[39m             fromAddressDelivery\u001b[33m:\u001b[39m savedFormData\u001b[33m.\u001b[39mfromAddressDelivery\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 267 |\u001b[39m             toAddressDelivery\u001b[33m:\u001b[39m savedFormData\u001b[33m.\u001b[39mtoAddressDelivery\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 268 |\u001b[39m             selectedProducts\u001b[33m:\u001b[39m savedFormData\u001b[33m.\u001b[39mselectedProducts\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 269 |\u001b[39m           }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 270 |\u001b[39m           \u001b[0m\n\u001b[0m \u001b[90m 271 |\u001b[39m           setForm(restoredForm)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:268:13\nType error: Type '{ product: { id: number; name: string; category: string; length: number; width: number; height: number; weight: number; price: number; }; quantity: number; addedAt: number; }[]' is not assignable to type 'ProductInForm[]'.\n  Type '{ product: { id: number; name: string; category: string; length: number; width: number; height: number; weight: number; price: number; }; quantity: number; addedAt: number; }' is missing the following properties from type 'ProductInForm': totalPrice, cargoIndexes\n\n\u001b[0m \u001b[90m 266 |\u001b[39m             fromAddressDelivery\u001b[33m:\u001b[39m savedFormData\u001b[33m.\u001b[39mfromAddressDelivery\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 267 |\u001b[39m             toAddressDelivery\u001b[33m:\u001b[39m savedFormData\u001b[33m.\u001b[39mtoAddressDelivery\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 268 |\u001b[39m             selectedProducts\u001b[33m:\u001b[39m savedFormData\u001b[33m.\u001b[39mselectedProducts\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 269 |\u001b[39m           }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 270 |\u001b[39m           \u001b[0m\n\u001b[0m \u001b[90m 271 |\u001b[39m           setForm(restoredForm)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Сборка проекта для проверки типов"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759753967925,
+      "end": 1759753982067
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b980a007001aWtJXvPuZ691w6",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PzNvEXfU1dKshxkCppSaW2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 0,
+      "limit": 20
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import React, { useState, useEffect, useCallback } from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Input } from '@/components/ui/input';\n00007| import { Label } from '@/components/ui/label';\n00008| import { Checkbox } from '@/components/ui/checkbox';\n00009| import { Switch } from '@/components/ui/switch';\n00010| import { Plus, Truck, Building2, Map, Settings, Package2 } from 'lucide-react';\n00011| import { Alert, AlertDescription } from '@/components/ui/alert';\n00012| import { Badge } from '@/components/ui/badge';\n00013| import { Separator } from '@/components/ui/separator';\n00014| import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\n00015| import ProductSearch from '@/components/ProductSearch';\n00016| import ProductManager from '@/components/ProductManager';\n00017| import TruckVisualization from '@/components/TruckVisualization';\n00018| import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\n00019| import { \n00020|   createCargosForProduct, \n\n(File has more lines. Use 'offset' parameter to read beyond line 20)\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport React, { useState, useEffect, useCallback } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Checkbox } from '@/components/ui/checkbox';\nimport { Switch } from '@/components/ui/switch';\nimport { Plus, Truck, Building2, Map, Settings, Package2 } from 'lucide-react';\nimport { Alert, AlertDescription } from '@/components/ui/alert';\nimport { Badge } from '@/components/ui/badge';\nimport { Separator } from '@/components/ui/separator';\nimport { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\nimport ProductSearch from '@/components/ProductSearch';\nimport ProductManager from '@/components/ProductManager';\nimport TruckVisualization from '@/components/TruckVisualization';\nimport { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\nimport { \n  createCargosForProduct, "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759753839224,
+      "end": 1759753839227
+    }
+  }
+}

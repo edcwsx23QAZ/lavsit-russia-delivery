@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b982483f0015hjdwiE5I4hE8M",
+  "messageID": "msg_9b97f30eb001ENVqcwYxlvYUkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01CUURBLJVYZbNZNMYxY2q4z",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3395,
+      "limit": 30
+    },
+    "output": "<file>\n03396|     <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n03397|       <div className=\"max-w-7xl mx-auto\">\n03398|         <h1 className=\"text-2xl font-bold text-center mb-6 text-blue-400\">\n03399|           Междугородняя доставка Лавсит (ТК: {COMPANIES_BASE.length})\n03400|         </h1>\n03401|         \n03402|         {/* Кнопка диагностики */}\n03403|         <div className=\"flex justify-end mb-4\">\n03404|           <Button \n03405|             onClick={() => window.open('/diagnostic', '_blank')}\n03406|             variant=\"outline\" \n03407|             className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n03408|           >\n03409|             <Settings className=\"h-4 w-4 mr-2\" />\n03410|             Диагностика\n03411|           </Button>\n03412|         </div>\n03413|         \n03414|         <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-4 h-[90vh]\">\n03415|           {/* Левая часть - форма */}\n03416|           <div className=\"space-y-3 overflow-y-auto pr-2\">\n03417|             {/* Каталог мебели */}\n03418|             <Card className=\"bg-gray-800 border-gray-700\">\n03419|               <CardHeader className=\"pb-3\">\n03420|                 <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n03421|                   <Package2 className=\"h-4 w-4\" />\n03422|                   Каталог мебели\n03423|                 </CardTitle>\n03424|               </CardHeader>\n03425|               <CardContent className=\"space-y-3\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 3425)\n</file>",
+    "metadata": {
+      "preview": "    <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n      <div className=\"max-w-7xl mx-auto\">\n        <h1 className=\"text-2xl font-bold text-center mb-6 text-blue-400\">\n          Междугородняя доставка Лавсит (ТК: {COMPANIES_BASE.length})\n        </h1>\n        \n        {/* Кнопка диагностики */}\n        <div className=\"flex justify-end mb-4\">\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Диагностика\n          </Button>\n        </div>\n        \n        <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-4 h-[90vh]\">\n          {/* Левая часть - форма */}"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759753947932,
+      "end": 1759753947934
+    }
+  }
+}
