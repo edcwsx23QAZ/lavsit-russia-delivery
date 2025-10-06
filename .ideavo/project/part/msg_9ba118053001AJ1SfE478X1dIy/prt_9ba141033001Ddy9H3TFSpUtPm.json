@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba141033001Ddy9H3TFSpUtPm",
+  "messageID": "msg_9ba118053001AJ1SfE478X1dIy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01899kqdrZxYk4Th51WyFDDT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/test-persistence.js",
+      "content": "// Тест сохранения данных в localStorage\n// Этот скрипт проверяет, что данные формы сохраняются между перезапусками\n\nconsole.log('🧪 Тестирование persistence localStorage...');\n\n// Имитируем сохранение данных\nconst testFormData = {\n  version: '1.2',\n  timestamp: Date.now(),\n  cargos: [\n    { id: '1', length: 100, width: 50, height: 30, weight: 25 }\n  ],\n  fromCity: 'Москва',\n  toCity: 'Санкт-Петербург',\n  fromAddress: 'Тестовый адрес отправления',\n  toAddress: 'Тестовый адрес получения',\n  declaredValue: 50000,\n  needPackaging: true,\n  needLoading: false,\n  needCarry: true,\n  floor: 3,\n  hasFreightLift: false,\n  needInsurance: true,\n  fromTerminal: false,\n  toTerminal: true,\n  fromAddressDelivery: true,\n  toAddressDelivery: false,\n  fromLavsiteWarehouse: false,\n  selectedProducts: [],\n  enabledCompanies: {\n    pek: true,\n    dellin: true,\n    railcontinent: false,\n    vozovoz: true\n  }\n};\n\n// Эмуляция localStorage для Node.js\nglobal.localStorage = {\n  data: {},\n  getItem: function(key) {\n    return this.data[key] || null;\n  },\n  setItem: function(key, value) {\n    this.data[key] = value;\n  },\n  removeItem: function(key) {\n    delete this.data[key];\n  },\n  clear: function() {\n    this.data = {};\n  }\n};\n\n// Сохраняем тестовые данные\nconst FORM_DATA_KEY = 'deliveryFormData';\nlocalStorage.setItem(FORM_DATA_KEY, JSON.stringify(testFormData));\n\nconsole.log('✅ Данные сохранены в localStorage');\n\n// Проверяем загрузку данных\nconst savedData = localStorage.getItem(FORM_DATA_KEY);\nconst parsedData = JSON.parse(savedData);\n\nconsole.log('📂 Загруженные данные:');\nconsole.log('- Груз:', parsedData.cargos);\nconsole.log('- Откуда:', parsedData.fromCity);\nconsole.log('- Куда:', parsedData.toCity);\nconsole.log('- Включенные ТК:', parsedData.enabledCompanies);\n\nconsole.log('✅ Тест persistence пройден успешно!');"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-persistence.js",
+      "exists": false
+    },
+    "title": "test-persistence.js",
+    "time": {
+      "start": 1759763511916,
+      "end": 1759763511917
+    }
+  }
+}

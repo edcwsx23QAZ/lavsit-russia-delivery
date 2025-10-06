@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba12e3000013DVFKp1qc8wnl8",
+  "messageID": "msg_9ba118053001AJ1SfE478X1dIy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01SfAsFaeecRTwAi4o4wAumM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build the app to check for errors"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1114:22\nType error: Cannot find name 'getCityIDMapping'.\n\n\u001b[0m \u001b[90m 1112 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1113 |\u001b[39m       \u001b[90m// Получаем cityID для города из маппинга\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1114 |\u001b[39m       \u001b[36mconst\u001b[39m cityID \u001b[33m=\u001b[39m getCityIDMapping(citySearch)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1115 |\u001b[39m       \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mcityID) {\u001b[0m\n\u001b[0m \u001b[90m 1116 |\u001b[39m         console\u001b[33m.\u001b[39mwarn(\u001b[32m`⚠️ cityID не найден для города \"${citySearch}\". Пробуем поиск без cityID...`\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1117 |\u001b[39m       }\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1114:22\nType error: Cannot find name 'getCityIDMapping'.\n\n\u001b[0m \u001b[90m 1112 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1113 |\u001b[39m       \u001b[90m// Получаем cityID для города из маппинга\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1114 |\u001b[39m       \u001b[36mconst\u001b[39m cityID \u001b[33m=\u001b[39m getCityIDMapping(citySearch)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1115 |\u001b[39m       \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mcityID) {\u001b[0m\n\u001b[0m \u001b[90m 1116 |\u001b[39m         console\u001b[33m.\u001b[39mwarn(\u001b[32m`⚠️ cityID не найден для города \"${citySearch}\". Пробуем поиск без cityID...`\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1117 |\u001b[39m       }\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build the app to check for errors"
+    },
+    "title": "npm run build",
+    "time": {
+      "start": 1759763424596,
+      "end": 1759763439766
+    }
+  }
+}

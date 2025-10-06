@@ -1,0 +1,50 @@
+{
+  "id": "prt_9ba12a326001f74vj3RLsEWgOJ",
+  "messageID": "msg_9ba118053001AJ1SfE478X1dIy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01VQC7bK96bmjvWX8edMFhTR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "            fromLavsiteWarehouse: savedFormData.fromLavsiteWarehouse || false,\n            selectedProducts: savedFormData.selectedProducts,\n          };\n          \n          setForm(restoredForm);",
+          "newString": "            fromLavsiteWarehouse: savedFormData.fromLavsiteWarehouse || false,\n            selectedProducts: savedFormData.selectedProducts,\n          };\n          \n          setForm(restoredForm);\n          \n          // Восстанавливаем состояние включенных компаний\n          if (savedFormData.enabledCompanies && Object.keys(savedFormData.enabledCompanies).length > 0) {\n            setEnabledCompanies(savedFormData.enabledCompanies);\n          }"
+        },
+        {
+          "oldString": "        fromLavsiteWarehouse: form.fromLavsiteWarehouse,\n        selectedProducts: form.selectedProducts,",
+          "newString": "        fromLavsiteWarehouse: form.fromLavsiteWarehouse,\n        selectedProducts: form.selectedProducts,\n        enabledCompanies: enabledCompanies,"
+        },
+        {
+          "oldString": "  }, [form, isLoaded, debouncedSave]);",
+          "newString": "  }, [form, enabledCompanies, isLoaded, debouncedSave]);"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -252,8 +252,13 @@\n   selectedProducts: savedFormData.selectedProducts,\n };\n \n setForm(restoredForm);\n+\n+// Восстанавливаем состояние включенных компаний\n+if (savedFormData.enabledCompanies && Object.keys(savedFormData.enabledCompanies).length > 0) {\n+  setEnabledCompanies(savedFormData.enabledCompanies);\n+}\n console.log('✅ Данные формы успешно восстановлены из localStorage');\n \n // Диагностика времени для Supabase\n const currentTime = Math.floor(Date.now() / 1000);\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -317,8 +317,9 @@\n       fromAddressDelivery: form.fromAddressDelivery,\n       toAddressDelivery: form.toAddressDelivery,\n       fromLavsiteWarehouse: form.fromLavsiteWarehouse,\n       selectedProducts: form.selectedProducts,\n+      enabledCompanies: enabledCompanies,\n     });\n   }\n }, [form, isLoaded, debouncedSave]);\n \n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -320,9 +320,9 @@\n       selectedProducts: form.selectedProducts,\n       enabledCompanies: enabledCompanies,\n     });\n   }\n-}, [form, isLoaded, debouncedSave]);\n+}, [form, enabledCompanies, isLoaded, debouncedSave]);\n \n // Автоматическая страховка при указании стоимости\n useEffect(() => {\n   if (form.declaredValue > 0) {\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759763414345,
+      "end": 1759763414400
+    }
+  }
+}

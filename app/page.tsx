@@ -209,40 +209,21 @@ export default function Home() {
     ankor: 'не подключено'
   });
 
-  // Автоматическая очистка localStorage в dev режиме
-  useEffect(() => {
-    const isDev = typeof window !== 'undefined' && 
-                  (process.env.NODE_ENV === 'development' || 
-                   process.env.NODE_ENV === undefined ||
-                   window.location.hostname.includes('localhost') || 
-                   window.location.hostname.includes('127.0.0.1') || 
-                   window.location.hostname.includes('.e2b.app'));
-    
-    if (isDev) {
-      // Очищаем localStorage при каждой перезагрузке в dev режиме
-      const devTimestamp = Date.now().toString();
-      const lastDevTimestamp = localStorage.getItem('devTimestamp');
-      
-      if (lastDevTimestamp !== devTimestamp) {
-        console.log('🧹 DEV: Очистка localStorage для актуальных данных');
-        localStorage.clear();
-        localStorage.setItem('devTimestamp', devTimestamp);
-      }
-    }
-  }, []);
+  // Защита от потери данных - НЕ очищаем localStorage в dev режиме
+  // Пользовательские данные должны сохраняться между перезагрузками
 
   // Загрузка сохраненных данных (только на клиенте)
   useEffect(() => {
     // Проверяем, что мы на клиенте
     if (typeof window !== 'undefined' && !isLoaded) {
       try {
-        // Проверяем версию для принудительного обновления кэша
-        const currentVersion = 'v2.3.0-form-storage'; // Новая версия с улучшенным сохранением
+        // Мягкая проверка версии без очистки пользовательских данных
+        const currentVersion = 'v2.4.0-persistent-storage'; // Версия с постоянным сохранением
         const savedVersion = localStorage.getItem('appVersion');
         
         if (savedVersion !== currentVersion) {
-          console.log('🔄 Обновление версии приложения, очищаем старые данные');
-          localStorage.clear();
+          console.log('🔄 Обновление версии приложения до', currentVersion);
+          // НЕ очищаем localStorage - сохраняем пользовательские данные
           localStorage.setItem('appVersion', currentVersion);
         }
         
@@ -272,6 +253,11 @@ export default function Home() {
           };
           
           setForm(restoredForm);
+          
+          // Восстанавливаем состояние включенных компаний
+          if (savedFormData.enabledCompanies && Object.keys(savedFormData.enabledCompanies).length > 0) {
+            setEnabledCompanies(savedFormData.enabledCompanies);
+          }
           console.log('✅ Данные формы успешно восстановлены из localStorage');
           
           // Диагностика времени для Supabase
@@ -332,9 +318,10 @@ export default function Home() {
         toAddressDelivery: form.toAddressDelivery,
         fromLavsiteWarehouse: form.fromLavsiteWarehouse,
         selectedProducts: form.selectedProducts,
+        enabledCompanies: enabledCompanies,
       });
     }
-  }, [form, isLoaded, debouncedSave]);
+  }, [form, enabledCompanies, isLoaded, debouncedSave]);
 
   // Автоматическая страховка при указании стоимости
   useEffect(() => {
@@ -1123,8 +1110,8 @@ export default function Home() {
         return null;
       }
 
-      // Получаем cityID для города из маппинга
-      const cityID = getCityIDMapping(citySearch);
+      // Получаем cityID для города из локального справочника
+      const cityID = await getCityIDFromLocal(citySearch);
       if (!cityID) {
         console.warn(`⚠️ cityID не найден для города "${citySearch}". Пробуем поиск без cityID...`);
       }

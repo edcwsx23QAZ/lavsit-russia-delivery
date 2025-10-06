@@ -1,0 +1,34 @@
+{
+  "id": "prt_9ba129178002sUS0ArMr7LUknc",
+  "messageID": "msg_9ba118053001AJ1SfE478X1dIy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01Nv5YkYUxBWTGwCq9vQFkAm",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "edits": [
+        {
+          "oldString": "      fromLavsiteWarehouse: oldData.fromLavsiteWarehouse || false,\n      selectedProducts: oldData.selectedProducts || [],",
+          "newString": "      fromLavsiteWarehouse: oldData.fromLavsiteWarehouse || false,\n      selectedProducts: oldData.selectedProducts || [],\n      enabledCompanies: oldData.enabledCompanies || {},"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/lib/form-storage.ts\n===================================================================\n--- /home/user/project/lib/form-storage.ts\n+++ /home/user/project/lib/form-storage.ts\n@@ -166,8 +166,9 @@\n   fromAddressDelivery: oldData.fromAddressDelivery || false,\n   toAddressDelivery: oldData.toAddressDelivery || false,\n   fromLavsiteWarehouse: oldData.fromLavsiteWarehouse || false,\n   selectedProducts: oldData.selectedProducts || [],\n+  enabledCompanies: oldData.enabledCompanies || {},\n };\n \n // Сохраняем мигрированные данные\n localStorage.setItem(FORM_DATA_KEY, JSON.stringify(migratedData));\n"
+        }
+      ]
+    },
+    "title": "lib/form-storage.ts",
+    "time": {
+      "start": 1759763404937,
+      "end": 1759763404940
+    }
+  }
+}

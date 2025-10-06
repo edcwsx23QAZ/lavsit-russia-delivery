@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba1443a1001sa1Iyee5VO92pS",
+  "messageID": "msg_9ba118053001AJ1SfE478X1dIy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Q963iRs2qPqwngnHGrT8Gt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-persistence.js",
+      "description": "Run persistence test"
+    },
+    "output": "🧪 Тестирование persistence localStorage...\n✅ Данные сохранены в localStorage\n📂 Загруженные данные:\n- Груз: [ { id: '1', length: 100, width: 50, height: 30, weight: 25 } ]\n- Откуда: Москва\n- Куда: Санкт-Петербург\n- Включенные ТК: { pek: true, dellin: true, railcontinent: false, vozovoz: true }\n✅ Тест persistence пройден успешно!\n",
+    "metadata": {
+      "output": "🧪 Тестирование persistence localStorage...\n✅ Данные сохранены в localStorage\n📂 Загруженные данные:\n- Груз: [ { id: '1', length: 100, width: 50, height: 30, weight: 25 } ]\n- Откуда: Москва\n- Куда: Санкт-Петербург\n- Включенные ТК: { pek: true, dellin: true, railcontinent: false, vozovoz: true }\n✅ Тест persistence пройден успешно!\n",
+      "exit": 0,
+      "description": "Run persistence test"
+    },
+    "title": "node test-persistence.js",
+    "time": {
+      "start": 1759763514829,
+      "end": 1759763514872
+    }
+  }
+}

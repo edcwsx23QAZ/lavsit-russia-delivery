@@ -1,0 +1,25 @@
+{
+  "id": "prt_9ba133739001YOhDy0OZCUp50k",
+  "messageID": "msg_9ba118053001AJ1SfE478X1dIy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01LQb97TmGsdDaTMidbBuVcq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1100,
+      "limit": 50
+    },
+    "output": "<file>\n01101|   };\n01102| \n01103|   // Получение терминалов Деловые Линии для города с указанием направления\n01104|   const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {\n01105|     try {\n01106|       // Получаем валидный sessionID\n01107|       const sessionID = await getDellinSessionId();\n01108|       if (!sessionID) {\n01109|         console.error(`❌ Не удалось получить sessionID для поиска терминалов ${direction}`);\n01110|         return null;\n01111|       }\n01112| \n01113|       // Получаем cityID для города из маппинга\n01114|       const cityID = getCityIDMapping(citySearch);\n01115|       if (!cityID) {\n01116|         console.warn(`⚠️ cityID не найден для города \"${citySearch}\". Пробуем поиск без cityID...`);\n01117|       }\n01118| \n01119|       console.log(`🔍 Поиск терминала ${direction} для города:`, citySearch);\n01120|       console.log(`🆔 Используем cityID:`, cityID);\n01121|       console.log(`🔑 Используем sessionID:`, sessionID);\n01122| \n01123|       // Нормализуем название города для поиска\n01124|       const normalizedCity = citySearch.toLowerCase().trim()\n01125|         .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n01126|         .replace(/^город\\s+/, '') // Убираем префикс \"город \"\n01127|         .replace(/\\s+/g, ' '); // Нормализуем пробелы\n01128| \n01129|       // Используем правильный API endpoint для поиска терминалов\n01130|       // Структура запроса согласно API Деловых Линий\n01131|       const requestBody: any = {\n01132|         appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n01133|         sessionID: sessionID,\n01134|         search: normalizedCity,\n01135|         direction: direction,\n01136|         maxCargoDimensions: {\n01137|           length: 3.0,\n01138|           width: 3.0,\n01139|           height: 3.0,\n01140|           weight: 3.0,\n01141|           maxVolume: 3.0,\n01142|           totalVolume: 3.0,\n01143|           totalWeight: 3.0\n01144|         },\n01145|         express: true,\n01146|         freeStorageDays: \"2\"\n01147|       };\n01148| \n01149|       // Добавляем cityID если он найден\n01150|       if (cityID) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 1150)\n</file>",
+    "metadata": {
+      "preview": "  };\n\n  // Получение терминалов Деловые Линии для города с указанием направления\n  const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {\n    try {\n      // Получаем валидный sessionID\n      const sessionID = await getDellinSessionId();\n      if (!sessionID) {\n        console.error(`❌ Не удалось получить sessionID для поиска терминалов ${direction}`);\n        return null;\n      }\n\n      // Получаем cityID для города из маппинга\n      const cityID = getCityIDMapping(citySearch);\n      if (!cityID) {\n        console.warn(`⚠️ cityID не найден для города \"${citySearch}\". Пробуем поиск без cityID...`);\n      }\n\n      console.log(`🔍 Поиск терминала ${direction} для города:`, citySearch);\n      console.log(`🆔 Используем cityID:`, cityID);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759763446246,
+      "end": 1759763446249
+    }
+  }
+}
