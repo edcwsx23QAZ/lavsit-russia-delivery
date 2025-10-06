@@ -1,0 +1,82 @@
+{
+  "id": "prt_9ba3fe6d4001aNVe2Egfgqx61G",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_016vEm8arGKyc9SpFfWKjMG8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "          {/* Правая часть - результаты */}\n          <div className=\"space-y-3 overflow-y-auto\">",
+          "newString": "          {/* Правая часть - результаты */}\n          <div className=\"space-y-2 overflow-y-auto\">"
+        },
+        {
+          "oldString": "                 <div className=\"space-y-3\">",
+          "newString": "                 <div className=\"space-y-2\">"
+        },
+        {
+          "oldString": "                  <h2 className=\"text-xl font-bold text-blue-400\">Результаты расчета</h2>",
+          "newString": "                  <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>"
+        },
+        {
+          "oldString": "                   <Card key={index} className=\"bg-gray-800 border-gray-700\">",
+          "newString": "                   <Card key={index} className=\"bg-gray-800 border-gray-700 text-xs\">"
+        },
+        {
+          "oldString": "                     <CardHeader className=\"pb-2\">",
+          "newString": "                     <CardHeader className=\"pb-1\">"
+        },
+        {
+          "oldString": "                         <CardTitle className=\"text-white flex items-center gap-2 text-sm\">",
+          "newString": "                         <CardTitle className=\"text-white flex items-center gap-2 text-xs\">"
+        },
+        {
+          "oldString": "                           <Building2 className=\"h-4 w-4\" />",
+          "newString": "                           <Building2 className=\"h-3 w-3\" />"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3972,9 +3972,9 @@\n   </Card>\n </div>\n \n {/* Правая часть - результаты */}\n-<div className=\"space-y-3 overflow-y-auto\">\n+<div className=\"space-y-2 overflow-y-auto\">\n   {calculations.length > 0 && (\n     <div className=\"space-y-3\">\n       <div className=\"flex justify-between items-center\">\n         <h2 className=\"text-xl font-bold text-blue-400\">Результаты расчета</h2>\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3974,9 +3974,9 @@\n \n {/* Правая часть - результаты */}\n <div className=\"space-y-2 overflow-y-auto\">\n   {calculations.length > 0 && (\n-    <div className=\"space-y-3\">\n+       <div className=\"space-y-2\">\n       <div className=\"flex justify-between items-center\">\n         <h2 className=\"text-xl font-bold text-blue-400\">Результаты расчета</h2>\n         <Button \n           onClick={exportToPDF} \n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3976,9 +3976,9 @@\n <div className=\"space-y-2 overflow-y-auto\">\n   {calculations.length > 0 && (\n        <div className=\"space-y-2\">\n       <div className=\"flex justify-between items-center\">\n-        <h2 className=\"text-xl font-bold text-blue-400\">Результаты расчета</h2>\n+        <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n         <Button \n           onClick={exportToPDF} \n           variant=\"outline\" \n           size=\"sm\" \n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3988,9 +3988,9 @@\n   </Button>\n </div>\n \n {calculations.map((calc, index) => (\n-  <Card key={index} className=\"bg-gray-800 border-gray-700\">\n+   <Card key={index} className=\"bg-gray-800 border-gray-700 text-xs\">\n     <CardHeader className=\"pb-2\">\n       <div className=\"flex justify-between items-center\">\n         <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n           <Building2 className=\"h-4 w-4\" />\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3989,9 +3989,9 @@\n </div>\n \n {calculations.map((calc, index) => (\n    <Card key={index} className=\"bg-gray-800 border-gray-700 text-xs\">\n-    <CardHeader className=\"pb-2\">\n+     <CardHeader className=\"pb-1\">\n       <div className=\"flex justify-between items-center\">\n         <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n           <Building2 className=\"h-4 w-4\" />\n           {calc.company}\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3991,9 +3991,9 @@\n {calculations.map((calc, index) => (\n    <Card key={index} className=\"bg-gray-800 border-gray-700 text-xs\">\n      <CardHeader className=\"pb-1\">\n       <div className=\"flex justify-between items-center\">\n-        <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n+         <CardTitle className=\"text-white flex items-center gap-2 text-xs\">\n           <Building2 className=\"h-4 w-4\" />\n           {calc.company}\n         </CardTitle>\n         {calc.error ? (\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3992,9 +3992,9 @@\n <Card key={index} className=\"bg-gray-800 border-gray-700 text-xs\">\n   <CardHeader className=\"pb-1\">\n    <div className=\"flex justify-between items-center\">\n       <CardTitle className=\"text-white flex items-center gap-2 text-xs\">\n-       <Building2 className=\"h-4 w-4\" />\n+        <Building2 className=\"h-3 w-3\" />\n        {calc.company}\n      </CardTitle>\n      {calc.error ? (\n        <Badge variant=\"destructive\" className=\"text-xs\">Ошибка</Badge>\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759766378667,
+      "end": 1759766378782
+    }
+  }
+}

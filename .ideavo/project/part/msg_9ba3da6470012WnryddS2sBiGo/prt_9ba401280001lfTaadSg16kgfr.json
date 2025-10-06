@@ -1,0 +1,25 @@
+{
+  "id": "prt_9ba401280001lfTaadSg16kgfr",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QLG8PsVgtKr65Kb2xN9grw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3950,
+      "limit": 20
+    },
+    "output": "<file>\n03951|                 </div>\n03952|                 \n03953|                 <div className=\"space-y-2\">\n03954|                   <Button \n03955|                     onClick={handleCalculate} \n03956|                     className=\"w-full bg-blue-600 hover:bg-blue-700 h-8\" \n03957|                     disabled={calculating}\n03958|                   >\n03959|                     {calculating ? 'Расчет...' : 'Рассчитать'}\n03960|                   </Button>\n03961|                   \n03962|                   <Button \n03963|                     onClick={handleReset} \n03964|                     variant=\"outline\" \n03965|                     className=\"w-full h-8 text-black border-gray-600 hover:bg-gray-700 hover:text-white\" \n03966|                     disabled={calculating}\n03967|                   >\n03968|                     Сбросить расчет\n03969|                   </Button>\n03970|                 </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 3970)\n</file>",
+    "metadata": {
+      "preview": "                </div>\n                \n                <div className=\"space-y-2\">\n                  <Button \n                    onClick={handleCalculate} \n                    className=\"w-full bg-blue-600 hover:bg-blue-700 h-8\" \n                    disabled={calculating}\n                  >\n                    {calculating ? 'Расчет...' : 'Рассчитать'}\n                  </Button>\n                  \n                  <Button \n                    onClick={handleReset} \n                    variant=\"outline\" \n                    className=\"w-full h-8 text-black border-gray-600 hover:bg-gray-700 hover:text-white\" \n                    disabled={calculating}\n                  >\n                    Сбросить расчет\n                  </Button>\n                </div>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759766386044,
+      "end": 1759766386047
+    }
+  }
+}

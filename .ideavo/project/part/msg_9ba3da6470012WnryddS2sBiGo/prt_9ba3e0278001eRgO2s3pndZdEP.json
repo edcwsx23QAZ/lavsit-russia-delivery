@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba3e0278001eRgO2s3pndZdEP",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_018xBpiw6Q9iV5J5BeuUnGXV",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "h1|заголовок|title|Калькулятор|Calculator",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "output": "Found 11 matches\n/home/user/project/app/page.tsx:\n  Line 2594:                 title: senderZone.branchTitle,\n  Line 2599:                 title: receiverZone.branchTitle,\n  Line 3685:           <h1 className=\"text-2xl font-bold text-blue-400\">\n  Line 3687:           </h1>\n\n/home/user/project/app/layout.tsx:\n  Line 10:   title: 'Междугородняя доставка Лавсит',\n\n/home/user/project/app/layout-dev.tsx:\n  Line 10:   title: 'Междугородняя доставка Лавсит (DEV)',\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 1177:           <h1 className=\"text-3xl font-bold mb-2\">Диагностика транспортных компаний</h1>\n  Line 1204:             title=\"Открыть Google Sheets с базой товаров и размеров\"\n  Line 1220:             title=\"Обновить данные о товарах из Google Sheets\"\n\n/home/user/project/app/pek-test/page.tsx:\n  Line 121:           <h1 className=\"text-3xl font-bold mb-2\">🧪 Диагностика ПЭК API</h1>\n\n/home/user/project/app/env-check/page.tsx:\n  Line 45:         <h1 className=\"text-3xl font-bold mb-2\">Environment Variables Status</h1>",
+    "metadata": {
+      "matches": 11,
+      "truncated": false
+    },
+    "title": "h1|заголовок|title|Калькулятор|Calculator",
+    "time": {
+      "start": 1759766251205,
+      "end": 1759766251218
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba3e600c001cF35P09hJgzIGj",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_017mcwTkNWuTZQzifJkffZa5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Подключенные транспортные компании|транспортн|компани",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "output": "Found 9 matches\n/home/user/project/app/page.tsx:\n  Line 84: // Определим базовую структуру компаний\n  Line 158:   // Состояние для управления включением/выключением транспортных компаний\n  Line 323:           // Восстанавливаем состояние включенных компаний\n  Line 3361:       // Создаем массив функций расчета только для включенных компаний\n  Line 3380:       // Если ни одна компания не включена\n  Line 4262:                   Подключенные транспортные компании ({COMPANIES_BASE.length})\n  Line 4272:                     // Отладка для первых 3 компаний\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 1177:           <h1 className=\"text-3xl font-bold mb-2\">Диагностика транспортных компаний</h1>\n  Line 1462:                 <h4 className=\"font-medium mb-2 text-white\">Статистика по транспортным компаниям:</h4>",
+    "metadata": {
+      "matches": 9,
+      "truncated": false
+    },
+    "title": "Подключенные транспортные компании|транспортн|компани",
+    "time": {
+      "start": 1759766275380,
+      "end": 1759766275390
+    }
+  }
+}

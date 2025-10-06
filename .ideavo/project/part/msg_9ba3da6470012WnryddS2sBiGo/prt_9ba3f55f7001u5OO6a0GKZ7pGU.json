@@ -1,0 +1,21 @@
+{
+  "id": "prt_9ba3f55f7001u5OO6a0GKZ7pGU",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01PhBKnKPXaSQgUfedeeGymE",
+  "state": {
+    "status": "error",
+    "input": {
+      "pattern": "Button onClick={addCargo}",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "error": "Error: ripgrep failed: regex parse error:\n    Button onClick={addCargo}\n                    ^\nerror: repetition quantifier expects a valid decimal\n",
+    "time": {
+      "start": 1759766337741,
+      "end": 1759766337744
+    }
+  }
+}

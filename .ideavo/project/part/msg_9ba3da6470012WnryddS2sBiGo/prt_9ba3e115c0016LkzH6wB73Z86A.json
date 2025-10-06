@@ -1,0 +1,25 @@
+{
+  "id": "prt_9ba3e115c0016LkzH6wB73Z86A",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01MLNLhfMujs3MXjtvUMthbY",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3680,
+      "limit": 20
+    },
+    "output": "<file>\n03681|   return (\n03682|     <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n03683|       <div className=\"max-w-7xl mx-auto\">\n03684|         <div className=\"flex items-center justify-between mb-6\">\n03685|           <h1 className=\"text-2xl font-bold text-blue-400\">\n03686|             Междугородняя доставка Лавсит (ТК: {COMPANIES_BASE.length})\n03687|           </h1>\n03688|           \n03689|           {/* Индикатор сохранения */}\n03690|           <div className=\"flex items-center gap-4\">\n03691|             {isFormChanged ? (\n03692|               <div className=\"flex items-center gap-2 text-yellow-400 text-sm\">\n03693|                 <div className=\"w-2 h-2 bg-yellow-400 rounded-full animate-pulse\"></div>\n03694|                 Сохранение...\n03695|               </div>\n03696|             ) : lastSaveTime ? (\n03697|               <div className=\"flex items-center gap-2 text-green-400 text-sm\">\n03698|                 <div className=\"w-2 h-2 bg-green-400 rounded-full\"></div>\n03699|                 Сохранено {lastSaveTime.toLocaleTimeString()}\n03700|               </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 3700)\n</file>",
+    "metadata": {
+      "preview": "  return (\n    <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n      <div className=\"max-w-7xl mx-auto\">\n        <div className=\"flex items-center justify-between mb-6\">\n          <h1 className=\"text-2xl font-bold text-blue-400\">\n            Междугородняя доставка Лавсит (ТК: {COMPANIES_BASE.length})\n          </h1>\n          \n          {/* Индикатор сохранения */}\n          <div className=\"flex items-center gap-4\">\n            {isFormChanged ? (\n              <div className=\"flex items-center gap-2 text-yellow-400 text-sm\">\n                <div className=\"w-2 h-2 bg-yellow-400 rounded-full animate-pulse\"></div>\n                Сохранение...\n              </div>\n            ) : lastSaveTime ? (\n              <div className=\"flex items-center gap-2 text-green-400 text-sm\">\n                <div className=\"w-2 h-2 bg-green-400 rounded-full\"></div>\n                Сохранено {lastSaveTime.toLocaleTimeString()}\n              </div>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759766254615,
+      "end": 1759766254617
+    }
+  }
+}

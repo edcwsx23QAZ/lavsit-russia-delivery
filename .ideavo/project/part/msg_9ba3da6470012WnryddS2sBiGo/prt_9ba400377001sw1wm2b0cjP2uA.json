@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba400377001sw1wm2b0cjP2uA",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01QvPrcQopjYHHN933XoWQV1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Рассчитать|рассчитать",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 3959:                     {calculating ? 'Расчет...' : 'Рассчитать'}",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "Рассчитать|рассчитать",
+    "time": {
+      "start": 1759766382390,
+      "end": 1759766382403
+    }
+  }
+}

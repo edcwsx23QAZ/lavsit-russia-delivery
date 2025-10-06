@@ -1,0 +1,45 @@
+{
+  "id": "prt_9ba3ebadc001TcXh7IiDBkJgUn",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01DmXFEXfDVHLQc1sukz2U48",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "        <div className=\"flex items-center justify-between mb-6\">",
+          "newString": "        <div className=\"flex items-center justify-between mb-3\">"
+        },
+        {
+          "oldString": "              <CardHeader className=\"pb-3\">",
+          "newString": "              <CardHeader className=\"pb-2\">"
+        },
+        {
+          "oldString": "                <CardTitle className=\"text-white flex items-center gap-2 text-lg\">",
+          "newString": "                <CardTitle className=\"text-white flex items-center gap-2 text-sm\">"
+        },
+        {
+          "oldString": "              <CardContent className=\"space-y-3\">",
+          "newString": "              <CardContent className=\"space-y-2\">"
+        },
+        {
+          "oldString": "                   <div key={`group_${groupIndex}`} className=\"border border-gray-600 rounded p-3\">",
+          "newString": "                   <div key={`group_${groupIndex}`} className=\"border border-gray-600 rounded p-2\">"
+        },
+        {
+          "oldString": "        <div className=\"flex justify-end mb-4\">",
+          "newString": "        <div className=\"flex justify-end mb-2\">"
+        }
+      ]
+    },
+    "error": "Error: oldString found multiple times and requires more code context to uniquely identify the intended match",
+    "time": {
+      "start": 1759766300887,
+      "end": 1759766300932
+    }
+  }
+}

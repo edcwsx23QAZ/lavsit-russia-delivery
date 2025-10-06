@@ -1,0 +1,50 @@
+{
+  "id": "prt_9ba3ee18a001rwVvqD8Y4jQwcr",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01P7XdPZagejLg4n9B9fLuDJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "            {/* Каталог мебели */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-3\">\n                <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n                  <Package2 className=\"h-4 w-4\" />\n                  Каталог мебели\n                </CardTitle>\n              </CardHeader>\n              <CardContent className=\"space-y-3\">",
+          "newString": "            {/* Каталог мебели */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-2\">\n                <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n                  <Package2 className=\"h-3 w-3\" />\n                  Каталог мебели\n                </CardTitle>\n              </CardHeader>\n              <CardContent className=\"space-y-2\">"
+        },
+        {
+          "oldString": "            {/* Грузы */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-3\">\n                <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n                  <Truck className=\"h-4 w-4\" />\n                  Грузы\n                </CardTitle>\n              </CardHeader>\n              <CardContent className=\"space-y-3\">",
+          "newString": "            {/* Грузы */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-2\">\n                <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n                  <Truck className=\"h-3 w-3\" />\n                  Грузы\n                </CardTitle>\n              </CardHeader>\n              <CardContent className=\"space-y-2\">"
+        },
+        {
+          "oldString": "                   <div key={`group_${groupIndex}`} className=\"border border-gray-600 rounded p-3\">",
+          "newString": "                   <div key={`group_${groupIndex}`} className=\"border border-gray-600 rounded p-2\">"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3743,15 +3743,15 @@\n {/* Левая часть - форма */}\n <div className=\"space-y-2 overflow-y-auto pr-2\">\n   {/* Каталог мебели */}\n   <Card className=\"bg-gray-800 border-gray-700\">\n-    <CardHeader className=\"pb-3\">\n-      <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n-        <Package2 className=\"h-4 w-4\" />\n+    <CardHeader className=\"pb-2\">\n+      <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n+        <Package2 className=\"h-3 w-3\" />\n         Каталог мебели\n       </CardTitle>\n     </CardHeader>\n-    <CardContent className=\"space-y-3\">\n+    <CardContent className=\"space-y-2\">\n       {/* Поиск и добавление товаров */}\n       <ProductSearch \n         onProductAdd={handleProductAdd}\n         disabled={calculating}\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3768,15 +3768,15 @@\n </Card>\n \n {/* Грузы */}\n <Card className=\"bg-gray-800 border-gray-700\">\n-  <CardHeader className=\"pb-3\">\n-    <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n-      <Truck className=\"h-4 w-4\" />\n+  <CardHeader className=\"pb-2\">\n+    <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n+      <Truck className=\"h-3 w-3\" />\n       Грузы\n     </CardTitle>\n   </CardHeader>\n-  <CardContent className=\"space-y-3\">\n+  <CardContent className=\"space-y-2\">\n     {groupCargosForDisplay(form.cargos).map((group, groupIndex) => (\n       <div key={`group_${groupIndex}`} className=\"border border-gray-600 rounded p-3\">\n         <div className=\"flex justify-between items-center mb-2\">\n           <h4 className=\"text-sm font-medium text-white\">\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3776,9 +3776,9 @@\n   </CardTitle>\n </CardHeader>\n <CardContent className=\"space-y-2\">\n   {groupCargosForDisplay(form.cargos).map((group, groupIndex) => (\n-    <div key={`group_${groupIndex}`} className=\"border border-gray-600 rounded p-3\">\n+     <div key={`group_${groupIndex}`} className=\"border border-gray-600 rounded p-2\">\n       <div className=\"flex justify-between items-center mb-2\">\n         <h4 className=\"text-sm font-medium text-white\">\n           {group.isEmpty ? (\n             `Груз №${group.indices[0] + 1}`\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759766312783,
+      "end": 1759766312850
+    }
+  }
+}

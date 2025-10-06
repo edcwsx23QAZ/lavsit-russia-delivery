@@ -1,0 +1,90 @@
+{
+  "id": "prt_9ba3e9375001U6vJZ7f9tlQj2l",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_017tWaDc2yB7BmLNcuSCwzAi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "        <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-4 h-[90vh]\">",
+          "newString": "        <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-3 h-[85vh]\">"
+        },
+        {
+          "oldString": "          <div className=\"space-y-3 overflow-y-auto pr-2\">",
+          "newString": "          <div className=\"space-y-2 overflow-y-auto pr-2\">"
+        },
+        {
+          "oldString": "          <h1 className=\"text-2xl font-bold text-blue-400\">",
+          "newString": "          <h1 className=\"text-xl font-bold text-blue-400\">"
+        },
+        {
+          "oldString": "                <div className=\"grid grid-cols-1 gap-2\">",
+          "newString": "                <div className=\"grid grid-cols-2 gap-2\">"
+        },
+        {
+          "oldString": "                      <div key={index} className=\"flex items-center justify-between p-2 bg-gray-700 rounded\">",
+          "newString": "                      <div key={index} className=\"flex items-center justify-between p-1.5 bg-gray-700 rounded\">"
+        },
+        {
+          "oldString": "                            <p className=\"font-medium text-white text-xs\">{company.name}</p>",
+          "newString": "                            <p className=\"font-medium text-white text-[10px] leading-tight\">{company.name}</p>"
+        },
+        {
+          "oldString": "                              className=\"text-xs\"",
+          "newString": "                              className=\"text-[9px] py-0 px-1\""
+        },
+        {
+          "oldString": "                          <span className=\"text-xs text-gray-300\">",
+          "newString": "                          <span className=\"text-[9px] text-gray-300\">"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3738,9 +3738,9 @@\n     Диагностика\n   </Button>\n </div>\n \n-<div className=\"grid grid-cols-1 lg:grid-cols-2 gap-4 h-[90vh]\">\n+<div className=\"grid grid-cols-1 lg:grid-cols-2 gap-3 h-[85vh]\">\n   {/* Левая часть - форма */}\n   <div className=\"space-y-3 overflow-y-auto pr-2\">\n     {/* Каталог мебели */}\n     <Card className=\"bg-gray-800 border-gray-700\">\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3740,9 +3740,9 @@\n </div>\n \n <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-3 h-[85vh]\">\n   {/* Левая часть - форма */}\n-  <div className=\"space-y-3 overflow-y-auto pr-2\">\n+  <div className=\"space-y-2 overflow-y-auto pr-2\">\n     {/* Каталог мебели */}\n     <Card className=\"bg-gray-800 border-gray-700\">\n       <CardHeader className=\"pb-3\">\n         <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3681,9 +3681,9 @@\n return (\n   <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n     <div className=\"max-w-7xl mx-auto\">\n       <div className=\"flex items-center justify-between mb-6\">\n-        <h1 className=\"text-2xl font-bold text-blue-400\">\n+        <h1 className=\"text-xl font-bold text-blue-400\">\n           Междугородняя доставка Лавсит\n         </h1>\n         \n         {/* Индикатор сохранения */}\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -4262,9 +4262,9 @@\n     Подключенные транспортные компании ({COMPANIES_BASE.length})\n   </CardTitle>\n </CardHeader>\n <CardContent>\n-  <div className=\"grid grid-cols-1 gap-2\">\n+  <div className=\"grid grid-cols-2 gap-2\">\n     {COMPANIES_BASE.map((company, index) => {\n       const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n       const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n       const isEnabled = enabledCompanies[company.apiKey];\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -4274,9 +4274,9 @@\n   console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}`);\n }\n \n return (\n-  <div key={index} className=\"flex items-center justify-between p-2 bg-gray-700 rounded\">\n+  <div key={index} className=\"flex items-center justify-between p-1.5 bg-gray-700 rounded\">\n     <div className=\"flex items-center gap-2\">\n       <span className=\"text-lg\">{company.logo}</span>\n       <div>\n         <p className=\"font-medium text-white text-xs\">{company.name}</p>\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -4278,9 +4278,9 @@\n <div key={index} className=\"flex items-center justify-between p-1.5 bg-gray-700 rounded\">\n   <div className=\"flex items-center gap-2\">\n     <span className=\"text-lg\">{company.logo}</span>\n     <div>\n-      <p className=\"font-medium text-white text-xs\">{company.name}</p>\n+      <p className=\"font-medium text-white text-[10px] leading-tight\">{company.name}</p>\n       <Badge \n         variant={isConnected ? \"default\" : \"destructive\"} \n         className=\"text-xs\"\n       >\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -4281,9 +4281,9 @@\n <div>\n   <p className=\"font-medium text-white text-[10px] leading-tight\">{company.name}</p>\n   <Badge \n     variant={isConnected ? \"default\" : \"destructive\"} \n-    className=\"text-xs\"\n+    className=\"text-[9px] py-0 px-1\"\n   >\n     {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}\n   </Badge>\n </div>\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -4288,9 +4288,9 @@\n     </Badge>\n   </div>\n </div>\n <div className=\"flex items-center gap-2\">\n-  <span className=\"text-xs text-gray-300\">\n+  <span className=\"text-[9px] text-gray-300\">\n     {isEnabled ? 'Вкл' : 'Выкл'}\n   </span>\n   <Switch\n     checked={isEnabled}\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759766294291,
+      "end": 1759766294420
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba3e1ccc001l6hqvuWnfwnUBo",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01HJ7Dz4wWQ1ggS7qnaC2bnE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          <h1 className=\"text-2xl font-bold text-blue-400\">\n            Междугородняя доставка Лавсит (ТК: {COMPANIES_BASE.length})\n          </h1>",
+      "newString": "          <h1 className=\"text-2xl font-bold text-blue-400\">\n            Междугородняя доставка Лавсит\n          </h1>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3682,9 +3682,9 @@\n <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n   <div className=\"max-w-7xl mx-auto\">\n     <div className=\"flex items-center justify-between mb-6\">\n       <h1 className=\"text-2xl font-bold text-blue-400\">\n-        Междугородняя доставка Лавсит (ТК: {COMPANIES_BASE.length})\n+        Междугородняя доставка Лавсит\n       </h1>\n       \n       {/* Индикатор сохранения */}\n       <div className=\"flex items-center gap-4\">\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759766258253,
+      "end": 1759766258280
+    }
+  }
+}

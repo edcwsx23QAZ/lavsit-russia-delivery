@@ -1,0 +1,25 @@
+{
+  "id": "prt_9ba3f8d4a002TmqWtYFLDZTZFs",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_014fuCXsGFP731m5EjSNdbZf",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3862,
+      "limit": 5
+    },
+    "output": "<file>\n03863|                  <Button onClick={addCargo} className=\"w-full h-7 text-xs\" variant=\"outline\">\n03864|                   <Plus className=\"h-3 w-3 mr-1\" />\n03865|                   Добавить груз\n03866|                 </Button>\n03867|               </CardContent>\n\n(File has more lines. Use 'offset' parameter to read beyond line 3867)\n</file>",
+    "metadata": {
+      "preview": "                 <Button onClick={addCargo} className=\"w-full h-7 text-xs\" variant=\"outline\">\n                  <Plus className=\"h-3 w-3 mr-1\" />\n                  Добавить груз\n                </Button>\n              </CardContent>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759766351762,
+      "end": 1759766351765
+    }
+  }
+}

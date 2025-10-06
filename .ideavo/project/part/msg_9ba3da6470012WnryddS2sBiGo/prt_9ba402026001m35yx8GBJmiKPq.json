@@ -1,0 +1,42 @@
+{
+  "id": "prt_9ba402026001m35yx8GBJmiKPq",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01QAhHYLHMfZJtDPGJnyVCxB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "                  <Button \n                    onClick={handleCalculate} \n                    className=\"w-full bg-blue-600 hover:bg-blue-700 h-8\" \n                    disabled={calculating}\n                  >\n                    {calculating ? 'Расчет...' : 'Рассчитать'}\n                  </Button>",
+          "newString": "                  <Button \n                    onClick={handleCalculate} \n                    className=\"w-full bg-blue-600 hover:bg-blue-700 h-7 text-xs\" \n                    disabled={calculating}\n                  >\n                    {calculating ? 'Расчет...' : 'Рассчитать'}\n                  </Button>"
+        },
+        {
+          "oldString": "                  <Button \n                    onClick={handleReset} \n                    variant=\"outline\" \n                    className=\"w-full h-8 text-black border-gray-600 hover:bg-gray-700 hover:text-white\" \n                    disabled={calculating}\n                  >\n                    Сбросить расчет\n                  </Button>",
+          "newString": "                  <Button \n                    onClick={handleReset} \n                    variant=\"outline\" \n                    className=\"w-full h-7 text-xs text-black border-gray-600 hover:bg-gray-700 hover:text-white\" \n                    disabled={calculating}\n                  >\n                    Сбросить расчет\n                  </Button>"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3952,9 +3952,9 @@\n \n <div className=\"space-y-2\">\n   <Button \n     onClick={handleCalculate} \n-    className=\"w-full bg-blue-600 hover:bg-blue-700 h-8\" \n+    className=\"w-full bg-blue-600 hover:bg-blue-700 h-7 text-xs\" \n     disabled={calculating}\n   >\n     {calculating ? 'Расчет...' : 'Рассчитать'}\n   </Button>\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3961,9 +3961,9 @@\n \n <Button \n   onClick={handleReset} \n   variant=\"outline\" \n-  className=\"w-full h-8 text-black border-gray-600 hover:bg-gray-700 hover:text-white\" \n+  className=\"w-full h-7 text-xs text-black border-gray-600 hover:bg-gray-700 hover:text-white\" \n   disabled={calculating}\n >\n   Сбросить расчет\n </Button>\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759766394506,
+      "end": 1759766394534
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba3f7085001uDWhXRXCgPTG1R",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01Sf9nqT7NRNDk8K6HsEiLYZ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Добавить груз",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 3865:                   Добавить груз",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "Добавить груз",
+    "time": {
+      "start": 1759766344491,
+      "end": 1759766344500
+    }
+  }
+}

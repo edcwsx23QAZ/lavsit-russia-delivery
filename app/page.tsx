@@ -3681,9 +3681,9 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-900 text-white p-4 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-blue-400">
-            Междугородняя доставка Лавсит (ТК: {COMPANIES_BASE.length})
+        <div className="flex items-center justify-between mb-3">
+          <h1 className="text-xl font-bold text-blue-400">
+            Междугородняя доставка Лавсит
           </h1>
           
           {/* Индикатор сохранения */}
@@ -3739,18 +3739,18 @@ export default function Home() {
           </Button>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 h-[90vh]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 h-[85vh]">
           {/* Левая часть - форма */}
-          <div className="space-y-3 overflow-y-auto pr-2">
+          <div className="space-y-2 overflow-y-auto pr-2">
             {/* Каталог мебели */}
             <Card className="bg-gray-800 border-gray-700">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-white flex items-center gap-2 text-lg">
-                  <Package2 className="h-4 w-4" />
+              <CardHeader className="pb-2">
+                <CardTitle className="text-white flex items-center gap-2 text-sm">
+                  <Package2 className="h-3 w-3" />
                   Каталог мебели
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-2">
                 {/* Поиск и добавление товаров */}
                 <ProductSearch 
                   onProductAdd={handleProductAdd}
@@ -3769,15 +3769,15 @@ export default function Home() {
 
             {/* Грузы */}
             <Card className="bg-gray-800 border-gray-700">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-white flex items-center gap-2 text-lg">
-                  <Truck className="h-4 w-4" />
+              <CardHeader className="pb-2">
+                <CardTitle className="text-white flex items-center gap-2 text-sm">
+                  <Truck className="h-3 w-3" />
                   Грузы
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-2">
                 {groupCargosForDisplay(form.cargos).map((group, groupIndex) => (
-                  <div key={`group_${groupIndex}`} className="border border-gray-600 rounded p-3">
+                   <div key={`group_${groupIndex}`} className="border border-gray-600 rounded p-2">
                     <div className="flex justify-between items-center mb-2">
                       <h4 className="text-sm font-medium text-white">
                         {group.isEmpty ? (
@@ -3860,7 +3860,7 @@ export default function Home() {
                     )}
                   </div>
                 ))}
-                <Button onClick={addCargo} className="w-full h-8" variant="outline">
+                 <Button onClick={addCargo} className="w-full h-7 text-xs" variant="outline">
                   <Plus className="h-3 w-3 mr-1" />
                   Добавить груз
                 </Button>
@@ -3869,127 +3869,13 @@ export default function Home() {
 
             {/* Маршрут */}
             <Card className="bg-gray-800 border-gray-700">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-white flex items-center gap-2 text-lg">
-                  <Map className="h-4 w-4" />
+              <CardHeader className="pb-2">
+                <CardTitle className="text-white flex items-center gap-2 text-sm">
+                  <Map className="h-3 w-3" />
                   Маршрут
                 </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
-                {/* Отправление */}
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium text-white">Отправление</Label>
-                  <div className="flex gap-3 flex-wrap">
-                    <label className="flex items-center space-x-1">
-                      <input
-                        type="radio"
-                        name="fromDelivery"
-                        checked={form.fromTerminal}
-                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false, fromLavsiteWarehouse: false }))}
-                      />
-                      <span className="text-white text-xs">От терминала</span>
-                    </label>
-                    <label className="flex items-center space-x-1">
-                      <input
-                        type="radio"
-                        name="fromDelivery"
-                        checked={form.fromAddressDelivery && !form.fromLavsiteWarehouse}
-                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true, fromLavsiteWarehouse: false }))}
-                      />
-                      <span className="text-white text-xs">От адреса</span>
-                    </label>
-                    <label className="flex items-center space-x-1">
-                      <Checkbox
-                        id="lavsiteWarehouse"
-                        checked={form.fromLavsiteWarehouse}
-                        onCheckedChange={handleLavsiteWarehouseChange}
-                      />
-                      <span className="text-white text-xs cursor-pointer">Со склада Лавсит</span>
-                    </label>
-                  </div>
-                  
-                  <div>
-                    <Label className="text-white text-xs">Город отправления</Label>
-                    <Input
-                      value={form.fromCity}
-                      onChange={(e) => !form.fromLavsiteWarehouse && handleAddressChange('fromCity', e.target.value, e.target)}
-                      placeholder="Начните вводить город"
-                      disabled={form.fromLavsiteWarehouse}
-                      className={`bg-gray-700 border-gray-600 h-8 text-white ${form.fromLavsiteWarehouse ? 'opacity-50 cursor-not-allowed' : ''}`}
-                    />
-                  </div>
-                  
-                  {form.fromAddressDelivery && (
-                    <div>
-                      <Label className="text-white text-xs">Адрес отправления</Label>
-                      <Input
-                        value={form.fromAddress}
-                        onChange={(e) => !form.fromLavsiteWarehouse && handleAddressChange('fromAddress', e.target.value, e.target)}
-                        placeholder="Начните вводить адрес"
-                        disabled={form.fromLavsiteWarehouse}
-                        className={`bg-gray-700 border-gray-600 h-8 text-white ${form.fromLavsiteWarehouse ? 'opacity-50 cursor-not-allowed' : ''}`}
-                      />
-                    </div>
-                  )}
-                </div>
-
-                <Separator className="bg-gray-600" />
-
-                {/* Доставка */}
-                <div className="space-y-2">
-                  <Label className="text-sm font-medium text-white">Доставка</Label>
-                  <div className="flex gap-3">
-                    <label className="flex items-center space-x-1">
-                      <input
-                        type="radio"
-                        name="toDelivery"
-                        checked={form.toTerminal}
-                        onChange={() => setForm(prev => ({ ...prev, toTerminal: true, toAddressDelivery: false }))}
-                      />
-                      <span className="text-white text-xs">До терминала</span>
-                    </label>
-                    <label className="flex items-center space-x-1">
-                      <input
-                        type="radio"
-                        name="toDelivery"
-                        checked={form.toAddressDelivery}
-                        onChange={() => setForm(prev => ({ ...prev, toTerminal: false, toAddressDelivery: true }))}
-                      />
-                      <span className="text-white text-xs">До адреса</span>
-                    </label>
-                  </div>
-                  
-                  <div>
-                    <Label className="text-white text-xs">Город доставки</Label>
-                    <Input
-                      value={form.toCity}
-                      onChange={(e) => handleAddressChange('toCity', e.target.value, e.target)}
-                      placeholder="Начните вводить город"
-                      className="bg-gray-700 border-gray-600 h-8 text-white"
-                    />
-                  </div>
-                  
-                  {form.toAddressDelivery && (
-                    <div>
-                      <Label className="text-white text-xs">Адрес доставки</Label>
-                      <Input
-                        value={form.toAddress}
-                        onChange={(e) => handleAddressChange('toAddress', e.target.value, e.target)}
-                        placeholder="Начните вводить адрес"
-                        className="bg-gray-700 border-gray-600 h-8 text-white"
-                      />
-                    </div>
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Дополнительные параметры */}
-            <Card className="bg-gray-800 border-gray-700">
-              <CardHeader className="pb-3">
-                <CardTitle className="text-white text-lg">Дополнительные услуги</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-2">
                 <div>
                   <Label className="text-white text-xs">Объявленная стоимость (руб.)</Label>
                   <Input
@@ -4067,7 +3953,7 @@ export default function Home() {
                 <div className="space-y-2">
                   <Button 
                     onClick={handleCalculate} 
-                    className="w-full bg-blue-600 hover:bg-blue-700 h-8" 
+                    className="w-full bg-blue-600 hover:bg-blue-700 h-7 text-xs" 
                     disabled={calculating}
                   >
                     {calculating ? 'Расчет...' : 'Рассчитать'}
@@ -4076,7 +3962,7 @@ export default function Home() {
                   <Button 
                     onClick={handleReset} 
                     variant="outline" 
-                    className="w-full h-8 text-black border-gray-600 hover:bg-gray-700 hover:text-white" 
+                    className="w-full h-7 text-xs text-black border-gray-600 hover:bg-gray-700 hover:text-white" 
                     disabled={calculating}
                   >
                     Сбросить расчет
@@ -4087,11 +3973,11 @@ export default function Home() {
           </div>
 
           {/* Правая часть - результаты */}
-          <div className="space-y-3 overflow-y-auto">
+          <div className="space-y-2 overflow-y-auto">
             {calculations.length > 0 && (
-              <div className="space-y-3">
+                 <div className="space-y-2">
                 <div className="flex justify-between items-center">
-                  <h2 className="text-xl font-bold text-blue-400">Результаты расчета</h2>
+                  <h2 className="text-lg font-bold text-blue-400">Результаты расчета</h2>
                   <Button 
                     onClick={exportToPDF} 
                     variant="outline" 
@@ -4103,11 +3989,11 @@ export default function Home() {
                 </div>
                 
                 {calculations.map((calc, index) => (
-                  <Card key={index} className="bg-gray-800 border-gray-700">
-                    <CardHeader className="pb-2">
+                   <Card key={index} className="bg-gray-800 border-gray-700 text-xs">
+                     <CardHeader className="pb-1">
                       <div className="flex justify-between items-center">
-                        <CardTitle className="text-white flex items-center gap-2 text-sm">
-                          <Building2 className="h-4 w-4" />
+                         <CardTitle className="text-white flex items-center gap-2 text-xs">
+                           <Building2 className="h-3 w-3" />
                           {calc.company}
                         </CardTitle>
                         {calc.error ? (
@@ -4263,7 +4149,7 @@ export default function Home() {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-1 gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   {COMPANIES_BASE.map((company, index) => {
                     const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';
                     const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];
@@ -4275,21 +4161,21 @@ export default function Home() {
                     }
                     
                     return (
-                      <div key={index} className="flex items-center justify-between p-2 bg-gray-700 rounded">
+                      <div key={index} className="flex items-center justify-between p-1.5 bg-gray-700 rounded">
                         <div className="flex items-center gap-2">
                           <span className="text-lg">{company.logo}</span>
                           <div>
-                            <p className="font-medium text-white text-xs">{company.name}</p>
+                            <p className="font-medium text-white text-[10px] leading-tight">{company.name}</p>
                             <Badge 
                               variant={isConnected ? "default" : "destructive"} 
-                              className="text-xs"
+                              className="text-[9px] py-0 px-1"
                             >
                               {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}
                             </Badge>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs text-gray-300">
+                          <span className="text-[9px] text-gray-300">
                             {isEnabled ? 'Вкл' : 'Выкл'}
                           </span>
                           <Switch

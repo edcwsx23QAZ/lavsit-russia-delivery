@@ -1,0 +1,25 @@
+{
+  "id": "prt_9ba3fab6d0012KGCoEZ023MUD5",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01RJnQcDFA5dJz2xAfmVwDE4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4100,
+      "limit": 50
+    },
+    "output": "<file>\n04101|                               {calc.requestData && (\n04102|                                 <div className=\"mb-3\">\n04103|                                   <h5 className=\"font-bold mb-1 text-white\">Отправленный запрос:</h5>\n04104|                                   <pre className=\"whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs\">\n04105|                                     {JSON.stringify(calc.requestData, null, 2)}\n04106|                                   </pre>\n04107|                                 </div>\n04108|                               )}\n04109|                               \n04110|                               {calc.responseData && (\n04111|                                 <div className=\"mb-3\">\n04112|                                   <h5 className=\"font-bold mb-1 text-white\">Полученный ответ:</h5>\n04113|                                   <pre className=\"whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs\">\n04114|                                     {JSON.stringify(calc.responseData, null, 2)}\n04115|                                   </pre>\n04116|                                 </div>\n04117|                               )}\n04118|                               \n04119|                               {calc.details && (\n04120|                                 <div className=\"mb-3\">\n04121|                                   <h5 className=\"font-bold mb-1 text-white\">Детали расчета (JSON):</h5>\n04122|                                   <pre className=\"whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs\">\n04123|                                     {JSON.stringify(calc.details, null, 2)}\n04124|                                   </pre>\n04125|                                 </div>\n04126|                               )}\n04127|                               \n04128|                               {calc.error && (\n04129|                                 <div className=\"mb-3\">\n04130|                                   <h5 className=\"font-bold mb-1 text-red-400\">Информация об ошибке:</h5>\n04131|                                   <p className=\"text-red-300 text-xs\">{calc.error}</p>\n04132|                                 </div>\n04133|                               )}\n04134|                             </div>\n04135|                           </CollapsibleContent>\n04136|                         </Collapsible>\n04137|                       </div>\n04138|                     </CardContent>\n04139|                   </Card>\n04140|                 ))}\n04141|               </div>\n04142|             )}\n04143| \n04144|             {/* Список подключенных ТК - всегда видимый */}\n04145|             <Card className=\"bg-gray-800 border-gray-700\">\n04146|               <CardHeader className=\"pb-2\">\n04147|                 <CardTitle className=\"text-white text-sm\">\n04148|                   Подключенные транспортные компании ({COMPANIES_BASE.length})\n04149|                 </CardTitle>\n04150|               </CardHeader>\n\n(File has more lines. Use 'offset' parameter to read beyond line 4150)\n</file>",
+    "metadata": {
+      "preview": "                              {calc.requestData && (\n                                <div className=\"mb-3\">\n                                  <h5 className=\"font-bold mb-1 text-white\">Отправленный запрос:</h5>\n                                  <pre className=\"whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs\">\n                                    {JSON.stringify(calc.requestData, null, 2)}\n                                  </pre>\n                                </div>\n                              )}\n                              \n                              {calc.responseData && (\n                                <div className=\"mb-3\">\n                                  <h5 className=\"font-bold mb-1 text-white\">Полученный ответ:</h5>\n                                  <pre className=\"whitespace-pre-wrap overflow-auto max-h-32 text-gray-300 bg-gray-950 p-2 rounded text-xs\">\n                                    {JSON.stringify(calc.responseData, null, 2)}\n                                  </pre>\n                                </div>\n                              )}\n                              \n                              {calc.details && (\n                                <div className=\"mb-3\">"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759766359369,
+      "end": 1759766359372
+    }
+  }
+}

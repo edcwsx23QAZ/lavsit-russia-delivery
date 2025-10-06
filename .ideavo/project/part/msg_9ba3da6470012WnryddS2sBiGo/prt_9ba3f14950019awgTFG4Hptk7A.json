@@ -1,0 +1,33 @@
+{
+  "id": "prt_9ba3f14950019awgTFG4Hptk7A",
+  "messageID": "msg_9ba3da6470012WnryddS2sBiGo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01KVTk8Nsrji5VshrWXNSDBk",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "            {/* Маршрут */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-3\">\n                <CardTitle className=\"text-white flex items-center gap-2 text-lg\">\n                  <Map className=\"h-4 w-4\" />\n                  Маршрут\n                </CardTitle>\n              </CardHeader>\n              <CardContent className=\"space-y-3\">",
+          "newString": "            {/* Маршрут */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-2\">\n                <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n                  <Map className=\"h-3 w-3\" />\n                  Маршрут\n                </CardTitle>\n              </CardHeader>\n              <CardContent className=\"space-y-2\">"
+        },
+        {
+          "oldString": "                 <Button onClick={addCargo} className=\"w-full h-8\" variant=\"outline\">",
+          "newString": "                 <Button onClick={addCargo} className=\"w-full h-7 text-xs\" variant=\"outline\">"
+        },
+        {
+          "oldString": "                   <Plus className=\"h-3 w-3 mr-1\" />",
+          "newString": "                   <Plus className=\"h-3 w-3 mr-1\" />"
+        }
+      ]
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1759766326652,
+      "end": 1759766326684
+    }
+  }
+}
