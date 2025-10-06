@@ -3,8 +3,14 @@ import type { NextRequest } from 'next/server'
 import { checkMissingEnvVars } from '@/lib/env-config'
 
 export function middleware(request: NextRequest) {
-  // Детекция dev режима
-  const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined;
+  // EMERGENCY: SUPER AGGRESSIVE DEV DETECTION
+  const isDev = process.env.NODE_ENV === 'development' || 
+                process.env.NODE_ENV === undefined ||
+                request.nextUrl.hostname.includes('localhost') ||
+                request.nextUrl.hostname.includes('127.0.0.1') ||
+                request.nextUrl.hostname.includes('.e2b.app') ||
+                request.nextUrl.hostname.includes('ideavo') ||
+                request.nextUrl.port !== '';
 
   // Skip middleware for the env-check page itself to avoid infinite redirects
   if (request.nextUrl.pathname === '/env-check') {
@@ -48,12 +54,16 @@ export function middleware(request: NextRequest) {
 
   const response = NextResponse.next()
   
-  // Добавляем заголовки против кэширования в dev режиме
+  // EMERGENCY: NUCLEAR CACHE HEADERS FOR DEV
   if (isDev) {
-    response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')
+    response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate, proxy-revalidate, s-maxage=0, max-age=0')
     response.headers.set('Pragma', 'no-cache')
     response.headers.set('Expires', '0')
+    response.headers.set('Last-Modified', new Date().toUTCString())
+    response.headers.set('ETag', `dev-${Date.now()}`)
     response.headers.set('X-Dev-Mode', 'true')
+    response.headers.set('X-Emergency-No-Cache', 'true')
+    response.headers.set('Clear-Site-Data', '"cache", "storage"')
   }
   
   return response

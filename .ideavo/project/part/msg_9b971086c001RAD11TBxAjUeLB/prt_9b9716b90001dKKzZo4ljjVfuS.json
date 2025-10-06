@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9716b90001dKKzZo4ljjVfuS",
+  "messageID": "msg_9b971086c001RAD11TBxAjUeLB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01JEc5gYnVWaCnVbvvhBHT8C",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/public/sw.js",
+      "content": "// EMERGENCY DEV KILL SWITCH - DO NOT CACHE ANYTHING\nconsole.log('[SW] EMERGENCY: Self-destructing immediately');\n\n// Immediately unregister self\nself.registration.unregister().then(() => {\n  console.log('[SW] EMERGENCY: Self-unregistered successfully');\n});\n\n// Kill all events\nself.addEventListener('install', (event) => {\n  console.log('[SW] EMERGENCY: Install blocked');\n  event.waitUntil(self.skipWaiting());\n});\n\nself.addEventListener('activate', (event) => {\n  console.log('[SW] EMERGENCY: Activate blocked, self-destructing');\n  event.waitUntil(\n    caches.keys().then((cacheNames) => {\n      return Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)));\n    }).then(() => {\n      return self.registration.unregister();\n    })\n  );\n});\n\nself.addEventListener('fetch', (event) => {\n  // DO NOTHING - let all requests pass through\n  console.log('[SW] EMERGENCY: Fetch event ignored');\n});"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/public/sw.js",
+      "exists": false
+    },
+    "title": "public/sw.js",
+    "time": {
+      "start": 1759752846988,
+      "end": 1759752846991
+    }
+  }
+}

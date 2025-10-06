@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9715c0b0016uD6ZekuPzYbgA",
+  "messageID": "msg_9b971086c001RAD11TBxAjUeLB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01BDj34ofma6NRCqkqFarmzU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rm -f public/sw.js public/sw-disabled.js",
+      "description": "Удаление всех Service Worker файлов"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Удаление всех Service Worker файлов"
+    },
+    "title": "cd /home/user/project && rm -f public/sw.js public/sw-disabled.js",
+    "time": {
+      "start": 1759752839209,
+      "end": 1759752839235
+    }
+  }
+}

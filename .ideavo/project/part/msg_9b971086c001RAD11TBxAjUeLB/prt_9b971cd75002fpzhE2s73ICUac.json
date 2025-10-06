@@ -1,0 +1,265 @@
+{
+  "id": "prt_9b971cd75002fpzhE2s73ICUac",
+  "messageID": "msg_9b971086c001RAD11TBxAjUeLB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01GKfohfLUXFn3bnEbFcpe3e",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "1. Полностью удалить service worker файлы",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "2. Отключить все lazy loading компоненты",
+          "status": "completed",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "3. Добавить webpack externals исключения",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "3"
+        },
+        {
+          "content": "4. Создать custom webpack config",
+          "status": "pending",
+          "priority": "high",
+          "id": "4"
+        },
+        {
+          "content": "5. Отключить SSR глобально в dev",
+          "status": "pending",
+          "priority": "high",
+          "id": "5"
+        },
+        {
+          "content": "6. Добавить error boundary для webpack errors",
+          "status": "pending",
+          "priority": "high",
+          "id": "6"
+        },
+        {
+          "content": "7. Изменить Next.js routing strategy",
+          "status": "pending",
+          "priority": "high",
+          "id": "7"
+        },
+        {
+          "content": "8. Создать fallback компоненты",
+          "status": "pending",
+          "priority": "high",
+          "id": "8"
+        },
+        {
+          "content": "9. Отключить React.StrictMode",
+          "status": "pending",
+          "priority": "high",
+          "id": "9"
+        },
+        {
+          "content": "10. Добавить custom module resolution",
+          "status": "pending",
+          "priority": "high",
+          "id": "10"
+        },
+        {
+          "content": "11. Изменить chunk splitting strategy",
+          "status": "pending",
+          "priority": "high",
+          "id": "11"
+        },
+        {
+          "content": "12. Добавить dev-only middleware",
+          "status": "pending",
+          "priority": "high",
+          "id": "12"
+        },
+        {
+          "content": "13. Создать custom React hydration",
+          "status": "pending",
+          "priority": "high",
+          "id": "13"
+        },
+        {
+          "content": "14. Отключить Turbopack если активен",
+          "status": "pending",
+          "priority": "high",
+          "id": "14"
+        },
+        {
+          "content": "15. Добавить cache-control headers",
+          "status": "pending",
+          "priority": "high",
+          "id": "15"
+        },
+        {
+          "content": "16. Создать dev-specific layout",
+          "status": "pending",
+          "priority": "high",
+          "id": "16"
+        },
+        {
+          "content": "17. Переписать diagnostic page без lazy",
+          "status": "pending",
+          "priority": "high",
+          "id": "17"
+        },
+        {
+          "content": "18. Добавить webpack plugins для dev",
+          "status": "pending",
+          "priority": "high",
+          "id": "18"
+        },
+        {
+          "content": "19. Создать emergency fallback app",
+          "status": "pending",
+          "priority": "high",
+          "id": "19"
+        },
+        {
+          "content": "20. Полностью отключить React Concurrent",
+          "status": "pending",
+          "priority": "high",
+          "id": "20"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"1. Полностью удалить service worker файлы\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"1\"\n  },\n  {\n    \"content\": \"2. Отключить все lazy loading компоненты\",\n    \"status\": \"completed\",\n    \"priority\": \"high\",\n    \"id\": \"2\"\n  },\n  {\n    \"content\": \"3. Добавить webpack externals исключения\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"3\"\n  },\n  {\n    \"content\": \"4. Создать custom webpack config\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"4\"\n  },\n  {\n    \"content\": \"5. Отключить SSR глобально в dev\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"5\"\n  },\n  {\n    \"content\": \"6. Добавить error boundary для webpack errors\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"6\"\n  },\n  {\n    \"content\": \"7. Изменить Next.js routing strategy\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"7\"\n  },\n  {\n    \"content\": \"8. Создать fallback компоненты\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"8\"\n  },\n  {\n    \"content\": \"9. Отключить React.StrictMode\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"9\"\n  },\n  {\n    \"content\": \"10. Добавить custom module resolution\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"10\"\n  },\n  {\n    \"content\": \"11. Изменить chunk splitting strategy\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"11\"\n  },\n  {\n    \"content\": \"12. Добавить dev-only middleware\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"12\"\n  },\n  {\n    \"content\": \"13. Создать custom React hydration\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"13\"\n  },\n  {\n    \"content\": \"14. Отключить Turbopack если активен\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"14\"\n  },\n  {\n    \"content\": \"15. Добавить cache-control headers\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"15\"\n  },\n  {\n    \"content\": \"16. Создать dev-specific layout\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"16\"\n  },\n  {\n    \"content\": \"17. Переписать diagnostic page без lazy\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"17\"\n  },\n  {\n    \"content\": \"18. Добавить webpack plugins для dev\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"18\"\n  },\n  {\n    \"content\": \"19. Создать emergency fallback app\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"19\"\n  },\n  {\n    \"content\": \"20. Полностью отключить React Concurrent\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"20\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "1. Полностью удалить service worker файлы",
+          "status": "completed",
+          "priority": "high",
+          "id": "1"
+        },
+        {
+          "content": "2. Отключить все lazy loading компоненты",
+          "status": "completed",
+          "priority": "high",
+          "id": "2"
+        },
+        {
+          "content": "3. Добавить webpack externals исключения",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "3"
+        },
+        {
+          "content": "4. Создать custom webpack config",
+          "status": "pending",
+          "priority": "high",
+          "id": "4"
+        },
+        {
+          "content": "5. Отключить SSR глобально в dev",
+          "status": "pending",
+          "priority": "high",
+          "id": "5"
+        },
+        {
+          "content": "6. Добавить error boundary для webpack errors",
+          "status": "pending",
+          "priority": "high",
+          "id": "6"
+        },
+        {
+          "content": "7. Изменить Next.js routing strategy",
+          "status": "pending",
+          "priority": "high",
+          "id": "7"
+        },
+        {
+          "content": "8. Создать fallback компоненты",
+          "status": "pending",
+          "priority": "high",
+          "id": "8"
+        },
+        {
+          "content": "9. Отключить React.StrictMode",
+          "status": "pending",
+          "priority": "high",
+          "id": "9"
+        },
+        {
+          "content": "10. Добавить custom module resolution",
+          "status": "pending",
+          "priority": "high",
+          "id": "10"
+        },
+        {
+          "content": "11. Изменить chunk splitting strategy",
+          "status": "pending",
+          "priority": "high",
+          "id": "11"
+        },
+        {
+          "content": "12. Добавить dev-only middleware",
+          "status": "pending",
+          "priority": "high",
+          "id": "12"
+        },
+        {
+          "content": "13. Создать custom React hydration",
+          "status": "pending",
+          "priority": "high",
+          "id": "13"
+        },
+        {
+          "content": "14. Отключить Turbopack если активен",
+          "status": "pending",
+          "priority": "high",
+          "id": "14"
+        },
+        {
+          "content": "15. Добавить cache-control headers",
+          "status": "pending",
+          "priority": "high",
+          "id": "15"
+        },
+        {
+          "content": "16. Создать dev-specific layout",
+          "status": "pending",
+          "priority": "high",
+          "id": "16"
+        },
+        {
+          "content": "17. Переписать diagnostic page без lazy",
+          "status": "pending",
+          "priority": "high",
+          "id": "17"
+        },
+        {
+          "content": "18. Добавить webpack plugins для dev",
+          "status": "pending",
+          "priority": "high",
+          "id": "18"
+        },
+        {
+          "content": "19. Создать emergency fallback app",
+          "status": "pending",
+          "priority": "high",
+          "id": "19"
+        },
+        {
+          "content": "20. Полностью отключить React Concurrent",
+          "status": "pending",
+          "priority": "high",
+          "id": "20"
+        }
+      ]
+    },
+    "title": "18 todos",
+    "time": {
+      "start": 1759752885743,
+      "end": 1759752885744
+    }
+  }
+}

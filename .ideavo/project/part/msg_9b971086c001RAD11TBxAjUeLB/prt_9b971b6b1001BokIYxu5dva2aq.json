@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b971b6b1001BokIYxu5dva2aq",
+  "messageID": "msg_9b971086c001RAD11TBxAjUeLB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01NRrnABQCE2GwDrg5hjpJx3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/diagnostic/LazyLoadedComponents.tsx",
+      "oldString": "'use client';\n\nimport dynamic from 'next/dynamic';\n\n// NUCLEAR SOLUTION: Используем Next.js dynamic с отключенным SSR\nconst LazyFullTestingResults = dynamic(\n  () => import('./FullTestingResults'),\n  { \n    ssr: false,\n    loading: () => <div className=\"text-white p-4\">Загрузка результатов тестирования...</div>\n  }\n);\n\nconst LazyVehicleManagement = dynamic(\n  () => import('./VehicleManagement'),\n  { \n    ssr: false,\n    loading: () => <div className=\"text-white p-4\">Загрузка управления автомобилями...</div>\n  }\n);\n\n// Экспортируем оба компонента\nexport { LazyFullTestingResults, LazyVehicleManagement };",
+      "newString": "'use client';\n\n// EMERGENCY: NO LAZY LOADING AT ALL\nimport FullTestingResults from './FullTestingResults';\nimport VehicleManagement from './VehicleManagement';\n\n// Direct exports without any lazy loading\nexport { FullTestingResults as LazyFullTestingResults, VehicleManagement as LazyVehicleManagement };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/diagnostic/LazyLoadedComponents.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/LazyLoadedComponents.tsx\n+++ /home/user/project/components/diagnostic/LazyLoadedComponents.tsx\n@@ -1,23 +1,8 @@\n 'use client';\n \n-import dynamic from 'next/dynamic';\n+// EMERGENCY: NO LAZY LOADING AT ALL\n+import FullTestingResults from './FullTestingResults';\n+import VehicleManagement from './VehicleManagement';\n \n-// NUCLEAR SOLUTION: Используем Next.js dynamic с отключенным SSR\n-const LazyFullTestingResults = dynamic(\n-  () => import('./FullTestingResults'),\n-  { \n-    ssr: false,\n-    loading: () => <div className=\"text-white p-4\">Загрузка результатов тестирования...</div>\n-  }\n-);\n-\n-const LazyVehicleManagement = dynamic(\n-  () => import('./VehicleManagement'),\n-  { \n-    ssr: false,\n-    loading: () => <div className=\"text-white p-4\">Загрузка управления автомобилями...</div>\n-  }\n-);\n-\n-// Экспортируем оба компонента\n-export { LazyFullTestingResults, LazyVehicleManagement };\n\\ No newline at end of file\n+// Direct exports without any lazy loading\n+export { FullTestingResults as LazyFullTestingResults, VehicleManagement as LazyVehicleManagement };\n\\ No newline at end of file\n"
+    },
+    "title": "components/diagnostic/LazyLoadedComponents.tsx",
+    "time": {
+      "start": 1759752864179,
+      "end": 1759752864185
+    }
+  }
+}

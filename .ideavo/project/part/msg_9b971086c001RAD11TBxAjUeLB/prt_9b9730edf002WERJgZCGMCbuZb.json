@@ -1,0 +1,23 @@
+{
+  "id": "prt_9b9730edf002WERJgZCGMCbuZb",
+  "messageID": "msg_9b971086c001RAD11TBxAjUeLB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01BCxtNM65szGALnnbXzhQPG",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/layout.tsx"
+    },
+    "output": "<file>\n00001| import './globals.css';\n00002| import type { Metadata } from 'next';\n00003| import { Inter } from 'next/font/google';\n00004| import ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';\n00005| import ClientDevUtils from '@/components/ClientDevUtils';\n00006| \n00007| const inter = Inter({ subsets: ['latin'] });\n00008| \n00009| export const metadata: Metadata = {\n00010|   title: 'Междугородняя доставка Лавсит',\n00011|   description: 'Система расчета стоимости доставки по всей России',\n00012| };\n00013| \n00014| export default function RootLayout({\n00015|   children,\n00016| }: {\n00017|   children: React.ReactNode;\n00018| }) {\n00019|   return (\n00020|     <html lang=\"en\">\n00021|       <body className={inter.className}>\n00022|         <ServiceWorkerRegistration />\n00023|         <ClientDevUtils />\n00024|         {children}\n00025|         {/* TODO: Remove iframe-navigation.js in production, should never be removed by AI */}\n00026|         <script src=\"/scripts/iframe-navigation.js\"></script>\n00027|         {/* CRITICAL: Dev cache clearing script - only loads in development */}\n00028|         {process.env.NODE_ENV !== 'production' && (\n00029|           <script src=\"/clear-dev-cache.js\"></script>\n00030|         )}\n00031|       </body>\n00032|     </html>\n00033|   );\n00034| }\n00035| \n</file>",
+    "metadata": {
+      "preview": "import './globals.css';\nimport type { Metadata } from 'next';\nimport { Inter } from 'next/font/google';\nimport ServiceWorkerRegistration from '@/components/ServiceWorkerRegistration';\nimport ClientDevUtils from '@/components/ClientDevUtils';\n\nconst inter = Inter({ subsets: ['latin'] });\n\nexport const metadata: Metadata = {\n  title: 'Междугородняя доставка Лавсит',\n  description: 'Система расчета стоимости доставки по всей России',\n};\n\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  return (\n    <html lang=\"en\">"
+    },
+    "title": "app/layout.tsx",
+    "time": {
+      "start": 1759752949887,
+      "end": 1759752949888
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "prt_9b9734fe7001we4D3H81NmP49J",
+  "messageID": "msg_9b971086c001RAD11TBxAjUeLB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XVaBTsYBf9HKhMG6M8VfKe",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/middleware.ts"
+    },
+    "output": "<file>\n00001| import { NextResponse } from 'next/server'\n00002| import type { NextRequest } from 'next/server'\n00003| import { checkMissingEnvVars } from '@/lib/env-config'\n00004| \n00005| export function middleware(request: NextRequest) {\n00006|   // Детекция dev режима\n00007|   const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined;\n00008| \n00009|   // Skip middleware for the env-check page itself to avoid infinite redirects\n00010|   if (request.nextUrl.pathname === '/env-check') {\n00011|     const response = NextResponse.next()\n00012|     \n00013|     // Добавляем заголовки против кэширования в dev режиме\n00014|     if (isDev) {\n00015|       response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')\n00016|       response.headers.set('Pragma', 'no-cache')\n00017|       response.headers.set('Expires', '0')\n00018|     }\n00019|     \n00020|     return response\n00021|   }\n00022| \n00023|   // Skip middleware for API routes, static files, and Next.js internals\n00024|   if (\n00025|     request.nextUrl.pathname.startsWith('/api/') ||\n00026|     request.nextUrl.pathname.startsWith('/_next/') ||\n00027|     request.nextUrl.pathname.includes('.')\n00028|   ) {\n00029|     const response = NextResponse.next()\n00030|     \n00031|     // Добавляем заголовки против кэширования в dev режиме\n00032|     if (isDev) {\n00033|       response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')\n00034|       response.headers.set('Pragma', 'no-cache')\n00035|       response.headers.set('Expires', '0')\n00036|     }\n00037|     \n00038|     return response\n00039|   }\n00040| \n00041|   // Check if any required environment variables are missing\n00042|   const missingEnvVars = checkMissingEnvVars()\n00043| \n00044|   // If any env variables are missing, redirect to env-check page\n00045|   if (missingEnvVars.length > 0) {\n00046|     return NextResponse.redirect(new URL('/env-check', request.url))\n00047|   }\n00048| \n00049|   const response = NextResponse.next()\n00050|   \n00051|   // Добавляем заголовки против кэширования в dev режиме\n00052|   if (isDev) {\n00053|     response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')\n00054|     response.headers.set('Pragma', 'no-cache')\n00055|     response.headers.set('Expires', '0')\n00056|     response.headers.set('X-Dev-Mode', 'true')\n00057|   }\n00058|   \n00059|   return response\n00060| }\n00061| \n00062| export const config = {\n00063|   matcher: [\n00064|     /*\n00065|      * Match all request paths except for the ones starting with:\n00066|      * - api (API routes)\n00067|      * - _next/static (static files)\n00068|      * - _next/image (image optimization files)\n00069|      * - favicon.ico (favicon file)\n00070|      */\n00071|     '/((?!api|_next/static|_next/image|favicon.ico).*)',\n00072|   ],\n00073| }\n</file>",
+    "metadata": {
+      "preview": "import { NextResponse } from 'next/server'\nimport type { NextRequest } from 'next/server'\nimport { checkMissingEnvVars } from '@/lib/env-config'\n\nexport function middleware(request: NextRequest) {\n  // Детекция dev режима\n  const isDev = process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined;\n\n  // Skip middleware for the env-check page itself to avoid infinite redirects\n  if (request.nextUrl.pathname === '/env-check') {\n    const response = NextResponse.next()\n    \n    // Добавляем заголовки против кэширования в dev режиме\n    if (isDev) {\n      response.headers.set('Cache-Control', 'no-cache, no-store, must-revalidate')\n      response.headers.set('Pragma', 'no-cache')\n      response.headers.set('Expires', '0')\n    }\n    \n    return response"
+    },
+    "title": "middleware.ts",
+    "time": {
+      "start": 1759752966603,
+      "end": 1759752966605
+    }
+  }
+}

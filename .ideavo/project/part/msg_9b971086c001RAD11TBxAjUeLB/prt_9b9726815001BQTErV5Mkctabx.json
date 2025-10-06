@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9726815001BQTErV5Mkctabx",
+  "messageID": "msg_9b971086c001RAD11TBxAjUeLB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01T96Z1a7nxvjT7HC3cL6ezh",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/WebpackErrorBoundary.tsx",
+      "content": "'use client';\n\nimport React from 'react';\n\ninterface ErrorBoundaryState {\n  hasError: boolean;\n  error?: Error;\n}\n\nexport class WebpackErrorBoundary extends React.Component<\n  { children: React.ReactNode },\n  ErrorBoundaryState\n> {\n  constructor(props: { children: React.ReactNode }) {\n    super(props);\n    this.state = { hasError: false };\n  }\n\n  static getDerivedStateFromError(error: Error): ErrorBoundaryState {\n    console.error('[WEBPACK-ERROR-BOUNDARY] Caught error:', error);\n    \n    // Check if it's a webpack factory error\n    if (error.message.includes('Cannot read properties of undefined (reading \\'call\\')')) {\n      console.error('[WEBPACK-ERROR-BOUNDARY] Detected webpack factory error, attempting recovery...');\n      \n      // Try to clear caches\n      if (typeof window !== 'undefined') {\n        try {\n          localStorage.clear();\n          sessionStorage.clear();\n          if ('caches' in window) {\n            caches.keys().then(names => {\n              names.forEach(name => caches.delete(name));\n            });\n          }\n        } catch (e) {\n          console.warn('[WEBPACK-ERROR-BOUNDARY] Cache clearing failed:', e);\n        }\n      }\n    }\n    \n    return { hasError: true, error };\n  }\n\n  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {\n    console.error('[WEBPACK-ERROR-BOUNDARY] Component error:', error, errorInfo);\n  }\n\n  render() {\n    if (this.state.hasError) {\n      return (\n        <div className=\"min-h-screen bg-red-900 flex items-center justify-center p-4\">\n          <div className=\"bg-red-800 border border-red-600 rounded-lg p-6 max-w-md w-full\">\n            <h2 className=\"text-white text-xl font-bold mb-4\">\n              ⚠️ Development Error Detected\n            </h2>\n            <p className=\"text-red-200 mb-4\">\n              A webpack module loading error occurred. This is likely due to development environment issues.\n            </p>\n            <button\n              onClick={() => {\n                // Force reload\n                window.location.reload();\n              }}\n              className=\"bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded font-medium\"\n            >\n              Reload Page\n            </button>\n            <details className=\"mt-4\">\n              <summary className=\"text-red-300 cursor-pointer\">Error Details</summary>\n              <pre className=\"text-xs text-red-100 mt-2 bg-red-900 p-2 rounded overflow-auto\">\n                {this.state.error?.stack || this.state.error?.message}\n              </pre>\n            </details>\n          </div>\n        </div>\n      );\n    }\n\n    return this.props.children;\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/components/WebpackErrorBoundary.tsx",
+      "exists": false
+    },
+    "title": "components/WebpackErrorBoundary.tsx",
+    "time": {
+      "start": 1759752920805,
+      "end": 1759752920806
+    }
+  }
+}

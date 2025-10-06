@@ -1,23 +1,8 @@
 'use client';
 
-import dynamic from 'next/dynamic';
+// EMERGENCY: NO LAZY LOADING AT ALL
+import FullTestingResults from './FullTestingResults';
+import VehicleManagement from './VehicleManagement';
 
-// NUCLEAR SOLUTION: Используем Next.js dynamic с отключенным SSR
-const LazyFullTestingResults = dynamic(
-  () => import('./FullTestingResults'),
-  { 
-    ssr: false,
-    loading: () => <div className="text-white p-4">Загрузка результатов тестирования...</div>
-  }
-);
-
-const LazyVehicleManagement = dynamic(
-  () => import('./VehicleManagement'),
-  { 
-    ssr: false,
-    loading: () => <div className="text-white p-4">Загрузка управления автомобилями...</div>
-  }
-);
-
-// Экспортируем оба компонента
-export { LazyFullTestingResults, LazyVehicleManagement };
+// Direct exports without any lazy loading
+export { FullTestingResults as LazyFullTestingResults, VehicleManagement as LazyVehicleManagement };

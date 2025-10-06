@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b972acd8001JjHKSg1EOUWg4q",
+  "messageID": "msg_9b971086c001RAD11TBxAjUeLB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_0181EHAzSS34dyZAs37zhGqf",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/layout-dev.tsx",
+      "content": "import './globals.css';\nimport type { Metadata } from 'next';\nimport { Inter } from 'next/font/google';\nimport { WebpackErrorBoundary } from '@/components/WebpackErrorBoundary';\nimport ClientDevUtils from '@/components/ClientDevUtils';\n\nconst inter = Inter({ subsets: ['latin'] });\n\nexport const metadata: Metadata = {\n  title: 'Междугородняя доставка Лавсит (DEV)',\n  description: 'Система расчета стоимости доставки по всей России (Development Mode)',\n};\n\nexport default function DevRootLayout({\n  children,\n}: {\n  children: React.ReactNode;\n}) {\n  return (\n    <html lang=\"en\">\n      <head>\n        <meta name=\"format-detection\" content=\"telephone=no, date=no, email=no, address=no\" />\n        <meta httpEquiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\" />\n        <meta httpEquiv=\"Pragma\" content=\"no-cache\" />\n        <meta httpEquiv=\"Expires\" content=\"0\" />\n      </head>\n      <body className={inter.className} suppressHydrationWarning>\n        <WebpackErrorBoundary>\n          <ClientDevUtils />\n          {children}\n        </WebpackErrorBoundary>\n        {/* CRITICAL: Dev cache clearing script */}\n        <script src=\"/clear-dev-cache.js\"></script>\n        {/* Emergency Service Worker killer */}\n        <script dangerouslySetInnerHTML={{\n          __html: `\n            console.log('[EMERGENCY] Checking for service workers...');\n            if ('serviceWorker' in navigator) {\n              navigator.serviceWorker.getRegistrations().then(registrations => {\n                registrations.forEach(registration => {\n                  console.log('[EMERGENCY] Unregistering SW:', registration.scope);\n                  registration.unregister();\n                });\n              });\n            }\n            if ('caches' in window) {\n              caches.keys().then(names => {\n                names.forEach(name => {\n                  console.log('[EMERGENCY] Deleting cache:', name);\n                  caches.delete(name);\n                });\n              });\n            }\n          `\n        }} />\n      </body>\n    </html>\n  );\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/layout-dev.tsx",
+      "exists": false
+    },
+    "title": "app/layout-dev.tsx",
+    "time": {
+      "start": 1759752932418,
+      "end": 1759752932419
+    }
+  }
+}
