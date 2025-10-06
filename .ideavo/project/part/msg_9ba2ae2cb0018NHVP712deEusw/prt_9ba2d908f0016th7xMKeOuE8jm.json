@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba2d908f0016th7xMKeOuE8jm",
+  "messageID": "msg_9ba2ae2cb0018NHVP712deEusw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01C4FcG3H87Dy6cJHNRXCUoG",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/public/persistent-form-guardian.js",
+      "oldString": "// PERSISTENT FORM DATA GUARDIAN\n// Защищает данные формы от любых видов очистки localStorage\n(function() {\n  'use strict';\n  \n  console.log('[FORM-GUARDIAN] Инициализация защиты данных формы...');\n  \n  const FORM_DATA_KEY = 'deliveryFormData';\n  const APP_VERSION_KEY = 'appVersion';\n  const BACKUP_KEYS = ['formBackup1', 'formBackup2', 'formBackup3'];\n  \n  let formDataBackup = null;\n  let appVersionBackup = null;\n  let guardianActive = false;",
+      "newString": "// PERSISTENT FORM DATA GUARDIAN WITH INDEXEDDB\n// Защищает данные формы от любых видов очистки, включая Clear-Site-Data\n(function() {\n  'use strict';\n  \n  console.log('[FORM-GUARDIAN] Инициализация с IndexedDB защитой...');\n  \n  const FORM_DATA_KEY = 'deliveryFormData';\n  const APP_VERSION_KEY = 'appVersion';\n  const BACKUP_KEYS = ['formBackup1', 'formBackup2', 'formBackup3'];\n  const DB_NAME = 'LavsitFormStorage';\n  const DB_VERSION = 1;\n  const STORE_NAME = 'formData';\n  \n  let formDataBackup = null;\n  let appVersionBackup = null;\n  let guardianActive = false;\n  let indexedDB = null;\n  let dbInstance = null;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/public/persistent-form-guardian.js\n===================================================================\n--- /home/user/project/public/persistent-form-guardian.js\n+++ /home/user/project/public/persistent-form-guardian.js\n@@ -1,18 +1,23 @@\n-// PERSISTENT FORM DATA GUARDIAN\n-// Защищает данные формы от любых видов очистки localStorage\n+// PERSISTENT FORM DATA GUARDIAN WITH INDEXEDDB\n+// Защищает данные формы от любых видов очистки, включая Clear-Site-Data\n (function() {\n   'use strict';\n   \n-  console.log('[FORM-GUARDIAN] Инициализация защиты данных формы...');\n+  console.log('[FORM-GUARDIAN] Инициализация с IndexedDB защитой...');\n   \n   const FORM_DATA_KEY = 'deliveryFormData';\n   const APP_VERSION_KEY = 'appVersion';\n   const BACKUP_KEYS = ['formBackup1', 'formBackup2', 'formBackup3'];\n+  const DB_NAME = 'LavsitFormStorage';\n+  const DB_VERSION = 1;\n+  const STORE_NAME = 'formData';\n   \n   let formDataBackup = null;\n   let appVersionBackup = null;\n   let guardianActive = false;\n+  let indexedDB = null;\n+  let dbInstance = null;\n   \n   // Функция сохранения данных в резервные копии\n   function createBackups() {\n     try {\n"
+    },
+    "title": "public/persistent-form-guardian.js",
+    "time": {
+      "start": 1759765177794,
+      "end": 1759765177805
+    }
+  }
+}

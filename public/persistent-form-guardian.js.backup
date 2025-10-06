@@ -1,126 +1,20 @@
-// PERSISTENT FORM DATA GUARDIAN WITH INDEXEDDB
-// Защищает данные формы от любых видов очистки, включая Clear-Site-Data
+// PERSISTENT FORM DATA GUARDIAN
+// Защищает данные формы от любых видов очистки localStorage
 (function() {
   'use strict';
   
-  console.log('[FORM-GUARDIAN] Инициализация с IndexedDB защитой...');
+  console.log('[FORM-GUARDIAN] Инициализация защиты данных формы...');
   
   const FORM_DATA_KEY = 'deliveryFormData';
   const APP_VERSION_KEY = 'appVersion';
   const BACKUP_KEYS = ['formBackup1', 'formBackup2', 'formBackup3'];
-  const DB_NAME = 'LavsitFormStorage';
-  const DB_VERSION = 1;
-  const STORE_NAME = 'formData';
   
   let formDataBackup = null;
   let appVersionBackup = null;
   let guardianActive = false;
-  let indexedDB = null;
-  let dbInstance = null;
-  
-  // IndexedDB helper functions
-  function initIndexedDB() {
-    return new Promise((resolve, reject) => {
-      if (typeof window === 'undefined' || !window.indexedDB) {
-        console.warn('[FORM-GUARDIAN] IndexedDB не доступна');
-        resolve(null);
-        return;
-      }
-      
-      const request = window.indexedDB.open(DB_NAME, DB_VERSION);
-      
-      request.onerror = () => {
-        console.error('[FORM-GUARDIAN] Ошибка открытия IndexedDB:', request.error);
-        resolve(null);
-      };
-      
-      request.onsuccess = () => {
-        dbInstance = request.result;
-        console.log('[FORM-GUARDIAN] IndexedDB инициализирована');
-        resolve(dbInstance);
-      };
-      
-      request.onupgradeneeded = (event) => {
-        const db = event.target.result;
-        if (!db.objectStoreNames.contains(STORE_NAME)) {
-          const store = db.createObjectStore(STORE_NAME, { keyPath: 'key' });
-          store.createIndex('timestamp', 'timestamp', { unique: false });
-          console.log('[FORM-GUARDIAN] IndexedDB объект-хранилище создано');
-        }
-      };
-    });
-  }
-  
-  function saveToIndexedDB(key, value) {
-    return new Promise((resolve) => {
-      if (!dbInstance) {
-        resolve(false);
-        return;
-      }
-      
-      try {
-        const transaction = dbInstance.transaction([STORE_NAME], 'readwrite');
-        const store = transaction.objectStore(STORE_NAME);
-        const data = {
-          key: key,
-          value: value,
-          timestamp: Date.now()
-        };
-        
-        const request = store.put(data);
-        
-        request.onsuccess = () => {
-          console.log(`[FORM-GUARDIAN] Сохранено в IndexedDB: ${key}`);
-          resolve(true);
-        };
-        
-        request.onerror = () => {
-          console.error(`[FORM-GUARDIAN] Ошибка сохранения в IndexedDB: ${key}`, request.error);
-          resolve(false);
-        };
-      } catch (error) {
-        console.error('[FORM-GUARDIAN] Исключение при сохранении в IndexedDB:', error);
-        resolve(false);
-      }
-    });
-  }
-  
-  function loadFromIndexedDB(key) {
-    return new Promise((resolve) => {
-      if (!dbInstance) {
-        resolve(null);
-        return;
-      }
-      
-      try {
-        const transaction = dbInstance.transaction([STORE_NAME], 'readonly');
-        const store = transaction.objectStore(STORE_NAME);
-        const request = store.get(key);
-        
-        request.onsuccess = () => {
-          const result = request.result;
-          if (result) {
-            console.log(`[FORM-GUARDIAN] Загружено из IndexedDB: ${key}`);
-            resolve(result.value);
-          } else {
-            console.log(`[FORM-GUARDIAN] Данные не найдены в IndexedDB: ${key}`);
-            resolve(null);
-          }
-        };
-        
-        request.onerror = () => {
-          console.error(`[FORM-GUARDIAN] Ошибка загрузки из IndexedDB: ${key}`, request.error);
-          resolve(null);
-        };
-      } catch (error) {
-        console.error('[FORM-GUARDIAN] Исключение при загрузке из IndexedDB:', error);
-        resolve(null);
-      }
-    });
-  }
   
   // Функция сохранения данных в резервные копии
-  async function createBackups() {
+  function createBackups() {
     try {
       const formData = localStorage.getItem(FORM_DATA_KEY);
       const appVersion = localStorage.getItem(APP_VERSION_KEY);
