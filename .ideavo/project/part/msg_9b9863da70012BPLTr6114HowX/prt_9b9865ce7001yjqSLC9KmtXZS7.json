@@ -1,0 +1,26 @@
+{
+  "id": "prt_9b9865ce7001yjqSLC9KmtXZS7",
+  "messageID": "msg_9b9863da70012BPLTr6114HowX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_017CauugCpN4LzSUsDBVJ29G",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "getDellinTerminal|❌ Не найден терминал отправления",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "output": "Found 4 matches\n/home/user/project/app/page.tsx:\n  Line 1043:   const getDellinTerminal = async (citySearch: string): Promise<string | null> => {\n  Line 1179:       const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminal(form.fromCity) : null;\n  Line 1180:       const toTerminalId = !form.toAddressDelivery ? await getDellinTerminal(form.toCity) : null;\n  Line 1190:         console.error('❌ Не найден терминал отправления для города:', form.fromCity);",
+    "metadata": {
+      "matches": 4,
+      "truncated": false
+    },
+    "title": "getDellinTerminal|❌ Не найден терминал отправления",
+    "time": {
+      "start": 1759754215942,
+      "end": 1759754215953
+    }
+  }
+}

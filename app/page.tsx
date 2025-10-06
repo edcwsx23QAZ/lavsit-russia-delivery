@@ -1056,14 +1056,50 @@ export default function Home() {
       console.log('Деловые Линии терминалы:', data);
       
       if (response.ok && data.terminals) {
-        // Ищем терминал в указанном городе
-        const normalizedCity = citySearch.toLowerCase().trim();
-        const terminal = data.terminals.find((t: any) => 
-          t.city?.toLowerCase().includes(normalizedCity) ||
-          normalizedCity.includes(t.city?.toLowerCase())
+        // Улучшенный поиск терминала в указанном городе
+        const normalizedCity = citySearch.toLowerCase().trim()
+          .replace(/^г\s+/, '') // Убираем префикс "г "
+          .replace(/^город\s+/, '') // Убираем префикс "город "
+          .replace(/\s+/g, ' '); // Нормализуем пробелы
+        
+        console.log('🔍 Поиск терминала для города:', normalizedCity);
+        console.log('🔍 Доступные терминалы:', data.terminals.slice(0, 5).map((t: any) => ({
+          id: t.id,
+          city: t.city,
+          address: t.address
+        })));
+        
+        // Пытаемся найти точное совпадение
+        let terminal = data.terminals.find((t: any) => 
+          t.city?.toLowerCase().trim() === normalizedCity
         );
         
-        return terminal?.id || data.terminals[0]?.id || null;
+        // Если не найдено - ищем по вхождению
+        if (!terminal) {
+          terminal = data.terminals.find((t: any) => 
+            t.city?.toLowerCase().includes(normalizedCity) ||
+            normalizedCity.includes(t.city?.toLowerCase().trim())
+          );
+        }
+        
+        // Если до сих пор не найдено - ищем по первому слову
+        if (!terminal) {
+          const firstWord = normalizedCity.split(' ')[0];
+          if (firstWord.length > 2) {
+            terminal = data.terminals.find((t: any) => 
+              t.city?.toLowerCase().includes(firstWord) ||
+              firstWord.includes(t.city?.toLowerCase().split(' ')[0])
+            );
+          }
+        }
+        
+        if (terminal) {
+          console.log('✅ Найден терминал:', { id: terminal.id, city: terminal.city });
+          return terminal.id;
+        } else {
+          console.warn('⚠️ Терминал не найден, используем первый доступный');
+          return data.terminals[0]?.id || null;
+        }
       }
       
       return null;

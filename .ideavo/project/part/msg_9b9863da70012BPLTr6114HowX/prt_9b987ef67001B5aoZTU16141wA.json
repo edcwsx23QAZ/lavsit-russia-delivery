@@ -1,0 +1,25 @@
+{
+  "id": "prt_9b987ef67001B5aoZTU16141wA",
+  "messageID": "msg_9b9863da70012BPLTr6114HowX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_013rAZ79ge373t3Wv3m6xuAd",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1225,
+      "limit": 20
+    },
+    "output": "<file>\n01226|         console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n01227|         return {\n01228|           company: 'Деловые Линии',\n01229|           price: 0,\n01230|           days: 0,\n01231|           error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,\n01232|           apiUrl,\n01233|           requestData: null,\n01234|           responseData: null\n01235|         };\n01236|       }\n01237|       \n01238|       if (!form.toAddressDelivery && !toTerminalId) {\n01239|         console.error('❌ Не найден терминал назначения для города:', form.toCity);\n01240|         return {\n01241|           company: 'Деловые Линии',\n01242|           price: 0,\n01243|           days: 0,\n01244|           error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,\n01245|           apiUrl,\n\n(File has more lines. Use 'offset' parameter to read beyond line 1245)\n</file>",
+    "metadata": {
+      "preview": "        console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }\n      \n      if (!form.toAddressDelivery && !toTerminalId) {\n        console.error('❌ Не найден терминал назначения для города:', form.toCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,\n          apiUrl,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759754318335,
+      "end": 1759754318337
+    }
+  }
+}
