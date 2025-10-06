@@ -1,0 +1,11 @@
+{
+  "id": "prt_9ba1a706f001BRzoCAlqaSZFin",
+  "messageID": "msg_9ba1a336d0019BX05Wsd1Z3gzX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "I found the issue! The problem is that there's a race condition between the data loading effect and the auto-save effect. The auto-save effect triggers after `isLoaded` becomes true and overwrites the restored data with the initial empty form state. Let me examine the initial form state:",
+  "time": {
+    "start": 1759763920754,
+    "end": 1759763920754
+  }
+}

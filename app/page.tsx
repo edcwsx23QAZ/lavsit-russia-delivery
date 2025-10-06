@@ -132,6 +132,7 @@ export default function Home() {
 
   const [form, setForm] = useState<DeliveryForm>(initialFormState);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isRestoring, setIsRestoring] = useState(false);
   const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
   
@@ -216,7 +217,10 @@ export default function Home() {
   useEffect(() => {
     // Проверяем, что мы на клиенте
     if (typeof window !== 'undefined' && !isLoaded) {
+      let dataRestored = false;
       try {
+        setIsRestoring(true); // Блокируем автосохранение во время восстановления
+        
         // Мягкая проверка версии без очистки пользовательских данных
         const currentVersion = 'v2.4.0-persistent-storage'; // Версия с постоянным сохранением
         const savedVersion = localStorage.getItem('appVersion');
@@ -264,6 +268,12 @@ export default function Home() {
           const currentTime = Math.floor(Date.now() / 1000);
           console.log('🕒 Текущее время (timestamp):', currentTime);
           console.log('🕒 Текущее время (ISO):', new Date().toISOString());
+          
+          dataRestored = true;
+          // Небольшая задержка чтобы все состояния успели обновиться
+          setTimeout(() => {
+            setIsRestoring(false);
+          }, 100);
         } else {
           // Проверяем старый формат данных для миграции
           const oldSaved = localStorage.getItem('deliveryForm');
@@ -279,6 +289,12 @@ export default function Home() {
             saveFormData(oldForm);
             localStorage.removeItem('deliveryForm');
             console.log('✅ Миграция завершена');
+            
+            dataRestored = true;
+            // Небольшая задержка чтобы все состояния успели обновиться
+            setTimeout(() => {
+              setIsRestoring(false);
+            }, 100);
           }
         }
         
@@ -290,6 +306,10 @@ export default function Home() {
         console.error('Ошибка загрузки сохраненных данных:', error);
         // В случае ошибки оставляем начальное состояние
       } finally {
+        // Если данные не восстановлены, сразу разблокируем автосохранение
+        if (!dataRestored) {
+          setIsRestoring(false);
+        }
         setIsLoaded(true);
       }
     }
@@ -297,7 +317,7 @@ export default function Home() {
 
   // Автоматическое сохранение данных при изменении формы (с дебаунсом)
   useEffect(() => {
-    if (typeof window !== 'undefined' && isLoaded) {
+    if (typeof window !== 'undefined' && isLoaded && !isRestoring) {
       // Используем дебаунс для ограничения частоты сохранения
       debouncedSave({
         cargos: form.cargos,
@@ -321,7 +341,7 @@ export default function Home() {
         enabledCompanies: enabledCompanies,
       });
     }
-  }, [form, enabledCompanies, isLoaded, debouncedSave]);
+  }, [form, enabledCompanies, isLoaded, isRestoring, debouncedSave]);
 
   // Автоматическая страховка при указании стоимости
   useEffect(() => {

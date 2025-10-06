@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba1b7572001ZIv6YtgrRFZXpH",
+  "messageID": "msg_9ba1a336d0019BX05Wsd1Z3gzX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01NE9cz5TQSwtqPERvgc4hrM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "            // Небольшая задержка чтобы все состояния успели обновиться\n            setTimeout(() => {\n              setIsRestoring(false);\n            }, 100);\n          }\n        }",
+      "newString": "            dataRestored = true;\n            // Небольшая задержка чтобы все состояния успели обновиться\n            setTimeout(() => {\n              setIsRestoring(false);\n            }, 100);\n          }\n        }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -289,8 +289,9 @@\n saveFormData(oldForm);\n localStorage.removeItem('deliveryForm');\n console.log('✅ Миграция завершена');\n \n+dataRestored = true;\n // Небольшая задержка чтобы все состояния успели обновиться\n setTimeout(() => {\n   setIsRestoring(false);\n }, 100);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759763988004,
+      "end": 1759763988024
+    }
+  }
+}

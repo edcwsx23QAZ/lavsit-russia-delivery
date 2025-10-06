@@ -1,0 +1,18 @@
+{
+  "id": "prt_9ba1ca523001mp6u96yOnHBqlz",
+  "messageID": "msg_9ba1a336d0019BX05Wsd1Z3gzX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "model": "Claude Sonnet 4",
+  "type": "finish",
+  "commitMessage": "fix(persistence): resolve data restoration race condition and prevent auto-save overwrite",
+  "cost": 0.5303032500000001,
+  "tokens": {
+    "input": 1,
+    "output": 396,
+    "reasoning": 0,
+    "cache": {
+      "write": 714,
+      "read": 51542
+    }
+  }
+}

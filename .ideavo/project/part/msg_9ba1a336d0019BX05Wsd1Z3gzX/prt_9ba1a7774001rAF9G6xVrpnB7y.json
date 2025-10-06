@@ -1,0 +1,25 @@
+{
+  "id": "prt_9ba1a7774001rAF9G6xVrpnB7y",
+  "messageID": "msg_9ba1a336d0019BX05Wsd1Z3gzX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Q19A226fwT9xLSwRVg4k9w",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 120,
+      "limit": 50
+    },
+    "output": "<file>\n00121|     needCarry: false,\n00122|     floor: 1,\n00123|     hasFreightLift: false,\n00124|     needInsurance: false,\n00125|     fromTerminal: true,\n00126|     toTerminal: true,\n00127|     fromAddressDelivery: false,\n00128|     toAddressDelivery: false,\n00129|     fromLavsiteWarehouse: false,\n00130|     selectedProducts: []\n00131|   };\n00132| \n00133|   const [form, setForm] = useState<DeliveryForm>(initialFormState);\n00134|   const [isLoaded, setIsLoaded] = useState(false);\n00135|   const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);\n00136|   const [isFormChanged, setIsFormChanged] = useState(false);\n00137|   \n00138|   // Создаем дебаунс функцию для сохранения (сохраняем через 1 секунду после последнего изменения)\n00139|   const debouncedSave = useMemo(() => {\n00140|     const saver = createDebouncedSaver(1000);\n00141|     // Оборачиваем в функцию, которая обновляет индикаторы\n00142|     return (formData: any) => {\n00143|       setIsFormChanged(true);\n00144|       saver(formData);\n00145|       // Обновляем время последнего сохранения через небольшую задержку\n00146|       setTimeout(() => {\n00147|         setLastSaveTime(new Date());\n00148|         setIsFormChanged(false);\n00149|       }, 1100);\n00150|     };\n00151|   }, []);\n00152| \n00153|   const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n00154|   const [showSuggestions, setShowSuggestions] = useState(false);\n00155|   const [activeField, setActiveField] = useState('');\n00156|   \n00157|   // Состояние для управления включением/выключением транспортных компаний\n00158|   const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n00159|     pek: true,\n00160|     dellin: true,\n00161|     railcontinent: true,\n00162|     vozovoz: true,\n00163|     nordwheel: true,\n00164|     cdek: false,\n00165|     newline: false,\n00166|     irtrust: false,\n00167|     majortrans: false,\n00168|     baikalservice: false,\n00169|     adamant: false,\n00170|     energiya: false,\n\n(File has more lines. Use 'offset' parameter to read beyond line 170)\n</file>",
+    "metadata": {
+      "preview": "    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false,\n    fromLavsiteWarehouse: false,\n    selectedProducts: []\n  };\n\n  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n  const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);\n  const [isFormChanged, setIsFormChanged] = useState(false);\n  \n  // Создаем дебаунс функцию для сохранения (сохраняем через 1 секунду после последнего изменения)\n  const debouncedSave = useMemo(() => {\n    const saver = createDebouncedSaver(1000);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759763921720,
+      "end": 1759763921723
+    }
+  }
+}

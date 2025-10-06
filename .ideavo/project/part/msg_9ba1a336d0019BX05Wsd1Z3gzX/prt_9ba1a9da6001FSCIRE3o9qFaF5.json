@@ -1,0 +1,66 @@
+{
+  "id": "prt_9ba1a9da6001FSCIRE3o9qFaF5",
+  "messageID": "msg_9ba1a336d0019BX05Wsd1Z3gzX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01X1pPbnwv3Nhpftb7Rciwkv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n  const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);\n  const [isFormChanged, setIsFormChanged] = useState(false);",
+          "newString": "  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n  const [isLoaded, setIsLoaded] = useState(false);\n  const [isRestoring, setIsRestoring] = useState(false);\n  const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);\n  const [isFormChanged, setIsFormChanged] = useState(false);"
+        },
+        {
+          "oldString": "      try {\n        // Мягкая проверка версии без очистки пользовательских данных\n        const currentVersion = 'v2.4.0-persistent-storage'; // Версия с постоянным сохранением\n        const savedVersion = localStorage.getItem('appVersion');\n        \n        if (savedVersion !== currentVersion) {\n          console.log('🔄 Обновление версии приложения до', currentVersion);\n          // НЕ очищаем localStorage - сохраняем пользовательские данные\n          localStorage.setItem('appVersion', currentVersion);\n        }\n        \n        // Пытаемся загрузить данные через новую систему\n        const savedFormData = loadFormData();\n        if (savedFormData) {",
+          "newString": "      try {\n        setIsRestoring(true); // Блокируем автосохранение во время восстановления\n        \n        // Мягкая проверка версии без очистки пользовательских данных\n        const currentVersion = 'v2.4.0-persistent-storage'; // Версия с постоянным сохранением\n        const savedVersion = localStorage.getItem('appVersion');\n        \n        if (savedVersion !== currentVersion) {\n          console.log('🔄 Обновление версии приложения до', currentVersion);\n          // НЕ очищаем localStorage - сохраняем пользовательские данные\n          localStorage.setItem('appVersion', currentVersion);\n        }\n        \n        // Пытаемся загрузить данные через новую систему\n        const savedFormData = loadFormData();\n        if (savedFormData) {"
+        },
+        {
+          "oldString": "      } finally {\n        setIsLoaded(true);\n      }",
+          "newString": "      } finally {\n        setIsRestoring(false); // Разблокируем автосохранение\n        setIsLoaded(true);\n      }"
+        },
+        {
+          "oldString": "  // Автоматическое сохранение данных при изменении формы (с дебаунсом)\n  useEffect(() => {\n    if (typeof window !== 'undefined' && isLoaded) {",
+          "newString": "  // Автоматическое сохранение данных при изменении формы (с дебаунсом)\n  useEffect(() => {\n    if (typeof window !== 'undefined' && isLoaded && !isRestoring) {"
+        },
+        {
+          "oldString": "  }, [form, enabledCompanies, isLoaded, debouncedSave]);",
+          "newString": "  }, [form, enabledCompanies, isLoaded, isRestoring, debouncedSave]);"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -131,8 +131,9 @@\n };\n \n const [form, setForm] = useState<DeliveryForm>(initialFormState);\n const [isLoaded, setIsLoaded] = useState(false);\n+const [isRestoring, setIsRestoring] = useState(false);\n const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);\n const [isFormChanged, setIsFormChanged] = useState(false);\n \n // Создаем дебаунс функцию для сохранения (сохраняем через 1 секунду после последнего изменения)\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -217,8 +217,10 @@\n useEffect(() => {\n   // Проверяем, что мы на клиенте\n   if (typeof window !== 'undefined' && !isLoaded) {\n     try {\n+      setIsRestoring(true); // Блокируем автосохранение во время восстановления\n+      \n       // Мягкая проверка версии без очистки пользовательских данных\n       const currentVersion = 'v2.4.0-persistent-storage'; // Версия с постоянным сохранением\n       const savedVersion = localStorage.getItem('appVersion');\n       \n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -292,8 +292,9 @@\n     } catch (error) {\n       console.error('Ошибка загрузки сохраненных данных:', error);\n       // В случае ошибки оставляем начальное состояние\n     } finally {\n+      setIsRestoring(false); // Разблокируем автосохранение\n       setIsLoaded(true);\n     }\n   }\n }, [isLoaded]);\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -300,9 +300,9 @@\n }, [isLoaded]);\n \n // Автоматическое сохранение данных при изменении формы (с дебаунсом)\n useEffect(() => {\n-  if (typeof window !== 'undefined' && isLoaded) {\n+  if (typeof window !== 'undefined' && isLoaded && !isRestoring) {\n     // Используем дебаунс для ограничения частоты сохранения\n     debouncedSave({\n       cargos: form.cargos,\n       fromCity: form.fromCity,\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -324,9 +324,9 @@\n       selectedProducts: form.selectedProducts,\n       enabledCompanies: enabledCompanies,\n     });\n   }\n-}, [form, enabledCompanies, isLoaded, debouncedSave]);\n+}, [form, enabledCompanies, isLoaded, isRestoring, debouncedSave]);\n \n // Автоматическая страховка при указании стоимости\n useEffect(() => {\n   if (form.declaredValue > 0) {\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759763942069,
+      "end": 1759763942143
+    }
+  }
+}

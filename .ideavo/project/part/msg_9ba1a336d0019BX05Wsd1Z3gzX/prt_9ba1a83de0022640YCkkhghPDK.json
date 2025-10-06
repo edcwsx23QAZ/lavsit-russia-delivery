@@ -1,0 +1,11 @@
+{
+  "id": "prt_9ba1a83de0022640YCkkhghPDK",
+  "messageID": "msg_9ba1a336d0019BX05Wsd1Z3gzX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "The issue is clear now! The auto-save effect runs whenever `form` changes, and when `isLoaded` becomes true, it immediately saves the current form state (which is still the initial empty state) over the restored data. I need to fix this by preventing the auto-save from running during the initial data restoration.",
+  "time": {
+    "start": 1759763925670,
+    "end": 1759763925670
+  }
+}

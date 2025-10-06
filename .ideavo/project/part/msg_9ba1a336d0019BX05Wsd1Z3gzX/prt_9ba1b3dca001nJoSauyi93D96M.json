@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba1b3dca001nJoSauyi93D96M",
+  "messageID": "msg_9ba1a336d0019BX05Wsd1Z3gzX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01LCdcfib9jHb7mGE3gicKKL",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  // Загрузка сохраненных данных (только на клиенте)\n  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined' && !isLoaded) {\n      try {\n        setIsRestoring(true); // Блокируем автосохранение во время восстановления\n        \n        // Мягкая проверка версии без очистки пользовательских данных\n        const currentVersion = 'v2.4.0-persistent-storage'; // Версия с постоянным сохранением\n        const savedVersion = localStorage.getItem('appVersion');\n        \n        if (savedVersion !== currentVersion) {\n          console.log('🔄 Обновление версии приложения до', currentVersion);\n          // НЕ очищаем localStorage - сохраняем пользовательские данные\n          localStorage.setItem('appVersion', currentVersion);\n        }\n        \n        // Пытаемся загрузить данные через новую систему\n        const savedFormData = loadFormData();",
+      "newString": "  // Загрузка сохраненных данных (только на клиенте)\n  useEffect(() => {\n    // Проверяем, что мы на клиенте\n    if (typeof window !== 'undefined' && !isLoaded) {\n      let dataRestored = false;\n      try {\n        setIsRestoring(true); // Блокируем автосохранение во время восстановления\n        \n        // Мягкая проверка версии без очистки пользовательских данных\n        const currentVersion = 'v2.4.0-persistent-storage'; // Версия с постоянным сохранением\n        const savedVersion = localStorage.getItem('appVersion');\n        \n        if (savedVersion !== currentVersion) {\n          console.log('🔄 Обновление версии приложения до', currentVersion);\n          // НЕ очищаем localStorage - сохраняем пользовательские данные\n          localStorage.setItem('appVersion', currentVersion);\n        }\n        \n        // Пытаемся загрузить данные через новую систему\n        const savedFormData = loadFormData();"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -216,8 +216,9 @@\n // Загрузка сохраненных данных (только на клиенте)\n useEffect(() => {\n   // Проверяем, что мы на клиенте\n   if (typeof window !== 'undefined' && !isLoaded) {\n+    let dataRestored = false;\n     try {\n       setIsRestoring(true); // Блокируем автосохранение во время восстановления\n       \n       // Мягкая проверка версии без очистки пользовательских данных\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759763979376,
+      "end": 1759763979396
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba1b665a0015jWEeLKrUa5ESH",
+  "messageID": "msg_9ba1a336d0019BX05Wsd1Z3gzX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_017vK1MVbYwMk5UdnvAg8hXa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          // Небольшая задержка чтобы все состояния успели обновиться\n          setTimeout(() => {\n            setIsRestoring(false);\n          }, 100);\n        } else {",
+      "newString": "          dataRestored = true;\n          // Небольшая задержка чтобы все состояния успели обновиться\n          setTimeout(() => {\n            setIsRestoring(false);\n          }, 100);\n        } else {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -268,8 +268,9 @@\n const currentTime = Math.floor(Date.now() / 1000);\n console.log('🕒 Текущее время (timestamp):', currentTime);\n console.log('🕒 Текущее время (ISO):', new Date().toISOString());\n \n+dataRestored = true;\n // Небольшая задержка чтобы все состояния успели обновиться\n setTimeout(() => {\n   setIsRestoring(false);\n }, 100);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759763983440,
+      "end": 1759763983454
+    }
+  }
+}

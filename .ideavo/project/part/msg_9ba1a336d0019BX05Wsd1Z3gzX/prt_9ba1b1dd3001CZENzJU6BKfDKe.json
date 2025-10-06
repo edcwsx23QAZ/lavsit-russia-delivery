@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba1b1dd3001CZENzJU6BKfDKe",
+  "messageID": "msg_9ba1a336d0019BX05Wsd1Z3gzX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_015TxhgRL6c2EmfWCVDxSmuD",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      } finally {\n        setIsRestoring(false); // Разблокируем автосохранение\n        setIsLoaded(true);\n      }",
+      "newString": "      } finally {\n        // Если данные не восстановлены, сразу разблокируем автосохранение\n        if (!savedFormData) {\n          setIsRestoring(false);\n        }\n        setIsLoaded(true);\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -302,9 +302,12 @@\n     } catch (error) {\n       console.error('Ошибка загрузки сохраненных данных:', error);\n       // В случае ошибки оставляем начальное состояние\n     } finally {\n-      setIsRestoring(false); // Разблокируем автосохранение\n+      // Если данные не восстановлены, сразу разблокируем автосохранение\n+      if (!savedFormData) {\n+        setIsRestoring(false);\n+      }\n       setIsLoaded(true);\n     }\n   }\n }, [isLoaded]);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759763965446,
+      "end": 1759763965459
+    }
+  }
+}

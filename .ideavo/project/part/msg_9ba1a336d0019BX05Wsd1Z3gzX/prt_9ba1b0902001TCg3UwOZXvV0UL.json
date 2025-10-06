@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba1b0902001TCg3UwOZXvV0UL",
+  "messageID": "msg_9ba1a336d0019BX05Wsd1Z3gzX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01JFNKjpsA9DUy2wUvLBh9KL",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "            // Сохраняем в новом формате и удаляем старые данные\n            saveFormData(oldForm);\n            localStorage.removeItem('deliveryForm');\n            console.log('✅ Миграция завершена');",
+      "newString": "            // Сохраняем в новом формате и удаляем старые данные\n            saveFormData(oldForm);\n            localStorage.removeItem('deliveryForm');\n            console.log('✅ Миграция завершена');\n            \n            // Небольшая задержка чтобы все состояния успели обновиться\n            setTimeout(() => {\n              setIsRestoring(false);\n            }, 100);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -286,8 +286,13 @@\n     // Сохраняем в новом формате и удаляем старые данные\n     saveFormData(oldForm);\n     localStorage.removeItem('deliveryForm');\n     console.log('✅ Миграция завершена');\n+    \n+    // Небольшая задержка чтобы все состояния успели обновиться\n+    setTimeout(() => {\n+      setIsRestoring(false);\n+    }, 100);\n   }\n }\n \n // Выводим все доступные ТК для отладки\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759763960592,
+      "end": 1759763960609
+    }
+  }
+}

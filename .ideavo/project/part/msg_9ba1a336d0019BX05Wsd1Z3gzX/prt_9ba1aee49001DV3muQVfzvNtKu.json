@@ -1,0 +1,26 @@
+{
+  "id": "prt_9ba1aee49001DV3muQVfzvNtKu",
+  "messageID": "msg_9ba1a336d0019BX05Wsd1Z3gzX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01HtRs4Yb1sfUJ7Tk7h6gzYx",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          console.log('✅ Данные формы успешно восстановлены из localStorage');\n          \n          // Диагностика времени для Supabase\n          const currentTime = Math.floor(Date.now() / 1000);\n          console.log('🕒 Текущее время (timestamp):', currentTime);\n          console.log('🕒 Текущее время (ISO):', new Date().toISOString());",
+      "newString": "          console.log('✅ Данные формы успешно восстановлены из localStorage');\n          \n          // Диагностика времени для Supabase\n          const currentTime = Math.floor(Date.now() / 1000);\n          console.log('🕒 Текущее время (timestamp):', currentTime);\n          console.log('🕒 Текущее время (ISO):', new Date().toISOString());\n          \n          // Небольшая задержка чтобы все состояния успели обновиться\n          setTimeout(() => {\n            setIsRestoring(false);\n          }, 100);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -266,8 +266,13 @@\n   // Диагностика времени для Supabase\n   const currentTime = Math.floor(Date.now() / 1000);\n   console.log('🕒 Текущее время (timestamp):', currentTime);\n   console.log('🕒 Текущее время (ISO):', new Date().toISOString());\n+  \n+  // Небольшая задержка чтобы все состояния успели обновиться\n+  setTimeout(() => {\n+    setIsRestoring(false);\n+  }, 100);\n } else {\n   // Проверяем старый формат данных для миграции\n   const oldSaved = localStorage.getItem('deliveryForm');\n   if (oldSaved) {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759763955491,
+      "end": 1759763955507
+    }
+  }
+}
