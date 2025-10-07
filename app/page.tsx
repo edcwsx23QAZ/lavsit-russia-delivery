@@ -3122,11 +3122,11 @@ export default function Home() {
              } : {
                insuranceNdv: true                  // Включаем страхование без объявленной стоимости
              }),
-             ...(form.needPackaging ? {
-               wrapping: {
-                 "hardBoxVolume": totalVolume      // ✅ Используем корректный код упаковки из документации
-               }
-             } : {})
+              ...(form.needPackaging ? {
+                wrapping: {
+                  "hardPackageVolume": totalVolume  // ✅ ИСПРАВЛЕНО: Правильный код "Жёсткая упаковка" из документации
+                }
+              } : {})
            },
            gateway: {
              dispatch: {

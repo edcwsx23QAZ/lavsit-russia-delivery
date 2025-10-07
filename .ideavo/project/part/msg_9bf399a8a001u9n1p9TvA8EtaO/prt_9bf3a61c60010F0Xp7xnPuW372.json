@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bf3a61c60010F0Xp7xnPuW372",
+  "messageID": "msg_9bf399a8a001u9n1p9TvA8EtaO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01FB6UPQJ6xkY8qsRQ8RiDEf",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "              ...(form.needPackaging ? {\n                wrapping: {\n                  \"hardBoxVolume\": totalVolume      // ✅ Используем корректный код упаковки из документации\n                }\n              } : {})",
+      "newString": "              ...(form.needPackaging ? {\n                wrapping: {\n                  \"hardPackageVolume\": totalVolume  // ✅ ИСПРАВЛЕНО: Правильный код \"Жёсткая упаковка\" из документации\n                }\n              } : {})"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3121,13 +3121,13 @@\n     insuranceNdv: false                 // Отключаем страхование без объявленной стоимости\n   } : {\n     insuranceNdv: true                  // Включаем страхование без объявленной стоимости\n   }),\n-  ...(form.needPackaging ? {\n-    wrapping: {\n-      \"hardBoxVolume\": totalVolume      // ✅ Используем корректный код упаковки из документации\n-    }\n-  } : {})\n+   ...(form.needPackaging ? {\n+     wrapping: {\n+       \"hardPackageVolume\": totalVolume  // ✅ ИСПРАВЛЕНО: Правильный код \"Жёсткая упаковка\" из документации\n+     }\n+   } : {})\n },\n gateway: {\n   dispatch: {\n     point: {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759849899894,
+      "end": 1759849899924
+    }
+  }
+}

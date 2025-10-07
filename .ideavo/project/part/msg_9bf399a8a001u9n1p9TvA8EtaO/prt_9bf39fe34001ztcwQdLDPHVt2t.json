@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bf39fe34001ztcwQdLDPHVt2t",
+  "messageID": "msg_9bf399a8a001u9n1p9TvA8EtaO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01T3vxqqTs8K9csT7Z7JG9Bb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3110,
+      "limit": 20
+    },
+    "output": "<file>\n03111|                  width: maxDimensions.width,       // Максимальная ширина одного места в метрах\n03112|                  height: maxDimensions.height,     // Максимальная высота одного места в метрах\n03113|                  weight: maxDimensions.weight      // Максимальный вес одного места в кг\n03114|                },\n03115|                quantity: form.cargos.length,       // Количество мест\n03116|                volume: totalVolume,                // Общий объем в м³\n03117|                weight: totalWeight                 // Общий вес в кг\n03118|              },\n03119|              ...(form.needInsurance && form.declaredValue > 0 ? {\n03120|                insurance: form.declaredValue,      // ✅ Страхование корректно\n03121|                insuranceNdv: false                 // Отключаем страхование без объявленной стоимости\n03122|              } : {\n03123|                insuranceNdv: true                  // Включаем страхование без объявленной стоимости\n03124|              }),\n03125|              ...(form.needPackaging ? {\n03126|                wrapping: {\n03127|                  \"hardBoxVolume\": totalVolume      // ✅ Используем корректный код упаковки из документации\n03128|                }\n03129|              } : {})\n03130|            },\n\n(File has more lines. Use 'offset' parameter to read beyond line 3130)\n</file>",
+    "metadata": {
+      "preview": "                 width: maxDimensions.width,       // Максимальная ширина одного места в метрах\n                 height: maxDimensions.height,     // Максимальная высота одного места в метрах\n                 weight: maxDimensions.weight      // Максимальный вес одного места в кг\n               },\n               quantity: form.cargos.length,       // Количество мест\n               volume: totalVolume,                // Общий объем в м³\n               weight: totalWeight                 // Общий вес в кг\n             },\n             ...(form.needInsurance && form.declaredValue > 0 ? {\n               insurance: form.declaredValue,      // ✅ Страхование корректно\n               insuranceNdv: false                 // Отключаем страхование без объявленной стоимости\n             } : {\n               insuranceNdv: true                  // Включаем страхование без объявленной стоимости\n             }),\n             ...(form.needPackaging ? {\n               wrapping: {\n                 \"hardBoxVolume\": totalVolume      // ✅ Используем корректный код упаковки из документации\n               }\n             } : {})\n           },"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759849873682,
+      "end": 1759849873687
+    }
+  }
+}
