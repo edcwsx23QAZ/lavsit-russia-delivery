@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bdf94297002PhCMtDmpb5GZkp",
+  "messageID": "msg_9bdf84972001Bc4RfgX38gTYNH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_015FXvbAn7yRErbnVHe43DVJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Build project to test terminal search fixes"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1261:25\nType error: Cannot find name 'dellinSessionData'.\n\n\u001b[0m \u001b[90m 1259 |\u001b[39m       \u001b[0m\n\u001b[0m \u001b[90m 1260 |\u001b[39m       \u001b[90m// Получаем sessionID для запроса\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1261 |\u001b[39m       \u001b[36mconst\u001b[39m sessionID \u001b[33m=\u001b[39m dellinSessionData\u001b[33m?\u001b[39m\u001b[33m.\u001b[39msessionID\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1262 |\u001b[39m       \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39msessionID) {\u001b[0m\n\u001b[0m \u001b[90m 1263 |\u001b[39m         console\u001b[33m.\u001b[39merror(\u001b[32m'❌ Отсутствует sessionID для поиска терминалов'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1264 |\u001b[39m         \u001b[36mreturn\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1261:25\nType error: Cannot find name 'dellinSessionData'.\n\n\u001b[0m \u001b[90m 1259 |\u001b[39m       \u001b[0m\n\u001b[0m \u001b[90m 1260 |\u001b[39m       \u001b[90m// Получаем sessionID для запроса\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1261 |\u001b[39m       \u001b[36mconst\u001b[39m sessionID \u001b[33m=\u001b[39m dellinSessionData\u001b[33m?\u001b[39m\u001b[33m.\u001b[39msessionID\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1262 |\u001b[39m       \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39msessionID) {\u001b[0m\n\u001b[0m \u001b[90m 1263 |\u001b[39m         console\u001b[33m.\u001b[39merror(\u001b[32m'❌ Отсутствует sessionID для поиска терминалов'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1264 |\u001b[39m         \u001b[36mreturn\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build project to test terminal search fixes"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759828854031,
+      "end": 1759828867546
+    }
+  }
+}

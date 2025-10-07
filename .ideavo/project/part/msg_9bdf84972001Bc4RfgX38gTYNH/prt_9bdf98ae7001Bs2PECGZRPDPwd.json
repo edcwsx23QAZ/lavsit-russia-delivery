@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bdf98ae7001Bs2PECGZRPDPwd",
+  "messageID": "msg_9bdf84972001Bc4RfgX38gTYNH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01BMC7rtZ6xpfeQcfHAD9kqb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "sessionID|SessionID",
+      "include": "*.tsx"
+    },
+    "output": "Found 36 matches\n/home/user/project/app/page.tsx:\n  Line 517:           // Тестируем получение sessionID для Деловых Линий (тот же метод что в calculateDellin)\n  Line 529:           // Проверяем все возможные пути к sessionID как в calculateDellin\n  Line 530:           if (authData.data?.sessionID || authData.sessionID || authData.data?.session) {\n  Line 1087:   // Получение sessionID для Деловых Линий\n  Line 1106:       console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data?.sessionID:', authData.data?.sessionID);\n  Line 1108:       // Проверяем разные возможные пути к sessionID\n  Line 1109:       let sessionID = null;\n  Line 1111:       if (authData.data?.sessionID) {\n  Line 1112:         sessionID = authData.data.sessionID;\n  Line 1113:         console.log('✅ SessionID найден в data.sessionID:', sessionID);\n  Line 1114:       } else if (authData.sessionID) {\n  Line 1115:         sessionID = authData.sessionID;\n  Line 1116:         console.log('✅ SessionID найден в sessionID:', sessionID);\n  Line 1118:         sessionID = authData.data.session;\n  Line 1119:         console.log('✅ SessionID найден в data.session:', sessionID);\n  Line 1122:       if (authResponse.ok && sessionID) {\n  Line 1123:         return sessionID;\n  Line 1260:       // Получаем sessionID для запроса\n  Line 1261:       const sessionID = dellinSessionData?.sessionID;\n  Line 1262:       if (!sessionID) {\n  Line 1263:         console.error('❌ Отсутствует sessionID для поиска терминалов');\n  Line 1270:         sessionID: sessionID,\n  Line 1381:             console.log('✅ СПРАВОЧНИК УПАКОВОК: получен новый SessionID, повторяем запрос...');\n  Line 1384:             console.error('❌ СПРАВОЧНИК УПАКОВОК: не удалось получить новый SessionID');\n  Line 1435:       let sessionID = await getDellinSessionId();\n  Line 1437:       if (!sessionID) {\n  Line 1442:           error: 'Не удалось получить sessionID',\n  Line 1598:         sessionID: sessionID,\n  Line 1732:             console.log('✅ ДЛ: получен новый SessionID, обновляем запрос...');\n  Line 1733:             // Обновляем sessionID в запросе\n  Line 1734:             requestData.sessionID = newSessionId;\n  Line 1735:             sessionID = newSessionId;\n  Line 1738:             console.error('❌ ДЛ: не удалось получить новый SessionID');\n  Line 1775:           sessionId: sessionID\n  Line 2015:           sessionId: sessionID\n  Line 2031:           sessionId: sessionID",
+    "metadata": {
+      "matches": 36,
+      "truncated": false
+    },
+    "title": "sessionID|SessionID",
+    "time": {
+      "start": 1759828872277,
+      "end": 1759828872298
+    }
+  }
+}

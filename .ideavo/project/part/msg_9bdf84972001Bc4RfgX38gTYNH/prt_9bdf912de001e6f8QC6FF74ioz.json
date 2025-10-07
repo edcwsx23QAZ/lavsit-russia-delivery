@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bdf912de001e6f8QC6FF74ioz",
+  "messageID": "msg_9bdf84972001Bc4RfgX38gTYNH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01BykPTwixeq8Wio9kpLwhfo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  // Получение справочника терминалов Деловых Линий\n  const getDellinTerminalsDirectory = async (): Promise<any> => {\n    try {\n      console.log(`📋 Получение справочника терминалов ДЛ...`);\n      \n      // Сначала получаем ссылку на файл справочника\n      const response = await fetch('https://api.dellin.ru/v3/public/terminals.json', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json'\n        },\n        body: JSON.stringify({\n          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'\n        })\n      });\n      \n      const data = await response.json();\n      console.log(`📋 Ответ API терминалов:`, data);\n      \n      if (response.ok && data.url) {\n        // Скачиваем сам файл справочника\n        // Принудительно заменяем HTTP на HTTPS для избежания Mixed Content ошибки\n        const httpsUrl = data.url.replace('http://', 'https://');\n        const directoryResponse = await fetch(httpsUrl);\n        const directoryData = await directoryResponse.json();\n        \n        console.log(`📋 Справочник терминалов получен, городов: ${directoryData.city?.length || 0}`);\n        return directoryData;\n      }\n      \n      console.error(`❌ Ошибка получения справочника терминалов:`, data);\n      return null;\n      \n    } catch (error) {\n      console.error(`❌ Ошибка загрузки справочника терминалов ДЛ:`, error);\n      return null;\n    }\n  };",
+      "newString": ""
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1249,46 +1249,9 @@\n     return null;\n   }\n };\n \n-// Получение справочника терминалов Деловых Линий\n-const getDellinTerminalsDirectory = async (): Promise<any> => {\n-  try {\n-    console.log(`📋 Получение справочника терминалов ДЛ...`);\n-    \n-    // Сначала получаем ссылку на файл справочника\n-    const response = await fetch('https://api.dellin.ru/v3/public/terminals.json', {\n-      method: 'POST',\n-      headers: {\n-        'Content-Type': 'application/json'\n-      },\n-      body: JSON.stringify({\n-        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'\n-      })\n-    });\n-    \n-    const data = await response.json();\n-    console.log(`📋 Ответ API терминалов:`, data);\n-    \n-    if (response.ok && data.url) {\n-      // Скачиваем сам файл справочника\n-      // Принудительно заменяем HTTP на HTTPS для избежания Mixed Content ошибки\n-      const httpsUrl = data.url.replace('http://', 'https://');\n-      const directoryResponse = await fetch(httpsUrl);\n-      const directoryData = await directoryResponse.json();\n-      \n-      console.log(`📋 Справочник терминалов получен, городов: ${directoryData.city?.length || 0}`);\n-      return directoryData;\n-    }\n-    \n-    console.error(`❌ Ошибка получения справочника терминалов:`, data);\n-    return null;\n-    \n-  } catch (error) {\n-    console.error(`❌ Ошибка загрузки справочника терминалов ДЛ:`, error);\n-    return null;\n-  }\n-};\n+\n \n // Поиск терминалов через рабочий v1 API (из test-dellin-terminals-simple.js)\n const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {\n   try {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759828845435,
+      "end": 1759828845456
+    }
+  }
+}

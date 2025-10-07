@@ -1250,137 +1250,66 @@ export default function Home() {
     }
   };
   
-  // Получение справочника терминалов Деловых Линий
-  const getDellinTerminalsDirectory = async (): Promise<any> => {
+
+  
+  // Поиск терминалов через рабочий v1 API (из test-dellin-terminals-simple.js)
+  const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {
     try {
-      console.log(`📋 Получение справочника терминалов ДЛ...`);
+      console.log(`🔍 РАБОЧИЙ v1 API: Поиск терминала ${direction} для города: ${citySearch}`);
       
-      // Сначала получаем ссылку на файл справочника
-      const response = await fetch('https://api.dellin.ru/v3/public/terminals.json', {
+      // Получаем sessionID для запроса
+      const sessionID = await getDellinSessionId();
+      if (!sessionID) {
+        console.error('❌ Отсутствует sessionID для поиска терминалов');
+        return null;
+      }
+      
+      // Прямой запрос к рабочему API
+      const requestData = {
+        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
+        sessionID: sessionID,
+        search: citySearch,
+        direction: direction
+      };
+      
+      console.log(`📤 Запрос терминалов:`, requestData);
+      
+      const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({
-          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'
-        })
+        body: JSON.stringify(requestData)
       });
       
       const data = await response.json();
-      console.log(`📋 Ответ API терминалов:`, data);
+      console.log(`📥 Ответ терминалов (${response.status}):`, data);
       
-      if (response.ok && data.url) {
-        // Скачиваем сам файл справочника
-        // Принудительно заменяем HTTP на HTTPS для избежания Mixed Content ошибки
-        const httpsUrl = data.url.replace('http://', 'https://');
-        const directoryResponse = await fetch(httpsUrl);
-        const directoryData = await directoryResponse.json();
-        
-        console.log(`📋 Справочник терминалов получен, городов: ${directoryData.city?.length || 0}`);
-        return directoryData;
-      }
-      
-      console.error(`❌ Ошибка получения справочника терминалов:`, data);
-      return null;
-      
-    } catch (error) {
-      console.error(`❌ Ошибка загрузки справочника терминалов ДЛ:`, error);
-      return null;
-    }
-  };
-  
-  // Кэш для справочника терминалов
-  let terminalsDirectoryCache: any = null;
-  let terminalsDirectoryCacheTime: number = 0;
-  const CACHE_DURATION = 30 * 60 * 1000; // 30 минут
-  
-  // Поиск терминалов в городе через правильный алгоритм
-  const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {
-    try {
-      console.log(`🔍 НОВЫЙ АЛГОРИТМ: Поиск терминала ${direction} для города: ${citySearch}`);
-      
-      // Шаг 1: Находим cityID города через API поиска
-      const cityInfo = await findCityInDellinDirectory(citySearch);
-      if (!cityInfo) {
-        console.warn(`⚠️ Город "${citySearch}" не найден в справочнике ДЛ`);
+      if (!response.ok) {
+        console.error('❌ Ошибка запроса терминалов:', data);
         return null;
       }
       
-      // Шаг 2: Получаем справочник терминалов (с кэшированием)
-      const now = Date.now();
-      if (!terminalsDirectoryCache || (now - terminalsDirectoryCacheTime) > CACHE_DURATION) {
-        terminalsDirectoryCache = await getDellinTerminalsDirectory();
-        terminalsDirectoryCacheTime = now;
-      }
-      
-      if (!terminalsDirectoryCache || !terminalsDirectoryCache.city) {
-        console.error(`❌ Справочник терминалов недоступен`);
-        return null;
-      }
-      
-      // Шаг 3: Находим город в справочнике по cityID
-      const cityWithTerminals = terminalsDirectoryCache.city.find((city: any) => 
-        city.cityID === cityInfo.cityID
-      );
-      
-      if (!cityWithTerminals) {
-        console.warn(`⚠️ Город с cityID ${cityInfo.cityID} не найден в справочнике терминалов`);
-        return null;
-      }
-      
-      console.log(`🏙️ Найден город в справочнике:`, {
-        name: cityWithTerminals.name,
-        cityID: cityWithTerminals.cityID,
-        terminalsCount: cityWithTerminals.terminals?.terminal?.length || 0
-      });
-      
-      // Шаг 4: Фильтруем терминалы по направлению
-      const terminals = cityWithTerminals.terminals?.terminal || [];
+      // Проверяем наличие терминалов в ответе
+      const terminals = data.terminals || [];
       if (terminals.length === 0) {
-        console.warn(`⚠️ В городе "${cityWithTerminals.name}" нет терминалов`);
+        console.warn(`⚠️ Терминалы не найдены для города "${citySearch}"`);
         return null;
       }
       
-      // Фильтруем терминалы по возможности приема/выдачи груза
-      const suitableTerminals = terminals.filter((terminal: any) => {
-        if (direction === 'derival') {
-          return terminal.receiveCargo === true; // Может принимать груз
-        } else {
-          return terminal.giveoutCargo === true; // Может выдавать груз
-        }
+      // Выбираем первый доступный терминал
+      const selectedTerminal = terminals[0];
+      
+      console.log(`✅ Найден терминал ${direction}:`, {
+        id: selectedTerminal.id,
+        name: selectedTerminal.name,
+        address: selectedTerminal.address
       });
       
-      console.log(`🚛 Подходящих терминалов для ${direction}:`, suitableTerminals.length);
-      
-      // Если нет подходящих по направлению, берем любые доступные
-      const availableTerminals = suitableTerminals.length > 0 ? suitableTerminals : terminals;
-      
-      // Ищем терминал по умолчанию
-      let selectedTerminal = availableTerminals.find((terminal: any) => terminal.default === true);
-      
-      // Если нет терминала по умолчанию, берем первый
-      if (!selectedTerminal && availableTerminals.length > 0) {
-        selectedTerminal = availableTerminals[0];
-      }
-      
-      if (selectedTerminal) {
-        console.log(`✅ Найден терминал ${direction}:`, {
-          id: selectedTerminal.id,
-          name: selectedTerminal.name,
-          address: selectedTerminal.address,
-          default: selectedTerminal.default,
-          receiveCargo: selectedTerminal.receiveCargo,
-          giveoutCargo: selectedTerminal.giveoutCargo
-        });
-        
-        return selectedTerminal.id.toString();
-      }
-      
-      console.warn(`❌ Подходящий терминал не найден в городе "${cityWithTerminals.name}"`);
-      return null;
+      return selectedTerminal.id.toString();
       
     } catch (error) {
-      console.error(`❌ Ошибка поиска терминала ${direction} (новый алгоритм):`, error);
+      console.error(`❌ Ошибка поиска терминала ${direction} (v1 API):`, error);
       return null;
     }
   };
