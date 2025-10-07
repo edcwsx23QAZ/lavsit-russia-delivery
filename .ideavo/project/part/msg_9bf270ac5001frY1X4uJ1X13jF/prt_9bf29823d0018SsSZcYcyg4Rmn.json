@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bf29823d0018SsSZcYcyg4Rmn",
+  "messageID": "msg_9bf270ac5001frY1X4uJ1X13jF",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Be3u33JrDX9GKi671UWgFQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/vozovoz-docs/ru/docs/object/price.md",
+      "offset": 50,
+      "limit": 30
+    },
+    "output": "<file>\n00051| ```json\n00052| {\n00053|   \"response\": {\n00054|     \"basePrice\": 1250,\n00055|     \"price\": 1200,\n00056|     \"service\": [\n00057|       {\n00058|         \"name\": \"Перевозка между городами\",\n00059|         \"price\": 370\n00060|       },\n00061|       {\n00062|         \"name\": \"Страхование груза без объявленной стоимости\",\n00063|         \"price\": 35\n00064|       },\n00065|       {\n00066|         \"name\": \"Забор груза от клиента\",\n00067|         \"price\": 363\n00068|       },\n00069|       {\n00070|         \"name\": \"Отвоз груза клиенту\",\n00071|         \"price\": 432\n00072|       }\n00073|     ],\n00074|     \"deliveryTime\": {\n00075|       \"from\": 1,\n00076|       \"to\": 1\n00077|     }\n00078|   }\n00079| }\n00080| ```\n\n(File has more lines. Use 'offset' parameter to read beyond line 80)\n</file>",
+    "metadata": {
+      "preview": "```json\n{\n  \"response\": {\n    \"basePrice\": 1250,\n    \"price\": 1200,\n    \"service\": [\n      {\n        \"name\": \"Перевозка между городами\",\n        \"price\": 370\n      },\n      {\n        \"name\": \"Страхование груза без объявленной стоимости\",\n        \"price\": 35\n      },\n      {\n        \"name\": \"Забор груза от клиента\",\n        \"price\": 363\n      },\n      {\n        \"name\": \"Отвоз груза клиенту\","
+    },
+    "title": "vozovoz-docs/ru/docs/object/price.md",
+    "time": {
+      "start": 1759848793919,
+      "end": 1759848793921
+    }
+  }
+}

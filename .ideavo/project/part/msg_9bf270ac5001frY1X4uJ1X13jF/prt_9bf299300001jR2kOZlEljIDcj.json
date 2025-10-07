@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bf299300001jR2kOZlEljIDcj",
+  "messageID": "msg_9bf270ac5001frY1X4uJ1X13jF",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01PzJjBbFKw2iu9vVn68Bt7j",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3080,
+      "limit": 15
+    },
+    "output": "<file>\n03081|       const maxDimensions = form.cargos.reduce((max, cargo) => {\n03082|         const length = cargo.length / 1000; // переводим мм в м\n03083|         const width = cargo.width / 1000;\n03084|         const height = cargo.height / 1000;\n03085|         const weight = cargo.weight;\n03086|         \n03087|         return {\n03088|           length: Math.max(max.length, length),\n03089|           width: Math.max(max.width, width),\n03090|           height: Math.max(max.height, height),\n03091|           weight: Math.max(max.weight, weight)\n03092|         };\n03093|       }, { length: 0, width: 0, height: 0, weight: 0 });\n03094|       \n03095|       console.log('🚚 Возовоз: подготовка данных...');\n\n(File has more lines. Use 'offset' parameter to read beyond line 3095)\n</file>",
+    "metadata": {
+      "preview": "      const maxDimensions = form.cargos.reduce((max, cargo) => {\n        const length = cargo.length / 1000; // переводим мм в м\n        const width = cargo.width / 1000;\n        const height = cargo.height / 1000;\n        const weight = cargo.weight;\n        \n        return {\n          length: Math.max(max.length, length),\n          width: Math.max(max.width, width),\n          height: Math.max(max.height, height),\n          weight: Math.max(max.weight, weight)\n        };\n      }, { length: 0, width: 0, height: 0, weight: 0 });\n      \n      console.log('🚚 Возовоз: подготовка данных...');"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759848797738,
+      "end": 1759848797742
+    }
+  }
+}

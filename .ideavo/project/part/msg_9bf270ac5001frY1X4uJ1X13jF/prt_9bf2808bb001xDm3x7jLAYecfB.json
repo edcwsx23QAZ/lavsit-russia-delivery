@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bf2808bb001xDm3x7jLAYecfB",
+  "messageID": "msg_9bf270ac5001frY1X4uJ1X13jF",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Axysg1m1nqgtBPjVYTfVV1",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Вычисляем основные параметры груза\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n      \n      console.log('🚚 Возовоз: подготовка данных...');\n      console.log('   - Общий вес:', totalWeight, 'кг');\n      console.log('   - Общий объем:', totalVolume, 'м³');\n      console.log('   - Откуда:', form.fromCity);\n      console.log('   - Куда:', form.toCity);",
+      "newString": "      // Вычисляем основные параметры груза\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n      \n      // Находим максимальные габариты одного места для соответствия документации Возовоз\n      const maxDimensions = form.cargos.reduce((max, cargo) => {\n        const length = cargo.length / 1000; // переводим мм в м\n        const width = cargo.width / 1000;\n        const height = cargo.height / 1000;\n        const weight = cargo.weight;\n        \n        return {\n          length: Math.max(max.length, length),\n          width: Math.max(max.width, width),\n          height: Math.max(max.height, height),\n          weight: Math.max(max.weight, weight)\n        };\n      }, { length: 0, width: 0, height: 0, weight: 0 });\n      \n      console.log('🚚 Возовоз: подготовка данных...');\n      console.log('   - Общий вес:', totalWeight, 'кг');\n      console.log('   - Общий объем:', totalVolume, 'м³');\n      console.log('   - Максимальные габариты:', maxDimensions);\n      console.log('   - Откуда:', form.fromCity);\n      console.log('   - Куда:', form.toCity);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3076,11 +3076,27 @@\n const totalVolume = form.cargos.reduce((sum, cargo) => \n   sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n );\n \n+// Находим максимальные габариты одного места для соответствия документации Возовоз\n+const maxDimensions = form.cargos.reduce((max, cargo) => {\n+  const length = cargo.length / 1000; // переводим мм в м\n+  const width = cargo.width / 1000;\n+  const height = cargo.height / 1000;\n+  const weight = cargo.weight;\n+  \n+  return {\n+    length: Math.max(max.length, length),\n+    width: Math.max(max.width, width),\n+    height: Math.max(max.height, height),\n+    weight: Math.max(max.weight, weight)\n+  };\n+}, { length: 0, width: 0, height: 0, weight: 0 });\n+\n console.log('🚚 Возовоз: подготовка данных...');\n console.log('   - Общий вес:', totalWeight, 'кг');\n console.log('   - Общий объем:', totalVolume, 'м³');\n+console.log('   - Максимальные габариты:', maxDimensions);\n console.log('   - Откуда:', form.fromCity);\n console.log('   - Куда:', form.toCity);\n \n // Параметры для API Vozovoz\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759848704221,
+      "end": 1759848704252
+    }
+  }
+}

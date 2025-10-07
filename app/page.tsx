@@ -3077,56 +3077,83 @@ export default function Home() {
         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
       );
       
+      // Находим максимальные габариты одного места для соответствия документации Возовоз
+      const maxDimensions = form.cargos.reduce((max, cargo) => {
+        const length = cargo.length / 1000; // переводим мм в м
+        const width = cargo.width / 1000;
+        const height = cargo.height / 1000;
+        const weight = cargo.weight;
+        
+        return {
+          length: Math.max(max.length, length),
+          width: Math.max(max.width, width),
+          height: Math.max(max.height, height),
+          weight: Math.max(max.weight, weight)
+        };
+      }, { length: 0, width: 0, height: 0, weight: 0 });
+      
       console.log('🚚 Возовоз: подготовка данных...');
       console.log('   - Общий вес:', totalWeight, 'кг');
       console.log('   - Общий объем:', totalVolume, 'м³');
+      console.log('   - Максимальные габариты:', maxDimensions);
       console.log('   - Откуда:', form.fromCity);
       console.log('   - Куда:', form.toCity);
       
-      // Параметры для API Vozovoz
-      const requestData = {
-        object: "price",
-        action: "get",
-        params: {
-          cargo: {
-            dimension: {
-              quantity: form.cargos.length,
-              volume: totalVolume,
-              weight: totalWeight
-            },
-            ...(form.needInsurance && form.declaredValue > 0 ? {
-              insurance: form.declaredValue
-            } : {}),
-            ...(form.needPackaging ? {
-              wrapping: {
-                palletCollar: totalVolume // Обрешетка по объему
-              }
-            } : {})
-          },
-          gateway: {
-            dispatch: {
-              point: {
-                location: form.fromCity || 'Москва',
-                ...(form.fromAddressDelivery ? {
-                  address: form.fromAddress || "адрес отправления"
-                } : {
-                  terminal: "default"
-                })
-              }
-            },
-            destination: {
-              point: {
-                location: form.toCity || 'Санкт-Петербург',
-                ...(form.toAddressDelivery ? {
-                  address: form.toAddress || "адрес получения"
-                } : {
-                  terminal: "default"
-                })
-              }
-            }
-          }
-        }
-      };
+       // Параметры для API Vozovoz согласно официальной документации
+       const requestData = {
+         object: "price",
+         action: "get",
+         params: {
+           cargo: {
+             dimension: {
+               max: {                              // ✅ Добавляем обязательную структуру max
+                 length: maxDimensions.length,     // Максимальная длина одного места в метрах
+                 width: maxDimensions.width,       // Максимальная ширина одного места в метрах
+                 height: maxDimensions.height,     // Максимальная высота одного места в метрах
+                 weight: maxDimensions.weight      // Максимальный вес одного места в кг
+               },
+               quantity: form.cargos.length,       // Количество мест
+               volume: totalVolume,                // Общий объем в м³
+               weight: totalWeight                 // Общий вес в кг
+             },
+             ...(form.needInsurance && form.declaredValue > 0 ? {
+               insurance: form.declaredValue,      // ✅ Страхование корректно
+               insuranceNdv: false                 // Отключаем страхование без объявленной стоимости
+             } : {
+               insuranceNdv: true                  // Включаем страхование без объявленной стоимости
+             }),
+             ...(form.needPackaging ? {
+               wrapping: {
+                 "hardBoxVolume": totalVolume      // ✅ Используем корректный код упаковки из документации
+               }
+             } : {})
+           },
+           gateway: {
+             dispatch: {
+               point: {
+                 location: form.fromCity || 'Москва',
+                 // ✅ Поля address и terminal взаимоисключающие согласно документации
+                 ...(form.fromAddressDelivery ? {
+                   address: form.fromAddress || "адрес отправления"
+                 } : {
+                   terminal: "default"
+                 })
+               }
+             },
+             destination: {
+               point: {
+                 location: form.toCity || 'Санкт-Петербург',
+                 // ✅ Поля address и terminal взаимоисключающие согласно документации
+                 ...(form.toAddressDelivery ? {
+                   address: form.toAddress || "адрес получения"
+                 } : {
+                   terminal: "default"
+                 })
+               }
+             }
+           }
+         }
+       };
 
       console.log('🚚 Возовоз запрос:', JSON.stringify(requestData, null, 2));
 
@@ -3144,24 +3171,18 @@ export default function Home() {
       if (response.ok && data.response) {
         const responseData = data.response;
         
-        // Собираем детали по услугам
+        console.log('🚚 Возовоз анализ ответа согласно документации:', responseData);
+        
+        // ✅ Используем правильную структуру ответа согласно документации
         const services: { name: string; description: string; price: number }[] = [];
         let totalPrice = responseData.price || responseData.basePrice || 0;
         
-        console.log('🚚 Возовоз анализ ответа:', responseData);
-        
-        // Базовая стоимость доставки
-        if (responseData.basePrice && responseData.basePrice > 0) {
-          services.push({
-            name: 'Доставка груза',
-            description: `${form.fromCity} - ${form.toCity}`,
-            price: responseData.basePrice
-          });
-        }
-        
-        // Дополнительные услуги из ответа API
+        // ✅ Обрабатываем массив услуг согласно документации API
         if (responseData.service && Array.isArray(responseData.service)) {
-          responseData.service.forEach((service: any) => {
+          console.log('🚚 Возовоз найден массив услуг:', responseData.service.length);
+          
+          responseData.service.forEach((service: any, index: number) => {
+            console.log(`🚚 Услуга [${index}]:`, service);
             if (service.price > 0) {
               services.push({
                 name: service.name || 'Дополнительная услуга',
@@ -3170,46 +3191,33 @@ export default function Home() {
               });
             }
           });
+        } else {
+          console.log('🚚 Возовоз: массив услуг не найден или пуст');
+          
+          // Если массива услуг нет, добавляем общую стоимость
+          if (responseData.basePrice && responseData.basePrice > 0) {
+            services.push({
+              name: 'Базовая доставка',
+              description: `${form.fromCity} - ${form.toCity}`,
+              price: responseData.basePrice
+            });
+          }
+          
+          // Если есть скидка, показываем её отдельно
+          if (responseData.price !== responseData.basePrice && responseData.price > 0) {
+            const discount = (responseData.basePrice || 0) - responseData.price;
+            if (discount > 0) {
+              services.push({
+                name: 'Скидка',
+                description: 'Применена скидка',
+                price: -discount
+              });
+            }
+          }
         }
         
-        // Забор груза с адреса (если указан)
-        if (form.fromAddressDelivery && responseData.pickupPrice) {
-          services.push({
-            name: 'Забор груза',
-            description: `Забор с адреса: ${form.fromAddress || 'адрес отправления'}`,
-            price: responseData.pickupPrice
-          });
-        }
-        
-        // Доставка груза до адреса (если указан)
-        if (form.toAddressDelivery && responseData.deliveryPrice) {
-          services.push({
-            name: 'Доставка до адреса',
-            description: `Доставка до: ${form.toAddress || 'адрес получения'}`,
-            price: responseData.deliveryPrice
-          });
-        }
-        
-        // Упаковка (обрешетка)
-        if (form.needPackaging && responseData.wrappingPrice) {
-          services.push({
-            name: 'Упаковка груза',
-            description: 'Обрешетка груза',
-            price: responseData.wrappingPrice
-          });
-        }
-        
-        // Страхование
-        if (form.needInsurance && responseData.insurancePrice) {
-          services.push({
-            name: 'Страхование груза',
-            description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
-            price: responseData.insurancePrice
-          });
-        }
-        
-        // Если услуг нет, добавляем общую стоимость
-        if (services.length === 0) {
+        // Если никаких услуг не найдено, добавляем общую стоимость
+        if (services.length === 0 && totalPrice > 0) {
           services.push({
             name: 'Доставка груза',
             description: `${form.fromCity} - ${form.toCity}`,
