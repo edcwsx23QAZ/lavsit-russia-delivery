@@ -3670,6 +3670,56 @@ export default function Home() {
           });
         }
       });
+    } else if (calc.company === 'Возовоз' && calc.details?.service) {
+      // ✅ Детализация для Возовоз на основе API ответа
+      const basePrice = calc.details.basePrice || 0;
+      const finalPrice = calc.details.price || calc.price || 0;
+      const totalDiscount = basePrice - finalPrice;
+      
+      // Показываем каждую услугу с базовой ценой и скидкой
+      calc.details.service.forEach((service: any) => {
+        const serviceDiscount = (service.basePrice || 0) - (service.price || 0);
+        
+        // Основная услуга
+        details.push({
+          service: service.name || 'Услуга Возовоз',
+          description: '',
+          price: service.price || 0
+        });
+        
+        // Скидка на услугу (если есть)
+        if (serviceDiscount > 0) {
+          details.push({
+            service: `Скидка на ${service.name?.toLowerCase() || 'услугу'}`,
+            description: `${(service.basePrice || 0).toLocaleString()} - ${(service.price || 0).toLocaleString()}`,
+            price: -serviceDiscount
+          });
+        }
+      });
+      
+      // Итоговая строка с общими скидками
+      if (totalDiscount > 0) {
+        details.push({
+          service: '─────────────────────────',
+          description: '',
+          price: 0
+        });
+        details.push({
+          service: 'Базовая стоимость',
+          description: 'До применения скидок',
+          price: basePrice
+        });
+        details.push({
+          service: 'Общие скидки',
+          description: `Экономия ${totalDiscount.toLocaleString()} ₽`,
+          price: -totalDiscount
+        });
+        details.push({
+          service: 'ИТОГО',
+          description: 'К оплате',
+          price: finalPrice
+        });
+      }
     } else {
       // Для других ТК - базовая информация
       details.push({

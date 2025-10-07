@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bf4dc10c001IoRsFcYvD8jIuy",
+  "messageID": "msg_9bf4d38cf001E4WH6psoX42zvL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01Wr3z13Y2hjS4PqAAxHaVdo",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "else if.*Возовоз|Возовоз.*else|vozovoz",
+      "include": "*.tsx"
+    },
+    "output": "Found 29 matches\n/home/user/project/app/page.tsx:\n  Line 89:   { name: 'Возовоз', logo: '🚚', apiKey: 'vozovoz' },\n  Line 163:     vozovoz: true,\n  Line 192:     vozovoz: 'проверка...',\n  Line 567:       checkAPIStatus('vozovoz', async () => {\n  Line 569:           const response = await fetch('/api/vozovoz', {\n  Line 3071:     const apiUrl = '/api/vozovoz';\n  Line 3420:       if (enabledCompanies.vozovoz) {\n\n/home/user/project/app/diagnostic/page.tsx:\n  Line 87:     testAPI('Vozovoz', '/api/vozovoz', { method: 'test' });\n  Line 127:       { service: 'Возовоз', endpoint: '/api/vozovoz', data: { method: 'test' } },\n\n/home/user/project/components/diagnostic/ManualTesting.tsx:\n  Line 57:   { id: 'vozovoz', name: 'Возовоз', officialSite: 'https://vozovoz.ru/calculator/' },\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 534:       const response = await fetch('/api/vozovoz', {\n  Line 546:         updateResult('vozovoz', {\n  Line 555:         updateResult('vozovoz', {\n  Line 566:       updateResult('vozovoz', {\n  Line 778:         case 'vozovoz':\n  Line 779:           apiUrl = '/api/vozovoz';\n  Line 903:         case 'vozovoz':\n  Line 953:       const transportCompanies = ['pek', 'railcontinent', 'vozovoz', 'nordwheel', 'dellin'];\n  Line 1686:               {diagnosticResults.vozovoz ? (\n  Line 1687:                 <Alert className={getStatusColor(diagnosticResults.vozovoz.status)}>\n  Line 1689:                     {getStatusIcon(diagnosticResults.vozovoz.status)}\n  Line 1692:                         <div className=\"font-medium mb-2\">{diagnosticResults.vozovoz.message}</div>\n  Line 1693:                         {diagnosticResults.vozovoz.timing && (\n  Line 1695:                             Время ответа: {diagnosticResults.vozovoz.timing}мс\n  Line 1698:                         {diagnosticResults.vozovoz.details && (\n  Line 1702:                               {JSON.stringify(diagnosticResults.vozovoz.details, null, 2)}\n\n/home/user/project/app/diagnostic/optimized-page.tsx:\n  Line 86:     testAPI('Vozovoz', '/api/vozovoz', { method: 'test' });\n  Line 126:       { service: 'Возовоз', endpoint: '/api/vozovoz', data: { method: 'test' } },\n\n/home/user/project/components/diagnostic/ApiTestingSection.tsx:\n  Line 128:       {renderApiCard('vozovoz', 'Возовоз', 'text-orange-400', testStates.isTestingVozovoz, onTestVozovoz, 'vozovoz')}",
+    "metadata": {
+      "matches": 29,
+      "truncated": false
+    },
+    "title": "else if.*Возовоз|Возовоз.*else|vozovoz",
+    "time": {
+      "start": 1759851168642,
+      "end": 1759851168664
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bf4deae8001fkJ05Cb1Ds1HIu",
+  "messageID": "msg_9bf4d38cf001E4WH6psoX42zvL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01DkCRZ6EFmGJ8mzXvdsCa3g",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "company.*Возовоз",
+      "include": "*.tsx"
+    },
+    "output": "Found 3 matches\n/home/user/project/app/page.tsx:\n  Line 3232:           company: 'Возовоз',\n  Line 3250:           company: 'Возовоз',\n  Line 3262:         company: 'Возовоз',",
+    "metadata": {
+      "matches": 3,
+      "truncated": false
+    },
+    "title": "company.*Возовоз",
+    "time": {
+      "start": 1759851179091,
+      "end": 1759851179103
+    }
+  }
+}

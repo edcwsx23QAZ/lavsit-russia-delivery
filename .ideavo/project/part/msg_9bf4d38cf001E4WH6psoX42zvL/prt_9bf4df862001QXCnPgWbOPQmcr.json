@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bf4df862001QXCnPgWbOPQmcr",
+  "messageID": "msg_9bf4d38cf001E4WH6psoX42zvL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01N34hWrkWpeixz4BCXaiLoV",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    } else if (calc.company === 'ПЭК' && calc.details?.services) {\n      // Для ПЭК используем данные из API\n      calc.details.services.forEach((service: any) => {\n        if (service.price > 0) {\n          details.push({\n            service: service.name || 'Услуга ПЭК',\n            description: service.description || '',\n            price: service.price\n          });\n        }\n      });\n    } else {",
+      "newString": "    } else if (calc.company === 'ПЭК' && calc.details?.services) {\n      // Для ПЭК используем данные из API\n      calc.details.services.forEach((service: any) => {\n        if (service.price > 0) {\n          details.push({\n            service: service.name || 'Услуга ПЭК',\n            description: service.description || '',\n            price: service.price\n          });\n        }\n      });\n    } else if (calc.company === 'Возовоз' && calc.details?.service) {\n      // ✅ Детализация для Возовоз на основе API ответа\n      const basePrice = calc.details.basePrice || 0;\n      const finalPrice = calc.details.price || calc.price || 0;\n      const totalDiscount = basePrice - finalPrice;\n      \n      // Показываем каждую услугу с базовой ценой и скидкой\n      calc.details.service.forEach((service: any) => {\n        const serviceDiscount = (service.basePrice || 0) - (service.price || 0);\n        \n        // Основная услуга\n        details.push({\n          service: service.name || 'Услуга Возовоз',\n          description: '',\n          price: service.price || 0\n        });\n        \n        // Скидка на услугу (если есть)\n        if (serviceDiscount > 0) {\n          details.push({\n            service: `Скидка на ${service.name?.toLowerCase() || 'услугу'}`,\n            description: `${(service.basePrice || 0).toLocaleString()} - ${(service.price || 0).toLocaleString()}`,\n            price: -serviceDiscount\n          });\n        }\n      });\n      \n      // Итоговая строка с общими скидками\n      if (totalDiscount > 0) {\n        details.push({\n          service: '─────────────────────────',\n          description: '',\n          price: 0\n        });\n        details.push({\n          service: 'Базовая стоимость',\n          description: 'До применения скидок',\n          price: basePrice\n        });\n        details.push({\n          service: 'Общие скидки',\n          description: `Экономия ${totalDiscount.toLocaleString()} ₽`,\n          price: -totalDiscount\n        });\n        details.push({\n          service: 'ИТОГО',\n          description: 'К оплате',\n          price: finalPrice\n        });\n      }\n    } else {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3669,8 +3669,58 @@\n         price: service.price\n       });\n     }\n   });\n+} else if (calc.company === 'Возовоз' && calc.details?.service) {\n+  // ✅ Детализация для Возовоз на основе API ответа\n+  const basePrice = calc.details.basePrice || 0;\n+  const finalPrice = calc.details.price || calc.price || 0;\n+  const totalDiscount = basePrice - finalPrice;\n+  \n+  // Показываем каждую услугу с базовой ценой и скидкой\n+  calc.details.service.forEach((service: any) => {\n+    const serviceDiscount = (service.basePrice || 0) - (service.price || 0);\n+    \n+    // Основная услуга\n+    details.push({\n+      service: service.name || 'Услуга Возовоз',\n+      description: '',\n+      price: service.price || 0\n+    });\n+    \n+    // Скидка на услугу (если есть)\n+    if (serviceDiscount > 0) {\n+      details.push({\n+        service: `Скидка на ${service.name?.toLowerCase() || 'услугу'}`,\n+        description: `${(service.basePrice || 0).toLocaleString()} - ${(service.price || 0).toLocaleString()}`,\n+        price: -serviceDiscount\n+      });\n+    }\n+  });\n+  \n+  // Итоговая строка с общими скидками\n+  if (totalDiscount > 0) {\n+    details.push({\n+      service: '─────────────────────────',\n+      description: '',\n+      price: 0\n+    });\n+    details.push({\n+      service: 'Базовая стоимость',\n+      description: 'До применения скидок',\n+      price: basePrice\n+    });\n+    details.push({\n+      service: 'Общие скидки',\n+      description: `Экономия ${totalDiscount.toLocaleString()} ₽`,\n+      price: -totalDiscount\n+    });\n+    details.push({\n+      service: 'ИТОГО',\n+      description: 'К оплате',\n+      price: finalPrice\n+    });\n+  }\n } else {\n   // Для других ТК - базовая информация\n   details.push({\n     service: 'Доставка груза',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759851193314,
+      "end": 1759851193361
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bf4d56d0001PKbbTYSlQcGha9",
+  "messageID": "msg_9bf4d38cf001E4WH6psoX42zvL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01G8PU7wDXyKs1nWfaf6vsEA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 2850,
+      "limit": 50
+    },
+    "output": "<file>\n02851|       console.warn('⚠️ Очень большой объем груза (>100 м³). Возможны ограничения.');\n02852|     }\n02853|     \n02854|     return true;\n02855|   };\n02856| \n02857|   const calculateRailContinent = async (): Promise<CalculationResult> => {\n02858|     const apiUrl = '/api/rail-continent';\n02859|     \n02860|     try {\n02861|       // 🔧 Валидация множественных мест\n02862|       validateMultipleCargos(form.cargos);\n02863|       \n02864|       // Вычисляем основные параметры груза\n02865|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n02866|       const totalVolume = form.cargos.reduce((sum, cargo) => \n02867|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n02868|       );\n02869|       \n02870|       // 🔧 ИСПРАВЛЕНО: Умные габариты для множественных мест\n02871|       const optimalLength = calculateOptimalLength(form.cargos);\n02872|       const optimalWidth = calculateOptimalWidth(form.cargos);\n02873|       const optimalHeight = calculateOptimalHeight(form.cargos);\n02874|       \n02875|       // 🔧 Детальное логирование множественных мест\n02876|       console.log('🚂 Rail Continent: Анализ множественных грузовых мест:');\n02877|       console.log(`   - Количество мест: ${form.cargos.length}`);\n02878|       console.log(`   - Общий вес: ${totalWeight} кг`);\n02879|       console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);\n02880|       \n02881|       form.cargos.forEach((cargo, index) => {\n02882|         console.log(`   📦 Место ${index + 1}:`);\n02883|         console.log(`     - Габариты: ${cargo.length}×${cargo.width}×${cargo.height} см`);\n02884|         console.log(`     - Вес: ${cargo.weight} кг`);\n02885|         console.log(`     - Объем: ${((cargo.length * cargo.width * cargo.height) / 1000000).toFixed(3)} м³`);\n02886|       });\n02887|       \n02888|       if (form.cargos.length > 1) {\n02889|         const maxLength = Math.max(...form.cargos.map(c => c.length));\n02890|         const maxWidth = Math.max(...form.cargos.map(c => c.width));\n02891|         const maxHeight = Math.max(...form.cargos.map(c => c.height));\n02892|         console.log(`   📐 Максимальные габариты: ${maxLength}×${maxWidth}×${maxHeight} см`);\n02893|         console.log(`   🔧 Оптимальные габариты: ${(optimalLength*100).toFixed(0)}×${(optimalWidth*100).toFixed(0)}×${(optimalHeight*100).toFixed(0)} см`);\n02894|       }\n02895|       \n02896|       // 🔧 ИСПРАВЛЕНО: Добавлен параметр quantity и улучшенные габариты\n02897|       const requestData = {\n02898|         city_sender: form.fromCity || 'Москва',\n02899|         city_receiver: form.toCity || 'Санкт-Петербург',\n02900|         weight: totalWeight,\n\n(File has more lines. Use 'offset' parameter to read beyond line 2900)\n</file>",
+    "metadata": {
+      "preview": "      console.warn('⚠️ Очень большой объем груза (>100 м³). Возможны ограничения.');\n    }\n    \n    return true;\n  };\n\n  const calculateRailContinent = async (): Promise<CalculationResult> => {\n    const apiUrl = '/api/rail-continent';\n    \n    try {\n      // 🔧 Валидация множественных мест\n      validateMultipleCargos(form.cargos);\n      \n      // Вычисляем основные параметры груза\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n      \n      // 🔧 ИСПРАВЛЕНО: Умные габариты для множественных мест"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759851141842,
+      "end": 1759851141848
+    }
+  }
+}

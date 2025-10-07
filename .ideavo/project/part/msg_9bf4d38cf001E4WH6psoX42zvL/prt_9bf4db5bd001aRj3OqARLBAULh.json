@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bf4db5bd001aRj3OqARLBAULh",
+  "messageID": "msg_9bf4d38cf001E4WH6psoX42zvL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01NzSBirTUWP1MYLUmh2U921",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "calc.company.*Возовоз|Возовоз.*calc|parseCalculationDetails.*Возовоз",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/components/diagnostic/ManualTesting.tsx:\n  Line 57:   { id: 'vozovoz', name: 'Возовоз', officialSite: 'https://vozovoz.ru/calculator/' },",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "calc.company.*Возовоз|Возовоз.*calc|parseCalculationDetails.*Возовоз",
+    "time": {
+      "start": 1759851166048,
+      "end": 1759851166066
+    }
+  }
+}

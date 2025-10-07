@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bf4d7640001oiMh2TAK0RvCpA",
+  "messageID": "msg_9bf4d38cf001E4WH6psoX42zvL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_013XxEkzPZrykDTvidWPhjUs",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Показать подробнее|ShowDetails",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 4185:                               {expandedDetails[calc.company] ? 'Скрыть подробнее' : 'Показать подробнее'}",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "Показать подробнее|ShowDetails",
+    "time": {
+      "start": 1759851148930,
+      "end": 1759851148942
+    }
+  }
+}

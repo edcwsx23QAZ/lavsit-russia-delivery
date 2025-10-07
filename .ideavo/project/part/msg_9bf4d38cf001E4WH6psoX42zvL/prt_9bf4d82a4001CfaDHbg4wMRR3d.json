@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bf4d82a4001CfaDHbg4wMRR3d",
+  "messageID": "msg_9bf4d38cf001E4WH6psoX42zvL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01JEnTox2BR7Lj1Q3rerAV3A",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4180,
+      "limit": 50
+    },
+    "output": "<file>\n04181|                               size=\"sm\"\n04182|                               onClick={() => toggleDetails(calc.company)}\n04183|                               className=\"h-6 text-xs\"\n04184|                             >\n04185|                               {expandedDetails[calc.company] ? 'Скрыть подробнее' : 'Показать подробнее'}\n04186|                             </Button>\n04187|                           )}\n04188|                           <Button\n04189|                             variant=\"outline\"\n04190|                             size=\"sm\"\n04191|                             onClick={() => toggleDebugInfo(calc.company)}\n04192|                             className=\"h-6 text-xs\"\n04193|                           >\n04194|                             {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}\n04195|                           </Button>\n04196|                         </div>\n04197|                         \n04198|                         {/* Детали расчета */}\n04199|                         {!calc.error && (\n04200|                           <Collapsible open={expandedDetails[calc.company]}>\n04201|                             <CollapsibleContent className=\"mt-2\">\n04202|                               <div className=\"bg-gray-900 p-3 rounded text-xs\">\n04203|                                 <h4 className=\"font-bold mb-2 text-white\">Детали расчета:</h4>\n04204|                                 {(() => {\n04205|                                   const details = parseCalculationDetails(calc);\n04206|                                   const totalPrice = details.reduce((sum, detail) => sum + detail.price, 0);\n04207|                                   \n04208|                                   return (\n04209|                                     <div className=\"space-y-1\">\n04210|                                       {details.map((detail, idx) => (\n04211|                                         <div key={idx} className=\"flex justify-between text-white\">\n04212|                                           <div>\n04213|                                             <div className=\"font-medium\">{detail.service}</div>\n04214|                                             {detail.description && (\n04215|                                               <div className=\"text-gray-400 text-xs\">{detail.description}</div>\n04216|                                             )}\n04217|                                           </div>\n04218|                                           <div className=\"font-medium\">{detail.price.toLocaleString()} ₽</div>\n04219|                                         </div>\n04220|                                       ))}\n04221|                                     </div>\n04222|                                   );\n04223|                                 })()}\n04224|                               </div>\n04225|                             </CollapsibleContent>\n04226|                           </Collapsible>\n04227|                         )}\n04228|                         \n04229|                         {/* Отладочная информация - всегда доступна */}\n04230|                         <Collapsible open={expandedDebugInfo[calc.company]}>\n\n(File has more lines. Use 'offset' parameter to read beyond line 4230)\n</file>",
+    "metadata": {
+      "preview": "                              size=\"sm\"\n                              onClick={() => toggleDetails(calc.company)}\n                              className=\"h-6 text-xs\"\n                            >\n                              {expandedDetails[calc.company] ? 'Скрыть подробнее' : 'Показать подробнее'}\n                            </Button>\n                          )}\n                          <Button\n                            variant=\"outline\"\n                            size=\"sm\"\n                            onClick={() => toggleDebugInfo(calc.company)}\n                            className=\"h-6 text-xs\"\n                          >\n                            {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}\n                          </Button>\n                        </div>\n                        \n                        {/* Детали расчета */}\n                        {!calc.error && (\n                          <Collapsible open={expandedDetails[calc.company]}>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759851152736,
+      "end": 1759851152739
+    }
+  }
+}
