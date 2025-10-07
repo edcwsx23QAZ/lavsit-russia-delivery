@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bdeaeca30019sYOWDfKUZpWE8",
+  "messageID": "msg_9bdea9044001M4xts0oh5SrGUz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_013eCGzGNaPnc62v86A2tpZz",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "api\\.dellin\\.ru",
+      "include": "*.ts"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/api/dellin-packages/route.ts:\n  Line 6:     const response = await fetch('https://api.dellin.ru/v1/references/packages.json', {\n  Line 80:       const response = await apiRequestWithTimeout('https://api.dellin.ru/v1/references/packages.json', {",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "api\\.dellin\\.ru",
+    "time": {
+      "start": 1759827913963,
+      "end": 1759827913973
+    }
+  }
+}

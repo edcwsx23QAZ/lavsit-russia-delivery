@@ -1,0 +1,11 @@
+{
+  "id": "prt_9bdeb2513001eBTp7IHu0U4Z94",
+  "messageID": "msg_9bdea9044001M4xts0oh5SrGUz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "## Диагностика проблемы\n\n**Основная причина ошибки**: Mixed Content Policy - браузер блокирует HTTP запрос с HTTPS сайта.\n\nВ строке `1274` лога видим:\n- API возвращает HTTP URL: `http://api.dellin.ru/catalog/terminals_v3.json`\n- Сайт работает по HTTPS: `https://ideavo.ai/`\n- Браузер блокирует запрос к небезопасному ресурсу",
+  "time": {
+    "start": 1759827931130,
+    "end": 1759827931130
+  }
+}

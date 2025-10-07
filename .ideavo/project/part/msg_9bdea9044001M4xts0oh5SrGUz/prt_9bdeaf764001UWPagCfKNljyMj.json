@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bdeaf764001UWPagCfKNljyMj",
+  "messageID": "msg_9bdea9044001M4xts0oh5SrGUz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01EkRtiV4u3qzp4C1wZxfuze",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "terminals|catalog",
+      "include": "*.tsx"
+    },
+    "output": "Found 13 matches\n/home/user/project/app/page.tsx:\n  Line 1259:       const response = await fetch('https://api.dellin.ru/v3/public/terminals.json', {\n  Line 1291:   let terminalsDirectoryCache: any = null;\n  Line 1292:   let terminalsDirectoryCacheTime: number = 0;\n  Line 1309:       if (!terminalsDirectoryCache || (now - terminalsDirectoryCacheTime) > CACHE_DURATION) {\n  Line 1310:         terminalsDirectoryCache = await getDellinTerminalsDirectory();\n  Line 1311:         terminalsDirectoryCacheTime = now;\n  Line 1314:       if (!terminalsDirectoryCache || !terminalsDirectoryCache.city) {\n  Line 1320:       const cityWithTerminals = terminalsDirectoryCache.city.find((city: any) => \n  Line 1332:         terminalsCount: cityWithTerminals.terminals?.terminal?.length || 0\n  Line 1336:       const terminals = cityWithTerminals.terminals?.terminal || [];\n  Line 1337:       if (terminals.length === 0) {\n  Line 1343:       const suitableTerminals = terminals.filter((terminal: any) => {\n  Line 1354:       const availableTerminals = suitableTerminals.length > 0 ? suitableTerminals : terminals;",
+    "metadata": {
+      "matches": 13,
+      "truncated": false
+    },
+    "title": "terminals|catalog",
+    "time": {
+      "start": 1759827917397,
+      "end": 1759827917409
+    }
+  }
+}
