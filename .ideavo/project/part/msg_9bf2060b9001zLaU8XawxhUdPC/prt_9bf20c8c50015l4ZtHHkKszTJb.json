@@ -1,0 +1,23 @@
+{
+  "id": "prt_9bf20c8c50015l4ZtHHkKszTJb",
+  "messageID": "msg_9bf2060b9001zLaU8XawxhUdPC",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01NbVj26CADddRzPMiuAJifq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/vozovoz-docs/README.md"
+    },
+    "output": "<file>\n00001| Vozovoz API 2.5\n00002| ===============\n00003| \n00004| Vozovoz API представляет интерфейс для взаимодействия с данными https://vozovoz.ru.\n00005| В качестве протокола передачи данных используется HTTPS.\n00006| Протестировать взаимодействия с API можно на [демо-сервере](https://vozovoz.org/dev/api/).\n00007| \n00008| >[English version](en/README.md)\n00009| \n00010| ## Содержание\n00011| \n00012| * [Быстрый старт](ru/docs/quick.md)\n00013|     * [Расчёт стоимости заказа](ru/docs/object/price.md)\n00014|     * [Оформление заказа](ru/docs/object/order.md#set)\n00015| * [Параметры запросов](ru/docs/params/index.md)\n00016|     * [Авторизация](ru/docs/params/auth.md)\n00017| * [Объекты](ru/docs/object/index.md)\n00018|     * [Локация](ru/docs/object/location.md)\n00019|     * [Заказ](ru/docs/object/order.md)\n00020|         * [Получить](ru/docs/object/order.md#get)\n00021|         * [Оформить](ru/docs/object/order.md#set)\n00022|     * [Прямой запрос](ru/docs/object/directQuery.md)\n00023|     * [Расписание дат доставки](ru/docs/object/schedule.md)\n00024|     * [Стоимость](ru/docs/object/price.md)\n00025|     * [Терминал](ru/docs/object/terminal.md)\n00026|     * [Упаковка](ru/docs/object/wrapping.md)\n00027| * [Структуры](ru/docs/structure/index.md)\n00028|     * [Груз](ru/docs/structure/cargo.md)\n00029|         * [Габариты](ru/docs/structure/cargo.md#dimension)\n00030|         * [Упаковка](ru/docs/structure/cargo.md#wrapping)\n00031|     * [Контрагент](ru/docs/structure/customer.md)\n00032|     * [Пункт доступа](ru/docs/structure/gateway.md)\n00033|         * [Точка доступа](ru/docs/structure/gateway.md#point)\n00034|         * [Услуги](ru/docs/structure/service.md)\n00035| \n00036| ***\n00037| \n00038| По всем вопросам обращайтесь на почту [api@vozovoz.ru](mailto:api@vozovoz.ru).\n</file>",
+    "metadata": {
+      "preview": "Vozovoz API 2.5\n===============\n\nVozovoz API представляет интерфейс для взаимодействия с данными https://vozovoz.ru.\nВ качестве протокола передачи данных используется HTTPS.\nПротестировать взаимодействия с API можно на [демо-сервере](https://vozovoz.org/dev/api/).\n\n>[English version](en/README.md)\n\n## Содержание\n\n* [Быстрый старт](ru/docs/quick.md)\n    * [Расчёт стоимости заказа](ru/docs/object/price.md)\n    * [Оформление заказа](ru/docs/object/order.md#set)\n* [Параметры запросов](ru/docs/params/index.md)\n    * [Авторизация](ru/docs/params/auth.md)\n* [Объекты](ru/docs/object/index.md)\n    * [Локация](ru/docs/object/location.md)\n    * [Заказ](ru/docs/object/order.md)\n        * [Получить](ru/docs/object/order.md#get)"
+    },
+    "title": "vozovoz-docs/README.md",
+    "time": {
+      "start": 1759848221273,
+      "end": 1759848221276
+    }
+  }
+}

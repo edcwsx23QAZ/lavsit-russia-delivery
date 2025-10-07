@@ -1,0 +1,20 @@
+{
+  "id": "prt_9bf2097df001lagVddH9OIK58T",
+  "messageID": "msg_9bf2060b9001zLaU8XawxhUdPC",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01KZ6rgABrAvRzyMCTEDtaCA",
+  "state": {
+    "status": "error",
+    "input": {
+      "command": "cd /tmp && git clone https://github.com/vozovoz/apiv2.git vozovoz-docs",
+      "description": "Клонировать документацию API Возовоз"
+    },
+    "error": "Error: This command references paths outside of /home/user/project so it is not allowed to be executed.",
+    "time": {
+      "start": 1759848209495,
+      "end": 1759848209504
+    }
+  }
+}

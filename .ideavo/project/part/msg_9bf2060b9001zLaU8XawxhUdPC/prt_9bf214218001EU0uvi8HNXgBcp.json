@@ -1,0 +1,23 @@
+{
+  "id": "prt_9bf214218001EU0uvi8HNXgBcp",
+  "messageID": "msg_9bf2060b9001zLaU8XawxhUdPC",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016J4t6XtkDfiJ5F5DeCxgUU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/vozovoz-docs/ru/docs/quick.md"
+    },
+    "output": "<file>\n00001| # <a name=\"up\"/>Vozovoz API 2.5\n00002| \n00003| [Главная страница](/README.md) > Быстрый старт\n00004| \n00005| ## Быстрый старт\n00006| \n00007| Все запросы и ответы Vozovoz API передаются в формате JSON, передаваемого в [POST-параметрах](params/post.md).\n00008| Для использования Vozovoz API Вам необходимо в каждом запросе в [GET-параметрах](params/get.md) указывать свой идентификационный токен.\n00009| \n00010| Пример кода на JavaScript, который Вы можете в любой момент ввести в консоли разработчика:\n00011| \n00012| ```javascript\n00013| var xhttp = new XMLHttpRequest();\n00014| // запрос на тестовый сервер\n00015| xhttp.open(\"POST\", \"https://vozovoz.org/api/?token=yourToken\"/*вместо yourToken должен быть указан Ваш идентификационный токен-ключ*/, false);\n00016| // xhttp.open(\"POST\", \"https://vozovoz.ru/api/?token=yourToken\", false); // для рабочего сервера\n00017| xhttp.setRequestHeader(\"Content-type\", \"application/json\");\n00018| xhttp.send(JSON.stringify({\n00019| // Тело запроса, например:\n00020|     \"object\": \"version\",\n00021|     \"action\": \"get\"\n00022| }));\n00023| // вывести текст тут же, в консоли\n00024| xhttp.responseText;\n00025| // или разместить его прямо на странице\n00026| //document.body.innerHTML = xhttp.responseText;\n00027| ```\n00028| \n00029| Без комментариев:\n00030| \n00031| ```javascript\n00032| var xhttp = new XMLHttpRequest();\n00033| xhttp.open(\"POST\", \"https://vozovoz.org/api/?token=\", false);\n00034| xhttp.setRequestHeader(\"Content-type\", \"application/json\");\n00035| xhttp.send(JSON.stringify({\n00036|     \"object\": \"version\",\n00037|     \"action\": \"get\"\n00038| }));\n00039| document.body.innerHTML = xhttp.responseText;\n00040| ```\n00041| \n00042| ***\n00043| [▲ Наверх](#up)\n</file>",
+    "metadata": {
+      "preview": "# <a name=\"up\"/>Vozovoz API 2.5\n\n[Главная страница](/README.md) > Быстрый старт\n\n## Быстрый старт\n\nВсе запросы и ответы Vozovoz API передаются в формате JSON, передаваемого в [POST-параметрах](params/post.md).\nДля использования Vozovoz API Вам необходимо в каждом запросе в [GET-параметрах](params/get.md) указывать свой идентификационный токен.\n\nПример кода на JavaScript, который Вы можете в любой момент ввести в консоли разработчика:\n\n```javascript\nvar xhttp = new XMLHttpRequest();\n// запрос на тестовый сервер\nxhttp.open(\"POST\", \"https://vozovoz.org/api/?token=yourToken\"/*вместо yourToken должен быть указан Ваш идентификационный токен-ключ*/, false);\n// xhttp.open(\"POST\", \"https://vozovoz.ru/api/?token=yourToken\", false); // для рабочего сервера\nxhttp.setRequestHeader(\"Content-type\", \"application/json\");\nxhttp.send(JSON.stringify({\n// Тело запроса, например:\n    \"object\": \"version\","
+    },
+    "title": "vozovoz-docs/ru/docs/quick.md",
+    "time": {
+      "start": 1759848252776,
+      "end": 1759848252778
+    }
+  }
+}
