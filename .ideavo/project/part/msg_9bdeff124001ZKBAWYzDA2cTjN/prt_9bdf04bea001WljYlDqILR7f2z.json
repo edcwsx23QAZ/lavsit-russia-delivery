@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bdf04bea001WljYlDqILR7f2z",
+  "messageID": "msg_9bdeff124001ZKBAWYzDA2cTjN",
+  "sessionID": "ses_642100efaffewo9B0P8I80dZaA",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_0157kDC1KpotuWVC8gnhtaYM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -s -X POST \"https://api.dellin.ru/v3/public/terminals.json\" -H \"Content-Type: application/json\" -d '{\"appkey\": \"demo\"}' | head -20",
+      "description": "Test Dellin terminals API with demo key"
+    },
+    "output": "{\n    \"errors\": \"Unauthorized\"\n}",
+    "metadata": {
+      "output": "{\n    \"errors\": \"Unauthorized\"\n}",
+      "exit": 0,
+      "description": "Test Dellin terminals API with demo key"
+    },
+    "title": "curl -s -X POST \"https://api.dellin.ru/v3/public/terminals.json\" -H \"Content-Type: application/json\" -d '{\"appkey\": \"demo\"}' | head -20",
+    "time": {
+      "start": 1759828267133,
+      "end": 1759828268055
+    }
+  }
+}

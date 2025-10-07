@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bdf09311001S1Xrh0Pe7wmx0L",
+  "messageID": "msg_9bdeff124001ZKBAWYzDA2cTjN",
+  "sessionID": "ses_642100efaffewo9B0P8I80dZaA",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01XXHBBGjBTn8L8NzpDUqLSF",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 900,
+      "limit": 50
+    },
+    "output": "<file>\n00901|       // Находим пустые грузы для заполнения\n00902|       const emptyCargos = updatedCargos\n00903|         .map((cargo, index) => ({ cargo, index }))\n00904|         .filter(item => isEmptyCargo(item.cargo));\n00905|       \n00906|       console.log('Найдено пустых грузов:', emptyCargos.length);\n00907|       console.log('Нужно заполнить грузов:', newCargos.length);\n00908|       \n00909|       // Заполняем пустые грузы данными товара\n00910|       let filledCount = 0;\n00911|       for (let i = 0; i < Math.min(emptyCargos.length, newCargos.length); i++) {\n00912|         const emptyCargoIndex = emptyCargos[i].index;\n00913|         const newCargoData = newCargos[i];\n00914|         \n00915|         updatedCargos[emptyCargoIndex] = {\n00916|           ...updatedCargos[emptyCargoIndex],\n00917|           length: newCargoData.length,\n00918|           width: newCargoData.width,\n00919|           height: newCargoData.height,\n00920|           weight: newCargoData.weight,\n00921|           productId: newCargoData.productId,\n00922|           placeNumber: newCargoData.placeNumber,\n00923|           isFromProduct: newCargoData.isFromProduct,\n00924|           addedAt: newCargoData.addedAt\n00925|         };\n00926|         \n00927|         cargoIndexes.push(emptyCargoIndex);\n00928|         filledCount++;\n00929|       }\n00930|       \n00931|       // Если нужно больше грузов, чем есть пустых - добавляем новые\n00932|       if (filledCount < newCargos.length) {\n00933|         const remainingCargos = newCargos.slice(filledCount);\n00934|         const startIndex = updatedCargos.length;\n00935|         \n00936|         for (let i = 0; i < remainingCargos.length; i++) {\n00937|           updatedCargos.push(remainingCargos[i]);\n00938|           cargoIndexes.push(startIndex + i);\n00939|         }\n00940|       }\n00941|       \n00942|       productInForm.cargoIndexes = cargoIndexes;\n00943|       \n00944|       console.log('Индексы заполненных грузов:', cargoIndexes);\n00945|       console.log('Общее количество грузов после добавления:', updatedCargos.length);\n00946|       \n00947|       // Пересчитываем объявленную стоимость\n00948|       const prevSelectedProducts = prev.selectedProducts || [];\n00949|       const newSelectedProducts = [...prevSelectedProducts, productInForm];\n00950|       const newDeclaredValue = calculateTotalValue(newSelectedProducts);\n\n(File has more lines. Use 'offset' parameter to read beyond line 950)\n</file>",
+    "metadata": {
+      "preview": "      // Находим пустые грузы для заполнения\n      const emptyCargos = updatedCargos\n        .map((cargo, index) => ({ cargo, index }))\n        .filter(item => isEmptyCargo(item.cargo));\n      \n      console.log('Найдено пустых грузов:', emptyCargos.length);\n      console.log('Нужно заполнить грузов:', newCargos.length);\n      \n      // Заполняем пустые грузы данными товара\n      let filledCount = 0;\n      for (let i = 0; i < Math.min(emptyCargos.length, newCargos.length); i++) {\n        const emptyCargoIndex = emptyCargos[i].index;\n        const newCargoData = newCargos[i];\n        \n        updatedCargos[emptyCargoIndex] = {\n          ...updatedCargos[emptyCargoIndex],\n          length: newCargoData.length,\n          width: newCargoData.width,\n          height: newCargoData.height,\n          weight: newCargoData.weight,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759828284627,
+      "end": 1759828284636
+    }
+  }
+}

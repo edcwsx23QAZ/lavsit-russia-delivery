@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bdf05083001JvIYqc7J35SfUp",
+  "messageID": "msg_9bdeff124001ZKBAWYzDA2cTjN",
+  "sessionID": "ses_642100efaffewo9B0P8I80dZaA",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01P4PLrL98w83vBZkLPeRxAW",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -s \"https://api.dellin.ru/v1/references/packages.json\" | head -20",
+      "description": "Test Dellin packages reference API"
+    },
+    "output": "{\n    \"errors\": \"Unauthorized\"\n}",
+    "metadata": {
+      "output": "{\n    \"errors\": \"Unauthorized\"\n}",
+      "exit": 0,
+      "description": "Test Dellin packages reference API"
+    },
+    "title": "curl -s \"https://api.dellin.ru/v1/references/packages.json\" | head -20",
+    "time": {
+      "start": 1759828267911,
+      "end": 1759828268677
+    }
+  }
+}

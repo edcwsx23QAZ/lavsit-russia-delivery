@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bdf01f8d001oDJB708nvJ6c7H",
+  "messageID": "msg_9bdeff124001ZKBAWYzDA2cTjN",
+  "sessionID": "ses_642100efaffewo9B0P8I80dZaA",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_016nDRN3vPzqs6LFqhjQZbS5",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "calculation|калькулят",
+      "path": "/home/user/project",
+      "include": "*.tsx"
+    },
+    "output": "Found 14 matches\n/home/user/project/app/page.tsx:\n  Line 183:   const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  Line 3467:       const calculationFunctions: Promise<CalculationResult>[] = [];\n  Line 3470:         calculationFunctions.push(calculateDellin());\n  Line 3473:         calculationFunctions.push(calculatePEK());\n  Line 3476:         calculationFunctions.push(calculateNordWheel());\n  Line 3479:         calculationFunctions.push(calculateRailContinent());\n  Line 3482:         calculationFunctions.push(calculateVozovoz());\n  Line 3486:       if (calculationFunctions.length === 0) {\n  Line 3491:       const results = await Promise.all(calculationFunctions);\n  Line 3510:       const allExpanded = calculations.reduce((acc, calc) => {\n  Line 4186:             {calculations.length > 0 && (\n  Line 4200:                 {calculations.map((calc, index) => (\n  Line 4409:             {calculations.length > 0 && (\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 753:           // Используем прямой расчет как в главном калькуляторе",
+    "metadata": {
+      "matches": 14,
+      "truncated": false
+    },
+    "title": "calculation|калькулят",
+    "time": {
+      "start": 1759828254666,
+      "end": 1759828254677
+    }
+  }
+}
