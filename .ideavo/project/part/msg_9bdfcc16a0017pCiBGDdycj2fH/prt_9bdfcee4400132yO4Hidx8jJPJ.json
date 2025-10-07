@@ -6,17 +6,21 @@
   "tool": "bash",
   "callID": "toolu_01UmMVCcvBq8gee9pz2YoUgh",
   "state": {
-    "metadata": {
-      "output": "",
-      "description": "Add all files and show what will be committed"
-    },
-    "status": "running",
+    "status": "completed",
     "input": {
       "command": "cd /home/user/project && git add . && git diff --cached --name-only",
       "description": "Add all files and show what will be committed"
     },
+    "output": ".ideavo/project/message/ses_6852784ecffeuHwynj83p2lr14/msg_9bdfcb7c3001U4bBVuhThSjfzo.json\n.ideavo/project/message/ses_6852784ecffeuHwynj83p2lr14/msg_9bdfcc16a0017pCiBGDdycj2fH.json\n.ideavo/project/part/msg_9bdfcb7c3001U4bBVuhThSjfzo/prt_9bdfcb7c4001ZQUCwEDey5Ad45.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfcd03e001I2fEbjtmPSyFn2.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfcd1f7001BGdgCcEFNhWf0e.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfcd3e8001H18Zf0OXEDvnI2.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfce01f001dufvhT923ul4K0.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfce0200015l3ojY7UxMjkPe.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfce332001y5nPHSZB1vnrrr.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfcee43001g1zNa5BdRwJWQ3.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfcee4400132yO4Hidx8jJPJ.json\n.ideavo/project/project/6fae4c02af555c76f810bd980eaf5744c0e2af67.json\n.ideavo/project/session/6fae4c02af555c76f810bd980eaf5744c0e2af67/ses_6852784ecffeuHwynj83p2lr14.json\n",
+    "metadata": {
+      "output": ".ideavo/project/message/ses_6852784ecffeuHwynj83p2lr14/msg_9bdfcb7c3001U4bBVuhThSjfzo.json\n.ideavo/project/message/ses_6852784ecffeuHwynj83p2lr14/msg_9bdfcc16a0017pCiBGDdycj2fH.json\n.ideavo/project/part/msg_9bdfcb7c3001U4bBVuhThSjfzo/prt_9bdfcb7c4001ZQUCwEDey5Ad45.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfcd03e001I2fEbjtmPSyFn2.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfcd1f7001BGdgCcEFNhWf0e.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfcd3e8001H18Zf0OXEDvnI2.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfce01f001dufvhT923ul4K0.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfce0200015l3ojY7UxMjkPe.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfce332001y5nPHSZB1vnrrr.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfcee43001g1zNa5BdRwJWQ3.json\n.ideavo/project/part/msg_9bdfcc16a0017pCiBGDdycj2fH/prt_9bdfcee4400132yO4Hidx8jJPJ.json\n.ideavo/project/project/6fae4c02af555c76f810bd980eaf5744c0e2af67.json\n.ideavo/project/session/6fae4c02af555c76f810bd980eaf5744c0e2af67/ses_6852784ecffeuHwynj83p2lr14.json\n",
+      "exit": 0,
+      "description": "Add all files and show what will be committed"
+    },
+    "title": "cd /home/user/project && git add . && git diff --cached --name-only",
     "time": {
-      "start": 1759829094836
+      "start": 1759829094832,
+      "end": 1759829094899
     }
   }
 }

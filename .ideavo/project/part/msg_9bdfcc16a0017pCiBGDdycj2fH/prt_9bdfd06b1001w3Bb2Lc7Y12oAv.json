@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bdfd06b1001w3Bb2Lc7Y12oAv",
+  "messageID": "msg_9bdfcc16a0017pCiBGDdycj2fH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01PxhFuFg8yVvpVxBKquJ2xy",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && git status --porcelain | grep -E '\\.(tsx?|js|json)$' | grep -v '\\.ideavo'",
+      "description": "Check for code changes outside ideavo directory"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Check for code changes outside ideavo directory"
+    },
+    "title": "cd /home/user/project && git status --porcelain | grep -E '\\.(tsx?|js|json)$' | grep -v '\\.ideavo'",
+    "time": {
+      "start": 1759829101212,
+      "end": 1759829101280
+    }
+  }
+}
