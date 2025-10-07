@@ -1271,7 +1271,9 @@ export default function Home() {
       
       if (response.ok && data.url) {
         // Скачиваем сам файл справочника
-        const directoryResponse = await fetch(data.url);
+        // Принудительно заменяем HTTP на HTTPS для избежания Mixed Content ошибки
+        const httpsUrl = data.url.replace('http://', 'https://');
+        const directoryResponse = await fetch(httpsUrl);
         const directoryData = await directoryResponse.json();
         
         console.log(`📋 Справочник терминалов получен, городов: ${directoryData.city?.length || 0}`);
@@ -1525,10 +1527,10 @@ export default function Home() {
       const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;
 
       // Получаем терминалы и нормализованные адреса
-      let fromTerminalId = null;
-      let toTerminalId = null;
-      let normalizedFromAddress = null;
-      let normalizedToAddress = null;
+      let fromTerminalId: string | null = null;
+      let toTerminalId: string | null = null;
+      let normalizedFromAddress: string | null = null;
+      let normalizedToAddress: string | null = null;
       
       // Для терминальной доставки получаем терминалы
       if (!form.fromAddressDelivery) {

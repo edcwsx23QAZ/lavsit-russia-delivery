@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bdec4f0e001QKQasUgnbOKh28",
+  "messageID": "msg_9bdec1464001kmey9OvVD5M5zR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_019iYKk1dgB5wTznsai5fXtY",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      if (response.ok && data.url) {\n        // Скачиваем сам файл справочника\n        const directoryResponse = await fetch(data.url);",
+      "newString": "      if (response.ok && data.url) {\n        // Скачиваем сам файл справочника\n        // Принудительно заменяем HTTP на HTTPS для избежания Mixed Content ошибки\n        const httpsUrl = data.url.replace('http://', 'https://');\n        const directoryResponse = await fetch(httpsUrl);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1270,9 +1270,11 @@\n console.log(`📋 Ответ API терминалов:`, data);\n \n if (response.ok && data.url) {\n   // Скачиваем сам файл справочника\n-  const directoryResponse = await fetch(data.url);\n+  // Принудительно заменяем HTTP на HTTPS для избежания Mixed Content ошибки\n+  const httpsUrl = data.url.replace('http://', 'https://');\n+  const directoryResponse = await fetch(httpsUrl);\n   const directoryData = await directoryResponse.json();\n   \n   console.log(`📋 Справочник терминалов получен, городов: ${directoryData.city?.length || 0}`);\n   return directoryData;\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759828006835,
+      "end": 1759828006858
+    }
+  }
+}
