@@ -1,0 +1,73 @@
+{
+  "id": "prt_9be55d5e40014efCxCxTFGGqRH",
+  "messageID": "msg_9be55c139001Ilj1jdBWC6apGq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_016CBAgZJch2vwmCR2dYhrv8",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Исправить получение справочника упаковок Деловых Линий согласно официальной документации",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "fix-dellin-packaging-api"
+        },
+        {
+          "content": "Создать правильный workflow: API ДЛ → CSV ссылка → скачать CSV → парсить → получить UID",
+          "status": "pending",
+          "priority": "high",
+          "id": "implement-csv-workflow"
+        },
+        {
+          "content": "Обновить API endpoint /api/dellin-packages для работы с CSV",
+          "status": "pending",
+          "priority": "high",
+          "id": "update-dellin-packages-endpoint"
+        },
+        {
+          "content": "Протестировать новую логику получения UID упаковки",
+          "status": "pending",
+          "priority": "medium",
+          "id": "test-packaging-uid-logic"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Исправить получение справочника упаковок Деловых Линий согласно официальной документации\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"fix-dellin-packaging-api\"\n  },\n  {\n    \"content\": \"Создать правильный workflow: API ДЛ → CSV ссылка → скачать CSV → парсить → получить UID\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"implement-csv-workflow\"\n  },\n  {\n    \"content\": \"Обновить API endpoint /api/dellin-packages для работы с CSV\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"update-dellin-packages-endpoint\"\n  },\n  {\n    \"content\": \"Протестировать новую логику получения UID упаковки\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"test-packaging-uid-logic\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Исправить получение справочника упаковок Деловых Линий согласно официальной документации",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "fix-dellin-packaging-api"
+        },
+        {
+          "content": "Создать правильный workflow: API ДЛ → CSV ссылка → скачать CSV → парсить → получить UID",
+          "status": "pending",
+          "priority": "high",
+          "id": "implement-csv-workflow"
+        },
+        {
+          "content": "Обновить API endpoint /api/dellin-packages для работы с CSV",
+          "status": "pending",
+          "priority": "high",
+          "id": "update-dellin-packages-endpoint"
+        },
+        {
+          "content": "Протестировать новую логику получения UID упаковки",
+          "status": "pending",
+          "priority": "medium",
+          "id": "test-packaging-uid-logic"
+        }
+      ]
+    },
+    "title": "4 todos",
+    "time": {
+      "start": 1759834923983,
+      "end": 1759834923984
+    }
+  }
+}

@@ -1353,74 +1353,76 @@ export default function Home() {
     }
   };
 
-  // Получение UID упаковки "crate_with_bubble" из справочника упаковок Деловые Линии с повторной авторизацией
-  const getDellinCrateWithBubbleUid = async (): Promise<string | null> => {
-    const maxRetries = 2;
-    
-    for (let attempt = 1; attempt <= maxRetries; attempt++) {
-      try {
-        console.log(`📦 СПРАВОЧНИК УПАКОВОК: попытка ${attempt}/${maxRetries}`);
-        
-        const response = await fetch('/api/dellin-packages', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
+  // Получение UID упаковки через правильный workflow согласно документации ДЛ
+  const getDellinPackageUid = async (packageName: string = 'crate_with_bubble'): Promise<string | null> => {
+    try {
+      console.log(`📦 CSV WORKFLOW: Получение UID упаковки "${packageName}" через правильный workflow...`);
+      console.log('📦 CSV WORKFLOW: API ДЛ → CSV ссылка → скачать CSV → парсить → получить UID');
+      
+      const response = await fetch('/api/dellin-packages', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
 
-        const data = await response.json();
-        console.log('📦 СПРАВОЧНИК УПАКОВОК response.ok:', response.ok);
-        console.log('📦 СПРАВОЧНИК УПАКОВОК status:', response.status);
-        console.log('📦 СПРАВОЧНИК УПАКОВОК data:', data);
-        
-        // Если 401 Unauthorized - пробуем переавторизоваться
-        if (response.status === 401 && attempt < maxRetries) {
-          console.log('🔄 СПРАВОЧНИК УПАКОВОК: получили 401, выполняем повторную авторизацию...');
-          const newSessionId = await getDellinSessionId();
-          if (newSessionId) {
-            console.log('✅ СПРАВОЧНИК УПАКОВОК: получен новый SessionID, повторяем запрос...');
-            continue; // Пробуем еще раз с новой авторизацией
-          } else {
-            console.error('❌ СПРАВОЧНИК УПАКОВОК: не удалось получить новый SessionID');
-            return null;
-          }
+      const data = await response.json();
+      console.log('📦 CSV WORKFLOW response.ok:', response.ok);
+      console.log('📦 CSV WORKFLOW status:', response.status);
+      console.log('📦 CSV WORKFLOW workflow info:', data.workflow || 'not specified');
+      
+      if (response.ok && data.success && data.data && Array.isArray(data.data)) {
+        console.log('📦 CSV WORKFLOW: успешно получен справочник');
+        console.log('📦 Количество упаковок в справочнике:', data.data.length);
+        console.log('📦 Источник данных:', data.cached ? 'кэш (24ч)' : 'свежий CSV файл');
+        if (data.csvUrl) {
+          console.log('📦 CSV URL:', data.csvUrl);
         }
         
-        if (response.ok && data.data && Array.isArray(data.data)) {
-          console.log('📦 Количество упаковок в справочнике:', data.data.length);
-          console.log('📦 Первые 3 упаковки:', data.data.slice(0, 3).map(p => ({name: p.name, uid: p.uid})));
-          
-          // Находим упаковку с name "crate_with_bubble"
-          const crateWithBubble = data.data.find((pkg: any) => 
-            pkg.name === 'crate_with_bubble'
+        // Поиск по нескольким вариантам названия
+        const searchTerms = [
+          packageName,
+          'обрешетка',
+          'обрешётка',
+          'амортизация',
+          'bubble',
+          'защитная упаковка'
+        ];
+        
+        let foundPackage: any = null;
+        
+        for (const term of searchTerms) {
+          foundPackage = data.data.find((pkg: any) => 
+            pkg.name && pkg.name.toLowerCase().includes(term.toLowerCase())
           );
           
-          console.log('📦 Поиск crate_with_bubble результат:', crateWithBubble);
-          
-          if (crateWithBubble && crateWithBubble.uid) {
-            console.log('✅ Найден UID для crate_with_bubble:', crateWithBubble.uid);
-            return crateWithBubble.uid;
-          } else {
-            console.log('❌ crate_with_bubble не найден или нет UID');
+          if (foundPackage) {
+            console.log(`✅ CSV WORKFLOW: Найдена упаковка по термину "${term}": ${foundPackage.name} → ${foundPackage.uid}`);
+            break;
           }
+        }
+        
+        if (foundPackage && foundPackage.uid) {
+          return foundPackage.uid;
         } else {
-          console.log('❌ Ошибка структуры ответа API упаковок');
+          console.log('❌ CSV WORKFLOW: Упаковка не найдена по поисковым терминам');
+          
+          // Выводим первые 10 упаковок для отладки
+          console.log('📦 Доступные упаковки в справочнике (первые 10):');
+          data.data.slice(0, 10).forEach((pkg: any, index: number) => {
+            console.log(`  ${index + 1}. ${pkg.name} (${pkg.uid})`);
+          });
         }
-        
-        // Если дошли сюда, значит не нашли упаковку или была другая ошибка
-        break;
-        
-      } catch (error) {
-        console.error(`❌ СПРАВОЧНИК УПАКОВОК: ошибка на попытке ${attempt}:`, error);
-        if (attempt === maxRetries) {
-          console.error('❌ СПРАВОЧНИК УПАКОВОК: исчерпаны все попытки');
-          return null;
-        }
+      } else {
+        console.error('❌ CSV WORKFLOW: Ошибка получения справочника:', data);
       }
+      
+      return null;
+        
+    } catch (error) {
+      console.error('❌ CSV WORKFLOW: Критическая ошибка:', error);
+      return null;
     }
-    
-    console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');
-    return null;
   };
 
   // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией
@@ -1547,25 +1549,25 @@ export default function Home() {
       console.log('🔍 ОТЛАДКА УПАКОВКИ: typeof form.needPackaging =', typeof form.needPackaging);
       
       if (form.needPackaging) {
-        console.log('🔍 ✅ УПАКОВКА ТРЕБУЕТСЯ - ЗАПРАШИВАЕМ UID...');
+        console.log('🔍 ✅ УПАКОВКА ТРЕБУЕТСЯ - ЗАПРАШИВАЕМ UID через CSV WORKFLOW...');
         try {
-          packageUid = await getDellinCrateWithBubbleUid();
-          console.log('🔍 ✅ ПОЛУЧЕН packageUid из API:', packageUid);
+          packageUid = await getDellinPackageUid('crate_with_bubble');
+          console.log('🔍 ✅ ПОЛУЧЕН packageUid из CSV WORKFLOW:', packageUid);
           
-          // ВРЕМЕННО: если не получили UID из API, используем тестовый
+          // Если не получили UID из CSV, используем UID с сайта ДЛ (исправляем расхождение 500₽)
           if (!packageUid) {
-            packageUid = '0xa6a7bd2bf950e67f4b2cf7cc3a97c111';
-            console.log('🔍 🧪 ИСПОЛЬЗУЕМ ТЕСТОВЫЙ UID:', packageUid);
+            packageUid = '0x9dd8901b0ecef10c11e8ed001199bf6e'; // UID с официального сайта ДЛ
+            console.log('🔍 🧪 ИСПОЛЬЗУЕМ UID С САЙТА ДЛ (исправляем расхождение):', packageUid);
           }
           
           console.log('🔍 ✅ ФИНАЛЬНЫЙ packageUid:', packageUid);
           console.log('🔍 ✅ typeof packageUid:', typeof packageUid);
           console.log('🔍 ✅ packageUid truthy:', !!packageUid);
         } catch (error) {
-          console.log('🔍 ❌ ОШИБКА при получении packageUid:', error);
-          // ВРЕМЕННО: используем тестовый UID при ошибке
-          packageUid = '0xa6a7bd2bf950e67f4b2cf7cc3a97c111';
-          console.log('🔍 🧪 ИСПОЛЬЗУЕМ ТЕСТОВЫЙ UID после ошибки:', packageUid);
+          console.log('🔍 ❌ ОШИБКА при получении packageUid через CSV WORKFLOW:', error);
+          // Используем UID с сайта ДЛ как fallback (исправляем расхождение)
+          packageUid = '0x9dd8901b0ecef10c11e8ed001199bf6e'; // UID с официального сайта ДЛ
+          console.log('🔍 🧪 ИСПОЛЬЗУЕМ UID С САЙТА ДЛ после ошибки (исправляем расхождение):', packageUid);
         }
       } else {
         console.log('🔍 ❌ Упаковка не требуется, пропускаем получение UID');

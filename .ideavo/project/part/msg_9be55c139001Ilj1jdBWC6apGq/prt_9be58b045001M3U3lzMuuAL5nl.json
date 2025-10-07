@@ -1,0 +1,26 @@
+{
+  "id": "prt_9be58b045001M3U3lzMuuAL5nl",
+  "messageID": "msg_9be55c139001Ilj1jdBWC6apGq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01WrqC9kFwvUKokhARqRqncz",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/dellin-packages/route.ts",
+      "oldString": "// Функция для парсинга CSV\nfunction parseCSV(csvText: string): any[] {\n  const lines = csvText.trim().split('\\n');\n  if (lines.length < 2) return [];\n  \n  const headers = lines[0].split(',').map(h => h.trim().replace(/\"/g, ''));\n  const result = [];\n  \n  for (let i = 1; i < lines.length; i++) {\n    const values = lines[i].split(',').map(v => v.trim().replace(/\"/g, ''));\n    const row: any = {};\n    \n    headers.forEach((header, index) => {\n      row[header] = values[index] || '';\n    });\n    \n    result.push(row);\n  }\n  \n  return result;\n}",
+      "newString": "// Функция для парсинга CSV\nfunction parseCSV(csvText: string): any[] {\n  const lines = csvText.trim().split('\\n');\n  if (lines.length < 2) return [];\n  \n  const headers = lines[0].split(',').map(h => h.trim().replace(/\"/g, ''));\n  const result: any[] = [];\n  \n  for (let i = 1; i < lines.length; i++) {\n    const values = lines[i].split(',').map(v => v.trim().replace(/\"/g, ''));\n    const row: any = {};\n    \n    headers.forEach((header, index) => {\n      row[header] = values[index] || '';\n    });\n    \n    result.push(row);\n  }\n  \n  return result;\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/dellin-packages/route.ts\n===================================================================\n--- /home/user/project/app/api/dellin-packages/route.ts\n+++ /home/user/project/app/api/dellin-packages/route.ts\n@@ -16,9 +16,9 @@\n const lines = csvText.trim().split('\\n');\n if (lines.length < 2) return [];\n \n const headers = lines[0].split(',').map(h => h.trim().replace(/\"/g, ''));\n-const result = [];\n+const result: any[] = [];\n \n for (let i = 1; i < lines.length; i++) {\n   const values = lines[i].split(',').map(v => v.trim().replace(/\"/g, ''));\n   const row: any = {};\n"
+    },
+    "title": "app/api/dellin-packages/route.ts",
+    "time": {
+      "start": 1759835111385,
+      "end": 1759835111389
+    }
+  }
+}

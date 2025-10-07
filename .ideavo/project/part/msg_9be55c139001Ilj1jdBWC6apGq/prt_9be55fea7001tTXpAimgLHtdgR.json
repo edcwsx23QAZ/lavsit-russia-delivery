@@ -1,0 +1,26 @@
+{
+  "id": "prt_9be55fea7001tTXpAimgLHtdgR",
+  "messageID": "msg_9be55c139001Ilj1jdBWC6apGq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_018phNanAdrCaFZEFbbBinbb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/dellin-packages/route.ts",
+      "oldString": "import { NextRequest, NextResponse } from 'next/server'\nimport { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils'",
+      "newString": "import { NextRequest, NextResponse } from 'next/server'\nimport { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils'\n\n// Кэш для CSV данных упаковок (24 часа)\ninterface PackageCache {\n  data: any[];\n  timestamp: number;\n  ttl: number;\n}\n\nlet packageCache: PackageCache | null = null;\nconst CACHE_TTL = 24 * 60 * 60 * 1000; // 24 часа\n\n// Функция для парсинга CSV\nfunction parseCSV(csvText: string): any[] {\n  const lines = csvText.trim().split('\\n');\n  if (lines.length < 2) return [];\n  \n  const headers = lines[0].split(',').map(h => h.trim().replace(/\"/g, ''));\n  const result = [];\n  \n  for (let i = 1; i < lines.length; i++) {\n    const values = lines[i].split(',').map(v => v.trim().replace(/\"/g, ''));\n    const row: any = {};\n    \n    headers.forEach((header, index) => {\n      row[header] = values[index] || '';\n    });\n    \n    result.push(row);\n  }\n  \n  return result;\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/dellin-packages/route.ts\n===================================================================\n--- /home/user/project/app/api/dellin-packages/route.ts\n+++ /home/user/project/app/api/dellin-packages/route.ts\n@@ -1,7 +1,39 @@\n import { NextRequest, NextResponse } from 'next/server'\n import { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils'\n \n+// Кэш для CSV данных упаковок (24 часа)\n+interface PackageCache {\n+  data: any[];\n+  timestamp: number;\n+  ttl: number;\n+}\n+\n+let packageCache: PackageCache | null = null;\n+const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 часа\n+\n+// Функция для парсинга CSV\n+function parseCSV(csvText: string): any[] {\n+  const lines = csvText.trim().split('\\n');\n+  if (lines.length < 2) return [];\n+  \n+  const headers = lines[0].split(',').map(h => h.trim().replace(/\"/g, ''));\n+  const result = [];\n+  \n+  for (let i = 1; i < lines.length; i++) {\n+    const values = lines[i].split(',').map(v => v.trim().replace(/\"/g, ''));\n+    const row: any = {};\n+    \n+    headers.forEach((header, index) => {\n+      row[header] = values[index] || '';\n+    });\n+    \n+    result.push(row);\n+  }\n+  \n+  return result;\n+}\n+\n export async function GET() {\n   try {\n     const response = await fetch('https://api.dellin.ru/v1/references/packages.json', {\n       method: 'GET',\n"
+    },
+    "title": "app/api/dellin-packages/route.ts",
+    "time": {
+      "start": 1759834935382,
+      "end": 1759834935397
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9be57d5af001ll6FjB7nt6ggKK",
+  "messageID": "msg_9be55c139001Ilj1jdBWC6apGq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01134uGqhjuDXm3WGmo4S9fP",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1540,
+      "limit": 30
+    },
+    "output": "<file>\n01541|           responseData: null\n01542|         };\n01543|       }\n01544| \n01545|       // Получаем UID упаковки crate_with_bubble (если нужна упаковка)\n01546|       let packageUid: string | null = null;\n01547|       console.log('=== НАЧАЛО ОТЛАДКИ УПАКОВКИ ===');\n01548|       console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);\n01549|       console.log('🔍 ОТЛАДКА УПАКОВКИ: typeof form.needPackaging =', typeof form.needPackaging);\n01550|       \n01551|       if (form.needPackaging) {\n01552|         console.log('🔍 ✅ УПАКОВКА ТРЕБУЕТСЯ - ЗАПРАШИВАЕМ UID...');\n01553|         try {\n01554|           packageUid = await getDellinCrateWithBubbleUid();\n01555|           console.log('🔍 ✅ ПОЛУЧЕН packageUid из API:', packageUid);\n01556|           \n01557|           // ВРЕМЕННО: если не получили UID из API, используем тестовый\n01558|           if (!packageUid) {\n01559|             packageUid = '0xa6a7bd2bf950e67f4b2cf7cc3a97c111';\n01560|             console.log('🔍 🧪 ИСПОЛЬЗУЕМ ТЕСТОВЫЙ UID:', packageUid);\n01561|           }\n01562|           \n01563|           console.log('🔍 ✅ ФИНАЛЬНЫЙ packageUid:', packageUid);\n01564|           console.log('🔍 ✅ typeof packageUid:', typeof packageUid);\n01565|           console.log('🔍 ✅ packageUid truthy:', !!packageUid);\n01566|         } catch (error) {\n01567|           console.log('🔍 ❌ ОШИБКА при получении packageUid:', error);\n01568|           // ВРЕМЕННО: используем тестовый UID при ошибке\n01569|           packageUid = '0xa6a7bd2bf950e67f4b2cf7cc3a97c111';\n01570|           console.log('🔍 🧪 ИСПОЛЬЗУЕМ ТЕСТОВЫЙ UID после ошибки:', packageUid);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1570)\n</file>",
+    "metadata": {
+      "preview": "          responseData: null\n        };\n      }\n\n      // Получаем UID упаковки crate_with_bubble (если нужна упаковка)\n      let packageUid: string | null = null;\n      console.log('=== НАЧАЛО ОТЛАДКИ УПАКОВКИ ===');\n      console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);\n      console.log('🔍 ОТЛАДКА УПАКОВКИ: typeof form.needPackaging =', typeof form.needPackaging);\n      \n      if (form.needPackaging) {\n        console.log('🔍 ✅ УПАКОВКА ТРЕБУЕТСЯ - ЗАПРАШИВАЕМ UID...');\n        try {\n          packageUid = await getDellinCrateWithBubbleUid();\n          console.log('🔍 ✅ ПОЛУЧЕН packageUid из API:', packageUid);\n          \n          // ВРЕМЕННО: если не получили UID из API, используем тестовый\n          if (!packageUid) {\n            packageUid = '0xa6a7bd2bf950e67f4b2cf7cc3a97c111';\n            console.log('🔍 🧪 ИСПОЛЬЗУЕМ ТЕСТОВЫЙ UID:', packageUid);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759835052055,
+      "end": 1759835052057
+    }
+  }
+}

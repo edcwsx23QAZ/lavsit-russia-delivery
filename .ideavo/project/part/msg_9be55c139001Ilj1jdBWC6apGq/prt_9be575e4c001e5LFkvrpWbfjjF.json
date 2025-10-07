@@ -1,0 +1,25 @@
+{
+  "id": "prt_9be575e4c001e5LFkvrpWbfjjF",
+  "messageID": "msg_9be55c139001Ilj1jdBWC6apGq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_013EcHRDXZVEo5BDznkmSP8j",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1340,
+      "limit": 50
+    },
+    "output": "<file>\n01341|       if (data.success && data.data?.dellinFormat) {\n01342|         console.log(`✅ Нормализованный адрес: ${data.data.dellinFormat}`);\n01343|         return data.data.dellinFormat;\n01344|       }\n01345|       \n01346|       // Если DaData не сработал, возвращаем исходный адрес\n01347|       console.warn(`⚠️ DaData не смог нормализовать адрес, используем исходный`);\n01348|       return address;\n01349|       \n01350|     } catch (error) {\n01351|       console.error(`❌ Ошибка нормализации адреса через DaData:`, error);\n01352|       return address; // Возвращаем исходный адрес в случае ошибки\n01353|     }\n01354|   };\n01355| \n01356|   // Получение UID упаковки \"crate_with_bubble\" из справочника упаковок Деловые Линии с повторной авторизацией\n01357|   const getDellinCrateWithBubbleUid = async (): Promise<string | null> => {\n01358|     const maxRetries = 2;\n01359|     \n01360|     for (let attempt = 1; attempt <= maxRetries; attempt++) {\n01361|       try {\n01362|         console.log(`📦 СПРАВОЧНИК УПАКОВОК: попытка ${attempt}/${maxRetries}`);\n01363|         \n01364|         const response = await fetch('/api/dellin-packages', {\n01365|           method: 'GET',\n01366|           headers: {\n01367|             'Content-Type': 'application/json'\n01368|           }\n01369|         });\n01370| \n01371|         const data = await response.json();\n01372|         console.log('📦 СПРАВОЧНИК УПАКОВОК response.ok:', response.ok);\n01373|         console.log('📦 СПРАВОЧНИК УПАКОВОК status:', response.status);\n01374|         console.log('📦 СПРАВОЧНИК УПАКОВОК data:', data);\n01375|         \n01376|         // Если 401 Unauthorized - пробуем переавторизоваться\n01377|         if (response.status === 401 && attempt < maxRetries) {\n01378|           console.log('🔄 СПРАВОЧНИК УПАКОВОК: получили 401, выполняем повторную авторизацию...');\n01379|           const newSessionId = await getDellinSessionId();\n01380|           if (newSessionId) {\n01381|             console.log('✅ СПРАВОЧНИК УПАКОВОК: получен новый SessionID, повторяем запрос...');\n01382|             continue; // Пробуем еще раз с новой авторизацией\n01383|           } else {\n01384|             console.error('❌ СПРАВОЧНИК УПАКОВОК: не удалось получить новый SessionID');\n01385|             return null;\n01386|           }\n01387|         }\n01388|         \n01389|         if (response.ok && data.data && Array.isArray(data.data)) {\n01390|           console.log('📦 Количество упаковок в справочнике:', data.data.length);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1390)\n</file>",
+    "metadata": {
+      "preview": "      if (data.success && data.data?.dellinFormat) {\n        console.log(`✅ Нормализованный адрес: ${data.data.dellinFormat}`);\n        return data.data.dellinFormat;\n      }\n      \n      // Если DaData не сработал, возвращаем исходный адрес\n      console.warn(`⚠️ DaData не смог нормализовать адрес, используем исходный`);\n      return address;\n      \n    } catch (error) {\n      console.error(`❌ Ошибка нормализации адреса через DaData:`, error);\n      return address; // Возвращаем исходный адрес в случае ошибки\n    }\n  };\n\n  // Получение UID упаковки \"crate_with_bubble\" из справочника упаковок Деловые Линии с повторной авторизацией\n  const getDellinCrateWithBubbleUid = async (): Promise<string | null> => {\n    const maxRetries = 2;\n    \n    for (let attempt = 1; attempt <= maxRetries; attempt++) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759835021618,
+      "end": 1759835021621
+    }
+  }
+}
