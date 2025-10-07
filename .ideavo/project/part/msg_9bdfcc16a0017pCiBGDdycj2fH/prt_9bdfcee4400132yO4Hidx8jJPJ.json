@@ -1,0 +1,22 @@
+{
+  "id": "prt_9bdfcee4400132yO4Hidx8jJPJ",
+  "messageID": "msg_9bdfcc16a0017pCiBGDdycj2fH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01UmMVCcvBq8gee9pz2YoUgh",
+  "state": {
+    "metadata": {
+      "output": "",
+      "description": "Add all files and show what will be committed"
+    },
+    "status": "running",
+    "input": {
+      "command": "cd /home/user/project && git add . && git diff --cached --name-only",
+      "description": "Add all files and show what will be committed"
+    },
+    "time": {
+      "start": 1759829094836
+    }
+  }
+}
