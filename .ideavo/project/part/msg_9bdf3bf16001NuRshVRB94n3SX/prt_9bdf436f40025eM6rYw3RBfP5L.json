@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bdf436f40025eM6rYw3RBfP5L",
+  "messageID": "msg_9bdf3bf16001NuRshVRB94n3SX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01S2hYWcVesaa4xzsXGgWRk2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1560,
+      "limit": 20
+    },
+    "output": "<file>\n01561|       if (!form.fromAddressDelivery && !fromTerminalId) {\n01562|         console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n01563|         return {\n01564|           company: 'Деловые Линии',\n01565|           price: 0,\n01566|           days: 0,\n01567|           error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,\n01568|           apiUrl,\n01569|           requestData: null,\n01570|           responseData: null\n01571|         };\n01572|       }\n01573|       \n01574|       if (!form.toAddressDelivery && !toTerminalId) {\n01575|         console.error('❌ Не найден терминал назначения для города:', form.toCity);\n01576|         return {\n01577|           company: 'Деловые Линии',\n01578|           price: 0,\n01579|           days: 0,\n01580|           error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,\n\n(File has more lines. Use 'offset' parameter to read beyond line 1580)\n</file>",
+    "metadata": {
+      "preview": "      if (!form.fromAddressDelivery && !fromTerminalId) {\n        console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }\n      \n      if (!form.toAddressDelivery && !toTerminalId) {\n        console.error('❌ Не найден терминал назначения для города:', form.toCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759828523284,
+      "end": 1759828523293
+    }
+  }
+}

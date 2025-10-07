@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bdf4c0f8001m1D3PRs195DDmx",
+  "messageID": "msg_9bdf463da001jap96doy8gmmWx",
+  "sessionID": "ses_6420b9c45ffey22RshNCwF81Ws",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011JFEopL8jw6fjsswce6kPk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1480,
+      "limit": 50
+    },
+    "output": "<file>\n01481|         // Если дошли сюда, значит не нашли упаковку или была другая ошибка\n01482|         break;\n01483|         \n01484|       } catch (error) {\n01485|         console.error(`❌ СПРАВОЧНИК УПАКОВОК: ошибка на попытке ${attempt}:`, error);\n01486|         if (attempt === maxRetries) {\n01487|           console.error('❌ СПРАВОЧНИК УПАКОВОК: исчерпаны все попытки');\n01488|           return null;\n01489|         }\n01490|       }\n01491|     }\n01492|     \n01493|     console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');\n01494|     return null;\n01495|   };\n01496| \n01497|   // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n01498|   const calculateDellin = async (): Promise<CalculationResult> => {\n01499|     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n01500|     const maxRetries = 2;\n01501|     \n01502|     console.log('🚀 === НАЧАЛО РАСЧЕТА ДЕЛОВЫХ ЛИНИЙ ===');\n01503|     console.log('🚀 API URL:', apiUrl);\n01504|     \n01505|     try {\n01506|       let sessionID = await getDellinSessionId();\n01507|       \n01508|       if (!sessionID) {\n01509|         return {\n01510|           company: 'Деловые Линии',\n01511|           price: 0,\n01512|           days: 0,\n01513|           error: 'Не удалось получить sessionID',\n01514|           apiUrl,\n01515|           requestData: null,\n01516|           responseData: null\n01517|         };\n01518|       }\n01519| \n01520|       // Вычисляем размеры и объемы\n01521|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n01522|       const totalVolume = form.cargos.reduce((sum, cargo) => \n01523|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n01524|       );\n01525|       const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n01526|       const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n01527|       const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;\n01528| \n01529|       // Получаем терминалы и нормализованные адреса\n01530|       let fromTerminalId: string | null = null;\n\n(File has more lines. Use 'offset' parameter to read beyond line 1530)\n</file>",
+    "metadata": {
+      "preview": "        // Если дошли сюда, значит не нашли упаковку или была другая ошибка\n        break;\n        \n      } catch (error) {\n        console.error(`❌ СПРАВОЧНИК УПАКОВОК: ошибка на попытке ${attempt}:`, error);\n        if (attempt === maxRetries) {\n          console.error('❌ СПРАВОЧНИК УПАКОВОК: исчерпаны все попытки');\n          return null;\n        }\n      }\n    }\n    \n    console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');\n    return null;\n  };\n\n  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n  const calculateDellin = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n    const maxRetries = 2;"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759828558119,
+      "end": 1759828558122
+    }
+  }
+}

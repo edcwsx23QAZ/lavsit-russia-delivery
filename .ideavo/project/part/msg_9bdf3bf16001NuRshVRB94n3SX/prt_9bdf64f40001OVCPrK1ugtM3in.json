@@ -1,0 +1,11 @@
+{
+  "id": "prt_9bdf64f40001OVCPrK1ugtM3in",
+  "messageID": "msg_9bdf3bf16001NuRshVRB94n3SX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "## 🎯 НАЙДЕНА КОРНЕВАЯ ПРИЧИНА! \n\n### **Проблема: Архитектурная деградация API**\n\n**РАБОЧАЯ ВЕРСИЯ** (из `test-dellin-terminals-simple.js`):\n```javascript\nPOST https://api.dellin.ru/v1/public/request_terminals.json\n{\n  appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n  sessionID: sessionID,\n  search: 'Москва',           // ← ПРЯМОЙ ПОИСК\n  direction: 'derival'\n}\n```\n\n**СЛОМАННАЯ ВЕРСИЯ** (в `app/page.tsx:1254-1386`):\n```javascript\nPOST https://api.dellin.ru/v3/public/terminals.json  // ← Получает URL файла\n→ GET https://api.dellin.ru/catalog/terminals_v3.json // ← CORS блокировка\n→ Парсинг всего справочника в браузере\n```",
+  "time": {
+    "start": 1759828664799,
+    "end": 1759828664799
+  }
+}

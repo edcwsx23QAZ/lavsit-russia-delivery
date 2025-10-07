@@ -1,0 +1,24 @@
+{
+  "id": "prt_9bdf476200016CHesds24X4e9i",
+  "messageID": "msg_9bdf463da001jap96doy8gmmWx",
+  "sessionID": "ses_6420b9c45ffey22RshNCwF81Ws",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01RCxPnjbZZBXcanq1M5yuSi",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "/v1/public/request_terminals"
+    },
+    "output": "Found 4 matches\n/home/user/project/test-dellin-terminals-simple.js:\n  Line 41:     const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n  Line 54:     const response2 = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n\n/home/user/project/test-dellin-terminals.js:\n  Line 78:     let response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {\n  Line 124:     response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {",
+    "metadata": {
+      "matches": 4,
+      "truncated": false
+    },
+    "title": "/v1/public/request_terminals",
+    "time": {
+      "start": 1759828539539,
+      "end": 1759828539549
+    }
+  }
+}

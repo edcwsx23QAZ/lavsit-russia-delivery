@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bdf4ce5e0017jCGKV3Dsq1JUZ",
+  "messageID": "msg_9bdf463da001jap96doy8gmmWx",
+  "sessionID": "ses_6420b9c45ffey22RshNCwF81Ws",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_017btf5rTymJ58UZwN4LxGtX",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg -n \"TODO|FIXME|HACK|XXX|BUG\" --type=ts --type=js -A 3 -B 1",
+      "description": "Search for TODO/FIXME comments with correct file types"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Search for TODO/FIXME comments with correct file types"
+    },
+    "title": "cd /home/user/project && rg -n \"TODO|FIXME|HACK|XXX|BUG\" --type=ts --type=js -A 3 -B 1",
+    "time": {
+      "start": 1759828562753,
+      "end": 1759828622793
+    }
+  }
+}
