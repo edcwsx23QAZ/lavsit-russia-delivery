@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bdce04ec001zTlWeptX3ma1HG",
+  "messageID": "msg_9bdcd91f1001436m4s4uWC4yjJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_019K7UBh3LJD6EtUEDANWwQx",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "enabled.*companies|companies.*enabled|enabledCompanies",
+      "path": "/home/user/project/app",
+      "include": "*.tsx"
+    },
+    "output": "Found 13 matches\n/home/user/project/app/page.tsx:\n  Line 159:   const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n  Line 259:                   if (restoredData.enabledCompanies && Object.keys(restoredData.enabledCompanies).length > 0) {\n  Line 260:                     setEnabledCompanies(restoredData.enabledCompanies);\n  Line 324:           if (savedFormData.enabledCompanies && Object.keys(savedFormData.enabledCompanies).length > 0) {\n  Line 325:             setEnabledCompanies(savedFormData.enabledCompanies);\n  Line 403:         enabledCompanies: enabledCompanies,\n  Line 406:   }, [form, enabledCompanies, isLoaded, isRestoring, debouncedSave]);\n  Line 3364:       if (enabledCompanies.dellin) {\n  Line 3367:       if (enabledCompanies.pek) {\n  Line 3370:       if (enabledCompanies.nordwheel) {\n  Line 3373:       if (enabledCompanies.railcontinent) {\n  Line 3376:       if (enabledCompanies.vozovoz) {\n  Line 4260:                     const isEnabled = enabledCompanies[company.apiKey];",
+    "metadata": {
+      "matches": 13,
+      "truncated": false
+    },
+    "title": "enabled.*companies|companies.*enabled|enabledCompanies",
+    "time": {
+      "start": 1759826020908,
+      "end": 1759826020922
+    }
+  }
+}

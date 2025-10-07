@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bdce772e001M20nJ6p6KYSWiw",
+  "messageID": "msg_9bdcd91f1001436m4s4uWC4yjJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_019raXXMKSAhChUrwAhBJYt4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "offset": 0,
+      "limit": 100
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import { \n00004|   saveFormDataToIndexedDB, \n00005|   loadFormDataFromIndexedDB, \n00006|   clearFormDataFromIndexedDB,\n00007|   isIndexedDBAvailable \n00008| } from './indexeddb-storage';\n00009| import { \n00010|   saveFormDataToCookies, \n00011|   loadFormDataFromCookies, \n00012|   clearFormDataFromCookies,\n00013|   isCookieStorageAvailable \n00014| } from './cookie-storage';\n00015| \n00016| // Константы для ключей localStorage\n00017| const FORM_DATA_KEY = 'deliveryFormData';\n00018| const FORM_VERSION = '1.2'; // Поддержка полного состояния формы + enabledCompanies\n00019| \n00020| export interface StoredFormData {\n00021|   version: string;\n00022|   timestamp: number;\n00023|   cargos: Array<{\n00024|     id: string;\n00025|     length: number;\n00026|     width: number;\n00027|     height: number;\n00028|     weight: number;\n00029|     productId?: string;\n00030|     placeNumber?: number;\n00031|     isFromProduct?: boolean;\n00032|     addedAt?: number;\n00033|   }>;\n00034|   fromCity: string;\n00035|   toCity: string;\n00036|   fromAddress: string;\n00037|   toAddress: string;\n00038|   declaredValue: number;\n00039|   needPackaging: boolean;\n00040|   needLoading: boolean;\n00041|   needCarry: boolean;\n00042|   floor: number;\n00043|   hasFreightLift: boolean;\n00044|   needInsurance: boolean;\n00045|   fromTerminal: boolean;\n00046|   toTerminal: boolean;\n00047|   fromAddressDelivery: boolean;\n00048|   toAddressDelivery: boolean;\n00049|   fromLavsiteWarehouse: boolean;\n00050|   selectedProducts: Array<{\n00051|     product: {\n00052|       id: string;\n00053|       externalCode: string;\n00054|       name: string;\n00055|       retailPrice: number;\n00056|       isActive: boolean;\n00057|       cargoPlaces: Array<{\n00058|         placeNumber: number;\n00059|         weight: number;\n00060|         height: number;\n00061|         depth: number;\n00062|         length: number;\n00063|       }>;\n00064|     };\n00065|     quantity: number;\n00066|     totalPrice: number;\n00067|     cargoIndexes: number[];\n00068|     addedAt: number;\n00069|   }>;\n00070|   enabledCompanies?: Record<string, boolean>;\n00071| }\n00072| \n00073| /**\n00074|  * Сохраняет данные формы в localStorage, IndexedDB и cookies (тройная защита)\n00075|  * НЕ сохраняет результаты расчетов - только пользовательский ввод\n00076|  */\n00077| export const saveFormData = (formData: Partial<StoredFormData>): boolean => {\n00078|   try {\n00079|     if (typeof window === 'undefined') {\n00080|       return false; // SSR safe\n00081|     }\n00082| \n00083|     const dataToSave: StoredFormData = {\n00084|       version: FORM_VERSION,\n00085|       timestamp: Date.now(),\n00086|       cargos: formData.cargos || [],\n00087|       fromCity: formData.fromCity || '',\n00088|       toCity: formData.toCity || '',\n00089|       fromAddress: formData.fromAddress || '',\n00090|       toAddress: formData.toAddress || '',\n00091|       declaredValue: formData.declaredValue || 0,\n00092|       needPackaging: formData.needPackaging || false,\n00093|       needLoading: formData.needLoading || false,\n00094|       needCarry: formData.needCarry || false,\n00095|       floor: formData.floor || 1,\n00096|       hasFreightLift: formData.hasFreightLift || false,\n00097|       needInsurance: formData.needInsurance || false,\n00098|       fromTerminal: formData.fromTerminal ?? true,\n00099|       toTerminal: formData.toTerminal ?? true,\n00100|       fromAddressDelivery: formData.fromAddressDelivery || false,\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport { \n  saveFormDataToIndexedDB, \n  loadFormDataFromIndexedDB, \n  clearFormDataFromIndexedDB,\n  isIndexedDBAvailable \n} from './indexeddb-storage';\nimport { \n  saveFormDataToCookies, \n  loadFormDataFromCookies, \n  clearFormDataFromCookies,\n  isCookieStorageAvailable \n} from './cookie-storage';\n\n// Константы для ключей localStorage\nconst FORM_DATA_KEY = 'deliveryFormData';\nconst FORM_VERSION = '1.2'; // Поддержка полного состояния формы + enabledCompanies\n\nexport interface StoredFormData {"
+    },
+    "title": "lib/form-storage.ts",
+    "time": {
+      "start": 1759826049412,
+      "end": 1759826049416
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bdce3f72001In3V8ZtjeM7qJT",
+  "messageID": "msg_9bdcd91f1001436m4s4uWC4yjJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_013vY3fQ81C1Se6zggzoEmpT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 390,
+      "limit": 50
+    },
+    "output": "<file>\n00391|         needPackaging: form.needPackaging,\n00392|         needLoading: form.needLoading,\n00393|         needCarry: form.needCarry,\n00394|         floor: form.floor,\n00395|         hasFreightLift: form.hasFreightLift,\n00396|         needInsurance: form.needInsurance,\n00397|         fromTerminal: form.fromTerminal,\n00398|         toTerminal: form.toTerminal,\n00399|         fromAddressDelivery: form.fromAddressDelivery,\n00400|         toAddressDelivery: form.toAddressDelivery,\n00401|         fromLavsiteWarehouse: form.fromLavsiteWarehouse,\n00402|         selectedProducts: form.selectedProducts,\n00403|         enabledCompanies: enabledCompanies,\n00404|       });\n00405|     }\n00406|   }, [form, enabledCompanies, isLoaded, isRestoring, debouncedSave]);\n00407| \n00408|   // Автоматическая страховка при указании стоимости\n00409|   useEffect(() => {\n00410|     if (form.declaredValue > 0) {\n00411|       setForm(prev => ({ ...prev, needInsurance: true }));\n00412|     }\n00413|   }, [form.declaredValue]);\n00414| \n00415|   // Обработка сообщений об обновлении данных товаров\n00416|   useEffect(() => {\n00417|     const handleMessage = (event: MessageEvent) => {\n00418|       if (event.data && event.data.type === 'PRODUCTS_UPDATED') {\n00419|         console.log('📨 Получено сообщение об обновлении товаров:', event.data.data);\n00420|         \n00421|         // Очищаем локальные кэши товаров\n00422|         const keysToRemove: string[] = [];\n00423|         for (let i = 0; i < localStorage.length; i++) {\n00424|           const key = localStorage.key(i);\n00425|           if (key && (key.startsWith('furniture_') || key.startsWith('product_') || key.includes('ProductSearch'))) {\n00426|             keysToRemove.push(key);\n00427|           }\n00428|         }\n00429|         keysToRemove.forEach(key => localStorage.removeItem(key));\n00430|         console.log(`🧽 Очищено ${keysToRemove.length} ключей кэша товаров`);\n00431|         \n00432|         // Отправляем сообщение компоненту ProductSearch о необходимости обновления\n00433|         window.dispatchEvent(new CustomEvent('forceProductsReload', {\n00434|           detail: event.data.data\n00435|         }));\n00436|       }\n00437|     };\n00438|     \n00439|     window.addEventListener('message', handleMessage);\n00440|     \n\n(File has more lines. Use 'offset' parameter to read beyond line 440)\n</file>",
+    "metadata": {
+      "preview": "        needPackaging: form.needPackaging,\n        needLoading: form.needLoading,\n        needCarry: form.needCarry,\n        floor: form.floor,\n        hasFreightLift: form.hasFreightLift,\n        needInsurance: form.needInsurance,\n        fromTerminal: form.fromTerminal,\n        toTerminal: form.toTerminal,\n        fromAddressDelivery: form.fromAddressDelivery,\n        toAddressDelivery: form.toAddressDelivery,\n        fromLavsiteWarehouse: form.fromLavsiteWarehouse,\n        selectedProducts: form.selectedProducts,\n        enabledCompanies: enabledCompanies,\n      });\n    }\n  }, [form, enabledCompanies, isLoaded, isRestoring, debouncedSave]);\n\n  // Автоматическая страховка при указании стоимости\n  useEffect(() => {\n    if (form.declaredValue > 0) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759826035142,
+      "end": 1759826035147
+    }
+  }
+}

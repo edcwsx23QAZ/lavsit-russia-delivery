@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bdce8a1c001KVTFILvna3Hlxm",
+  "messageID": "msg_9bdcd91f1001436m4s4uWC4yjJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01LDEgKnp9VFAr4pWhue2bUk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "offset": 100,
+      "limit": 50
+    },
+    "output": "<file>\n00101|       toAddressDelivery: formData.toAddressDelivery || false,\n00102|       fromLavsiteWarehouse: formData.fromLavsiteWarehouse || false,\n00103|       selectedProducts: formData.selectedProducts || [],\n00104|       enabledCompanies: formData.enabledCompanies || {},\n00105|     };\n00106| \n00107|     const serializedData = JSON.stringify(dataToSave);\n00108|     \n00109|     // Тройная защита: сохраняем в localStorage, IndexedDB и cookies\n00110|     let localStorageSuccess = false;\n00111|     let indexedDBSuccess = false;\n00112|     let cookieSuccess = false;\n00113|     \n00114|     // 1. localStorage (основной метод)\n00115|     try {\n00116|       localStorage.setItem(FORM_DATA_KEY, serializedData);\n00117|       localStorageSuccess = true;\n00118|       console.log('💾 Данные формы сохранены в localStorage');\n00119|     } catch (error) {\n00120|       console.warn('⚠️ Ошибка сохранения в localStorage:', error);\n00121|     }\n00122|     \n00123|     // 2. IndexedDB (защита от Clear-Site-Data для storage)\n00124|     if (isIndexedDBAvailable()) {\n00125|       saveFormDataToIndexedDB(serializedData).then(success => {\n00126|         if (success) {\n00127|           console.log('💾 Данные формы сохранены в IndexedDB');\n00128|         }\n00129|       }).catch(error => {\n00130|         console.warn('⚠️ Ошибка сохранения в IndexedDB:', error);\n00131|       });\n00132|     }\n00133|     \n00134|     // 3. Cookies (дополнительная защита)\n00135|     if (isCookieStorageAvailable()) {\n00136|       try {\n00137|         cookieSuccess = saveFormDataToCookies(serializedData);\n00138|         if (cookieSuccess) {\n00139|           console.log('💾 Данные формы сохранены в cookies');\n00140|         }\n00141|       } catch (error) {\n00142|         console.warn('⚠️ Ошибка сохранения в cookies:', error);\n00143|       }\n00144|     }\n00145|     \n00146|     console.log(`💾 Сохранение: localStorage=${localStorageSuccess}, IndexedDB=async, cookies=${cookieSuccess}`);\n00147|     return localStorageSuccess; // localStorage остается основным критерием успеха\n00148|   } catch (error) {\n00149|     console.error('❌ Ошибка сохранения данных формы:', error);\n00150|     return false;\n\n(File has more lines. Use 'offset' parameter to read beyond line 150)\n</file>",
+    "metadata": {
+      "preview": "      toAddressDelivery: formData.toAddressDelivery || false,\n      fromLavsiteWarehouse: formData.fromLavsiteWarehouse || false,\n      selectedProducts: formData.selectedProducts || [],\n      enabledCompanies: formData.enabledCompanies || {},\n    };\n\n    const serializedData = JSON.stringify(dataToSave);\n    \n    // Тройная защита: сохраняем в localStorage, IndexedDB и cookies\n    let localStorageSuccess = false;\n    let indexedDBSuccess = false;\n    let cookieSuccess = false;\n    \n    // 1. localStorage (основной метод)\n    try {\n      localStorage.setItem(FORM_DATA_KEY, serializedData);\n      localStorageSuccess = true;\n      console.log('💾 Данные формы сохранены в localStorage');\n    } catch (error) {\n      console.warn('⚠️ Ошибка сохранения в localStorage:', error);"
+    },
+    "title": "lib/form-storage.ts",
+    "time": {
+      "start": 1759826053730,
+      "end": 1759826053732
+    }
+  }
+}

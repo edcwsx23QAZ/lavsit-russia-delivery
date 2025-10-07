@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bdce5a3d001jRogkshtxN56nM",
+  "messageID": "msg_9bdcd91f1001436m4s4uWC4yjJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_014kZJWmCrpsqEGd4UvuRpt7",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4250,
+      "limit": 50
+    },
+    "output": "<file>\n04251|                 <CardTitle className=\"text-white text-sm\">\n04252|                   Подключенные транспортные компании ({COMPANIES_BASE.length})\n04253|                 </CardTitle>\n04254|               </CardHeader>\n04255|               <CardContent>\n04256|                 <div className=\"grid grid-cols-2 gap-2\">\n04257|                   {COMPANIES_BASE.map((company, index) => {\n04258|                     const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n04259|                     const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n04260|                     const isEnabled = enabledCompanies[company.apiKey];\n04261|                     \n04262|                     // Отладка для первых 3 компаний\n04263|                     if (index < 3) {\n04264|                       console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}`);\n04265|                     }\n04266|                     \n04267|                     return (\n04268|                       <div key={index} className=\"flex items-center justify-between p-1.5 bg-gray-700 rounded\">\n04269|                         <div className=\"flex items-center gap-2\">\n04270|                           <span className=\"text-lg\">{company.logo}</span>\n04271|                           <div>\n04272|                             <p className=\"font-medium text-white text-[10px] leading-tight\">{company.name}</p>\n04273|                             <Badge \n04274|                               variant={isConnected ? \"default\" : \"destructive\"} \n04275|                               className=\"text-[9px] py-0 px-1\"\n04276|                             >\n04277|                               {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}\n04278|                             </Badge>\n04279|                           </div>\n04280|                         </div>\n04281|                         <div className=\"flex items-center gap-2\">\n04282|                           <span className=\"text-[9px] text-gray-300\">\n04283|                             {isEnabled ? 'Вкл' : 'Выкл'}\n04284|                           </span>\n04285|                           <Switch\n04286|                             checked={isEnabled}\n04287|                             onCheckedChange={(checked) => {\n04288|                               setEnabledCompanies(prev => ({\n04289|                                 ...prev,\n04290|                                 [company.apiKey]: checked\n04291|                               }));\n04292|                             }}\n04293|                             disabled={!isConnected}\n04294|                           />\n04295|                         </div>\n04296|                       </div>\n04297|                     );\n04298|                   })}\n04299|                 </div>\n04300|               </CardContent>\n\n(File has more lines. Use 'offset' parameter to read beyond line 4300)\n</file>",
+    "metadata": {
+      "preview": "                <CardTitle className=\"text-white text-sm\">\n                  Подключенные транспортные компании ({COMPANIES_BASE.length})\n                </CardTitle>\n              </CardHeader>\n              <CardContent>\n                <div className=\"grid grid-cols-2 gap-2\">\n                  {COMPANIES_BASE.map((company, index) => {\n                    const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n                    const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n                    const isEnabled = enabledCompanies[company.apiKey];\n                    \n                    // Отладка для первых 3 компаний\n                    if (index < 3) {\n                      console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}`);\n                    }\n                    \n                    return (\n                      <div key={index} className=\"flex items-center justify-between p-1.5 bg-gray-700 rounded\">\n                        <div className=\"flex items-center gap-2\">\n                          <span className=\"text-lg\">{company.logo}</span>"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759826041837,
+      "end": 1759826041840
+    }
+  }
+}

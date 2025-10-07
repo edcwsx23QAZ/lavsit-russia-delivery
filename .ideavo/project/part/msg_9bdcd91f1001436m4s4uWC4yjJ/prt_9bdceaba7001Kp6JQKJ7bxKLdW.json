@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bdceaba7001Kp6JQKJ7bxKLdW",
+  "messageID": "msg_9bdcd91f1001436m4s4uWC4yjJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01MkGC2eKoAhnJCWwVt9Kggb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "offset": 250,
+      "limit": 50
+    },
+    "output": "<file>\n00251|       fromTerminal: oldData.fromTerminal ?? true,\n00252|       toTerminal: oldData.toTerminal ?? true,\n00253|       fromAddressDelivery: oldData.fromAddressDelivery || false,\n00254|       toAddressDelivery: oldData.toAddressDelivery || false,\n00255|       fromLavsiteWarehouse: oldData.fromLavsiteWarehouse || false,\n00256|       selectedProducts: oldData.selectedProducts || [],\n00257|       enabledCompanies: oldData.enabledCompanies || {},\n00258|     };\n00259| \n00260|     // Сохраняем мигрированные данные\n00261|     localStorage.setItem(FORM_DATA_KEY, JSON.stringify(migratedData));\n00262|     console.log('✅ Данные успешно мигрированы');\n00263|     return migratedData;\n00264|   } catch (error) {\n00265|     console.error('❌ Ошибка миграции данных:', error);\n00266|     return null;\n00267|   }\n00268| };\n00269| \n00270| /**\n00271|  * Очищает сохраненные данные формы из всех источников (localStorage, IndexedDB, cookies)\n00272|  */\n00273| export const clearFormData = (): boolean => {\n00274|   try {\n00275|     if (typeof window === 'undefined') {\n00276|       return false;\n00277|     }\n00278| \n00279|     let localStorageSuccess = false;\n00280|     let indexedDBSuccess = false;\n00281|     let cookieSuccess = false;\n00282|     \n00283|     // Очищаем localStorage\n00284|     try {\n00285|       localStorage.removeItem(FORM_DATA_KEY);\n00286|       localStorageSuccess = true;\n00287|       console.log('🗑️ Данные формы удалены из localStorage');\n00288|     } catch (error) {\n00289|       console.warn('⚠️ Ошибка удаления из localStorage:', error);\n00290|     }\n00291|     \n00292|     // Очищаем IndexedDB\n00293|     if (isIndexedDBAvailable()) {\n00294|       clearFormDataFromIndexedDB().then(success => {\n00295|         if (success) {\n00296|           console.log('🗑️ Данные формы удалены из IndexedDB');\n00297|         }\n00298|       }).catch(error => {\n00299|         console.warn('⚠️ Ошибка удаления из IndexedDB:', error);\n00300|       });\n\n(File has more lines. Use 'offset' parameter to read beyond line 300)\n</file>",
+    "metadata": {
+      "preview": "      fromTerminal: oldData.fromTerminal ?? true,\n      toTerminal: oldData.toTerminal ?? true,\n      fromAddressDelivery: oldData.fromAddressDelivery || false,\n      toAddressDelivery: oldData.toAddressDelivery || false,\n      fromLavsiteWarehouse: oldData.fromLavsiteWarehouse || false,\n      selectedProducts: oldData.selectedProducts || [],\n      enabledCompanies: oldData.enabledCompanies || {},\n    };\n\n    // Сохраняем мигрированные данные\n    localStorage.setItem(FORM_DATA_KEY, JSON.stringify(migratedData));\n    console.log('✅ Данные успешно мигрированы');\n    return migratedData;\n  } catch (error) {\n    console.error('❌ Ошибка миграции данных:', error);\n    return null;\n  }\n};\n\n/**"
+    },
+    "title": "lib/form-storage.ts",
+    "time": {
+      "start": 1759826062704,
+      "end": 1759826062706
+    }
+  }
+}
