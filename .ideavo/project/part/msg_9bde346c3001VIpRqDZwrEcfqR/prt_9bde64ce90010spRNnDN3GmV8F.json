@@ -1,0 +1,34 @@
+{
+  "id": "prt_9bde64ce90010spRNnDN3GmV8F",
+  "messageID": "msg_9bde346c3001VIpRqDZwrEcfqR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_015t8ZBLvf4HtJhGyeuJgUCQ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "      // Проверяем что терминалы найдены для терминальной доставки\n      if (!form.fromAddressDelivery && !fromTerminalId) {\n        console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }\n      \n      if (!form.toAddressDelivery && !toTerminalId) {\n        console.error('❌ Не найден терминал назначения для города:', form.toCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }",
+          "newString": "      // Проверяем что терминалы найдены ТОЛЬКО для терминальной доставки\n      if (!form.fromAddressDelivery && !fromTerminalId) {\n        console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }\n      \n      if (!form.toAddressDelivery && !toTerminalId) {\n        console.error('❌ Не найден терминал назначения для города:', form.toCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }\n      \n      // Для адресной доставки проверяем что адреса нормализованы\n      if (form.fromAddressDelivery && !normalizedFromAddress) {\n        console.error('❌ Не удалось нормализовать адрес отправления:', form.fromAddress || form.fromCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не удалось обработать адрес отправления: ${form.fromAddress || form.fromCity}`,\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }\n      \n      if (form.toAddressDelivery && !normalizedToAddress) {\n        console.error('❌ Не удалось нормализовать адрес назначения:', form.toAddress || form.toCity);\n        return {\n          company: 'Деловые Линии',\n          price: 0,\n          days: 0,\n          error: `Не удалось обработать адрес назначения: ${form.toAddress || form.toCity}`,\n          apiUrl,\n          requestData: null,\n          responseData: null\n        };\n      }"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1554,9 +1554,9 @@\n console.log('🏢 toTerminalId:', toTerminalId);\n console.log('🏢 normalizedFromAddress:', normalizedFromAddress);\n console.log('🏢 normalizedToAddress:', normalizedToAddress);\n \n-// Проверяем что терминалы найдены для терминальной доставки\n+// Проверяем что терминалы найдены ТОЛЬКО для терминальной доставки\n if (!form.fromAddressDelivery && !fromTerminalId) {\n   console.error('❌ Не найден терминал отправления для города:', form.fromCity);\n   return {\n     company: 'Деловые Линии',\n@@ -1580,8 +1580,35 @@\n     requestData: null,\n     responseData: null\n   };\n }\n+\n+// Для адресной доставки проверяем что адреса нормализованы\n+if (form.fromAddressDelivery && !normalizedFromAddress) {\n+  console.error('❌ Не удалось нормализовать адрес отправления:', form.fromAddress || form.fromCity);\n+  return {\n+    company: 'Деловые Линии',\n+    price: 0,\n+    days: 0,\n+    error: `Не удалось обработать адрес отправления: ${form.fromAddress || form.fromCity}`,\n+    apiUrl,\n+    requestData: null,\n+    responseData: null\n+  };\n+}\n+\n+if (form.toAddressDelivery && !normalizedToAddress) {\n+  console.error('❌ Не удалось нормализовать адрес назначения:', form.toAddress || form.toCity);\n+  return {\n+    company: 'Деловые Линии',\n+    price: 0,\n+    days: 0,\n+    error: `Не удалось обработать адрес назначения: ${form.toAddress || form.toCity}`,\n+    apiUrl,\n+    requestData: null,\n+    responseData: null\n+  };\n+}\n \n // Получаем UID упаковки crate_with_bubble (если нужна упаковка)\n let packageUid: string | null = null;\n console.log('=== НАЧАЛО ОТЛАДКИ УПАКОВКИ ===');\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759827620128,
+      "end": 1759827620150
+    }
+  }
+}

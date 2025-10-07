@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bde60c2d001nBxbZ3OJuIwfBa",
+  "messageID": "msg_9bde346c3001VIpRqDZwrEcfqR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01AKvNVBnkmygoW5vf3NEmRM",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1474,
+      "limit": 50
+    },
+    "output": "<file>\n01475|         } else {\n01476|           console.log('❌ Ошибка структуры ответа API упаковок');\n01477|         }\n01478|         \n01479|         // Если дошли сюда, значит не нашли упаковку или была другая ошибка\n01480|         break;\n01481|         \n01482|       } catch (error) {\n01483|         console.error(`❌ СПРАВОЧНИК УПАКОВОК: ошибка на попытке ${attempt}:`, error);\n01484|         if (attempt === maxRetries) {\n01485|           console.error('❌ СПРАВОЧНИК УПАКОВОК: исчерпаны все попытки');\n01486|           return null;\n01487|         }\n01488|       }\n01489|     }\n01490|     \n01491|     console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');\n01492|     return null;\n01493|   };\n01494| \n01495|   // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n01496|   const calculateDellin = async (): Promise<CalculationResult> => {\n01497|     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n01498|     const maxRetries = 2;\n01499|     \n01500|     console.log('🚀 === НАЧАЛО РАСЧЕТА ДЕЛОВЫХ ЛИНИЙ ===');\n01501|     console.log('🚀 API URL:', apiUrl);\n01502|     \n01503|     try {\n01504|       let sessionID = await getDellinSessionId();\n01505|       \n01506|       if (!sessionID) {\n01507|         return {\n01508|           company: 'Деловые Линии',\n01509|           price: 0,\n01510|           days: 0,\n01511|           error: 'Не удалось получить sessionID',\n01512|           apiUrl,\n01513|           requestData: null,\n01514|           responseData: null\n01515|         };\n01516|       }\n01517| \n01518|       // Вычисляем размеры и объемы\n01519|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n01520|       const totalVolume = form.cargos.reduce((sum, cargo) => \n01521|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n01522|       );\n01523|       const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n01524|       const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;\n\n(File has more lines. Use 'offset' parameter to read beyond line 1524)\n</file>",
+    "metadata": {
+      "preview": "        } else {\n          console.log('❌ Ошибка структуры ответа API упаковок');\n        }\n        \n        // Если дошли сюда, значит не нашли упаковку или была другая ошибка\n        break;\n        \n      } catch (error) {\n        console.error(`❌ СПРАВОЧНИК УПАКОВОК: ошибка на попытке ${attempt}:`, error);\n        if (attempt === maxRetries) {\n          console.error('❌ СПРАВОЧНИК УПАКОВОК: исчерпаны все попытки');\n          return null;\n        }\n      }\n    }\n    \n    console.warn('Упаковка с name=crate_with_bubble не найдена в справочнике');\n    return null;\n  };\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759827595072,
+      "end": 1759827595074
+    }
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "prt_9bde37d38001gs54eZBtdn2x1A",
+  "messageID": "msg_9bde346c3001VIpRqDZwrEcfqR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "todowrite",
+  "callID": "toolu_01EsoQMiZaFD2UsQ4SmhqArE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Создать интеграцию DaData для нормализации адресов и получения КЛАДР",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "dellin_fix_1"
+        },
+        {
+          "content": "Переписать функцию поиска терминалов через правильные API endpoints",
+          "status": "pending",
+          "priority": "high",
+          "id": "dellin_fix_2"
+        },
+        {
+          "content": "Исправить структуру запроса в calculateDellin функции",
+          "status": "pending",
+          "priority": "high",
+          "id": "dellin_fix_3"
+        },
+        {
+          "content": "Добавить API endpoint для DaData в backend",
+          "status": "pending",
+          "priority": "medium",
+          "id": "dellin_fix_4"
+        },
+        {
+          "content": "Протестировать новую интеграцию на популярных городах",
+          "status": "pending",
+          "priority": "medium",
+          "id": "dellin_fix_5"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Создать интеграцию DaData для нормализации адресов и получения КЛАДР\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\",\n    \"id\": \"dellin_fix_1\"\n  },\n  {\n    \"content\": \"Переписать функцию поиска терминалов через правильные API endpoints\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"dellin_fix_2\"\n  },\n  {\n    \"content\": \"Исправить структуру запроса в calculateDellin функции\",\n    \"status\": \"pending\",\n    \"priority\": \"high\",\n    \"id\": \"dellin_fix_3\"\n  },\n  {\n    \"content\": \"Добавить API endpoint для DaData в backend\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"dellin_fix_4\"\n  },\n  {\n    \"content\": \"Протестировать новую интеграцию на популярных городах\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\",\n    \"id\": \"dellin_fix_5\"\n  }\n]",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Создать интеграцию DaData для нормализации адресов и получения КЛАДР",
+          "status": "in_progress",
+          "priority": "high",
+          "id": "dellin_fix_1"
+        },
+        {
+          "content": "Переписать функцию поиска терминалов через правильные API endpoints",
+          "status": "pending",
+          "priority": "high",
+          "id": "dellin_fix_2"
+        },
+        {
+          "content": "Исправить структуру запроса в calculateDellin функции",
+          "status": "pending",
+          "priority": "high",
+          "id": "dellin_fix_3"
+        },
+        {
+          "content": "Добавить API endpoint для DaData в backend",
+          "status": "pending",
+          "priority": "medium",
+          "id": "dellin_fix_4"
+        },
+        {
+          "content": "Протестировать новую интеграцию на популярных городах",
+          "status": "pending",
+          "priority": "medium",
+          "id": "dellin_fix_5"
+        }
+      ]
+    },
+    "title": "5 todos",
+    "time": {
+      "start": 1759827434039,
+      "end": 1759827434040
+    }
+  }
+}

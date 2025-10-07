@@ -1,0 +1,26 @@
+{
+  "id": "prt_9bde6f98b0016rZjRhlft6MW2T",
+  "messageID": "msg_9bde346c3001VIpRqDZwrEcfqR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_019Jsw6hABfVvmhAe1z6DfsT",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Тестирование сборки приложения после изменений"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1535:9\nType error: Type 'string | null' is not assignable to type 'null'.\n  Type 'string' is not assignable to type 'null'.\n\n\u001b[0m \u001b[90m 1533 |\u001b[39m       \u001b[90m// Для терминальной доставки получаем терминалы\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1534 |\u001b[39m       \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mform\u001b[33m.\u001b[39mfromAddressDelivery) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1535 |\u001b[39m         fromTerminalId \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m getDellinTerminalByDirection(form\u001b[33m.\u001b[39mfromCity\u001b[33m,\u001b[39m \u001b[32m'derival'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1536 |\u001b[39m       } \u001b[36melse\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 1537 |\u001b[39m         \u001b[90m// Для адресной доставки нормализуем адрес\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1538 |\u001b[39m         \u001b[36mconst\u001b[39m addressToNormalize \u001b[33m=\u001b[39m form\u001b[33m.\u001b[39mfromAddress \u001b[33m||\u001b[39m form\u001b[33m.\u001b[39mfromCity\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:1535:9\nType error: Type 'string | null' is not assignable to type 'null'.\n  Type 'string' is not assignable to type 'null'.\n\n\u001b[0m \u001b[90m 1533 |\u001b[39m       \u001b[90m// Для терминальной доставки получаем терминалы\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1534 |\u001b[39m       \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mform\u001b[33m.\u001b[39mfromAddressDelivery) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 1535 |\u001b[39m         fromTerminalId \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m getDellinTerminalByDirection(form\u001b[33m.\u001b[39mfromCity\u001b[33m,\u001b[39m \u001b[32m'derival'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1536 |\u001b[39m       } \u001b[36melse\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 1537 |\u001b[39m         \u001b[90m// Для адресной доставки нормализуем адрес\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 1538 |\u001b[39m         \u001b[36mconst\u001b[39m addressToNormalize \u001b[33m=\u001b[39m form\u001b[33m.\u001b[39mfromAddress \u001b[33m||\u001b[39m form\u001b[33m.\u001b[39mfromCity\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Тестирование сборки приложения после изменений"
+    },
+    "title": "cd /home/user/project && npm run build",
+    "time": {
+      "start": 1759827655687,
+      "end": 1759827669221
+    }
+  }
+}

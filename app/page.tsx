@@ -1182,174 +1182,203 @@ export default function Home() {
     return null;
   };
 
-  // Получение терминалов Деловые Линии для города с указанием направления
-  const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {
+  // Получение cityID через правильный API Деловых Линий
+  const findCityInDellinDirectory = async (cityName: string): Promise<{cityID: number, code: string} | null> => {
     try {
-      // Получаем валидный sessionID
-      const sessionID = await getDellinSessionId();
-      if (!sessionID) {
-        console.error(`❌ Не удалось получить sessionID для поиска терминалов ${direction}`);
-        return null;
-      }
-
-      // Получаем cityID для города из локального справочника
-      const cityID = await getCityIDFromLocal(citySearch);
-      if (!cityID) {
-        console.warn(`⚠️ cityID не найден для города "${citySearch}". Пробуем поиск без cityID...`);
-      }
-
-      console.log(`🔍 Поиск терминала ${direction} для города:`, citySearch);
-      console.log(`🆔 Используем cityID:`, cityID);
-      console.log(`🔑 Используем sessionID:`, sessionID);
-
-      // Нормализуем название города для поиска
-      const normalizedCity = citySearch.toLowerCase().trim()
+      console.log(`🔍 Поиск города в справочнике ДЛ: ${cityName}`);
+      
+      // Нормализуем название города
+      const normalizedCity = cityName.toLowerCase().trim()
         .replace(/^г\s+/, '') // Убираем префикс "г "
         .replace(/^город\s+/, '') // Убираем префикс "город "
         .replace(/\s+/g, ' '); // Нормализуем пробелы
-
-      // Используем правильный API endpoint для поиска терминалов
-      // Структура запроса согласно API Деловых Линий
-      const requestBody: any = {
-        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
-        sessionID: sessionID,
-        search: normalizedCity,
-        direction: direction,
-        maxCargoDimensions: {
-          length: 3.0,
-          width: 3.0,
-          height: 3.0,
-          weight: 3.0,
-          maxVolume: 3.0,
-          totalVolume: 3.0,
-          totalWeight: 3.0
-        },
-        express: true,
-        freeStorageDays: "2"
-      };
-
-      // Добавляем cityID если он найден
-      if (cityID) {
-        requestBody.cityid = cityID;
-        console.log(`🆔 Добавляем cityID в запрос: ${cityID}`);
-      }
-
-      console.log(`📤 Запрос терминалов ${direction}:`, JSON.stringify(requestBody, null, 2));
-
-      const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {
+      
+      // Используем правильный API для поиска населенных пунктов
+      const response = await fetch('https://api.dellin.ru/v2/public/kladr.json', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(requestBody)
+        body: JSON.stringify({
+          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
+          q: normalizedCity,
+          limit: 10
+        })
       });
-
+      
       const data = await response.json();
-      console.log(`🚛 Деловые Линии терминалы ${direction} response status:`, response.status);
-      console.log(`🚛 Деловые Линии терминалы ${direction} response:`, data);
+      console.log(`🏙️ Поиск города "${normalizedCity}" response:`, data);
       
-      // Детальный анализ структуры ответа
-      console.log(`🔍 Анализ ответа Деловых Линий ${direction}:`);
-      console.log(`   - response.ok: ${response.ok}`);
-      console.log(`   - data тип:`, typeof data);
-      console.log(`   - data.terminals:`, data.terminals);
-      console.log(`   - data.terminals тип:`, typeof data.terminals);
-      console.log(`   - data.terminals.length:`, data.terminals?.length);
-      console.log(`   - data.metadata:`, data.metadata);
-      console.log(`   - data.errors:`, data.errors);
-      console.log(`   - Все ключи data:`, Object.keys(data));
-      
-      if (response.ok && data.terminals && data.terminals.length > 0) {
-        console.log(`🔍 Найденные терминалы ${direction}:`, data.terminals.map((t: any) => ({
-          id: t.id,
-          city: t.city,
-          name: t.name,
-          address: t.address,
-          default: t.default
-        })));
+      if (response.ok && data.cities && Array.isArray(data.cities) && data.cities.length > 0) {
+        // Ищем точное соответствие или наиболее подходящий город
+        let bestMatch = data.cities.find((city: any) => 
+          city.searchString?.toLowerCase() === normalizedCity ||
+          city.aString?.toLowerCase().includes(normalizedCity)
+        );
         
-        // Ищем терминал по умолчанию
-        let terminal = data.terminals.find((t: any) => t.default === true);
-        
-        // Если нет терминала по умолчанию, берем первый
-        if (!terminal && data.terminals.length > 0) {
-          terminal = data.terminals[0];
+        // Если точного соответствия нет, берем первый с терминалами
+        if (!bestMatch) {
+          bestMatch = data.cities.find((city: any) => city.isTerminal === 1);
         }
         
-        if (terminal) {
-          console.log(`✅ Найден терминал ${direction}:`, { 
-            id: terminal.id, 
-            city: terminal.city, 
-            name: terminal.name,
-            default: terminal.default 
+        // Если и этого нет, берем первый
+        if (!bestMatch) {
+          bestMatch = data.cities[0];
+        }
+        
+        if (bestMatch) {
+          console.log(`✅ Найден город:`, {
+            cityID: bestMatch.cityID,
+            name: bestMatch.aString,
+            code: bestMatch.code,
+            hasTerminals: bestMatch.isTerminal === 1
           });
-          return terminal.id.toString();
-        }
-      }
-      
-      // Если основной поиск не дал результатов, пробуем альтернативные варианты
-      console.warn(`⚠️ Терминалы ${direction} не найдены для города "${normalizedCity}". Пробуем альтернативные варианты...`);
-      
-      // Список альтернативных вариантов названий для популярных городов
-      const alternativeNames: { [key: string]: string[] } = {
-        'санкт-петербург': ['спб', 'санкт петербург', 'петербург', 'ленинград'],
-        'москва': ['московская область', 'мск'],
-        'екатеринбург': ['свердловск', 'екб'],
-        'нижний новгород': ['н.новгород', 'нижний-новгород'],
-        'ростов-на-дону': ['ростов на дону', 'ростов'],
-      };
-      
-      if (alternativeNames[normalizedCity]) {
-        for (const altName of alternativeNames[normalizedCity]) {
-          console.log(`🔄 Пробуем альтернативное название: "${altName}"`);
           
-          const altRequestBody = {
-            ...requestBody,
-            search: altName
+          return {
+            cityID: bestMatch.cityID,
+            code: bestMatch.code
           };
-          
-          // Убираем cityID для альтернативного поиска
-          delete altRequestBody.cityid;
-          
-          try {
-            const altResponse = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(altRequestBody)
-            });
-            
-            const altData = await altResponse.json();
-            console.log(`🚛 Альтернативный поиск "${altName}" response:`, altData);
-            
-            if (altResponse.ok && altData.terminals && altData.terminals.length > 0) {
-              let terminal = altData.terminals.find((t: any) => t.default === true);
-              if (!terminal && altData.terminals.length > 0) {
-                terminal = altData.terminals[0];
-              }
-              
-              if (terminal) {
-                console.log(`✅ Найден терминал ${direction} по альтернативному названию "${altName}":`, { 
-                  id: terminal.id, 
-                  city: terminal.city, 
-                  name: terminal.name 
-                });
-                return terminal.id.toString();
-              }
-            }
-          } catch (altError) {
-            console.warn(`⚠️ Ошибка альтернативного поиска "${altName}":`, altError);
-          }
         }
       }
       
-      console.warn(`❌ Терминалы ${direction} не найдены для города:`, citySearch);
-      console.warn('⚠️ Response status:', response.status);
-      console.warn('⚠️ Response data:', data);
+      console.warn(`⚠️ Город "${normalizedCity}" не найден в справочнике ДЛ`);
       return null;
+      
     } catch (error) {
-      console.error(`❌ Ошибка получения терминалов ${direction} Деловые Линии:`, error);
+      console.error(`❌ Ошибка поиска города в справочнике ДЛ:`, error);
+      return null;
+    }
+  };
+  
+  // Получение справочника терминалов Деловых Линий
+  const getDellinTerminalsDirectory = async (): Promise<any> => {
+    try {
+      console.log(`📋 Получение справочника терминалов ДЛ...`);
+      
+      // Сначала получаем ссылку на файл справочника
+      const response = await fetch('https://api.dellin.ru/v3/public/terminals.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B'
+        })
+      });
+      
+      const data = await response.json();
+      console.log(`📋 Ответ API терминалов:`, data);
+      
+      if (response.ok && data.url) {
+        // Скачиваем сам файл справочника
+        const directoryResponse = await fetch(data.url);
+        const directoryData = await directoryResponse.json();
+        
+        console.log(`📋 Справочник терминалов получен, городов: ${directoryData.city?.length || 0}`);
+        return directoryData;
+      }
+      
+      console.error(`❌ Ошибка получения справочника терминалов:`, data);
+      return null;
+      
+    } catch (error) {
+      console.error(`❌ Ошибка загрузки справочника терминалов ДЛ:`, error);
+      return null;
+    }
+  };
+  
+  // Кэш для справочника терминалов
+  let terminalsDirectoryCache: any = null;
+  let terminalsDirectoryCacheTime: number = 0;
+  const CACHE_DURATION = 30 * 60 * 1000; // 30 минут
+  
+  // Поиск терминалов в городе через правильный алгоритм
+  const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {
+    try {
+      console.log(`🔍 НОВЫЙ АЛГОРИТМ: Поиск терминала ${direction} для города: ${citySearch}`);
+      
+      // Шаг 1: Находим cityID города через API поиска
+      const cityInfo = await findCityInDellinDirectory(citySearch);
+      if (!cityInfo) {
+        console.warn(`⚠️ Город "${citySearch}" не найден в справочнике ДЛ`);
+        return null;
+      }
+      
+      // Шаг 2: Получаем справочник терминалов (с кэшированием)
+      const now = Date.now();
+      if (!terminalsDirectoryCache || (now - terminalsDirectoryCacheTime) > CACHE_DURATION) {
+        terminalsDirectoryCache = await getDellinTerminalsDirectory();
+        terminalsDirectoryCacheTime = now;
+      }
+      
+      if (!terminalsDirectoryCache || !terminalsDirectoryCache.city) {
+        console.error(`❌ Справочник терминалов недоступен`);
+        return null;
+      }
+      
+      // Шаг 3: Находим город в справочнике по cityID
+      const cityWithTerminals = terminalsDirectoryCache.city.find((city: any) => 
+        city.cityID === cityInfo.cityID
+      );
+      
+      if (!cityWithTerminals) {
+        console.warn(`⚠️ Город с cityID ${cityInfo.cityID} не найден в справочнике терминалов`);
+        return null;
+      }
+      
+      console.log(`🏙️ Найден город в справочнике:`, {
+        name: cityWithTerminals.name,
+        cityID: cityWithTerminals.cityID,
+        terminalsCount: cityWithTerminals.terminals?.terminal?.length || 0
+      });
+      
+      // Шаг 4: Фильтруем терминалы по направлению
+      const terminals = cityWithTerminals.terminals?.terminal || [];
+      if (terminals.length === 0) {
+        console.warn(`⚠️ В городе "${cityWithTerminals.name}" нет терминалов`);
+        return null;
+      }
+      
+      // Фильтруем терминалы по возможности приема/выдачи груза
+      const suitableTerminals = terminals.filter((terminal: any) => {
+        if (direction === 'derival') {
+          return terminal.receiveCargo === true; // Может принимать груз
+        } else {
+          return terminal.giveoutCargo === true; // Может выдавать груз
+        }
+      });
+      
+      console.log(`🚛 Подходящих терминалов для ${direction}:`, suitableTerminals.length);
+      
+      // Если нет подходящих по направлению, берем любые доступные
+      const availableTerminals = suitableTerminals.length > 0 ? suitableTerminals : terminals;
+      
+      // Ищем терминал по умолчанию
+      let selectedTerminal = availableTerminals.find((terminal: any) => terminal.default === true);
+      
+      // Если нет терминала по умолчанию, берем первый
+      if (!selectedTerminal && availableTerminals.length > 0) {
+        selectedTerminal = availableTerminals[0];
+      }
+      
+      if (selectedTerminal) {
+        console.log(`✅ Найден терминал ${direction}:`, {
+          id: selectedTerminal.id,
+          name: selectedTerminal.name,
+          address: selectedTerminal.address,
+          default: selectedTerminal.default,
+          receiveCargo: selectedTerminal.receiveCargo,
+          giveoutCargo: selectedTerminal.giveoutCargo
+        });
+        
+        return selectedTerminal.id.toString();
+      }
+      
+      console.warn(`❌ Подходящий терминал не найден в городе "${cityWithTerminals.name}"`);
+      return null;
+      
+    } catch (error) {
+      console.error(`❌ Ошибка поиска терминала ${direction} (новый алгоритм):`, error);
       return null;
     }
   };
@@ -1357,6 +1386,40 @@ export default function Home() {
   // Получение терминалов Деловые Линии для города (используем функцию с направлением)
   const getDellinTerminal = async (citySearch: string): Promise<string | null> => {
     return getDellinTerminalByDirection(citySearch, 'arrival');
+  };
+  
+  // Нормализация адреса через DaData для правильного формата Деловых Линий
+  const normalizeAddressForDellin = async (address: string): Promise<string> => {
+    try {
+      console.log(`🌐 Нормализация адреса через DaData: ${address}`);
+      
+      const response = await fetch('/api/dadata', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          address: address,
+          type: 'clean'
+        })
+      });
+      
+      const data = await response.json();
+      console.log(`🌐 DaData response:`, data);
+      
+      if (data.success && data.data?.dellinFormat) {
+        console.log(`✅ Нормализованный адрес: ${data.data.dellinFormat}`);
+        return data.data.dellinFormat;
+      }
+      
+      // Если DaData не сработал, возвращаем исходный адрес
+      console.warn(`⚠️ DaData не смог нормализовать адрес, используем исходный`);
+      return address;
+      
+    } catch (error) {
+      console.error(`❌ Ошибка нормализации адреса через DaData:`, error);
+      return address; // Возвращаем исходный адрес в случае ошибки
+    }
   };
 
   // Получение UID упаковки "crate_with_bubble" из справочника упаковок Деловые Линии с повторной авторизацией
@@ -1461,17 +1524,38 @@ export default function Home() {
       const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;
       const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;
 
-      // Получаем терминалы для городов (если нужно)
-      const fromTerminalId = !form.fromAddressDelivery ? await getDellinTerminalByDirection(form.fromCity, 'derival') : null;
-      const toTerminalId = !form.toAddressDelivery ? await getDellinTerminalByDirection(form.toCity, 'arrival') : null;
+      // Получаем терминалы и нормализованные адреса
+      let fromTerminalId = null;
+      let toTerminalId = null;
+      let normalizedFromAddress = null;
+      let normalizedToAddress = null;
       
-      console.log('🏢 ТЕРМИНАЛЫ ДЛ:');
+      // Для терминальной доставки получаем терминалы
+      if (!form.fromAddressDelivery) {
+        fromTerminalId = await getDellinTerminalByDirection(form.fromCity, 'derival');
+      } else {
+        // Для адресной доставки нормализуем адрес
+        const addressToNormalize = form.fromAddress || form.fromCity;
+        normalizedFromAddress = await normalizeAddressForDellin(addressToNormalize);
+      }
+      
+      if (!form.toAddressDelivery) {
+        toTerminalId = await getDellinTerminalByDirection(form.toCity, 'arrival');
+      } else {
+        // Для адресной доставки нормализуем адрес
+        const addressToNormalize = form.toAddress || form.toCity;
+        normalizedToAddress = await normalizeAddressForDellin(addressToNormalize);
+      }
+      
+      console.log('🏢 ДАННЫЕ ДЛ:');
       console.log('🏢 form.fromAddressDelivery:', form.fromAddressDelivery);
       console.log('🏢 form.toAddressDelivery:', form.toAddressDelivery);
       console.log('🏢 fromTerminalId:', fromTerminalId);
       console.log('🏢 toTerminalId:', toTerminalId);
+      console.log('🏢 normalizedFromAddress:', normalizedFromAddress);
+      console.log('🏢 normalizedToAddress:', normalizedToAddress);
       
-      // Проверяем что терминалы найдены для терминальной доставки
+      // Проверяем что терминалы найдены ТОЛЬКО для терминальной доставки
       if (!form.fromAddressDelivery && !fromTerminalId) {
         console.error('❌ Не найден терминал отправления для города:', form.fromCity);
         return {
@@ -1492,6 +1576,33 @@ export default function Home() {
           price: 0,
           days: 0,
           error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,
+          apiUrl,
+          requestData: null,
+          responseData: null
+        };
+      }
+      
+      // Для адресной доставки проверяем что адреса нормализованы
+      if (form.fromAddressDelivery && !normalizedFromAddress) {
+        console.error('❌ Не удалось нормализовать адрес отправления:', form.fromAddress || form.fromCity);
+        return {
+          company: 'Деловые Линии',
+          price: 0,
+          days: 0,
+          error: `Не удалось обработать адрес отправления: ${form.fromAddress || form.fromCity}`,
+          apiUrl,
+          requestData: null,
+          responseData: null
+        };
+      }
+      
+      if (form.toAddressDelivery && !normalizedToAddress) {
+        console.error('❌ Не удалось нормализовать адрес назначения:', form.toAddress || form.toCity);
+        return {
+          company: 'Деловые Линии',
+          price: 0,
+          days: 0,
+          error: `Не удалось обработать адрес назначения: ${form.toAddress || form.toCity}`,
           apiUrl,
           requestData: null,
           responseData: null
@@ -1563,15 +1674,11 @@ export default function Home() {
             variant: form.fromAddressDelivery ? 'address' : 'terminal',
             ...(form.fromAddressDelivery ? {
               address: {
-                search: form.fromAddress || form.fromCity
+                search: normalizedFromAddress || form.fromAddress || form.fromCity
               }
-            } : (fromTerminalId ? {
-              terminalID: fromTerminalId
             } : {
-              address: {
-                search: form.fromCity
-              }
-            })),
+              terminalID: fromTerminalId
+            }),
             time: {
               worktimeStart: '10:00',
               worktimeEnd: '18:00',
@@ -1585,15 +1692,11 @@ export default function Home() {
             variant: form.toAddressDelivery ? 'address' : 'terminal',
             ...(form.toAddressDelivery ? {
               address: {
-                search: form.toAddress || form.toCity
+                search: normalizedToAddress || form.toAddress || form.toCity
               }
-            } : (toTerminalId ? {
-              terminalID: toTerminalId
             } : {
-              address: {
-                search: form.toCity
-              }
-            })),
+              terminalID: toTerminalId
+            }),
             time: {
               worktimeStart: '10:00',
               worktimeEnd: '18:00',
