@@ -1,0 +1,25 @@
+{
+  "id": "prt_9be827a3a001xPvihSkxqEydTU",
+  "messageID": "msg_9be826a550014dubA6RW0J9h2N",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Mg1QcNcrDUMei5tAMroKSK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1800,
+      "limit": 50
+    },
+    "output": "<file>\n01801|           price: 0,\n01802|           days: 0,\n01803|           error: 'Ошибка обработки ответа API: данные не получены',\n01804|           apiUrl,\n01805|           requestData,\n01806|           responseData: null\n01807|         };\n01808|       }\n01809|       \n01810|       try {\n01811|         console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));\n01812|       } catch (jsonError) {\n01813|         console.error('❌ Ошибка JSON.stringify для data.data:', jsonError);\n01814|         console.log('🔍 data.data (toString):', data.data?.toString?.() || 'Не удалось преобразовать');\n01815|       }\n01816|       \n01817|       // Поиск всех полей связанных со страховкой\n01818|       console.log('💳 ПОИСК КОМПОНЕНТОВ СТРАХОВКИ:');\n01819|       console.log('💳 data.data.insurance:', data.data?.insurance);\n01820|       console.log('💳 data.data.cargoInsurance:', data.data?.cargoInsurance);\n01821|       console.log('💳 data.data.termInsurance:', data.data?.termInsurance);\n01822|       console.log('💳 data.data.insuranceDetails:', data.data?.insuranceDetails);\n01823|       console.log('💳 data.data.services:', data.data?.services);\n01824|       console.log('💳 data.data.additionalServices:', data.data?.additionalServices);\n01825|       \n01826|       // Поиск страховки в других разделах\n01827|       try {\n01828|         console.log('💳 Проверяем derival...');\n01829|         if (data.data?.derival) {\n01830|           console.log('💳 derival найден, проверяем insurance...');\n01831|           console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival?.insurance);\n01832|         } else {\n01833|           console.log('💳 derival не найден или null');\n01834|         }\n01835|         \n01836|         console.log('💳 Проверяем arrival...');\n01837|         if (data.data?.arrival) {\n01838|           console.log('💳 arrival найден, проверяем insurance...');\n01839|           console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);\n01840|         } else {\n01841|           console.log('💳 arrival не найден или null');\n01842|         }\n01843|         \n01844|         console.log('💳 Проверяем intercity...');\n01845|         if (data.data?.intercity) {\n01846|           console.log('💳 intercity найден, проверяем insurance...');\n01847|           console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);\n01848|         } else {\n01849|           console.log('💳 intercity не найден или null');\n01850|         }\n\n(File has more lines. Use 'offset' parameter to read beyond line 1850)\n</file>",
+    "metadata": {
+      "preview": "          price: 0,\n          days: 0,\n          error: 'Ошибка обработки ответа API: данные не получены',\n          apiUrl,\n          requestData,\n          responseData: null\n        };\n      }\n      \n      try {\n        console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));\n      } catch (jsonError) {\n        console.error('❌ Ошибка JSON.stringify для data.data:', jsonError);\n        console.log('🔍 data.data (toString):', data.data?.toString?.() || 'Не удалось преобразовать');\n      }\n      \n      // Поиск всех полей связанных со страховкой\n      console.log('💳 ПОИСК КОМПОНЕНТОВ СТРАХОВКИ:');\n      console.log('💳 data.data.insurance:', data.data?.insurance);\n      console.log('💳 data.data.cargoInsurance:', data.data?.cargoInsurance);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759837846876,
+      "end": 1759837846886
+    }
+  }
+}

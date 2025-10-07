@@ -1,0 +1,25 @@
+{
+  "id": "prt_9be82edf10012RPIxEpQ1c0vcf",
+  "messageID": "msg_9be826a550014dubA6RW0J9h2N",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016cQUoDPMfQdM2hxr99Dhgp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 1980,
+      "limit": 40
+    },
+    "output": "<file>\n01981|             \n01982|             console.log('Парсированная дата pickup:', pickupDate);\n01983|             console.log('Парсированная дата arrival:', arrivalDate);\n01984|             \n01985|             // Проверяем, что даты валидны\n01986|             if (!isNaN(pickupDate.getTime()) && !isNaN(arrivalDate.getTime())) {\n01987|               // Вычисляем разность в днях\n01988|               const timeDiff = arrivalDate.getTime() - pickupDate.getTime();\n01989|               deliveryDays = Math.max(1, Math.ceil(timeDiff / (1000 * 3600 * 24))); // Минимум 1 день\n01990|               \n01991|               console.log('Разность в миллисекундах:', timeDiff);\n01992|               console.log('Деловые Линии - ВЫЧИСЛЕН срок доставки:', deliveryDays, 'дней');\n01993|             } else {\n01994|               console.error('Деловые Линии - Невалидные даты после парсинга');\n01995|               console.error('pickup Date object:', pickupDate);\n01996|               console.error('arrival Date object:', arrivalDate);\n01997|             }\n01998|           } else {\n01999|             console.warn('Деловые Линии - Не найдены даты pickup или arrivalToOspReceiver');\n02000|             console.log('pickup найден:', !!pickup, pickup);\n02001|             console.log('arrivalToOspReceiver найден:', !!arrivalToOspReceiver, arrivalToOspReceiver);\n02002|           }\n02003|         } catch (error) {\n02004|           console.error('Деловые Линии - Ошибка вычисления срока доставки:', error);\n02005|         }\n02006| \n02007|         console.log('💰 ФИНАЛЬНАЯ ИТОГОВАЯ СТОИМОСТЬ:', Math.round(totalPrice));\n02008|         \n02009|         return {\n02010|           company: 'Деловые Линии',\n02011|           price: Math.round(totalPrice),\n02012|           days: deliveryDays || 0,\n02013|           details: data.data || {},\n02014|           requestData,\n02015|           responseData: data,\n02016|           apiUrl,\n02017|           sessionId: sessionID\n02018|         };\n02019|       } else {\n02020|         const errorMessage = data.metadata?.detail || \n\n(File has more lines. Use 'offset' parameter to read beyond line 2020)\n</file>",
+    "metadata": {
+      "preview": "            \n            console.log('Парсированная дата pickup:', pickupDate);\n            console.log('Парсированная дата arrival:', arrivalDate);\n            \n            // Проверяем, что даты валидны\n            if (!isNaN(pickupDate.getTime()) && !isNaN(arrivalDate.getTime())) {\n              // Вычисляем разность в днях\n              const timeDiff = arrivalDate.getTime() - pickupDate.getTime();\n              deliveryDays = Math.max(1, Math.ceil(timeDiff / (1000 * 3600 * 24))); // Минимум 1 день\n              \n              console.log('Разность в миллисекундах:', timeDiff);\n              console.log('Деловые Линии - ВЫЧИСЛЕН срок доставки:', deliveryDays, 'дней');\n            } else {\n              console.error('Деловые Линии - Невалидные даты после парсинга');\n              console.error('pickup Date object:', pickupDate);\n              console.error('arrival Date object:', arrivalDate);\n            }\n          } else {\n            console.warn('Деловые Линии - Не найдены даты pickup или arrivalToOspReceiver');\n            console.log('pickup найден:', !!pickup, pickup);"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759837876097,
+      "end": 1759837876101
+    }
+  }
+}
