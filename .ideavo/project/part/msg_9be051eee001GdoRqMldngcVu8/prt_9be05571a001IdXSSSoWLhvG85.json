@@ -1,0 +1,25 @@
+{
+  "id": "prt_9be05571a001IdXSSSoWLhvG85",
+  "messageID": "msg_9be051eee001GdoRqMldngcVu8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0139qP7SDrUp9N9yD1mF1vx3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 100,
+      "limit": 50
+    },
+    "output": "<file>\n00101|       () => testNordWheel()\n00102|     ];\n00103| \n00104|     // Run tests in parallel for better performance\n00105|     await Promise.allSettled(tests.map(test => test()));\n00106|   }, [actions, testPEK, testDellin, testRailContinent, testVozovoz, testNordWheel]);\n00107| \n00108|   const runFullTesting = useCallback(async () => {\n00109|     actions.setFullTesting(true);\n00110|     actions.setTestProgress({ \n00111|       currentTK: 'Начинаем тестирование...', \n00112|       completedTests: 0, \n00113|       totalPlannedTests: 25, \n00114|       stage: 'Инициализация',\n00115|       progress: 0 \n00116|     });\n00117| \n00118|     const startTime = Date.now();\n00119|     const results: any[] = [];\n00120|     const errors: string[] = [];\n00121| \n00122|     const testCases = [\n00123|       { service: 'ПЭК', endpoint: '/api/pek', data: { method: 'test' } },\n00124|       { service: 'Деловые Линии', endpoint: '/api/dellin-packages', data: { method: 'test' } },\n00125|       { service: 'Rail Continent', endpoint: '/api/rail-continent', data: { method: 'test' } },\n00126|       { service: 'Возовоз', endpoint: '/api/vozovoz', data: { method: 'test' } },\n00127|       { service: 'Nord Wheel', endpoint: '/api/test', data: { service: 'nordwheel' } }\n00128|     ];\n00129| \n00130|     for (let i = 0; i < testCases.length; i++) {\n00131|       const testCase = testCases[i];\n00132|       const progress = Math.round(((i + 1) / testCases.length) * 100);\n00133|       \n00134|       actions.setTestProgress({\n00135|         currentTK: testCase.service,\n00136|         completedTests: i,\n00137|         totalPlannedTests: testCases.length,\n00138|         stage: 'Тестирование API',\n00139|         progress\n00140|       });\n00141| \n00142|       try {\n00143|         const response = await apiRequestWithTimeout(testCase.endpoint, {\n00144|           method: 'POST',\n00145|           headers: { 'Content-Type': 'application/json' },\n00146|           body: JSON.stringify(testCase.data)\n00147|         }, { timeout: 10000 });\n00148| \n00149|         const result = await response.json();\n00150|         \n\n(File has more lines. Use 'offset' parameter to read beyond line 150)\n</file>",
+    "metadata": {
+      "preview": "      () => testNordWheel()\n    ];\n\n    // Run tests in parallel for better performance\n    await Promise.allSettled(tests.map(test => test()));\n  }, [actions, testPEK, testDellin, testRailContinent, testVozovoz, testNordWheel]);\n\n  const runFullTesting = useCallback(async () => {\n    actions.setFullTesting(true);\n    actions.setTestProgress({ \n      currentTK: 'Начинаем тестирование...', \n      completedTests: 0, \n      totalPlannedTests: 25, \n      stage: 'Инициализация',\n      progress: 0 \n    });\n\n    const startTime = Date.now();\n    const results: any[] = [];\n    const errors: string[] = [];"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759829645604,
+      "end": 1759829645605
+    }
+  }
+}

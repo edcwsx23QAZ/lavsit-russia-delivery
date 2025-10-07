@@ -1,0 +1,26 @@
+{
+  "id": "prt_9be0706a500100goRmjXXnvnYq",
+  "messageID": "msg_9be051eee001GdoRqMldngcVu8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01NbQPyxsSsA2N7NYSzTGpUc",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "oldString": "import DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';\nimport ApiTestingSection from '@/components/diagnostic/ApiTestingSection';\nimport { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';\nimport { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';",
+      "newString": "import DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';\nimport ApiTestingSection from '@/components/diagnostic/ApiTestingSection';\nimport ManualTesting from '@/components/diagnostic/ManualTesting';\nimport { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';\nimport { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -3,8 +3,9 @@\n import React, { useEffect, useCallback } from 'react';\n import { useDiagnosticState } from '@/hooks/useDiagnosticState';\n import DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';\n import ApiTestingSection from '@/components/diagnostic/ApiTestingSection';\n+import ManualTesting from '@/components/diagnostic/ManualTesting';\n import { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';\n import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\n \n export default function OptimizedDiagnosticPage() {\n"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759829758491,
+      "end": 1759829758499
+    }
+  }
+}

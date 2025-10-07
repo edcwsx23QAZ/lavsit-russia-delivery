@@ -1,0 +1,25 @@
+{
+  "id": "prt_9be06e68b001sXpxPua7VUY6Cw",
+  "messageID": "msg_9be051eee001GdoRqMldngcVu8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_011AADWWDEixpBDjAWe2uV7X",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 250,
+      "limit": 50
+    },
+    "output": "<file>\n00251|         headers: {\n00252|           'Cache-Control': 'no-cache, no-store, must-revalidate',\n00253|           'Pragma': 'no-cache',\n00254|           'Expires': '0'\n00255|         }\n00256|       }, { timeout: 30000 });\n00257| \n00258|       const result = await response.json();\n00259|       \n00260|       if (!result.success) {\n00261|         throw new Error(result.error || 'Ошибка обновления данных');\n00262|       }\n00263| \n00264|       const updateTime = new Date().toLocaleString('ru-RU');\n00265|       localStorage.setItem('lastProductDataUpdate', new Date().toISOString());\n00266|       actions.setLastUpdateTime(updateTime);\n00267|       actions.setUpdateStatus('success');\n00268|       \n00269|       setTimeout(() => actions.setUpdateStatus('idle'), 3000);\n00270|     } catch (error) {\n00271|       console.error('Ошибка обновления данных:', error);\n00272|       actions.setUpdateStatus('error');\n00273|       setTimeout(() => actions.setUpdateStatus('idle'), 5000);\n00274|     } finally {\n00275|       actions.setUpdatingData(false);\n00276|     }\n00277|   }, [actions]);\n00278| \n00279|   return (\n00280|     <div className=\"min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6\">\n00281|       <div className=\"max-w-7xl mx-auto\">\n00282|         <DiagnosticHeader\n00283|           onTestAllAPIs={testAllAPIs}\n00284|           onRunFullTesting={runFullTesting}\n00285|           onUpdateProductData={updateProductData}\n00286|           isFullTesting={state.isFullTesting}\n00287|           isUpdatingData={state.isUpdatingData}\n00288|           updateStatus={state.updateStatus}\n00289|         />\n00290| \n00291|         <ApiTestingSection\n00292|           diagnosticResults={state.diagnosticResults}\n00293|           testStates={{\n00294|             isTestingPEK: state.isTestingPEK,\n00295|             isTestingDellin: state.isTestingDellin,\n00296|             isTestingRailContinent: state.isTestingRailContinent,\n00297|             isTestingVozovoz: state.isTestingVozovoz,\n00298|             isTestingNordWheel: state.isTestingNordWheel,\n00299|           }}\n00300|           onTestPEK={testPEK}\n\n(File has more lines. Use 'offset' parameter to read beyond line 300)\n</file>",
+    "metadata": {
+      "preview": "        headers: {\n          'Cache-Control': 'no-cache, no-store, must-revalidate',\n          'Pragma': 'no-cache',\n          'Expires': '0'\n        }\n      }, { timeout: 30000 });\n\n      const result = await response.json();\n      \n      if (!result.success) {\n        throw new Error(result.error || 'Ошибка обновления данных');\n      }\n\n      const updateTime = new Date().toLocaleString('ru-RU');\n      localStorage.setItem('lastProductDataUpdate', new Date().toISOString());\n      actions.setLastUpdateTime(updateTime);\n      actions.setUpdateStatus('success');\n      \n      setTimeout(() => actions.setUpdateStatus('idle'), 3000);\n    } catch (error) {"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759829747789,
+      "end": 1759829747791
+    }
+  }
+}

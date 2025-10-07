@@ -1,0 +1,25 @@
+{
+  "id": "prt_9be06d5b100171jhxS0CKFPCtm",
+  "messageID": "msg_9be051eee001GdoRqMldngcVu8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01VGURZdBoCfML1j7KxSJhhk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/diagnostic/page.tsx",
+      "offset": 170,
+      "limit": 50
+    },
+    "output": "<file>\n00171|         });\n00172|         errors.push(`${testCase.service}: Сетевая ошибка`);\n00173|       }\n00174| \n00175|       // Small delay for UI updates\n00176|       await new Promise(resolve => setTimeout(resolve, 200));\n00177|     }\n00178| \n00179|     const endTime = Date.now();\n00180|     const totalTime = endTime - startTime;\n00181|     const successful = results.filter(r => r.status === 'passed').length;\n00182|     const failed = results.filter(r => r.status === 'failed').length;\n00183|     const averageTime = results.reduce((sum, r) => sum + r.timing, 0) / results.length;\n00184| \n00185|     actions.setFullTestResults({\n00186|       summary: {\n00187|         totalTests: results.length,\n00188|         successful,\n00189|         failed,\n00190|         skipped: 0,\n00191|         errors,\n00192|         averageResponseTime: Math.round(averageTime),\n00193|         successRate: (successful / results.length) * 100\n00194|       },\n00195|       details: results,\n00196|       progressInfo: null\n00197|     });\n00198| \n00199|     actions.setTestProgress(null);\n00200|     actions.setFullTesting(false);\n00201|   }, [actions]);\n00202| \n00203|   // Vehicle management functions\n00204|   const addVehicleType = useCallback(() => {\n00205|     const { name, length, width, height } = state.newVehicle;\n00206|     \n00207|     if (!name || !length || !width || !height) {\n00208|       alert('Пожалуйста, заполните все поля');\n00209|       return;\n00210|     }\n00211|     \n00212|     const newId = (state.vehicleTypes.length + 1).toString();\n00213|     const vehicleToAdd = {\n00214|       id: newId,\n00215|       name,\n00216|       length: parseInt(length),\n00217|       width: parseInt(width),\n00218|       height: parseInt(height)\n00219|     };\n00220|     \n\n(File has more lines. Use 'offset' parameter to read beyond line 220)\n</file>",
+    "metadata": {
+      "preview": "        });\n        errors.push(`${testCase.service}: Сетевая ошибка`);\n      }\n\n      // Small delay for UI updates\n      await new Promise(resolve => setTimeout(resolve, 200));\n    }\n\n    const endTime = Date.now();\n    const totalTime = endTime - startTime;\n    const successful = results.filter(r => r.status === 'passed').length;\n    const failed = results.filter(r => r.status === 'failed').length;\n    const averageTime = results.reduce((sum, r) => sum + r.timing, 0) / results.length;\n\n    actions.setFullTestResults({\n      summary: {\n        totalTests: results.length,\n        successful,\n        failed,\n        skipped: 0,"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1759829744072,
+      "end": 1759829744073
+    }
+  }
+}

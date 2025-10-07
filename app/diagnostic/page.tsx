@@ -4,6 +4,7 @@ import React, { useEffect, useCallback } from 'react';
 import { useDiagnosticState } from '@/hooks/useDiagnosticState';
 import DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';
 import ApiTestingSection from '@/components/diagnostic/ApiTestingSection';
+import ManualTesting from '@/components/diagnostic/ManualTesting';
 import { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';
 import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';
 
@@ -309,6 +310,8 @@ export default function OptimizedDiagnosticPage() {
           testProgress={state.testProgress?.progress || 0}
           isFullTesting={state.isFullTesting}
         />
+
+        <ManualTesting />
 
         <LazyVehicleManagement
           vehicleTypes={state.vehicleTypes}
