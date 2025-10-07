@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bf22a701002a4ly5sCkpZe694",
+  "messageID": "msg_9bf21ff31001b0r0vUHmlRUVke",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_01XrheHSkKtnGUdnyp24Cq3q",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "calculateVozovoz",
+      "path": "/home/user/project"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 3070:   const calculateVozovoz = async (): Promise<CalculationResult> => {\n  Line 3413:         calculationFunctions.push(calculateVozovoz());",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "title": "calculateVozovoz",
+    "time": {
+      "start": 1759848343897,
+      "end": 1759848343910
+    }
+  }
+}

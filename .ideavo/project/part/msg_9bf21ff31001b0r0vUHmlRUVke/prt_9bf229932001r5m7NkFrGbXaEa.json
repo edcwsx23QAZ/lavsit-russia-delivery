@@ -1,0 +1,23 @@
+{
+  "id": "prt_9bf229932001r5m7NkFrGbXaEa",
+  "messageID": "msg_9bf21ff31001b0r0vUHmlRUVke",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01QzNZgsFLt54Eank7J2Sucv",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz/route.ts"
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server';\n00002| import { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils';\n00003| \n00004| // Токен Возовоз API\n00005| const VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n00006| \n00007| export async function POST(request: NextRequest) {\n00008|   const endTiming = PerformanceMonitor.startMeasurement('vozovoz_api_total');\n00009|   \n00010|   try {\n00011|     const body = await request.json();\n00012|     \n00013|     // Input validation for Vozovoz API\n00014|     if (body.method && typeof body.method !== 'string') {\n00015|       endTiming();\n00016|       return NextResponse.json({ \n00017|         error: 'Invalid method parameter',\n00018|         details: 'method must be a string'\n00019|       }, { status: 400 });\n00020|     }\n00021|     \n00022|     // Строим URL для API Vozovoz с токеном\n00023|     const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;\n00024| \n00025|     console.log('🚚 Vozovoz API запрос:', JSON.stringify(body, null, 2));\n00026|     console.log('🚚 Vozovoz API URL:', apiUrl);\n00027| \n00028|     const response = await apiRequestWithTimeout(apiUrl, {\n00029|       method: 'POST',\n00030|       headers: {\n00031|         'Content-Type': 'application/json',\n00032|         'Accept': 'application/json',\n00033|         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'\n00034|       },\n00035|       body: JSON.stringify(body)\n00036|     }, { timeout: 12000, retries: 1 });\n00037| \n00038|     console.log(`🚚 Vozovoz API статус: ${response.status} ${response.statusText}`);\n00039| \n00040|     if (!response.ok) {\n00041|       console.error('🚚 Vozovoz API ошибка:', response.status, response.statusText);\n00042|       \n00043|       const errorText = await response.text();\n00044|       console.error('🚚 Vozovoz API ошибка тело:', errorText);\n00045|       \n00046|       return NextResponse.json({\n00047|         success: false,\n00048|         error: `API ошибка: ${response.status} ${response.statusText}`,\n00049|         details: errorText\n00050|       }, { status: response.status });\n00051|     }\n00052| \n00053|     const data = await response.json();\n00054|     console.log('🚚 Vozovoz API ответ:', JSON.stringify(data, null, 2));\n00055| \n00056|     // Проверяем на наличие ошибок в ответе Vozovoz\n00057|     if (data.error) {\n00058|       console.error('🚚 Vozovoz API вернул ошибку:', data.error);\n00059|       return NextResponse.json({\n00060|         success: false,\n00061|         error: data.error.message || 'Vozovoz API error',\n00062|         details: data.error\n00063|       }, { status: 400 });\n00064|     }\n00065| \n00066|     return NextResponse.json(data);\n00067| \n00068|   } catch (error: any) {\n00069|     console.error('🚚 Vozovoz API критическая ошибка:', error);\n00070|     return NextResponse.json({\n00071|       success: false,\n00072|       error: error.message || 'Внутренняя ошибка сервера',\n00073|       details: error.stack\n00074|     }, { status: 500 });\n00075|   }\n00076| }\n</file>",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server';\nimport { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils';\n\n// Токен Возовоз API\nconst VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n\nexport async function POST(request: NextRequest) {\n  const endTiming = PerformanceMonitor.startMeasurement('vozovoz_api_total');\n  \n  try {\n    const body = await request.json();\n    \n    // Input validation for Vozovoz API\n    if (body.method && typeof body.method !== 'string') {\n      endTiming();\n      return NextResponse.json({ \n        error: 'Invalid method parameter',\n        details: 'method must be a string'\n      }, { status: 400 });\n    }"
+    },
+    "title": "app/api/vozovoz/route.ts",
+    "time": {
+      "start": 1759848340534,
+      "end": 1759848340538
+    }
+  }
+}

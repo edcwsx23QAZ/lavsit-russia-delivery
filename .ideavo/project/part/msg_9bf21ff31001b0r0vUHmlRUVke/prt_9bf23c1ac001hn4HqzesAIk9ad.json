@@ -1,0 +1,25 @@
+{
+  "id": "prt_9bf23c1ac001hn4HqzesAIk9ad",
+  "messageID": "msg_9bf21ff31001b0r0vUHmlRUVke",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016UPhQ6LyiVwReu5fVvXqux",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3220,
+      "limit": 30
+    },
+    "output": "<file>\n03221|         console.log('🚚 Возовоз услуги:', services);\n03222| \n03223|         return {\n03224|           company: 'Возовоз',\n03225|           price: Math.round(totalPrice),\n03226|           days: responseData.deliveryTime?.to || responseData.deliveryTime?.from || 3,\n03227|           details: {\n03228|             note: `Доставка ${form.fromCity} - ${form.toCity}`,\n03229|             services,\n03230|             basePrice: responseData.basePrice,\n03231|             finalPrice: responseData.price,\n03232|             deliveryTime: responseData.deliveryTime,\n03233|             weight: totalWeight,\n03234|             volume: totalVolume\n03235|           },\n03236|           requestData,\n03237|           responseData: data,\n03238|           apiUrl\n03239|         };\n03240|       } else {\n03241|         return {\n03242|           company: 'Возовоз',\n03243|           price: 0,\n03244|           days: 0,\n03245|           error: data.error || 'Ошибка расчета Возовоз',\n03246|           requestData,\n03247|           responseData: data,\n03248|           apiUrl\n03249|         };\n03250|       }\n\n(File has more lines. Use 'offset' parameter to read beyond line 3250)\n</file>",
+    "metadata": {
+      "preview": "        console.log('🚚 Возовоз услуги:', services);\n\n        return {\n          company: 'Возовоз',\n          price: Math.round(totalPrice),\n          days: responseData.deliveryTime?.to || responseData.deliveryTime?.from || 3,\n          details: {\n            note: `Доставка ${form.fromCity} - ${form.toCity}`,\n            services,\n            basePrice: responseData.basePrice,\n            finalPrice: responseData.price,\n            deliveryTime: responseData.deliveryTime,\n            weight: totalWeight,\n            volume: totalVolume\n          },\n          requestData,\n          responseData: data,\n          apiUrl\n        };\n      } else {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1759848416113,
+      "end": 1759848416119
+    }
+  }
+}
