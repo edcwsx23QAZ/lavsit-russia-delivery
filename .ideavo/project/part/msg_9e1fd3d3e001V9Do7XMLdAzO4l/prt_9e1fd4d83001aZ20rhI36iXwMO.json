@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e1fd4d83001aZ20rhI36iXwMO",
+  "messageID": "msg_9e1fd3d3e001V9Do7XMLdAzO4l",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01GGrY4UBPP73be8fk1kgi5e",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "offset": 90,
+      "limit": 30
+    },
+    "output": "<file>\n00091|           toCity: body.to_city,\n00092|           fromCityCode,\n00093|           toCityCode\n00094|         }\n00095|       }, { status: 400 });\n00096|     }\n00097| \n00098|     const packages = body.packages || [{\n00099|       height: body.height || 10,\n00100|       length: body.length || 20,\n00101|       width: body.width || 10,\n00102|       weight: body.weight || 1000\n00103|     }];\n00104| \n00105|     const requestData = {\n00106|       type: 1,\n00107|       date: new Date().toISOString(),\n00108|       lang: 'rus',\n00109|       from_location: {\n00110|         code: fromCityCode\n00111|       },\n00112|       to_location: {\n00113|         code: toCityCode\n00114|       },\n00115|       packages: packages\n00116|     };\n00117| \n00118|     console.log('📦 CDEK калькулятор запрос:', JSON.stringify(requestData, null, 2));\n00119| \n00120|     const response = await apiRequestWithTimeout(`${CDEK_API_URL}/calculator/tarifflist`, {\n\n(File has more lines. Use 'offset' parameter to read beyond line 120)\n</file>",
+    "metadata": {
+      "preview": "          toCity: body.to_city,\n          fromCityCode,\n          toCityCode\n        }\n      }, { status: 400 });\n    }\n\n    const packages = body.packages || [{\n      height: body.height || 10,\n      length: body.length || 20,\n      width: body.width || 10,\n      weight: body.weight || 1000\n    }];\n\n    const requestData = {\n      type: 1,\n      date: new Date().toISOString(),\n      lang: 'rus',\n      from_location: {\n        code: fromCityCode"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760433098685,
+      "end": 1760433098686
+    }
+  }
+}

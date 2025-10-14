@@ -1,0 +1,20 @@
+{
+  "id": "prt_9e1fdc426001WXhcmLxgKt2tcg",
+  "messageID": "msg_9e1fdafa1002xd5em5xQhofsnn",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01PHM8P2q1EtUYr3pbP6hcNv",
+  "state": {
+    "status": "error",
+    "input": {
+      "command": "kill $(cat /tmp/dev.pid) 2>/dev/null; rm /tmp/dev.pid /tmp/dev.log 2>/dev/null; echo \"Dev server stopped\"",
+      "description": "Остановка dev сервера"
+    },
+    "error": "Error: This command references paths outside of /home/user/project so it is not allowed to be executed.",
+    "time": {
+      "start": 1760433129834,
+      "end": 1760433129837
+    }
+  }
+}

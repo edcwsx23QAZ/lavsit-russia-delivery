@@ -3,7 +3,7 @@ import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';
 
 const CDEK_CLIENT_ID = 'wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP';
 const CDEK_CLIENT_SECRET = 'RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5';
-const CDEK_API_URL = 'https://api.cdek.ru/v2';
+const CDEK_API_URL = 'https://api.edu.cdek.ru/v2';
 
 let cachedToken: string | null = null;
 let tokenExpiry: number = 0;
@@ -15,13 +15,12 @@ async function getCdekToken(): Promise<string> {
 
   const credentials = Buffer.from(`${CDEK_CLIENT_ID}:${CDEK_CLIENT_SECRET}`).toString('base64');
 
-  const response = await apiRequestWithTimeout(`${CDEK_API_URL}/oauth/token?parameters`, {
+  const response = await apiRequestWithTimeout(`${CDEK_API_URL}/oauth/token`, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-      'Authorization': `Basic ${credentials}`
+      'Content-Type': 'application/x-www-form-urlencoded'
     },
-    body: 'grant_type=client_credentials'
+    body: `grant_type=client_credentials&client_id=${CDEK_CLIENT_ID}&client_secret=${CDEK_CLIENT_SECRET}`
   }, { timeout: 10000, retries: 2 });
 
   if (!response.ok) {
@@ -103,9 +102,22 @@ export async function POST(request: NextRequest) {
       weight: body.weight || 1000
     }];
 
+    const now = new Date();
+    const offset = -now.getTimezoneOffset();
+    const sign = offset >= 0 ? '+' : '-';
+    const pad = (num: number) => String(Math.abs(num)).padStart(2, '0');
+    const hours = pad(Math.floor(Math.abs(offset) / 60));
+    const minutes = pad(Math.abs(offset) % 60);
+    const dateFormatted = now.getFullYear() + '-' + 
+      pad(now.getMonth() + 1) + '-' + 
+      pad(now.getDate()) + 'T' + 
+      pad(now.getHours()) + ':' + 
+      pad(now.getMinutes()) + ':' + 
+      pad(now.getSeconds()) + sign + hours + minutes;
+
     const requestData = {
       type: 1,
-      date: new Date().toISOString(),
+      date: dateFormatted,
       lang: 'rus',
       from_location: {
         code: fromCityCode

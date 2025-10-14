@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e1fdff23001qzjfeL6VnCr9B0",
+  "messageID": "msg_9e1fdf0ba00227dl7K5T79FIFM",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Jhj4Gd79tiEGdxvy2yAmfY",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | tail -40",
+      "description": "Финальная проверка сборки"
+    },
+    "output": " ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/16) ...\n   Generating static pages (4/16) \r\n   Generating static pages (8/16) \r\n   Generating static pages (12/16) \r\n[INDEXEDDB] Storage module initialized\n[COOKIE] Storage module initialized\n ✓ Generating static pages (16/16)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    64.1 kB         165 kB\n├ ○ /_not-found                          873 B            88 kB\n├ ƒ /api/cdek                            0 B                0 B\n├ ƒ /api/dadata                          0 B                0 B\n├ ƒ /api/dellin-packages                 0 B                0 B\n├ ƒ /api/furniture-products              0 B                0 B\n├ ƒ /api/pek                             0 B                0 B\n├ ƒ /api/pek-get                         0 B                0 B\n├ ƒ /api/pek-simple                      0 B                0 B\n├ ƒ /api/rail-continent                  0 B                0 B\n├ ƒ /api/test                            0 B                0 B\n├ ƒ /api/vozovoz                         0 B                0 B\n├ ○ /diagnostic                          14.8 kB         115 kB\n├ ○ /env-check                           8.88 kB          96 kB\n└ ○ /pek-test                            3.07 kB        97.9 kB\n+ First Load JS shared by all            87.1 kB\n  ├ chunks/117-08bceb6cd3f08885.js       31.6 kB\n  ├ chunks/fd9d1056-5869b01721c53837.js  53.6 kB\n  └ other shared chunks (total)          1.86 kB\n\n\nƒ Middleware                             27.3 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+    "metadata": {
+      "output": " ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/16) ...\n   Generating static pages (4/16) \r\n   Generating static pages (8/16) \r\n   Generating static pages (12/16) \r\n[INDEXEDDB] Storage module initialized\n[COOKIE] Storage module initialized\n ✓ Generating static pages (16/16)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    64.1 kB         165 kB\n├ ○ /_not-found                          873 B            88 kB\n├ ƒ /api/cdek                            0 B                0 B\n├ ƒ /api/dadata                          0 B                0 B\n├ ƒ /api/dellin-packages                 0 B                0 B\n├ ƒ /api/furniture-products              0 B                0 B\n├ ƒ /api/pek                             0 B                0 B\n├ ƒ /api/pek-get                         0 B                0 B\n├ ƒ /api/pek-simple                      0 B                0 B\n├ ƒ /api/rail-continent                  0 B                0 B\n├ ƒ /api/test                            0 B                0 B\n├ ƒ /api/vozovoz                         0 B                0 B\n├ ○ /diagnostic                          14.8 kB         115 kB\n├ ○ /env-check                           8.88 kB          96 kB\n└ ○ /pek-test                            3.07 kB        97.9 kB\n+ First Load JS shared by all            87.1 kB\n  ├ chunks/117-08bceb6cd3f08885.js       31.6 kB\n  ├ chunks/fd9d1056-5869b01721c53837.js  53.6 kB\n  └ other shared chunks (total)          1.86 kB\n\n\nƒ Middleware                             27.3 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+      "exit": 0,
+      "description": "Финальная проверка сборки"
+    },
+    "title": "cd /home/user/project && npm run build 2>&1 | tail -40",
+    "time": {
+      "start": 1760433143944,
+      "end": 1760433166571
+    }
+  }
+}

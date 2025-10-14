@@ -1,0 +1,27 @@
+{
+  "id": "prt_9e1fbfb35001T4wVFv81iRV3n7",
+  "messageID": "msg_9e1fbe6310012n09ZW10NeFXMv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_016Q6YUwxqeT27Cx4TCiV2Xx",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run dev > /tmp/dev.log 2>&1 & echo $! > /tmp/dev.pid && sleep 5 && echo \"Dev server started\"",
+      "description": "Запуск dev сервера для тестирования",
+      "timeout": 10000
+    },
+    "output": "Dev server started\n",
+    "metadata": {
+      "output": "Dev server started\n",
+      "exit": 0,
+      "description": "Запуск dev сервера для тестирования"
+    },
+    "title": "cd /home/user/project && npm run dev > /tmp/dev.log 2>&1 & echo $! > /tmp/dev.pid && sleep 5 && echo \"Dev server started\"",
+    "time": {
+      "start": 1760433012023,
+      "end": 1760433017165
+    }
+  }
+}

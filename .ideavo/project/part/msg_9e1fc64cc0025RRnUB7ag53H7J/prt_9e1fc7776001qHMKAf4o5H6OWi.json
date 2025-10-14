@@ -1,0 +1,27 @@
+{
+  "id": "prt_9e1fc7776001qHMKAf4o5H6OWi",
+  "messageID": "msg_9e1fc64cc0025RRnUB7ag53H7J",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01Bvm17etSopSXvwvPJikd7w",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST \"https://api.edu.cdek.ru/v2/oauth/token\" -H \"Content-Type: application/x-www-form-urlencoded\" -d \"grant_type=client_credentials&client_id=wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP&client_secret=RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5\" 2>&1",
+      "description": "Тест OAuth на тестовом API",
+      "timeout": 10000
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100  1511    0  1392  100   119   1450    124 --:--:-- --:--:-- --:--:--  1573\n{\"access_token\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjA0MzY2NDUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50LXV1aWQ6ZWQ3NWVjZjQtMzBlZC00MTUzLWFmZTktZWI4MGJiNTEyZjIyIiwic29saWQtYWRkcmVzczpmYWxzZSIsImZ1bGwtbmFtZTrQotC10YHRgtC40YDQvtCy0LDQvdC40LUg0JjQvdGC0LXQs9GA0LDRhtC40Lgg0JjQnCJdLCJqdGkiOiI2bTVRQW0yX1lWYW5GbVBuYTF3cXJPblF2U0UiLCJjbGllbnRfaWQiOiJ3cUd3aVF4MGdnOG1MdGlFS3NVaW5qVlNJQ0NqdFRFUCJ9.KjSIDpXhuqs_J6jy9PoK0FcORBEeOfLtbs0pm2AMZ59YcMgvELhsFM2I8-6Hb1j-D33KQ2mAKxSVStocR4FcA6cpQJiQt6E8LIl0gdsLXbUK3Npcvi5VxWfnzi44xGYAiPG5ahei_4l_CA4MxzGMFYxsRh_DhWLDyrfzsHqoAh0aGgkWbFpoz7bC9jFLvTH0ii2RJ_j6TtZr8-bQZS2BYaSI-_W5q6uQr84vlLvHQ2J08HIMfY9FyPvvktEbDkXTcqPcy1-gh0d_9mCtkml2hPJW6yOq70ElJqOoYnXSbLttibv1_yajowQr_L4v-XxXq3IEeiX3jDuTWciIisx5mg\",\"token_type\":\"bearer\",\"expires_in\":3599,\"scope\":\"location:all order:all payment:all\",\"jti\":\"6m5QAm2_YVanFmPna1wqrOnQvSE\"}",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100  1511    0  1392  100   119   1450    124 --:--:-- --:--:-- --:--:--  1573\n{\"access_token\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjA0MzY2NDUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50LXV1aWQ6ZWQ3NWVjZjQtMzBlZC00MTUzLWFmZTktZWI4MGJiNTEyZjIyIiwic29saWQtYWRkcmVzczpmYWxzZSIsImZ1bGwtbmFtZTrQotC10YHRgtC40YDQvtCy0LDQvdC40LUg0JjQvdGC0LXQs9GA0LDRhtC40Lgg0JjQnCJdLCJqdGkiOiI2bTVRQW0yX1lWYW5GbVBuYTF3cXJPblF2U0UiLCJjbGllbnRfaWQiOiJ3cUd3aVF4MGdnOG1MdGlFS3NVaW5qVlNJQ0NqdFRFUCJ9.KjSIDpXhuqs_J6jy9PoK0FcORBEeOfLtbs0pm2AMZ59YcMgvELhsFM2I8-6Hb1j-D33KQ2mAKxSVStocR4FcA6cpQJiQt6E8LIl0gdsLXbUK3Npcvi5VxWfnzi44xGYAiPG5ahei_4l_CA4MxzGMFYxsRh_DhWLDyrfzsHqoAh0aGgkWbFpoz7bC9jFLvTH0ii2RJ_j6TtZr8-bQZS2BYaSI-_W5q6uQr84vlLvHQ2J08HIMfY9FyPvvktEbDkXTcqPcy1-gh0d_9mCtkml2hPJW6yOq70ElJqOoYnXSbLttibv1_yajowQr_L4v-XxXq3IEeiX3jDuTWciIisx5mg\",\"token_type\":\"bearer\",\"expires_in\":3599,\"scope\":\"location:all order:all payment:all\",\"jti\":\"6m5QAm2_YVanFmPna1wqrOnQvSE\"}",
+      "exit": 0,
+      "description": "Тест OAuth на тестовом API"
+    },
+    "title": "curl -X POST \"https://api.edu.cdek.ru/v2/oauth/token\" -H \"Content-Type: application/x-www-form-urlencoded\" -d \"grant_type=client_credentials&client_id=wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP&client_secret=RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5\" 2>&1",
+    "time": {
+      "start": 1760433044644,
+      "end": 1760433045622
+    }
+  }
+}

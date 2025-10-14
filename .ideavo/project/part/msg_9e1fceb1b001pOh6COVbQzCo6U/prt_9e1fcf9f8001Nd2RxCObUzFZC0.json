@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e1fcf9f8001Nd2RxCObUzFZC0",
+  "messageID": "msg_9e1fceb1b001pOh6COVbQzCo6U",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Xrx1dJWu1xaA1k3ov5hDGq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "oldString": "  const response = await apiRequestWithTimeout(`${CDEK_API_URL}/oauth/token?parameters`, {\n    method: 'POST',\n    headers: {\n      'Content-Type': 'application/x-www-form-urlencoded',\n      'Authorization': `Basic ${credentials}`\n    },\n    body: 'grant_type=client_credentials'\n  }, { timeout: 10000, retries: 2 });",
+      "newString": "  const response = await apiRequestWithTimeout(`${CDEK_API_URL}/oauth/token`, {\n    method: 'POST',\n    headers: {\n      'Content-Type': 'application/x-www-form-urlencoded'\n    },\n    body: `grant_type=client_credentials&client_id=${CDEK_CLIENT_ID}&client_secret=${CDEK_CLIENT_SECRET}`\n  }, { timeout: 10000, retries: 2 });"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/cdek/route.ts\n===================================================================\n--- /home/user/project/app/api/cdek/route.ts\n+++ /home/user/project/app/api/cdek/route.ts\n@@ -14,15 +14,14 @@\n }\n \n const credentials = Buffer.from(`${CDEK_CLIENT_ID}:${CDEK_CLIENT_SECRET}`).toString('base64');\n \n-const response = await apiRequestWithTimeout(`${CDEK_API_URL}/oauth/token?parameters`, {\n+const response = await apiRequestWithTimeout(`${CDEK_API_URL}/oauth/token`, {\n   method: 'POST',\n   headers: {\n-    'Content-Type': 'application/x-www-form-urlencoded',\n-    'Authorization': `Basic ${credentials}`\n+    'Content-Type': 'application/x-www-form-urlencoded'\n   },\n-  body: 'grant_type=client_credentials'\n+  body: `grant_type=client_credentials&client_id=${CDEK_CLIENT_ID}&client_secret=${CDEK_CLIENT_SECRET}`\n }, { timeout: 10000, retries: 2 });\n \n if (!response.ok) {\n   throw new Error(`CDEK OAuth failed: ${response.status} ${response.statusText}`);\n"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760433079275,
+      "end": 1760433079279
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e1fcbfc30011iBCOM5CzUnFOR",
+  "messageID": "msg_9e1fcb0ed002wEcvlOArrSc0Jk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01K2DDKBdVyRsKmZHkXL1aMm",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "oldString": "const CDEK_CLIENT_ID = 'wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP';\nconst CDEK_CLIENT_SECRET = 'RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5';\nconst CDEK_API_URL = 'https://api.cdek.ru/v2';",
+      "newString": "const CDEK_CLIENT_ID = 'wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP';\nconst CDEK_CLIENT_SECRET = 'RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5';\nconst CDEK_API_URL = 'https://api.edu.cdek.ru/v2';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/cdek/route.ts\n===================================================================\n--- /home/user/project/app/api/cdek/route.ts\n+++ /home/user/project/app/api/cdek/route.ts\n@@ -2,9 +2,9 @@\n import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\n \n const CDEK_CLIENT_ID = 'wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP';\n const CDEK_CLIENT_SECRET = 'RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5';\n-const CDEK_API_URL = 'https://api.cdek.ru/v2';\n+const CDEK_API_URL = 'https://api.edu.cdek.ru/v2';\n \n let cachedToken: string | null = null;\n let tokenExpiry: number = 0;\n \n"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760433063761,
+      "end": 1760433063769
+    }
+  }
+}

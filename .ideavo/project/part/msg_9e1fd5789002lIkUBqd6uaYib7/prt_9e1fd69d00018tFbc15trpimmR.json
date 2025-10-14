@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e1fd69d00018tFbc15trpimmR",
+  "messageID": "msg_9e1fd5789002lIkUBqd6uaYib7",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01XCLeF1yLEP8VCo2Xj9ZFLk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "oldString": "    const requestData = {\n      type: 1,\n      date: new Date().toISOString(),\n      lang: 'rus',\n      from_location: {\n        code: fromCityCode\n      },\n      to_location: {\n        code: toCityCode\n      },\n      packages: packages\n    };",
+      "newString": "    const now = new Date();\n    const offset = -now.getTimezoneOffset();\n    const sign = offset >= 0 ? '+' : '-';\n    const pad = (num: number) => String(Math.abs(num)).padStart(2, '0');\n    const hours = pad(Math.floor(Math.abs(offset) / 60));\n    const minutes = pad(Math.abs(offset) % 60);\n    const dateFormatted = now.getFullYear() + '-' + \n      pad(now.getMonth() + 1) + '-' + \n      pad(now.getDate()) + 'T' + \n      pad(now.getHours()) + ':' + \n      pad(now.getMinutes()) + ':' + \n      pad(now.getSeconds()) + sign + hours + minutes;\n\n    const requestData = {\n      type: 1,\n      date: dateFormatted,\n      lang: 'rus',\n      from_location: {\n        code: fromCityCode\n      },\n      to_location: {\n        code: toCityCode\n      },\n      packages: packages\n    };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/cdek/route.ts\n===================================================================\n--- /home/user/project/app/api/cdek/route.ts\n+++ /home/user/project/app/api/cdek/route.ts\n@@ -101,11 +101,24 @@\n   width: body.width || 10,\n   weight: body.weight || 1000\n }];\n \n+const now = new Date();\n+const offset = -now.getTimezoneOffset();\n+const sign = offset >= 0 ? '+' : '-';\n+const pad = (num: number) => String(Math.abs(num)).padStart(2, '0');\n+const hours = pad(Math.floor(Math.abs(offset) / 60));\n+const minutes = pad(Math.abs(offset) % 60);\n+const dateFormatted = now.getFullYear() + '-' + \n+  pad(now.getMonth() + 1) + '-' + \n+  pad(now.getDate()) + 'T' + \n+  pad(now.getHours()) + ':' + \n+  pad(now.getMinutes()) + ':' + \n+  pad(now.getSeconds()) + sign + hours + minutes;\n+\n const requestData = {\n   type: 1,\n-  date: new Date().toISOString(),\n+  date: dateFormatted,\n   lang: 'rus',\n   from_location: {\n     code: fromCityCode\n   },\n"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760433109100,
+      "end": 1760433109105
+    }
+  }
+}

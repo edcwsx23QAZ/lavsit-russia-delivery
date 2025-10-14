@@ -1,0 +1,27 @@
+{
+  "id": "prt_9e1fc5540001937vObZgUYEyI1",
+  "messageID": "msg_9e1fc4348002AaBfIqqf97V4Vf",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01AybkqbYT2BPvnm77L9i7Ss",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST \"https://api.cdek.ru/v2/oauth/token\" -H \"Content-Type: application/x-www-form-urlencoded\" -d \"grant_type=client_credentials&client_id=wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP&client_secret=RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5\" 2>&1",
+      "description": "Тест OAuth без параметра в URL",
+      "timeout": 10000
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   188    0    69  100   119    121    209 --:--:-- --:--:-- --:--:--   330\n{\"error\":\"unauthorized\",\"error_description\":\"No such account secure\"}",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   188    0    69  100   119    121    209 --:--:-- --:--:-- --:--:--   330\n{\"error\":\"unauthorized\",\"error_description\":\"No such account secure\"}",
+      "exit": 0,
+      "description": "Тест OAuth без параметра в URL"
+    },
+    "title": "curl -X POST \"https://api.cdek.ru/v2/oauth/token\" -H \"Content-Type: application/x-www-form-urlencoded\" -d \"grant_type=client_credentials&client_id=wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP&client_secret=RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5\" 2>&1",
+    "time": {
+      "start": 1760433035846,
+      "end": 1760433036433
+    }
+  }
+}

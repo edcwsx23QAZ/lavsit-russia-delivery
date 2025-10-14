@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e1fce033001UaorBatLyuRRfY",
+  "messageID": "msg_9e1fccf4c002S8sdqE1ZCXantJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_013SULtkCQa1op2JghT2Rjis",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "offset": 15,
+      "limit": 15
+    },
+    "output": "<file>\n00016|   const credentials = Buffer.from(`${CDEK_CLIENT_ID}:${CDEK_CLIENT_SECRET}`).toString('base64');\n00017| \n00018|   const response = await apiRequestWithTimeout(`${CDEK_API_URL}/oauth/token?parameters`, {\n00019|     method: 'POST',\n00020|     headers: {\n00021|       'Content-Type': 'application/x-www-form-urlencoded',\n00022|       'Authorization': `Basic ${credentials}`\n00023|     },\n00024|     body: 'grant_type=client_credentials'\n00025|   }, { timeout: 10000, retries: 2 });\n00026| \n00027|   if (!response.ok) {\n00028|     throw new Error(`CDEK OAuth failed: ${response.status} ${response.statusText}`);\n00029|   }\n00030| \n\n(File has more lines. Use 'offset' parameter to read beyond line 30)\n</file>",
+    "metadata": {
+      "preview": "  const credentials = Buffer.from(`${CDEK_CLIENT_ID}:${CDEK_CLIENT_SECRET}`).toString('base64');\n\n  const response = await apiRequestWithTimeout(`${CDEK_API_URL}/oauth/token?parameters`, {\n    method: 'POST',\n    headers: {\n      'Content-Type': 'application/x-www-form-urlencoded',\n      'Authorization': `Basic ${credentials}`\n    },\n    body: 'grant_type=client_credentials'\n  }, { timeout: 10000, retries: 2 });\n\n  if (!response.ok) {\n    throw new Error(`CDEK OAuth failed: ${response.status} ${response.statusText}`);\n  }\n"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760433070984,
+      "end": 1760433070990
+    }
+  }
+}
