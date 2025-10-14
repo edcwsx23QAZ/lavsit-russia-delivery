@@ -3517,9 +3517,11 @@ export default function Home() {
           console.log('📦 CDEK детали тарифа:', tariffDetails);
         }
 
+        const finalPrice = tariffDetails?.total_sum || bestTariff.delivery_sum;
+        
         return {
           company: 'СДЭК',
-          price: Math.round(bestTariff.delivery_sum || 0),
+          price: Math.round(finalPrice),
           days: bestTariff.period_max || 0,
           details: {
             tariff_name: bestTariff.tariff_name || 'Не указан',
@@ -3532,7 +3534,7 @@ export default function Home() {
             all_tariffs: filteredTariffs,
             services: tariffDetails?.services || [],
             delivery_sum: tariffDetails?.delivery_sum || bestTariff.delivery_sum,
-            total_sum: tariffDetails?.total_sum || bestTariff.delivery_sum,
+            total_sum: finalPrice,
             weight_calc: tariffDetails?.weight_calc
           },
           requestData,

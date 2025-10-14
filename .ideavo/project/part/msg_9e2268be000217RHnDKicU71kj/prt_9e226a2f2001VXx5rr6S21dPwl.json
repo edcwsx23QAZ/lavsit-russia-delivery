@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e226a2f2001VXx5rr6S21dPwl",
+  "messageID": "msg_9e2268be000217RHnDKicU71kj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01MfUNHvQSBMmr1ZqWEt2oTJ",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        return {\n          company: 'СДЭК',\n          price: Math.round(bestTariff.delivery_sum || 0),\n          days: bestTariff.period_max || 0,\n          details: {\n            tariff_name: bestTariff.tariff_name || 'Не указан',\n            tariff_code: bestTariff.tariff_code,\n            delivery_mode: deliveryModeText,\n            period_min: bestTariff.period_min,\n            period_max: bestTariff.period_max,\n            calendar_min: bestTariff.calendar_min,\n            calendar_max: bestTariff.calendar_max,\n            all_tariffs: filteredTariffs,\n            services: tariffDetails?.services || [],\n            delivery_sum: tariffDetails?.delivery_sum || bestTariff.delivery_sum,\n            total_sum: tariffDetails?.total_sum || bestTariff.delivery_sum,\n            weight_calc: tariffDetails?.weight_calc\n          },\n          requestData,\n          responseData: data,\n          apiUrl\n        };",
+      "newString": "        const finalPrice = tariffDetails?.total_sum || bestTariff.delivery_sum;\n        \n        return {\n          company: 'СДЭК',\n          price: Math.round(finalPrice),\n          days: bestTariff.period_max || 0,\n          details: {\n            tariff_name: bestTariff.tariff_name || 'Не указан',\n            tariff_code: bestTariff.tariff_code,\n            delivery_mode: deliveryModeText,\n            period_min: bestTariff.period_min,\n            period_max: bestTariff.period_max,\n            calendar_min: bestTariff.calendar_min,\n            calendar_max: bestTariff.calendar_max,\n            all_tariffs: filteredTariffs,\n            services: tariffDetails?.services || [],\n            delivery_sum: tariffDetails?.delivery_sum || bestTariff.delivery_sum,\n            total_sum: finalPrice,\n            weight_calc: tariffDetails?.weight_calc\n          },\n          requestData,\n          responseData: data,\n          apiUrl\n        };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3516,11 +3516,13 @@\n   tariffDetails = detailsData.tariff_details;\n   console.log('📦 CDEK детали тарифа:', tariffDetails);\n }\n \n+const finalPrice = tariffDetails?.total_sum || bestTariff.delivery_sum;\n+\n return {\n   company: 'СДЭК',\n-  price: Math.round(bestTariff.delivery_sum || 0),\n+  price: Math.round(finalPrice),\n   days: bestTariff.period_max || 0,\n   details: {\n     tariff_name: bestTariff.tariff_name || 'Не указан',\n     tariff_code: bestTariff.tariff_code,\n@@ -3531,9 +3533,9 @@\n     calendar_max: bestTariff.calendar_max,\n     all_tariffs: filteredTariffs,\n     services: tariffDetails?.services || [],\n     delivery_sum: tariffDetails?.delivery_sum || bestTariff.delivery_sum,\n-    total_sum: tariffDetails?.total_sum || bestTariff.delivery_sum,\n+    total_sum: finalPrice,\n     weight_calc: tariffDetails?.weight_calc\n   },\n   requestData,\n   responseData: data,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760435812292,
+      "end": 1760435812315
+    }
+  }
+}

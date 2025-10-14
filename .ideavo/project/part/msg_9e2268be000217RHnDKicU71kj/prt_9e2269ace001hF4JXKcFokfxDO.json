@@ -1,0 +1,11 @@
+{
+  "id": "prt_9e2269ace001hF4JXKcFokfxDO",
+  "messageID": "msg_9e2268be000217RHnDKicU71kj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Вижу проблему! В строке 3522 `price` использует `bestTariff.delivery_sum`, а должен использовать `tariffDetails.total_sum` (итоговую сумму со всеми сборами). Исправлю:",
+  "time": {
+    "start": 1760435806961,
+    "end": 1760435806961
+  }
+}
