@@ -1,0 +1,27 @@
+{
+  "id": "prt_9e2014105001agOMBzHxvkyWdL",
+  "messageID": "msg_9e2013201001iC5za3GduUchTg",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_012mqDmhAzZ1au6mhCesUxJH",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST \"https://api.cdek.ru/v2/oauth/token\" -H \"Content-Type: application/x-www-form-urlencoded\" -d \"grant_type=client_credentials&client_id=3J5AvQWReEdW1o01PApvw6jHsnkNpqT1&client_secret=T8iMvgShV0p9OfJiysSBpCCWcXtOO0Hy\" 2>&1 | head -20",
+      "description": "Тест новых учетных данных на продакшн API",
+      "timeout": 10000
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   119    0     0  100   119      0    173 --:--:-- --:--:-- --:--:--   173\r100  1490    0  1371  100   119   1816    157 --:--:-- --:--:-- --:--:--  1973\n{\"access_token\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjA0MzY5NTgsImF1dGhvcml0aWVzIjpbImNsaWVudC1jaXR5OtCc0L7RgdC60LLQsCwg0JzQvtGB0LrQstCwIiwic2hhcmQtaWQ6cnUtMDQiLCJmdWxsLW5hbWU60JvQvtCx0L7QstCwINCQ0L3QsNGB0YLQsNGB0LjRjyDQkdC-0YDQuNGB0L7QstC90LAiLCJhY2NvdW50LXV1aWQ6ODljMGFhZDgtYzQyNS00ZjM2LWE0MmMtYWFjZTI3MTBlZDE1IiwiY2xpZW50LWVtYWlsczpzZXJ2aWNlQGxhdnNpdC5ydSIsImNvbnRyYWN0OklNLUtMTTI0LTk3MiIsImNvbnRyYWN0LWlkOjg0ZmE3Y2QyLTcxNWItNGUzOC04YmJiLWEwMzYzYTFhY2UyNyIsImNsaWVudC1pZC1lYzU6MzBmNTI2OTYtNTQ1NS00MGIzLTk0MWMtYWFkZjU3ZGUyYmM2IiwiY29udHJhZ2VudC11dWlkOjMwZjUyNjk2LTU0NTUtNDBiMy05NDFjLWFhZGY1N2RlMmJjNiIsImFjY291bnQtbGFuZzpydXMiLCJhcGktdmVyc2lvbjoyLjAiLCJzb2xpZC1hZGRyZXNzOmZhbHNlIiwiY2xpZW50LWlkLWVjNDpudWxsIl0sImp0aSI6ImhFSmxzVGRwRXNlVWNIVGxNUHc1OWlnUlJIQSIsImNsaWVudF9pZCI6IjNKNUF2UVdSZUVkVzFvMDFQQXB2dzZqSHNua05wcVQxIn0.mg3ngRipb2kOnkvd7ruTD-SdUai2xXSl-woSoSKn5qwZT-Q5osDG0Te03sBJ9MRHy0usPK5sjnRc3ZS2lV6dg3lP1GEQSBW0eabJgm5cacWBZKIgIl_n_x_ietiziWYb970yxVWsMrq6EbVNaNY8YT59S1noaFbVNL0sDRWjFuOPN7S3hlkp5PdBTfEIhQ4jZco2DHMh9kfzBdUyiqzfetV8GKHKGusmPpgk6vO-c_CcWvMrgUKQSsn1Be4STrjDESHsa1gAPipEofD6DwXr_cGBw6UNZJLNBMUP2-TfH89OIzwESwjegvu8ZZ5kGViVC0-OVsai6YwX13g979UCLg\",\"token_type\":\"bearer\",\"expires_in\":3599,\"scope\":\"location:all order:all payment:all\",\"jti\":\"hEJlsTdpEseUcHTlMPw59igRRHA\"}",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   119    0     0  100   119      0    173 --:--:-- --:--:-- --:--:--   173\r100  1490    0  1371  100   119   1816    157 --:--:-- --:--:-- --:--:--  1973\n{\"access_token\":\"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjA0MzY5NTgsImF1dGhvcml0aWVzIjpbImNsaWVudC1jaXR5OtCc0L7RgdC60LLQsCwg0JzQvtGB0LrQstCwIiwic2hhcmQtaWQ6cnUtMDQiLCJmdWxsLW5hbWU60JvQvtCx0L7QstCwINCQ0L3QsNGB0YLQsNGB0LjRjyDQkdC-0YDQuNGB0L7QstC90LAiLCJhY2NvdW50LXV1aWQ6ODljMGFhZDgtYzQyNS00ZjM2LWE0MmMtYWFjZTI3MTBlZDE1IiwiY2xpZW50LWVtYWlsczpzZXJ2aWNlQGxhdnNpdC5ydSIsImNvbnRyYWN0OklNLUtMTTI0LTk3MiIsImNvbnRyYWN0LWlkOjg0ZmE3Y2QyLTcxNWItNGUzOC04YmJiLWEwMzYzYTFhY2UyNyIsImNsaWVudC1pZC1lYzU6MzBmNTI2OTYtNTQ1NS00MGIzLTk0MWMtYWFkZjU3ZGUyYmM2IiwiY29udHJhZ2VudC11dWlkOjMwZjUyNjk2LTU0NTUtNDBiMy05NDFjLWFhZGY1N2RlMmJjNiIsImFjY291bnQtbGFuZzpydXMiLCJhcGktdmVyc2lvbjoyLjAiLCJzb2xpZC1hZGRyZXNzOmZhbHNlIiwiY2xpZW50LWlkLWVjNDpudWxsIl0sImp0aSI6ImhFSmxzVGRwRXNlVWNIVGxNUHc1OWlnUlJIQSIsImNsaWVudF9pZCI6IjNKNUF2UVdSZUVkVzFvMDFQQXB2dzZqSHNua05wcVQxIn0.mg3ngRipb2kOnkvd7ruTD-SdUai2xXSl-woSoSKn5qwZT-Q5osDG0Te03sBJ9MRHy0usPK5sjnRc3ZS2lV6dg3lP1GEQSBW0eabJgm5cacWBZKIgIl_n_x_ietiziWYb970yxVWsMrq6EbVNaNY8YT59S1noaFbVNL0sDRWjFuOPN7S3hlkp5PdBTfEIhQ4jZco2DHMh9kfzBdUyiqzfetV8GKHKGusmPpgk6vO-c_CcWvMrgUKQSsn1Be4STrjDESHsa1gAPipEofD6DwXr_cGBw6UNZJLNBMUP2-TfH89OIzwESwjegvu8ZZ5kGViVC0-OVsai6YwX13g979UCLg\",\"token_type\":\"bearer\",\"expires_in\":3599,\"scope\":\"location:all order:all payment:all\",\"jti\":\"hEJlsTdpEseUcHTlMPw59igRRHA\"}",
+      "exit": 0,
+      "description": "Тест новых учетных данных на продакшн API"
+    },
+    "title": "curl -X POST \"https://api.cdek.ru/v2/oauth/token\" -H \"Content-Type: application/x-www-form-urlencoded\" -d \"grant_type=client_credentials&client_id=3J5AvQWReEdW1o01PApvw6jHsnkNpqT1&client_secret=T8iMvgShV0p9OfJiysSBpCCWcXtOO0Hy\" 2>&1 | head -20",
+    "time": {
+      "start": 1760433358316,
+      "end": 1760433359089
+    }
+  }
+}

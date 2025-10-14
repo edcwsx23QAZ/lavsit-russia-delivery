@@ -1,0 +1,24 @@
+{
+  "id": "prt_9e2007fde001jOHygh5i7hzezy",
+  "messageID": "msg_9e2006af90025k7QfXvJKzeJ66",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01BxUEpD2cjrt5DCNJRPTscp",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "limit": 10
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server';\n00002| import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\n00003| \n00004| const CDEK_CLIENT_ID = 'wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP';\n00005| const CDEK_CLIENT_SECRET = 'RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5';\n00006| const CDEK_API_URL = 'https://api.edu.cdek.ru/v2';\n00007| \n00008| let cachedToken: string | null = null;\n00009| let tokenExpiry: number = 0;\n00010| \n\n(File has more lines. Use 'offset' parameter to read beyond line 10)\n</file>",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server';\nimport { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\n\nconst CDEK_CLIENT_ID = 'wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP';\nconst CDEK_CLIENT_SECRET = 'RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5';\nconst CDEK_API_URL = 'https://api.edu.cdek.ru/v2';\n\nlet cachedToken: string | null = null;\nlet tokenExpiry: number = 0;\n"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760433316364,
+      "end": 1760433316372
+    }
+  }
+}

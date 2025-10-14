@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e201eb66001k1nwQjz7jzijRd",
+  "messageID": "msg_9e201d6ef002h7aQjZRpL8KHBs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01RUWc4UdG4sf5oRGBDnWgWx",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "pkill -9 -f \"next dev\" 2>/dev/null; sleep 1; echo \"Все процессы остановлены\"",
+      "description": "Полная остановка всех dev серверов"
+    },
+    "output": "",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Полная остановка всех dev серверов"
+    },
+    "title": "pkill -9 -f \"next dev\" 2>/dev/null; sleep 1; echo \"Все процессы остановлены\"",
+    "time": {
+      "start": 1760433401198,
+      "end": 1760433401211
+    }
+  }
+}

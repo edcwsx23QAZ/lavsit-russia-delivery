@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';
 
-const CDEK_CLIENT_ID = 'wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP';
-const CDEK_CLIENT_SECRET = 'RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5';
-const CDEK_API_URL = 'https://api.edu.cdek.ru/v2';
+const CDEK_CLIENT_ID = '3J5AvQWReEdW1o01PApvw6jHsnkNpqT1';
+const CDEK_CLIENT_SECRET = 'T8iMvgShV0p9OfJiysSBpCCWcXtOO0Hy';
+const CDEK_API_URL = 'https://api.cdek.ru/v2';
 
 let cachedToken: string | null = null;
 let tokenExpiry: number = 0;
