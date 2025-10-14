@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e23b8f17001FCTZX9BrZJVOBm",
+  "messageID": "msg_9e23b7c79002UMaj0WWRYOiJ7x",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01BKEMc6kgGgxanS2UaZoLSK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | tail -35",
+      "description": "Повторная проверка сборки"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:3596:67\nType error: Property 'currency_code' does not exist on type '{}'.\n\n\u001b[0m \u001b[90m 3594 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3595 |\u001b[39m       \u001b[36mif\u001b[39m (response\u001b[33m.\u001b[39mok \u001b[33m&&\u001b[39m \u001b[33mArray\u001b[39m\u001b[33m.\u001b[39misArray(data) \u001b[33m&&\u001b[39m data\u001b[33m.\u001b[39mlength \u001b[33m>\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 3596 |\u001b[39m         \u001b[36mconst\u001b[39m rubData \u001b[33m=\u001b[39m data\u001b[33m.\u001b[39mfind(item \u001b[33m=>\u001b[39m \u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mvalues(item)[\u001b[35m0\u001b[39m]\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mcurrency_code \u001b[33m===\u001b[39m \u001b[32m'RUB'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3597 |\u001b[39m         \u001b[0m\n\u001b[0m \u001b[90m 3598 |\u001b[39m         \u001b[36mif\u001b[39m (rubData) {\u001b[0m\n\u001b[0m \u001b[90m 3599 |\u001b[39m           \u001b[36mconst\u001b[39m tariffKey \u001b[33m=\u001b[39m \u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mkeys(rubData)[\u001b[35m0\u001b[39m]\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:3596:67\nType error: Property 'currency_code' does not exist on type '{}'.\n\n\u001b[0m \u001b[90m 3594 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3595 |\u001b[39m       \u001b[36mif\u001b[39m (response\u001b[33m.\u001b[39mok \u001b[33m&&\u001b[39m \u001b[33mArray\u001b[39m\u001b[33m.\u001b[39misArray(data) \u001b[33m&&\u001b[39m data\u001b[33m.\u001b[39mlength \u001b[33m>\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 3596 |\u001b[39m         \u001b[36mconst\u001b[39m rubData \u001b[33m=\u001b[39m data\u001b[33m.\u001b[39mfind(item \u001b[33m=>\u001b[39m \u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mvalues(item)[\u001b[35m0\u001b[39m]\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mcurrency_code \u001b[33m===\u001b[39m \u001b[32m'RUB'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                                                                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3597 |\u001b[39m         \u001b[0m\n\u001b[0m \u001b[90m 3598 |\u001b[39m         \u001b[36mif\u001b[39m (rubData) {\u001b[0m\n\u001b[0m \u001b[90m 3599 |\u001b[39m           \u001b[36mconst\u001b[39m tariffKey \u001b[33m=\u001b[39m \u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mkeys(rubData)[\u001b[35m0\u001b[39m]\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 0,
+      "description": "Повторная проверка сборки"
+    },
+    "title": "cd /home/user/project && npm run build 2>&1 | tail -35",
+    "time": {
+      "start": 1760437178638,
+      "end": 1760437193257
+    }
+  }
+}

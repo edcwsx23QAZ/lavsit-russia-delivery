@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e23adc35001thRnQBJ3NqANID",
+  "messageID": "msg_9e23ac7240010iuCxu2fmln21f",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_01BAsdZmaeA5uhbtCDAs4p2Q",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | tail -35",
+      "description": "Проверка сборки после добавления КИТ"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:205:5\nType error: An object literal cannot have multiple properties with the same name.\n\n\u001b[0m \u001b[90m 203 |\u001b[39m     uraltrans\u001b[33m:\u001b[39m \u001b[32m'не подключено'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 204 |\u001b[39m     novotek\u001b[33m:\u001b[39m \u001b[32m'не подключено'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 205 |\u001b[39m     kit\u001b[33m:\u001b[39m \u001b[32m'не подключено'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 206 |\u001b[39m     karavan\u001b[33m:\u001b[39m \u001b[32m'не подключено'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 207 |\u001b[39m     zeldor\u001b[33m:\u001b[39m \u001b[32m'не подключено'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 208 |\u001b[39m     dktransit\u001b[33m:\u001b[39m \u001b[32m'не подключено'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:205:5\nType error: An object literal cannot have multiple properties with the same name.\n\n\u001b[0m \u001b[90m 203 |\u001b[39m     uraltrans\u001b[33m:\u001b[39m \u001b[32m'не подключено'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 204 |\u001b[39m     novotek\u001b[33m:\u001b[39m \u001b[32m'не подключено'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 205 |\u001b[39m     kit\u001b[33m:\u001b[39m \u001b[32m'не подключено'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 206 |\u001b[39m     karavan\u001b[33m:\u001b[39m \u001b[32m'не подключено'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 207 |\u001b[39m     zeldor\u001b[33m:\u001b[39m \u001b[32m'не подключено'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 208 |\u001b[39m     dktransit\u001b[33m:\u001b[39m \u001b[32m'не подключено'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 0,
+      "description": "Проверка сборки после добавления КИТ"
+    },
+    "title": "cd /home/user/project && npm run build 2>&1 | tail -35",
+    "time": {
+      "start": 1760437132634,
+      "end": 1760437147976
+    }
+  }
+}

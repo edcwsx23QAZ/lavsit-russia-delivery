@@ -11,6 +11,12 @@ export const ENV_VARIABLES: EnvVariable[] = [
     description: "API ключ доступа к ПЭК",
     required: true,
     instructions: "Войдите в [kabinet.pecom.ru](https://kabinet.pecom.ru) → Регистрационные данные → Ключи API. Создайте новый ключ и скопируйте его значение."
+  },
+  {
+    name: "KIT_API_TOKEN",
+    description: "API токен для КИТ транспортная компания",
+    required: false,
+    instructions: "Войдите в личный кабинет КИТ → Раздел 'Разработчикам' → 'Получение ключа API'. Сгенерируйте токен и скопируйте его значение."
   }
 ];
 

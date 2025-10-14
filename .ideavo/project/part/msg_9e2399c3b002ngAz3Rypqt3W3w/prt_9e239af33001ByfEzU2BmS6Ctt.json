@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e239af33001ByfEzU2BmS6Ctt",
+  "messageID": "msg_9e2399c3b002ngAz3Rypqt3W3w",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01BHQ8NnM88N3iTwGzyLYGf7",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      if (enabledCompanies.cdek) {\n        calculationFunctions.push(calculateCdek());\n      }\n      \n      // Если ни одна компания не включена",
+      "newString": "      if (enabledCompanies.cdek) {\n        calculationFunctions.push(calculateCdek());\n      }\n      if (enabledCompanies.kit) {\n        calculationFunctions.push(calculateKit());\n      }\n      \n      // Если ни одна компания не включена"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3685,8 +3685,11 @@\n }\n if (enabledCompanies.cdek) {\n   calculationFunctions.push(calculateCdek());\n }\n+if (enabledCompanies.kit) {\n+  calculationFunctions.push(calculateKit());\n+}\n \n // Если ни одна компания не включена\n if (calculationFunctions.length === 0) {\n   setCalculations([]);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760437056764,
+      "end": 1760437056789
+    }
+  }
+}

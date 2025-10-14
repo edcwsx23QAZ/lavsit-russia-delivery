@@ -172,7 +172,7 @@ export default function Home() {
     cap: false,
     uraltrans: false,
     novotek: false,
-    kit: false,
+    kit: true,
     karavan: false,
     zeldor: false,
     dktransit: false,
@@ -192,6 +192,7 @@ export default function Home() {
     vozovoz: 'проверка...',
     nordwheel: 'проверка...',
     cdek: 'проверка...',
+    kit: 'проверка...',
     newline: 'не подключено',
     irtrust: 'не подключено',
     majortrans: 'не подключено',
@@ -201,7 +202,6 @@ export default function Home() {
     cap: 'не подключено',
     uraltrans: 'не подключено',
     novotek: 'не подключено',
-    kit: 'не подключено',
     karavan: 'не подключено',
     zeldor: 'не подключено',
     dktransit: 'не подключено',
@@ -3564,6 +3564,84 @@ export default function Home() {
     }
   };
 
+  const calculateKit = async (): Promise<CalculationResult> => {
+    const apiUrl = '/api/kit';
+    
+    try {
+      validateMultipleCargos(form.cargos);
+      
+      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
+
+      const requestData = {
+        from_city: form.fromCity || 'Москва',
+        to_city: form.toCity || 'Санкт-Петербург',
+        declared_price: form.declaredValue || 10000,
+        service: ['S089']
+      };
+
+      console.log('🚛 КИТ запрос:', JSON.stringify(requestData, null, 2));
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData)
+      });
+
+      const data = await response.json();
+      console.log('🚛 КИТ ответ:', data);
+
+      if (response.ok && Array.isArray(data) && data.length > 0) {
+        const rubData = data.find((item: any) => {
+          const tariffData: any = Object.values(item)[0];
+          return tariffData?.currency_code === 'RUB';
+        });
+        
+        if (rubData) {
+          const tariffKey = Object.keys(rubData)[0];
+          const tariffData: any = rubData[tariffKey];
+          
+          console.log('🚛 КИТ выбран тариф:', tariffKey, tariffData);
+
+          return {
+            company: 'КИТ',
+            price: Math.round(tariffData.cost || 0),
+            days: tariffData.time || 0,
+            details: {
+              tariff_name: tariffData.name || 'Не указан',
+              tariff_type: tariffKey,
+              services: tariffData.detail || [],
+              currency: tariffData.currency_code
+            },
+            requestData,
+            responseData: data,
+            apiUrl
+          };
+        }
+      }
+
+      return {
+        company: 'КИТ',
+        price: 0,
+        days: 0,
+        error: data.error || 'Ошибка расчета КИТ',
+        requestData,
+        responseData: data,
+        apiUrl
+      };
+    } catch (error: any) {
+      console.error('🚛 КИТ ошибка:', error);
+      return {
+        company: 'КИТ',
+        price: 0,
+        days: 0,
+        error: `Ошибка соединения: ${error.message}`,
+        apiUrl
+      };
+    }
+  };
+
   const handleCalculate = async () => {
     setCalculating(true);
     setCalculations([]);
@@ -3610,6 +3688,9 @@ export default function Home() {
       }
       if (enabledCompanies.cdek) {
         calculationFunctions.push(calculateCdek());
+      }
+      if (enabledCompanies.kit) {
+        calculationFunctions.push(calculateKit());
       }
       
       // Если ни одна компания не включена
@@ -3999,6 +4080,32 @@ export default function Home() {
           service: 'ИТОГО',
           description: 'К оплате',
           price: finalPrice
+        });
+      }
+    } else if (calc.company === 'КИТ' && calc.details?.services) {
+      calc.details.services.forEach((service: any) => {
+        details.push({
+          service: service.name || 'Услуга КИТ',
+          description: service.code || '',
+          price: service.price || 0
+        });
+      });
+      
+      if (calc.details.tariff_name) {
+        details.push({
+          service: '─────────────────────────',
+          description: '',
+          price: 0
+        });
+        details.push({
+          service: 'Тариф',
+          description: calc.details.tariff_name,
+          price: 0
+        });
+        details.push({
+          service: 'ИТОГО',
+          description: calc.details.currency || 'RUB',
+          price: calc.price
         });
       }
     } else {

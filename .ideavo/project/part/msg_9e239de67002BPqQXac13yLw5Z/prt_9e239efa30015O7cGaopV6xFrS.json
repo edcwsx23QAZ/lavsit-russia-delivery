@@ -1,0 +1,42 @@
+{
+  "id": "prt_9e239efa30015O7cGaopV6xFrS",
+  "messageID": "msg_9e239de67002BPqQXac13yLw5Z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01YCp6q6Dc6Mcumu9TK7yReA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "    dellin: true,\n    railcontinent: true,\n    vozovoz: true,\n    nordwheel: true,\n    cdek: true,\n    newline: false,\n    irtrust: false,\n    majortrans: false,\n    baikalservice: false,\n    adamant: false,\n    energiya: false,\n    cap: false,\n    uraltrans: false,\n    novotek: false,\n    kit: false,",
+          "newString": "    dellin: true,\n    railcontinent: true,\n    vozovoz: true,\n    nordwheel: true,\n    cdek: true,\n    newline: false,\n    irtrust: false,\n    majortrans: false,\n    baikalservice: false,\n    adamant: false,\n    energiya: false,\n    cap: false,\n    uraltrans: false,\n    novotek: false,\n    kit: true,"
+        },
+        {
+          "oldString": "    railcontinent: 'проверка...',\n    vozovoz: 'проверка...',\n    nordwheel: 'проверка...',\n    cdek: 'проверка...',",
+          "newString": "    railcontinent: 'проверка...',\n    vozovoz: 'проверка...',\n    nordwheel: 'проверка...',\n    cdek: 'проверка...',\n    kit: 'проверка...',"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -171,9 +171,9 @@\n energiya: false,\n cap: false,\n uraltrans: false,\n novotek: false,\n-kit: false,\n+kit: true,\n karavan: false,\n zeldor: false,\n dktransit: false,\n glavtrassa: false,\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -191,8 +191,9 @@\n railcontinent: 'проверка...',\n vozovoz: 'проверка...',\n nordwheel: 'проверка...',\n cdek: 'проверка...',\n+kit: 'проверка...',\n newline: 'не подключено',\n irtrust: 'не подключено',\n majortrans: 'не подключено',\n baikalservice: 'не подключено',\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760437077759,
+      "end": 1760437077796
+    }
+  }
+}

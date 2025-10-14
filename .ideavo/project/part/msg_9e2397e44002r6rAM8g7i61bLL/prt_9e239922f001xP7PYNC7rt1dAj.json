@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e239922f001xP7PYNC7rt1dAj",
+  "messageID": "msg_9e2397e44002r6rAM8g7i61bLL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01EmWFERpSrJsoUhzjEWcWvA",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3660,
+      "limit": 25
+    },
+    "output": "<file>\n03661|       toTerminal: form.toTerminal,\n03662|       fromAddressDelivery: form.fromAddressDelivery,\n03663|       toAddressDelivery: form.toAddressDelivery,\n03664|       selectedProducts: form.selectedProducts,\n03665|     });\n03666|     \n03667|     try {\n03668|       // Создаем массив функций расчета только для включенных компаний\n03669|       const calculationFunctions: Promise<CalculationResult>[] = [];\n03670|       \n03671|       if (enabledCompanies.dellin) {\n03672|         calculationFunctions.push(calculateDellin());\n03673|       }\n03674|       if (enabledCompanies.pek) {\n03675|         calculationFunctions.push(calculatePEK());\n03676|       }\n03677|       if (enabledCompanies.nordwheel) {\n03678|         calculationFunctions.push(calculateNordWheel());\n03679|       }\n03680|       if (enabledCompanies.railcontinent) {\n03681|         calculationFunctions.push(calculateRailContinent());\n03682|       }\n03683|       if (enabledCompanies.vozovoz) {\n03684|         calculationFunctions.push(calculateVozovoz());\n03685|       }\n\n(File has more lines. Use 'offset' parameter to read beyond line 3685)\n</file>",
+    "metadata": {
+      "preview": "      toTerminal: form.toTerminal,\n      fromAddressDelivery: form.fromAddressDelivery,\n      toAddressDelivery: form.toAddressDelivery,\n      selectedProducts: form.selectedProducts,\n    });\n    \n    try {\n      // Создаем массив функций расчета только для включенных компаний\n      const calculationFunctions: Promise<CalculationResult>[] = [];\n      \n      if (enabledCompanies.dellin) {\n        calculationFunctions.push(calculateDellin());\n      }\n      if (enabledCompanies.pek) {\n        calculationFunctions.push(calculatePEK());\n      }\n      if (enabledCompanies.nordwheel) {\n        calculationFunctions.push(calculateNordWheel());\n      }\n      if (enabledCompanies.railcontinent) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760437048167,
+      "end": 1760437048170
+    }
+  }
+}

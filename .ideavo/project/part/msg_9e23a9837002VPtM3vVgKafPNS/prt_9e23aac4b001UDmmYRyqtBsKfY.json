@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e23aac4b001UDmmYRyqtBsKfY",
+  "messageID": "msg_9e23a9837002VPtM3vVgKafPNS",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_0187iifbgzxnVBiKj4PL56Kr",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/env-config.ts",
+      "oldString": "  {\n    name: \"PEK_API_KEY\",\n    description: \"API ключ доступа к ПЭК\",\n    required: true,\n    instructions: \"Войдите в [kabinet.pecom.ru](https://kabinet.pecom.ru) → Регистрационные данные → Ключи API. Создайте новый ключ и скопируйте его значение.\"\n  }\n];",
+      "newString": "  {\n    name: \"PEK_API_KEY\",\n    description: \"API ключ доступа к ПЭК\",\n    required: true,\n    instructions: \"Войдите в [kabinet.pecom.ru](https://kabinet.pecom.ru) → Регистрационные данные → Ключи API. Создайте новый ключ и скопируйте его значение.\"\n  },\n  {\n    name: \"KIT_API_TOKEN\",\n    description: \"API токен для КИТ транспортная компания\",\n    required: false,\n    instructions: \"Войдите в личный кабинет КИТ → Раздел 'Разработчикам' → 'Получение ключа API'. Сгенерируйте токен и скопируйте его значение.\"\n  }\n];"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/env-config.ts\n===================================================================\n--- /home/user/project/lib/env-config.ts\n+++ /home/user/project/lib/env-config.ts\n@@ -10,8 +10,14 @@\n     name: \"PEK_API_KEY\",\n     description: \"API ключ доступа к ПЭК\",\n     required: true,\n     instructions: \"Войдите в [kabinet.pecom.ru](https://kabinet.pecom.ru) → Регистрационные данные → Ключи API. Создайте новый ключ и скопируйте его значение.\"\n+  },\n+  {\n+    name: \"KIT_API_TOKEN\",\n+    description: \"API токен для КИТ транспортная компания\",\n+    required: false,\n+    instructions: \"Войдите в личный кабинет КИТ → Раздел 'Разработчикам' → 'Получение ключа API'. Сгенерируйте токен и скопируйте его значение.\"\n   }\n ];\n \n // SUPABASE/DATABASE VARIABLES (uncomment and add to ENV_VARIABLES array when adding database features)\n"
+    },
+    "title": "lib/env-config.ts",
+    "time": {
+      "start": 1760437124755,
+      "end": 1760437124760
+    }
+  }
+}

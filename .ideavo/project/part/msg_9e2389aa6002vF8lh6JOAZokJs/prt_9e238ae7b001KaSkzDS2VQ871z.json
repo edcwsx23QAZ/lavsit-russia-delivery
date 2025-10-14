@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e238ae7b001KaSkzDS2VQ871z",
+  "messageID": "msg_9e2389aa6002vF8lh6JOAZokJs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "toolu_01EemgfgSFu3xxpRXFQjahwq",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/kit/route.ts",
+      "content": "import { NextRequest, NextResponse } from 'next/server';\nimport { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\n\nconst KIT_API_URL = 'https://capi.tk-kit.com';\nconst KIT_TOKEN = process.env.KIT_API_TOKEN || '';\n\nasync function searchCityByName(cityName: string): Promise<any> {\n  try {\n    const response = await apiRequestWithTimeout(\n      `${KIT_API_URL}/1.1/tdd/search/by-name`,\n      {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Authorization': `Bearer ${KIT_TOKEN}`\n        },\n        body: JSON.stringify({ title: cityName })\n      },\n      { timeout: 8000, retries: 1 }\n    );\n\n    if (!response.ok) {\n      console.error(`КИТ поиск города ${cityName} неуспешен: ${response.status}`);\n      return null;\n    }\n\n    const data = await response.json();\n    if (data && data.length > 0) {\n      return data[0];\n    }\n\n    return null;\n  } catch (error) {\n    console.error(`Ошибка поиска города ${cityName}:`, error);\n    return null;\n  }\n}\n\nexport async function POST(request: NextRequest) {\n  const endTiming = PerformanceMonitor.startMeasurement('kit_api_total');\n  \n  try {\n    const body = await request.json();\n    \n    console.log('🚛 КИТ API запрос:', JSON.stringify(body, null, 2));\n\n    const fromCity = await searchCityByName(body.from_city || 'Москва');\n    const toCity = await searchCityByName(body.to_city || 'Санкт-Петербург');\n\n    if (!fromCity || !toCity) {\n      return NextResponse.json({\n        success: false,\n        error: 'Не удалось определить коды городов',\n        details: {\n          fromCity: body.from_city,\n          toCity: body.to_city,\n          fromCityCode: fromCity?.code,\n          toCityCode: toCity?.code\n        }\n      }, { status: 400 });\n    }\n\n    console.log('🚛 КИТ коды городов:', {\n      from: fromCity.code,\n      to: toCity.code\n    });\n\n    const requestData = {\n      city_pickup_code: fromCity.code,\n      city_delivery_code: toCity.code,\n      declared_price: body.declared_price || 10000,\n      post_type: '02',\n      currency_code: ['RUB']\n    };\n\n    if (body.declared_price >= 10000) {\n      requestData['insurance'] = '1';\n      requestData['insurance_agent_code'] = '8000152423';\n    }\n\n    if (body.service && body.service.length > 0) {\n      requestData['service'] = body.service;\n    }\n\n    console.log('🚛 КИТ калькулятор запрос:', JSON.stringify(requestData, null, 2));\n\n    const response = await apiRequestWithTimeout(\n      `${KIT_API_URL}/1.0/order/calculate-post`,\n      {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Authorization': `Bearer ${KIT_TOKEN}`\n        },\n        body: JSON.stringify(requestData)\n      },\n      { timeout: 12000, retries: 1 }\n    );\n\n    console.log(`🚛 КИТ API статус: ${response.status} ${response.statusText}`);\n\n    if (!response.ok) {\n      const errorText = await response.text();\n      console.error('🚛 КИТ API ошибка:', errorText);\n      \n      return NextResponse.json({\n        success: false,\n        error: `API ошибка: ${response.status} ${response.statusText}`,\n        details: errorText\n      }, { status: response.status });\n    }\n\n    const data = await response.json();\n    console.log('🚛 КИТ API ответ:', JSON.stringify(data, null, 2));\n\n    if (data.name === 'Too Many Requests') {\n      return NextResponse.json({\n        success: false,\n        error: 'Превышен лимит запросов',\n        details: data\n      }, { status: 429 });\n    }\n\n    endTiming();\n    return NextResponse.json(data);\n\n  } catch (error: any) {\n    console.error('🚛 КИТ API критическая ошибка:', error);\n    endTiming();\n    return NextResponse.json({\n      success: false,\n      error: error.message || 'Внутренняя ошибка сервера',\n      details: error.stack\n    }, { status: 500 });\n  }\n}\n"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/api/kit/route.ts",
+      "exists": false
+    },
+    "title": "app/api/kit/route.ts",
+    "time": {
+      "start": 1760437006087,
+      "end": 1760437006090
+    }
+  }
+}

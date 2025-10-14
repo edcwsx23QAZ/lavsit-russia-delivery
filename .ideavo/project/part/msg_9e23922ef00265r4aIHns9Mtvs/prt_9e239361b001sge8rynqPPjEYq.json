@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e239361b001sge8rynqPPjEYq",
+  "messageID": "msg_9e23922ef00265r4aIHns9Mtvs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01AojUf7Cz31AuEFp5PnZAMH",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3545,
+      "limit": 30
+    },
+    "output": "<file>\n03546|           company: 'СДЭК',\n03547|           price: 0,\n03548|           days: 0,\n03549|           error: data.error || 'Ошибка расчета СДЭК',\n03550|           requestData,\n03551|           responseData: data,\n03552|           apiUrl\n03553|         };\n03554|       }\n03555|     } catch (error: any) {\n03556|       console.error('📦 СДЭК ошибка:', error);\n03557|       return {\n03558|         company: 'СДЭК',\n03559|         price: 0,\n03560|         days: 0,\n03561|         error: `Ошибка соединения: ${error.message}`,\n03562|         apiUrl\n03563|       };\n03564|     }\n03565|   };\n03566| \n03567|   const handleCalculate = async () => {\n03568|     setCalculating(true);\n03569|     setCalculations([]);\n03570|     \n03571|     // Сохраняем данные формы после расчета (принудительно, без дебаунса)\n03572|     saveFormData({\n03573|       cargos: form.cargos,\n03574|       fromCity: form.fromCity,\n03575|       toCity: form.toCity,\n\n(File has more lines. Use 'offset' parameter to read beyond line 3575)\n</file>",
+    "metadata": {
+      "preview": "          company: 'СДЭК',\n          price: 0,\n          days: 0,\n          error: data.error || 'Ошибка расчета СДЭК',\n          requestData,\n          responseData: data,\n          apiUrl\n        };\n      }\n    } catch (error: any) {\n      console.error('📦 СДЭК ошибка:', error);\n      return {\n        company: 'СДЭК',\n        price: 0,\n        days: 0,\n        error: `Ошибка соединения: ${error.message}`,\n        apiUrl\n      };\n    }\n  };"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760437025295,
+      "end": 1760437025299
+    }
+  }
+}

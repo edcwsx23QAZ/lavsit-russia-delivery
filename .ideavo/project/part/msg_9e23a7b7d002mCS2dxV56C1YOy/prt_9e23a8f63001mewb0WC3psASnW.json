@@ -1,0 +1,23 @@
+{
+  "id": "prt_9e23a8f63001mewb0WC3psASnW",
+  "messageID": "msg_9e23a7b7d002mCS2dxV56C1YOy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01A3Uy3X32v6FfF3kejapp6B",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/env-config.ts"
+    },
+    "output": "<file>\n00001| // IMPORTANT: When adding new env variables to the codebase, update this array\n00002| export const ENV_VARIABLES: EnvVariable[] = [\n00003|   {\n00004|     name: \"PEK_LOGIN\",\n00005|     description: \"Логин пользователя личного кабинета ПЭК\",\n00006|     required: true,\n00007|     instructions: \"Перейдите на [kabinet.pecom.ru](https://kabinet.pecom.ru) и введите ваш логин от личного кабинета. Если у вас нет логина, зарегистрируйтесь на сайте ПЭК.\"\n00008|   },\n00009|   {\n00010|     name: \"PEK_API_KEY\",\n00011|     description: \"API ключ доступа к ПЭК\",\n00012|     required: true,\n00013|     instructions: \"Войдите в [kabinet.pecom.ru](https://kabinet.pecom.ru) → Регистрационные данные → Ключи API. Создайте новый ключ и скопируйте его значение.\"\n00014|   }\n00015| ];\n00016| \n00017| // SUPABASE/DATABASE VARIABLES (uncomment and add to ENV_VARIABLES array when adding database features)\n00018| // {\n00019| //   name: \"DATABASE_URL\",\n00020| //   description: \"Supabase PostgreSQL database connection string for migrations and server-side operations\",\n00021| //   required: true,\n00022| //   instructions: \"Go to [Supabase Dashboard](https://supabase.com/dashboard) → Your Project → Settings → Database → Connection string (URI format).\\n Copy the full postgresql:// connection string.\\n Make sure to replace [YOUR-PASSWORD] with actual password\"\n00023| // },\n00024| // {\n00025| //   name: \"NEXT_PUBLIC_SUPABASE_URL\",\n00026| //   description: \"Supabase project URL for client-side authentication and API calls\",\n00027| //   required: true,\n00028| //   instructions: \"Go to [Supabase Dashboard](https://supabase.com/dashboard) → Your Project → Settings → Data API → Copy the 'Project URL -> URL' field (format: https://[project-id].supabase.co)\"\n00029| // },\n00030| // {\n00031| //   name: \"NEXT_PUBLIC_SUPABASE_ANON_KEY\",\n00032| //   description: \"Supabase anonymous/publishable key for client-side authentication\",\n00033| //   required: true,\n00034| //   instructions: \"Go to [Supabase Dashboard](https://supabase.com/dashboard) → Your Project → Settings → API Keys → Copy 'Legacy API keys → anon public' key\"\n00035| // }\n00036| \n00037| export interface EnvVariable {\n00038|   name: string\n00039|   description: string\n00040|   instructions: string\n00041|   required: boolean\n00042| }\n00043| \n00044| export function checkMissingEnvVars(): string[] {\n00045|   return ENV_VARIABLES.filter(envVar => envVar.required && !process.env[envVar.name]).map(envVar => envVar.name)\n00046| }\n</file>",
+    "metadata": {
+      "preview": "// IMPORTANT: When adding new env variables to the codebase, update this array\nexport const ENV_VARIABLES: EnvVariable[] = [\n  {\n    name: \"PEK_LOGIN\",\n    description: \"Логин пользователя личного кабинета ПЭК\",\n    required: true,\n    instructions: \"Перейдите на [kabinet.pecom.ru](https://kabinet.pecom.ru) и введите ваш логин от личного кабинета. Если у вас нет логина, зарегистрируйтесь на сайте ПЭК.\"\n  },\n  {\n    name: \"PEK_API_KEY\",\n    description: \"API ключ доступа к ПЭК\",\n    required: true,\n    instructions: \"Войдите в [kabinet.pecom.ru](https://kabinet.pecom.ru) → Регистрационные данные → Ключи API. Создайте новый ключ и скопируйте его значение.\"\n  }\n];\n\n// SUPABASE/DATABASE VARIABLES (uncomment and add to ENV_VARIABLES array when adding database features)\n// {\n//   name: \"DATABASE_URL\",\n//   description: \"Supabase PostgreSQL database connection string for migrations and server-side operations\","
+    },
+    "title": "lib/env-config.ts",
+    "time": {
+      "start": 1760437112907,
+      "end": 1760437112909
+    }
+  }
+}

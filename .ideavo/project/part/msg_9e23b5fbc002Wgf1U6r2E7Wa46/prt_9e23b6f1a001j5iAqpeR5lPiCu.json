@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e23b6f1a001j5iAqpeR5lPiCu",
+  "messageID": "msg_9e23b5fbc002Wgf1U6r2E7Wa46",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01EYeWuvYLie4GT5K74zPX7p",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    cap: 'не подключено',\n    uraltrans: 'не подключено',\n    novotek: 'не подключено',\n    kit: 'не подключено',\n    karavan: 'не подключено',",
+      "newString": "    cap: 'не подключено',\n    uraltrans: 'не подключено',\n    novotek: 'не подключено',\n    karavan: 'не подключено',"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -201,9 +201,8 @@\n energiya: 'не подключено',\n cap: 'не подключено',\n uraltrans: 'не подключено',\n novotek: 'не подключено',\n-kit: 'не подключено',\n karavan: 'не подключено',\n zeldor: 'не подключено',\n dktransit: 'не подключено',\n glavtrassa: 'не подключено',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760437171436,
+      "end": 1760437171452
+    }
+  }
+}

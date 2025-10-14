@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e23b39e000188706WPldrd4PZ",
+  "messageID": "msg_9e23b23a8002AGvbFh6tQEi7J6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "toolu_0139QaWfoEBJGL2QfVrNVq6b",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "kit:.*не подключено",
+      "include": "page.tsx"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 205:     kit: 'не подключено',",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "title": "kit:.*не подключено",
+    "time": {
+      "start": 1760437156596,
+      "end": 1760437156606
+    }
+  }
+}
