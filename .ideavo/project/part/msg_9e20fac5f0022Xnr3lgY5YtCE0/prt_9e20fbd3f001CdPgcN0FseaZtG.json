@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e20fbd3f001CdPgcN0FseaZtG",
+  "messageID": "msg_9e20fac5f0022Xnr3lgY5YtCE0",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01XxHjG52T8SKKHCtBDdEJnR",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "oldString": "    const requestData = {\n      type: 1,\n      date: dateFormatted,\n      lang: 'rus',\n      from_location: {\n        code: fromCityCode\n      },\n      to_location: {\n        code: toCityCode\n      },\n      packages: packages\n    };",
+      "newString": "    const requestData: any = {\n      type: 1,\n      date: dateFormatted,\n      lang: 'rus',\n      from_location: {\n        code: fromCityCode\n      },\n      to_location: {\n        code: toCityCode\n      },\n      packages: packages\n    };\n\n    if (body.services && body.services.length > 0) {\n      requestData.services = body.services;\n      console.log('📦 CDEK: добавлены дополнительные услуги', body.services);\n    }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/cdek/route.ts\n===================================================================\n--- /home/user/project/app/api/cdek/route.ts\n+++ /home/user/project/app/api/cdek/route.ts\n@@ -114,9 +114,9 @@\n   pad(now.getHours()) + ':' + \n   pad(now.getMinutes()) + ':' + \n   pad(now.getSeconds()) + sign + hours + minutes;\n \n-const requestData = {\n+const requestData: any = {\n   type: 1,\n   date: dateFormatted,\n   lang: 'rus',\n   from_location: {\n@@ -127,8 +127,13 @@\n   },\n   packages: packages\n };\n \n+if (body.services && body.services.length > 0) {\n+  requestData.services = body.services;\n+  console.log('📦 CDEK: добавлены дополнительные услуги', body.services);\n+}\n+\n console.log('📦 CDEK калькулятор запрос:', JSON.stringify(requestData, null, 2));\n \n const response = await apiRequestWithTimeout(`${CDEK_API_URL}/calculator/tarifflist`, {\n   method: 'POST',\n"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760434308355,
+      "end": 1760434308360
+    }
+  }
+}

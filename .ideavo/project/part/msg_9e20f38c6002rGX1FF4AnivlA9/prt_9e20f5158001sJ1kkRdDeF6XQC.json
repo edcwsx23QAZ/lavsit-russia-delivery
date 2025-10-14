@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e20f5158001sJ1kkRdDeF6XQC",
+  "messageID": "msg_9e20f38c6002rGX1FF4AnivlA9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_017W8zjecbskjF29SbZLfVjB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3410,
+      "limit": 30
+    },
+    "output": "<file>\n03411|       validateMultipleCargos(form.cargos);\n03412|       \n03413|       const packages = form.cargos.map(cargo => ({\n03414|         height: cargo.height,\n03415|         length: cargo.length,\n03416|         width: cargo.width,\n03417|         weight: cargo.weight * 1000\n03418|       }));\n03419| \n03420|       const requestData = {\n03421|         from_city: form.fromCity || 'Москва',\n03422|         to_city: form.toCity || 'Санкт-Петербург',\n03423|         packages: packages\n03424|       };\n03425| \n03426|       console.log('📦 CDEK запрос:', JSON.stringify(requestData, null, 2));\n03427|       console.log('📦 CDEK маршрут:', {\n03428|         fromAddressDelivery: form.fromAddressDelivery,\n03429|         fromLavsiteWarehouse: form.fromLavsiteWarehouse,\n03430|         toAddressDelivery: form.toAddressDelivery\n03431|       });\n03432| \n03433|       const response = await fetch(apiUrl, {\n03434|         method: 'POST',\n03435|         headers: {\n03436|           'Content-Type': 'application/json',\n03437|         },\n03438|         body: JSON.stringify(requestData)\n03439|       });\n03440| \n\n(File has more lines. Use 'offset' parameter to read beyond line 3440)\n</file>",
+    "metadata": {
+      "preview": "      validateMultipleCargos(form.cargos);\n      \n      const packages = form.cargos.map(cargo => ({\n        height: cargo.height,\n        length: cargo.length,\n        width: cargo.width,\n        weight: cargo.weight * 1000\n      }));\n\n      const requestData = {\n        from_city: form.fromCity || 'Москва',\n        to_city: form.toCity || 'Санкт-Петербург',\n        packages: packages\n      };\n\n      console.log('📦 CDEK запрос:', JSON.stringify(requestData, null, 2));\n      console.log('📦 CDEK маршрут:', {\n        fromAddressDelivery: form.fromAddressDelivery,\n        fromLavsiteWarehouse: form.fromLavsiteWarehouse,\n        toAddressDelivery: form.toAddressDelivery"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760434280129,
+      "end": 1760434280137
+    }
+  }
+}

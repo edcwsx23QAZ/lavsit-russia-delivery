@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e20fdc6f001rjgTuuW16tAvQl",
+  "messageID": "msg_9e20fccc3002vMiZ0jwK2UpEdi",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01MTauFvgLvEjfowUqVCxXYh",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "offset": 168,
+      "limit": 25
+    },
+    "output": "<file>\n00169|       }, { status: 400 });\n00170|     }\n00171| \n00172|     if (body.tariff_code && body.get_details) {\n00173|       console.log('📦 CDEK: запрос детализации для тарифа', body.tariff_code);\n00174|       \n00175|       const detailsRequest = {\n00176|         type: 1,\n00177|         date: dateFormatted,\n00178|         lang: 'rus',\n00179|         tariff_code: body.tariff_code,\n00180|         from_location: {\n00181|           code: fromCityCode\n00182|         },\n00183|         to_location: {\n00184|           code: toCityCode\n00185|         },\n00186|         packages: packages\n00187|       };\n00188| \n00189|       const detailsResponse = await apiRequestWithTimeout(`${CDEK_API_URL}/calculator/tariff`, {\n00190|         method: 'POST',\n00191|         headers: {\n00192|           'Authorization': `Bearer ${token}`,\n00193|           'Content-Type': 'application/json'\n\n(File has more lines. Use 'offset' parameter to read beyond line 193)\n</file>",
+    "metadata": {
+      "preview": "      }, { status: 400 });\n    }\n\n    if (body.tariff_code && body.get_details) {\n      console.log('📦 CDEK: запрос детализации для тарифа', body.tariff_code);\n      \n      const detailsRequest = {\n        type: 1,\n        date: dateFormatted,\n        lang: 'rus',\n        tariff_code: body.tariff_code,\n        from_location: {\n          code: fromCityCode\n        },\n        to_location: {\n          code: toCityCode\n        },\n        packages: packages\n      };\n"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760434314645,
+      "end": 1760434314646
+    }
+  }
+}

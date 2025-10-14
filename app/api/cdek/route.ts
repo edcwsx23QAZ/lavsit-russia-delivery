@@ -115,7 +115,7 @@ export async function POST(request: NextRequest) {
       pad(now.getMinutes()) + ':' + 
       pad(now.getSeconds()) + sign + hours + minutes;
 
-    const requestData = {
+    const requestData: any = {
       type: 1,
       date: dateFormatted,
       lang: 'rus',
@@ -127,6 +127,11 @@ export async function POST(request: NextRequest) {
       },
       packages: packages
     };
+
+    if (body.services && body.services.length > 0) {
+      requestData.services = body.services;
+      console.log('📦 CDEK: добавлены дополнительные услуги', body.services);
+    }
 
     console.log('📦 CDEK калькулятор запрос:', JSON.stringify(requestData, null, 2));
 
@@ -167,7 +172,7 @@ export async function POST(request: NextRequest) {
     if (body.tariff_code && body.get_details) {
       console.log('📦 CDEK: запрос детализации для тарифа', body.tariff_code);
       
-      const detailsRequest = {
+      const detailsRequest: any = {
         type: 1,
         date: dateFormatted,
         lang: 'rus',
@@ -180,6 +185,11 @@ export async function POST(request: NextRequest) {
         },
         packages: packages
       };
+
+      if (body.services && body.services.length > 0) {
+        detailsRequest.services = body.services;
+        console.log('📦 CDEK детали: добавлены услуги', body.services);
+      }
 
       const detailsResponse = await apiRequestWithTimeout(`${CDEK_API_URL}/calculator/tariff`, {
         method: 'POST',

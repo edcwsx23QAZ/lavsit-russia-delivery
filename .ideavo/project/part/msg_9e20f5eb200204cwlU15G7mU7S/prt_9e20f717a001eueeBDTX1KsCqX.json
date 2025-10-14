@@ -1,0 +1,42 @@
+{
+  "id": "prt_9e20f717a001eueeBDTX1KsCqX",
+  "messageID": "msg_9e20f5eb200204cwlU15G7mU7S",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "multiedit",
+  "callID": "toolu_01PFzYX1wWiCyfxAUHsPU8HE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "edits": [
+        {
+          "oldString": "      const requestData = {\n        from_city: form.fromCity || 'Москва',\n        to_city: form.toCity || 'Санкт-Петербург',\n        packages: packages\n      };",
+          "newString": "      const requestData: any = {\n        from_city: form.fromCity || 'Москва',\n        to_city: form.toCity || 'Санкт-Петербург',\n        packages: packages\n      };\n\n      if (form.needInsurance && form.declaredValue > 0) {\n        requestData.services = [{\n          code: 'INSURANCE',\n          parameter: form.declaredValue\n        }];\n        console.log('📦 CDEK: добавлено страхование', form.declaredValue);\n      }"
+        },
+        {
+          "oldString": "        const detailsRequest = {\n          ...requestData,\n          tariff_code: bestTariff.tariff_code,\n          get_details: true\n        };",
+          "newString": "        const detailsRequest: any = {\n          ...requestData,\n          tariff_code: bestTariff.tariff_code,\n          get_details: true\n        };"
+        }
+      ]
+    },
+    "output": "",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3416,14 +3416,22 @@\n   width: cargo.width,\n   weight: cargo.weight * 1000\n }));\n \n-const requestData = {\n+const requestData: any = {\n   from_city: form.fromCity || 'Москва',\n   to_city: form.toCity || 'Санкт-Петербург',\n   packages: packages\n };\n \n+if (form.needInsurance && form.declaredValue > 0) {\n+  requestData.services = [{\n+    code: 'INSURANCE',\n+    parameter: form.declaredValue\n+  }];\n+  console.log('📦 CDEK: добавлено страхование', form.declaredValue);\n+}\n+\n console.log('📦 CDEK запрос:', JSON.stringify(requestData, null, 2));\n console.log('📦 CDEK маршрут:', {\n   fromAddressDelivery: form.fromAddressDelivery,\n   fromLavsiteWarehouse: form.fromLavsiteWarehouse,\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3493,9 +3493,9 @@\n );\n \n console.log(`📦 CDEK лучший тариф: ${bestTariff.tariff_name} - ${bestTariff.delivery_sum}₽`);\n \n-const detailsRequest = {\n+const detailsRequest: any = {\n   ...requestData,\n   tariff_code: bestTariff.tariff_code,\n   get_details: true\n };\n"
+        }
+      ]
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760434291319,
+      "end": 1760434291373
+    }
+  }
+}

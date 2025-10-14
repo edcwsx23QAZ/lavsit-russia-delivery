@@ -3417,11 +3417,19 @@ export default function Home() {
         weight: cargo.weight * 1000
       }));
 
-      const requestData = {
+      const requestData: any = {
         from_city: form.fromCity || 'Москва',
         to_city: form.toCity || 'Санкт-Петербург',
         packages: packages
       };
+
+      if (form.needInsurance && form.declaredValue > 0) {
+        requestData.services = [{
+          code: 'INSURANCE',
+          parameter: form.declaredValue
+        }];
+        console.log('📦 CDEK: добавлено страхование', form.declaredValue);
+      }
 
       console.log('📦 CDEK запрос:', JSON.stringify(requestData, null, 2));
       console.log('📦 CDEK маршрут:', {
@@ -3486,7 +3494,7 @@ export default function Home() {
 
         console.log(`📦 CDEK лучший тариф: ${bestTariff.tariff_name} - ${bestTariff.delivery_sum}₽`);
 
-        const detailsRequest = {
+        const detailsRequest: any = {
           ...requestData,
           tariff_code: bestTariff.tariff_code,
           get_details: true
@@ -3852,13 +3860,32 @@ export default function Home() {
         }
       });
     } else if (calc.company === 'СДЭК' && calc.details) {
+      const cdekServiceNames: Record<string, string> = {
+        'INSURANCE': 'Страхование груза',
+        'HEAVY_CARGO': 'Тяжеловесный груз',
+        'DELIVERY_TO_DOOR': 'Доставка до двери',
+        'PICKUP_FROM_SENDER': 'Забор от отправителя',
+        'PACKAGE': 'Упаковка',
+        'TRYING_ON': 'Примерка на дому',
+        'PART_DELIVERY': 'Частичная доставка'
+      };
+
       if (calc.details.services && calc.details.services.length > 0) {
         calc.details.services.forEach((service: any) => {
-          details.push({
-            service: service.code || service.name || 'Услуга СДЭК',
-            description: service.name || '',
-            price: service.sum || 0
-          });
+          const serviceName = cdekServiceNames[service.code] || service.code || 'Услуга СДЭК';
+          const servicePrice = service.total_sum || service.sum || 0;
+          
+          if (servicePrice > 0) {
+            details.push({
+              service: serviceName,
+              description: service.code === 'HEAVY_CARGO' 
+                ? `Сбор за габаритный груз (расчетный вес: ${(calc.details.weight_calc / 1000).toFixed(0)} кг)`
+                : service.code === 'INSURANCE'
+                ? `Объявленная стоимость: ${form.declaredValue?.toLocaleString() || 0} ₽`
+                : '',
+              price: servicePrice
+            });
+          }
         });
         
         if (calc.details.delivery_sum && calc.details.total_sum) {
@@ -3869,20 +3896,26 @@ export default function Home() {
           });
           details.push({
             service: 'Стоимость доставки',
-            description: 'Перевозка',
-            price: calc.details.delivery_sum
+            description: calc.details.tariff_name || 'Перевозка',
+            price: Math.round(calc.details.delivery_sum)
           });
-          if (calc.details.total_sum !== calc.details.delivery_sum) {
+          
+          const additionalSum = calc.details.services.reduce((sum: number, s: any) => 
+            sum + (s.total_sum || s.sum || 0), 0
+          );
+          
+          if (additionalSum > 0) {
             details.push({
               service: 'Дополнительные услуги',
               description: 'Доп. сборы',
-              price: calc.details.total_sum - calc.details.delivery_sum
+              price: Math.round(additionalSum)
             });
           }
+          
           details.push({
             service: 'ИТОГО',
-            description: calc.details.tariff_name || 'Тариф',
-            price: calc.details.total_sum
+            description: 'К оплате',
+            price: Math.round(calc.details.total_sum)
           });
         }
       } else {

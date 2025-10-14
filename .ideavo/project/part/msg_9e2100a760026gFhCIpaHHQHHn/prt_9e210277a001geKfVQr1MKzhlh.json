@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e210277a001geKfVQr1MKzhlh",
+  "messageID": "msg_9e2100a760026gFhCIpaHHQHHn",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Mgaiz8ahXXmfd5jg23SeZP",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3860,
+      "limit": 60
+    },
+    "output": "<file>\n03861|       });\n03862|     } else if (calc.company === 'СДЭК' && calc.details) {\n03863|       if (calc.details.services && calc.details.services.length > 0) {\n03864|         calc.details.services.forEach((service: any) => {\n03865|           details.push({\n03866|             service: service.code || service.name || 'Услуга СДЭК',\n03867|             description: service.name || '',\n03868|             price: service.sum || 0\n03869|           });\n03870|         });\n03871|         \n03872|         if (calc.details.delivery_sum && calc.details.total_sum) {\n03873|           details.push({\n03874|             service: '─────────────────────────',\n03875|             description: '',\n03876|             price: 0\n03877|           });\n03878|           details.push({\n03879|             service: 'Стоимость доставки',\n03880|             description: 'Перевозка',\n03881|             price: calc.details.delivery_sum\n03882|           });\n03883|           if (calc.details.total_sum !== calc.details.delivery_sum) {\n03884|             details.push({\n03885|               service: 'Дополнительные услуги',\n03886|               description: 'Доп. сборы',\n03887|               price: calc.details.total_sum - calc.details.delivery_sum\n03888|             });\n03889|           }\n03890|           details.push({\n03891|             service: 'ИТОГО',\n03892|             description: calc.details.tariff_name || 'Тариф',\n03893|             price: calc.details.total_sum\n03894|           });\n03895|         }\n03896|       } else {\n03897|         details.push({\n03898|           service: 'Тариф',\n03899|           description: calc.details.tariff_name || 'Не указан',\n03900|           price: calc.price\n03901|         });\n03902|         \n03903|         if (calc.details.delivery_mode) {\n03904|           details.push({\n03905|             service: 'Режим доставки',\n03906|             description: calc.details.delivery_mode,\n03907|             price: 0\n03908|           });\n03909|         }\n03910|       }\n03911|       \n03912|       if (calc.details.period_min && calc.details.period_max) {\n03913|         details.push({\n03914|           service: 'Срок доставки',\n03915|           description: `${calc.details.period_min}-${calc.details.period_max} дней`,\n03916|           price: 0\n03917|         });\n03918|       }\n03919|       \n03920|       if (calc.details.weight_calc) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 3920)\n</file>",
+    "metadata": {
+      "preview": "      });\n    } else if (calc.company === 'СДЭК' && calc.details) {\n      if (calc.details.services && calc.details.services.length > 0) {\n        calc.details.services.forEach((service: any) => {\n          details.push({\n            service: service.code || service.name || 'Услуга СДЭК',\n            description: service.name || '',\n            price: service.sum || 0\n          });\n        });\n        \n        if (calc.details.delivery_sum && calc.details.total_sum) {\n          details.push({\n            service: '─────────────────────────',\n            description: '',\n            price: 0\n          });\n          details.push({\n            service: 'Стоимость доставки',\n            description: 'Перевозка',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760434333789,
+      "end": 1760434333792
+    }
+  }
+}

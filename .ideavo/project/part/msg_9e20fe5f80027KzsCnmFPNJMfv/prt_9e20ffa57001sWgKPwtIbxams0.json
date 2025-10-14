@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e20ffa57001sWgKPwtIbxams0",
+  "messageID": "msg_9e20fe5f80027KzsCnmFPNJMfv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01UbQ8THawjVLdQvZjrV52QU",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "oldString": "      const detailsRequest = {\n        type: 1,\n        date: dateFormatted,\n        lang: 'rus',\n        tariff_code: body.tariff_code,\n        from_location: {\n          code: fromCityCode\n        },\n        to_location: {\n          code: toCityCode\n        },\n        packages: packages\n      };",
+      "newString": "      const detailsRequest: any = {\n        type: 1,\n        date: dateFormatted,\n        lang: 'rus',\n        tariff_code: body.tariff_code,\n        from_location: {\n          code: fromCityCode\n        },\n        to_location: {\n          code: toCityCode\n        },\n        packages: packages\n      };\n\n      if (body.services && body.services.length > 0) {\n        detailsRequest.services = body.services;\n        console.log('📦 CDEK детали: добавлены услуги', body.services);\n      }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/cdek/route.ts\n===================================================================\n--- /home/user/project/app/api/cdek/route.ts\n+++ /home/user/project/app/api/cdek/route.ts\n@@ -171,9 +171,9 @@\n \n if (body.tariff_code && body.get_details) {\n   console.log('📦 CDEK: запрос детализации для тарифа', body.tariff_code);\n   \n-  const detailsRequest = {\n+  const detailsRequest: any = {\n     type: 1,\n     date: dateFormatted,\n     lang: 'rus',\n     tariff_code: body.tariff_code,\n@@ -185,8 +185,13 @@\n     },\n     packages: packages\n   };\n \n+  if (body.services && body.services.length > 0) {\n+    detailsRequest.services = body.services;\n+    console.log('📦 CDEK детали: добавлены услуги', body.services);\n+  }\n+\n   const detailsResponse = await apiRequestWithTimeout(`${CDEK_API_URL}/calculator/tariff`, {\n     method: 'POST',\n     headers: {\n       'Authorization': `Bearer ${token}`,\n"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760434324146,
+      "end": 1760434324150
+    }
+  }
+}

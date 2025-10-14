@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e20f9f0a001bwhSt5T4VdWQah",
+  "messageID": "msg_9e20f8b19002zhAtOQeDZaCa4E",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_0185taDJua9KdkZ1GL4KHYCP",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "offset": 118,
+      "limit": 20
+    },
+    "output": "<file>\n00119|       type: 1,\n00120|       date: dateFormatted,\n00121|       lang: 'rus',\n00122|       from_location: {\n00123|         code: fromCityCode\n00124|       },\n00125|       to_location: {\n00126|         code: toCityCode\n00127|       },\n00128|       packages: packages\n00129|     };\n00130| \n00131|     console.log('📦 CDEK калькулятор запрос:', JSON.stringify(requestData, null, 2));\n00132| \n00133|     const response = await apiRequestWithTimeout(`${CDEK_API_URL}/calculator/tarifflist`, {\n00134|       method: 'POST',\n00135|       headers: {\n00136|         'Authorization': `Bearer ${token}`,\n00137|         'Content-Type': 'application/json'\n00138|       },\n\n(File has more lines. Use 'offset' parameter to read beyond line 138)\n</file>",
+    "metadata": {
+      "preview": "      type: 1,\n      date: dateFormatted,\n      lang: 'rus',\n      from_location: {\n        code: fromCityCode\n      },\n      to_location: {\n        code: toCityCode\n      },\n      packages: packages\n    };\n\n    console.log('📦 CDEK калькулятор запрос:', JSON.stringify(requestData, null, 2));\n\n    const response = await apiRequestWithTimeout(`${CDEK_API_URL}/calculator/tarifflist`, {\n      method: 'POST',\n      headers: {\n        'Authorization': `Bearer ${token}`,\n        'Content-Type': 'application/json'\n      },"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760434299749,
+      "end": 1760434299751
+    }
+  }
+}
