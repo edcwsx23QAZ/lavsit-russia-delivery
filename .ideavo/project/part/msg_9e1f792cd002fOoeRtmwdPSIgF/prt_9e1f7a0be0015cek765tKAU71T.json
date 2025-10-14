@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e1f7a0be0015cek765tKAU71T",
+  "messageID": "msg_9e1f792cd002fOoeRtmwdPSIgF",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_016epionqB9Azxu4SRbD5dfk",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3750,
+      "limit": 30
+    },
+    "output": "<file>\n03751|           description: '',\n03752|           price: calc.details.pickupCost\n03753|         });\n03754|       }\n03755|       if (calc.details.deliveryToDoorCost) {\n03756|         details.push({\n03757|           service: 'Стоимость доставки до двери',\n03758|           description: '',\n03759|           price: calc.details.deliveryToDoorCost\n03760|         });\n03761|       }\n03762|       if (calc.details.additionalServices && calc.details.additionalServices > 0) {\n03763|         details.push({\n03764|           service: 'Стоимость доп.услуг',\n03765|           description: '',\n03766|           price: calc.details.additionalServices\n03767|         });\n03768|       }\n03769| \n03770|     } else if (calc.company === 'ПЭК' && calc.details?.services) {\n03771|       // Для ПЭК используем данные из API\n03772|       calc.details.services.forEach((service: any) => {\n03773|         if (service.price > 0) {\n03774|           details.push({\n03775|             service: service.name || 'Услуга ПЭК',\n03776|             description: service.description || '',\n03777|             price: service.price\n03778|           });\n03779|         }\n03780|       });\n\n(File has more lines. Use 'offset' parameter to read beyond line 3780)\n</file>",
+    "metadata": {
+      "preview": "          description: '',\n          price: calc.details.pickupCost\n        });\n      }\n      if (calc.details.deliveryToDoorCost) {\n        details.push({\n          service: 'Стоимость доставки до двери',\n          description: '',\n          price: calc.details.deliveryToDoorCost\n        });\n      }\n      if (calc.details.additionalServices && calc.details.additionalServices > 0) {\n        details.push({\n          service: 'Стоимость доп.услуг',\n          description: '',\n          price: calc.details.additionalServices\n        });\n      }\n\n    } else if (calc.company === 'ПЭК' && calc.details?.services) {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760432726796,
+      "end": 1760432726799
+    }
+  }
+}

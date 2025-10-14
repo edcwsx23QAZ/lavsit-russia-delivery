@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e1f64271001dbinELqTUSE44j",
+  "messageID": "msg_9e1f634df002Q60rh8rXa0yIRV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_013hXKnn5oZWtj1YEiMB23wB",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3250,
+      "limit": 50
+    },
+    "output": "<file>\n03251|           price: 0,\n03252|           days: 0,\n03253|           error: data.error || 'Ошибка расчета Возовоз',\n03254|           requestData,\n03255|           responseData: data,\n03256|           apiUrl\n03257|         };\n03258|       }\n03259|     } catch (error: any) {\n03260|       console.error('🚚 Возовоз ошибка:', error);\n03261|       return {\n03262|         company: 'Возовоз',\n03263|         price: 0,\n03264|         days: 0,\n03265|         error: `Ошибка соединения: ${error.message}`,\n03266|         apiUrl\n03267|       };\n03268|     }\n03269|   };\n03270| \n03271|   // Расчет для Nord Wheel\n03272|   const calculateNordWheel = async (): Promise<CalculationResult> => {\n03273|     const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n03274|     \n03275|     try {\n03276|       // 🔧 Валидация множественных мест\n03277|       validateMultipleCargos(form.cargos);\n03278|       \n03279|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n03280|       const totalVolume = form.cargos.reduce((sum, cargo) => \n03281|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n03282|       );\n03283| \n03284|       // 🔧 ДОБАВЛЕНО: Расчет габаритов для множественных мест\n03285|       const maxLength = Math.max(...form.cargos.map(c => c.length));\n03286|       const maxWidth = Math.max(...form.cargos.map(c => c.width));\n03287|       const maxHeight = Math.max(...form.cargos.map(c => c.height));\n03288|       \n03289|       // 🔧 ДОБАВЛЕНО: Проверка на негабарит (>2м по любому измерению)\n03290|       const isOversized = maxLength > 200 || maxWidth > 200 || maxHeight > 200 || totalWeight > 1000;\n03291|       \n03292|       // 🔧 Детальное логирование множественных мест\n03293|       console.log('🌐 Nord Wheel: Анализ множественных грузовых мест:');\n03294|       console.log(`   - Количество мест: ${form.cargos.length}`);\n03295|       console.log(`   - Общий вес: ${totalWeight} кг`);\n03296|       console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);\n03297|       \n03298|       form.cargos.forEach((cargo, index) => {\n03299|         console.log(`   📦 Место ${index + 1}:`);\n03300|         console.log(`     - Габариты: ${cargo.length}×${cargo.width}×${cargo.height} см`);\n\n(File has more lines. Use 'offset' parameter to read beyond line 3300)\n</file>",
+    "metadata": {
+      "preview": "          price: 0,\n          days: 0,\n          error: data.error || 'Ошибка расчета Возовоз',\n          requestData,\n          responseData: data,\n          apiUrl\n        };\n      }\n    } catch (error: any) {\n      console.error('🚚 Возовоз ошибка:', error);\n      return {\n        company: 'Возовоз',\n        price: 0,\n        days: 0,\n        error: `Ошибка соединения: ${error.message}`,\n        apiUrl\n      };\n    }\n  };\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760432636864,
+      "end": 1760432636867
+    }
+  }
+}

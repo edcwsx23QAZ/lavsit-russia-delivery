@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e1f6dc840016NOo7S1lAPh7do",
+  "messageID": "msg_9e1f6cd99002uxxAxSp6O2pNKK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01MrvNxxtvicUoVvNHpWUrYK",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      if (enabledCompanies.vozovoz) {\n        calculationFunctions.push(calculateVozovoz());\n      }\n      \n      // Если ни одна компания не включена",
+      "newString": "      if (enabledCompanies.vozovoz) {\n        calculationFunctions.push(calculateVozovoz());\n      }\n      if (enabledCompanies.cdek) {\n        calculationFunctions.push(calculateCdek());\n      }\n      \n      // Если ни одна компания не включена"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3496,8 +3496,11 @@\n }\n if (enabledCompanies.vozovoz) {\n   calculationFunctions.push(calculateVozovoz());\n }\n+if (enabledCompanies.cdek) {\n+  calculationFunctions.push(calculateCdek());\n+}\n \n // Если ни одна компания не включена\n if (calculationFunctions.length === 0) {\n   setCalculations([]);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760432677614,
+      "end": 1760432677635
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e1f67432001tqy01zJCLyo0yV",
+  "messageID": "msg_9e1f666d300245U6TlIBhckB2O",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01B5LmX5BjWwnY7Y3cLLAdZC",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3380,
+      "limit": 50
+    },
+    "output": "<file>\n03381|     setCalculations([]);\n03382|     \n03383|     // Сохраняем данные формы после расчета (принудительно, без дебаунса)\n03384|     saveFormData({\n03385|       cargos: form.cargos,\n03386|       fromCity: form.fromCity,\n03387|       toCity: form.toCity,\n03388|       fromAddress: form.fromAddress,\n03389|       toAddress: form.toAddress,\n03390|       declaredValue: form.declaredValue,\n03391|       needPackaging: form.needPackaging,\n03392|       needLoading: form.needLoading,\n03393|       needCarry: form.needCarry,\n03394|       floor: form.floor,\n03395|       hasFreightLift: form.hasFreightLift,\n03396|       needInsurance: form.needInsurance,\n03397|       fromTerminal: form.fromTerminal,\n03398|       toTerminal: form.toTerminal,\n03399|       fromAddressDelivery: form.fromAddressDelivery,\n03400|       toAddressDelivery: form.toAddressDelivery,\n03401|       selectedProducts: form.selectedProducts,\n03402|     });\n03403|     \n03404|     try {\n03405|       // Создаем массив функций расчета только для включенных компаний\n03406|       const calculationFunctions: Promise<CalculationResult>[] = [];\n03407|       \n03408|       if (enabledCompanies.dellin) {\n03409|         calculationFunctions.push(calculateDellin());\n03410|       }\n03411|       if (enabledCompanies.pek) {\n03412|         calculationFunctions.push(calculatePEK());\n03413|       }\n03414|       if (enabledCompanies.nordwheel) {\n03415|         calculationFunctions.push(calculateNordWheel());\n03416|       }\n03417|       if (enabledCompanies.railcontinent) {\n03418|         calculationFunctions.push(calculateRailContinent());\n03419|       }\n03420|       if (enabledCompanies.vozovoz) {\n03421|         calculationFunctions.push(calculateVozovoz());\n03422|       }\n03423|       \n03424|       // Если ни одна компания не включена\n03425|       if (calculationFunctions.length === 0) {\n03426|         setCalculations([]);\n03427|         return;\n03428|       }\n03429|       \n03430|       const results = await Promise.all(calculationFunctions);\n\n(File has more lines. Use 'offset' parameter to read beyond line 3430)\n</file>",
+    "metadata": {
+      "preview": "    setCalculations([]);\n    \n    // Сохраняем данные формы после расчета (принудительно, без дебаунса)\n    saveFormData({\n      cargos: form.cargos,\n      fromCity: form.fromCity,\n      toCity: form.toCity,\n      fromAddress: form.fromAddress,\n      toAddress: form.toAddress,\n      declaredValue: form.declaredValue,\n      needPackaging: form.needPackaging,\n      needLoading: form.needLoading,\n      needCarry: form.needCarry,\n      floor: form.floor,\n      hasFreightLift: form.hasFreightLift,\n      needInsurance: form.needInsurance,\n      fromTerminal: form.fromTerminal,\n      toTerminal: form.toTerminal,\n      fromAddressDelivery: form.fromAddressDelivery,\n      toAddressDelivery: form.toAddressDelivery,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760432649457,
+      "end": 1760432649460
+    }
+  }
+}

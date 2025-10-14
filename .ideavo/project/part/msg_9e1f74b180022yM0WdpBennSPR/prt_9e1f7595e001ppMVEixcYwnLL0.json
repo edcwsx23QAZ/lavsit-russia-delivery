@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e1f7595e001ppMVEixcYwnLL0",
+  "messageID": "msg_9e1f74b180022yM0WdpBennSPR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01VDGg5gkfj6QPVgtPUAyfeL",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 605,
+      "limit": 50
+    },
+    "output": "<file>\n00606|       checkAPIStatus('nordwheel', async () => {\n00607|         try {\n00608|           const totalWeight = 10;\n00609|           const totalVolume = 0.1;\n00610|           \n00611|           const params = new URLSearchParams({\n00612|             from: '91',\n00613|             to: '92',\n00614|             pickup: '1',\n00615|             deliver: '1',\n00616|             weight: totalWeight.toString(),\n00617|             volume: totalVolume.toString(),\n00618|             oversized: '0',\n00619|             package: '1',\n00620|             packageCount: '1',\n00621|             insurance: '1',\n00622|             sum: '50000',\n00623|             documentsReturn: '0',\n00624|             fragile: '1'\n00625|           });\n00626| \n00627|           const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n00628|           const response = await fetch(fullUrl);\n00629|           const data = await response.json();\n00630|           \n00631|           if (response.ok && data.status === 'success') {\n00632|             return { success: true };\n00633|           } else {\n00634|             return { error: true };\n00635|           }\n00636|         } catch (error) {\n00637|           return { error: true };\n00638|         }\n00639|       })\n00640|     ]).finally(() => {\n00641|       // Восстанавливаем исходное состояние формы\n00642|       setForm(currentForm);\n00643|     });\n00644|   };\n00645| \n00646|   const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n00647|     if (query.length < 3) {\n00648|       setSuggestions([]);\n00649|       setShowSuggestions(false);\n00650|       return;\n00651|     }\n00652| \n00653|     setActiveField(field);\n00654|     \n00655|     // Установка позиции автоподсказок\n\n(File has more lines. Use 'offset' parameter to read beyond line 655)\n</file>",
+    "metadata": {
+      "preview": "      checkAPIStatus('nordwheel', async () => {\n        try {\n          const totalWeight = 10;\n          const totalVolume = 0.1;\n          \n          const params = new URLSearchParams({\n            from: '91',\n            to: '92',\n            pickup: '1',\n            deliver: '1',\n            weight: totalWeight.toString(),\n            volume: totalVolume.toString(),\n            oversized: '0',\n            package: '1',\n            packageCount: '1',\n            insurance: '1',\n            sum: '50000',\n            documentsReturn: '0',\n            fragile: '1'\n          });"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760432708001,
+      "end": 1760432708006
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "prt_9e1f8924d001T4w0kj5pz2BsH6",
+  "messageID": "msg_9e1f87ec8002FxEFDj8rJBoHl5",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Y71Bq4V16svHs1o8GpYW9R",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "limit": 40
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server';\n00002| import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\n00003| \n00004| const CDEK_CLIENT_ID = 'wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP';\n00005| const CDEK_CLIENT_SECRET = 'RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5';\n00006| const CDEK_API_URL = 'https://api.cdek.ru/v2';\n00007| \n00008| let cachedToken: string | null = null;\n00009| let tokenExpiry: number = 0;\n00010| \n00011| async function getCdekToken(): Promise<string> {\n00012|   if (cachedToken && Date.now() < tokenExpiry) {\n00013|     return cachedToken;\n00014|   }\n00015| \n00016|   const credentials = Buffer.from(`${CDEK_CLIENT_ID}:${CDEK_CLIENT_SECRET}`).toString('base64');\n00017| \n00018|   const response = await apiRequestWithTimeout(`${CDEK_API_URL}/oauth/token?parameters`, {\n00019|     method: 'POST',\n00020|     headers: {\n00021|       'Content-Type': 'application/x-www-form-urlencoded',\n00022|       'Authorization': `Basic ${credentials}`\n00023|     },\n00024|     body: 'grant_type=client_credentials'\n00025|   }, { timeout: 10000, retries: 2 });\n00026| \n00027|   if (!response.ok) {\n00028|     throw new Error(`CDEK OAuth failed: ${response.status} ${response.statusText}`);\n00029|   }\n00030| \n00031|   const data = await response.json();\n00032|   cachedToken = data.access_token;\n00033|   tokenExpiry = Date.now() + (data.expires_in - 60) * 1000;\n00034| \n00035|   return cachedToken;\n00036| }\n00037| \n00038| async function getCityCode(cityName: string, token: string): Promise<number | null> {\n00039|   try {\n00040|     const response = await apiRequestWithTimeout(\n\n(File has more lines. Use 'offset' parameter to read beyond line 40)\n</file>",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server';\nimport { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\n\nconst CDEK_CLIENT_ID = 'wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP';\nconst CDEK_CLIENT_SECRET = 'RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5';\nconst CDEK_API_URL = 'https://api.cdek.ru/v2';\n\nlet cachedToken: string | null = null;\nlet tokenExpiry: number = 0;\n\nasync function getCdekToken(): Promise<string> {\n  if (cachedToken && Date.now() < tokenExpiry) {\n    return cachedToken;\n  }\n\n  const credentials = Buffer.from(`${CDEK_CLIENT_ID}:${CDEK_CLIENT_SECRET}`).toString('base64');\n\n  const response = await apiRequestWithTimeout(`${CDEK_API_URL}/oauth/token?parameters`, {\n    method: 'POST',\n    headers: {"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760432788369,
+      "end": 1760432788370
+    }
+  }
+}

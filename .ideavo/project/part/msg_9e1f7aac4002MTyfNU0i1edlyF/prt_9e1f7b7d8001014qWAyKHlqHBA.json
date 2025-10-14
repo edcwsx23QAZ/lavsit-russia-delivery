@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e1f7b7d8001014qWAyKHlqHBA",
+  "messageID": "msg_9e1f7aac4002MTyfNU0i1edlyF",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_0124G4Y1PbP9kQgBberKCcb4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    } else if (calc.company === 'Возовоз' && calc.details?.service) {",
+      "newString": "    } else if (calc.company === 'СДЭК' && calc.details) {\n      details.push({\n        service: 'Тариф',\n        description: calc.details.tariff_name || 'Не указан',\n        price: calc.price\n      });\n      \n      if (calc.details.period_min && calc.details.period_max) {\n        details.push({\n          service: 'Срок доставки',\n          description: `${calc.details.period_min}-${calc.details.period_max} дней`,\n          price: 0\n        });\n      }\n      \n      if (calc.details.all_tariffs && calc.details.all_tariffs.length > 1) {\n        details.push({\n          service: 'Доступные тарифы',\n          description: `Найдено ${calc.details.all_tariffs.length} вариантов`,\n          price: 0\n        });\n      }\n    } else if (calc.company === 'Возовоз' && calc.details?.service) {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3777,8 +3777,30 @@\n         price: service.price\n       });\n     }\n   });\n+} else if (calc.company === 'СДЭК' && calc.details) {\n+  details.push({\n+    service: 'Тариф',\n+    description: calc.details.tariff_name || 'Не указан',\n+    price: calc.price\n+  });\n+  \n+  if (calc.details.period_min && calc.details.period_max) {\n+    details.push({\n+      service: 'Срок доставки',\n+      description: `${calc.details.period_min}-${calc.details.period_max} дней`,\n+      price: 0\n+    });\n+  }\n+  \n+  if (calc.details.all_tariffs && calc.details.all_tariffs.length > 1) {\n+    details.push({\n+      service: 'Доступные тарифы',\n+      description: `Найдено ${calc.details.all_tariffs.length} вариантов`,\n+      price: 0\n+    });\n+  }\n } else if (calc.company === 'Возовоз' && calc.details?.service) {\n   // ✅ Детализация для Возовоз на основе API ответа\n   const basePrice = calc.details.basePrice || 0;\n   const finalPrice = calc.details.price || calc.price || 0;\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760432737111,
+      "end": 1760432737131
+    }
+  }
+}

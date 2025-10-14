@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e1f6f854001D7kDl8StU0GRzQ",
+  "messageID": "msg_9e1f6ea4d002pVtMva68vLOWgZ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01VraUJFMZqzkgitWXk1y9L3",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    dellin: true,\n    railcontinent: true,\n    vozovoz: true,\n    nordwheel: true,\n    cdek: false,",
+      "newString": "    dellin: true,\n    railcontinent: true,\n    vozovoz: true,\n    nordwheel: true,\n    cdek: true,"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -161,9 +161,9 @@\n dellin: true,\n railcontinent: true,\n vozovoz: true,\n nordwheel: true,\n-cdek: false,\n+cdek: true,\n newline: false,\n irtrust: false,\n majortrans: false,\n baikalservice: false,\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760432684418,
+      "end": 1760432684436
+    }
+  }
+}

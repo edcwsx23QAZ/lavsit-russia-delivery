@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e1f728eb001Sg0X2SPsNhfbkm",
+  "messageID": "msg_9e1f71b5b002QUDYYCj8rresLJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_018yDW342sz14Fy3rUfY7Mww",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    railcontinent: 'проверка...',\n    vozovoz: 'проверка...',\n    nordwheel: 'проверка...',\n    cdek: 'не подключено',",
+      "newString": "    railcontinent: 'проверка...',\n    vozovoz: 'проверка...',\n    nordwheel: 'проверка...',\n    cdek: 'проверка...',"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -190,9 +190,9 @@\n dellin: 'проверка...',\n railcontinent: 'проверка...',\n vozovoz: 'проверка...',\n nordwheel: 'проверка...',\n-cdek: 'не подключено',\n+cdek: 'проверка...',\n newline: 'не подключено',\n irtrust: 'не подключено',\n majortrans: 'не подключено',\n baikalservice: 'не подключено',\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760432696647,
+      "end": 1760432696666
+    }
+  }
+}

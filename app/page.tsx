@@ -162,7 +162,7 @@ export default function Home() {
     railcontinent: true,
     vozovoz: true,
     nordwheel: true,
-    cdek: false,
+    cdek: true,
     newline: false,
     irtrust: false,
     majortrans: false,
@@ -191,7 +191,7 @@ export default function Home() {
     railcontinent: 'проверка...',
     vozovoz: 'проверка...',
     nordwheel: 'проверка...',
-    cdek: 'не подключено',
+    cdek: 'проверка...',
     newline: 'не подключено',
     irtrust: 'не подключено',
     majortrans: 'не подключено',
@@ -629,6 +629,34 @@ export default function Home() {
           const data = await response.json();
           
           if (response.ok && data.status === 'success') {
+            return { success: true };
+          } else {
+            return { error: true };
+          }
+        } catch (error) {
+          return { error: true };
+        }
+      }),
+      
+      checkAPIStatus('cdek', async () => {
+        try {
+          const response = await fetch('/api/cdek', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              from_city: testData.fromCity,
+              to_city: testData.toCity,
+              packages: [{
+                height: 10,
+                length: 20,
+                width: 10,
+                weight: 1000
+              }]
+            })
+          });
+          const data = await response.json();
+          
+          if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {
             return { success: true };
           } else {
             return { error: true };
@@ -3376,6 +3404,83 @@ export default function Home() {
     }
   };
 
+  const calculateCdek = async (): Promise<CalculationResult> => {
+    const apiUrl = '/api/cdek';
+    
+    try {
+      validateMultipleCargos(form.cargos);
+      
+      const packages = form.cargos.map(cargo => ({
+        height: cargo.height,
+        length: cargo.length,
+        width: cargo.width,
+        weight: cargo.weight * 1000
+      }));
+
+      const requestData = {
+        from_city: form.fromCity || 'Москва',
+        to_city: form.toCity || 'Санкт-Петербург',
+        packages: packages
+      };
+
+      console.log('📦 CDEK запрос:', JSON.stringify(requestData, null, 2));
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestData)
+      });
+
+      const data = await response.json();
+      console.log('📦 CDEK ответ:', JSON.stringify(data, null, 2));
+
+      if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {
+        const bestTariff = data.tariff_codes.reduce((min: any, tariff: any) => 
+          (tariff.delivery_sum < min.delivery_sum) ? tariff : min
+        );
+
+        return {
+          company: 'СДЭК',
+          price: Math.round(bestTariff.delivery_sum || 0),
+          days: bestTariff.period_max || 0,
+          details: {
+            tariff_name: bestTariff.tariff_name || 'Не указан',
+            tariff_code: bestTariff.tariff_code,
+            period_min: bestTariff.period_min,
+            period_max: bestTariff.period_max,
+            calendar_min: bestTariff.calendar_min,
+            calendar_max: bestTariff.calendar_max,
+            all_tariffs: data.tariff_codes
+          },
+          requestData,
+          responseData: data,
+          apiUrl
+        };
+      } else {
+        return {
+          company: 'СДЭК',
+          price: 0,
+          days: 0,
+          error: data.error || 'Ошибка расчета СДЭК',
+          requestData,
+          responseData: data,
+          apiUrl
+        };
+      }
+    } catch (error: any) {
+      console.error('📦 СДЭК ошибка:', error);
+      return {
+        company: 'СДЭК',
+        price: 0,
+        days: 0,
+        error: `Ошибка соединения: ${error.message}`,
+        apiUrl
+      };
+    }
+  };
+
   const handleCalculate = async () => {
     setCalculating(true);
     setCalculations([]);
@@ -3419,6 +3524,9 @@ export default function Home() {
       }
       if (enabledCompanies.vozovoz) {
         calculationFunctions.push(calculateVozovoz());
+      }
+      if (enabledCompanies.cdek) {
+        calculationFunctions.push(calculateCdek());
       }
       
       // Если ни одна компания не включена
@@ -3670,6 +3778,28 @@ export default function Home() {
           });
         }
       });
+    } else if (calc.company === 'СДЭК' && calc.details) {
+      details.push({
+        service: 'Тариф',
+        description: calc.details.tariff_name || 'Не указан',
+        price: calc.price
+      });
+      
+      if (calc.details.period_min && calc.details.period_max) {
+        details.push({
+          service: 'Срок доставки',
+          description: `${calc.details.period_min}-${calc.details.period_max} дней`,
+          price: 0
+        });
+      }
+      
+      if (calc.details.all_tariffs && calc.details.all_tariffs.length > 1) {
+        details.push({
+          service: 'Доступные тарифы',
+          description: `Найдено ${calc.details.all_tariffs.length} вариантов`,
+          price: 0
+        });
+      }
     } else if (calc.company === 'Возовоз' && calc.details?.service) {
       // ✅ Детализация для Возовоз на основе API ответа
       const basePrice = calc.details.basePrice || 0;

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e1f7427f0014GVilGyp50gbF9",
+  "messageID": "msg_9e1f73466002cYFI14nQeBgwjB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01JbjBYoFaiKMVYiymAhzCYE",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 565,
+      "limit": 30
+    },
+    "output": "<file>\n00566|       \n00567|       checkAPIStatus('vozovoz', async () => {\n00568|         try {\n00569|           const response = await fetch('/api/vozovoz', {\n00570|             method: 'POST',\n00571|             headers: { 'Content-Type': 'application/json' },\n00572|             body: JSON.stringify({\n00573|               object: \"price\",\n00574|               action: \"get\",\n00575|               params: {\n00576|                 cargo: {\n00577|                   dimension: {\n00578|                     quantity: 1,\n00579|                     volume: 0.1,\n00580|                     weight: 10\n00581|                   }\n00582|                 },\n00583|                 gateway: {\n00584|                   dispatch: {\n00585|                     point: {\n00586|                       location: testData.fromCity,\n00587|                       terminal: \"default\"\n00588|                     }\n00589|                   },\n00590|                   destination: {\n00591|                     point: {\n00592|                       location: testData.toCity,\n00593|                       terminal: \"default\"\n00594|                     }\n00595|                   }\n\n(File has more lines. Use 'offset' parameter to read beyond line 595)\n</file>",
+    "metadata": {
+      "preview": "      \n      checkAPIStatus('vozovoz', async () => {\n        try {\n          const response = await fetch('/api/vozovoz', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({\n              object: \"price\",\n              action: \"get\",\n              params: {\n                cargo: {\n                  dimension: {\n                    quantity: 1,\n                    volume: 0.1,\n                    weight: 10\n                  }\n                },\n                gateway: {\n                  dispatch: {\n                    point: {"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760432702254,
+      "end": 1760432702256
+    }
+  }
+}

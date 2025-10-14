@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e1f76fb9001kRNBOj2o8o4Me5",
+  "messageID": "msg_9e1f76179002a9FNaQHXUJk0xw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01TFYUXijCUaDFpYk1W6NStb",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      checkAPIStatus('nordwheel', async () => {\n        try {\n          const totalWeight = 10;\n          const totalVolume = 0.1;\n          \n          const params = new URLSearchParams({\n            from: '91',\n            to: '92',\n            pickup: '1',\n            deliver: '1',\n            weight: totalWeight.toString(),\n            volume: totalVolume.toString(),\n            oversized: '0',\n            package: '1',\n            packageCount: '1',\n            insurance: '1',\n            sum: '50000',\n            documentsReturn: '0',\n            fragile: '1'\n          });\n\n          const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n          const response = await fetch(fullUrl);\n          const data = await response.json();\n          \n          if (response.ok && data.status === 'success') {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      })\n    ]).finally(() => {",
+      "newString": "      checkAPIStatus('nordwheel', async () => {\n        try {\n          const totalWeight = 10;\n          const totalVolume = 0.1;\n          \n          const params = new URLSearchParams({\n            from: '91',\n            to: '92',\n            pickup: '1',\n            deliver: '1',\n            weight: totalWeight.toString(),\n            volume: totalVolume.toString(),\n            oversized: '0',\n            package: '1',\n            packageCount: '1',\n            insurance: '1',\n            sum: '50000',\n            documentsReturn: '0',\n            fragile: '1'\n          });\n\n          const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n          const response = await fetch(fullUrl);\n          const data = await response.json();\n          \n          if (response.ok && data.status === 'success') {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      }),\n      \n      checkAPIStatus('cdek', async () => {\n        try {\n          const response = await fetch('/api/cdek', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({\n              from_city: testData.fromCity,\n              to_city: testData.toCity,\n              packages: [{\n                height: 10,\n                length: 20,\n                width: 10,\n                weight: 1000\n              }]\n            })\n          });\n          const data = await response.json();\n          \n          if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      })\n    ]).finally(() => {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -635,8 +635,36 @@\n       }\n     } catch (error) {\n       return { error: true };\n     }\n+  }),\n+  \n+  checkAPIStatus('cdek', async () => {\n+    try {\n+      const response = await fetch('/api/cdek', {\n+        method: 'POST',\n+        headers: { 'Content-Type': 'application/json' },\n+        body: JSON.stringify({\n+          from_city: testData.fromCity,\n+          to_city: testData.toCity,\n+          packages: [{\n+            height: 10,\n+            length: 20,\n+            width: 10,\n+            weight: 1000\n+          }]\n+        })\n+      });\n+      const data = await response.json();\n+      \n+      if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {\n+        return { success: true };\n+      } else {\n+        return { error: true };\n+      }\n+    } catch (error) {\n+      return { error: true };\n+    }\n   })\n ]).finally(() => {\n   // Восстанавливаем исходное состояние формы\n   setForm(currentForm);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760432720186,
+      "end": 1760432720204
+    }
+  }
+}

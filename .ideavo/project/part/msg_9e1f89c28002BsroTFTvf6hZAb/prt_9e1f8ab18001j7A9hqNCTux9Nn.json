@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e1f8ab18001j7A9hqNCTux9Nn",
+  "messageID": "msg_9e1f89c28002BsroTFTvf6hZAb",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Xx54ZwVkXGBbumw4rwLq7z",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "oldString": "  const data = await response.json();\n  cachedToken = data.access_token;\n  tokenExpiry = Date.now() + (data.expires_in - 60) * 1000;\n\n  return cachedToken;",
+      "newString": "  const data = await response.json();\n  cachedToken = data.access_token;\n  tokenExpiry = Date.now() + (data.expires_in - 60) * 1000;\n\n  if (!cachedToken) {\n    throw new Error('Failed to get CDEK access token');\n  }\n\n  return cachedToken;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/cdek/route.ts\n===================================================================\n--- /home/user/project/app/api/cdek/route.ts\n+++ /home/user/project/app/api/cdek/route.ts\n@@ -31,8 +31,12 @@\n   const data = await response.json();\n   cachedToken = data.access_token;\n   tokenExpiry = Date.now() + (data.expires_in - 60) * 1000;\n \n+  if (!cachedToken) {\n+    throw new Error('Failed to get CDEK access token');\n+  }\n+\n   return cachedToken;\n }\n \n async function getCityCode(cityName: string, token: string): Promise<number | null> {\n"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760432795909,
+      "end": 1760432795912
+    }
+  }
+}

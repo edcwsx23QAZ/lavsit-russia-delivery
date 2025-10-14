@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e1f68bfc001H4IcxLiN3iQZFs",
+  "messageID": "msg_9e1f67d36001aUHqwMwkhQRaPH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01Q1YsiBVpbwhhc87BQ424Fw",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3350,
+      "limit": 30
+    },
+    "output": "<file>\n03351|             additionalServices: (data.data.total || 0) - (data.data.door || 0)\n03352|           },\n03353|           requestData,\n03354|           responseData: data,\n03355|           apiUrl: fullUrl\n03356|         };\n03357|       } else {\n03358|         return {\n03359|           company: 'Nord Wheel',\n03360|           price: 0,\n03361|           days: 0,\n03362|           error: 'Ошибка расчета Nord Wheel',\n03363|           requestData,\n03364|           responseData: data,\n03365|           apiUrl: fullUrl\n03366|         };\n03367|       }\n03368|     } catch (error: any) {\n03369|       return {\n03370|         company: 'Nord Wheel',\n03371|         price: 0,\n03372|         days: 0,\n03373|         error: `Ошибка соединения: ${error.message}`,\n03374|         apiUrl\n03375|       };\n03376|     }\n03377|   };\n03378| \n03379|   const handleCalculate = async () => {\n03380|     setCalculating(true);\n\n(File has more lines. Use 'offset' parameter to read beyond line 3380)\n</file>",
+    "metadata": {
+      "preview": "            additionalServices: (data.data.total || 0) - (data.data.door || 0)\n          },\n          requestData,\n          responseData: data,\n          apiUrl: fullUrl\n        };\n      } else {\n        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: 'Ошибка расчета Nord Wheel',\n          requestData,\n          responseData: data,\n          apiUrl: fullUrl\n        };\n      }\n    } catch (error: any) {\n      return {\n        company: 'Nord Wheel',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760432656150,
+      "end": 1760432656153
+    }
+  }
+}
