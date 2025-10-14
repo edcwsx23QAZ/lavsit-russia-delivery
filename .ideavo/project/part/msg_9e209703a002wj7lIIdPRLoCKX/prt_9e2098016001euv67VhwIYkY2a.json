@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e2098016001euv67VhwIYkY2a",
+  "messageID": "msg_9e209703a002wj7lIIdPRLoCKX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_012eYXGQm6a8PsTimNeSA6q2",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "oldString": "    const data = await response.json();\n    console.log('📦 CDEK API ответ:', JSON.stringify(data, null, 2));\n\n    if (data.errors && data.errors.length > 0) {\n      console.error('📦 CDEK API вернул ошибки:', data.errors);\n      return NextResponse.json({\n        success: false,\n        error: data.errors[0].message || 'CDEK API error',\n        details: data.errors\n      }, { status: 400 });\n    }\n\n    endTiming();\n    return NextResponse.json(data);",
+      "newString": "    const data = await response.json();\n    console.log('📦 CDEK API ответ тарифов:', data.tariff_codes?.length || 0, 'вариантов');\n\n    if (data.errors && data.errors.length > 0) {\n      console.error('📦 CDEK API вернул ошибки:', data.errors);\n      return NextResponse.json({\n        success: false,\n        error: data.errors[0].message || 'CDEK API error',\n        details: data.errors\n      }, { status: 400 });\n    }\n\n    if (body.tariff_code && body.get_details) {\n      console.log('📦 CDEK: запрос детализации для тарифа', body.tariff_code);\n      \n      const detailsRequest = {\n        type: 1,\n        date: dateFormatted,\n        lang: 'rus',\n        tariff_code: body.tariff_code,\n        from_location: {\n          code: fromCityCode\n        },\n        to_location: {\n          code: toCityCode\n        },\n        packages: packages\n      };\n\n      const detailsResponse = await apiRequestWithTimeout(`${CDEK_API_URL}/calculator/tariff`, {\n        method: 'POST',\n        headers: {\n          'Authorization': `Bearer ${token}`,\n          'Content-Type': 'application/json'\n        },\n        body: JSON.stringify(detailsRequest)\n      }, { timeout: 12000, retries: 1 });\n\n      if (detailsResponse.ok) {\n        const detailsData = await detailsResponse.json();\n        console.log('📦 CDEK детализация:', JSON.stringify(detailsData, null, 2));\n        endTiming();\n        return NextResponse.json({\n          ...data,\n          tariff_details: detailsData\n        });\n      }\n    }\n\n    endTiming();\n    return NextResponse.json(data);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/cdek/route.ts\n===================================================================\n--- /home/user/project/app/api/cdek/route.ts\n+++ /home/user/project/app/api/cdek/route.ts\n@@ -152,9 +152,9 @@\n     }, { status: response.status });\n   }\n \n   const data = await response.json();\n-  console.log('📦 CDEK API ответ:', JSON.stringify(data, null, 2));\n+  console.log('📦 CDEK API ответ тарифов:', data.tariff_codes?.length || 0, 'вариантов');\n \n   if (data.errors && data.errors.length > 0) {\n     console.error('📦 CDEK API вернул ошибки:', data.errors);\n     return NextResponse.json({\n@@ -163,8 +163,45 @@\n       details: data.errors\n     }, { status: 400 });\n   }\n \n+  if (body.tariff_code && body.get_details) {\n+    console.log('📦 CDEK: запрос детализации для тарифа', body.tariff_code);\n+    \n+    const detailsRequest = {\n+      type: 1,\n+      date: dateFormatted,\n+      lang: 'rus',\n+      tariff_code: body.tariff_code,\n+      from_location: {\n+        code: fromCityCode\n+      },\n+      to_location: {\n+        code: toCityCode\n+      },\n+      packages: packages\n+    };\n+\n+    const detailsResponse = await apiRequestWithTimeout(`${CDEK_API_URL}/calculator/tariff`, {\n+      method: 'POST',\n+      headers: {\n+        'Authorization': `Bearer ${token}`,\n+        'Content-Type': 'application/json'\n+      },\n+      body: JSON.stringify(detailsRequest)\n+    }, { timeout: 12000, retries: 1 });\n+\n+    if (detailsResponse.ok) {\n+      const detailsData = await detailsResponse.json();\n+      console.log('📦 CDEK детализация:', JSON.stringify(detailsData, null, 2));\n+      endTiming();\n+      return NextResponse.json({\n+        ...data,\n+        tariff_details: detailsData\n+      });\n+    }\n+  }\n+\n   endTiming();\n   return NextResponse.json(data);\n \n } catch (error: any) {\n"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760433904994,
+      "end": 1760433905006
+    }
+  }
+}

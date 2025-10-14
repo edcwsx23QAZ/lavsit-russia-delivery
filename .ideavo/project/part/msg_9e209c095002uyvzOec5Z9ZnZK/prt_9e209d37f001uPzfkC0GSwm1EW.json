@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e209d37f001uPzfkC0GSwm1EW",
+  "messageID": "msg_9e209c095002uyvzOec5Z9ZnZK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01BYgLTTQdfsP9joae71g2Md",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        console.log(`📦 CDEK лучший тариф: ${bestTariff.tariff_name} - ${bestTariff.delivery_sum}₽`);\n\n        return {\n          company: 'СДЭК',\n          price: Math.round(bestTariff.delivery_sum || 0),\n          days: bestTariff.period_max || 0,\n          details: {\n            tariff_name: bestTariff.tariff_name || 'Не указан',\n            tariff_code: bestTariff.tariff_code,\n            delivery_mode: deliveryModeText,\n            period_min: bestTariff.period_min,\n            period_max: bestTariff.period_max,\n            calendar_min: bestTariff.calendar_min,\n            calendar_max: bestTariff.calendar_max,\n            all_tariffs: filteredTariffs\n          },\n          requestData,\n          responseData: data,\n          apiUrl\n        };",
+      "newString": "        console.log(`📦 CDEK лучший тариф: ${bestTariff.tariff_name} - ${bestTariff.delivery_sum}₽`);\n\n        const detailsRequest = {\n          ...requestData,\n          tariff_code: bestTariff.tariff_code,\n          get_details: true\n        };\n\n        console.log('📦 CDEK: запрос детализации...');\n\n        const detailsResponse = await fetch(apiUrl, {\n          method: 'POST',\n          headers: {\n            'Content-Type': 'application/json',\n          },\n          body: JSON.stringify(detailsRequest)\n        });\n\n        let tariffDetails = null;\n        if (detailsResponse.ok) {\n          const detailsData = await detailsResponse.json();\n          tariffDetails = detailsData.tariff_details;\n          console.log('📦 CDEK детали тарифа:', tariffDetails);\n        }\n\n        return {\n          company: 'СДЭК',\n          price: Math.round(bestTariff.delivery_sum || 0),\n          days: bestTariff.period_max || 0,\n          details: {\n            tariff_name: bestTariff.tariff_name || 'Не указан',\n            tariff_code: bestTariff.tariff_code,\n            delivery_mode: deliveryModeText,\n            period_min: bestTariff.period_min,\n            period_max: bestTariff.period_max,\n            calendar_min: bestTariff.calendar_min,\n            calendar_max: bestTariff.calendar_max,\n            all_tariffs: filteredTariffs,\n            services: tariffDetails?.services || [],\n            delivery_sum: tariffDetails?.delivery_sum || bestTariff.delivery_sum,\n            total_sum: tariffDetails?.total_sum || bestTariff.delivery_sum,\n            weight_calc: tariffDetails?.weight_calc\n          },\n          requestData,\n          responseData: data,\n          apiUrl\n        };"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3485,8 +3485,31 @@\n );\n \n console.log(`📦 CDEK лучший тариф: ${bestTariff.tariff_name} - ${bestTariff.delivery_sum}₽`);\n \n+const detailsRequest = {\n+  ...requestData,\n+  tariff_code: bestTariff.tariff_code,\n+  get_details: true\n+};\n+\n+console.log('📦 CDEK: запрос детализации...');\n+\n+const detailsResponse = await fetch(apiUrl, {\n+  method: 'POST',\n+  headers: {\n+    'Content-Type': 'application/json',\n+  },\n+  body: JSON.stringify(detailsRequest)\n+});\n+\n+let tariffDetails = null;\n+if (detailsResponse.ok) {\n+  const detailsData = await detailsResponse.json();\n+  tariffDetails = detailsData.tariff_details;\n+  console.log('📦 CDEK детали тарифа:', tariffDetails);\n+}\n+\n return {\n   company: 'СДЭК',\n   price: Math.round(bestTariff.delivery_sum || 0),\n   days: bestTariff.period_max || 0,\n@@ -3497,9 +3520,13 @@\n     period_min: bestTariff.period_min,\n     period_max: bestTariff.period_max,\n     calendar_min: bestTariff.calendar_min,\n     calendar_max: bestTariff.calendar_max,\n-    all_tariffs: filteredTariffs\n+    all_tariffs: filteredTariffs,\n+    services: tariffDetails?.services || [],\n+    delivery_sum: tariffDetails?.delivery_sum || bestTariff.delivery_sum,\n+    total_sum: tariffDetails?.total_sum || bestTariff.delivery_sum,\n+    weight_calc: tariffDetails?.weight_calc\n   },\n   requestData,\n   responseData: data,\n   apiUrl\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760433925378,
+      "end": 1760433925401
+    }
+  }
+}

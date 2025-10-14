@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e209b59f001p3M3Jy3kwJJ4Fa",
+  "messageID": "msg_9e209a3bd002zLA3qOYUSyzZOM",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01ANiw2zcN3rCGjUYgCqqscg",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3435,
+      "limit": 80
+    },
+    "output": "<file>\n03436|           'Content-Type': 'application/json',\n03437|         },\n03438|         body: JSON.stringify(requestData)\n03439|       });\n03440| \n03441|       const data = await response.json();\n03442|       console.log('📦 CDEK ответ получен, тарифов:', data.tariff_codes?.length || 0);\n03443| \n03444|       if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {\n03445|         const isFromDoor = form.fromAddressDelivery || form.fromLavsiteWarehouse;\n03446|         const isToDoor = form.toAddressDelivery;\n03447|         \n03448|         let deliveryMode: number;\n03449|         let deliveryModeText: string;\n03450|         \n03451|         if (isFromDoor && isToDoor) {\n03452|           deliveryMode = 1;\n03453|           deliveryModeText = 'дверь-дверь';\n03454|         } else if (isFromDoor && !isToDoor) {\n03455|           deliveryMode = 2;\n03456|           deliveryModeText = 'дверь-склад';\n03457|         } else if (!isFromDoor && isToDoor) {\n03458|           deliveryMode = 3;\n03459|           deliveryModeText = 'склад-дверь';\n03460|         } else {\n03461|           deliveryMode = 4;\n03462|           deliveryModeText = 'склад-склад';\n03463|         }\n03464| \n03465|         console.log(`📦 CDEK выбран режим доставки: ${deliveryMode} (${deliveryModeText})`);\n03466| \n03467|         const filteredTariffs = data.tariff_codes.filter((t: any) => t.delivery_mode === deliveryMode);\n03468|         \n03469|         console.log(`📦 CDEK отфильтровано тарифов для режима ${deliveryModeText}:`, filteredTariffs.length);\n03470| \n03471|         if (filteredTariffs.length === 0) {\n03472|           return {\n03473|             company: 'СДЭК',\n03474|             price: 0,\n03475|             days: 0,\n03476|             error: `Нет доступных тарифов для маршрута ${deliveryModeText}`,\n03477|             requestData,\n03478|             responseData: data,\n03479|             apiUrl\n03480|           };\n03481|         }\n03482| \n03483|         const bestTariff = filteredTariffs.reduce((min: any, tariff: any) => \n03484|           (tariff.delivery_sum < min.delivery_sum) ? tariff : min\n03485|         );\n03486| \n03487|         console.log(`📦 CDEK лучший тариф: ${bestTariff.tariff_name} - ${bestTariff.delivery_sum}₽`);\n03488| \n03489|         return {\n03490|           company: 'СДЭК',\n03491|           price: Math.round(bestTariff.delivery_sum || 0),\n03492|           days: bestTariff.period_max || 0,\n03493|           details: {\n03494|             tariff_name: bestTariff.tariff_name || 'Не указан',\n03495|             tariff_code: bestTariff.tariff_code,\n03496|             delivery_mode: deliveryModeText,\n03497|             period_min: bestTariff.period_min,\n03498|             period_max: bestTariff.period_max,\n03499|             calendar_min: bestTariff.calendar_min,\n03500|             calendar_max: bestTariff.calendar_max,\n03501|             all_tariffs: filteredTariffs\n03502|           },\n03503|           requestData,\n03504|           responseData: data,\n03505|           apiUrl\n03506|         };\n03507|       } else {\n03508|         return {\n03509|           company: 'СДЭК',\n03510|           price: 0,\n03511|           days: 0,\n03512|           error: data.error || 'Ошибка расчета СДЭК',\n03513|           requestData,\n03514|           responseData: data,\n03515|           apiUrl\n\n(File has more lines. Use 'offset' parameter to read beyond line 3515)\n</file>",
+    "metadata": {
+      "preview": "          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(requestData)\n      });\n\n      const data = await response.json();\n      console.log('📦 CDEK ответ получен, тарифов:', data.tariff_codes?.length || 0);\n\n      if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {\n        const isFromDoor = form.fromAddressDelivery || form.fromLavsiteWarehouse;\n        const isToDoor = form.toAddressDelivery;\n        \n        let deliveryMode: number;\n        let deliveryModeText: string;\n        \n        if (isFromDoor && isToDoor) {\n          deliveryMode = 1;\n          deliveryModeText = 'дверь-дверь';\n        } else if (isFromDoor && !isToDoor) {\n          deliveryMode = 2;"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760433912306,
+      "end": 1760433912309
+    }
+  }
+}

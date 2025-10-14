@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e20a5f3a0019XRE65sP3wXEF0",
+  "messageID": "msg_9e20a5172002YkevcHwbytNzQ9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "toolu_011XvaJpdJnP6W7iVYyxdfBf",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | tail -35",
+      "description": "Проверка сборки"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:3525:38\nType error: Property 'services' does not exist on type 'never'.\n\n\u001b[0m \u001b[90m 3523 |\u001b[39m             calendar_max\u001b[33m:\u001b[39m bestTariff\u001b[33m.\u001b[39mcalendar_max\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3524 |\u001b[39m             all_tariffs\u001b[33m:\u001b[39m filteredTariffs\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 3525 |\u001b[39m             services\u001b[33m:\u001b[39m tariffDetails\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mservices \u001b[33m||\u001b[39m []\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3526 |\u001b[39m             delivery_sum\u001b[33m:\u001b[39m tariffDetails\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mdelivery_sum \u001b[33m||\u001b[39m bestTariff\u001b[33m.\u001b[39mdelivery_sum\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3527 |\u001b[39m             total_sum\u001b[33m:\u001b[39m tariffDetails\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mtotal_sum \u001b[33m||\u001b[39m bestTariff\u001b[33m.\u001b[39mdelivery_sum\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3528 |\u001b[39m             weight_calc\u001b[33m:\u001b[39m tariffDetails\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mweight_calc\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:3525:38\nType error: Property 'services' does not exist on type 'never'.\n\n\u001b[0m \u001b[90m 3523 |\u001b[39m             calendar_max\u001b[33m:\u001b[39m bestTariff\u001b[33m.\u001b[39mcalendar_max\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3524 |\u001b[39m             all_tariffs\u001b[33m:\u001b[39m filteredTariffs\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 3525 |\u001b[39m             services\u001b[33m:\u001b[39m tariffDetails\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mservices \u001b[33m||\u001b[39m []\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3526 |\u001b[39m             delivery_sum\u001b[33m:\u001b[39m tariffDetails\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mdelivery_sum \u001b[33m||\u001b[39m bestTariff\u001b[33m.\u001b[39mdelivery_sum\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3527 |\u001b[39m             total_sum\u001b[33m:\u001b[39m tariffDetails\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mtotal_sum \u001b[33m||\u001b[39m bestTariff\u001b[33m.\u001b[39mdelivery_sum\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3528 |\u001b[39m             weight_calc\u001b[33m:\u001b[39m tariffDetails\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mweight_calc\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 0,
+      "description": "Проверка сборки"
+    },
+    "title": "cd /home/user/project && npm run build 2>&1 | tail -35",
+    "time": {
+      "start": 1760433955374,
+      "end": 1760433968494
+    }
+  }
+}

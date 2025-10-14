@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e209650c0019zR9dsiRAuwhm7",
+  "messageID": "msg_9e2093604001xY71AY9IT2kL29",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01DoaT5SHJRC7RY24f5rUQEa",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/cdek/route.ts",
+      "offset": 115,
+      "limit": 50
+    },
+    "output": "<file>\n00116|       pad(now.getSeconds()) + sign + hours + minutes;\n00117| \n00118|     const requestData = {\n00119|       type: 1,\n00120|       date: dateFormatted,\n00121|       lang: 'rus',\n00122|       from_location: {\n00123|         code: fromCityCode\n00124|       },\n00125|       to_location: {\n00126|         code: toCityCode\n00127|       },\n00128|       packages: packages\n00129|     };\n00130| \n00131|     console.log('📦 CDEK калькулятор запрос:', JSON.stringify(requestData, null, 2));\n00132| \n00133|     const response = await apiRequestWithTimeout(`${CDEK_API_URL}/calculator/tarifflist`, {\n00134|       method: 'POST',\n00135|       headers: {\n00136|         'Authorization': `Bearer ${token}`,\n00137|         'Content-Type': 'application/json'\n00138|       },\n00139|       body: JSON.stringify(requestData)\n00140|     }, { timeout: 12000, retries: 1 });\n00141| \n00142|     console.log(`📦 CDEK API статус: ${response.status} ${response.statusText}`);\n00143| \n00144|     if (!response.ok) {\n00145|       const errorText = await response.text();\n00146|       console.error('📦 CDEK API ошибка:', errorText);\n00147|       \n00148|       return NextResponse.json({\n00149|         success: false,\n00150|         error: `API ошибка: ${response.status} ${response.statusText}`,\n00151|         details: errorText\n00152|       }, { status: response.status });\n00153|     }\n00154| \n00155|     const data = await response.json();\n00156|     console.log('📦 CDEK API ответ:', JSON.stringify(data, null, 2));\n00157| \n00158|     if (data.errors && data.errors.length > 0) {\n00159|       console.error('📦 CDEK API вернул ошибки:', data.errors);\n00160|       return NextResponse.json({\n00161|         success: false,\n00162|         error: data.errors[0].message || 'CDEK API error',\n00163|         details: data.errors\n00164|       }, { status: 400 });\n00165|     }\n\n(File has more lines. Use 'offset' parameter to read beyond line 165)\n</file>",
+    "metadata": {
+      "preview": "      pad(now.getSeconds()) + sign + hours + minutes;\n\n    const requestData = {\n      type: 1,\n      date: dateFormatted,\n      lang: 'rus',\n      from_location: {\n        code: fromCityCode\n      },\n      to_location: {\n        code: toCityCode\n      },\n      packages: packages\n    };\n\n    console.log('📦 CDEK калькулятор запрос:', JSON.stringify(requestData, null, 2));\n\n    const response = await apiRequestWithTimeout(`${CDEK_API_URL}/calculator/tarifflist`, {\n      method: 'POST',\n      headers: {"
+    },
+    "title": "app/api/cdek/route.ts",
+    "time": {
+      "start": 1760433891253,
+      "end": 1760433891257
+    }
+  }
+}

@@ -3486,6 +3486,29 @@ export default function Home() {
 
         console.log(`📦 CDEK лучший тариф: ${bestTariff.tariff_name} - ${bestTariff.delivery_sum}₽`);
 
+        const detailsRequest = {
+          ...requestData,
+          tariff_code: bestTariff.tariff_code,
+          get_details: true
+        };
+
+        console.log('📦 CDEK: запрос детализации...');
+
+        const detailsResponse = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(detailsRequest)
+        });
+
+        let tariffDetails: any = null;
+        if (detailsResponse.ok) {
+          const detailsData = await detailsResponse.json();
+          tariffDetails = detailsData.tariff_details;
+          console.log('📦 CDEK детали тарифа:', tariffDetails);
+        }
+
         return {
           company: 'СДЭК',
           price: Math.round(bestTariff.delivery_sum || 0),
@@ -3498,7 +3521,11 @@ export default function Home() {
             period_max: bestTariff.period_max,
             calendar_min: bestTariff.calendar_min,
             calendar_max: bestTariff.calendar_max,
-            all_tariffs: filteredTariffs
+            all_tariffs: filteredTariffs,
+            services: tariffDetails?.services || [],
+            delivery_sum: tariffDetails?.delivery_sum || bestTariff.delivery_sum,
+            total_sum: tariffDetails?.total_sum || bestTariff.delivery_sum,
+            weight_calc: tariffDetails?.weight_calc
           },
           requestData,
           responseData: data,
@@ -3825,18 +3852,53 @@ export default function Home() {
         }
       });
     } else if (calc.company === 'СДЭК' && calc.details) {
-      details.push({
-        service: 'Тариф',
-        description: calc.details.tariff_name || 'Не указан',
-        price: calc.price
-      });
-      
-      if (calc.details.delivery_mode) {
-        details.push({
-          service: 'Режим доставки',
-          description: calc.details.delivery_mode,
-          price: 0
+      if (calc.details.services && calc.details.services.length > 0) {
+        calc.details.services.forEach((service: any) => {
+          details.push({
+            service: service.code || service.name || 'Услуга СДЭК',
+            description: service.name || '',
+            price: service.sum || 0
+          });
         });
+        
+        if (calc.details.delivery_sum && calc.details.total_sum) {
+          details.push({
+            service: '─────────────────────────',
+            description: '',
+            price: 0
+          });
+          details.push({
+            service: 'Стоимость доставки',
+            description: 'Перевозка',
+            price: calc.details.delivery_sum
+          });
+          if (calc.details.total_sum !== calc.details.delivery_sum) {
+            details.push({
+              service: 'Дополнительные услуги',
+              description: 'Доп. сборы',
+              price: calc.details.total_sum - calc.details.delivery_sum
+            });
+          }
+          details.push({
+            service: 'ИТОГО',
+            description: calc.details.tariff_name || 'Тариф',
+            price: calc.details.total_sum
+          });
+        }
+      } else {
+        details.push({
+          service: 'Тариф',
+          description: calc.details.tariff_name || 'Не указан',
+          price: calc.price
+        });
+        
+        if (calc.details.delivery_mode) {
+          details.push({
+            service: 'Режим доставки',
+            description: calc.details.delivery_mode,
+            price: 0
+          });
+        }
       }
       
       if (calc.details.period_min && calc.details.period_max) {
@@ -3847,10 +3909,10 @@ export default function Home() {
         });
       }
       
-      if (calc.details.all_tariffs && calc.details.all_tariffs.length > 1) {
+      if (calc.details.weight_calc) {
         details.push({
-          service: 'Альтернативные варианты',
-          description: `Еще ${calc.details.all_tariffs.length - 1} тарифов доступно`,
+          service: 'Расчетный вес',
+          description: `${calc.details.weight_calc} кг`,
           price: 0
         });
       }

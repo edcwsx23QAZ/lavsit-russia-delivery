@@ -153,7 +153,7 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await response.json();
-    console.log('📦 CDEK API ответ:', JSON.stringify(data, null, 2));
+    console.log('📦 CDEK API ответ тарифов:', data.tariff_codes?.length || 0, 'вариантов');
 
     if (data.errors && data.errors.length > 0) {
       console.error('📦 CDEK API вернул ошибки:', data.errors);
@@ -162,6 +162,43 @@ export async function POST(request: NextRequest) {
         error: data.errors[0].message || 'CDEK API error',
         details: data.errors
       }, { status: 400 });
+    }
+
+    if (body.tariff_code && body.get_details) {
+      console.log('📦 CDEK: запрос детализации для тарифа', body.tariff_code);
+      
+      const detailsRequest = {
+        type: 1,
+        date: dateFormatted,
+        lang: 'rus',
+        tariff_code: body.tariff_code,
+        from_location: {
+          code: fromCityCode
+        },
+        to_location: {
+          code: toCityCode
+        },
+        packages: packages
+      };
+
+      const detailsResponse = await apiRequestWithTimeout(`${CDEK_API_URL}/calculator/tariff`, {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(detailsRequest)
+      }, { timeout: 12000, retries: 1 });
+
+      if (detailsResponse.ok) {
+        const detailsData = await detailsResponse.json();
+        console.log('📦 CDEK детализация:', JSON.stringify(detailsData, null, 2));
+        endTiming();
+        return NextResponse.json({
+          ...data,
+          tariff_details: detailsData
+        });
+      }
     }
 
     endTiming();
