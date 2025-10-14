@@ -1,0 +1,37 @@
+{
+  "id": "prt_9e31153030013MTUQ4KwLhdC1o",
+  "messageID": "msg_9e3114ccf0018d3w1EDBESNeFD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "list",
+  "callID": "call_88777855",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": ".",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "public",
+        "components",
+        "app",
+        "hooks",
+        "lib",
+        "data",
+        "docs",
+        "vozovoz-docs",
+        ".env*"
+      ]
+    },
+    "output": "/home/user/project/\n  prisma/\n    schema.prisma\n  .gitignore\n  OPTIMIZATION_PLAN.md\n  SETUP_PEK_API.md\n  bun.lock\n  components.json\n  dev.log\n  ideavo-server.info\n  middleware.ts\n  next.config.js\n  package-lock.json\n  package.json\n  performance-report.json\n  performance-test.js\n  postcss.config.js\n  project-rules.md\n  project.todo.md\n  tailwind.config.ts\n  test-dellin-api.js\n  test-dellin-derival.js\n  test-dellin-terminals-simple.js\n  test-dellin-terminals.js\n  test-spb-terminals.js\n  tsconfig.json\n",
+    "metadata": {
+      "count": 24,
+      "truncated": false
+    },
+    "title": "",
+    "time": {
+      "start": 1760451187461,
+      "end": 1760451187469
+    }
+  }
+}

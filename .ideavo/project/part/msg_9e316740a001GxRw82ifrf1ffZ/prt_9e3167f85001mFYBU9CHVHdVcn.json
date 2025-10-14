@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e3167f85001mFYBU9CHVHdVcn",
+  "messageID": "msg_9e316740a001GxRw82ifrf1ffZ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_42196029",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "next.config.js",
+      "oldString": "  // Добавляем заголовки для предотвращения кэширования\n  async headers() {\n    return [\n      {\n        source: '/(.*)',\n        headers: [\n          {\n            key: 'Cache-Control',\n            value: (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined)\n              ? 'no-cache, no-store, must-revalidate, proxy-revalidate, s-maxage=0'\n              : 'public, max-age=3600',\n          },\n          {\n            key: 'Pragma',\n            value: 'no-cache',\n          },\n          {\n            key: 'Expires',\n            value: '0',\n          },\n        ],\n      },\n    ];\n  },",
+      "newString": "  // Добавляем заголовки для предотвращения кэширования\n  async headers() {\n    return [\n      {\n        source: '/(.*)',\n        headers: [\n          {\n            key: 'Cache-Control',\n            value: (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === undefined)\n              ? 'no-cache, no-store, must-revalidate, proxy-revalidate, s-maxage=0'\n              : 'public, max-age=3600',\n          },\n          {\n            key: 'Pragma',\n            value: 'no-cache',\n          },\n          {\n            key: 'Expires',\n            value: '0',\n          },\n        ],\n      },\n      // PWA headers\n      {\n        source: '/manifest.json',\n        headers: [\n          {\n            key: 'Content-Type',\n            value: 'application/manifest+json',\n          },\n        ],\n      },\n      {\n        source: '/sw.js',\n        headers: [\n          {\n            key: 'Cache-Control',\n            value: 'public, max-age=0, must-revalidate',\n          },\n        ],\n      },\n    ];\n  },"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/next.config.js\n===================================================================\n--- /home/user/project/next.config.js\n+++ /home/user/project/next.config.js\n@@ -68,8 +68,27 @@\n             value: '0',\n           },\n         ],\n       },\n+      // PWA headers\n+      {\n+        source: '/manifest.json',\n+        headers: [\n+          {\n+            key: 'Content-Type',\n+            value: 'application/manifest+json',\n+          },\n+        ],\n+      },\n+      {\n+        source: '/sw.js',\n+        headers: [\n+          {\n+            key: 'Cache-Control',\n+            value: 'public, max-age=0, must-revalidate',\n+          },\n+        ],\n+      },\n     ];\n   },\n };\n \n"
+    },
+    "title": "next.config.js",
+    "time": {
+      "start": 1760451526534,
+      "end": 1760451526537
+    }
+  }
+}

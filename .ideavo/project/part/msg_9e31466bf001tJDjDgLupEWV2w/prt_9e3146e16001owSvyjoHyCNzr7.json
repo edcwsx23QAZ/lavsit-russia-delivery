@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e3146e16001owSvyjoHyCNzr7",
+  "messageID": "msg_9e31466bf001tJDjDgLupEWV2w",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_08753167",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "next.config.js",
+      "oldString": "/** @type {import('next').NextConfig} */\nconst nextConfig = {",
+      "newString": "const { withSentryConfig } = require('@sentry/nextjs');\n\n/** @type {import('next').NextConfig} */\nconst nextConfig = {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/next.config.js\n===================================================================\n--- /home/user/project/next.config.js\n+++ /home/user/project/next.config.js\n@@ -1,4 +1,6 @@\n+const { withSentryConfig } = require('@sentry/nextjs');\n+\n /** @type {import('next').NextConfig} */\n const nextConfig = {\n   images: { unoptimized: true },\n   \n"
+    },
+    "title": "next.config.js",
+    "time": {
+      "start": 1760451391000,
+      "end": 1760451391003
+    }
+  }
+}

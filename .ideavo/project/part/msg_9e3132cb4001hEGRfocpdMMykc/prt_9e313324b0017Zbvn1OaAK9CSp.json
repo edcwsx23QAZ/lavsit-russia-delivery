@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e313324b0017Zbvn1OaAK9CSp",
+  "messageID": "msg_9e3132cb4001hEGRfocpdMMykc",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "call_25870588",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npx @sentry/wizard@latest --yes",
+      "description": "Initialize Sentry configuration for the project"
+    },
+    "output": "npm warn exec The following package was not found and will be installed: @sentry/wizard@6.5.0\n┌  Sentry Wizard 6.5.0\n\u001b[?25l│\n◆  What do you want to set up?\n│  ● React Native\n│  ○ Flutter\n│  ○ iOS\n│  ○ Angular\n│  ○ Android\n│  ○ Cordova\n│  ○ Electron\n│  ○ Next.js\n│  ○ Nuxt\n│  ○ Remix\n│  ○ SvelteKit\n│  ○ Configure Source Maps Upload\n└\n",
+    "metadata": {
+      "output": "npm warn exec The following package was not found and will be installed: @sentry/wizard@6.5.0\n┌  Sentry Wizard 6.5.0\n\u001b[?25l│\n◆  What do you want to set up?\n│  ● React Native\n│  ○ Flutter\n│  ○ iOS\n│  ○ Angular\n│  ○ Android\n│  ○ Cordova\n│  ○ Electron\n│  ○ Next.js\n│  ○ Nuxt\n│  ○ Remix\n│  ○ SvelteKit\n│  ○ Configure Source Maps Upload\n└\n",
+      "exit": null,
+      "description": "Initialize Sentry configuration for the project"
+    },
+    "title": "npx @sentry/wizard@latest --yes",
+    "time": {
+      "start": 1760451310159,
+      "end": 1760451370184
+    }
+  }
+}

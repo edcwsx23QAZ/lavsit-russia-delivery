@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e31214f5001bMv6cTx4deXRxn",
+  "messageID": "msg_9e3120e99001B1p3Omlz72H26G",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_18119059",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/diagnostic/page.tsx",
+      "oldString": "import DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';\nimport ApiTestingSection from '@/components/diagnostic/ApiTestingSection';\nimport ManualTesting from '@/components/diagnostic/ManualTesting';\nimport { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';",
+      "newString": "import DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';\nimport ApiTestingSection from '@/components/diagnostic/ApiTestingSection';\nimport ManualTesting from '@/components/diagnostic/ManualTesting';\nimport { LazyFullTestingResults, LazyVehicleManagement, LazyTestRunner } from '@/components/diagnostic/LazyLoadedComponents';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -4,9 +4,9 @@\n import { useDiagnosticState } from '@/hooks/useDiagnosticState';\n import DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';\n import ApiTestingSection from '@/components/diagnostic/ApiTestingSection';\n import ManualTesting from '@/components/diagnostic/ManualTesting';\n-import { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';\n+import { LazyFullTestingResults, LazyVehicleManagement, LazyTestRunner } from '@/components/diagnostic/LazyLoadedComponents';\n import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\n \n export default function OptimizedDiagnosticPage() {\n   const { state, actions } = useDiagnosticState();\n"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1760451237110,
+      "end": 1760451237114
+    }
+  }
+}

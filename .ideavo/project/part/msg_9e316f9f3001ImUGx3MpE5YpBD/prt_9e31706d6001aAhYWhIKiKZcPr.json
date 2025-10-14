@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e31706d6001aAhYWhIKiKZcPr",
+  "messageID": "msg_9e316f9f3001ImUGx3MpE5YpBD",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_97056895",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/layout.tsx",
+      "oldString": "      <head>\n        {isDev && (\n          <>\n            <meta name=\"format-detection\" content=\"telephone=no, date=no, email=no, address=no\" />\n            <meta httpEquiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\" />\n            <meta httpEquiv=\"Pragma\" content=\"no-cache\" />\n            <meta httpEquiv=\"Expires\" content=\"0\" />\n          </>\n        )}\n      </head>",
+      "newString": "      <head>\n        <link rel=\"manifest\" href=\"/manifest.json\" />\n        <link rel=\"apple-touch-icon\" href=\"/icon-192x192.png\" />\n        <meta name=\"theme-color\" content=\"#1e293b\" />\n        <meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\n        <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\" />\n        <meta name=\"apple-mobile-web-app-title\" content=\"FreightCalc\" />\n        <meta name=\"application-name\" content=\"Freight Calculator Pro\" />\n\n        {isDev && (\n          <>\n            <meta name=\"format-detection\" content=\"telephone=no, date=no, email=no, address=no\" />\n            <meta httpEquiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\" />\n            <meta httpEquiv=\"Pragma\" content=\"no-cache\" />\n            <meta httpEquiv=\"Expires\" content=\"0\" />\n          </>\n        )}\n      </head>"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/layout.tsx\n===================================================================\n--- /home/user/project/app/layout.tsx\n+++ /home/user/project/app/layout.tsx\n@@ -38,8 +38,16 @@\n \n return (\n   <html lang=\"en\">\n     <head>\n+      <link rel=\"manifest\" href=\"/manifest.json\" />\n+      <link rel=\"apple-touch-icon\" href=\"/icon-192x192.png\" />\n+      <meta name=\"theme-color\" content=\"#1e293b\" />\n+      <meta name=\"apple-mobile-web-app-capable\" content=\"yes\" />\n+      <meta name=\"apple-mobile-web-app-status-bar-style\" content=\"default\" />\n+      <meta name=\"apple-mobile-web-app-title\" content=\"FreightCalc\" />\n+      <meta name=\"application-name\" content=\"Freight Calculator Pro\" />\n+\n       {isDev && (\n         <>\n           <meta name=\"format-detection\" content=\"telephone=no, date=no, email=no, address=no\" />\n           <meta httpEquiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate\" />\n"
+    },
+    "title": "app/layout.tsx",
+    "time": {
+      "start": 1760451561175,
+      "end": 1760451561177
+    }
+  }
+}

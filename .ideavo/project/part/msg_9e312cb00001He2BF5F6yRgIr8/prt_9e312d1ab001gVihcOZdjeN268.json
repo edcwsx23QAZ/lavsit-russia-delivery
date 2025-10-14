@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e312d1ab001gVihcOZdjeN268",
+  "messageID": "msg_9e312cb00001He2BF5F6yRgIr8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "call_46412287",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm install @sentry/nextjs",
+      "description": "Install Sentry for Next.js error tracking and monitoring"
+    },
+    "output": "\nadded 203 packages, changed 5 packages, and audited 516 packages in 21s\n\n64 packages are looking for funding\n  run `npm fund` for details\n\n1 moderate severity vulnerability\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
+    "metadata": {
+      "output": "\nadded 203 packages, changed 5 packages, and audited 516 packages in 21s\n\n64 packages are looking for funding\n  run `npm fund` for details\n\n1 moderate severity vulnerability\n\nTo address all issues, run:\n  npm audit fix\n\nRun `npm audit` for details.\n",
+      "exit": 0,
+      "description": "Install Sentry for Next.js error tracking and monitoring"
+    },
+    "title": "npm install @sentry/nextjs",
+    "time": {
+      "start": 1760451285438,
+      "end": 1760451306370
+    }
+  }
+}

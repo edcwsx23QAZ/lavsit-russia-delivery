@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e312905500117lLZvrp8o1MTD",
+  "messageID": "msg_9e3128aab001B74ZEmzJOTiUUT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_69504494",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/diagnostic/page.tsx",
+      "oldString": "import { LazyFullTestingResults, LazyVehicleManagement, LazyTestRunner } from '@/components/diagnostic/LazyLoadedComponents';",
+      "newString": "import { LazyFullTestingResults, LazyVehicleManagement, LazyTestRunner, LazyPerformanceDashboard } from '@/components/diagnostic/LazyLoadedComponents';"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -4,9 +4,9 @@\n import { useDiagnosticState } from '@/hooks/useDiagnosticState';\n import DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';\n import ApiTestingSection from '@/components/diagnostic/ApiTestingSection';\n import ManualTesting from '@/components/diagnostic/ManualTesting';\n-import { LazyFullTestingResults, LazyVehicleManagement, LazyTestRunner } from '@/components/diagnostic/LazyLoadedComponents';\n+import { LazyFullTestingResults, LazyVehicleManagement, LazyTestRunner, LazyPerformanceDashboard } from '@/components/diagnostic/LazyLoadedComponents';\n import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\n \n export default function OptimizedDiagnosticPage() {\n   const { state, actions } = useDiagnosticState();\n"
+    },
+    "title": "app/diagnostic/page.tsx",
+    "time": {
+      "start": 1760451268694,
+      "end": 1760451268697
+    }
+  }
+}

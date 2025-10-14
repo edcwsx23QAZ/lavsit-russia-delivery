@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e316f06d001j8HfBpk60Qvhh5",
+  "messageID": "msg_9e316e4350016X9SUKC2232YF2",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_61322023",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/layout.tsx",
+      "oldString": "export const metadata: Metadata = {\n  title: 'Междугородняя доставка Лавсит',\n  description: 'Система расчета стоимости доставки по всей России',\n};",
+      "newString": "export const metadata: Metadata = {\n  title: 'Freight Calculator Pro - Междугородняя доставка',\n  description: 'Профессиональная система расчета стоимости доставки по всей России с поддержкой всех транспортных компаний',\n  manifest: '/manifest.json',\n  themeColor: '#1e293b',\n  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',\n  appleWebApp: {\n    capable: true,\n    statusBarStyle: 'default',\n    title: 'Freight Calculator Pro',\n  },\n  formatDetection: {\n    telephone: false,\n  },\n  other: {\n    'mobile-web-app-capable': 'yes',\n    'apple-mobile-web-app-capable': 'yes',\n    'apple-mobile-web-app-status-bar-style': 'default',\n    'apple-mobile-web-app-title': 'FreightCalc',\n    'application-name': 'Freight Calculator Pro',\n  },\n};"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/layout.tsx\n===================================================================\n--- /home/user/project/app/layout.tsx\n+++ /home/user/project/app/layout.tsx\n@@ -6,10 +6,28 @@\n \n const inter = Inter({ subsets: ['latin'] });\n \n export const metadata: Metadata = {\n-  title: 'Междугородняя доставка Лавсит',\n-  description: 'Система расчета стоимости доставки по всей России',\n+  title: 'Freight Calculator Pro - Междугородняя доставка',\n+  description: 'Профессиональная система расчета стоимости доставки по всей России с поддержкой всех транспортных компаний',\n+  manifest: '/manifest.json',\n+  themeColor: '#1e293b',\n+  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',\n+  appleWebApp: {\n+    capable: true,\n+    statusBarStyle: 'default',\n+    title: 'Freight Calculator Pro',\n+  },\n+  formatDetection: {\n+    telephone: false,\n+  },\n+  other: {\n+    'mobile-web-app-capable': 'yes',\n+    'apple-mobile-web-app-capable': 'yes',\n+    'apple-mobile-web-app-status-bar-style': 'default',\n+    'apple-mobile-web-app-title': 'FreightCalc',\n+    'application-name': 'Freight Calculator Pro',\n+  },\n };\n \n export default function RootLayout({\n   children,\n"
+    },
+    "title": "app/layout.tsx",
+    "time": {
+      "start": 1760451555439,
+      "end": 1760451555442
+    }
+  }
+}

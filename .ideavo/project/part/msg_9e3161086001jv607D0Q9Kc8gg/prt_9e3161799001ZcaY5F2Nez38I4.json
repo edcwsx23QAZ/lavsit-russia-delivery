@@ -1,0 +1,23 @@
+{
+  "id": "prt_9e3161799001ZcaY5F2Nez38I4",
+  "messageID": "msg_9e3161086001jv607D0Q9Kc8gg",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "call_29877391",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "public/sw.js"
+    },
+    "output": "<file>\n00001| // EMERGENCY DEV KILL SWITCH - DO NOT CACHE ANYTHING\n00002| console.log('[SW] EMERGENCY: Self-destructing immediately');\n00003| \n00004| // Immediately unregister self\n00005| self.registration.unregister().then(() => {\n00006|   console.log('[SW] EMERGENCY: Self-unregistered successfully');\n00007| });\n00008| \n00009| // Kill all events\n00010| self.addEventListener('install', (event) => {\n00011|   console.log('[SW] EMERGENCY: Install blocked');\n00012|   event.waitUntil(self.skipWaiting());\n00013| });\n00014| \n00015| self.addEventListener('activate', (event) => {\n00016|   console.log('[SW] EMERGENCY: Activate blocked, self-destructing');\n00017|   event.waitUntil(\n00018|     caches.keys().then((cacheNames) => {\n00019|       return Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)));\n00020|     }).then(() => {\n00021|       return self.registration.unregister();\n00022|     })\n00023|   );\n00024| });\n00025| \n00026| self.addEventListener('fetch', (event) => {\n00027|   // DO NOTHING - let all requests pass through\n00028|   console.log('[SW] EMERGENCY: Fetch event ignored');\n00029| });\n</file>",
+    "metadata": {
+      "preview": "// EMERGENCY DEV KILL SWITCH - DO NOT CACHE ANYTHING\nconsole.log('[SW] EMERGENCY: Self-destructing immediately');\n\n// Immediately unregister self\nself.registration.unregister().then(() => {\n  console.log('[SW] EMERGENCY: Self-unregistered successfully');\n});\n\n// Kill all events\nself.addEventListener('install', (event) => {\n  console.log('[SW] EMERGENCY: Install blocked');\n  event.waitUntil(self.skipWaiting());\n});\n\nself.addEventListener('activate', (event) => {\n  console.log('[SW] EMERGENCY: Activate blocked, self-destructing');\n  event.waitUntil(\n    caches.keys().then((cacheNames) => {\n      return Promise.all(cacheNames.map((cacheName) => caches.delete(cacheName)));\n    }).then(() => {"
+    },
+    "title": "public/sw.js",
+    "time": {
+      "start": 1760451499931,
+      "end": 1760451499932
+    }
+  }
+}

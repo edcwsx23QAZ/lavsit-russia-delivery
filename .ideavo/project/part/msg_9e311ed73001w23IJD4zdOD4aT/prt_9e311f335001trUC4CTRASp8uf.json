@@ -1,0 +1,23 @@
+{
+  "id": "prt_9e311f335001trUC4CTRASp8uf",
+  "messageID": "msg_9e311ed73001w23IJD4zdOD4aT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "call_40042599",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "components/diagnostic/LazyLoadedComponents.tsx"
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| // EMERGENCY: NO LAZY LOADING AT ALL\n00004| import FullTestingResults from './FullTestingResults';\n00005| import VehicleManagement from './VehicleManagement';\n00006| \n00007| // Direct exports without any lazy loading\n00008| export { FullTestingResults as LazyFullTestingResults, VehicleManagement as LazyVehicleManagement };\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\n// EMERGENCY: NO LAZY LOADING AT ALL\nimport FullTestingResults from './FullTestingResults';\nimport VehicleManagement from './VehicleManagement';\n\n// Direct exports without any lazy loading\nexport { FullTestingResults as LazyFullTestingResults, VehicleManagement as LazyVehicleManagement };"
+    },
+    "title": "components/diagnostic/LazyLoadedComponents.tsx",
+    "time": {
+      "start": 1760451228470,
+      "end": 1760451228471
+    }
+  }
+}

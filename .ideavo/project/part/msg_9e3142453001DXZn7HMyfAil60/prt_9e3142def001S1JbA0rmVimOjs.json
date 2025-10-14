@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e3142def001S1JbA0rmVimOjs",
+  "messageID": "msg_9e3142453001DXZn7HMyfAil60",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "call_06394909",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "sentry.client.config.js",
+      "content": "import * as Sentry from '@sentry/nextjs';\n\nSentry.init({\n  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,\n\n  // Adjust this value in production, or use tracesSampler for greater control\n  tracesSampleRate: 1,\n\n  // Setting this option to true will print useful information to the console while you're setting up Sentry.\n  debug: false,\n\n  replaysOnErrorSampleRate: 1.0,\n\n  // This sets the sample rate to be 10%. You may want this to be 100% while\n  // in development and sample at a lower rate in production\n  replaysSessionSampleRate: 0.1,\n\n  // You can remove this option if you're not planning to use the Sentry Session Replay feature:\n  integrations: [\n    Sentry.replayIntegration({\n      // Additional Replay configuration goes in here, for example:\n      maskAllText: true,\n      blockAllMedia: true,\n    }),\n    Sentry.browserTracingIntegration(),\n  ],\n});"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/sentry.client.config.js",
+      "exists": false
+    },
+    "title": "sentry.client.config.js",
+    "time": {
+      "start": 1760451374577,
+      "end": 1760451374577
+    }
+  }
+}

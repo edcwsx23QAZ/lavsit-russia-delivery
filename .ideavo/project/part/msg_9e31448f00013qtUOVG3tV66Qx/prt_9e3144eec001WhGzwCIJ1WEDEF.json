@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e3144eec001WhGzwCIJ1WEDEF",
+  "messageID": "msg_9e31448f00013qtUOVG3tV66Qx",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "write",
+  "callID": "call_57478506",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "instrumentation.ts",
+      "content": "export async function register() {\n  if (process.env.NEXT_RUNTIME === 'nodejs') {\n    await import('./sentry.server.config');\n  }\n\n  if (process.env.NEXT_RUNTIME === 'edge') {\n    await import('./sentry.server.config');\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/instrumentation.ts",
+      "exists": false
+    },
+    "title": "instrumentation.ts",
+    "time": {
+      "start": 1760451383021,
+      "end": 1760451383022
+    }
+  }
+}

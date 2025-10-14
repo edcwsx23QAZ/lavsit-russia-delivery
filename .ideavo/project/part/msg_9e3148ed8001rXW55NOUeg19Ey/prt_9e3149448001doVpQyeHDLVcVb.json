@@ -1,0 +1,23 @@
+{
+  "id": "prt_9e3149448001doVpQyeHDLVcVb",
+  "messageID": "msg_9e3148ed8001rXW55NOUeg19Ey",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "call_96459227",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "lib/env-config.ts"
+    },
+    "output": "<file>\n00001| // IMPORTANT: When adding new env variables to the codebase, update this array\n00002| export const ENV_VARIABLES: EnvVariable[] = [\n00003|   {\n00004|     name: \"PEK_LOGIN\",\n00005|     description: \"Логин пользователя личного кабинета ПЭК\",\n00006|     required: true,\n00007|     instructions: \"Перейдите на [kabinet.pecom.ru](https://kabinet.pecom.ru) и введите ваш логин от личного кабинета. Если у вас нет логина, зарегистрируйтесь на сайте ПЭК.\"\n00008|   },\n00009|   {\n00010|     name: \"PEK_API_KEY\",\n00011|     description: \"API ключ доступа к ПЭК\",\n00012|     required: true,\n00013|     instructions: \"Войдите в [kabinet.pecom.ru](https://kabinet.pecom.ru) → Регистрационные данные → Ключи API. Создайте новый ключ и скопируйте его значение.\"\n00014|   },\n00015|   {\n00016|     name: \"KIT_API_TOKEN\",\n00017|     description: \"API токен для КИТ транспортная компания\",\n00018|     required: false,\n00019|     instructions: \"Войдите в личный кабинет КИТ → Раздел 'Разработчикам' → 'Получение ключа API'. Сгенерируйте токен и скопируйте его значение.\"\n00020|   }\n00021| ];\n00022| \n00023| // SUPABASE/DATABASE VARIABLES (uncomment and add to ENV_VARIABLES array when adding database features)\n00024| // {\n00025| //   name: \"DATABASE_URL\",\n00026| //   description: \"Supabase PostgreSQL database connection string for migrations and server-side operations\",\n00027| //   required: true,\n00028| //   instructions: \"Go to [Supabase Dashboard](https://supabase.com/dashboard) → Your Project → Settings → Database → Connection string (URI format).\\n Copy the full postgresql:// connection string.\\n Make sure to replace [YOUR-PASSWORD] with actual password\"\n00029| // },\n00030| // {\n00031| //   name: \"NEXT_PUBLIC_SUPABASE_URL\",\n00032| //   description: \"Supabase project URL for client-side authentication and API calls\",\n00033| //   required: true,\n00034| //   instructions: \"Go to [Supabase Dashboard](https://supabase.com/dashboard) → Your Project → Settings → Data API → Copy the 'Project URL -> URL' field (format: https://[project-id].supabase.co)\"\n00035| // },\n00036| // {\n00037| //   name: \"NEXT_PUBLIC_SUPABASE_ANON_KEY\",\n00038| //   description: \"Supabase anonymous/publishable key for client-side authentication\",\n00039| //   required: true,\n00040| //   instructions: \"Go to [Supabase Dashboard](https://supabase.com/dashboard) → Your Project → Settings → API Keys → Copy 'Legacy API keys → anon public' key\"\n00041| // }\n00042| \n00043| export interface EnvVariable {\n00044|   name: string\n00045|   description: string\n00046|   instructions: string\n00047|   required: boolean\n00048| }\n00049| \n00050| export function checkMissingEnvVars(): string[] {\n00051|   return ENV_VARIABLES.filter(envVar => envVar.required && !process.env[envVar.name]).map(envVar => envVar.name)\n00052| }\n</file>",
+    "metadata": {
+      "preview": "// IMPORTANT: When adding new env variables to the codebase, update this array\nexport const ENV_VARIABLES: EnvVariable[] = [\n  {\n    name: \"PEK_LOGIN\",\n    description: \"Логин пользователя личного кабинета ПЭК\",\n    required: true,\n    instructions: \"Перейдите на [kabinet.pecom.ru](https://kabinet.pecom.ru) и введите ваш логин от личного кабинета. Если у вас нет логина, зарегистрируйтесь на сайте ПЭК.\"\n  },\n  {\n    name: \"PEK_API_KEY\",\n    description: \"API ключ доступа к ПЭК\",\n    required: true,\n    instructions: \"Войдите в [kabinet.pecom.ru](https://kabinet.pecom.ru) → Регистрационные данные → Ключи API. Создайте новый ключ и скопируйте его значение.\"\n  },\n  {\n    name: \"KIT_API_TOKEN\",\n    description: \"API токен для КИТ транспортная компания\",\n    required: false,\n    instructions: \"Войдите в личный кабинет КИТ → Раздел 'Разработчикам' → 'Получение ключа API'. Сгенерируйте токен и скопируйте его значение.\"\n  }"
+    },
+    "title": "lib/env-config.ts",
+    "time": {
+      "start": 1760451400778,
+      "end": 1760451400779
+    }
+  }
+}
