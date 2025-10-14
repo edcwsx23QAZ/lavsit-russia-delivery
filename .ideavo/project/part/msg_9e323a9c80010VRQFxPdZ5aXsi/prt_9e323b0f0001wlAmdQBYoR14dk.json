@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e323b0f0001wlAmdQBYoR14dk",
+  "messageID": "msg_9e323a9c80010VRQFxPdZ5aXsi",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "grep",
+  "callID": "call_55510793",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "web-vitals|WebVitals|getCLS|getFID|getFCP|getLCP|getTTFB",
+      "path": "."
+    },
+    "output": "Found 13 matches\n./package-lock.json:\n  Line 69:         \"web-vitals\": \"^5.1.0\",\n  Line 3667:     \"node_modules/web-vitals\": {\n  Line 3669:       \"resolved\": \"https://registry.npmjs.org/web-vitals/-/web-vitals-5.1.0.tgz\",\n\n./package.json:\n  Line 71:     \"web-vitals\": \"^5.1.0\",\n\n./bun.lock:\n  Line 65:         \"web-vitals\": \"^5.1.0\",\n  Line 672:     \"web-vitals\": [\"web-vitals@5.1.0\", \"\", {}, \"sha512-ArI3kx5jI0atlTtmV0fWU3fjpLmq/nD3Zr1iFFlJLaqa5wLBkUSzINwBPySCX/8jRyjlmy1Volw1kz1g9XE4Jg==\"],\n\n./OPTIMIZATION_PLAN.md:\n  Line 152: import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';\n  Line 154: getCLS(console.log);\n  Line 155: getFID(console.log);\n  Line 156: getFCP(console.log);\n  Line 157: getLCP(console.log);\n  Line 158: getTTFB(console.log);\n  Line 193: npm install web-vitals",
+    "metadata": {
+      "matches": 13,
+      "truncated": false
+    },
+    "title": "web-vitals|WebVitals|getCLS|getFID|getFCP|getLCP|getTTFB",
+    "time": {
+      "start": 1760452391155,
+      "end": 1760452391167
+    }
+  }
+}

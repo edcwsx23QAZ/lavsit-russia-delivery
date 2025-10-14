@@ -1,0 +1,11 @@
+{
+  "id": "prt_9e32b2f6f001n1JCvbyGRUYbua",
+  "messageID": "msg_9e32b2c6f001g840XSyyZynMkX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "reasoning",
+  "text": "The issue is that the web-vitals library API has changed. The functions like `getCLS`, `getFID`, etc. are not named exports anymore. They are default exports or have a different API. Let me check the correct way to import them.",
+  "time": {
+    "start": 1760452882287,
+    "end": 1760452883862
+  }
+}

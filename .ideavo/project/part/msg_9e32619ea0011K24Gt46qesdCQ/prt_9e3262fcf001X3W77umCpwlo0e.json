@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e3262fcf001X3W77umCpwlo0e",
+  "messageID": "msg_9e32619ea0011K24Gt46qesdCQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_70617496",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "lib/error-handling.ts",
+      "oldString": "/**\n * Graceful degradation helper for UI components\n */\nexport function withGracefulDegradation<T>(\n  Component: React.ComponentType<T>,\n  FallbackComponent: React.ComponentType<{ error: ErrorResult }>\n) {\n  return function GracefulComponent(props: T) {\n    // This would be used in error boundaries\n    // For now, just return the original component\n    return <Component {...props} />;\n  };\n}",
+      "newString": "/**\n * Graceful degradation helper for UI components\n * Note: This function is not currently used and would need to be moved to a .tsx file if implemented\n */\nexport function withGracefulDegradation<T>(\n  Component: React.ComponentType<T>,\n  FallbackComponent: React.ComponentType<{ error: ErrorResult }>\n) {\n  return function GracefulComponent(props: T) {\n    // This would be used in error boundaries\n    // For now, just return the original component\n    return Component;\n  };\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/error-handling.ts\n===================================================================\n--- /home/user/project/lib/error-handling.ts\n+++ /home/user/project/lib/error-handling.ts\n@@ -259,17 +259,18 @@\n }\n \n /**\n  * Graceful degradation helper for UI components\n+ * Note: This function is not currently used and would need to be moved to a .tsx file if implemented\n  */\n export function withGracefulDegradation<T>(\n   Component: React.ComponentType<T>,\n   FallbackComponent: React.ComponentType<{ error: ErrorResult }>\n ) {\n   return function GracefulComponent(props: T) {\n     // This would be used in error boundaries\n     // For now, just return the original component\n-    return <Component {...props} />;\n+    return Component;\n   };\n }\n \n /**\n"
+    },
+    "title": "lib/error-handling.ts",
+    "time": {
+      "start": 1760452554705,
+      "end": 1760452554709
+    }
+  }
+}

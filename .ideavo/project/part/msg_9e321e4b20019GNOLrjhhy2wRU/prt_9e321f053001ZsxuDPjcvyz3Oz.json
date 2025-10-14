@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e321f053001ZsxuDPjcvyz3Oz",
+  "messageID": "msg_9e321e4b20019GNOLrjhhy2wRU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_77780132",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "oldString": "       const response = await fetch('/api/pek', {\n         method: 'POST',\n         headers: {\n           'Content-Type': 'application/json',\n         },\n         body: JSON.stringify(finalRequestData)\n       });\n\n       console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n       console.log(`📡 ПЭК API URL: ${response.url}`);\n       console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));\n       \n       let data;\n       try {\n         data = JSON.parse(responseText);\n         console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));\n       } catch (parseError) {\n         console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);\n         throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);\n       }",
+      "newString": "       const result = await enhancedApiRequest(\n         '/api/pek',\n         {\n           method: 'POST',\n           headers: {\n             'Content-Type': 'application/json',\n           },\n           body: JSON.stringify(finalRequestData)\n         },\n         { operation: 'calculateprice', company: 'ПЭК' }\n       );\n\n       if (result && typeof result === 'object' && 'success' in result && !result.success) {\n         console.error('❌ ПЭК API расчет ошибка:', result.error);\n         throw new Error(result.error.userMessage || result.error.message);\n       }\n\n       const response = result as Response;\n       console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n       console.log(`📡 ПЭК API URL: ${response.url}`);\n\n       const responseText = await response.text();\n       console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));\n\n       let data;\n       try {\n         data = JSON.parse(responseText);\n         console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));\n       } catch (parseError) {\n         console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);\n         throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);\n       }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2580,31 +2580,41 @@\n if (finalRequestData.delivery?.coordinates) {\n   console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);\n }\n \n-const response = await fetch('/api/pek', {\n-  method: 'POST',\n-  headers: {\n-    'Content-Type': 'application/json',\n-  },\n-  body: JSON.stringify(finalRequestData)\n-});\n+ const result = await enhancedApiRequest(\n+   '/api/pek',\n+   {\n+     method: 'POST',\n+     headers: {\n+       'Content-Type': 'application/json',\n+     },\n+     body: JSON.stringify(finalRequestData)\n+   },\n+   { operation: 'calculateprice', company: 'ПЭК' }\n+ );\n \n-console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n-console.log(`📡 ПЭК API URL: ${response.url}`);\n-\n-const responseText = await response.text();\n-console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));\n-\n-let data;\n-try {\n-  data = JSON.parse(responseText);\n-  console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));\n-} catch (parseError) {\n-  console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);\n-  throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);\n-}\n+ if (result && typeof result === 'object' && 'success' in result && !result.success) {\n+   console.error('❌ ПЭК API расчет ошибка:', result.error);\n+   throw new Error(result.error.userMessage || result.error.message);\n+ }\n \n+ const response = result as Response;\n+ console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);\n+ console.log(`📡 ПЭК API URL: ${response.url}`);\n+\n+ const responseText = await response.text();\n+ console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));\n+\n+ let data;\n+ try {\n+   data = JSON.parse(responseText);\n+   console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));\n+ } catch (parseError) {\n+   console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);\n+   throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);\n+ }\n+\n   return { response, data };\n };\n \n // Добавляем диагностику перед началом расчета\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760452276309,
+      "end": 1760452276341
+    }
+  }
+}

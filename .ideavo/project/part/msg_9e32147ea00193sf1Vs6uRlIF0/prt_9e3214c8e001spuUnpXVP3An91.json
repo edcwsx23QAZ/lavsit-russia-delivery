@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e3214c8e001spuUnpXVP3An91",
+  "messageID": "msg_9e32147ea00193sf1Vs6uRlIF0",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "call_76098725",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "offset": 1457,
+      "limit": 10
+    },
+    "output": "<file>\n01458|     const { enhancedApiRequest } = await import('@/lib/api-utils');\n01459|     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n01460|     const maxRetries = 2;\n01461|     \n01462|     console.log('🚀 === НАЧАЛО РАСЧЕТА ДЕЛОВЫХ ЛИНИЙ ===');\n01463|     console.log('🚀 API URL:', apiUrl);\n01464|     \n01465|     try {\n01466|       let sessionID = await getDellinSessionId();\n01467|       \n\n(File has more lines. Use 'offset' parameter to read beyond line 1467)\n</file>",
+    "metadata": {
+      "preview": "    const { enhancedApiRequest } = await import('@/lib/api-utils');\n    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n    const maxRetries = 2;\n    \n    console.log('🚀 === НАЧАЛО РАСЧЕТА ДЕЛОВЫХ ЛИНИЙ ===');\n    console.log('🚀 API URL:', apiUrl);\n    \n    try {\n      let sessionID = await getDellinSessionId();\n      "
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760452234383,
+      "end": 1760452234386
+    }
+  }
+}

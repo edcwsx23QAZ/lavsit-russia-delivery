@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e322f7ec001z37GRvrd6PU61l",
+  "messageID": "msg_9e322ebca001lcY1boDr2Z1uAZ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_95356770",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "oldString": "        response = await fetch(apiUrl, {\n          method: 'POST',\n          headers: {\n            'Content-Type': 'application/json',\n            'Accept': 'application/json'\n          },\n          body: JSON.stringify(requestData)\n        });\n\n        try {\n          data = await response.json();\n        } catch (parseError) {\n          console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);\n          throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);\n        }",
+      "newString": "        const result = await enhancedApiRequest(\n          apiUrl,\n          {\n            method: 'POST',\n            headers: {\n              'Content-Type': 'application/json',\n              'Accept': 'application/json'\n            },\n            body: JSON.stringify(requestData)\n          },\n          { operation: 'calculate', company: 'Деловые Линии' }\n        );\n\n        if (result && typeof result === 'object' && 'success' in result && !result.success) {\n          console.error('❌ ДЛ API ошибка:', result.error);\n          // For Dellin, we still want to handle retries manually for session renewal\n          // So we'll create a mock response that indicates failure\n          response = {\n            ok: false,\n            status: 500,\n            json: async () => ({ error: result.error.message })\n          } as any;\n          data = { error: result.error.message };\n        } else {\n          response = result as Response;\n          try {\n            data = await response.json();\n          } catch (parseError) {\n            console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);\n            throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);\n          }\n        }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1748,22 +1748,39 @@\n \n for (let attempt = 1; attempt <= maxRetries; attempt++) {\n   console.log(`🔄 ДЛ: попытка запроса ${attempt}/${maxRetries}`);\n   \n-  response = await fetch(apiUrl, {\n-    method: 'POST',\n-    headers: {\n-      'Content-Type': 'application/json',\n-      'Accept': 'application/json'\n+  const result = await enhancedApiRequest(\n+    apiUrl,\n+    {\n+      method: 'POST',\n+      headers: {\n+        'Content-Type': 'application/json',\n+        'Accept': 'application/json'\n+      },\n+      body: JSON.stringify(requestData)\n     },\n-    body: JSON.stringify(requestData)\n-  });\n+    { operation: 'calculate', company: 'Деловые Линии' }\n+  );\n \n-  try {\n-    data = await response.json();\n-  } catch (parseError) {\n-    console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);\n-    throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);\n+  if (result && typeof result === 'object' && 'success' in result && !result.success) {\n+    console.error('❌ ДЛ API ошибка:', result.error);\n+    // For Dellin, we still want to handle retries manually for session renewal\n+    // So we'll create a mock response that indicates failure\n+    response = {\n+      ok: false,\n+      status: 500,\n+      json: async () => ({ error: result.error.message })\n+    } as any;\n+    data = { error: result.error.message };\n+  } else {\n+    response = result as Response;\n+    try {\n+      data = await response.json();\n+    } catch (parseError) {\n+      console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);\n+      throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);\n+    }\n   }\n   \n   console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n   console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760452343790,
+      "end": 1760452343808
+    }
+  }
+}

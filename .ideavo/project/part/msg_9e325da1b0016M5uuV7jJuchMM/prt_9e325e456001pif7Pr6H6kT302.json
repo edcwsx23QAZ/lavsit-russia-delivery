@@ -1,0 +1,27 @@
+{
+  "id": "prt_9e325e456001pif7Pr6H6kT302",
+  "messageID": "msg_9e325da1b0016M5uuV7jJuchMM",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "call_80286561",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "timeout": 60000,
+      "description": "Build the application to check for any compilation errors"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./lib/error-handling.ts\nError: \n  \u001b[31mx\u001b[0m Expected '>', got '{'\n     ,-[\u001b[36;1;4m/home/user/project/lib/error-handling.ts\u001b[0m:268:1]\n \u001b[2m268\u001b[0m |   return function GracefulComponent(props: T) {\n \u001b[2m269\u001b[0m |     // This would be used in error boundaries\n \u001b[2m270\u001b[0m |     // For now, just return the original component\n \u001b[2m271\u001b[0m |     return <Component {...props} />;\n     : \u001b[31;1m                      ^\u001b[0m\n \u001b[2m272\u001b[0m |   };\n \u001b[2m273\u001b[0m | }\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./lib/error-handling.ts\n./lib/api-utils.ts\n./app/diagnostic/page.tsx\n\n./lib/error-handling.ts\nError: \n  \u001b[31mx\u001b[0m Expected '>', got '{'\n     ,-[\u001b[36;1;4m/home/user/project/lib/error-handling.ts\u001b[0m:268:1]\n \u001b[2m268\u001b[0m |   return function GracefulComponent(props: T) {\n \u001b[2m269\u001b[0m |     // This would be used in error boundaries\n \u001b[2m270\u001b[0m |     // For now, just return the original component\n \u001b[2m271\u001b[0m |     return <Component {...props} />;\n     : \u001b[31;1m                      ^\u001b[0m\n \u001b[2m272\u001b[0m |   };\n \u001b[2m273\u001b[0m | }\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./lib/error-handling.ts\n./lib/api-utils.ts\n./app/api/dellin-packages/route.ts\n\n\n> Build failed because of webpack errors\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./lib/error-handling.ts\nError: \n  \u001b[31mx\u001b[0m Expected '>', got '{'\n     ,-[\u001b[36;1;4m/home/user/project/lib/error-handling.ts\u001b[0m:268:1]\n \u001b[2m268\u001b[0m |   return function GracefulComponent(props: T) {\n \u001b[2m269\u001b[0m |     // This would be used in error boundaries\n \u001b[2m270\u001b[0m |     // For now, just return the original component\n \u001b[2m271\u001b[0m |     return <Component {...props} />;\n     : \u001b[31;1m                      ^\u001b[0m\n \u001b[2m272\u001b[0m |   };\n \u001b[2m273\u001b[0m | }\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./lib/error-handling.ts\n./lib/api-utils.ts\n./app/diagnostic/page.tsx\n\n./lib/error-handling.ts\nError: \n  \u001b[31mx\u001b[0m Expected '>', got '{'\n     ,-[\u001b[36;1;4m/home/user/project/lib/error-handling.ts\u001b[0m:268:1]\n \u001b[2m268\u001b[0m |   return function GracefulComponent(props: T) {\n \u001b[2m269\u001b[0m |     // This would be used in error boundaries\n \u001b[2m270\u001b[0m |     // For now, just return the original component\n \u001b[2m271\u001b[0m |     return <Component {...props} />;\n     : \u001b[31;1m                      ^\u001b[0m\n \u001b[2m272\u001b[0m |   };\n \u001b[2m273\u001b[0m | }\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./lib/error-handling.ts\n./lib/api-utils.ts\n./app/api/dellin-packages/route.ts\n\n\n> Build failed because of webpack errors\n",
+      "exit": 1,
+      "description": "Build the application to check for any compilation errors"
+    },
+    "title": "npm run build",
+    "time": {
+      "start": 1760452535402,
+      "end": 1760452546597
+    }
+  }
+}

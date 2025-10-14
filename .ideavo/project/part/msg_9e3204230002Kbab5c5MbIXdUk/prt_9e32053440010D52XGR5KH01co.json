@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e32053440010D52XGR5KH01co",
+  "messageID": "msg_9e3204230002Kbab5c5MbIXdUk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_10929364",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "oldString": "  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n  const calculateDellin = async (): Promise<CalculationResult> => {",
+      "newString": "  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n  const calculateDellin = async (): Promise<CalculationResult> => {\n    const { enhancedApiRequest } = await import('@/lib/api-utils');"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -1454,8 +1454,9 @@\n };\n \n // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией\n const calculateDellin = async (): Promise<CalculationResult> => {\n+  const { enhancedApiRequest } = await import('@/lib/api-utils');\n   const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n   const maxRetries = 2;\n   \n   console.log('🚀 === НАЧАЛО РАСЧЕТА ДЕЛОВЫХ ЛИНИЙ ===');\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760452170565,
+      "end": 1760452170584
+    }
+  }
+}

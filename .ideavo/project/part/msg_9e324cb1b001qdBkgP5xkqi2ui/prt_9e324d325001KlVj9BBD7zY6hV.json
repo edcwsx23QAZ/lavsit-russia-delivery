@@ -1,0 +1,23 @@
+{
+  "id": "prt_9e324d325001KlVj9BBD7zY6hV",
+  "messageID": "msg_9e324cb1b001qdBkgP5xkqi2ui",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "call_07183621",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/api/run-tests/route.ts"
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server';\n00002| import { exec } from 'child_process';\n00003| import { promisify } from 'util';\n00004| import path from 'path';\n00005| \n00006| const execAsync = promisify(exec);\n00007| \n00008| export async function POST(request: NextRequest) {\n00009|   try {\n00010|     const { testType } = await request.json();\n00011| \n00012|     if (!testType) {\n00013|       return NextResponse.json(\n00014|         { error: 'testType is required' },\n00015|         { status: 400 }\n00016|       );\n00017|     }\n00018| \n00019|     const projectRoot = path.join(process.cwd());\n00020|     let command: string;\n00021|     let scriptPath: string;\n00022| \n00023|     switch (testType) {\n00024|       case 'dellin-api':\n00025|         scriptPath = path.join(projectRoot, 'test-dellin-api.js');\n00026|         command = `node ${scriptPath}`;\n00027|         break;\n00028|       case 'performance':\n00029|         scriptPath = path.join(projectRoot, 'performance-test.js');\n00030|         command = `node ${scriptPath}`;\n00031|         break;\n00032|       case 'dellin-derival':\n00033|         scriptPath = path.join(projectRoot, 'test-dellin-derival.js');\n00034|         command = `node ${scriptPath}`;\n00035|         break;\n00036|       case 'dellin-terminals':\n00037|         scriptPath = path.join(projectRoot, 'test-dellin-terminals.js');\n00038|         command = `node ${scriptPath}`;\n00039|         break;\n00040|       case 'dellin-terminals-simple':\n00041|         scriptPath = path.join(projectRoot, 'test-dellin-terminals-simple.js');\n00042|         command = `node ${scriptPath}`;\n00043|         break;\n00044|       case 'spb-terminals':\n00045|         scriptPath = path.join(projectRoot, 'test-spb-terminals.js');\n00046|         command = `node ${scriptPath}`;\n00047|         break;\n00048|       default:\n00049|         return NextResponse.json(\n00050|           { error: `Unknown test type: ${testType}` },\n00051|           { status: 400 }\n00052|         );\n00053|     }\n00054| \n00055|     // Check if script exists\n00056|     const fs = require('fs');\n00057|     if (!fs.existsSync(scriptPath)) {\n00058|       return NextResponse.json(\n00059|         { error: `Test script not found: ${scriptPath}` },\n00060|         { status: 404 }\n00061|       );\n00062|     }\n00063| \n00064|     // Execute the test script\n00065|     const startTime = Date.now();\n00066|     const { stdout, stderr } = await execAsync(command, {\n00067|       cwd: projectRoot,\n00068|       timeout: 30000, // 30 second timeout\n00069|       maxBuffer: 1024 * 1024 * 10 // 10MB buffer\n00070|     });\n00071|     const endTime = Date.now();\n00072| \n00073|     const result = {\n00074|       testType,\n00075|       success: !stderr || stderr.trim() === '',\n00076|       output: stdout,\n00077|       errors: stderr || null,\n00078|       executionTime: endTime - startTime,\n00079|       timestamp: new Date().toISOString()\n00080|     };\n00081| \n00082|     return NextResponse.json(result);\n00083| \n00084|   } catch (error: any) {\n00085|     console.error('Test execution error:', error);\n00086| \n00087|     return NextResponse.json(\n00088|       {\n00089|         testType: 'unknown',\n00090|         success: false,\n00091|         output: null,\n00092|         errors: error.message || 'Unknown error occurred',\n00093|         executionTime: 0,\n00094|         timestamp: new Date().toISOString()\n00095|       },\n00096|       { status: 500 }\n00097|     );\n00098|   }\n00099| }\n</file>",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server';\nimport { exec } from 'child_process';\nimport { promisify } from 'util';\nimport path from 'path';\n\nconst execAsync = promisify(exec);\n\nexport async function POST(request: NextRequest) {\n  try {\n    const { testType } = await request.json();\n\n    if (!testType) {\n      return NextResponse.json(\n        { error: 'testType is required' },\n        { status: 400 }\n      );\n    }\n\n    const projectRoot = path.join(process.cwd());\n    let command: string;"
+    },
+    "title": "app/api/run-tests/route.ts",
+    "time": {
+      "start": 1760452465446,
+      "end": 1760452465447
+    }
+  }
+}

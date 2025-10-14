@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e31f179b001ici1Osvauf04Ae",
+  "messageID": "msg_9e31f0a0800210hQive5JUNG7u",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_76230837",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "lib/api-utils.ts",
+      "oldString": "export async function apiRequestWithTimeout(\n  url: string,\n  options: RequestInit = {},\n  config: ApiRequestConfig = {}\n): Promise<Response> {\n  const { timeout = 10000, retries = 1, retryDelay = 1000 } = config;\n  \n  const controller = new AbortController();\n  const timeoutId = setTimeout(() => controller.abort(), timeout);\n  \n  const requestOptions: RequestInit = {\n    ...options,\n    signal: controller.signal,\n  };\n\n  for (let attempt = 0; attempt <= retries; attempt++) {\n    try {\n      const response = await fetch(url, requestOptions);\n      clearTimeout(timeoutId);\n      return response;\n    } catch (error) {\n      clearTimeout(timeoutId);\n      \n      if (error instanceof Error && error.name === 'AbortError') {\n        throw new ApiTimeoutError(`Request timeout after ${timeout}ms`, timeout);\n      }\n      \n      if (attempt === retries) {\n        throw error;\n      }\n      \n      // Wait before retry\n      await new Promise(resolve => setTimeout(resolve, retryDelay));\n    }\n  }\n  \n  throw new Error('Max retries exceeded');\n}",
+      "newString": "export async function apiRequestWithTimeout(\n  url: string,\n  options: RequestInit = {},\n  config: ApiRequestConfig = {}\n): Promise<Response> {\n  const { timeout = 10000 } = config;\n\n  const controller = new AbortController();\n  const timeoutId = setTimeout(() => controller.abort(), timeout);\n\n  const requestOptions: RequestInit = {\n    ...options,\n    signal: controller.signal,\n  };\n\n  try {\n    const response = await fetch(url, requestOptions);\n    clearTimeout(timeoutId);\n    return response;\n  } catch (error) {\n    clearTimeout(timeoutId);\n\n    if (error instanceof Error && error.name === 'AbortError') {\n      throw new ApiTimeoutError(`Request timeout after ${timeout}ms`, timeout);\n    }\n\n    throw error;\n  }\n}"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/api-utils.ts\n===================================================================\n--- /home/user/project/lib/api-utils.ts\n+++ /home/user/project/lib/api-utils.ts\n@@ -22,40 +22,31 @@\n   url: string,\n   options: RequestInit = {},\n   config: ApiRequestConfig = {}\n ): Promise<Response> {\n-  const { timeout = 10000, retries = 1, retryDelay = 1000 } = config;\n-  \n+  const { timeout = 10000 } = config;\n+\n   const controller = new AbortController();\n   const timeoutId = setTimeout(() => controller.abort(), timeout);\n-  \n+\n   const requestOptions: RequestInit = {\n     ...options,\n     signal: controller.signal,\n   };\n \n-  for (let attempt = 0; attempt <= retries; attempt++) {\n-    try {\n-      const response = await fetch(url, requestOptions);\n-      clearTimeout(timeoutId);\n-      return response;\n-    } catch (error) {\n-      clearTimeout(timeoutId);\n-      \n-      if (error instanceof Error && error.name === 'AbortError') {\n-        throw new ApiTimeoutError(`Request timeout after ${timeout}ms`, timeout);\n-      }\n-      \n-      if (attempt === retries) {\n-        throw error;\n-      }\n-      \n-      // Wait before retry\n-      await new Promise(resolve => setTimeout(resolve, retryDelay));\n+  try {\n+    const response = await fetch(url, requestOptions);\n+    clearTimeout(timeoutId);\n+    return response;\n+  } catch (error) {\n+    clearTimeout(timeoutId);\n+\n+    if (error instanceof Error && error.name === 'AbortError') {\n+      throw new ApiTimeoutError(`Request timeout after ${timeout}ms`, timeout);\n     }\n+\n+    throw error;\n   }\n-  \n-  throw new Error('Max retries exceeded');\n }\n \n export function validateApiInput(data: any, rules: Record<string, (value: any) => string | null>): void {\n   for (const [field, validator] of Object.entries(rules)) {\n"
+    },
+    "title": "lib/api-utils.ts",
+    "time": {
+      "start": 1760452089757,
+      "end": 1760452089766
+    }
+  }
+}

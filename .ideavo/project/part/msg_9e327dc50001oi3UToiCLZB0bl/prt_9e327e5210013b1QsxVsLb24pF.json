@@ -1,0 +1,27 @@
+{
+  "id": "prt_9e327e5210013b1QsxVsLb24pF",
+  "messageID": "msg_9e327dc50001oi3UToiCLZB0bl",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "call_22185134",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "timeout": 60000,
+      "description": "Build the application after fixing the requestData scope issue"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:644:12\nType error: No value exists in scope for the shorthand property 'requestData'. Either declare one or provide an initializer.\n\n\u001b[0m \u001b[90m 642 |\u001b[39m            days\u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 643 |\u001b[39m            error\u001b[33m:\u001b[39m result\u001b[33m.\u001b[39merror\u001b[33m.\u001b[39muserMessage \u001b[33m||\u001b[39m result\u001b[33m.\u001b[39merror\u001b[33m.\u001b[39mmessage\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 644 |\u001b[39m            requestData\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 645 |\u001b[39m            responseData\u001b[33m:\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 646 |\u001b[39m            apiUrl\u001b[33m:\u001b[39m fullUrl\u001b[0m\n\u001b[0m \u001b[90m 647 |\u001b[39m          }\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:644:12\nType error: No value exists in scope for the shorthand property 'requestData'. Either declare one or provide an initializer.\n\n\u001b[0m \u001b[90m 642 |\u001b[39m            days\u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 643 |\u001b[39m            error\u001b[33m:\u001b[39m result\u001b[33m.\u001b[39merror\u001b[33m.\u001b[39muserMessage \u001b[33m||\u001b[39m result\u001b[33m.\u001b[39merror\u001b[33m.\u001b[39mmessage\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 644 |\u001b[39m            requestData\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 645 |\u001b[39m            responseData\u001b[33m:\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 646 |\u001b[39m            apiUrl\u001b[33m:\u001b[39m fullUrl\u001b[0m\n\u001b[0m \u001b[90m 647 |\u001b[39m          }\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build the application after fixing the requestData scope issue"
+    },
+    "title": "npm run build",
+    "time": {
+      "start": 1760452666661,
+      "end": 1760452682011
+    }
+  }
+}

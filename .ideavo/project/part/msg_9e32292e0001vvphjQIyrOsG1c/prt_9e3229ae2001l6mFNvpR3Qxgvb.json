@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e3229ae2001l6mFNvpR3Qxgvb",
+  "messageID": "msg_9e32292e0001vvphjQIyrOsG1c",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_66343733",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "oldString": "       const response = await fetch(apiUrl, {\n         method: 'POST',\n         headers: {\n           'Content-Type': 'application/json',\n         },\n         body: JSON.stringify(requestData)\n       });\n\n       const data = await response.json();\n       console.log('🚂 Rail Continent ответ:', data);",
+      "newString": "       const result = await enhancedApiRequest(\n         apiUrl,\n         {\n           method: 'POST',\n           headers: {\n             'Content-Type': 'application/json',\n           },\n           body: JSON.stringify(requestData)\n         },\n         { operation: 'calculate', company: 'Rail Continent' }\n       );\n\n       if (result && typeof result === 'object' && 'success' in result && !result.success) {\n         console.error('❌ Rail Continent API ошибка:', result.error);\n         return {\n           company: 'Rail Continent',\n           price: 0,\n           days: 0,\n           error: result.error.userMessage || result.error.message,\n           requestData,\n           responseData: null,\n           apiUrl\n         };\n       }\n\n       const response = result as Response;\n       const data = await response.json();\n       console.log('🚂 Rail Continent ответ:', data);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -2973,19 +2973,37 @@\n };\n \n console.log('🚂 Rail Continent запрос:', requestData);\n \n-const response = await fetch(apiUrl, {\n-  method: 'POST',\n-  headers: {\n-    'Content-Type': 'application/json',\n-  },\n-  body: JSON.stringify(requestData)\n-});\n+ const result = await enhancedApiRequest(\n+   apiUrl,\n+   {\n+     method: 'POST',\n+     headers: {\n+       'Content-Type': 'application/json',\n+     },\n+     body: JSON.stringify(requestData)\n+   },\n+   { operation: 'calculate', company: 'Rail Continent' }\n+ );\n \n-const data = await response.json();\n-console.log('🚂 Rail Continent ответ:', data);\n+ if (result && typeof result === 'object' && 'success' in result && !result.success) {\n+   console.error('❌ Rail Continent API ошибка:', result.error);\n+   return {\n+     company: 'Rail Continent',\n+     price: 0,\n+     days: 0,\n+     error: result.error.userMessage || result.error.message,\n+     requestData,\n+     responseData: null,\n+     apiUrl\n+   };\n+ }\n \n+ const response = result as Response;\n+ const data = await response.json();\n+ console.log('🚂 Rail Continent ответ:', data);\n+\n if (response.ok && data.result === 'success' && data.data) {\n   // Выбираем автомобильный тариф как основной (самый быстрый)\n   const autoTariff = data.data.auto;\n   \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760452319974,
+      "end": 1760452320093
+    }
+  }
+}

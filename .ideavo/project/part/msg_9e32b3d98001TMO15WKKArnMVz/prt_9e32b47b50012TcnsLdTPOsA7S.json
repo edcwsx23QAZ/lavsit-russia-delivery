@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e32b47b50012TcnsLdTPOsA7S",
+  "messageID": "msg_9e32b3d98001TMO15WKKArnMVz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_42938467",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "components/ClientDevUtils.tsx",
+      "oldString": "      import('web-vitals').then((webVitals) => {\n        const { getCLS, getFID, getFCP, getLCP, getTTFB } = webVitals;",
+      "newString": "      import('web-vitals').then((webVitals) => {\n        const getCLS = webVitals.getCLS;\n        const getFID = webVitals.getFID;\n        const getFCP = webVitals.getFCP;\n        const getLCP = webVitals.getLCP;\n        const getTTFB = webVitals.getTTFB;"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/ClientDevUtils.tsx\n===================================================================\n--- /home/user/project/components/ClientDevUtils.tsx\n+++ /home/user/project/components/ClientDevUtils.tsx\n@@ -26,9 +26,13 @@\n \n // Web Vitals monitoring\n if (typeof window !== 'undefined') {\n   import('web-vitals').then((webVitals) => {\n-    const { getCLS, getFID, getFCP, getLCP, getTTFB } = webVitals;\n+    const getCLS = webVitals.getCLS;\n+    const getFID = webVitals.getFID;\n+    const getFCP = webVitals.getFCP;\n+    const getLCP = webVitals.getLCP;\n+    const getTTFB = webVitals.getTTFB;\n     // Core Web Vitals\n     getCLS((metric) => {\n       console.log('📊 CLS (Cumulative Layout Shift):', metric.value);\n       // Send to analytics/monitoring service\n"
+    },
+    "title": "components/ClientDevUtils.tsx",
+    "time": {
+      "start": 1760452888502,
+      "end": 1760452888504
+    }
+  }
+}

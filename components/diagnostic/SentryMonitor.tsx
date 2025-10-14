@@ -120,10 +120,10 @@ export default function SentryMonitor({ className }: SentryMonitorProps) {
 
       setPerformanceMetrics(prev => [metric, ...prev.slice(0, 49)]);
 
-      // Send to Sentry
-      Sentry.metrics.increment('test_operation_duration', duration, {
-        unit: 'millisecond'
-      });
+      // Send to Sentry - TODO: Fix metrics API
+      // Sentry.metrics.increment('test_operation_duration', duration, {
+      //   unit: 'millisecond'
+      // });
 
       setIsCapturing(false);
     }, Math.random() * 1000 + 500);

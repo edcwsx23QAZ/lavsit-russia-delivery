@@ -1,0 +1,23 @@
+{
+  "id": "prt_9e32408ec0014EgrHllAvfV2xV",
+  "messageID": "msg_9e324018b001IGt22675sGljUy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "call_64031930",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "components/ClientDevUtils.tsx"
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import { useEffect } from 'react';\n00004| \n00005| export default function ClientDevUtils() {\n00006|   useEffect(() => {\n00007|     // Более надежная детекция dev режима\n00008|     const isDev = process.env.NODE_ENV === 'development' || \n00009|                   (typeof window !== 'undefined' && \n00010|                    (window.location.hostname.includes('localhost') || \n00011|                     window.location.hostname.includes('127.0.0.1') || \n00012|                     window.location.hostname.includes('.e2b.app')));\n00013|     \n00014|     if (isDev) {\n00015|       try {\n00016|         // Добавляем timestamp к URL для предотвращения кэширования\n00017|         const timestamp = Date.now();\n00018|         document.documentElement.setAttribute('data-timestamp', timestamp.toString());\n00019|         \n00020|         console.log('🔧 DEV: Timestamp добавлен к HTML:', timestamp);\n00021|         console.log('🔧 DEV: ClientDevUtils инициализирован');\n00022|       } catch (error) {\n00023|         console.warn('🔧 DEV: Ошибка в ClientDevUtils:', error);\n00024|       }\n00025|     }\n00026|   }, []);\n00027| \n00028|   return null;\n00029| }\n</file>",
+    "metadata": {
+      "preview": "'use client';\n\nimport { useEffect } from 'react';\n\nexport default function ClientDevUtils() {\n  useEffect(() => {\n    // Более надежная детекция dev режима\n    const isDev = process.env.NODE_ENV === 'development' || \n                  (typeof window !== 'undefined' && \n                   (window.location.hostname.includes('localhost') || \n                    window.location.hostname.includes('127.0.0.1') || \n                    window.location.hostname.includes('.e2b.app')));\n    \n    if (isDev) {\n      try {\n        // Добавляем timestamp к URL для предотвращения кэширования\n        const timestamp = Date.now();\n        document.documentElement.setAttribute('data-timestamp', timestamp.toString());\n        \n        console.log('🔧 DEV: Timestamp добавлен к HTML:', timestamp);"
+    },
+    "title": "components/ClientDevUtils.tsx",
+    "time": {
+      "start": 1760452413678,
+      "end": 1760452413679
+    }
+  }
+}

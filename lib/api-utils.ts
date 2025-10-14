@@ -23,38 +23,49 @@ export async function apiRequestWithTimeout(
   options: RequestInit = {},
   config: ApiRequestConfig = {}
 ): Promise<Response> {
-  const { timeout = 10000, retries = 1, retryDelay = 1000 } = config;
-  
+  const { timeout = 10000 } = config;
+
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeout);
-  
+
   const requestOptions: RequestInit = {
     ...options,
     signal: controller.signal,
   };
 
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    try {
-      const response = await fetch(url, requestOptions);
-      clearTimeout(timeoutId);
-      return response;
-    } catch (error) {
-      clearTimeout(timeoutId);
-      
-      if (error instanceof Error && error.name === 'AbortError') {
-        throw new ApiTimeoutError(`Request timeout after ${timeout}ms`, timeout);
-      }
-      
-      if (attempt === retries) {
-        throw error;
-      }
-      
-      // Wait before retry
-      await new Promise(resolve => setTimeout(resolve, retryDelay));
+  try {
+    const response = await fetch(url, requestOptions);
+    clearTimeout(timeoutId);
+    return response;
+  } catch (error) {
+    clearTimeout(timeoutId);
+
+    if (error instanceof Error && error.name === 'AbortError') {
+      throw new ApiTimeoutError(`Request timeout after ${timeout}ms`, timeout);
     }
+
+    throw error;
   }
-  
-  throw new Error('Max retries exceeded');
+}
+
+/**
+ * Enhanced API request with comprehensive error handling and caching
+ */
+export async function enhancedApiRequest(
+  url: string,
+  options: RequestInit = {},
+  context: { operation: string; company?: string },
+  retryConfig?: Partial<{ maxRetries: number; baseDelay: number }>
+) {
+  const { apiRequestWithErrorHandling } = await import('./error-handling');
+
+  return apiRequestWithErrorHandling(
+    url,
+    options,
+    context,
+    retryConfig,
+    `${context.company || 'unknown'}_${context.operation}_${JSON.stringify(options.body || {})}`
+  );
 }
 
 export function validateApiInput(data: any, rules: Record<string, (value: any) => string | null>): void {

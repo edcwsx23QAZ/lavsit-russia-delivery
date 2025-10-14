@@ -1,0 +1,11 @@
+{
+  "id": "prt_9e328f801001WZezxAH86tCL3j",
+  "messageID": "msg_9e328efa2001Jw7ZeWpNh6627h",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "reasoning",
+  "text": "I see the issue. The `requestData` is being used in the error return, but it's defined later. I need to move the requestData definition before the API call. But I thought I already did that. Let me check the current order.",
+  "time": {
+    "start": 1760452737025,
+    "end": 1760452738501
+  }
+}

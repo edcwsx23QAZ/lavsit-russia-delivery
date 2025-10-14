@@ -1,0 +1,11 @@
+{
+  "id": "prt_9e327c255001G48DbhDLRYzZbR",
+  "messageID": "msg_9e327b99f001zrKcT3Aed2U6Wb",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "reasoning",
+  "text": "I see the issue. I replaced the fetch call with enhancedApiRequest, but I didn't update the rest of the function properly. The `requestData` is defined after the fetch call, but I'm using it in the error handling before it's defined. Let me fix this by moving the requestData definition before the API call.",
+  "time": {
+    "start": 1760452657749,
+    "end": 1760452662139
+  }
+}

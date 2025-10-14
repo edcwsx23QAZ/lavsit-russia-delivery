@@ -17,12 +17,13 @@ import ProductManager from '@/components/ProductManager';
 import TruckVisualization from '@/components/TruckVisualization';
 import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';
 import { saveFormData, loadFormData, hasStoredFormData, createDebouncedSaver, clearFormData } from '@/lib/form-storage';
-import { 
-  createCargosForProduct, 
-  removeCargosForProduct, 
+import {
+  createCargosForProduct,
+  removeCargosForProduct,
   calculateTotalValue,
-  findCargoIndexesForProduct 
+  findCargoIndexesForProduct
 } from '@/lib/furniture-utils';
+import { enhancedApiRequest } from '@/lib/api-utils';
 
 interface Cargo {
   id: string;
@@ -625,8 +626,29 @@ export default function Home() {
           });
 
           const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;
-          const response = await fetch(fullUrl);
-          const data = await response.json();
+       const result = await enhancedApiRequest(
+         fullUrl,
+         {
+           method: 'GET'
+         },
+         { operation: 'calculate', company: 'Nord Wheel' }
+       );
+
+        if (result && typeof result === 'object' && 'success' in result && !result.success) {
+          console.error('❌ Nord Wheel API ошибка:', result.error);
+          return {
+            company: 'Nord Wheel',
+            price: 0,
+            days: 0,
+            error: result.error.userMessage || result.error.message,
+            requestData: params,
+            responseData: null,
+            apiUrl: fullUrl
+          };
+        }
+
+       const response = result as Response;
+       const data = await response.json();
           
           if (response.ok && data.status === 'success') {
             return { success: true };
@@ -1455,6 +1477,7 @@ export default function Home() {
 
   // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией
   const calculateDellin = async (): Promise<CalculationResult> => {
+    const { enhancedApiRequest } = await import('@/lib/api-utils');
     const apiUrl = 'https://api.dellin.ru/v2/calculator.json';
     const maxRetries = 2;
     
@@ -1726,20 +1749,37 @@ export default function Home() {
       for (let attempt = 1; attempt <= maxRetries; attempt++) {
         console.log(`🔄 ДЛ: попытка запроса ${attempt}/${maxRetries}`);
         
-        response = await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
+        const result = await enhancedApiRequest(
+          apiUrl,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(requestData)
           },
-          body: JSON.stringify(requestData)
-        });
+          { operation: 'calculate', company: 'Деловые Линии' }
+        );
 
-        try {
-          data = await response.json();
-        } catch (parseError) {
-          console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);
-          throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);
+        if (result && typeof result === 'object' && 'success' in result && !result.success) {
+          console.error('❌ ДЛ API ошибка:', result.error);
+          // For Dellin, we still want to handle retries manually for session renewal
+          // So we'll create a mock response that indicates failure
+          response = {
+            ok: false,
+            status: 500,
+            json: async () => ({ error: result.error.message })
+          } as any;
+          data = { error: result.error.message };
+        } else {
+          response = result as Response;
+          try {
+            data = await response.json();
+          } catch (parseError) {
+            console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);
+            throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);
+          }
         }
         
         console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);
@@ -2080,20 +2120,31 @@ export default function Home() {
   const getPekZoneByAddress = async (address: string) => {
     try {
       console.log(`🔍 ПЭК: поиск зоны для адреса "${address}"`);
-      
-      const response = await fetch('/api/pek', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          method: 'findzonebyaddress',
-          address: address
-        })
-      });
 
+      const result = await enhancedApiRequest(
+        '/api/pek',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            method: 'findzonebyaddress',
+            address: address
+          })
+        },
+        { operation: 'findzonebyaddress', company: 'ПЭК' }
+      );
+
+      if (result && typeof result === 'object' && 'success' in result && !result.success) {
+        console.error(`❌ ПЭК API ошибка:`, result.error);
+        console.log(`🔄 ПЭК: переход к фоллбэк методу для "${address}"`);
+        return getPekZoneFallback(address);
+      }
+
+      const response = result as Response;
       console.log(`📡 ПЭК API статус: ${response.status} ${response.statusText}`);
-      
+
       if (!response.ok) {
         let errorData;
         try {
@@ -2101,9 +2152,9 @@ export default function Home() {
         } catch {
           errorData = { error: 'Невозможно парсить ответ' };
         }
-        
+
         console.error(`❌ ПЭК API ошибка ${response.status}:`, errorData);
-        
+
         // Детализация ошибок
         if (response.status === 401) {
           console.error('❌ ПЭК: Ошибка авторизации - неверный токен');
@@ -2114,14 +2165,14 @@ export default function Home() {
         } else if (response.status >= 500) {
           console.error('❌ ПЭК: Ошибка сервера ПЭК');
         }
-        
+
         console.log(`🔄 ПЭК: переход к фоллбэк методу для "${address}"`);
         return getPekZoneFallback(address);
       }
 
       const data = await response.json();
       console.log(`✅ ПЭК зона найдена:`, data);
-      
+
       if (data.zoneId && data.mainWarehouseId) {
         return {
           zoneId: data.zoneId,
@@ -2135,10 +2186,10 @@ export default function Home() {
           precision: data.GeoData?.precision
         };
       }
-      
+
       console.warn(`⚠️ ПЭК: некорректный ответ:`, data);
       return getPekZoneFallback(address);
-      
+
     } catch (error) {
       console.error('❌ ПЭК: критическая ошибка поиска зоны:', error);
       return getPekZoneFallback(address);
@@ -2213,37 +2264,47 @@ export default function Home() {
   const getPekNearestDepartments = async (address: string, coordinates?: { latitude: string, longitude: string }) => {
     try {
       console.log(`🏢 ПЭК: поиск ближайших отделений для "${address}"`);
-      
+
       const requestBody: any = {
         departmentOperation: 3, // выдача грузов
         type: 3, // авто-транспорт
         searchRadius: 50, // км
         limit: 5
       };
-      
+
       // ПЭК API требует и адрес, и координаты одновременно
       requestBody.address = address;
-      
+
       if (coordinates) {
         requestBody.coordinates = coordinates;
         console.log(`📍 ПЭК: поиск по адресу "${address}" и координатам`, coordinates);
       } else {
         console.log(`📍 ПЭК: поиск только по адресу "${address}"`);
       }
-      
-      const response = await fetch('/api/pek', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          method: 'nearestdepartments',
-          ...requestBody
-        })
-      });
 
+      const result = await enhancedApiRequest(
+        '/api/pek',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            method: 'nearestdepartments',
+            ...requestBody
+          })
+        },
+        { operation: 'nearestdepartments', company: 'ПЭК' }
+      );
+
+      if (result && typeof result === 'object' && 'success' in result && !result.success) {
+        console.error(`❌ ПЭК отделения API ошибка:`, result.error);
+        return null;
+      }
+
+      const response = result as Response;
       console.log(`📡 ПЭК отделения API статус: ${response.status}`);
-      
+
       if (!response.ok) {
         const errorText = await response.text();
         console.error(`❌ ПЭК отделения API ошибка: ${response.status} ${response.statusText}`);
@@ -2253,7 +2314,7 @@ export default function Home() {
 
       const data = await response.json();
       console.log(`✅ ПЭК отделения найдены:`, data);
-      
+
       // Возвращаем первое бесплатное отделение с наивысшим приоритетом
       if (data.freeDepartments && data.freeDepartments.length > 0) {
         const bestDepartment = data.freeDepartments.sort((a: any, b: any) => b.priority - a.priority)[0];
@@ -2269,7 +2330,7 @@ export default function Home() {
           email: bestDepartment.email
         };
       }
-      
+
       console.warn(`❌ ПЭК: отделения не найдены для "${address}"`);
       return null;
     } catch (error) {
@@ -2558,28 +2619,38 @@ export default function Home() {
         console.log('📍 Координаты delivery:', finalRequestData.delivery.coordinates);
       }
 
-      const response = await fetch('/api/pek', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(finalRequestData)
-      });
+       const result = await enhancedApiRequest(
+         '/api/pek',
+         {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           body: JSON.stringify(finalRequestData)
+         },
+         { operation: 'calculateprice', company: 'ПЭК' }
+       );
 
-      console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);
-      console.log(`📡 ПЭК API URL: ${response.url}`);
-      
-      const responseText = await response.text();
-      console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));
-      
-      let data;
-      try {
-        data = JSON.parse(responseText);
-        console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));
-      } catch (parseError) {
-        console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);
-        throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);
-      }
+       if (result && typeof result === 'object' && 'success' in result && !result.success) {
+         console.error('❌ ПЭК API расчет ошибка:', result.error);
+         throw new Error(result.error.userMessage || result.error.message);
+       }
+
+       const response = result as Response;
+       console.log(`📡 ПЭК API расчет статус: ${response.status} ${response.statusText}`);
+       console.log(`📡 ПЭК API URL: ${response.url}`);
+
+       const responseText = await response.text();
+       console.log(`📡 ПЭК API сырой ответ:`, responseText.substring(0, 1000));
+
+       let data;
+       try {
+         data = JSON.parse(responseText);
+         console.log('🚀 ПЭК API ответ:', JSON.stringify(data, null, 2));
+       } catch (parseError) {
+         console.error('❌ ПЭК: ошибка парсинга JSON:', parseError);
+         throw new Error(`Некорректный ответ API: ${responseText.substring(0, 200)}`);
+       }
 
         return { response, data };
       };
@@ -2941,16 +3012,34 @@ export default function Home() {
 
       console.log('🚂 Rail Continent запрос:', requestData);
 
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestData)
-      });
+       const result = await enhancedApiRequest(
+         apiUrl,
+         {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           body: JSON.stringify(requestData)
+         },
+         { operation: 'calculate', company: 'Rail Continent' }
+       );
 
-      const data = await response.json();
-      console.log('🚂 Rail Continent ответ:', data);
+       if (result && typeof result === 'object' && 'success' in result && !result.success) {
+         console.error('❌ Rail Continent API ошибка:', result.error);
+         return {
+           company: 'Rail Continent',
+           price: 0,
+           days: 0,
+           error: result.error.userMessage || result.error.message,
+           requestData,
+           responseData: null,
+           apiUrl
+         };
+       }
+
+       const response = result as Response;
+       const data = await response.json();
+       console.log('🚂 Rail Continent ответ:', data);
 
       if (response.ok && data.result === 'success' && data.data) {
         // Выбираем автомобильный тариф как основной (самый быстрый)
@@ -3185,16 +3274,34 @@ export default function Home() {
 
       console.log('🚚 Возовоз запрос:', JSON.stringify(requestData, null, 2));
 
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestData)
-      });
+       const result = await enhancedApiRequest(
+         apiUrl,
+         {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           body: JSON.stringify(requestData)
+         },
+         { operation: 'calculate', company: 'Возовоз' }
+       );
 
-      const data = await response.json();
-      console.log('🚚 Возовоз ответ:', JSON.stringify(data, null, 2));
+       if (result && typeof result === 'object' && 'success' in result && !result.success) {
+         console.error('❌ Возовоз API ошибка:', result.error);
+         return {
+           company: 'Возовоз',
+           price: 0,
+           days: 0,
+           error: result.error.userMessage || result.error.message,
+           requestData,
+           responseData: null,
+           apiUrl
+         };
+       }
+
+       const response = result as Response;
+       const data = await response.json();
+       console.log('🚚 Возовоз ответ:', JSON.stringify(data, null, 2));
 
       if (response.ok && data.response) {
         const responseData = data.response;
@@ -3361,7 +3468,28 @@ export default function Home() {
       const requestData = Object.fromEntries(params);
       const fullUrl = `${apiUrl}?${params.toString()}`;
 
-      const response = await fetch(fullUrl);
+      const result = await enhancedApiRequest(
+        fullUrl,
+        {
+          method: 'GET'
+        },
+        { operation: 'calculate', company: 'Nord Wheel' }
+      );
+
+      if (result && typeof result === 'object' && 'success' in result && !result.success) {
+        console.error('❌ Nord Wheel API ошибка:', result.error);
+        return {
+          company: 'Nord Wheel',
+          price: 0,
+          days: 0,
+          error: result.error.userMessage || result.error.message,
+          requestData: requestData,
+          responseData: null,
+          apiUrl: fullUrl
+        };
+      }
+
+      const response = result as Response;
       const data = await response.json();
 
       if (response.ok && data.status === 'success' && data.data) {
@@ -3438,16 +3566,34 @@ export default function Home() {
         toAddressDelivery: form.toAddressDelivery
       });
 
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestData)
-      });
+       const result = await enhancedApiRequest(
+         apiUrl,
+         {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           body: JSON.stringify(requestData)
+         },
+         { operation: 'calculate', company: 'СДЭК' }
+       );
 
-      const data = await response.json();
-      console.log('📦 CDEK ответ получен, тарифов:', data.tariff_codes?.length || 0);
+       if (result && typeof result === 'object' && 'success' in result && !result.success) {
+         console.error('❌ СДЭК API ошибка:', result.error);
+         return {
+           company: 'СДЭК',
+           price: 0,
+           days: 0,
+           error: result.error.userMessage || result.error.message,
+           requestData,
+           responseData: null,
+           apiUrl
+         };
+       }
+
+       const response = result as Response;
+       const data = await response.json();
+       console.log('📦 CDEK ответ получен, тарифов:', data.tariff_codes?.length || 0);
 
       if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {
         const isFromDoor = form.fromAddressDelivery || form.fromLavsiteWarehouse;
@@ -3502,20 +3648,27 @@ export default function Home() {
 
         console.log('📦 CDEK: запрос детализации...');
 
-        const detailsResponse = await fetch(apiUrl, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(detailsRequest)
-        });
+          const detailsResult = await enhancedApiRequest(
+            apiUrl,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(detailsRequest)
+            },
+            { operation: 'tariff_details', company: 'СДЭК' }
+          );
 
-        let tariffDetails: any = null;
-        if (detailsResponse.ok) {
-          const detailsData = await detailsResponse.json();
-          tariffDetails = detailsData.tariff_details;
-          console.log('📦 CDEK детали тарифа:', tariffDetails);
-        }
+          let tariffDetails: any = null;
+          if (detailsResult && typeof detailsResult === 'object' && 'success' in detailsResult && detailsResult.success) {
+            const detailsResponse = detailsResult as Response;
+            if (detailsResponse.ok) {
+              const detailsData = await detailsResponse.json();
+              tariffDetails = detailsData.tariff_details;
+              console.log('📦 СДЭК детали тарифа:', tariffDetails);
+            }
+          }
 
         const finalPrice = tariffDetails?.total_sum || bestTariff.delivery_sum;
         
@@ -3581,16 +3734,34 @@ export default function Home() {
 
       console.log('🚛 КИТ запрос:', JSON.stringify(requestData, null, 2));
 
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestData)
-      });
+       const result = await enhancedApiRequest(
+         apiUrl,
+         {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           body: JSON.stringify(requestData)
+         },
+         { operation: 'calculate', company: 'КИТ' }
+       );
 
-      const data = await response.json();
-      console.log('🚛 КИТ ответ:', data);
+       if (result && typeof result === 'object' && 'success' in result && !result.success) {
+         console.error('❌ КИТ API ошибка:', result.error);
+         return {
+           company: 'КИТ',
+           price: 0,
+           days: 0,
+           error: result.error.userMessage || result.error.message,
+           requestData,
+           responseData: null,
+           apiUrl
+         };
+       }
+
+       const response = result as Response;
+       const data = await response.json();
+       console.log('🚛 КИТ ответ:', data);
 
       if (response.ok && Array.isArray(data) && data.length > 0) {
         const rubData = data.find((item: any) => {

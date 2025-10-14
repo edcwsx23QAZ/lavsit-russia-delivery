@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e32ac6e80012zBCIB9MipNI4H",
+  "messageID": "msg_9e32abcef001P9txpTAGN2zeY9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_02986735",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "oldString": "        if (result && typeof result === 'object' && 'success' in result && !result.success) {\n          console.error('❌ Nord Wheel API ошибка:', result.error);\n          return {\n            company: 'Nord Wheel',\n            price: 0,\n            days: 0,\n            error: result.error.userMessage || result.error.message,\n            requestData,\n            responseData: null,\n            apiUrl: fullUrl\n          };\n        }",
+      "newString": "        if (result && typeof result === 'object' && 'success' in result && !result.success) {\n          console.error('❌ Nord Wheel API ошибка:', result.error);\n          return {\n            company: 'Nord Wheel',\n            price: 0,\n            days: 0,\n            error: result.error.userMessage || result.error.message,\n            requestData: params,\n            responseData: null,\n            apiUrl: fullUrl\n          };\n        }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -633,20 +633,20 @@\n   },\n   { operation: 'calculate', company: 'Nord Wheel' }\n );\n \n-if (result && typeof result === 'object' && 'success' in result && !result.success) {\n-  console.error('❌ Nord Wheel API ошибка:', result.error);\n-  return {\n-    company: 'Nord Wheel',\n-    price: 0,\n-    days: 0,\n-    error: result.error.userMessage || result.error.message,\n-    requestData,\n-    responseData: null,\n-    apiUrl: fullUrl\n-  };\n-}\n+ if (result && typeof result === 'object' && 'success' in result && !result.success) {\n+   console.error('❌ Nord Wheel API ошибка:', result.error);\n+   return {\n+     company: 'Nord Wheel',\n+     price: 0,\n+     days: 0,\n+     error: result.error.userMessage || result.error.message,\n+     requestData: params,\n+     responseData: null,\n+     apiUrl: fullUrl\n+   };\n+ }\n \n const response = result as Response;\n const data = await response.json();\n    \n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760452855530,
+      "end": 1760452855553
+    }
+  }
+}

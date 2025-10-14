@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e32204eb001XLicHsuAaBTbw9",
+  "messageID": "msg_9e321fcbe001f5V5fTgYWFs5gF",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_06574320",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "oldString": "         const detailsResponse = await fetch(apiUrl, {\n           method: 'POST',\n           headers: {\n             'Content-Type': 'application/json',\n           },\n           body: JSON.stringify(detailsRequest)\n         });\n\n         let tariffDetails: any = null;\n         if (detailsResponse.ok) {\n           const detailsData = await detailsResponse.json();\n           tariffDetails = detailsData.tariff_details;\n           console.log('📦 CDEK детали тарифа:', tariffDetails);\n         }",
+      "newString": "         const detailsResult = await enhancedApiRequest(\n           apiUrl,\n           {\n             method: 'POST',\n             headers: {\n               'Content-Type': 'application/json',\n             },\n             body: JSON.stringify(detailsRequest)\n           },\n           { operation: 'tariff_details', company: 'ПЭК' }\n         );\n\n         let tariffDetails: any = null;\n         if (detailsResult && typeof detailsResult === 'object' && 'success' in detailsResult && detailsResult.success) {\n           const detailsResponse = detailsResult as Response;\n           if (detailsResponse.ok) {\n             const detailsData = await detailsResponse.json();\n             tariffDetails = detailsData.tariff_details;\n             console.log('📦 ПЭК детали тарифа:', tariffDetails);\n           }\n         }"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3534,22 +3534,29 @@\n };\n \n console.log('📦 CDEK: запрос детализации...');\n \n-const detailsResponse = await fetch(apiUrl, {\n-  method: 'POST',\n-  headers: {\n-    'Content-Type': 'application/json',\n-  },\n-  body: JSON.stringify(detailsRequest)\n-});\n+ const detailsResult = await enhancedApiRequest(\n+   apiUrl,\n+   {\n+     method: 'POST',\n+     headers: {\n+       'Content-Type': 'application/json',\n+     },\n+     body: JSON.stringify(detailsRequest)\n+   },\n+   { operation: 'tariff_details', company: 'ПЭК' }\n+ );\n \n-let tariffDetails: any = null;\n-if (detailsResponse.ok) {\n-  const detailsData = await detailsResponse.json();\n-  tariffDetails = detailsData.tariff_details;\n-  console.log('📦 CDEK детали тарифа:', tariffDetails);\n-}\n+ let tariffDetails: any = null;\n+ if (detailsResult && typeof detailsResult === 'object' && 'success' in detailsResult && detailsResult.success) {\n+   const detailsResponse = detailsResult as Response;\n+   if (detailsResponse.ok) {\n+     const detailsData = await detailsResponse.json();\n+     tariffDetails = detailsData.tariff_details;\n+     console.log('📦 ПЭК детали тарифа:', tariffDetails);\n+   }\n+ }\n \n const finalPrice = tariffDetails?.total_sum || bestTariff.delivery_sum;\n \n return {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760452281580,
+      "end": 1760452281602
+    }
+  }
+}

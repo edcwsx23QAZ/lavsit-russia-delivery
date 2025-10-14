@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e326f290001FAHNmy2qEt0NdV",
+  "messageID": "msg_9e326e20a001Y2PAPAVRuOtbDu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "call_47364269",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "offset": 3380,
+      "limit": 30
+    },
+    "output": "<file>\n03381|           apiUrl\n03382|         };\n03383|       } else {\n03384|         return {\n03385|           company: 'Возовоз',\n03386|           price: 0,\n03387|           days: 0,\n03388|           error: data.error || 'Ошибка расчета Возовоз',\n03389|           requestData,\n03390|           responseData: data,\n03391|           apiUrl\n03392|         };\n03393|       }\n03394|     } catch (error: any) {\n03395|       console.error('🚚 Возовоз ошибка:', error);\n03396|       return {\n03397|         company: 'Возовоз',\n03398|         price: 0,\n03399|         days: 0,\n03400|         error: `Ошибка соединения: ${error.message}`,\n03401|         apiUrl\n03402|       };\n03403|     }\n03404|   };\n03405| \n03406|   // Расчет для Nord Wheel\n03407|   const calculateNordWheel = async (): Promise<CalculationResult> => {\n03408|     const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n03409|     \n03410|     try {\n\n(File has more lines. Use 'offset' parameter to read beyond line 3410)\n</file>",
+    "metadata": {
+      "preview": "          apiUrl\n        };\n      } else {\n        return {\n          company: 'Возовоз',\n          price: 0,\n          days: 0,\n          error: data.error || 'Ошибка расчета Возовоз',\n          requestData,\n          responseData: data,\n          apiUrl\n        };\n      }\n    } catch (error: any) {\n      console.error('🚚 Возовоз ошибка:', error);\n      return {\n        company: 'Возовоз',\n        price: 0,\n        days: 0,\n        error: `Ошибка соединения: ${error.message}`,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760452604563,
+      "end": 1760452604566
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e32cd277001YwGnLZcyybASi2",
+  "messageID": "msg_9e32cc8aa0010B1ncaazB6L12Q",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "call_75153013",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "lib/error-handling.ts",
+      "offset": 100,
+      "limit": 15
+    },
+    "output": "<file>\n00101|   clear(): void {\n00102|     this.cache.clear();\n00103|   }\n00104| \n00105|   // Clean up expired entries\n00106|   cleanup(): void {\n00107|     const now = Date.now();\n00108|     for (const [key, entry] of this.cache.entries()) {\n00109|       if (now - entry.timestamp > entry.ttl) {\n00110|         this.cache.delete(key);\n00111|       }\n00112|     }\n00113|   }\n00114| }\n00115| \n\n(File has more lines. Use 'offset' parameter to read beyond line 115)\n</file>",
+    "metadata": {
+      "preview": "  clear(): void {\n    this.cache.clear();\n  }\n\n  // Clean up expired entries\n  cleanup(): void {\n    const now = Date.now();\n    for (const [key, entry] of this.cache.entries()) {\n      if (now - entry.timestamp > entry.ttl) {\n        this.cache.delete(key);\n      }\n    }\n  }\n}\n"
+    },
+    "title": "lib/error-handling.ts",
+    "time": {
+      "start": 1760452989561,
+      "end": 1760452989562
+    }
+  }
+}

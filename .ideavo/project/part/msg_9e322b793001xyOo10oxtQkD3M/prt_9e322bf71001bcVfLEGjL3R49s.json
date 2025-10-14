@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e322bf71001bcVfLEGjL3R49s",
+  "messageID": "msg_9e322b793001xyOo10oxtQkD3M",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_09303760",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "oldString": "       const response = await fetch(fullUrl);\n       const data = await response.json();",
+      "newString": "       const result = await enhancedApiRequest(\n         fullUrl,\n         {\n           method: 'GET'\n         },\n         { operation: 'calculate', company: 'Nord Wheel' }\n       );\n\n       if (result && typeof result === 'object' && 'success' in result && !result.success) {\n         console.error('❌ Nord Wheel API ошибка:', result.error);\n         return {\n           company: 'Nord Wheel',\n           price: 0,\n           days: 0,\n           error: result.error.userMessage || result.error.message,\n           requestData,\n           responseData: null,\n           apiUrl: fullUrl\n         };\n       }\n\n       const response = result as Response;\n       const data = await response.json();"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -625,10 +625,31 @@\n      fragile: '1'\n    });\n \n    const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n-   const response = await fetch(fullUrl);\n-   const data = await response.json();\n+const result = await enhancedApiRequest(\n+  fullUrl,\n+  {\n+    method: 'GET'\n+  },\n+  { operation: 'calculate', company: 'Nord Wheel' }\n+);\n+\n+if (result && typeof result === 'object' && 'success' in result && !result.success) {\n+  console.error('❌ Nord Wheel API ошибка:', result.error);\n+  return {\n+    company: 'Nord Wheel',\n+    price: 0,\n+    days: 0,\n+    error: result.error.userMessage || result.error.message,\n+    requestData,\n+    responseData: null,\n+    apiUrl: fullUrl\n+  };\n+}\n+\n+const response = result as Response;\n+const data = await response.json();\n    \n    if (response.ok && data.status === 'success') {\n      return { success: true };\n    } else {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760452329330,
+      "end": 1760452329348
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e32ad5950018TKFbct3aMmDrL",
+  "messageID": "msg_9e32ad11d00168wUugVrZ5DH4x",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "call_64654605",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Running build to check for TypeScript compilation errors"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./components/ClientDevUtils.tsx:29:36\nType error: Property 'getCLS' does not exist on type '{ default: typeof import(\"/home/user/project/node_modules/web-vitals/dist/modules/index\"); onCLS: (onReport: (metric: CLSMetric) => void, opts?: ReportOpts | undefined) => void; ... 8 more ...; TTFBThresholds: MetricRatingThresholds; }'.\n\n\u001b[0m \u001b[90m 27 |\u001b[39m     \u001b[90m// Web Vitals monitoring\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 28 |\u001b[39m     \u001b[36mif\u001b[39m (\u001b[36mtypeof\u001b[39m window \u001b[33m!==\u001b[39m \u001b[32m'undefined'\u001b[39m) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 29 |\u001b[39m       \u001b[36mimport\u001b[39m(\u001b[32m'web-vitals'\u001b[39m)\u001b[33m.\u001b[39mthen(({ getCLS\u001b[33m,\u001b[39m getFID\u001b[33m,\u001b[39m getFCP\u001b[33m,\u001b[39m getLCP\u001b[33m,\u001b[39m getTTFB }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 30 |\u001b[39m         \u001b[90m// Core Web Vitals\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 31 |\u001b[39m         getCLS((metric) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 32 |\u001b[39m           console\u001b[33m.\u001b[39mlog(\u001b[32m'📊 CLS (Cumulative Layout Shift):'\u001b[39m\u001b[33m,\u001b[39m metric\u001b[33m.\u001b[39mvalue)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./components/ClientDevUtils.tsx:29:36\nType error: Property 'getCLS' does not exist on type '{ default: typeof import(\"/home/user/project/node_modules/web-vitals/dist/modules/index\"); onCLS: (onReport: (metric: CLSMetric) => void, opts?: ReportOpts | undefined) => void; ... 8 more ...; TTFBThresholds: MetricRatingThresholds; }'.\n\n\u001b[0m \u001b[90m 27 |\u001b[39m     \u001b[90m// Web Vitals monitoring\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 28 |\u001b[39m     \u001b[36mif\u001b[39m (\u001b[36mtypeof\u001b[39m window \u001b[33m!==\u001b[39m \u001b[32m'undefined'\u001b[39m) {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 29 |\u001b[39m       \u001b[36mimport\u001b[39m(\u001b[32m'web-vitals'\u001b[39m)\u001b[33m.\u001b[39mthen(({ getCLS\u001b[33m,\u001b[39m getFID\u001b[33m,\u001b[39m getFCP\u001b[33m,\u001b[39m getLCP\u001b[33m,\u001b[39m getTTFB }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 30 |\u001b[39m         \u001b[90m// Core Web Vitals\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 31 |\u001b[39m         getCLS((metric) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 32 |\u001b[39m           console\u001b[33m.\u001b[39mlog(\u001b[32m'📊 CLS (Cumulative Layout Shift):'\u001b[39m\u001b[33m,\u001b[39m metric\u001b[33m.\u001b[39mvalue)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Running build to check for TypeScript compilation errors"
+    },
+    "title": "npm run build",
+    "time": {
+      "start": 1760452859291,
+      "end": 1760452874449
+    }
+  }
+}

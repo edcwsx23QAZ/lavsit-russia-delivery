@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e3275bb40014LtFtcBTBtRB8m",
+  "messageID": "msg_9e3273c86001g45sEh8oXimhf7",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "call_03465136",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "offset": 3360,
+      "limit": 20
+    },
+    "output": "<file>\n03361|         }\n03362| \n03363|         console.log('🚚 Возовоз итоговая стоимость:', totalPrice);\n03364|         console.log('🚚 Возовоз услуги:', services);\n03365| \n03366|         return {\n03367|           company: 'Возовоз',\n03368|           price: Math.round(totalPrice),\n03369|           days: responseData.deliveryTime?.to || responseData.deliveryTime?.from || 3,\n03370|           details: {\n03371|             note: `Доставка ${form.fromCity} - ${form.toCity}`,\n03372|             services,\n03373|             basePrice: responseData.basePrice,\n03374|             finalPrice: responseData.price,\n03375|             deliveryTime: responseData.deliveryTime,\n03376|             weight: totalWeight,\n03377|             volume: totalVolume\n03378|           },\n03379|           requestData,\n03380|           responseData: data,\n\n(File has more lines. Use 'offset' parameter to read beyond line 3380)\n</file>",
+    "metadata": {
+      "preview": "        }\n\n        console.log('🚚 Возовоз итоговая стоимость:', totalPrice);\n        console.log('🚚 Возовоз услуги:', services);\n\n        return {\n          company: 'Возовоз',\n          price: Math.round(totalPrice),\n          days: responseData.deliveryTime?.to || responseData.deliveryTime?.from || 3,\n          details: {\n            note: `Доставка ${form.fromCity} - ${form.toCity}`,\n            services,\n            basePrice: responseData.basePrice,\n            finalPrice: responseData.price,\n            deliveryTime: responseData.deliveryTime,\n            weight: totalWeight,\n            volume: totalVolume\n          },\n          requestData,\n          responseData: data,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760452631477,
+      "end": 1760452631480
+    }
+  }
+}

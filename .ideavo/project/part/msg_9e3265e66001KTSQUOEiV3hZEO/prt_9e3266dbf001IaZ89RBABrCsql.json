@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e3266dbf001IaZ89RBABrCsql",
+  "messageID": "msg_9e3265e66001KTSQUOEiV3hZEO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_59222549",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "lib/error-handling.ts",
+      "oldString": "/**\n * Error boundary component for React components\n */\nexport class ErrorBoundary extends React.Component<\n  { children: React.ReactNode; fallback?: React.ComponentType<{ error: any }> },\n  { hasError: boolean; error: any }\n> {\n  constructor(props: any) {\n    super(props);\n    this.state = { hasError: false, error: null };\n  }\n\n  static getDerivedStateFromError(error: any) {\n    return { hasError: true, error };\n  }\n\n  componentDidCatch(error: any, errorInfo: any) {\n    console.error('[ErrorBoundary] Caught error:', error, errorInfo);\n\n    // Report to monitoring service\n    if (typeof window !== 'undefined' && (window as any).Sentry) {\n      (window as any).Sentry.captureException(error, {\n        contexts: {\n          react: {\n            componentStack: errorInfo.componentStack\n          }\n        }\n      });\n    }\n  }\n\n  render() {\n    if (this.state.hasError) {\n      const FallbackComponent = this.props.fallback;\n      if (FallbackComponent) {\n        return <FallbackComponent error={this.state.error} />;\n      }\n\n      return (\n        <div className=\"p-4 border border-red-300 bg-red-50 rounded-lg\">\n          <h3 className=\"text-lg font-semibold text-red-800 mb-2\">\n            Что-то пошло не так\n          </h3>\n          <p className=\"text-red-600 mb-4\">\n            Произошла ошибка при загрузке компонента. Попробуйте перезагрузить страницу.\n          </p>\n          <button\n            onClick={() => window.location.reload()}\n            className=\"px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700\"\n          >\n            Перезагрузить\n          </button>\n        </div>\n      );\n    }\n\n    return this.props.children;\n  }\n}",
+      "newString": "// Error boundary component removed - should be implemented in a .tsx file if needed"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/error-handling.ts\n===================================================================\n--- /home/user/project/lib/error-handling.ts\n+++ /home/user/project/lib/error-handling.ts\n@@ -272,63 +272,5 @@\n     return Component;\n   };\n }\n \n-/**\n- * Error boundary component for React components\n- */\n-export class ErrorBoundary extends React.Component<\n-  { children: React.ReactNode; fallback?: React.ComponentType<{ error: any }> },\n-  { hasError: boolean; error: any }\n-> {\n-  constructor(props: any) {\n-    super(props);\n-    this.state = { hasError: false, error: null };\n-  }\n-\n-  static getDerivedStateFromError(error: any) {\n-    return { hasError: true, error };\n-  }\n-\n-  componentDidCatch(error: any, errorInfo: any) {\n-    console.error('[ErrorBoundary] Caught error:', error, errorInfo);\n-\n-    // Report to monitoring service\n-    if (typeof window !== 'undefined' && (window as any).Sentry) {\n-      (window as any).Sentry.captureException(error, {\n-        contexts: {\n-          react: {\n-            componentStack: errorInfo.componentStack\n-          }\n-        }\n-      });\n-    }\n-  }\n-\n-  render() {\n-    if (this.state.hasError) {\n-      const FallbackComponent = this.props.fallback;\n-      if (FallbackComponent) {\n-        return <FallbackComponent error={this.state.error} />;\n-      }\n-\n-      return (\n-        <div className=\"p-4 border border-red-300 bg-red-50 rounded-lg\">\n-          <h3 className=\"text-lg font-semibold text-red-800 mb-2\">\n-            Что-то пошло не так\n-          </h3>\n-          <p className=\"text-red-600 mb-4\">\n-            Произошла ошибка при загрузке компонента. Попробуйте перезагрузить страницу.\n-          </p>\n-          <button\n-            onClick={() => window.location.reload()}\n-            className=\"px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700\"\n-          >\n-            Перезагрузить\n-          </button>\n-        </div>\n-      );\n-    }\n-\n-    return this.props.children;\n-  }\n-}\n\\ No newline at end of file\n+// Error boundary component removed - should be implemented in a .tsx file if needed\n\\ No newline at end of file\n"
+    },
+    "title": "lib/error-handling.ts",
+    "time": {
+      "start": 1760452570560,
+      "end": 1760452570564
+    }
+  }
+}

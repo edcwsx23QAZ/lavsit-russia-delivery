@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e32bcff1001hVzqLz2GYCuzlT",
+  "messageID": "msg_9e32bc9a2001wKHbQjNOwUdrOL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "call_68159518",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "components/ClientDevUtils.tsx",
+      "offset": 25,
+      "limit": 65
+    },
+    "output": "<file>\n00026| \n00027|     // Web Vitals monitoring - TODO: Implement with correct web-vitals API\n00028|     // Currently commented out due to API compatibility issues\n00029|     /*\n00030|     if (typeof window !== 'undefined') {\n00031|       // TODO: Install web-vitals package and implement correct API usage\n00032|       console.log('📊 Web Vitals monitoring placeholder');\n00033|     }\n00034|     */\n00035|         });\n00036| \n00037|         getFID((metric) => {\n00038|           console.log('📊 FID (First Input Delay):', metric.value, 'ms');\n00039|           if (typeof window !== 'undefined' && (window as any).gtag) {\n00040|             (window as any).gtag('event', 'web_vitals', {\n00041|               event_category: 'Web Vitals',\n00042|               event_label: 'FID',\n00043|               value: Math.round(metric.value),\n00044|               custom_map: { metric_value: metric.value }\n00045|             });\n00046|           }\n00047|         });\n00048| \n00049|         getFCP((metric) => {\n00050|           console.log('📊 FCP (First Contentful Paint):', metric.value, 'ms');\n00051|           if (typeof window !== 'undefined' && (window as any).gtag) {\n00052|             (window as any).gtag('event', 'web_vitals', {\n00053|               event_category: 'Web Vitals',\n00054|               event_label: 'FCP',\n00055|               value: Math.round(metric.value),\n00056|               custom_map: { metric_value: metric.value }\n00057|             });\n00058|           }\n00059|         });\n00060| \n00061|         getLCP((metric) => {\n00062|           console.log('📊 LCP (Largest Contentful Paint):', metric.value, 'ms');\n00063|           if (typeof window !== 'undefined' && (window as any).gtag) {\n00064|             (window as any).gtag('event', 'web_vitals', {\n00065|               event_category: 'Web Vitals',\n00066|               event_label: 'LCP',\n00067|               value: Math.round(metric.value),\n00068|               custom_map: { metric_value: metric.value }\n00069|             });\n00070|           }\n00071|         });\n00072| \n00073|         getTTFB((metric) => {\n00074|           console.log('📊 TTFB (Time to First Byte):', metric.value, 'ms');\n00075|           if (typeof window !== 'undefined' && (window as any).gtag) {\n00076|             (window as any).gtag('event', 'web_vitals', {\n00077|               event_category: 'Web Vitals',\n00078|               event_label: 'TTFB',\n00079|               value: Math.round(metric.value),\n00080|               custom_map: { metric_value: metric.value }\n00081|             });\n00082|           }\n00083|         });\n00084|       }).catch((error) => {\n00085|         console.warn('⚠️ Failed to load web-vitals:', error);\n00086|       });\n00087|     }\n00088|   }, []);\n00089| \n00090|   return null;\n\n(File has more lines. Use 'offset' parameter to read beyond line 90)\n</file>",
+    "metadata": {
+      "preview": "\n    // Web Vitals monitoring - TODO: Implement with correct web-vitals API\n    // Currently commented out due to API compatibility issues\n    /*\n    if (typeof window !== 'undefined') {\n      // TODO: Install web-vitals package and implement correct API usage\n      console.log('📊 Web Vitals monitoring placeholder');\n    }\n    */\n        });\n\n        getFID((metric) => {\n          console.log('📊 FID (First Input Delay):', metric.value, 'ms');\n          if (typeof window !== 'undefined' && (window as any).gtag) {\n            (window as any).gtag('event', 'web_vitals', {\n              event_category: 'Web Vitals',\n              event_label: 'FID',\n              value: Math.round(metric.value),\n              custom_map: { metric_value: metric.value }\n            });"
+    },
+    "title": "components/ClientDevUtils.tsx",
+    "time": {
+      "start": 1760452923379,
+      "end": 1760452923380
+    }
+  }
+}

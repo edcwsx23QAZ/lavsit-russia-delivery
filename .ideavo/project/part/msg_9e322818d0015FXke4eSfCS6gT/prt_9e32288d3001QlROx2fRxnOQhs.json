@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e32288d3001QlROx2fRxnOQhs",
+  "messageID": "msg_9e322818d0015FXke4eSfCS6gT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "call_93172622",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "oldString": "       const response = await fetch(apiUrl, {\n         method: 'POST',\n         headers: {\n           'Content-Type': 'application/json',\n         },\n         body: JSON.stringify(requestData)\n       });\n\n       const data = await response.json();\n       console.log('🚛 КИТ ответ:', data);",
+      "newString": "       const result = await enhancedApiRequest(\n         apiUrl,\n         {\n           method: 'POST',\n           headers: {\n             'Content-Type': 'application/json',\n           },\n           body: JSON.stringify(requestData)\n         },\n         { operation: 'calculate', company: 'КИТ' }\n       );\n\n       if (result && typeof result === 'object' && 'success' in result && !result.success) {\n         console.error('❌ КИТ API ошибка:', result.error);\n         return {\n           company: 'КИТ',\n           price: 0,\n           days: 0,\n           error: result.error.userMessage || result.error.message,\n           requestData,\n           responseData: null,\n           apiUrl\n         };\n       }\n\n       const response = result as Response;\n       const data = await response.json();\n       console.log('🚛 КИТ ответ:', data);"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3638,19 +3638,37 @@\n };\n \n console.log('🚛 КИТ запрос:', JSON.stringify(requestData, null, 2));\n \n-const response = await fetch(apiUrl, {\n-  method: 'POST',\n-  headers: {\n-    'Content-Type': 'application/json',\n-  },\n-  body: JSON.stringify(requestData)\n-});\n+ const result = await enhancedApiRequest(\n+   apiUrl,\n+   {\n+     method: 'POST',\n+     headers: {\n+       'Content-Type': 'application/json',\n+     },\n+     body: JSON.stringify(requestData)\n+   },\n+   { operation: 'calculate', company: 'КИТ' }\n+ );\n \n-const data = await response.json();\n-console.log('🚛 КИТ ответ:', data);\n+ if (result && typeof result === 'object' && 'success' in result && !result.success) {\n+   console.error('❌ КИТ API ошибка:', result.error);\n+   return {\n+     company: 'КИТ',\n+     price: 0,\n+     days: 0,\n+     error: result.error.userMessage || result.error.message,\n+     requestData,\n+     responseData: null,\n+     apiUrl\n+   };\n+ }\n \n+ const response = result as Response;\n+ const data = await response.json();\n+ console.log('🚛 КИТ ответ:', data);\n+\n if (response.ok && Array.isArray(data) && data.length > 0) {\n   const rubData = data.find((item: any) => {\n     const tariffData: any = Object.values(item)[0];\n     return tariffData?.currency_code === 'RUB';\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760452315348,
+      "end": 1760452315368
+    }
+  }
+}

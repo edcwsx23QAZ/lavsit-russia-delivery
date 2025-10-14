@@ -1,0 +1,27 @@
+{
+  "id": "prt_9e32644d70016oeU02WRt8orKA",
+  "messageID": "msg_9e3263c11001zkal3dKEXJWKtt",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "call_92916248",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "timeout": 60000,
+      "description": "Build the application again after fixing the syntax error"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./lib/error-handling.ts\nError: \n  \u001b[31mx\u001b[0m Expected '>', got 'error'\n     ,-[\u001b[36;1;4m/home/user/project/lib/error-handling.ts\u001b[0m:308:1]\n \u001b[2m308\u001b[0m |     if (this.state.hasError) {\n \u001b[2m309\u001b[0m |       const FallbackComponent = this.props.fallback;\n \u001b[2m310\u001b[0m |       if (FallbackComponent) {\n \u001b[2m311\u001b[0m |         return <FallbackComponent error={this.state.error} />;\n     : \u001b[31;1m                                  ^^^^^\u001b[0m\n \u001b[2m312\u001b[0m |       }\n \u001b[2m313\u001b[0m | \n \u001b[2m314\u001b[0m |       return (\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./lib/error-handling.ts\n./lib/api-utils.ts\n./app/page.tsx\n\n./lib/error-handling.ts\nError: \n  \u001b[31mx\u001b[0m Expected '>', got 'error'\n     ,-[\u001b[36;1;4m/home/user/project/lib/error-handling.ts\u001b[0m:308:1]\n \u001b[2m308\u001b[0m |     if (this.state.hasError) {\n \u001b[2m309\u001b[0m |       const FallbackComponent = this.props.fallback;\n \u001b[2m310\u001b[0m |       if (FallbackComponent) {\n \u001b[2m311\u001b[0m |         return <FallbackComponent error={this.state.error} />;\n     : \u001b[31;1m                                  ^^^^^\u001b[0m\n \u001b[2m312\u001b[0m |       }\n \u001b[2m313\u001b[0m | \n \u001b[2m314\u001b[0m |       return (\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./lib/error-handling.ts\n./lib/api-utils.ts\n./app/api/cdek/route.ts\n\n\n> Build failed because of webpack errors\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./lib/error-handling.ts\nError: \n  \u001b[31mx\u001b[0m Expected '>', got 'error'\n     ,-[\u001b[36;1;4m/home/user/project/lib/error-handling.ts\u001b[0m:308:1]\n \u001b[2m308\u001b[0m |     if (this.state.hasError) {\n \u001b[2m309\u001b[0m |       const FallbackComponent = this.props.fallback;\n \u001b[2m310\u001b[0m |       if (FallbackComponent) {\n \u001b[2m311\u001b[0m |         return <FallbackComponent error={this.state.error} />;\n     : \u001b[31;1m                                  ^^^^^\u001b[0m\n \u001b[2m312\u001b[0m |       }\n \u001b[2m313\u001b[0m | \n \u001b[2m314\u001b[0m |       return (\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./lib/error-handling.ts\n./lib/api-utils.ts\n./app/page.tsx\n\n./lib/error-handling.ts\nError: \n  \u001b[31mx\u001b[0m Expected '>', got 'error'\n     ,-[\u001b[36;1;4m/home/user/project/lib/error-handling.ts\u001b[0m:308:1]\n \u001b[2m308\u001b[0m |     if (this.state.hasError) {\n \u001b[2m309\u001b[0m |       const FallbackComponent = this.props.fallback;\n \u001b[2m310\u001b[0m |       if (FallbackComponent) {\n \u001b[2m311\u001b[0m |         return <FallbackComponent error={this.state.error} />;\n     : \u001b[31;1m                                  ^^^^^\u001b[0m\n \u001b[2m312\u001b[0m |       }\n \u001b[2m313\u001b[0m | \n \u001b[2m314\u001b[0m |       return (\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./lib/error-handling.ts\n./lib/api-utils.ts\n./app/api/cdek/route.ts\n\n\n> Build failed because of webpack errors\n",
+      "exit": 1,
+      "description": "Build the application again after fixing the syntax error"
+    },
+    "title": "npm run build",
+    "time": {
+      "start": 1760452560093,
+      "end": 1760452564381
+    }
+  }
+}

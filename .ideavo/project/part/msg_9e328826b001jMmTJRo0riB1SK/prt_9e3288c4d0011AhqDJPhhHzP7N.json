@@ -1,0 +1,27 @@
+{
+  "id": "prt_9e3288c4d0011AhqDJPhhHzP7N",
+  "messageID": "msg_9e328826b001jMmTJRo0riB1SK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "bash",
+  "callID": "call_30910052",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build 2>&1 | head -20",
+      "timeout": 30000,
+      "description": "Run build and show first 20 lines of output to see the exact error"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:644:12\nType error: No value exists in scope for the shorthand property 'requestData'. Either declare one or provide an initializer.\n\n\u001b[0m \u001b[90m 642 |\u001b[39m            days\u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 643 |\u001b[39m            error\u001b[33m:\u001b[39m result\u001b[33m.\u001b[39merror\u001b[33m.\u001b[39muserMessage \u001b[33m||\u001b[39m result\u001b[33m.\u001b[39merror\u001b[33m.\u001b[39mmessage\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 644 |\u001b[39m            requestData\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 645 |\u001b[39m            responseData\u001b[33m:\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:644:12\nType error: No value exists in scope for the shorthand property 'requestData'. Either declare one or provide an initializer.\n\n\u001b[0m \u001b[90m 642 |\u001b[39m            days\u001b[33m:\u001b[39m \u001b[35m0\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 643 |\u001b[39m            error\u001b[33m:\u001b[39m result\u001b[33m.\u001b[39merror\u001b[33m.\u001b[39muserMessage \u001b[33m||\u001b[39m result\u001b[33m.\u001b[39merror\u001b[33m.\u001b[39mmessage\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 644 |\u001b[39m            requestData\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 645 |\u001b[39m            responseData\u001b[33m:\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n",
+      "exit": 0,
+      "description": "Run build and show first 20 lines of output to see the exact error"
+    },
+    "title": "npm run build 2>&1 | head -20",
+    "time": {
+      "start": 1760452709458,
+      "end": 1760452721786
+    }
+  }
+}

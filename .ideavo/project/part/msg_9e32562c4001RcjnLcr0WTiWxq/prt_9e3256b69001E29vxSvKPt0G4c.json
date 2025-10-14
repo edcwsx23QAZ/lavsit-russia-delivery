@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e3256b69001E29vxSvKPt0G4c",
+  "messageID": "msg_9e32562c4001RcjnLcr0WTiWxq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "call_25978293",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "offset": 4200,
+      "limit": 100
+    },
+    "output": "<file>\n04201|         \n04202|         // Скидка на услугу (если есть)\n04203|         if (serviceDiscount > 0) {\n04204|           details.push({\n04205|             service: `Скидка на ${service.name?.toLowerCase() || 'услугу'}`,\n04206|             description: `${(service.basePrice || 0).toLocaleString()} - ${(service.price || 0).toLocaleString()}`,\n04207|             price: -serviceDiscount\n04208|           });\n04209|         }\n04210|       });\n04211|       \n04212|       // Итоговая строка с общими скидками\n04213|       if (totalDiscount > 0) {\n04214|         details.push({\n04215|           service: '─────────────────────────',\n04216|           description: '',\n04217|           price: 0\n04218|         });\n04219|         details.push({\n04220|           service: 'Базовая стоимость',\n04221|           description: 'До применения скидок',\n04222|           price: basePrice\n04223|         });\n04224|         details.push({\n04225|           service: 'Общие скидки',\n04226|           description: `Экономия ${totalDiscount.toLocaleString()} ₽`,\n04227|           price: -totalDiscount\n04228|         });\n04229|         details.push({\n04230|           service: 'ИТОГО',\n04231|           description: 'К оплате',\n04232|           price: finalPrice\n04233|         });\n04234|       }\n04235|     } else if (calc.company === 'КИТ' && calc.details?.services) {\n04236|       calc.details.services.forEach((service: any) => {\n04237|         details.push({\n04238|           service: service.name || 'Услуга КИТ',\n04239|           description: service.code || '',\n04240|           price: service.price || 0\n04241|         });\n04242|       });\n04243|       \n04244|       if (calc.details.tariff_name) {\n04245|         details.push({\n04246|           service: '─────────────────────────',\n04247|           description: '',\n04248|           price: 0\n04249|         });\n04250|         details.push({\n04251|           service: 'Тариф',\n04252|           description: calc.details.tariff_name,\n04253|           price: 0\n04254|         });\n04255|         details.push({\n04256|           service: 'ИТОГО',\n04257|           description: calc.details.currency || 'RUB',\n04258|           price: calc.price\n04259|         });\n04260|       }\n04261|     } else {\n04262|       // Для других ТК - базовая информация\n04263|       details.push({\n04264|         service: 'Доставка груза',\n04265|         description: `${form.fromCity} - ${form.toCity}`,\n04266|         price: calc.price\n04267|       });\n04268|       \n04269|       if (form.needInsurance && form.declaredValue > 0) {\n04270|         details.push({\n04271|           service: 'Страхование',\n04272|           description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,\n04273|           price: Math.round(form.declaredValue * 0.02)\n04274|         });\n04275|       }\n04276|       \n04277|       if (form.needPackaging) {\n04278|         const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n04279|         details.push({\n04280|           service: 'Упаковка',\n04281|           description: '',\n04282|           price: Math.round(totalWeight * 30)\n04283|         });\n04284|       }\n04285|     }\n04286|     \n04287|     return details;\n04288|   } catch (globalError) {\n04289|     console.error('❌ ГЛОБАЛЬНАЯ ОШИБКА в parseCalculationDetails:', globalError);\n04290|     console.error('❌ Стек ошибки:', globalError instanceof Error ? globalError.stack : 'Нет стека');\n04291|     console.log('❌ calc object:', calc);\n04292|     // Возвращаем минимальные данные при любой ошибке\n04293|     return [{\n04294|       service: 'Доставка',\n04295|       description: 'Ошибка обработки деталей расчета',\n04296|       price: calc?.price || 0\n04297|     }];\n04298|   }\n04299| };\n04300| \n\n(File has more lines. Use 'offset' parameter to read beyond line 4300)\n</file>",
+    "metadata": {
+      "preview": "        \n        // Скидка на услугу (если есть)\n        if (serviceDiscount > 0) {\n          details.push({\n            service: `Скидка на ${service.name?.toLowerCase() || 'услугу'}`,\n            description: `${(service.basePrice || 0).toLocaleString()} - ${(service.price || 0).toLocaleString()}`,\n            price: -serviceDiscount\n          });\n        }\n      });\n      \n      // Итоговая строка с общими скидками\n      if (totalDiscount > 0) {\n        details.push({\n          service: '─────────────────────────',\n          description: '',\n          price: 0\n        });\n        details.push({\n          service: 'Базовая стоимость',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760452504426,
+      "end": 1760452504429
+    }
+  }
+}
