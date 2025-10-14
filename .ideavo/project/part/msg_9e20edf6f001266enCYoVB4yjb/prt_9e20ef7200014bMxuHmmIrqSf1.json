@@ -21,7 +21,8 @@
     "title": "cd /home/user/project && npm run dev > /dev/null 2>&1 & sleep 8 && curl -s -X POST http://localhost:3000/api/cdek -H \"Content-Type: application/json\" -d '{\"from_city\":\"Москва\",\"to_city\":\"Санкт-Петербург\",\"packages\":[{\"height\":100,\"length\":200,\"width\":100,\"weight\":100000}],\"tariff_code\":121,\"get_details\":true}' | python3 -m json.tool && pkill -f \"next dev\"",
     "time": {
       "start": 1760434258878,
-      "end": 1760434269596
+      "end": 1760434269596,
+      "compacted": 1760450580028
     }
   }
 }

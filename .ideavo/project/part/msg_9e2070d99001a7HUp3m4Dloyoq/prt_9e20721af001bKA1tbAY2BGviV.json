@@ -20,7 +20,8 @@
     "title": "cat > /home/user/project/test-cdek-modes.js << 'EOF'\nconst testCases = [\n  {\n    name: \"Склад Лавсит → Терминал получателя\",\n    fromLavsiteWarehouse: false,\n    fromAddressDelivery: false,\n    toAddressDelivery: false,\n    expected: \"склад-склад (4)\"\n  },\n  {\n    name: \"Склад Лавсит → Адрес получателя\",\n    fromLavsiteWarehouse: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: true,\n    expected: \"дверь-дверь (1)\"\n  },\n  {\n    name: \"От адреса → Терминал получателя\",\n    fromLavsiteWarehouse: false,\n    fromAddressDelivery: true,\n    toAddressDelivery: false,\n    expected: \"дверь-склад (2)\"\n  },\n  {\n    name: \"От адреса → Адрес получателя\",\n    fromLavsiteWarehouse: false,\n    fromAddressDelivery: true,\n    toAddressDelivery: true,\n    expected: \"дверь-дверь (1)\"\n  }\n];\n\ntestCases.forEach(test => {\n  const isFromDoor = test.fromAddressDelivery || test.fromLavsiteWarehouse;\n  const isToDoor = test.toAddressDelivery;\n  \n  let deliveryMode, deliveryModeText;\n  \n  if (isFromDoor && isToDoor) {\n    deliveryMode = 1;\n    deliveryModeText = 'дверь-дверь';\n  } else if (isFromDoor && !isToDoor) {\n    deliveryMode = 2;\n    deliveryModeText = 'дверь-склад';\n  } else if (!isFromDoor && isToDoor) {\n    deliveryMode = 3;\n    deliveryModeText = 'склад-дверь';\n  } else {\n    deliveryMode = 4;\n    deliveryModeText = 'склад-склад';\n  }\n  \n  const result = `${deliveryModeText} (${deliveryMode})`;\n  const status = result === test.expected ? '✅' : '❌';\n  \n  console.log(`${status} ${test.name}`);\n  console.log(`   Ожидалось: ${test.expected}`);\n  console.log(`   Получено:  ${result}`);\n  console.log();\n});\nEOF\nnode /home/user/project/test-cdek-modes.js\n",
     "time": {
       "start": 1760433750031,
-      "end": 1760433750079
+      "end": 1760433750079,
+      "compacted": 1760450580030
     }
   }
 }

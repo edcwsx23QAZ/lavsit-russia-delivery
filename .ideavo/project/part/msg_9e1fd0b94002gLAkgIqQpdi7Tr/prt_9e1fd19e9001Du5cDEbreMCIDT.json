@@ -21,7 +21,8 @@
     "title": "sleep 3 && curl -X POST http://localhost:3000/api/cdek -H \"Content-Type: application/json\" -d '{\"from_city\":\"Москва\",\"to_city\":\"Санкт-Петербург\",\"packages\":[{\"height\":10,\"length\":20,\"width\":10,\"weight\":1000}]}' 2>&1 | head -50",
     "time": {
       "start": 1760433087161,
-      "end": 1760433091972
+      "end": 1760433091972,
+      "compacted": 1760450580036
     }
   }
 }
