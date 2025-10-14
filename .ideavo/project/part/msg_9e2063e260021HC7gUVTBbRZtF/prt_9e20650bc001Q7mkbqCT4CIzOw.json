@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e20650bc001Q7mkbqCT4CIzOw",
+  "messageID": "msg_9e2063e260021HC7gUVTBbRZtF",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01YVSD5taHUT28Ku1crP2YXm",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3830,
+      "limit": 30
+    },
+    "output": "<file>\n03831|         price: calc.price\n03832|       });\n03833|       \n03834|       if (calc.details.period_min && calc.details.period_max) {\n03835|         details.push({\n03836|           service: 'Срок доставки',\n03837|           description: `${calc.details.period_min}-${calc.details.period_max} дней`,\n03838|           price: 0\n03839|         });\n03840|       }\n03841|       \n03842|       if (calc.details.all_tariffs && calc.details.all_tariffs.length > 1) {\n03843|         details.push({\n03844|           service: 'Доступные тарифы',\n03845|           description: `Найдено ${calc.details.all_tariffs.length} вариантов`,\n03846|           price: 0\n03847|         });\n03848|       }\n03849|     } else if (calc.company === 'Возовоз' && calc.details?.service) {\n03850|       // ✅ Детализация для Возовоз на основе API ответа\n03851|       const basePrice = calc.details.basePrice || 0;\n03852|       const finalPrice = calc.details.price || calc.price || 0;\n03853|       const totalDiscount = basePrice - finalPrice;\n03854|       \n03855|       // Показываем каждую услугу с базовой ценой и скидкой\n03856|       calc.details.service.forEach((service: any) => {\n03857|         const serviceDiscount = (service.basePrice || 0) - (service.price || 0);\n03858|         \n03859|         // Основная услуга\n03860|         details.push({\n\n(File has more lines. Use 'offset' parameter to read beyond line 3860)\n</file>",
+    "metadata": {
+      "preview": "        price: calc.price\n      });\n      \n      if (calc.details.period_min && calc.details.period_max) {\n        details.push({\n          service: 'Срок доставки',\n          description: `${calc.details.period_min}-${calc.details.period_max} дней`,\n          price: 0\n        });\n      }\n      \n      if (calc.details.all_tariffs && calc.details.all_tariffs.length > 1) {\n        details.push({\n          service: 'Доступные тарифы',\n          description: `Найдено ${calc.details.all_tariffs.length} вариантов`,\n          price: 0\n        });\n      }\n    } else if (calc.company === 'Возовоз' && calc.details?.service) {\n      // ✅ Детализация для Возовоз на основе API ответа"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760433689815,
+      "end": 1760433689818
+    }
+  }
+}

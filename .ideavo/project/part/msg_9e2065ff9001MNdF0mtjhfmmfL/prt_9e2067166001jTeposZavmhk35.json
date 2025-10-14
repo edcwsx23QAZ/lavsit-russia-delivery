@@ -1,0 +1,26 @@
+{
+  "id": "prt_9e2067166001jTeposZavmhk35",
+  "messageID": "msg_9e2065ff9001MNdF0mtjhfmmfL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "edit",
+  "callID": "toolu_01Rs2UYtmKcG8dpPsxjH3s2G",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "    } else if (calc.company === 'СДЭК' && calc.details) {\n      details.push({\n        service: 'Тариф',\n        description: calc.details.tariff_name || 'Не указан',\n        price: calc.price\n      });\n      \n      if (calc.details.period_min && calc.details.period_max) {\n        details.push({\n          service: 'Срок доставки',\n          description: `${calc.details.period_min}-${calc.details.period_max} дней`,\n          price: 0\n        });\n      }\n      \n      if (calc.details.all_tariffs && calc.details.all_tariffs.length > 1) {\n        details.push({\n          service: 'Доступные тарифы',\n          description: `Найдено ${calc.details.all_tariffs.length} вариантов`,\n          price: 0\n        });\n      }\n    } else if (calc.company === 'Возовоз' && calc.details?.service) {",
+      "newString": "    } else if (calc.company === 'СДЭК' && calc.details) {\n      details.push({\n        service: 'Тариф',\n        description: calc.details.tariff_name || 'Не указан',\n        price: calc.price\n      });\n      \n      if (calc.details.delivery_mode) {\n        details.push({\n          service: 'Режим доставки',\n          description: calc.details.delivery_mode,\n          price: 0\n        });\n      }\n      \n      if (calc.details.period_min && calc.details.period_max) {\n        details.push({\n          service: 'Срок доставки',\n          description: `${calc.details.period_min}-${calc.details.period_max} дней`,\n          price: 0\n        });\n      }\n      \n      if (calc.details.all_tariffs && calc.details.all_tariffs.length > 1) {\n        details.push({\n          service: 'Альтернативные варианты',\n          description: `Еще ${calc.details.all_tariffs.length - 1} тарифов доступно`,\n          price: 0\n        });\n      }\n    } else if (calc.company === 'Возовоз' && calc.details?.service) {"
+    },
+    "output": "",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3830,8 +3830,16 @@\n     description: calc.details.tariff_name || 'Не указан',\n     price: calc.price\n   });\n   \n+  if (calc.details.delivery_mode) {\n+    details.push({\n+      service: 'Режим доставки',\n+      description: calc.details.delivery_mode,\n+      price: 0\n+    });\n+  }\n+  \n   if (calc.details.period_min && calc.details.period_max) {\n     details.push({\n       service: 'Срок доставки',\n       description: `${calc.details.period_min}-${calc.details.period_max} дней`,\n@@ -3840,10 +3848,10 @@\n   }\n   \n   if (calc.details.all_tariffs && calc.details.all_tariffs.length > 1) {\n     details.push({\n-      service: 'Доступные тарифы',\n-      description: `Найдено ${calc.details.all_tariffs.length} вариантов`,\n+      service: 'Альтернативные варианты',\n+      description: `Еще ${calc.details.all_tariffs.length - 1} тарифов доступно`,\n       price: 0\n     });\n   }\n } else if (calc.company === 'Возовоз' && calc.details?.service) {\n"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760433702554,
+      "end": 1760433702574
+    }
+  }
+}

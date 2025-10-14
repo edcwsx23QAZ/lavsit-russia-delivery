@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e2057f12001N4kcO1Fw8mocd6",
+  "messageID": "msg_9e20567730019TxrFy9hbVnCL9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01SRo4ddR6QGHKBS7iGn2ZTt",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3378,
+      "limit": 80
+    },
+    "output": "<file>\n03379|             additionalServices: (data.data.total || 0) - (data.data.door || 0)\n03380|           },\n03381|           requestData,\n03382|           responseData: data,\n03383|           apiUrl: fullUrl\n03384|         };\n03385|       } else {\n03386|         return {\n03387|           company: 'Nord Wheel',\n03388|           price: 0,\n03389|           days: 0,\n03390|           error: 'Ошибка расчета Nord Wheel',\n03391|           requestData,\n03392|           responseData: data,\n03393|           apiUrl: fullUrl\n03394|         };\n03395|       }\n03396|     } catch (error: any) {\n03397|       return {\n03398|         company: 'Nord Wheel',\n03399|         price: 0,\n03400|         days: 0,\n03401|         error: `Ошибка соединения: ${error.message}`,\n03402|         apiUrl\n03403|       };\n03404|     }\n03405|   };\n03406| \n03407|   const calculateCdek = async (): Promise<CalculationResult> => {\n03408|     const apiUrl = '/api/cdek';\n03409|     \n03410|     try {\n03411|       validateMultipleCargos(form.cargos);\n03412|       \n03413|       const packages = form.cargos.map(cargo => ({\n03414|         height: cargo.height,\n03415|         length: cargo.length,\n03416|         width: cargo.width,\n03417|         weight: cargo.weight * 1000\n03418|       }));\n03419| \n03420|       const requestData = {\n03421|         from_city: form.fromCity || 'Москва',\n03422|         to_city: form.toCity || 'Санкт-Петербург',\n03423|         packages: packages\n03424|       };\n03425| \n03426|       console.log('📦 CDEK запрос:', JSON.stringify(requestData, null, 2));\n03427| \n03428|       const response = await fetch(apiUrl, {\n03429|         method: 'POST',\n03430|         headers: {\n03431|           'Content-Type': 'application/json',\n03432|         },\n03433|         body: JSON.stringify(requestData)\n03434|       });\n03435| \n03436|       const data = await response.json();\n03437|       console.log('📦 CDEK ответ:', JSON.stringify(data, null, 2));\n03438| \n03439|       if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {\n03440|         const bestTariff = data.tariff_codes.reduce((min: any, tariff: any) => \n03441|           (tariff.delivery_sum < min.delivery_sum) ? tariff : min\n03442|         );\n03443| \n03444|         return {\n03445|           company: 'СДЭК',\n03446|           price: Math.round(bestTariff.delivery_sum || 0),\n03447|           days: bestTariff.period_max || 0,\n03448|           details: {\n03449|             tariff_name: bestTariff.tariff_name || 'Не указан',\n03450|             tariff_code: bestTariff.tariff_code,\n03451|             period_min: bestTariff.period_min,\n03452|             period_max: bestTariff.period_max,\n03453|             calendar_min: bestTariff.calendar_min,\n03454|             calendar_max: bestTariff.calendar_max,\n03455|             all_tariffs: data.tariff_codes\n03456|           },\n03457|           requestData,\n03458|           responseData: data,\n\n(File has more lines. Use 'offset' parameter to read beyond line 3458)\n</file>",
+    "metadata": {
+      "preview": "            additionalServices: (data.data.total || 0) - (data.data.door || 0)\n          },\n          requestData,\n          responseData: data,\n          apiUrl: fullUrl\n        };\n      } else {\n        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: 'Ошибка расчета Nord Wheel',\n          requestData,\n          responseData: data,\n          apiUrl: fullUrl\n        };\n      }\n    } catch (error: any) {\n      return {\n        company: 'Nord Wheel',"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760433639313,
+      "end": 1760433639320
+    }
+  }
+}

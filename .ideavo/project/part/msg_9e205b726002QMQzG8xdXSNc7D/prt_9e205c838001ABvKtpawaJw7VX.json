@@ -1,0 +1,11 @@
+{
+  "id": "prt_9e205c838001ABvKtpawaJw7VX",
+  "messageID": "msg_9e205b726002QMQzG8xdXSNc7D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "text",
+  "text": "Отлично! Теперь я понимаю логику:\n- `fromAddressDelivery: true` - забор от адреса (дверь)\n- `fromTerminal: true` - забор с терминала (склад)\n- `toAddressDelivery: true` - доставка до адреса (дверь)\n- `toTerminal: true` - доставка до терминала (склад)\n\nТеперь обновлю функцию calculateCdek с правильной логикой выбора тарифов:",
+  "time": {
+    "start": 1760433655546,
+    "end": 1760433655546
+  }
+}

@@ -3424,6 +3424,11 @@ export default function Home() {
       };
 
       console.log('📦 CDEK запрос:', JSON.stringify(requestData, null, 2));
+      console.log('📦 CDEK маршрут:', {
+        fromAddressDelivery: form.fromAddressDelivery,
+        fromLavsiteWarehouse: form.fromLavsiteWarehouse,
+        toAddressDelivery: form.toAddressDelivery
+      });
 
       const response = await fetch(apiUrl, {
         method: 'POST',
@@ -3434,12 +3439,52 @@ export default function Home() {
       });
 
       const data = await response.json();
-      console.log('📦 CDEK ответ:', JSON.stringify(data, null, 2));
+      console.log('📦 CDEK ответ получен, тарифов:', data.tariff_codes?.length || 0);
 
       if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {
-        const bestTariff = data.tariff_codes.reduce((min: any, tariff: any) => 
+        const isFromDoor = form.fromAddressDelivery || form.fromLavsiteWarehouse;
+        const isToDoor = form.toAddressDelivery;
+        
+        let deliveryMode: number;
+        let deliveryModeText: string;
+        
+        if (isFromDoor && isToDoor) {
+          deliveryMode = 1;
+          deliveryModeText = 'дверь-дверь';
+        } else if (isFromDoor && !isToDoor) {
+          deliveryMode = 2;
+          deliveryModeText = 'дверь-склад';
+        } else if (!isFromDoor && isToDoor) {
+          deliveryMode = 3;
+          deliveryModeText = 'склад-дверь';
+        } else {
+          deliveryMode = 4;
+          deliveryModeText = 'склад-склад';
+        }
+
+        console.log(`📦 CDEK выбран режим доставки: ${deliveryMode} (${deliveryModeText})`);
+
+        const filteredTariffs = data.tariff_codes.filter((t: any) => t.delivery_mode === deliveryMode);
+        
+        console.log(`📦 CDEK отфильтровано тарифов для режима ${deliveryModeText}:`, filteredTariffs.length);
+
+        if (filteredTariffs.length === 0) {
+          return {
+            company: 'СДЭК',
+            price: 0,
+            days: 0,
+            error: `Нет доступных тарифов для маршрута ${deliveryModeText}`,
+            requestData,
+            responseData: data,
+            apiUrl
+          };
+        }
+
+        const bestTariff = filteredTariffs.reduce((min: any, tariff: any) => 
           (tariff.delivery_sum < min.delivery_sum) ? tariff : min
         );
+
+        console.log(`📦 CDEK лучший тариф: ${bestTariff.tariff_name} - ${bestTariff.delivery_sum}₽`);
 
         return {
           company: 'СДЭК',
@@ -3448,11 +3493,12 @@ export default function Home() {
           details: {
             tariff_name: bestTariff.tariff_name || 'Не указан',
             tariff_code: bestTariff.tariff_code,
+            delivery_mode: deliveryModeText,
             period_min: bestTariff.period_min,
             period_max: bestTariff.period_max,
             calendar_min: bestTariff.calendar_min,
             calendar_max: bestTariff.calendar_max,
-            all_tariffs: data.tariff_codes
+            all_tariffs: filteredTariffs
           },
           requestData,
           responseData: data,
@@ -3785,6 +3831,14 @@ export default function Home() {
         price: calc.price
       });
       
+      if (calc.details.delivery_mode) {
+        details.push({
+          service: 'Режим доставки',
+          description: calc.details.delivery_mode,
+          price: 0
+        });
+      }
+      
       if (calc.details.period_min && calc.details.period_max) {
         details.push({
           service: 'Срок доставки',
@@ -3795,8 +3849,8 @@ export default function Home() {
       
       if (calc.details.all_tariffs && calc.details.all_tariffs.length > 1) {
         details.push({
-          service: 'Доступные тарифы',
-          description: `Найдено ${calc.details.all_tariffs.length} вариантов`,
+          service: 'Альтернативные варианты',
+          description: `Еще ${calc.details.all_tariffs.length - 1} тарифов доступно`,
           price: 0
         });
       }

@@ -1,0 +1,25 @@
+{
+  "id": "prt_9e20633e5001WMB4tlZatuAMma",
+  "messageID": "msg_9e20620b8002Madvoa9UtE2UrI",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "type": "tool",
+  "tool": "read",
+  "callID": "toolu_01WsxVpLDW5e79ZmcxwbdFw4",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3870,
+      "limit": 30
+    },
+    "output": "<file>\n03871|             price: -serviceDiscount\n03872|           });\n03873|         }\n03874|       });\n03875|       \n03876|       // Итоговая строка с общими скидками\n03877|       if (totalDiscount > 0) {\n03878|         details.push({\n03879|           service: '─────────────────────────',\n03880|           description: '',\n03881|           price: 0\n03882|         });\n03883|         details.push({\n03884|           service: 'Базовая стоимость',\n03885|           description: 'До применения скидок',\n03886|           price: basePrice\n03887|         });\n03888|         details.push({\n03889|           service: 'Общие скидки',\n03890|           description: `Экономия ${totalDiscount.toLocaleString()} ₽`,\n03891|           price: -totalDiscount\n03892|         });\n03893|         details.push({\n03894|           service: 'ИТОГО',\n03895|           description: 'К оплате',\n03896|           price: finalPrice\n03897|         });\n03898|       }\n03899|     } else {\n03900|       // Для других ТК - базовая информация\n\n(File has more lines. Use 'offset' parameter to read beyond line 3900)\n</file>",
+    "metadata": {
+      "preview": "            price: -serviceDiscount\n          });\n        }\n      });\n      \n      // Итоговая строка с общими скидками\n      if (totalDiscount > 0) {\n        details.push({\n          service: '─────────────────────────',\n          description: '',\n          price: 0\n        });\n        details.push({\n          service: 'Базовая стоимость',\n          description: 'До применения скидок',\n          price: basePrice\n        });\n        details.push({\n          service: 'Общие скидки',\n          description: `Экономия ${totalDiscount.toLocaleString()} ₽`,"
+    },
+    "title": "app/page.tsx",
+    "time": {
+      "start": 1760433681919,
+      "end": 1760433681923
+    }
+  }
+}
