@@ -1,0 +1,25 @@
+{
+  "id": "prt_a3548e0d60013tGQy0rRROzjtW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a3548ce24001iUE3bDId0uF4BB",
+  "type": "tool",
+  "callID": "toolu_01AF8fgckuindcV3jKgqEbJ8",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "components/diagnostic/SentryMonitor.tsx",
+      "offset": 1,
+      "limit": 30
+    },
+    "output": "<file>\n00002| \n00003| import React, { useState, useEffect, useCallback } from 'react';\n00004| import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Badge } from '@/components/ui/badge';\n00007| import { ScrollArea } from '@/components/ui/scroll-area';\n00008| import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';\n00009| import {\n00010|   AlertTriangle,\n00011|   CheckCircle,\n00012|   XCircle,\n00013|   Activity,\n00014|   Bug,\n00015|   Zap,\n00016|   RefreshCw,\n00017|   Settings,\n00018|   Eye\n00019| } from 'lucide-react';\n00020| import * as Sentry from '@sentry/nextjs';\n00021| \n00022| interface ErrorEvent {\n00023|   id: string;\n00024|   timestamp: string;\n00025|   message: string;\n00026|   level: 'error' | 'warning' | 'info';\n00027|   stack?: string;\n00028|   url?: string;\n00029|   userAgent?: string;\n00030| }\n00031| \n\n(File has more lines. Use 'offset' parameter to read beyond line 31)\n</file>",
+    "title": "components/diagnostic/SentryMonitor.tsx",
+    "metadata": {
+      "preview": "\nimport React, { useState, useEffect, useCallback } from 'react';\nimport { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Badge } from '@/components/ui/badge';\nimport { ScrollArea } from '@/components/ui/scroll-area';\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';\nimport {\n  AlertTriangle,\n  CheckCircle,\n  XCircle,\n  Activity,\n  Bug,\n  Zap,\n  RefreshCw,\n  Settings,\n  Eye\n} from 'lucide-react';\nimport * as Sentry from '@sentry/nextjs';\n"
+    },
+    "time": {
+      "start": 1761830560492,
+      "end": 1761830560494
+    }
+  }
+}

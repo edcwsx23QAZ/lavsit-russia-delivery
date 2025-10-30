@@ -1,0 +1,26 @@
+{
+  "id": "prt_a3549f590001Pd1ZA9U7ujNDvA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a3549e60f001qTPjbRu7AozoGf",
+  "type": "tool",
+  "callID": "toolu_015KBCJwNF24yqFacd9mpRzh",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "sentry",
+      "path": ".",
+      "include": "*.ts"
+    },
+    "output": "Found 2 matches\n./instrumentation.ts:\n  Line 4:   //   await import('./sentry.server.config');\n  Line 8:   //   await import('./sentry.server.config');",
+    "title": "sentry",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "time": {
+      "start": 1761830631266,
+      "end": 1761830631278
+    }
+  }
+}

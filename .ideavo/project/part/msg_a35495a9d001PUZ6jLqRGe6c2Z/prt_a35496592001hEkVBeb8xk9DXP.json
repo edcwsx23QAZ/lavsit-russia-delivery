@@ -1,0 +1,23 @@
+{
+  "id": "prt_a35496592001hEkVBeb8xk9DXP",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a35495a9d001PUZ6jLqRGe6c2Z",
+  "type": "tool",
+  "callID": "toolu_01QRZZJrSfkTV3ZLePjU1fPd",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "sentry.client.config.js"
+    },
+    "output": "<file>\n00001| import * as Sentry from '@sentry/nextjs';\n00002| \n00003| Sentry.init({\n00004|   dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,\n00005| \n00006|   // Adjust this value in production, or use tracesSampler for greater control\n00007|   tracesSampleRate: 1,\n00008| \n00009|   // Setting this option to true will print useful information to the console while you're setting up Sentry.\n00010|   debug: false,\n00011| \n00012|   replaysOnErrorSampleRate: 1.0,\n00013| \n00014|   // This sets the sample rate to be 10%. You may want this to be 100% while\n00015|   // in development and sample at a lower rate in production\n00016|   replaysSessionSampleRate: 0.1,\n00017| \n00018|   // You can remove this option if you're not planning to use the Sentry Session Replay feature:\n00019|   integrations: [\n00020|     Sentry.replayIntegration({\n00021|       // Additional Replay configuration goes in here, for example:\n00022|       maskAllText: true,\n00023|       blockAllMedia: true,\n00024|     }),\n00025|     Sentry.browserTracingIntegration(),\n00026|   ],\n00027| });\n</file>",
+    "title": "sentry.client.config.js",
+    "metadata": {
+      "preview": "import * as Sentry from '@sentry/nextjs';\n\nSentry.init({\n  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,\n\n  // Adjust this value in production, or use tracesSampler for greater control\n  tracesSampleRate: 1,\n\n  // Setting this option to true will print useful information to the console while you're setting up Sentry.\n  debug: false,\n\n  replaysOnErrorSampleRate: 1.0,\n\n  // This sets the sample rate to be 10%. You may want this to be 100% while\n  // in development and sample at a lower rate in production\n  replaysSessionSampleRate: 0.1,\n\n  // You can remove this option if you're not planning to use the Sentry Session Replay feature:\n  integrations: [\n    Sentry.replayIntegration({"
+    },
+    "time": {
+      "start": 1761830594158,
+      "end": 1761830594161
+    }
+  }
+}

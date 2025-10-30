@@ -1,0 +1,42 @@
+{
+  "id": "prt_a354943920017DpA5ua69x3m2t",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a3549380f001VQ1iGSnxRsoeEL",
+  "type": "tool",
+  "callID": "toolu_01VZwGrapRkR2dt9Lvcxa6oX",
+  "tool": "multiedit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "components/diagnostic/SentryMonitor.tsx",
+      "edits": [
+        {
+          "oldString": "  const triggerTestError = useCallback(() => {\n    try {\n      // Trigger a test error\n      throw new Error('Test error from Sentry Monitor - this is intentional for testing');\n    } catch (error) {\n      Sentry.captureException(error);\n      console.log('Test error sent to Sentry');\n    }\n  }, []);",
+          "newString": "  const triggerTestError = useCallback(() => {\n    try {\n      // Trigger a test error\n      throw new Error('Test error from Sentry Monitor - this is intentional for testing');\n    } catch (error) {\n      // Sentry.captureException(error);\n      console.log('Test error - Sentry not configured');\n    }\n  }, []);"
+        },
+        {
+          "oldString": "  const triggerTestWarning = useCallback(() => {\n    // Send a test warning\n    Sentry.captureMessage('Test warning from Sentry Monitor - this is intentional for testing', 'warning');\n    console.log('Test warning sent to Sentry');\n  }, []);",
+          "newString": "  const triggerTestWarning = useCallback(() => {\n    // Send a test warning\n    // Sentry.captureMessage('Test warning from Sentry Monitor - this is intentional for testing', 'warning');\n    console.log('Test warning - Sentry not configured');\n  }, []);"
+        }
+      ]
+    },
+    "output": "",
+    "title": "components/diagnostic/SentryMonitor.tsx",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/diagnostic/SentryMonitor.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/SentryMonitor.tsx\n+++ /home/user/project/components/diagnostic/SentryMonitor.tsx\n@@ -89,10 +89,10 @@\n   try {\n     // Trigger a test error\n     throw new Error('Test error from Sentry Monitor - this is intentional for testing');\n   } catch (error) {\n-    Sentry.captureException(error);\n-    console.log('Test error sent to Sentry');\n+    // Sentry.captureException(error);\n+    console.log('Test error - Sentry not configured');\n   }\n }, []);\n \n const triggerTestWarning = useCallback(() => {\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/components/diagnostic/SentryMonitor.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/SentryMonitor.tsx\n+++ /home/user/project/components/diagnostic/SentryMonitor.tsx\n@@ -96,10 +96,10 @@\n }, []);\n \n const triggerTestWarning = useCallback(() => {\n   // Send a test warning\n-  Sentry.captureMessage('Test warning from Sentry Monitor - this is intentional for testing', 'warning');\n-  console.log('Test warning sent to Sentry');\n+  // Sentry.captureMessage('Test warning from Sentry Monitor - this is intentional for testing', 'warning');\n+  console.log('Test warning - Sentry not configured');\n }, []);\n \n const triggerPerformanceCapture = useCallback(() => {\n   setIsCapturing(true);\n"
+        }
+      ]
+    },
+    "time": {
+      "start": 1761830588601,
+      "end": 1761830588612
+    }
+  }
+}

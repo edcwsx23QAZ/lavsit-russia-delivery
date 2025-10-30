@@ -17,7 +17,7 @@ import {
   Settings,
   Eye
 } from 'lucide-react';
-import * as Sentry from '@sentry/nextjs';
+// import * as Sentry from '@sentry/nextjs';
 
 interface ErrorEvent {
   id: string;
@@ -90,15 +90,15 @@ export default function SentryMonitor({ className }: SentryMonitorProps) {
       // Trigger a test error
       throw new Error('Test error from Sentry Monitor - this is intentional for testing');
     } catch (error) {
-      Sentry.captureException(error);
-      console.log('Test error sent to Sentry');
+      // Sentry.captureException(error);
+      console.log('Test error - Sentry not configured');
     }
   }, []);
 
   const triggerTestWarning = useCallback(() => {
     // Send a test warning
-    Sentry.captureMessage('Test warning from Sentry Monitor - this is intentional for testing', 'warning');
-    console.log('Test warning sent to Sentry');
+    // Sentry.captureMessage('Test warning from Sentry Monitor - this is intentional for testing', 'warning');
+    console.log('Test warning - Sentry not configured');
   }, []);
 
   const triggerPerformanceCapture = useCallback(() => {

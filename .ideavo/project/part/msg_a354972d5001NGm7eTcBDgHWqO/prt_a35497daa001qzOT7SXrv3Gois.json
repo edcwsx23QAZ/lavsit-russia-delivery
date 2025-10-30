@@ -1,0 +1,23 @@
+{
+  "id": "prt_a35497daa001qzOT7SXrv3Gois",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a354972d5001NGm7eTcBDgHWqO",
+  "type": "tool",
+  "callID": "toolu_019Y1ZiBqYeotZm1ofCTPauK",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "sentry.server.config.js"
+    },
+    "output": "<file>\n00001| import * as Sentry from '@sentry/nextjs';\n00002| \n00003| Sentry.init({\n00004|   dsn: process.env.SENTRY_DSN,\n00005| \n00006|   // Adjust this value in production, or use tracesSampler for greater control\n00007|   tracesSampleRate: 1,\n00008| \n00009|   // Setting this option to true will print useful information to the console while you're setting up Sentry.\n00010|   debug: false,\n00011| \n00012|   // Uncomment the line below to enable Spotlight (https://spotlightjs.com)\n00013|   // spotlight: process.env.NODE_ENV === 'development',\n00014| });\n</file>",
+    "title": "sentry.server.config.js",
+    "metadata": {
+      "preview": "import * as Sentry from '@sentry/nextjs';\n\nSentry.init({\n  dsn: process.env.SENTRY_DSN,\n\n  // Adjust this value in production, or use tracesSampler for greater control\n  tracesSampleRate: 1,\n\n  // Setting this option to true will print useful information to the console while you're setting up Sentry.\n  debug: false,\n\n  // Uncomment the line below to enable Spotlight (https://spotlightjs.com)\n  // spotlight: process.env.NODE_ENV === 'development',\n});"
+    },
+    "time": {
+      "start": 1761830600302,
+      "end": 1761830600305
+    }
+  }
+}

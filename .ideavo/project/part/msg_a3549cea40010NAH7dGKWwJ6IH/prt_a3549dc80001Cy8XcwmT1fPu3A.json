@@ -1,0 +1,26 @@
+{
+  "id": "prt_a3549dc80001Cy8XcwmT1fPu3A",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a3549cea40010NAH7dGKWwJ6IH",
+  "type": "tool",
+  "callID": "toolu_014U9kefoyNf3bBJMnR1fz9p",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "sentry",
+      "path": ".",
+      "include": "*.tsx"
+    },
+    "output": "Found 1 matches\n./components/diagnostic/SentryMonitor.tsx:\n  Line 20: // import * as Sentry from '@sentry/nextjs';",
+    "title": "sentry",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1761830624596,
+      "end": 1761830624606
+    }
+  }
+}

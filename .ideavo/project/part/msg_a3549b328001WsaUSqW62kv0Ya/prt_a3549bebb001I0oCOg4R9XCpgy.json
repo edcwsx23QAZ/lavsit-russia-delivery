@@ -1,0 +1,26 @@
+{
+  "id": "prt_a3549bebb001I0oCOg4R9XCpgy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a3549b328001WsaUSqW62kv0Ya",
+  "type": "tool",
+  "callID": "toolu_01HoR3Yh9No2dE966jM4HbgF",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "instrumentation.ts",
+      "oldString": "export async function register() {\n  if (process.env.NEXT_RUNTIME === 'nodejs') {\n    await import('./sentry.server.config');\n  }\n\n  if (process.env.NEXT_RUNTIME === 'edge') {\n    await import('./sentry.server.config');\n  }\n}",
+      "newString": "export async function register() {\n  // Sentry configuration disabled\n  // if (process.env.NEXT_RUNTIME === 'nodejs') {\n  //   await import('./sentry.server.config');\n  // }\n\n  // if (process.env.NEXT_RUNTIME === 'edge') {\n  //   await import('./sentry.server.config');\n  // }\n}"
+    },
+    "output": "",
+    "title": "instrumentation.ts",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/instrumentation.ts\n===================================================================\n--- /home/user/project/instrumentation.ts\n+++ /home/user/project/instrumentation.ts\n@@ -1,9 +1,10 @@\n export async function register() {\n-  if (process.env.NEXT_RUNTIME === 'nodejs') {\n-    await import('./sentry.server.config');\n-  }\n+  // Sentry configuration disabled\n+  // if (process.env.NEXT_RUNTIME === 'nodejs') {\n+  //   await import('./sentry.server.config');\n+  // }\n \n-  if (process.env.NEXT_RUNTIME === 'edge') {\n-    await import('./sentry.server.config');\n-  }\n+  // if (process.env.NEXT_RUNTIME === 'edge') {\n+  //   await import('./sentry.server.config');\n+  // }\n }\n\\ No newline at end of file\n"
+    },
+    "time": {
+      "start": 1761830618406,
+      "end": 1761830618414
+    }
+  }
+}

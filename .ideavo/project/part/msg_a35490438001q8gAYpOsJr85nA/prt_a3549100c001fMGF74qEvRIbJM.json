@@ -1,0 +1,26 @@
+{
+  "id": "prt_a3549100c001fMGF74qEvRIbJM",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a35490438001q8gAYpOsJr85nA",
+  "type": "tool",
+  "callID": "toolu_01NkUMV3UFtY6oHuZqwNPbbN",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "components/diagnostic/SentryMonitor.tsx",
+      "oldString": "import * as Sentry from '@sentry/nextjs';",
+      "newString": "// import * as Sentry from '@sentry/nextjs';"
+    },
+    "output": "",
+    "title": "components/diagnostic/SentryMonitor.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/diagnostic/SentryMonitor.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/SentryMonitor.tsx\n+++ /home/user/project/components/diagnostic/SentryMonitor.tsx\n@@ -16,9 +16,9 @@\n   RefreshCw,\n   Settings,\n   Eye\n } from 'lucide-react';\n-import * as Sentry from '@sentry/nextjs';\n+// import * as Sentry from '@sentry/nextjs';\n \n interface ErrorEvent {\n   id: string;\n   timestamp: string;\n"
+    },
+    "time": {
+      "start": 1761830573003,
+      "end": 1761830573015
+    }
+  }
+}
