@@ -1,0 +1,26 @@
+{
+  "id": "prt_a6d3749b4001UlvdDEVOE33Eio",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a6d373bf7002OcNqIj0ZQl22xP",
+  "type": "tool",
+  "callID": "toolu_01YMXyjn3oZQPsqnwMpd118G",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": ".",
+      "pattern": "VOZOVOZ|vozovoz",
+      "include": "*.ts"
+    },
+    "output": "Found 6 matches\n./app/api/external/route.ts:\n  Line 8:   'vozovoz',\n  Line 267:     vozovoz: '/api/vozovoz',\n  Line 303:     case 'vozovoz':\n\n./app/api/vozovoz/route.ts:\n  Line 5: const VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n  Line 8:   const endTiming = PerformanceMonitor.startMeasurement('vozovoz_api_total');\n  Line 23:     const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;",
+    "title": "VOZOVOZ|vozovoz",
+    "metadata": {
+      "matches": 6,
+      "truncated": false
+    },
+    "time": {
+      "start": 1762768932055,
+      "end": 1762768932068
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_a6d3798be001KfRbj1dweOc5DO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a6d377d91002ycjZjG5u2sP0RH",
+  "type": "tool",
+  "callID": "toolu_01CjAVPboSHGCYNuh3iGFKdW",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "include": "*.ts",
+      "path": "app/api",
+      "pattern": "TOKEN|API_KEY|CLIENT_ID|CLIENT_SECRET"
+    },
+    "output": "Found 26 matches\napp/api/kit/route.ts:\n  Line 5: const KIT_TOKEN = process.env.KIT_API_TOKEN || '';\n  Line 15:           'Authorization': `Bearer ${KIT_TOKEN}`\n  Line 93:           'Authorization': `Bearer ${KIT_TOKEN}`\n\napp/api/cdek/route.ts:\n  Line 4: const CDEK_CLIENT_ID = '3J5AvQWReEdW1o01PApvw6jHsnkNpqT1';\n  Line 5: const CDEK_CLIENT_SECRET = 'T8iMvgShV0p9OfJiysSBpCCWcXtOO0Hy';\n  Line 16:   const credentials = Buffer.from(`${CDEK_CLIENT_ID}:${CDEK_CLIENT_SECRET}`).toString('base64');\n  Line 23:     body: `grant_type=client_credentials&client_id=${CDEK_CLIENT_ID}&client_secret=${CDEK_CLIENT_SECRET}`\n\napp/api/dadata/route.ts:\n  Line 3: const DADATA_API_KEY = 'eb87bbb3789bb43ed465f796892ea951f9e91008';\n  Line 25:       'Authorization': `Token ${DADATA_API_KEY}`,\n  Line 173:         'Authorization': `Token ${DADATA_API_KEY}`,\n\napp/api/vozovoz/route.ts:\n  Line 5: const VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';\n  Line 23:     const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;\n\napp/api/pek/route.ts:\n  Line 21:     const PEK_API_KEY = process.env.PEK_API_KEY || '624FC93CA677B23673BB476D4982294DC27E246F';\n  Line 25:     if (method !== 'test' && (!process.env.PEK_LOGIN || !process.env.PEK_API_KEY)) {\n  Line 26:       console.warn('⚠️ Не настроены переменные окружения PEK_LOGIN и PEK_API_KEY');\n  Line 31:         details: 'Необходимо настроить PEK_LOGIN и PEK_API_KEY в переменных окружения',\n  Line 33:         requiredVars: ['PEK_LOGIN', 'PEK_API_KEY'],\n  Line 36:           hasKey: !!process.env.PEK_API_KEY,\n  Line 178:     const credentials = Buffer.from(`${PEK_LOGIN}:${PEK_API_KEY}`).toString('base64');\n\napp/api/pek-simple/route.ts:\n  Line 18:           hasKey: !!process.env.PEK_API_KEY,\n  Line 25:     const PEK_API_KEY = process.env.PEK_API_KEY;\n  Line 28:     if (!PEK_LOGIN || !PEK_API_KEY) {\n  Line 32:         hasKey: !!PEK_API_KEY\n  Line 38:       const credentials = Buffer.from(`${PEK_LOGIN}:${PEK_API_KEY}`).toString('base64');\n\napp/api/pek-get/route.ts:\n  Line 11:     const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';\n  Line 32:             'Authorization': `Bearer ${PEK_TOKEN}`,",
+    "title": "TOKEN|API_KEY|CLIENT_ID|CLIENT_SECRET",
+    "metadata": {
+      "matches": 26,
+      "truncated": false
+    },
+    "time": {
+      "start": 1762768952611,
+      "end": 1762768952629
+    }
+  }
+}

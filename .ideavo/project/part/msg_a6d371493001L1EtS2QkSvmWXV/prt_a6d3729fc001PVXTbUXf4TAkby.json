@@ -1,0 +1,25 @@
+{
+  "id": "prt_a6d3729fc001PVXTbUXf4TAkby",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a6d371493001L1EtS2QkSvmWXV",
+  "type": "tool",
+  "callID": "toolu_01F5QjjvHnTQGd4oDBXcr7UP",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp",
+      "path": "."
+    },
+    "output": "Found 3 matches\n./ideavo-server.info:\n  Line 53: 🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp\n  Line 275: 🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp\n\n./app/api/vozovoz/route.ts:\n  Line 5: const VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';",
+    "title": "efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp",
+    "metadata": {
+      "matches": 3,
+      "truncated": false
+    },
+    "time": {
+      "start": 1762768925151,
+      "end": 1762768925165
+    }
+  }
+}
