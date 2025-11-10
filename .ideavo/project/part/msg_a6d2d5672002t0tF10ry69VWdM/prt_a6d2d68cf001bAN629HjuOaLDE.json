@@ -1,0 +1,26 @@
+{
+  "id": "prt_a6d2d68cf001bAN629HjuOaLDE",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a6d2d5672002t0tF10ry69VWdM",
+  "type": "tool",
+  "callID": "toolu_01UFcymTGg8P6qLJjkyMRxug",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "calculatePEK|calculateVozovoz|calculateRailContinent|calculateCdek|calculateKit|calculateNordWheel",
+      "path": "app",
+      "include": "*.tsx"
+    },
+    "output": "Found 12 matches\napp/page.tsx:\n  Line 2368:   const calculatePEK = async (): Promise<CalculationResult> => {\n  Line 2956:   const calculateRailContinent = async (): Promise<CalculationResult> => {\n  Line 3187:   const calculateVozovoz = async (): Promise<CalculationResult> => {\n  Line 3407:   const calculateNordWheel = async (): Promise<CalculationResult> => {\n  Line 3535:   const calculateCdek = async (): Promise<CalculationResult> => {\n  Line 3720:   const calculateKit = async (): Promise<CalculationResult> => {\n  Line 3849:         calculationFunctions.push(calculatePEK());\n  Line 3852:         calculationFunctions.push(calculateNordWheel());\n  Line 3855:         calculationFunctions.push(calculateRailContinent());\n  Line 3858:         calculationFunctions.push(calculateVozovoz());\n  Line 3861:         calculationFunctions.push(calculateCdek());\n  Line 3864:         calculationFunctions.push(calculateKit());",
+    "title": "calculatePEK|calculateVozovoz|calculateRailContinent|calculateCdek|calculateKit|calculateNordWheel",
+    "metadata": {
+      "matches": 12,
+      "truncated": false
+    },
+    "time": {
+      "start": 1762768285934,
+      "end": 1762768285945
+    }
+  }
+}

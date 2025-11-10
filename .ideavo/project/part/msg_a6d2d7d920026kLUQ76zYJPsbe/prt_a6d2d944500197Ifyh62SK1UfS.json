@@ -1,0 +1,25 @@
+{
+  "id": "prt_a6d2d944500197Ifyh62SK1UfS",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a6d2d7d920026kLUQ76zYJPsbe",
+  "type": "tool",
+  "callID": "toolu_019C6b7acGJFBZHY6rMTCDXT",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 100,
+      "offset": 3710
+    },
+    "output": "<file>\n03711|         company: 'СДЭК',\n03712|         price: 0,\n03713|         days: 0,\n03714|         error: `Ошибка соединения: ${error.message}`,\n03715|         apiUrl\n03716|       };\n03717|     }\n03718|   };\n03719| \n03720|   const calculateKit = async (): Promise<CalculationResult> => {\n03721|     const apiUrl = '/api/kit';\n03722|     \n03723|     try {\n03724|       validateMultipleCargos(form.cargos);\n03725|       \n03726|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n03727| \n03728|       const requestData = {\n03729|         from_city: form.fromCity || 'Москва',\n03730|         to_city: form.toCity || 'Санкт-Петербург',\n03731|         declared_price: form.declaredValue || 10000,\n03732|         service: ['S089']\n03733|       };\n03734| \n03735|       console.log('🚛 КИТ запрос:', JSON.stringify(requestData, null, 2));\n03736| \n03737|        const result = await enhancedApiRequest(\n03738|          apiUrl,\n03739|          {\n03740|            method: 'POST',\n03741|            headers: {\n03742|              'Content-Type': 'application/json',\n03743|            },\n03744|            body: JSON.stringify(requestData)\n03745|          },\n03746|          { operation: 'calculate', company: 'КИТ' }\n03747|        );\n03748| \n03749|        if (result && typeof result === 'object' && 'success' in result && !result.success) {\n03750|          console.error('❌ КИТ API ошибка:', result.error);\n03751|          return {\n03752|            company: 'КИТ',\n03753|            price: 0,\n03754|            days: 0,\n03755|            error: result.error.userMessage || result.error.message,\n03756|            requestData,\n03757|            responseData: null,\n03758|            apiUrl\n03759|          };\n03760|        }\n03761| \n03762|        const response = result as Response;\n03763|        const data = await response.json();\n03764|        console.log('🚛 КИТ ответ:', data);\n03765| \n03766|       if (response.ok && Array.isArray(data) && data.length > 0) {\n03767|         const rubData = data.find((item: any) => {\n03768|           const tariffData: any = Object.values(item)[0];\n03769|           return tariffData?.currency_code === 'RUB';\n03770|         });\n03771|         \n03772|         if (rubData) {\n03773|           const tariffKey = Object.keys(rubData)[0];\n03774|           const tariffData: any = rubData[tariffKey];\n03775|           \n03776|           console.log('🚛 КИТ выбран тариф:', tariffKey, tariffData);\n03777| \n03778|           return {\n03779|             company: 'КИТ',\n03780|             price: Math.round(tariffData.cost || 0),\n03781|             days: tariffData.time || 0,\n03782|             details: {\n03783|               tariff_name: tariffData.name || 'Не указан',\n03784|               tariff_type: tariffKey,\n03785|               services: tariffData.detail || [],\n03786|               currency: tariffData.currency_code\n03787|             },\n03788|             requestData,\n03789|             responseData: data,\n03790|             apiUrl\n03791|           };\n03792|         }\n03793|       }\n03794| \n03795|       return {\n03796|         company: 'КИТ',\n03797|         price: 0,\n03798|         days: 0,\n03799|         error: data.error || 'Ошибка расчета КИТ',\n03800|         requestData,\n03801|         responseData: data,\n03802|         apiUrl\n03803|       };\n03804|     } catch (error: any) {\n03805|       console.error('🚛 КИТ ошибка:', error);\n03806|       return {\n03807|         company: 'КИТ',\n03808|         price: 0,\n03809|         days: 0,\n03810|         error: `Ошибка соединения: ${error.message}`,\n\n(File has more lines. Use 'offset' parameter to read beyond line 3810)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        company: 'СДЭК',\n        price: 0,\n        days: 0,\n        error: `Ошибка соединения: ${error.message}`,\n        apiUrl\n      };\n    }\n  };\n\n  const calculateKit = async (): Promise<CalculationResult> => {\n    const apiUrl = '/api/kit';\n    \n    try {\n      validateMultipleCargos(form.cargos);\n      \n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n\n      const requestData = {\n        from_city: form.fromCity || 'Москва',\n        to_city: form.toCity || 'Санкт-Петербург',"
+    },
+    "time": {
+      "start": 1762768295314,
+      "end": 1762768295317
+    }
+  }
+}
