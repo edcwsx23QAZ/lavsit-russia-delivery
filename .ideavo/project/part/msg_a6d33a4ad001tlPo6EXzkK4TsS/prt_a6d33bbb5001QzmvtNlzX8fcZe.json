@@ -1,0 +1,22 @@
+{
+  "id": "prt_a6d33bbb5001QzmvtNlzX8fcZe",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a6d33a4ad001tlPo6EXzkK4TsS",
+  "type": "tool",
+  "callID": "toolu_01Nk5LMB59TJPwwn3yQZEVus",
+  "tool": "invalid",
+  "state": {
+    "status": "completed",
+    "input": {
+      "tool": "bash",
+      "error": "Model tried to call unavailable tool 'bash'. Available tools: invalid, multiedit, webfetch, glob, grep, list, read, todowrite, todoread, task, setupdatabase, asksecrets, docs."
+    },
+    "output": "The arguments provided to the tool are invalid: Model tried to call unavailable tool 'bash'. Available tools: invalid, multiedit, webfetch, glob, grep, list, read, todowrite, todoread, task, setupdatabase, asksecrets, docs.",
+    "title": "Invalid Tool",
+    "metadata": {},
+    "time": {
+      "start": 1762768700121,
+      "end": 1762768700123
+    }
+  }
+}

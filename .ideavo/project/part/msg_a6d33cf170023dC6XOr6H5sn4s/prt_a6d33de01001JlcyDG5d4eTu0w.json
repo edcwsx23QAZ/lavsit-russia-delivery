@@ -1,0 +1,26 @@
+{
+  "id": "prt_a6d33de01001JlcyDG5d4eTu0w",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a6d33cf170023dC6XOr6H5sn4s",
+  "type": "tool",
+  "callID": "toolu_01NXUZJDECLTuVxSCY6rCZbm",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "app",
+      "pattern": "Vozovoz API ответ|🚚 Vozovoz",
+      "include": "*.ts"
+    },
+    "output": "Found 8 matches\napp/api/vozovoz/route.ts:\n  Line 25:     console.log('🚚 Vozovoz API запрос:', JSON.stringify(body, null, 2));\n  Line 26:     console.log('🚚 Vozovoz API URL:', apiUrl);\n  Line 38:     console.log(`🚚 Vozovoz API статус: ${response.status} ${response.statusText}`);\n  Line 41:       console.error('🚚 Vozovoz API ошибка:', response.status, response.statusText);\n  Line 44:       console.error('🚚 Vozovoz API ошибка тело:', errorText);\n  Line 54:     console.log('🚚 Vozovoz API ответ:', JSON.stringify(data, null, 2));\n  Line 58:       console.error('🚚 Vozovoz API вернул ошибку:', data.error);\n  Line 69:     console.error('🚚 Vozovoz API критическая ошибка:', error);",
+    "title": "Vozovoz API ответ|🚚 Vozovoz",
+    "metadata": {
+      "matches": 8,
+      "truncated": false
+    },
+    "time": {
+      "start": 1762768708470,
+      "end": 1762768708488
+    }
+  }
+}
