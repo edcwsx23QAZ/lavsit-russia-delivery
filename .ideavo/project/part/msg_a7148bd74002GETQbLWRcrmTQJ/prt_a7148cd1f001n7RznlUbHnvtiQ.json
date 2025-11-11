@@ -1,0 +1,42 @@
+{
+  "id": "prt_a7148cd1f001n7RznlUbHnvtiQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a7148bd74002GETQbLWRcrmTQJ",
+  "type": "tool",
+  "callID": "toolu_01QQif9tGTW9ne9YdEmpS3YT",
+  "tool": "multiedit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "edits": [
+        {
+          "oldString": "  const [apiStatus, setApiStatus] = useState({\n    pek: 'проверка...',\n    dellin: 'проверка...',\n    railcontinent: 'проверка...',\n    vozovoz: 'проверка...',\n    nordwheel: 'проверка...',\n    cdek: 'проверка...',\n    kit: 'проверка...',\n    newline: 'не подключено',\n    irtrust: 'не подключено',\n    majortrans: 'не подключено',\n    baikalservice: 'не подключено',\n    adamant: 'не подключено',\n    energiya: 'не подключено',\n    cap: 'не подключено',\n    uraltrans: 'не подключено',\n    novotek: 'не подключено',\n    karavan: 'не подключено',\n    zeldor: 'не подключено',\n    dktransit: 'не подключено',\n    glavtrassa: 'не подключено',\n    baltservice: 'не подключено',\n    ankor: 'не подключено'\n  });",
+          "newString": "  const [apiStatus, setApiStatus] = useState({\n    pek: 'проверка...',\n    dellin: 'проверка...',\n    railcontinent: 'проверка...',\n    vozovoz: 'проверка...',\n    nordwheel: 'проверка...',\n    cdek: 'проверка...',\n    kit: 'проверка...',\n    newline: 'не подключено',\n    irtrust: 'не подключено',\n    majortrans: 'не подключено',\n    baikalservice: 'не подключено',\n    adamant: 'не подключено',\n    energiya: 'не подключено',\n    cap: 'не подключено',\n    uraltrans: 'не подключено',\n    novotek: 'не подключено',\n    karavan: 'не подключено',\n    zeldor: 'не подключено',\n    dktransit: 'не подключено',\n    glavtrassa: 'не подключено',\n    baltservice: 'не подключено',\n    ankor: 'не подключено'\n  });\n\n  const [apiStatusDetails, setApiStatusDetails] = useState<{ [key: string]: string }>({\n    pek: '',\n    dellin: '',\n    railcontinent: '',\n    vozovoz: '',\n    nordwheel: '',\n    cdek: '',\n    kit: ''\n  });"
+        },
+        {
+          "oldString": "  const checkAPIStatus = async (apiName: string, testFunction: () => Promise<any>) => {\n    try {\n      const result = await testFunction();\n      if (result && !result.error) {\n        setApiStatus(prev => ({ ...prev, [apiName]: 'подключено' }));\n      } else {\n        setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));\n      }\n    } catch (error) {\n      setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));\n    }\n  };",
+          "newString": "  const checkAPIStatus = async (apiName: string, testFunction: () => Promise<any>) => {\n    try {\n      const result = await testFunction();\n      if (result && !result.error) {\n        setApiStatus(prev => ({ ...prev, [apiName]: 'подключено' }));\n        setApiStatusDetails(prev => ({ ...prev, [apiName]: '' }));\n      } else {\n        const errorDetail = result?.errorType || result?.details || 'ошибка';\n        setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));\n        setApiStatusDetails(prev => ({ ...prev, [apiName]: errorDetail }));\n      }\n    } catch (error: any) {\n      const errorMsg = error?.message || 'ошибка соединения';\n      setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));\n      setApiStatusDetails(prev => ({ ...prev, [apiName]: errorMsg }));\n    }\n  };"
+        }
+      ]
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -210,8 +210,18 @@\n   baltservice: 'не подключено',\n   ankor: 'не подключено'\n });\n \n+const [apiStatusDetails, setApiStatusDetails] = useState<{ [key: string]: string }>({\n+  pek: '',\n+  dellin: '',\n+  railcontinent: '',\n+  vozovoz: '',\n+  nordwheel: '',\n+  cdek: '',\n+  kit: ''\n+});\n+\n // Защита от потери данных - НЕ очищаем localStorage в dev режиме\n // Пользовательские данные должны сохраняться между перезагрузками\n \n // Дополнительная проверка восстановления данных после серверной очистки\n"
+        },
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -465,13 +465,18 @@\n   try {\n     const result = await testFunction();\n     if (result && !result.error) {\n       setApiStatus(prev => ({ ...prev, [apiName]: 'подключено' }));\n+      setApiStatusDetails(prev => ({ ...prev, [apiName]: '' }));\n     } else {\n+      const errorDetail = result?.errorType || result?.details || 'ошибка';\n       setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));\n+      setApiStatusDetails(prev => ({ ...prev, [apiName]: errorDetail }));\n     }\n-  } catch (error) {\n+  } catch (error: any) {\n+    const errorMsg = error?.message || 'ошибка соединения';\n     setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));\n+    setApiStatusDetails(prev => ({ ...prev, [apiName]: errorMsg }));\n   }\n };\n \n const checkAllAPIStatus = async () => {\n"
+        }
+      ]
+    },
+    "time": {
+      "start": 1762837202564,
+      "end": 1762837202621
+    }
+  }
+}

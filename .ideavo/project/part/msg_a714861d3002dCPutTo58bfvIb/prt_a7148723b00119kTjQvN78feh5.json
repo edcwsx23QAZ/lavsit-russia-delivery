@@ -1,0 +1,26 @@
+{
+  "id": "prt_a7148723b00119kTjQvN78feh5",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a714861d3002dCPutTo58bfvIb",
+  "type": "tool",
+  "callID": "toolu_01XWDERWbz3aCkPWCFYHWKrh",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "include": "*.tsx",
+      "path": "app",
+      "pattern": "const \\[apiStatus|setApiStatus"
+    },
+    "output": "Found 4 matches\napp/page.tsx:\n  Line 189:   const [apiStatus, setApiStatus] = useState({\n  Line 458:         setApiStatus(prev => ({ ...prev, [apiName]: 'подключено' }));\n  Line 460:         setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));\n  Line 463:       setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));",
+    "title": "const \\[apiStatus|setApiStatus",
+    "metadata": {
+      "matches": 4,
+      "truncated": false
+    },
+    "time": {
+      "start": 1762837165954,
+      "end": 1762837165967
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_a714b2f66001cIzakpFQLNAHFg",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a714b1d89002lUt3AWv4Rs1wOJ",
+  "type": "tool",
+  "callID": "toolu_01LoiNyqezFTPpAQg74TKMke",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "include": "*.ts",
+      "path": "app/api",
+      "pattern": "const.*TOKEN|const.*API_KEY|const.*CLIENT_ID|const.*CLIENT_SECRET"
+    },
+    "output": "Found 12 matches\napp/api/vozovoz/route.ts:\n  Line 5: const VOZOVOZ_TOKEN = 'sBDUaEmzVBO6syQWHvHxmjxJQiON2BZplQaqrU3N';\n  Line 23:     const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;\n\napp/api/kit/route.ts:\n  Line 5: const KIT_TOKEN = process.env.KIT_API_TOKEN || '';\n\napp/api/cdek/route.ts:\n  Line 4: const CDEK_CLIENT_ID = '3J5AvQWReEdW1o01PApvw6jHsnkNpqT1';\n  Line 5: const CDEK_CLIENT_SECRET = 'T8iMvgShV0p9OfJiysSBpCCWcXtOO0Hy';\n  Line 16:   const credentials = Buffer.from(`${CDEK_CLIENT_ID}:${CDEK_CLIENT_SECRET}`).toString('base64');\n\napp/api/dadata/route.ts:\n  Line 3: const DADATA_API_KEY = 'eb87bbb3789bb43ed465f796892ea951f9e91008';\n\napp/api/pek/route.ts:\n  Line 21:     const PEK_API_KEY = process.env.PEK_API_KEY || '624FC93CA677B23673BB476D4982294DC27E246F';\n  Line 178:     const credentials = Buffer.from(`${PEK_LOGIN}:${PEK_API_KEY}`).toString('base64');\n\napp/api/pek-simple/route.ts:\n  Line 25:     const PEK_API_KEY = process.env.PEK_API_KEY;\n  Line 38:       const credentials = Buffer.from(`${PEK_LOGIN}:${PEK_API_KEY}`).toString('base64');\n\napp/api/pek-get/route.ts:\n  Line 11:     const PEK_TOKEN = '624FC93CA677B23673BB476D4982294DC27E246F';",
+    "title": "const.*TOKEN|const.*API_KEY|const.*CLIENT_ID|const.*CLIENT_SECRET",
+    "metadata": {
+      "matches": 12,
+      "truncated": false
+    },
+    "time": {
+      "start": 1762837345381,
+      "end": 1762837345397
+    }
+  }
+}

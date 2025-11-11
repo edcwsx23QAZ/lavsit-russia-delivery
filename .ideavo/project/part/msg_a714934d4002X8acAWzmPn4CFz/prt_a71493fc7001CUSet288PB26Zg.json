@@ -1,0 +1,26 @@
+{
+  "id": "prt_a71493fc7001CUSet288PB26Zg",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a714934d4002X8acAWzmPn4CFz",
+  "type": "tool",
+  "callID": "toolu_011RMdBiJgUFbwETeqauJ5sN",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "      checkAPIStatus('vozovoz', async () => {\n        try {\n          const response = await fetch('/api/vozovoz', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({\n              object: \"price\",\n              action: \"get\",\n              params: {\n                cargo: {\n                  dimension: {\n                    quantity: 1,\n                    volume: 0.1,\n                    weight: 10\n                  }\n                },\n                gateway: {\n                  dispatch: {\n                    point: {\n                      location: testData.fromCity,\n                      terminal: \"default\"\n                    }\n                  },\n                  destination: {\n                    point: {\n                      location: testData.toCity,\n                      terminal: \"default\"\n                    }\n                  }\n                }\n              }\n            })\n          });\n          const data = await response.json();\n          \n          if (!response.ok) {\n            const errorText = data.details || data.error || 'Unknown error';\n            if (errorText.includes('<!DOCTYPE') || errorText.includes('<html')) {\n              return { error: true, errorType: '⚠️ токен' };\n            }\n            if (response.status === 401 || response.status === 403) {\n              return { error: true, errorType: '🔐 auth' };\n            }\n            return { error: true, errorType: '❌ API' };\n          }\n          \n          if (data.response) {\n            return { success: true };\n          }\n          \n          return { error: true, errorType: '⚠️ формат' };\n        } catch (error) {\n          return { error: true, errorType: '📡 сеть' };\n        }\n      }),",
+      "oldString": "      checkAPIStatus('vozovoz', async () => {\n        try {\n          const response = await fetch('/api/vozovoz', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({\n              object: \"price\",\n              action: \"get\",\n              params: {\n                cargo: {\n                  dimension: {\n                    quantity: 1,\n                    volume: 0.1,\n                    weight: 10\n                  }\n                },\n                gateway: {\n                  dispatch: {\n                    point: {\n                      location: testData.fromCity,\n                      terminal: \"default\"\n                    }\n                  },\n                  destination: {\n                    point: {\n                      location: testData.toCity,\n                      terminal: \"default\"\n                    }\n                  }\n                }\n              }\n            })\n          });\n          return await response.json();\n        } catch (error) {\n          return { error: true };\n        }\n      }),"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -612,11 +612,28 @@\n           }\n         }\n       })\n     });\n-    return await response.json();\n+    const data = await response.json();\n+    \n+    if (!response.ok) {\n+      const errorText = data.details || data.error || 'Unknown error';\n+      if (errorText.includes('<!DOCTYPE') || errorText.includes('<html')) {\n+        return { error: true, errorType: '⚠️ токен' };\n+      }\n+      if (response.status === 401 || response.status === 403) {\n+        return { error: true, errorType: '🔐 auth' };\n+      }\n+      return { error: true, errorType: '❌ API' };\n+    }\n+    \n+    if (data.response) {\n+      return { success: true };\n+    }\n+    \n+    return { error: true, errorType: '⚠️ формат' };\n   } catch (error) {\n-    return { error: true };\n+    return { error: true, errorType: '📡 сеть' };\n   }\n }),\n \n checkAPIStatus('nordwheel', async () => {\n"
+    },
+    "time": {
+      "start": 1762837225331,
+      "end": 1762837225364
+    }
+  }
+}

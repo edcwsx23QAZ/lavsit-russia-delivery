@@ -211,6 +211,16 @@ export default function Home() {
     ankor: 'не подключено'
   });
 
+  const [apiStatusDetails, setApiStatusDetails] = useState<{ [key: string]: string }>({
+    pek: '',
+    dellin: '',
+    railcontinent: '',
+    vozovoz: '',
+    nordwheel: '',
+    cdek: '',
+    kit: ''
+  });
+
   // Защита от потери данных - НЕ очищаем localStorage в dev режиме
   // Пользовательские данные должны сохраняться между перезагрузками
 
@@ -456,11 +466,16 @@ export default function Home() {
       const result = await testFunction();
       if (result && !result.error) {
         setApiStatus(prev => ({ ...prev, [apiName]: 'подключено' }));
+        setApiStatusDetails(prev => ({ ...prev, [apiName]: '' }));
       } else {
+        const errorDetail = result?.errorType || result?.details || 'ошибка';
         setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));
+        setApiStatusDetails(prev => ({ ...prev, [apiName]: errorDetail }));
       }
-    } catch (error) {
+    } catch (error: any) {
+      const errorMsg = error?.message || 'ошибка соединения';
       setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));
+      setApiStatusDetails(prev => ({ ...prev, [apiName]: errorMsg }));
     }
   };
 
@@ -559,9 +574,23 @@ export default function Home() {
               tariff: 'auto'
             })
           });
-          return await response.json();
+          const data = await response.json();
+          
+          if (!response.ok) {
+            const errorText = data.details || data.error || 'Unknown error';
+            if (errorText.includes('<!DOCTYPE') || errorText.includes('<html')) {
+              return { error: true, errorType: '⚠️ API' };
+            }
+            return { error: true, errorType: '❌ API' };
+          }
+          
+          if (data.success === false) {
+            return { error: true, errorType: '❌ формат' };
+          }
+          
+          return { success: true };
         } catch (error) {
-          return { error: true };
+          return { error: true, errorType: '📡 сеть' };
         }
       }),
       
@@ -598,9 +627,26 @@ export default function Home() {
               }
             })
           });
-          return await response.json();
+          const data = await response.json();
+          
+          if (!response.ok) {
+            const errorText = data.details || data.error || 'Unknown error';
+            if (errorText.includes('<!DOCTYPE') || errorText.includes('<html')) {
+              return { error: true, errorType: '⚠️ токен' };
+            }
+            if (response.status === 401 || response.status === 403) {
+              return { error: true, errorType: '🔐 auth' };
+            }
+            return { error: true, errorType: '❌ API' };
+          }
+          
+          if (data.response) {
+            return { success: true };
+          }
+          
+          return { error: true, errorType: '⚠️ формат' };
         } catch (error) {
-          return { error: true };
+          return { error: true, errorType: '📡 сеть' };
         }
       }),
       
@@ -678,991 +724,60 @@ export default function Home() {
           });
           const data = await response.json();
           
+          if (!response.ok) {
+            const errorText = data.details || data.error || 'Unknown error';
+            if (errorText.includes('<!DOCTYPE') || errorText.includes('<html')) {
+              return { error: true, errorType: '⚠️ токен' };
+            }
+            if (response.status === 401 || response.status === 403) {
+              return { error: true, errorType: '🔐 auth' };
+            }
+            return { error: true, errorType: '❌ API' };
+          }
+          
           if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {
             return { success: true };
           } else {
-            return { error: true };
+            return { error: true, errorType: '⚠️ формат' };
           }
         } catch (error) {
-          return { error: true };
+          return { error: true, errorType: '📡 сеть' };
         }
-      })
-    ]).finally(() => {
-      // Восстанавливаем исходное состояние формы
-      setForm(currentForm);
-    });
-  };
-
-  const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {
-    if (query.length < 3) {
-      setSuggestions([]);
-      setShowSuggestions(false);
-      return;
-    }
-
-    setActiveField(field);
-    
-    // Установка позиции автоподсказок
-    if (element) {
-      const rect = element.getBoundingClientRect();
-      setSuggestionPosition({
-        top: rect.bottom + window.scrollY,
-        left: rect.left + window.scrollX
-      });
-    }
-    
-    try {
-      const response = await fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': 'Token eb87bbb3789bb43ed465f796892ea951f9e91008'
-        },
-        body: JSON.stringify({
-          query: query,
-          count: 10,
-          // Ограничение для полей городов - только города
-          ...(field === 'fromCity' || field === 'toCity' ? {
-            restrict_value: true,
-            locations: [{
-              country: 'Россия'
-            }],
-            from_bound: { value: 'city' },
-            to_bound: { value: 'city' }
-          } : {})
-        })
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setSuggestions(data.suggestions || []);
-        setShowSuggestions(true);
-      }
-    } catch (error) {
-      console.error('Ошибка получения подсказок:', error);
-    }
-  }, []);
-
-  const debounceTimer = React.useRef<NodeJS.Timeout>();
-  const handleAddressChange = (field: string, value: string, element?: HTMLInputElement) => {
-    setForm(prev => ({ ...prev, [field]: value }));
-    
-    clearTimeout(debounceTimer.current);
-    debounceTimer.current = setTimeout(() => {
-      searchAddresses(value, field, element);
-    }, 50);
-  };
-
-  const selectSuggestion = (suggestion: AddressSuggestion) => {
-    setForm(prev => ({ ...prev, [activeField]: suggestion.value }));
-    setShowSuggestions(false);
-    setActiveField('');
-  };
-
-  // Обработчик для чекбокса "Со склада Лавсит"
-  const handleLavsiteWarehouseChange = (checked: boolean) => {
-    if (checked) {
-      setForm(prev => ({
-        ...prev,
-        fromLavsiteWarehouse: true,
-        fromAddressDelivery: true,
-        fromTerminal: false,
-        fromCity: 'Лосино-Петровский',
-        fromAddress: 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область'
-      }));
-    } else {
-      setForm(prev => ({
-        ...prev,
-        fromLavsiteWarehouse: false,
-        fromCity: '',
-        fromAddress: ''
-      }));
-    }
-  };
-
-  const addCargo = () => {
-    const newId = (form.cargos.length + 1).toString();
-    setForm(prev => ({
-      ...prev,
-      cargos: [...prev.cargos, { id: newId, length: 0, width: 0, height: 0, weight: 0 }]
-    }));
-  };
-
-  const updateCargo = (id: string, field: string, value: number) => {
-    setForm(prev => {
-      const updatedCargos = prev.cargos.map(cargo => 
-        cargo.id === id ? { ...cargo, [field]: value } : cargo
-      );
+      }),
       
-      // Очищаем пустые грузы согласно новой логике
-      const cleanResult = cleanEmptyCargos(updatedCargos, prev.selectedProducts || []);
-      
-      return {
-        ...prev,
-        cargos: cleanResult.cargos,
-        selectedProducts: cleanResult.products
-      };
-    });
-  };
-
-  const removeCargo = (id: string) => {
-    if (form.cargos.length > 1) {
-      setForm(prev => ({
-        ...prev,
-        cargos: prev.cargos.filter(cargo => cargo.id !== id)
-      }));
-    }
-  };
-
-  // 🔧 Функция для проверки пустых грузов (все поля равны 0)
-  const isEmptyCargo = (cargo: Cargo) => {
-    return cargo.length === 0 && cargo.width === 0 && cargo.height === 0 && cargo.weight === 0;
-  };
-
-  // 🔧 Функция очистки пустых грузов
-  const cleanEmptyCargos = (cargos: Cargo[], selectedProducts: ProductInForm[]) => {
-    // Проверяем есть ли хотя бы один заполненный груз
-    const hasFilledCargos = cargos.some(cargo => !isEmptyCargo(cargo));
-    
-    if (!hasFilledCargos) {
-      // Если нет заполненных грузов, оставляем только первый пустой
-      return {
-        cargos: cargos.length > 0 ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }] : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],
-        products: selectedProducts
-      };
-    }
-
-    // Создаем маппинг старых индексов к новым
-    const oldToNewIndexMap = new globalThis.Map<number, number>();
-    let newIndex = 0;
-    
-    cargos.forEach((cargo, oldIndex) => {
-      if (!isEmptyCargo(cargo)) {
-        oldToNewIndexMap.set(oldIndex, newIndex);
-        newIndex++;
-      }
-    });
-    
-    // Оставляем только заполненные грузы
-    const filledCargos = cargos.filter(cargo => !isEmptyCargo(cargo));
-    
-    // Обновляем индексы у товаров
-    const updatedProducts = selectedProducts.map(productItem => ({
-      ...productItem,
-      cargoIndexes: productItem.cargoIndexes
-        .map(oldIndex => oldToNewIndexMap.get(oldIndex))
-        .filter(newIdx => newIdx !== undefined) as number[]
-    }));
-    
-    return {
-      cargos: filledCargos,
-      products: updatedProducts
-    };
-  };
-
-  // 🔧 Функция группировки грузов для отображения
-  interface GroupedCargoDisplay {
-    length: number;
-    width: number;
-    height: number;
-    weight: number;
-    quantity: number;
-    indices: number[];
-    isEmpty: boolean;
-  }
-
-  const groupCargosForDisplay = (cargos: Cargo[]): GroupedCargoDisplay[] => {
-    const groups = new globalThis.Map<string, GroupedCargoDisplay>();
-    
-    cargos.forEach((cargo, index) => {
-      const isEmpty = isEmptyCargo(cargo);
-      
-      // Для пустых грузов не группируем
-      if (isEmpty) {
-        groups.set(`empty_${index}`, {
-          length: 0,
-          width: 0,
-          height: 0,
-          weight: 0,
-          quantity: 1,
-          indices: [index],
-          isEmpty: true
-        });
-        return;
-      }
-      
-      // Создаем ключ для группировки на основе габаритов и веса
-      const key = `${cargo.length}_${cargo.width}_${cargo.height}_${cargo.weight}`;
-      
-      if (groups.has(key)) {
-        const existing = groups.get(key)!;
-        existing.quantity += 1;
-        existing.indices.push(index);
-      } else {
-        groups.set(key, {
-          length: cargo.length,
-          width: cargo.width,
-          height: cargo.height,
-          weight: cargo.weight,
-          quantity: 1,
-          indices: [index],
-          isEmpty: false
-        });
-      }
-    });
-    
-    // Возвращаем сортированный массив: сначала заполненные (по количеству убывания), потом пустые
-    return Array.from(groups.values()).sort((a, b) => {
-      if (a.isEmpty && !b.isEmpty) return 1;
-      if (!a.isEmpty && b.isEmpty) return -1;
-      if (!a.isEmpty && !b.isEmpty) {
-        return b.quantity - a.quantity; // По убыванию количества
-      }
-      return a.indices[0] - b.indices[0]; // Пустые по порядку индексов
-    });
-  };
-
-  // 🔧 Функции управления товарами
-  const handleProductAdd = (product: FurnitureProduct) => {
-    const timestamp = Date.now();
-    
-    console.log(`➕ Добавление товара: ${product.name} (${product.cargoPlaces.length} грузовых мест)`);
-    
-    // Создаем грузовые места для товара
-    const newCargos = createCargosForProduct(product, 1, timestamp);
-    
-    console.log('Создано новых грузов:', newCargos.length);
-    console.log('Новые грузы:', newCargos.map(c => ({ id: c.id, productId: c.productId, addedAt: c.addedAt })));
-    
-    // Создаем объект товара в форме
-    const productInForm: ProductInForm = {
-      product,
-      quantity: 1,
-      totalPrice: product.retailPrice,
-      cargoIndexes: [], // Заполним после добавления грузов
-      addedAt: timestamp
-    };
-    
-    setForm(prev => {
-      let updatedCargos = [...prev.cargos];
-      let cargoIndexes: number[] = [];
-      
-      // Находим пустые грузы для заполнения
-      const emptyCargos = updatedCargos
-        .map((cargo, index) => ({ cargo, index }))
-        .filter(item => isEmptyCargo(item.cargo));
-      
-      console.log('Найдено пустых грузов:', emptyCargos.length);
-      console.log('Нужно заполнить грузов:', newCargos.length);
-      
-      // Заполняем пустые грузы данными товара
-      let filledCount = 0;
-      for (let i = 0; i < Math.min(emptyCargos.length, newCargos.length); i++) {
-        const emptyCargoIndex = emptyCargos[i].index;
-        const newCargoData = newCargos[i];
-        
-        updatedCargos[emptyCargoIndex] = {
-          ...updatedCargos[emptyCargoIndex],
-          length: newCargoData.length,
-          width: newCargoData.width,
-          height: newCargoData.height,
-          weight: newCargoData.weight,
-          productId: newCargoData.productId,
-          placeNumber: newCargoData.placeNumber,
-          isFromProduct: newCargoData.isFromProduct,
-          addedAt: newCargoData.addedAt
-        };
-        
-        cargoIndexes.push(emptyCargoIndex);
-        filledCount++;
-      }
-      
-      // Если нужно больше грузов, чем есть пустых - добавляем новые
-      if (filledCount < newCargos.length) {
-        const remainingCargos = newCargos.slice(filledCount);
-        const startIndex = updatedCargos.length;
-        
-        for (let i = 0; i < remainingCargos.length; i++) {
-          updatedCargos.push(remainingCargos[i]);
-          cargoIndexes.push(startIndex + i);
-        }
-      }
-      
-      productInForm.cargoIndexes = cargoIndexes;
-      
-      console.log('Индексы заполненных грузов:', cargoIndexes);
-      console.log('Общее количество грузов после добавления:', updatedCargos.length);
-      
-      // Пересчитываем объявленную стоимость
-      const prevSelectedProducts = prev.selectedProducts || [];
-      const newSelectedProducts = [...prevSelectedProducts, productInForm];
-      const newDeclaredValue = calculateTotalValue(newSelectedProducts);
-      
-      // Очищаем пустые грузы согласно новой логике
-      const cleanResult = cleanEmptyCargos(updatedCargos, newSelectedProducts);
-      
-      return {
-        ...prev,
-        cargos: cleanResult.cargos,
-        selectedProducts: cleanResult.products,
-        declaredValue: newDeclaredValue
-      };
-    });
-    
-    console.log(`✅ Добавлен товар: ${product.name} (${newCargos.length} грузовых мест)`);
-    console.log('Финальное состояние грузов:', newCargos.length);
-  };
-
-  const handleProductQuantityChange = (productId: string, addedAt: number, newQuantity: number) => {
-    setForm(prev => {
-      console.log(`🔢 Изменение количества товара ${productId} с ${prev.selectedProducts?.find(p => p.product.id === productId && p.addedAt === addedAt)?.quantity || 0} на ${newQuantity}`);
-      
-      // Находим товар
-      const selectedProducts = prev.selectedProducts || [];
-      const productIndex = selectedProducts.findIndex(p => 
-        p.product.id === productId && p.addedAt === addedAt
-      );
-      
-      if (productIndex === -1) {
-        console.warn('❌ Товар не найден для изменения количества');
-        return prev;
-      }
-      
-      const product = selectedProducts[productIndex];
-      console.log('Грузы до изменения количества:', prev.cargos.length);
-      
-      // Удаляем старые грузы этого товара
-      const cargosWithoutProduct = removeCargosForProduct(
-        prev.cargos as CargoWithMetadata[], 
-        productId, 
-        addedAt
-      );
-      
-      console.log('Грузы после удаления старых:', cargosWithoutProduct.length);
-      
-      // Создаем новые грузы с новым количеством
-      const newCargos = createCargosForProduct(product.product, newQuantity, addedAt);
-      const updatedCargos = [...cargosWithoutProduct, ...newCargos];
-      
-      console.log('Грузы после добавления новых:', updatedCargos.length);
-      
-      // Обновляем товар
-      const updatedProduct = {
-        ...product,
-        quantity: newQuantity,
-        totalPrice: product.product.retailPrice * newQuantity,
-        cargoIndexes: findCargoIndexesForProduct(updatedCargos, productId, addedAt)
-      };
-      
-      const updatedProducts = selectedProducts.map((p, index) => 
-        index === productIndex ? updatedProduct : p
-      );
-      
-      // Пересчитываем объявленную стоимость
-      const newDeclaredValue = calculateTotalValue(updatedProducts);
-      
-      // Очищаем пустые грузы согласно новой логике
-      const cleanResult = cleanEmptyCargos(updatedCargos, updatedProducts);
-      
-      return {
-        ...prev,
-        cargos: cleanResult.cargos,
-        selectedProducts: cleanResult.products,
-        declaredValue: newDeclaredValue
-      };
-    });
-    
-    console.log(`🔄 Изменено количество товара ${productId}: ${newQuantity} шт.`);
-  };
-
-  const handleProductRemove = (productId: string, addedAt: number) => {
-    setForm(prev => {
-      console.log(`🗑️ Удаление товара ${productId} (addedAt: ${addedAt})`);
-      
-      // Находим товар и его индексы грузов
-      const selectedProducts = prev.selectedProducts || [];
-      const product = selectedProducts.find(p => 
-        p.product.id === productId && p.addedAt === addedAt
-      );
-      
-      if (!product) {
-        console.log('Товар не найден');
-        return prev;
-      }
-      
-      // Очищаем грузы товара (делаем их пустыми вместо удаления)
-      const updatedCargos = prev.cargos.map((cargo, index) => {
-        if (product.cargoIndexes.includes(index)) {
-          return {
-            ...cargo,
-            length: 0,
-            width: 0,
-            height: 0,
-            weight: 0,
-            productId: undefined,
-            placeNumber: undefined,
-            isFromProduct: undefined,
-            addedAt: undefined
-          };
-        }
-        return cargo;
-      });
-      
-      // Удаляем товар из списка
-      const updatedProducts = selectedProducts.filter(p => 
-        !(p.product.id === productId && p.addedAt === addedAt)
-      );
-      
-      // Пересчитываем объявленную стоимость
-      const newDeclaredValue = calculateTotalValue(updatedProducts);
-      
-      // Очищаем пустые грузы согласно новой логике
-      const cleanResult = cleanEmptyCargos(updatedCargos, updatedProducts);
-      
-      console.log('Грузы после очистки:', cleanResult.cargos.length);
-      console.log('Удалено пустых грузов:', updatedCargos.length - cleanResult.cargos.length);
-      
-      return {
-        ...prev,
-        cargos: cleanResult.cargos,
-        selectedProducts: cleanResult.products,
-        declaredValue: newDeclaredValue
-      };
-    });
-    
-    console.log(`🗑️ Удален товар ${productId}`);
-  };
-
-  // Получение sessionID для Деловых Линий
-  const getDellinSessionId = async (): Promise<string | null> => {
-    try {
-      const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
-          login: 'service@lavsit.ru',
-          password: 'edcwsx123QAZ'
-        })
-      });
-
-      const authData = await authResponse.json();
-      console.log('🔑 АВТОРИЗАЦИЯ ДЛ response.ok:', authResponse.ok);
-      console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData:', authData);
-      console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data:', authData.data);
-      console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data?.sessionID:', authData.data?.sessionID);
-      
-      // Проверяем разные возможные пути к sessionID
-      let sessionID = null;
-      
-      if (authData.data?.sessionID) {
-        sessionID = authData.data.sessionID;
-        console.log('✅ SessionID найден в data.sessionID:', sessionID);
-      } else if (authData.sessionID) {
-        sessionID = authData.sessionID;
-        console.log('✅ SessionID найден в sessionID:', sessionID);
-      } else if (authData.data?.session) {
-        sessionID = authData.data.session;
-        console.log('✅ SessionID найден в data.session:', sessionID);
-      }
-      
-      if (authResponse.ok && sessionID) {
-        return sessionID;
-      } else {
-        console.error('❌ Ошибка авторизации Деловые Линии:', authData);
-        console.error('❌ Статус ответа:', authResponse.status);
-        console.error('❌ Текст ответа:', authResponse.statusText);
-        return null;
-      }
-    } catch (error) {
-      console.error('Ошибка соединения с авторизацией Деловые Линии:', error);
-    }
-    return null;
-  };
-
-  // Загрузка локального справочника городов Деловых Линий
-  const loadDellinCities = async () => {
-    try {
-      const response = await fetch('/data/dellin-cities.json');
-      if (!response.ok) {
-        console.error('❌ Не удалось загрузить справочник городов');
-        return null;
-      }
-      const data = await response.json();
-      return data.cities;
-    } catch (error) {
-      console.error('❌ Ошибка загрузки справочника городов:', error);
-      return null;
-    }
-  };
-
-  // Поиск cityID в локальном справочнике
-  const getCityIDFromLocal = async (cityName: string): Promise<string | null> => {
-    const cities = await loadDellinCities();
-    if (!cities) return null;
-
-    const normalizedSearch = cityName.toLowerCase().trim()
-      .replace(/^г\s+/, '') // Убираем префикс "г "
-      .replace(/^город\s+/, '') // Убираем префикс "город "
-      .replace(/\s+/g, ' '); // Нормализуем пробелы
-
-    console.log(`🔍 Поиск cityID для города: "${normalizedSearch}"`);
-
-    // Поиск в справочнике
-    for (const city of cities) {
-      // Проверяем точное совпадение с именем города
-      if (city.name.toLowerCase() === normalizedSearch) {
-        console.log(`✅ Точное совпадение: "${city.name}" -> cityID: ${city.cityID}`);
-        return city.cityID;
-      }
-
-      // Проверяем совпадение с поисковыми строками
-      for (const searchString of city.searchStrings) {
-        if (searchString === normalizedSearch) {
-          console.log(`✅ Найдено в поисковых строках: "${searchString}" для города "${city.name}" -> cityID: ${city.cityID}`);
-          return city.cityID;
-        }
-      }
-    }
-
-    console.warn(`⚠️ cityID не найден в локальном справочнике для города: "${normalizedSearch}"`);
-    return null;
-  };
-
-  // Получение cityID через правильный API Деловых Линий
-  const findCityInDellinDirectory = async (cityName: string): Promise<{cityID: number, code: string} | null> => {
-    try {
-      console.log(`🔍 Поиск города в справочнике ДЛ: ${cityName}`);
-      
-      // Нормализуем название города
-      const normalizedCity = cityName.toLowerCase().trim()
-        .replace(/^г\s+/, '') // Убираем префикс "г "
-        .replace(/^город\s+/, '') // Убираем префикс "город "
-        .replace(/\s+/g, ' '); // Нормализуем пробелы
-      
-      // Используем правильный API для поиска населенных пунктов
-      const response = await fetch('https://api.dellin.ru/v2/public/kladr.json', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
-          q: normalizedCity,
-          limit: 10
-        })
-      });
-      
-      const data = await response.json();
-      console.log(`🏙️ Поиск города "${normalizedCity}" response:`, data);
-      
-      if (response.ok && data.cities && Array.isArray(data.cities) && data.cities.length > 0) {
-        // Ищем точное соответствие или наиболее подходящий город
-        let bestMatch = data.cities.find((city: any) => 
-          city.searchString?.toLowerCase() === normalizedCity ||
-          city.aString?.toLowerCase().includes(normalizedCity)
-        );
-        
-        // Если точного соответствия нет, берем первый с терминалами
-        if (!bestMatch) {
-          bestMatch = data.cities.find((city: any) => city.isTerminal === 1);
-        }
-        
-        // Если и этого нет, берем первый
-        if (!bestMatch) {
-          bestMatch = data.cities[0];
-        }
-        
-        if (bestMatch) {
-          console.log(`✅ Найден город:`, {
-            cityID: bestMatch.cityID,
-            name: bestMatch.aString,
-            code: bestMatch.code,
-            hasTerminals: bestMatch.isTerminal === 1
-          });
-          
-          return {
-            cityID: bestMatch.cityID,
-            code: bestMatch.code
-          };
-        }
-      }
-      
-      console.warn(`⚠️ Город "${normalizedCity}" не найден в справочнике ДЛ`);
-      return null;
-      
-    } catch (error) {
-      console.error(`❌ Ошибка поиска города в справочнике ДЛ:`, error);
-      return null;
-    }
-  };
-  
-
-  
-  // Поиск терминалов через рабочий v1 API (из test-dellin-terminals-simple.js)
-  const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {
-    try {
-      console.log(`🔍 РАБОЧИЙ v1 API: Поиск терминала ${direction} для города: ${citySearch}`);
-      
-      // Получаем sessionID для запроса
-      const sessionID = await getDellinSessionId();
-      if (!sessionID) {
-        console.error('❌ Отсутствует sessionID для поиска терминалов');
-        return null;
-      }
-      
-      // Прямой запрос к рабочему API
-      const requestData = {
-        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
-        sessionID: sessionID,
-        search: citySearch,
-        direction: direction
-      };
-      
-      console.log(`📤 Запрос терминалов:`, requestData);
-      
-      const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestData)
-      });
-      
-      const data = await response.json();
-      console.log(`📥 Ответ терминалов (${response.status}):`, data);
-      
-      if (!response.ok) {
-        console.error('❌ Ошибка запроса терминалов:', data);
-        return null;
-      }
-      
-      // Проверяем наличие терминалов в ответе
-      const terminals = data.terminals || [];
-      if (terminals.length === 0) {
-        console.warn(`⚠️ Терминалы не найдены для города "${citySearch}"`);
-        return null;
-      }
-      
-      // Выбираем первый доступный терминал
-      const selectedTerminal = terminals[0];
-      
-      console.log(`✅ Найден терминал ${direction}:`, {
-        id: selectedTerminal.id,
-        name: selectedTerminal.name,
-        address: selectedTerminal.address
-      });
-      
-      return selectedTerminal.id.toString();
-      
-    } catch (error) {
-      console.error(`❌ Ошибка поиска терминала ${direction} (v1 API):`, error);
-      return null;
-    }
-  };
-
-  // Получение терминалов Деловые Линии для города (используем функцию с направлением)
-  const getDellinTerminal = async (citySearch: string): Promise<string | null> => {
-    return getDellinTerminalByDirection(citySearch, 'arrival');
-  };
-  
-  // Нормализация адреса через DaData для правильного формата Деловых Линий
-  const normalizeAddressForDellin = async (address: string): Promise<string> => {
-    try {
-      console.log(`🌐 Нормализация адреса через DaData: ${address}`);
-      
-      const response = await fetch('/api/dadata', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          address: address,
-          type: 'clean'
-        })
-      });
-      
-      const data = await response.json();
-      console.log(`🌐 DaData response:`, data);
-      
-      if (data.success && data.data?.dellinFormat) {
-        console.log(`✅ Нормализованный адрес: ${data.data.dellinFormat}`);
-        return data.data.dellinFormat;
-      }
-      
-      // Если DaData не сработал, возвращаем исходный адрес
-      console.warn(`⚠️ DaData не смог нормализовать адрес, используем исходный`);
-      return address;
-      
-    } catch (error) {
-      console.error(`❌ Ошибка нормализации адреса через DaData:`, error);
-      return address; // Возвращаем исходный адрес в случае ошибки
-    }
-  };
-
-  // Получение UID упаковки через правильный workflow согласно документации ДЛ
-  const getDellinPackageUid = async (packageName: string = 'crate_with_bubble'): Promise<string | null> => {
-    try {
-      console.log(`📦 CSV WORKFLOW: Получение UID упаковки "${packageName}" через правильный workflow...`);
-      console.log('📦 CSV WORKFLOW: API ДЛ → CSV ссылка → скачать CSV → парсить → получить UID');
-      
-      const response = await fetch('/api/dellin-packages', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      const data = await response.json();
-      console.log('📦 CSV WORKFLOW response.ok:', response.ok);
-      console.log('📦 CSV WORKFLOW status:', response.status);
-      console.log('📦 CSV WORKFLOW workflow info:', data.workflow || 'not specified');
-      
-      if (response.ok && data.success && data.data && Array.isArray(data.data)) {
-        console.log('📦 CSV WORKFLOW: успешно получен справочник');
-        console.log('📦 Количество упаковок в справочнике:', data.data.length);
-        console.log('📦 Источник данных:', data.cached ? 'кэш (24ч)' : 'свежий CSV файл');
-        if (data.csvUrl) {
-          console.log('📦 CSV URL:', data.csvUrl);
-        }
-        
-        // Поиск по нескольким вариантам названия
-        const searchTerms = [
-          packageName,
-          'обрешетка',
-          'обрешётка',
-          'амортизация',
-          'bubble',
-          'защитная упаковка'
-        ];
-        
-        let foundPackage: any = null;
-        
-        for (const term of searchTerms) {
-          foundPackage = data.data.find((pkg: any) => 
-            pkg.name && pkg.name.toLowerCase().includes(term.toLowerCase())
-          );
-          
-          if (foundPackage) {
-            console.log(`✅ CSV WORKFLOW: Найдена упаковка по термину "${term}": ${foundPackage.name} → ${foundPackage.uid}`);
-            break;
-          }
-        }
-        
-        if (foundPackage && foundPackage.uid) {
-          return foundPackage.uid;
-        } else {
-          console.log('❌ CSV WORKFLOW: Упаковка не найдена по поисковым терминам');
-          
-          // Выводим первые 10 упаковок для отладки
-          console.log('📦 Доступные упаковки в справочнике (первые 10):');
-          data.data.slice(0, 10).forEach((pkg: any, index: number) => {
-            console.log(`  ${index + 1}. ${pkg.name} (${pkg.uid})`);
-          });
-        }
-      } else {
-        console.error('❌ CSV WORKFLOW: Ошибка получения справочника:', data);
-      }
-      
-      return null;
-        
-    } catch (error) {
-      console.error('❌ CSV WORKFLOW: Критическая ошибка:', error);
-      return null;
-    }
-  };
-
-  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией
-  const calculateDellin = async (): Promise<CalculationResult> => {
-    const { enhancedApiRequest } = await import('@/lib/api-utils');
-    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';
-    const maxRetries = 2;
-    
-    console.log('🚀 === НАЧАЛО РАСЧЕТА ДЕЛОВЫХ ЛИНИЙ ===');
-    console.log('🚀 API URL:', apiUrl);
-    
-    try {
-      let sessionID = await getDellinSessionId();
-      
-      if (!sessionID) {
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: 'Не удалось получить sessionID',
-          apiUrl,
-          requestData: null,
-          responseData: null
-        };
-      }
-
-      // Вычисляем размеры и объемы
-      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
-      const totalVolume = form.cargos.reduce((sum, cargo) => 
-        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
-      );
-      const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах
-      const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;
-      const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;
-
-      // Получаем терминалы и нормализованные адреса
-      let fromTerminalId: string | null = null;
-      let toTerminalId: string | null = null;
-      let normalizedFromAddress: string | null = null;
-      let normalizedToAddress: string | null = null;
-      
-      // Для терминальной доставки получаем терминалы
-      if (!form.fromAddressDelivery) {
-        fromTerminalId = await getDellinTerminalByDirection(form.fromCity, 'derival');
-      } else {
-        // Для адресной доставки нормализуем адрес
-        const addressToNormalize = form.fromAddress || form.fromCity;
-        normalizedFromAddress = await normalizeAddressForDellin(addressToNormalize);
-      }
-      
-      if (!form.toAddressDelivery) {
-        toTerminalId = await getDellinTerminalByDirection(form.toCity, 'arrival');
-      } else {
-        // Для адресной доставки нормализуем адрес
-        const addressToNormalize = form.toAddress || form.toCity;
-        normalizedToAddress = await normalizeAddressForDellin(addressToNormalize);
-      }
-      
-      console.log('🏢 ДАННЫЕ ДЛ:');
-      console.log('🏢 form.fromAddressDelivery:', form.fromAddressDelivery);
-      console.log('🏢 form.toAddressDelivery:', form.toAddressDelivery);
-      console.log('🏢 fromTerminalId:', fromTerminalId);
-      console.log('🏢 toTerminalId:', toTerminalId);
-      console.log('🏢 normalizedFromAddress:', normalizedFromAddress);
-      console.log('🏢 normalizedToAddress:', normalizedToAddress);
-      
-      // Проверяем что терминалы найдены ТОЛЬКО для терминальной доставки
-      if (!form.fromAddressDelivery && !fromTerminalId) {
-        console.error('❌ Не найден терминал отправления для города:', form.fromCity);
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,
-          apiUrl,
-          requestData: null,
-          responseData: null
-        };
-      }
-      
-      if (!form.toAddressDelivery && !toTerminalId) {
-        console.error('❌ Не найден терминал назначения для города:', form.toCity);
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,
-          apiUrl,
-          requestData: null,
-          responseData: null
-        };
-      }
-      
-      // Для адресной доставки проверяем что адреса нормализованы
-      if (form.fromAddressDelivery && !normalizedFromAddress) {
-        console.error('❌ Не удалось нормализовать адрес отправления:', form.fromAddress || form.fromCity);
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: `Не удалось обработать адрес отправления: ${form.fromAddress || form.fromCity}`,
-          apiUrl,
-          requestData: null,
-          responseData: null
-        };
-      }
-      
-      if (form.toAddressDelivery && !normalizedToAddress) {
-        console.error('❌ Не удалось нормализовать адрес назначения:', form.toAddress || form.toCity);
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: `Не удалось обработать адрес назначения: ${form.toAddress || form.toCity}`,
-          apiUrl,
-          requestData: null,
-          responseData: null
-        };
-      }
-
-      // Получаем UID упаковки crate_with_bubble (если нужна упаковка)
-      let packageUid: string | null = null;
-      console.log('=== НАЧАЛО ОТЛАДКИ УПАКОВКИ ===');
-      console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);
-      console.log('🔍 ОТЛАДКА УПАКОВКИ: typeof form.needPackaging =', typeof form.needPackaging);
-      
-      if (form.needPackaging) {
-        console.log('🔍 ✅ УПАКОВКА ТРЕБУЕТСЯ - ЗАПРАШИВАЕМ UID через CSV WORKFLOW...');
+      checkAPIStatus('kit', async () => {
         try {
-          packageUid = await getDellinPackageUid('crate_with_bubble');
-          console.log('🔍 ✅ ПОЛУЧЕН packageUid из CSV WORKFLOW:', packageUid);
+          const response = await fetch('/api/kit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              from_city: testData.fromCity,
+              to_city: testData.toCity,
+              declared_price: testData.declaredValue
+            })
+          });
+          const data = await response.json();
           
-          // Если не получили UID из CSV, используем UID с сайта ДЛ (исправляем расхождение 500₽)
-          if (!packageUid) {
-            packageUid = '0x9dd8901b0ecef10c11e8ed001199bf6e'; // UID с официального сайта ДЛ
-            console.log('🔍 🧪 ИСПОЛЬЗУЕМ UID С САЙТА ДЛ (исправляем расхождение):', packageUid);
+          if (!response.ok) {
+            const errorText = data.details || data.error || 'Unknown error';
+            if (errorText.includes('<!DOCTYPE') || errorText.includes('<html')) {
+              return { error: true, errorType: '⚠️ токен' };
+            }
+            if (response.status === 401 || response.status === 403) {
+              return { error: true, errorType: '🔐 токен' };
+            }
+            return { error: true, errorType: '❌ API' };
           }
           
-          console.log('🔍 ✅ ФИНАЛЬНЫЙ packageUid:', packageUid);
-          console.log('🔍 ✅ typeof packageUid:', typeof packageUid);
-          console.log('🔍 ✅ packageUid truthy:', !!packageUid);
+          if (Array.isArray(data) && data.length > 0) {
+            return { success: true };
+          } else {
+            return { error: true, errorType: '⚠️ формат' };
+          }
         } catch (error) {
-          console.log('🔍 ❌ ОШИБКА при получении packageUid через CSV WORKFLOW:', error);
-          // Используем UID с сайта ДЛ как fallback (исправляем расхождение)
-          packageUid = '0x9dd8901b0ecef10c11e8ed001199bf6e'; // UID с официального сайта ДЛ
-          console.log('🔍 🧪 ИСПОЛЬЗУЕМ UID С САЙТА ДЛ после ошибки (исправляем расхождение):', packageUid);
+          return { error: true, errorType: '📡 сеть' };
         }
-      } else {
-        console.log('🔍 ❌ Упаковка не требуется, пропускаем получение UID');
-      }
-      console.log('=== КОНЕЦ ОТЛАДКИ УПАКОВКИ ===');
-
-      // Формируем дату отправления на завтра
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      const produceDate = tomorrow.toISOString().split('T')[0];
-
-      // Отладка перед формированием запроса
-      console.log('=== ОТЛАДКА ФОРМИРОВАНИЯ ЗАПРОСА ===');
-      console.log('🔍 form.needPackaging =', form.needPackaging, '(тип:', typeof form.needPackaging, ')');
-      console.log('🔍 packageUid =', packageUid, '(тип:', typeof packageUid, ')');
-      console.log('🔍 packageUid truthy =', !!packageUid);
-      console.log('🔍 Условие (form.needPackaging && packageUid) =', form.needPackaging && packageUid);
-      
-      if (form.needPackaging && packageUid) {
-        console.log('✅ PACKAGES БУДЕТ ДОБАВЛЕН В ЗАПРОС!');
-      } else {
-        console.log('❌ PACKAGES НЕ БУДЕТ ДОБАВЛЕН:');
-        if (!form.needPackaging) console.log('  - form.needPackaging = false');
-        if (!packageUid) console.log('  - packageUid отсутствует/null');
-      }
-
-      // Формируем корректную структуру запроса согласно инструкции
-      const requestData = {
-        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
-        sessionID: sessionID,
-        delivery: {
-          deliveryType: {
-            type: 'auto'  // Всегда "auto" по умолчанию
-          },
-          derival: {
-            produceDate: produceDate,  // Обязательная дата отправления
-            variant: form.fromAddressDelivery ? 'address' : 'terminal',
-            ...(form.fromAddressDelivery ? {
-              address: {
-                search: normalizedFromAddress || form.fromAddress || form.fromCity
-              }
-            } : {
-              terminalID: fromTerminalId
-            }),
+      }),
             time: {
               worktimeStart: '10:00',
               worktimeEnd: '18:00',
@@ -4910,11 +4025,12 @@ export default function Home() {
                   {COMPANIES_BASE.map((company, index) => {
                     const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';
                     const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];
+                    const statusDetail = apiStatusDetails[company.apiKey as keyof typeof apiStatusDetails];
                     const isEnabled = enabledCompanies[company.apiKey];
                     
                     // Отладка для первых 3 компаний
                     if (index < 3) {
-                      console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}`);
+                      console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}, detail: ${statusDetail}`);
                     }
                     
                     return (
@@ -4923,12 +4039,19 @@ export default function Home() {
                           <span className="text-lg">{company.logo}</span>
                           <div>
                             <p className="font-medium text-white text-[10px] leading-tight">{company.name}</p>
-                            <Badge 
-                              variant={isConnected ? "default" : "destructive"} 
-                              className="text-[9px] py-0 px-1"
-                            >
-                              {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}
-                            </Badge>
+                            <div className="flex items-center gap-1">
+                              <Badge 
+                                variant={isConnected ? "default" : "destructive"} 
+                                className="text-[9px] py-0 px-1"
+                              >
+                                {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}
+                              </Badge>
+                              {statusDetail && !isConnected && (
+                                <span className="text-[8px] text-yellow-400" title={statusDetail}>
+                                  {statusDetail}
+                                </span>
+                              )}
+                            </div>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils';
 
 // Токен Возовоз API
-const VOZOVOZ_TOKEN = 'efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp';
+const VOZOVOZ_TOKEN = 'sBDUaEmzVBO6syQWHvHxmjxJQiON2BZplQaqrU3N';
 
 export async function POST(request: NextRequest) {
   const endTiming = PerformanceMonitor.startMeasurement('vozovoz_api_total');

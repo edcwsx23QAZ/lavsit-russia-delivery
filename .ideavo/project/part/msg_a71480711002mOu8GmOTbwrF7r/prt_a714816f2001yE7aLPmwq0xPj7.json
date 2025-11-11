@@ -1,0 +1,26 @@
+{
+  "id": "prt_a714816f2001yE7aLPmwq0xPj7",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a71480711002mOu8GmOTbwrF7r",
+  "type": "tool",
+  "callID": "toolu_01CCgRVR7EauEL7ijEyMJQYn",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "include": "*.tsx",
+      "path": "app",
+      "pattern": "COMPANIES_BASE|company\\.name|company\\.logo"
+    },
+    "output": "Found 8 matches\napp/page.tsx:\n  Line 86: const COMPANIES_BASE = [\n  Line 365:         console.log('📋 Всего доступно ТК:', COMPANIES_BASE.length);\n  Line 366:         console.log('📋 Список ТК:', COMPANIES_BASE.map(c => c.name));\n  Line 4905:                   Подключенные транспортные компании ({COMPANIES_BASE.length})\n  Line 4910:                   {COMPANIES_BASE.map((company, index) => {\n  Line 4917:                       console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}`);\n  Line 4923:                           <span className=\"text-lg\">{company.logo}</span>\n  Line 4925:                             <p className=\"font-medium text-white text-[10px] leading-tight\">{company.name}</p>",
+    "title": "COMPANIES_BASE|company\\.name|company\\.logo",
+    "metadata": {
+      "matches": 8,
+      "truncated": false
+    },
+    "time": {
+      "start": 1762837142663,
+      "end": 1762837142678
+    }
+  }
+}

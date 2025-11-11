@@ -1,0 +1,25 @@
+{
+  "id": "prt_a71497f62001YWZQ41WqabTujl",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a71496e69002slapehtEt6r2Nm",
+  "type": "tool",
+  "callID": "toolu_01CzCRtK9pM3qKYkP26pcQq4",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 100,
+      "offset": 680
+    },
+    "output": "<file>\n00681| \n00682|        const response = result as Response;\n00683|        const data = await response.json();\n00684|           \n00685|           if (response.ok && data.status === 'success') {\n00686|             return { success: true };\n00687|           } else {\n00688|             return { error: true };\n00689|           }\n00690|         } catch (error) {\n00691|           return { error: true };\n00692|         }\n00693|       }),\n00694|       \n00695|       checkAPIStatus('cdek', async () => {\n00696|         try {\n00697|           const response = await fetch('/api/cdek', {\n00698|             method: 'POST',\n00699|             headers: { 'Content-Type': 'application/json' },\n00700|             body: JSON.stringify({\n00701|               from_city: testData.fromCity,\n00702|               to_city: testData.toCity,\n00703|               packages: [{\n00704|                 height: 10,\n00705|                 length: 20,\n00706|                 width: 10,\n00707|                 weight: 1000\n00708|               }]\n00709|             })\n00710|           });\n00711|           const data = await response.json();\n00712|           \n00713|           if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {\n00714|             return { success: true };\n00715|           } else {\n00716|             return { error: true };\n00717|           }\n00718|         } catch (error) {\n00719|           return { error: true };\n00720|         }\n00721|       })\n00722|     ]).finally(() => {\n00723|       // Восстанавливаем исходное состояние формы\n00724|       setForm(currentForm);\n00725|     });\n00726|   };\n00727| \n00728|   const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n00729|     if (query.length < 3) {\n00730|       setSuggestions([]);\n00731|       setShowSuggestions(false);\n00732|       return;\n00733|     }\n00734| \n00735|     setActiveField(field);\n00736|     \n00737|     // Установка позиции автоподсказок\n00738|     if (element) {\n00739|       const rect = element.getBoundingClientRect();\n00740|       setSuggestionPosition({\n00741|         top: rect.bottom + window.scrollY,\n00742|         left: rect.left + window.scrollX\n00743|       });\n00744|     }\n00745|     \n00746|     try {\n00747|       const response = await fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {\n00748|         method: 'POST',\n00749|         headers: {\n00750|           'Content-Type': 'application/json',\n00751|           'Accept': 'application/json',\n00752|           'Authorization': 'Token eb87bbb3789bb43ed465f796892ea951f9e91008'\n00753|         },\n00754|         body: JSON.stringify({\n00755|           query: query,\n00756|           count: 10,\n00757|           // Ограничение для полей городов - только города\n00758|           ...(field === 'fromCity' || field === 'toCity' ? {\n00759|             restrict_value: true,\n00760|             locations: [{\n00761|               country: 'Россия'\n00762|             }],\n00763|             from_bound: { value: 'city' },\n00764|             to_bound: { value: 'city' }\n00765|           } : {})\n00766|         })\n00767|       });\n00768| \n00769|       if (response.ok) {\n00770|         const data = await response.json();\n00771|         setSuggestions(data.suggestions || []);\n00772|         setShowSuggestions(true);\n00773|       }\n00774|     } catch (error) {\n00775|       console.error('Ошибка получения подсказок:', error);\n00776|     }\n00777|   }, []);\n00778| \n00779|   const debounceTimer = React.useRef<NodeJS.Timeout>();\n00780|   const handleAddressChange = (field: string, value: string, element?: HTMLInputElement) => {\n\n(File has more lines. Use 'offset' parameter to read beyond line 780)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "\n       const response = result as Response;\n       const data = await response.json();\n          \n          if (response.ok && data.status === 'success') {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      }),\n      \n      checkAPIStatus('cdek', async () => {\n        try {\n          const response = await fetch('/api/cdek', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({"
+    },
+    "time": {
+      "start": 1762837234382,
+      "end": 1762837234386
+    }
+  }
+}

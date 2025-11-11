@@ -1,0 +1,25 @@
+{
+  "id": "prt_a7149e05c001HF3u7jndcIvQvQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a7149ce24002e9XYRS9N5sQIxt",
+  "type": "tool",
+  "callID": "toolu_01DM1LwmgNCf6hhr42JPbeFT",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 40,
+      "offset": 540
+    },
+    "output": "<file>\n00541|             })\n00542|           });\n00543|           const authData = await authResponse.json();\n00544|           \n00545|           // Проверяем все возможные пути к sessionID как в calculateDellin\n00546|           if (authData.data?.sessionID || authData.sessionID || authData.data?.session) {\n00547|             return { success: true };\n00548|           } else {\n00549|             return { error: true };\n00550|           }\n00551|         } catch (error) {\n00552|           return { error: true };\n00553|         }\n00554|       }),\n00555|       \n00556|       checkAPIStatus('railcontinent', async () => {\n00557|         try {\n00558|           const response = await fetch('/api/rail-continent', {\n00559|             method: 'POST',\n00560|             headers: { 'Content-Type': 'application/json' },\n00561|             body: JSON.stringify({\n00562|               city_sender: testData.fromCity,\n00563|               city_receiver: testData.toCity,\n00564|               weight: 10,\n00565|               volume: 0.1,\n00566|               length: 1,\n00567|               width: 1,\n00568|               height: 1,\n00569|               declared_cost: testData.declaredValue,\n00570|               pickup: '0',\n00571|               delivery: '0',\n00572|               packaging: '0',\n00573|               insurance: '0',\n00574|               tariff: 'auto'\n00575|             })\n00576|           });\n00577|           return await response.json();\n00578|         } catch (error) {\n00579|           return { error: true };\n00580|         }\n\n(File has more lines. Use 'offset' parameter to read beyond line 580)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "            })\n          });\n          const authData = await authResponse.json();\n          \n          // Проверяем все возможные пути к sessionID как в calculateDellin\n          if (authData.data?.sessionID || authData.sessionID || authData.data?.session) {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      }),\n      \n      checkAPIStatus('railcontinent', async () => {\n        try {\n          const response = await fetch('/api/rail-continent', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },"
+    },
+    "time": {
+      "start": 1762837259041,
+      "end": 1762837259046
+    }
+  }
+}

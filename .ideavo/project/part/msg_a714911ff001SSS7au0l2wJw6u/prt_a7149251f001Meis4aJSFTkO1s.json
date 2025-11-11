@@ -1,0 +1,25 @@
+{
+  "id": "prt_a7149251f001Meis4aJSFTkO1s",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a714911ff001SSS7au0l2wJw6u",
+  "type": "tool",
+  "callID": "toolu_01XMNKUMRMCyYzt1V8VshnRY",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 60,
+      "offset": 565
+    },
+    "output": "<file>\n00566|               length: 1,\n00567|               width: 1,\n00568|               height: 1,\n00569|               declared_cost: testData.declaredValue,\n00570|               pickup: '0',\n00571|               delivery: '0',\n00572|               packaging: '0',\n00573|               insurance: '0',\n00574|               tariff: 'auto'\n00575|             })\n00576|           });\n00577|           return await response.json();\n00578|         } catch (error) {\n00579|           return { error: true };\n00580|         }\n00581|       }),\n00582|       \n00583|       checkAPIStatus('vozovoz', async () => {\n00584|         try {\n00585|           const response = await fetch('/api/vozovoz', {\n00586|             method: 'POST',\n00587|             headers: { 'Content-Type': 'application/json' },\n00588|             body: JSON.stringify({\n00589|               object: \"price\",\n00590|               action: \"get\",\n00591|               params: {\n00592|                 cargo: {\n00593|                   dimension: {\n00594|                     quantity: 1,\n00595|                     volume: 0.1,\n00596|                     weight: 10\n00597|                   }\n00598|                 },\n00599|                 gateway: {\n00600|                   dispatch: {\n00601|                     point: {\n00602|                       location: testData.fromCity,\n00603|                       terminal: \"default\"\n00604|                     }\n00605|                   },\n00606|                   destination: {\n00607|                     point: {\n00608|                       location: testData.toCity,\n00609|                       terminal: \"default\"\n00610|                     }\n00611|                   }\n00612|                 }\n00613|               }\n00614|             })\n00615|           });\n00616|           return await response.json();\n00617|         } catch (error) {\n00618|           return { error: true };\n00619|         }\n00620|       }),\n00621|       \n00622|       checkAPIStatus('nordwheel', async () => {\n00623|         try {\n00624|           const totalWeight = 10;\n00625|           const totalVolume = 0.1;\n\n(File has more lines. Use 'offset' parameter to read beyond line 625)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "              length: 1,\n              width: 1,\n              height: 1,\n              declared_cost: testData.declaredValue,\n              pickup: '0',\n              delivery: '0',\n              packaging: '0',\n              insurance: '0',\n              tariff: 'auto'\n            })\n          });\n          return await response.json();\n        } catch (error) {\n          return { error: true };\n        }\n      }),\n      \n      checkAPIStatus('vozovoz', async () => {\n        try {\n          const response = await fetch('/api/vozovoz', {"
+    },
+    "time": {
+      "start": 1762837211200,
+      "end": 1762837211204
+    }
+  }
+}
