@@ -1,0 +1,25 @@
+{
+  "id": "prt_a768cb748001WntCoAywzQBQIk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768ca412001DZ2kuJNitlpupd",
+  "type": "tool",
+  "callID": "toolu_01TE6UUErbMC7bvSDh1s2eio",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 30,
+      "offset": 835
+    },
+    "output": "<file>\n00836|   }, []);\n00837| \n00838|   const debounceTimer = React.useRef<NodeJS.Timeout>();\n00839|   const handleAddressChange = (field: string, value: string, element?: HTMLInputElement) => {\n00840|             },\n00841|             body: JSON.stringify(requestData)\n00842|           },\n00843|           { operation: 'calculate', company: 'Деловые Линии' }\n00844|         );\n00845| \n00846|         if (result && typeof result === 'object' && 'success' in result && !result.success) {\n00847|           console.error('❌ ДЛ API ошибка:', result.error);\n00848|           // For Dellin, we still want to handle retries manually for session renewal\n00849|           // So we'll create a mock response that indicates failure\n00850|           response = {\n00851|             ok: false,\n00852|             status: 500,\n00853|             json: async () => ({ error: result.error.message })\n00854|           } as any;\n00855|           data = { error: result.error.message };\n00856|         } else {\n00857|           response = result as Response;\n00858|           try {\n00859|             data = await response.json();\n00860|           } catch (parseError) {\n00861|             console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);\n00862|             throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);\n00863|           }\n00864|         }\n00865|         \n\n(File has more lines. Use 'offset' parameter to read beyond line 865)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  }, []);\n\n  const debounceTimer = React.useRef<NodeJS.Timeout>();\n  const handleAddressChange = (field: string, value: string, element?: HTMLInputElement) => {\n            },\n            body: JSON.stringify(requestData)\n          },\n          { operation: 'calculate', company: 'Деловые Линии' }\n        );\n\n        if (result && typeof result === 'object' && 'success' in result && !result.success) {\n          console.error('❌ ДЛ API ошибка:', result.error);\n          // For Dellin, we still want to handle retries manually for session renewal\n          // So we'll create a mock response that indicates failure\n          response = {\n            ok: false,\n            status: 500,\n            json: async () => ({ error: result.error.message })\n          } as any;\n          data = { error: result.error.message };"
+    },
+    "time": {
+      "start": 1762925525711,
+      "end": 1762925525714
+    }
+  }
+}

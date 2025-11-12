@@ -1,0 +1,25 @@
+{
+  "id": "prt_a768d92f4001vXtE3smWz3FU6P",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768d85d1002AvJ9myQYIq4bwK",
+  "type": "tool",
+  "callID": "toolu_01NuYiGiwbX5fw4pncmLYtGy",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 20,
+      "offset": 1995
+    },
+    "output": "<file>\n01996|     \n01997|     // Если много мелких мест - можем стакировать\n01998|     const avgHeight = totalHeight / cargos.length;\n01999|     return avgHeight < 0.5 ? totalHeight : maxHeight; // 50см порог для стакирования\n02000|   };\n02001| \n02002|   // 🔧 Валидация множественных грузовых мест\n02003|   const validateMultipleCargos = (cargos: typeof form.cargos) => {\n02004|     if (!cargos || cargos.length === 0) {\n02005|       throw new Error('Отсутствуют грузовые места');\n02006|     }\n02007|     \n02008|     if (cargos.length > 50) {\n02009|       throw new Error(`Слишком много грузовых мест (${cargos.length}). Максимум: 50`);\n02010|     }\n02011|     \n02012|     const totalVolume = cargos.reduce((sum, cargo) => \n02013|       sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n02014|     );\n02015|     \n\n(File has more lines. Use 'offset' parameter to read beyond line 2015)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "    \n    // Если много мелких мест - можем стакировать\n    const avgHeight = totalHeight / cargos.length;\n    return avgHeight < 0.5 ? totalHeight : maxHeight; // 50см порог для стакирования\n  };\n\n  // 🔧 Валидация множественных грузовых мест\n  const validateMultipleCargos = (cargos: typeof form.cargos) => {\n    if (!cargos || cargos.length === 0) {\n      throw new Error('Отсутствуют грузовые места');\n    }\n    \n    if (cargos.length > 50) {\n      throw new Error(`Слишком много грузовых мест (${cargos.length}). Максимум: 50`);\n    }\n    \n    const totalVolume = cargos.reduce((sum, cargo) => \n      sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n    );\n    "
+    },
+    "time": {
+      "start": 1762925582002,
+      "end": 1762925582009
+    }
+  }
+}

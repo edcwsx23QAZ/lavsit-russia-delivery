@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768bdbb8001QDXV1QxTNXz2ms",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768bbd9c002qYO2pGSGDTapvv",
+  "type": "tool",
+  "callID": "toolu_01E7nktgfSDdDNRgDnvENQGC",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | head -40",
+      "description": "Check build errors to understand structure"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expected ',', got ':'\n     ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:789:1]\n \u001b[2m789\u001b[0m |               uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n \u001b[2m790\u001b[0m |               count: 1  // По умолчанию 1\n \u001b[2m791\u001b[0m |             }]\n \u001b[2m792\u001b[0m |           } : {})\n     : \u001b[31;1m            ^\u001b[0m\n \u001b[2m793\u001b[0m |         },\n \u001b[2m794\u001b[0m |         cargo: {\n \u001b[2m795\u001b[0m |           quantity: form.cargos.length,\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+    "title": "cd /home/user/project && npm run build 2>&1 | head -40",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expected ',', got ':'\n     ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:789:1]\n \u001b[2m789\u001b[0m |               uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n \u001b[2m790\u001b[0m |               count: 1  // По умолчанию 1\n \u001b[2m791\u001b[0m |             }]\n \u001b[2m792\u001b[0m |           } : {})\n     : \u001b[31;1m            ^\u001b[0m\n \u001b[2m793\u001b[0m |         },\n \u001b[2m794\u001b[0m |         cargo: {\n \u001b[2m795\u001b[0m |           quantity: form.cargos.length,\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+      "exit": 0,
+      "description": "Check build errors to understand structure"
+    },
+    "time": {
+      "start": 1762925469652,
+      "end": 1762925475736
+    }
+  }
+}

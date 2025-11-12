@@ -1,0 +1,26 @@
+{
+  "id": "prt_a76924e48001996zCfWmwZrtUw",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a769236bc001bzGpmLPil3cfGG",
+  "type": "tool",
+  "callID": "toolu_01HBJnqDEQz4esL4PhZJJsbY",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep \"VOZOVOZ_TOKEN\" app/api/vozovoz/route.ts",
+      "description": "Check Vozovoz token"
+    },
+    "output": "const VOZOVOZ_TOKEN = 'sBDUaEmzVBO6syQWHvHxmjxJQiON2BZplQaqrU3N';\n    const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;\n",
+    "title": "grep \"VOZOVOZ_TOKEN\" app/api/vozovoz/route.ts",
+    "metadata": {
+      "output": "const VOZOVOZ_TOKEN = 'sBDUaEmzVBO6syQWHvHxmjxJQiON2BZplQaqrU3N';\n    const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;\n",
+      "exit": 0,
+      "description": "Check Vozovoz token"
+    },
+    "time": {
+      "start": 1762925892081,
+      "end": 1762925892089
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_a768a52eb0017lVyHXJi9gVvP7",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768a3ddc0027cbX9gf02C4Vtj",
+  "type": "tool",
+  "callID": "toolu_01Vu5BtF463peGfkTCZebAU5",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 50,
+      "offset": 720
+    },
+    "output": "<file>\n00721|                 weight: 1000\n00722|               }]\n00723|             })\n00724|           });\n00725|           const data = await response.json();\n00726|           \n00727|           if (!response.ok) {\n00728|             const errorText = data.details || data.error || 'Unknown error';\n00729|             if (errorText.includes('<!DOCTYPE') || errorText.includes('<html')) {\n00730|               return { error: true, errorType: '⚠️ токен' };\n00731|             }\n00732|             if (response.status === 401 || response.status === 403) {\n00733|               return { error: true, errorType: '🔐 auth' };\n00734|             }\n00735|             return { error: true, errorType: '❌ API' };\n00736|           }\n00737|           \n00738|           if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {\n00739|             return { success: true };\n00740|           } else {\n00741|             return { error: true, errorType: '⚠️ формат' };\n00742|           }\n00743|         } catch (error) {\n00744|           return { error: true, errorType: '📡 сеть' };\n00745|         }\n00746|       }),\n00747|       \n00748|       checkAPIStatus('kit', async () => {\n00749|         try {\n00750|           const response = await fetch('/api/kit', {\n00751|             method: 'POST',\n00752|             headers: { 'Content-Type': 'application/json' },\n00753|             body: JSON.stringify({\n00754|               from_city: testData.fromCity,\n00755|               to_city: testData.toCity,\n00756|               declared_price: testData.declaredValue\n00757|             })\n00758|           });\n00759|           const data = await response.json();\n00760|           \n00761|           if (!response.ok) {\n00762|             const errorText = data.details || data.error || 'Unknown error';\n00763|             if (errorText.includes('<!DOCTYPE') || errorText.includes('<html')) {\n00764|               return { error: true, errorType: '⚠️ токен' };\n00765|             }\n00766|             if (response.status === 401 || response.status === 403) {\n00767|               return { error: true, errorType: '🔐 токен' };\n00768|             }\n00769|             return { error: true, errorType: '❌ API' };\n00770|           }\n\n(File has more lines. Use 'offset' parameter to read beyond line 770)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                weight: 1000\n              }]\n            })\n          });\n          const data = await response.json();\n          \n          if (!response.ok) {\n            const errorText = data.details || data.error || 'Unknown error';\n            if (errorText.includes('<!DOCTYPE') || errorText.includes('<html')) {\n              return { error: true, errorType: '⚠️ токен' };\n            }\n            if (response.status === 401 || response.status === 403) {\n              return { error: true, errorType: '🔐 auth' };\n            }\n            return { error: true, errorType: '❌ API' };\n          }\n          \n          if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {\n            return { success: true };\n          } else {"
+    },
+    "time": {
+      "start": 1762925368629,
+      "end": 1762925368632
+    }
+  }
+}

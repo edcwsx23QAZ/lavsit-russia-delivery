@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768fe8e50013gz9vC4MtPqspy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768fd4d3002Q3298T5AbTltAU",
+  "type": "tool",
+  "callID": "toolu_01TxHiLRKHHT5BhwAkAUHiQs",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && sed -n '787,1500p' app/page.tsx | grep -n \"^  const\\|^  };\" | head -10",
+      "description": "Find end of the messy code block"
+    },
+    "output": "1:  const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n426:  };\n431:  const getPekZoneByAddress = async (address: string) => {\n508:  };\n511:  const getPekZoneFallback = (address: string) => {\n572:  };\n575:  const getPekNearestDepartments = async (address: string, coordinates?: { latitude: string, longitude: string }) => {\n651:  };\n654:  const getYandexCoordinates = async (address: string): Promise<{ latitude: string, longitude: string } | null> => {\n676:  };\n",
+    "title": "cd /home/user/project && sed -n '787,1500p' app/page.tsx | grep -n \"^  const\\|^  };\" | head -10",
+    "metadata": {
+      "output": "1:  const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n426:  };\n431:  const getPekZoneByAddress = async (address: string) => {\n508:  };\n511:  const getPekZoneFallback = (address: string) => {\n572:  };\n575:  const getPekNearestDepartments = async (address: string, coordinates?: { latitude: string, longitude: string }) => {\n651:  };\n654:  const getYandexCoordinates = async (address: string): Promise<{ latitude: string, longitude: string } | null> => {\n676:  };\n",
+      "exit": 0,
+      "description": "Find end of the messy code block"
+    },
+    "time": {
+      "start": 1762925735728,
+      "end": 1762925735744
+    }
+  }
+}

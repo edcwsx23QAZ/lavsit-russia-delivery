@@ -1,0 +1,25 @@
+{
+  "id": "prt_a768f4af9001Y1EFp4kJ3B46bF",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768f31a5002TMQTKzHH6qlk55",
+  "type": "tool",
+  "callID": "toolu_01N3W4KEmYX8cDeVtm9GYrWx",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 30,
+      "offset": 775
+    },
+    "output": "<file>\n00776|           }\n00777|         } catch (error) {\n00778|           return { error: true, errorType: '📡 сеть' };\n00779|         }\n00780|       }),\n00781|             time: {\n00782|               worktimeStart: '10:00',\n00783|               worktimeEnd: '18:00',\n00784|               breakStart: '13:00',\n00785|               breakEnd: '14:00',\n00786|               exactTime: false\n00787|             }\n00788|             // handling в derival всегда пропускается согласно инструкции\n00789|           },\n00790|           arrival: {\n00791|             variant: form.toAddressDelivery ? 'address' : 'terminal',\n00792|             ...(form.toAddressDelivery ? {\n00793|               address: {\n00794|                 search: normalizedToAddress || form.toAddress || form.toCity\n00795|               }\n00796|             } : {\n00797|               terminalID: toTerminalId\n00798|             }),\n00799|             time: {\n00800|               worktimeStart: '10:00',\n00801|               worktimeEnd: '18:00',\n00802|               breakStart: '13:00',\n00803|               breakEnd: '14:00',\n00804|               exactTime: false\n00805|             },\n\n(File has more lines. Use 'offset' parameter to read beyond line 805)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "          }\n        } catch (error) {\n          return { error: true, errorType: '📡 сеть' };\n        }\n      }),\n            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            }\n            // handling в derival всегда пропускается согласно инструкции\n          },\n          arrival: {\n            variant: form.toAddressDelivery ? 'address' : 'terminal',\n            ...(form.toAddressDelivery ? {\n              address: {\n                search: normalizedToAddress || form.toAddress || form.toCity\n              }"
+    },
+    "time": {
+      "start": 1762925694642,
+      "end": 1762925694644
+    }
+  }
+}

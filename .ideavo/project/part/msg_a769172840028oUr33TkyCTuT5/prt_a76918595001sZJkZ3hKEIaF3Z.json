@@ -1,0 +1,26 @@
+{
+  "id": "prt_a76918595001sZJkZ3hKEIaF3Z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a769172840028oUr33TkyCTuT5",
+  "type": "tool",
+  "callID": "toolu_017wx743UCP3uepr5cydqPQ3",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && git checkout 5af3cc4 -- app/page.tsx",
+      "description": "Restore file from working commit"
+    },
+    "output": "",
+    "title": "cd /home/user/project && git checkout 5af3cc4 -- app/page.tsx",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Restore file from working commit"
+    },
+    "time": {
+      "start": 1762925840073,
+      "end": 1762925840110
+    }
+  }
+}

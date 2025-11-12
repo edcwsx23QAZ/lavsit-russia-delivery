@@ -1,0 +1,26 @@
+{
+  "id": "prt_a76916745001v0xyFxggTE4kRL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a76914bce002AqlFdU56WmIQjJ",
+  "type": "tool",
+  "callID": "toolu_01FreXfvsMCsNDnsjwUj1Lfi",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && git show 5af3cc4:app/page.tsx | sed -n '778,782p'",
+      "description": "Check previous commit"
+    },
+    "output": "        fromCity: '',\n        fromAddress: ''\n      }));\n    }\n  };\n",
+    "title": "cd /home/user/project && git show 5af3cc4:app/page.tsx | sed -n '778,782p'",
+    "metadata": {
+      "output": "        fromCity: '',\n        fromAddress: ''\n      }));\n    }\n  };\n",
+      "exit": 0,
+      "description": "Check previous commit"
+    },
+    "time": {
+      "start": 1762925832555,
+      "end": 1762925832571
+    }
+  }
+}

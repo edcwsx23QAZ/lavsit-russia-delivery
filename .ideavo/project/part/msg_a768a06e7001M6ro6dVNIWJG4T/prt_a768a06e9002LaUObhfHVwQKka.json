@@ -1,0 +1,7 @@
+{
+  "id": "prt_a768a06e9002LaUObhfHVwQKka",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768a06e7001M6ro6dVNIWJG4T",
+  "type": "text",
+  "text": "Посмотри ошибку и исправь:\n\nFailed to compile\n\nNext.js (14.2.31) is outdated (learn more)\n./app/page.tsx\nError: \n  x Expected ',', got ':'\n     ,-[/home/user/project/app/page.tsx:778:1]\n 778 |           return { error: true, errorType: '📡 сеть' };\n 779 |         }\n 780 |       }),\n 781 |             time: {\n     :                 ^\n 782 |               worktimeStart: '10:00',\n 783 |               worktimeEnd: '18:00',\n 784 |               breakStart: '13:00',\n     `----\n\nCaused by:\n    Syntax Error\nThis error occurred during the build process and can only be dismissed by fixing the error."
+}

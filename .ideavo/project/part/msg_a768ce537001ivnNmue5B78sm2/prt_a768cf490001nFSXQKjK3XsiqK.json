@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768cf490001nFSXQKjK3XsiqK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768ce537001ivnNmue5B78sm2",
+  "type": "tool",
+  "callID": "toolu_01D7ahgAoq2ycUoxftwJc5Wj",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "  const debounceTimer = React.useRef<NodeJS.Timeout>();\n  const handleAddressChange = (field: string, value: string, element?: HTMLInputElement) => {\n    setForm(prev => ({ ...prev, [field]: value }));\n    \n    if (debounceTimer.current) {\n      clearTimeout(debounceTimer.current);\n    }\n    \n    debounceTimer.current = setTimeout(() => {\n      searchAddresses(value, field, element);\n    }, 300);\n  };\n\n  const selectSuggestion = (suggestion: AddressSuggestion) => {",
+      "oldString": "  const debounceTimer = React.useRef<NodeJS.Timeout>();\n  const handleAddressChange = (field: string, value: string, element?: HTMLInputElement) => {\n            },\n            body: JSON.stringify(requestData)\n          },\n          { operation: 'calculate', company: 'Деловые Линии' }\n        );\n\n        if (result && typeof result === 'object' && 'success' in result && !result.success) {\n          console.error('❌ ДЛ API ошибка:', result.error);\n          // For Dellin, we still want to handle retries manually for session renewal\n          // So we'll create a mock response that indicates failure\n          response = {\n            ok: false,\n            status: 500,\n            json: async () => ({ error: result.error.message })\n          } as any;\n          data = { error: result.error.message };\n        } else {\n          response = result as Response;\n          try {\n            data = await response.json();\n          } catch (parseError) {\n            console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);\n            throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);\n          }\n        }\n        "
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -836,34 +836,20 @@\n }, []);\n \n const debounceTimer = React.useRef<NodeJS.Timeout>();\n const handleAddressChange = (field: string, value: string, element?: HTMLInputElement) => {\n-          },\n-          body: JSON.stringify(requestData)\n-        },\n-        { operation: 'calculate', company: 'Деловые Линии' }\n-      );\n+  setForm(prev => ({ ...prev, [field]: value }));\n+  \n+  if (debounceTimer.current) {\n+    clearTimeout(debounceTimer.current);\n+  }\n+  \n+  debounceTimer.current = setTimeout(() => {\n+    searchAddresses(value, field, element);\n+  }, 300);\n+};\n \n-      if (result && typeof result === 'object' && 'success' in result && !result.success) {\n-        console.error('❌ ДЛ API ошибка:', result.error);\n-        // For Dellin, we still want to handle retries manually for session renewal\n-        // So we'll create a mock response that indicates failure\n-        response = {\n-          ok: false,\n-          status: 500,\n-          json: async () => ({ error: result.error.message })\n-        } as any;\n-        data = { error: result.error.message };\n-      } else {\n-        response = result as Response;\n-        try {\n-          data = await response.json();\n-        } catch (parseError) {\n-          console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);\n-          throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);\n-        }\n-      }\n-      \n+const selectSuggestion = (suggestion: AddressSuggestion) => {\n       console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n       console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n       console.log('🚀 ОТВЕТ ДЛ data:', data);\n       \n"
+    },
+    "time": {
+      "start": 1762925545880,
+      "end": 1762925545898
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768b8d0e001LTCUaBu5tVn00B",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768b7b94001YbG4mhvN7IgS0G",
+  "type": "tool",
+  "callID": "toolu_01QpscSbW7gXQ497cxL9K6xy",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n \"debounceTimer\" app/page.tsx | head -3",
+      "description": "Find debounceTimer reference"
+    },
+    "output": "",
+    "title": "cd /home/user/project && grep -n \"debounceTimer\" app/page.tsx | head -3",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Find debounceTimer reference"
+    },
+    "time": {
+      "start": 1762925449237,
+      "end": 1762925449250
+    }
+  }
+}

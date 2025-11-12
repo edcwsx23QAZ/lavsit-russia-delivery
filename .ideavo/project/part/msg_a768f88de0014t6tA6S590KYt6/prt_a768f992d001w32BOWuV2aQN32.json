@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768f992d001w32BOWuV2aQN32",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768f88de0014t6tA6S590KYt6",
+  "type": "tool",
+  "callID": "toolu_015gjcpPY5pKi8hDzRBZyvK2",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | tail -30",
+      "description": "Check build status"
+    },
+    "output": "> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expression expected\n     ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:786:1]\n \u001b[2m786\u001b[0m | \n \u001b[2m787\u001b[0m |   const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n \u001b[2m788\u001b[0m |             // handling в arrival заполняется только если требуется подъем\n \u001b[2m789\u001b[0m |             ...(form.needCarry ? {\n     : \u001b[31;1m            ^^^\u001b[0m\n \u001b[2m790\u001b[0m |               handling: {\n \u001b[2m791\u001b[0m |                 freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n \u001b[2m792\u001b[0m |                 toFloor: form.floor, // этаж из формы\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+    "title": "cd /home/user/project && npm run build 2>&1 | tail -30",
+    "metadata": {
+      "output": "> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expression expected\n     ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:786:1]\n \u001b[2m786\u001b[0m | \n \u001b[2m787\u001b[0m |   const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n \u001b[2m788\u001b[0m |             // handling в arrival заполняется только если требуется подъем\n \u001b[2m789\u001b[0m |             ...(form.needCarry ? {\n     : \u001b[31;1m            ^^^\u001b[0m\n \u001b[2m790\u001b[0m |               handling: {\n \u001b[2m791\u001b[0m |                 freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n \u001b[2m792\u001b[0m |                 toFloor: form.floor, // этаж из формы\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+      "exit": 0,
+      "description": "Check build status"
+    },
+    "time": {
+      "start": 1762925714504,
+      "end": 1762925718703
+    }
+  }
+}

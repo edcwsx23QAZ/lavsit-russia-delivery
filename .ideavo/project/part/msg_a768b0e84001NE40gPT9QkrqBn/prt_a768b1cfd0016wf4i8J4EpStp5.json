@@ -1,0 +1,25 @@
+{
+  "id": "prt_a768b1cfd0016wf4i8J4EpStp5",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768b0e84001NE40gPT9QkrqBn",
+  "type": "tool",
+  "callID": "toolu_01AFiUUfFiSzJKAN9T592KaJ",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 30,
+      "offset": 785
+    },
+    "output": "<file>\n00786| \n00787|   const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n00788|             packages: [{\n00789|               uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n00790|               count: 1  // По умолчанию 1\n00791|             }]\n00792|           } : {})\n00793|         },\n00794|         cargo: {\n00795|           quantity: form.cargos.length,\n00796|           length: maxLength,\n00797|           width: maxWidth,\n00798|           height: maxHeight,\n00799|           weight: totalWeight,\n00800|           totalVolume: totalVolume,\n00801|           totalWeight: totalWeight,\n00802|           oversizedWeight: 0,\n00803|           oversizedVolume: 0,\n00804|           hazardClass: 0,  // Всегда 0 если нет опасных грузов\n00805|           ...(form.needInsurance && form.declaredValue > 0 ? {\n00806|             insurance: {\n00807|               statedValue: form.declaredValue,\n00808|               term: true  // Всегда true при наличии страхования\n00809|             }\n00810|           } : {})\n00811|         },\n00812|         payment: {\n00813|           type: 'noncash',  // Всегда \"noncash\"\n00814|           paymentCitySearch: {\n00815|             search: form.fromCity  // Город оплаты\n\n(File has more lines. Use 'offset' parameter to read beyond line 815)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "\n  const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n            packages: [{\n              uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n              count: 1  // По умолчанию 1\n            }]\n          } : {})\n        },\n        cargo: {\n          quantity: form.cargos.length,\n          length: maxLength,\n          width: maxWidth,\n          height: maxHeight,\n          weight: totalWeight,\n          totalVolume: totalVolume,\n          totalWeight: totalWeight,\n          oversizedWeight: 0,\n          oversizedVolume: 0,\n          hazardClass: 0,  // Всегда 0 если нет опасных грузов\n          ...(form.needInsurance && form.declaredValue > 0 ? {"
+    },
+    "time": {
+      "start": 1762925420663,
+      "end": 1762925420671
+    }
+  }
+}

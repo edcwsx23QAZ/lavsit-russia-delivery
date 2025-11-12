@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768bad4d0018fJgf7rbJ0zpL7",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768b9c820023xg46kkdrJTzoT",
+  "type": "tool",
+  "callID": "toolu_01TS2msnbYG14xr3yx1KSQrx",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && sed -n '785,900p' app/page.tsx | grep -n \"const\\|function\\|=>\" | head -20",
+      "description": "Find function declarations around line 785"
+    },
+    "output": "3:  const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n55:        const result = await enhancedApiRequest(\n75:            json: async () => ({ error: result.error.message })\n93:        const isAuthError = response.status === 401 || \n95:                           (response.status === 400 && data?.errors?.some((err: any) => \n103:          const newSessionId = await getDellinSessionId();\n",
+    "title": "cd /home/user/project && sed -n '785,900p' app/page.tsx | grep -n \"const\\|function\\|=>\" | head -20",
+    "metadata": {
+      "output": "3:  const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n55:        const result = await enhancedApiRequest(\n75:            json: async () => ({ error: result.error.message })\n93:        const isAuthError = response.status === 401 || \n95:                           (response.status === 400 && data?.errors?.some((err: any) => \n103:          const newSessionId = await getDellinSessionId();\n",
+      "exit": 0,
+      "description": "Find function declarations around line 785"
+    },
+    "time": {
+      "start": 1762925457919,
+      "end": 1762925457936
+    }
+  }
+}

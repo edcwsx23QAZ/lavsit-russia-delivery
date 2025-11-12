@@ -1,0 +1,26 @@
+{
+  "id": "prt_a76913f4c001XnFr2nU6yQ4OIE",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a76912aab002Ww43F5Avrq730v",
+  "type": "tool",
+  "callID": "toolu_01BR8pSe2A98GtgBahhEuVTh",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && git show aab4724:app/page.tsx | sed -n '778,782p'",
+      "description": "Check what's in the last commit"
+    },
+    "output": "          return { error: true, errorType: '📡 сеть' };\n        }\n      }),\n            time: {\n              worktimeStart: '10:00',\n",
+    "title": "cd /home/user/project && git show aab4724:app/page.tsx | sed -n '778,782p'",
+    "metadata": {
+      "output": "          return { error: true, errorType: '📡 сеть' };\n        }\n      }),\n            time: {\n              worktimeStart: '10:00',\n",
+      "exit": 0,
+      "description": "Check what's in the last commit"
+    },
+    "time": {
+      "start": 1762925822779,
+      "end": 1762925822788
+    }
+  }
+}

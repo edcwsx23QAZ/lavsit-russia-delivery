@@ -1,0 +1,25 @@
+{
+  "id": "prt_a768d588d001P6UINXfCf6KDvP",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768d39d200223scBghajdls0M",
+  "type": "tool",
+  "callID": "toolu_0114Mq1EKxZucpLRrLUp186h",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 50,
+      "offset": 848
+    },
+    "output": "<file>\n00849|   };\n00850| \n00851|   const selectSuggestion = (suggestion: AddressSuggestion) => {\n00852|         console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n00853|         console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n00854|         console.log('🚀 ОТВЕТ ДЛ data:', data);\n00855|         \n00856|         // Проверяем различные типы ошибок авторизации\n00857|         const isAuthError = response.status === 401 || \n00858|                            response.status === 403 ||\n00859|                            (response.status === 400 && data?.errors?.some((err: any) => \n00860|                              err.detail?.toLowerCase()?.includes('session') ||\n00861|                              err.detail?.toLowerCase()?.includes('auth') ||\n00862|                              err.detail?.toLowerCase()?.includes('invalid')\n00863|                            ));\n00864| \n00865|         if (isAuthError && attempt < maxRetries) {\n00866|           console.log('🔄 ДЛ: обнаружена ошибка авторизации, выполняем повторную авторизацию...');\n00867|           const newSessionId = await getDellinSessionId();\n00868|           if (newSessionId) {\n00869|             console.log('✅ ДЛ: получен новый SessionID, обновляем запрос...');\n00870|             // Обновляем sessionID в запросе\n00871|             requestData.sessionID = newSessionId;\n00872|             sessionID = newSessionId;\n00873|             continue; // Пробуем еще раз с новой авторизацией\n00874|           } else {\n00875|             console.error('❌ ДЛ: не удалось получить новый SessionID');\n00876|             break;\n00877|           }\n00878|         }\n00879|         \n00880|         if (response.status === 400 && data?.errors) {\n00881|           console.log('=== АНАЛИЗ ОШИБКИ 400 ===');\n00882|           console.log('🔍 Ошибки:', data.errors);\n00883|           data.errors.forEach((error: any, index: number) => {\n00884|             console.log(`🔍 Ошибка ${index + 1}:`, error);\n00885|             console.log(`   - Поле: ${error.field || 'не указано'}`);\n00886|             console.log(`   - Сообщение: ${error.detail || error.message || 'не указано'}`);\n00887|           });\n00888|           console.log('=== КОНЕЦ АНАЛИЗА ОШИБКИ 400 ===');\n00889|         }\n00890| \n00891|         // Если запрос успешный или не связан с авторизацией, продолжаем обработку\n00892|         break;\n00893|       }\n00894| \n00895|       // Проверяем на ошибки ПЕРЕД анализом данных\n00896|       if (!response.ok || !data.data) {\n00897|         console.log('❌ Ошибочный ответ API - пропускаем анализ данных');\n00898|         const errorMessage = data.metadata?.detail || \n\n(File has more lines. Use 'offset' parameter to read beyond line 898)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  };\n\n  const selectSuggestion = (suggestion: AddressSuggestion) => {\n        console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);\n        console.log('🚀 ОТВЕТ ДЛ status:', response.status);\n        console.log('🚀 ОТВЕТ ДЛ data:', data);\n        \n        // Проверяем различные типы ошибок авторизации\n        const isAuthError = response.status === 401 || \n                           response.status === 403 ||\n                           (response.status === 400 && data?.errors?.some((err: any) => \n                             err.detail?.toLowerCase()?.includes('session') ||\n                             err.detail?.toLowerCase()?.includes('auth') ||\n                             err.detail?.toLowerCase()?.includes('invalid')\n                           ));\n\n        if (isAuthError && attempt < maxRetries) {\n          console.log('🔄 ДЛ: обнаружена ошибка авторизации, выполняем повторную авторизацию...');\n          const newSessionId = await getDellinSessionId();\n          if (newSessionId) {"
+    },
+    "time": {
+      "start": 1762925566894,
+      "end": 1762925566897
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_a768fc7f6001THa1ACWKoZgL06",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768fb874002hdQREu40lCh5wN",
+  "type": "tool",
+  "callID": "toolu_01L8H61DG1qHmrHtwKhe7eb9",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 50,
+      "offset": 785
+    },
+    "output": "<file>\n00786| \n00787|   const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n00788|             // handling в arrival заполняется только если требуется подъем\n00789|             ...(form.needCarry ? {\n00790|               handling: {\n00791|                 freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n00792|                 toFloor: form.floor, // этаж из формы\n00793|                 carry: 0\n00794|               }\n00795|             } : {})\n00796|           },\n00797|           ...(form.needPackaging && packageUid ? {\n00798|             packages: [{\n00799|               uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n00800|               count: 1  // По умолчанию 1\n00801|             }]\n00802|           } : {})\n00803|         },\n00804|         cargo: {\n00805|           quantity: form.cargos.length,\n00806|           length: maxLength,\n00807|           width: maxWidth,\n00808|           height: maxHeight,\n00809|           weight: totalWeight,\n00810|           totalVolume: totalVolume,\n00811|           totalWeight: totalWeight,\n00812|           oversizedWeight: 0,\n00813|           oversizedVolume: 0,\n00814|           hazardClass: 0,  // Всегда 0 если нет опасных грузов\n00815|           ...(form.needInsurance && form.declaredValue > 0 ? {\n00816|             insurance: {\n00817|               statedValue: form.declaredValue,\n00818|               term: true  // Всегда true при наличии страхования\n00819|             }\n00820|           } : {})\n00821|         },\n00822|         payment: {\n00823|           type: 'noncash',  // Всегда \"noncash\"\n00824|           paymentCitySearch: {\n00825|             search: form.fromCity  // Город оплаты\n00826|           }\n00827|         }\n00828|       };\n00829| \n00830|       console.log('🚀 ИТОГОВЫЙ ЗАПРОС К ДЛ:', JSON.stringify(requestData, null, 2));\n00831|       \n00832|       // Специальная проверка блока packages\n00833|       if (requestData.delivery.packages) {\n00834|         console.log('✅ PACKAGES НАЙДЕН В ЗАПРОСЕ:', requestData.delivery.packages);\n00835|       } else {\n\n(File has more lines. Use 'offset' parameter to read beyond line 835)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "\n  const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n            // handling в arrival заполняется только если требуется подъем\n            ...(form.needCarry ? {\n              handling: {\n                freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n                toFloor: form.floor, // этаж из формы\n                carry: 0\n              }\n            } : {})\n          },\n          ...(form.needPackaging && packageUid ? {\n            packages: [{\n              uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n              count: 1  // По умолчанию 1\n            }]\n          } : {})\n        },\n        cargo: {\n          quantity: form.cargos.length,"
+    },
+    "time": {
+      "start": 1762925726431,
+      "end": 1762925726435
+    }
+  }
+}

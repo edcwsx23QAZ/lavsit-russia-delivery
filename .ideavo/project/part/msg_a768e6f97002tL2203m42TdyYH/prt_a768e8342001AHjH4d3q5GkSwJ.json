@@ -1,0 +1,25 @@
+{
+  "id": "prt_a768e8342001AHjH4d3q5GkSwJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768e6f97002tL2203m42TdyYH",
+  "type": "tool",
+  "callID": "toolu_0151et3UHARMiNwLxh7ni8pd",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 25,
+      "offset": 454
+    },
+    "output": "<file>\n00455|   }, []);\n00456| \n00457|   // Проверка статуса API при загрузке страницы\n00458|   useEffect(() => {\n00459|     if (typeof window !== 'undefined' && isLoaded) {\n00460|       checkAllAPIStatus();\n00461|     }\n00462|   }, [isLoaded]);\n00463| \n00464|   const checkAPIStatus = async (apiName: string, testFunction: () => Promise<any>) => {\n00465|     try {\n00466|       const result = await testFunction();\n00467|       if (result && !result.error) {\n00468|         setApiStatus(prev => ({ ...prev, [apiName]: 'подключено' }));\n00469|         setApiStatusDetails(prev => ({ ...prev, [apiName]: '' }));\n00470|       } else {\n00471|         const errorDetail = result?.errorType || result?.details || 'ошибка';\n00472|         setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));\n00473|         setApiStatusDetails(prev => ({ ...prev, [apiName]: errorDetail }));\n00474|       }\n00475|     } catch (error: any) {\n00476|       const errorMsg = error?.message || 'ошибка соединения';\n00477|       setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));\n00478|       setApiStatusDetails(prev => ({ ...prev, [apiName]: errorMsg }));\n00479|     }\n\n(File has more lines. Use 'offset' parameter to read beyond line 479)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  }, []);\n\n  // Проверка статуса API при загрузке страницы\n  useEffect(() => {\n    if (typeof window !== 'undefined' && isLoaded) {\n      checkAllAPIStatus();\n    }\n  }, [isLoaded]);\n\n  const checkAPIStatus = async (apiName: string, testFunction: () => Promise<any>) => {\n    try {\n      const result = await testFunction();\n      if (result && !result.error) {\n        setApiStatus(prev => ({ ...prev, [apiName]: 'подключено' }));\n        setApiStatusDetails(prev => ({ ...prev, [apiName]: '' }));\n      } else {\n        const errorDetail = result?.errorType || result?.details || 'ошибка';\n        setApiStatus(prev => ({ ...prev, [apiName]: 'ошибка' }));\n        setApiStatusDetails(prev => ({ ...prev, [apiName]: errorDetail }));\n      }"
+    },
+    "time": {
+      "start": 1762925643080,
+      "end": 1762925643082
+    }
+  }
+}

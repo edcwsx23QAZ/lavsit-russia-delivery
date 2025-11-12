@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768afe27001LoD7qhivkgmIyd",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768aee43001kJpuPTbzIKsHue",
+  "type": "tool",
+  "callID": "toolu_01DYoiyPqdXmJyjDybzZs34w",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "include": "*.tsx",
+      "path": "app",
+      "pattern": "const searchAddresses = useCallback"
+    },
+    "output": "Found 1 matches\napp/page.tsx:\n  Line 787:   const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {",
+    "title": "const searchAddresses = useCallback",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1762925412669,
+      "end": 1762925412682
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768cd5df00167aFqLK3Z7e795",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768cc409002lLiDr1tVRYoXZz",
+  "type": "tool",
+  "callID": "toolu_01Nv9VFePS7Xnm73ygH2zeGL",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n \"setForm(prev =>\" app/page.tsx | head -5",
+      "description": "Find setForm usage to understand function structure"
+    },
+    "output": "422:      setForm(prev => ({ ...prev, needInsurance: true }));\n3622:                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false, fromLavsiteWarehouse: false }))}\n3631:                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true, fromLavsiteWarehouse: false }))}\n3679:                        onChange={() => setForm(prev => ({ ...prev, toTerminal: true, toAddressDelivery: false }))}\n3688:                        onChange={() => setForm(prev => ({ ...prev, toTerminal: false, toAddressDelivery: true }))}\n",
+    "title": "cd /home/user/project && grep -n \"setForm(prev =>\" app/page.tsx | head -5",
+    "metadata": {
+      "output": "422:      setForm(prev => ({ ...prev, needInsurance: true }));\n3622:                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: true, fromAddressDelivery: false, fromLavsiteWarehouse: false }))}\n3631:                        onChange={() => setForm(prev => ({ ...prev, fromTerminal: false, fromAddressDelivery: true, fromLavsiteWarehouse: false }))}\n3679:                        onChange={() => setForm(prev => ({ ...prev, toTerminal: true, toAddressDelivery: false }))}\n3688:                        onChange={() => setForm(prev => ({ ...prev, toTerminal: false, toAddressDelivery: true }))}\n",
+      "exit": 0,
+      "description": "Find setForm usage to understand function structure"
+    },
+    "time": {
+      "start": 1762925534038,
+      "end": 1762925534049
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_a76903332001oxx16ohfKT6VmK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a769020db002RAnk0spSdz1Kja",
+  "type": "tool",
+  "callID": "toolu_014t8iVEqDfLGRSDLHCfHimg",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && git diff HEAD -- app/page.tsx | grep -A5 -B5 \"searchAddresses\"",
+      "description": "Check git diff for searchAddresses"
+    },
+    "output": "+      // Восстанавливаем исходное состояние формы\n+      setForm(currentForm);\n+    });\n+  };\n+\n+  const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n             // handling в arrival заполняется только если требуется подъем\n             ...(form.needCarry ? {\n               handling: {\n",
+    "title": "cd /home/user/project && git diff HEAD -- app/page.tsx | grep -A5 -B5 \"searchAddresses\"",
+    "metadata": {
+      "output": "+      // Восстанавливаем исходное состояние формы\n+      setForm(currentForm);\n+    });\n+  };\n+\n+  const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n             // handling в arrival заполняется только если требуется подъем\n             ...(form.needCarry ? {\n               handling: {\n",
+      "exit": 0,
+      "description": "Check git diff for searchAddresses"
+    },
+    "time": {
+      "start": 1762925754288,
+      "end": 1762925754314
+    }
+  }
+}

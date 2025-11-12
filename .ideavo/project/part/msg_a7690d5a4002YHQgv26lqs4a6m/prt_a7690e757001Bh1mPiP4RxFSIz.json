@@ -1,0 +1,26 @@
+{
+  "id": "prt_a7690e757001Bh1mPiP4RxFSIz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a7690d5a4002YHQgv26lqs4a6m",
+  "type": "tool",
+  "callID": "toolu_01GNb1XApcg8X4TeiwzU6JDA",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | tail -20",
+      "description": "Check if original file builds"
+    },
+    "output": "  \u001b[31mx\u001b[0m Expected ',', got ':'\n     ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:778:1]\n \u001b[2m778\u001b[0m |           return { error: true, errorType: '📡 сеть' };\n \u001b[2m779\u001b[0m |         }\n \u001b[2m780\u001b[0m |       }),\n \u001b[2m781\u001b[0m |             time: {\n     : \u001b[31;1m                ^\u001b[0m\n \u001b[2m782\u001b[0m |               worktimeStart: '10:00',\n \u001b[2m783\u001b[0m |               worktimeEnd: '18:00',\n \u001b[2m784\u001b[0m |               breakStart: '13:00',\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+    "title": "cd /home/user/project && npm run build 2>&1 | tail -20",
+    "metadata": {
+      "output": "  \u001b[31mx\u001b[0m Expected ',', got ':'\n     ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:778:1]\n \u001b[2m778\u001b[0m |           return { error: true, errorType: '📡 сеть' };\n \u001b[2m779\u001b[0m |         }\n \u001b[2m780\u001b[0m |       }),\n \u001b[2m781\u001b[0m |             time: {\n     : \u001b[31;1m                ^\u001b[0m\n \u001b[2m782\u001b[0m |               worktimeStart: '10:00',\n \u001b[2m783\u001b[0m |               worktimeEnd: '18:00',\n \u001b[2m784\u001b[0m |               breakStart: '13:00',\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+      "exit": 0,
+      "description": "Check if original file builds"
+    },
+    "time": {
+      "start": 1762925800301,
+      "end": 1762925803772
+    }
+  }
+}

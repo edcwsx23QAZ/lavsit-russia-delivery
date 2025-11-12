@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768ad22e001dp8MkK2sMQ4HkH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768abc7b002sb2mztf2fsKHg3",
+  "type": "tool",
+  "callID": "toolu_016sfUihDDWegNqXZEwLFar6",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "          }\n        } catch (error) {\n          return { error: true, errorType: '📡 сеть' };\n        }\n      })\n    ]).finally(() => {\n      // Восстанавливаем исходное состояние формы\n      setForm(currentForm);\n    });\n  };\n\n  const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {",
+      "oldString": "          }\n        } catch (error) {\n          return { error: true, errorType: '📡 сеть' };\n        }\n      })\n    ]).finally(() => {\n      // Восстанавливаем исходное состояние формы\n      setForm(currentForm);\n    });\n  };\n            // handling в arrival заполняется только если требуется подъем\n            ...(form.needCarry ? {\n              handling: {\n                freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n                toFloor: form.floor, // этаж из формы\n                carry: 0\n              }\n            } : {})\n          },\n          ...(form.needPackaging && packageUid ? {"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -782,18 +782,10 @@\n     // Восстанавливаем исходное состояние формы\n     setForm(currentForm);\n   });\n };\n-          // handling в arrival заполняется только если требуется подъем\n-          ...(form.needCarry ? {\n-            handling: {\n-              freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n-              toFloor: form.floor, // этаж из формы\n-              carry: 0\n-            }\n-          } : {})\n-        },\n-        ...(form.needPackaging && packageUid ? {\n+\n+const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n           packages: [{\n             uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n             count: 1  // По умолчанию 1\n           }]\n"
+    },
+    "time": {
+      "start": 1762925404258,
+      "end": 1762925404292
+    }
+  }
+}

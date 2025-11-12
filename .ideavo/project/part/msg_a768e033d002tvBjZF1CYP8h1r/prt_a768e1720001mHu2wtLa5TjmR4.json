@@ -1,0 +1,25 @@
+{
+  "id": "prt_a768e1720001mHu2wtLa5TjmR4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768e033d002tvBjZF1CYP8h1r",
+  "type": "tool",
+  "callID": "toolu_01AnYQwkcHG8bF13RVbPu2So",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/api/vozovoz/route.ts",
+      "limit": 10,
+      "offset": 1
+    },
+    "output": "<file>\n00002| import { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils';\n00003| \n00004| // Токен Возовоз API\n00005| const VOZOVOZ_TOKEN = 'sBDUaEmzVBO6syQWHvHxmjxJQiON2BZplQaqrU3N';\n00006| \n00007| export async function POST(request: NextRequest) {\n00008|   const endTiming = PerformanceMonitor.startMeasurement('vozovoz_api_total');\n00009|   \n00010|   try {\n00011|     const body = await request.json();\n\n(File has more lines. Use 'offset' parameter to read beyond line 11)\n</file>",
+    "title": "app/api/vozovoz/route.ts",
+    "metadata": {
+      "preview": "import { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils';\n\n// Токен Возовоз API\nconst VOZOVOZ_TOKEN = 'sBDUaEmzVBO6syQWHvHxmjxJQiON2BZplQaqrU3N';\n\nexport async function POST(request: NextRequest) {\n  const endTiming = PerformanceMonitor.startMeasurement('vozovoz_api_total');\n  \n  try {\n    const body = await request.json();"
+    },
+    "time": {
+      "start": 1762925615903,
+      "end": 1762925615906
+    }
+  }
+}

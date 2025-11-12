@@ -1,0 +1,25 @@
+{
+  "id": "prt_a768e62570018g8Zqn6fSeZ91f",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768e4ec20024ARgJze2ROAK5D",
+  "type": "tool",
+  "callID": "toolu_01QAteMJbzLtSN7xPvrgUUmc",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 30,
+      "offset": 185
+    },
+    "output": "<file>\n00186|   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n00187|   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n00188|   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n00189|   const [apiStatus, setApiStatus] = useState({\n00190|     pek: 'проверка...',\n00191|     dellin: 'проверка...',\n00192|     railcontinent: 'проверка...',\n00193|     vozovoz: 'проверка...',\n00194|     nordwheel: 'проверка...',\n00195|     cdek: 'проверка...',\n00196|     kit: 'проверка...',\n00197|     newline: 'не подключено',\n00198|     irtrust: 'не подключено',\n00199|     majortrans: 'не подключено',\n00200|     baikalservice: 'не подключено',\n00201|     adamant: 'не подключено',\n00202|     energiya: 'не подключено',\n00203|     cap: 'не подключено',\n00204|     uraltrans: 'не подключено',\n00205|     novotek: 'не подключено',\n00206|     karavan: 'не подключено',\n00207|     zeldor: 'не подключено',\n00208|     dktransit: 'не подключено',\n00209|     glavtrassa: 'не подключено',\n00210|     baltservice: 'не подключено',\n00211|     ankor: 'не подключено'\n00212|   });\n00213| \n00214|   const [apiStatusDetails, setApiStatusDetails] = useState<{ [key: string]: string }>({\n00215|     pek: '',\n\n(File has more lines. Use 'offset' parameter to read beyond line 215)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n  const [apiStatus, setApiStatus] = useState({\n    pek: 'проверка...',\n    dellin: 'проверка...',\n    railcontinent: 'проверка...',\n    vozovoz: 'проверка...',\n    nordwheel: 'проверка...',\n    cdek: 'проверка...',\n    kit: 'проверка...',\n    newline: 'не подключено',\n    irtrust: 'не подключено',\n    majortrans: 'не подключено',\n    baikalservice: 'не подключено',\n    adamant: 'не подключено',\n    energiya: 'не подключено',\n    cap: 'не подключено',\n    uraltrans: 'не подключено',\n    novotek: 'не подключено',"
+    },
+    "time": {
+      "start": 1762925634950,
+      "end": 1762925634953
+    }
+  }
+}

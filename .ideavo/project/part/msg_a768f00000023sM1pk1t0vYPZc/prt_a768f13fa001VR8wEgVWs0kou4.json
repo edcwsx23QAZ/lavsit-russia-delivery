@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768f13fa001VR8wEgVWs0kou4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768f00000023sM1pk1t0vYPZc",
+  "type": "tool",
+  "callID": "toolu_01WMAxxeR1scG2EfDhJy9Stz",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | tail -50",
+      "description": "Build the project to check for errors"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expected ',', got ':'\n     ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:778:1]\n \u001b[2m778\u001b[0m |           return { error: true, errorType: '📡 сеть' };\n \u001b[2m779\u001b[0m |         }\n \u001b[2m780\u001b[0m |       }),\n \u001b[2m781\u001b[0m |             time: {\n     : \u001b[31;1m                ^\u001b[0m\n \u001b[2m782\u001b[0m |               worktimeStart: '10:00',\n \u001b[2m783\u001b[0m |               worktimeEnd: '18:00',\n \u001b[2m784\u001b[0m |               breakStart: '13:00',\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+    "title": "cd /home/user/project && npm run build 2>&1 | tail -50",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expected ',', got ':'\n     ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:778:1]\n \u001b[2m778\u001b[0m |           return { error: true, errorType: '📡 сеть' };\n \u001b[2m779\u001b[0m |         }\n \u001b[2m780\u001b[0m |       }),\n \u001b[2m781\u001b[0m |             time: {\n     : \u001b[31;1m                ^\u001b[0m\n \u001b[2m782\u001b[0m |               worktimeStart: '10:00',\n \u001b[2m783\u001b[0m |               worktimeEnd: '18:00',\n \u001b[2m784\u001b[0m |               breakStart: '13:00',\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+      "exit": 0,
+      "description": "Build the project to check for errors"
+    },
+    "time": {
+      "start": 1762925680565,
+      "end": 1762925684594
+    }
+  }
+}

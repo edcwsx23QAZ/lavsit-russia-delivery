@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768b6ba0001d61KIRH1nddZI0",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768b528a0022XvKDMdEoAZuZk",
+  "type": "tool",
+  "callID": "toolu_01S7eU8uLa8bmh2qmYVirDm3",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && grep -n \"if (query.length < 3)\" app/page.tsx | head -5",
+      "description": "Find searchAddresses function body"
+    },
+    "output": "",
+    "title": "cd /home/user/project && grep -n \"if (query.length < 3)\" app/page.tsx | head -5",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Find searchAddresses function body"
+    },
+    "time": {
+      "start": 1762925441084,
+      "end": 1762925441105
+    }
+  }
+}

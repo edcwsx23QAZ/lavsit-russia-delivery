@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768a72880013XUyFPIUJrJD79",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768a63f7002z2I8R7IOkgDcOb",
+  "type": "tool",
+  "callID": "toolu_01P9UcRKxbK9aEFhUA6iEGkM",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "          }\n        } catch (error) {\n          return { error: true, errorType: '📡 сеть' };\n        }\n      })\n    ]).finally(() => {\n      // Восстанавливаем исходное состояние формы\n      setForm(currentForm);\n    });\n  };",
+      "oldString": "          }\n        } catch (error) {\n          return { error: true, errorType: '📡 сеть' };\n        }\n      }),\n            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            }\n            // handling в derival всегда пропускается согласно инструкции\n          },\n          arrival: {\n            variant: form.toAddressDelivery ? 'address' : 'terminal',\n            ...(form.toAddressDelivery ? {\n              address: {\n                search: normalizedToAddress || form.toAddress || form.toCity\n              }\n            } : {\n              terminalID: toTerminalId\n            }),\n            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            },"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -776,34 +776,14 @@\n         }\n       } catch (error) {\n         return { error: true, errorType: '📡 сеть' };\n       }\n-    }),\n-          time: {\n-            worktimeStart: '10:00',\n-            worktimeEnd: '18:00',\n-            breakStart: '13:00',\n-            breakEnd: '14:00',\n-            exactTime: false\n-          }\n-          // handling в derival всегда пропускается согласно инструкции\n-        },\n-        arrival: {\n-          variant: form.toAddressDelivery ? 'address' : 'terminal',\n-          ...(form.toAddressDelivery ? {\n-            address: {\n-              search: normalizedToAddress || form.toAddress || form.toCity\n-            }\n-          } : {\n-            terminalID: toTerminalId\n-          }),\n-          time: {\n-            worktimeStart: '10:00',\n-            worktimeEnd: '18:00',\n-            breakStart: '13:00',\n-            breakEnd: '14:00',\n-            exactTime: false\n-          },\n+    })\n+  ]).finally(() => {\n+    // Восстанавливаем исходное состояние формы\n+    setForm(currentForm);\n+  });\n+};\n           // handling в arrival заполняется только если требуется подъем\n           ...(form.needCarry ? {\n             handling: {\n               freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n"
+    },
+    "time": {
+      "start": 1762925382431,
+      "end": 1762925382467
+    }
+  }
+}

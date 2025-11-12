@@ -1,0 +1,26 @@
+{
+  "id": "prt_a768ed8170012GRnfoEhuRo0jf",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a768ec8e4002f1vW5lTsCPzDau",
+  "type": "tool",
+  "callID": "toolu_01Cbgho5Z62JeKx946jYCpXu",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "include": "*.tsx",
+      "path": "app",
+      "pattern": "statusDetail &&"
+    },
+    "output": "Found 1 matches\napp/page.tsx:\n  Line 4049:                               {statusDetail && !isConnected && (",
+    "title": "statusDetail &&",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1762925665232,
+      "end": 1762925665241
+    }
+  }
+}
