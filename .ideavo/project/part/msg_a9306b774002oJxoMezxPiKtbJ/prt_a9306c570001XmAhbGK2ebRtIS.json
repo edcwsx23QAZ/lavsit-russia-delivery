@@ -1,0 +1,25 @@
+{
+  "id": "prt_a9306c570001XmAhbGK2ebRtIS",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a9306b774002oJxoMezxPiKtbJ",
+  "type": "tool",
+  "callID": "call_91190930",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "limit": 50,
+      "offset": 4380
+    },
+    "output": "<file>\n04381|         </div>\n04382|         \n04383|         {/* Кнопка диагностики */}\n04384|         <div className=\"flex justify-end mb-4\">\n04385|           <Button \n04386|             onClick={() => window.open('/diagnostic', '_blank')}\n04387|             variant=\"outline\" \n04388|             className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n04389|           >\n04390|             <Settings className=\"h-4 w-4 mr-2\" />\n04391|             Диагностика\n04392|           </Button>\n04393|         </div>\n04394|         \n04395|         <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-3 h-[85vh]\">\n04396|           {/* Левая часть - форма */}\n04397|           <div className=\"space-y-2 overflow-y-auto pr-2\">\n04398|             {/* Каталог мебели */}\n04399|             <Card className=\"bg-gray-800 border-gray-700\">\n04400|               <CardHeader className=\"pb-2\">\n04401|                 <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n04402|                   <Package2 className=\"h-3 w-3\" />\n04403|                   Каталог мебели\n04404|                 </CardTitle>\n04405|               </CardHeader>\n04406|               <CardContent className=\"space-y-2\">\n04407|                 {/* Поиск и добавление товаров */}\n04408|                 <ProductSearch \n04409|                   onProductAdd={handleProductAdd}\n04410|                   disabled={calculating}\n04411|                 />\n04412|                 \n04413|                 {/* Управление добавленными товарами */}\n04414|                 <ProductManager\n04415|                   products={form.selectedProducts}\n04416|                   onQuantityChange={handleProductQuantityChange}\n04417|                   onProductRemove={handleProductRemove}\n04418|                   disabled={calculating}\n04419|                 />\n04420|               </CardContent>\n04421|             </Card>\n04422| \n04423|             {/* Грузы */}\n04424|             <Card className=\"bg-gray-800 border-gray-700\">\n04425|               <CardHeader className=\"pb-2\">\n04426|                 <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n04427|                   <Truck className=\"h-3 w-3\" />\n04428|                   Грузы\n04429|                 </CardTitle>\n04430|               </CardHeader>\n\n(File has more lines. Use 'offset' parameter to read beyond line 4430)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        </div>\n        \n        {/* Кнопка диагностики */}\n        <div className=\"flex justify-end mb-4\">\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Диагностика\n          </Button>\n        </div>\n        \n        <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-3 h-[85vh]\">\n          {/* Левая часть - форма */}\n          <div className=\"space-y-2 overflow-y-auto pr-2\">\n            {/* Каталог мебели */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-2\">"
+    },
+    "time": {
+      "start": 1763403285873,
+      "end": 1763403285875
+    }
+  }
+}

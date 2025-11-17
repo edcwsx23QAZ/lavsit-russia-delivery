@@ -1,0 +1,26 @@
+{
+  "id": "prt_a93093c1b00198fBt26hZmryVk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a93092cfa002j4kFlq10VHFHOj",
+  "type": "tool",
+  "callID": "call_15618922",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | tail -20",
+      "description": "Check if the build passes with new components"
+    },
+    "output": " ⨯ useSearchParams() should be wrapped in a suspense boundary at page \"/diagnostic\". Read more: https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout\n    at o (/home/user/project/.next/server/chunks/892.js:1:10674)\n    at s (/home/user/project/.next/server/chunks/892.js:1:21610)\n    at tO (/home/user/project/.next/server/app/diagnostic/page.js:279:25066)\n    at nj (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:46252)\n    at nM (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:47572)\n    at nN (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:64547)\n    at nI (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:47011)\n    at nM (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:47718)\n    at nM (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:61547)\n    at nN (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:64547)\n\nError occurred prerendering page \"/diagnostic\". Read more: https://nextjs.org/docs/messages/prerender-error\n\n[INDEXEDDB] Storage module initialized\n[COOKIE] Storage module initialized\n ✓ Generating static pages (19/19)\n\n> Export encountered errors on following paths:\n\t/diagnostic/page: /diagnostic\n\n\n(Command timed out after 60000 ms)",
+    "title": "cd /home/user/project && npm run build 2>&1 | tail -20",
+    "metadata": {
+      "output": " ⨯ useSearchParams() should be wrapped in a suspense boundary at page \"/diagnostic\". Read more: https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout\n    at o (/home/user/project/.next/server/chunks/892.js:1:10674)\n    at s (/home/user/project/.next/server/chunks/892.js:1:21610)\n    at tO (/home/user/project/.next/server/app/diagnostic/page.js:279:25066)\n    at nj (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:46252)\n    at nM (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:47572)\n    at nN (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:64547)\n    at nI (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:47011)\n    at nM (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:47718)\n    at nM (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:61547)\n    at nN (/home/user/project/node_modules/next/dist/compiled/next-server/app-page.runtime.prod.js:12:64547)\n\nError occurred prerendering page \"/diagnostic\". Read more: https://nextjs.org/docs/messages/prerender-error\n\n[INDEXEDDB] Storage module initialized\n[COOKIE] Storage module initialized\n ✓ Generating static pages (19/19)\n\n> Export encountered errors on following paths:\n\t/diagnostic/page: /diagnostic\n\n\n(Command timed out after 60000 ms)",
+      "exit": 0,
+      "description": "Check if the build passes with new components"
+    },
+    "time": {
+      "start": 1763403447337,
+      "end": 1763403503121
+    }
+  }
+}

@@ -4380,8 +4380,24 @@ export default function Home() {
           </div>
         </div>
         
-        {/* Кнопка диагностики */}
-        <div className="flex justify-end mb-4">
+        {/* Кнопки диагностики и документации */}
+        <div className="flex justify-end gap-2 mb-4">
+          <Button 
+            onClick={() => window.open('/diagnostic?tab=api', '_blank')}
+            variant="outline" 
+            className="border-green-500 text-green-400 hover:bg-green-900/20"
+          >
+            <Settings className="h-4 w-4 mr-2" />
+            Все API
+          </Button>
+          <Button 
+            onClick={() => window.open('/diagnostic?tab=docs', '_blank')}
+            variant="outline" 
+            className="border-purple-500 text-purple-400 hover:bg-purple-900/20"
+          >
+            <Package2 className="h-4 w-4 mr-2" />
+            Документация
+          </Button>
           <Button 
             onClick={() => window.open('/diagnostic', '_blank')}
             variant="outline" 

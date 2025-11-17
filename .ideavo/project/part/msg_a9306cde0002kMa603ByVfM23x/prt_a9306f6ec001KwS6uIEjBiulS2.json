@@ -1,0 +1,26 @@
+{
+  "id": "prt_a9306f6ec001KwS6uIEjBiulS2",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a9306cde0002kMa603ByVfM23x",
+  "type": "tool",
+  "callID": "call_07139668",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "        {/* Кнопки диагностики и документации */}\n        <div className=\"flex justify-end gap-2 mb-4\">\n          <Button \n            onClick={() => window.open('/diagnostic?tab=api', '_blank')}\n            variant=\"outline\" \n            className=\"border-green-500 text-green-400 hover:bg-green-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Все API\n          </Button>\n          <Button \n            onClick={() => window.open('/diagnostic?tab=docs', '_blank')}\n            variant=\"outline\" \n            className=\"border-purple-500 text-purple-400 hover:bg-purple-900/20\"\n          >\n            <Package2 className=\"h-4 w-4 mr-2\" />\n            Документация\n          </Button>\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Диагностика\n          </Button>\n        </div>",
+      "oldString": "        {/* Кнопка диагностики */}\n        <div className=\"flex justify-end mb-4\">\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Диагностика\n          </Button>\n        </div>"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -4379,11 +4379,27 @@\n     )}\n   </div>\n </div>\n \n-{/* Кнопка диагностики */}\n-<div className=\"flex justify-end mb-4\">\n+{/* Кнопки диагностики и документации */}\n+<div className=\"flex justify-end gap-2 mb-4\">\n   <Button \n+    onClick={() => window.open('/diagnostic?tab=api', '_blank')}\n+    variant=\"outline\" \n+    className=\"border-green-500 text-green-400 hover:bg-green-900/20\"\n+  >\n+    <Settings className=\"h-4 w-4 mr-2\" />\n+    Все API\n+  </Button>\n+  <Button \n+    onClick={() => window.open('/diagnostic?tab=docs', '_blank')}\n+    variant=\"outline\" \n+    className=\"border-purple-500 text-purple-400 hover:bg-purple-900/20\"\n+  >\n+    <Package2 className=\"h-4 w-4 mr-2\" />\n+    Документация\n+  </Button>\n+  <Button \n     onClick={() => window.open('/diagnostic', '_blank')}\n     variant=\"outline\" \n     className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n   >\n"
+    },
+    "time": {
+      "start": 1763403298542,
+      "end": 1763403298563
+    }
+  }
+}

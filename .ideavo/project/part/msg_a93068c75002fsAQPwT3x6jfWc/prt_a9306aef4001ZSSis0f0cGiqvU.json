@@ -1,0 +1,26 @@
+{
+  "id": "prt_a9306aef4001ZSSis0f0cGiqvU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a93068c75002fsAQPwT3x6jfWc",
+  "type": "tool",
+  "callID": "call_85098795",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "include": "*.tsx",
+      "path": "app",
+      "pattern": "Диагностика"
+    },
+    "output": "Found 5 matches\napp/page.tsx:\n  Line 330:           // Диагностика времени для Supabase\n  Line 4391:             Диагностика\n\napp/diagnostic/page-original.tsx:\n  Line 1177:           <h1 className=\"text-3xl font-bold mb-2\">Диагностика транспортных компаний</h1>\n\napp/pek-test/page.tsx:\n  Line 121:           <h1 className=\"text-3xl font-bold mb-2\">🧪 Диагностика ПЭК API</h1>\n  Line 234:                 console.log('✅ Диагностика завершена');",
+    "title": "Диагностика",
+    "metadata": {
+      "matches": 5,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763403280120,
+      "end": 1763403280129
+    }
+  }
+}

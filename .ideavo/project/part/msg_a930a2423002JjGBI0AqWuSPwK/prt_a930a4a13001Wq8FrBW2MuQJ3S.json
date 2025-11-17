@@ -1,0 +1,26 @@
+{
+  "id": "prt_a930a4a13001Wq8FrBW2MuQJ3S",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a930a2423002JjGBI0AqWuSPwK",
+  "type": "tool",
+  "callID": "call_79062969",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/diagnostic/page.tsx",
+      "newString": "import React, { useEffect, useCallback, useState, Suspense } from 'react';\nimport { useSearchParams } from 'next/navigation';\nimport { useDiagnosticState } from '@/hooks/useDiagnosticState';\nimport DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';\nimport ApiTestingSection from '@/components/diagnostic/ApiTestingSection';\nimport ManualTesting from '@/components/diagnostic/ManualTesting';\nimport { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';\nimport TechnicalDocumentation from '@/components/diagnostic/TechnicalDocumentation';\nimport ApiMasterTab from '@/components/diagnostic/ApiMasterTab';\nimport { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';\n\nconst DiagnosticContent = () => {\n  const { state, actions } = useDiagnosticState();\n  const searchParams = useSearchParams();\n  const [activeTab, setActiveTab] = useState('api-testing');",
+      "oldString": "import React, { useEffect, useCallback, useState } from 'react';\nimport { useSearchParams } from 'next/navigation';\nimport { useDiagnosticState } from '@/hooks/useDiagnosticState';\nimport DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';\nimport ApiTestingSection from '@/components/diagnostic/ApiTestingSection';\nimport ManualTesting from '@/components/diagnostic/ManualTesting';\nimport { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';\nimport TechnicalDocumentation from '@/components/diagnostic/TechnicalDocumentation';\nimport ApiMasterTab from '@/components/diagnostic/ApiMasterTab';\nimport { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';\n\nexport default function OptimizedDiagnosticPage() {\n  const { state, actions } = useDiagnosticState();\n  const searchParams = useSearchParams();\n  const [activeTab, setActiveTab] = useState('api-testing');"
+    },
+    "output": "",
+    "title": "app/diagnostic/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -1,7 +1,7 @@\n 'use client';\n \n-import React, { useEffect, useCallback, useState } from 'react';\n+import React, { useEffect, useCallback, useState, Suspense } from 'react';\n import { useSearchParams } from 'next/navigation';\n import { useDiagnosticState } from '@/hooks/useDiagnosticState';\n import DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';\n import ApiTestingSection from '@/components/diagnostic/ApiTestingSection';\n@@ -11,9 +11,9 @@\n import ApiMasterTab from '@/components/diagnostic/ApiMasterTab';\n import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\n import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';\n \n-export default function OptimizedDiagnosticPage() {\n+const DiagnosticContent = () => {\n   const { state, actions } = useDiagnosticState();\n   const searchParams = useSearchParams();\n   const [activeTab, setActiveTab] = useState('api-testing');\n \n"
+    },
+    "time": {
+      "start": 1763403516437,
+      "end": 1763403516441
+    }
+  }
+}

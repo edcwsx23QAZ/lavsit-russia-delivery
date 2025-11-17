@@ -1,17 +1,23 @@
 'use client';
 
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState, Suspense } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useDiagnosticState } from '@/hooks/useDiagnosticState';
 import DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';
 import ApiTestingSection from '@/components/diagnostic/ApiTestingSection';
 import ManualTesting from '@/components/diagnostic/ManualTesting';
 import { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';
+import TechnicalDocumentation from '@/components/diagnostic/TechnicalDocumentation';
+import ApiMasterTab from '@/components/diagnostic/ApiMasterTab';
 import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-export default function OptimizedDiagnosticPage() {
+const DiagnosticContent = () => {
   const { state, actions } = useDiagnosticState();
+  const searchParams = useSearchParams();
+  const [activeTab, setActiveTab] = useState('api-testing');
 
-  // Initialize data on mount
+  // Initialize data on mount and handle URL params
   useEffect(() => {
     try {
       const saved = localStorage.getItem('vehicleTypes');
@@ -24,10 +30,18 @@ export default function OptimizedDiagnosticPage() {
       if (lastUpdate) {
         actions.setLastUpdateTime(new Date(lastUpdate).toLocaleString('ru-RU'));
       }
+
+      // Handle URL parameters for tab selection
+      const tabParam = searchParams.get('tab');
+      if (tabParam === 'api') {
+        setActiveTab('all-api');
+      } else if (tabParam === 'docs') {
+        setActiveTab('documentation');
+      }
     } catch (error) {
       console.error('Ошибка загрузки сохранённых данных:', error);
     }
-  }, [actions]);
+  }, [actions, searchParams]);
 
   // API testing functions with performance monitoring
   const testAPI = useCallback(async (service: string, endpoint: string, data: any = {}) => {
@@ -289,29 +303,58 @@ export default function OptimizedDiagnosticPage() {
           updateStatus={state.updateStatus}
         />
 
-        <ApiTestingSection
-          diagnosticResults={state.diagnosticResults}
-          testStates={{
-            isTestingPEK: state.isTestingPEK,
-            isTestingDellin: state.isTestingDellin,
-            isTestingRailContinent: state.isTestingRailContinent,
-            isTestingVozovoz: state.isTestingVozovoz,
-            isTestingNordWheel: state.isTestingNordWheel,
-          }}
-          onTestPEK={testPEK}
-          onTestDellin={testDellin}
-          onTestRailContinent={testRailContinent}
-          onTestVozovoz={testVozovoz}
-          onTestNordWheel={testNordWheel}
-        />
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-4 bg-gray-800 border-gray-700">
+            <TabsTrigger value="api-testing" className="text-white data-[state=active]:bg-blue-600">
+              Тестирование API
+            </TabsTrigger>
+            <TabsTrigger value="full-testing" className="text-white data-[state=active]:bg-purple-600">
+              Полное тестирование
+            </TabsTrigger>
+            <TabsTrigger value="all-api" className="text-white data-[state=active]:bg-green-600">
+              Все API
+            </TabsTrigger>
+            <TabsTrigger value="documentation" className="text-white data-[state=active]:bg-orange-600">
+              Техническая документация
+            </TabsTrigger>
+          </TabsList>
 
-        <LazyFullTestingResults
-          fullTestResults={state.fullTestResults}
-          testProgress={state.testProgress?.progress || 0}
-          isFullTesting={state.isFullTesting}
-        />
+          <TabsContent value="api-testing" className="mt-6">
+            <ApiTestingSection
+              diagnosticResults={state.diagnosticResults}
+              testStates={{
+                isTestingPEK: state.isTestingPEK,
+                isTestingDellin: state.isTestingDellin,
+                isTestingRailContinent: state.isTestingRailContinent,
+                isTestingVozovoz: state.isTestingVozovoz,
+                isTestingNordWheel: state.isTestingNordWheel,
+              }}
+              onTestPEK={testPEK}
+              onTestDellin={testDellin}
+              onTestRailContinent={testRailContinent}
+              onTestVozovoz={testVozovoz}
+              onTestNordWheel={testNordWheel}
+            />
 
-        <ManualTesting />
+            <LazyFullTestingResults
+              fullTestResults={state.fullTestResults}
+              testProgress={state.testProgress?.progress || 0}
+              isFullTesting={state.isFullTesting}
+            />
+          </TabsContent>
+
+          <TabsContent value="full-testing" className="mt-6">
+            <ManualTesting />
+          </TabsContent>
+
+          <TabsContent value="all-api" className="mt-6">
+            <ApiMasterTab />
+          </TabsContent>
+
+          <TabsContent value="documentation" className="mt-6">
+            <TechnicalDocumentation />
+          </TabsContent>
+        </Tabs>
 
         <LazyVehicleManagement
           vehicleTypes={state.vehicleTypes}

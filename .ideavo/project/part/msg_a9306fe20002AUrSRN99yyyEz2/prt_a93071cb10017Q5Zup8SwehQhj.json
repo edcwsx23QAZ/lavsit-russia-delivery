@@ -1,0 +1,25 @@
+{
+  "id": "prt_a93071cb10017Q5Zup8SwehQhj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a9306fe20002AUrSRN99yyyEz2",
+  "type": "tool",
+  "callID": "call_70941764",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/diagnostic/page.tsx",
+      "limit": 50,
+      "offset": 1
+    },
+    "output": "<file>\n00002| \n00003| import React, { useEffect, useCallback } from 'react';\n00004| import { useDiagnosticState } from '@/hooks/useDiagnosticState';\n00005| import DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';\n00006| import ApiTestingSection from '@/components/diagnostic/ApiTestingSection';\n00007| import ManualTesting from '@/components/diagnostic/ManualTesting';\n00008| import { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';\n00009| import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\n00010| \n00011| export default function OptimizedDiagnosticPage() {\n00012|   const { state, actions } = useDiagnosticState();\n00013| \n00014|   // Initialize data on mount\n00015|   useEffect(() => {\n00016|     try {\n00017|       const saved = localStorage.getItem('vehicleTypes');\n00018|       if (saved) {\n00019|         const parsedVehicleTypes = JSON.parse(saved);\n00020|         actions.initializeVehicleTypes(parsedVehicleTypes, null);\n00021|       }\n00022|       \n00023|       const lastUpdate = localStorage.getItem('lastProductDataUpdate');\n00024|       if (lastUpdate) {\n00025|         actions.setLastUpdateTime(new Date(lastUpdate).toLocaleString('ru-RU'));\n00026|       }\n00027|     } catch (error) {\n00028|       console.error('Ошибка загрузки сохранённых данных:', error);\n00029|     }\n00030|   }, [actions]);\n00031| \n00032|   // API testing functions with performance monitoring\n00033|   const testAPI = useCallback(async (service: string, endpoint: string, data: any = {}) => {\n00034|     const endTiming = PerformanceMonitor.startMeasurement(`diagnostic_${service}`);\n00035|     actions.setTestingState(service, true);\n00036|     \n00037|     try {\n00038|       const response = await apiRequestWithTimeout(endpoint, {\n00039|         method: 'POST',\n00040|         headers: { 'Content-Type': 'application/json' },\n00041|         body: JSON.stringify(data)\n00042|       }, { timeout: 15000, retries: 1 });\n00043| \n00044|       const result = await response.json();\n00045|       const timing = endTiming();\n00046| \n00047|       if (response.ok) {\n00048|         actions.setDiagnosticResult(service.toLowerCase(), {\n00049|           status: 'success',\n00050|           message: `✅ ${service} API работает корректно`,\n00051|           details: result,\n\n(File has more lines. Use 'offset' parameter to read beyond line 51)\n</file>",
+    "title": "app/diagnostic/page.tsx",
+    "metadata": {
+      "preview": "\nimport React, { useEffect, useCallback } from 'react';\nimport { useDiagnosticState } from '@/hooks/useDiagnosticState';\nimport DiagnosticHeader from '@/components/diagnostic/DiagnosticHeader';\nimport ApiTestingSection from '@/components/diagnostic/ApiTestingSection';\nimport ManualTesting from '@/components/diagnostic/ManualTesting';\nimport { LazyFullTestingResults, LazyVehicleManagement } from '@/components/diagnostic/LazyLoadedComponents';\nimport { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';\n\nexport default function OptimizedDiagnosticPage() {\n  const { state, actions } = useDiagnosticState();\n\n  // Initialize data on mount\n  useEffect(() => {\n    try {\n      const saved = localStorage.getItem('vehicleTypes');\n      if (saved) {\n        const parsedVehicleTypes = JSON.parse(saved);\n        actions.initializeVehicleTypes(parsedVehicleTypes, null);\n      }"
+    },
+    "time": {
+      "start": 1763403308210,
+      "end": 1763403308211
+    }
+  }
+}

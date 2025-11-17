@@ -1,0 +1,26 @@
+{
+  "id": "prt_a9307726e001eksS1JpPgVq2Br",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a93075e5a002s5WRPGDjdk7yHt",
+  "type": "tool",
+  "callID": "call_68015467",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/diagnostic/page.tsx",
+      "newString": "export default function OptimizedDiagnosticPage() {\n  const { state, actions } = useDiagnosticState();\n  const searchParams = useSearchParams();\n  const [activeTab, setActiveTab] = useState('api-testing');\n\n  // Initialize data on mount and handle URL params\n  useEffect(() => {\n    try {\n      const saved = localStorage.getItem('vehicleTypes');\n      if (saved) {\n        const parsedVehicleTypes = JSON.parse(saved);\n        actions.initializeVehicleTypes(parsedVehicleTypes, null);\n      }\n      \n      const lastUpdate = localStorage.getItem('lastProductDataUpdate');\n      if (lastUpdate) {\n        actions.setLastUpdateTime(new Date(lastUpdate).toLocaleString('ru-RU'));\n      }\n\n      // Handle URL parameters for tab selection\n      const tabParam = searchParams.get('tab');\n      if (tabParam === 'api') {\n        setActiveTab('all-api');\n      } else if (tabParam === 'docs') {\n        setActiveTab('documentation');\n      }\n    } catch (error) {\n      console.error('Ошибка загрузки сохранённых данных:', error);\n    }\n  }, [actions, searchParams]);",
+      "oldString": "export default function OptimizedDiagnosticPage() {\n  const { state, actions } = useDiagnosticState();\n\n  // Initialize data on mount\n  useEffect(() => {\n    try {\n      const saved = localStorage.getItem('vehicleTypes');\n      if (saved) {\n        const parsedVehicleTypes = JSON.parse(saved);\n        actions.initializeVehicleTypes(parsedVehicleTypes, null);\n      }\n      \n      const lastUpdate = localStorage.getItem('lastProductDataUpdate');\n      if (lastUpdate) {\n        actions.setLastUpdateTime(new Date(lastUpdate).toLocaleString('ru-RU'));\n      }\n    } catch (error) {\n      console.error('Ошибка загрузки сохранённых данных:', error);\n    }\n  }, [actions]);"
+    },
+    "output": "",
+    "title": "app/diagnostic/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -13,10 +13,12 @@\n import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';\n \n export default function OptimizedDiagnosticPage() {\n   const { state, actions } = useDiagnosticState();\n+  const searchParams = useSearchParams();\n+  const [activeTab, setActiveTab] = useState('api-testing');\n \n-  // Initialize data on mount\n+  // Initialize data on mount and handle URL params\n   useEffect(() => {\n     try {\n       const saved = localStorage.getItem('vehicleTypes');\n       if (saved) {\n@@ -27,12 +29,20 @@\n       const lastUpdate = localStorage.getItem('lastProductDataUpdate');\n       if (lastUpdate) {\n         actions.setLastUpdateTime(new Date(lastUpdate).toLocaleString('ru-RU'));\n       }\n+\n+      // Handle URL parameters for tab selection\n+      const tabParam = searchParams.get('tab');\n+      if (tabParam === 'api') {\n+        setActiveTab('all-api');\n+      } else if (tabParam === 'docs') {\n+        setActiveTab('documentation');\n+      }\n     } catch (error) {\n       console.error('Ошибка загрузки сохранённых данных:', error);\n     }\n-  }, [actions]);\n+  }, [actions, searchParams]);\n \n   // API testing functions with performance monitoring\n   const testAPI = useCallback(async (service: string, endpoint: string, data: any = {}) => {\n     const endTiming = PerformanceMonitor.startMeasurement(`diagnostic_${service}`);\n"
+    },
+    "time": {
+      "start": 1763403330159,
+      "end": 1763403330163
+    }
+  }
+}
