@@ -6,32 +6,56 @@ const KIT_TOKEN = process.env.KIT_API_TOKEN || '';
 
 async function searchCityByName(cityName: string): Promise<any> {
   try {
+    // Проверяем наличие токена
+    if (!KIT_TOKEN) {
+      console.error('🚛 КИТ: Токен API не настроен');
+      return null;
+    }
+
+    console.log(`🚛 КИТ: Поиск города "${cityName}" с токеном: ${KIT_TOKEN.substring(0, 10)}...`);
+
     const response = await apiRequestWithTimeout(
       `${KIT_API_URL}/1.1/tdd/search/by-name`,
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${KIT_TOKEN}`
+          'Authorization': `Bearer ${KIT_TOKEN}`,
+          'Accept': 'application/json'
         },
         body: JSON.stringify({ title: cityName })
       },
       { timeout: 8000, retries: 1 }
     );
 
+    console.log(`🚛 КИТ: Статус ответа поиска города: ${response.status}`);
+
     if (!response.ok) {
-      console.error(`КИТ поиск города ${cityName} неуспешен: ${response.status}`);
+      const errorText = await response.text();
+      console.error(`🚛 КИТ: Ошибка поиска города ${cityName}: ${response.status} - ${errorText}`);
+
+      // Специальная обработка ошибок авторизации
+      if (response.status === 401) {
+        console.error('🚛 КИТ: Ошибка авторизации - проверьте токен API');
+      } else if (response.status === 429) {
+        console.error('🚛 КИТ: Превышен лимит запросов');
+      }
+
       return null;
     }
 
     const data = await response.json();
-    if (data && data.length > 0) {
+    console.log(`🚛 КИТ: Ответ поиска города:`, data);
+
+    if (data && Array.isArray(data) && data.length > 0) {
+      console.log(`🚛 КИТ: Найден город: ${data[0].name} (код: ${data[0].code})`);
       return data[0];
     }
 
+    console.warn(`🚛 КИТ: Город "${cityName}" не найден в API`);
     return null;
   } catch (error) {
-    console.error(`Ошибка поиска города ${cityName}:`, error);
+    console.error(`🚛 КИТ: Критическая ошибка поиска города ${cityName}:`, error);
     return null;
   }
 }
@@ -44,19 +68,36 @@ export async function POST(request: NextRequest) {
     
     console.log('🚛 КИТ API запрос:', JSON.stringify(body, null, 2));
 
+    // Проверяем наличие токена
+    if (!KIT_TOKEN) {
+      console.error('🚛 КИТ: Токен API не настроен в переменных окружения');
+      return NextResponse.json({
+        success: false,
+        error: 'API токен КИТ не настроен',
+        details: 'Добавьте KIT_API_TOKEN в переменные окружения'
+      }, { status: 500 });
+    }
+
     const fromCity = await searchCityByName(body.from_city || 'Москва');
     const toCity = await searchCityByName(body.to_city || 'Санкт-Петербург');
 
     if (!fromCity || !toCity) {
+      const errorDetails = {
+        fromCity: body.from_city,
+        toCity: body.to_city,
+        fromCityFound: !!fromCity,
+        toCityFound: !!toCity,
+        fromCityData: fromCity,
+        toCityData: toCity,
+        tokenConfigured: !!KIT_TOKEN
+      };
+
+      console.error('🚛 КИТ: Не удалось определить коды городов:', errorDetails);
+
       return NextResponse.json({
         success: false,
         error: 'Не удалось определить коды городов',
-        details: {
-          fromCity: body.from_city,
-          toCity: body.to_city,
-          fromCityCode: fromCity?.code,
-          toCityCode: toCity?.code
-        }
+        details: errorDetails
       }, { status: 400 });
     }
 

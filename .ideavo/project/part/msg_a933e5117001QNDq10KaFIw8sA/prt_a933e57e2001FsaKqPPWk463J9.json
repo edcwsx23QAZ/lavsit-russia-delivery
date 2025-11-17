@@ -1,0 +1,23 @@
+{
+  "id": "prt_a933e57e2001FsaKqPPWk463J9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a933e5117001QNDq10KaFIw8sA",
+  "type": "tool",
+  "callID": "call_41413865",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": ".env"
+    },
+    "output": "<file>\n00001| # Environment variables\n00002| # Add your environment variables here\n00003| \n00004| DATABASE_URL=\n00005| NEXT_PUBLIC_SUPABASE_URL=\n00006| NEXT_PUBLIC_SUPABASE_ANON_KEY=\n</file>",
+    "title": ".env",
+    "metadata": {
+      "preview": "# Environment variables\n# Add your environment variables here\n\nDATABASE_URL=\nNEXT_PUBLIC_SUPABASE_URL=\nNEXT_PUBLIC_SUPABASE_ANON_KEY="
+    },
+    "time": {
+      "start": 1763406927843,
+      "end": 1763406927844
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "prt_a933e6fb8001FLVwQxwcLr2DNT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a933e6153001c5i0q14CpkD0G9",
+  "type": "tool",
+  "callID": "call_49776147",
+  "tool": "asksecrets",
+  "state": {
+    "status": "completed",
+    "input": {
+      "secrets": [
+        {
+          "description": "API токен для КИТ транспортная компания",
+          "display_name": "KIT API Token",
+          "name": "KIT_API_TOKEN",
+          "resource_url": "https://tk-kit.com"
+        }
+      ]
+    },
+    "output": "Requesting the following secrets:\n\n- KIT API Token (KIT_API_TOKEN): API токен для КИТ транспортная компания\n\nResource Links:\n- Get KIT API Token: https://tk-kit.com\n\nWaiting for user input...",
+    "title": "Requesting API Keys & Secrets",
+    "metadata": {
+      "secrets": [
+        {
+          "description": "API токен для КИТ транспортная компания",
+          "display_name": "KIT API Token",
+          "name": "KIT_API_TOKEN",
+          "resource_url": "https://tk-kit.com"
+        }
+      ]
+    },
+    "time": {
+      "start": 1763406933946,
+      "end": 1763406933946
+    }
+  }
+}

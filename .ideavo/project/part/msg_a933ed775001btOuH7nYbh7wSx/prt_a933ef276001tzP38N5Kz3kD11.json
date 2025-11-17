@@ -1,0 +1,26 @@
+{
+  "id": "prt_a933ef276001tzP38N5Kz3kD11",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a933ed775001btOuH7nYbh7wSx",
+  "type": "tool",
+  "callID": "call_71446133",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "components/diagnostic/ApiMasterTab.tsx",
+      "newString": "        case 'kit':\n          const kitResponse = await apiRequestWithTimeout('/api/kit', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({\n              from_city: 'Москва',\n              to_city: 'СПб',\n              declared_price: 10000\n            })\n          });\n          testResult = kitResponse.ok;\n          if (!kitResponse.ok) {\n            const errorData = await kitResponse.json().catch(() => ({}));\n            if (kitResponse.status === 500 && errorData.error?.includes('не настроен')) {\n              errorMessage = 'Токен API не настроен';\n            } else if (kitResponse.status === 400 && errorData.error?.includes('Не удалось определить коды городов')) {\n              errorMessage = 'Ошибка определения городов - проверьте токен';\n            } else {\n              errorMessage = errorData.error || 'Ошибка API';\n            }\n          }\n          break;",
+      "oldString": "        case 'kit':\n          const kitResponse = await apiRequestWithTimeout('/api/kit', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({\n              from_city: 'Москва',\n              to_city: 'СПб',\n              declared_price: 10000\n            })\n          });\n          testResult = kitResponse.ok;\n          if (!kitResponse.ok) {\n            const errorData = await kitResponse.text();\n            errorMessage = errorData.includes('<!DOCTYPE') ? 'Токен отсутствует' : 'Ошибка API';\n          }\n          break;"
+    },
+    "output": "",
+    "title": "components/diagnostic/ApiMasterTab.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/diagnostic/ApiMasterTab.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/ApiMasterTab.tsx\n+++ /home/user/project/components/diagnostic/ApiMasterTab.tsx\n@@ -242,10 +242,16 @@\n     })\n   });\n   testResult = kitResponse.ok;\n   if (!kitResponse.ok) {\n-    const errorData = await kitResponse.text();\n-    errorMessage = errorData.includes('<!DOCTYPE') ? 'Токен отсутствует' : 'Ошибка API';\n+    const errorData = await kitResponse.json().catch(() => ({}));\n+    if (kitResponse.status === 500 && errorData.error?.includes('не настроен')) {\n+      errorMessage = 'Токен API не настроен';\n+    } else if (kitResponse.status === 400 && errorData.error?.includes('Не удалось определить коды городов')) {\n+      errorMessage = 'Ошибка определения городов - проверьте токен';\n+    } else {\n+      errorMessage = errorData.error || 'Ошибка API';\n+    }\n   }\n   break;\n \n case 'dellin':\n"
+    },
+    "time": {
+      "start": 1763406967415,
+      "end": 1763406967423
+    }
+  }
+}

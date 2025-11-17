@@ -1,0 +1,26 @@
+{
+  "id": "prt_a933eb094001sMFjshvgVVK3Wp",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a933ea5ed001JASaLaey1L92lv",
+  "type": "tool",
+  "callID": "call_72437812",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/api/kit/route.ts",
+      "newString": "export async function POST(request: NextRequest) {\n  const endTiming = PerformanceMonitor.startMeasurement('kit_api_total');\n  \n  try {\n    const body = await request.json();\n    \n    console.log('🚛 КИТ API запрос:', JSON.stringify(body, null, 2));\n\n    // Проверяем наличие токена\n    if (!KIT_TOKEN) {\n      console.error('🚛 КИТ: Токен API не настроен в переменных окружения');\n      return NextResponse.json({\n        success: false,\n        error: 'API токен КИТ не настроен',\n        details: 'Добавьте KIT_API_TOKEN в переменные окружения'\n      }, { status: 500 });\n    }",
+      "oldString": "export async function POST(request: NextRequest) {\n  const endTiming = PerformanceMonitor.startMeasurement('kit_api_total');\n  \n  try {\n    const body = await request.json();\n    \n    console.log('🚛 КИТ API запрос:', JSON.stringify(body, null, 2));"
+    },
+    "output": "",
+    "title": "app/api/kit/route.ts",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/kit/route.ts\n===================================================================\n--- /home/user/project/app/api/kit/route.ts\n+++ /home/user/project/app/api/kit/route.ts\n@@ -67,8 +67,18 @@\n const body = await request.json();\n \n console.log('🚛 КИТ API запрос:', JSON.stringify(body, null, 2));\n \n+// Проверяем наличие токена\n+if (!KIT_TOKEN) {\n+  console.error('🚛 КИТ: Токен API не настроен в переменных окружения');\n+  return NextResponse.json({\n+    success: false,\n+    error: 'API токен КИТ не настроен',\n+    details: 'Добавьте KIT_API_TOKEN в переменные окружения'\n+  }, { status: 500 });\n+}\n+\n const fromCity = await searchCityByName(body.from_city || 'Москва');\n const toCity = await searchCityByName(body.to_city || 'Санкт-Петербург');\n \n if (!fromCity || !toCity) {\n"
+    },
+    "time": {
+      "start": 1763406950550,
+      "end": 1763406950553
+    }
+  }
+}

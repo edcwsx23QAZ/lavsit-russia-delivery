@@ -1,0 +1,21 @@
+{
+  "id": "prt_a933ec0d4001idOAb7ySnzREtd",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a933eb9020016K3QIWhSj7X6Kf",
+  "type": "tool",
+  "callID": "call_07576531",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "components/diagnostic/ApiMasterTab.tsx",
+      "newString": "  {\n    name: 'КИТ',\n    key: 'kit',\n    category: 'transport',\n    status: 'unknown',\n    credentials: {\n      token: process.env.KIT_API_TOKEN || ''\n    },\n    endpoints: ['/api/kit'],\n    description: 'Транспортная компания КИТ - доставка посылок'\n  },",
+      "oldString": "   {\n     name: 'КИТ',\n     key: 'kit',\n     category: 'transport',\n     status: 'unknown',\n     credentials: {\n       token: process.env.KIT_API_TOKEN || ''\n     },\n     endpoints: ['/api/kit'],\n     description: 'Транспортная компания КИТ - доставка посылок'\n   },"
+    },
+    "error": "Error: You must read the file /home/user/project/components/diagnostic/ApiMasterTab.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1763406954709,
+      "end": 1763406954710
+    }
+  }
+}

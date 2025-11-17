@@ -1,0 +1,24 @@
+{
+  "id": "prt_a933e3180001ukQyb0lgckV40f",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a933e29870019a4SnTzcuiFBWY",
+  "type": "tool",
+  "callID": "call_26379855",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "KIT_API_TOKEN"
+    },
+    "output": "Found 3 matches\n/home/user/project/components/diagnostic/ApiMasterTab.tsx:\n  Line 83:       token: process.env.KIT_API_TOKEN || ''\n\n/home/user/project/lib/env-config.ts:\n  Line 16:     name: \"KIT_API_TOKEN\",\n\n/home/user/project/app/api/kit/route.ts:\n  Line 5: const KIT_TOKEN = process.env.KIT_API_TOKEN || '';",
+    "title": "KIT_API_TOKEN",
+    "metadata": {
+      "matches": 3,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763406918022,
+      "end": 1763406918033
+    }
+  }
+}

@@ -243,8 +243,14 @@ const ApiMasterTab: React.FC = () => {
           });
           testResult = kitResponse.ok;
           if (!kitResponse.ok) {
-            const errorData = await kitResponse.text();
-            errorMessage = errorData.includes('<!DOCTYPE') ? 'Токен отсутствует' : 'Ошибка API';
+            const errorData = await kitResponse.json().catch(() => ({}));
+            if (kitResponse.status === 500 && errorData.error?.includes('не настроен')) {
+              errorMessage = 'Токен API не настроен';
+            } else if (kitResponse.status === 400 && errorData.error?.includes('Не удалось определить коды городов')) {
+              errorMessage = 'Ошибка определения городов - проверьте токен';
+            } else {
+              errorMessage = errorData.error || 'Ошибка API';
+            }
           }
           break;
 

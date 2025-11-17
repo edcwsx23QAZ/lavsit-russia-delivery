@@ -1,0 +1,26 @@
+{
+  "id": "prt_a933e9c3f001yLRoOi0YPMaLJx",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a933e925c001eeWQRQe7XOy5V8",
+  "type": "tool",
+  "callID": "call_25698844",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/api/kit/route.ts",
+      "newString": "    const fromCity = await searchCityByName(body.from_city || 'Москва');\n    const toCity = await searchCityByName(body.to_city || 'Санкт-Петербург');\n\n    if (!fromCity || !toCity) {\n      const errorDetails = {\n        fromCity: body.from_city,\n        toCity: body.to_city,\n        fromCityFound: !!fromCity,\n        toCityFound: !!toCity,\n        fromCityData: fromCity,\n        toCityData: toCity,\n        tokenConfigured: !!KIT_TOKEN\n      };\n\n      console.error('🚛 КИТ: Не удалось определить коды городов:', errorDetails);\n\n      return NextResponse.json({\n        success: false,\n        error: 'Не удалось определить коды городов',\n        details: errorDetails\n      }, { status: 400 });\n    }",
+      "oldString": "    const fromCity = await searchCityByName(body.from_city || 'Москва');\n    const toCity = await searchCityByName(body.to_city || 'Санкт-Петербург');\n\n    if (!fromCity || !toCity) {\n      return NextResponse.json({\n        success: false,\n        error: 'Не удалось определить коды городов',\n        details: {\n          fromCity: body.from_city,\n          toCity: body.to_city,\n          fromCityCode: fromCity?.code,\n          toCityCode: toCity?.code\n        }\n      }, { status: 400 });\n    }"
+    },
+    "output": "",
+    "title": "app/api/kit/route.ts",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/api/kit/route.ts\n===================================================================\n--- /home/user/project/app/api/kit/route.ts\n+++ /home/user/project/app/api/kit/route.ts\n@@ -71,17 +71,24 @@\n const fromCity = await searchCityByName(body.from_city || 'Москва');\n const toCity = await searchCityByName(body.to_city || 'Санкт-Петербург');\n \n if (!fromCity || !toCity) {\n+  const errorDetails = {\n+    fromCity: body.from_city,\n+    toCity: body.to_city,\n+    fromCityFound: !!fromCity,\n+    toCityFound: !!toCity,\n+    fromCityData: fromCity,\n+    toCityData: toCity,\n+    tokenConfigured: !!KIT_TOKEN\n+  };\n+\n+  console.error('🚛 КИТ: Не удалось определить коды городов:', errorDetails);\n+\n   return NextResponse.json({\n     success: false,\n     error: 'Не удалось определить коды городов',\n-    details: {\n-      fromCity: body.from_city,\n-      toCity: body.to_city,\n-      fromCityCode: fromCity?.code,\n-      toCityCode: toCity?.code\n-    }\n+    details: errorDetails\n   }, { status: 400 });\n }\n \n console.log('🚛 КИТ коды городов:', {\n"
+    },
+    "time": {
+      "start": 1763406945345,
+      "end": 1763406945349
+    }
+  }
+}
