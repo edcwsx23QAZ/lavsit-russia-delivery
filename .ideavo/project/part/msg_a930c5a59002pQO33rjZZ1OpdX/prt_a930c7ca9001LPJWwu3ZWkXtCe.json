@@ -1,0 +1,21 @@
+{
+  "id": "prt_a930c7ca9001LPJWwu3ZWkXtCe",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a930c5a59002pQO33rjZZ1OpdX",
+  "type": "tool",
+  "callID": "call_91100996",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "app/diagnostic/page.tsx",
+      "newString": "export default function OptimizedDiagnosticPage() {\n  return (\n    <Suspense fallback={\n      <div className=\"min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 flex items-center justify-center\">\n        <div className=\"text-white text-xl\">Загрузка...</div>\n      </div>\n    }>\n      <DiagnosticContent />\n    </Suspense>\n  );\n}",
+      "oldString": "const DiagnosticContent = () => {\n  const { state, actions } = useDiagnosticState();\n  const searchParams = useSearchParams();\n  const [activeTab, setActiveTab] = useState('api-testing');"
+    },
+    "error": "Error: oldString not found in content",
+    "time": {
+      "start": 1763403660458,
+      "end": 1763403660473
+    }
+  }
+}

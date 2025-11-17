@@ -1,0 +1,26 @@
+{
+  "id": "prt_a931020fe001HUm5ORdjopUKix",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a93101472001NsmsDTfseKaXtR",
+  "type": "tool",
+  "callID": "call_89550966",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && curl -s http://localhost:3000 | grep -A 5 -B 5 \"Все API\\|Документация\\|Диагностика\"",
+      "description": "Testing if the new buttons are present on the main page"
+    },
+    "output": "",
+    "title": "cd /home/user/project && curl -s http://localhost:3000 | grep -A 5 -B 5 \"Все API\\|Документация\\|Диагностика\"",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Testing if the new buttons are present on the main page"
+    },
+    "time": {
+      "start": 1763403899137,
+      "end": 1763403899152
+    }
+  }
+}

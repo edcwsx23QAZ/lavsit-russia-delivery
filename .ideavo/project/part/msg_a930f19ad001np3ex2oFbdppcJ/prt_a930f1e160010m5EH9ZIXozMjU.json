@@ -1,0 +1,24 @@
+{
+  "id": "prt_a930f1e160010m5EH9ZIXozMjU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a930f19ad001np3ex2oFbdppcJ",
+  "type": "tool",
+  "callID": "call_72234371",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "components/diagnostic/ApiMasterTab.tsx",
+      "limit": 100
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import React, { useState, useEffect, useCallback } from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Badge } from '@/components/ui/badge';\n00007| import { Input } from '@/components/ui/input';\n00008| import { Label } from '@/components/ui/label';\n00009| import { Switch } from '@/components/ui/switch';\n00010| import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';\n00011| import { Alert, AlertDescription } from '@/components/ui/alert';\n00012| import {\n00013|   Settings,\n00014|   Play,\n00015|   CheckCircle,\n00016|   XCircle,\n00017|   AlertTriangle,\n00018|   RefreshCw,\n00019|   Key,\n00020|   Globe,\n00021|   Truck,\n00022|   Database,\n00023|   ExternalLink\n00024| } from 'lucide-react';\n00025| import { apiRequestWithTimeout } from '@/lib/api-utils';\n00026| \n00027| interface ApiConfig {\n00028|   name: string;\n00029|   key: string;\n00030|   category: 'transport' | 'service' | 'internal';\n00031|   status: 'working' | 'error' | 'expired' | 'unknown';\n00032|   credentials: {\n00033|     [key: string]: string;\n00034|   };\n00035|   endpoints: string[];\n00036|   description: string;\n00037|   lastChecked?: Date;\n00038|   errorMessage?: string;\n00039| }\n00040| \n00041| const API_CONFIGS: ApiConfig[] = [\n00042|   {\n00043|     name: 'ПЭК',\n00044|     key: 'pek',\n00045|     category: 'transport',\n00046|     status: 'unknown',\n00047|     credentials: {\n00048|       login: process.env.PEK_LOGIN || '',\n00049|       apiKey: process.env.PEK_API_KEY || '624FC93CA677B23673BB476D4982294DC27E246F'\n00050|     },\n00051|     endpoints: ['/api/pek'],\n00052|     description: 'Транспортная компания ПЭК - доставка по России'\n00053|   },\n00054|   {\n00055|     name: 'Возовоз',\n00056|     key: 'vozovoz',\n00057|     category: 'transport',\n00058|     status: 'unknown',\n00059|     credentials: {\n00060|       token: 'sBDUaEmzVBO6syQWHvHxmjxJQiON2BZplQaqrU3N'\n00061|     },\n00062|     endpoints: ['/api/vozovoz'],\n00063|     description: 'Транспортная компания Возовоз - доставка сборных грузов'\n00064|   },\n00065|   {\n00066|     name: 'СДЭК',\n00067|     key: 'cdek',\n00068|     category: 'transport',\n00069|     status: 'unknown',\n00070|     credentials: {\n00071|       clientId: '3J5AvQWReEdW1o01PApvw6jHsnkNpqT1',\n00072|       clientSecret: 'T8iMvgShV0p9OfJiysSBpCCWcXtOO0Hy'\n00073|     },\n00074|     endpoints: ['/api/cdek'],\n00075|     description: 'Транспортная компания СДЭК - курьерская доставка'\n00076|   },\n00077|   {\n00078|     name: 'КИТ',\n00079|     key: 'kit',\n00080|     category: 'transport',\n00081|     status: 'unknown',\n00082|     credentials: {\n00083|       token: process.env.KIT_API_TOKEN || ''\n00084|     },\n00085|     endpoints: ['/api/kit'],\n00086|     description: 'Транспортная компания КИТ - доставка посылок'\n00087|   },\n00088|   {\n00089|     name: 'Деловые Линии',\n00090|     key: 'dellin',\n00091|     category: 'transport',\n00092|     status: 'unknown',\n00093|     credentials: {\n00094|       appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n00095|       login: 'service@lavsit.ru',\n00096|       password: 'edcwsx123QAZ'\n00097|     },\n00098|     endpoints: ['/api/dellin-packages'],\n00099|     description: 'Транспортная компания Деловые Линии'\n00100|   },\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "title": "components/diagnostic/ApiMasterTab.tsx",
+    "metadata": {
+      "preview": "'use client';\n\nimport React, { useState, useEffect, useCallback } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Badge } from '@/components/ui/badge';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Switch } from '@/components/ui/switch';\nimport { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';\nimport { Alert, AlertDescription } from '@/components/ui/alert';\nimport {\n  Settings,\n  Play,\n  CheckCircle,\n  XCircle,\n  AlertTriangle,\n  RefreshCw,\n  Key,\n  Globe,"
+    },
+    "time": {
+      "start": 1763403832856,
+      "end": 1763403832862
+    }
+  }
+}

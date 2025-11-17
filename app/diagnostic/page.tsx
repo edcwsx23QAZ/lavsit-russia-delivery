@@ -12,7 +12,7 @@ import ApiMasterTab from '@/components/diagnostic/ApiMasterTab';
 import { apiRequestWithTimeout, PerformanceMonitor } from '@/lib/api-utils';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
-const DiagnosticContent = () => {
+function DiagnosticContent() {
   const { state, actions } = useDiagnosticState();
   const searchParams = useSearchParams();
   const [activeTab, setActiveTab] = useState('api-testing');
@@ -371,5 +371,17 @@ const DiagnosticContent = () => {
         />
       </div>
     </div>
+  );
+}
+
+export default function OptimizedDiagnosticPage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 flex items-center justify-center">
+        <div className="text-white text-xl">Загрузка...</div>
+      </div>
+    }>
+      <DiagnosticContent />
+    </Suspense>
   );
 }

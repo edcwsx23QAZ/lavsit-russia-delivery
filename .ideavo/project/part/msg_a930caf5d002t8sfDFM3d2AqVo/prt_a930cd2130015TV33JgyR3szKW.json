@@ -1,0 +1,26 @@
+{
+  "id": "prt_a930cd2130015TV33JgyR3szKW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a930caf5d002t8sfDFM3d2AqVo",
+  "type": "tool",
+  "callID": "call_00998383",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/diagnostic/page.tsx",
+      "newString": "  );\n}\n\nexport default function OptimizedDiagnosticPage() {\n  return (\n    <Suspense fallback={\n      <div className=\"min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 flex items-center justify-center\">\n        <div className=\"text-white text-xl\">Загрузка...</div>\n      </div>\n    }>\n      <DiagnosticContent />\n    </Suspense>\n  );\n}",
+      "oldString": "  );\n}"
+    },
+    "output": "",
+    "title": "app/diagnostic/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/diagnostic/page.tsx\n===================================================================\n--- /home/user/project/app/diagnostic/page.tsx\n+++ /home/user/project/app/diagnostic/page.tsx\n@@ -371,5 +371,17 @@\n         />\n       </div>\n     </div>\n   );\n+}\n+\n+export default function OptimizedDiagnosticPage() {\n+  return (\n+    <Suspense fallback={\n+      <div className=\"min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 p-6 flex items-center justify-center\">\n+        <div className=\"text-white text-xl\">Загрузка...</div>\n+      </div>\n+    }>\n+      <DiagnosticContent />\n+    </Suspense>\n+  );\n }\n\\ No newline at end of file\n"
+    },
+    "time": {
+      "start": 1763403682325,
+      "end": 1763403682329
+    }
+  }
+}

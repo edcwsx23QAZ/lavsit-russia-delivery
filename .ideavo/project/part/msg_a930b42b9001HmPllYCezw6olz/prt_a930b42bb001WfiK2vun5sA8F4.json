@@ -1,0 +1,7 @@
+{
+  "id": "prt_a930b42bb001WfiK2vun5sA8F4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a930b42b9001HmPllYCezw6olz",
+  "type": "text",
+  "text": "Приложение выдало следующую ошибку. Исправь:\n\n\n\n1 of 1 error\nNext.js (14.2.31) is outdated (learn more)\nServer Error\nError: Cannot find module './276.js'\nRequire stack:\n- /home/user/project/.next/server/webpack-runtime.js\n- /home/user/project/.next/server/app/page.js\n- /home/user/project/node_modules/next/dist/server/require.js\n- /home/user/project/node_modules/next/dist/server/load-components.js\n- /home/user/project/node_modules/next/dist/build/utils.js\n- /home/user/project/node_modules/next/dist/server/dev/hot-middleware.js\n- /home/user/project/node_modules/next/dist/server/dev/hot-reloader-webpack.js\n- /home/user/project/node_modules/next/dist/server/lib/router-utils/setup-dev-bundler.js\n- /home/user/project/node_modules/next/dist/server/lib/router-server.js\n- /home/user/project/node_modules/next/dist/server/lib/start-server.js\n\nThis error happened while generating the page. Any console logs will be displayed in the terminal window.\nCall Stack\nNext.js\nArray.reduce\n<anonymous>\nNext.js\nArray.map\n<anonymous>\nNext.js\n<unknown>\nfile:///home/user/project/.next/server/app/page.js (1:195985)\nObject.<anonymous>\nfile:///home/user/project/.next/server/app/page.js (1:196042)\nNext.js"
+}

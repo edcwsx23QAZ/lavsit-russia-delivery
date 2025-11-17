@@ -1,0 +1,26 @@
+{
+  "id": "prt_a93103c0f001N6pwdVbEkKbPee",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a93102979001KvMrtW4FPEbxHN",
+  "type": "tool",
+  "callID": "call_28723680",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && curl -I http://localhost:3000",
+      "description": "Checking if the Next.js server is responding"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server\n",
+    "title": "cd /home/user/project && curl -I http://localhost:3000",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server\n",
+      "exit": 7,
+      "description": "Checking if the Next.js server is responding"
+    },
+    "time": {
+      "start": 1763403906066,
+      "end": 1763403906083
+    }
+  }
+}

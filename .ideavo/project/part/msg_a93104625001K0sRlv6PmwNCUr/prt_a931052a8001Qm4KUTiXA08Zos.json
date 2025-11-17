@@ -1,0 +1,26 @@
+{
+  "id": "prt_a931052a8001Qm4KUTiXA08Zos",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a93104625001K0sRlv6PmwNCUr",
+  "type": "tool",
+  "callID": "call_44975562",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && ps aux | grep \"next dev\" | grep -v grep",
+      "description": "Checking if the Next.js dev server is still running"
+    },
+    "output": "user       52830  0.0  1.6 11527212 67148 ?      Sl   17:15   0:00 node /home/user/project/node_modules/.bin/next dev\n",
+    "title": "cd /home/user/project && ps aux | grep \"next dev\" | grep -v grep",
+    "metadata": {
+      "output": "user       52830  0.0  1.6 11527212 67148 ?      Sl   17:15   0:00 node /home/user/project/node_modules/.bin/next dev\n",
+      "exit": 0,
+      "description": "Checking if the Next.js dev server is still running"
+    },
+    "time": {
+      "start": 1763403911851,
+      "end": 1763403912010
+    }
+  }
+}

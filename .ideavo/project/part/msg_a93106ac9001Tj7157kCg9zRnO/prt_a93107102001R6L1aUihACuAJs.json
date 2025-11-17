@@ -1,0 +1,26 @@
+{
+  "id": "prt_a93107102001R6L1aUihACuAJs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a93106ac9001Tj7157kCg9zRnO",
+  "type": "tool",
+  "callID": "call_34239038",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && pkill -f \"next dev\" && sleep 2 && npm run dev",
+      "description": "Restarting the Next.js development server to check for any compilation issues"
+    },
+    "output": "",
+    "title": "cd /home/user/project && pkill -f \"next dev\" && sleep 2 && npm run dev",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Restarting the Next.js development server to check for any compilation issues"
+    },
+    "time": {
+      "start": 1763403919621,
+      "end": 1763403919635
+    }
+  }
+}
