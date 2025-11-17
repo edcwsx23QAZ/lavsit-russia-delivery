@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32bbeb6001mZOXh1HJ5DTEXF",
-  "messageID": "msg_9e32bb92b001SAGNEPH0VmRni5",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32bb92b001SAGNEPH0VmRni5",
   "type": "tool",
-  "tool": "read",
   "callID": "call_49989973",
+  "tool": "read",
   "state": {
     "status": "completed",
     "input": {
@@ -13,13 +13,14 @@
       "limit": 15
     },
     "output": "<file>\n00076|             (window as any).gtag('event', 'web_vitals', {\n00077|               event_category: 'Web Vitals',\n00078|               event_label: 'TTFB',\n00079|               value: Math.round(metric.value),\n00080|               custom_map: { metric_value: metric.value }\n00081|             });\n00082|           }\n00083|         });\n00084|       }).catch((error) => {\n00085|         console.warn('⚠️ Failed to load web-vitals:', error);\n00086|       });\n00087|     }\n00088|   }, []);\n00089| \n00090|   return null;\n\n(File has more lines. Use 'offset' parameter to read beyond line 90)\n</file>",
+    "title": "components/ClientDevUtils.tsx",
     "metadata": {
       "preview": "            (window as any).gtag('event', 'web_vitals', {\n              event_category: 'Web Vitals',\n              event_label: 'TTFB',\n              value: Math.round(metric.value),\n              custom_map: { metric_value: metric.value }\n            });\n          }\n        });\n      }).catch((error) => {\n        console.warn('⚠️ Failed to load web-vitals:', error);\n      });\n    }\n  }, []);\n\n  return null;"
     },
-    "title": "components/ClientDevUtils.tsx",
     "time": {
       "start": 1760452918968,
-      "end": 1760452918970
+      "end": 1760452918970,
+      "compacted": 1763403135403
     }
   }
 }

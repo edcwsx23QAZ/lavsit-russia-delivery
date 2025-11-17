@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32c782e001nVDLoBxZXg29V8",
-  "messageID": "msg_9e32c70f3001Tz6sG1CzgDUKEg",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32c70f3001Tz6sG1CzgDUKEg",
   "type": "tool",
-  "tool": "edit",
   "callID": "call_31310491",
+  "tool": "edit",
   "state": {
     "status": "completed",
     "input": {
@@ -13,14 +13,15 @@
       "newString": "      // Send to Sentry - TODO: Fix metrics API\n      // Sentry.metrics.increment('test_operation_duration', duration, {\n      //   unit: 'millisecond'\n      // });"
     },
     "output": "",
+    "title": "components/diagnostic/SentryMonitor.tsx",
     "metadata": {
       "diagnostics": {},
       "diff": "Index: /home/user/project/components/diagnostic/SentryMonitor.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/SentryMonitor.tsx\n+++ /home/user/project/components/diagnostic/SentryMonitor.tsx\n@@ -119,12 +119,12 @@\n     };\n \n     setPerformanceMetrics(prev => [metric, ...prev.slice(0, 49)]);\n \n-    // Send to Sentry\n-    Sentry.metrics.increment('test_operation_duration', duration, {\n-      unit: 'millisecond'\n-    });\n+    // Send to Sentry - TODO: Fix metrics API\n+    // Sentry.metrics.increment('test_operation_duration', duration, {\n+    //   unit: 'millisecond'\n+    // });\n \n     setIsCapturing(false);\n   }, Math.random() * 1000 + 500);\n }, []);\n"
     },
-    "title": "components/diagnostic/SentryMonitor.tsx",
     "time": {
       "start": 1760452966448,
-      "end": 1760452966453
+      "end": 1760452966453,
+      "compacted": 1763403135402
     }
   }
 }

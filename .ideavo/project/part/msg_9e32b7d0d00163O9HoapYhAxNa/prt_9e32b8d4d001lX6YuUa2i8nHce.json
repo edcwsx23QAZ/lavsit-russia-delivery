@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32b8d4d001lX6YuUa2i8nHce",
-  "messageID": "msg_9e32b7d0d00163O9HoapYhAxNa",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32b7d0d00163O9HoapYhAxNa",
   "type": "tool",
-  "tool": "edit",
   "callID": "call_98003090",
+  "tool": "edit",
   "state": {
     "status": "completed",
     "input": {
@@ -13,14 +13,15 @@
       "newString": "    // Web Vitals monitoring - TODO: Implement with correct web-vitals API\n    // Currently commented out due to API compatibility issues\n    /*\n    if (typeof window !== 'undefined') {\n      // TODO: Install web-vitals package and implement correct API usage\n      console.log('📊 Web Vitals monitoring placeholder');\n    }\n    */"
     },
     "output": "",
+    "title": "components/ClientDevUtils.tsx",
     "metadata": {
       "diagnostics": {},
       "diff": "Index: /home/user/project/components/ClientDevUtils.tsx\n===================================================================\n--- /home/user/project/components/ClientDevUtils.tsx\n+++ /home/user/project/components/ClientDevUtils.tsx\n@@ -23,28 +23,16 @@\n     console.warn('🔧 DEV: Ошибка в ClientDevUtils:', error);\n   }\n }\n \n-// Web Vitals monitoring\n+// Web Vitals monitoring - TODO: Implement with correct web-vitals API\n+// Currently commented out due to API compatibility issues\n+/*\n if (typeof window !== 'undefined') {\n-  import('web-vitals').then((webVitals) => {\n-    const getCLS = webVitals.getCLS;\n-    const getFID = webVitals.getFID;\n-    const getFCP = webVitals.getFCP;\n-    const getLCP = webVitals.getLCP;\n-    const getTTFB = webVitals.getTTFB;\n-    // Core Web Vitals\n-    getCLS((metric) => {\n-      console.log('📊 CLS (Cumulative Layout Shift):', metric.value);\n-      // Send to analytics/monitoring service\n-      if (typeof window !== 'undefined' && (window as any).gtag) {\n-        (window as any).gtag('event', 'web_vitals', {\n-          event_category: 'Web Vitals',\n-          event_label: 'CLS',\n-          value: Math.round(metric.value * 1000),\n-          custom_map: { metric_value: metric.value }\n-        });\n-      }\n+  // TODO: Install web-vitals package and implement correct API usage\n+  console.log('📊 Web Vitals monitoring placeholder');\n+}\n+*/\n     });\n \n     getFID((metric) => {\n       console.log('📊 FID (First Input Delay):', metric.value, 'ms');\n"
     },
-    "title": "components/ClientDevUtils.tsx",
     "time": {
       "start": 1760452906320,
-      "end": 1760452906326
+      "end": 1760452906326,
+      "compacted": 1763403135404
     }
   }
 }

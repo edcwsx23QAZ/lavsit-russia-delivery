@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32c8bbc001LJcUCbxxqHm5MU",
-  "messageID": "msg_9e32c8622001C41x01opNw9q4B",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32c8622001C41x01opNw9q4B",
   "type": "tool",
-  "tool": "bash",
   "callID": "call_11939461",
+  "tool": "bash",
   "state": {
     "status": "completed",
     "input": {
@@ -12,15 +12,16 @@
       "description": "Running build to check if Sentry error is resolved"
     },
     "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./lib/error-handling.ts:108:32\nType error: Type 'IterableIterator<[string, { data: any; timestamp: number; ttl: number; }]>' can only be iterated through when using the '--downlevelIteration' flag or with a '--target' of 'es2015' or higher.\n\n\u001b[0m \u001b[90m 106 |\u001b[39m   cleanup()\u001b[33m:\u001b[39m \u001b[36mvoid\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 107 |\u001b[39m     \u001b[36mconst\u001b[39m now \u001b[33m=\u001b[39m \u001b[33mDate\u001b[39m\u001b[33m.\u001b[39mnow()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 108 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m [key\u001b[33m,\u001b[39m entry] \u001b[36mof\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcache\u001b[33m.\u001b[39mentries()) {\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 109 |\u001b[39m       \u001b[36mif\u001b[39m (now \u001b[33m-\u001b[39m entry\u001b[33m.\u001b[39mtimestamp \u001b[33m>\u001b[39m entry\u001b[33m.\u001b[39mttl) {\u001b[0m\n\u001b[0m \u001b[90m 110 |\u001b[39m         \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcache\u001b[33m.\u001b[39m\u001b[36mdelete\u001b[39m(key)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 111 |\u001b[39m       }\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
     "metadata": {
       "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./lib/error-handling.ts:108:32\nType error: Type 'IterableIterator<[string, { data: any; timestamp: number; ttl: number; }]>' can only be iterated through when using the '--downlevelIteration' flag or with a '--target' of 'es2015' or higher.\n\n\u001b[0m \u001b[90m 106 |\u001b[39m   cleanup()\u001b[33m:\u001b[39m \u001b[36mvoid\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 107 |\u001b[39m     \u001b[36mconst\u001b[39m now \u001b[33m=\u001b[39m \u001b[33mDate\u001b[39m\u001b[33m.\u001b[39mnow()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 108 |\u001b[39m     \u001b[36mfor\u001b[39m (\u001b[36mconst\u001b[39m [key\u001b[33m,\u001b[39m entry] \u001b[36mof\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcache\u001b[33m.\u001b[39mentries()) {\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 109 |\u001b[39m       \u001b[36mif\u001b[39m (now \u001b[33m-\u001b[39m entry\u001b[33m.\u001b[39mtimestamp \u001b[33m>\u001b[39m entry\u001b[33m.\u001b[39mttl) {\u001b[0m\n\u001b[0m \u001b[90m 110 |\u001b[39m         \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mcache\u001b[33m.\u001b[39m\u001b[36mdelete\u001b[39m(key)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 111 |\u001b[39m       }\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
       "exit": 1,
       "description": "Running build to check if Sentry error is resolved"
     },
-    "title": "npm run build",
     "time": {
       "start": 1760452971457,
-      "end": 1760452984697
+      "end": 1760452984697,
+      "compacted": 1763403135402
     }
   }
 }

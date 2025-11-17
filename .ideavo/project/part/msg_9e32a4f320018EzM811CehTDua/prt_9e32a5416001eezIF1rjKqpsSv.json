@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32a5416001eezIF1rjKqpsSv",
-  "messageID": "msg_9e32a4f320018EzM811CehTDua",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32a4f320018EzM811CehTDua",
   "type": "tool",
-  "tool": "grep",
   "callID": "call_09512311",
+  "tool": "grep",
   "state": {
     "status": "completed",
     "input": {
@@ -12,14 +12,15 @@
       "path": "app/page.tsx"
     },
     "output": "No files found",
+    "title": "calculate.*=.*async",
     "metadata": {
       "matches": 0,
       "truncated": false
     },
-    "title": "calculate.*=.*async",
     "time": {
       "start": 1760452826136,
-      "end": 1760452826143
+      "end": 1760452826143,
+      "compacted": 1763403135407
     }
   }
 }

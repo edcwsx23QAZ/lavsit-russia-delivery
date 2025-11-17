@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32b22d7001020lAmklTnmdcw",
-  "messageID": "msg_9e32b18af001i97f2DEopYtT4V",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32b18af001i97f2DEopYtT4V",
   "type": "tool",
-  "tool": "read",
   "callID": "call_67652535",
+  "tool": "read",
   "state": {
     "status": "completed",
     "input": {
@@ -13,13 +13,14 @@
       "limit": 15
     },
     "output": "<file>\n00026| \n00027|     // Web Vitals monitoring\n00028|     if (typeof window !== 'undefined') {\n00029|       import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {\n00030|         // Core Web Vitals\n00031|         getCLS((metric) => {\n00032|           console.log('📊 CLS (Cumulative Layout Shift):', metric.value);\n00033|           // Send to analytics/monitoring service\n00034|           if (typeof window !== 'undefined' && (window as any).gtag) {\n00035|             (window as any).gtag('event', 'web_vitals', {\n00036|               event_category: 'Web Vitals',\n00037|               event_label: 'CLS',\n00038|               value: Math.round(metric.value * 1000),\n00039|               custom_map: { metric_value: metric.value }\n00040|             });\n\n(File has more lines. Use 'offset' parameter to read beyond line 40)\n</file>",
+    "title": "components/ClientDevUtils.tsx",
     "metadata": {
       "preview": "\n    // Web Vitals monitoring\n    if (typeof window !== 'undefined') {\n      import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {\n        // Core Web Vitals\n        getCLS((metric) => {\n          console.log('📊 CLS (Cumulative Layout Shift):', metric.value);\n          // Send to analytics/monitoring service\n          if (typeof window !== 'undefined' && (window as any).gtag) {\n            (window as any).gtag('event', 'web_vitals', {\n              event_category: 'Web Vitals',\n              event_label: 'CLS',\n              value: Math.round(metric.value * 1000),\n              custom_map: { metric_value: metric.value }\n            });"
     },
-    "title": "components/ClientDevUtils.tsx",
     "time": {
       "start": 1760452879064,
-      "end": 1760452879066
+      "end": 1760452879066,
+      "compacted": 1763403135405
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "id": "prt_9e329e8f6001ZAMUwMNXSqW0kJ",
-  "messageID": "msg_9e329e40a001q1uMxiz0pGcM25",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e329e40a001q1uMxiz0pGcM25",
   "type": "tool",
-  "tool": "read",
   "callID": "call_28853031",
+  "tool": "read",
   "state": {
     "status": "completed",
     "input": {
@@ -13,13 +13,14 @@
       "limit": 80
     },
     "output": "<file>\n00601|           return await response.json();\n00602|         } catch (error) {\n00603|           return { error: true };\n00604|         }\n00605|       }),\n00606|       \n00607|       checkAPIStatus('nordwheel', async () => {\n00608|         try {\n00609|           const totalWeight = 10;\n00610|           const totalVolume = 0.1;\n00611|           \n00612|           const params = new URLSearchParams({\n00613|             from: '91',\n00614|             to: '92',\n00615|             pickup: '1',\n00616|             deliver: '1',\n00617|             weight: totalWeight.toString(),\n00618|             volume: totalVolume.toString(),\n00619|             oversized: '0',\n00620|             package: '1',\n00621|             packageCount: '1',\n00622|             insurance: '1',\n00623|             sum: '50000',\n00624|             documentsReturn: '0',\n00625|             fragile: '1'\n00626|           });\n00627| \n00628|           const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n00629|        const result = await enhancedApiRequest(\n00630|          fullUrl,\n00631|          {\n00632|            method: 'GET'\n00633|          },\n00634|          { operation: 'calculate', company: 'Nord Wheel' }\n00635|        );\n00636| \n00637|        if (result && typeof result === 'object' && 'success' in result && !result.success) {\n00638|          console.error('❌ Nord Wheel API ошибка:', result.error);\n00639|          return {\n00640|            company: 'Nord Wheel',\n00641|            price: 0,\n00642|            days: 0,\n00643|            error: result.error.userMessage || result.error.message,\n00644|            requestData,\n00645|            responseData: null,\n00646|            apiUrl: fullUrl\n00647|          };\n00648|        }\n00649| \n00650|        const response = result as Response;\n00651|        const data = await response.json();\n00652|           \n00653|           if (response.ok && data.status === 'success') {\n00654|             return { success: true };\n00655|           } else {\n00656|             return { error: true };\n00657|           }\n00658|         } catch (error) {\n00659|           return { error: true };\n00660|         }\n00661|       }),\n00662|       \n00663|       checkAPIStatus('cdek', async () => {\n00664|         try {\n00665|           const response = await fetch('/api/cdek', {\n00666|             method: 'POST',\n00667|             headers: { 'Content-Type': 'application/json' },\n00668|             body: JSON.stringify({\n00669|               from_city: testData.fromCity,\n00670|               to_city: testData.toCity,\n00671|               packages: [{\n00672|                 height: 10,\n00673|                 length: 20,\n00674|                 width: 10,\n00675|                 weight: 1000\n00676|               }]\n00677|             })\n00678|           });\n00679|           const data = await response.json();\n00680|           \n\n(File has more lines. Use 'offset' parameter to read beyond line 680)\n</file>",
+    "title": "app/page.tsx",
     "metadata": {
       "preview": "          return await response.json();\n        } catch (error) {\n          return { error: true };\n        }\n      }),\n      \n      checkAPIStatus('nordwheel', async () => {\n        try {\n          const totalWeight = 10;\n          const totalVolume = 0.1;\n          \n          const params = new URLSearchParams({\n            from: '91',\n            to: '92',\n            pickup: '1',\n            deliver: '1',\n            weight: totalWeight.toString(),\n            volume: totalVolume.toString(),\n            oversized: '0',\n            package: '1',"
     },
-    "title": "app/page.tsx",
     "time": {
       "start": 1760452798712,
-      "end": 1760452798717
+      "end": 1760452798717,
+      "compacted": 1763403135408
     }
   }
 }

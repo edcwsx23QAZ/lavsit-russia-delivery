@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32be8fa001oHxHkiHc074yFg",
-  "messageID": "msg_9e32bda45001mnU0YDy94Og5Hz",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32bda45001mnU0YDy94Og5Hz",
   "type": "tool",
-  "tool": "edit",
   "callID": "call_13835937",
+  "tool": "edit",
   "state": {
     "status": "completed",
     "input": {
@@ -13,14 +13,15 @@
       "newString": "    // Web Vitals monitoring - TODO: Implement with correct web-vitals API\n    // Currently commented out due to API compatibility issues\n    /*\n    if (typeof window !== 'undefined') {\n      // TODO: Install web-vitals package and implement correct API usage\n      console.log('📊 Web Vitals monitoring placeholder');\n    }\n    */"
     },
     "output": "",
+    "title": "components/ClientDevUtils.tsx",
     "metadata": {
       "diagnostics": {},
       "diff": "Index: /home/user/project/components/ClientDevUtils.tsx\n===================================================================\n--- /home/user/project/components/ClientDevUtils.tsx\n+++ /home/user/project/components/ClientDevUtils.tsx\n@@ -31,61 +31,8 @@\n       // TODO: Install web-vitals package and implement correct API usage\n       console.log('📊 Web Vitals monitoring placeholder');\n     }\n     */\n-        });\n-\n-        getFID((metric) => {\n-          console.log('📊 FID (First Input Delay):', metric.value, 'ms');\n-          if (typeof window !== 'undefined' && (window as any).gtag) {\n-            (window as any).gtag('event', 'web_vitals', {\n-              event_category: 'Web Vitals',\n-              event_label: 'FID',\n-              value: Math.round(metric.value),\n-              custom_map: { metric_value: metric.value }\n-            });\n-          }\n-        });\n-\n-        getFCP((metric) => {\n-          console.log('📊 FCP (First Contentful Paint):', metric.value, 'ms');\n-          if (typeof window !== 'undefined' && (window as any).gtag) {\n-            (window as any).gtag('event', 'web_vitals', {\n-              event_category: 'Web Vitals',\n-              event_label: 'FCP',\n-              value: Math.round(metric.value),\n-              custom_map: { metric_value: metric.value }\n-            });\n-          }\n-        });\n-\n-        getLCP((metric) => {\n-          console.log('📊 LCP (Largest Contentful Paint):', metric.value, 'ms');\n-          if (typeof window !== 'undefined' && (window as any).gtag) {\n-            (window as any).gtag('event', 'web_vitals', {\n-              event_category: 'Web Vitals',\n-              event_label: 'LCP',\n-              value: Math.round(metric.value),\n-              custom_map: { metric_value: metric.value }\n-            });\n-          }\n-        });\n-\n-        getTTFB((metric) => {\n-          console.log('📊 TTFB (Time to First Byte):', metric.value, 'ms');\n-          if (typeof window !== 'undefined' && (window as any).gtag) {\n-            (window as any).gtag('event', 'web_vitals', {\n-              event_category: 'Web Vitals',\n-              event_label: 'TTFB',\n-              value: Math.round(metric.value),\n-              custom_map: { metric_value: metric.value }\n-            });\n-          }\n-        });\n-      }).catch((error) => {\n-        console.warn('⚠️ Failed to load web-vitals:', error);\n-      });\n-    }\n   }, []);\n \n   return null;\n }\n\\ No newline at end of file\n"
     },
-    "title": "components/ClientDevUtils.tsx",
     "time": {
       "start": 1760452929788,
-      "end": 1760452929791
+      "end": 1760452929791,
+      "compacted": 1763403135403
     }
   }
 }

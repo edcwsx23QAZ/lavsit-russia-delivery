@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32a270b001j3VADwx23lsu8r",
-  "messageID": "msg_9e32a23ef001J1jf9kV7kNPiQu",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32a23ef001J1jf9kV7kNPiQu",
   "type": "tool",
-  "tool": "grep",
   "callID": "call_85807437",
+  "tool": "grep",
   "state": {
     "status": "completed",
     "input": {
@@ -12,14 +12,15 @@
       "path": "app/page.tsx"
     },
     "output": "No files found",
+    "title": "Nord Wheel",
     "metadata": {
       "matches": 0,
       "truncated": false
     },
-    "title": "Nord Wheel",
     "time": {
       "start": 1760452814605,
-      "end": 1760452814617
+      "end": 1760452814617,
+      "compacted": 1763403135408
     }
   }
 }

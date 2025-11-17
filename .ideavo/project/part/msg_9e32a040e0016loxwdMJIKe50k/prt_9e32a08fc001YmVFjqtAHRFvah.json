@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32a08fc001YmVFjqtAHRFvah",
-  "messageID": "msg_9e32a040e0016loxwdMJIKe50k",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32a040e0016loxwdMJIKe50k",
   "type": "tool",
-  "tool": "read",
   "callID": "call_90358784",
+  "tool": "read",
   "state": {
     "status": "completed",
     "input": {
@@ -13,13 +13,14 @@
       "limit": 100
     },
     "output": "<file>\n00501|             method: 'POST',\n00502|             headers: { 'Content-Type': 'application/json' },\n00503|             body: JSON.stringify({ method: 'test' })\n00504|           });\n00505|           const data = await response.json();\n00506|           if (data.status === 'OK') {\n00507|             return { success: true };\n00508|           } else {\n00509|             return { error: true };\n00510|           }\n00511|         } catch (error) {\n00512|           return { error: true };\n00513|         }\n00514|       }),\n00515|       \n00516|       checkAPIStatus('dellin', async () => {\n00517|         try {\n00518|           // Тестируем получение sessionID для Деловых Линий (тот же метод что в calculateDellin)\n00519|           const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n00520|             method: 'POST',\n00521|             headers: { 'Content-Type': 'application/json' },\n00522|             body: JSON.stringify({\n00523|               appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n00524|               login: 'service@lavsit.ru',\n00525|               password: 'edcwsx123QAZ'\n00526|             })\n00527|           });\n00528|           const authData = await authResponse.json();\n00529|           \n00530|           // Проверяем все возможные пути к sessionID как в calculateDellin\n00531|           if (authData.data?.sessionID || authData.sessionID || authData.data?.session) {\n00532|             return { success: true };\n00533|           } else {\n00534|             return { error: true };\n00535|           }\n00536|         } catch (error) {\n00537|           return { error: true };\n00538|         }\n00539|       }),\n00540|       \n00541|       checkAPIStatus('railcontinent', async () => {\n00542|         try {\n00543|           const response = await fetch('/api/rail-continent', {\n00544|             method: 'POST',\n00545|             headers: { 'Content-Type': 'application/json' },\n00546|             body: JSON.stringify({\n00547|               city_sender: testData.fromCity,\n00548|               city_receiver: testData.toCity,\n00549|               weight: 10,\n00550|               volume: 0.1,\n00551|               length: 1,\n00552|               width: 1,\n00553|               height: 1,\n00554|               declared_cost: testData.declaredValue,\n00555|               pickup: '0',\n00556|               delivery: '0',\n00557|               packaging: '0',\n00558|               insurance: '0',\n00559|               tariff: 'auto'\n00560|             })\n00561|           });\n00562|           return await response.json();\n00563|         } catch (error) {\n00564|           return { error: true };\n00565|         }\n00566|       }),\n00567|       \n00568|       checkAPIStatus('vozovoz', async () => {\n00569|         try {\n00570|           const response = await fetch('/api/vozovoz', {\n00571|             method: 'POST',\n00572|             headers: { 'Content-Type': 'application/json' },\n00573|             body: JSON.stringify({\n00574|               object: \"price\",\n00575|               action: \"get\",\n00576|               params: {\n00577|                 cargo: {\n00578|                   dimension: {\n00579|                     quantity: 1,\n00580|                     volume: 0.1,\n00581|                     weight: 10\n00582|                   }\n00583|                 },\n00584|                 gateway: {\n00585|                   dispatch: {\n00586|                     point: {\n00587|                       location: testData.fromCity,\n00588|                       terminal: \"default\"\n00589|                     }\n00590|                   },\n00591|                   destination: {\n00592|                     point: {\n00593|                       location: testData.toCity,\n00594|                       terminal: \"default\"\n00595|                     }\n00596|                   }\n00597|                 }\n00598|               }\n00599|             })\n00600|           });\n\n(File has more lines. Use 'offset' parameter to read beyond line 600)\n</file>",
+    "title": "app/page.tsx",
     "metadata": {
       "preview": "            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({ method: 'test' })\n          });\n          const data = await response.json();\n          if (data.status === 'OK') {\n            return { success: true };\n          } else {\n            return { error: true };\n          }\n        } catch (error) {\n          return { error: true };\n        }\n      }),\n      \n      checkAPIStatus('dellin', async () => {\n        try {\n          // Тестируем получение sessionID для Деловых Линий (тот же метод что в calculateDellin)\n          const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {\n            method: 'POST',"
     },
-    "title": "app/page.tsx",
     "time": {
       "start": 1760452806909,
-      "end": 1760452806911
+      "end": 1760452806911,
+      "compacted": 1763403135408
     }
   }
 }

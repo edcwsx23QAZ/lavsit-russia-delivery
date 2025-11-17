@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32b9ddf0012vuOvlMXjSU5az",
-  "messageID": "msg_9e32b995b0016E6EYc7L4ANFwc",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32b995b0016E6EYc7L4ANFwc",
   "type": "tool",
-  "tool": "bash",
   "callID": "call_52702769",
+  "tool": "bash",
   "state": {
     "status": "completed",
     "input": {
@@ -12,15 +12,16 @@
       "description": "Running build again to check for remaining TypeScript errors"
     },
     "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./components/ClientDevUtils.tsx\nError: \n  \u001b[31mx\u001b[0m Expression expected\n    ,-[\u001b[36;1;4m/home/user/project/components/ClientDevUtils.tsx\u001b[0m:81:1]\n \u001b[2m81\u001b[0m |             });\n \u001b[2m82\u001b[0m |           }\n \u001b[2m83\u001b[0m |         });\n \u001b[2m84\u001b[0m |       }).catch((error) => {\n    : \u001b[31;1m       ^\u001b[0m\n \u001b[2m85\u001b[0m |         console.warn('⚠️ Failed to load web-vitals:', error);\n \u001b[2m86\u001b[0m |       });\n \u001b[2m87\u001b[0m |     }\n    `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./components/ClientDevUtils.tsx\n./app/layout.tsx\n\n\n> Build failed because of webpack errors\n",
+    "title": "npm run build",
     "metadata": {
       "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./components/ClientDevUtils.tsx\nError: \n  \u001b[31mx\u001b[0m Expression expected\n    ,-[\u001b[36;1;4m/home/user/project/components/ClientDevUtils.tsx\u001b[0m:81:1]\n \u001b[2m81\u001b[0m |             });\n \u001b[2m82\u001b[0m |           }\n \u001b[2m83\u001b[0m |         });\n \u001b[2m84\u001b[0m |       }).catch((error) => {\n    : \u001b[31;1m       ^\u001b[0m\n \u001b[2m85\u001b[0m |         console.warn('⚠️ Failed to load web-vitals:', error);\n \u001b[2m86\u001b[0m |       });\n \u001b[2m87\u001b[0m |     }\n    `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./components/ClientDevUtils.tsx\n./app/layout.tsx\n\n\n> Build failed because of webpack errors\n",
       "exit": 1,
       "description": "Running build again to check for remaining TypeScript errors"
     },
-    "title": "npm run build",
     "time": {
       "start": 1760452910566,
-      "end": 1760452915098
+      "end": 1760452915098,
+      "compacted": 1763403135403
     }
   }
 }

@@ -1,0 +1,4 @@
+# lavsit-russia-delivery-1758626401275 git init git add README.md git commit -m first commit git branch -M main git remote add origin https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1758626401275.git git push -u origin main
+# lavsit-russia-delivery-1758626401275 git init git add README.md git commit -m first commit git branch -M main git remote add origin https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1758626401275.git git push -u origin main
+# lavsit-russia-delivery-1758626401275 git init git add README.md git commit -m first commit git branch -M main git remote add origin https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1758626401275.git git push -u origin main
+# lavsit-russia-delivery-1758626401275 git init git add README.md git commit -m first commit git branch -M main git remote add origin https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1758626401275.git git push -u origin main

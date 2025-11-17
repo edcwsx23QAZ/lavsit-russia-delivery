@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32c6632001PqhZnIEh1wnQTv",
-  "messageID": "msg_9e32c598d001m1LtfLEAslpVUQ",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32c598d001m1LtfLEAslpVUQ",
   "type": "tool",
-  "tool": "read",
   "callID": "call_77063532",
+  "tool": "read",
   "state": {
     "status": "completed",
     "input": {
@@ -13,13 +13,14 @@
       "limit": 10
     },
     "output": "<file>\n00121|       setPerformanceMetrics(prev => [metric, ...prev.slice(0, 49)]);\n00122| \n00123|       // Send to Sentry\n00124|       Sentry.metrics.increment('test_operation_duration', duration, {\n00125|         unit: 'millisecond'\n00126|       });\n00127| \n00128|       setIsCapturing(false);\n00129|     }, Math.random() * 1000 + 500);\n00130|   }, []);\n\n(File has more lines. Use 'offset' parameter to read beyond line 130)\n</file>",
+    "title": "components/diagnostic/SentryMonitor.tsx",
     "metadata": {
       "preview": "      setPerformanceMetrics(prev => [metric, ...prev.slice(0, 49)]);\n\n      // Send to Sentry\n      Sentry.metrics.increment('test_operation_duration', duration, {\n        unit: 'millisecond'\n      });\n\n      setIsCapturing(false);\n    }, Math.random() * 1000 + 500);\n  }, []);"
     },
-    "title": "components/diagnostic/SentryMonitor.tsx",
     "time": {
       "start": 1760452961844,
-      "end": 1760452961846
+      "end": 1760452961846,
+      "compacted": 1763403135402
     }
   }
 }

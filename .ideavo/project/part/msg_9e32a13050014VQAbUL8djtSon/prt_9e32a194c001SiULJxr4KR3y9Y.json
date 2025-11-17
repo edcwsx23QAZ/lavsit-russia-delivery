@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32a194c001SiULJxr4KR3y9Y",
-  "messageID": "msg_9e32a13050014VQAbUL8djtSon",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32a13050014VQAbUL8djtSon",
   "type": "tool",
-  "tool": "grep",
   "callID": "call_55385302",
+  "tool": "grep",
   "state": {
     "status": "completed",
     "input": {
@@ -12,14 +12,15 @@
       "path": "app/page.tsx"
     },
     "output": "No files found",
+    "title": "calculateNordWheel",
     "metadata": {
       "matches": 0,
       "truncated": false
     },
-    "title": "calculateNordWheel",
     "time": {
       "start": 1760452811086,
-      "end": 1760452811093
+      "end": 1760452811093,
+      "compacted": 1763403135408
     }
   }
 }

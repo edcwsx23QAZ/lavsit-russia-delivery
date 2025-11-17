@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32a65af0017G71YxWmB3IxzG",
-  "messageID": "msg_9e32a5daf001vGKZrXamUML1Id",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32a5daf001vGKZrXamUML1Id",
   "type": "tool",
-  "tool": "grep",
   "callID": "call_99956248",
+  "tool": "grep",
   "state": {
     "status": "completed",
     "input": {
@@ -12,14 +12,15 @@
       "path": "app/page.tsx"
     },
     "output": "No files found",
+    "title": "const calculate",
     "metadata": {
       "matches": 0,
       "truncated": false
     },
-    "title": "const calculate",
     "time": {
       "start": 1760452830642,
-      "end": 1760452830650
+      "end": 1760452830650,
+      "compacted": 1763403135407
     }
   }
 }

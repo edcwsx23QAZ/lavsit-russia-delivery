@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32bf9e9001HrI9HMLXmUBSRx",
-  "messageID": "msg_9e32bf50c001nUhRGbi0XYMIxE",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32bf50c001nUhRGbi0XYMIxE",
   "type": "tool",
-  "tool": "bash",
   "callID": "call_79341045",
+  "tool": "bash",
   "state": {
     "status": "completed",
     "input": {
@@ -12,15 +12,16 @@
       "description": "Running build to verify all TypeScript errors are resolved"
     },
     "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./components/diagnostic/SentryMonitor.tsx:124:22\nType error: Property 'increment' does not exist on type 'typeof import(\"/home/user/project/node_modules/@sentry/core/build/types/metrics/public-api\")'.\n\n\u001b[0m \u001b[90m 122 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 123 |\u001b[39m       \u001b[90m// Send to Sentry\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 124 |\u001b[39m       \u001b[33mSentry\u001b[39m\u001b[33m.\u001b[39mmetrics\u001b[33m.\u001b[39mincrement(\u001b[32m'test_operation_duration'\u001b[39m\u001b[33m,\u001b[39m duration\u001b[33m,\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 125 |\u001b[39m         unit\u001b[33m:\u001b[39m \u001b[32m'millisecond'\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 126 |\u001b[39m       })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 127 |\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
     "metadata": {
       "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./components/diagnostic/SentryMonitor.tsx:124:22\nType error: Property 'increment' does not exist on type 'typeof import(\"/home/user/project/node_modules/@sentry/core/build/types/metrics/public-api\")'.\n\n\u001b[0m \u001b[90m 122 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 123 |\u001b[39m       \u001b[90m// Send to Sentry\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 124 |\u001b[39m       \u001b[33mSentry\u001b[39m\u001b[33m.\u001b[39mmetrics\u001b[33m.\u001b[39mincrement(\u001b[32m'test_operation_duration'\u001b[39m\u001b[33m,\u001b[39m duration\u001b[33m,\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 125 |\u001b[39m         unit\u001b[33m:\u001b[39m \u001b[32m'millisecond'\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 126 |\u001b[39m       })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 127 |\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
       "exit": 1,
       "description": "Running build to verify all TypeScript errors are resolved"
     },
-    "title": "npm run build",
     "time": {
       "start": 1760452934125,
-      "end": 1760452956216
+      "end": 1760452956216,
+      "compacted": 1763403135402
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "id": "prt_9e32b7269001c56I1mfSzmVDZJ",
-  "messageID": "msg_9e32b6db5001k3qD33qV5cEcut",
   "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_9e32b6db5001k3qD33qV5cEcut",
   "type": "tool",
-  "tool": "grep",
   "callID": "call_07062735",
+  "tool": "grep",
   "state": {
     "status": "completed",
     "input": {
@@ -13,14 +13,15 @@
       "include": "*"
     },
     "output": "No files found",
+    "title": "web-vitals",
     "metadata": {
       "matches": 0,
       "truncated": false
     },
-    "title": "web-vitals",
     "time": {
       "start": 1760452899435,
-      "end": 1760452899441
+      "end": 1760452899441,
+      "compacted": 1763403135404
     }
   }
 }
