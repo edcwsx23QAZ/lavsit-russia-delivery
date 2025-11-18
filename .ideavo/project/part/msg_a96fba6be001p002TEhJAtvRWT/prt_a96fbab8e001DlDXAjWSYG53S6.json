@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96fbab8e001DlDXAjWSYG53S6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96fba6be001p002TEhJAtvRWT",
+  "type": "tool",
+  "callID": "call_06493910",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-api.js",
+      "description": "Testing NordWheel API with city names in city_fias field"
+    },
+    "output": "Отправка запроса к NordWheel API...\nURL: https://api.nordw.orog.ru/api/v1/calculate\nRequest data: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"address\",\n      \"city_fias\": \"Москва\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"address\",\n      \"city_fias\": \"Казань\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 10,\n    \"total_volume\": 1,\n    \"total_quantity\": 1\n  },\n  \"insurance\": 1000,\n  \"insurance_refuse\": false,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\nСтатус ответа: 400\nОшибка API: 400 Bad Request\nТело ошибки: {\"meta\":{\"id\":\"e98bf229-8a2c-41fc-a2a8-eab142fdc2b5\",\"code\":400,\"success\":false,\"response_time\":\"2025-11-18 12:58:12.047\",\"errors\":{\"dispatch.location.city_fias\":[\"\\u0412\\u044b\\u0431\\u0440\\u0430\\u043d\\u043d\\u044b\\u0439 \\u0433\\u043e\\u0440\\u043e\\u0434 \\u043d\\u0435 \\u0441\\u0443\\u0449\\u0435\\u0441\\u0442\\u0432\\u0443\\u0435\\u0442 \\u0432 \\u0431\\u0430\\u0437\\u0435 \\u0434\\u0430\\u043d\\u043d\\u044b\\u0445.\"],\"destination.location.city_fias\":[\"\\u0412\\u044b\\u0431\\u0440\\u0430\\u043d\\u043d\\u044b\\u0439 \\u0433\\u043e\\u0440\\u043e\\u0434 \\u043d\\u0430\\u0437\\u043d\\u0430\\u0447\\u0435\\u043d\\u0438\\u044f \\u043d\\u0435 \\u0441\\u0443\\u0449\\u0435\\u0441\\u0442\\u0432\\u0443\\u0435\\u0442 \\u0432 \\u0431\\u0430\\u0437\\u0435 \\u0434\\u0430\\u043d\\u043d\\u044b\\u0445.\"]}},\"data\":[]}\n",
+    "title": "node test-nordwheel-api.js",
+    "metadata": {
+      "output": "Отправка запроса к NordWheel API...\nURL: https://api.nordw.orog.ru/api/v1/calculate\nRequest data: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"address\",\n      \"city_fias\": \"Москва\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"address\",\n      \"city_fias\": \"Казань\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 10,\n    \"total_volume\": 1,\n    \"total_quantity\": 1\n  },\n  \"insurance\": 1000,\n  \"insurance_refuse\": false,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\nСтатус ответа: 400\nОшибка API: 400 Bad Request\nТело ошибки: {\"meta\":{\"id\":\"e98bf229-8a2c-41fc-a2a8-eab142fdc2b5\",\"code\":400,\"success\":false,\"response_time\":\"2025-11-18 12:58:12.047\",\"errors\":{\"dispatch.location.city_fias\":[\"\\u0412\\u044b\\u0431\\u0440\\u0430\\u043d\\u043d\\u044b\\u0439 \\u0433\\u043e\\u0440\\u043e\\u0434 \\u043d\\u0435 \\u0441\\u0443\\u0449\\u0435\\u0441\\u0442\\u0432\\u0443\\u0435\\u0442 \\u0432 \\u0431\\u0430\\u0437\\u0435 \\u0434\\u0430\\u043d\\u043d\\u044b\\u0445.\"],\"destination.location.city_fias\":[\"\\u0412\\u044b\\u0431\\u0440\\u0430\\u043d\\u043d\\u044b\\u0439 \\u0433\\u043e\\u0440\\u043e\\u0434 \\u043d\\u0430\\u0437\\u043d\\u0430\\u0447\\u0435\\u043d\\u0438\\u044f \\u043d\\u0435 \\u0441\\u0443\\u0449\\u0435\\u0441\\u0442\\u0432\\u0443\\u0435\\u0442 \\u0432 \\u0431\\u0430\\u0437\\u0435 \\u0434\\u0430\\u043d\\u043d\\u044b\\u0445.\"]}},\"data\":[]}\n",
+      "exit": 0,
+      "description": "Testing NordWheel API with city names in city_fias field"
+    },
+    "time": {
+      "start": 1763469667218,
+      "end": 1763469668284
+    }
+  }
+}

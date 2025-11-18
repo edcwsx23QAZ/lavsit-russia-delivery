@@ -1,0 +1,23 @@
+{
+  "id": "prt_a96fa1640001Ze60Jvk1rK9AyC",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96fa127b001pNrPrAPGvsrHzw",
+  "type": "tool",
+  "callID": "call_85088361",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "test-nordwheel-cities.js"
+    },
+    "output": "<file>\n00001| // Тестовый скрипт для проверки NordWheel API - получение списка терминалов для Москвы и СПб\n00002| const testNordWheelTerminals = async (cityFias, cityName) => {\n00003|   const apiUrl = `https://api.nordw.orog.ru/api/v1/terminals?city_id=${cityFias}`;\n00004| \n00005|   try {\n00006|     console.log(`Получение списка терминалов NordWheel для ${cityName}...`);\n00007|     const response = await fetch(apiUrl, {\n00008|       headers: {\n00009|         'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'}`\n00010|       }\n00011|     });\n00012| \n00013|     console.log('Статус ответа:', response.status);\n00014| \n00015|     if (!response.ok) {\n00016|       console.error('Ошибка API:', response.status, response.statusText);\n00017|       const errorText = await response.text();\n00018|       console.error('Тело ошибки:', errorText);\n00019|       return null;\n00020|     }\n00021| \n00022|     const data = await response.json();\n00023|     console.log(`Количество терминалов для ${cityName}:`, data.data?.length || 0);\n00024|     console.log(`Терминалы для ${cityName}:`);\n00025|     if (data.data && Array.isArray(data.data)) {\n00026|       data.data.forEach((terminal, index) => {\n00027|         console.log(`Терминал ${index + 1}:`, terminal);\n00028|       });\n00029|     }\n00030|     return data.data || [];\n00031|   } catch (error) {\n00032|     console.error('Ошибка соединения:', error);\n00033|     return null;\n00034|   }\n00035| };\n00036| \n00037| const testBothCities = async () => {\n00038|   const moscowFias = '0c5b2444-70a0-4932-980c-b4dc0d3f02b5';\n00039|   const spbFias = 'c2deb16a-0330-4f05-821f-1d09c93331e6';\n00040| \n00041|   const moscowTerminals = await testNordWheelTerminals(moscowFias, 'Москвы');\n00042|   console.log('\\n--- СПб ---\\n');\n00043|   const spbTerminals = await testNordWheelTerminals(spbFias, 'СПб');\n00044| \n00045|   console.log('\\n--- Резюме ---');\n00046|   console.log('Москва терминалы:', moscowTerminals?.length || 0);\n00047|   console.log('СПб терминалы:', spbTerminals?.length || 0);\n00048| };\n00049| \n00050| testBothCities();\n</file>",
+    "title": "test-nordwheel-cities.js",
+    "metadata": {
+      "preview": "// Тестовый скрипт для проверки NordWheel API - получение списка терминалов для Москвы и СПб\nconst testNordWheelTerminals = async (cityFias, cityName) => {\n  const apiUrl = `https://api.nordw.orog.ru/api/v1/terminals?city_id=${cityFias}`;\n\n  try {\n    console.log(`Получение списка терминалов NordWheel для ${cityName}...`);\n    const response = await fetch(apiUrl, {\n      headers: {\n        'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'}`\n      }\n    });\n\n    console.log('Статус ответа:', response.status);\n\n    if (!response.ok) {\n      console.error('Ошибка API:', response.status, response.statusText);\n      const errorText = await response.text();\n      console.error('Тело ошибки:', errorText);\n      return null;\n    }"
+    },
+    "time": {
+      "start": 1763469563458,
+      "end": 1763469563460
+    }
+  }
+}

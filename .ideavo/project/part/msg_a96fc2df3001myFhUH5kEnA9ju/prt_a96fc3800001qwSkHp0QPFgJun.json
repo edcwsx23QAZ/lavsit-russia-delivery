@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96fc3800001qwSkHp0QPFgJun",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96fc2df3001myFhUH5kEnA9ju",
+  "type": "tool",
+  "callID": "call_37412561",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "test-nordwheel-api.js",
+      "newString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'address',\n        guid: 'Москва' // Название города в guid поле\n      }\n    },\n    destination: {\n      location: {\n        type: 'address',\n        guid: 'Санкт-Петербург' // Название города в guid поле\n      }\n    },",
+      "oldString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'address',\n        city_fias: 'Москва' // Название города вместо кода\n      }\n    },\n    destination: {\n      location: {\n        type: 'address',\n        city_fias: 'Казань' // Название города вместо кода\n      }\n    },"
+    },
+    "output": "",
+    "title": "test-nordwheel-api.js",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-nordwheel-api.js\n===================================================================\n--- /home/user/project/test-nordwheel-api.js\n+++ /home/user/project/test-nordwheel-api.js\n@@ -5,15 +5,15 @@\n const requestData = {\n   dispatch: {\n     location: {\n       type: 'address',\n-      city_fias: 'Москва' // Название города вместо кода\n+      guid: 'Москва' // Название города в guid поле\n     }\n   },\n   destination: {\n     location: {\n       type: 'address',\n-      city_fias: 'Казань' // Название города вместо кода\n+      guid: 'Санкт-Петербург' // Название города в guid поле\n     }\n   },\n   cargo: {\n     total_weight: 10,\n"
+    },
+    "time": {
+      "start": 1763469703170,
+      "end": 1763469703174
+    }
+  }
+}

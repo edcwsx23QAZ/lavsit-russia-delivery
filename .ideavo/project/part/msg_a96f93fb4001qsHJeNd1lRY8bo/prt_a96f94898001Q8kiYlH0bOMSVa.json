@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96f94898001Q8kiYlH0bOMSVa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96f93fb4001qsHJeNd1lRY8bo",
+  "type": "tool",
+  "callID": "call_01177574",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "test-nordwheel-api.js",
+      "newString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'address',\n        name: 'Москва' // Название города для address типа\n      }\n    },\n    destination: {\n      location: {\n        type: 'address',\n        name: 'Санкт-Петербург' // Название города для address типа\n      }\n    },",
+      "oldString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'terminal',\n        terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224',\n        name: 'Москва' // Название города\n      }\n    },\n    destination: {\n      location: {\n        type: 'terminal',\n        terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553',\n        name: 'Санкт-Петербург' // Название города\n      }\n    },"
+    },
+    "output": "",
+    "title": "test-nordwheel-api.js",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-nordwheel-api.js\n===================================================================\n--- /home/user/project/test-nordwheel-api.js\n+++ /home/user/project/test-nordwheel-api.js\n@@ -4,18 +4,16 @@\n \n const requestData = {\n   dispatch: {\n     location: {\n-      type: 'terminal',\n-      terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224',\n-      name: 'Москва' // Название города\n+      type: 'address',\n+      name: 'Москва' // Название города для address типа\n     }\n   },\n   destination: {\n     location: {\n-      type: 'terminal',\n-      terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553',\n-      name: 'Санкт-Петербург' // Название города\n+      type: 'address',\n+      name: 'Санкт-Петербург' // Название города для address типа\n     }\n   },\n   cargo: {\n     total_weight: 10,\n"
+    },
+    "time": {
+      "start": 1763469510809,
+      "end": 1763469510813
+    }
+  }
+}

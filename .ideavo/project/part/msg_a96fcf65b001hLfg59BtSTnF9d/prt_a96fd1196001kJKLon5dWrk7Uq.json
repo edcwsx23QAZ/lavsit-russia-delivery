@@ -1,0 +1,21 @@
+{
+  "id": "prt_a96fd1196001kJKLon5dWrk7Uq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96fcf65b001hLfg59BtSTnF9d",
+  "type": "tool",
+  "callID": "call_43639354",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "      // Формируем запрос для нового API NordWheel\n      const requestData = {\n        dispatch: {\n          location: {\n            type: 'terminal',\n            terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224', // Москва terminal GUID\n            city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS (требуется API, но не работает)\n          }\n        },\n        destination: {\n          location: {\n            type: 'terminal',\n            terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553', // СПб terminal GUID\n            city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS (требуется API, но не работает)\n          }\n        },",
+      "oldString": "      // Формируем запрос для нового API NordWheel\n      const requestData = {\n        dispatch: {\n          location: {\n            type: 'terminal',\n            terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224', // Москва terminal GUID\n            city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS\n          }\n        },\n        destination: {\n          location: {\n            type: 'terminal',\n            terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553', // СПб terminal GUID\n            city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS\n          }\n        },"
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1763469758873,
+      "end": 1763469758874
+    }
+  }
+}

@@ -3444,14 +3444,14 @@ export default function Home() {
           location: {
             type: 'terminal',
             terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224', // Москва terminal GUID
-            city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS
+            city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS (требуется API, но не работает - TODO: исправить идентификацию городов)
           }
         },
         destination: {
           location: {
             type: 'terminal',
             terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553', // СПб terminal GUID
-            city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS
+            city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS (требуется API, но не работает - TODO: исправить идентификацию городов)
           }
         },
         cargo: {

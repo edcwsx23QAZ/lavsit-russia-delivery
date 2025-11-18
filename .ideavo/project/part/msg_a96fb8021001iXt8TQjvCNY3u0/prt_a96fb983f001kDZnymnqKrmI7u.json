@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96fb983f001kDZnymnqKrmI7u",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96fb8021001iXt8TQjvCNY3u0",
+  "type": "tool",
+  "callID": "call_77179161",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "test-nordwheel-api.js",
+      "newString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'address',\n        city_fias: 'Москва' // Название города вместо кода\n      }\n    },\n    destination: {\n      location: {\n        type: 'address',\n        city_fias: 'Казань' // Название города вместо кода\n      }\n    },",
+      "oldString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'address',\n        city_fias: '7700000000000' // KLADR код Москвы\n      }\n    },\n    destination: {\n      location: {\n        type: 'address',\n        city_fias: '1600000000000' // KLADR код Казани\n      }\n    },"
+    },
+    "output": "",
+    "title": "test-nordwheel-api.js",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-nordwheel-api.js\n===================================================================\n--- /home/user/project/test-nordwheel-api.js\n+++ /home/user/project/test-nordwheel-api.js\n@@ -5,15 +5,15 @@\n const requestData = {\n   dispatch: {\n     location: {\n       type: 'address',\n-      city_fias: '7700000000000' // KLADR код Москвы\n+      city_fias: 'Москва' // Название города вместо кода\n     }\n   },\n   destination: {\n     location: {\n       type: 'address',\n-      city_fias: '1600000000000' // KLADR код Казани\n+      city_fias: 'Казань' // Название города вместо кода\n     }\n   },\n   cargo: {\n     total_weight: 10,\n"
+    },
+    "time": {
+      "start": 1763469662274,
+      "end": 1763469662277
+    }
+  }
+}

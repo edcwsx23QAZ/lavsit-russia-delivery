@@ -6,20 +6,18 @@ const testNordWheelAPI = async () => {
     dispatch: {
       location: {
         type: 'terminal',
-        terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224',
-        city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS
+        terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224' // GUID терминала Москвы
       }
     },
     destination: {
       location: {
         type: 'terminal',
-        terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553',
-        city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS
+        terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553' // GUID терминала СПб
       }
     },
     cargo: {
-      total_weight: 10,
-      total_volume: 1.0,
+      total_weight: 1, // Меньший вес
+      total_volume: 0.1, // Меньший объем
       total_quantity: 1
     },
     insurance: 1000,

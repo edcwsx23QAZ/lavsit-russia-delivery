@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96fbde47001j5u2KdsBSl9JJs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96fbd9e9001PZ2FdF2qWliiXW",
+  "type": "tool",
+  "callID": "call_79282229",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-cities.js",
+      "description": "Getting terminals for Kazan from NordWheel API"
+    },
+    "output": "Получение списка терминалов NordWheel для Казани...\nСтатус ответа: 400\nОшибка API: 400 Bad Request\nТело ошибки: {\"meta\":{\"id\":\"8192953b-a55b-4d48-bb05-a5003d971d26\",\"code\":400,\"success\":false,\"response_time\":\"2025-11-18 12:58:26.403\",\"errors\":{\"city_id\":[\"\\u0412\\u044b\\u0431\\u0440\\u0430\\u043d\\u043d\\u043e\\u0435 \\u0437\\u043d\\u0430\\u0447\\u0435\\u043d\\u0438\\u0435 \\u0434\\u043b\\u044f city id \\u043d\\u0435\\u0434\\u043e\\u043f\\u0443\\u0441\\u0442\\u0438\\u043c\\u043e.\"]}},\"data\":[]}\n",
+    "title": "node test-nordwheel-cities.js",
+    "metadata": {
+      "output": "Получение списка терминалов NordWheel для Казани...\nСтатус ответа: 400\nОшибка API: 400 Bad Request\nТело ошибки: {\"meta\":{\"id\":\"8192953b-a55b-4d48-bb05-a5003d971d26\",\"code\":400,\"success\":false,\"response_time\":\"2025-11-18 12:58:26.403\",\"errors\":{\"city_id\":[\"\\u0412\\u044b\\u0431\\u0440\\u0430\\u043d\\u043d\\u043e\\u0435 \\u0437\\u043d\\u0430\\u0447\\u0435\\u043d\\u0438\\u0435 \\u0434\\u043b\\u044f city id \\u043d\\u0435\\u0434\\u043e\\u043f\\u0443\\u0441\\u0442\\u0438\\u043c\\u043e.\"]}},\"data\":[]}\n",
+      "exit": 0,
+      "description": "Getting terminals for Kazan from NordWheel API"
+    },
+    "time": {
+      "start": 1763469680203,
+      "end": 1763469681416
+    }
+  }
+}

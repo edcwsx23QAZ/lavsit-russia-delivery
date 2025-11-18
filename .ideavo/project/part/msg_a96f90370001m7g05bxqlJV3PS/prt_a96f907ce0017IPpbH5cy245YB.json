@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96f907ce0017IPpbH5cy245YB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96f90370001m7g05bxqlJV3PS",
+  "type": "tool",
+  "callID": "call_04146847",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-api.js",
+      "description": "Testing NordWheel API with city names instead of FIAS codes"
+    },
+    "output": "Отправка запроса к NordWheel API...\nURL: https://api.nordw.orog.ru/api/v1/calculate\nRequest data: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"terminal_id\": \"0c7a2795-1220-486d-a7ce-8bcf130a1224\",\n      \"city_name\": \"Москва\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"terminal_id\": \"3ca02b62-3632-4da0-8fde-de9d9c77c553\",\n      \"city_name\": \"Санкт-Петербург\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 10,\n    \"total_volume\": 1,\n    \"total_quantity\": 1\n  },\n  \"insurance\": 1000,\n  \"insurance_refuse\": false,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\nСтатус ответа: 400\nОшибка API: 400 Bad Request\nТело ошибки: {\"meta\":{\"id\":\"8fb0648a-f308-4405-a9c5-46c13e7b01c4\",\"code\":400,\"success\":false,\"response_time\":\"2025-11-18 12:55:03.731\",\"errors\":{\"dispatch.location.city_fias\":[\"\\u0422\\u0438\\u043f \\u043f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u0440\\u0430 \\u043d\\u0435 \\u0441\\u043e\\u043e\\u0442\\u0432\\u0435\\u0442\\u0441\\u0442\\u0432\\u0443\\u0435\\u0442 \\u0442\\u0440\\u0435\\u0431\\u0443\\u0435\\u043c\\u043e\\u043c\\u0443 \\u0438\\u043b\\u0438 \\u043f\\u0435\\u0440\\u0435\\u0434\\u0430\\u0435\\u0442\\u0441\\u044f \\u043d\\u0435\\u0441\\u0443\\u0449\\u0435\\u0441\\u0442\\u0432\\u0443\\u044e\\u0449\\u0438\\u0439\"]}},\"data\":[]}\n",
+    "title": "node test-nordwheel-api.js",
+    "metadata": {
+      "output": "Отправка запроса к NordWheel API...\nURL: https://api.nordw.orog.ru/api/v1/calculate\nRequest data: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"terminal_id\": \"0c7a2795-1220-486d-a7ce-8bcf130a1224\",\n      \"city_name\": \"Москва\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"terminal_id\": \"3ca02b62-3632-4da0-8fde-de9d9c77c553\",\n      \"city_name\": \"Санкт-Петербург\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 10,\n    \"total_volume\": 1,\n    \"total_quantity\": 1\n  },\n  \"insurance\": 1000,\n  \"insurance_refuse\": false,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\nСтатус ответа: 400\nОшибка API: 400 Bad Request\nТело ошибки: {\"meta\":{\"id\":\"8fb0648a-f308-4405-a9c5-46c13e7b01c4\",\"code\":400,\"success\":false,\"response_time\":\"2025-11-18 12:55:03.731\",\"errors\":{\"dispatch.location.city_fias\":[\"\\u0422\\u0438\\u043f \\u043f\\u0430\\u0440\\u0430\\u043c\\u0435\\u0442\\u0440\\u0430 \\u043d\\u0435 \\u0441\\u043e\\u043e\\u0442\\u0432\\u0435\\u0442\\u0441\\u0442\\u0432\\u0443\\u0435\\u0442 \\u0442\\u0440\\u0435\\u0431\\u0443\\u0435\\u043c\\u043e\\u043c\\u0443 \\u0438\\u043b\\u0438 \\u043f\\u0435\\u0440\\u0435\\u0434\\u0430\\u0435\\u0442\\u0441\\u044f \\u043d\\u0435\\u0441\\u0443\\u0449\\u0435\\u0441\\u0442\\u0432\\u0443\\u044e\\u0449\\u0438\\u0439\"]}},\"data\":[]}\n",
+      "exit": 0,
+      "description": "Testing NordWheel API with city names instead of FIAS codes"
+    },
+    "time": {
+      "start": 1763469494255,
+      "end": 1763469495619
+    }
+  }
+}

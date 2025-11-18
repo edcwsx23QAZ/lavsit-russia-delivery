@@ -1,0 +1,24 @@
+{
+  "id": "prt_a96fac3d9001fSkoGOEndNFrPE",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96fabebd001DcwDfC7X3iVIny",
+  "type": "tool",
+  "callID": "call_35210366",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "/api/test"
+    },
+    "output": "Found 11 matches\n/home/user/project/dev.log:\n  Line 14:  ○ Compiling /api/test ...\n  Line 15:  ✓ Compiled /api/test in 802ms (103 modules)\n  Line 16:  POST /api/test 200 in 958ms\n  Line 17:  POST /api/test 200 in 17ms\n\n/home/user/project/components/diagnostic/ApiMasterTab.tsx:\n  Line 109:     endpoints: ['/api/test'],\n\n/home/user/project/app/diagnostic/page.tsx:\n  Line 105:     testAPI('NordWheel', '/api/test', { service: 'nordwheel' });\n  Line 142:       { service: 'Nord Wheel', endpoint: '/api/test', data: { service: 'nordwheel' } }\n\n/home/user/project/app/api/external/route.ts:\n  Line 269:     nordwheel: '/api/test'\n\n/home/user/project/performance-test.js:\n  Line 97:       { name: 'Test API', endpoint: '/api/test', data: { service: 'nordwheel' } }\n\n/home/user/project/app/diagnostic/optimized-page.tsx:\n  Line 90:     testAPI('NordWheel', '/api/test', { service: 'nordwheel' });\n  Line 127:       { service: 'Nord Wheel', endpoint: '/api/test', data: { service: 'nordwheel' } }",
+    "title": "/api/test",
+    "metadata": {
+      "matches": 11,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763469607900,
+      "end": 1763469607914
+    }
+  }
+}

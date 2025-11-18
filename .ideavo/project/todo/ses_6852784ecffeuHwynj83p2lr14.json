@@ -1,20 +1,8 @@
 [
   {
-    "content": "Test NordWheel integration in the main application",
-    "id": "test_integration",
-    "priority": "high",
+    "content": "Update app with current NordWheel terminal GUIDs and mark as requiring API fix",
+    "id": "update_app_with_current_findings",
+    "priority": "medium",
     "status": "completed"
-  },
-  {
-    "content": "Investigate why NordWheel API returns 'city_type_id on null' error despite valid FIAS codes",
-    "id": "investigate_city_issue",
-    "priority": "high",
-    "status": "in_progress"
-  },
-  {
-    "content": "Find correct FIAS codes or city identifiers that NordWheel API accepts",
-    "id": "find_correct_fias",
-    "priority": "high",
-    "status": "pending"
   }
 ]

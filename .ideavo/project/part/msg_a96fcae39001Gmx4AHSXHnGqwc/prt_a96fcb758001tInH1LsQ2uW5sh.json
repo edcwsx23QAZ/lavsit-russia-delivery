@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96fcb758001tInH1LsQ2uW5sh",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96fcae39001Gmx4AHSXHnGqwc",
+  "type": "tool",
+  "callID": "call_73373568",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "test-nordwheel-api.js",
+      "newString": "    cargo: {\n      total_weight: 1, // Меньший вес\n      total_volume: 0.1, // Меньший объем\n      total_quantity: 1\n    },",
+      "oldString": "    cargo: {\n      total_weight: 10,\n      total_volume: 1.0,\n      total_quantity: 1\n    },"
+    },
+    "output": "",
+    "title": "test-nordwheel-api.js",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-nordwheel-api.js\n===================================================================\n--- /home/user/project/test-nordwheel-api.js\n+++ /home/user/project/test-nordwheel-api.js\n@@ -15,10 +15,10 @@\n     terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553' // GUID терминала СПб\n   }\n },\n cargo: {\n-  total_weight: 10,\n-  total_volume: 1.0,\n+  total_weight: 1, // Меньший вес\n+  total_volume: 0.1, // Меньший объем\n   total_quantity: 1\n },\n insurance: 1000,\n insurance_refuse: false,\n"
+    },
+    "time": {
+      "start": 1763469735770,
+      "end": 1763469735773
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96fd44b70015qezStO2e0Bx6G",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96fd326a001oxGJ81Yhas58rf",
+  "type": "tool",
+  "callID": "call_48872262",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "      // Формируем запрос для нового API NordWheel\n      const requestData = {\n        dispatch: {\n          location: {\n            type: 'terminal',\n            terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224', // Москва terminal GUID\n            city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS (требуется API, но не работает - TODO: исправить идентификацию городов)\n          }\n        },\n        destination: {\n          location: {\n            type: 'terminal',\n            terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553', // СПб terminal GUID\n            city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS (требуется API, но не работает - TODO: исправить идентификацию городов)\n          }\n        },",
+      "oldString": "      // Формируем запрос для нового API NordWheel\n      const requestData = {\n        dispatch: {\n          location: {\n            type: 'terminal',\n            terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224', // Москва terminal GUID\n            city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS\n          }\n        },\n        destination: {\n          location: {\n            type: 'terminal',\n            terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553', // СПб terminal GUID\n            city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS\n          }\n        },"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3443,16 +3443,16 @@\n dispatch: {\n   location: {\n     type: 'terminal',\n     terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224', // Москва terminal GUID\n-    city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS\n+    city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS (требуется API, но не работает - TODO: исправить идентификацию городов)\n   }\n },\n destination: {\n   location: {\n     type: 'terminal',\n     terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553', // СПб terminal GUID\n-    city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS\n+    city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS (требуется API, но не работает - TODO: исправить идентификацию городов)\n   }\n },\n cargo: {\n   total_weight: totalWeight,\n"
+    },
+    "time": {
+      "start": 1763469771962,
+      "end": 1763469771980
+    }
+  }
+}
