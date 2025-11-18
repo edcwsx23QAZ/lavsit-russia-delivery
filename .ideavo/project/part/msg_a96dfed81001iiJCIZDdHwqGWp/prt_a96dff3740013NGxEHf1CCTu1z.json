@@ -1,0 +1,24 @@
+{
+  "id": "prt_a96dff3740013NGxEHf1CCTu1z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96dfed81001iiJCIZDdHwqGWp",
+  "type": "tool",
+  "callID": "call_06977268",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "nordwheel"
+    },
+    "output": "Found 34 matches\n/home/user/project/app/page.tsx:\n  Line 91:   { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' },\n  Line 165:     nordwheel: true,\n  Line 194:     nordwheel: 'проверка...',\n  Line 607:       checkAPIStatus('nordwheel', async () => {\n  Line 3854:       if (enabledCompanies.nordwheel) {\n\n/home/user/project/components/diagnostic/ApiMasterTab.tsx:\n  Line 103:     key: 'nordwheel',\n  Line 286:         case 'nordwheel':\n  Line 288:            const nordwheelApiKey = api.credentials.apiKey;\n  Line 289:            if (nordwheelApiKey && nordwheelApiKey.length > 0) {\n\n/home/user/project/app/diagnostic/page.tsx:\n  Line 105:     testAPI('NordWheel', '/api/test', { service: 'nordwheel' });\n  Line 142:       { service: 'Nord Wheel', endpoint: '/api/test', data: { service: 'nordwheel' } }\n\n/home/user/project/components/diagnostic/ApiTestingSection.tsx:\n  Line 129:       {renderApiCard('nordwheel', 'Nord Wheel', 'text-cyan-400', testStates.isTestingNordWheel, onTestNordWheel, 'nordwheel')}\n\n/home/user/project/app/api/external/route.ts:\n  Line 10:   'nordwheel'\n  Line 269:     nordwheel: '/api/test'\n  Line 315:     case 'nordwheel':\n  Line 318:         service: 'nordwheel'\n\n/home/user/project/performance-test.js:\n  Line 97:       { name: 'Test API', endpoint: '/api/test', data: { service: 'nordwheel' } }\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 613:         updateResult('nordwheel', {\n  Line 622:         updateResult('nordwheel', {\n  Line 633:       updateResult('nordwheel', {\n  Line 828:         case 'nordwheel':\n  Line 866:       if (tkName === 'nordwheel') {\n  Line 907:         case 'nordwheel':\n  Line 953:       const transportCompanies = ['pek', 'railcontinent', 'vozovoz', 'nordwheel', 'dellin'];\n  Line 1735:               {diagnosticResults.nordwheel ? (\n  Line 1736:                 <Alert className={getStatusColor(diagnosticResults.nordwheel.status)}>\n  Line 1738:                     {getStatusIcon(diagnosticResults.nordwheel.status)}\n  Line 1741:                         <div className=\"font-medium mb-2\">{diagnosticResults.nordwheel.message}</div>\n  Line 1742:                         {diagnosticResults.nordwheel.timing && (\n  Line 1744:                             Время ответа: {diagnosticResults.nordwheel.timing}мс\n  Line 1747:                         {diagnosticResults.nordwheel.details && (\n  Line 1751:                               {JSON.stringify(diagnosticResults.nordwheel.details, null, 2)}\n\n/home/user/project/app/diagnostic/optimized-page.tsx:\n  Line 90:     testAPI('NordWheel', '/api/test', { service: 'nordwheel' });\n  Line 127:       { service: 'Nord Wheel', endpoint: '/api/test', data: { service: 'nordwheel' } }",
+    "title": "nordwheel",
+    "metadata": {
+      "matches": 34,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763467850617,
+      "end": 1763467850629
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96e0b3170015fnIeAlj1f859E",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96e0ac340016EtMlbZ5u9vpVj",
+  "type": "tool",
+  "callID": "call_45576333",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "test-nordwheel-api.js",
+      "newString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'terminal',\n        terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224' // Москва terminal GUID\n      }\n    },\n    destination: {\n      location: {\n        type: 'terminal',\n        terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553' // СПб terminal GUID\n      }\n    },",
+      "oldString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'terminal',\n        terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224' // Москва terminal GUID\n      }\n    },\n    destination: {\n      location: {\n        type: 'terminal',\n        terminal_id: 'f46c77e9-662f-4e02-be6a-7078962152aa' // СПб terminal GUID - нужно получить для СПб\n      }\n    },"
+    },
+    "output": "",
+    "title": "test-nordwheel-api.js",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-nordwheel-api.js\n===================================================================\n--- /home/user/project/test-nordwheel-api.js\n+++ /home/user/project/test-nordwheel-api.js\n@@ -41,9 +41,9 @@\n },\n destination: {\n   location: {\n     type: 'terminal',\n-    terminal_id: 'f46c77e9-662f-4e02-be6a-7078962152aa' // СПб terminal GUID - нужно получить для СПб\n+    terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553' // СПб terminal GUID\n   }\n },\n destination: {\n   location: {\n"
+    },
+    "time": {
+      "start": 1763467899672,
+      "end": 1763467899675
+    }
+  }
+}

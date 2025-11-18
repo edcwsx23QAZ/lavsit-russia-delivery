@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96df21d40012t2jD99ssDypwV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96df1797001Wwje6CAqgk7YcM",
+  "type": "tool",
+  "callID": "call_70056659",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "test-nordwheel-api.js",
+      "newString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'address',\n        city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS\n      }\n    },\n    destination: {\n      location: {\n        type: 'address',\n        city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS\n      }\n    },",
+      "oldString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'address',\n        fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS\n      }\n    },\n    destination: {\n      location: {\n        type: 'address',\n        fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS\n      }\n    },"
+    },
+    "output": "",
+    "title": "test-nordwheel-api.js",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-nordwheel-api.js\n===================================================================\n--- /home/user/project/test-nordwheel-api.js\n+++ /home/user/project/test-nordwheel-api.js\n@@ -5,15 +5,15 @@\n const requestData = {\n   dispatch: {\n     location: {\n       type: 'address',\n-      fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS\n+      city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS\n     }\n   },\n   destination: {\n     location: {\n       type: 'address',\n-      fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS\n+      city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS\n     }\n   },\n   cargo: {\n     total_weight: 10,\n"
+    },
+    "time": {
+      "start": 1763467796951,
+      "end": 1763467796954
+    }
+  }
+}

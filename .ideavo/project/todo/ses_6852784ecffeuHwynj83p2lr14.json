@@ -1,50 +1,20 @@
 [
   {
-    "content": "Fix syntax errors in app/page.tsx (missing closing braces and async keywords)",
-    "id": "fix-syntax-errors",
+    "content": "Test NordWheel integration in the main application",
+    "id": "test_integration",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Add missing catch block and closing brace to calculateNordWheel function",
-    "id": "fix-calculatenordwheel",
+    "content": "Investigate why NordWheel API returns 'city_type_id on null' error despite valid FIAS codes",
+    "id": "investigate_city_issue",
     "priority": "high",
-    "status": "completed"
+    "status": "in_progress"
   },
   {
-    "content": "Add missing async keyword to calculateCdek function declaration",
-    "id": "fix-calculatecdek",
+    "content": "Find correct FIAS codes or city identifiers that NordWheel API accepts",
+    "id": "find_correct_fias",
     "priority": "high",
-    "status": "completed"
-  },
-  {
-    "content": "Run npm run build to verify all compilation errors are resolved",
-    "id": "verify-build",
-    "priority": "high",
-    "status": "completed"
-  },
-  {
-    "content": "Start development server with npm run dev",
-    "id": "start-dev-server",
-    "priority": "high",
-    "status": "completed"
-  },
-  {
-    "content": "Test NordWheel API integration in the application interface",
-    "id": "test-nordwheel-api",
-    "priority": "medium",
-    "status": "pending"
-  },
-  {
-    "content": "Test all transport company calculations (Dellin, PEK, CDEK, KIT, etc.)",
-    "id": "test-all-calculations",
-    "priority": "medium",
-    "status": "pending"
-  },
-  {
-    "content": "Verify form data persistence and localStorage functionality",
-    "id": "verify-form-persistence",
-    "priority": "low",
     "status": "pending"
   }
 ]

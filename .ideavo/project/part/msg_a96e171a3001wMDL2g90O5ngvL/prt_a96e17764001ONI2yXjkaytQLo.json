@@ -1,0 +1,21 @@
+{
+  "id": "prt_a96e17764001ONI2yXjkaytQLo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96e171a3001wMDL2g90O5ngvL",
+  "type": "tool",
+  "callID": "call_19887807",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "test-nordwheel-api.js",
+      "newString": "testNordWheelAPI();\n\n// Обертка для top-level await\n(async () => {\n  await testNordWheelAPI();\n})();",
+      "oldString": "testNordWheelAPI();"
+    },
+    "error": "Error: oldString found multiple times and requires more code context to uniquely identify the intended match",
+    "time": {
+      "start": 1763467949925,
+      "end": 1763467949931
+    }
+  }
+}

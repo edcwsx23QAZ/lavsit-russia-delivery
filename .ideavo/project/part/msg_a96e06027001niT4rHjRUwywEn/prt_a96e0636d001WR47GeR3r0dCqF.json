@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96e0636d001WR47GeR3r0dCqF",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96e06027001niT4rHjRUwywEn",
+  "type": "tool",
+  "callID": "call_98637708",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-cities.js",
+      "description": "Getting full terminal data structure from NordWheel API"
+    },
+    "output": "Получение списка терминалов NordWheel для Москвы...\nСтатус ответа: 200\nПолный ответ: {\n  \"data\": [\n    {\n      \"guid\": \"0c7a2795-1220-486d-a7ce-8bcf130a1224\",\n      \"address\": \"МО, Томилино, мкр-н Птицефабрика, 2с1, склад К-10\",\n      \"working_hours\": \"пн-пт: 09:00 - 18:00 cб: 10:00 - 15:00\",\n      \"latitude\": \"55.648834\",\n      \"longitude\": \"37.929018\"\n    },\n    {\n      \"guid\": \"f46c77e9-662f-4e02-be6a-7078962152aa\",\n      \"address\": \"МО, д. Аббакумово, Центральная улица, 32/2\",\n      \"working_hours\": \"пн-пт: 09:00 - 18:00 cб: 10:00 - 15:00\",\n      \"latitude\": \"56.001323\",\n      \"longitude\": \"37.531007\"\n    }\n  ]\n}\nКоличество терминалов: 2\nТерминалы:\nТерминал 1: {\n  guid: '0c7a2795-1220-486d-a7ce-8bcf130a1224',\n  address: 'МО, Томилино, мкр-н Птицефабрика, 2с1, склад К-10',\n  working_hours: 'пн-пт: 09:00 - 18:00 cб: 10:00 - 15:00',\n  latitude: '55.648834',\n  longitude: '37.929018'\n}\nТерминал 2: {\n  guid: 'f46c77e9-662f-4e02-be6a-7078962152aa',\n  address: 'МО, д. Аббакумово, Центральная улица, 32/2',\n  working_hours: 'пн-пт: 09:00 - 18:00 cб: 10:00 - 15:00',\n  latitude: '56.001323',\n  longitude: '37.531007'\n}\n",
+    "title": "node test-nordwheel-cities.js",
+    "metadata": {
+      "output": "Получение списка терминалов NordWheel для Москвы...\nСтатус ответа: 200\nПолный ответ: {\n  \"data\": [\n    {\n      \"guid\": \"0c7a2795-1220-486d-a7ce-8bcf130a1224\",\n      \"address\": \"МО, Томилино, мкр-н Птицефабрика, 2с1, склад К-10\",\n      \"working_hours\": \"пн-пт: 09:00 - 18:00 cб: 10:00 - 15:00\",\n      \"latitude\": \"55.648834\",\n      \"longitude\": \"37.929018\"\n    },\n    {\n      \"guid\": \"f46c77e9-662f-4e02-be6a-7078962152aa\",\n      \"address\": \"МО, д. Аббакумово, Центральная улица, 32/2\",\n      \"working_hours\": \"пн-пт: 09:00 - 18:00 cб: 10:00 - 15:00\",\n      \"latitude\": \"56.001323\",\n      \"longitude\": \"37.531007\"\n    }\n  ]\n}\nКоличество терминалов: 2\nТерминалы:\nТерминал 1: {\n  guid: '0c7a2795-1220-486d-a7ce-8bcf130a1224',\n  address: 'МО, Томилино, мкр-н Птицефабрика, 2с1, склад К-10',\n  working_hours: 'пн-пт: 09:00 - 18:00 cб: 10:00 - 15:00',\n  latitude: '55.648834',\n  longitude: '37.929018'\n}\nТерминал 2: {\n  guid: 'f46c77e9-662f-4e02-be6a-7078962152aa',\n  address: 'МО, д. Аббакумово, Центральная улица, 32/2',\n  working_hours: 'пн-пт: 09:00 - 18:00 cб: 10:00 - 15:00',\n  latitude: '56.001323',\n  longitude: '37.531007'\n}\n",
+      "exit": 0,
+      "description": "Getting full terminal data structure from NordWheel API"
+    },
+    "time": {
+      "start": 1763467879280,
+      "end": 1763467880213
+    }
+  }
+}

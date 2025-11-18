@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96def7dc001JSOd66MLz4LaPL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96deef26001s6R2z0mrZFP9QH",
+  "type": "tool",
+  "callID": "call_89516699",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "test-nordwheel-api.js",
+      "newString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'address',\n        fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS\n      }\n    },\n    destination: {\n      location: {\n        type: 'address',\n        fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS\n      }\n    },",
+      "oldString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'terminal',\n        terminal_id: 91 // Москва terminal ID from old API\n      }\n    },\n    destination: {\n      location: {\n        type: 'terminal',\n        terminal_id: 92 // СПб terminal ID from old API\n      }\n    },"
+    },
+    "output": "",
+    "title": "test-nordwheel-api.js",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-nordwheel-api.js\n===================================================================\n--- /home/user/project/test-nordwheel-api.js\n+++ /home/user/project/test-nordwheel-api.js\n@@ -4,16 +4,16 @@\n \n const requestData = {\n   dispatch: {\n     location: {\n-      type: 'terminal',\n-      terminal_id: 91 // Москва terminal ID from old API\n+      type: 'address',\n+      fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS\n     }\n   },\n   destination: {\n     location: {\n-      type: 'terminal',\n-      terminal_id: 92 // СПб terminal ID from old API\n+      type: 'address',\n+      fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS\n     }\n   },\n   cargo: {\n     total_weight: 10,\n"
+    },
+    "time": {
+      "start": 1763467786205,
+      "end": 1763467786211
+    }
+  }
+}

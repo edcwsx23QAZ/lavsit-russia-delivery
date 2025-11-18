@@ -1,0 +1,24 @@
+{
+  "id": "prt_a96e131be001HN54xKMBtFGNQX",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96e121c4001X3xqDpgSC4AqVT",
+  "type": "tool",
+  "callID": "call_38821970",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "test-nordwheel-api.js",
+      "offset": 75
+    },
+    "output": "<file>\n00076|     console.log('Статус ответа:', response.status);\n00077| \n00078|     if (!response.ok) {\n00079|       console.error('Ошибка API:', response.status, response.statusText);\n00080|       const errorText = await response.text();\n00081|       console.error('Тело ошибки:', errorText);\n00082|       return;\n00083|     }\n00084| \n00085|     const data = await response.json();\n00086|     console.log('Терминалы:', JSON.stringify(data, null, 2));\n00087| \n00088|   } catch (error) {\n00089|     console.error('Ошибка соединения:', error);\n00090|   }\n00091| };\n00092| \n00093| const testNordWheelAPI = async () => {\n00094|   const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';\n00095| \n00096|   const requestData = {\n00097|     dispatch: {\n00098|       location: {\n00099|         type: 'terminal',\n00100|         terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224' // Москва terminal GUID\n00101|       }\n00102|     },\n00103|     destination: {\n00104|       location: {\n00105|         type: 'terminal',\n00106|         terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553' // СПб terminal GUID\n00107|       }\n00108|     },\n00109|     destination: {\n00110|       location: {\n00111|         type: 'terminal',\n00112|         terminal_id: 92,\n00113|         city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS\n00114|       }\n00115|     },\n00116|     cargo: {\n00117|       total_weight: 10,\n00118|       total_volume: 1.0,\n00119|       total_quantity: 1\n00120|     },\n00121|     insurance: 1000,\n00122|     insurance_refuse: false,\n00123|     services: {\n00124|       is_package: false,\n00125|       is_documents_return: false,\n00126|       is_fragile: false\n00127|     },\n00128|     promocode: null\n00129|   };\n00130| \n00131|   try {\n00132|     console.log('Отправка запроса к NordWheel API...');\n00133|     console.log('URL:', apiUrl);\n00134|     console.log('Request data:', JSON.stringify(requestData, null, 2));\n00135| \n00136|     const response = await fetch(apiUrl, {\n00137|       method: 'POST',\n00138|       headers: {\n00139|         'Content-Type': 'application/json',\n00140|         'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'}`\n00141|       },\n00142|       body: JSON.stringify(requestData)\n00143|     });\n00144| \n00145|     console.log('Статус ответа:', response.status);\n00146| \n00147|     if (!response.ok) {\n00148|       console.error('Ошибка API:', response.status, response.statusText);\n00149|       const errorText = await response.text();\n00150|       console.error('Тело ошибки:', errorText);\n00151|       return;\n00152|     }\n00153| \n00154|     const data = await response.json();\n00155|     console.log('Ответ от API:', JSON.stringify(data, null, 2));\n00156| \n00157|     if (data.success) {\n00158|       console.log('Цена:', data.price);\n00159|       console.log('Дни:', data.days);\n00160|     } else {\n00161|       console.log('API вернул success: false');\n00162|       if (data.message) {\n00163|         console.log('Сообщение:', data.message);\n00164|       }\n00165|     }\n00166| \n00167|   } catch (error) {\n00168|     console.error('Ошибка соединения:', error);\n00169|   }\n00170| };\n00171| \n00172| testNordWheelAPI();\n</file>",
+    "title": "test-nordwheel-api.js",
+    "metadata": {
+      "preview": "    console.log('Статус ответа:', response.status);\n\n    if (!response.ok) {\n      console.error('Ошибка API:', response.status, response.statusText);\n      const errorText = await response.text();\n      console.error('Тело ошибки:', errorText);\n      return;\n    }\n\n    const data = await response.json();\n    console.log('Терминалы:', JSON.stringify(data, null, 2));\n\n  } catch (error) {\n    console.error('Ошибка соединения:', error);\n  }\n};\n\nconst testNordWheelAPI = async () => {\n  const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';\n"
+    },
+    "time": {
+      "start": 1763467932096,
+      "end": 1763467932098
+    }
+  }
+}
