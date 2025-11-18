@@ -1,0 +1,7 @@
+{
+  "id": "prt_a96ac8dbd002Cd9Cx9o8EZHwJq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96ac8dbc001WUgFib5FcR245L",
+  "type": "text",
+  "text": "Вышла следующая ошибка, исправь:\n\nFailed to compile\n\nNext.js (14.2.31) is outdated (learn more)\n./app/page.tsx\nError: \n  x Unexpected token `params`. Expected ... , *,  (, [, :, , ?, =, an identifier, public, protected, private, readonly, <.\n      ,-[/home/user/project/app/page.tsx:3458:1]\n 3458 |         documentsReturn: '0',\n 3459 |         fragile: '1',\n 3460 |       // 🔧 ДОБАВЛЕНО: Габаритные параметры\n 3461 |       const params = new URLSearchParams({\n      :             ^^^^^^\n 3462 |         from: '91', // Москва (нужно будет получать ID города)\n 3463 |         to: '92', // СПб (нужно будет получать ID города)\n 3464 |         pickup: form.fromAddressDelivery ? '1' : '0',\n      `----\n\nCaused by:\n    Syntax Error\nThis error occurred during the build process and can only be dismissed by fixing the error."
+}

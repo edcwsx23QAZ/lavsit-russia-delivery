@@ -3457,21 +3457,6 @@ export default function Home() {
         sum: form.declaredValue.toString(),
         documentsReturn: '0',
         fragile: '1',
-      // 🔧 ДОБАВЛЕНО: Габаритные параметры
-      const params = new URLSearchParams({
-        from: '91', // Москва (нужно будет получать ID города)
-        to: '92', // СПб (нужно будет получать ID города)
-        pickup: form.fromAddressDelivery ? '1' : '0',
-        deliver: form.toAddressDelivery ? '1' : '0',
-        weight: totalWeight.toString(),
-        volume: totalVolume.toString(),
-        oversized: isOversized ? '1' : '0', // 🔧 ИСПРАВЛЕНО: Правильное определение негабарита
-        package: form.needPackaging ? '1' : '0',
-        packageCount: form.cargos.length.toString(),
-        insurance: form.needInsurance ? '1' : '0',
-        sum: form.declaredValue.toString(),
-        documentsReturn: '0',
-        fragile: '1',
         // 🔧 ДОБАВЛЕНО: Габаритные параметры
         length: (maxLength / 100).toString(),      // в метрах
         width: (maxWidth / 100).toString(),        // в метрах
