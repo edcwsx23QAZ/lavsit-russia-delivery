@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96cb1efb0016hf3SzZtQejRCl",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96cb1b73001mdiWZIdhi43eV9",
+  "type": "tool",
+  "callID": "call_13779144",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-api.js",
+      "description": "Running the NordWheel calculate API test to check for detailed error information"
+    },
+    "output": "Отправка запроса к NordWheel API...\nСтатус ответа: 400\nОшибка API: 400 Bad Request\n",
+    "title": "node test-nordwheel-api.js",
+    "metadata": {
+      "output": "Отправка запроса к NordWheel API...\nСтатус ответа: 400\nОшибка API: 400 Bad Request\n",
+      "exit": 0,
+      "description": "Running the NordWheel calculate API test to check for detailed error information"
+    },
+    "time": {
+      "start": 1763466485502,
+      "end": 1763466486568
+    }
+  }
+}

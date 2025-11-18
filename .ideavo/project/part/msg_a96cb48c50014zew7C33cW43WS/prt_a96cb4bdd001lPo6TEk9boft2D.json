@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96cb4bdd001lPo6TEk9boft2D",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96cb48c50014zew7C33cW43WS",
+  "type": "tool",
+  "callID": "call_93173307",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-api.js",
+      "description": "Running the modified NordWheel calculate API test to see error response body"
+    },
+    "output": "Отправка запроса к NordWheel API...\nСтатус ответа: 400\nОшибка API: 400 Bad Request\nТело ошибки: {\"meta\":{\"id\":\"330e6c3a-dc50-4887-97ee-0441e2250ccb\",\"code\":200,\"success\":false,\"response_time\":\"2025-11-18 12:00:35.825\",\"errors\":[\"Unauthenticated.\"]},\"data\":[]}\n",
+    "title": "node test-nordwheel-api.js",
+    "metadata": {
+      "output": "Отправка запроса к NordWheel API...\nСтатус ответа: 400\nОшибка API: 400 Bad Request\nТело ошибки: {\"meta\":{\"id\":\"330e6c3a-dc50-4887-97ee-0441e2250ccb\",\"code\":200,\"success\":false,\"response_time\":\"2025-11-18 12:00:35.825\",\"errors\":[\"Unauthenticated.\"]},\"data\":[]}\n",
+      "exit": 0,
+      "description": "Running the modified NordWheel calculate API test to see error response body"
+    },
+    "time": {
+      "start": 1763466496992,
+      "end": 1763466498003
+    }
+  }
+}

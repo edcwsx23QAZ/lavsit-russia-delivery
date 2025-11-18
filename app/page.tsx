@@ -3405,7 +3405,7 @@ export default function Home() {
 
   // Расчет для Nord Wheel
   const calculateNordWheel = async (): Promise<CalculationResult> => {
-    const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';
+    const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';
     
     try {
       // 🔧 Валидация множественных мест
@@ -3421,9 +3421,6 @@ export default function Home() {
       const maxWidth = Math.max(...form.cargos.map(c => c.width));
       const maxHeight = Math.max(...form.cargos.map(c => c.height));
       
-      // 🔧 ДОБАВЛЕНО: Проверка на негабарит (>2м по любому измерению)
-      const isOversized = maxLength > 200 || maxWidth > 200 || maxHeight > 200 || totalWeight > 1000;
-      
       // 🔧 Детальное логирование множественных мест
       console.log('🌐 Nord Wheel: Анализ множественных грузовых мест:');
       console.log(`   - Количество мест: ${form.cargos.length}`);
@@ -3436,46 +3433,58 @@ export default function Home() {
         console.log(`     - Вес: ${cargo.weight} кг`);
         console.log(`     - Объем: ${((cargo.length * cargo.width * cargo.height) / 1000000).toFixed(3)} м³`);
       });
-      
+
       if (form.cargos.length > 1) {
         console.log(`   📐 Максимальные габариты: ${maxLength}×${maxWidth}×${maxHeight} см`);
-        console.log(`   🚛 Негабарит: ${isOversized ? 'ДА' : 'НЕТ'}`);
       }
 
-      // 🔧 ИСПРАВЛЕНО: Добавлены габаритные параметры и улучшенная логика негабарита
-      const params = new URLSearchParams({
-        from: '91', // Москва (нужно будет получать ID города)
-        to: '92', // СПб (нужно будет получать ID города)
-        pickup: form.fromAddressDelivery ? '1' : '0',
-        deliver: form.toAddressDelivery ? '1' : '0',
-        weight: totalWeight.toString(),
-        volume: totalVolume.toString(),
-        oversized: isOversized ? '1' : '0', // 🔧 ИСПРАВЛЕНО: Правильное определение негабарита
-        package: form.needPackaging ? '1' : '0',
-        packageCount: form.cargos.length.toString(),
-        insurance: form.needInsurance ? '1' : '0',
-        sum: form.declaredValue.toString(),
-        documentsReturn: '0',
-        fragile: '1',
-        // 🔧 ДОБАВЛЕНО: Габаритные параметры
-        length: (maxLength / 100).toString(),      // в метрах
-        width: (maxWidth / 100).toString(),        // в метрах
-        height: (maxHeight / 100).toString(),      // в метрах
-        // 🔧 ДОБАВЛЕНО: Флаг множественных мест
-        multiplePackages: form.cargos.length > 1 ? '1' : '0',
-        // 🔧 ДОБАВЛЕНО: API ключ NordWheel
-        api_key: '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'
-      });
+      // ФИАС коды городов (тестовые значения для Москвы и СПб)
+      const cityFiasMap: { [key: string]: string } = {
+        'Москва': '0c5b2444-70a0-4932-980c-b4dc0d3f02b5',
+        'Санкт-Петербург': 'c2deb16a-0330-4f05-821f-1d09c93331e6',
+        'СПб': 'c2deb16a-0330-4f05-821f-1d09c93331e6'
+      };
 
-      // 🔧 ДОБАВЛЕНО: Отправка запроса к NordWheel API
-      console.log('🚛 Nord Wheel запрос:', params);
+      const fromCityFias = cityFiasMap[form.fromCity] || '0c5b2444-70a0-4932-980c-b4dc0d3f02b5'; // Москва по умолчанию
+      const toCityFias = cityFiasMap[form.toCity] || 'c2deb16a-0330-4f05-821f-1d09c93331e6'; // СПб по умолчанию
+
+      // Формируем запрос согласно новой документации API
+      const requestData = {
+        dispatch: {
+          location: {
+            type: form.fromAddressDelivery ? 'address' : 'terminal',
+            city_fias: fromCityFias
+          }
+        },
+        destination: {
+          location: {
+            type: form.toAddressDelivery ? 'address' : 'terminal',
+            city_fias: toCityFias
+          }
+        },
+        cargo: {
+          total_weight: totalWeight,
+          total_volume: totalVolume,
+          total_quantity: form.cargos.length
+        },
+        insurance: form.needInsurance ? form.declaredValue || 1000 : 0,
+        insurance_refuse: !form.needInsurance,
+        services: {
+          is_package: form.needPackaging,
+          is_documents_return: false, // Пока не поддерживается в форме
+          is_fragile: false // Пока не поддерживается в форме
+        },
+        promocode: null
+      };
+
+      console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));
 
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
+          'Content-Type': 'application/json',
         },
-        body: params.toString()
+        body: JSON.stringify(requestData)
       });
 
       if (!response.ok) {
@@ -3485,16 +3494,36 @@ export default function Home() {
           price: 0,
           days: 0,
           error: `Ошибка API: ${response.status} ${response.statusText}`,
-          apiUrl
+          apiUrl,
+          requestData
         };
       }
 
       const data = await response.json();
-      console.log('🚛 Nord Wheel ответ:', data);
+      console.log('🚛 Nord Wheel новый API ответ:', data);
 
-      if (data.success && data.data) {
-        const price = data.data.total_cost || 0;
-        const days = data.data.delivery_time || 0;
+      if (data.auto && data.auto.total_price) {
+        const autoData = data.auto;
+        const price = autoData.total_price;
+        
+        // Парсим дату доставки
+        let days = 0;
+        if (autoData.delivery_date) {
+          const deliveryDate = new Date(autoData.delivery_date);
+          const today = new Date();
+          const diffTime = deliveryDate.getTime() - today.getTime();
+          days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        }
+
+        // Формируем детали услуг
+        const details: any = {};
+        if (autoData.services && Array.isArray(autoData.services)) {
+          autoData.services.forEach((service: any) => {
+            if (service.name && service.amount) {
+              details[service.name] = service.amount;
+            }
+          });
+        }
 
         return {
           company: 'Nord Wheel',
@@ -3502,13 +3531,14 @@ export default function Home() {
           days: days,
           details: {
             totalCost: price,
-            deliveryCost: data.data.delivery_cost,
-            terminalCost: data.data.terminal_cost,
-            pickupCost: data.data.pickup_cost,
-            deliveryToDoorCost: data.data.delivery_to_door_cost,
-            additionalServices: data.data.additional_services
+            deliveryCost: details['Стоимость межтерминальной перевозки'] || 0,
+            pickupCost: details['Стоимость забора'] || 0,
+            deliveryToDoorCost: details['Стоимость доставки до двери'] || 0,
+            insuranceCost: details['Страхование груза'] || 0,
+            additionalServices: details['Стоимость доп.услуг'] || 0,
+            services: autoData.services || []
           },
-          requestData: Object.fromEntries(params),
+          requestData,
           responseData: data,
           apiUrl
         };
@@ -3517,8 +3547,8 @@ export default function Home() {
           company: 'Nord Wheel',
           price: 0,
           days: 0,
-          error: data.message || 'Ошибка расчета Nord Wheel',
-          requestData: Object.fromEntries(params),
+          error: data.message || 'Ошибка расчета Nord Wheel - нет данных для авто доставки',
+          requestData,
           responseData: data,
           apiUrl
         };

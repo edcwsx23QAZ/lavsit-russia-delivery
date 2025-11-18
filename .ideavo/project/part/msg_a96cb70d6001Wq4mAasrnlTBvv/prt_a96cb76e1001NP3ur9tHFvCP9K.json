@@ -1,0 +1,35 @@
+{
+  "id": "prt_a96cb76e1001NP3ur9tHFvCP9K",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96cb70d6001Wq4mAasrnlTBvv",
+  "type": "tool",
+  "callID": "call_25057815",
+  "tool": "asksecrets",
+  "state": {
+    "status": "completed",
+    "input": {
+      "secrets": [
+        {
+          "description": "Required for NordWheel API authentication to calculate shipping costs",
+          "display_name": "NordWheel API Key",
+          "name": "NORDWHEEL_API_KEY"
+        }
+      ]
+    },
+    "output": "Requesting the following secrets:\n\n- NordWheel API Key (NORDWHEEL_API_KEY): Required for NordWheel API authentication to calculate shipping costs\n\nWaiting for user input...",
+    "title": "Requesting API Keys & Secrets",
+    "metadata": {
+      "secrets": [
+        {
+          "description": "Required for NordWheel API authentication to calculate shipping costs",
+          "display_name": "NordWheel API Key",
+          "name": "NORDWHEEL_API_KEY"
+        }
+      ]
+    },
+    "time": {
+      "start": 1763466508004,
+      "end": 1763466508004
+    }
+  }
+}

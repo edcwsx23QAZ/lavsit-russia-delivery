@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96c931c9001RZKOTTVssSytkE",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96c91809001WZtCg2anap948i",
+  "type": "tool",
+  "callID": "call_34796004",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run dev",
+      "description": "Starting the development server to test the updated NordWheel API"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ⚠ Invalid next.config.js options detected: \n ⚠     Unrecognized key(s) in object: 'runtime', 'serverActionsBodySizeLimit' at \"experimental\"\n ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config\n ✓ Ready in 1667ms\n\n\n(Command timed out after 60000 ms)",
+    "title": "npm run dev",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3000\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ⚠ Invalid next.config.js options detected: \n ⚠     Unrecognized key(s) in object: 'runtime', 'serverActionsBodySizeLimit' at \"experimental\"\n ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config\n ✓ Ready in 1667ms\n\n\n(Command timed out after 60000 ms)",
+      "exit": null,
+      "description": "Starting the development server to test the updated NordWheel API"
+    },
+    "time": {
+      "start": 1763466359246,
+      "end": 1763466416230
+    }
+  }
+}

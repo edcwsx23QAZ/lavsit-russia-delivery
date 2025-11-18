@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96ca66e5001RkNS1a8kj5AhK4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96ca5bc0001SxndJD2g34Pi3q",
+  "type": "tool",
+  "callID": "call_31731889",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "content": "// Тестовый скрипт для проверки NordWheel API - получение списка городов\nconst testNordWheelCities = async () => {\n  const apiUrl = 'https://api.nordw.orog.ru/api/v1/city-list';\n\n  try {\n    console.log('Получение списка городов NordWheel...');\n    const response = await fetch(apiUrl);\n\n    console.log('Статус ответа:', response.status);\n\n    if (!response.ok) {\n      console.error('Ошибка API:', response.status, response.statusText);\n      return;\n    }\n\n    const data = await response.json();\n    console.log('Количество городов:', data.data?.length || 0);\n    console.log('Первые 5 городов:');\n    if (data.data && Array.isArray(data.data)) {\n      data.data.slice(0, 5).forEach(city => {\n        console.log(`- ${city.name} (${city.guid})`);\n      });\n    }\n\n  } catch (error) {\n    console.error('Ошибка соединения:', error);\n  }\n};\n\ntestNordWheelCities();",
+      "filePath": "test-nordwheel-cities.js"
+    },
+    "output": "",
+    "title": "test-nordwheel-cities.js",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-nordwheel-cities.js",
+      "exists": false
+    },
+    "time": {
+      "start": 1763466438375,
+      "end": 1763466438376
+    }
+  }
+}
