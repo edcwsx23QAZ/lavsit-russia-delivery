@@ -3216,92 +3216,127 @@ export default function Home() {
       console.log('   - Откуда:', form.fromCity);
       console.log('   - Куда:', form.toCity);
       
-       // Параметры для API Vozovoz согласно официальной документации
-       const requestData = {
-         object: "price",
-         action: "get",
-         params: {
-           cargo: {
-             dimension: {
-               max: {                              // ✅ Добавляем обязательную структуру max
-                 length: maxDimensions.length,     // Максимальная длина одного места в метрах
-                 width: maxDimensions.width,       // Максимальная ширина одного места в метрах
-                 height: maxDimensions.height,     // Максимальная высота одного места в метрах
-                 weight: maxDimensions.weight      // Максимальный вес одного места в кг
-               },
-               quantity: form.cargos.length,       // Количество мест
-               volume: totalVolume,                // Общий объем в м³
-               weight: totalWeight                 // Общий вес в кг
-             },
-             ...(form.needInsurance && form.declaredValue > 0 ? {
-               insurance: form.declaredValue,      // ✅ Страхование корректно
-               insuranceNdv: false                 // Отключаем страхование без объявленной стоимости
-             } : {
-               insuranceNdv: true                  // Включаем страхование без объявленной стоимости
-             }),
-              ...(form.needPackaging ? {
-                wrapping: {
-                  "hardPackageVolume": totalVolume  // ✅ ИСПРАВЛЕНО: Правильный код "Жёсткая упаковка" из документации
-                }
-              } : {})
-           },
-           gateway: {
-             dispatch: {
-               point: {
-                 location: form.fromCity || 'Москва',
-                 // ✅ Поля address и terminal взаимоисключающие согласно документации
-                 ...(form.fromAddressDelivery ? {
-                   address: form.fromAddress || "адрес отправления"
-                 } : {
-                   terminal: "default"
-                 })
+      // Функция для создания запроса с указанным типом доставки
+      const createRequestData = (useAddressType: boolean) => ({
+        object: "price",
+        action: "get",
+        params: {
+          cargo: {
+            dimension: {
+              max: {                              // ✅ Добавляем обязательную структуру max
+                length: maxDimensions.length,     // Максимальная длина одного места в метрах
+                width: maxDimensions.width,       // Максимальная ширина одного места в метрах
+                height: maxDimensions.height,     // Максимальная высота одного места в метрах
+                weight: maxDimensions.weight      // Максимальный вес одного места в кг
+              },
+              quantity: form.cargos.length,       // Количество мест
+              volume: totalVolume,                // Общий объем в м³
+              weight: totalWeight                 // Общий вес в кг
+            },
+            ...(form.needInsurance && form.declaredValue > 0 ? {
+              insurance: form.declaredValue,      // ✅ Страхование корректно
+              insuranceNdv: false                 // Отключаем страхование без объявленной стоимости
+            } : {
+              insuranceNdv: true                  // Включаем страхование без объявленной стоимости
+            }),
+             ...(form.needPackaging ? {
+               wrapping: {
+                 "hardPackageVolume": totalVolume  // ✅ ИСПРАВЛЕНО: Правильный код "Жёсткая упаковка" из документации
                }
-             },
-             destination: {
-               point: {
-                 location: form.toCity || 'Санкт-Петербург',
-                 // ✅ Поля address и terminal взаимоисключающие согласно документации
-                 ...(form.toAddressDelivery ? {
-                   address: form.toAddress || "адрес получения"
-                 } : {
-                   terminal: "default"
-                 })
-               }
-             }
-           }
-         }
-       };
+             } : {})
+          },
+          gateway: {
+            dispatch: {
+              point: {
+                location: form.fromCity || 'Москва',
+                // ✅ Поля address и terminal взаимоисключающие согласно документации
+                ...(useAddressType || form.fromAddressDelivery ? {
+                  address: form.fromAddress || "адрес отправления"
+                } : {
+                  terminal: "default"
+                })
+              }
+            },
+            destination: {
+              point: {
+                location: form.toCity || 'Санкт-Петербург',
+                // ✅ Поля address и terminal взаимоисключающие согласно документации
+                ...(useAddressType || form.toAddressDelivery ? {
+                  address: form.toAddress || "адрес получения"
+                } : {
+                  terminal: "default"
+                })
+              }
+            }
+          }
+        }
+      });
 
+      // Сначала пробуем с terminal типом (если не выбран address delivery)
+      let useAddressType = false;
+      let requestData = createRequestData(useAddressType);
+      
       console.log('🚚 Возовоз запрос:', JSON.stringify(requestData, null, 2));
 
-       const result = await enhancedApiRequest(
-         apiUrl,
-         {
-           method: 'POST',
-           headers: {
-             'Content-Type': 'application/json',
-           },
-           body: JSON.stringify(requestData)
-         },
-         { operation: 'calculate', company: 'Возовоз' }
-       );
+      let result = await enhancedApiRequest(
+        apiUrl,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(requestData)
+        },
+        { operation: 'calculate', company: 'Возовоз' }
+      );
 
-       if (result && typeof result === 'object' && 'success' in result && !result.success) {
-         console.error('❌ Возовоз API ошибка:', result.error);
-         return {
-           company: 'Возовоз',
-           price: 0,
-           days: 0,
-           error: result.error.userMessage || result.error.message,
-           requestData,
-           responseData: null,
-           apiUrl
-         };
-       }
+      // Проверяем, есть ли ошибка о том, что город не найден для terminal
+      if (result && typeof result === 'object' && 'success' in result && !result.success) {
+        const errorMessage = result.error?.userMessage || result.error?.message || '';
+        console.log('🚚 Возовоз: первая попытка с terminal вернула ошибку:', errorMessage);
+        
+        // Если ошибка связана с городом/терминалом, пробуем с address типом
+        if (errorMessage.toLowerCase().includes('город') || 
+            errorMessage.toLowerCase().includes('терминал') || 
+            errorMessage.toLowerCase().includes('city') ||
+            errorMessage.toLowerCase().includes('terminal')) {
+          
+          console.log('🚚 Возовоз: город не найден для terminal, пробуем с address типом...');
+          useAddressType = true;
+          requestData = createRequestData(useAddressType);
+          
+          console.log('🚚 Возовоз повторный запрос с address:', JSON.stringify(requestData, null, 2));
+          
+          result = await enhancedApiRequest(
+            apiUrl,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(requestData)
+            },
+            { operation: 'calculate', company: 'Возовоз' }
+          );
+        }
+      }
 
-       const response = result as Response;
-       const data = await response.json();
-       console.log('🚚 Возовоз ответ:', JSON.stringify(data, null, 2));
+      if (result && typeof result === 'object' && 'success' in result && !result.success) {
+        console.error('❌ Возовоз API ошибка:', result.error);
+        return {
+          company: 'Возовоз',
+          price: 0,
+          days: 0,
+          error: result.error.userMessage || result.error.message,
+          requestData,
+          responseData: null,
+          apiUrl
+        };
+      }
+
+      const response = result as Response;
+      const data = await response.json();
+      console.log('🚚 Возовоз ответ:', JSON.stringify(data, null, 2));
 
       if (response.ok && data.response) {
         const responseData = data.response;
