@@ -3405,7 +3405,7 @@ export default function Home() {
 
   // Расчет для Nord Wheel
   const calculateNordWheel = async (): Promise<CalculationResult> => {
-    const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';
+    const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';
     
     try {
       // 🔧 Валидация множественных мест
@@ -3438,53 +3438,29 @@ export default function Home() {
         console.log(`   📐 Максимальные габариты: ${maxLength}×${maxWidth}×${maxHeight} см`);
       }
 
-      // ФИАС коды городов (тестовые значения для Москвы и СПб)
-      const cityFiasMap: { [key: string]: string } = {
-        'Москва': '0c5b2444-70a0-4932-980c-b4dc0d3f02b5',
-        'Санкт-Петербург': 'c2deb16a-0330-4f05-821f-1d09c93331e6',
-        'СПб': 'c2deb16a-0330-4f05-821f-1d09c93331e6'
-      };
+      // Формируем параметры запроса согласно старому API
+      const params = new URLSearchParams({
+        from: '91', // Москва
+        to: '92', // Санкт-Петербург
+        pickup: form.fromAddressDelivery ? '1' : '0',
+        deliver: form.toAddressDelivery ? '1' : '0',
+        weight: totalWeight.toString(),
+        volume: totalVolume.toString(),
+        oversized: '0',
+        package: form.needPackaging ? '1' : '0',
+        packageCount: '1',
+        insurance: form.needInsurance ? '1' : '0',
+        sum: form.needInsurance && form.declaredValue ? form.declaredValue.toString() : '0',
+        documentsReturn: '0',
+        fragile: '0'
+      });
 
-      const fromCityFias = cityFiasMap[form.fromCity] || '0c5b2444-70a0-4932-980c-b4dc0d3f02b5'; // Москва по умолчанию
-      const toCityFias = cityFiasMap[form.toCity] || 'c2deb16a-0330-4f05-821f-1d09c93331e6'; // СПб по умолчанию
+      const fullUrl = `${apiUrl}?${params.toString()}`;
+      
+      console.log('🚛 Nord Wheel старый API запрос:', fullUrl);
 
-      // Формируем запрос согласно новой документации API
-      const requestData = {
-        dispatch: {
-          location: {
-            type: form.fromAddressDelivery ? 'address' : 'terminal',
-            city_fias: fromCityFias
-          }
-        },
-        destination: {
-          location: {
-            type: form.toAddressDelivery ? 'address' : 'terminal',
-            city_fias: toCityFias
-          }
-        },
-        cargo: {
-          total_weight: totalWeight,
-          total_volume: totalVolume,
-          total_quantity: form.cargos.length
-        },
-        insurance: form.needInsurance ? form.declaredValue || 1000 : 0,
-        insurance_refuse: !form.needInsurance,
-        services: {
-          is_package: form.needPackaging,
-          is_documents_return: false, // Пока не поддерживается в форме
-          is_fragile: false // Пока не поддерживается в форме
-        },
-        promocode: null
-      };
-
-      console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));
-
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(requestData)
+      const response = await fetch(fullUrl, {
+        method: 'GET'
       });
 
       if (!response.ok) {
@@ -3494,36 +3470,18 @@ export default function Home() {
           price: 0,
           days: 0,
           error: `Ошибка API: ${response.status} ${response.statusText}`,
-          apiUrl,
-          requestData
+          apiUrl: fullUrl,
+          requestData: params
         };
       }
 
       const data = await response.json();
-      console.log('🚛 Nord Wheel новый API ответ:', data);
+      console.log('🚛 Nord Wheel старый API ответ:', data);
 
-      if (data.auto && data.auto.total_price) {
-        const autoData = data.auto;
-        const price = autoData.total_price;
-        
-        // Парсим дату доставки
-        let days = 0;
-        if (autoData.delivery_date) {
-          const deliveryDate = new Date(autoData.delivery_date);
-          const today = new Date();
-          const diffTime = deliveryDate.getTime() - today.getTime();
-          days = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        }
-
-        // Формируем детали услуг
-        const details: any = {};
-        if (autoData.services && Array.isArray(autoData.services)) {
-          autoData.services.forEach((service: any) => {
-            if (service.name && service.amount) {
-              details[service.name] = service.amount;
-            }
-          });
-        }
+      // Парсинг ответа старого API
+      if (data.status === 'success' && data.data) {
+        const price = data.data.total || data.data.price || 0;
+        const days = data.data.days || data.data.delivery_time || 0;
 
         return {
           company: 'Nord Wheel',
@@ -3531,26 +3489,24 @@ export default function Home() {
           days: days,
           details: {
             totalCost: price,
-            deliveryCost: details['Стоимость межтерминальной перевозки'] || 0,
-            pickupCost: details['Стоимость забора'] || 0,
-            deliveryToDoorCost: details['Стоимость доставки до двери'] || 0,
-            insuranceCost: details['Страхование груза'] || 0,
-            additionalServices: details['Стоимость доп.услуг'] || 0,
-            services: autoData.services || []
+            deliveryCost: data.data.delivery_cost || 0,
+            pickupCost: data.data.pickup_cost || 0,
+            insuranceCost: data.data.insurance_cost || 0,
+            services: data.data.services || []
           },
-          requestData,
+          requestData: params,
           responseData: data,
-          apiUrl
+          apiUrl: fullUrl
         };
       } else {
         return {
           company: 'Nord Wheel',
           price: 0,
           days: 0,
-          error: data.message || 'Ошибка расчета Nord Wheel - нет данных для авто доставки',
-          requestData,
+          error: data.message || 'Ошибка расчета Nord Wheel - нет данных',
+          requestData: params,
           responseData: data,
-          apiUrl
+          apiUrl: fullUrl
         };
       }
     } catch (error: any) {

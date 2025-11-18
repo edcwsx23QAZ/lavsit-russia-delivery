@@ -1,0 +1,35 @@
+{
+  "id": "prt_a96d49508001Z834byo1kHpvel",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96d48e3c001RPu68ba6v7ncxi",
+  "type": "tool",
+  "callID": "call_47428454",
+  "tool": "asksecrets",
+  "state": {
+    "status": "completed",
+    "input": {
+      "secrets": [
+        {
+          "description": "API ключ для NordWheel (требуется для расчета стоимости перевозки)",
+          "display_name": "NordWheel API Key",
+          "name": "NORDWHEEL_API_KEY"
+        }
+      ]
+    },
+    "output": "Requesting the following secrets:\n\n- NordWheel API Key (NORDWHEEL_API_KEY): API ключ для NordWheel (требуется для расчета стоимости перевозки)\n\nWaiting for user input...",
+    "title": "Requesting API Keys & Secrets",
+    "metadata": {
+      "secrets": [
+        {
+          "description": "API ключ для NordWheel (требуется для расчета стоимости перевозки)",
+          "display_name": "NordWheel API Key",
+          "name": "NORDWHEEL_API_KEY"
+        }
+      ]
+    },
+    "time": {
+      "start": 1763467105545,
+      "end": 1763467105546
+    }
+  }
+}
