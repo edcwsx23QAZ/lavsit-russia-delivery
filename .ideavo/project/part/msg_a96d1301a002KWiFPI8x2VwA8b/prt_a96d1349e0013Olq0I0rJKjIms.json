@@ -1,0 +1,24 @@
+{
+  "id": "prt_a96d1349e0013Olq0I0rJKjIms",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96d1301a002KWiFPI8x2VwA8b",
+  "type": "tool",
+  "callID": "call_82734215",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "nordw\\.ru"
+    },
+    "output": "Found 3 matches\n/home/user/project/app/page.tsx:\n  Line 628:           const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 603:       const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n  Line 858:           apiUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;",
+    "title": "nordw\\.ru",
+    "metadata": {
+      "matches": 3,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763466884257,
+      "end": 1763466884267
+    }
+  }
+}
