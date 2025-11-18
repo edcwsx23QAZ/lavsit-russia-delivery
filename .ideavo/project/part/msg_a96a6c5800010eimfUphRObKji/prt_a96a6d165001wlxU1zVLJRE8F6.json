@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96a6d165001wlxU1zVLJRE8F6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96a6c5800010eimfUphRObKji",
+  "type": "tool",
+  "callID": "call_34367762",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "components/diagnostic/ApiMasterTab.tsx",
+      "newString": "  {\n    name: 'Деловые Линии',\n    key: 'dellin',\n    category: 'transport',\n    status: 'unknown',\n    credentials: {\n      appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n      login: 'service@lavsit.ru',\n      password: 'edcwsx123QAZ'\n    },\n    endpoints: ['/api/dellin-packages'],\n    description: 'Транспортная компания Деловые Линии'\n  },\n  {\n    name: 'Nord Wheel',\n    key: 'nordwheel',\n    category: 'transport',\n    status: 'unknown',\n    credentials: {\n      apiKey: '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'\n    },\n    endpoints: ['/api/test'],\n    description: 'Транспортная компания Nord Wheel - международные перевозки'\n  },",
+      "oldString": "  {\n    name: 'Деловые Линии',\n    key: 'dellin',\n    category: 'transport',\n    status: 'unknown',\n    credentials: {\n      appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n      login: 'service@lavsit.ru',\n      password: 'edcwsx123QAZ'\n    },\n    endpoints: ['/api/dellin-packages'],\n    description: 'Транспортная компания Деловые Линии'\n  },"
+    },
+    "output": "",
+    "title": "components/diagnostic/ApiMasterTab.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/diagnostic/ApiMasterTab.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/ApiMasterTab.tsx\n+++ /home/user/project/components/diagnostic/ApiMasterTab.tsx\n@@ -98,8 +98,19 @@\n   endpoints: ['/api/dellin-packages'],\n   description: 'Транспортная компания Деловые Линии'\n },\n {\n+  name: 'Nord Wheel',\n+  key: 'nordwheel',\n+  category: 'transport',\n+  status: 'unknown',\n+  credentials: {\n+    apiKey: '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'\n+  },\n+  endpoints: ['/api/test'],\n+  description: 'Транспортная компания Nord Wheel - международные перевозки'\n+},\n+{\n   name: 'Rail Continent',\n   key: 'railcontinent',\n   category: 'transport',\n   status: 'unknown',\n"
+    },
+    "time": {
+      "start": 1763464106345,
+      "end": 1763464106357
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96ab077c0015x36Nje4jTMsGh",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96ab0332001VaN17mWa9Uua4f",
+  "type": "tool",
+  "callID": "call_20059246",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run dev > dev.log 2>&1 &",
+      "description": "Запускаем Next.js dev сервер в фоне и перенаправляем логи"
+    },
+    "output": "",
+    "title": "npm run dev > dev.log 2>&1 &",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Запускаем Next.js dev сервер в фоне и перенаправляем логи"
+    },
+    "time": {
+      "start": 1763464382335,
+      "end": 1763464382337
+    }
+  }
+}

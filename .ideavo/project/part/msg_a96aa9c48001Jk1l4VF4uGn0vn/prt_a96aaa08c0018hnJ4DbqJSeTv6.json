@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96aaa08c0018hnJ4DbqJSeTv6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96aa9c48001Jk1l4VF4uGn0vn",
+  "type": "tool",
+  "callID": "call_89734644",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "pkill -f \"next dev\"",
+      "description": "Останавливаем все процессы next dev"
+    },
+    "output": "",
+    "title": "pkill -f \"next dev\"",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Останавливаем все процессы next dev"
+    },
+    "time": {
+      "start": 1763464355983,
+      "end": 1763464356000
+    }
+  }
+}

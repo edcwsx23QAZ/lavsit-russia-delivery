@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96a6e524001k41zTHRPXJqkYW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96a6dba1001JryTxDVowUlDQ5",
+  "type": "tool",
+  "callID": "call_94166489",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "components/diagnostic/ApiMasterTab.tsx",
+      "newString": "        case 'railcontinent':\n          const railResponse = await apiRequestWithTimeout('/api/rail-continent', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({ method: 'test' })\n          });\n          testResult = railResponse.ok;\n          break;\n\n        case 'nordwheel':\n          const nordwheelResponse = await apiRequestWithTimeout('/api/test', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({ service: 'nordwheel' })\n          });\n          testResult = nordwheelResponse.ok;\n          if (!nordwheelResponse.ok) {\n            const errorData = await nordwheelResponse.json().catch(() => ({}));\n            errorMessage = errorData.error || 'Ошибка API NordWheel';\n          }\n          break;",
+      "oldString": "        case 'railcontinent':\n          const railResponse = await apiRequestWithTimeout('/api/rail-continent', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({ method: 'test' })\n          });\n          testResult = railResponse.ok;\n          break;"
+    },
+    "output": "",
+    "title": "components/diagnostic/ApiMasterTab.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/diagnostic/ApiMasterTab.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/ApiMasterTab.tsx\n+++ /home/user/project/components/diagnostic/ApiMasterTab.tsx\n@@ -282,8 +282,21 @@\n   });\n   testResult = railResponse.ok;\n   break;\n \n+case 'nordwheel':\n+  const nordwheelResponse = await apiRequestWithTimeout('/api/test', {\n+    method: 'POST',\n+    headers: { 'Content-Type': 'application/json' },\n+    body: JSON.stringify({ service: 'nordwheel' })\n+  });\n+  testResult = nordwheelResponse.ok;\n+  if (!nordwheelResponse.ok) {\n+    const errorData = await nordwheelResponse.json().catch(() => ({}));\n+    errorMessage = errorData.error || 'Ошибка API NordWheel';\n+  }\n+  break;\n+\n case 'dadata':\n   const dadataResponse = await fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {\n     method: 'POST',\n     headers: {\n"
+    },
+    "time": {
+      "start": 1763464111397,
+      "end": 1763464111402
+    }
+  }
+}

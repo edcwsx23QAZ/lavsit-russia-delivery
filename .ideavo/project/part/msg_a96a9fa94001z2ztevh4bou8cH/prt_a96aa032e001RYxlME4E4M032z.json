@@ -1,0 +1,23 @@
+{
+  "id": "prt_a96aa032e001RYxlME4E4M032z",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96a9fa94001z2ztevh4bou8cH",
+  "type": "tool",
+  "callID": "call_08834773",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/api/test/route.ts"
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server';\n00002| \n00003| export async function GET() {\n00004|   return NextResponse.json({ status: 'OK', message: 'Simple test works' });\n00005| }\n00006| \n00007| export async function POST(request: NextRequest) {\n00008|   try {\n00009|     const body = await request.json();\n00010|     return NextResponse.json({ \n00011|       status: 'OK', \n00012|       message: 'POST test works',\n00013|       received: body \n00014|     });\n00015|   } catch (error) {\n00016|     return NextResponse.json({ \n00017|       status: 'ERROR', \n00018|       message: 'Error parsing JSON',\n00019|       error: error instanceof Error ? error.message : 'Unknown error'\n00020|     });\n00021|   }\n00022| }\n</file>",
+    "title": "app/api/test/route.ts",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server';\n\nexport async function GET() {\n  return NextResponse.json({ status: 'OK', message: 'Simple test works' });\n}\n\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    return NextResponse.json({ \n      status: 'OK', \n      message: 'POST test works',\n      received: body \n    });\n  } catch (error) {\n    return NextResponse.json({ \n      status: 'ERROR', \n      message: 'Error parsing JSON',\n      error: error instanceof Error ? error.message : 'Unknown error'\n    });"
+    },
+    "time": {
+      "start": 1763464315696,
+      "end": 1763464315697
+    }
+  }
+}

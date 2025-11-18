@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96a81106001NDON7pEP8BAeUi",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96a8095b001THqdwn8jPafQN7",
+  "type": "tool",
+  "callID": "call_99662117",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run dev > /dev/null 2>&1 & sleep 5 && curl -X POST http://localhost:3000/api/test -H \"Content-Type: application/json\" -d '{\"service\": \"nordwheel\"}'",
+      "description": "Запускаем сервер в фоне и тестируем NordWheel API"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100    24    0     0  100    24      0     22  0:00:01  0:00:01 --:--:--    22\r100   102    0    78  100    24     72     22  0:00:01  0:00:01 --:--:--    95\n{\"status\":\"OK\",\"message\":\"POST test works\",\"received\":{\"service\":\"nordwheel\"}}",
+    "title": "cd /home/user/project && npm run dev > /dev/null 2>&1 & sleep 5 && curl -X POST http://localhost:3000/api/test -H \"Content-Type: application/json\" -d '{\"service\": \"nordwheel\"}'",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100    24    0     0  100    24      0     22  0:00:01  0:00:01 --:--:--    22\r100   102    0    78  100    24     72     22  0:00:01  0:00:01 --:--:--    95\n{\"status\":\"OK\",\"message\":\"POST test works\",\"received\":{\"service\":\"nordwheel\"}}",
+      "exit": 0,
+      "description": "Запускаем сервер в фоне и тестируем NordWheel API"
+    },
+    "time": {
+      "start": 1763464188170,
+      "end": 1763464194260
+    }
+  }
+}

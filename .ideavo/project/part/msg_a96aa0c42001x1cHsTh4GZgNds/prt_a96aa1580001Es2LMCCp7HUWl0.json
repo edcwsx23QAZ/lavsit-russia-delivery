@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96aa1580001Es2LMCCp7HUWl0",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96aa0c42001x1cHsTh4GZgNds",
+  "type": "tool",
+  "callID": "call_22194663",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:3001/api/test -H \"Content-Type: application/json\" -d '{\"service\": \"nordwheel\"}'",
+      "description": "Тестируем тестовый эндпоинт NordWheel для проверки работоспособности"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3001 after 0 ms: Couldn't connect to server\n",
+    "title": "curl -X POST http://localhost:3001/api/test -H \"Content-Type: application/json\" -d '{\"service\": \"nordwheel\"}'",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3001 after 0 ms: Couldn't connect to server\n",
+      "exit": 7,
+      "description": "Тестируем тестовый эндпоинт NordWheel для проверки работоспособности"
+    },
+    "time": {
+      "start": 1763464320389,
+      "end": 1763464320403
+    }
+  }
+}

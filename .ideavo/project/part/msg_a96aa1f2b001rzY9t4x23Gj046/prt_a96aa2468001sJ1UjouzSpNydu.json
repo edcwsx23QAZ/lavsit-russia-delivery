@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96aa2468001sJ1UjouzSpNydu",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96aa1f2b001rzY9t4x23Gj046",
+  "type": "tool",
+  "callID": "call_86275979",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "ps aux | grep next",
+      "description": "Проверяем, запущен ли Next.js сервер"
+    },
+    "output": "user       56085  0.1  1.6 11527220 67060 ?      Sl   11:04   0:00 node /home/user/project/node_modules/.bin/next dev\nuser       56096  7.5 14.2 76138516 575200 ?     Sl   11:04   0:34 next-server (v14.2.31)\nuser       56394  0.0  0.0   2584   888 ?        S    11:09   0:00 sh -c next dev\nuser       56395  0.3  1.6 11527148 67444 ?      Sl   11:09   0:00 node /home/user/project/node_modules/.bin/next dev\nuser       56406  3.7  5.7 54918456 233660 ?     Sl   11:09   0:05 next-server (v14.2.31)\nuser       56554  0.0  0.0   2584   892 ?        Ss   11:12   0:00 /bin/sh -c ps aux | grep next\nuser       56556  0.0  0.0   3332  1440 ?        S    11:12   0:00 grep next\n",
+    "title": "ps aux | grep next",
+    "metadata": {
+      "output": "user       56085  0.1  1.6 11527220 67060 ?      Sl   11:04   0:00 node /home/user/project/node_modules/.bin/next dev\nuser       56096  7.5 14.2 76138516 575200 ?     Sl   11:04   0:34 next-server (v14.2.31)\nuser       56394  0.0  0.0   2584   888 ?        S    11:09   0:00 sh -c next dev\nuser       56395  0.3  1.6 11527148 67444 ?      Sl   11:09   0:00 node /home/user/project/node_modules/.bin/next dev\nuser       56406  3.7  5.7 54918456 233660 ?     Sl   11:09   0:05 next-server (v14.2.31)\nuser       56554  0.0  0.0   2584   892 ?        Ss   11:12   0:00 /bin/sh -c ps aux | grep next\nuser       56556  0.0  0.0   3332  1440 ?        S    11:12   0:00 grep next\n",
+      "exit": 0,
+      "description": "Проверяем, запущен ли Next.js сервер"
+    },
+    "time": {
+      "start": 1763464324224,
+      "end": 1763464324278
+    }
+  }
+}

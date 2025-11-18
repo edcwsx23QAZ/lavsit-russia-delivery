@@ -99,6 +99,17 @@ const API_CONFIGS: ApiConfig[] = [
     description: 'Транспортная компания Деловые Линии'
   },
   {
+    name: 'Nord Wheel',
+    key: 'nordwheel',
+    category: 'transport',
+    status: 'unknown',
+    credentials: {
+      apiKey: '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'
+    },
+    endpoints: ['/api/test'],
+    description: 'Транспортная компания Nord Wheel - международные перевозки'
+  },
+  {
     name: 'Rail Continent',
     key: 'railcontinent',
     category: 'transport',
@@ -271,6 +282,17 @@ const ApiMasterTab: React.FC = () => {
           });
           testResult = railResponse.ok;
           break;
+
+        case 'nordwheel':
+           // NordWheel API test - check if API key is configured
+           const nordwheelApiKey = api.credentials.apiKey;
+           if (nordwheelApiKey && nordwheelApiKey.length > 0) {
+             testResult = true;
+           } else {
+             testResult = false;
+             errorMessage = 'API ключ NordWheel не настроен';
+           }
+           break;
 
         case 'dadata':
           const dadataResponse = await fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {

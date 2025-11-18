@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96aa77ad00176R9B9KTjW6CDR",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96aa6ff2001nJDhRsDjOsUNNn",
+  "type": "tool",
+  "callID": "call_89928332",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "netstat -tlnp | grep node",
+      "description": "Проверяем, какие порты слушают Node.js процессы"
+    },
+    "output": "/bin/sh: 1: netstat: not found\n",
+    "title": "netstat -tlnp | grep node",
+    "metadata": {
+      "output": "/bin/sh: 1: netstat: not found\n",
+      "exit": 1,
+      "description": "Проверяем, какие порты слушают Node.js процессы"
+    },
+    "time": {
+      "start": 1763464345521,
+      "end": 1763464345525
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96aa847e001f0CrC7C4RtL783",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96aa80d1001Bkl0QyH23HRXp7",
+  "type": "tool",
+  "callID": "call_86666299",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "ss -tlnp | grep node",
+      "description": "Проверяем, какие порты слушают Node.js процессы с помощью ss"
+    },
+    "output": "",
+    "title": "ss -tlnp | grep node",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Проверяем, какие порты слушают Node.js процессы с помощью ss"
+    },
+    "time": {
+      "start": 1763464348801,
+      "end": 1763464348809
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96a7ff0c001G5ZOegg3wsFTdH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96a7f92f001gHtEy6AxL8vhpq",
+  "type": "tool",
+  "callID": "call_69992966",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && curl -X POST http://localhost:3000/api/test -H \"Content-Type: application/json\" -d '{\"service\": \"nordwheel\"}' | jq .",
+      "description": "Тестируем NordWheel API через /api/test эндпоинт"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server\n/bin/sh: 1: jq: not found\n",
+    "title": "cd /home/user/project && curl -X POST http://localhost:3000/api/test -H \"Content-Type: application/json\" -d '{\"service\": \"nordwheel\"}' | jq .",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server\n/bin/sh: 1: jq: not found\n",
+      "exit": 127,
+      "description": "Тестируем NordWheel API через /api/test эндпоинт"
+    },
+    "time": {
+      "start": 1763464183567,
+      "end": 1763464183775
+    }
+  }
+}

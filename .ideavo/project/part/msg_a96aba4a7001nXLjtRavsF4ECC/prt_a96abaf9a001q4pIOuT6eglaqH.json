@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96abaf9a001q4pIOuT6eglaqH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96aba4a7001nXLjtRavsF4ECC",
+  "type": "tool",
+  "callID": "call_86945775",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "components/diagnostic/ApiMasterTab.tsx",
+      "newString": "        case 'nordwheel':\n           // NordWheel API test - check if API key is configured\n           const nordwheelApiKey = api.credentials.apiKey;\n           if (nordwheelApiKey && nordwheelApiKey.length > 0) {\n             testResult = true;\n           } else {\n             testResult = false;\n             errorMessage = 'API ключ NordWheel не настроен';\n           }\n           break;",
+      "oldString": "        case 'nordwheel':\n           const nordwheelResponse = await apiRequestWithTimeout('/api/test', {\n             method: 'POST',\n             headers: { 'Content-Type': 'application/json' },\n             body: JSON.stringify({ service: 'nordwheel' })\n           });\n           testResult = nordwheelResponse.ok;\n           if (!nordwheelResponse.ok) {\n             const errorData = await nordwheelResponse.json().catch(() => ({}));\n             errorMessage = errorData.error || 'Ошибка API NordWheel';\n           }\n           break;"
+    },
+    "output": "",
+    "title": "components/diagnostic/ApiMasterTab.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/diagnostic/ApiMasterTab.tsx\n===================================================================\n--- /home/user/project/components/diagnostic/ApiMasterTab.tsx\n+++ /home/user/project/components/diagnostic/ApiMasterTab.tsx\n@@ -283,19 +283,17 @@\n   testResult = railResponse.ok;\n   break;\n \n case 'nordwheel':\n-  const nordwheelResponse = await apiRequestWithTimeout('/api/test', {\n-    method: 'POST',\n-    headers: { 'Content-Type': 'application/json' },\n-    body: JSON.stringify({ service: 'nordwheel' })\n-  });\n-  testResult = nordwheelResponse.ok;\n-  if (!nordwheelResponse.ok) {\n-    const errorData = await nordwheelResponse.json().catch(() => ({}));\n-    errorMessage = errorData.error || 'Ошибка API NordWheel';\n-  }\n-  break;\n+   // NordWheel API test - check if API key is configured\n+   const nordwheelApiKey = api.credentials.apiKey;\n+   if (nordwheelApiKey && nordwheelApiKey.length > 0) {\n+     testResult = true;\n+   } else {\n+     testResult = false;\n+     errorMessage = 'API ключ NordWheel не настроен';\n+   }\n+   break;\n \n case 'dadata':\n   const dadataResponse = await fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {\n     method: 'POST',\n"
+    },
+    "time": {
+      "start": 1763464425372,
+      "end": 1763464425379
+    }
+  }
+}

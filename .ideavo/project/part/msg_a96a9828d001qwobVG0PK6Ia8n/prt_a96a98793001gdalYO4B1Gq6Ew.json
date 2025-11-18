@@ -1,0 +1,27 @@
+{
+  "id": "prt_a96a98793001gdalYO4B1Gq6Ew",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96a9828d001qwobVG0PK6Ia8n",
+  "type": "tool",
+  "callID": "call_23881881",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run dev",
+      "description": "Запуск Next.js dev сервера с таймаутом для проверки запуска без ошибок",
+      "timeout": 10000
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n ⚠ Port 3000 is in use, trying 3001 instead.\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3001\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ⚠ Invalid next.config.js options detected: \n ⚠     Unrecognized key(s) in object: 'runtime', 'serverActionsBodySizeLimit' at \"experimental\"\n ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config\n ✓ Ready in 1626ms\n\n\n(Command timed out after 10000 ms)",
+    "title": "npm run dev",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 dev\n> next dev\n\n ⚠ Port 3000 is in use, trying 3001 instead.\n  ▲ Next.js 14.2.31\n  - Local:        http://localhost:3001\n  - Environments: .env.local, .env\n\n ✓ Starting...\n ⚠ Invalid next.config.js options detected: \n ⚠     Unrecognized key(s) in object: 'runtime', 'serverActionsBodySizeLimit' at \"experimental\"\n ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config\n ✓ Ready in 1626ms\n\n\n(Command timed out after 10000 ms)",
+      "exit": null,
+      "description": "Запуск Next.js dev сервера с таймаутом для проверки запуска без ошибок"
+    },
+    "time": {
+      "start": 1763464284055,
+      "end": 1763464293273
+    }
+  }
+}

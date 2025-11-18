@@ -3457,80 +3457,30 @@ export default function Home() {
         sum: form.declaredValue.toString(),
         documentsReturn: '0',
         fragile: '1',
+      // 🔧 ДОБАВЛЕНО: Габаритные параметры
+      const params = new URLSearchParams({
+        from: '91', // Москва (нужно будет получать ID города)
+        to: '92', // СПб (нужно будет получать ID города)
+        pickup: form.fromAddressDelivery ? '1' : '0',
+        deliver: form.toAddressDelivery ? '1' : '0',
+        weight: totalWeight.toString(),
+        volume: totalVolume.toString(),
+        oversized: isOversized ? '1' : '0', // 🔧 ИСПРАВЛЕНО: Правильное определение негабарита
+        package: form.needPackaging ? '1' : '0',
+        packageCount: form.cargos.length.toString(),
+        insurance: form.needInsurance ? '1' : '0',
+        sum: form.declaredValue.toString(),
+        documentsReturn: '0',
+        fragile: '1',
         // 🔧 ДОБАВЛЕНО: Габаритные параметры
         length: (maxLength / 100).toString(),      // в метрах
         width: (maxWidth / 100).toString(),        // в метрах
         height: (maxHeight / 100).toString(),      // в метрах
         // 🔧 ДОБАВЛЕНО: Флаг множественных мест
-        multiplePackages: form.cargos.length > 1 ? '1' : '0'
+        multiplePackages: form.cargos.length > 1 ? '1' : '0',
+        // 🔧 ДОБАВЛЕНО: API ключ NordWheel
+        api_key: '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'
       });
-
-      const requestData = Object.fromEntries(params);
-      const fullUrl = `${apiUrl}?${params.toString()}`;
-
-      const result = await enhancedApiRequest(
-        fullUrl,
-        {
-          method: 'GET'
-        },
-        { operation: 'calculate', company: 'Nord Wheel' }
-      );
-
-      if (result && typeof result === 'object' && 'success' in result && !result.success) {
-        console.error('❌ Nord Wheel API ошибка:', result.error);
-        return {
-          company: 'Nord Wheel',
-          price: 0,
-          days: 0,
-          error: result.error.userMessage || result.error.message,
-          requestData: requestData,
-          responseData: null,
-          apiUrl: fullUrl
-        };
-      }
-
-      const response = result as Response;
-      const data = await response.json();
-
-      if (response.ok && data.status === 'success' && data.data) {
-        return {
-          company: 'Nord Wheel',
-          price: data.data.total || 0,
-          days: data.data.days || 0,
-          details: {
-            ...data.data,
-            totalCost: data.data.total,
-            deliveryCost: data.data.door,
-            terminalCost: data.data.terminal,
-            pickupCost: data.data.pick,
-            deliveryToDoorCost: data.data.deliver,
-            additionalServices: (data.data.total || 0) - (data.data.door || 0)
-          },
-          requestData,
-          responseData: data,
-          apiUrl: fullUrl
-        };
-      } else {
-        return {
-          company: 'Nord Wheel',
-          price: 0,
-          days: 0,
-          error: 'Ошибка расчета Nord Wheel',
-          requestData,
-          responseData: data,
-          apiUrl: fullUrl
-        };
-      }
-    } catch (error: any) {
-      return {
-        company: 'Nord Wheel',
-        price: 0,
-        days: 0,
-        error: `Ошибка соединения: ${error.message}`,
-        apiUrl
-      };
-    }
-  };
 
   const calculateCdek = async (): Promise<CalculationResult> => {
     const apiUrl = '/api/cdek';

@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96abbf70001omnM0JIwgrUckb",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96abb831001EAtJOsMH8xT0fz",
+  "type": "tool",
+  "callID": "call_04987879",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:3000/api/test -H \"Content-Type: application/json\" -d '{\"service\": \"nordwheel\"}'",
+      "description": "Проверяем, что тестовый API все еще работает"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   102    0    78  100    24   3674   1130 --:--:-- --:--:-- --:--:--  4857\n{\"status\":\"OK\",\"message\":\"POST test works\",\"received\":{\"service\":\"nordwheel\"}}",
+    "title": "curl -X POST http://localhost:3000/api/test -H \"Content-Type: application/json\" -d '{\"service\": \"nordwheel\"}'",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   102    0    78  100    24   3674   1130 --:--:-- --:--:-- --:--:--  4857\n{\"status\":\"OK\",\"message\":\"POST test works\",\"received\":{\"service\":\"nordwheel\"}}",
+      "exit": 0,
+      "description": "Проверяем, что тестовый API все еще работает"
+    },
+    "time": {
+      "start": 1763464429428,
+      "end": 1763464429463
+    }
+  }
+}

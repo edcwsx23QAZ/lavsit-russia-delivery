@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96aa925c001LyJ47tl6L376GT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96aa8ddd001u5kbYsaiv4HqhG",
+  "type": "tool",
+  "callID": "call_77450783",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "lsof -i -P -n | grep LISTEN",
+      "description": "Проверяем открытые порты с помощью lsof"
+    },
+    "output": "",
+    "title": "lsof -i -P -n | grep LISTEN",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Проверяем открытые порты с помощью lsof"
+    },
+    "time": {
+      "start": 1763464352352,
+      "end": 1763464352519
+    }
+  }
+}

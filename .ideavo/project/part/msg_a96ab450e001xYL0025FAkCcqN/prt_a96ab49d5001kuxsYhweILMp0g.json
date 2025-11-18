@@ -1,0 +1,24 @@
+{
+  "id": "prt_a96ab49d5001kuxsYhweILMp0g",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96ab450e001xYL0025FAkCcqN",
+  "type": "tool",
+  "callID": "call_68982327",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "COMPANIES_BASE"
+    },
+    "output": "Found 5 matches\n/home/user/project/app/page.tsx:\n  Line 86: const COMPANIES_BASE = [\n  Line 365:         console.log('📋 Всего доступно ТК:', COMPANIES_BASE.length);\n  Line 366:         console.log('📋 Список ТК:', COMPANIES_BASE.map(c => c.name));\n  Line 4871:                   Подключенные транспортные компании ({COMPANIES_BASE.length})\n  Line 4876:                   {COMPANIES_BASE.map((company, index) => {",
+    "title": "COMPANIES_BASE",
+    "metadata": {
+      "matches": 5,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763464399319,
+      "end": 1763464399329
+    }
+  }
+}

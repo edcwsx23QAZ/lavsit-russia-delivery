@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96a8e0e7001fuy04MRrGfJGcK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96a8cc43001fbU24r2QJo2Bf8",
+  "type": "tool",
+  "callID": "call_41140312",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Проверяем, что изменения компилируются без ошибок"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Unexpected token `params`. Expected ... , *,  (, [, :, , ?, =, an identifier, public, protected, private, readonly, <.\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:3458:1]\n \u001b[2m3458\u001b[0m |         documentsReturn: '0',\n \u001b[2m3459\u001b[0m |         fragile: '1',\n \u001b[2m3460\u001b[0m |       // 🔧 ДОБАВЛЕНО: Габаритные параметры\n \u001b[2m3461\u001b[0m |       const params = new URLSearchParams({\n      : \u001b[31;1m            ^^^^^^\u001b[0m\n \u001b[2m3462\u001b[0m |         from: '91', // Москва (нужно будет получать ID города)\n \u001b[2m3463\u001b[0m |         to: '92', // СПб (нужно будет получать ID города)\n \u001b[2m3464\u001b[0m |         pickup: form.fromAddressDelivery ? '1' : '0',\n      `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+    "title": "cd /home/user/project && npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Unexpected token `params`. Expected ... , *,  (, [, :, , ?, =, an identifier, public, protected, private, readonly, <.\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:3458:1]\n \u001b[2m3458\u001b[0m |         documentsReturn: '0',\n \u001b[2m3459\u001b[0m |         fragile: '1',\n \u001b[2m3460\u001b[0m |       // 🔧 ДОБАВЛЕНО: Габаритные параметры\n \u001b[2m3461\u001b[0m |       const params = new URLSearchParams({\n      : \u001b[31;1m            ^^^^^^\u001b[0m\n \u001b[2m3462\u001b[0m |         from: '91', // Москва (нужно будет получать ID города)\n \u001b[2m3463\u001b[0m |         to: '92', // СПб (нужно будет получать ID города)\n \u001b[2m3464\u001b[0m |         pickup: form.fromAddressDelivery ? '1' : '0',\n      `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+      "exit": 1,
+      "description": "Проверяем, что изменения компилируются без ошибок"
+    },
+    "time": {
+      "start": 1763464241386,
+      "end": 1763464246119
+    }
+  }
+}
