@@ -1,0 +1,21 @@
+{
+  "id": "prt_a96d64e450016pEUCJOM3s4Y2u",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96d62fe7001N4dtINzJjC2xPH",
+  "type": "tool",
+  "callID": "call_11376268",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "  const calculateNordWheel = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';\n\n    const requestData = {\n      dispatch: {\n        location: {\n          type: 'terminal',\n          city_fias: dispatchCityFias || '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Default to Moscow\n        }\n      },\n      destination: {\n        location: {\n          type: 'terminal',\n          city_fias: destinationCityFias || 'c2deb16a-0330-4f05-821f-1d09c93331e6' // Default to SPb\n        }\n      },\n      cargo: {\n        total_weight: weight,\n        total_volume: volume,\n        total_quantity: quantity\n      },\n      insurance: insurance,\n      insurance_refuse: false,\n      services: {\n        is_package: isPackage,\n        is_documents_return: isDocumentsReturn,\n        is_fragile: isFragile\n      },\n      promocode: null\n    };\n\n    try {\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          // Add API key if available\n          ...(process.env.NORDWHEEL_API_KEY && { 'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}` })\n        },\n        body: JSON.stringify(requestData)\n      });\n\n      if (!response.ok) {\n        throw new Error(`NordWheel API error: ${response.status} ${response.statusText}`);\n      }\n\n      const data = await response.json();\n\n      if (data.success) {\n        return {\n          price: data.price,\n          days: data.days,\n        };\n      } else {\n        throw new Error(data.message || 'NordWheel calculation failed');\n      }\n    } catch (error) {\n      console.error('NordWheel calculation error:', error);\n      throw error;\n    }\n  };",
+      "oldString": "  const calculateNordWheel = async (): Promise<CalculationResult> => {\n    const apiUrl = 'https://nordw.ru/tools/api/calc/calculate/';\n\n    const params = new URLSearchParams({\n      'dispatch[city]': dispatchCity,\n      'dispatch[terminal]': dispatchTerminal,\n      'destination[city]': destinationCity,\n      'destination[terminal]': destinationTerminal,\n      'cargo[weight]': weight.toString(),\n      'cargo[volume]': volume.toString(),\n      'cargo[quantity]': quantity.toString(),\n      'insurance': insurance.toString(),\n      'services[package]': isPackage.toString(),\n      'services[documents_return]': isDocumentsReturn.toString(),\n      'services[fragile]': isFragile.toString(),\n    });\n\n    const fullUrl = `${apiUrl}?${params.toString()}`;\n\n    try {\n      const response = await fetch(fullUrl, {\n        method: 'GET',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n      });\n\n      if (!response.ok) {\n        throw new Error(`NordWheel API error: ${response.status} ${response.statusText}`);\n      }\n\n      const data = await response.json();\n\n      if (data.success) {\n        return {\n          price: data.price,\n          days: data.days,\n        };\n      } else {\n        throw new Error(data.message || 'NordWheel calculation failed');\n      }\n    } catch (error) {\n        console.error('NordWheel calculation error:', error);\n        throw error;\n    }\n  };"
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1763467218506,
+      "end": 1763467218508
+    }
+  }
+}

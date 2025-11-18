@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96d6e5ff001gdRixnJQG6Xm7H",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96d6dd45001B0B98OwkP9zYY6",
+  "type": "tool",
+  "callID": "call_85587568",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-api.js",
+      "description": "Test the updated NordWheel API with the new endpoint and POST method"
+    },
+    "output": "Отправка запроса к NordWheel API...\nURL: https://api.nordw.orog.ru/api/v1/calculate\nRequest data: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 10,\n    \"total_volume\": 1,\n    \"total_quantity\": 1\n  },\n  \"insurance\": 1000,\n  \"insurance_refuse\": false,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\nСтатус ответа: 400\nОшибка API: 400 Bad Request\nТело ошибки: {\"meta\":{\"id\":\"db6ceba6-6dc5-4ce3-9ffb-9e71f8409bc1\",\"code\":1000,\"success\":false,\"response_time\":\"2025-11-18 12:14:24.647\",\"errors\":[\"Attempt to read property \\\"city_type_id\\\" on null\"]},\"data\":[]}\n",
+    "title": "node test-nordwheel-api.js",
+    "metadata": {
+      "output": "Отправка запроса к NordWheel API...\nURL: https://api.nordw.orog.ru/api/v1/calculate\nRequest data: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 10,\n    \"total_volume\": 1,\n    \"total_quantity\": 1\n  },\n  \"insurance\": 1000,\n  \"insurance_refuse\": false,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\nСтатус ответа: 400\nОшибка API: 400 Bad Request\nТело ошибки: {\"meta\":{\"id\":\"db6ceba6-6dc5-4ce3-9ffb-9e71f8409bc1\",\"code\":1000,\"success\":false,\"response_time\":\"2025-11-18 12:14:24.647\",\"errors\":[\"Attempt to read property \\\"city_type_id\\\" on null\"]},\"data\":[]}\n",
+      "exit": 0,
+      "description": "Test the updated NordWheel API with the new endpoint and POST method"
+    },
+    "time": {
+      "start": 1763467257360,
+      "end": 1763467258374
+    }
+  }
+}
