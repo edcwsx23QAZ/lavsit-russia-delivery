@@ -1,0 +1,23 @@
+{
+  "id": "prt_a96d93dec0011Pez0BLW2kw958",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96d93a0e001MSERLZqui1CLkO",
+  "type": "tool",
+  "callID": "call_81320326",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "test-nordwheel-api.js"
+    },
+    "output": "<file>\n00001| // Тестовый скрипт для проверки NordWheel API\n00002| const testNordWheelAPI = async () => {\n00003|   const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';\n00004| \n00005|   const requestData = {\n00006|     dispatch: {\n00007|       location: {\n00008|         type: 'terminal',\n00009|         city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва\n00010|       }\n00011|     },\n00012|     destination: {\n00013|       location: {\n00014|         type: 'terminal',\n00015|         city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб\n00016|       }\n00017|     },\n00018|     cargo: {\n00019|       total_weight: 10,\n00020|       total_volume: 1.0,\n00021|       total_quantity: 1\n00022|     },\n00023|     insurance: 1000,\n00024|     insurance_refuse: false,\n00025|     services: {\n00026|       is_package: false,\n00027|       is_documents_return: false,\n00028|       is_fragile: false\n00029|     },\n00030|     promocode: null\n00031|   };\n00032| \n00033|   try {\n00034|     console.log('Отправка запроса к NordWheel API...');\n00035|     console.log('URL:', apiUrl);\n00036|     console.log('Request data:', JSON.stringify(requestData, null, 2));\n00037| \n00038|     const response = await fetch(apiUrl, {\n00039|       method: 'POST',\n00040|       headers: {\n00041|         'Content-Type': 'application/json',\n00042|         // Add API key if available\n00043|         ...(process.env.NORDWHEEL_API_KEY && { 'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}` })\n00044|       },\n00045|       body: JSON.stringify(requestData)\n00046|     });\n00047| \n00048|     console.log('Статус ответа:', response.status);\n00049| \n00050|     if (!response.ok) {\n00051|       console.error('Ошибка API:', response.status, response.statusText);\n00052|       const errorText = await response.text();\n00053|       console.error('Тело ошибки:', errorText);\n00054|       return;\n00055|     }\n00056| \n00057|     const data = await response.json();\n00058|     console.log('Ответ от API:', JSON.stringify(data, null, 2));\n00059| \n00060|     if (data.success) {\n00061|       console.log('Цена:', data.price);\n00062|       console.log('Дни:', data.days);\n00063|     } else {\n00064|       console.log('API вернул success: false');\n00065|       if (data.message) {\n00066|         console.log('Сообщение:', data.message);\n00067|       }\n00068|     }\n00069| \n00070|   } catch (error) {\n00071|     console.error('Ошибка соединения:', error);\n00072|   }\n00073| };\n00074| \n00075| testNordWheelAPI();\n</file>",
+    "title": "test-nordwheel-api.js",
+    "metadata": {
+      "preview": "// Тестовый скрипт для проверки NordWheel API\nconst testNordWheelAPI = async () => {\n  const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';\n\n  const requestData = {\n    dispatch: {\n      location: {\n        type: 'terminal',\n        city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва\n      }\n    },\n    destination: {\n      location: {\n        type: 'terminal',\n        city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб\n      }\n    },\n    cargo: {\n      total_weight: 10,\n      total_volume: 1.0,"
+    },
+    "time": {
+      "start": 1763467410926,
+      "end": 1763467410927
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "prt_a96da8b72001Sj1zgU8bxGj80X",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96da7880001oadU8ScGLbB2eQ",
+  "type": "tool",
+  "callID": "call_30859477",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "      // Формируем запрос для нового API NordWheel\n      const requestData = {\n        dispatch: {\n          location: {\n            type: 'terminal',\n            city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва\n          }\n        },\n        destination: {\n          location: {\n            type: 'terminal',\n            city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // Санкт-Петербург\n          }\n        },\n        cargo: {\n          total_weight: totalWeight,\n          total_volume: totalVolume,\n          total_quantity: form.cargos.length\n        },\n        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : 0,\n        insurance_refuse: !form.needInsurance,\n        services: {\n          is_package: form.needPackaging,\n          is_documents_return: false,\n          is_fragile: false\n        },\n        promocode: null\n      };\n\n      console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}`\n        },\n        body: JSON.stringify(requestData)\n      });",
+      "oldString": "      // Формируем запрос для нового API NordWheel\n      const requestData = {\n        dispatch: {\n          location: {\n            type: 'terminal',\n            city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва\n          }\n        },\n        destination: {\n          location: {\n            type: 'terminal',\n            city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // Санкт-Петербург\n          }\n        },\n        cargo: {\n          total_weight: totalWeight,\n          total_volume: totalVolume,\n          total_quantity: form.cargos.length\n        },\n        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : 0,\n        insurance_refuse: !form.needInsurance,\n        services: {\n          is_package: form.needPackaging,\n          is_documents_return: false,\n          is_fragile: false\n        },\n        promocode: null\n      };\n\n      console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          // Add API key if available\n          ...(process.env.NORDWHEEL_API_KEY && { 'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}` })\n        },\n        body: JSON.stringify(requestData)\n      });"
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1763467496308,
+      "end": 1763467496309
+    }
+  }
+}

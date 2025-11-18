@@ -3473,8 +3473,7 @@ export default function Home() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          // Add API key if available
-          ...(process.env.NORDWHEEL_API_KEY && { 'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}` })
+          'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}`
         },
         body: JSON.stringify(requestData)
       });

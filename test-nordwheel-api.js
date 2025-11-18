@@ -6,13 +6,13 @@ const testNordWheelAPI = async () => {
     dispatch: {
       location: {
         type: 'terminal',
-        city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва
+        terminal_id: 91 // Москва terminal ID from old API
       }
     },
     destination: {
       location: {
         type: 'terminal',
-        city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб
+        terminal_id: 92 // СПб terminal ID from old API
       }
     },
     cargo: {
@@ -39,8 +39,7 @@ const testNordWheelAPI = async () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // Add API key if available
-        ...(process.env.NORDWHEEL_API_KEY && { 'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}` })
+        'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'}`
       },
       body: JSON.stringify(requestData)
     });

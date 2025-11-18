@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96d884e2001uD7LA2RusExrc4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96d87de5001Qoiw67xS4gtOcl",
+  "type": "tool",
+  "callID": "call_53635481",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-api.js",
+      "description": "Test NordWheel API with the provided API key for authentication"
+    },
+    "output": "Отправка запроса к NordWheel API...\nURL: https://api.nordw.orog.ru/api/v1/calculate\nRequest data: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 10,\n    \"total_volume\": 1,\n    \"total_quantity\": 1\n  },\n  \"insurance\": 1000,\n  \"insurance_refuse\": false,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\nСтатус ответа: 400\nОшибка API: 400 Bad Request\nТело ошибки: {\"meta\":{\"id\":\"2b171251-3d39-40a4-822f-5c7a6a9daca0\",\"code\":1000,\"success\":false,\"response_time\":\"2025-11-18 12:16:20.530\",\"errors\":[\"Attempt to read property \\\"city_type_id\\\" on null\"]},\"data\":[]}\n",
+    "title": "node test-nordwheel-api.js",
+    "metadata": {
+      "output": "Отправка запроса к NordWheel API...\nURL: https://api.nordw.orog.ru/api/v1/calculate\nRequest data: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 10,\n    \"total_volume\": 1,\n    \"total_quantity\": 1\n  },\n  \"insurance\": 1000,\n  \"insurance_refuse\": false,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\nСтатус ответа: 400\nОшибка API: 400 Bad Request\nТело ошибки: {\"meta\":{\"id\":\"2b171251-3d39-40a4-822f-5c7a6a9daca0\",\"code\":1000,\"success\":false,\"response_time\":\"2025-11-18 12:16:20.530\",\"errors\":[\"Attempt to read property \\\"city_type_id\\\" on null\"]},\"data\":[]}\n",
+      "exit": 0,
+      "description": "Test NordWheel API with the provided API key for authentication"
+    },
+    "time": {
+      "start": 1763467363573,
+      "end": 1763467364805
+    }
+  }
+}

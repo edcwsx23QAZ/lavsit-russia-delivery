@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96d8c66d001kc6VbOfPe50jM4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96d8bb8b001S92MPXqnx0KDga",
+  "type": "tool",
+  "callID": "call_19851837",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "test-nordwheel-cities.js",
+      "newString": "// Тестовый скрипт для проверки NordWheel API - получение списка городов\nconst testNordWheelCities = async () => {\n  const apiUrl = 'https://api.nordw.orog.ru/api/v1/city-list';\n\n  try {\n    console.log('Получение списка городов NordWheel...');\n    const response = await fetch(apiUrl, {\n      headers: {\n        'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'}`\n      }\n    });\n\n    console.log('Статус ответа:', response.status);\n\n    if (!response.ok) {\n      console.error('Ошибка API:', response.status, response.statusText);\n      const errorText = await response.text();\n      console.error('Тело ошибки:', errorText);\n      return;\n    }\n\n    const data = await response.json();\n    console.log('Количество городов:', data.data?.length || 0);\n    console.log('Первые 10 городов:');\n    if (data.data && Array.isArray(data.data)) {\n      data.data.slice(0, 10).forEach(city => {\n        console.log(`- ${city.name} (${city.guid}) - type: ${city.city_type_id}`);\n      });\n    }\n\n  } catch (error) {\n    console.error('Ошибка соединения:', error);\n  }\n};\n\ntestNordWheelCities();",
+      "oldString": "// Тестовый скрипт для проверки NordWheel API - получение списка городов\nconst testNordWheelCities = async () => {\n  const apiUrl = 'https://api.nordw.orog.ru/api/v1/city-list';\n\n  try {\n    console.log('Получение списка городов NordWheel...');\n    const response = await fetch(apiUrl);\n\n    console.log('Статус ответа:', response.status);\n\n    if (!response.ok) {\n      console.error('Ошибка API:', response.status, response.statusText);\n      const errorText = await response.text();\n      console.error('Тело ошибки:', errorText);\n      return;\n    }\n\n    const data = await response.json();\n    console.log('Количество городов:', data.data?.length || 0);\n    console.log('Первые 5 городов:');\n    if (data.data && Array.isArray(data.data)) {\n      data.data.slice(0, 5).forEach(city => {\n        console.log(`- ${city.name} (${city.guid})`);\n      });\n    }\n\n  } catch (error) {\n    console.error('Ошибка соединения:', error);\n  }\n};\n\ntestNordWheelCities();"
+    },
+    "output": "",
+    "title": "test-nordwheel-cities.js",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-nordwheel-cities.js\n===================================================================\n--- /home/user/project/test-nordwheel-cities.js\n+++ /home/user/project/test-nordwheel-cities.js\n@@ -3,9 +3,13 @@\n const apiUrl = 'https://api.nordw.orog.ru/api/v1/city-list';\n \n try {\n   console.log('Получение списка городов NordWheel...');\n-  const response = await fetch(apiUrl);\n+  const response = await fetch(apiUrl, {\n+    headers: {\n+      'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'}`\n+    }\n+  });\n \n   console.log('Статус ответа:', response.status);\n \n   if (!response.ok) {\n@@ -16,12 +20,12 @@\n   }\n \n   const data = await response.json();\n   console.log('Количество городов:', data.data?.length || 0);\n-  console.log('Первые 5 городов:');\n+  console.log('Первые 10 городов:');\n   if (data.data && Array.isArray(data.data)) {\n-    data.data.slice(0, 5).forEach(city => {\n-      console.log(`- ${city.name} (${city.guid})`);\n+    data.data.slice(0, 10).forEach(city => {\n+      console.log(`- ${city.name} (${city.guid}) - type: ${city.city_type_id}`);\n     });\n   }\n \n } catch (error) {\n"
+    },
+    "time": {
+      "start": 1763467380335,
+      "end": 1763467380343
+    }
+  }
+}
