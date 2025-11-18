@@ -1,20 +1,50 @@
 [
   {
-    "content": "Обновить токен Возовоз на sBDUaEmzVBO6syQWHvHxmjxJQiON2BZplQaqrU3N",
-    "id": "update_vozovoz_token",
+    "content": "Fix syntax errors in app/page.tsx (missing closing braces and async keywords)",
+    "id": "fix-syntax-errors",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Добавить систему индикации проблем с токенами для каждой ТК",
-    "id": "add_token_status_indicators",
+    "content": "Add missing catch block and closing brace to calculateNordWheel function",
+    "id": "fix-calculatenordwheel",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Исправить синтаксические ошибки в app/page.tsx",
-    "id": "fix_syntax_errors",
+    "content": "Add missing async keyword to calculateCdek function declaration",
+    "id": "fix-calculatecdek",
     "priority": "high",
     "status": "completed"
+  },
+  {
+    "content": "Run npm run build to verify all compilation errors are resolved",
+    "id": "verify-build",
+    "priority": "high",
+    "status": "completed"
+  },
+  {
+    "content": "Start development server with npm run dev",
+    "id": "start-dev-server",
+    "priority": "high",
+    "status": "completed"
+  },
+  {
+    "content": "Test NordWheel API integration in the application interface",
+    "id": "test-nordwheel-api",
+    "priority": "medium",
+    "status": "pending"
+  },
+  {
+    "content": "Test all transport company calculations (Dellin, PEK, CDEK, KIT, etc.)",
+    "id": "test-all-calculations",
+    "priority": "medium",
+    "status": "pending"
+  },
+  {
+    "content": "Verify form data persistence and localStorage functionality",
+    "id": "verify-form-persistence",
+    "priority": "low",
+    "status": "pending"
   }
 ]

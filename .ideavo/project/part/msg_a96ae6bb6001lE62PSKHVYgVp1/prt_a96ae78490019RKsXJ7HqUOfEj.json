@@ -1,0 +1,24 @@
+{
+  "id": "prt_a96ae78490019RKsXJ7HqUOfEj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96ae6bb6001lE62PSKHVYgVp1",
+  "type": "tool",
+  "callID": "call_15297488",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "parseCalculationDetails"
+    },
+    "output": "Found 4 matches\n/home/user/project/app/page.tsx:\n  Line 3877:   const parseCalculationDetails = (calc: CalculationResult) => {\n  Line 3878:     console.log('🔍 parseCalculationDetails получил calc:', calc?.company || 'undefined');\n  Line 4245:     console.error('❌ ГЛОБАЛЬНАЯ ОШИБКА в parseCalculationDetails:', globalError);\n  Line 4765:                                   const details = parseCalculationDetails(calc);",
+    "title": "parseCalculationDetails",
+    "metadata": {
+      "matches": 4,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763464607820,
+      "end": 1763464607834
+    }
+  }
+}

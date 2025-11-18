@@ -1,0 +1,24 @@
+{
+  "id": "prt_a96af38f6001G5FKfPX7pzmk7W",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96af310a001MRei7350DyWJOF",
+  "type": "tool",
+  "callID": "call_12458034",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "const handleCalculate"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 3751:   const handleCalculate = async () => {",
+    "title": "const handleCalculate",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763464657145,
+      "end": 1763464657155
+    }
+  }
+}

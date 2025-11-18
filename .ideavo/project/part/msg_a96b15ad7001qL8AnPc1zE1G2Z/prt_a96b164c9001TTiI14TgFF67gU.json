@@ -1,0 +1,21 @@
+{
+  "id": "prt_a96b164c9001TTiI14TgFF67gU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96b15ad7001qL8AnPc1zE1G2Z",
+  "type": "tool",
+  "callID": "call_72694572",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "  const calculateCdek = async (): Promise<CalculationResult> => {",
+      "oldString": "  const calculateCdek = (): Promise<CalculationResult> => {"
+    },
+    "error": "Error: oldString not found in content",
+    "time": {
+      "start": 1763464799434,
+      "end": 1763464799464
+    }
+  }
+}

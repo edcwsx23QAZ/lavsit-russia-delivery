@@ -1,0 +1,21 @@
+{
+  "id": "prt_a96af8591001zAJ4htiwtzjrJ9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96af7150001cIEWBqUnjvrBEk",
+  "type": "tool",
+  "callID": "call_99963246",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "       });\n\n       const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n   const result = await enhancedApiRequest(\n     fullUrl,\n     {\n       method: 'GET'\n     },\n     { operation: 'calculate', company: 'Nord Wheel' }\n   );\n\n   if (result && typeof result === 'object' && 'success' in result && !result.success) {\n     console.error('❌ Nord Wheel API ошибка:', result.error);\n     return {\n       company: 'Nord Wheel',\n       price: 0,\n       days: 0,\n       error: result.error.userMessage || result.error.message,\n       requestData: params,\n       responseData: null,\n       apiUrl: fullUrl\n     };\n   }\n\n  const response = result as Response;\n  const data = await response.json();\n     \n     if (response.ok && data.status === 'success') {\n       return { success: true };\n     } else {\n       return { error: true };\n     }\n   } catch (error) {\n     return { error: true };\n   }\n };\n\n const calculateCdek = async (): Promise<CalculationResult> => {",
+      "oldString": "       });\n\n       const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n   const result = await enhancedApiRequest(\n     fullUrl,\n     {\n       method: 'GET'\n     },\n     { operation: 'calculate', company: 'Nord Wheel' }\n   );\n\n   if (result && typeof result === 'object' && 'success' in result && !result.success) {\n     console.error('❌ Nord Wheel API ошибка:', result.error);\n     return {\n       company: 'Nord Wheel',\n       price: 0,\n       days: 0,\n       error: result.error.userMessage || result.error.message,\n       requestData: params,\n       responseData: null,\n       apiUrl: fullUrl\n     };\n   }\n\n  const response = result as Response;\n  const data = await response.json();\n     \n     if (response.ok && data.status === 'success') {\n       return { success: true };\n     } else {\n       return { error: true };\n     }\n   } catch (error) {\n     return { error: true };\n   }\n };\n\n const calculateCdek = async (): Promise<CalculationResult> => {"
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1763464676754,
+      "end": 1763464676755
+    }
+  }
+}

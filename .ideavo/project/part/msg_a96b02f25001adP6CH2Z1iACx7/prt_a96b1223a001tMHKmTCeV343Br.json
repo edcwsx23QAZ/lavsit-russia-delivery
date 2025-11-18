@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96b1223a001tMHKmTCeV343Br",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96b02f25001adP6CH2Z1iACx7",
+  "type": "tool",
+  "callID": "call_20603921",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "      });\n\n      // 🔧 ДОБАВЛЕНО: Отправка запроса к NordWheel API\n      console.log('🚛 Nord Wheel запрос:', params);\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/x-www-form-urlencoded',\n        },\n        body: params.toString()\n      });\n\n      if (!response.ok) {\n        console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: `Ошибка API: ${response.status} ${response.statusText}`,\n          apiUrl\n        };\n      }\n\n      const data = await response.json();\n      console.log('🚛 Nord Wheel ответ:', data);\n\n      if (data.success && data.data) {\n        const price = data.data.total_cost || 0;\n        const days = data.data.delivery_time || 0;\n\n        return {\n          company: 'Nord Wheel',\n          price: Math.round(price),\n          days: days,\n          details: {\n            totalCost: price,\n            deliveryCost: data.data.delivery_cost,\n            terminalCost: data.data.terminal_cost,\n            pickupCost: data.data.pickup_cost,\n            deliveryToDoorCost: data.data.delivery_to_door_cost,\n            additionalServices: data.data.additional_services\n          },\n          requestData: Object.fromEntries(params),\n          responseData: data,\n          apiUrl\n        };\n      } else {\n        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: data.message || 'Ошибка расчета Nord Wheel',\n          requestData: Object.fromEntries(params),\n          responseData: data,\n          apiUrl\n        };\n      }\n    } catch (error: any) {\n      console.error('🚛 Nord Wheel ошибка:', error);\n      return {\n        company: 'Nord Wheel',\n        price: 0,\n        days: 0,\n        error: `Ошибка соединения: ${error.message}`,\n        apiUrl\n      };\n    }\n  };",
+      "oldString": "      });\n\n   const calculateCdek = async (): Promise<CalculationResult> => {"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3466,9 +3466,75 @@\n       // 🔧 ДОБАВЛЕНО: API ключ NordWheel\n       api_key: '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'\n     });\n \n-const calculateCdek = async (): Promise<CalculationResult> => {\n+    // 🔧 ДОБАВЛЕНО: Отправка запроса к NordWheel API\n+    console.log('🚛 Nord Wheel запрос:', params);\n+\n+    const response = await fetch(apiUrl, {\n+      method: 'POST',\n+      headers: {\n+        'Content-Type': 'application/x-www-form-urlencoded',\n+      },\n+      body: params.toString()\n+    });\n+\n+    if (!response.ok) {\n+      console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n+      return {\n+        company: 'Nord Wheel',\n+        price: 0,\n+        days: 0,\n+        error: `Ошибка API: ${response.status} ${response.statusText}`,\n+        apiUrl\n+      };\n+    }\n+\n+    const data = await response.json();\n+    console.log('🚛 Nord Wheel ответ:', data);\n+\n+    if (data.success && data.data) {\n+      const price = data.data.total_cost || 0;\n+      const days = data.data.delivery_time || 0;\n+\n+      return {\n+        company: 'Nord Wheel',\n+        price: Math.round(price),\n+        days: days,\n+        details: {\n+          totalCost: price,\n+          deliveryCost: data.data.delivery_cost,\n+          terminalCost: data.data.terminal_cost,\n+          pickupCost: data.data.pickup_cost,\n+          deliveryToDoorCost: data.data.delivery_to_door_cost,\n+          additionalServices: data.data.additional_services\n+        },\n+        requestData: Object.fromEntries(params),\n+        responseData: data,\n+        apiUrl\n+      };\n+    } else {\n+      return {\n+        company: 'Nord Wheel',\n+        price: 0,\n+        days: 0,\n+        error: data.message || 'Ошибка расчета Nord Wheel',\n+        requestData: Object.fromEntries(params),\n+        responseData: data,\n+        apiUrl\n+      };\n+    }\n+  } catch (error: any) {\n+    console.error('🚛 Nord Wheel ошибка:', error);\n+    return {\n+      company: 'Nord Wheel',\n+      price: 0,\n+      days: 0,\n+      error: `Ошибка соединения: ${error.message}`,\n+      apiUrl\n+    };\n+  }\n+};\n   const apiUrl = '/api/cdek';\n   \n   try {\n     validateMultipleCargos(form.cargos);\n"
+    },
+    "time": {
+      "start": 1763464782396,
+      "end": 1763464782419
+    }
+  }
+}

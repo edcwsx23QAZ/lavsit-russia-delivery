@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96b19154001GOpjJwy3yundI5",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96b189e80018JhfdmK5P51saJ",
+  "type": "tool",
+  "callID": "call_35960770",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "  const calculateCdek = async (): Promise<CalculationResult> => {\n    const apiUrl = '/api/cdek';",
+      "oldString": "  const apiUrl = '/api/cdek';"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3533,8 +3533,9 @@\n       apiUrl\n     };\n   }\n };\n+  const calculateCdek = async (): Promise<CalculationResult> => {\n   const apiUrl = '/api/cdek';\n   \n   try {\n     validateMultipleCargos(form.cargos);\n"
+    },
+    "time": {
+      "start": 1763464810837,
+      "end": 1763464810854
+    }
+  }
+}

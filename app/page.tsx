@@ -3467,7 +3467,74 @@ export default function Home() {
         api_key: '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'
       });
 
-  const calculateCdek = async (): Promise<CalculationResult> => {
+      // 🔧 ДОБАВЛЕНО: Отправка запроса к NordWheel API
+      console.log('🚛 Nord Wheel запрос:', params);
+
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: params.toString()
+      });
+
+      if (!response.ok) {
+        console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);
+        return {
+          company: 'Nord Wheel',
+          price: 0,
+          days: 0,
+          error: `Ошибка API: ${response.status} ${response.statusText}`,
+          apiUrl
+        };
+      }
+
+      const data = await response.json();
+      console.log('🚛 Nord Wheel ответ:', data);
+
+      if (data.success && data.data) {
+        const price = data.data.total_cost || 0;
+        const days = data.data.delivery_time || 0;
+
+        return {
+          company: 'Nord Wheel',
+          price: Math.round(price),
+          days: days,
+          details: {
+            totalCost: price,
+            deliveryCost: data.data.delivery_cost,
+            terminalCost: data.data.terminal_cost,
+            pickupCost: data.data.pickup_cost,
+            deliveryToDoorCost: data.data.delivery_to_door_cost,
+            additionalServices: data.data.additional_services
+          },
+          requestData: Object.fromEntries(params),
+          responseData: data,
+          apiUrl
+        };
+      } else {
+        return {
+          company: 'Nord Wheel',
+          price: 0,
+          days: 0,
+          error: data.message || 'Ошибка расчета Nord Wheel',
+          requestData: Object.fromEntries(params),
+          responseData: data,
+          apiUrl
+        };
+      }
+    } catch (error: any) {
+      console.error('🚛 Nord Wheel ошибка:', error);
+      return {
+        company: 'Nord Wheel',
+        price: 0,
+        days: 0,
+        error: `Ошибка соединения: ${error.message}`,
+        apiUrl
+      };
+    }
+  };
+    const calculateCdek = async (): Promise<CalculationResult> => {
     const apiUrl = '/api/cdek';
     
     try {

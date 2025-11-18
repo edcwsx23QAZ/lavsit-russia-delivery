@@ -1,0 +1,26 @@
+{
+  "id": "prt_a96aec429001Nc1ec7q9hB2rB3",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96aebb7e001A54HCQ373Ro01W",
+  "type": "tool",
+  "callID": "call_55079123",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "        });\n      }\n      }\n    } else if (calc.company === 'Nord Wheel' && calc.details) {",
+      "oldString": "        });\n      }\n    } else if (calc.company === 'Nord Wheel' && calc.details) {"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3991,8 +3991,9 @@\n       description: 'Дополнительные сборы и корректировки',\n       price: remainder\n     });\n   }\n+  }\n } else if (calc.company === 'Nord Wheel' && calc.details) {\n   // Расшифровка для Nord Wheel согласно требованиям\n   if (calc.details.totalCost) {\n     details.push({\n"
+    },
+    "time": {
+      "start": 1763464627243,
+      "end": 1763464627271
+    }
+  }
+}

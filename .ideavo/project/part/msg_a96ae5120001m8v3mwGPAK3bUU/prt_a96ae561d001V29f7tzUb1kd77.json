@@ -1,0 +1,24 @@
+{
+  "id": "prt_a96ae561d001V29f7tzUb1kd77",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_a96ae5120001m8v3mwGPAK3bUU",
+  "type": "tool",
+  "callID": "call_40355823",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "export default"
+    },
+    "output": "Found 27 matches\n/home/user/project/app/page.tsx:\n  Line 111: export default function Home() {\n\n/home/user/project/components/diagnostic/ApiMasterTab.tsx:\n  Line 640: export default ApiMasterTab;\n\n/home/user/project/app/diagnostic/page.tsx:\n  Line 377: export default function OptimizedDiagnosticPage() {\n\n/home/user/project/components/diagnostic/TechnicalDocumentation.tsx:\n  Line 886: export default TechnicalDocumentation;\n\n/home/user/project/components/diagnostic/SentryMonitor.tsx:\n  Line 43: export default function SentryMonitor({ className }: SentryMonitorProps) {\n\n/home/user/project/components/ClientDevUtils.tsx:\n  Line 5: export default function ClientDevUtils() {\n\n/home/user/project/components/ErrorFallback.tsx:\n  Line 13: export default function ErrorFallback({\n\n/home/user/project/components/ServiceWorkerRegistration.tsx:\n  Line 5: export default function ServiceWorkerRegistration() {\n\n/home/user/project/components/diagnostic/ApiTestingSection.tsx:\n  Line 134: export default ApiTestingSection;\n\n/home/user/project/components/diagnostic/DiagnosticHeader.tsx:\n  Line 94: export default DiagnosticHeader;\n\n/home/user/project/app/layout.tsx:\n  Line 14: export default function RootLayout({\n\n/home/user/project/components/diagnostic/PerformanceDashboard.tsx:\n  Line 115: export default function PerformanceDashboard({ className }: PerformanceDashboardProps) {\n\n/home/user/project/components/diagnostic/TestRunner.tsx:\n  Line 63: export default function TestRunner({ className }: TestRunnerProps) {\n\n/home/user/project/components/diagnostic/ManualTesting.tsx:\n  Line 275: export default function ManualTesting() {\n\n/home/user/project/app/layout-dev.tsx:\n  Line 14: export default function DevRootLayout({\n\n/home/user/project/components/diagnostic/FullTestingResults.tsx:\n  Line 200: export default FullTestingResults;\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 12: export default function DiagnosticPage() {\n\n/home/user/project/app/diagnostic/optimized-page.tsx:\n  Line 10: export default function OptimizedDiagnosticPage() {\n\n/home/user/project/components/diagnostic/VehicleManagement.tsx:\n  Line 228: export default VehicleManagement;\n\n/home/user/project/OPTIMIZATION_PLAN.md:\n  Line 105: export default React.memo(TruckVisualization);\n  Line 106: export default React.memo(ProductSearch);\n\n/home/user/project/components/ProductSearch.tsx:\n  Line 17: export default function ProductSearch({ onProductAdd, disabled = false }: ProductSearchProps) {\n\n/home/user/project/components/TruckVisualization.tsx:\n  Line 67: export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {\n\n/home/user/project/components/ProductManager.tsx:\n  Line 19: export default function ProductManager({ \n\n/home/user/project/app/pek-test/page.tsx:\n  Line 9: export default function PekTestPage() {\n\n/home/user/project/tailwind.config.ts:\n  Line 90: export default config;\n\n/home/user/project/app/env-check/page.tsx:\n  Line 17: export default function EnvCheckPage() {",
+    "title": "export default",
+    "metadata": {
+      "matches": 27,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763464599074,
+      "end": 1763464599085
+    }
+  }
+}
