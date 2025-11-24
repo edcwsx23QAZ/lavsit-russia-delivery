@@ -1,0 +1,21 @@
+{
+  "id": "prt_ab443c895001Gq6uZhmzP826t0",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab443b93b002X4G3qfz3HHOyda",
+  "type": "tool",
+  "callID": "call_5df73237fb4346769805e040",
+  "tool": "webfetch",
+  "state": {
+    "status": "error",
+    "input": {
+      "url": "https://nordw.orog.ru/docs/api",
+      "format": "text",
+      "timeout": 10000
+    },
+    "error": "Error: Unable to connect. Is the computer able to access the url?",
+    "time": {
+      "start": 1763960932503,
+      "end": 1763960932695
+    }
+  }
+}

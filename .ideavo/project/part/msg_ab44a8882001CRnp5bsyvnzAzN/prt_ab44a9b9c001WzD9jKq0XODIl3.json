@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab44a9b9c001WzD9jKq0XODIl3",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab44a8882001CRnp5bsyvnzAzN",
+  "type": "tool",
+  "callID": "call_4c031a6dcb50441782b41e2a",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 3640
+    },
+    "output": "<file>\n03641| \n03642|       const response = await fetch(apiUrl, {\n03643|         method: 'POST',\n03644|         headers: {\n03645|           'Content-Type': 'application/json',\n03646|           'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}`\n03647|         },\n03648|         body: JSON.stringify(requestData)\n03649|       });\n03650| \n03651|       if (!response.ok) {\n03652|         console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n03653|         const errorDetails = response.status === 401 ? 'Неверный API ключ' :\n03654|                             response.status === 400 ? 'Неверный запрос' :\n03655|                             response.status === 404 ? 'Город не найден' :\n03656|                             response.status === 500 ? 'Внутренняя ошибка сервера' :\n03657|                             `Ошибка API: ${response.status} ${response.statusText}`;\n03658|         \n03659|         return {\n03660|           company: 'Nord Wheel',\n03661|           price: 0,\n03662|           days: 0,\n03663|           error: errorDetails,\n03664|           apiUrl,\n03665|           requestData\n03666|         };\n03667|       }\n03668| \n03669|       const data = await response.json();\n03670|       console.log('🚛 Nord Wheel API ответ:', data);\n\n(File has more lines. Use 'offset' parameter to read beyond line 3670)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}`\n        },\n        body: JSON.stringify(requestData)\n      });\n\n      if (!response.ok) {\n        console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n        const errorDetails = response.status === 401 ? 'Неверный API ключ' :\n                            response.status === 400 ? 'Неверный запрос' :\n                            response.status === 404 ? 'Город не найден' :\n                            response.status === 500 ? 'Внутренняя ошибка сервера' :\n                            `Ошибка API: ${response.status} ${response.statusText}`;\n        \n        return {\n          company: 'Nord Wheel',"
+    },
+    "time": {
+      "start": 1763961379742,
+      "end": 1763961379746
+    }
+  }
+}

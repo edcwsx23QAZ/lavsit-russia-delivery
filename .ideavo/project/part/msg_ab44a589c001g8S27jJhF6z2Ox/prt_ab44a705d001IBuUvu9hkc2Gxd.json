@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab44a705d001IBuUvu9hkc2Gxd",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab44a589c001g8S27jJhF6z2Ox",
+  "type": "tool",
+  "callID": "call_41572334b8344cdbad5fd365",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 3660
+    },
+    "output": "<file>\n03661|           price: 0,\n03662|           days: 0,\n03663|           error: errorDetails,\n03664|           apiUrl,\n03665|           requestData\n03666|         };\n03667|       }\n03668| \n03669|       const data = await response.json();\n03670|       console.log('🚛 Nord Wheel API ответ:', data);\n03671| \n03672|       // Nord Wheel возвращает массив авиатарифов\n03673|       let price = 0;\n03674|       let days = 0;\n03675|       let details: any = {};\n03676| \n03677|       if (data.success && Array.isArray(data.data) && data.data.length > 0) {\n03678|         // Формат авиатарифов Nord Wheel\n03679|         const airlineTariff = data.data[0]; // Берем первый тариф\n03680|         price = parseFloat(airlineTariff.price) || 0;\n03681|         days = 1; // Авиаперевозки обычно 1 день\n03682|         details = {\n03683|           airlineId: airlineTariff.airline_id,\n03684|           airportFromId: airlineTariff.airport_from_id,\n03685|           airportToId: airlineTariff.airport_to_id,\n03686|           minPaidWeight: airlineTariff.min_paid_weight || 25,\n03687|           originalWeight: totalWeight,\n03688|           adjustedWeight: adjustedWeight,\n03689|           currency: 'RUB',\n03690|           transportType: 'aviation'\n03691|         };\n03692|         \n03693|         console.log(`✈️ Nord Wheel авиатариф: ${price}₽ (вес: ${adjustedWeight}кг, аэропорты: ${airlineTariff.airport_from_id}→${airlineTariff.airport_to_id})`);\n03694|       } else if (data.success) {\n03695|         // Альтернативный формат ответа\n03696|         price = data.price || data.total_cost || data.cost || 0;\n03697|         days = data.days || data.delivery_days || data.delivery_time || 0;\n03698|         details = {\n03699|           totalCost: price,\n03700|           deliveryCost: data.delivery_cost || 0,\n03701|           pickupCost: data.pickup_cost || 0,\n03702|           services: data.services || [],\n03703|           currency: data.currency || 'RUB'\n03704|         };\n03705|       } else if (data.price !== undefined) {\n03706|         // Альтернативный формат ответа\n03707|         price = data.price;\n03708|         days = data.days || data.delivery_time || 0;\n03709|         details = {\n03710|           totalCost: price,\n\n(File has more lines. Use 'offset' parameter to read beyond line 3710)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "          price: 0,\n          days: 0,\n          error: errorDetails,\n          apiUrl,\n          requestData\n        };\n      }\n\n      const data = await response.json();\n      console.log('🚛 Nord Wheel API ответ:', data);\n\n      // Nord Wheel возвращает массив авиатарифов\n      let price = 0;\n      let days = 0;\n      let details: any = {};\n\n      if (data.success && Array.isArray(data.data) && data.data.length > 0) {\n        // Формат авиатарифов Nord Wheel\n        const airlineTariff = data.data[0]; // Берем первый тариф\n        price = parseFloat(airlineTariff.price) || 0;"
+    },
+    "time": {
+      "start": 1763961368671,
+      "end": 1763961368676
+    }
+  }
+}

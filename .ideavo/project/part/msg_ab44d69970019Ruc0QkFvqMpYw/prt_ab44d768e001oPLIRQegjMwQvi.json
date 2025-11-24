@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab44d768e001oPLIRQegjMwQvi",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab44d69970019Ruc0QkFvqMpYw",
+  "type": "tool",
+  "callID": "call_7b656c98ed9f46dca0bea0a2",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "sleep 5 && echo \"Server should be running on http://localhost:3000\"",
+      "description": "Wait for server to start"
+    },
+    "output": "Server should be running on http://localhost:3000\n",
+    "title": "sleep 5 && echo \"Server should be running on http://localhost:3000\"",
+    "metadata": {
+      "output": "Server should be running on http://localhost:3000\n",
+      "exit": 0,
+      "description": "Wait for server to start"
+    },
+    "time": {
+      "start": 1763961566866,
+      "end": 1763961571881
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "prt_ab4686ef0001OqbkLzdDCa7VZQ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab46835a1002Cii5IymDmeuv5P",
+  "type": "tool",
+  "callID": "call_e7a2cb26a99145fca75884d0",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "limit": 50
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import React, { useState } from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Slider } from '@/components/ui/slider';\n00007| import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';\n00008| import { Truck, Move, RotateCw as Rotate3d, ChevronDown } from 'lucide-react';\n00009| \n00010| interface Cargo {\n00011|   id: string;\n00012|   length: number; // в мм\n00013|   width: number;  // в мм\n00014|   height: number; // в мм\n00015|   weight: number;\n00016|   productName?: string;\n00017| }\n00018| \n00019| interface Orientation {\n00020|   length: number;\n00021|   width: number;\n00022|   height: number;\n00023|   rotationAngle: number; // в градусах\n00024|   flipped: boolean; // перевернут ли груз по высоте\n00025| }\n00026| \n00027| interface CargoPlacement {\n00028|   cargo: Cargo;\n00029|   x: number;\n00030|   y: number;\n00031|   z: number;\n00032|   orientation: Orientation;\n00033|   color: string;\n00034|   projectedVertices: Array<{x: number, y: number}>; // Для 3D отображения\n00035| }\n00036| \n00037| interface TruckVisualizationProps {\n00038|   cargos: Cargo[];\n00039|   isVisible?: boolean;\n00040| }\n00041| \n00042| // Типы автомобилей\n00043| const VEHICLE_TYPES = {\n00044|   'ford-transit': {\n00045|     name: 'Форд Транзит',\n00046|     dimensions: { length: 4200, width: 2025, height: 2025 }\n00047|   },\n00048|   'truck-18m3': {\n00049|     name: 'Фура 18м3',\n00050|     dimensions: { length: 4200, width: 2200, height: 2000 }\n\n(File has more lines. Use 'offset' parameter to read beyond line 50)\n</file>",
+    "title": "components/TruckVisualization.tsx",
+    "metadata": {
+      "preview": "'use client';\n\nimport React, { useState } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Slider } from '@/components/ui/slider';\nimport { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';\nimport { Truck, Move, RotateCw as Rotate3d, ChevronDown } from 'lucide-react';\n\ninterface Cargo {\n  id: string;\n  length: number; // в мм\n  width: number;  // в мм\n  height: number; // в мм\n  weight: number;\n  productName?: string;\n}\n\ninterface Orientation {\n  length: number;"
+    },
+    "time": {
+      "start": 1763963334387,
+      "end": 1763963334391
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab44a44ff001ychBGGi7cF7949",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab44a306a001vt0gBTdt4ciFTg",
+  "type": "tool",
+  "callID": "call_bf1cfc1a18eb402fa1feef63",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        cargo: {\n          total_weight: adjustedWeight,\n          total_volume: Math.round(totalVolume * 100) / 100, // Округляем до 2 знаков\n          total_quantity: form.cargos.length\n        },\n        services: {\n          is_package: form.needPackaging,\n          is_documents_return: false,\n          is_fragile: false\n        },\n        promocode: null",
+      "newString": "        cargo: {\n          total_weight: adjustedWeight,\n          total_volume: Math.round(totalVolume * 100) / 100, // Округляем до 2 знаков\n          total_quantity: form.cargos.length\n        },\n        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : null,\n        insurance_refuse: !form.needInsurance,\n        services: {\n          is_package: form.needPackaging,\n          is_documents_return: false,\n          is_fragile: false\n        },\n        promocode: null"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3622,8 +3622,10 @@\n   total_weight: adjustedWeight,\n   total_volume: Math.round(totalVolume * 100) / 100, // Округляем до 2 знаков\n   total_quantity: form.cargos.length\n },\n+insurance: form.needInsurance && form.declaredValue ? form.declaredValue : null,\n+insurance_refuse: !form.needInsurance,\n services: {\n   is_package: form.needPackaging,\n   is_documents_return: false,\n   is_fragile: false\n"
+    },
+    "time": {
+      "start": 1763961357571,
+      "end": 1763961357594
+    }
+  }
+}

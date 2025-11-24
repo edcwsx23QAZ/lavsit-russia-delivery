@@ -1,0 +1,23 @@
+{
+  "id": "prt_ab4682dfb0010gVxqvYRKWDvyv",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab4681f820012j3K5e6aA7jvkl",
+  "type": "tool",
+  "callID": "call_282c6cb55d4d43e093ee5ab3",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/package.json"
+    },
+    "output": "<file>\n00001| {\n00002|   \"name\": \"ideavo-nextjs\",\n00003|   \"version\": \"0.1.0\",\n00004|   \"private\": true,\n00005|   \"scripts\": {\n00006|     \"dev\": \"next dev\",\n00007|     \"build\": \"next build\",\n00008|     \"start\": \"next start\",\n00009|     \"db:studio\": \"prisma studio\",\n00010|     \"db:seed\": \"prisma db seed\"\n00011|   },\n00012|   \"dependencies\": {\n00013|     \"@hookform/resolvers\": \"3.9.1\",\n00014|     \"@prisma/client\": \"^5.22.0\",\n00015|     \"@radix-ui/react-accordion\": \"^1.2.0\",\n00016|     \"@radix-ui/react-alert-dialog\": \"^1.1.1\",\n00017|     \"@radix-ui/react-aspect-ratio\": \"^1.1.0\",\n00018|     \"@radix-ui/react-avatar\": \"^1.1.0\",\n00019|     \"@radix-ui/react-checkbox\": \"^1.1.1\",\n00020|     \"@radix-ui/react-collapsible\": \"^1.1.0\",\n00021|     \"@radix-ui/react-context-menu\": \"^2.2.1\",\n00022|     \"@radix-ui/react-dialog\": \"^1.1.1\",\n00023|     \"@radix-ui/react-dropdown-menu\": \"^2.1.1\",\n00024|     \"@radix-ui/react-hover-card\": \"^1.1.1\",\n00025|     \"@radix-ui/react-label\": \"^2.1.0\",\n00026|     \"@radix-ui/react-menubar\": \"^1.1.1\",\n00027|     \"@radix-ui/react-navigation-menu\": \"^1.2.0\",\n00028|     \"@radix-ui/react-popover\": \"^1.1.1\",\n00029|     \"@radix-ui/react-progress\": \"^1.1.7\",\n00030|     \"@radix-ui/react-radio-group\": \"^1.2.0\",\n00031|     \"@radix-ui/react-scroll-area\": \"^1.1.0\",\n00032|     \"@radix-ui/react-select\": \"^2.1.1\",\n00033|     \"@radix-ui/react-separator\": \"^1.1.0\",\n00034|     \"@radix-ui/react-slider\": \"^1.2.0\",\n00035|     \"@radix-ui/react-slot\": \"^1.1.0\",\n00036|     \"@radix-ui/react-switch\": \"^1.1.0\",\n00037|     \"@radix-ui/react-tabs\": \"^1.1.0\",\n00038|     \"@radix-ui/react-toast\": \"^1.2.1\",\n00039|     \"@radix-ui/react-toggle\": \"^1.1.0\",\n00040|     \"@radix-ui/react-toggle-group\": \"^1.1.0\",\n00041|     \"@radix-ui/react-tooltip\": \"^1.1.2\",\n00042|     \"@supabase/supabase-js\": \"^2.52.0\",\n00043|     \"autoprefixer\": \"10.4.20\",\n00044|     \"class-variance-authority\": \"0.7.1\",\n00045|     \"clsx\": \"2.1.1\",\n00046|     \"cmdk\": \"1.0.4\",\n00047|     \"date-fns\": \"3.6.0\",\n00048|     \"embla-carousel-react\": \"8.3.1\",\n00049|     \"input-otp\": \"1.4.1\",\n00050|     \"jsonwebtoken\": \"^9.0.2\",\n00051|     \"lucide-react\": \"0.454.0\",\n00052|     \"next\": \"^14.2.30\",\n00053|     \"next-themes\": \"0.4.3\",\n00054|     \"postcss\": \"8.4.47\",\n00055|     \"prisma\": \"^5.22.0\",\n00056|     \"react\": \"18.3.1\",\n00057|     \"react-day-picker\": \"8.10.1\",\n00058|     \"react-dom\": \"18.3.1\",\n00059|     \"react-hook-form\": \"7.54.0\",\n00060|     \"react-resizable-panels\": \"2.1.7\",\n00061|     \"react-window\": \"^2.1.2\",\n00062|     \"recharts\": \"2.13.3\",\n00063|     \"sonner\": \"1.7.1\",\n00064|     \"tailwind-merge\": \"2.5.4\",\n00065|     \"tailwindcss\": \"3.4.13\",\n00066|     \"tailwindcss-animate\": \"1.0.7\",\n00067|     \"typescript\": \"5.5.4\",\n00068|     \"use-debounce\": \"^10.0.6\",\n00069|     \"uuid\": \"^11.1.0\",\n00070|     \"vaul\": \"1.1.2\",\n00071|     \"web-vitals\": \"^5.1.0\",\n00072|     \"zod\": \"^3.23.8\"\n00073|   },\n00074|   \"devDependencies\": {\n00075|     \"@types/jsonwebtoken\": \"9.0.10\",\n00076|     \"@types/node\": \"22.7.4\",\n00077|     \"@types/react\": \"18.3.11\",\n00078|     \"@types/react-dom\": \"18.3.1\",\n00079|     \"@types/uuid\": \"^10.0.0\"\n00080|   }\n00081| }\n00082| \n</file>",
+    "title": "package.json",
+    "metadata": {
+      "preview": "{\n  \"name\": \"ideavo-nextjs\",\n  \"version\": \"0.1.0\",\n  \"private\": true,\n  \"scripts\": {\n    \"dev\": \"next dev\",\n    \"build\": \"next build\",\n    \"start\": \"next start\",\n    \"db:studio\": \"prisma studio\",\n    \"db:seed\": \"prisma db seed\"\n  },\n  \"dependencies\": {\n    \"@hookform/resolvers\": \"3.9.1\",\n    \"@prisma/client\": \"^5.22.0\",\n    \"@radix-ui/react-accordion\": \"^1.2.0\",\n    \"@radix-ui/react-alert-dialog\": \"^1.1.1\",\n    \"@radix-ui/react-aspect-ratio\": \"^1.1.0\",\n    \"@radix-ui/react-avatar\": \"^1.1.0\",\n    \"@radix-ui/react-checkbox\": \"^1.1.1\",\n    \"@radix-ui/react-collapsible\": \"^1.1.0\","
+    },
+    "time": {
+      "start": 1763963317760,
+      "end": 1763963317766
+    }
+  }
+}

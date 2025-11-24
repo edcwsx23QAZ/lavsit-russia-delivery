@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab4465d93001qcOLThfiHDICSY",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab4462157001hKE5OuM1f0QAYb",
+  "type": "tool",
+  "callID": "call_bc0bfafc657549f49a6ac3a6",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/test-nordwheel-api.js",
+      "oldString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'terminal',\n        terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224', // GUID терминала Москвы\n        city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // FIAS код Москвы\n      }\n    },\n    destination: {\n      location: {\n        type: 'terminal',\n        terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553', // GUID терминала СПб\n        city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // FIAS код СПб\n      }\n    },",
+      "newString": "  const requestData = {\n    dispatch: {\n      location: {\n        type: 'terminal',\n        terminal_id: '1', // ID аэропорта Москвы\n        city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // FIAS код Москвы\n      }\n    },\n    destination: {\n      location: {\n        type: 'terminal',\n        terminal_id: '24', // ID аэропорта СПб\n        city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // FIAS код СПб\n      }\n    },"
+    },
+    "output": "",
+    "title": "test-nordwheel-api.js",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-nordwheel-api.js\n===================================================================\n--- /home/user/project/test-nordwheel-api.js\n+++ /home/user/project/test-nordwheel-api.js\n@@ -5,16 +5,16 @@\n const requestData = {\n   dispatch: {\n     location: {\n       type: 'terminal',\n-      terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224', // GUID терминала Москвы\n+      terminal_id: '1', // ID аэропорта Москвы\n       city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // FIAS код Москвы\n     }\n   },\n   destination: {\n     location: {\n       type: 'terminal',\n-      terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553', // GUID терминала СПб\n+      terminal_id: '24', // ID аэропорта СПб\n       city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // FIAS код СПб\n     }\n   },\n   cargo: {\n"
+    },
+    "time": {
+      "start": 1763961101718,
+      "end": 1763961101726
+    }
+  }
+}

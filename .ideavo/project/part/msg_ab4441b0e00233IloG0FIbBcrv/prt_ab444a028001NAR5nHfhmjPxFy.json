@@ -1,0 +1,20 @@
+{
+  "id": "prt_ab444a028001NAR5nHfhmjPxFy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab4441b0e00233IloG0FIbBcrv",
+  "type": "tool",
+  "callID": "call_84d598eae4d14722895a2a02",
+  "tool": "write",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/test-nordwheel-api.js",
+      "content": "// Тестирование Nord Wheel API с разными форматами запросов\n\nconst API_URL = 'https://api.nordw.orog.ru/api/v1/calculate';\nconst API_KEY = '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950';\n\n// Тестовый запрос 1: Исправленный формат с insurance_value\nconst testRequest1 = {\n  dispatch: {\n    location: {\n      type: \"address\",\n      address: \"Московская область, Лосино-Петровский, деревня Осеево, 202\"\n    }\n  },\n  destination: {\n    location: {\n      type: \"address\", \n      address: \"Санкт-Петербург, Невский проспект, 132\"\n    }\n  },\n  cargo: {\n    total_weight: 388,\n    total_volume: 5.18, // Округлим до 2 знаков\n    total_quantity: 4\n  },\n  insurance_value: 87700, // Изменили имя поля\n  services: {\n    is_package: false,\n    is_documents_return: false,\n    is_fragile: false\n  }\n};\n\n// Тестовый запрос 2: Без страховки\nconst testRequest2 = {\n  dispatch: {\n    location: {\n      type: \"address\",\n      address: \"Московская область, Лосино-Петровский, деревня Осеево, 202\"\n    }\n  },\n  destination: {\n    location: {\n      type: \"address\",\n      address: \"Санкт-Петербург, Невский проспект, 132\"\n    }\n  },\n  cargo: {\n    total_weight: 388,\n    total_volume: 5.18,\n    total_quantity: 4\n  },\n  services: {\n    is_package: false,\n    is_documents_return: false,\n    is_fragile: false\n  }\n};\n\n// Тестовый запрос 3: Терминалы вместо адресов\nconst testRequest3 = {\n  dispatch: {\n    location: {\n      type: \"terminal\",\n      terminal_id: \"0c7a2795-1220-486d-a7ce-8bcf130a1224\"\n    }\n  },\n  destination: {\n    location: {\n      type: \"terminal\",\n      terminal_id: \"3ca02b62-3632-4da0-8fde-de9d9c77c553\"\n    }\n  },\n  cargo: {\n    total_weight: 388,\n    total_volume: 5.18,\n    total_quantity: 4\n  },\n  services: {\n    is_package: false,\n    is_documents_return: false,\n    is_fragile: false\n  }\n};\n\nasync function testRequest(requestData, testName) {\n  console.log(`\\n=== ${testName} ===`);\n  console.log('Request:', JSON.stringify(requestData, null, 2));\n  \n  try {\n    const response = await fetch(API_URL, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'Authorization': `Bearer ${API_KEY}`\n      },\n      body: JSON.stringify(requestData)\n    });\n    \n    console.log('Status:', response.status, response.statusText);\n    \n    const data = await response.json();\n    console.log('Response:', JSON.stringify(data, null, 2));\n    \n    return { success: response.ok, data };\n  } catch (error) {\n    console.error('Error:', error.message);\n    return { success: false, error: error.message };\n  }\n}\n\n// Запускаем тесты\nasync function runTests() {\n  console.log('Testing Nord Wheel API...');\n  \n  await testRequest(testRequest1, 'Test 1: С полем insurance_value');\n  await testRequest(testRequest2, 'Test 2: Без страховки');\n  await testRequest(testRequest3, 'Test 3: Терминалы');\n}\n\nrunTests().catch(console.error);"
+    },
+    "error": "Error: You must read the file /home/user/project/test-nordwheel-api.js before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1763960987691,
+      "end": 1763960987692
+    }
+  }
+}

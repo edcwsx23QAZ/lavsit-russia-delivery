@@ -1,0 +1,21 @@
+{
+  "id": "prt_ab449fd19001kWhj3haeHXQ8WU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab449a9f8001IZDOMULmTbiaj0",
+  "type": "tool",
+  "callID": "call_654dbcb75e254e628b868a96",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : 0,\n        insurance_refuse: !form.needInsurance,",
+      "newString": "        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : null,\n        insurance_refuse: !form.needInsurance,"
+    },
+    "error": "Error: oldString not found in content",
+    "time": {
+      "start": 1763961339164,
+      "end": 1763961339274
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab44c766b001j3FX7dA2lLqTZE",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab44c63ad0014HMeXF1K34GVJI",
+  "type": "text",
+  "text": "\nI see the issue - the API is returning HTML debug output instead of JSON when called from Node.js. This might be due to different headers or user agent. Let me modify the test to handle this and extract the JSON from the HTML response:",
+  "time": {
+    "start": 1763961528595,
+    "end": 1763961528595
+  }
+}

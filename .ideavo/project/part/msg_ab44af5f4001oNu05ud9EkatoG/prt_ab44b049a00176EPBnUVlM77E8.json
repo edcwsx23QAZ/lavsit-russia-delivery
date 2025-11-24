@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab44b049a00176EPBnUVlM77E8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab44af5f4001oNu05ud9EkatoG",
+  "type": "tool",
+  "callID": "call_dfa2d69f44bd4dd3b3464e12",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      const data = await response.json();\n      console.log('🚛 Nord Wheel API ответ:', data);",
+      "newString": ""
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3674,11 +3674,10 @@\n     requestData\n   };\n }\n \n-const data = await response.json();\n-console.log('🚛 Nord Wheel API ответ:', data);\n \n+\n // Nord Wheel возвращает массив авиатарифов\n let price = 0;\n let days = 0;\n let details: any = {};\n"
+    },
+    "time": {
+      "start": 1763961406621,
+      "end": 1763961406641
+    }
+  }
+}

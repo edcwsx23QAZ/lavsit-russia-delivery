@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab44d188b0014oMr0teVI4xcJh",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab44d0f690019nzBLRy6oVpfs4",
+  "type": "text",
+  "text": "\nThe issue is that the API returns HTML debug dump when called from Node.js environment. This is likely because the server detects different user agent or headers. Let me update the main application to handle this scenario properly. The key insight is that the API works in browser but returns HTML dump in Node.js.\n\nLet me update the main application to handle both JSON and HTML responses:",
+  "time": {
+    "start": 1763961553020,
+    "end": 1763961553020
+  }
+}

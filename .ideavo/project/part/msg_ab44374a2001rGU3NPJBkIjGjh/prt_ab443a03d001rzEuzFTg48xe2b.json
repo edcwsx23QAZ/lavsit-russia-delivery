@@ -1,0 +1,21 @@
+{
+  "id": "prt_ab443a03d001rzEuzFTg48xe2b",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab44374a2001rGU3NPJBkIjGjh",
+  "type": "tool",
+  "callID": "call_1bafbec9bae04a11863592d8",
+  "tool": "webfetch",
+  "state": {
+    "status": "error",
+    "input": {
+      "url": "https://api.nordw.orog.ru/api/v1/calculate",
+      "format": "text",
+      "timeout": 10000
+    },
+    "error": "Error: Request failed with status code: 400",
+    "time": {
+      "start": 1763960922180,
+      "end": 1763960923311
+    }
+  }
+}

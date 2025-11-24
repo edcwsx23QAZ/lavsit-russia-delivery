@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab4492d85001aP7by0P5Y6gZXv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab449151a001ZLfXzfdtDODMMr",
+  "type": "tool",
+  "callID": "call_1aa05790ee34477c8fc83159",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/test-nordwheel-api.js",
+      "oldString": "        cargo: {\n          total_weight: 25,\n          total_volume: 0.1,\n          total_quantity: 1\n        },",
+      "newString": "        cargo: {\n          total_weight: 25,\n          total_volume: 0.1,\n          total_quantity: 1\n        },\n        insurance: 0,\n        insurance_refuse: true,"
+    },
+    "output": "",
+    "title": "test-nordwheel-api.js",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-nordwheel-api.js\n===================================================================\n--- /home/user/project/test-nordwheel-api.js\n+++ /home/user/project/test-nordwheel-api.js\n@@ -21,8 +21,10 @@\n       total_weight: 25,\n       total_volume: 0.1,\n       total_quantity: 1\n     },\n+    insurance: 0,\n+    insurance_refuse: true,\n services: {\n   is_package: false,\n   is_documents_return: false,\n   is_fragile: false\n"
+    },
+    "time": {
+      "start": 1763961286027,
+      "end": 1763961286085
+    }
+  }
+}

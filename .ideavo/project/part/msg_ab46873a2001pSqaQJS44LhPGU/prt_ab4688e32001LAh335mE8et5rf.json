@@ -1,0 +1,24 @@
+{
+  "id": "prt_ab4688e32001LAh335mE8et5rf",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab46873a2001pSqaQJS44LhPGU",
+  "type": "tool",
+  "callID": "call_7b6f10ad3fb441d7a82da415",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/dellin-packages/route.ts",
+      "limit": 50
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server'\n00002| import { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils'\n00003| \n00004| // Кэш для CSV данных упаковок (24 часа)\n00005| interface PackageCache {\n00006|   data: any[];\n00007|   timestamp: number;\n00008|   ttl: number;\n00009| }\n00010| \n00011| let packageCache: PackageCache | null = null;\n00012| const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 часа\n00013| \n00014| // Функция для парсинга CSV\n00015| function parseCSV(csvText: string): any[] {\n00016|   const lines = csvText.trim().split('\\n');\n00017|   if (lines.length < 2) return [];\n00018|   \n00019|   const headers = lines[0].split(',').map(h => h.trim().replace(/\"/g, ''));\n00020|   const result: any[] = [];\n00021|   \n00022|   for (let i = 1; i < lines.length; i++) {\n00023|     const values = lines[i].split(',').map(v => v.trim().replace(/\"/g, ''));\n00024|     const row: any = {};\n00025|     \n00026|     headers.forEach((header, index) => {\n00027|       row[header] = values[index] || '';\n00028|     });\n00029|     \n00030|     result.push(row);\n00031|   }\n00032|   \n00033|   return result;\n00034| }\n00035| \n00036| export async function GET() {\n00037|   const endTiming = PerformanceMonitor.startMeasurement('dellin_packages_get');\n00038|   \n00039|   try {\n00040|     // Проверяем кэш\n00041|     const now = Date.now();\n00042|     if (packageCache && (now - packageCache.timestamp) < packageCache.ttl) {\n00043|       console.log('📦 Возвращаем упаковки из кэша');\n00044|       const timing = endTiming();\n00045|       return NextResponse.json({\n00046|         success: true,\n00047|         data: packageCache.data,\n00048|         cached: true,\n00049|         timing\n00050|       }, {\n\n(File has more lines. Use 'offset' parameter to read beyond line 50)\n</file>",
+    "title": "app/api/dellin-packages/route.ts",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server'\nimport { apiRequestWithTimeout, validateApiInput, validationRules, PerformanceMonitor } from '@/lib/api-utils'\n\n// Кэш для CSV данных упаковок (24 часа)\ninterface PackageCache {\n  data: any[];\n  timestamp: number;\n  ttl: number;\n}\n\nlet packageCache: PackageCache | null = null;\nconst CACHE_TTL = 24 * 60 * 60 * 1000; // 24 часа\n\n// Функция для парсинга CSV\nfunction parseCSV(csvText: string): any[] {\n  const lines = csvText.trim().split('\\n');\n  if (lines.length < 2) return [];\n  \n  const headers = lines[0].split(',').map(h => h.trim().replace(/\"/g, ''));\n  const result: any[] = [];"
+    },
+    "time": {
+      "start": 1763963342388,
+      "end": 1763963342390
+    }
+  }
+}

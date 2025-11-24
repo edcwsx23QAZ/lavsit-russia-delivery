@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab468d441001q1xrv2fcSc4fbU",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab468c420002n8KmAcBs5hqoll",
+  "type": "tool",
+  "callID": "call_2ac5e43fb8044b6d947e5640",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "handleCalculate|onClick.*calculate|Расчет стоимости"
+    },
+    "output": "Found 3 matches\n/home/user/project/app/page.tsx:\n  Line 4004:   const handleCalculate = async () => {\n  Line 4916:                     onClick={handleCalculate}\n\n/home/user/project/app/api/dellin-packages/route.ts:\n  Line 181:           'Расчет стоимости доставки',",
+    "title": "handleCalculate|onClick.*calculate|Расчет стоимости",
+    "metadata": {
+      "matches": 3,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763963360324,
+      "end": 1763963360338
+    }
+  }
+}

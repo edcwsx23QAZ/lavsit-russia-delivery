@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab448e0cb001DBX6E5T07triJW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab448c82d0014xGdGToPEgOdUE",
+  "type": "tool",
+  "callID": "call_01529b47d88e45efb6503c75",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/test-nordwheel-api.js",
+      "oldString": "        cargo: {\n          total_weight: 25,\n          total_volume: 0.1,\n          total_quantity: 1\n        },\n        insurance: 1000,\n        insurance_refuse: false,",
+      "newString": "        cargo: {\n          total_weight: 25,\n          total_volume: 0.1,\n          total_quantity: 1\n        },"
+    },
+    "output": "",
+    "title": "test-nordwheel-api.js",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-nordwheel-api.js\n===================================================================\n--- /home/user/project/test-nordwheel-api.js\n+++ /home/user/project/test-nordwheel-api.js\n@@ -16,15 +16,13 @@\n     terminal_id: '24', // ID аэропорта СПб\n     city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // FIAS код СПб\n   }\n },\n-cargo: {\n-  total_weight: 25, // Минимальный оплачиваемый вес\n-  total_volume: 0.1, // Маленький объем\n-  total_quantity: 1\n-},\n-insurance: 1000,\n-insurance_refuse: false,\n+    cargo: {\n+      total_weight: 25,\n+      total_volume: 0.1,\n+      total_quantity: 1\n+    },\n services: {\n   is_package: false,\n   is_documents_return: false,\n   is_fragile: false\n"
+    },
+    "time": {
+      "start": 1763961266382,
+      "end": 1763961266391
+    }
+  }
+}

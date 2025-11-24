@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab44a1f47001d53BnppHYkcWHA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab44a0dfe001F1TZ5Lu8sP2xfb",
+  "type": "tool",
+  "callID": "call_0df3be04578f4b649c682a5a",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 3620
+    },
+    "output": "<file>\n03621|         cargo: {\n03622|           total_weight: adjustedWeight,\n03623|           total_volume: Math.round(totalVolume * 100) / 100, // Округляем до 2 знаков\n03624|           total_quantity: form.cargos.length\n03625|         },\n03626|         services: {\n03627|           is_package: form.needPackaging,\n03628|           is_documents_return: false,\n03629|           is_fragile: false\n03630|         },\n03631|         promocode: null\n03632|       };\n03633|       \n03634|       if (totalWeight < minWeight) {\n03635|         console.log(`✈️ Nord Wheel: вес увеличен с ${totalWeight}кг до ${adjustedWeight}кг (минимум ${minWeight}кг)`);\n03636|       }\n03637| \n03638|       console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n03639| \n03640|       const response = await fetch(apiUrl, {\n\n(File has more lines. Use 'offset' parameter to read beyond line 3640)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        cargo: {\n          total_weight: adjustedWeight,\n          total_volume: Math.round(totalVolume * 100) / 100, // Округляем до 2 знаков\n          total_quantity: form.cargos.length\n        },\n        services: {\n          is_package: form.needPackaging,\n          is_documents_return: false,\n          is_fragile: false\n        },\n        promocode: null\n      };\n      \n      if (totalWeight < minWeight) {\n        console.log(`✈️ Nord Wheel: вес увеличен с ${totalWeight}кг до ${adjustedWeight}кг (минимум ${minWeight}кг)`);\n      }\n\n      console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n\n      const response = await fetch(apiUrl, {"
+    },
+    "time": {
+      "start": 1763961347913,
+      "end": 1763961347918
+    }
+  }
+}

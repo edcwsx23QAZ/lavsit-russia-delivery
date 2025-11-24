@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab44ae763001zifiaeZMKA5TRV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab44aac11001f8EV1048gczKqm",
+  "type": "tool",
+  "callID": "call_8b1bb67719c9440b894cc516",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      if (!response.ok) {\n        console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n        const errorDetails = response.status === 401 ? 'Неверный API ключ' :\n                            response.status === 400 ? 'Неверный запрос' :\n                            response.status === 404 ? 'Город не найден' :\n                            response.status === 500 ? 'Внутренняя ошибка сервера' :\n                            `Ошибка API: ${response.status} ${response.statusText}`;\n        \n        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: errorDetails,\n          apiUrl,\n          requestData\n        };\n      }",
+      "newString": "      // Nord Wheel может возвращать 500 ошибку, но с валидными данными\n      let data;\n      try {\n        data = await response.json();\n        console.log('🚛 Nord Wheel API ответ:', data);\n      } catch (parseError) {\n        console.error('❌ Nord Wheel API ошибка парсинга:', parseError);\n      }\n\n      if (!response.ok && (!data || !data.success)) {\n        console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n        const errorDetails = response.status === 401 ? 'Неверный API ключ' :\n                            response.status === 400 ? 'Неверный запрос' :\n                            response.status === 404 ? 'Город не найден' :\n                            response.status === 500 ? 'Внутренняя ошибка сервера' :\n                            `Ошибка API: ${response.status} ${response.statusText}`;\n        \n        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: errorDetails,\n          apiUrl,\n          requestData\n        };\n      }"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3647,9 +3647,18 @@\n   },\n   body: JSON.stringify(requestData)\n });\n \n-if (!response.ok) {\n+// Nord Wheel может возвращать 500 ошибку, но с валидными данными\n+let data;\n+try {\n+  data = await response.json();\n+  console.log('🚛 Nord Wheel API ответ:', data);\n+} catch (parseError) {\n+  console.error('❌ Nord Wheel API ошибка парсинга:', parseError);\n+}\n+\n+if (!response.ok && (!data || !data.success)) {\n   console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n   const errorDetails = response.status === 401 ? 'Неверный API ключ' :\n                       response.status === 400 ? 'Неверный запрос' :\n                       response.status === 404 ? 'Город не найден' :\n"
+    },
+    "time": {
+      "start": 1763961399141,
+      "end": 1763961399164
+    }
+  }
+}
