@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e81574001JEnNiKqirAHMVp",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e80b5900128NmeOsLBTYLyC",
+  "type": "tool",
+  "callID": "call_8b38d7e7be2246d6a0b141f9",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3650,
+      "limit": 30
+    },
+    "output": "<file>\n03651|         return {\n03652|           company: 'Nord Wheel',\n03653|           price: 0,\n03654|           days: 0,\n03655|           error: errorDetails,\n03656|           apiUrl,\n03657|           requestData\n03658|         };\n03659|       }\n03660| \n03661|       const data = await response.json();\n03662|       console.log('🚛 Nord Wheel новый API ответ:', data);\n03663| \n03664|       // Парсинг ответа нового API\n03665|       if (data.success) {\n03666|         const price = data.price || 0;\n03667|         const days = data.days || 0;\n03668| \n03669|         return {\n03670|           company: 'Nord Wheel',\n03671|           price: Math.round(price),\n03672|           days: days,\n03673|           details: {\n03674|             totalCost: price,\n03675|             deliveryCost: data.delivery_cost || 0,\n03676|             pickupCost: data.pickup_cost || 0,\n03677|             insuranceCost: data.insurance_cost || 0,\n03678|             services: data.services || []\n03679|           },\n03680|           requestData,\n\n(File has more lines. Use 'offset' parameter to read beyond line 3680)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: errorDetails,\n          apiUrl,\n          requestData\n        };\n      }\n\n      const data = await response.json();\n      console.log('🚛 Nord Wheel новый API ответ:', data);\n\n      // Парсинг ответа нового API\n      if (data.success) {\n        const price = data.price || 0;\n        const days = data.days || 0;\n\n        return {\n          company: 'Nord Wheel',"
+    },
+    "time": {
+      "start": 1763954922871,
+      "end": 1763954922876
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3ec204e001HMff3P35x3o6LQ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3ec0f62001rOOsmGwrKWOD52",
+  "type": "tool",
+  "callID": "call_d0cbc8afee86447c8ce57682",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3720,
+      "limit": 10
+    },
+    "output": "<file>\n03721|       };\n03722|     }\n03723|   };\n03724|     const calculateCdek = async (): Promise<CalculationResult> => {\n03725|     const apiUrl = '/api/cdek';\n03726|     \n03727|     try {\n03728|       validateMultipleCargos(form.cargos);\n03729|       \n03730|       const packages = form.cargos.map(cargo => ({\n\n(File has more lines. Use 'offset' parameter to read beyond line 3730)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "      };\n    }\n  };\n    const calculateCdek = async (): Promise<CalculationResult> => {\n    const apiUrl = '/api/cdek';\n    \n    try {\n      validateMultipleCargos(form.cargos);\n      \n      const packages = form.cargos.map(cargo => ({"
+    },
+    "time": {
+      "start": 1763955187792,
+      "end": 1763955187795
+    }
+  }
+}

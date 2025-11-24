@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3ea5a8a0016qvGT4o02xnWSo",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3ea2174001HFba4jO4G62qm9",
+  "type": "tool",
+  "callID": "call_7fde6e3241b742658b0f5d35",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3705,
+      "limit": 25
+    },
+    "output": "<file>\n03706|         days: days,\n03707|         details,\n03708|         requestData,\n03709|         responseData: data,\n03710|         apiUrl\n03711|       };\n03712|         };\n03713|       }\n03714|     } catch (error: any) {\n03715|       console.error('🚛 Nord Wheel ошибка:', error);\n03716|       return {\n03717|         company: 'Nord Wheel',\n03718|         price: 0,\n03719|         days: 0,\n03720|         error: `Ошибка соединения: ${error.message}`,\n03721|         apiUrl\n03722|       };\n03723|     }\n03724|   };\n03725|     const calculateCdek = async (): Promise<CalculationResult> => {\n03726|     const apiUrl = '/api/cdek';\n03727|     \n03728|     try {\n03729|       validateMultipleCargos(form.cargos);\n03730|       \n\n(File has more lines. Use 'offset' parameter to read beyond line 3730)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        days: days,\n        details,\n        requestData,\n        responseData: data,\n        apiUrl\n      };\n        };\n      }\n    } catch (error: any) {\n      console.error('🚛 Nord Wheel ошибка:', error);\n      return {\n        company: 'Nord Wheel',\n        price: 0,\n        days: 0,\n        error: `Ошибка соединения: ${error.message}`,\n        apiUrl\n      };\n    }\n  };\n    const calculateCdek = async (): Promise<CalculationResult> => {"
+    },
+    "time": {
+      "start": 1763955071629,
+      "end": 1763955071633
+    }
+  }
+}

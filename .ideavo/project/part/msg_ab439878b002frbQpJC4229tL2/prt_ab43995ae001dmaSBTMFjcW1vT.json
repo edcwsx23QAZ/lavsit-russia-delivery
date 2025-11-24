@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab43995ae001dmaSBTMFjcW1vT",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab439878b002frbQpJC4229tL2",
+  "type": "tool",
+  "callID": "call_5f6ee26b2b0548d89e66f848",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 41,
+      "limit": 30
+    },
+    "output": "<file>\n00042|   cargos: Cargo[];\n00043|   fromCity: string;\n00044|   toCity: string;\n00045|   fromAddress: string;\n00046|   toAddress: string;\n00047|   declaredValue: number;\n00048|   needPackaging: boolean;\n00049|   needLoading: boolean;\n00050|   needCarry: boolean;\n00051|   floor: number;\n00052|   hasFreightLift: boolean;\n00053|   needInsurance: boolean;\n00054|   fromTerminal: boolean;\n00055|   toTerminal: boolean;\n00056|   fromAddressDelivery: boolean;\n00057|   toAddressDelivery: boolean;\n00058|   fromLavsiteWarehouse: boolean;\n00059|   // Добавляем поддержку товаров\n00060|   selectedProducts: ProductInForm[];\n00061| }\n00062| \n00063| interface CalculationResult {\n00064|   company: string;\n00065|   price: number;\n00066|   days: number;\n00067|   details?: any;\n00068|   error?: string;\n00069|   requestData?: any;\n00070|   responseData?: any;\n00071|   apiUrl?: string;\n\n(File has more lines. Use 'offset' parameter to read beyond line 71)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  cargos: Cargo[];\n  fromCity: string;\n  toCity: string;\n  fromAddress: string;\n  toAddress: string;\n  declaredValue: number;\n  needPackaging: boolean;\n  needLoading: boolean;\n  needCarry: boolean;\n  floor: number;\n  hasFreightLift: boolean;\n  needInsurance: boolean;\n  fromTerminal: boolean;\n  toTerminal: boolean;\n  fromAddressDelivery: boolean;\n  toAddressDelivery: boolean;\n  fromLavsiteWarehouse: boolean;\n  // Добавляем поддержку товаров\n  selectedProducts: ProductInForm[];\n}"
+    },
+    "time": {
+      "start": 1763960264112,
+      "end": 1763960264116
+    }
+  }
+}

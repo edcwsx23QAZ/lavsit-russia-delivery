@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3ede1a6001NkrbOYPWoMr3r6",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3edd2bf001Vnwium75oRVkaC",
+  "type": "tool",
+  "callID": "call_1d6abf26340247c3b0b37c6d",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 63,
+      "limit": 20
+    },
+    "output": "<file>\n00064|   company: string;\n00065|   price: number;\n00066|   days: number;\n00067|   details?: any;\n00068|   error?: string;\n00069|   requestData?: any;\n00070|   responseData?: any;\n00071|   apiUrl?: string;\n00072|   sessionId?: string;\n00073| }\n00074| \n00075| interface AddressSuggestion {\n00076|   value: string;\n00077|   unrestricted_value: string;\n00078|   data: {\n00079|     city?: string;\n00080|     street?: string;\n00081|     house?: string;\n00082|   };\n00083| }\n\n(File has more lines. Use 'offset' parameter to read beyond line 83)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  company: string;\n  price: number;\n  days: number;\n  details?: any;\n  error?: string;\n  requestData?: any;\n  responseData?: any;\n  apiUrl?: string;\n  sessionId?: string;\n}\n\ninterface AddressSuggestion {\n  value: string;\n  unrestricted_value: string;\n  data: {\n    city?: string;\n    street?: string;\n    house?: string;\n  };\n}"
+    },
+    "time": {
+      "start": 1763955302824,
+      "end": 1763955302828
+    }
+  }
+}

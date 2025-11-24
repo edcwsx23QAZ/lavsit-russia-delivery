@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3e7f8f4001QR3x5FcLqwQLYJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e7c4b8001Svsr2LXtmxF12M",
+  "type": "tool",
+  "callID": "call_50dd723aba564d4e899b8eb4",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      if (!response.ok) {\n        console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: `Ошибка API: ${response.status} ${response.statusText}`,\n          apiUrl,\n          requestData\n        };\n      }",
+      "newString": "      if (!response.ok) {\n        console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n        const errorDetails = response.status === 401 ? 'Неверный API ключ' :\n                            response.status === 400 ? 'Неверный запрос' :\n                            response.status === 404 ? 'Город не найден' :\n                            response.status === 500 ? 'Внутренняя ошибка сервера' :\n                            `Ошибка API: ${response.status} ${response.statusText}`;\n        \n        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: errorDetails,\n          apiUrl,\n          requestData\n        };\n      }"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3641,13 +3641,19 @@\n });\n \n if (!response.ok) {\n   console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n+  const errorDetails = response.status === 401 ? 'Неверный API ключ' :\n+                      response.status === 400 ? 'Неверный запрос' :\n+                      response.status === 404 ? 'Город не найден' :\n+                      response.status === 500 ? 'Внутренняя ошибка сервера' :\n+                      `Ошибка API: ${response.status} ${response.statusText}`;\n+  \n   return {\n     company: 'Nord Wheel',\n     price: 0,\n     days: 0,\n-    error: `Ошибка API: ${response.status} ${response.statusText}`,\n+    error: errorDetails,\n     apiUrl,\n     requestData\n   };\n }\n"
+    },
+    "time": {
+      "start": 1763954915574,
+      "end": 1763954915600
+    }
+  }
+}

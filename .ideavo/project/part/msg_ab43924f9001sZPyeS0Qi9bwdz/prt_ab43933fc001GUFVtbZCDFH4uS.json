@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab43933fc001GUFVtbZCDFH4uS",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab43924f9001sZPyeS0Qi9bwdz",
+  "type": "tool",
+  "callID": "call_cd3e4fabe60548fabef0db5f",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3630,
+      "limit": 50
+    },
+    "output": "<file>\n03631| \n03632|       console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n03633| \n03634|       const response = await fetch(apiUrl, {\n03635|         method: 'POST',\n03636|         headers: {\n03637|           'Content-Type': 'application/json',\n03638|           'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}`\n03639|         },\n03640|         body: JSON.stringify(requestData)\n03641|       });\n03642| \n03643|       if (!response.ok) {\n03644|         console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n03645|         const errorDetails = response.status === 401 ? 'Неверный API ключ' :\n03646|                             response.status === 400 ? 'Неверный запрос' :\n03647|                             response.status === 404 ? 'Город не найден' :\n03648|                             response.status === 500 ? 'Внутренняя ошибка сервера' :\n03649|                             `Ошибка API: ${response.status} ${response.statusText}`;\n03650|         \n03651|         return {\n03652|           company: 'Nord Wheel',\n03653|           price: 0,\n03654|           days: 0,\n03655|           error: errorDetails,\n03656|           apiUrl,\n03657|           requestData\n03658|         };\n03659|       }\n03660| \n03661|       const data = await response.json();\n03662|       console.log('🚛 Nord Wheel API ответ:', data);\n03663| \n03664|       // Парсинг ответа API - поддерживаем разные форматы\n03665|       let price = 0;\n03666|       let days = 0;\n03667|       let details: any = {};\n03668| \n03669|       if (data.success) {\n03670|         // Новый формат API\n03671|         price = data.price || data.total_cost || data.cost || 0;\n03672|         days = data.days || data.delivery_days || data.delivery_time || 0;\n03673|         details = {\n03674|           totalCost: price,\n03675|           deliveryCost: data.delivery_cost || 0,\n03676|           pickupCost: data.pickup_cost || 0,\n03677|           insuranceCost: data.insurance_cost || 0,\n03678|           services: data.services || [],\n03679|           currency: data.currency || 'RUB'\n03680|         };\n\n(File has more lines. Use 'offset' parameter to read beyond line 3680)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "\n      console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}`\n        },\n        body: JSON.stringify(requestData)\n      });\n\n      if (!response.ok) {\n        console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n        const errorDetails = response.status === 401 ? 'Неверный API ключ' :\n                            response.status === 400 ? 'Неверный запрос' :\n                            response.status === 404 ? 'Город не найден' :\n                            response.status === 500 ? 'Внутренняя ошибка сервера' :\n                            `Ошибка API: ${response.status} ${response.statusText}`;\n        "
+    },
+    "time": {
+      "start": 1763960239102,
+      "end": 1763960239105
+    }
+  }
+}

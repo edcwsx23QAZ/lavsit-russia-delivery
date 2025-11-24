@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3c9563f001tL7CXur6TRkozx",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3c9395c001GaSUzPj7rA7PhC",
+  "type": "tool",
+  "callID": "call_9e1a21a7e579443b8d7d481e",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 5095,
+      "limit": 20
+    },
+    "output": "<file>\n05096|                 </div>\n05097|               </CardHeader>\n05098|               <CardContent>\n05099|                 <div className=\"grid grid-cols-2 gap-2\">\n05100|                   {COMPANIES_BASE\n05101|                     .filter(company => showHiddenCompanies || enabledCompanies[company.apiKey])\n05102|                     .map((company, index) => {\n05103|                     const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n05104|                     const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n05105|                     const isEnabled = enabledCompanies[company.apiKey];\n05106|                     \n05107|                     // Отладка для первых 3 компаний\n05108|                     if (index < 3) {\n05109|                       console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}`);\n05110|                     }\n05111|                     \n05112|                     return (\n05113|                       <div key={index} className=\"flex items-center justify-between p-1.5 bg-gray-700 rounded\">\n05114|                         <div className=\"flex items-center gap-2\">\n05115|                           <span className=\"text-lg\">{company.logo}</span>\n\n(File has more lines. Use 'offset' parameter to read beyond line 5115)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                </div>\n              </CardHeader>\n              <CardContent>\n                <div className=\"grid grid-cols-2 gap-2\">\n                  {COMPANIES_BASE\n                    .filter(company => showHiddenCompanies || enabledCompanies[company.apiKey])\n                    .map((company, index) => {\n                    const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n                    const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n                    const isEnabled = enabledCompanies[company.apiKey];\n                    \n                    // Отладка для первых 3 компаний\n                    if (index < 3) {\n                      console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}`);\n                    }\n                    \n                    return (\n                      <div key={index} className=\"flex items-center justify-between p-1.5 bg-gray-700 rounded\">\n                        <div className=\"flex items-center gap-2\">\n                          <span className=\"text-lg\">{company.logo}</span>"
+    },
+    "time": {
+      "start": 1763952907842,
+      "end": 1763952907847
+    }
+  }
+}

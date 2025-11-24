@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3c902b1001XJ25KzwfkFwPgs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3c8f3a6001CBRkA3s7raKQtk",
+  "type": "tool",
+  "callID": "call_1ba502524d634fcd94318c1e",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 5125,
+      "limit": 20
+    },
+    "output": "<file>\n05126|                         <div className=\"flex items-center gap-2\">\n05127|                           <span className=\"text-[9px] text-gray-300\">\n05128|                             {isEnabled ? 'Вкл' : 'Выкл'}\n05129|                           </span>\n05130|                           <Switch\n05131|                             checked={isEnabled}\n05132|                             onCheckedChange={(checked) => {\n05133|                               setEnabledCompanies(prev => ({\n05134|                                 ...prev,\n05135|                                 [company.apiKey]: checked\n05136|                               }));\n05137|                             }}\n05138|                             disabled={!isConnected}\n05139|                           />\n05140|                         </div>\n05141|                       </div>\n05142|                     );\n05143|                   })}\n05144|                 </div>\n05145|               </CardContent>\n\n(File has more lines. Use 'offset' parameter to read beyond line 5145)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                        <div className=\"flex items-center gap-2\">\n                          <span className=\"text-[9px] text-gray-300\">\n                            {isEnabled ? 'Вкл' : 'Выкл'}\n                          </span>\n                          <Switch\n                            checked={isEnabled}\n                            onCheckedChange={(checked) => {\n                              setEnabledCompanies(prev => ({\n                                ...prev,\n                                [company.apiKey]: checked\n                              }));\n                            }}\n                            disabled={!isConnected}\n                          />\n                        </div>\n                      </div>\n                    );\n                  })}\n                </div>\n              </CardContent>"
+    },
+    "time": {
+      "start": 1763952886472,
+      "end": 1763952886499
+    }
+  }
+}

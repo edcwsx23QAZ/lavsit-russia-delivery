@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab439113a001Svi3AqczVFGNiH",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab438ecad001BfhV5O77GuxkXW",
+  "type": "tool",
+  "callID": "call_9f4afba604b84cb38ebd05b0",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3580,
+      "limit": 50
+    },
+    "output": "<file>\n03581|         } else {\n03582|           return {\n03583|             type: 'address' as const,\n03584|             address: form.fromAddress || form.fromCity // Используем адрес если есть, иначе город\n03585|           };\n03586|         }\n03587|       };\n03588| \n03589|       const getDestinationLocation = () => {\n03590|         if (form.toTerminal) {\n03591|           return {\n03592|             type: 'terminal' as const,\n03593|             // Для терминальной доставки достаточно города, используем стандартные терминалы\n03594|             terminal_id: form.toCity.toLowerCase().includes('москва') ? '0c7a2795-1220-486d-a7ce-8bcf130a1224' :\n03595|                         form.toCity.toLowerCase().includes('санкт') || form.toCity.toLowerCase().includes('спб') ? '3ca02b62-3632-4da0-8fde-de9d9c77c553' :\n03596|                         '3ca02b62-3632-4da0-8fde-de9d9c77c553', // По умолчанию СПб\n03597|             city_fias: form.toCity.toLowerCase().includes('москва') ? '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' :\n03598|                        form.toCity.toLowerCase().includes('санкт') || form.toCity.toLowerCase().includes('спб') ? 'c2deb16a-0330-4f05-821f-1d09c93331e6' :\n03599|                        'c2deb16a-0330-4f05-821f-1d09c93331e6' // По умолчанию СПб\n03600|           };\n03601|         } else {\n03602|           return {\n03603|             type: 'address' as const,\n03604|             address: form.toAddress || form.toCity // Используем адрес если есть, иначе город\n03605|           };\n03606|         }\n03607|       };\n03608| \n03609|       // Формируем запрос для нового API NordWheel с учетом настроек формы\n03610|       const requestData = {\n03611|         dispatch: {\n03612|           location: getDispatchLocation()\n03613|         },\n03614|         destination: {\n03615|           location: getDestinationLocation()\n03616|         },\n03617|         cargo: {\n03618|           total_weight: totalWeight,\n03619|           total_volume: totalVolume,\n03620|           total_quantity: form.cargos.length\n03621|         },\n03622|         insurance: form.needInsurance && form.declaredValue ? form.declaredValue : 0,\n03623|         insurance_refuse: !form.needInsurance,\n03624|         services: {\n03625|           is_package: form.needPackaging,\n03626|           is_documents_return: false,\n03627|           is_fragile: false\n03628|         },\n03629|         promocode: null\n03630|       };\n\n(File has more lines. Use 'offset' parameter to read beyond line 3630)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        } else {\n          return {\n            type: 'address' as const,\n            address: form.fromAddress || form.fromCity // Используем адрес если есть, иначе город\n          };\n        }\n      };\n\n      const getDestinationLocation = () => {\n        if (form.toTerminal) {\n          return {\n            type: 'terminal' as const,\n            // Для терминальной доставки достаточно города, используем стандартные терминалы\n            terminal_id: form.toCity.toLowerCase().includes('москва') ? '0c7a2795-1220-486d-a7ce-8bcf130a1224' :\n                        form.toCity.toLowerCase().includes('санкт') || form.toCity.toLowerCase().includes('спб') ? '3ca02b62-3632-4da0-8fde-de9d9c77c553' :\n                        '3ca02b62-3632-4da0-8fde-de9d9c77c553', // По умолчанию СПб\n            city_fias: form.toCity.toLowerCase().includes('москва') ? '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' :\n                       form.toCity.toLowerCase().includes('санкт') || form.toCity.toLowerCase().includes('спб') ? 'c2deb16a-0330-4f05-821f-1d09c93331e6' :\n                       'c2deb16a-0330-4f05-821f-1d09c93331e6' // По умолчанию СПб\n          };"
+    },
+    "time": {
+      "start": 1763960230205,
+      "end": 1763960230209
+    }
+  }
+}

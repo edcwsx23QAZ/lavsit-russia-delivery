@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e27936001PXHeBiFJ27OGU4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e26b3a001lfIRWhPuHrfHjB",
+  "type": "tool",
+  "callID": "call_7a3a6143589c488091cb953d",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/external/route.ts",
+      "offset": 200,
+      "limit": 50
+    },
+    "output": "<file>\n00201|     }\n00202| \n00203|     // Route to appropriate API endpoint\n00204|     const apiEndpoint = getApiEndpoint(body.company);\n00205|     const apiPayload = transformPayload(body);\n00206| \n00207|     console.log(`[External API] Routing request ${requestId} to ${body.company} API`);\n00208| \n00209|     const response = await apiRequestWithTimeout(apiEndpoint, {\n00210|       method: 'POST',\n00211|       headers: {\n00212|         'Content-Type': 'application/json',\n00213|         'X-Request-ID': requestId\n00214|       },\n00215|       body: JSON.stringify(apiPayload)\n00216|     }, { timeout: 30000 });\n00217| \n00218|     const result = await response.json();\n00219| \n00220|     if (!response.ok) {\n00221|       return NextResponse.json(\n00222|         {\n00223|           success: false,\n00224|           error: result.error || 'API request failed',\n00225|           metadata: {\n00226|             requestId,\n00227|             timestamp: new Date().toISOString(),\n00228|             processingTime: Date.now() - startTime\n00229|           }\n00230|         } as FreightCalculationResponse,\n00231|         { status: response.status }\n00232|       );\n00233|     }\n00234| \n00235|     // Transform response to standardized format\n00236|     const standardizedResponse = transformResponse(body.company, result, requestId, startTime);\n00237| \n00238|     return NextResponse.json(standardizedResponse, {\n00239|       headers: {\n00240|         'X-Request-ID': requestId,\n00241|         'X-API-Version': '1.0.0'\n00242|       }\n00243|     });\n00244| \n00245|   } catch (error: any) {\n00246|     console.error(`[External API] Error processing request ${requestId}:`, error);\n00247| \n00248|     return NextResponse.json(\n00249|       {\n00250|         success: false,\n\n(File has more lines. Use 'offset' parameter to read beyond line 250)\n</file>",
+    "title": "app/api/external/route.ts",
+    "metadata": {
+      "preview": "    }\n\n    // Route to appropriate API endpoint\n    const apiEndpoint = getApiEndpoint(body.company);\n    const apiPayload = transformPayload(body);\n\n    console.log(`[External API] Routing request ${requestId} to ${body.company} API`);\n\n    const response = await apiRequestWithTimeout(apiEndpoint, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'X-Request-ID': requestId\n      },\n      body: JSON.stringify(apiPayload)\n    }, { timeout: 30000 });\n\n    const result = await response.json();\n\n    if (!response.ok) {"
+    },
+    "time": {
+      "start": 1763954555193,
+      "end": 1763954555196
+    }
+  }
+}

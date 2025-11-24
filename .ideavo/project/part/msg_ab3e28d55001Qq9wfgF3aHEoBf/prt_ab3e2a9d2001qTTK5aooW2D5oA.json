@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e2a9d2001qTTK5aooW2D5oA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e28d55001Qq9wfgF3aHEoBf",
+  "type": "tool",
+  "callID": "call_48c9431c313346f993528b2a",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/external/route.ts",
+      "offset": 260,
+      "limit": 20
+    },
+    "output": "<file>\n00261| }\n00262| \n00263| function getApiEndpoint(company: SupportedCompany): string {\n00264|   const endpoints = {\n00265|     pek: '/api/pek',\n00266|     dellin: '/api/dellin-packages',\n00267|     vozovoz: '/api/vozovoz',\n00268|     railcontinent: '/api/rail-continent',\n00269|     nordwheel: '/api/test'\n00270|   };\n00271| \n00272|   return endpoints[company];\n00273| }\n00274| \n00275| function transformPayload(body: FreightCalculationRequest): any {\n00276|   // Transform to the format expected by each company's API\n00277|   const basePayload = {\n00278|     fromCity: body.fromCity,\n00279|     toCity: body.toCity,\n00280|     cargos: body.cargo.map(item => ({\n\n(File has more lines. Use 'offset' parameter to read beyond line 280)\n</file>",
+    "title": "app/api/external/route.ts",
+    "metadata": {
+      "preview": "}\n\nfunction getApiEndpoint(company: SupportedCompany): string {\n  const endpoints = {\n    pek: '/api/pek',\n    dellin: '/api/dellin-packages',\n    vozovoz: '/api/vozovoz',\n    railcontinent: '/api/rail-continent',\n    nordwheel: '/api/test'\n  };\n\n  return endpoints[company];\n}\n\nfunction transformPayload(body: FreightCalculationRequest): any {\n  // Transform to the format expected by each company's API\n  const basePayload = {\n    fromCity: body.fromCity,\n    toCity: body.toCity,\n    cargos: body.cargo.map(item => ({"
+    },
+    "time": {
+      "start": 1763954567636,
+      "end": 1763954567639
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e56e09001nhce4TaKGOuKSl",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e561ff0013EK5SwVdy47n64",
+  "type": "tool",
+  "callID": "call_5a185ebacf094a759bbfcc09",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3580,
+      "limit": 50
+    },
+    "output": "<file>\n03581|         },\n03582|         cargo: {\n03583|           total_weight: totalWeight,\n03584|           total_volume: totalVolume,\n03585|           total_quantity: form.cargos.length\n03586|         },\n03587|         insurance: form.needInsurance && form.declaredValue ? form.declaredValue : 0,\n03588|         insurance_refuse: !form.needInsurance,\n03589|         services: {\n03590|           is_package: form.needPackaging,\n03591|           is_documents_return: false,\n03592|           is_fragile: false\n03593|         },\n03594|         promocode: null\n03595|       };\n03596| \n03597|       console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n03598| \n03599|       const response = await fetch(apiUrl, {\n03600|         method: 'POST',\n03601|         headers: {\n03602|           'Content-Type': 'application/json',\n03603|           'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}`\n03604|         },\n03605|         body: JSON.stringify(requestData)\n03606|       });\n03607| \n03608|       if (!response.ok) {\n03609|         console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n03610|         return {\n03611|           company: 'Nord Wheel',\n03612|           price: 0,\n03613|           days: 0,\n03614|           error: `Ошибка API: ${response.status} ${response.statusText}`,\n03615|           apiUrl,\n03616|           requestData\n03617|         };\n03618|       }\n03619| \n03620|       const data = await response.json();\n03621|       console.log('🚛 Nord Wheel новый API ответ:', data);\n03622| \n03623|       // Парсинг ответа нового API\n03624|       if (data.success) {\n03625|         const price = data.price || 0;\n03626|         const days = data.days || 0;\n03627| \n03628|         return {\n03629|           company: 'Nord Wheel',\n03630|           price: Math.round(price),\n\n(File has more lines. Use 'offset' parameter to read beyond line 3630)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        },\n        cargo: {\n          total_weight: totalWeight,\n          total_volume: totalVolume,\n          total_quantity: form.cargos.length\n        },\n        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : 0,\n        insurance_refuse: !form.needInsurance,\n        services: {\n          is_package: form.needPackaging,\n          is_documents_return: false,\n          is_fragile: false\n        },\n        promocode: null\n      };\n\n      console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',"
+    },
+    "time": {
+      "start": 1763954748939,
+      "end": 1763954748943
+    }
+  }
+}

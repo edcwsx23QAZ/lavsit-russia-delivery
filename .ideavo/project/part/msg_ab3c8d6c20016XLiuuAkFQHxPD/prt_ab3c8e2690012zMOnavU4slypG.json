@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3c8e2690012zMOnavU4slypG",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3c8d6c20016XLiuuAkFQHxPD",
+  "type": "tool",
+  "callID": "call_59d4da3edc924d6798450578",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "onCheckedChange"
+    },
+    "output": "Found 7 matches\n/home/user/project/app/page.tsx:\n  Line 4704:                         onCheckedChange={handleLavsiteWarehouseChange}\n  Line 4797:                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needPackaging: checked as boolean }))}\n  Line 4807:                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needInsurance: checked as boolean }))}\n  Line 4817:                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needLoading: checked as boolean }))}\n  Line 4827:                       onCheckedChange={(checked) => setForm(prev => ({ ...prev, needCarry: checked as boolean }))}\n  Line 4848:                           onCheckedChange={(checked) => setForm(prev => ({ ...prev, hasFreightLift: checked as boolean }))}\n  Line 5132:                             onCheckedChange={(checked) => {",
+    "title": "onCheckedChange",
+    "metadata": {
+      "matches": 7,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763952878188,
+      "end": 1763952878199
+    }
+  }
+}

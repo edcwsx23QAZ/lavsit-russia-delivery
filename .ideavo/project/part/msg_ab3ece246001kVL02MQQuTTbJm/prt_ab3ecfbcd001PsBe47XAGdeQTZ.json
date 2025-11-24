@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3ecfbcd001PsBe47XAGdeQTZ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3ece246001kVL02MQQuTTbJm",
+  "type": "tool",
+  "callID": "call_fdc8f9005b3d4f76823f77a8",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "sed -n '3720,3725p' /home/user/project/app/page.tsx",
+      "description": "Show exact content around problematic lines"
+    },
+    "output": "        apiUrl\n      };\n    }\n  };\n    const calculateCdek = async (): Promise<CalculationResult> => {\n    const apiUrl = '/api/cdek';\n",
+    "title": "sed -n '3720,3725p' /home/user/project/app/page.tsx",
+    "metadata": {
+      "output": "        apiUrl\n      };\n    }\n  };\n    const calculateCdek = async (): Promise<CalculationResult> => {\n    const apiUrl = '/api/cdek';\n",
+      "exit": 0,
+      "description": "Show exact content around problematic lines"
+    },
+    "time": {
+      "start": 1763955243986,
+      "end": 1763955243993
+    }
+  }
+}

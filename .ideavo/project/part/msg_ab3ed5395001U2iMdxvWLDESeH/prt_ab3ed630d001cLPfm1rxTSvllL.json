@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3ed630d001cLPfm1rxTSvllL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3ed5395001U2iMdxvWLDESeH",
+  "type": "tool",
+  "callID": "call_68e5b7a7c6fd46a69176d24c",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Check compilation after fixing try-catch structure"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:3699:11\nType error: Object literal may only specify known properties, and 'apiResponse' does not exist in type 'CalculationResult'.\n\n\u001b[0m \u001b[90m 3697 |\u001b[39m           apiUrl\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3698 |\u001b[39m           requestData\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 3699 |\u001b[39m           apiResponse\u001b[33m:\u001b[39m data\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3700 |\u001b[39m         }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3701 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 3702 |\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:3699:11\nType error: Object literal may only specify known properties, and 'apiResponse' does not exist in type 'CalculationResult'.\n\n\u001b[0m \u001b[90m 3697 |\u001b[39m           apiUrl\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3698 |\u001b[39m           requestData\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 3699 |\u001b[39m           apiResponse\u001b[33m:\u001b[39m data\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3700 |\u001b[39m         }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3701 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 3702 |\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Check compilation after fixing try-catch structure"
+    },
+    "time": {
+      "start": 1763955270419,
+      "end": 1763955286771
+    }
+  }
+}

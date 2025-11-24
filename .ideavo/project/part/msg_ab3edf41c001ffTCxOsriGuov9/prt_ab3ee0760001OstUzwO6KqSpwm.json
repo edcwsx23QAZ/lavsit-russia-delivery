@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3ee0760001OstUzwO6KqSpwm",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3edf41c001ffTCxOsriGuov9",
+  "type": "tool",
+  "callID": "call_1dfb9e4c1dbd4bb9ae95d0f0",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          apiResponse: data",
+      "newString": "          responseData: data"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3695,9 +3695,9 @@\n     days: 0,\n     error: 'Неверный формат ответа API',\n     apiUrl,\n     requestData,\n-    apiResponse: data\n+    responseData: data\n   };\n }\n \n return {\n"
+    },
+    "time": {
+      "start": 1763955312482,
+      "end": 1763955312505
+    }
+  }
+}

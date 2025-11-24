@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3ea9714001xvwO7Z6Y1QdCdj",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3ea8b5f001dRsKlLj36PV1Pd",
+  "type": "tool",
+  "callID": "call_31a3ee0744f74a2dafbef832",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Check compilation after removing extra brace"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expected a semicolon\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:3710:1]\n \u001b[2m3710\u001b[0m |         apiUrl\n \u001b[2m3711\u001b[0m |       };\n \u001b[2m3712\u001b[0m |       }\n \u001b[2m3713\u001b[0m |     } catch (error: any) {\n      : \u001b[31;1m    ^\u001b[0m\n \u001b[2m3714\u001b[0m |       console.error('🚛 Nord Wheel ошибка:', error);\n \u001b[2m3715\u001b[0m |       return {\n \u001b[2m3716\u001b[0m |         company: 'Nord Wheel',\n      `----\n\n  \u001b[31mx\u001b[0m Expected a semicolon\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:3710:1]\n \u001b[2m3710\u001b[0m |         apiUrl\n \u001b[2m3711\u001b[0m |       };\n \u001b[2m3712\u001b[0m |       }\n \u001b[2m3713\u001b[0m |     } catch (error: any) {\n      : \u001b[31;1m      ^^^^^\u001b[0m\n \u001b[2m3714\u001b[0m |       console.error('🚛 Nord Wheel ошибка:', error);\n \u001b[2m3715\u001b[0m |       return {\n \u001b[2m3716\u001b[0m |         company: 'Nord Wheel',\n      `----\n\n  \u001b[31mx\u001b[0m Expression expected\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:3720:1]\n \u001b[2m3720\u001b[0m |         apiUrl\n \u001b[2m3721\u001b[0m |       };\n \u001b[2m3722\u001b[0m |     }\n \u001b[2m3723\u001b[0m |   };\n      : \u001b[31;1m  ^\u001b[0m\n \u001b[2m3724\u001b[0m |     const calculateCdek = async (): Promise<CalculationResult> => {\n \u001b[2m3725\u001b[0m |     const apiUrl = '/api/cdek';\n \u001b[2m3726\u001b[0m |     \n      `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expected a semicolon\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:3710:1]\n \u001b[2m3710\u001b[0m |         apiUrl\n \u001b[2m3711\u001b[0m |       };\n \u001b[2m3712\u001b[0m |       }\n \u001b[2m3713\u001b[0m |     } catch (error: any) {\n      : \u001b[31;1m    ^\u001b[0m\n \u001b[2m3714\u001b[0m |       console.error('🚛 Nord Wheel ошибка:', error);\n \u001b[2m3715\u001b[0m |       return {\n \u001b[2m3716\u001b[0m |         company: 'Nord Wheel',\n      `----\n\n  \u001b[31mx\u001b[0m Expected a semicolon\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:3710:1]\n \u001b[2m3710\u001b[0m |         apiUrl\n \u001b[2m3711\u001b[0m |       };\n \u001b[2m3712\u001b[0m |       }\n \u001b[2m3713\u001b[0m |     } catch (error: any) {\n      : \u001b[31;1m      ^^^^^\u001b[0m\n \u001b[2m3714\u001b[0m |       console.error('🚛 Nord Wheel ошибка:', error);\n \u001b[2m3715\u001b[0m |       return {\n \u001b[2m3716\u001b[0m |         company: 'Nord Wheel',\n      `----\n\n  \u001b[31mx\u001b[0m Expression expected\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:3720:1]\n \u001b[2m3720\u001b[0m |         apiUrl\n \u001b[2m3721\u001b[0m |       };\n \u001b[2m3722\u001b[0m |     }\n \u001b[2m3723\u001b[0m |   };\n      : \u001b[31;1m  ^\u001b[0m\n \u001b[2m3724\u001b[0m |     const calculateCdek = async (): Promise<CalculationResult> => {\n \u001b[2m3725\u001b[0m |     const apiUrl = '/api/cdek';\n \u001b[2m3726\u001b[0m |     \n      `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+      "exit": 1,
+      "description": "Check compilation after removing extra brace"
+    },
+    "time": {
+      "start": 1763955087129,
+      "end": 1763955091223
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3eb017f0017FxYecCARiGrdE",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3eadb5e001fuvC7BJjbqbGcP",
+  "type": "tool",
+  "callID": "call_f252a83f6c084e81863b8e26",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3610,
+      "limit": 15
+    },
+    "output": "<file>\n03611|         dispatch: {\n03612|           location: getDispatchLocation()\n03613|         },\n03614|         destination: {\n03615|           location: getDestinationLocation()\n03616|         },\n03617|         cargo: {\n03618|           total_weight: totalWeight,\n03619|           total_volume: totalVolume,\n03620|           total_quantity: form.cargos.length\n03621|         },\n03622|         insurance: form.needInsurance && form.declaredValue ? form.declaredValue : 0,\n03623|         insurance_refuse: !form.needInsurance,\n03624|         services: {\n03625|           is_package: form.needPackaging,\n\n(File has more lines. Use 'offset' parameter to read beyond line 3625)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        dispatch: {\n          location: getDispatchLocation()\n        },\n        destination: {\n          location: getDestinationLocation()\n        },\n        cargo: {\n          total_weight: totalWeight,\n          total_volume: totalVolume,\n          total_quantity: form.cargos.length\n        },\n        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : 0,\n        insurance_refuse: !form.needInsurance,\n        services: {\n          is_package: form.needPackaging,"
+    },
+    "time": {
+      "start": 1763955114369,
+      "end": 1763955114373
+    }
+  }
+}

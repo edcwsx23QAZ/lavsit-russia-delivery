@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e2369f001i8FBen32MZE1Xk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e22a72001LfqEBqKw7YHW1E",
+  "type": "tool",
+  "callID": "call_46fd0a3134f14dd68f947c5e",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/external/route.ts",
+      "offset": 340,
+      "limit": 50
+    },
+    "output": "<file>\n00341|     calculation: {\n00342|       totalCost: apiResponse.totalCost || apiResponse.cost || 0,\n00343|       currency: apiResponse.currency || 'RUB',\n00344|       deliveryTime: {\n00345|         min: apiResponse.deliveryTime?.min || apiResponse.minDays || 1,\n00346|         max: apiResponse.deliveryTime?.max || apiResponse.maxDays || 7,\n00347|         unit: 'days'\n00348|       },\n00349|       breakdown: apiResponse.breakdown || undefined\n00350|     },\n00351|     metadata: {\n00352|       requestId,\n00353|       timestamp: new Date().toISOString(),\n00354|       processingTime\n00355|     }\n00356|   };\n00357| }\n00358| \n00359| // GET endpoint for API documentation\n00360| export async function GET() {\n00361|   return NextResponse.json({\n00362|     name: 'Freight Calculator External API',\n00363|     version: '1.0.0',\n00364|     description: 'REST API for freight cost calculations across Russian transport companies',\n00365|     baseUrl: '/api/external',\n00366|     endpoints: {\n00367|       'POST /api/external': {\n00368|         description: 'Calculate freight costs',\n00369|         authentication: 'API Key (X-API-Key header) or IP-based rate limiting',\n00370|         rateLimit: `${RATE_LIMIT_MAX_REQUESTS} requests per minute`,\n00371|         requestBody: {\n00372|           company: {\n00373|             type: 'string',\n00374|             required: true,\n00375|             enum: SUPPORTED_COMPANIES,\n00376|             description: 'Transport company to use for calculation'\n00377|           },\n00378|           fromCity: {\n00379|             type: 'string',\n00380|             required: true,\n00381|             description: 'Departure city'\n00382|           },\n00383|           toCity: {\n00384|             type: 'string',\n00385|             required: true,\n00386|             description: 'Destination city'\n00387|           },\n00388|           cargo: {\n00389|             type: 'array',\n00390|             required: true,\n\n(File has more lines. Use 'offset' parameter to read beyond line 390)\n</file>",
+    "title": "app/api/external/route.ts",
+    "metadata": {
+      "preview": "    calculation: {\n      totalCost: apiResponse.totalCost || apiResponse.cost || 0,\n      currency: apiResponse.currency || 'RUB',\n      deliveryTime: {\n        min: apiResponse.deliveryTime?.min || apiResponse.minDays || 1,\n        max: apiResponse.deliveryTime?.max || apiResponse.maxDays || 7,\n        unit: 'days'\n      },\n      breakdown: apiResponse.breakdown || undefined\n    },\n    metadata: {\n      requestId,\n      timestamp: new Date().toISOString(),\n      processingTime\n    }\n  };\n}\n\n// GET endpoint for API documentation\nexport async function GET() {"
+    },
+    "time": {
+      "start": 1763954538145,
+      "end": 1763954538147
+    }
+  }
+}

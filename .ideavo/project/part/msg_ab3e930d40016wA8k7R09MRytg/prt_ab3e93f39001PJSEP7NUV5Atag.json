@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3e93f39001PJSEP7NUV5Atag",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e930d40016wA8k7R09MRytg",
+  "type": "tool",
+  "callID": "call_bdfe0f50519e47fbbda6fc62",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Check compilation after syntax fix"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expected a semicolon\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:3709:1]\n \u001b[2m3709\u001b[0m |         responseData: data,\n \u001b[2m3710\u001b[0m |         apiUrl\n \u001b[2m3711\u001b[0m |       };\n \u001b[2m3712\u001b[0m |     } else {\n      : \u001b[31;1m      ^\u001b[0m\n \u001b[2m3713\u001b[0m |       return {\n \u001b[2m3714\u001b[0m |         company: 'Nord Wheel',\n \u001b[2m3715\u001b[0m |         price: 0,\n      `----\n\n  \u001b[31mx\u001b[0m Expression expected\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:3709:1]\n \u001b[2m3709\u001b[0m |         responseData: data,\n \u001b[2m3710\u001b[0m |         apiUrl\n \u001b[2m3711\u001b[0m |       };\n \u001b[2m3712\u001b[0m |     } else {\n      : \u001b[31;1m      ^^^^\u001b[0m\n \u001b[2m3713\u001b[0m |       return {\n \u001b[2m3714\u001b[0m |         company: 'Nord Wheel',\n \u001b[2m3715\u001b[0m |         price: 0,\n      `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expected a semicolon\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:3709:1]\n \u001b[2m3709\u001b[0m |         responseData: data,\n \u001b[2m3710\u001b[0m |         apiUrl\n \u001b[2m3711\u001b[0m |       };\n \u001b[2m3712\u001b[0m |     } else {\n      : \u001b[31;1m      ^\u001b[0m\n \u001b[2m3713\u001b[0m |       return {\n \u001b[2m3714\u001b[0m |         company: 'Nord Wheel',\n \u001b[2m3715\u001b[0m |         price: 0,\n      `----\n\n  \u001b[31mx\u001b[0m Expression expected\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:3709:1]\n \u001b[2m3709\u001b[0m |         responseData: data,\n \u001b[2m3710\u001b[0m |         apiUrl\n \u001b[2m3711\u001b[0m |       };\n \u001b[2m3712\u001b[0m |     } else {\n      : \u001b[31;1m      ^^^^\u001b[0m\n \u001b[2m3713\u001b[0m |       return {\n \u001b[2m3714\u001b[0m |         company: 'Nord Wheel',\n \u001b[2m3715\u001b[0m |         price: 0,\n      `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+      "exit": 1,
+      "description": "Check compilation after syntax fix"
+    },
+    "time": {
+      "start": 1763954999102,
+      "end": 1763955004017
+    }
+  }
+}

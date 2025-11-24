@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3c995720012AAnXBZeNBsqC8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3c96bb7001jruBrAQX5wDmpw",
+  "type": "tool",
+  "callID": "call_2fa9d066ed3b4ebda0f46406",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                          <Switch\n                            checked={isEnabled}\n                            onCheckedChange={(checked) => {\n                              setEnabledCompanies(prev => ({\n                                ...prev,\n                                [company.apiKey]: checked\n                              }));\n                            }}\n                            disabled={!isConnected}\n                          />",
+      "newString": "                          <Switch\n                            checked={isEnabled}\n                            onCheckedChange={(checked) => {\n                              setEnabledCompanies(prev => ({\n                                ...prev,\n                                [company.apiKey]: checked\n                              }));\n                            }}\n                          />"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -5134,9 +5134,8 @@\n             ...prev,\n             [company.apiKey]: checked\n           }));\n         }}\n-        disabled={!isConnected}\n       />\n     </div>\n   </div>\n );\n"
+    },
+    "time": {
+      "start": 1763952924022,
+      "end": 1763952924058
+    }
+  }
+}

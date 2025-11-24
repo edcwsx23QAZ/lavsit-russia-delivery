@@ -3551,6 +3551,8 @@ export default function Home() {
       console.log(`   - Количество мест: ${form.cargos.length}`);
       console.log(`   - Общий вес: ${totalWeight} кг`);
       console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);
+      console.log(`   - Откуда: ${form.fromCity} (${form.fromTerminal ? 'терминал' : 'адрес'})`);
+      console.log(`   - Куда: ${form.toCity} (${form.toTerminal ? 'терминал' : 'адрес'})`);
       
       form.cargos.forEach((cargo, index) => {
         console.log(`   📦 Место ${index + 1}:`);
@@ -3563,21 +3565,54 @@ export default function Home() {
         console.log(`   📐 Максимальные габариты: ${maxLength}×${maxWidth}×${maxHeight} см`);
       }
 
-      // Формируем запрос для нового API NordWheel
+      // 🏙️ Определяем тип локации на основе настроек формы
+      const getDispatchLocation = () => {
+        if (form.fromTerminal) {
+          return {
+            type: 'terminal' as const,
+            // Для терминальной доставки достаточно города, используем стандартные терминалы
+            terminal_id: form.fromCity.toLowerCase().includes('москва') ? '0c7a2795-1220-486d-a7ce-8bcf130a1224' :
+                        form.fromCity.toLowerCase().includes('санкт') || form.fromCity.toLowerCase().includes('спб') ? '3ca02b62-3632-4da0-8fde-de9d9c77c553' :
+                        '0c7a2795-1220-486d-a7ce-8bcf130a1224', // По умолчанию Москва
+            city_fias: form.fromCity.toLowerCase().includes('москва') ? '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' :
+                       form.fromCity.toLowerCase().includes('санкт') || form.fromCity.toLowerCase().includes('спб') ? 'c2deb16a-0330-4f05-821f-1d09c93331e6' :
+                       '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // По умолчанию Москва
+          };
+        } else {
+          return {
+            type: 'address' as const,
+            address: form.fromAddress || form.fromCity // Используем адрес если есть, иначе город
+          };
+        }
+      };
+
+      const getDestinationLocation = () => {
+        if (form.toTerminal) {
+          return {
+            type: 'terminal' as const,
+            // Для терминальной доставки достаточно города, используем стандартные терминалы
+            terminal_id: form.toCity.toLowerCase().includes('москва') ? '0c7a2795-1220-486d-a7ce-8bcf130a1224' :
+                        form.toCity.toLowerCase().includes('санкт') || form.toCity.toLowerCase().includes('спб') ? '3ca02b62-3632-4da0-8fde-de9d9c77c553' :
+                        '3ca02b62-3632-4da0-8fde-de9d9c77c553', // По умолчанию СПб
+            city_fias: form.toCity.toLowerCase().includes('москва') ? '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' :
+                       form.toCity.toLowerCase().includes('санкт') || form.toCity.toLowerCase().includes('спб') ? 'c2deb16a-0330-4f05-821f-1d09c93331e6' :
+                       'c2deb16a-0330-4f05-821f-1d09c93331e6' // По умолчанию СПб
+          };
+        } else {
+          return {
+            type: 'address' as const,
+            address: form.toAddress || form.toCity // Используем адрес если есть, иначе город
+          };
+        }
+      };
+
+      // Формируем запрос для нового API NordWheel с учетом настроек формы
       const requestData = {
         dispatch: {
-          location: {
-            type: 'terminal',
-            terminal_id: '0c7a2795-1220-486d-a7ce-8bcf130a1224', // Москва terminal GUID
-            city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва FIAS (требуется API, но не работает - TODO: исправить идентификацию городов)
-          }
+          location: getDispatchLocation()
         },
         destination: {
-          location: {
-            type: 'terminal',
-            terminal_id: '3ca02b62-3632-4da0-8fde-de9d9c77c553', // СПб terminal GUID
-            city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // СПб FIAS (требуется API, но не работает - TODO: исправить идентификацию городов)
-          }
+          location: getDestinationLocation()
         },
         cargo: {
           total_weight: totalWeight,
@@ -3607,50 +3642,73 @@ export default function Home() {
 
       if (!response.ok) {
         console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);
+        const errorDetails = response.status === 401 ? 'Неверный API ключ' :
+                            response.status === 400 ? 'Неверный запрос' :
+                            response.status === 404 ? 'Город не найден' :
+                            response.status === 500 ? 'Внутренняя ошибка сервера' :
+                            `Ошибка API: ${response.status} ${response.statusText}`;
+        
         return {
           company: 'Nord Wheel',
           price: 0,
           days: 0,
-          error: `Ошибка API: ${response.status} ${response.statusText}`,
+          error: errorDetails,
           apiUrl,
           requestData
         };
       }
 
       const data = await response.json();
-      console.log('🚛 Nord Wheel новый API ответ:', data);
+      console.log('🚛 Nord Wheel API ответ:', data);
 
-      // Парсинг ответа нового API
+      // Парсинг ответа API - поддерживаем разные форматы
+      let price = 0;
+      let days = 0;
+      let details: any = {};
+
       if (data.success) {
-        const price = data.price || 0;
-        const days = data.days || 0;
-
-        return {
-          company: 'Nord Wheel',
-          price: Math.round(price),
-          days: days,
-          details: {
-            totalCost: price,
-            deliveryCost: data.delivery_cost || 0,
-            pickupCost: data.pickup_cost || 0,
-            insuranceCost: data.insurance_cost || 0,
-            services: data.services || []
-          },
-          requestData,
-          responseData: data,
-          apiUrl
+        // Новый формат API
+        price = data.price || data.total_cost || data.cost || 0;
+        days = data.days || data.delivery_days || data.delivery_time || 0;
+        details = {
+          totalCost: price,
+          deliveryCost: data.delivery_cost || 0,
+          pickupCost: data.pickup_cost || 0,
+          insuranceCost: data.insurance_cost || 0,
+          services: data.services || [],
+          currency: data.currency || 'RUB'
+        };
+      } else if (data.price !== undefined) {
+        // Альтернативный формат ответа
+        price = data.price;
+        days = data.days || data.delivery_time || 0;
+        details = {
+          totalCost: price,
+          currency: data.currency || 'RUB'
         };
       } else {
+        // Если ответ не содержит цены, возвращаем ошибку
+        console.error('❌ Nord Wheel: Неверный формат ответа API:', data);
         return {
           company: 'Nord Wheel',
           price: 0,
           days: 0,
-          error: data.message || 'Ошибка расчета Nord Wheel - нет данных',
+          error: 'Неверный формат ответа API',
+          apiUrl,
           requestData,
-          responseData: data,
-          apiUrl
+          responseData: data
         };
       }
+
+      return {
+        company: 'Nord Wheel',
+        price: Math.round(price),
+        days: days,
+        details,
+        requestData,
+        responseData: data,
+        apiUrl
+      };
     } catch (error: any) {
       console.error('🚛 Nord Wheel ошибка:', error);
       return {
@@ -5135,7 +5193,6 @@ export default function Home() {
                                 [company.apiKey]: checked
                               }));
                             }}
-                            disabled={!isConnected}
                           />
                         </div>
                       </div>

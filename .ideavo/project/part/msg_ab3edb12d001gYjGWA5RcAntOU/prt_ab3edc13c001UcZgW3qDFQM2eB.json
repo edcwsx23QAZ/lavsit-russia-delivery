@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3edc13c001UcZgW3qDFQM2eB",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3edb12d001gYjGWA5RcAntOU",
+  "type": "tool",
+  "callID": "call_1156bc4456c14d4e8fe84634",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "interface CalculationResult"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 63: interface CalculationResult {",
+    "title": "interface CalculationResult",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763955294528,
+      "end": 1763955294542
+    }
+  }
+}

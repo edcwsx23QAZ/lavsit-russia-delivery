@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3e8a551001axUJBVIr0EHnOy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e82cb2001m1AaHC5jx97OUF",
+  "type": "tool",
+  "callID": "call_47c5f631219f416baba0c9bb",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      const data = await response.json();\n      console.log('🚛 Nord Wheel новый API ответ:', data);\n\n      // Парсинг ответа нового API\n      if (data.success) {\n        const price = data.price || 0;\n        const days = data.days || 0;\n\n        return {\n          company: 'Nord Wheel',\n          price: Math.round(price),\n          days: days,\n          details: {\n            totalCost: price,\n            deliveryCost: data.delivery_cost || 0,\n            pickupCost: data.pickup_cost || 0,\n            insuranceCost: data.insurance_cost || 0,\n            services: data.services || []\n          },\n          requestData,",
+      "newString": "      const data = await response.json();\n      console.log('🚛 Nord Wheel API ответ:', data);\n\n      // Парсинг ответа API - поддерживаем разные форматы\n      let price = 0;\n      let days = 0;\n      let details: any = {};\n\n      if (data.success) {\n        // Новый формат API\n        price = data.price || data.total_cost || data.cost || 0;\n        days = data.days || data.delivery_days || data.delivery_time || 0;\n        details = {\n          totalCost: price,\n          deliveryCost: data.delivery_cost || 0,\n          pickupCost: data.pickup_cost || 0,\n          insuranceCost: data.insurance_cost || 0,\n          services: data.services || [],\n          currency: data.currency || 'RUB'\n        };\n      } else if (data.price !== undefined) {\n        // Альтернативный формат ответа\n        price = data.price;\n        days = data.days || data.delivery_time || 0;\n        details = {\n          totalCost: price,\n          currency: data.currency || 'RUB'\n        };\n      } else {\n        // Если ответ не содержит цены, возвращаем ошибку\n        console.error('❌ Nord Wheel: Неверный формат ответа API:', data);\n        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: 'Неверный формат ответа API',\n          apiUrl,\n          requestData,\n          apiResponse: data\n        };\n      }\n\n      return {\n        company: 'Nord Wheel',\n        price: Math.round(price),\n        days: days,\n        details,\n        requestData,"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3658,27 +3658,55 @@\n   };\n }\n \n const data = await response.json();\n-console.log('🚛 Nord Wheel новый API ответ:', data);\n+console.log('🚛 Nord Wheel API ответ:', data);\n \n-// Парсинг ответа нового API\n-if (data.success) {\n-  const price = data.price || 0;\n-  const days = data.days || 0;\n+// Парсинг ответа API - поддерживаем разные форматы\n+let price = 0;\n+let days = 0;\n+let details: any = {};\n \n+if (data.success) {\n+  // Новый формат API\n+  price = data.price || data.total_cost || data.cost || 0;\n+  days = data.days || data.delivery_days || data.delivery_time || 0;\n+  details = {\n+    totalCost: price,\n+    deliveryCost: data.delivery_cost || 0,\n+    pickupCost: data.pickup_cost || 0,\n+    insuranceCost: data.insurance_cost || 0,\n+    services: data.services || [],\n+    currency: data.currency || 'RUB'\n+  };\n+} else if (data.price !== undefined) {\n+  // Альтернативный формат ответа\n+  price = data.price;\n+  days = data.days || data.delivery_time || 0;\n+  details = {\n+    totalCost: price,\n+    currency: data.currency || 'RUB'\n+  };\n+} else {\n+  // Если ответ не содержит цены, возвращаем ошибку\n+  console.error('❌ Nord Wheel: Неверный формат ответа API:', data);\n   return {\n     company: 'Nord Wheel',\n-    price: Math.round(price),\n-    days: days,\n-    details: {\n-      totalCost: price,\n-      deliveryCost: data.delivery_cost || 0,\n-      pickupCost: data.pickup_cost || 0,\n-      insuranceCost: data.insurance_cost || 0,\n-      services: data.services || []\n-    },\n+    price: 0,\n+    days: 0,\n+    error: 'Неверный формат ответа API',\n+    apiUrl,\n     requestData,\n+    apiResponse: data\n+  };\n+}\n+\n+return {\n+  company: 'Nord Wheel',\n+  price: Math.round(price),\n+  days: days,\n+  details,\n+  requestData,\n     responseData: data,\n     apiUrl\n   };\n } else {\n"
+    },
+    "time": {
+      "start": 1763954959700,
+      "end": 1763954959727
+    }
+  }
+}

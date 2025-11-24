@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3ed4591001VM4uLm2Ax4jY9m",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3ed2a2600128u5xn2P6yNEQX",
+  "type": "tool",
+  "callID": "call_a1346440abe146b2bdbb5ec5",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        apiUrl\n      };\n      }\n    } catch (error: any) {",
+      "newString": "        apiUrl\n      };\n    } catch (error: any) {"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3708,9 +3708,8 @@\n     requestData,\n     responseData: data,\n     apiUrl\n   };\n-  }\n } catch (error: any) {\n   console.error('🚛 Nord Wheel ошибка:', error);\n   return {\n     company: 'Nord Wheel',\n"
+    },
+    "time": {
+      "start": 1763955262867,
+      "end": 1763955262887
+    }
+  }
+}

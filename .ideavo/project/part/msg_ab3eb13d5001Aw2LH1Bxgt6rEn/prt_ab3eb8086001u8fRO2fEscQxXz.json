@@ -1,0 +1,20 @@
+{
+  "id": "prt_ab3eb8086001u8fRO2fEscQxXz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3eb13d5001Aw2LH1Bxgt6rEn",
+  "type": "tool",
+  "callID": "call_1c69faf974fa4bcd927bd5a3",
+  "tool": "grep",
+  "state": {
+    "status": "error",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "try.*{"
+    },
+    "error": "Error: ripgrep failed: regex parse error:\n    try.*{\n         ^\nerror: unclosed counted repetition\n",
+    "time": {
+      "start": 1763955146890,
+      "end": 1763955146894
+    }
+  }
+}

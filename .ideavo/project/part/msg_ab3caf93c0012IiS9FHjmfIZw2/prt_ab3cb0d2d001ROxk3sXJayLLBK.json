@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3cb0d2d001ROxk3sXJayLLBK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3caf93c0012IiS9FHjmfIZw2",
+  "type": "tool",
+  "callID": "call_1ed036dc14344ff19f4c37a4",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "hiddenCompanies.*calc"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 4895:                   .filter(calc => !hiddenCompanies[calc.company])",
+    "title": "hiddenCompanies.*calc",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763953020208,
+      "end": 1763953020219
+    }
+  }
+}

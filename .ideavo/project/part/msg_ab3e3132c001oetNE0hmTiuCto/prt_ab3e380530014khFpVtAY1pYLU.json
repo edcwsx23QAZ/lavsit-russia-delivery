@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e380530014khFpVtAY1pYLU",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e3132c001oetNE0hmTiuCto",
+  "type": "tool",
+  "callID": "call_1e47a45db5b54a668733d072",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "fromAddress.*required"
+    },
+    "output": "No files found",
+    "title": "fromAddress.*required",
+    "metadata": {
+      "matches": 0,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763954622550,
+      "end": 1763954622561
+    }
+  }
+}

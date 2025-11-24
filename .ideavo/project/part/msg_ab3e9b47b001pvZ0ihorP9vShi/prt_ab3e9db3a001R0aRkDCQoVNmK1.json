@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3e9db3a001R0aRkDCQoVNmK1",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e9b47b001pvZ0ihorP9vShi",
+  "type": "tool",
+  "callID": "call_2373aadc7cd14dbd95c91805",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      return {\n        company: 'Nord Wheel',\n        price: Math.round(price),\n        days: days,\n        details,\n        requestData,\n        responseData: data,\n        apiUrl\n      };\n    } else {\n      return {\n        company: 'Nord Wheel',\n        price: 0,\n        days: 0,\n        error: data.message || 'Ошибка расчета Nord Wheel - нет данных',\n        requestData,\n        responseData: data,\n        apiUrl",
+      "newString": "      return {\n        company: 'Nord Wheel',\n        price: Math.round(price),\n        days: days,\n        details,\n        requestData,\n        responseData: data,\n        apiUrl\n      };"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3708,17 +3708,8 @@\n     requestData,\n     responseData: data,\n     apiUrl\n   };\n-} else {\n-  return {\n-    company: 'Nord Wheel',\n-    price: 0,\n-    days: 0,\n-    error: data.message || 'Ошибка расчета Nord Wheel - нет данных',\n-    requestData,\n-    responseData: data,\n-    apiUrl\n     };\n   }\n } catch (error: any) {\n   console.error('🚛 Nord Wheel ошибка:', error);\n"
+    },
+    "time": {
+      "start": 1763955039036,
+      "end": 1763955039057
+    }
+  }
+}

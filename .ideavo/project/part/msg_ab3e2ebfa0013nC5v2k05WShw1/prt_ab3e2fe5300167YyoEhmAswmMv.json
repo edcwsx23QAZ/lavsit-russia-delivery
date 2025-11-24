@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e2fe5300167YyoEhmAswmMv",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e2ebfa0013nC5v2k05WShw1",
+  "type": "tool",
+  "callID": "call_80fa9eeff7e54026bd924858",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "fromAddress.*toAddress"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 2444:           error: `Зона ПЭК не обслуживается. Проверьте адреса: ${!senderZone ? (form.fromAddress || form.fromCity) : ''} ${!receiverZone ? (form.toAddress || form.toCity) : ''}`.trim(),",
+    "title": "fromAddress.*toAddress",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763954589271,
+      "end": 1763954589284
+    }
+  }
+}

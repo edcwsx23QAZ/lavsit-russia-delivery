@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e1f6af0014WCrXV3kYZ0YjM",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e1bbcc0016sOZzmsxgw6Gor",
+  "type": "tool",
+  "callID": "call_1c0f81bc46a04356a3ff5c23",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/external/route.ts",
+      "offset": 310,
+      "limit": 20
+    },
+    "output": "<file>\n00311|         ...basePayload,\n00312|         method: 'calculate'\n00313|       };\n00314| \n00315|     case 'nordwheel':\n00316|       return {\n00317|         ...basePayload,\n00318|         service: 'nordwheel'\n00319|       };\n00320| \n00321|     default:\n00322|       return basePayload;\n00323|   }\n00324| }\n00325| \n00326| function transformResponse(\n00327|   company: SupportedCompany,\n00328|   apiResponse: any,\n00329|   requestId: string,\n00330|   startTime: number\n\n(File has more lines. Use 'offset' parameter to read beyond line 330)\n</file>",
+    "title": "app/api/external/route.ts",
+    "metadata": {
+      "preview": "        ...basePayload,\n        method: 'calculate'\n      };\n\n    case 'nordwheel':\n      return {\n        ...basePayload,\n        service: 'nordwheel'\n      };\n\n    default:\n      return basePayload;\n  }\n}\n\nfunction transformResponse(\n  company: SupportedCompany,\n  apiResponse: any,\n  requestId: string,\n  startTime: number"
+    },
+    "time": {
+      "start": 1763954521778,
+      "end": 1763954521783
+    }
+  }
+}

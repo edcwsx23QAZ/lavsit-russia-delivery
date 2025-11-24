@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3e91ef900113lGFIl84Or6T5",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e90648001K8p3aW5JY3utX1",
+  "type": "tool",
+  "callID": "call_6aef04ff1fd24925a26d9959",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      return {\n        company: 'Nord Wheel',\n        price: Math.round(price),\n        days: days,\n        details,\n        requestData,\n          responseData: data,\n          apiUrl\n        };\n      } else {\n        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: data.message || 'Ошибка расчета Nord Wheel - нет данных',\n          requestData,\n          responseData: data,\n          apiUrl",
+      "newString": "      return {\n        company: 'Nord Wheel',\n        price: Math.round(price),\n        days: days,\n        details,\n        requestData,\n        responseData: data,\n        apiUrl\n      };\n    } else {\n      return {\n        company: 'Nord Wheel',\n        price: 0,\n        days: 0,\n        error: data.message || 'Ошибка расчета Nord Wheel - нет данных',\n        requestData,\n        responseData: data,\n        apiUrl"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3705,21 +3705,21 @@\n     price: Math.round(price),\n     days: days,\n     details,\n     requestData,\n-      responseData: data,\n-      apiUrl\n+    responseData: data,\n+    apiUrl\n+  };\n+} else {\n+  return {\n+    company: 'Nord Wheel',\n+    price: 0,\n+    days: 0,\n+    error: data.message || 'Ошибка расчета Nord Wheel - нет данных',\n+    requestData,\n+    responseData: data,\n+    apiUrl\n     };\n-  } else {\n-    return {\n-      company: 'Nord Wheel',\n-      price: 0,\n-      days: 0,\n-      error: data.message || 'Ошибка расчета Nord Wheel - нет данных',\n-      requestData,\n-      responseData: data,\n-      apiUrl\n-    };\n   }\n } catch (error: any) {\n   console.error('🚛 Nord Wheel ошибка:', error);\n   return {\n"
+    },
+    "time": {
+      "start": 1763954990844,
+      "end": 1763954990864
+    }
+  }
+}

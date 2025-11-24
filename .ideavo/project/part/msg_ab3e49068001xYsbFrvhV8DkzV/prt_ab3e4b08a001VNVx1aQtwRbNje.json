@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e4b08a001VNVx1aQtwRbNje",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e49068001xYsbFrvhV8DkzV",
+  "type": "tool",
+  "callID": "call_fb074546127d4159bba9d4cf",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "async.*calculate"
+    },
+    "output": "No files found",
+    "title": "async.*calculate",
+    "metadata": {
+      "matches": 0,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763954700431,
+      "end": 1763954700444
+    }
+  }
+}

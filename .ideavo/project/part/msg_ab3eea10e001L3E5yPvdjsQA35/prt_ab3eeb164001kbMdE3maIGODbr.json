@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3eeb164001kbMdE3maIGODbr",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3eea10e001L3E5yPvdjsQA35",
+  "type": "tool",
+  "callID": "call_849dd2f3642b455fbd5221f6",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "pkill -f \"npm run dev\"",
+      "description": "Stop development server"
+    },
+    "output": "",
+    "title": "pkill -f \"npm run dev\"",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Stop development server"
+    },
+    "time": {
+      "start": 1763955356008,
+      "end": 1763955356023
+    }
+  }
+}

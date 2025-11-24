@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3ca821d001fjNMKBFcJ5Zant",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3ca74fb001zrwDH1gf92eXEU",
+  "type": "tool",
+  "callID": "call_8a85780ceb1246788e226c6a",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "sleep 5 && echo \"Server started successfully\"",
+      "description": "Wait for server to start"
+    },
+    "output": "Server started successfully\n",
+    "title": "sleep 5 && echo \"Server started successfully\"",
+    "metadata": {
+      "output": "Server started successfully\n",
+      "exit": 0,
+      "description": "Wait for server to start"
+    },
+    "time": {
+      "start": 1763952984610,
+      "end": 1763952989678
+    }
+  }
+}

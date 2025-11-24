@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3cb417c001iYlSv6vWdtDEG1",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3cb206c001CwmGBXaPAiBiRx",
+  "type": "tool",
+  "callID": "call_fdb77de38ef041f9b0051e53",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 5095,
+      "limit": 15
+    },
+    "output": "<file>\n05096|                 </div>\n05097|               </CardHeader>\n05098|               <CardContent>\n05099|                 <div className=\"grid grid-cols-2 gap-2\">\n05100|                   {COMPANIES_BASE\n05101|                     .filter(company => showHiddenCompanies || enabledCompanies[company.apiKey])\n05102|                     .map((company, index) => {\n05103|                     const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n05104|                     const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n05105|                     const isEnabled = enabledCompanies[company.apiKey];\n05106|                     \n05107|                     // Отладка для первых 3 компаний\n05108|                     if (index < 3) {\n05109|                       console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}`);\n05110|                     }\n\n(File has more lines. Use 'offset' parameter to read beyond line 5110)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                </div>\n              </CardHeader>\n              <CardContent>\n                <div className=\"grid grid-cols-2 gap-2\">\n                  {COMPANIES_BASE\n                    .filter(company => showHiddenCompanies || enabledCompanies[company.apiKey])\n                    .map((company, index) => {\n                    const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n                    const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n                    const isEnabled = enabledCompanies[company.apiKey];\n                    \n                    // Отладка для первых 3 компаний\n                    if (index < 3) {\n                      console.log(`🔍 Компания ${index}: ${company.name}, apiKey: ${company.apiKey}, isEnabled: ${isEnabled}, statusText: ${statusText}`);\n                    }"
+    },
+    "time": {
+      "start": 1763953033598,
+      "end": 1763953033601
+    }
+  }
+}

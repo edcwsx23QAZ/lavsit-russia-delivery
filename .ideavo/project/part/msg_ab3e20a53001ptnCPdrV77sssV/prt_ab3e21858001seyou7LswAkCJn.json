@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e21858001seyou7LswAkCJn",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e20a53001ptnCPdrV77sssV",
+  "type": "tool",
+  "callID": "call_da32905f80b445c5b863e87c",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app/api/external",
+      "pattern": "case 'nordwheel'"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/api/external/route.ts:\n  Line 315:     case 'nordwheel':",
+    "title": "case 'nordwheel'",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763954530395,
+      "end": 1763954530406
+    }
+  }
+}

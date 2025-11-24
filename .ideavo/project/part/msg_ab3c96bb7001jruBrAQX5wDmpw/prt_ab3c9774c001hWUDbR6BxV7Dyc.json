@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab3c9774c001hWUDbR6BxV7Dyc",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3c96bb7001jruBrAQX5wDmpw",
+  "type": "text",
+  "text": "\nОтлично! Теперь я вижу проблему. На строке 5103 переменная `isConnected` определяется как:\n\n```javascript\nconst isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n```\n\nА на строке 5138 переключатель отключается, если `!isConnected`:\n\n```javascript\ndisabled={!isConnected}\n```\n\nЭто означает, что переключатель работает только если статус ТК \"подключено\". Если есть ошибка, переключатель становится неактивным.\n\nНужно исправить эту логику, чтобы переключатель всегда был активен. Давайте уберем условие `disabled`:",
+  "time": {
+    "start": 1763952924855,
+    "end": 1763952924855
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3c9242f001KabJUHYDN4V547",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3c91656001lvzg0o0p9Agdl5",
+  "type": "tool",
+  "callID": "call_77741a21544c4182bfec4b42",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 5110,
+      "limit": 20
+    },
+    "output": "<file>\n05111|                     \n05112|                     return (\n05113|                       <div key={index} className=\"flex items-center justify-between p-1.5 bg-gray-700 rounded\">\n05114|                         <div className=\"flex items-center gap-2\">\n05115|                           <span className=\"text-lg\">{company.logo}</span>\n05116|                           <div>\n05117|                             <p className=\"font-medium text-white text-[10px] leading-tight\">{company.name}</p>\n05118|                             <Badge \n05119|                               variant={isConnected ? \"default\" : \"destructive\"} \n05120|                               className=\"text-[9px] py-0 px-1\"\n05121|                             >\n05122|                               {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}\n05123|                             </Badge>\n05124|                           </div>\n05125|                         </div>\n05126|                         <div className=\"flex items-center gap-2\">\n05127|                           <span className=\"text-[9px] text-gray-300\">\n05128|                             {isEnabled ? 'Вкл' : 'Выкл'}\n05129|                           </span>\n05130|                           <Switch\n\n(File has more lines. Use 'offset' parameter to read beyond line 5130)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                    \n                    return (\n                      <div key={index} className=\"flex items-center justify-between p-1.5 bg-gray-700 rounded\">\n                        <div className=\"flex items-center gap-2\">\n                          <span className=\"text-lg\">{company.logo}</span>\n                          <div>\n                            <p className=\"font-medium text-white text-[10px] leading-tight\">{company.name}</p>\n                            <Badge \n                              variant={isConnected ? \"default\" : \"destructive\"} \n                              className=\"text-[9px] py-0 px-1\"\n                            >\n                              {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}\n                            </Badge>\n                          </div>\n                        </div>\n                        <div className=\"flex items-center gap-2\">\n                          <span className=\"text-[9px] text-gray-300\">\n                            {isEnabled ? 'Вкл' : 'Выкл'}\n                          </span>\n                          <Switch"
+    },
+    "time": {
+      "start": 1763952895027,
+      "end": 1763952895032
+    }
+  }
+}

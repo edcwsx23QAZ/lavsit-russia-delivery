@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e7af0e001b76NmE6TkC9Rfn",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e78ce8001B2TL47z3Z6HfPI",
+  "type": "tool",
+  "callID": "call_14807bd2e3844c25ba713eab",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3620,
+      "limit": 30
+    },
+    "output": "<file>\n03621|         },\n03622|         insurance: form.needInsurance && form.declaredValue ? form.declaredValue : 0,\n03623|         insurance_refuse: !form.needInsurance,\n03624|         services: {\n03625|           is_package: form.needPackaging,\n03626|           is_documents_return: false,\n03627|           is_fragile: false\n03628|         },\n03629|         promocode: null\n03630|       };\n03631| \n03632|       console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n03633| \n03634|       const response = await fetch(apiUrl, {\n03635|         method: 'POST',\n03636|         headers: {\n03637|           'Content-Type': 'application/json',\n03638|           'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}`\n03639|         },\n03640|         body: JSON.stringify(requestData)\n03641|       });\n03642| \n03643|       if (!response.ok) {\n03644|         console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);\n03645|         return {\n03646|           company: 'Nord Wheel',\n03647|           price: 0,\n03648|           days: 0,\n03649|           error: `Ошибка API: ${response.status} ${response.statusText}`,\n03650|           apiUrl,\n\n(File has more lines. Use 'offset' parameter to read beyond line 3650)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        },\n        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : 0,\n        insurance_refuse: !form.needInsurance,\n        services: {\n          is_package: form.needPackaging,\n          is_documents_return: false,\n          is_fragile: false\n        },\n        promocode: null\n      };\n\n      console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n\n      const response = await fetch(apiUrl, {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n          'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}`\n        },\n        body: JSON.stringify(requestData)"
+    },
+    "time": {
+      "start": 1763954896658,
+      "end": 1763954896663
+    }
+  }
+}

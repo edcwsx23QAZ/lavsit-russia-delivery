@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab439d4af001mcvsQjlK70KcDC",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab439a894001Stzcn0pcj38koK",
+  "type": "tool",
+  "callID": "call_24c7e368f40e4713abcc81a5",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 113,
+      "limit": 20
+    },
+    "output": "<file>\n00114|     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00115|     fromCity: '',\n00116|     toCity: '',\n00117|     fromAddress: '',\n00118|     toAddress: '',\n00119|     declaredValue: 0,\n00120|     needPackaging: false,\n00121|     needLoading: false,\n00122|     needCarry: false,\n00123|     floor: 1,\n00124|     hasFreightLift: false,\n00125|     needInsurance: false,\n00126|     fromTerminal: true,\n00127|     toTerminal: true,\n00128|     fromAddressDelivery: false,\n00129|     toAddressDelivery: false,\n00130|     fromLavsiteWarehouse: false,\n00131|     selectedProducts: []\n00132|   };\n00133| \n\n(File has more lines. Use 'offset' parameter to read beyond line 133)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,\n    fromTerminal: true,\n    toTerminal: true,\n    fromAddressDelivery: false,\n    toAddressDelivery: false,\n    fromLavsiteWarehouse: false,\n    selectedProducts: []\n  };\n"
+    },
+    "time": {
+      "start": 1763960280242,
+      "end": 1763960280248
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e4dae0001rQiBfYw45GZf94",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e4ca24001Qj7sXJrfxHxXUl",
+  "type": "tool",
+  "callID": "call_b8789303098c46d0bc7f900d",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "handleCalculate"
+    },
+    "output": "Found 2 matches\n/home/user/project/app/page.tsx:\n  Line 3946:   const handleCalculate = async () => {\n  Line 4858:                     onClick={handleCalculate}",
+    "title": "handleCalculate",
+    "metadata": {
+      "matches": 2,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763954711268,
+      "end": 1763954711281
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e1a8c60018SnBQ2GWqRNtDs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e185c4001uhM7ujx5HbaqKX",
+  "type": "tool",
+  "callID": "call_1bcce95834f54c488488a2d9",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "nordwheel"
+    },
+    "output": "Found 28 matches\n/home/user/project/app/page.tsx:\n  Line 91:   { name: 'Nord Wheel', logo: '🌐', apiKey: 'nordwheel' },\n  Line 165:     nordwheel: true,\n  Line 194:     nordwheel: 'проверка...',\n  Line 611:       checkAPIStatus('nordwheel', async () => {\n  Line 3981:       if (enabledCompanies.nordwheel) {\n\n/home/user/project/app/diagnostic/page.tsx:\n  Line 105:     testAPI('NordWheel', '/api/test', { service: 'nordwheel' });\n  Line 142:       { service: 'Nord Wheel', endpoint: '/api/test', data: { service: 'nordwheel' } }\n\n/home/user/project/app/api/external/route.ts:\n  Line 10:   'nordwheel'\n  Line 269:     nordwheel: '/api/test'\n  Line 315:     case 'nordwheel':\n  Line 318:         service: 'nordwheel'\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 613:         updateResult('nordwheel', {\n  Line 622:         updateResult('nordwheel', {\n  Line 633:       updateResult('nordwheel', {\n  Line 828:         case 'nordwheel':\n  Line 866:       if (tkName === 'nordwheel') {\n  Line 907:         case 'nordwheel':\n  Line 953:       const transportCompanies = ['pek', 'railcontinent', 'vozovoz', 'nordwheel', 'dellin'];\n  Line 1735:               {diagnosticResults.nordwheel ? (\n  Line 1736:                 <Alert className={getStatusColor(diagnosticResults.nordwheel.status)}>\n  Line 1738:                     {getStatusIcon(diagnosticResults.nordwheel.status)}\n  Line 1741:                         <div className=\"font-medium mb-2\">{diagnosticResults.nordwheel.message}</div>\n  Line 1742:                         {diagnosticResults.nordwheel.timing && (\n  Line 1744:                             Время ответа: {diagnosticResults.nordwheel.timing}мс\n  Line 1747:                         {diagnosticResults.nordwheel.details && (\n  Line 1751:                               {JSON.stringify(diagnosticResults.nordwheel.details, null, 2)}\n\n/home/user/project/app/diagnostic/optimized-page.tsx:\n  Line 90:     testAPI('NordWheel', '/api/test', { service: 'nordwheel' });\n  Line 127:       { service: 'Nord Wheel', endpoint: '/api/test', data: { service: 'nordwheel' } }",
+    "title": "nordwheel",
+    "metadata": {
+      "matches": 28,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763954501837,
+      "end": 1763954501853
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3e97362001rZ4xXTMRi2DyrJ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3e962d7001xhA8i7172zMkcm",
+  "type": "tool",
+  "callID": "call_f6ec8366ffac40beaeb7c06d",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 3695,
+      "limit": 25
+    },
+    "output": "<file>\n03696|           error: 'Неверный формат ответа API',\n03697|           apiUrl,\n03698|           requestData,\n03699|           apiResponse: data\n03700|         };\n03701|       }\n03702| \n03703|       return {\n03704|         company: 'Nord Wheel',\n03705|         price: Math.round(price),\n03706|         days: days,\n03707|         details,\n03708|         requestData,\n03709|         responseData: data,\n03710|         apiUrl\n03711|       };\n03712|     } else {\n03713|       return {\n03714|         company: 'Nord Wheel',\n03715|         price: 0,\n03716|         days: 0,\n03717|         error: data.message || 'Ошибка расчета Nord Wheel - нет данных',\n03718|         requestData,\n03719|         responseData: data,\n03720|         apiUrl\n\n(File has more lines. Use 'offset' parameter to read beyond line 3720)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "          error: 'Неверный формат ответа API',\n          apiUrl,\n          requestData,\n          apiResponse: data\n        };\n      }\n\n      return {\n        company: 'Nord Wheel',\n        price: Math.round(price),\n        days: days,\n        details,\n        requestData,\n        responseData: data,\n        apiUrl\n      };\n    } else {\n      return {\n        company: 'Nord Wheel',\n        price: 0,"
+    },
+    "time": {
+      "start": 1763955012454,
+      "end": 1763955012458
+    }
+  }
+}

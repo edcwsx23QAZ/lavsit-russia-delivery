@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab3ed1b8e001kmG4nQHeOtryeS",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3ed0cd8001Qyt5PlXZB4iueS",
+  "type": "tool",
+  "callID": "call_faf3209d91d74e0cbc7a30fe",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "sed -n '3710,3725p' /home/user/project/app/page.tsx",
+      "description": "Show try-catch structure"
+    },
+    "output": "        apiUrl\n      };\n      }\n    } catch (error: any) {\n      console.error('🚛 Nord Wheel ошибка:', error);\n      return {\n        company: 'Nord Wheel',\n        price: 0,\n        days: 0,\n        error: `Ошибка соединения: ${error.message}`,\n        apiUrl\n      };\n    }\n  };\n    const calculateCdek = async (): Promise<CalculationResult> => {\n    const apiUrl = '/api/cdek';\n",
+    "title": "sed -n '3710,3725p' /home/user/project/app/page.tsx",
+    "metadata": {
+      "output": "        apiUrl\n      };\n      }\n    } catch (error: any) {\n      console.error('🚛 Nord Wheel ошибка:', error);\n      return {\n        company: 'Nord Wheel',\n        price: 0,\n        days: 0,\n        error: `Ошибка соединения: ${error.message}`,\n        apiUrl\n      };\n    }\n  };\n    const calculateCdek = async (): Promise<CalculationResult> => {\n    const apiUrl = '/api/cdek';\n",
+      "exit": 0,
+      "description": "Show try-catch structure"
+    },
+    "time": {
+      "start": 1763955252114,
+      "end": 1763955252121
+    }
+  }
+}
