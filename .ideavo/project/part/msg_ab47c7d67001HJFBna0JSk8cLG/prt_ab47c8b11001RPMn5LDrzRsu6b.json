@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab47c8b11001RPMn5LDrzRsu6b",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab47c7d67001HJFBna0JSk8cLG",
+  "type": "tool",
+  "callID": "call_044d439809e74612903642e0",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/optimized-api-client.ts",
+      "limit": 30,
+      "offset": 210
+    },
+    "output": "<file>\n00211|       \n00212|       const fromCached = cacheManager.getCachedData(fromCacheKey);\n00213|       const toCached = cacheManager.getCachedData(toCacheKey);\n00214|       \n00215|       if (fromCached && toCached) return;\n00216|       \n00217|       console.log('🏙️ Предзагрузка зон ПЭК...');\n00218|       \n00219|       // Параллельно загружаем зоны для обоих городов\n00220|       const zonePromises = [];\n00221|       \n00222|       if (!fromCached) {\n00223|         zonePromises.push(\n00224|           enhancedApiRequest(\n00225|             '/api/pek',\n00226|             {\n00227|               method: 'POST',\n00228|               headers: { 'Content-Type': 'application/json' },\n00229|               body: JSON.stringify({\n00230|                 method: 'findzonebyaddress',\n00231|                 address: fromCity\n00232|               })\n00233|             },\n00234|             { operation: 'findzonebyaddress', company: 'ПЭК' }\n00235|           ).then(response => response.json()).then(data => ({ city: fromCity, data }))\n00236|         );\n00237|       }\n00238|       \n00239|       if (!toCached) {\n00240|         zonePromises.push(\n\n(File has more lines. Use 'offset' parameter to read beyond line 240)\n</file>",
+    "title": "lib/optimized-api-client.ts",
+    "metadata": {
+      "preview": "      \n      const fromCached = cacheManager.getCachedData(fromCacheKey);\n      const toCached = cacheManager.getCachedData(toCacheKey);\n      \n      if (fromCached && toCached) return;\n      \n      console.log('🏙️ Предзагрузка зон ПЭК...');\n      \n      // Параллельно загружаем зоны для обоих городов\n      const zonePromises = [];\n      \n      if (!fromCached) {\n        zonePromises.push(\n          enhancedApiRequest(\n            '/api/pek',\n            {\n              method: 'POST',\n              headers: { 'Content-Type': 'application/json' },\n              body: JSON.stringify({\n                method: 'findzonebyaddress',"
+    },
+    "time": {
+      "start": 1763964652307,
+      "end": 1763964652309
+    }
+  }
+}

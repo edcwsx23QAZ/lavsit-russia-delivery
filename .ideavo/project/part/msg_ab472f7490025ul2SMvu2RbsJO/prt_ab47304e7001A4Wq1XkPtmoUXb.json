@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab47304e7001A4Wq1XkPtmoUXb",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab472f7490025ul2SMvu2RbsJO",
+  "type": "tool",
+  "callID": "call_80c9994d3207475691653242",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "              <TruckVisualization",
+      "newString": "              <LazyTruckVisualization"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -5261,9 +5261,9 @@\n </Card>\n \n {/* Визуализация кузова */}\n {calculations.length > 0 && (\n-  <TruckVisualization \n+  <LazyTruckVisualization \n     cargos={form.cargos.map(cargo => ({\n       id: cargo.id,\n       length: cargo.length * 10, // Переводим см в мм\n       width: cargo.width * 10,   // Переводим см в мм\n"
+    },
+    "time": {
+      "start": 1763964028137,
+      "end": 1763964028171
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab470eef4001cWtXAFj90KUPow",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab470c6a90014yd7gWjaua2n3p",
+  "type": "tool",
+  "callID": "call_7cd21ab9c8fd43ea990961da",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "limit": 50,
+      "offset": 67
+    },
+    "output": "<file>\n00068|   // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n00069|   const [rotationX, setRotationX] = useState(-90);   // Поворот по оси X\n00070|   const [rotationY, setRotationY] = useState(55); // Поворот по оси Y\n00071|   const [rotationZ, setRotationZ] = useState(0);   // Поворот по си Z\n00072|   const [positionX, setPositionX] = useState(51);  // Позиция по X (0-100%)\n00073|   const [positionY, setPositionY] = useState(35);  // Позиция по Y\n00074|   const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации\n00075|   const [showControls, setShowControls] = useState(false); // Показывать ли элементы управления\n00076|   const [selectedVehicleType, setSelectedVehicleType] = useState<keyof typeof VEHICLE_TYPES>('ford-transit'); // Выбранный тип автомобиля\n00077|   \n00078|   // Получение размеров выбранного автомобиля\n00079|   const getCurrentVehicleDimensions = () => VEHICLE_TYPES[selectedVehicleType].dimensions;\n00080|   \n00081|   // Функция проверки ключевых слов\n00082|   const isChairOrSeat = (productName?: string) => {\n00083|     if (!productName) return false;\n00084|     const lowerName = productName.toLowerCase();\n00085|     return lowerName.includes('стул') || lowerName.includes('кресло');\n00086|   };\n00087| \n00088|   // Генерация всех возможных ориентаций груза\n00089|   const generateOrientations = (cargo: Cargo): Orientation[] => {\n00090|     const orientations: Orientation[] = [];\n00091|     const baseDimensions = [\n00092|       [cargo.length, cargo.width, cargo.height],\n00093|       [cargo.width, cargo.length, cargo.height],\n00094|       [cargo.length, cargo.height, cargo.width],\n00095|       [cargo.height, cargo.length, cargo.width],\n00096|       [cargo.width, cargo.height, cargo.length],\n00097|       [cargo.height, cargo.width, cargo.length]\n00098|     ];\n00099| \n00100|     // Для стульев/кресел ограничиваем повороты (нельзя переворачивать)\n00101|     const allowedDimensions = isChairOrSeat(cargo.productName) \n00102|       ? baseDimensions.slice(0, 2) // Только первые 2 варианта (без поворота по высоте)\n00103|       : baseDimensions;\n00104| \n00105|     allowedDimensions.forEach(([l, w, h]) => {\n00106|       ROTATION_ANGLES.forEach(angle => {\n00107|         // Вычисляем размеры после поворота\n00108|         const rad = (angle * Math.PI) / 180;\n00109|         const cos = Math.abs(Math.cos(rad));\n00110|         const sin = Math.abs(Math.sin(rad));\n00111|         \n00112|         const rotatedLength = l * cos + w * sin;\n00113|         const rotatedWidth = l * sin + w * cos;\n00114| \n00115|         orientations.push({\n00116|           length: rotatedLength,\n00117|           width: rotatedWidth,\n\n(File has more lines. Use 'offset' parameter to read beyond line 117)\n</file>",
+    "title": "components/TruckVisualization.tsx",
+    "metadata": {
+      "preview": "  // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n  const [rotationX, setRotationX] = useState(-90);   // Поворот по оси X\n  const [rotationY, setRotationY] = useState(55); // Поворот по оси Y\n  const [rotationZ, setRotationZ] = useState(0);   // Поворот по си Z\n  const [positionX, setPositionX] = useState(51);  // Позиция по X (0-100%)\n  const [positionY, setPositionY] = useState(35);  // Позиция по Y\n  const [scale, setScale] = useState(70); // Оптимальный масштаб для демонстрации\n  const [showControls, setShowControls] = useState(false); // Показывать ли элементы управления\n  const [selectedVehicleType, setSelectedVehicleType] = useState<keyof typeof VEHICLE_TYPES>('ford-transit'); // Выбранный тип автомобиля\n  \n  // Получение размеров выбранного автомобиля\n  const getCurrentVehicleDimensions = () => VEHICLE_TYPES[selectedVehicleType].dimensions;\n  \n  // Функция проверки ключевых слов\n  const isChairOrSeat = (productName?: string) => {\n    if (!productName) return false;\n    const lowerName = productName.toLowerCase();\n    return lowerName.includes('стул') || lowerName.includes('кресло');\n  };\n"
+    },
+    "time": {
+      "start": 1763963891446,
+      "end": 1763963891448
+    }
+  }
+}

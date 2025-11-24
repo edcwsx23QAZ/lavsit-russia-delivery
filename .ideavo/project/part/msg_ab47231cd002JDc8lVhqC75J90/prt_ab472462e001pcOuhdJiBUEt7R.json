@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab472462e001pcOuhdJiBUEt7R",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab47231cd002JDc8lVhqC75J90",
+  "type": "tool",
+  "callID": "call_63bde5301931497196c5ad5f",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ProductSearch.tsx",
+      "limit": 50,
+      "offset": 90
+    },
+    "output": "<file>\n00091|       ...prev,\n00092|       query,\n00093|       selectedIndex: -1\n00094|     }));\n00095|     \n00096|     if (query.trim().length >= 2) {\n00097|       const filtered = searchProducts(allProducts, query);\n00098|       setSearchState(prev => ({\n00099|         ...prev,\n00100|         suggestions: filtered,\n00101|         showSuggestions: true\n00102|       }));\n00103|     } else {\n00104|       setSearchState(prev => ({\n00105|         ...prev,\n00106|         suggestions: [],\n00107|         showSuggestions: false\n00108|       }));\n00109|     }\n00110|   }, [allProducts]);\n00111|   \n00112|   // Обработка выбора товара\n00113|   const handleProductSelect = (product: FurnitureProduct) => {\n00114|     onProductAdd(product);\n00115|     setSearchState(prev => ({\n00116|       ...prev,\n00117|       query: '',\n00118|       suggestions: [],\n00119|       showSuggestions: false,\n00120|       selectedIndex: -1\n00121|     }));\n00122|     inputRef.current?.focus();\n00123|   };\n00124|   \n00125|   // Обработка клавиш\n00126|   const handleKeyDown = (e: React.KeyboardEvent) => {\n00127|     if (!searchState.showSuggestions || searchState.suggestions.length === 0) return;\n00128|     \n00129|     switch (e.key) {\n00130|       case 'ArrowDown':\n00131|         e.preventDefault();\n00132|         setSearchState(prev => ({\n00133|           ...prev,\n00134|           selectedIndex: Math.min(prev.selectedIndex + 1, prev.suggestions.length - 1)\n00135|         }));\n00136|         break;\n00137|         \n00138|       case 'ArrowUp':\n00139|         e.preventDefault();\n00140|         setSearchState(prev => ({\n\n(File has more lines. Use 'offset' parameter to read beyond line 140)\n</file>",
+    "title": "components/ProductSearch.tsx",
+    "metadata": {
+      "preview": "      ...prev,\n      query,\n      selectedIndex: -1\n    }));\n    \n    if (query.trim().length >= 2) {\n      const filtered = searchProducts(allProducts, query);\n      setSearchState(prev => ({\n        ...prev,\n        suggestions: filtered,\n        showSuggestions: true\n      }));\n    } else {\n      setSearchState(prev => ({\n        ...prev,\n        suggestions: [],\n        showSuggestions: false\n      }));\n    }\n  }, [allProducts]);"
+    },
+    "time": {
+      "start": 1763963979312,
+      "end": 1763963979314
+    }
+  }
+}

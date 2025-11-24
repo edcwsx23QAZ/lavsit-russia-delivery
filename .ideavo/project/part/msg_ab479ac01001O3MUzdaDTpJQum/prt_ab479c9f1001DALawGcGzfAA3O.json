@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab479c9f1001DALawGcGzfAA3O",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab479ac01001O3MUzdaDTpJQum",
+  "type": "tool",
+  "callID": "call_772f81e8046041e693cd9393",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node calculation-performance-test.js",
+      "description": "Run calculation performance test with real APIs"
+    },
+    "output": "\n🧪 TESTING CACHE PERFORMANCE...\n\n📊 Cache Statistics:\n   Cache Hits: 7\n   Cache Misses: 3\n   Hit Rate: 70.0%\n🔥 STARTING FULL CALCULATION PERFORMANCE TEST 🔥\n\n📋 Test Scenario:\n  From: Москва → To: Санкт-Петербург\n  Cargo: 2 items, total weight: 40kg\n  Value: ₽75,000\n  Packaging: true, Insurance: true\n\n🔄 Running parallel API tests...\n\n🚀 Testing PEK API...\n🚀 Testing Деловые Линии API...\n🚀 Testing Возовоз API...\n🚀 Testing СДЭК API...\n❌ PEK:  (33ms)\n❌ Деловые Линии:  (15ms)\n❌ Возовоз:  (15ms)\n❌ СДЭК:  (13ms)\n\n📊 CALCULATION PERFORMANCE RESULTS 📊\n\n⏱️  TIMING METRICS:\n   Total Calculation Time: 36ms\n   Average API Response: 0ms\n   Fastest API: N/A\n   Slowest API: N/A\n\n📈 SUCCESS METRICS:\n   APIs Tested: 4\n   Successful: 0\n   Failed: 4\n   Success Rate: 0.0%\n   Parallel Execution: ❌ Sequential execution detected\n\n🔍 DETAILED RESULTS:\n   ❌ PEK: 33ms\n   ❌ Деловые Линии: 15ms\n   ❌ Возовоз: 15ms\n   ❌ СДЭК: 13ms\n\n🎯 PERFORMANCE TARGETS:\n   ✅ Target ≤5 seconds: 36ms (0.0s)\n   📊 Cache Hit Rate: 70.0%\n\n💡 OPTIMIZATION INSIGHTS:\n   ⚠️  4 APIs failed - check API connectivity\n   ⚠️  APIs may be executing sequentially - check Promise.all implementation\n\n💾 Results saved to: calculation-performance-results.json\n\n🎉 PERFORMANCE TARGET ACHIEVED! Calculation time ≤5 seconds\n",
+    "title": "node calculation-performance-test.js",
+    "metadata": {
+      "output": "\n🧪 TESTING CACHE PERFORMANCE...\n\n📊 Cache Statistics:\n   Cache Hits: 7\n   Cache Misses: 3\n   Hit Rate: 70.0%\n🔥 STARTING FULL CALCULATION PERFORMANCE TEST 🔥\n\n📋 Test Scenario:\n  From: Москва → To: Санкт-Петербург\n  Cargo: 2 items, total weight: 40kg\n  Value: ₽75,000\n  Packaging: true, Insurance: true\n\n🔄 Running parallel API tests...\n\n🚀 Testing PEK API...\n🚀 Testing Деловые Линии API...\n🚀 Testing Возовоз API...\n🚀 Testing СДЭК API...\n❌ PEK:  (33ms)\n❌ Деловые Линии:  (15ms)\n❌ Возовоз:  (15ms)\n❌ СДЭК:  (13ms)\n\n📊 CALCULATION PERFORMANCE RESULTS 📊\n\n⏱️  TIMING METRICS:\n   Total Calculation Time: 36ms\n   Average API Response: 0ms\n   Fastest API: N/A\n   Slowest API: N/A\n\n📈 SUCCESS METRICS:\n   APIs Tested: 4\n   Successful: 0\n   Failed: 4\n   Success Rate: 0.0%\n   Parallel Execution: ❌ Sequential execution detected\n\n🔍 DETAILED RESULTS:\n   ❌ PEK: 33ms\n   ❌ Деловые Линии: 15ms\n   ❌ Возовоз: 15ms\n   ❌ СДЭК: 13ms\n\n🎯 PERFORMANCE TARGETS:\n   ✅ Target ≤5 seconds: 36ms (0.0s)\n   📊 Cache Hit Rate: 70.0%\n\n💡 OPTIMIZATION INSIGHTS:\n   ⚠️  4 APIs failed - check API connectivity\n   ⚠️  APIs may be executing sequentially - check Promise.all implementation\n\n💾 Results saved to: calculation-performance-results.json\n\n🎉 PERFORMANCE TARGET ACHIEVED! Calculation time ≤5 seconds\n",
+      "exit": 0,
+      "description": "Run calculation performance test with real APIs"
+    },
+    "time": {
+      "start": 1763964471798,
+      "end": 1763964473369
+    }
+  }
+}

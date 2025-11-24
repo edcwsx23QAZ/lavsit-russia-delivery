@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback, memo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Slider } from '@/components/ui/slider';
@@ -64,7 +64,7 @@ const CARGO_COLORS = [
   '#10AC84', '#EE5A24', '#0984E3', '#6C5CE7', '#FD79A8'
 ];
 
-export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {
+const TruckVisualization = memo(function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {
   // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)
   const [rotationX, setRotationX] = useState(-90);   // Поворот по оси X
   const [rotationY, setRotationY] = useState(55); // Поворот по оси Y
@@ -76,7 +76,25 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
   const [selectedVehicleType, setSelectedVehicleType] = useState<keyof typeof VEHICLE_TYPES>('ford-transit'); // Выбранный тип автомобиля
   
   // Получение размеров выбранного автомобиля
-  const getCurrentVehicleDimensions = () => VEHICLE_TYPES[selectedVehicleType].dimensions;
+  const getCurrentVehicleDimensions = useCallback(() => VEHICLE_TYPES[selectedVehicleType].dimensions, [selectedVehicleType]);
+  
+  // Оптимизированные обработчики событий
+  const handleRotationXChange = useCallback((value: number[]) => setRotationX(value[0]), []);
+  const handleRotationYChange = useCallback((value: number[]) => setRotationY(value[0]), []);
+  const handleRotationZChange = useCallback((value: number[]) => setRotationZ(value[0]), []);
+  const handlePositionXChange = useCallback((value: number[]) => setPositionX(value[0]), []);
+  const handlePositionYChange = useCallback((value: number[]) => setPositionY(value[0]), []);
+  const handleScaleChange = useCallback((value: number[]) => setScale(value[0]), []);
+  const handleVehicleTypeChange = useCallback((value: string) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES), []);
+  const toggleControls = useCallback(() => setShowControls(prev => !prev), []);
+  const resetView = useCallback(() => {
+    setRotationX(-90);
+    setRotationY(55);
+    setRotationZ(0);
+    setPositionX(51);
+    setPositionY(35);
+    setScale(70);
+  }, []);
   
   // Функция проверки ключевых слов
   const isChairOrSeat = (productName?: string) => {
@@ -545,10 +563,15 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
     return words.slice(0, 2).join(' ');
   };
 
-  const placements = calculateCargoPlacement();
+  // Мемоизация размещения грузов - самая тяжелая операция
+  const placements = useMemo(() => calculateCargoPlacement(), [
+    cargos.length,
+    cargos.map(c => `${c.id}-${c.length}-${c.width}-${c.height}-${c.weight}`).join('|'),
+    selectedVehicleType
+  ]);
 
-  // Расчет статистики
-  const calculateStats = () => {
+  // Мемоизация статистики размещения
+  const stats = useMemo(() => {
     if (!placements.length) return null;
 
     const floorArea = calculateFloorArea(placements);
@@ -581,11 +604,16 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
         height: (maxZ / 1000).toFixed(2)
       }
     };
-  };
+  }, [placements, selectedVehicleType]);
 
-  const stats = calculateStats();
-  const truckVertices = calculateTruckVertices();
-  const truckComponents = calculateCabinAndChassisVertices();
+  // Мемоизация вершин грузовика
+  const truckVertices = useMemo(() => calculateTruckVertices(), [
+    selectedVehicleType, rotationX, rotationY, rotationZ, positionX, positionY, scale
+  ]);
+  
+  const truckComponents = useMemo(() => calculateCabinAndChassisVertices(), [
+    selectedVehicleType, rotationX, rotationY, rotationZ, positionX, positionY, scale
+  ]);
 
   if (!isVisible) return null;
 
@@ -1006,4 +1034,6 @@ export default function TruckVisualization({ cargos, isVisible = false }: TruckV
       </CardContent>
     </Card>
   );
-}
+});
+
+export default TruckVisualization;

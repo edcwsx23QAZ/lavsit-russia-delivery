@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab46f5b0f0013yeNX2iW55756T",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab46f331e002pRVtDIcQJVIe1s",
+  "type": "tool",
+  "callID": "call_397eff15e7b145fda17569e1",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "oldString": "export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {",
+      "newString": "const TruckVisualization = memo(function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {"
+    },
+    "output": "",
+    "title": "components/TruckVisualization.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -63,9 +63,9 @@\n   '#FF9FF3', '#54A0FF', '#5F27CD', '#00D2D3', '#FF9F43',\n   '#10AC84', '#EE5A24', '#0984E3', '#6C5CE7', '#FD79A8'\n ];\n \n-export default function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {\n+const TruckVisualization = memo(function TruckVisualization({ cargos, isVisible = false }: TruckVisualizationProps) {\n   // Состояние для 3D трансформаций (вид сзади 3/4, стоящий на колесах)\n   const [rotationX, setRotationX] = useState(-90);   // Поворот по оси X\n   const [rotationY, setRotationY] = useState(55); // Поворот по оси Y\n   const [rotationZ, setRotationZ] = useState(0);   // Поворот по си Z\n"
+    },
+    "time": {
+      "start": 1763963788049,
+      "end": 1763963788058
+    }
+  }
+}

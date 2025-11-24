@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab4706f58001dnPq1ub6SeXcc4",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab4700bc7001wQ3TR6A9VlEJ3K",
+  "type": "tool",
+  "callID": "call_07b28620ced74f36a9d62d19",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "limit": 50,
+      "offset": 540
+    },
+    "output": "<file>\n00541|   // Функция для получения первых двух слов из названия товара\n00542|   const getProductShortName = (productName?: string) => {\n00543|     if (!productName) return '';\n00544|     const words = productName.trim().split(/\\s+/);\n00545|     return words.slice(0, 2).join(' ');\n00546|   };\n00547| \n00548|   const placements = calculateCargoPlacement();\n00549| \n00550|   // Расчет статистики\n00551|   const calculateStats = () => {\n00552|     if (!placements.length) return null;\n00553| \n00554|     const floorArea = calculateFloorArea(placements);\n00555|     \n00556|     let maxX = 0, maxY = 0, maxZ = 0;\n00557|     placements.forEach(p => {\n00558|       const rad = (p.orientation.rotationAngle * Math.PI) / 180;\n00559|       const cos = Math.abs(Math.cos(rad));\n00560|       const sin = Math.abs(Math.sin(rad));\n00561|       \n00562|       const effectiveLength = p.orientation.length * cos + p.orientation.width * sin;\n00563|       const effectiveWidth = p.orientation.length * sin + p.orientation.width * cos;\n00564|       \n00565|       maxX = Math.max(maxX, p.x + effectiveLength);\n00566|       maxY = Math.max(maxY, p.y + effectiveWidth);\n00567|       maxZ = Math.max(maxZ, p.z + p.orientation.height);\n00568|     });\n00569| \n00570|     const occupiedVolume = (maxX * maxY * maxZ) / 1000000000; // в м³\n00571|     const vehicleDimensions = getCurrentVehicleDimensions();\n00572|     const floorUtilization = (floorArea / ((vehicleDimensions.length * vehicleDimensions.width))) * 100;\n00573| \n00574|     return {\n00575|       occupiedFloorArea: (floorArea / 1000000).toFixed(2), // в м²\n00576|       occupiedVolume: occupiedVolume.toFixed(3),\n00577|       floorUtilization: floorUtilization.toFixed(1),\n00578|       dimensions: {\n00579|         length: (maxX / 1000).toFixed(2),\n00580|         width: (maxY / 1000).toFixed(2),\n00581|         height: (maxZ / 1000).toFixed(2)\n00582|       }\n00583|     };\n00584|   };\n00585| \n00586|   const stats = calculateStats();\n00587|   const truckVertices = calculateTruckVertices();\n00588|   const truckComponents = calculateCabinAndChassisVertices();\n00589| \n00590|   if (!isVisible) return null;\n\n(File has more lines. Use 'offset' parameter to read beyond line 590)\n</file>",
+    "title": "components/TruckVisualization.tsx",
+    "metadata": {
+      "preview": "  // Функция для получения первых двух слов из названия товара\n  const getProductShortName = (productName?: string) => {\n    if (!productName) return '';\n    const words = productName.trim().split(/\\s+/);\n    return words.slice(0, 2).join(' ');\n  };\n\n  const placements = calculateCargoPlacement();\n\n  // Расчет статистики\n  const calculateStats = () => {\n    if (!placements.length) return null;\n\n    const floorArea = calculateFloorArea(placements);\n    \n    let maxX = 0, maxY = 0, maxZ = 0;\n    placements.forEach(p => {\n      const rad = (p.orientation.rotationAngle * Math.PI) / 180;\n      const cos = Math.abs(Math.cos(rad));\n      const sin = Math.abs(Math.sin(rad));"
+    },
+    "time": {
+      "start": 1763963858779,
+      "end": 1763963858781
+    }
+  }
+}

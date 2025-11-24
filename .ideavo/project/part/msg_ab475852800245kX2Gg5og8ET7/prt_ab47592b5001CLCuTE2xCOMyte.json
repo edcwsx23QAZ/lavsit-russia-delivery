@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab47592b5001CLCuTE2xCOMyte",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab475852800245kX2Gg5og8ET7",
+  "type": "tool",
+  "callID": "call_faa7499ea1e040c0846b6733",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 5065
+    },
+    "output": "<file>\n05066|           </div>\n05067| \n05068|           {/* Правая часть - результаты */}\n05069|           <div className=\"space-y-2 overflow-y-auto\">\n05070|             {calculations.length > 0 && (\n05071|                  <div className=\"space-y-2\">\n05072|                 <div className=\"flex justify-between items-center\">\n05073|                   <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n05074|                   <Button \n05075|                     onClick={exportToPDF} \n05076|                     variant=\"outline\" \n05077|                     size=\"sm\" \n05078|                     className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n05079|                   >\n05080|                     Сохранить в PDF\n05081|                   </Button>\n05082|                 </div>\n05083|                 \n05084|                 {calculations\n05085|                   .filter(calc => !hiddenCompanies[calc.company])\n05086|                   .map((calc, index) => (\n05087|                    <Card key={index} className=\"bg-gray-800 border-gray-700 text-xs\">\n05088|                      <CardHeader className=\"pb-1\">\n05089|                       <div className=\"flex justify-between items-center\">\n05090|                          <CardTitle className=\"text-white flex items-center gap-2 text-xs\">\n05091|                            <Building2 className=\"h-3 w-3\" />\n05092|                           {calc.company}\n05093|                         </CardTitle>\n05094|                         {calc.error ? (\n05095|                           <Badge variant=\"destructive\" className=\"text-xs\">Ошибка</Badge>\n\n(File has more lines. Use 'offset' parameter to read beyond line 5095)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "          </div>\n\n          {/* Правая часть - результаты */}\n          <div className=\"space-y-2 overflow-y-auto\">\n            {calculations.length > 0 && (\n                 <div className=\"space-y-2\">\n                <div className=\"flex justify-between items-center\">\n                  <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n                  <Button \n                    onClick={exportToPDF} \n                    variant=\"outline\" \n                    size=\"sm\" \n                    className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n                  >\n                    Сохранить в PDF\n                  </Button>\n                </div>\n                \n                {calculations\n                  .filter(calc => !hiddenCompanies[calc.company])"
+    },
+    "time": {
+      "start": 1763964195510,
+      "end": 1763964195514
+    }
+  }
+}

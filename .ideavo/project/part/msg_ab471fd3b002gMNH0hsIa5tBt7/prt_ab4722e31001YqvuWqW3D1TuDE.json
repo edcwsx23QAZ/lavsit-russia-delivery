@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab4722e31001YqvuWqW3D1TuDE",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab471fd3b002gMNH0hsIa5tBt7",
+  "type": "tool",
+  "callID": "call_f5eff3525ec24d0d83af7a71",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/components",
+      "pattern": "searchProducts|filterProducts|suggestions.*="
+    },
+    "output": "Found 8 matches\n/home/user/project/components/ProductSearch.tsx:\n  Line 10: import { searchProducts, formatPrice, getProductSummary } from '@/lib/furniture-utils';\n  Line 29:   const suggestionsRef = useRef<HTMLDivElement>(null);\n  Line 97:       const filtered = searchProducts(allProducts, query);\n  Line 127:     if (!searchState.showSuggestions || searchState.suggestions.length === 0) return;\n  Line 207:             } else if (searchState.suggestions.length === 1) {\n  Line 211:           disabled={disabled || searchState.suggestions.length === 0}\n  Line 237:             {searchState.suggestions.map((product, index) => (\n  Line 288:       {searchState.query.length >= 2 && searchState.suggestions.length === 0 && !isLoadingProducts && (",
+    "title": "searchProducts|filterProducts|suggestions.*=",
+    "metadata": {
+      "matches": 8,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763963973174,
+      "end": 1763963973189
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab47bfe3c001gIQp7jXRBgPfdo",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab47b8e4d001H0x8pWX0UFJNJl",
+  "type": "tool",
+  "callID": "call_53bcb998b7da47aca35530f9",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      const enabledCompaniesList = [\n        enabledCompanies.pek && { name: 'ПЭК', key: 'pek', func: calculatePEK },\n        enabledCompanies.dellin && { name: 'Деловые Линии', key: 'dellin', func: calculateDellin },\n        enabledCompanies.railcontinent && { name: 'Rail Continent', key: 'railcontinent', func: calculateRailContinent },\n        enabledCompanies.vozovoz && { name: 'Возовоз', key: 'vozovoz', func: calculateVozovoz },\n        enabledCompanies.nordwheel && { name: 'Nord Wheel', key: 'nordwheel', func: calculateNordWheel },\n        enabledCompanies.cdek && { name: 'Сдэк', key: 'cdek', func: calculateCdek },\n        enabledCompanies.kit && { name: 'Кит', key: 'kit', func: calculateKit }\n      ].filter(Boolean);",
+      "newString": "      const enabledCompaniesList: Array<{ name: string; key: string; func: () => Promise<CalculationResult> }> = [];\n      \n      if (enabledCompanies.pek) enabledCompaniesList.push({ name: 'ПЭК', key: 'pek', func: calculatePEK });\n      if (enabledCompanies.dellin) enabledCompaniesList.push({ name: 'Деловые Линии', key: 'dellin', func: calculateDellin });\n      if (enabledCompanies.railcontinent) enabledCompaniesList.push({ name: 'Rail Continent', key: 'railcontinent', func: calculateRailContinent });\n      if (enabledCompanies.vozovoz) enabledCompaniesList.push({ name: 'Возовоз', key: 'vozovoz', func: calculateVozovoz });\n      if (enabledCompanies.nordwheel) enabledCompaniesList.push({ name: 'Nord Wheel', key: 'nordwheel', func: calculateNordWheel });\n      if (enabledCompanies.cdek) enabledCompaniesList.push({ name: 'Сдэк', key: 'cdek', func: calculateCdek });\n      if (enabledCompanies.kit) enabledCompaniesList.push({ name: 'Кит', key: 'kit', func: calculateKit });"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -4055,18 +4055,18 @@\n const preloadDuration = performance.now() - preloadStartTime;\n console.log(`⚡ Предзагрузка завершена за ${preloadDuration.toFixed(0)}мс`);\n \n // 2. Определяем включенные компании\n-const enabledCompaniesList = [\n-  enabledCompanies.dellin && { name: 'Деловые Линии', key: 'dellin', func: calculateDellin },\n-  enabledCompanies.pek && { name: 'ПЭК', key: 'pek', func: calculatePEK },\n-  enabledCompanies.nordwheel && { name: 'Nord Wheel', key: 'nordwheel', func: calculateNordWheel },\n-  enabledCompanies.railcontinent && { name: 'Rail Continent', key: 'railcontinent', func: calculateRailContinent },\n-  enabledCompanies.vozovoz && { name: 'Возовоз', key: 'vozovoz', func: calculateVozovoz },\n-  enabledCompanies.cdek && { name: 'Сдэк', key: 'cdek', func: calculateCdek },\n-  enabledCompanies.kit && { name: 'Кит', key: 'kit', func: calculateKit }\n-].filter(Boolean);\n+const enabledCompaniesList: Array<{ name: string; key: string; func: () => Promise<CalculationResult> }> = [];\n \n+if (enabledCompanies.pek) enabledCompaniesList.push({ name: 'ПЭК', key: 'pek', func: calculatePEK });\n+if (enabledCompanies.dellin) enabledCompaniesList.push({ name: 'Деловые Линии', key: 'dellin', func: calculateDellin });\n+if (enabledCompanies.railcontinent) enabledCompaniesList.push({ name: 'Rail Continent', key: 'railcontinent', func: calculateRailContinent });\n+if (enabledCompanies.vozovoz) enabledCompaniesList.push({ name: 'Возовоз', key: 'vozovoz', func: calculateVozovoz });\n+if (enabledCompanies.nordwheel) enabledCompaniesList.push({ name: 'Nord Wheel', key: 'nordwheel', func: calculateNordWheel });\n+if (enabledCompanies.cdek) enabledCompaniesList.push({ name: 'Сдэк', key: 'cdek', func: calculateCdek });\n+if (enabledCompanies.kit) enabledCompaniesList.push({ name: 'Кит', key: 'kit', func: calculateKit });\n+\n // Если ни одна компания не включена\n if (enabledCompaniesList.length === 0) {\n   setCalculations([]);\n   return;\n"
+    },
+    "time": {
+      "start": 1763964616253,
+      "end": 1763964616295
+    }
+  }
+}

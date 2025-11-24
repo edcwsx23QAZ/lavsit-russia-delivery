@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab47ca079001Lq936w1EWLKA0D",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab47c8efd001bgmvcQXqyZmbAw",
+  "type": "tool",
+  "callID": "call_9f2eeed0fe7a4a4889ced773",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/optimized-api-client.ts",
+      "oldString": "      // Параллельно загружаем зоны для обоих городов\n      const zonePromises = [];",
+      "newString": "      // Параллельно загружаем зоны для обоих городов\n      const zonePromises: Promise<{ city: string; data: any }>[] = [];"
+    },
+    "output": "",
+    "title": "lib/optimized-api-client.ts",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/lib/optimized-api-client.ts\n===================================================================\n--- /home/user/project/lib/optimized-api-client.ts\n+++ /home/user/project/lib/optimized-api-client.ts\n@@ -216,9 +216,9 @@\n \n console.log('🏙️ Предзагрузка зон ПЭК...');\n \n // Параллельно загружаем зоны для обоих городов\n-const zonePromises = [];\n+const zonePromises: Promise<{ city: string; data: any }>[] = [];\n \n if (!fromCached) {\n   zonePromises.push(\n     enhancedApiRequest(\n"
+    },
+    "time": {
+      "start": 1763964657787,
+      "end": 1763964657791
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab4762f89001ONBhHTgAR1HwzZ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab4762019002UKfISmKIJPHf6f",
+  "type": "tool",
+  "callID": "call_6432475ba86a41db94b70825",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 4180
+    },
+    "output": "<file>\n04181|       console.log(`📊 Успешно: ${successCount}/${enabledCompaniesList.length}`);\n04182|       console.log(`💾 Кэш: сессий=${cacheStats.sessions}, расчетов=${cacheStats.calculations}`);\n04183|       \n04184|       if (errors.length > 0) {\n04185|         console.warn(`⚠️ Ошибки: ${errors.join('; ')}`);\n04186|       }\n04187|       \n04188|       // Финальное обновление прогресса\n04189|       setCalculationProgress(prev => ({\n04190|         ...prev,\n04191|         totalDuration: totalDuration\n04192|       }));\n04193|       \n04194|       setCalculations(sortedResults);\n04195|       \n04196|     } catch (error) {\n04197|       console.error('❌ Критическая ошибка при расчете:', error);\n04198|       setCalculations([{\n04199|         company: 'Система',\n04200|         price: 0,\n04201|         days: 0,\n04202|         error: error instanceof Error ? error.message : 'Критическая ошибка расчета'\n04203|       }]);\n04204|     } finally {\n04205|       setCalculating(false);\n04206|     }\n04207|   };\n04208| \n04209|   const exportToPDF = () => {\n04210|     if (typeof window !== 'undefined') {\n\n(File has more lines. Use 'offset' parameter to read beyond line 4210)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "      console.log(`📊 Успешно: ${successCount}/${enabledCompaniesList.length}`);\n      console.log(`💾 Кэш: сессий=${cacheStats.sessions}, расчетов=${cacheStats.calculations}`);\n      \n      if (errors.length > 0) {\n        console.warn(`⚠️ Ошибки: ${errors.join('; ')}`);\n      }\n      \n      // Финальное обновление прогресса\n      setCalculationProgress(prev => ({\n        ...prev,\n        totalDuration: totalDuration\n      }));\n      \n      setCalculations(sortedResults);\n      \n    } catch (error) {\n      console.error('❌ Критическая ошибка при расчете:', error);\n      setCalculations([{\n        company: 'Система',\n        price: 0,"
+    },
+    "time": {
+      "start": 1763964235661,
+      "end": 1763964235666
+    }
+  }
+}

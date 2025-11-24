@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab47afd3b001TcKmbxLAeYAytC",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab47ae0f8001U4ZTtAsKGggsuy",
+  "type": "tool",
+  "callID": "call_4997772f3b594f4ca394cce5",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build the optimized application to verify everything works"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:4075:118\nType error: Property 'name' does not exist on type 'false | { name: string; key: string; func: () => Promise<CalculationResult>; }'.\n  Property 'name' does not exist on type 'false'.\n\n\u001b[0m \u001b[90m 4073 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 4074 |\u001b[39m       \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 4075 |\u001b[39m       console\u001b[33m.\u001b[39mlog(\u001b[32m`📋 Запуск расчетов для ${enabledCompaniesList.length} компаний:`\u001b[39m\u001b[33m,\u001b[39m enabledCompaniesList\u001b[33m.\u001b[39mmap(c \u001b[33m=>\u001b[39m c\u001b[33m.\u001b[39mname))\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                                                                                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 4076 |\u001b[39m       \u001b[0m\n\u001b[0m \u001b[90m 4077 |\u001b[39m       \u001b[90m// 3. Инициализация прогресса\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 4078 |\u001b[39m       setCalculationProgress({\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:4075:118\nType error: Property 'name' does not exist on type 'false | { name: string; key: string; func: () => Promise<CalculationResult>; }'.\n  Property 'name' does not exist on type 'false'.\n\n\u001b[0m \u001b[90m 4073 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 4074 |\u001b[39m       \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 4075 |\u001b[39m       console\u001b[33m.\u001b[39mlog(\u001b[32m`📋 Запуск расчетов для ${enabledCompaniesList.length} компаний:`\u001b[39m\u001b[33m,\u001b[39m enabledCompaniesList\u001b[33m.\u001b[39mmap(c \u001b[33m=>\u001b[39m c\u001b[33m.\u001b[39mname))\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                                                                                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 4076 |\u001b[39m       \u001b[0m\n\u001b[0m \u001b[90m 4077 |\u001b[39m       \u001b[90m// 3. Инициализация прогресса\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 4078 |\u001b[39m       setCalculationProgress({\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build the optimized application to verify everything works"
+    },
+    "time": {
+      "start": 1763964550463,
+      "end": 1763964575070
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab4700855001vqww90yl4eCEl0",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab46fe0e60021D39NJ2u66hhLA",
+  "type": "tool",
+  "callID": "call_8db02a4175354d30b8e4ca06",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/components",
+      "pattern": "const.*placements|placements.*=|tryPackCargos"
+    },
+    "output": "Found 13 matches\n/home/user/project/components/TruckVisualization.tsx:\n  Line 185:     for (const placement of placements) {\n  Line 204:       const supportingCargos = placements.filter(p => \n  Line 240:           const chairsBelow = placements.filter(p =>\n  Line 272:   const calculateFloorArea = (placements: CargoPlacement[], newPlacement?: CargoPlacement) => {\n  Line 273:     const allPlacements = newPlacement ? [...placements, newPlacement] : placements;\n  Line 368:     const placements: CargoPlacement[] = [];\n  Line 379:       placements.forEach(p => {\n  Line 410:                 const floorArea = calculateFloorArea(placements, testPlacement);\n  Line 548:   const placements = calculateCargoPlacement();\n  Line 554:     const floorArea = calculateFloorArea(placements);\n  Line 557:     placements.forEach(p => {\n  Line 866:                 {placements.map((placement, index) => {\n  Line 978:                 {placements.map((placement, index) => (",
+    "title": "const.*placements|placements.*=|tryPackCargos",
+    "metadata": {
+      "matches": 13,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763963832414,
+      "end": 1763963832427
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab47cb08e001M8vNMJlTVi3Q2X",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab47ca4250016LmpbDF5MBPJtX",
+  "type": "tool",
+  "callID": "call_cda3053c092841048c15d244",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build application after TypeScript fixes"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/19) ...\n   Generating static pages (4/19) \r\n   Generating static pages (9/19) \r\n   Generating static pages (14/19) \r\n[INDEXEDDB] Storage module initialized\n[COOKIE] Storage module initialized\n ✓ Generating static pages (19/19)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    37.2 kB         139 kB\n├ ○ /_not-found                          873 B          88.2 kB\n├ ƒ /api/cdek                            0 B                0 B\n├ ƒ /api/dadata                          0 B                0 B\n├ ƒ /api/dellin-packages                 0 B                0 B\n├ ƒ /api/external                        0 B                0 B\n├ ƒ /api/furniture-products              0 B                0 B\n├ ƒ /api/kit                             0 B                0 B\n├ ƒ /api/pek                             0 B                0 B\n├ ƒ /api/pek-get                         0 B                0 B\n├ ƒ /api/pek-simple                      0 B                0 B\n├ ƒ /api/rail-continent                  0 B                0 B\n├ ƒ /api/run-tests                       0 B                0 B\n├ ƒ /api/test                            0 B                0 B\n├ ƒ /api/vozovoz                         0 B                0 B\n├ ○ /diagnostic                          31 kB           133 kB\n├ ○ /env-check                           8.88 kB        96.2 kB\n└ ○ /pek-test                            3.07 kB        98.2 kB\n+ First Load JS shared by all            87.4 kB\n  ├ chunks/117-a9311b30f8c1d654.js       31.6 kB\n  ├ chunks/fd9d1056-dbbc99e218e38580.js  53.6 kB\n  └ other shared chunks (total)          2.13 kB\n\n\nƒ Middleware                             26.6 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\n   Generating static pages (0/19) ...\n   Generating static pages (4/19) \r\n   Generating static pages (9/19) \r\n   Generating static pages (14/19) \r\n[INDEXEDDB] Storage module initialized\n[COOKIE] Storage module initialized\n ✓ Generating static pages (19/19)\n   Finalizing page optimization ...\n   Collecting build traces ...\n\nRoute (app)                              Size     First Load JS\n┌ ○ /                                    37.2 kB         139 kB\n├ ○ /_not-found                          873 B          88.2 kB\n├ ƒ /api/cdek                            0 B                0 B\n├ ƒ /api/dadata                          0 B                0 B\n├ ƒ /api/dellin-packages                 0 B                0 B\n├ ƒ /api/external                        0 B                0 B\n├ ƒ /api/furniture-products              0 B                0 B\n├ ƒ /api/kit                             0 B                0 B\n├ ƒ /api/pek                             0 B                0 B\n├ ƒ /api/pek-get                         0 B                0 B\n├ ƒ /api/pek-simple                      0 B                0 B\n├ ƒ /api/rail-continent                  0 B                0 B\n├ ƒ /api/run-tests                       0 B                0 B\n├ ƒ /api/test                            0 B                0 B\n├ ƒ /api/vozovoz                         0 B                0 B\n├ ○ /diagnostic                          31 kB           133 kB\n├ ○ /env-check                           8.88 kB        96.2 kB\n└ ○ /pek-test                            3.07 kB        98.2 kB\n+ First Load JS shared by all            87.4 kB\n  ├ chunks/117-a9311b30f8c1d654.js       31.6 kB\n  ├ chunks/fd9d1056-dbbc99e218e38580.js  53.6 kB\n  └ other shared chunks (total)          2.13 kB\n\n\nƒ Middleware                             26.6 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+      "exit": 0,
+      "description": "Build application after TypeScript fixes"
+    },
+    "time": {
+      "start": 1763964661906,
+      "end": 1763964687748
+    }
+  }
+}

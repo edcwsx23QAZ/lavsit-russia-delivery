@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab476448a001s9Xg99xYcu2hJh",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab476331a0028bIX4BkqvOV12K",
+  "type": "tool",
+  "callID": "call_ac9b2a33519045b4a35e9649",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "handleReset|setCalculations.*\\[\\]|setCalculating.*false"
+    },
+    "output": "Found 8 matches\n/home/user/project/app/page.tsx:\n  Line 186:   const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  Line 187:   const [calculating, setCalculating] = useState(false);\n  Line 4022:     setCalculations([]);\n  Line 4071:         setCalculations([]);\n  Line 4205:       setCalculating(false);\n  Line 4241:   const handleReset = () => {\n  Line 4250:       setCalculations([]);\n  Line 5056:                     onClick={handleReset}",
+    "title": "handleReset|setCalculations.*\\[\\]|setCalculating.*false",
+    "metadata": {
+      "matches": 8,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763964241037,
+      "end": 1763964241049
+    }
+  }
+}

@@ -4,7 +4,7 @@
     "totalOptimizations": 9,
     "completedOptimizations": 9,
     "successRate": "100%",
-    "reportDate": "2025-09-30T14:53:28.785Z"
+    "reportDate": "2025-11-24T06:11:32.040Z"
   },
   "beforeAfterComparison": {
     "diagnosticPageSize": {
@@ -49,9 +49,9 @@
   },
   "detailedMetrics": {
     "build": {
-      "totalSize": 117984049,
-      "fileCount": 177,
-      "timestamp": "2025-09-30T14:53:28.495Z"
+      "totalSize": 137862305,
+      "fileCount": 204,
+      "timestamp": "2025-11-24T06:11:31.609Z"
     },
     "bundle": {
       "routes": {
@@ -82,35 +82,35 @@
     "api": {
       "tests": {
         "PEK API": {
-          "duration": 56,
+          "duration": 84,
           "status": "success",
           "withTimeout": true,
           "withValidation": true,
           "withMonitoring": true
         },
         "Vozovoz API": {
-          "duration": 112,
+          "duration": 126,
           "status": "success",
           "withTimeout": true,
           "withValidation": true,
           "withMonitoring": true
         },
         "Dellin API": {
-          "duration": 61,
+          "duration": 75,
           "status": "success",
           "withTimeout": true,
           "withValidation": true,
           "withMonitoring": true
         },
         "Test API": {
-          "duration": 57,
+          "duration": 142,
           "status": "success",
           "withTimeout": true,
           "withValidation": true,
           "withMonitoring": true
         }
       },
-      "averageResponseTime": 71.5,
+      "averageResponseTime": 106.75,
       "optimizations": [
         "Timeout protection (15s)",
         "Input validation",

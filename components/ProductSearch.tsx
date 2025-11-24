@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo, memo } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -14,7 +14,7 @@ interface ProductSearchProps {
   disabled?: boolean;
 }
 
-export default function ProductSearch({ onProductAdd, disabled = false }: ProductSearchProps) {
+const ProductSearch = memo(function ProductSearch({ onProductAdd, disabled = false }: ProductSearchProps) {
   const [searchState, setSearchState] = useState<ProductSearchState>({
     query: '',
     isLoading: false,
@@ -94,12 +94,17 @@ export default function ProductSearch({ onProductAdd, disabled = false }: Produc
     }));
     
     if (query.trim().length >= 2) {
-      const filtered = searchProducts(allProducts, query);
-      setSearchState(prev => ({
-        ...prev,
-        suggestions: filtered,
-        showSuggestions: true
-      }));
+      // Используем debounce для оптимизации поиска
+      const debouncedSearch = setTimeout(() => {
+        const filtered = searchProducts(allProducts, query);
+        setSearchState(prev => ({
+          ...prev,
+          suggestions: filtered,
+          showSuggestions: true
+        }));
+      }, 150);
+      
+      return () => clearTimeout(debouncedSearch);
     } else {
       setSearchState(prev => ({
         ...prev,
@@ -299,4 +304,6 @@ export default function ProductSearch({ onProductAdd, disabled = false }: Produc
       )}
     </div>
   );
-}
+});
+
+export default ProductSearch;

@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab47c2460001tZx3Sid0Sze0jl",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab47c01df001Et2gzJyQLCmPUu",
+  "type": "tool",
+  "callID": "call_eabd7cbc0aaa4209a618d8b6",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build application after TypeScript fix"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./lib/optimized-api-client.ts:224:11\nType error: Argument of type 'Promise<{ city: string; data: any; }>' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 222 |\u001b[39m       \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mfromCached) {\u001b[0m\n\u001b[0m \u001b[90m 223 |\u001b[39m         zonePromises\u001b[33m.\u001b[39mpush(\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 224 |\u001b[39m           enhancedApiRequest(\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 225 |\u001b[39m             \u001b[32m'/api/pek'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 226 |\u001b[39m             {\u001b[0m\n\u001b[0m \u001b[90m 227 |\u001b[39m               method\u001b[33m:\u001b[39m \u001b[32m'POST'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./lib/optimized-api-client.ts:224:11\nType error: Argument of type 'Promise<{ city: string; data: any; }>' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 222 |\u001b[39m       \u001b[36mif\u001b[39m (\u001b[33m!\u001b[39mfromCached) {\u001b[0m\n\u001b[0m \u001b[90m 223 |\u001b[39m         zonePromises\u001b[33m.\u001b[39mpush(\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 224 |\u001b[39m           enhancedApiRequest(\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m           \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 225 |\u001b[39m             \u001b[32m'/api/pek'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 226 |\u001b[39m             {\u001b[0m\n\u001b[0m \u001b[90m 227 |\u001b[39m               method\u001b[33m:\u001b[39m \u001b[32m'POST'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build application after TypeScript fix"
+    },
+    "time": {
+      "start": 1763964626021,
+      "end": 1763964643006
+    }
+  }
+}

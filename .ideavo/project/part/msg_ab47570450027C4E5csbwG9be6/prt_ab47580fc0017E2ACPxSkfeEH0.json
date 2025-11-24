@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab47580fc0017E2ACPxSkfeEH0",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab47570450027C4E5csbwG9be6",
+  "type": "tool",
+  "callID": "call_bb5b70a39e3e4d1fb1585b55",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "calculating.*&&|calculations.*length|Результаты расчета"
+    },
+    "output": "Found 3 matches\n/home/user/project/app/page.tsx:\n  Line 5070:             {calculations.length > 0 && (\n  Line 5073:                   <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n  Line 5338:             {calculations.length > 0 && (",
+    "title": "calculating.*&&|calculations.*length|Результаты расчета",
+    "metadata": {
+      "matches": 3,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763964190976,
+      "end": 1763964190987
+    }
+  }
+}

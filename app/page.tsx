@@ -12,9 +12,9 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';
-import ProductSearch from '@/components/ProductSearch';
+import { LazyProductSearch, LazyTruckVisualization } from '@/components/LazyLoadedComponents';
 import ProductManager from '@/components/ProductManager';
-import TruckVisualization from '@/components/TruckVisualization';
+import CalculationProgress from '@/components/CalculationProgress';
 import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';
 import { saveFormData, loadFormData, hasStoredFormData, createDebouncedSaver, clearFormData } from '@/lib/form-storage';
 import {
@@ -24,6 +24,8 @@ import {
   findCargoIndexesForProduct
 } from '@/lib/furniture-utils';
 import { enhancedApiRequest } from '@/lib/api-utils';
+import { cacheManager } from '@/lib/cache-manager';
+import { optimizedApiClient } from '@/lib/optimized-api-client';
 
 interface Cargo {
   id: string;
@@ -183,6 +185,19 @@ export default function Home() {
   });
   const [calculations, setCalculations] = useState<CalculationResult[]>([]);
   const [calculating, setCalculating] = useState(false);
+  const [calculationProgress, setCalculationProgress] = useState<{
+    companies: Array<{
+      name: string;
+      status: 'pending' | 'loading' | 'completed' | 'error';
+      progress?: number;
+      error?: string;
+      duration?: number;
+    }>;
+    totalDuration: number;
+  }>({
+    companies: [],
+    totalDuration: 0
+  });
   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});
   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});
   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });
@@ -4002,6 +4017,7 @@ export default function Home() {
   };
 
   const handleCalculate = async () => {
+    const totalStartTime = performance.now();
     setCalculating(true);
     setCalculations([]);
     
@@ -4027,48 +4043,164 @@ export default function Home() {
     });
     
     try {
-      // Создаем массив функций расчета только для включенных компаний
-      const calculationFunctions: Promise<CalculationResult>[] = [];
+      console.log('🚀 === НАЧАЛО ОПТИМИЗИРОВАННОГО РАСЧЕТА ===');
       
-      if (enabledCompanies.dellin) {
-        calculationFunctions.push(calculateDellin());
-      }
-      if (enabledCompanies.pek) {
-        calculationFunctions.push(calculatePEK());
-      }
-      if (enabledCompanies.nordwheel) {
-        calculationFunctions.push(calculateNordWheel());
-      }
-      if (enabledCompanies.railcontinent) {
-        calculationFunctions.push(calculateRailContinent());
-      }
-      if (enabledCompanies.vozovoz) {
-        calculationFunctions.push(calculateVozovoz());
-      }
-      if (enabledCompanies.cdek) {
-        calculationFunctions.push(calculateCdek());
-      }
-      if (enabledCompanies.kit) {
-        calculationFunctions.push(calculateKit());
-      }
+      // Динамический импорт оптимизированного клиента
+      const { optimizedApiClient } = await import('@/lib/optimized-api-client');
+      const { cacheManager } = await import('@/lib/cache-manager');
+      
+      // 1. Предзагрузка данных и сессий параллельно
+      const preloadStartTime = performance.now();
+      await optimizedApiClient.preloadCalculationData(form);
+      const preloadDuration = performance.now() - preloadStartTime;
+      console.log(`⚡ Предзагрузка завершена за ${preloadDuration.toFixed(0)}мс`);
+      
+      // 2. Определяем включенные компании
+      const enabledCompaniesList: Array<{ name: string; key: string; func: () => Promise<CalculationResult> }> = [];
+      
+      if (enabledCompanies.pek) enabledCompaniesList.push({ name: 'ПЭК', key: 'pek', func: calculatePEK });
+      if (enabledCompanies.dellin) enabledCompaniesList.push({ name: 'Деловые Линии', key: 'dellin', func: calculateDellin });
+      if (enabledCompanies.railcontinent) enabledCompaniesList.push({ name: 'Rail Continent', key: 'railcontinent', func: calculateRailContinent });
+      if (enabledCompanies.vozovoz) enabledCompaniesList.push({ name: 'Возовоз', key: 'vozovoz', func: calculateVozovoz });
+      if (enabledCompanies.nordwheel) enabledCompaniesList.push({ name: 'Nord Wheel', key: 'nordwheel', func: calculateNordWheel });
+      if (enabledCompanies.cdek) enabledCompaniesList.push({ name: 'Сдэк', key: 'cdek', func: calculateCdek });
+      if (enabledCompanies.kit) enabledCompaniesList.push({ name: 'Кит', key: 'kit', func: calculateKit });
       
       // Если ни одна компания не включена
-      if (calculationFunctions.length === 0) {
+      if (enabledCompaniesList.length === 0) {
         setCalculations([]);
         return;
       }
       
-      const results = await Promise.all(calculationFunctions);
+      console.log(`📋 Запуск расчетов для ${enabledCompaniesList.length} компаний:`, enabledCompaniesList.map(c => c.name));
       
-      // Сортировка по цене
-      const sortedResults = results
+      // 3. Инициализация прогресса
+      setCalculationProgress({
+        companies: enabledCompaniesList.map(company => ({
+          name: company.name,
+          status: 'pending'
+        })),
+        totalDuration: 0
+      });
+      
+      // 4. Параллельный запуск всех расчетов с отслеживанием прогресса
+      const calculationStartTime = performance.now();
+      const calculationPromises = enabledCompaniesList.map(async (company, index) => {
+        const companyStartTime = performance.now();
+        
+        // Обновляем статус на "loading"
+        setCalculationProgress(prev => ({
+          ...prev,
+          companies: prev.companies.map((c, i) => 
+            i === index ? { ...c, status: 'loading', progress: 0 } : c
+          )
+        }));
+        
+        try {
+          const result = await optimizedApiClient.calculateWithCache(
+            company.key,
+            company.func,
+            form
+          );
+          
+          const duration = performance.now() - companyStartTime;
+          
+          // Обновляем статус на "completed"
+          setCalculationProgress(prev => ({
+            ...prev,
+            companies: prev.companies.map((c, i) => 
+              i === index ? { 
+                ...c, 
+                status: 'completed', 
+                progress: 100, 
+                duration 
+              } : c
+            )
+          }));
+          
+          return result;
+        } catch (error) {
+          const duration = performance.now() - companyStartTime;
+          const errorMessage = error instanceof Error ? error.message : 'Ошибка расчета';
+          
+          // Обновляем статус на "error"
+          setCalculationProgress(prev => ({
+            ...prev,
+            companies: prev.companies.map((c, i) => 
+              i === index ? { 
+                ...c, 
+                status: 'error', 
+                error: errorMessage,
+                duration 
+              } : c
+            )
+          }));
+          
+          console.error(`❌ Ошибка расчета ${company.name}:`, error);
+          return {
+            company: company.name,
+            price: 0,
+            days: 0,
+            error: errorMessage,
+            duration
+          };
+        }
+      });
+      
+      const results = await Promise.allSettled(calculationPromises);
+      const calculationDuration = performance.now() - calculationStartTime;
+      
+      // 4. Обработка результатов
+      const validResults: CalculationResult[] = [];
+      const errors: string[] = [];
+      
+      results.forEach((result, index) => {
+        if (result.status === 'fulfilled') {
+          validResults.push(result.value);
+        } else {
+          const companyName = enabledCompaniesList[index].name;
+          errors.push(`${companyName}: ${result.reason}`);
+          console.error(`❌ Критическая ошибка ${companyName}:`, result.reason);
+        }
+      });
+      
+      // 5. Сортировка результатов
+      const sortedResults = validResults
         .filter(result => !result.error)
         .sort((a, b) => a.price - b.price)
-        .concat(results.filter(result => result.error));
+        .concat(validResults.filter(result => result.error));
+      
+      // 6. Логирование производительности
+      const totalDuration = performance.now() - totalStartTime;
+      const successCount = sortedResults.filter(r => !r.error).length;
+      const cacheStats = cacheManager.getCacheStats();
+      
+      console.log(`✅ === РАСЧЕТ ЗАВЕРШЕН ===`);
+      console.log(`⏱️ Общее время: ${totalDuration.toFixed(0)}мс`);
+      console.log(`⚡ Расчеты: ${calculationDuration.toFixed(0)}мс`);
+      console.log(`📊 Успешно: ${successCount}/${enabledCompaniesList.length}`);
+      console.log(`💾 Кэш: сессий=${cacheStats.sessions}, расчетов=${cacheStats.calculations}`);
+      
+      if (errors.length > 0) {
+        console.warn(`⚠️ Ошибки: ${errors.join('; ')}`);
+      }
+      
+      // Финальное обновление прогресса
+      setCalculationProgress(prev => ({
+        ...prev,
+        totalDuration: totalDuration
+      }));
       
       setCalculations(sortedResults);
+      
     } catch (error) {
-      console.error('Ошибка при расчете:', error);
+      console.error('❌ Критическая ошибка при расчете:', error);
+      setCalculations([{
+        company: 'Система',
+        price: 0,
+        days: 0,
+        error: error instanceof Error ? error.message : 'Критическая ошибка расчета'
+      }]);
     } finally {
       setCalculating(false);
     }
@@ -4609,7 +4741,7 @@ export default function Home() {
               </CardHeader>
               <CardContent className="space-y-2">
                 {/* Поиск и добавление товаров */}
-                <ProductSearch 
+                <LazyProductSearch 
                   onProductAdd={handleProductAdd}
                   disabled={calculating}
                 />
@@ -4935,6 +5067,13 @@ export default function Home() {
 
           {/* Правая часть - результаты */}
           <div className="space-y-2 overflow-y-auto">
+            {/* Индикатор прогресса расчетов */}
+            <CalculationProgress 
+              companies={calculationProgress.companies}
+              totalDuration={calculationProgress.totalDuration}
+              isVisible={calculating}
+            />
+            
             {calculations.length > 0 && (
                  <div className="space-y-2">
                 <div className="flex justify-between items-center">
@@ -5204,7 +5343,7 @@ export default function Home() {
 
             {/* Визуализация кузова */}
             {calculations.length > 0 && (
-              <TruckVisualization 
+              <LazyTruckVisualization 
                 cargos={form.cargos.map(cargo => ({
                   id: cargo.id,
                   length: cargo.length * 10, // Переводим см в мм

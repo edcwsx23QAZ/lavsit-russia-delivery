@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab4712a7b001hQMYmlxGcbi8QE",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab470f275002R5uh6xHr6vgsJf",
+  "type": "tool",
+  "callID": "call_420fddebd4fe463bac3ace42",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/TruckVisualization.tsx",
+      "oldString": "  // Получение размеров выбранного автомобиля\n  const getCurrentVehicleDimensions = () => VEHICLE_TYPES[selectedVehicleType].dimensions;",
+      "newString": "  // Получение размеров выбранного автомобиля\n  const getCurrentVehicleDimensions = useCallback(() => VEHICLE_TYPES[selectedVehicleType].dimensions, [selectedVehicleType]);\n  \n  // Оптимизированные обработчики событий\n  const handleRotationXChange = useCallback((value: number[]) => setRotationX(value[0]), []);\n  const handleRotationYChange = useCallback((value: number[]) => setRotationY(value[0]), []);\n  const handleRotationZChange = useCallback((value: number[]) => setRotationZ(value[0]), []);\n  const handlePositionXChange = useCallback((value: number[]) => setPositionX(value[0]), []);\n  const handlePositionYChange = useCallback((value: number[]) => setPositionY(value[0]), []);\n  const handleScaleChange = useCallback((value: number[]) => setScale(value[0]), []);\n  const handleVehicleTypeChange = useCallback((value: string) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES), []);\n  const toggleControls = useCallback(() => setShowControls(prev => !prev), []);\n  const resetView = useCallback(() => {\n    setRotationX(-90);\n    setRotationY(55);\n    setRotationZ(0);\n    setPositionX(51);\n    setPositionY(35);\n    setScale(70);\n  }, []);"
+    },
+    "output": "",
+    "title": "components/TruckVisualization.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/TruckVisualization.tsx\n===================================================================\n--- /home/user/project/components/TruckVisualization.tsx\n+++ /home/user/project/components/TruckVisualization.tsx\n@@ -75,10 +75,28 @@\n const [showControls, setShowControls] = useState(false); // Показывать ли элементы управления\n const [selectedVehicleType, setSelectedVehicleType] = useState<keyof typeof VEHICLE_TYPES>('ford-transit'); // Выбранный тип автомобиля\n \n // Получение размеров выбранного автомобиля\n-const getCurrentVehicleDimensions = () => VEHICLE_TYPES[selectedVehicleType].dimensions;\n+const getCurrentVehicleDimensions = useCallback(() => VEHICLE_TYPES[selectedVehicleType].dimensions, [selectedVehicleType]);\n \n+// Оптимизированные обработчики событий\n+const handleRotationXChange = useCallback((value: number[]) => setRotationX(value[0]), []);\n+const handleRotationYChange = useCallback((value: number[]) => setRotationY(value[0]), []);\n+const handleRotationZChange = useCallback((value: number[]) => setRotationZ(value[0]), []);\n+const handlePositionXChange = useCallback((value: number[]) => setPositionX(value[0]), []);\n+const handlePositionYChange = useCallback((value: number[]) => setPositionY(value[0]), []);\n+const handleScaleChange = useCallback((value: number[]) => setScale(value[0]), []);\n+const handleVehicleTypeChange = useCallback((value: string) => setSelectedVehicleType(value as keyof typeof VEHICLE_TYPES), []);\n+const toggleControls = useCallback(() => setShowControls(prev => !prev), []);\n+const resetView = useCallback(() => {\n+  setRotationX(-90);\n+  setRotationY(55);\n+  setRotationZ(0);\n+  setPositionX(51);\n+  setPositionY(35);\n+  setScale(70);\n+}, []);\n+\n // Функция проверки ключевых слов\n const isChairOrSeat = (productName?: string) => {\n   if (!productName) return false;\n   const lowerName = productName.toLowerCase();\n"
+    },
+    "time": {
+      "start": 1763963906686,
+      "end": 1763963906699
+    }
+  }
+}

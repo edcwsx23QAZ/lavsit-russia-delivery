@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab472e3a6001oNvxtozbXKvOtq",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab472d5bd002ycJwCst0JwAcT8",
+  "type": "tool",
+  "callID": "call_c192c4b1ceca4d1d82ac23ae",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "TruckVisualization|ProductSearch"
+    },
+    "output": "Found 5 matches\n/home/user/project/app/page.tsx:\n  Line 15: import { LazyProductSearch, LazyTruckVisualization } from '@/components/LazyLoadedComponents';\n  Line 431:           if (key && (key.startsWith('furniture_') || key.startsWith('product_') || key.includes('ProductSearch'))) {\n  Line 438:         // Отправляем сообщение компоненту ProductSearch о необходимости обновления\n  Line 4670:                 <ProductSearch \n  Line 5265:               <TruckVisualization",
+    "title": "TruckVisualization|ProductSearch",
+    "metadata": {
+      "matches": 5,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763964019627,
+      "end": 1763964019639
+    }
+  }
+}

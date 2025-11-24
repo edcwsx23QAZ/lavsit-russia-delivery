@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab472af1b001YBmK4zCl6tGyKP",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab4726603002gg9RMki5GCgEho",
+  "type": "tool",
+  "callID": "call_a3606a05d9de4b099fab7c3e",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/LazyLoadedComponents.tsx",
+      "content": "'use client';\n\nimport { lazy, Suspense } from 'react';\nimport { Loader2 } from 'lucide-react';\nimport { Card, CardContent } from '@/components/ui/card';\n\n// Ленивая загрузка тяжелых компонентов\nconst TruckVisualization = lazy(() => import('./TruckVisualization').then(module => ({\n  default: module.default\n})));\n\nconst ProductSearch = lazy(() => import('./ProductSearch').then(module => ({\n  default: module.default\n})));\n\n// Компонент-заглушка для загрузки\nconst LoadingFallback = ({ message = 'Загрузка...' }: { message?: string }) => (\n  <Card className=\"w-full\">\n    <CardContent className=\"flex items-center justify-center p-8\">\n      <div className=\"flex items-center gap-3 text-muted-foreground\">\n        <Loader2 className=\"h-5 w-5 animate-spin\" />\n        <span>{message}</span>\n      </div>\n    </CardContent>\n  </Card>\n);\n\n// Обертка для TruckVisualization с ленивой загрузкой\nexport const LazyTruckVisualization = (props: any) => (\n  <Suspense fallback={<LoadingFallback message=\"Загрузка визуализации грузовика...\" />}>\n    <TruckVisualization {...props} />\n  </Suspense>\n);\n\n// Обертка для ProductSearch с ленивой загрузкой\nexport const LazyProductSearch = (props: any) => (\n  <Suspense fallback={<LoadingFallback message=\"Загрузка каталога товаров...\" />}>\n    <ProductSearch {...props} />\n  </Suspense>\n);\n\n// Экспортируем ленивые компоненты\nexport default {\n  TruckVisualization: LazyTruckVisualization,\n  ProductSearch: LazyProductSearch\n};"
+    },
+    "output": "",
+    "title": "components/LazyLoadedComponents.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/components/LazyLoadedComponents.tsx",
+      "exists": false
+    },
+    "time": {
+      "start": 1763964006175,
+      "end": 1763964006176
+    }
+  }
+}

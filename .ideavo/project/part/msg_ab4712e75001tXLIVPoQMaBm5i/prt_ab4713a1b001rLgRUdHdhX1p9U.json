@@ -1,0 +1,24 @@
+{
+  "id": "prt_ab4713a1b001rLgRUdHdhX1p9U",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab4712e75001tXLIVPoQMaBm5i",
+  "type": "tool",
+  "callID": "call_c2f29748ff4246d7abbc28ed",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/ProductSearch.tsx",
+      "limit": 50
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import React, { useState, useEffect, useRef, useCallback } from 'react';\n00004| import { Input } from '@/components/ui/input';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Badge } from '@/components/ui/badge';\n00007| import { Card, CardContent } from '@/components/ui/card';\n00008| import { Plus, Search, Package, Loader2, RefreshCw } from 'lucide-react';\n00009| import { FurnitureProduct, ProductSearchState } from '@/lib/furniture-types';\n00010| import { searchProducts, formatPrice, getProductSummary } from '@/lib/furniture-utils';\n00011| \n00012| interface ProductSearchProps {\n00013|   onProductAdd: (product: FurnitureProduct) => void;\n00014|   disabled?: boolean;\n00015| }\n00016| \n00017| export default function ProductSearch({ onProductAdd, disabled = false }: ProductSearchProps) {\n00018|   const [searchState, setSearchState] = useState<ProductSearchState>({\n00019|     query: '',\n00020|     isLoading: false,\n00021|     suggestions: [],\n00022|     showSuggestions: false,\n00023|     selectedIndex: -1\n00024|   });\n00025|   \n00026|   const [allProducts, setAllProducts] = useState<FurnitureProduct[]>([]);\n00027|   const [isLoadingProducts, setIsLoadingProducts] = useState(false);\n00028|   const inputRef = useRef<HTMLInputElement>(null);\n00029|   const suggestionsRef = useRef<HTMLDivElement>(null);\n00030|   \n00031|   // Загрузка продуктов при монтировании\n00032|   useEffect(() => {\n00033|     loadProducts();\n00034|   }, []);\n00035|   \n00036|   // Обработка принудительного обновления товаров\n00037|   useEffect(() => {\n00038|     const handleForceReload = (event: CustomEvent) => {\n00039|       console.log('🔄 ProductSearch: Получен сигнал о принудительном обновлении товаров');\n00040|       // Принудительно перезагружаем товары\n00041|       loadProducts(true);\n00042|       \n00043|       // Очищаем текущий поиск\n00044|       setSearchState({\n00045|         query: '',\n00046|         isLoading: false,\n00047|         suggestions: [],\n00048|         showSuggestions: false,\n00049|         selectedIndex: -1\n00050|       });\n\n(File has more lines. Use 'offset' parameter to read beyond line 50)\n</file>",
+    "title": "components/ProductSearch.tsx",
+    "metadata": {
+      "preview": "'use client';\n\nimport React, { useState, useEffect, useRef, useCallback } from 'react';\nimport { Input } from '@/components/ui/input';\nimport { Button } from '@/components/ui/button';\nimport { Badge } from '@/components/ui/badge';\nimport { Card, CardContent } from '@/components/ui/card';\nimport { Plus, Search, Package, Loader2, RefreshCw } from 'lucide-react';\nimport { FurnitureProduct, ProductSearchState } from '@/lib/furniture-types';\nimport { searchProducts, formatPrice, getProductSummary } from '@/lib/furniture-utils';\n\ninterface ProductSearchProps {\n  onProductAdd: (product: FurnitureProduct) => void;\n  disabled?: boolean;\n}\n\nexport default function ProductSearch({ onProductAdd, disabled = false }: ProductSearchProps) {\n  const [searchState, setSearchState] = useState<ProductSearchState>({\n    query: '',\n    isLoading: false,"
+    },
+    "time": {
+      "start": 1763963910687,
+      "end": 1763963910690
+    }
+  }
+}

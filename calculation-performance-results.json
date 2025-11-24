@@ -1,0 +1,66 @@
+{
+  "testScenario": {
+    "fromCity": "Москва",
+    "toCity": "Санкт-Петербург",
+    "cargos": [
+      {
+        "id": "1",
+        "length": 120,
+        "width": 80,
+        "height": 60,
+        "weight": 25
+      },
+      {
+        "id": "2",
+        "length": 100,
+        "width": 60,
+        "height": 40,
+        "weight": 15
+      }
+    ],
+    "declaredValue": 75000,
+    "fromAddressDelivery": false,
+    "toAddressDelivery": false,
+    "needPackaging": true,
+    "needInsurance": true
+  },
+  "performance": {
+    "totalDuration": 36,
+    "apiCount": 4,
+    "successfulAPIs": 0,
+    "failedAPIs": 4,
+    "successRate": "0.0%",
+    "averageAPIDuration": 0,
+    "fastestAPI": null,
+    "slowestAPI": null,
+    "parallelEfficiency": "❌ Sequential execution detected"
+  },
+  "detailedResults": [
+    {
+      "api": "PEK",
+      "success": false,
+      "duration": 33,
+      "error": ""
+    },
+    {
+      "api": "Деловые Линии",
+      "success": false,
+      "duration": 15,
+      "error": ""
+    },
+    {
+      "api": "Возовоз",
+      "success": false,
+      "duration": 15,
+      "error": ""
+    },
+    {
+      "api": "СДЭК",
+      "success": false,
+      "duration": 13,
+      "error": ""
+    }
+  ],
+  "timestamp": "2025-11-24T06:07:53.359Z",
+  "targetMet": true
+}

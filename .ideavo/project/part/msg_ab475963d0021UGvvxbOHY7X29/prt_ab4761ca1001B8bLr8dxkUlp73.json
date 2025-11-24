@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab4761ca1001B8bLr8dxkUlp73",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab475963d0021UGvvxbOHY7X29",
+  "type": "tool",
+  "callID": "call_aa3fb294140f468d8ad6edca",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          {/* Правая часть - результаты */}\n          <div className=\"space-y-2 overflow-y-auto\">\n            {calculations.length > 0 && (",
+      "newString": "          {/* Правая часть - результаты */}\n          <div className=\"space-y-2 overflow-y-auto\">\n            {/* Индикатор прогресса расчетов */}\n            <CalculationProgress \n              companies={calculationProgress.companies}\n              totalDuration={calculationProgress.totalDuration}\n              isVisible={calculating}\n            />\n            \n            {calculations.length > 0 && ("
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -5066,8 +5066,15 @@\n </div>\n \n {/* Правая часть - результаты */}\n <div className=\"space-y-2 overflow-y-auto\">\n+  {/* Индикатор прогресса расчетов */}\n+  <CalculationProgress \n+    companies={calculationProgress.companies}\n+    totalDuration={calculationProgress.totalDuration}\n+    isVisible={calculating}\n+  />\n+  \n   {calculations.length > 0 && (\n        <div className=\"space-y-2\">\n       <div className=\"flex justify-between items-center\">\n         <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n"
+    },
+    "time": {
+      "start": 1763964230820,
+      "end": 1763964230841
+    }
+  }
+}

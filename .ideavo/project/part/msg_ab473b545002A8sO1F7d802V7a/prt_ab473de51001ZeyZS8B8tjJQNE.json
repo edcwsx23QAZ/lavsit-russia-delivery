@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab473de51001ZeyZS8B8tjJQNE",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab473b545002A8sO1F7d802V7a",
+  "type": "tool",
+  "callID": "call_8dd4fd952f3546049d9c6731",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  const [calculating, setCalculating] = useState(false);\n  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});",
+      "newString": "  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  const [calculating, setCalculating] = useState(false);\n  const [calculationProgress, setCalculationProgress] = useState<{\n    companies: Array<{\n      name: string;\n      status: 'pending' | 'loading' | 'completed' | 'error';\n      progress?: number;\n      error?: string;\n      duration?: number;\n    }>;\n    totalDuration: number;\n  }>({\n    companies: [],\n    totalDuration: 0\n  });\n  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -183,8 +183,21 @@\n   ankor: false\n });\n const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n const [calculating, setCalculating] = useState(false);\n+const [calculationProgress, setCalculationProgress] = useState<{\n+  companies: Array<{\n+    name: string;\n+    status: 'pending' | 'loading' | 'completed' | 'error';\n+    progress?: number;\n+    error?: string;\n+    duration?: number;\n+  }>;\n+  totalDuration: number;\n+}>({\n+  companies: [],\n+  totalDuration: 0\n+});\n const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n const [apiStatus, setApiStatus] = useState({\n"
+    },
+    "time": {
+      "start": 1763964083795,
+      "end": 1763964083819
+    }
+  }
+}

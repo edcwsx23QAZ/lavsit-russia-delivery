@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab472f3cd001z0HlxK5Z1NQVLh",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab472e769002T9ZEcGyXLEOB4U",
+  "type": "tool",
+  "callID": "call_0bd457ed7d444834b5a108b8",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                <ProductSearch",
+      "newString": "                <LazyProductSearch"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -4666,9 +4666,9 @@\n   </CardTitle>\n </CardHeader>\n <CardContent className=\"space-y-2\">\n   {/* Поиск и добавление товаров */}\n-  <ProductSearch \n+  <LazyProductSearch \n     onProductAdd={handleProductAdd}\n     disabled={calculating}\n   />\n   \n"
+    },
+    "time": {
+      "start": 1763964023759,
+      "end": 1763964023782
+    }
+  }
+}

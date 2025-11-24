@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab473b19e001PTpyGpCkoupVoB",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab4737e3e0013P53E0E2fOmldc",
+  "type": "tool",
+  "callID": "call_34108d0202864bbfb9a33ab9",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 180
+    },
+    "output": "<file>\n00181|     glavtrassa: false,\n00182|     baltservice: false,\n00183|     ankor: false\n00184|   });\n00185|   const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n00186|   const [calculating, setCalculating] = useState(false);\n00187|   const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n00188|   const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n00189|   const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n00190|   const [apiStatus, setApiStatus] = useState({\n00191|     pek: 'проверка...',\n00192|     dellin: 'проверка...',\n00193|     railcontinent: 'проверка...',\n00194|     vozovoz: 'проверка...',\n00195|     nordwheel: 'проверка...',\n00196|     cdek: 'проверка...',\n00197|     kit: 'проверка...',\n00198|     newline: 'не подключено',\n00199|     irtrust: 'не подключено',\n00200|     majortrans: 'не подключено',\n00201|     baikalservice: 'не подключено',\n00202|     adamant: 'не подключено',\n00203|     energiya: 'не подключено',\n00204|     cap: 'не подключено',\n00205|     uraltrans: 'не подключено',\n00206|     novotek: 'не подключено',\n00207|     karavan: 'не подключено',\n00208|     zeldor: 'не подключено',\n00209|     dktransit: 'не подключено',\n00210|     glavtrassa: 'не подключено',\n00211|     baltservice: 'не подключено',\n00212|     ankor: 'не подключено'\n00213|   });\n00214| \n00215|   // Состояние для скрытых транспортных компаний\n00216|   const [hiddenCompanies, setHiddenCompanies] = useState<Record<string, boolean>>({});\n00217|   const [showHiddenCompanies, setShowHiddenCompanies] = useState(false);\n00218| \n00219|   // Защита от потери данных - НЕ очищаем localStorage в dev режиме\n00220|   // Пользовательские данные должны сохраняться между перезагрузками\n00221| \n00222|   // Дополнительная проверка восстановления данных после серверной очистки\n00223|   useEffect(() => {\n00224|     if (typeof window !== 'undefined' && isLoaded) {\n00225|       // Проверяем через 2 секунды после загрузки (после Clear-Site-Data)\n00226|       const delayedCheck = setTimeout(() => {\n00227|         const currentFormData = loadFormData();\n00228|         if (!currentFormData) {\n00229|           console.log('🔍 Дополнительная проверка: данные формы отсутствуют, ищем backup...');\n00230|           \n\n(File has more lines. Use 'offset' parameter to read beyond line 230)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "    glavtrassa: false,\n    baltservice: false,\n    ankor: false\n  });\n  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  const [calculating, setCalculating] = useState(false);\n  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n  const [apiStatus, setApiStatus] = useState({\n    pek: 'проверка...',\n    dellin: 'проверка...',\n    railcontinent: 'проверка...',\n    vozovoz: 'проверка...',\n    nordwheel: 'проверка...',\n    cdek: 'проверка...',\n    kit: 'проверка...',\n    newline: 'не подключено',\n    irtrust: 'не подключено',\n    majortrans: 'не подключено',"
+    },
+    "time": {
+      "start": 1763964072353,
+      "end": 1763964072356
+    }
+  }
+}

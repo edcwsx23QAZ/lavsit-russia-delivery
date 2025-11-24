@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab47b795e001xOTjcPPftt2z44",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab47b5e19001e2TCWLNU0Dt447",
+  "type": "tool",
+  "callID": "call_9034e4ca7e6a42fa8075aadf",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 10,
+      "offset": 4070
+    },
+    "output": "<file>\n04071|         setCalculations([]);\n04072|         return;\n04073|       }\n04074|       \n04075|       console.log(`📋 Запуск расчетов для ${enabledCompaniesList.length} компаний:`, enabledCompaniesList.map(c => c.name));\n04076|       \n04077|       // 3. Инициализация прогресса\n04078|       setCalculationProgress({\n04079|         companies: enabledCompaniesList.map(company => ({\n04080|           name: company.name,\n\n(File has more lines. Use 'offset' parameter to read beyond line 4080)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        setCalculations([]);\n        return;\n      }\n      \n      console.log(`📋 Запуск расчетов для ${enabledCompaniesList.length} компаний:`, enabledCompaniesList.map(c => c.name));\n      \n      // 3. Инициализация прогресса\n      setCalculationProgress({\n        companies: enabledCompaniesList.map(company => ({\n          name: company.name,"
+    },
+    "time": {
+      "start": 1763964582242,
+      "end": 1763964582247
+    }
+  }
+}
