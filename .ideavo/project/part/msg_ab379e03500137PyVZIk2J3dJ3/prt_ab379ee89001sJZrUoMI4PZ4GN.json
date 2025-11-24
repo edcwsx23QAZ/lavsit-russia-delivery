@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab379ee89001sJZrUoMI4PZ4GN",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab379e03500137PyVZIk2J3dJ3",
+  "type": "tool",
+  "callID": "call_6c142bfdeec846038e1ff62b",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 5070,
+      "limit": 15
+    },
+    "output": "<file>\n05071|                        onClick={() => setHiddenCompanies({})}\n05072|                        className=\"h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20\"\n05073|                      >\n05074|                        Показать все скрытые\n05075|                      </Button>\n05076|                    </div>\n05077|                  </div>\n05078|                )}\n05079|              )}\n05080| \n05081|             {/* Список подключенных ТК - всегда видимый */}\n05082|             <Card className=\"bg-gray-800 border-gray-700\">\n05083|               <CardHeader className=\"pb-2\">\n05084|                 <div className=\"flex justify-between items-center\">\n05085|                   <CardTitle className=\"text-white text-sm\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 5085)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                       onClick={() => setHiddenCompanies({})}\n                       className=\"h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20\"\n                     >\n                       Показать все скрытые\n                     </Button>\n                   </div>\n                 </div>\n               )}\n             )}\n\n            {/* Список подключенных ТК - всегда видимый */}\n            <Card className=\"bg-gray-800 border-gray-700\">\n              <CardHeader className=\"pb-2\">\n                <div className=\"flex justify-between items-center\">\n                  <CardTitle className=\"text-white text-sm\">"
+    },
+    "time": {
+      "start": 1763947703948,
+      "end": 1763947703953
+    }
+  }
+}

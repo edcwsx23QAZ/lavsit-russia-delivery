@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab37c918d001N57B7l7DyjaL81",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37c82810013BPycQfeQRxQ89",
+  "type": "tool",
+  "callID": "call_fa84f31bc40741de82b4ac6a",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 5077,
+      "limit": 5
+    },
+    "output": "<file>\n05078|                  )}\n05079|             )}\n05080| \n05081|             {/* Список подключенных ТК - всегда видимый */}\n05082|             <Card className=\"bg-gray-800 border-gray-700\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 5082)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                 )}\n            )}\n\n            {/* Список подключенных ТК - всегда видимый */}\n            <Card className=\"bg-gray-800 border-gray-700\">"
+    },
+    "time": {
+      "start": 1763947876751,
+      "end": 1763947876755
+    }
+  }
+}

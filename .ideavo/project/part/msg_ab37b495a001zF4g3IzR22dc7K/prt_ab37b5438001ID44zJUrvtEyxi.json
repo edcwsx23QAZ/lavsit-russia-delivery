@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab37b5438001ID44zJUrvtEyxi",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37b495a001zF4g3IzR22dc7K",
+  "type": "tool",
+  "callID": "call_24909e040d6648988f075b17",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 5057,
+      "limit": 25
+    },
+    "output": "<file>\n05058|                  ))}\n05059|                </div>\n05060|                \n05061|                {/* Блок для показа скрытых ТК */}\n05062|                {Object.values(hiddenCompanies).some(hidden => hidden) && (\n05063|                  <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n05064|                    <div className=\"flex items-center justify-between\">\n05065|                      <div className=\"text-sm text-gray-300\">\n05066|                        Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}\n05067|                      </div>\n05068|                      <Button\n05069|                        variant=\"outline\"\n05070|                        size=\"sm\"\n05071|                        onClick={() => setHiddenCompanies({})}\n05072|                        className=\"h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20\"\n05073|                      >\n05074|                        Показать все скрытые\n05075|                      </Button>\n05076|                    </div>\n05077|                  </div>\n05078|                 )}\n05079|             )}\n05080| \n05081|             {/* Список подключенных ТК - всегда видимый */}\n05082|             <Card className=\"bg-gray-800 border-gray-700\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 5082)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                 ))}\n               </div>\n               \n               {/* Блок для показа скрытых ТК */}\n               {Object.values(hiddenCompanies).some(hidden => hidden) && (\n                 <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n                   <div className=\"flex items-center justify-between\">\n                     <div className=\"text-sm text-gray-300\">\n                       Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}\n                     </div>\n                     <Button\n                       variant=\"outline\"\n                       size=\"sm\"\n                       onClick={() => setHiddenCompanies({})}\n                       className=\"h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20\"\n                     >\n                       Показать все скрытые\n                     </Button>\n                   </div>\n                 </div>"
+    },
+    "time": {
+      "start": 1763947795513,
+      "end": 1763947795516
+    }
+  }
+}

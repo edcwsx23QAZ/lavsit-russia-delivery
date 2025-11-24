@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab37a941a001F1G5AD6yrkOduA",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37a778d001XhYFLRZRQRpOQr",
+  "type": "text",
+  "text": "\nNow I can see the issue! There's an opening conditional at line 4880: `{calculations.length > 0 && (` which should be closed, but I need to find where it should properly close. The structure should be:\n\n```\n{calculations.length > 0 && (\n  <div className=\"space-y-2\">\n    // content\n  </div>\n)}\n```\n\nBut it seems like there might be an extra closing parenthesis. Let me check the entire structure by looking at where this conditional should end. The issue is likely that there's an extra `)}` at line 5079. Let me fix this:",
+  "time": {
+    "start": 1763947749134,
+    "end": 1763947749134
+  }
+}

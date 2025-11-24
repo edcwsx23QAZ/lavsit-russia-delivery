@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab37c46350015ikpquwrLe5qq2",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37c35e9001y22pevvclauzDn",
+  "type": "tool",
+  "callID": "call_7f328b1caf604e6c8f3f1d6d",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "sed -n '5055,5065p' /home/user/project/app/page.tsx | cat -n",
+      "description": "Check lines before the error"
+    },
+    "output": "     1\t                      </div>\n     2\t                    </CardContent>\n     3\t                  </Card>\n     4\t                 ))}\n     5\t               </div>\n     6\t               \n     7\t               {/* Блок для показа скрытых ТК */}\n     8\t               {Object.values(hiddenCompanies).some(hidden => hidden) && (\n     9\t                 <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n    10\t                   <div className=\"flex items-center justify-between\">\n    11\t                     <div className=\"text-sm text-gray-300\">\n",
+    "title": "sed -n '5055,5065p' /home/user/project/app/page.tsx | cat -n",
+    "metadata": {
+      "output": "     1\t                      </div>\n     2\t                    </CardContent>\n     3\t                  </Card>\n     4\t                 ))}\n     5\t               </div>\n     6\t               \n     7\t               {/* Блок для показа скрытых ТК */}\n     8\t               {Object.values(hiddenCompanies).some(hidden => hidden) && (\n     9\t                 <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n    10\t                   <div className=\"flex items-center justify-between\">\n    11\t                     <div className=\"text-sm text-gray-300\">\n",
+      "exit": 0,
+      "description": "Check lines before the error"
+    },
+    "time": {
+      "start": 1763947857466,
+      "end": 1763947857478
+    }
+  }
+}

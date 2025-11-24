@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab37528400013OjCLj3Ax2sJvF",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3751b1d001bKtWNGcz6jJHKa",
+  "type": "tool",
+  "callID": "call_2b466937c2f54dda833f0111",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4450,
+      "limit": 30
+    },
+    "output": "<file>\n04451| \n04452|   // Показываем загрузку пока состояние не загрузилось (предотвращает ошибку гидратации)\n04453|   if (!isLoaded) {\n04454|     return (\n04455|       <div className=\"min-h-screen bg-gray-900 text-white p-4 relative flex items-center justify-center\">\n04456|         <div className=\"text-center\">\n04457|           <div className=\"animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400 mx-auto mb-4\"></div>\n04458|           <p className=\"text-blue-400\">Загрузка...</p>\n04459|         </div>\n04460|       </div>\n04461|     );\n04462|   }\n04463| \n04464|   return (\n04465|     <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n04466|       <div className=\"max-w-7xl mx-auto\">\n04467|         <div className=\"flex items-center justify-between mb-3\">\n04468|           <h1 className=\"text-xl font-bold text-blue-400\">\n04469|             Междугородняя доставка Лавсит\n04470|           </h1>\n04471|           \n04472|           {/* Индикатор сохранения */}\n04473|           <div className=\"flex items-center gap-4\">\n04474|             {isFormChanged ? (\n04475|               <div className=\"flex items-center gap-2 text-yellow-400 text-sm\">\n04476|                 <div className=\"w-2 h-2 bg-yellow-400 rounded-full animate-pulse\"></div>\n04477|                 Сохранение...\n04478|               </div>\n04479|             ) : lastSaveTime ? (\n04480|               <div className=\"flex items-center gap-2 text-green-400 text-sm\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 4480)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "\n  // Показываем загрузку пока состояние не загрузилось (предотвращает ошибку гидратации)\n  if (!isLoaded) {\n    return (\n      <div className=\"min-h-screen bg-gray-900 text-white p-4 relative flex items-center justify-center\">\n        <div className=\"text-center\">\n          <div className=\"animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400 mx-auto mb-4\"></div>\n          <p className=\"text-blue-400\">Загрузка...</p>\n        </div>\n      </div>\n    );\n  }\n\n  return (\n    <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n      <div className=\"max-w-7xl mx-auto\">\n        <div className=\"flex items-center justify-between mb-3\">\n          <h1 className=\"text-xl font-bold text-blue-400\">\n            Междугородняя доставка Лавсит\n          </h1>"
+    },
+    "time": {
+      "start": 1763947391043,
+      "end": 1763947391050
+    }
+  }
+}

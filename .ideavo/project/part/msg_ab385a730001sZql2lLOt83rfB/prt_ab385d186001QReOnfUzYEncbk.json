@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab385d186001QReOnfUzYEncbk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab385a730001sZql2lLOt83rfB",
+  "type": "tool",
+  "callID": "call_a7d77a094c4d45d3824fd141",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 5059,
+      "limit": 5
+    },
+    "output": "<file>\n05060|                \n05061|                {/* Блок для показа скрытых ТК */}\n05062|                {Object.values(hiddenCompanies).some(hidden => hidden) && (\n05063|                  <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n05064|                    <div className=\"flex items-center justify-between\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 5064)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "               \n               {/* Блок для показа скрытых ТК */}\n               {Object.values(hiddenCompanies).some(hidden => hidden) && (\n                 <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n                   <div className=\"flex items-center justify-between\">"
+    },
+    "time": {
+      "start": 1763948482953,
+      "end": 1763948482957
+    }
+  }
+}

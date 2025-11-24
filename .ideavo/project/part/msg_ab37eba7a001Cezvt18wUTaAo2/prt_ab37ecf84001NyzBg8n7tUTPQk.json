@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab37ecf84001NyzBg8n7tUTPQk",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37eba7a001Cezvt18wUTaAo2",
+  "type": "tool",
+  "callID": "call_f97c6ca623684a479647ff1f",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4055,
+      "limit": 15
+    },
+    "output": "<file>\n04056|       // Сбрасываем состояние формы к начальному\n04057|       setForm(initialFormState);\n04058|       \n04059|       // Очищаем результаты расчетов и состояния\n04060|       setCalculations([]);\n04061|       setExpandedDetails({});\n04062|       setExpandedDebugInfo({});\n04063|       setSuggestions([]);\n04064|       setShowSuggestions(false);\n04065|       setActiveField('');\n04066|       \n04067|       console.log('Форма сброшена к начальному состоянию');\n04068|     }\n04069|   };\n04070| \n\n(File has more lines. Use 'offset' parameter to read beyond line 4070)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "      // Сбрасываем состояние формы к начальному\n      setForm(initialFormState);\n      \n      // Очищаем результаты расчетов и состояния\n      setCalculations([]);\n      setExpandedDetails({});\n      setExpandedDebugInfo({});\n      setSuggestions([]);\n      setShowSuggestions(false);\n      setActiveField('');\n      \n      console.log('Форма сброшена к начальному состоянию');\n    }\n  };\n"
+    },
+    "time": {
+      "start": 1763948023686,
+      "end": 1763948023690
+    }
+  }
+}

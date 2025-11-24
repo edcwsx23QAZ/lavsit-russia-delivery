@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab375b1f4001JueGiwsOKQMUji",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab375a11a001OkUcZPAwSO7Du4",
+  "type": "tool",
+  "callID": "call_3e92db7b733a41ef81cd2979",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "const parseCalculationDetails"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 4072:   const parseCalculationDetails = (calc: CalculationResult) => {",
+    "title": "const parseCalculationDetails",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763947426299,
+      "end": 1763947426309
+    }
+  }
+}

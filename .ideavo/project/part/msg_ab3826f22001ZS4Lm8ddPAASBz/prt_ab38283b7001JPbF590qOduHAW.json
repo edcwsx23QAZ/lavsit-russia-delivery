@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab38283b7001JPbF590qOduHAW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3826f22001ZS4Lm8ddPAASBz",
+  "type": "tool",
+  "callID": "call_58b70e5880c94d2c97fd5009",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4880,
+      "limit": 10
+    },
+    "output": "<file>\n04881|                  <div className=\"space-y-2\">\n04882|                 <div className=\"flex justify-between items-center\">\n04883|                   <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n04884|                   <Button \n04885|                     onClick={exportToPDF} \n04886|                     variant=\"outline\" \n04887|                     size=\"sm\" \n04888|                     className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n04889|                   >\n04890|                     Сохранить в PDF\n\n(File has more lines. Use 'offset' parameter to read beyond line 4890)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                 <div className=\"space-y-2\">\n                <div className=\"flex justify-between items-center\">\n                  <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n                  <Button \n                    onClick={exportToPDF} \n                    variant=\"outline\" \n                    size=\"sm\" \n                    className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n                  >\n                    Сохранить в PDF"
+    },
+    "time": {
+      "start": 1763948266426,
+      "end": 1763948266431
+    }
+  }
+}

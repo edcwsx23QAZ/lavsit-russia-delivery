@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3810e03001D9o7CL4t8gp2Q1",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab380fd5a001KHNzJETxINX01v",
+  "type": "tool",
+  "callID": "call_4cee61279322461f9da74b8d",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4155,
+      "limit": 10
+    },
+    "output": "<file>\n04156|           price: 0\n04157|         });\n04158|       }\n04159|     } else if (calc.company === 'Возовоз' && calc.details?.service) {\n04160|       // ✅ Детализация для Возовоз на основе API ответа\n04161|       const basePrice = calc.details.basePrice || 0;\n04162|       const finalPrice = calc.details.price || calc.price || 0;\n04163|       const totalDiscount = basePrice - finalPrice;\n04164|       \n04165|       // Показываем каждую услугу с базовой ценой и скидкой\n\n(File has more lines. Use 'offset' parameter to read beyond line 4165)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "          price: 0\n        });\n      }\n    } else if (calc.company === 'Возовоз' && calc.details?.service) {\n      // ✅ Детализация для Возовоз на основе API ответа\n      const basePrice = calc.details.basePrice || 0;\n      const finalPrice = calc.details.price || calc.price || 0;\n      const totalDiscount = basePrice - finalPrice;\n      \n      // Показываем каждую услугу с базовой ценой и скидкой"
+    },
+    "time": {
+      "start": 1763948170757,
+      "end": 1763948170761
+    }
+  }
+}

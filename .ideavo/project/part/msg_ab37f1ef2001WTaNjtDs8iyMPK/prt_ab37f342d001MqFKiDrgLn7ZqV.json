@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab37f342d001MqFKiDrgLn7ZqV",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37f1ef2001WTaNjtDs8iyMPK",
+  "type": "tool",
+  "callID": "call_5e1385b202f643cda0b65cac",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "  return (\n    <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n      <div className=\"max-w-7xl mx-auto\">",
+      "newString": "  return (\n    <div>\n      Test"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -4461,10 +4461,10 @@\n   );\n }\n \n return (\n-  <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n-    <div className=\"max-w-7xl mx-auto\">\n+  <div>\n+    Test\n       <div className=\"flex items-center justify-between mb-3\">\n         <h1 className=\"text-xl font-bold text-blue-400\">\n           Междугородняя доставка Лавсит\n         </h1>\n"
+    },
+    "time": {
+      "start": 1763948049455,
+      "end": 1763948049474
+    }
+  }
+}

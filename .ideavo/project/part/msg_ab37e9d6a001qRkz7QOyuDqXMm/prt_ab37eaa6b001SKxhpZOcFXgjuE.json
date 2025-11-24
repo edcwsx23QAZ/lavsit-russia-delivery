@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab37eaa6b001SKxhpZOcFXgjuE",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37e9d6a001qRkz7QOyuDqXMm",
+  "type": "tool",
+  "callID": "call_2915f074623e459baee15b18",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4065,
+      "limit": 10
+    },
+    "output": "<file>\n04066|       \n04067|       console.log('Форма сброшена к начальному состоянию');\n04068|     }\n04069|   };\n04070| \n04071|   // Парсер деталей расчета для читаемого формата\n04072|   const parseCalculationDetails = (calc: CalculationResult) => {\n04073|     console.log('🔍 parseCalculationDetails получил calc:', calc?.company || 'undefined');\n04074|     console.log('🔍 calc.details:', calc?.details ? 'существует' : 'undefined/null');\n04075|     console.log('🔍 typeof calc.details:', typeof calc?.details);\n\n(File has more lines. Use 'offset' parameter to read beyond line 4075)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "      \n      console.log('Форма сброшена к начальному состоянию');\n    }\n  };\n\n  // Парсер деталей расчета для читаемого формата\n  const parseCalculationDetails = (calc: CalculationResult) => {\n    console.log('🔍 parseCalculationDetails получил calc:', calc?.company || 'undefined');\n    console.log('🔍 calc.details:', calc?.details ? 'существует' : 'undefined/null');\n    console.log('🔍 typeof calc.details:', typeof calc?.details);"
+    },
+    "time": {
+      "start": 1763948014189,
+      "end": 1763948014193
+    }
+  }
+}

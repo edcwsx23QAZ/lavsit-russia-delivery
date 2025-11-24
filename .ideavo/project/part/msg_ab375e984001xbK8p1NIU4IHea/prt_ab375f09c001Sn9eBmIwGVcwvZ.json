@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab375f09c001Sn9eBmIwGVcwvZ",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab375e984001xbK8p1NIU4IHea",
+  "type": "text",
+  "text": "\nNow I understand the issue! The `parseCalculationDetails` function is defined correctly, but after it ends at line 4450, there should be the main component's return statement. However, the structure suggests this function is defined inside the main component. Let me check what comes after line 4465 to see the complete JSX structure:",
+  "time": {
+    "start": 1763947444793,
+    "end": 1763947444793
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab376f0b100100HM9GHGIAKhGi",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab376e5a7001xWtPdCoXb03eV5",
+  "type": "tool",
+  "callID": "call_fc00daf6efba40f280421e55",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4448,
+      "limit": 20
+    },
+    "output": "<file>\n04449|   }\n04450| };\n04451| \n04452|   // Показываем загрузку пока состояние не загрузилось (предотвращает ошибку гидратации)\n04453|   if (!isLoaded) {\n04454|     return (\n04455|       <div className=\"min-h-screen bg-gray-900 text-white p-4 relative flex items-center justify-center\">\n04456|         <div className=\"text-center\">\n04457|           <div className=\"animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400 mx-auto mb-4\"></div>\n04458|           <p className=\"text-blue-400\">Загрузка...</p>\n04459|         </div>\n04460|       </div>\n04461|     );\n04462|   }\n04463| \n04464|   return (\n04465|     <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n04466|       <div className=\"max-w-7xl mx-auto\">\n04467|         <div className=\"flex items-center justify-between mb-3\">\n04468|           <h1 className=\"text-xl font-bold text-blue-400\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 4468)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  }\n};\n\n  // Показываем загрузку пока состояние не загрузилось (предотвращает ошибку гидратации)\n  if (!isLoaded) {\n    return (\n      <div className=\"min-h-screen bg-gray-900 text-white p-4 relative flex items-center justify-center\">\n        <div className=\"text-center\">\n          <div className=\"animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400 mx-auto mb-4\"></div>\n          <p className=\"text-blue-400\">Загрузка...</p>\n        </div>\n      </div>\n    );\n  }\n\n  return (\n    <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n      <div className=\"max-w-7xl mx-auto\">\n        <div className=\"flex items-center justify-between mb-3\">\n          <h1 className=\"text-xl font-bold text-blue-400\">"
+    },
+    "time": {
+      "start": 1763947507892,
+      "end": 1763947507897
+    }
+  }
+}

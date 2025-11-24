@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab380dd37001doNTrDgMumUDjL",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3809ed0001IfxMu9IucgLTqW",
+  "type": "tool",
+  "callID": "call_1766eb9b5a0a4d76b1e9173b",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Test with simplified parseCalculationDetails function"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expression expected\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:4156:1]\n \u001b[2m4156\u001b[0m |           price: 0\n \u001b[2m4157\u001b[0m |         });\n \u001b[2m4158\u001b[0m |       }\n \u001b[2m4159\u001b[0m |     } else if (calc.company === 'Возовоз' && calc.details?.service) {\n      : \u001b[31;1m      ^^^^\u001b[0m\n \u001b[2m4160\u001b[0m |       // ✅ Детализация для Возовоз на основе API ответа\n \u001b[2m4161\u001b[0m |       const basePrice = calc.details.basePrice || 0;\n \u001b[2m4162\u001b[0m |       const finalPrice = calc.details.price || calc.price || 0;\n      `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./app/page.tsx\nError: \n  \u001b[31mx\u001b[0m Expression expected\n      ,-[\u001b[36;1;4m/home/user/project/app/page.tsx\u001b[0m:4156:1]\n \u001b[2m4156\u001b[0m |           price: 0\n \u001b[2m4157\u001b[0m |         });\n \u001b[2m4158\u001b[0m |       }\n \u001b[2m4159\u001b[0m |     } else if (calc.company === 'Возовоз' && calc.details?.service) {\n      : \u001b[31;1m      ^^^^\u001b[0m\n \u001b[2m4160\u001b[0m |       // ✅ Детализация для Возовоз на основе API ответа\n \u001b[2m4161\u001b[0m |       const basePrice = calc.details.basePrice || 0;\n \u001b[2m4162\u001b[0m |       const finalPrice = calc.details.price || calc.price || 0;\n      `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+      "exit": 1,
+      "description": "Test with simplified parseCalculationDetails function"
+    },
+    "time": {
+      "start": 1763948158268,
+      "end": 1763948162628
+    }
+  }
+}

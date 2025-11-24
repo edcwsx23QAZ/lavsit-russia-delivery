@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab386347f001VyXmHtEWylTZqf",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab38607200017FFI7V3UIQt3ob",
+  "type": "tool",
+  "callID": "call_d4a578cb6930473fb1a73822",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                 ))}\n               </div>\n               \n               {/* Блок для показа скрытых ТК */}\n               {Object.values(hiddenCompanies).some(hidden => hidden) && (\n                 <div className=\"mt-4 p-3 bg-gray-700 rounded border-gray-600\">\n                   <div className=\"flex items-center justify-between\">\n                     <div className=\"text-sm text-gray-300\">\n                       Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}\n                     </div>\n                     <Button\n                       variant=\"outline\"\n                       size=\"sm\"\n                       onClick={() => setHiddenCompanies({})}\n                       className=\"h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20\"\n                     >\n                       Показать все скрытые\n                     </Button>\n                   </div>\n                 </div>\n               )}\n           )}",
+      "newString": "                 ))}\n                 \n                 {/* Блок для показа скрытых ТК */}\n                 {Object.values(hiddenCompanies).some(hidden => hidden) && (\n                   <div className=\"mt-4 p-3 bg-gray-700 rounded border-gray-600\">\n                     <div className=\"flex items-center justify-between\">\n                       <div className=\"text-sm text-gray-300\">\n                         Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}\n                       </div>\n                       <Button\n                         variant=\"outline\"\n                         size=\"sm\"\n                         onClick={() => setHiddenCompanies({})}\n                         className=\"h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20\"\n                       >\n                         Показать все скрытые\n                       </Button>\n                     </div>\n                   </div>\n                 )}\n               </div>\n           )}"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -5055,28 +5055,29 @@\n            </div>\n          </CardContent>\n        </Card>\n       ))}\n-    </div>\n-    \n-    {/* Блок для показа скрытых ТК */}\n-    {Object.values(hiddenCompanies).some(hidden => hidden) && (\n-      <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n-        <div className=\"flex items-center justify-between\">\n-          <div className=\"text-sm text-gray-300\">\n-            Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}\n+      \n+      {/* Блок для показа скрытых ТК */}\n+      {Object.values(hiddenCompanies).some(hidden => hidden) && (\n+        <div className=\"mt-4 p-3 bg-gray-700 rounded border-gray-600\">\n+          <div className=\"flex items-center justify-between\">\n+            <div className=\"text-sm text-gray-300\">\n+              Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}\n+            </div>\n+            <Button\n+              variant=\"outline\"\n+              size=\"sm\"\n+              onClick={() => setHiddenCompanies({})}\n+              className=\"h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20\"\n+            >\n+              Показать все скрытые\n+            </Button>\n           </div>\n-          <Button\n-            variant=\"outline\"\n-            size=\"sm\"\n-            onClick={() => setHiddenCompanies({})}\n-            className=\"h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20\"\n-          >\n-            Показать все скрытые\n-          </Button>\n         </div>\n-      </div>\n-     )}\n+      )}\n+    </div>\n+)}\n  )}\n \n  {/* Список подключенных ТК - всегда видимый */}\n  <Card className=\"bg-gray-800 border-gray-700\">\n"
+    },
+    "time": {
+      "start": 1763948508289,
+      "end": 1763948508361
+    }
+  }
+}

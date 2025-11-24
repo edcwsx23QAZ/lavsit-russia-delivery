@@ -5056,27 +5056,27 @@ export default function Home() {
                     </CardContent>
                   </Card>
                  ))}
-               </div>
-               
-               {/* Блок для показа скрытых ТК */}
-               {Object.values(hiddenCompanies).some(hidden => hidden) && (
-                 <div className="mt-4 p-3 bg-gray-700 rounded border border-gray-600">
-                   <div className="flex items-center justify-between">
-                     <div className="text-sm text-gray-300">
-                       Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}
+                 
+                 {/* Блок для показа скрытых ТК */}
+                 {Object.values(hiddenCompanies).some(hidden => hidden) && (
+                   <div className="mt-4 p-3 bg-gray-700 rounded border-gray-600">
+                     <div className="flex items-center justify-between">
+                       <div className="text-sm text-gray-300">
+                         Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}
+                       </div>
+                       <Button
+                         variant="outline"
+                         size="sm"
+                         onClick={() => setHiddenCompanies({})}
+                         className="h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20"
+                       >
+                         Показать все скрытые
+                       </Button>
                      </div>
-                     <Button
-                       variant="outline"
-                       size="sm"
-                       onClick={() => setHiddenCompanies({})}
-                       className="h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20"
-                     >
-                       Показать все скрытые
-                     </Button>
                    </div>
-                 </div>
-               )}
-             )}
+                 )}
+               </div>
+            )}
 
             {/* Список подключенных ТК - всегда видимый */}
             <Card className="bg-gray-800 border-gray-700">

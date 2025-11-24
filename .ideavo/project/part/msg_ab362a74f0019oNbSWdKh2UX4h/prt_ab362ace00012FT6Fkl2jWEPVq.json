@@ -1,0 +1,24 @@
+{
+  "id": "prt_ab362ace00012FT6Fkl2jWEPVq",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab362a74f0019oNbSWdKh2UX4h",
+  "type": "tool",
+  "callID": "call_54947371",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "return details;"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 4438:     return details;",
+    "title": "return details;",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763946179811,
+      "end": 1763946179825
+    }
+  }
+}

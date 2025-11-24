@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab381a7ce001eEHAniZESRQY3j",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3819cb80013Hvav6KxLWvPDN",
+  "type": "tool",
+  "callID": "call_da76ae6e3c634963be08c392",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "git checkout HEAD -- app/page.tsx",
+      "description": "Restore original file to start over"
+    },
+    "output": "",
+    "title": "git checkout HEAD -- app/page.tsx",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Restore original file to start over"
+    },
+    "time": {
+      "start": 1763948210132,
+      "end": 1763948210203
+    }
+  }
+}

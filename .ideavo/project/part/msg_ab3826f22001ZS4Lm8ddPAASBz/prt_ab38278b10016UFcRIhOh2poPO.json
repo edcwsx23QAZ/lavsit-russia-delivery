@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab38278b10016UFcRIhOh2poPO",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3826f22001ZS4Lm8ddPAASBz",
+  "type": "text",
+  "text": "\nI can see that line 5058 has `))}` which closes the `.filter().map()` chain. Then line 5059 has `</div>` which closes the container. \n\nThe issue might be that there's a missing opening parenthesis for a conditional that should contain both the calculations results and the hidden companies block. Let me check what the structure should be by looking at the calculations section:",
+  "time": {
+    "start": 1763948267300,
+    "end": 1763948267300
+  }
+}

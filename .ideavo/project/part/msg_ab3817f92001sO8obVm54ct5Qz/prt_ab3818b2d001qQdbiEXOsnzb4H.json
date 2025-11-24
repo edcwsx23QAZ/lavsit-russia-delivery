@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3818b2d001qQdbiEXOsnzb4H",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3817f92001sO8obVm54ct5Qz",
+  "type": "tool",
+  "callID": "call_592cc7ec457e4a27a2080617",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4450,
+      "limit": 10
+    },
+    "output": "<file>\n04451|                         <div>\n04452|                           <Label className=\"text-white text-xs\">Высота (см)</Label>\n04453|                           <Input\n04454|                             type=\"number\"\n04455|                             value={form.cargos[group.indices[0]].height || ''}\n04456|                             onChange={(e) => updateCargo(form.cargos[group.indices[0]].id, 'height', Number(e.target.value))}\n04457|                             className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n04458|                           />\n04459|                         </div>\n04460|                         <div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 4460)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                        <div>\n                          <Label className=\"text-white text-xs\">Высота (см)</Label>\n                          <Input\n                            type=\"number\"\n                            value={form.cargos[group.indices[0]].height || ''}\n                            onChange={(e) => updateCargo(form.cargos[group.indices[0]].id, 'height', Number(e.target.value))}\n                            className=\"bg-gray-700 border-gray-600 h-8 text-white\"\n                          />\n                        </div>\n                        <div>"
+    },
+    "time": {
+      "start": 1763948202799,
+      "end": 1763948202803
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab37d2e2b001sUF4v90np6G3IP",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37cebec001yqmxCzqd8xVWAa",
+  "type": "tool",
+  "callID": "call_3ba48f30a40e47b794f45bcb",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -n \"const parseCalculationDetails\" /home/user/project/app/page.tsx",
+      "description": "Find the start of the function"
+    },
+    "output": "4072:  const parseCalculationDetails = (calc: CalculationResult) => {\n",
+    "title": "grep -n \"const parseCalculationDetails\" /home/user/project/app/page.tsx",
+    "metadata": {
+      "output": "4072:  const parseCalculationDetails = (calc: CalculationResult) => {\n",
+      "exit": 0,
+      "description": "Find the start of the function"
+    },
+    "time": {
+      "start": 1763947916847,
+      "end": 1763947916852
+    }
+  }
+}

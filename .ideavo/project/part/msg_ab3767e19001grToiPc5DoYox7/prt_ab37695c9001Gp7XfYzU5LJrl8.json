@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab37695c9001Gp7XfYzU5LJrl8",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3767e19001grToiPc5DoYox7",
+  "type": "tool",
+  "callID": "call_11bcb460408e4e9a83b587ef",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 105,
+      "limit": 20
+    },
+    "output": "<file>\n00106|   { name: 'Главтрасса', logo: '🛤️', apiKey: 'glavtrassa' },\n00107|   { name: 'Балтийская Служба Доставки', logo: '⚓', apiKey: 'baltservice' },\n00108|   { name: 'АНКОР', logo: '🔗', apiKey: 'ankor' }\n00109| ];\n00110| \n00111| export default function Home() {\n00112|   // Начальное состояние формы\n00113|   const initialFormState: DeliveryForm = {\n00114|     cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00115|     fromCity: '',\n00116|     toCity: '',\n00117|     fromAddress: '',\n00118|     toAddress: '',\n00119|     declaredValue: 0,\n00120|     needPackaging: false,\n00121|     needLoading: false,\n00122|     needCarry: false,\n00123|     floor: 1,\n00124|     hasFreightLift: false,\n00125|     needInsurance: false,\n\n(File has more lines. Use 'offset' parameter to read beyond line 125)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  { name: 'Главтрасса', logo: '🛤️', apiKey: 'glavtrassa' },\n  { name: 'Балтийская Служба Доставки', logo: '⚓', apiKey: 'baltservice' },\n  { name: 'АНКОР', logo: '🔗', apiKey: 'ankor' }\n];\n\nexport default function Home() {\n  // Начальное состояние формы\n  const initialFormState: DeliveryForm = {\n    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n    fromCity: '',\n    toCity: '',\n    fromAddress: '',\n    toAddress: '',\n    declaredValue: 0,\n    needPackaging: false,\n    needLoading: false,\n    needCarry: false,\n    floor: 1,\n    hasFreightLift: false,\n    needInsurance: false,"
+    },
+    "time": {
+      "start": 1763947484620,
+      "end": 1763947484624
+    }
+  }
+}

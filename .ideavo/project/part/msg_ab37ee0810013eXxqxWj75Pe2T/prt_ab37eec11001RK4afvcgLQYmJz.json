@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab37eec11001RK4afvcgLQYmJz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37ee0810013eXxqxWj75Pe2T",
+  "type": "tool",
+  "callID": "call_a287af141484471f8ae9be8e",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4040,
+      "limit": 20
+    },
+    "output": "<file>\n04041|   };\n04042| \n04043|   const toggleDebugInfo = (company: string) => {\n04044|     setExpandedDebugInfo(prev => ({\n04045|       ...prev,\n04046|       [company]: !prev[company]\n04047|     }));\n04048|   };\n04049| \n04050|   // Сброс формы и результатов расчета\n04051|   const handleReset = () => {\n04052|     if (typeof window !== 'undefined') {\n04053|       // Очищаем localStorage\n04054|       localStorage.removeItem('deliveryForm');\n04055|       \n04056|       // Сбрасываем состояние формы к начальному\n04057|       setForm(initialFormState);\n04058|       \n04059|       // Очищаем результаты расчетов и состояния\n04060|       setCalculations([]);\n\n(File has more lines. Use 'offset' parameter to read beyond line 4060)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  };\n\n  const toggleDebugInfo = (company: string) => {\n    setExpandedDebugInfo(prev => ({\n      ...prev,\n      [company]: !prev[company]\n    }));\n  };\n\n  // Сброс формы и результатов расчета\n  const handleReset = () => {\n    if (typeof window !== 'undefined') {\n      // Очищаем localStorage\n      localStorage.removeItem('deliveryForm');\n      \n      // Сбрасываем состояние формы к начальному\n      setForm(initialFormState);\n      \n      // Очищаем результаты расчетов и состояния\n      setCalculations([]);"
+    },
+    "time": {
+      "start": 1763948030996,
+      "end": 1763948031000
+    }
+  }
+}

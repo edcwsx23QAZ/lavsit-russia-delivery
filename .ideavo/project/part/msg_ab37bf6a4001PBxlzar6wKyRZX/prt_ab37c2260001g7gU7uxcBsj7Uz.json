@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab37c2260001g7gU7uxcBsj7Uz",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37bf6a4001PBxlzar6wKyRZX",
+  "type": "tool",
+  "callID": "call_689c391b204d471da4eb4df8",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "sed -n '5060,5080p' /home/user/project/app/page.tsx | cat -n",
+      "description": "Show exact characters around problematic lines"
+    },
+    "output": "     1\t               \n     2\t               {/* Блок для показа скрытых ТК */}\n     3\t               {Object.values(hiddenCompanies).some(hidden => hidden) && (\n     4\t                 <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n     5\t                   <div className=\"flex items-center justify-between\">\n     6\t                     <div className=\"text-sm text-gray-300\">\n     7\t                       Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}\n     8\t                     </div>\n     9\t                     <Button\n    10\t                       variant=\"outline\"\n    11\t                       size=\"sm\"\n    12\t                       onClick={() => setHiddenCompanies({})}\n    13\t                       className=\"h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20\"\n    14\t                     >\n    15\t                       Показать все скрытые\n    16\t                     </Button>\n    17\t                   </div>\n    18\t                 </div>\n    19\t                 )}\n    20\t            )}\n    21\t\n",
+    "title": "sed -n '5060,5080p' /home/user/project/app/page.tsx | cat -n",
+    "metadata": {
+      "output": "     1\t               \n     2\t               {/* Блок для показа скрытых ТК */}\n     3\t               {Object.values(hiddenCompanies).some(hidden => hidden) && (\n     4\t                 <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n     5\t                   <div className=\"flex items-center justify-between\">\n     6\t                     <div className=\"text-sm text-gray-300\">\n     7\t                       Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}\n     8\t                     </div>\n     9\t                     <Button\n    10\t                       variant=\"outline\"\n    11\t                       size=\"sm\"\n    12\t                       onClick={() => setHiddenCompanies({})}\n    13\t                       className=\"h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20\"\n    14\t                     >\n    15\t                       Показать все скрытые\n    16\t                     </Button>\n    17\t                   </div>\n    18\t                 </div>\n    19\t                 )}\n    20\t            )}\n    21\t\n",
+      "exit": 0,
+      "description": "Show exact characters around problematic lines"
+    },
+    "time": {
+      "start": 1763947848293,
+      "end": 1763947848455
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab375d2f6001vbW060CBHMSjds",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab375c53f0010kz7bhtTe7naWm",
+  "type": "tool",
+  "callID": "call_2edfda56d80a460bb027c012",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4065,
+      "limit": 20
+    },
+    "output": "<file>\n04066|       \n04067|       console.log('Форма сброшена к начальному состоянию');\n04068|     }\n04069|   };\n04070| \n04071|   // Парсер деталей расчета для читаемого формата\n04072|   const parseCalculationDetails = (calc: CalculationResult) => {\n04073|     console.log('🔍 parseCalculationDetails получил calc:', calc?.company || 'undefined');\n04074|     console.log('🔍 calc.details:', calc?.details ? 'существует' : 'undefined/null');\n04075|     console.log('🔍 typeof calc.details:', typeof calc?.details);\n04076|     \n04077|     const details: { service: string; description: string; price: number }[] = [];\n04078|     \n04079|     try {\n04080|       if (calc.company === 'Деловые Линии' && calc.details) {\n04081|         console.log('🔍 Начинаем обработку деталей Деловых Линий...');\n04082|       // Основная стоимость доставки (уже включает все базовые услуги и упаковку)\n04083|       let basePrice = calc.details?.price || calc.price || 0;\n04084|       \n04085|       // Разбиваем основную стоимость на компоненты если возможно\n\n(File has more lines. Use 'offset' parameter to read beyond line 4085)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "      \n      console.log('Форма сброшена к начальному состоянию');\n    }\n  };\n\n  // Парсер деталей расчета для читаемого формата\n  const parseCalculationDetails = (calc: CalculationResult) => {\n    console.log('🔍 parseCalculationDetails получил calc:', calc?.company || 'undefined');\n    console.log('🔍 calc.details:', calc?.details ? 'существует' : 'undefined/null');\n    console.log('🔍 typeof calc.details:', typeof calc?.details);\n    \n    const details: { service: string; description: string; price: number }[] = [];\n    \n    try {\n      if (calc.company === 'Деловые Линии' && calc.details) {\n        console.log('🔍 Начинаем обработку деталей Деловых Линий...');\n      // Основная стоимость доставки (уже включает все базовые услуги и упаковку)\n      let basePrice = calc.details?.price || calc.price || 0;\n      \n      // Разбиваем основную стоимость на компоненты если возможно"
+    },
+    "time": {
+      "start": 1763947434745,
+      "end": 1763947434749
+    }
+  }
+}

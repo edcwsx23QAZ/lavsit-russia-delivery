@@ -1,0 +1,21 @@
+{
+  "id": "prt_ab361eb72001Z1akycbPCsdA4p",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab361d2a40016e0as10Qlon9QQ",
+  "type": "tool",
+  "callID": "call_07175064",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "                   </Card>\n                  ))}\n                </div>\n                \n                {/* Блок для показа скрытых ТК */}\n                {Object.values(hiddenCompanies).some(hidden => hidden) && (\n                  <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n                    <div className=\"flex items-center justify-between\">\n                      <div className=\"text-sm text-gray-300\">\n                        Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}\n                      </div>\n                      <Button\n                        variant=\"outline\"\n                        size=\"sm\"\n                        onClick={() => setHiddenCompanies({})}\n                        className=\"h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20\"\n                      >\n                        Показать все скрытые\n                      </Button>\n                    </div>\n                  </div>\n                )}\n              )}\n\n             {/* Список подключенных ТК - всегда видимый */}",
+      "oldString": "                   </Card>\n                  ))}\n                </div>\n                \n                {/* Блок для показа скрытых ТК */}\n                {Object.values(hiddenCompanies).some(hidden => hidden) && (\n                  <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n                    <div className=\"flex items-center justify-between\">\n                      <div className=\"text-sm text-gray-300\">\n                        Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}\n                      </div>\n                      <Button\n                        variant=\"outline\"\n                        size=\"sm\"\n                        onClick={() => setHiddenCompanies({})}\n                        className=\"h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20\"\n                      >\n                        Показать все скрытые\n                      </Button>\n                    </div>\n                  </div>\n                )}\n              )}\n\n             {/* Список подключенных ТК - всегда видимый */}"
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1763946130292,
+      "end": 1763946130292
+    }
+  }
+}

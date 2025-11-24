@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3775dbd001auRJtAhGd7OnZx",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37739000012vjRTeq3NrTVE5",
+  "type": "tool",
+  "callID": "call_37f58269358f4ab38220030c",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4070,
+      "limit": 10
+    },
+    "output": "<file>\n04071|   // Парсер деталей расчета для читаемого формата\n04072|   const parseCalculationDetails = (calc: CalculationResult) => {\n04073|     console.log('🔍 parseCalculationDetails получил calc:', calc?.company || 'undefined');\n04074|     console.log('🔍 calc.details:', calc?.details ? 'существует' : 'undefined/null');\n04075|     console.log('🔍 typeof calc.details:', typeof calc?.details);\n04076|     \n04077|     const details: { service: string; description: string; price: number }[] = [];\n04078|     \n04079|     try {\n04080|       if (calc.company === 'Деловые Линии' && calc.details) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 4080)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  // Парсер деталей расчета для читаемого формата\n  const parseCalculationDetails = (calc: CalculationResult) => {\n    console.log('🔍 parseCalculationDetails получил calc:', calc?.company || 'undefined');\n    console.log('🔍 calc.details:', calc?.details ? 'существует' : 'undefined/null');\n    console.log('🔍 typeof calc.details:', typeof calc?.details);\n    \n    const details: { service: string; description: string; price: number }[] = [];\n    \n    try {\n      if (calc.company === 'Деловые Линии' && calc.details) {"
+    },
+    "time": {
+      "start": 1763947535808,
+      "end": 1763947535814
+    }
+  }
+}

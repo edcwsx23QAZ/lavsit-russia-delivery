@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab375f712001O3IymZCI3UD2r4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab375e984001xbK8p1NIU4IHea",
+  "type": "tool",
+  "callID": "call_fcb8f9c4b20e4d6988a2940b",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4465,
+      "limit": 50
+    },
+    "output": "<file>\n04466|       <div className=\"max-w-7xl mx-auto\">\n04467|         <div className=\"flex items-center justify-between mb-3\">\n04468|           <h1 className=\"text-xl font-bold text-blue-400\">\n04469|             Междугородняя доставка Лавсит\n04470|           </h1>\n04471|           \n04472|           {/* Индикатор сохранения */}\n04473|           <div className=\"flex items-center gap-4\">\n04474|             {isFormChanged ? (\n04475|               <div className=\"flex items-center gap-2 text-yellow-400 text-sm\">\n04476|                 <div className=\"w-2 h-2 bg-yellow-400 rounded-full animate-pulse\"></div>\n04477|                 Сохранение...\n04478|               </div>\n04479|             ) : lastSaveTime ? (\n04480|               <div className=\"flex items-center gap-2 text-green-400 text-sm\">\n04481|                 <div className=\"w-2 h-2 bg-green-400 rounded-full\"></div>\n04482|                 Сохранено {lastSaveTime.toLocaleTimeString()}\n04483|               </div>\n04484|             ) : hasStoredFormData() ? (\n04485|               <div className=\"flex items-center gap-2 text-blue-400 text-sm\">\n04486|                 <div className=\"w-2 h-2 bg-blue-400 rounded-full\"></div>\n04487|                 Данные восстановлены\n04488|               </div>\n04489|             ) : null}\n04490|             \n04491|             {/* Кнопка очистки данных */}\n04492|             {hasStoredFormData() && (\n04493|               <Button\n04494|                 onClick={() => {\n04495|                   if (confirm('Очистить все сохраненные данные формы?')) {\n04496|                     clearFormData();\n04497|                     setForm(initialFormState);\n04498|                     setLastSaveTime(null);\n04499|                     setIsFormChanged(false);\n04500|                   }\n04501|                 }}\n04502|                 variant=\"outline\"\n04503|                 size=\"sm\"\n04504|                 className=\"border-red-500 text-red-400 hover:bg-red-900/20\"\n04505|               >\n04506|                 <Trash2 className=\"h-3 w-3 mr-1\" />\n04507|                 Очистить\n04508|               </Button>\n04509|             )}\n04510|           </div>\n04511|         </div>\n04512|         \n04513|         {/* Кнопки диагностики и документации */}\n04514|         <div className=\"flex justify-end gap-2 mb-4\">\n04515|           <Button \n\n(File has more lines. Use 'offset' parameter to read beyond line 4515)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "      <div className=\"max-w-7xl mx-auto\">\n        <div className=\"flex items-center justify-between mb-3\">\n          <h1 className=\"text-xl font-bold text-blue-400\">\n            Междугородняя доставка Лавсит\n          </h1>\n          \n          {/* Индикатор сохранения */}\n          <div className=\"flex items-center gap-4\">\n            {isFormChanged ? (\n              <div className=\"flex items-center gap-2 text-yellow-400 text-sm\">\n                <div className=\"w-2 h-2 bg-yellow-400 rounded-full animate-pulse\"></div>\n                Сохранение...\n              </div>\n            ) : lastSaveTime ? (\n              <div className=\"flex items-center gap-2 text-green-400 text-sm\">\n                <div className=\"w-2 h-2 bg-green-400 rounded-full\"></div>\n                Сохранено {lastSaveTime.toLocaleTimeString()}\n              </div>\n            ) : hasStoredFormData() ? (\n              <div className=\"flex items-center gap-2 text-blue-400 text-sm\">"
+    },
+    "time": {
+      "start": 1763947443988,
+      "end": 1763947443992
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab361bcf000113x617hs2hqk3U",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab361b716001A6A1nfR1NUtTXD",
+  "type": "reasoning",
+  "text": "Я вижу проблему! В строке 5059 есть лишняя закрывающая скобка `)}` которая закрывает блок `calculations.map`, но затем в строке 5061-5078 добавлен новый блок с `{Object.values(hiddenCompanies).some(hidden => hidden) && (` который должен быть внутри блока результатов, но он находится после закрытия блока.",
+  "time": {
+    "start": 1763946118384,
+    "end": 1763946120656
+  }
+}

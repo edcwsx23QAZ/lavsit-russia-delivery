@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3766a21001SDblXxiZkFNyHM",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3765f9e0012c5G6SBqLH7AJU",
+  "type": "tool",
+  "callID": "call_563b6e5d49c2412eb296a760",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "export default function"
+    },
+    "output": "Found 8 matches\n/home/user/project/app/page.tsx:\n  Line 111: export default function Home() {\n\n/home/user/project/app/diagnostic/page.tsx:\n  Line 377: export default function OptimizedDiagnosticPage() {\n\n/home/user/project/app/layout.tsx:\n  Line 14: export default function RootLayout({\n\n/home/user/project/app/layout-dev.tsx:\n  Line 14: export default function DevRootLayout({\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 12: export default function DiagnosticPage() {\n\n/home/user/project/app/diagnostic/optimized-page.tsx:\n  Line 10: export default function OptimizedDiagnosticPage() {\n\n/home/user/project/app/pek-test/page.tsx:\n  Line 9: export default function PekTestPage() {\n\n/home/user/project/app/env-check/page.tsx:\n  Line 17: export default function EnvCheckPage() {",
+    "title": "export default function",
+    "metadata": {
+      "matches": 8,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763947473444,
+      "end": 1763947473460
+    }
+  }
+}

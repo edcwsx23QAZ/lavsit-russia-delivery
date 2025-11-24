@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab3814b31001Oa528wa9tfcXPW",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3813e33001Zl1uDqjEDoLmsb",
+  "type": "tool",
+  "callID": "call_bd7c74182c744f45bb2b4576",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4072,
+      "limit": 10
+    },
+    "output": "<file>\n04073|     return [{\n04074|       service: 'Доставка',\n04075|       description: `${form.fromCity} - ${form.toCity}`,\n04076|       price: calc.price\n04077|     }];\n04078|   };\n04079| \n04080|       if (calc.details.services && calc.details.services.length > 0) {\n04081|         calc.details.services.forEach((service: any) => {\n04082|           const serviceName = cdekServiceNames[service.code] || service.code || 'Услуга СДЭК';\n\n(File has more lines. Use 'offset' parameter to read beyond line 4082)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "    return [{\n      service: 'Доставка',\n      description: `${form.fromCity} - ${form.toCity}`,\n      price: calc.price\n    }];\n  };\n\n      if (calc.details.services && calc.details.services.length > 0) {\n        calc.details.services.forEach((service: any) => {\n          const serviceName = cdekServiceNames[service.code] || service.code || 'Услуга СДЭК';"
+    },
+    "time": {
+      "start": 1763948186419,
+      "end": 1763948186424
+    }
+  }
+}

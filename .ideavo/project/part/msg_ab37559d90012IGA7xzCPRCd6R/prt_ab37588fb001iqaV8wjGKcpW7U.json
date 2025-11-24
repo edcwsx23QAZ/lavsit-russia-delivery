@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab37588fb001iqaV8wjGKcpW7U",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37559d90012IGA7xzCPRCd6R",
+  "type": "text",
+  "text": "\nI can see the issue! The `parseCalculationDetails` function is not properly closed before the main component's return statement. The function ends at line 4450 with `};`, but then there's JSX code immediately after without being inside a proper component structure. Let me check what comes before this function to understand the proper structure:",
+  "time": {
+    "start": 1763947417824,
+    "end": 1763947417824
+  }
+}

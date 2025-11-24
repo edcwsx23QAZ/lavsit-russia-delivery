@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab38650d30010LQk3sQg5N2p4X",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab38646ae001tmyOGX8eaJJ5q8",
+  "type": "tool",
+  "callID": "call_3ba89864e38a49479e477982",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Check compilation after fixing JSX structure"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:5080:14\nType error: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?\n\n\u001b[0m \u001b[90m 5078 |\u001b[39m                \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5079 |\u001b[39m            )}\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5080 |\u001b[39m             )}\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5081 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5082 |\u001b[39m             {\u001b[90m/* Список подключенных ТК - всегда видимый */\u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 5083 |\u001b[39m             \u001b[33m<\u001b[39m\u001b[33mCard\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"bg-gray-800 border-gray-700\"\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:5080:14\nType error: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?\n\n\u001b[0m \u001b[90m 5078 |\u001b[39m                \u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5079 |\u001b[39m            )}\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5080 |\u001b[39m             )}\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5081 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5082 |\u001b[39m             {\u001b[90m/* Список подключенных ТК - всегда видимый */\u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 5083 |\u001b[39m             \u001b[33m<\u001b[39m\u001b[33mCard\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"bg-gray-800 border-gray-700\"\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Check compilation after fixing JSX structure"
+    },
+    "time": {
+      "start": 1763948515548,
+      "end": 1763948541386
+    }
+  }
+}

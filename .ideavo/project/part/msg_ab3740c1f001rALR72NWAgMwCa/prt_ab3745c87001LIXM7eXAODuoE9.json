@@ -1,0 +1,21 @@
+{
+  "id": "prt_ab3745c87001LIXM7eXAODuoE9",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3740c1f001rALR72NWAgMwCa",
+  "type": "tool",
+  "callID": "call_27f03b0199f64e7fa5e577f0",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "app/page.tsx",
+      "oldString": "  };\n\n  // Показываем загрузку пока состояние не загрузилось (предотвращает ошибку гидратации)\n  if (!isLoaded) {\n    return (\n      <div className=\"min-h-screen bg-gray-900 text-white p-4 relative flex items-center justify-center\">\n        <div className=\"text-center\">\n          <div className=\"animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400 mx-auto mb-4\"></div>\n          <p className=\"text-blue-400\">Загрузка...</p>\n        </div>\n      </div>\n    );\n  }\n\n  return (",
+      "newString": "  };\n\n  // Показываем загрузку пока состояние не загрузилось (предотвращает ошибку гидратации)\n  if (!isLoaded) {\n    return (\n      <div className=\"min-h-screen bg-gray-900 text-white p-4 relative flex items-center justify-center\">\n        <div className=\"text-center\">\n          <div className=\"animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400 mx-auto mb-4\"></div>\n          <p className=\"text-blue-400\">Загрузка...</p>\n        </div>\n      </div>\n    );\n  }\n\n  return ("
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1763947338891,
+      "end": 1763947338892
+    }
+  }
+}

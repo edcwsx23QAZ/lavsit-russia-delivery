@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab37b755c0010T0jV6onpnKHgs",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37b6662001vgOIDRVbLME4HV",
+  "type": "tool",
+  "callID": "call_d15496c55dfc4a30b05bd80e",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                 )}\n             )}",
+      "newString": "                 )}\n            )}"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -5074,9 +5074,9 @@\n            Показать все скрытые\n          </Button>\n        </div>\n      </div>\n-    )}\n+     )}\n )}\n \n {/* Список подключенных ТК - всегда видимый */}\n <Card className=\"bg-gray-800 border-gray-700\">\n"
+    },
+    "time": {
+      "start": 1763947803998,
+      "end": 1763947804026
+    }
+  }
+}

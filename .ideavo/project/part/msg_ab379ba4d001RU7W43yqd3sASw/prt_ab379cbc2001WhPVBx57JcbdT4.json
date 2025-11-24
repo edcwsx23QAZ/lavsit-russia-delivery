@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab379cbc2001WhPVBx57JcbdT4",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab379ba4d001RU7W43yqd3sASw",
+  "type": "tool",
+  "callID": "call_cfc3050d3d1d49b98f35d75a",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 5055,
+      "limit": 10
+    },
+    "output": "<file>\n05056|                     </CardContent>\n05057|                   </Card>\n05058|                  ))}\n05059|                </div>\n05060|                \n05061|                {/* Блок для показа скрытых ТК */}\n05062|                {Object.values(hiddenCompanies).some(hidden => hidden) && (\n05063|                  <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n05064|                    <div className=\"flex items-center justify-between\">\n05065|                      <div className=\"text-sm text-gray-300\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 5065)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                    </CardContent>\n                  </Card>\n                 ))}\n               </div>\n               \n               {/* Блок для показа скрытых ТК */}\n               {Object.values(hiddenCompanies).some(hidden => hidden) && (\n                 <div className=\"mt-4 p-3 bg-gray-700 rounded border border-gray-600\">\n                   <div className=\"flex items-center justify-between\">\n                     <div className=\"text-sm text-gray-300\">"
+    },
+    "time": {
+      "start": 1763947695044,
+      "end": 1763947695050
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab37a62e8001ERirn8pOOicQYI",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab37a04150013mDEKBYNHThrA6",
+  "type": "tool",
+  "callID": "call_ed1a05ab5be645d7bfc26a93",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4870,
+      "limit": 15
+    },
+    "output": "<file>\n04871|                     Сбросить расчет\n04872|                   </Button>\n04873|                 </div>\n04874|               </CardContent>\n04875|             </Card>\n04876|           </div>\n04877| \n04878|           {/* Правая часть - результаты */}\n04879|           <div className=\"space-y-2 overflow-y-auto\">\n04880|             {calculations.length > 0 && (\n04881|                  <div className=\"space-y-2\">\n04882|                 <div className=\"flex justify-between items-center\">\n04883|                   <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n04884|                   <Button \n04885|                     onClick={exportToPDF} \n\n(File has more lines. Use 'offset' parameter to read beyond line 4885)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                    Сбросить расчет\n                  </Button>\n                </div>\n              </CardContent>\n            </Card>\n          </div>\n\n          {/* Правая часть - результаты */}\n          <div className=\"space-y-2 overflow-y-auto\">\n            {calculations.length > 0 && (\n                 <div className=\"space-y-2\">\n                <div className=\"flex justify-between items-center\">\n                  <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n                  <Button \n                    onClick={exportToPDF} "
+    },
+    "time": {
+      "start": 1763947733738,
+      "end": 1763947733743
+    }
+  }
+}

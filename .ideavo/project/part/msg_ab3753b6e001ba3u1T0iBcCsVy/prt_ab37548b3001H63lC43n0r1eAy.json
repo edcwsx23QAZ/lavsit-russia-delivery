@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab37548b3001H63lC43n0r1eAy",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3753b6e001ba3u1T0iBcCsVy",
+  "type": "tool",
+  "callID": "call_1650357bf8c1478a9105341c",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4430,
+      "limit": 40
+    },
+    "output": "<file>\n04431|           service: 'Упаковка',\n04432|           description: '',\n04433|           price: Math.round(totalWeight * 30)\n04434|         });\n04435|       }\n04436|     }\n04437|     \n04438|     return details;\n04439|   } catch (globalError) {\n04440|     console.error('❌ ГЛОБАЛЬНАЯ ОШИБКА в parseCalculationDetails:', globalError);\n04441|     console.error('❌ Стек ошибки:', globalError instanceof Error ? globalError.stack : 'Нет стека');\n04442|     console.log('❌ calc object:', calc);\n04443|     // Возвращаем минимальные данные при любой ошибке\n04444|     return [{\n04445|       service: 'Доставка',\n04446|       description: 'Ошибка обработки деталей расчета',\n04447|       price: calc?.price || 0\n04448|     }];\n04449|   }\n04450| };\n04451| \n04452|   // Показываем загрузку пока состояние не загрузилось (предотвращает ошибку гидратации)\n04453|   if (!isLoaded) {\n04454|     return (\n04455|       <div className=\"min-h-screen bg-gray-900 text-white p-4 relative flex items-center justify-center\">\n04456|         <div className=\"text-center\">\n04457|           <div className=\"animate-spin rounded-full h-8 w-8 border-b-2 border-blue-400 mx-auto mb-4\"></div>\n04458|           <p className=\"text-blue-400\">Загрузка...</p>\n04459|         </div>\n04460|       </div>\n04461|     );\n04462|   }\n04463| \n04464|   return (\n04465|     <div className=\"min-h-screen bg-gray-900 text-white p-4 relative\">\n04466|       <div className=\"max-w-7xl mx-auto\">\n04467|         <div className=\"flex items-center justify-between mb-3\">\n04468|           <h1 className=\"text-xl font-bold text-blue-400\">\n04469|             Междугородняя доставка Лавсит\n04470|           </h1>\n\n(File has more lines. Use 'offset' parameter to read beyond line 4470)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "          service: 'Упаковка',\n          description: '',\n          price: Math.round(totalWeight * 30)\n        });\n      }\n    }\n    \n    return details;\n  } catch (globalError) {\n    console.error('❌ ГЛОБАЛЬНАЯ ОШИБКА в parseCalculationDetails:', globalError);\n    console.error('❌ Стек ошибки:', globalError instanceof Error ? globalError.stack : 'Нет стека');\n    console.log('❌ calc object:', calc);\n    // Возвращаем минимальные данные при любой ошибке\n    return [{\n      service: 'Доставка',\n      description: 'Ошибка обработки деталей расчета',\n      price: calc?.price || 0\n    }];\n  }\n};"
+    },
+    "time": {
+      "start": 1763947399349,
+      "end": 1763947399353
+    }
+  }
+}

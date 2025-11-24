@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab37977910014s56uE2c117OTp",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab3792cb30011lvEWYUvmUU6Ek",
+  "type": "tool",
+  "callID": "call_dfb58b6179ce44769d077798",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "offset": 4890,
+      "limit": 15
+    },
+    "output": "<file>\n04891|                   </Button>\n04892|                 </div>\n04893|                 \n04894|                 {calculations\n04895|                   .filter(calc => !hiddenCompanies[calc.company])\n04896|                   .map((calc, index) => (\n04897|                    <Card key={index} className=\"bg-gray-800 border-gray-700 text-xs\">\n04898|                      <CardHeader className=\"pb-1\">\n04899|                       <div className=\"flex justify-between items-center\">\n04900|                          <CardTitle className=\"text-white flex items-center gap-2 text-xs\">\n04901|                            <Building2 className=\"h-3 w-3\" />\n04902|                           {calc.company}\n04903|                         </CardTitle>\n04904|                         {calc.error ? (\n04905|                           <Badge variant=\"destructive\" className=\"text-xs\">Ошибка</Badge>\n\n(File has more lines. Use 'offset' parameter to read beyond line 4905)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                  </Button>\n                </div>\n                \n                {calculations\n                  .filter(calc => !hiddenCompanies[calc.company])\n                  .map((calc, index) => (\n                   <Card key={index} className=\"bg-gray-800 border-gray-700 text-xs\">\n                     <CardHeader className=\"pb-1\">\n                      <div className=\"flex justify-between items-center\">\n                         <CardTitle className=\"text-white flex items-center gap-2 text-xs\">\n                           <Building2 className=\"h-3 w-3\" />\n                          {calc.company}\n                        </CardTitle>\n                        {calc.error ? (\n                          <Badge variant=\"destructive\" className=\"text-xs\">Ошибка</Badge>"
+    },
+    "time": {
+      "start": 1763947673491,
+      "end": 1763947673495
+    }
+  }
+}
