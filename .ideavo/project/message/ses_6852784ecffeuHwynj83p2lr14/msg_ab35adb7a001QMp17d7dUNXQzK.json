@@ -1,0 +1,29 @@
+{
+  "id": "msg_ab35adb7a001QMp17d7dUNXQzK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "role": "assistant",
+  "time": {
+    "created": 1763945667450,
+    "completed": 1763945806840
+  },
+  "error": {
+    "name": "UnknownError",
+    "data": {
+      "message": "Error: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+    }
+  },
+  "mode": "build",
+  "path": {
+    "cwd": "/home/user/project",
+    "root": "/home/user/project"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "reasoning": 0,
+    "cache": {
+      "read": 0,
+      "write": 0
+    }
+  }
+}

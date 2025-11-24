@@ -1,0 +1,24 @@
+{
+  "id": "prt_ab35a3e3a001r7T3oXc2vytQql",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab35a35c40015goDRcwlT5LoJI",
+  "type": "tool",
+  "callID": "call_04714216",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "calculations\\.map"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 4894:                 {calculations.map((calc, index) => (",
+    "title": "calculations\\.map",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763945627198,
+      "end": 1763945627211
+    }
+  }
+}

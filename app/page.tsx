@@ -211,6 +211,10 @@ export default function Home() {
     ankor: 'не подключено'
   });
 
+  // Состояние для скрытых транспортных компаний
+  const [hiddenCompanies, setHiddenCompanies] = useState<Record<string, boolean>>({});
+  const [showHiddenCompanies, setShowHiddenCompanies] = useState(false);
+
   // Защита от потери данных - НЕ очищаем localStorage в dev режиме
   // Пользовательские данные должны сохраняться между перезагрузками
 

@@ -1,0 +1,24 @@
+{
+  "id": "prt_ab359ea53001lGcMKm71lIdl2e",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab359e4770012IsYHJGP1UPGzp",
+  "type": "tool",
+  "callID": "call_95343753",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "const \\[enabledCompanies"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 160:   const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({",
+    "title": "const \\[enabledCompanies",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1763945605721,
+      "end": 1763945605735
+    }
+  }
+}

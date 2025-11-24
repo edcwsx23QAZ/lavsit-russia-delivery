@@ -1,0 +1,21 @@
+{
+  "id": "prt_ab359d6b6001i1ixim012ce011",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab359aaba001mWODnvNEYL8sKx",
+  "type": "tool",
+  "callID": "call_61704471",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "  // Состояние для управления включением/выключением транспортных компаний\n  const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n    pek: true,\n    dellin: true,\n    railcontinent: true,\n    vozovoz: true,\n    nordwheel: true,\n    cdek: true,\n    newline: false,\n    irtrust: false,\n    majortrans: false,\n    baikalservice: false,\n    adamant: false,\n    energiya: false,\n    cap: false,\n    uraltrans: false,\n    novotek: false,\n    kit: true,\n    karavan: false,\n    zeldor: false,\n    dktransit: false,\n    glavtrassa: false,\n    baltservice: false,\n    ankor: false\n  });\n  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  const [calculating, setCalculating] = useState(false);\n  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n  const [apiStatus, setApiStatus] = useState({\n    pek: 'проверка...',\n    dellin: 'проверка...',\n    railcontinent: 'проверка...',\n    vozovoz: 'проверка...',\n    nordwheel: 'проверка...',\n    cdek: 'проверка...',\n    kit: 'проверка...',\n    newline: 'не подключено',\n    irtrust: 'не подключено',\n    majortrans: 'не подключено',\n    baikalservice: 'не подключено',\n    adamant: 'не подключено',\n    energiya: 'не подключено',\n    cap: 'не подключено',\n    uraltrans: 'не подключено',\n    novotek: 'не подключено',\n    karavan: 'не подключено',\n    zeldor: 'не подключено',\n    dktransit: 'не подключено',\n    glavtrassa: 'не подключено',\n    baltservice: 'не подключено',\n    ankor: 'не подключено'\n  });\n\n  // Состояние для скрытых транспортных компаний\n  const [hiddenCompanies, setHiddenCompanies] = useState<Record<string, boolean>>({});\n  const [showHiddenCompanies, setShowHiddenCompanies] = useState(false);",
+      "oldString": "  // Состояние для управления включением/выключением транспортных компаний\n  const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n    pek: true,\n    dellin: true,\n    railcontinent: true,\n    vozovoz: true,\n    nordwheel: true,\n    cdek: true,\n    newline: false,\n    irtrust: false,\n    majortrans: false,\n    baikalservice: false,\n    adamant: false,\n    energiya: false,\n    cap: false,\n    uraltrans: false,\n    novotek: false,\n    kit: true,\n    karavan: false,\n    zeldor: false,\n    dktransit: false,\n    glavtrassa: false,\n    baltservice: false,\n    ankor: false\n  });\n  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  const [calculating, setCalculating] = useState(false);\n  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n  const [apiStatus, setApiStatus] = useState({\n    pek: 'проверка...',\n    dellin: 'проверка...',\n    railcontinent: 'проверка...',\n    vozovoz: 'проверка...',\n    nordwheel: 'проверка...',\n    cdek: 'проверка...',\n    kit: 'проверка...',\n    newline: 'не подключено',\n    irtrust: 'не подключено',\n    majortrans: 'не подключено',\n    baikalservice: 'не подключено',\n    adamant: 'не подключено',\n    energiya: 'не подключено',\n    cap: 'не подключено',\n    uraltrans: 'не подключено',\n    novotek: 'не подключено',\n    karavan: 'не подключено',\n    zeldor: 'не подключено',\n    dktransit: 'не подключено',\n    glavtrassa: 'не подключено',\n    baltservice: 'не подключено',\n    ankor: 'не подключено'\n  });"
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1763945600699,
+      "end": 1763945600702
+    }
+  }
+}
