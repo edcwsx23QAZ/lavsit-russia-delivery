@@ -4891,7 +4891,9 @@ export default function Home() {
                   </Button>
                 </div>
                 
-                {calculations.map((calc, index) => (
+                {calculations
+                  .filter(calc => !hiddenCompanies[calc.company])
+                  .map((calc, index) => (
                    <Card key={index} className="bg-gray-800 border-gray-700 text-xs">
                      <CardHeader className="pb-1">
                       <div className="flex justify-between items-center">
@@ -4929,7 +4931,7 @@ export default function Home() {
                           </>
                         )}
                         
-                        <div className="flex gap-2 mt-2">
+                        <div className="flex gap-2 mt-2 flex-wrap">
                           {!calc.error && (
                             <Button
                               variant="outline"
@@ -4947,6 +4949,19 @@ export default function Home() {
                             className="h-6 text-xs"
                           >
                             {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}
+                          </Button>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => {
+                              setHiddenCompanies(prev => ({
+                                ...prev,
+                                [calc.company]: true
+                              }));
+                            }}
+                            className="h-6 text-xs border-red-500 text-red-400 hover:bg-red-900/20"
+                          >
+                            Скрыть
                           </Button>
                         </div>
                         
@@ -5040,20 +5055,51 @@ export default function Home() {
                       </div>
                     </CardContent>
                   </Card>
-                ))}
-              </div>
-            )}
+                 ))}
+               </div>
+               
+               {/* Блок для показа скрытых ТК */}
+               {Object.values(hiddenCompanies).some(hidden => hidden) && (
+                 <div className="mt-4 p-3 bg-gray-700 rounded border border-gray-600">
+                   <div className="flex items-center justify-between">
+                     <div className="text-sm text-gray-300">
+                       Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}
+                     </div>
+                     <Button
+                       variant="outline"
+                       size="sm"
+                       onClick={() => setHiddenCompanies({})}
+                       className="h-6 text-xs border-green-500 text-green-400 hover:bg-green-900/20"
+                     >
+                       Показать все скрытые
+                     </Button>
+                   </div>
+                 </div>
+               )}
+             )}
 
             {/* Список подключенных ТК - всегда видимый */}
             <Card className="bg-gray-800 border-gray-700">
               <CardHeader className="pb-2">
-                <CardTitle className="text-white text-sm">
-                  Подключенные транспортные компании ({COMPANIES_BASE.length})
-                </CardTitle>
+                <div className="flex justify-between items-center">
+                  <CardTitle className="text-white text-sm">
+                    Подключенные транспортные компании ({COMPANIES_BASE.filter(company => showHiddenCompanies || enabledCompanies[company.apiKey]).length}{showHiddenCompanies ? ` из ${COMPANIES_BASE.length}` : ''})
+                  </CardTitle>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setShowHiddenCompanies(prev => !prev)}
+                    className="h-6 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20"
+                  >
+                    {showHiddenCompanies ? 'Скрыть все' : 'Показать все'}
+                  </Button>
+                </div>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 gap-2">
-                  {COMPANIES_BASE.map((company, index) => {
+                  {COMPANIES_BASE
+                    .filter(company => showHiddenCompanies || enabledCompanies[company.apiKey])
+                    .map((company, index) => {
                     const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';
                     const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];
                     const isEnabled = enabledCompanies[company.apiKey];

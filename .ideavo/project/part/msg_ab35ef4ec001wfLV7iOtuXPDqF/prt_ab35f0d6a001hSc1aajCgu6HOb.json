@@ -1,0 +1,21 @@
+{
+  "id": "prt_ab35f0d6a001hSc1aajCgu6HOb",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab35ef4ec001wfLV7iOtuXPDqF",
+  "type": "tool",
+  "callID": "call_17101216",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "                        <div className=\"flex gap-2 mt-2 flex-wrap\">\n                          {!calc.error && (\n                            <Button\n                              variant=\"outline\"\n                              size=\"sm\"\n                              onClick={() => toggleDetails(calc.company)}\n                              className=\"h-6 text-xs\"\n                            >\n                              {expandedDetails[calc.company] ? 'Скрыть подробнее' : 'Показать подробнее'}\n                            </Button>\n                          )}\n                          <Button\n                            variant=\"outline\"\n                            size=\"sm\"\n                            onClick={() => toggleDebugInfo(calc.company)}\n                            className=\"h-6 text-xs\"\n                          >\n                            {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}\n                          </Button>\n                          <Button\n                            variant=\"outline\"\n                            size=\"sm\"\n                            onClick={() => {\n                              setHiddenCompanies(prev => ({\n                                ...prev,\n                                [calc.company]: true\n                              }));\n                            }}\n                            className=\"h-6 text-xs border-red-500 text-red-400 hover:bg-red-900/20\"\n                          >\n                            Скрыть\n                          </Button>\n                        </div>",
+      "oldString": "                        <div className=\"flex gap-2 mt-2\">\n                          {!calc.error && (\n                            <Button\n                              variant=\"outline\"\n                              size=\"sm\"\n                              onClick={() => toggleDetails(calc.company)}\n                              className=\"h-6 text-xs\"\n                            >\n                              {expandedDetails[calc.company] ? 'Скрыть подробнее' : 'Показать подробнее'}\n                            </Button>\n                          )}\n                          <Button\n                            variant=\"outline\"\n                            size=\"sm\"\n                            onClick={() => toggleDebugInfo(calc.company)}\n                            className=\"h-6 text-xs\"\n                          >\n                            {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}\n                          </Button>\n                        </div>"
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1763945942382,
+      "end": 1763945942384
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab35fa01e001gQJ1auFiIH0214",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab35f99ee0019iJ0HzyLh8RUWf",
+  "type": "tool",
+  "callID": "call_73610190",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "                  <CardTitle className=\"text-white text-sm\">\n                    Подключенные транспортные компании ({COMPANIES_BASE.filter(company => showHiddenCompanies || enabledCompanies[company.apiKey]).length}{showHiddenCompanies ? ` из ${COMPANIES_BASE.length}` : ''})\n                  </CardTitle>",
+      "oldString": "                  <CardTitle className=\"text-white text-sm\">\n                    Подключенные транспортные компании ({COMPANIES_BASE.length})\n                  </CardTitle>"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -5063,9 +5063,9 @@\n <Card className=\"bg-gray-800 border-gray-700\">\n   <CardHeader className=\"pb-2\">\n     <div className=\"flex justify-between items-center\">\n       <CardTitle className=\"text-white text-sm\">\n-        Подключенные транспортные компании ({COMPANIES_BASE.length})\n+        Подключенные транспортные компании ({COMPANIES_BASE.filter(company => showHiddenCompanies || enabledCompanies[company.apiKey]).length}{showHiddenCompanies ? ` из ${COMPANIES_BASE.length}` : ''})\n       </CardTitle>\n       <Button\n         variant=\"outline\"\n         size=\"sm\"\n"
+    },
+    "time": {
+      "start": 1763945979936,
+      "end": 1763945979959
+    }
+  }
+}

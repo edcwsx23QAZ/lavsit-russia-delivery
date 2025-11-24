@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab35f8bc8001QBK3a3kgYvV0dK",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab35f7e15001kD0rh1H1h9SXwA",
+  "type": "tool",
+  "callID": "call_75367396",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "                <div className=\"grid grid-cols-2 gap-2\">\n                  {COMPANIES_BASE\n                    .filter(company => showHiddenCompanies || enabledCompanies[company.apiKey])\n                    .map((company, index) => {",
+      "oldString": "                <div className=\"grid grid-cols-2 gap-2\">\n                  {COMPANIES_BASE.map((company, index) => {"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -5077,9 +5077,11 @@\n   </div>\n </CardHeader>\n <CardContent>\n   <div className=\"grid grid-cols-2 gap-2\">\n-    {COMPANIES_BASE.map((company, index) => {\n+    {COMPANIES_BASE\n+      .filter(company => showHiddenCompanies || enabledCompanies[company.apiKey])\n+      .map((company, index) => {\n       const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';\n       const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];\n       const isEnabled = enabledCompanies[company.apiKey];\n       \n"
+    },
+    "time": {
+      "start": 1763945974730,
+      "end": 1763945974752
+    }
+  }
+}

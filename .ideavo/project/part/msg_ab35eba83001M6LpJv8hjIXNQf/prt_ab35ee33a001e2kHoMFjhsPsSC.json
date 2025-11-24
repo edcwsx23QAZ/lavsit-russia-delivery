@@ -1,0 +1,19 @@
+{
+  "id": "prt_ab35ee33a001e2kHoMFjhsPsSC",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab35eba83001M6LpJv8hjIXNQf",
+  "type": "tool",
+  "callID": "call_37822637",
+  "tool": "multiedit",
+  "state": {
+    "status": "error",
+    "input": {
+      "edits": "[{\"newString\":                          \"}</div>\\n                        \\n                        <div className=\\\"flex gap-2 mt-2 flex-wrap\\\">\\n                          {!calc.error && (\\n                            <Button\\n                              variant=\\\"outline\\\"\\n                              size=\\\"sm\\\"\\n                              onClick={() => toggleDetails(calc.company)}\\n                              className=\\\"h-6 text-xs\\\"\\n                            >\\n                              {expandedDetails[calc.company] ? 'Скрыть подробнее' : 'Показать подробнее'}\\n                            </Button>\\n                          )}\\n                          <Button\\n                            variant=\\\"outline\\\"\\n                            size=\\\"sm\\\"\\n                            onClick={() => toggleDebugInfo(calc.company)}\\n                            className=\\\"h-6 text-xs\\\"\\n                          >\\n                            {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}\\n                          </Button>\\n                          <Button\\n                            variant=\\\"outline\\\"\\n                            size=\\\"sm\\\"\\n                            onClick={() => {\\n                              setHiddenCompanies(prev => ({\\n                                ...prev,\\n                                [calc.company]: true\\n                              }));\\n                            }}\\n                            className=\\\"h-6 text-xs border-red-500 text-red-400 hover:bg-red-900/20\\\"\\n                          >\\n                            Скрыть\\n                          </Button>\\n                        </div>"
+    },
+    "error": "TypeError: params.edits.entries is not a function. (In 'params.edits.entries()', 'params.edits.entries' is undefined)",
+    "time": {
+      "start": 1763945931586,
+      "end": 1763945931588
+    }
+  }
+}

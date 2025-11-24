@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab35f55d5001E4w88T4p5qHuVa",
+  "sessionID": "ses_6852784ecffeuHwynj83p2lr14",
+  "messageID": "msg_ab35f4f4f001QlXBUFFjP36h1P",
+  "type": "tool",
+  "callID": "call_36931999",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "                {calculations\n                  .filter(calc => !hiddenCompanies[calc.company])\n                  .map((calc, index) => (",
+      "oldString": "                {calculations.map((calc, index) => ("
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -4890,9 +4890,11 @@\n     Сохранить в PDF\n   </Button>\n </div>\n \n-{calculations.map((calc, index) => (\n+{calculations\n+  .filter(calc => !hiddenCompanies[calc.company])\n+  .map((calc, index) => (\n    <Card key={index} className=\"bg-gray-800 border-gray-700 text-xs\">\n      <CardHeader className=\"pb-1\">\n       <div className=\"flex justify-between items-center\">\n          <CardTitle className=\"text-white flex items-center gap-2 text-xs\">\n"
+    },
+    "time": {
+      "start": 1763945960919,
+      "end": 1763945960941
+    }
+  }
+}
