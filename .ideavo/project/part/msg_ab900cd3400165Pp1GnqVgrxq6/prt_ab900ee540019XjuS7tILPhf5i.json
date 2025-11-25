@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab900ee540019XjuS7tILPhf5i",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab900cd3400165Pp1GnqVgrxq6",
+  "type": "tool",
+  "callID": "call_6871004657ba4c1ea02cab4d",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/SaveCalculation.tsx",
+      "limit": 30,
+      "offset": 1
+    },
+    "output": "<file>\n00002| \n00003| import React, { useState } from 'react';\n00004| import { Button } from '@/components/ui/button';\n00005| import { Input } from '@/components/ui/input';\n00006| import { Label } from '@/components/ui/label';\n00007| import { Alert, AlertDescription } from '@/components/ui/alert';\n00008| import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';\n00009| import { Save, Download, Camera, CheckCircle, AlertCircle } from 'lucide-react';\n00010| \n00011| interface SaveCalculationProps {\n00012|   formData: any;\n00013|   calculations: any[];\n00014|   enabledCompanies: Record<string, boolean>;\n00015|   onSave?: (result: any) => void;\n00016| }\n00017| \n00018| export default function SaveCalculation({ \n00019|   formData, \n00020|   calculations, \n00021|   enabledCompanies, \n00022|   onSave \n00023| }: SaveCalculationProps) {\n00024|   const [isOpen, setIsOpen] = useState(false);\n00025|   const [orderNumber, setOrderNumber] = useState('');\n00026|   const [isSaving, setIsSaving] = useState(false);\n00027|   const [saveResult, setSaveResult] = useState<{\n00028|     success: boolean;\n00029|     message: string;\n00030|     data?: any;\n00031|   } | null>(null);\n\n(File has more lines. Use 'offset' parameter to read beyond line 31)\n</file>",
+    "title": "components/SaveCalculation.tsx",
+    "metadata": {
+      "preview": "\nimport React, { useState } from 'react';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Alert, AlertDescription } from '@/components/ui/alert';\nimport { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';\nimport { Save, Download, Camera, CheckCircle, AlertCircle } from 'lucide-react';\n\ninterface SaveCalculationProps {\n  formData: any;\n  calculations: any[];\n  enabledCompanies: Record<string, boolean>;\n  onSave?: (result: any) => void;\n}\n\nexport default function SaveCalculation({ \n  formData, \n  calculations, \n  enabledCompanies, "
+    },
+    "time": {
+      "start": 1764040437338,
+      "end": 1764040437348
+    }
+  }
+}

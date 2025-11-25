@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab9044cb8001GOhi9CC4J7D7US",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab9043ad90014aRQwOaIC407Zm",
+  "type": "tool",
+  "callID": "call_7323f642d60d41098b8a5b28",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/CalculationHistory.tsx",
+      "limit": 50,
+      "offset": 330
+    },
+    "output": "<file>\n00331|                         )\n00332|                         .map((cargo: any, index: number) => (\n00333|                           <div key={index} className=\"flex justify-between text-sm p-2 bg-gray-50 rounded\">\n00334|                             <span>Груз {index + 1}</span>\n00335|                             <span>\n00336|                               {cargo.length}×{cargo.width}×{cargo.height} см, {cargo.weight} кг\n00337|                             </span>\n00338|                           </div>\n00339|                         ))}\n00340|                     </div>\n00341|                   </CardContent>\n00342|                 </Card>\n00343| \n00344|                 {/* Результаты расчета */}\n00345|                 <Card>\n00346|                   <CardHeader>\n00347|                     <CardTitle className=\"text-sm\">Результаты расчета</CardTitle>\n00348|                   </CardHeader>\n00349|                   <CardContent>\n00350|                     <div className=\"space-y-2\">\n00351|                       {selectedCalculation.results.map((result: any, index: number) => (\n00352|                         <div key={index} className=\"flex justify-between items-center p-2 bg-gray-50 rounded\">\n00353|                           <div>\n00354|                             <div className=\"font-medium text-sm\">{result.company}</div>\n00355|                             {result.error && (\n00356|                               <div className=\"text-xs text-red-600\">{result.error}</div>\n00357|                             )}\n00358|                           </div>\n00359|                           <div className=\"text-right\">\n00360|                             {!result.error && (\n00361|                               <>\n00362|                                 <div className=\"font-bold text-sm\">{result.price.toLocaleString()} ₽</div>\n00363|                                 <div className=\"text-xs text-gray-600\">{result.days} дней</div>\n00364|                               </>\n00365|                             )}\n00366|                           </div>\n00367|                         </div>\n00368|                       ))}\n00369|                     </div>\n00370|                   </CardContent>\n00371|                 </Card>\n00372| \n00373|                 {/* Скриншот */}\n00374|                 {selectedCalculation.screenshot && (\n00375|                   <Card>\n00376|                     <CardHeader>\n00377|                       <CardTitle className=\"text-sm\">Скриншот расчета</CardTitle>\n00378|                     </CardHeader>\n00379|                     <CardContent>\n00380|                       <img \n\n(File has more lines. Use 'offset' parameter to read beyond line 380)\n</file>",
+    "title": "components/CalculationHistory.tsx",
+    "metadata": {
+      "preview": "                        )\n                        .map((cargo: any, index: number) => (\n                          <div key={index} className=\"flex justify-between text-sm p-2 bg-gray-50 rounded\">\n                            <span>Груз {index + 1}</span>\n                            <span>\n                              {cargo.length}×{cargo.width}×{cargo.height} см, {cargo.weight} кг\n                            </span>\n                          </div>\n                        ))}\n                    </div>\n                  </CardContent>\n                </Card>\n\n                {/* Результаты расчета */}\n                <Card>\n                  <CardHeader>\n                    <CardTitle className=\"text-sm\">Результаты расчета</CardTitle>\n                  </CardHeader>\n                  <CardContent>\n                    <div className=\"space-y-2\">"
+    },
+    "time": {
+      "start": 1764040658106,
+      "end": 1764040658108
+    }
+  }
+}

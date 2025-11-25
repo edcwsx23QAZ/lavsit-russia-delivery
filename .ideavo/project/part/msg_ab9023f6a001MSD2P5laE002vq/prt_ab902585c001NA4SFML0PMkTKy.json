@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab902585c001NA4SFML0PMkTKy",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab9023f6a001MSD2P5laE002vq",
+  "type": "tool",
+  "callID": "call_ba078417f171414b83ca460a",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/SaveCalculation.tsx",
+      "oldString": "          <div className=\"flex gap-2 pt-4\">\n            <Button \n              onClick={handleSave} \n              disabled={isSaving || !orderNumber.trim()}\n              className=\"flex-1\"\n            >\n              {isSaving ? (\n                <>\n                  <Camera className=\"w-4 h-4 mr-2 animate-pulse\" />\n                  Сохранение...\n                </>\n              ) : (\n                <>\n                  <Save className=\"w-4 h-4 mr-2\" />\n                  Сохранить\n                </>\n              )}\n            </Button>\n            \n            <Button \n              variant=\"outline\" \n              onClick={handleDownload}\n              disabled={!orderNumber.trim()}\n            >\n              <Download className=\"w-4 h-4 mr-2\" />\n              Скачать\n            </Button>\n          </div>",
+      "newString": "          <div className=\"pt-4\">\n            <Button \n              onClick={handleSave} \n              disabled={isSaving || !orderNumber.trim()}\n              className=\"w-full\"\n            >\n              {isSaving ? (\n                <>\n                  <Camera className=\"w-4 h-4 mr-2 animate-pulse\" />\n                  Сохранение...\n                </>\n              ) : (\n                <>\n                  <Save className=\"w-4 h-4 mr-2\" />\n                  Сохранить расчет\n                </>\n              )}\n            </Button>\n          </div>"
+    },
+    "output": "",
+    "title": "components/SaveCalculation.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/SaveCalculation.tsx\n===================================================================\n--- /home/user/project/components/SaveCalculation.tsx\n+++ /home/user/project/components/SaveCalculation.tsx\n@@ -256,13 +256,13 @@\n     </div>\n   </Alert>\n )}\n \n-<div className=\"flex gap-2 pt-4\">\n+<div className=\"pt-4\">\n   <Button \n     onClick={handleSave} \n     disabled={isSaving || !orderNumber.trim()}\n-    className=\"flex-1\"\n+    className=\"w-full\"\n   >\n     {isSaving ? (\n       <>\n         <Camera className=\"w-4 h-4 mr-2 animate-pulse\" />\n@@ -270,21 +270,12 @@\n       </>\n     ) : (\n       <>\n         <Save className=\"w-4 h-4 mr-2\" />\n-        Сохранить\n+        Сохранить расчет\n       </>\n     )}\n   </Button>\n-  \n-  <Button \n-    variant=\"outline\" \n-    onClick={handleDownload}\n-    disabled={!orderNumber.trim()}\n-  >\n-    <Download className=\"w-4 h-4 mr-2\" />\n-    Скачать\n-  </Button>\n </div>\n \n <div className=\"text-xs text-muted-foreground\">\n   <p>• Расчет будет сохранен с текущими данными формы</p>\n"
+    },
+    "time": {
+      "start": 1764040530014,
+      "end": 1764040530020
+    }
+  }
+}

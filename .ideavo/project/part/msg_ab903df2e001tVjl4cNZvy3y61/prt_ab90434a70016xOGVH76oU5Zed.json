@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab90434a70016xOGVH76oU5Zed",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab903df2e001tVjl4cNZvy3y61",
+  "type": "tool",
+  "callID": "call_c5f6f2a4c301489fbb106584",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/CalculationHistory.tsx",
+      "limit": 50,
+      "offset": 380
+    },
+    "output": "<file>\n00381|                         src={selectedCalculation.screenshot} \n00382|                         alt=\"Скриншот расчета\"\n00383|                         className=\"w-full rounded border\"\n00384|                       />\n00385|                     </CardContent>\n00386|                   </Card>\n00387|                 )}\n00388|               </div>\n00389|             </ScrollArea>\n00390|           )}\n00391|         </DialogContent>\n00392|       </Dialog>\n00393|     </>\n00394|   );\n00395| }\n</file>",
+    "title": "components/CalculationHistory.tsx",
+    "metadata": {
+      "preview": "                        src={selectedCalculation.screenshot} \n                        alt=\"Скриншот расчета\"\n                        className=\"w-full rounded border\"\n                      />\n                    </CardContent>\n                  </Card>\n                )}\n              </div>\n            </ScrollArea>\n          )}\n        </DialogContent>\n      </Dialog>\n    </>\n  );\n}"
+    },
+    "time": {
+      "start": 1764040651946,
+      "end": 1764040651949
+    }
+  }
+}

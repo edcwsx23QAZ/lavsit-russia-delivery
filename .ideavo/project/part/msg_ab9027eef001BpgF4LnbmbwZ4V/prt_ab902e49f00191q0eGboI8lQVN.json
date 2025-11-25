@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab902e49f00191q0eGboI8lQVN",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab9027eef001BpgF4LnbmbwZ4V",
+  "type": "tool",
+  "callID": "call_807fb88d2eec41408c7f6e59",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 5320
+    },
+    "output": "<file>\n05321|                   <div className=\"flex gap-2 flex-wrap\">\n05322|                     <SaveCalculation \n05323|                       formData={form}\n05324|                       calculations={calculations}\n05325|                       enabledCompanies={hiddenCompanies}\n05326|                       onSave={(result) => {\n05327|                         console.log('Расчет сохранен:', result);\n05328|                       }}\n05329|                     />\n05330|                     <CalculationHistory \n05331|                       onLoadCalculation={(calculation) => {\n05332|                         console.log('Загрузка расчета:', calculation.orderNumber);\n05333|                         // Здесь можно добавить логику загрузки данных формы из сохраненного расчета\n05334|                       }}\n05335|                     />\n05336|                     <Button \n05337|                       onClick={exportToPDF} \n05338|                       variant=\"outline\" \n05339|                       size=\"sm\" \n05340|                       className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n\n(File has more lines. Use 'offset' parameter to read beyond line 5340)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                  <div className=\"flex gap-2 flex-wrap\">\n                    <SaveCalculation \n                      formData={form}\n                      calculations={calculations}\n                      enabledCompanies={hiddenCompanies}\n                      onSave={(result) => {\n                        console.log('Расчет сохранен:', result);\n                      }}\n                    />\n                    <CalculationHistory \n                      onLoadCalculation={(calculation) => {\n                        console.log('Загрузка расчета:', calculation.orderNumber);\n                        // Здесь можно добавить логику загрузки данных формы из сохраненного расчета\n                      }}\n                    />\n                    <Button \n                      onClick={exportToPDF} \n                      variant=\"outline\" \n                      size=\"sm\" \n                      className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\""
+    },
+    "time": {
+      "start": 1764040565923,
+      "end": 1764040565935
+    }
+  }
+}

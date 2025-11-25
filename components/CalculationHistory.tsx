@@ -8,7 +8,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Separator } from '@/components/ui/separator';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { History, Eye, Calendar, MapPin, Package, Trash2, Download } from 'lucide-react';
+import { History, Eye, Calendar, MapPin, Package, Trash2, Download, Building2 } from 'lucide-react';
 
 interface Calculation {
   id: string;
@@ -342,30 +342,90 @@ export default function CalculationHistory({ onLoadCalculation }: CalculationHis
                 </Card>
 
                 {/* Результаты расчета */}
-                <Card>
+                <Card className="bg-gray-800 border-gray-700">
                   <CardHeader>
-                    <CardTitle className="text-sm">Результаты расчета</CardTitle>
+                    <CardTitle className="text-sm text-white">Результаты расчета</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
-                      {selectedCalculation.results.map((result: any, index: number) => (
-                        <div key={index} className="flex justify-between items-center p-2 bg-gray-50 rounded">
-                          <div>
-                            <div className="font-medium text-sm">{result.company}</div>
-                            {result.error && (
-                              <div className="text-xs text-red-600">{result.error}</div>
-                            )}
+                      {selectedCalculation.results
+                        .sort((a: any, b: any) => a.price - b.price)
+                        .map((result: any, index: number) => (
+                        <div key={index} className="bg-gray-700 border border-gray-600 rounded p-3">
+                          <div className="flex justify-between items-start">
+                            <div className="flex items-center gap-2">
+                              <Building2 className="h-3 w-3 text-blue-400" />
+                              <div>
+                                <div className="font-medium text-white text-sm">{result.company}</div>
+                                {result.error && (
+                                  <div className="text-xs text-red-400 mt-1">{result.error}</div>
+                                )}
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              {result.error ? (
+                                result.price > 0 && (
+                                  <>
+                                    <div className="text-yellow-400 text-sm font-bold">
+                                      {result.price.toLocaleString()} ₽
+                                    </div>
+                                    <div className="text-xs text-gray-400">~{result.days} дней</div>
+                                  </>
+                                )
+                              ) : (
+                                <>
+                                  <div className="text-green-400 text-sm font-bold">
+                                    {result.price.toLocaleString()} ₽
+                                  </div>
+                                  <div className="text-xs text-gray-400">{result.days} дней</div>
+                                </>
+                              )}
+                            </div>
                           </div>
-                          <div className="text-right">
-                            {!result.error && (
-                              <>
-                                <div className="font-bold text-sm">{result.price.toLocaleString()} ₽</div>
-                                <div className="text-xs text-gray-600">{result.days} дней</div>
-                              </>
-                            )}
-                          </div>
+                          
+                          {/* Дополнительная информация по ТК */}
+                          {!result.error && (
+                            <div className="mt-2 space-y-1">
+                              {result.services && result.services.length > 0 && (
+                                <div className="text-xs text-gray-400">
+                                  🛠️ {result.services.join(', ')}
+                                </div>
+                              )}
+                              {result.deliveryType && (
+                                <div className="text-xs text-gray-400">
+                                  🚚 {result.deliveryType}
+                                </div>
+                              )}
+                              {result.fromTerminal && (
+                                <div className="text-xs text-gray-400">
+                                  📍 От: {result.fromTerminal}
+                                </div>
+                              )}
+                              {result.toTerminal && (
+                                <div className="text-xs text-gray-400">
+                                  📍 До: {result.toTerminal}
+                                </div>
+                              )}
+                            </div>
+                          )}
                         </div>
                       ))}
+                    </div>
+                    
+                    {/* Сводка по результатам */}
+                    <div className="mt-4 pt-3 border-t border-gray-600">
+                      <div className="grid grid-cols-2 gap-4 text-xs">
+                        <div className="text-center">
+                          <div className="text-gray-400">Всего ТК</div>
+                          <div className="text-white font-bold">{selectedCalculation.results.length}</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-gray-400">Успешно</div>
+                          <div className="text-green-400 font-bold">
+                            {selectedCalculation.results.filter((r: any) => !r.error).length}
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>

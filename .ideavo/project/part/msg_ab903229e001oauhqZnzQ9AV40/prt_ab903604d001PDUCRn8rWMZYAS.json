@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab903604d001PDUCRn8rWMZYAS",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab903229e001oauhqZnzQ9AV40",
+  "type": "tool",
+  "callID": "call_e5bc7255cb004ffa9af30413",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/SaveCalculation.tsx",
+      "limit": 50,
+      "offset": 140
+    },
+    "output": "<file>\n00141|   };\n00142| \n00143|   const generateCalculationText = () => {\n00144|     const currentDate = new Date().toLocaleString('ru-RU');\n00145|     const validCalculations = calculations.filter(calc => \n00146|       calc.price > 0 && enabledCompanies[calc.company.toLowerCase().replace(/\\s+/g, '')]\n00147|     );\n00148| \n00149|     let text = `РАСЧЕТ СТОИМОСТИ ДОСТАВКИ\\n`;\n00150|     text += `Дата расчета: ${currentDate}\\n`;\n00151|     text += `Номер заказа: ${orderNumber || 'Не указан'}\\n`;\n00152|     text += `${'='.repeat(50)}\\n\\n`;\n00153| \n00154|     text += `МАРШРУТ:\\n`;\n00155|     text += `Откуда: ${formData.fromCity}\\n`;\n00156|     text += `Куда: ${formData.toCity}\\n`;\n00157|     if (formData.fromAddress) text += `Адрес отправления: ${formData.fromAddress}\\n`;\n00158|     if (formData.toAddress) text += `Адрес назначения: ${formData.toAddress}\\n`;\n00159|     text += `\\n`;\n00160| \n00161|     text += `ГРУЗЫ (${formData.cargos.length} шт.):\\n`;\n00162|     formData.cargos.forEach((cargo: any, index: number) => {\n00163|       text += `${index + 1}. ${cargo.length}×${cargo.width}×${cargo.height} см, ${cargo.weight} кг\\n`;\n00164|     });\n00165|     text += `\\n`;\n00166| \n00167|     text += `УСЛУГИ:\\n`;\n00168|     const services: string[] = [];\n00169|     if (formData.needPackaging) services.push('Упаковка');\n00170|     if (formData.needLoading) services.push('Погрузка');\n00171|     if (formData.needCarry) services.push('Переноска');\n00172|     if (formData.needInsurance) services.push(`Страхование (${formData.declaredValue}₽)`);\n00173|     text += services.length > 0 ? services.join(', ') : 'Нет дополнительных услуг';\n00174|     text += `\\n\\n`;\n00175| \n00176|     text += `РЕЗУЛЬТАТЫ РАСЧЕТА:\\n`;\n00177|     text += `${'='.repeat(50)}\\n`;\n00178|     \n00179|     if (validCalculations.length === 0) {\n00180|       text += 'Нет доступных расчетов\\n';\n00181|     } else {\n00182|       const sortedCalculations = [...validCalculations].sort((a, b) => a.price - b.price);\n00183|       sortedCalculations.forEach((calc, index) => {\n00184|         text += `${index + 1}. ${calc.company}\\n`;\n00185|         text += `   Стоимость: ${calc.price.toLocaleString('ru-RU')} ₽\\n`;\n00186|         text += `   Срок: ${calc.days} дней\\n`;\n00187|         if (calc.error) text += `   Ошибка: ${calc.error}\\n`;\n00188|         text += '\\n';\n00189|       });\n00190|     }\n\n(File has more lines. Use 'offset' parameter to read beyond line 190)\n</file>",
+    "title": "components/SaveCalculation.tsx",
+    "metadata": {
+      "preview": "  };\n\n  const generateCalculationText = () => {\n    const currentDate = new Date().toLocaleString('ru-RU');\n    const validCalculations = calculations.filter(calc => \n      calc.price > 0 && enabledCompanies[calc.company.toLowerCase().replace(/\\s+/g, '')]\n    );\n\n    let text = `РАСЧЕТ СТОИМОСТИ ДОСТАВКИ\\n`;\n    text += `Дата расчета: ${currentDate}\\n`;\n    text += `Номер заказа: ${orderNumber || 'Не указан'}\\n`;\n    text += `${'='.repeat(50)}\\n\\n`;\n\n    text += `МАРШРУТ:\\n`;\n    text += `Откуда: ${formData.fromCity}\\n`;\n    text += `Куда: ${formData.toCity}\\n`;\n    if (formData.fromAddress) text += `Адрес отправления: ${formData.fromAddress}\\n`;\n    if (formData.toAddress) text += `Адрес назначения: ${formData.toAddress}\\n`;\n    text += `\\n`;\n"
+    },
+    "time": {
+      "start": 1764040597583,
+      "end": 1764040597586
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab901491a001v0sSWsLz61pcCv",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab9012f4e001vDWPSGcchS03vS",
+  "type": "tool",
+  "callID": "call_f775c31dfc1143c2b0918129",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/SaveCalculation.tsx",
+      "oldString": "  return (\n    <Dialog open={isOpen} onOpenChange={setIsOpen}>\n      <DialogTrigger asChild>\n        <Button variant=\"outline\" className=\"flex items-center gap-2 text-black\">\n          <Save className=\"w-4 h-4\" />\n          Сохранить расчет\n        </Button>\n      </DialogTrigger>",
+      "newString": "  return (\n    <Dialog open={isOpen} onOpenChange={setIsOpen}>\n      <DialogTrigger asChild>\n        <DropdownMenu>\n          <DropdownMenuTrigger asChild>\n            <Button variant=\"outline\" className=\"flex items-center gap-2 text-black\">\n              <Save className=\"w-4 h-4\" />\n              Сохранить расчет\n            </Button>\n          </DropdownMenuTrigger>\n          <DropdownMenuContent>\n            <DropdownMenuItem onClick={(e) => e.preventDefault()}>\n              <DialogTrigger asChild>\n                <div className=\"flex items-center gap-2 w-full cursor-pointer\">\n                  <Save className=\"w-4 h-4\" />\n                  Сохранить с номером\n                </div>\n              </DialogTrigger>\n            </DropdownMenuItem>\n            <DropdownMenuItem onClick={handleDownload}>\n              <Download className=\"w-4 h-4 mr-2\" />\n              Сохранить в PDF\n            </DropdownMenuItem>\n          </DropdownMenuContent>\n        </DropdownMenu>\n      </DialogTrigger>"
+    },
+    "output": "",
+    "title": "components/SaveCalculation.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/SaveCalculation.tsx\n===================================================================\n--- /home/user/project/components/SaveCalculation.tsx\n+++ /home/user/project/components/SaveCalculation.tsx\n@@ -194,12 +194,30 @@\n \n return (\n   <Dialog open={isOpen} onOpenChange={setIsOpen}>\n     <DialogTrigger asChild>\n-      <Button variant=\"outline\" className=\"flex items-center gap-2 text-black\">\n-        <Save className=\"w-4 h-4\" />\n-        Сохранить расчет\n-      </Button>\n+      <DropdownMenu>\n+        <DropdownMenuTrigger asChild>\n+          <Button variant=\"outline\" className=\"flex items-center gap-2 text-black\">\n+            <Save className=\"w-4 h-4\" />\n+            Сохранить расчет\n+          </Button>\n+        </DropdownMenuTrigger>\n+        <DropdownMenuContent>\n+          <DropdownMenuItem onClick={(e) => e.preventDefault()}>\n+            <DialogTrigger asChild>\n+              <div className=\"flex items-center gap-2 w-full cursor-pointer\">\n+                <Save className=\"w-4 h-4\" />\n+                Сохранить с номером\n+              </div>\n+            </DialogTrigger>\n+          </DropdownMenuItem>\n+          <DropdownMenuItem onClick={handleDownload}>\n+            <Download className=\"w-4 h-4 mr-2\" />\n+            Сохранить в PDF\n+          </DropdownMenuItem>\n+        </DropdownMenuContent>\n+      </DropdownMenu>\n     </DialogTrigger>\n     \n     <DialogContent className=\"sm:max-w-md\">\n       <DialogHeader>\n"
+    },
+    "time": {
+      "start": 1764040460572,
+      "end": 1764040460579
+    }
+  }
+}

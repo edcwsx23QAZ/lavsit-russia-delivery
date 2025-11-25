@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab901d9750012RupFckcWhF81M",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab9014f72001A3mdaOJVgr7ArI",
+  "type": "tool",
+  "callID": "call_45acdcf60ca14e14bd5104cd",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/SaveCalculation.tsx",
+      "limit": 30,
+      "offset": 250
+    },
+    "output": "<file>\n00251|                   <AlertCircle className=\"w-4 h-4 text-red-600\" />\n00252|                 )}\n00253|                 <AlertDescription className={saveResult.success ? 'text-green-800' : 'text-red-800'}>\n00254|                   {saveResult.message}\n00255|                 </AlertDescription>\n00256|               </div>\n00257|             </Alert>\n00258|           )}\n00259| \n00260|           <div className=\"flex gap-2 pt-4\">\n00261|             <Button \n00262|               onClick={handleSave} \n00263|               disabled={isSaving || !orderNumber.trim()}\n00264|               className=\"flex-1\"\n00265|             >\n00266|               {isSaving ? (\n00267|                 <>\n00268|                   <Camera className=\"w-4 h-4 mr-2 animate-pulse\" />\n00269|                   Сохранение...\n00270|                 </>\n00271|               ) : (\n00272|                 <>\n00273|                   <Save className=\"w-4 h-4 mr-2\" />\n00274|                   Сохранить\n00275|                 </>\n00276|               )}\n00277|             </Button>\n00278|             \n00279|             <Button \n00280|               variant=\"outline\" \n\n(File has more lines. Use 'offset' parameter to read beyond line 280)\n</file>",
+    "title": "components/SaveCalculation.tsx",
+    "metadata": {
+      "preview": "                  <AlertCircle className=\"w-4 h-4 text-red-600\" />\n                )}\n                <AlertDescription className={saveResult.success ? 'text-green-800' : 'text-red-800'}>\n                  {saveResult.message}\n                </AlertDescription>\n              </div>\n            </Alert>\n          )}\n\n          <div className=\"flex gap-2 pt-4\">\n            <Button \n              onClick={handleSave} \n              disabled={isSaving || !orderNumber.trim()}\n              className=\"flex-1\"\n            >\n              {isSaving ? (\n                <>\n                  <Camera className=\"w-4 h-4 mr-2 animate-pulse\" />\n                  Сохранение...\n                </>"
+    },
+    "time": {
+      "start": 1764040497536,
+      "end": 1764040497553
+    }
+  }
+}

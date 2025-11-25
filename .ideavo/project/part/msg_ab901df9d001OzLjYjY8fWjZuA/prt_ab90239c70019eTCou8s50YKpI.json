@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab90239c70019eTCou8s50YKpI",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab901df9d001OzLjYjY8fWjZuA",
+  "type": "tool",
+  "callID": "call_84c39c6f3f7548349bc6f2c9",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/SaveCalculation.tsx",
+      "limit": 20,
+      "offset": 275
+    },
+    "output": "<file>\n00276|               )}\n00277|             </Button>\n00278|             \n00279|             <Button \n00280|               variant=\"outline\" \n00281|               onClick={handleDownload}\n00282|               disabled={!orderNumber.trim()}\n00283|             >\n00284|               <Download className=\"w-4 h-4 mr-2\" />\n00285|               Скачать\n00286|             </Button>\n00287|           </div>\n00288| \n00289|           <div className=\"text-xs text-muted-foreground\">\n00290|             <p>• Расчет будет сохранен с текущими данными формы</p>\n00291|             <p>• Будет создан скриншот страницы с результатами</p>\n00292|             <p>• Дата сохранения: {new Date().toLocaleDateString('ru-RU')}</p>\n00293|           </div>\n00294|         </div>\n00295|       </DialogContent>\n\n(File has more lines. Use 'offset' parameter to read beyond line 295)\n</file>",
+    "title": "components/SaveCalculation.tsx",
+    "metadata": {
+      "preview": "              )}\n            </Button>\n            \n            <Button \n              variant=\"outline\" \n              onClick={handleDownload}\n              disabled={!orderNumber.trim()}\n            >\n              <Download className=\"w-4 h-4 mr-2\" />\n              Скачать\n            </Button>\n          </div>\n\n          <div className=\"text-xs text-muted-foreground\">\n            <p>• Расчет будет сохранен с текущими данными формы</p>\n            <p>• Будет создан скриншот страницы с результатами</p>\n            <p>• Дата сохранения: {new Date().toLocaleDateString('ru-RU')}</p>\n          </div>\n        </div>\n      </DialogContent>"
+    },
+    "time": {
+      "start": 1764040522185,
+      "end": 1764040522188
+    }
+  }
+}

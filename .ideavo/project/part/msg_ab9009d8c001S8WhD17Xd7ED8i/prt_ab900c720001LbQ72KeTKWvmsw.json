@@ -1,0 +1,61 @@
+{
+  "id": "prt_ab900c720001LbQ72KeTKWvmsw",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab9009d8c001S8WhD17Xd7ED8i",
+  "type": "tool",
+  "callID": "call_6aa431bd3a8246ae8fe585e1",
+  "tool": "todowrite",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Hide PDF button inside Save Calculation button",
+          "id": "1",
+          "priority": "high",
+          "status": "in_progress"
+        },
+        {
+          "content": "Add detailed TK information to calculation save",
+          "id": "2",
+          "priority": "high",
+          "status": "pending"
+        },
+        {
+          "content": "Improve saved calculation styling to match current results",
+          "id": "3",
+          "priority": "medium",
+          "status": "pending"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Hide PDF button inside Save Calculation button\",\n    \"id\": \"1\",\n    \"priority\": \"high\",\n    \"status\": \"in_progress\"\n  },\n  {\n    \"content\": \"Add detailed TK information to calculation save\",\n    \"id\": \"2\",\n    \"priority\": \"high\",\n    \"status\": \"pending\"\n  },\n  {\n    \"content\": \"Improve saved calculation styling to match current results\",\n    \"id\": \"3\",\n    \"priority\": \"medium\",\n    \"status\": \"pending\"\n  }\n]",
+    "title": "3 todos",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Hide PDF button inside Save Calculation button",
+          "id": "1",
+          "priority": "high",
+          "status": "in_progress"
+        },
+        {
+          "content": "Add detailed TK information to calculation save",
+          "id": "2",
+          "priority": "high",
+          "status": "pending"
+        },
+        {
+          "content": "Improve saved calculation styling to match current results",
+          "id": "3",
+          "priority": "medium",
+          "status": "pending"
+        }
+      ]
+    },
+    "time": {
+      "start": 1764040427305,
+      "end": 1764040427308
+    }
+  }
+}

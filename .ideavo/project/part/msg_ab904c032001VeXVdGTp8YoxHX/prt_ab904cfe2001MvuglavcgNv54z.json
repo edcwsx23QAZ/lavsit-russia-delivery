@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab904cfe2001MvuglavcgNv54z",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab904c032001VeXVdGTp8YoxHX",
+  "type": "tool",
+  "callID": "call_832080ba868c4d28bbdc9c80",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/CalculationHistory.tsx",
+      "oldString": "import { History, Eye, Calendar, MapPin, Package, Trash2, Download } from 'lucide-react';",
+      "newString": "import { History, Eye, Calendar, MapPin, Package, Trash2, Download, Building2 } from 'lucide-react';"
+    },
+    "output": "",
+    "title": "components/CalculationHistory.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/CalculationHistory.tsx\n===================================================================\n--- /home/user/project/components/CalculationHistory.tsx\n+++ /home/user/project/components/CalculationHistory.tsx\n@@ -7,9 +7,9 @@\n import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';\n import { ScrollArea } from '@/components/ui/scroll-area';\n import { Separator } from '@/components/ui/separator';\n import { Alert, AlertDescription } from '@/components/ui/alert';\n-import { History, Eye, Calendar, MapPin, Package, Trash2, Download } from 'lucide-react';\n+import { History, Eye, Calendar, MapPin, Package, Trash2, Download, Building2 } from 'lucide-react';\n \n interface Calculation {\n   id: string;\n   orderNumber: string | null;\n"
+    },
+    "time": {
+      "start": 1764040691684,
+      "end": 1764040691688
+    }
+  }
+}

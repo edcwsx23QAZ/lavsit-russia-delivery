@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import { Save, Download, Camera, CheckCircle, AlertCircle } from 'lucide-react';
 
 interface SaveCalculationProps {
@@ -180,12 +181,67 @@ export default function SaveCalculation({
     } else {
       const sortedCalculations = [...validCalculations].sort((a, b) => a.price - b.price);
       sortedCalculations.forEach((calc, index) => {
-        text += `${index + 1}. ${calc.company}\n`;
-        text += `   Стоимость: ${calc.price.toLocaleString('ru-RU')} ₽\n`;
-        text += `   Срок: ${calc.days} дней\n`;
-        if (calc.error) text += `   Ошибка: ${calc.error}\n`;
+        text += `${index + 1}. ${calc.company.toUpperCase()}\n`;
+        text += `${'-'.repeat(40)}\n`;
+        
+        if (calc.error) {
+          text += `❌ Статус: Ошибка расчета\n`;
+          text += `📝 Описание: ${calc.error}\n`;
+          if (calc.price > 0) {
+            text += `💰 Примерная стоимость: ${calc.price.toLocaleString('ru-RU')} ₽\n`;
+            text += `📅 Примерный срок: ${calc.days} дней\n`;
+          }
+        } else {
+          text += `✅ Статус: Успешно рассчитано\n`;
+          text += `💰 Стоимость: ${calc.price.toLocaleString('ru-RU')} ₽\n`;
+          text += `📅 Срок доставки: ${calc.days} дней\n`;
+          
+          // Дополнительная информация по ТК
+          if (calc.services && calc.services.length > 0) {
+            text += `🛠️ Доп. услуги: ${calc.services.join(', ')}\n`;
+          }
+          
+          // Информация о типе доставки
+          if (calc.deliveryType) {
+            text += `🚚 Тип доставки: ${calc.deliveryType}\n`;
+          }
+          
+          // Информация о терминалах
+          if (calc.fromTerminal) {
+            text += `📍 Термин отправления: ${calc.fromTerminal}\n`;
+          }
+          if (calc.toTerminal) {
+            text += `📍 Термин назначения: ${calc.toTerminal}\n`;
+          }
+          
+          // Дополнительная информация
+          if (calc.description) {
+            text += `📋 Описание: ${calc.description}\n`;
+          }
+        }
+        
         text += '\n';
       });
+      
+      // Сводка по лучшим предложениям
+      text += `${'='.repeat(50)}\n`;
+      text += `СВОДКА ПО ЛУЧШИМ ПРЕДЛОЖЕНИЯМ:\n`;
+      text += `${'='.repeat(50)}\n`;
+      
+      const cheapest = sortedCalculations.find(calc => !calc.error);
+      const fastest = [...sortedCalculations]
+        .filter(calc => !calc.error)
+        .sort((a, b) => a.days - b.days)[0];
+      
+      if (cheapest) {
+        text += `💰 Самый дешевый: ${cheapest.company} - ${cheapest.price.toLocaleString('ru-RU')} ₽\n`;
+      }
+      if (fastest && fastest !== cheapest) {
+        text += `⚡ Самый быстрый: ${fastest.company} - ${fastest.days} дней\n`;
+      }
+      
+      text += `\nВсего рассчитано: ${sortedCalculations.length} ТК\n`;
+      text += `Успешных расчетов: ${sortedCalculations.filter(calc => !calc.error).length} ТК\n`;
     }
 
     return text;
@@ -194,10 +250,28 @@ export default function SaveCalculation({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="flex items-center gap-2 text-black">
-          <Save className="w-4 h-4" />
-          Сохранить расчет
-        </Button>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" className="flex items-center gap-2 text-black">
+              <Save className="w-4 h-4" />
+              Сохранить расчет
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            <DropdownMenuItem onClick={(e) => e.preventDefault()}>
+              <DialogTrigger asChild>
+                <div className="flex items-center gap-2 w-full cursor-pointer">
+                  <Save className="w-4 h-4" />
+                  Сохранить с номером
+                </div>
+              </DialogTrigger>
+            </DropdownMenuItem>
+            <DropdownMenuItem onClick={handleDownload}>
+              <Download className="w-4 h-4 mr-2" />
+              Сохранить в PDF
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </DialogTrigger>
       
       <DialogContent className="sm:max-w-md">
@@ -238,11 +312,11 @@ export default function SaveCalculation({
             </Alert>
           )}
 
-          <div className="flex gap-2 pt-4">
+          <div className="pt-4">
             <Button 
               onClick={handleSave} 
               disabled={isSaving || !orderNumber.trim()}
-              className="flex-1"
+              className="w-full"
             >
               {isSaving ? (
                 <>
@@ -252,18 +326,9 @@ export default function SaveCalculation({
               ) : (
                 <>
                   <Save className="w-4 h-4 mr-2" />
-                  Сохранить
+                  Сохранить расчет
                 </>
               )}
-            </Button>
-            
-            <Button 
-              variant="outline" 
-              onClick={handleDownload}
-              disabled={!orderNumber.trim()}
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Скачать
             </Button>
           </div>
 

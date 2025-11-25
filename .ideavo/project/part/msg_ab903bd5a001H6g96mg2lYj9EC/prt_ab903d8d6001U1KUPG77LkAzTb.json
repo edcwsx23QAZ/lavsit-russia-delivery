@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab903d8d6001U1KUPG77LkAzTb",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab903bd5a001H6g96mg2lYj9EC",
+  "type": "tool",
+  "callID": "call_1e17ae64f4ef4b8c82519a8a",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/CalculationHistory.tsx",
+      "limit": 50,
+      "offset": 200
+    },
+    "output": "<file>\n00201|                           </Button>\n00202|                           \n00203|                           {onLoadCalculation && (\n00204|                             <Button\n00205|                               variant=\"outline\"\n00206|                               size=\"sm\"\n00207|                               onClick={() => {\n00208|                                 onLoadCalculation(calc);\n00209|                                 setIsOpen(false);\n00210|                               }}\n00211|                               className=\"h-8 text-xs\"\n00212|                             >\n00213|                               <Package className=\"w-3 h-3 mr-1\" />\n00214|                               Загрузить\n00215|                             </Button>\n00216|                           )}\n00217|                           \n00218|                           {calc.screenshot && (\n00219|                             <Button\n00220|                               variant=\"outline\"\n00221|                               size=\"sm\"\n00222|                               onClick={() => {\n00223|                                 const link = document.createElement('a');\n00224|                                 link.href = calc.screenshot!;\n00225|                                 link.download = `calculation_${calc.orderNumber || calc.id}.jpg`;\n00226|                                 link.click();\n00227|                               }}\n00228|                               className=\"h-8 text-xs\"\n00229|                             >\n00230|                               <Download className=\"w-3 h-3 mr-1\" />\n00231|                               Скриншот\n00232|                             </Button>\n00233|                           )}\n00234|                         </div>\n00235|                       </CardContent>\n00236|                     </Card>\n00237|                   ))}\n00238|                 </div>\n00239|               </ScrollArea>\n00240|             )}\n00241| \n00242|             {calculations.length > 0 && (\n00243|               <div className=\"text-xs text-gray-500 text-center\">\n00244|                 {calculations.length} сохраненных расчетов\n00245|                 {calculations.some(calc => calc.note) && ' (сохранено в памяти)'}\n00246|               </div>\n00247|             )}\n00248|           </div>\n00249|         </DialogContent>\n00250|       </Dialog>\n\n(File has more lines. Use 'offset' parameter to read beyond line 250)\n</file>",
+    "title": "components/CalculationHistory.tsx",
+    "metadata": {
+      "preview": "                          </Button>\n                          \n                          {onLoadCalculation && (\n                            <Button\n                              variant=\"outline\"\n                              size=\"sm\"\n                              onClick={() => {\n                                onLoadCalculation(calc);\n                                setIsOpen(false);\n                              }}\n                              className=\"h-8 text-xs\"\n                            >\n                              <Package className=\"w-3 h-3 mr-1\" />\n                              Загрузить\n                            </Button>\n                          )}\n                          \n                          {calc.screenshot && (\n                            <Button\n                              variant=\"outline\""
+    },
+    "time": {
+      "start": 1764040628440,
+      "end": 1764040628443
+    }
+  }
+}

@@ -5333,14 +5333,6 @@ export default function Home() {
                         // Здесь можно добавить логику загрузки данных формы из сохраненного расчета
                       }}
                     />
-                    <Button 
-                      onClick={exportToPDF} 
-                      variant="outline" 
-                      size="sm" 
-                      className="h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden"
-                    >
-                      Сохранить в PDF
-                    </Button>
                   </div>
                 </div>
                 
