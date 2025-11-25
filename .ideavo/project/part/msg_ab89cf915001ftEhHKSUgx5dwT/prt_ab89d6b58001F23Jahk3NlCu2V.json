@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab89d6b58001F23Jahk3NlCu2V",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89cf915001ftEhHKSUgx5dwT",
+  "type": "tool",
+  "callID": "call_51530b1620054ed9b2c7d90c",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // Функция для определения FIAS кода города\n      const getCityFias = (cityName: string): string => {\n        const cityFiasMap: Record<string, string> = {\n          'москва': '0c5b2444-70a0-4932-980c-b4dc0d3f02b5',\n          'санкт-петербург': 'c2deb16a-0330-4f05-821f-1d09c93331e6',\n          'спб': 'c2deb16a-0330-4f05-821f-1d09c93331e6',\n          'екатеринбург': '2763c110-cb8b-416a-9dac-ad28a55b4402',\n          'новосибирск': '8dea00e3-9aab-4d8e-887c-ef2aaa546456',\n          'казань': '93b3df57-4c89-44df-ac42-96f05e9cd3b9',\n          'нижний новгород': '555e7d61-d9a7-4ba6-9770-6caa8198c483',\n          'челябинск': 'a376e68d-724a-4472-be7c-891bdb09ae32',\n          'омск': 'bb035cc3-1dc2-4627-9d25-a1bf5fed073d',\n          'ростов-на-дону': 'c1cfe4b9-f7c2-423c-abfa-6ed5cb24d83e',\n          'уфа': '7339e834-2cb4-473c-9c6e-93f3dcd66011',\n          'красноярск': '9b968c73-f4d4-4012-8da8-3dacd4d4c1bd',\n          'пермь': '4dc222e8-1f6a-4c36-894b-2b4a8c8a9b08',\n          'воронеж': '5bf5ddff-6353-4a3d-80c4-6fb27f00c6c1',\n          'волгоград': 'da051ec8-da2e-4a66-b542-473b8d221ab6'\n        };\n\n        const normalizedCity = cityName.toLowerCase().trim()\n          .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n          .replace(/^город\\s+/, '') // Убираем префикс \"город \"\n          .replace(/\\s+/g, ' '); // Нормализуем пробелы\n\n        return cityFiasMap[normalizedCity] || '0c5b2444-70a0-4932-980c-b4dc0d3f02b5'; // По умолчанию Москва\n      };",
+      "newString": "      // Функция для определения FIAS кода города\n      const getCityFias = (cityName: string): string => {\n        const cityFiasMap: Record<string, string> = {\n          'москва': '0c5b2444-70a0-4932-980c-b4dc0d3f02b5',\n          'санкт-петербург': 'c2deb16a-0330-4f05-821f-1d09c93331e6',\n          'спб': 'c2deb16a-0330-4f05-821f-1d09c93331e6',\n          'екатеринбург': '2763c110-cb8b-416a-9dac-ad28a55b4402',\n          'новосибирск': '8dea00e3-9aab-4d8e-887c-ef2aaa546456',\n          'казань': '93b3df57-4c89-44df-ac42-96f05e9cd3b9',\n          'нижний новгород': '555e7d61-d9a7-4ba6-9770-6caa8198c483',\n          'челябинск': 'a376e68d-724a-4472-be7c-891bdb09ae32',\n          'омск': 'bb035cc3-1dc2-4627-9d25-a1bf5fed073d',\n          'ростов-на-дону': 'c1cfe4b9-f7c2-423c-abfa-6ed5cb24d83e',\n          'уфа': '7339e834-2cb4-473c-9c6e-93f3dcd66011',\n          'красноярск': '9b968c73-f4d4-4012-8da8-3dacd4d4c1bd',\n          'пермь': '4dc222e8-1f6a-4c36-894b-2b4a8c8a9b08',\n          'воронеж': '5bf5ddff-6353-4a3d-80c4-6fb27f00c6c1',\n          'волгоград': 'da051ec8-da2e-4a66-b542-473b8d221ab6',\n          'лосино-петровский': '504ac4f9-0a3a-4c7b-9c2e-1a4a6b8b0c7e' // Добавляем Лосино-Петровский\n        };\n\n        const normalizedCity = cityName.toLowerCase().trim()\n          .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n          .replace(/^город\\s+/, '') // Убираем префикс \"город \"\n          .replace(/\\s+/g, ' '); // Нормализуем пробелы\n\n        return cityFiasMap[normalizedCity] || '0c5b2444-70a0-4932-980c-b4dc0d3f02b5'; // По умолчанию Москва\n      };"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3610,9 +3610,10 @@\n   'уфа': '7339e834-2cb4-473c-9c6e-93f3dcd66011',\n   'красноярск': '9b968c73-f4d4-4012-8da8-3dacd4d4c1bd',\n   'пермь': '4dc222e8-1f6a-4c36-894b-2b4a8c8a9b08',\n   'воронеж': '5bf5ddff-6353-4a3d-80c4-6fb27f00c6c1',\n-  'волгоград': 'da051ec8-da2e-4a66-b542-473b8d221ab6'\n+  'волгоград': 'da051ec8-da2e-4a66-b542-473b8d221ab6',\n+  'лосино-петровский': '504ac4f9-0a3a-4c7b-9c2e-1a4a6b8b0c7e' // Добавляем Лосино-Петровский\n };\n \n const normalizedCity = cityName.toLowerCase().trim()\n   .replace(/^г\\s+/, '') // Убираем префикс \"г \"\n"
+    },
+    "time": {
+      "start": 1764033915739,
+      "end": 1764033915775
+    }
+  }
+}

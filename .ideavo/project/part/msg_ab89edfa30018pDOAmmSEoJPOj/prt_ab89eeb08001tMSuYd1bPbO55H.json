@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab89eeb08001tMSuYd1bPbO55H",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89edfa30018pDOAmmSEoJPOj",
+  "type": "tool",
+  "callID": "call_d04513f9f91e43048a6be855",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-direct.js",
+      "description": "Test NordWheel API directly with warehouse fix"
+    },
+    "output": "🧪 Testing NordWheel route with warehouse delivery...\n📦 Sending request to NordWheel API: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"504ac4f9-0a3a-4c7b-9c2e-1a4a6b8b0c7e\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 50,\n    \"total_volume\": 0.2,\n    \"total_quantity\": 1\n  },\n  \"insurance\": 0,\n  \"insurance_refuse\": true,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\n📥 Response status: 400 Bad Request\n📥 Response body: {\"meta\":{\"id\":\"9a9361ee-5ed0-404d-9211-d42841d265d4\",\"code\":400,\"success\":false,\"response_time\":\"2025-11-25 11:41:53.858\",\"errors\":{\"insurance\":[\"\\u041f\\u0440\\u0438 \\u043e\\u0442\\u043a\\u0430\\u0437\\u0435 \\u043e\\u0442 \\u0441\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u044f \\u0441\\u0443\\u043c\\u043c\\u0430 \\u0434\\u043e\\u043b\\u0436\\u043d\\u0430 \\u0431\\u044b\\u0442\\u044c \\u0440\\u0430\\u0432\\u043d\\u0430 null.\"],\"dispatch.location.city_fias\":[\"\\u0412\\u044b\\u0431\\u0440\\u0430\\u043d\\u043d\\u044b\\u0439 \\u0433\\u043e\\u0440\\u043e\\u0434 \\u043d\\u0435 \\u0441\\u0443\\u0449\\u0435\\u0441\\u0442\\u0432\\u0443\\u0435\\u0442 \\u0432 \\u0431\\u0430\\u0437\\u0435 \\u0434\\u0430\\u043d\\u043d\\u044b\\u0445.\"]}},\"data\":[]}\n❌ ERROR: NordWheel API returned error\n❌ Error details: {\n  meta: {\n    id: '9a9361ee-5ed0-404d-9211-d42841d265d4',\n    code: 400,\n    success: false,\n    response_time: '2025-11-25 11:41:53.858',\n    errors: { insurance: [Array], 'dispatch.location.city_fias': [Array] }\n  },\n  data: []\n}\n\n🏁 Test completed: FAILED\n",
+    "title": "node test-nordwheel-direct.js",
+    "metadata": {
+      "output": "🧪 Testing NordWheel route with warehouse delivery...\n📦 Sending request to NordWheel API: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"504ac4f9-0a3a-4c7b-9c2e-1a4a6b8b0c7e\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 50,\n    \"total_volume\": 0.2,\n    \"total_quantity\": 1\n  },\n  \"insurance\": 0,\n  \"insurance_refuse\": true,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\n📥 Response status: 400 Bad Request\n📥 Response body: {\"meta\":{\"id\":\"9a9361ee-5ed0-404d-9211-d42841d265d4\",\"code\":400,\"success\":false,\"response_time\":\"2025-11-25 11:41:53.858\",\"errors\":{\"insurance\":[\"\\u041f\\u0440\\u0438 \\u043e\\u0442\\u043a\\u0430\\u0437\\u0435 \\u043e\\u0442 \\u0441\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u044f \\u0441\\u0443\\u043c\\u043c\\u0430 \\u0434\\u043e\\u043b\\u0436\\u043d\\u0430 \\u0431\\u044b\\u0442\\u044c \\u0440\\u0430\\u0432\\u043d\\u0430 null.\"],\"dispatch.location.city_fias\":[\"\\u0412\\u044b\\u0431\\u0440\\u0430\\u043d\\u043d\\u044b\\u0439 \\u0433\\u043e\\u0440\\u043e\\u0434 \\u043d\\u0435 \\u0441\\u0443\\u0449\\u0435\\u0441\\u0442\\u0432\\u0443\\u0435\\u0442 \\u0432 \\u0431\\u0430\\u0437\\u0435 \\u0434\\u0430\\u043d\\u043d\\u044b\\u0445.\"]}},\"data\":[]}\n❌ ERROR: NordWheel API returned error\n❌ Error details: {\n  meta: {\n    id: '9a9361ee-5ed0-404d-9211-d42841d265d4',\n    code: 400,\n    success: false,\n    response_time: '2025-11-25 11:41:53.858',\n    errors: { insurance: [Array], 'dispatch.location.city_fias': [Array] }\n  },\n  data: []\n}\n\n🏁 Test completed: FAILED\n",
+      "exit": 1,
+      "description": "Test NordWheel API directly with warehouse fix"
+    },
+    "time": {
+      "start": 1764034013965,
+      "end": 1764034015153
+    }
+  }
+}

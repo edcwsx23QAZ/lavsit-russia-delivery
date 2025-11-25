@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8a298cd001MOP1HeM4SjIc3Y",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8a0f2ef0018MIzYRJl3xkqme",
+  "type": "tool",
+  "callID": "call_7c709698877943b0a5e6c842",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "content": "// Comprehensive test for NordWheel warehouse delivery fix\nasync function testWarehouseDelivery() {\n  console.log('🧪 Testing NordWheel warehouse delivery fix end-to-end...\\n');\n\n  // Test 1: Terminal to Terminal (should work)\n  console.log('📋 Test 1: Terminal to Terminal (Москва → Санкт-Петербург)');\n  const terminalRequest = {\n    dispatch: {\n      location: {\n        type: 'terminal',\n        city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва\n      }\n    },\n    destination: {\n      location: {\n        type: 'terminal',\n        city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // Санкт-Петербург\n      }\n    },\n    cargo: {\n      total_weight: 50,\n      total_volume: 0.2,\n      total_quantity: 1\n    },\n    insurance: null,\n    insurance_refuse: true,\n    services: {\n      is_package: false,\n      is_documents_return: false,\n      is_fragile: false\n    },\n    promocode: null\n  };\n\n  await testRequest(terminalRequest, 'Terminal → Terminal');\n\n  // Test 2: Warehouse to Terminal (Лосино-Петровский → Санкт-Петербург)\n  console.log('\\n📋 Test 2: Warehouse to Terminal (Лосино-Петровский → Санкт-Петербург)');\n  const warehouseRequest = {\n    dispatch: {\n      location: {\n        type: 'terminal', // Используем terminal тип для склада\n        city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Используем FIAS Москвы для Лосино-Петровский\n      }\n    },\n    destination: {\n      location: {\n        type: 'terminal',\n        city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // Санкт-Петербург\n      }\n    },\n    cargo: {\n      total_weight: 50,\n      total_volume: 0.2,\n      total_quantity: 1\n    },\n    insurance: null,\n    insurance_refuse: true,\n    services: {\n      is_package: false,\n      is_documents_return: false,\n      is_fragile: false\n    },\n    promocode: null\n  };\n\n  await testRequest(warehouseRequest, 'Warehouse → Terminal');\n\n  console.log('\\n🏁 All tests completed!');\n}\n\nasync function testRequest(requestData, testName) {\n  try {\n    const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';\n    const apiKey = '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950';\n    \n    console.log(`📦 Sending ${testName} request...`);\n    \n    const response = await fetch(apiUrl, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'Authorization': `Bearer ${apiKey}`,\n        'User-Agent': 'DeliveryCalculator/1.0',\n        'Accept': 'application/json'\n      },\n      body: JSON.stringify(requestData)\n    });\n    \n    const responseText = await response.text();\n    \n    if (response.ok) {\n      const data = JSON.parse(responseText);\n      if (data.auto || data.avia) {\n        console.log(`✅ ${testName}: SUCCESS`);\n        console.log(`   💰 Auto: ${data.auto ? data.auto.total_amount + '₽' : 'N/A'}`);\n        console.log(`   ✈️  Avia: ${data.avia ? data.avia.total_amount + '₽' : 'N/A'}`);\n        console.log(`   📅 Delivery: ${data.auto ? data.auto.delivery_date : data.avia ? data.avia.delivery_date : 'N/A'}`);\n      } else {\n        console.log(`❌ ${testName}: No delivery options`);\n      }\n    } else {\n      console.log(`❌ ${testName}: ERROR ${response.status}`);\n      try {\n        const errorData = JSON.parse(responseText);\n        console.log(`   Details:`, errorData.meta?.errors || errorData);\n      } catch (e) {\n        console.log(`   Raw:`, responseText.substring(0, 200));\n      }\n    }\n    \n  } catch (error) {\n    console.log(`❌ ${testName}: FAILED - ${error.message}`);\n  }\n}\n\n// Run tests\ntestWarehouseDelivery();",
+      "filePath": "/home/user/project/test-nordwheel-comprehensive.js"
+    },
+    "output": "",
+    "title": "test-nordwheel-comprehensive.js",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-nordwheel-comprehensive.js",
+      "exists": false
+    },
+    "time": {
+      "start": 1764034255056,
+      "end": 1764034255057
+    }
+  }
+}

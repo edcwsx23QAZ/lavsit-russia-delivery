@@ -1,0 +1,21 @@
+{
+  "id": "prt_ab8a0cab6001mRxPyU3QwQNKcj",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8a0ac20001srk9YeKAw3a0ZZ",
+  "type": "tool",
+  "callID": "call_08069316f64a48d78095d905",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : null,",
+      "newString": "        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : null,"
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1764034136767,
+      "end": 1764034136768
+    }
+  }
+}

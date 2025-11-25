@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8a0a654001sDqffIx5nndVcQ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89fbae9001lgYNeP4MuyL4cH",
+  "type": "tool",
+  "callID": "call_d019a8e528684351bea4a656",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-direct.js",
+      "description": "Test NordWheel API with insurance null fix"
+    },
+    "output": "🧪 Testing NordWheel route with warehouse delivery...\n📦 Sending request to NordWheel API: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 50,\n    \"total_volume\": 0.2,\n    \"total_quantity\": 1\n  },\n  \"insurance\": null,\n  \"insurance_refuse\": true,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\n📥 Response status: 200 OK\n📥 Response body: {\"auto\":{\"total_amount\":900,\"delivery_date\":\"2025-11-26\",\"services\":[{\"id\":\"c9d0e1f2-g3h4-5678-cdef-901234567890\",\"name\":\"\\u042d\\u043a\\u0441\\u043f\\u0435\\u0434\\u0438\\u0440\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435 \\u043c\\u0435\\u0436\\u0442\\u0435\\u0440\\u043c\\u0438\\u043d\\u0430\\u043b\\u044c\\u043d\\u043e\\u0435 (\\u043a\\u0433)\",\"price\":16.36,\"quantity\":55,\"measure\":\"\\u043a\\u0433\",\"amount\":900}]},\"avia\":{\"total_amount\":4583,\"services\":[{\"id\":\"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\"name\":\"\\u0410\\u0432\\u0438\\u0430\\u043f\\u0435\\u0440\\u0435\\u0432\\u043e\\u0437\\u043a\\u0430\",\"price\":3273,\"quantity\":1,\"measure\":\"\\u0448\\u0442\",\"amount\":3273},{\"id\":\"a4bfb8d1-6bd7-4065-9972-2cf3563919b8\",\"name\":\"\\u0410\\u0432\\u0438\\u0430\\u043d\\u0430\\u043a\\u043b\\u0430\\u0434\\u043d\\u0430\\u044f\",\"price\":1210,\"quantity\":1,\"measure\":\"\\u0448\\u0442\",\"amount\":1210},{\"id\":\"v2w3x4y5-z6a7-8901-vwxy-234567890123\",\"name\":\"\\u0421\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0433\\u0440\\u0443\\u0437\\u0430\",\"price\":100,\"quantity\":1,\"m\n✅ SUCCESS: NordWheel warehouse delivery works!\n💰 Price options available: { auto: 900, avia: 4583 }\n\n🏁 Test completed: SUCCESS\n",
+    "title": "node test-nordwheel-direct.js",
+    "metadata": {
+      "output": "🧪 Testing NordWheel route with warehouse delivery...\n📦 Sending request to NordWheel API: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 50,\n    \"total_volume\": 0.2,\n    \"total_quantity\": 1\n  },\n  \"insurance\": null,\n  \"insurance_refuse\": true,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\n📥 Response status: 200 OK\n📥 Response body: {\"auto\":{\"total_amount\":900,\"delivery_date\":\"2025-11-26\",\"services\":[{\"id\":\"c9d0e1f2-g3h4-5678-cdef-901234567890\",\"name\":\"\\u042d\\u043a\\u0441\\u043f\\u0435\\u0434\\u0438\\u0440\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435 \\u043c\\u0435\\u0436\\u0442\\u0435\\u0440\\u043c\\u0438\\u043d\\u0430\\u043b\\u044c\\u043d\\u043e\\u0435 (\\u043a\\u0433)\",\"price\":16.36,\"quantity\":55,\"measure\":\"\\u043a\\u0433\",\"amount\":900}]},\"avia\":{\"total_amount\":4583,\"services\":[{\"id\":\"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\"name\":\"\\u0410\\u0432\\u0438\\u0430\\u043f\\u0435\\u0440\\u0435\\u0432\\u043e\\u0437\\u043a\\u0430\",\"price\":3273,\"quantity\":1,\"measure\":\"\\u0448\\u0442\",\"amount\":3273},{\"id\":\"a4bfb8d1-6bd7-4065-9972-2cf3563919b8\",\"name\":\"\\u0410\\u0432\\u0438\\u0430\\u043d\\u0430\\u043a\\u043b\\u0430\\u0434\\u043d\\u0430\\u044f\",\"price\":1210,\"quantity\":1,\"measure\":\"\\u0448\\u0442\",\"amount\":1210},{\"id\":\"v2w3x4y5-z6a7-8901-vwxy-234567890123\",\"name\":\"\\u0421\\u0442\\u0440\\u0430\\u0445\\u043e\\u0432\\u0430\\u043d\\u0438\\u0435 \\u0433\\u0440\\u0443\\u0437\\u0430\",\"price\":100,\"quantity\":1,\"m\n✅ SUCCESS: NordWheel warehouse delivery works!\n💰 Price options available: { auto: 900, avia: 4583 }\n\n🏁 Test completed: SUCCESS\n",
+      "exit": 0,
+      "description": "Test NordWheel API with insurance null fix"
+    },
+    "time": {
+      "start": 1764034127449,
+      "end": 1764034128624
+    }
+  }
+}

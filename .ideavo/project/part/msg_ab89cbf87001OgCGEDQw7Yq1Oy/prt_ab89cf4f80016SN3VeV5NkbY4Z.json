@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab89cf4f80016SN3VeV5NkbY4Z",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89cbf87001OgCGEDQw7Yq1Oy",
+  "type": "tool",
+  "callID": "call_6fdc1dc995a84ca39816520a",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // 🏙️ Определяем тип локации на основе настроек формы\n      const getDispatchLocation = () => {\n        if (form.fromTerminal) {\n          return {\n            type: 'terminal' as const,\n            // Для терминальной доставки используем реальный FIAS код города\n            city_fias: getCityFias(form.fromCity)\n          };\n        } else {\n          return {\n            type: 'address' as const,\n            address: form.fromAddress || form.fromCity // Используем адрес если есть, иначе город\n          };\n        }\n      };",
+      "newString": "      // 🏙️ Определяем тип локации на основе настроек формы\n      const getDispatchLocation = () => {\n        if (form.fromTerminal) {\n          return {\n            type: 'terminal' as const,\n            // Для терминальной доставки используем реальный FIAS код города\n            city_fias: getCityFias(form.fromCity)\n          };\n        } else if (form.fromLavsiteWarehouse) {\n          // 🏭 Для склада Лавсит используем специальный формат с FIAS кодом города\n          return {\n            type: 'terminal' as const, // Используем terminal тип для склада\n            city_fias: getCityFias('Лосино-Петровский') // Используем FIAS города склада\n          };\n        } else {\n          return {\n            type: 'address' as const,\n            address: form.fromAddress || form.fromCity // Используем адрес если есть, иначе город\n          };\n        }\n      };"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3628,8 +3628,14 @@\n     type: 'terminal' as const,\n     // Для терминальной доставки используем реальный FIAS код города\n     city_fias: getCityFias(form.fromCity)\n   };\n+} else if (form.fromLavsiteWarehouse) {\n+  // 🏭 Для склада Лавсит используем специальный формат с FIAS кодом города\n+  return {\n+    type: 'terminal' as const, // Используем terminal тип для склада\n+    city_fias: getCityFias('Лосино-Петровский') // Используем FIAS города склада\n+  };\n } else {\n   return {\n     type: 'address' as const,\n     address: form.fromAddress || form.fromCity // Используем адрес если есть, иначе город\n"
+    },
+    "time": {
+      "start": 1764033885439,
+      "end": 1764033885477
+    }
+  }
+}

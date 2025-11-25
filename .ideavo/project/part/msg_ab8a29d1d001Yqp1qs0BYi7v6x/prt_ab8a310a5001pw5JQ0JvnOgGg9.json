@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8a310a5001pw5JQ0JvnOgGg9",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8a29d1d001Yqp1qs0BYi7v6x",
+  "type": "tool",
+  "callID": "call_631fe9d75cd9419f94d85da9",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-comprehensive.js",
+      "description": "Run comprehensive NordWheel warehouse tests"
+    },
+    "output": "🧪 Testing NordWheel warehouse delivery fix end-to-end...\n\n📋 Test 1: Terminal to Terminal (Москва → Санкт-Петербург)\n📦 Sending Terminal → Terminal request...\n✅ Terminal → Terminal: SUCCESS\n   💰 Auto: 900₽\n   ✈️  Avia: 4583₽\n   📅 Delivery: 2025-11-26\n\n📋 Test 2: Warehouse to Terminal (Лосино-Петровский → Санкт-Петербург)\n📦 Sending Warehouse → Terminal request...\n✅ Warehouse → Terminal: SUCCESS\n   💰 Auto: 900₽\n   ✈️  Avia: 4583₽\n   📅 Delivery: 2025-11-26\n\n🏁 All tests completed!\n",
+    "title": "node test-nordwheel-comprehensive.js",
+    "metadata": {
+      "output": "🧪 Testing NordWheel warehouse delivery fix end-to-end...\n\n📋 Test 1: Terminal to Terminal (Москва → Санкт-Петербург)\n📦 Sending Terminal → Terminal request...\n✅ Terminal → Terminal: SUCCESS\n   💰 Auto: 900₽\n   ✈️  Avia: 4583₽\n   📅 Delivery: 2025-11-26\n\n📋 Test 2: Warehouse to Terminal (Лосино-Петровский → Санкт-Петербург)\n📦 Sending Warehouse → Terminal request...\n✅ Warehouse → Terminal: SUCCESS\n   💰 Auto: 900₽\n   ✈️  Avia: 4583₽\n   📅 Delivery: 2025-11-26\n\n🏁 All tests completed!\n",
+      "exit": 0,
+      "description": "Run comprehensive NordWheel warehouse tests"
+    },
+    "time": {
+      "start": 1764034285738,
+      "end": 1764034288357
+    }
+  }
+}

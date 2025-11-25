@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab89e1eba001qeth6IWHlzm4GE",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89ded7d001i2UszcKdBwi4ql",
+  "type": "tool",
+  "callID": "call_cc364aa116704446b6901aa1",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "content": "// Test script for NordWheel warehouse delivery fix\nconst testNordWheelWarehouse = async () => {\n  try {\n    console.log('🧪 Testing NordWheel warehouse delivery fix...');\n    \n    // Test warehouse delivery request\n    const warehouseRequest = {\n      dispatch: {\n        location: {\n          type: 'terminal',\n          city_fias: '504ac4f9-0a3a-4c7b-9c2e-1a4a6b8b0c7e' // Лосино-Петровский\n        }\n      },\n      destination: {\n        location: {\n          type: 'terminal',\n          city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // Санкт-Петербург\n        }\n      },\n      cargo: {\n        total_weight: 50,\n        total_volume: 0.2,\n        total_quantity: 1\n      },\n      insurance: 0,\n      insurance_refuse: true,\n      services: {\n        is_package: false,\n        is_documents_return: false,\n        is_fragile: false\n      },\n      promocode: null\n    };\n\n    console.log('📦 Sending warehouse delivery request:', JSON.stringify(warehouseRequest, null, 2));\n\n    const response = await fetch('http://localhost:3000/api/nordwheel', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json'\n      },\n      body: JSON.stringify(warehouseRequest)\n    });\n\n    const responseText = await response.text();\n    console.log('📥 Response status:', response.status);\n    console.log('📥 Response body:', responseText.substring(0, 1000));\n\n    if (response.ok) {\n      const data = JSON.parse(responseText);\n      if (data.auto || data.avia) {\n        console.log('✅ SUCCESS: NordWheel warehouse delivery works!');\n        console.log('💰 Price options available:', {\n          auto: data.auto ? data.auto.total_amount : 'N/A',\n          avia: data.avia ? data.avia.total_amount : 'N/A'\n        });\n      } else {\n        console.log('❌ ISSUE: No delivery options in response');\n      }\n    } else {\n      console.log('❌ ERROR: NordWheel API returned error');\n      try {\n        const errorData = JSON.parse(responseText);\n        console.log('❌ Error details:', errorData);\n      } catch (e) {\n        console.log('❌ Raw error response:', responseText);\n      }\n    }\n\n  } catch (error) {\n    console.error('❌ Test failed:', error.message);\n  }\n};\n\n// Run the test\ntestNordWheelWarehouse();",
+      "filePath": "/home/user/project/test-nordwheel-warehouse.js"
+    },
+    "output": "",
+    "title": "test-nordwheel-warehouse.js",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-nordwheel-warehouse.js",
+      "exists": false
+    },
+    "time": {
+      "start": 1764033961665,
+      "end": 1764033961666
+    }
+  }
+}

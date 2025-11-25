@@ -3580,8 +3580,25 @@ export default function Home() {
       console.log(`   - Количество мест: ${form.cargos.length}`);
       console.log(`   - Общий вес: ${totalWeight} кг`);
       console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);
-      console.log(`   - Откуда: ${form.fromCity} (${form.fromTerminal ? 'терминал' : 'адрес'})`);
+      
+      // Детальная логистика отправления
+      let dispatchType = 'неизвестно';
+      if (form.fromLavsiteWarehouse) {
+        dispatchType = 'склад Лавсит';
+      } else if (form.fromTerminal) {
+        dispatchType = 'терминал';
+      } else if (form.fromAddressDelivery) {
+        dispatchType = 'адрес';
+      } else {
+        dispatchType = 'терминал (по умолчанию)';
+      }
+      
+      console.log(`   - Откуда: ${form.fromCity} (${dispatchType})`);
       console.log(`   - Куда: ${form.toCity} (${form.toTerminal ? 'терминал' : 'адрес'})`);
+      
+      if (form.fromLavsiteWarehouse) {
+        console.log(`   - Адрес склада: ${form.fromAddress}`);
+      }
       
       form.cargos.forEach((cargo, index) => {
         console.log(`   📦 Место ${index + 1}:`);
@@ -3611,7 +3628,8 @@ export default function Home() {
           'красноярск': '9b968c73-f4d4-4012-8da8-3dacd4d4c1bd',
           'пермь': '4dc222e8-1f6a-4c36-894b-2b4a8c8a9b08',
           'воронеж': '5bf5ddff-6353-4a3d-80c4-6fb27f00c6c1',
-          'волгоград': 'da051ec8-da2e-4a66-b542-473b8d221ab6'
+          'волгоград': 'da051ec8-da2e-4a66-b542-473b8d221ab6',
+          'лосино-петровский': '0c5b2444-70a0-4932-980c-b4dc0d3f02b5', // Используем FIAS Москвы (ближайший крупный город)
         };
 
         const normalizedCity = cityName.toLowerCase().trim()
@@ -3628,6 +3646,12 @@ export default function Home() {
             type: 'terminal' as const,
             // Для терминальной доставки используем реальный FIAS код города
             city_fias: getCityFias(form.fromCity)
+          };
+        } else if (form.fromLavsiteWarehouse) {
+          // 🏭 Для склада Лавсит используем специальный формат с FIAS кодом города
+          return {
+            type: 'terminal' as const, // Используем terminal тип для склада
+            city_fias: getCityFias('Лосино-Петровский') // Используем FIAS города склада
           };
         } else {
           return {
@@ -3665,7 +3689,7 @@ export default function Home() {
           total_volume: totalVolume,
           total_quantity: form.cargos.length
         },
-        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : 0,
+        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : null,
         insurance_refuse: !form.needInsurance,
         services: {
           is_package: form.needPackaging,

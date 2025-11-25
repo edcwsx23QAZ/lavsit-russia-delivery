@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab89e36f0001cV6cC6OyskQdlB",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89e2314001s4BTFkfAPRwaHN",
+  "type": "tool",
+  "callID": "call_01d2fd616d3e487982e0222a",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-warehouse.js",
+      "description": "Test NordWheel warehouse delivery fix"
+    },
+    "output": "🧪 Testing NordWheel warehouse delivery fix...\n📦 Sending warehouse delivery request: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"504ac4f9-0a3a-4c7b-9c2e-1a4a6b8b0c7e\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 50,\n    \"total_volume\": 0.2,\n    \"total_quantity\": 1\n  },\n  \"insurance\": 0,\n  \"insurance_refuse\": true,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\n❌ Test failed: fetch failed\n",
+    "title": "node test-nordwheel-warehouse.js",
+    "metadata": {
+      "output": "🧪 Testing NordWheel warehouse delivery fix...\n📦 Sending warehouse delivery request: {\n  \"dispatch\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"504ac4f9-0a3a-4c7b-9c2e-1a4a6b8b0c7e\"\n    }\n  },\n  \"destination\": {\n    \"location\": {\n      \"type\": \"terminal\",\n      \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n    }\n  },\n  \"cargo\": {\n    \"total_weight\": 50,\n    \"total_volume\": 0.2,\n    \"total_quantity\": 1\n  },\n  \"insurance\": 0,\n  \"insurance_refuse\": true,\n  \"services\": {\n    \"is_package\": false,\n    \"is_documents_return\": false,\n    \"is_fragile\": false\n  },\n  \"promocode\": null\n}\n❌ Test failed: fetch failed\n",
+      "exit": 0,
+      "description": "Test NordWheel warehouse delivery fix"
+    },
+    "time": {
+      "start": 1764033967860,
+      "end": 1764033967987
+    }
+  }
+}

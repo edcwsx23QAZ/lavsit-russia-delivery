@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab89fb674001Yj6xkO04QD358y",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89f89a4001xT1tn3syU9irvo",
+  "type": "tool",
+  "callID": "call_f385684e73564b98b16184bf",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/test-nordwheel-direct.js",
+      "oldString": "    insurance: 0,",
+      "newString": "    insurance: null,"
+    },
+    "output": "",
+    "title": "test-nordwheel-direct.js",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/test-nordwheel-direct.js\n===================================================================\n--- /home/user/project/test-nordwheel-direct.js\n+++ /home/user/project/test-nordwheel-direct.js\n@@ -21,9 +21,9 @@\n   total_weight: 50,\n   total_volume: 0.2,\n   total_quantity: 1\n },\n-insurance: 0,\n+insurance: null,\n insurance_refuse: true,\n services: {\n   is_package: false,\n   is_documents_return: false,\n"
+    },
+    "time": {
+      "start": 1764034066038,
+      "end": 1764034066042
+    }
+  }
+}

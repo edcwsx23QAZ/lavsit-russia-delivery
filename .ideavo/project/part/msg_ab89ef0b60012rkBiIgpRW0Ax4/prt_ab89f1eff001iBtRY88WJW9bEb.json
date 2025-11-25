@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab89f1eff001iBtRY88WJW9bEb",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89ef0b60012rkBiIgpRW0Ax4",
+  "type": "text",
+  "text": "\nGreat! Now I can see the actual error. The issue is:\n\n1. **Insurance error**: \"При отказе от страхования сумма должна быть равна null\" - When refusing insurance, the amount should be null, not 0\n2. **City FIAS error**: \"Выбранный город не существует в базе данных\" - The selected city doesn't exist in the database\n\nLet me fix both issues:",
+  "time": {
+    "start": 1764034033141,
+    "end": 1764034033141
+  }
+}

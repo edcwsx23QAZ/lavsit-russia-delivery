@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab89cb0860013tL4ZmB0c17d3Y",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89c95d2001OJDoYksisRYH6v",
+  "type": "text",
+  "text": "\nNow I need to understand the issue better. Let me look at the warehouse handling logic. I can see the issue - when `fromLavsiteWarehouse` is true, the code sets `fromTerminal: false` but the NordWheel function still uses `form.fromTerminal` to determine the location type. Let me check how the warehouse form handling works:",
+  "time": {
+    "start": 1764033871487,
+    "end": 1764033871487
+  }
+}

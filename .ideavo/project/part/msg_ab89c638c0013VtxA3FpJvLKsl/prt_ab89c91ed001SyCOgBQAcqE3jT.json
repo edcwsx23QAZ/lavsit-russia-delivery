@@ -1,0 +1,23 @@
+{
+  "id": "prt_ab89c91ed001SyCOgBQAcqE3jT",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89c638c0013VtxA3FpJvLKsl",
+  "type": "tool",
+  "callID": "call_2f49e7722191404e9ebdac60",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/nordwheel/route.ts"
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server';\n00002| \n00003| export async function POST(request: NextRequest) {\n00004|   try {\n00005|     const body = await request.json();\n00006|     \n00007|     // NordWheel API endpoint\n00008|     const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';\n00009|     \n00010|     // Get API key from environment variables or use default\n00011|     const apiKey = process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950';\n00012|     \n00013|     console.log('🚛 NordWheel API Route: Forwarding request to:', apiUrl);\n00014|     console.log('🚛 NordWheel API Route: Request body:', JSON.stringify(body, null, 2));\n00015|     \n00016|     // Make request to NordWheel API\n00017|     const response = await fetch(apiUrl, {\n00018|       method: 'POST',\n00019|       headers: {\n00020|         'Content-Type': 'application/json',\n00021|         'Authorization': `Bearer ${apiKey}`,\n00022|         'User-Agent': 'DeliveryCalculator/1.0',\n00023|         'Accept': 'application/json'\n00024|       },\n00025|       body: JSON.stringify(body)\n00026|     });\n00027|     \n00028|     // Get response text first for better error handling\n00029|     const responseText = await response.text();\n00030|     console.log('🚛 NordWheel API Route: Response status:', response.status, response.statusText);\n00031|     console.log('🚛 NordWheel API Route: Response body:', responseText.substring(0, 1000));\n00032|     \n00033|     // Try to parse JSON\n00034|     let data;\n00035|     try {\n00036|       data = JSON.parse(responseText);\n00037|     } catch (parseError) {\n00038|       console.error('🚛 NordWheel API Route: JSON parse error:', parseError);\n00039|       return NextResponse.json(\n00040|         { \n00041|           success: false, \n00042|           error: { \n00043|             message: 'Invalid JSON response from NordWheel API',\n00044|             details: responseText.substring(0, 500)\n00045|           }\n00046|         },\n00047|         { status: 500 }\n00048|       );\n00049|     }\n00050|     \n00051|     // Return the response with the same status code\n00052|     if (response.ok) {\n00053|       return NextResponse.json(data, { status: 200 });\n00054|     } else {\n00055|       // Handle API errors\n00056|       const errorMessage = data?.message || data?.error || `HTTP ${response.status}`;\n00057|       const errorDetails = data?.errors || data?.details || null;\n00058|       \n00059|       return NextResponse.json(\n00060|         {\n00061|           success: false,\n00062|           error: {\n00063|             message: errorMessage,\n00064|             details: errorDetails,\n00065|             status: response.status\n00066|           }\n00067|         },\n00068|         { status: response.status }\n00069|       );\n00070|     }\n00071|     \n00072|   } catch (error: any) {\n00073|     console.error('🚛 NordWheel API Route: Critical error:', error);\n00074|     \n00075|     return NextResponse.json(\n00076|       { \n00077|         success: false, \n00078|         error: { \n00079|           message: 'Internal server error',\n00080|           details: error.message\n00081|         }\n00082|       },\n00083|       { status: 500 }\n00084|     );\n00085|   }\n00086| }\n</file>",
+    "title": "app/api/nordwheel/route.ts",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    \n    // NordWheel API endpoint\n    const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';\n    \n    // Get API key from environment variables or use default\n    const apiKey = process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950';\n    \n    console.log('🚛 NordWheel API Route: Forwarding request to:', apiUrl);\n    console.log('🚛 NordWheel API Route: Request body:', JSON.stringify(body, null, 2));\n    \n    // Make request to NordWheel API\n    const response = await fetch(apiUrl, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',"
+    },
+    "time": {
+      "start": 1764033860078,
+      "end": 1764033860080
+    }
+  }
+}

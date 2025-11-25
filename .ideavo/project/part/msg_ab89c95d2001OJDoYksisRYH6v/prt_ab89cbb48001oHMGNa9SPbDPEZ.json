@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab89cbb48001oHMGNa9SPbDPEZ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89c95d2001OJDoYksisRYH6v",
+  "type": "tool",
+  "callID": "call_ae879a6de99e4c139605e2d1",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 788
+    },
+    "output": "<file>\n00789|   const handleLavsiteWarehouseChange = (checked: boolean) => {\n00790|     if (checked) {\n00791|       setForm(prev => ({\n00792|         ...prev,\n00793|         fromLavsiteWarehouse: true,\n00794|         fromAddressDelivery: true,\n00795|         fromTerminal: false,\n00796|         fromCity: 'Лосино-Петровский',\n00797|         fromAddress: 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область'\n00798|       }));\n00799|     } else {\n00800|       setForm(prev => ({\n00801|         ...prev,\n00802|         fromLavsiteWarehouse: false,\n00803|         fromCity: '',\n00804|         fromAddress: ''\n00805|       }));\n00806|     }\n00807|   };\n00808| \n00809|   const addCargo = () => {\n00810|     const newId = (form.cargos.length + 1).toString();\n00811|     setForm(prev => ({\n00812|       ...prev,\n00813|       cargos: [...prev.cargos, { id: newId, length: 0, width: 0, height: 0, weight: 0 }]\n00814|     }));\n00815|   };\n00816| \n00817|   const updateCargo = (id: string, field: string, value: number) => {\n00818|     setForm(prev => {\n00819|       const updatedCargos = prev.cargos.map(cargo => \n00820|         cargo.id === id ? { ...cargo, [field]: value } : cargo\n00821|       );\n00822|       \n00823|       // Очищаем пустые грузы согласно новой логике\n00824|       const cleanResult = cleanEmptyCargos(updatedCargos, prev.selectedProducts || []);\n00825|       \n00826|       return {\n00827|         ...prev,\n00828|         cargos: cleanResult.cargos,\n00829|         selectedProducts: cleanResult.products\n00830|       };\n00831|     });\n00832|   };\n00833| \n00834|   const removeCargo = (id: string) => {\n00835|     if (form.cargos.length > 1) {\n00836|       setForm(prev => ({\n00837|         ...prev,\n00838|         cargos: prev.cargos.filter(cargo => cargo.id !== id)\n\n(File has more lines. Use 'offset' parameter to read beyond line 838)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  const handleLavsiteWarehouseChange = (checked: boolean) => {\n    if (checked) {\n      setForm(prev => ({\n        ...prev,\n        fromLavsiteWarehouse: true,\n        fromAddressDelivery: true,\n        fromTerminal: false,\n        fromCity: 'Лосино-Петровский',\n        fromAddress: 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область'\n      }));\n    } else {\n      setForm(prev => ({\n        ...prev,\n        fromLavsiteWarehouse: false,\n        fromCity: '',\n        fromAddress: ''\n      }));\n    }\n  };\n"
+    },
+    "time": {
+      "start": 1764033870666,
+      "end": 1764033870672
+    }
+  }
+}

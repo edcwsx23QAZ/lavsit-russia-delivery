@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab89cd2cc001C2GJNt5k4gptiW",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89cbf87001OgCGEDQw7Yq1Oy",
+  "type": "text",
+  "text": "\nNow I understand the issue! The problem is in the NordWheel calculation function. When `fromLavsiteWarehouse` is true, the form sets `fromTerminal: false` and `fromAddressDelivery: true`, but the NordWheel function only checks `form.fromTerminal` to determine the location type. It doesn't handle the special case of `fromLavsiteWarehouse`.\n\nLooking at the `getDispatchLocation()` function in NordWheel calculation:\n\n```typescript\nconst getDispatchLocation = () => {\n  if (form.fromTerminal) {\n    return {\n      type: 'terminal' as const,\n      city_fias: getCityFias(form.fromCity)\n    };\n  } else {\n    return {\n      type: 'address' as const,\n      address: form.fromAddress || form.fromCity\n    };\n  }\n};\n```\n\nWhen warehouse is selected, `form.fromTerminal` is false, so it uses `address` type with the full address \"деревня Осеево, 202, городской округ Лосино-Петровский, Московская область\". However, NordWheel API likely expects a different format for warehouse locations.\n\nLet me fix this by updating the NordWheel calculation to handle warehouse case properly:",
+  "time": {
+    "start": 1764033886235,
+    "end": 1764033886235
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab89d9372001VoK6Cx4uh0cdtc",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89d6f32001tGBm4cj4JC4XNH",
+  "type": "tool",
+  "callID": "call_40615fc1e4004f16add6eedd",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      // 🔧 Детальное логирование множественных мест\n      console.log('🌐 Nord Wheel: Анализ множественных грузовых мест:');\n      console.log(`   - Количество мест: ${form.cargos.length}`);\n      console.log(`   - Общий вес: ${totalWeight} кг`);\n      console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);\n      console.log(`   - Откуда: ${form.fromCity} (${form.fromTerminal ? 'терминал' : 'адрес'})`);\n      console.log(`   - Куда: ${form.toCity} (${form.toTerminal ? 'терминал' : 'адрес'})`);",
+      "newString": "      // 🔧 Детальное логирование множественных мест\n      console.log('🌐 Nord Wheel: Анализ множественных грузовых мест:');\n      console.log(`   - Количество мест: ${form.cargos.length}`);\n      console.log(`   - Общий вес: ${totalWeight} кг`);\n      console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);\n      \n      // Детальная логистика отправления\n      let dispatchType = 'неизвестно';\n      if (form.fromLavsiteWarehouse) {\n        dispatchType = 'склад Лавсит';\n      } else if (form.fromTerminal) {\n        dispatchType = 'терминал';\n      } else if (form.fromAddressDelivery) {\n        dispatchType = 'адрес';\n      } else {\n        dispatchType = 'терминал (по умолчанию)';\n      }\n      \n      console.log(`   - Откуда: ${form.fromCity} (${dispatchType})`);\n      console.log(`   - Куда: ${form.toCity} (${form.toTerminal ? 'терминал' : 'адрес'})`);\n      \n      if (form.fromLavsiteWarehouse) {\n        console.log(`   - Адрес склада: ${form.fromAddress}`);\n      }"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3579,11 +3579,28 @@\n console.log('🌐 Nord Wheel: Анализ множественных грузовых мест:');\n console.log(`   - Количество мест: ${form.cargos.length}`);\n console.log(`   - Общий вес: ${totalWeight} кг`);\n console.log(`   - Общий объем: ${totalVolume.toFixed(3)} м³`);\n-console.log(`   - Откуда: ${form.fromCity} (${form.fromTerminal ? 'терминал' : 'адрес'})`);\n+\n+// Детальная логистика отправления\n+let dispatchType = 'неизвестно';\n+if (form.fromLavsiteWarehouse) {\n+  dispatchType = 'склад Лавсит';\n+} else if (form.fromTerminal) {\n+  dispatchType = 'терминал';\n+} else if (form.fromAddressDelivery) {\n+  dispatchType = 'адрес';\n+} else {\n+  dispatchType = 'терминал (по умолчанию)';\n+}\n+\n+console.log(`   - Откуда: ${form.fromCity} (${dispatchType})`);\n console.log(`   - Куда: ${form.toCity} (${form.toTerminal ? 'терминал' : 'адрес'})`);\n \n+if (form.fromLavsiteWarehouse) {\n+  console.log(`   - Адрес склада: ${form.fromAddress}`);\n+}\n+\n form.cargos.forEach((cargo, index) => {\n   console.log(`   📦 Место ${index + 1}:`);\n   console.log(`     - Габариты: ${cargo.length}×${cargo.width}×${cargo.height} см`);\n   console.log(`     - Вес: ${cargo.weight} кг`);\n"
+    },
+    "time": {
+      "start": 1764033926004,
+      "end": 1764033926030
+    }
+  }
+}
