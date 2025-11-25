@@ -194,7 +194,7 @@ export default function SaveCalculation({
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="flex items-center gap-2">
+        <Button variant="outline" className="flex items-center gap-2 text-black">
           <Save className="w-4 h-4" />
           Сохранить расчет
         </Button>

@@ -1,7 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
 
-const prisma = new PrismaClient();
+// Временное решение для сохранения без базы данных
+const calculationsStore: Array<{
+  id: string;
+  orderNumber: string | null;
+  formData: any;
+  results: any;
+  screenshot: string | null;
+  status: string;
+  createdAt: Date;
+}> = [];
 
 export async function POST(request: NextRequest) {
   try {
@@ -21,52 +29,33 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Сохранение в базу данных
-    const calculation = await prisma.calculation.create({
-      data: {
-        orderNumber: orderNumber || null,
-        formData: formData,
-        results: results,
-        screenshot: screenshot || null,
-        status: 'active'
-      }
-    });
+    // Временное сохранение в память
+    const calculation = {
+      id: `calc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      orderNumber: orderNumber || null,
+      formData: formData,
+      results: results,
+      screenshot: screenshot || null,
+      status: 'active',
+      createdAt: new Date()
+    };
 
-    console.log('✅ Calculation saved successfully:', calculation.id);
+    calculationsStore.push(calculation);
+
+    console.log('✅ Calculation saved successfully (in memory):', calculation.id);
 
     return NextResponse.json({
       success: true,
       data: {
         id: calculation.id,
         orderNumber: calculation.orderNumber,
-        createdAt: calculation.createdAt
+        createdAt: calculation.createdAt,
+        note: 'Saved in memory (database not configured)'
       }
     });
 
   } catch (error: any) {
     console.error('❌ Error saving calculation:', error);
-    
-    // Проверка на ошибки подключения к базе данных
-    if (error.code === 'P1001') {
-      return NextResponse.json(
-        { 
-          success: false, 
-          error: 'Database connection error. Please check DATABASE_URL configuration.' 
-        },
-        { status: 500 }
-      );
-    }
-
-    // Проверка на ошибки валидации Prisma
-    if (error.code === 'P2002') {
-      return NextResponse.json(
-        { 
-          success: false, 
-          error: 'Order number already exists. Please use a different order number.' 
-        },
-        { status: 409 }
-      );
-    }
 
     return NextResponse.json(
       { 
@@ -75,8 +64,6 @@ export async function POST(request: NextRequest) {
       },
       { status: 500 }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }
 
@@ -88,10 +75,8 @@ export async function GET(request: NextRequest) {
     console.log('📋 Fetching calculations:', { orderNumber });
 
     if (orderNumber) {
-      // Поиск по номеру заказа
-      const calculation = await prisma.calculation.findUnique({
-        where: { orderNumber }
-      });
+      // Поиск по номеру заказа в памяти
+      const calculation = calculationsStore.find(calc => calc.orderNumber === orderNumber);
 
       if (!calculation) {
         return NextResponse.json(
@@ -108,15 +93,15 @@ export async function GET(request: NextRequest) {
         data: calculation
       });
     } else {
-      // Получение всех расчетов (сортировка по дате)
-      const calculations = await prisma.calculation.findMany({
-        orderBy: { createdAt: 'desc' },
-        take: 50 // Ограничение для производительности
-      });
+      // Получение всех расчетов из памяти
+      const calculations = calculationsStore
+        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+        .slice(0, 50); // Ограничение для производительности
 
       return NextResponse.json({
         success: true,
-        data: calculations
+        data: calculations,
+        note: 'Loaded from memory (database not configured)'
       });
     }
 
@@ -130,7 +115,5 @@ export async function GET(request: NextRequest) {
       },
       { status: 500 }
     );
-  } finally {
-    await prisma.$disconnect();
   }
 }

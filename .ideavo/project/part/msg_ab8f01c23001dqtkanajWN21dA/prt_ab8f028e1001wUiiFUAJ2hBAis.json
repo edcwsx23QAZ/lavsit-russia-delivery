@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8f028e1001wUiiFUAJ2hBAis",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8f01c23001dqtkanajWN21dA",
+  "type": "tool",
+  "callID": "call_1ba5b9192e6245ea9637ae78",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/SaveCalculation.tsx",
+      "limit": 30,
+      "offset": 190
+    },
+    "output": "<file>\n00191|     return text;\n00192|   };\n00193| \n00194|   return (\n00195|     <Dialog open={isOpen} onOpenChange={setIsOpen}>\n00196|       <DialogTrigger asChild>\n00197|         <Button variant=\"outline\" className=\"flex items-center gap-2\">\n00198|           <Save className=\"w-4 h-4\" />\n00199|           Сохранить расчет\n00200|         </Button>\n00201|       </DialogTrigger>\n00202|       \n00203|       <DialogContent className=\"sm:max-w-md\">\n00204|         <DialogHeader>\n00205|           <DialogTitle className=\"flex items-center gap-2\">\n00206|             <Save className=\"w-5 h-5\" />\n00207|             Сохранение расчета\n00208|           </DialogTitle>\n00209|         </DialogHeader>\n00210|         \n00211|         <div className=\"space-y-4\">\n00212|           <div className=\"space-y-2\">\n00213|             <Label htmlFor=\"orderNumber\">Номер заказа *</Label>\n00214|             <Input\n00215|               id=\"orderNumber\"\n00216|               placeholder=\"Введите номер заказа\"\n00217|               value={orderNumber}\n00218|               onChange={(e) => setOrderNumber(e.target.value)}\n00219|               disabled={isSaving}\n00220|             />\n\n(File has more lines. Use 'offset' parameter to read beyond line 220)\n</file>",
+    "title": "components/SaveCalculation.tsx",
+    "metadata": {
+      "preview": "    return text;\n  };\n\n  return (\n    <Dialog open={isOpen} onOpenChange={setIsOpen}>\n      <DialogTrigger asChild>\n        <Button variant=\"outline\" className=\"flex items-center gap-2\">\n          <Save className=\"w-4 h-4\" />\n          Сохранить расчет\n        </Button>\n      </DialogTrigger>\n      \n      <DialogContent className=\"sm:max-w-md\">\n        <DialogHeader>\n          <DialogTitle className=\"flex items-center gap-2\">\n            <Save className=\"w-5 h-5\" />\n            Сохранение расчета\n          </DialogTitle>\n        </DialogHeader>\n        "
+    },
+    "time": {
+      "start": 1764039338210,
+      "end": 1764039338212
+    }
+  }
+}

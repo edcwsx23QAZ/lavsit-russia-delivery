@@ -1,0 +1,23 @@
+{
+  "id": "prt_ab8f1485b001OU08hONcquBceA",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8f1396800143P1vlP4wEddCw",
+  "type": "tool",
+  "callID": "call_20bbaeece361477c8e76bdd7",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/screenshot/route.ts"
+    },
+    "output": "<file>\n00001| import { NextRequest, NextResponse } from 'next/server';\n00002| import { createCalculationScreenshot } from '@/lib/screenshot-utils';\n00003| \n00004| export async function POST(request: NextRequest) {\n00005|   try {\n00006|     const body = await request.json();\n00007|     const { formData, calculations, enabledCompanies } = body;\n00008| \n00009|     console.log('📸 Creating calculation screenshot...');\n00010| \n00011|     if (!formData || !calculations) {\n00012|       return NextResponse.json(\n00013|         { \n00014|           success: false, \n00015|           error: 'Missing required fields: formData and calculations are required' \n00016|         },\n00017|         { status: 400 }\n00018|       );\n00019|     }\n00020| \n00021|     // Создание скриншота\n00022|     const screenshot = await createCalculationScreenshot(\n00023|       formData, \n00024|       calculations, \n00025|       enabledCompanies || {}\n00026|     );\n00027| \n00028|     return NextResponse.json({\n00029|       success: true,\n00030|       screenshot\n00031|     });\n00032| \n00033|   } catch (error: any) {\n00034|     console.error('❌ Error creating screenshot:', error);\n00035|     \n00036|     // Проверка на отсутствие Puppeteer\n00037|     if (error.message.includes('Cannot find module')) {\n00038|       return NextResponse.json(\n00039|         { \n00040|           success: false, \n00041|           error: 'Screenshot service not available. Please install puppeteer: npm install puppeteer' \n00042|         },\n00043|         { status: 503 }\n00044|       );\n00045|     }\n00046| \n00047|     return NextResponse.json(\n00048|       { \n00049|         success: false, \n00050|         error: 'Screenshot creation failed: ' + error.message \n00051|       },\n00052|       { status: 500 }\n00053|     );\n00054|   }\n00055| }\n</file>",
+    "title": "app/api/screenshot/route.ts",
+    "metadata": {
+      "preview": "import { NextRequest, NextResponse } from 'next/server';\nimport { createCalculationScreenshot } from '@/lib/screenshot-utils';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    const { formData, calculations, enabledCompanies } = body;\n\n    console.log('📸 Creating calculation screenshot...');\n\n    if (!formData || !calculations) {\n      return NextResponse.json(\n        { \n          success: false, \n          error: 'Missing required fields: formData and calculations are required' \n        },\n        { status: 400 }\n      );\n    }\n"
+    },
+    "time": {
+      "start": 1764039411805,
+      "end": 1764039411807
+    }
+  }
+}

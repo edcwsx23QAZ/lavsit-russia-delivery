@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8eff92a001QSL79R4FKuFMhU",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8efd931001hxpxQNPQuSn68P",
+  "type": "tool",
+  "callID": "call_df78286ea5204b52a07d5f51",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/SaveCalculation.tsx",
+      "limit": 50,
+      "offset": 200
+    },
+    "output": "<file>\n00201|       </DialogTrigger>\n00202|       \n00203|       <DialogContent className=\"sm:max-w-md\">\n00204|         <DialogHeader>\n00205|           <DialogTitle className=\"flex items-center gap-2\">\n00206|             <Save className=\"w-5 h-5\" />\n00207|             Сохранение расчета\n00208|           </DialogTitle>\n00209|         </DialogHeader>\n00210|         \n00211|         <div className=\"space-y-4\">\n00212|           <div className=\"space-y-2\">\n00213|             <Label htmlFor=\"orderNumber\">Номер заказа *</Label>\n00214|             <Input\n00215|               id=\"orderNumber\"\n00216|               placeholder=\"Введите номер заказа\"\n00217|               value={orderNumber}\n00218|               onChange={(e) => setOrderNumber(e.target.value)}\n00219|               disabled={isSaving}\n00220|             />\n00221|             <p className=\"text-sm text-muted-foreground\">\n00222|               Уникальный номер для идентификации расчета\n00223|             </p>\n00224|           </div>\n00225| \n00226|           {saveResult && (\n00227|             <Alert className={saveResult.success ? 'border-green-200 bg-green-50' : 'border-red-200 bg-red-50'}>\n00228|               <div className=\"flex items-center gap-2\">\n00229|                 {saveResult.success ? (\n00230|                   <CheckCircle className=\"w-4 h-4 text-green-600\" />\n00231|                 ) : (\n00232|                   <AlertCircle className=\"w-4 h-4 text-red-600\" />\n00233|                 )}\n00234|                 <AlertDescription className={saveResult.success ? 'text-green-800' : 'text-red-800'}>\n00235|                   {saveResult.message}\n00236|                 </AlertDescription>\n00237|               </div>\n00238|             </Alert>\n00239|           )}\n00240| \n00241|           <div className=\"flex gap-2 pt-4\">\n00242|             <Button \n00243|               onClick={handleSave} \n00244|               disabled={isSaving || !orderNumber.trim()}\n00245|               className=\"flex-1\"\n00246|             >\n00247|               {isSaving ? (\n00248|                 <>\n00249|                   <Camera className=\"w-4 h-4 mr-2 animate-pulse\" />\n00250|                   Сохранение...\n\n(File has more lines. Use 'offset' parameter to read beyond line 250)\n</file>",
+    "title": "components/SaveCalculation.tsx",
+    "metadata": {
+      "preview": "      </DialogTrigger>\n      \n      <DialogContent className=\"sm:max-w-md\">\n        <DialogHeader>\n          <DialogTitle className=\"flex items-center gap-2\">\n            <Save className=\"w-5 h-5\" />\n            Сохранение расчета\n          </DialogTitle>\n        </DialogHeader>\n        \n        <div className=\"space-y-4\">\n          <div className=\"space-y-2\">\n            <Label htmlFor=\"orderNumber\">Номер заказа *</Label>\n            <Input\n              id=\"orderNumber\"\n              placeholder=\"Введите номер заказа\"\n              value={orderNumber}\n              onChange={(e) => setOrderNumber(e.target.value)}\n              disabled={isSaving}\n            />"
+    },
+    "time": {
+      "start": 1764039326000,
+      "end": 1764039326007
+    }
+  }
+}

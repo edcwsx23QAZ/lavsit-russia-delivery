@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8f043510014HGKg2KxJgPrAJ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8f02dc7001JqX5BMTCCoLAM0",
+  "type": "tool",
+  "callID": "call_88db0149bbaa4513a0e857ad",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/SaveCalculation.tsx",
+      "oldString": "        <Button variant=\"outline\" className=\"flex items-center gap-2\">\n          <Save className=\"w-4 h-4\" />\n          Сохранить расчет\n        </Button>",
+      "newString": "        <Button variant=\"outline\" className=\"flex items-center gap-2 text-black\">\n          <Save className=\"w-4 h-4\" />\n          Сохранить расчет\n        </Button>"
+    },
+    "output": "",
+    "title": "components/SaveCalculation.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/components/SaveCalculation.tsx\n===================================================================\n--- /home/user/project/components/SaveCalculation.tsx\n+++ /home/user/project/components/SaveCalculation.tsx\n@@ -193,9 +193,9 @@\n \n return (\n   <Dialog open={isOpen} onOpenChange={setIsOpen}>\n     <DialogTrigger asChild>\n-      <Button variant=\"outline\" className=\"flex items-center gap-2\">\n+      <Button variant=\"outline\" className=\"flex items-center gap-2 text-black\">\n         <Save className=\"w-4 h-4\" />\n         Сохранить расчет\n       </Button>\n     </DialogTrigger>\n"
+    },
+    "time": {
+      "start": 1764039344981,
+      "end": 1764039344992
+    }
+  }
+}

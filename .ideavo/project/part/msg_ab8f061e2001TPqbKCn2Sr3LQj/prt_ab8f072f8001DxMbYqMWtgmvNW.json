@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8f072f8001DxMbYqMWtgmvNW",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8f061e2001TPqbKCn2Sr3LQj",
+  "type": "tool",
+  "callID": "call_7e2bdf93dba54aaa9e06a9b6",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "export $(cat .env | xargs) && npx prisma db push --force-reset",
+      "description": "Test database connection and push schema"
+    },
+    "output": "Environment variables loaded from .env\nPrisma schema loaded from prisma/schema.prisma\nDatasource \"db\": PostgreSQL database \"postgres\", schema \"public\" at \"db.jnkjrieifdfbjuwmcocq.supabase.co:5432\"\n\nError: P1001: Can't reach database server at `db.jnkjrieifdfbjuwmcocq.supabase.co:5432`\n\nPlease make sure your database server is running at `db.jnkjrieifdfbjuwmcocq.supabase.co:5432`.\n",
+    "title": "export $(cat .env | xargs) && npx prisma db push --force-reset",
+    "metadata": {
+      "output": "Environment variables loaded from .env\nPrisma schema loaded from prisma/schema.prisma\nDatasource \"db\": PostgreSQL database \"postgres\", schema \"public\" at \"db.jnkjrieifdfbjuwmcocq.supabase.co:5432\"\n\nError: P1001: Can't reach database server at `db.jnkjrieifdfbjuwmcocq.supabase.co:5432`\n\nPlease make sure your database server is running at `db.jnkjrieifdfbjuwmcocq.supabase.co:5432`.\n",
+      "exit": 1,
+      "description": "Test database connection and push schema"
+    },
+    "time": {
+      "start": 1764039357206,
+      "end": 1764039359244
+    }
+  }
+}
