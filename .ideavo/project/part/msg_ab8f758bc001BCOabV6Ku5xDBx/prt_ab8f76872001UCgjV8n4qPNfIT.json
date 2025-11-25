@@ -1,0 +1,21 @@
+{
+  "id": "prt_ab8f76872001UCgjV8n4qPNfIT",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8f758bc001BCOabV6Ku5xDBx",
+  "type": "tool",
+  "callID": "call_d7f9a0ea975f4ebeb6e3e795",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "import SaveCalculation from '@/components/SaveCalculation';",
+      "newString": "import SaveCalculation from '@/components/SaveCalculation';\nimport CalculationHistory from '@/components/CalculationHistory';"
+    },
+    "error": "Error: You must read the file /home/user/project/app/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1764039813237,
+      "end": 1764039813238
+    }
+  }
+}

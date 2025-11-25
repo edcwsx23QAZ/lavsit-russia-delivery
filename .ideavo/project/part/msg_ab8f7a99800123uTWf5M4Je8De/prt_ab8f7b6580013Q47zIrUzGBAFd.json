@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8f7b6580013Q47zIrUzGBAFd",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8f7a99800123uTWf5M4Je8De",
+  "type": "tool",
+  "callID": "call_ee4fd200a6d94198ba6e2183",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 5320
+    },
+    "output": "<file>\n05321|                   <div className=\"flex gap-2\">\n05322|                     <SaveCalculation \n05323|                       formData={form}\n05324|                       calculations={calculations}\n05325|                       enabledCompanies={hiddenCompanies}\n05326|                       onSave={(result) => {\n05327|                         console.log('Расчет сохранен:', result);\n05328|                       }}\n05329|                     />\n05330|                     <Button \n05331|                       onClick={exportToPDF} \n05332|                       variant=\"outline\" \n05333|                       size=\"sm\" \n05334|                       className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n05335|                     >\n05336|                       Сохранить в PDF\n05337|                     </Button>\n05338|                   </div>\n05339|                 </div>\n05340|                 \n\n(File has more lines. Use 'offset' parameter to read beyond line 5340)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                  <div className=\"flex gap-2\">\n                    <SaveCalculation \n                      formData={form}\n                      calculations={calculations}\n                      enabledCompanies={hiddenCompanies}\n                      onSave={(result) => {\n                        console.log('Расчет сохранен:', result);\n                      }}\n                    />\n                    <Button \n                      onClick={exportToPDF} \n                      variant=\"outline\" \n                      size=\"sm\" \n                      className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n                    >\n                      Сохранить в PDF\n                    </Button>\n                  </div>\n                </div>\n                "
+    },
+    "time": {
+      "start": 1764039833178,
+      "end": 1764039833183
+    }
+  }
+}

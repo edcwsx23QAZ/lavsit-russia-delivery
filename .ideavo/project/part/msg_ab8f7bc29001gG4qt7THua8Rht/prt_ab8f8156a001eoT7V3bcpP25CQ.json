@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8f8156a001eoT7V3bcpP25CQ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8f7bc29001gG4qt7THua8Rht",
+  "type": "tool",
+  "callID": "call_4c6a74027ea042719dcc9ff3",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                  <div className=\"flex gap-2\">\n                    <SaveCalculation \n                      formData={form}\n                      calculations={calculations}\n                      enabledCompanies={hiddenCompanies}\n                      onSave={(result) => {\n                        console.log('Расчет сохранен:', result);\n                      }}\n                    />\n                    <Button \n                      onClick={exportToPDF} \n                      variant=\"outline\" \n                      size=\"sm\" \n                      className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n                    >\n                      Сохранить в PDF\n                    </Button>\n                  </div>",
+      "newString": "                  <div className=\"flex gap-2 flex-wrap\">\n                    <SaveCalculation \n                      formData={form}\n                      calculations={calculations}\n                      enabledCompanies={hiddenCompanies}\n                      onSave={(result) => {\n                        console.log('Расчет сохранен:', result);\n                      }}\n                    />\n                    <CalculationHistory \n                      onLoadCalculation={(calculation) => {\n                        console.log('Загрузка расчета:', calculation.orderNumber);\n                        // Здесь можно добавить логику загрузки данных формы из сохраненного расчета\n                      }}\n                    />\n                    <Button \n                      onClick={exportToPDF} \n                      variant=\"outline\" \n                      size=\"sm\" \n                      className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n                    >\n                      Сохранить в PDF\n                    </Button>\n                  </div>"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -5317,17 +5317,23 @@\n {calculations.length > 0 && (\n      <div className=\"space-y-2\">\n     <div className=\"flex justify-between items-center\">\n       <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n-      <div className=\"flex gap-2\">\n+      <div className=\"flex gap-2 flex-wrap\">\n         <SaveCalculation \n           formData={form}\n           calculations={calculations}\n           enabledCompanies={hiddenCompanies}\n           onSave={(result) => {\n             console.log('Расчет сохранен:', result);\n           }}\n         />\n+        <CalculationHistory \n+          onLoadCalculation={(calculation) => {\n+            console.log('Загрузка расчета:', calculation.orderNumber);\n+            // Здесь можно добавить логику загрузки данных формы из сохраненного расчета\n+          }}\n+        />\n         <Button \n           onClick={exportToPDF} \n           variant=\"outline\" \n           size=\"sm\" \n"
+    },
+    "time": {
+      "start": 1764039857517,
+      "end": 1764039857543
+    }
+  }
+}

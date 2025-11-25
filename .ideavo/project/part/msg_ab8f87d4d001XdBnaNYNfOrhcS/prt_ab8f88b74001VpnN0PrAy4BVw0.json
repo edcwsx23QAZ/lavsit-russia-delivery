@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8f88b74001VpnN0PrAy4BVw0",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8f87d4d001XdBnaNYNfOrhcS",
+  "type": "tool",
+  "callID": "call_5431737095294514abc6625a",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "tail -20 /home/user/project/components/CalculationHistory.tsx",
+      "description": "Check end of CalculationHistory component"
+    },
+    "output": "                    <CardHeader>\n                      <CardTitle className=\"text-sm\">Скриншот расчета</CardTitle>\n                    </CardHeader>\n                    <CardContent>\n                      <img \n                        src={selectedCalculation.screenshot} \n                        alt=\"Скриншот расчета\"\n                        className=\"w-full rounded border\"\n                      />\n                    </CardContent>\n                  </Card>\n                )}\n              </div>\n            </ScrollArea>\n          )}\n        </DialogContent>\n      </Dialog>\n    </div>\n  );\n}",
+    "title": "tail -20 /home/user/project/components/CalculationHistory.tsx",
+    "metadata": {
+      "output": "                    <CardHeader>\n                      <CardTitle className=\"text-sm\">Скриншот расчета</CardTitle>\n                    </CardHeader>\n                    <CardContent>\n                      <img \n                        src={selectedCalculation.screenshot} \n                        alt=\"Скриншот расчета\"\n                        className=\"w-full rounded border\"\n                      />\n                    </CardContent>\n                  </Card>\n                )}\n              </div>\n            </ScrollArea>\n          )}\n        </DialogContent>\n      </Dialog>\n    </div>\n  );\n}",
+      "exit": 0,
+      "description": "Check end of CalculationHistory component"
+    },
+    "time": {
+      "start": 1764039887736,
+      "end": 1764039888032
+    }
+  }
+}

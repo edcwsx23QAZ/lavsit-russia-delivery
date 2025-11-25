@@ -27,6 +27,7 @@ import { enhancedApiRequest } from '@/lib/api-utils';
 import { cacheManager } from '@/lib/cache-manager';
 import { optimizedApiClient } from '@/lib/optimized-api-client';
 import SaveCalculation from '@/components/SaveCalculation';
+import CalculationHistory from '@/components/CalculationHistory';
 
 interface Cargo {
   id: string;
@@ -5317,13 +5318,19 @@ export default function Home() {
                  <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <h2 className="text-lg font-bold text-blue-400">Результаты расчета</h2>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 flex-wrap">
                     <SaveCalculation 
                       formData={form}
                       calculations={calculations}
                       enabledCompanies={hiddenCompanies}
                       onSave={(result) => {
                         console.log('Расчет сохранен:', result);
+                      }}
+                    />
+                    <CalculationHistory 
+                      onLoadCalculation={(calculation) => {
+                        console.log('Загрузка расчета:', calculation.orderNumber);
+                        // Здесь можно добавить логику загрузки данных формы из сохраненного расчета
                       }}
                     />
                     <Button 

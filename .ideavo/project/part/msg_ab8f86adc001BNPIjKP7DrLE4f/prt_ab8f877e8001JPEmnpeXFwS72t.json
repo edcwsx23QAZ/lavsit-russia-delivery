@@ -1,0 +1,24 @@
+{
+  "id": "prt_ab8f877e8001JPEmnpeXFwS72t",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8f86adc001BNPIjKP7DrLE4f",
+  "type": "tool",
+  "callID": "call_7f92f51db923495a9f1443b3",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/CalculationHistory.tsx",
+      "limit": 20
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import React, { useState, useEffect } from 'react';\n00004| import { Button } from '@/components/ui/button';\n00005| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00006| import { Badge } from '@/components/ui/badge';\n00007| import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';\n00008| import { ScrollArea } from '@/components/ui/scroll-area';\n00009| import { Separator } from '@/components/ui/separator';\n00010| import { Alert, AlertDescription } from '@/components/ui/alert';\n00011| import { History, Eye, Calendar, MapPin, Package, Trash2, Download } from 'lucide-react';\n00012| \n00013| interface Calculation {\n00014|   id: string;\n00015|   orderNumber: string | null;\n00016|   formData: any;\n00017|   results: any;\n00018|   screenshot: string | null;\n00019|   status: string;\n00020|   createdAt: string;\n\n(File has more lines. Use 'offset' parameter to read beyond line 20)\n</file>",
+    "title": "components/CalculationHistory.tsx",
+    "metadata": {
+      "preview": "'use client';\n\nimport React, { useState, useEffect } from 'react';\nimport { Button } from '@/components/ui/button';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Badge } from '@/components/ui/badge';\nimport { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';\nimport { ScrollArea } from '@/components/ui/scroll-area';\nimport { Separator } from '@/components/ui/separator';\nimport { Alert, AlertDescription } from '@/components/ui/alert';\nimport { History, Eye, Calendar, MapPin, Package, Trash2, Download } from 'lucide-react';\n\ninterface Calculation {\n  id: string;\n  orderNumber: string | null;\n  formData: any;\n  results: any;\n  screenshot: string | null;\n  status: string;\n  createdAt: string;"
+    },
+    "time": {
+      "start": 1764039882730,
+      "end": 1764039882732
+    }
+  }
+}

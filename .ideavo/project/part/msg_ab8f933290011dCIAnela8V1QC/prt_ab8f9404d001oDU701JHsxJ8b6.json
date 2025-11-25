@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8f9404d001oDU701JHsxJ8b6",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8f933290011dCIAnela8V1QC",
+  "type": "tool",
+  "callID": "call_0776b69a5a11479f88e8538e",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build project to verify CalculationHistory fixes"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./components/CalculationHistory.tsx\nError: \n  \u001b[31mx\u001b[0m Expected ',', got '{'\n     ,-[\u001b[36;1;4m/home/user/project/components/CalculationHistory.tsx\u001b[0m:248:1]\n \u001b[2m248\u001b[0m |       </DialogContent>\n \u001b[2m249\u001b[0m |     </Dialog>\n \u001b[2m250\u001b[0m | \n \u001b[2m251\u001b[0m |     {/* Диалог с деталями расчета */}\n     : \u001b[31;1m    ^\u001b[0m\n \u001b[2m252\u001b[0m |     <Dialog open={showDetails} onOpenChange={setShowDetails}>\n \u001b[2m253\u001b[0m |       <DialogContent className=\"sm:max-w-2xl max-h-[80vh]\">\n \u001b[2m254\u001b[0m |         <DialogHeader>\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./components/CalculationHistory.tsx\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\nFailed to compile.\n\n./components/CalculationHistory.tsx\nError: \n  \u001b[31mx\u001b[0m Expected ',', got '{'\n     ,-[\u001b[36;1;4m/home/user/project/components/CalculationHistory.tsx\u001b[0m:248:1]\n \u001b[2m248\u001b[0m |       </DialogContent>\n \u001b[2m249\u001b[0m |     </Dialog>\n \u001b[2m250\u001b[0m | \n \u001b[2m251\u001b[0m |     {/* Диалог с деталями расчета */}\n     : \u001b[31;1m    ^\u001b[0m\n \u001b[2m252\u001b[0m |     <Dialog open={showDetails} onOpenChange={setShowDetails}>\n \u001b[2m253\u001b[0m |       <DialogContent className=\"sm:max-w-2xl max-h-[80vh]\">\n \u001b[2m254\u001b[0m |         <DialogHeader>\n     `----\n\nCaused by:\n    Syntax Error\n\nImport trace for requested module:\n./components/CalculationHistory.tsx\n./app/page.tsx\n\n\n> Build failed because of webpack errors\n",
+      "exit": 1,
+      "description": "Build project to verify CalculationHistory fixes"
+    },
+    "time": {
+      "start": 1764039934035,
+      "end": 1764039939231
+    }
+  }
+}

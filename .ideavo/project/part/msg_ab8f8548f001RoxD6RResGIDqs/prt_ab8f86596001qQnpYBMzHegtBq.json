@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8f86596001qQnpYBMzHegtBq",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8f8548f001RoxD6RResGIDqs",
+  "type": "tool",
+  "callID": "call_89e2c4055f8148e29392982f",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/CalculationHistory.tsx",
+      "limit": 10,
+      "offset": 100
+    },
+    "output": "<file>\n00101|     return results.filter((result: any) => !result.error).length;\n00102|   };\n00103| \n00104|   return (\n00105|     <Dialog open={isOpen} onOpenChange={setIsOpen}>\n00106|       <DialogTrigger asChild>\n00107|         <Button variant=\"outline\" className=\"flex items-center gap-2 text-black\">\n00108|           <History className=\"w-4 h-4\" />\n00109|           История расчетов\n00110|         </Button>\n\n(File has more lines. Use 'offset' parameter to read beyond line 110)\n</file>",
+    "title": "components/CalculationHistory.tsx",
+    "metadata": {
+      "preview": "    return results.filter((result: any) => !result.error).length;\n  };\n\n  return (\n    <Dialog open={isOpen} onOpenChange={setIsOpen}>\n      <DialogTrigger asChild>\n        <Button variant=\"outline\" className=\"flex items-center gap-2 text-black\">\n          <History className=\"w-4 h-4\" />\n          История расчетов\n        </Button>"
+    },
+    "time": {
+      "start": 1764039878040,
+      "end": 1764039878044
+    }
+  }
+}
