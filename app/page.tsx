@@ -3580,18 +3580,40 @@ export default function Home() {
         console.log(`   📐 Максимальные габариты: ${maxLength}×${maxWidth}×${maxHeight} см`);
       }
 
+      // Функция для определения FIAS кода города
+      const getCityFias = (cityName: string): string => {
+        const cityFiasMap: Record<string, string> = {
+          'москва': '0c5b2444-70a0-4932-980c-b4dc0d3f02b5',
+          'санкт-петербург': 'c2deb16a-0330-4f05-821f-1d09c93331e6',
+          'спб': 'c2deb16a-0330-4f05-821f-1d09c93331e6',
+          'екатеринбург': '2763c110-cb8b-416a-9dac-ad28a55b4402',
+          'новосибирск': '8dea00e3-9aab-4d8e-887c-ef2aaa546456',
+          'казань': '93b3df57-4c89-44df-ac42-96f05e9cd3b9',
+          'нижний новгород': '555e7d61-d9a7-4ba6-9770-6caa8198c483',
+          'челябинск': 'a376e68d-724a-4472-be7c-891bdb09ae32',
+          'омск': 'bb035cc3-1dc2-4627-9d25-a1bf5fed073d',
+          'ростов-на-дону': 'c1cfe4b9-f7c2-423c-abfa-6ed5cb24d83e',
+          'уфа': '7339e834-2cb4-473c-9c6e-93f3dcd66011',
+          'красноярск': '9b968c73-f4d4-4012-8da8-3dacd4d4c1bd',
+          'пермь': '4dc222e8-1f6a-4c36-894b-2b4a8c8a9b08',
+          'воронеж': '5bf5ddff-6353-4a3d-80c4-6fb27f00c6c1',
+          'волгоград': 'da051ec8-da2e-4a66-b542-473b8d221ab6'
+        };
+
+        const normalizedCity = cityName.toLowerCase().trim()
+          .replace(/^г\s+/, '') // Убираем префикс "г "
+          .replace(/^город\s+/, '') // Убираем префикс "город "
+          .replace(/\s+/g, ' '); // Нормализуем пробелы
+
+        return cityFiasMap[normalizedCity] || '0c5b2444-70a0-4932-980c-b4dc0d3f02b5'; // По умолчанию Москва
+      };
       // 🏙️ Определяем тип локации на основе настроек формы
       const getDispatchLocation = () => {
         if (form.fromTerminal) {
           return {
             type: 'terminal' as const,
-            // Для терминальной доставки достаточно города, используем стандартные терминалы
-            terminal_id: form.fromCity.toLowerCase().includes('москва') ? '0c7a2795-1220-486d-a7ce-8bcf130a1224' :
-                        form.fromCity.toLowerCase().includes('санкт') || form.fromCity.toLowerCase().includes('спб') ? '3ca02b62-3632-4da0-8fde-de9d9c77c553' :
-                        '0c7a2795-1220-486d-a7ce-8bcf130a1224', // По умолчанию Москва
-            city_fias: form.fromCity.toLowerCase().includes('москва') ? '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' :
-                       form.fromCity.toLowerCase().includes('санкт') || form.fromCity.toLowerCase().includes('спб') ? 'c2deb16a-0330-4f05-821f-1d09c93331e6' :
-                       '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // По умолчанию Москва
+            // Для терминальной доставки используем реальный FIAS код города
+            city_fias: getCityFias(form.fromCity)
           };
         } else {
           return {
@@ -3605,13 +3627,8 @@ export default function Home() {
         if (form.toTerminal) {
           return {
             type: 'terminal' as const,
-            // Для терминальной доставки достаточно города, используем стандартные терминалы
-            terminal_id: form.toCity.toLowerCase().includes('москва') ? '0c7a2795-1220-486d-a7ce-8bcf130a1224' :
-                        form.toCity.toLowerCase().includes('санкт') || form.toCity.toLowerCase().includes('спб') ? '3ca02b62-3632-4da0-8fde-de9d9c77c553' :
-                        '3ca02b62-3632-4da0-8fde-de9d9c77c553', // По умолчанию СПб
-            city_fias: form.toCity.toLowerCase().includes('москва') ? '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' :
-                       form.toCity.toLowerCase().includes('санкт') || form.toCity.toLowerCase().includes('спб') ? 'c2deb16a-0330-4f05-821f-1d09c93331e6' :
-                       'c2deb16a-0330-4f05-821f-1d09c93331e6' // По умолчанию СПб
+            // Для терминальной доставки используем реальный FIAS код города
+            city_fias: getCityFias(form.toCity)
           };
         } else {
           return {
@@ -3650,7 +3667,7 @@ export default function Home() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}`
+          'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'}`
         },
         body: JSON.stringify(requestData)
       });
@@ -3676,44 +3693,83 @@ export default function Home() {
       const data = await response.json();
       console.log('🚛 Nord Wheel API ответ:', data);
 
-      // Парсинг ответа API - поддерживаем разные форматы
-      let price = 0;
-      let days = 0;
-      let details: any = {};
+       // Парсинг ответа API - поддерживаем разные форматы
+       let price = 0;
+       let days = 0;
+       let details: any = {};
 
-      if (data.success) {
-        // Новый формат API
-        price = data.price || data.total_cost || data.cost || 0;
-        days = data.days || data.delivery_days || data.delivery_time || 0;
-        details = {
-          totalCost: price,
-          deliveryCost: data.delivery_cost || 0,
-          pickupCost: data.pickup_cost || 0,
-          insuranceCost: data.insurance_cost || 0,
-          services: data.services || [],
-          currency: data.currency || 'RUB'
-        };
-      } else if (data.price !== undefined) {
-        // Альтернативный формат ответа
-        price = data.price;
-        days = data.days || data.delivery_time || 0;
-        details = {
-          totalCost: price,
-          currency: data.currency || 'RUB'
-        };
-      } else {
-        // Если ответ не содержит цены, возвращаем ошибку
-        console.error('❌ Nord Wheel: Неверный формат ответа API:', data);
-        return {
-          company: 'Nord Wheel',
-          price: 0,
-          days: 0,
-          error: 'Неверный формат ответа API',
-          apiUrl,
-          requestData,
-          responseData: data
-        };
-      }
+       if (data.success) {
+         // Новый формат API с auto/avia объектами
+         if (data.auto || data.avia) {
+           const options: Array<{type: string, price: number, days: number, services: any[]}> = [];
+           
+           if (data.auto) {
+             options.push({
+               type: 'auto',
+               price: data.auto.total_price || 0,
+               days: data.auto.delivery_date || 0,
+               services: data.auto.services || []
+             });
+           }
+           
+           if (data.avia) {
+             options.push({
+               type: 'avia',
+               price: data.avia.total_price || 0,
+               days: data.avia.delivery_date || 0,
+               services: data.avia.services || []
+             });
+           }
+           
+           // Выбираем самый дешевый вариант
+           const bestOption = options.reduce((best, current) => 
+             current.price < best.price ? current : best
+           );
+           
+           price = bestOption.price;
+           days = bestOption.days;
+           details = {
+             totalCost: price,
+             deliveryCost: price, // В новом формате общая стоимость включает все
+             transportType: bestOption.type,
+             services: bestOption.services,
+             allOptions: options, // Сохраняем все варианты для отладки
+             currency: 'RUB'
+           };
+         } else {
+           // Альтернативный формат ответа
+           price = data.price || data.total_cost || data.cost || 0;
+           days = data.days || data.delivery_days || data.delivery_time || 0;
+           details = {
+             totalCost: price,
+             deliveryCost: data.delivery_cost || 0,
+             pickupCost: data.pickup_cost || 0,
+             insuranceCost: data.insurance_cost || 0,
+             services: data.services || [],
+             currency: data.currency || 'RUB'
+           };
+         }
+       } else if (data.price !== undefined) {
+         // Старый формат ответа
+         price = data.price;
+         days = data.days || data.delivery_time || 0;
+         details = {
+           totalCost: price,
+           currency: data.currency || 'RUB'
+         };
+       } else {
+         // Если ответ не содержит цены, возвращаем ошибку
+         console.error('❌ Nord Wheel: Неверный формат ответа API:', data);
+         return {
+           company: 'Nord Wheel',
+           price: 0,
+           days: 0,
+           error: 'Неверный формат ответа API',
+           apiUrl,
+           requestData,
+           responseData: data
+         };
+       }
 
       return {
         company: 'Nord Wheel',
@@ -4377,50 +4433,50 @@ export default function Home() {
           price: remainder
         });
       }
-    } else if (calc.company === 'Nord Wheel' && calc.details) {
-      // Расшифровка для Nord Wheel согласно требованиям
-      if (calc.details.totalCost) {
-        details.push({
-          service: 'Общая стоимость доставки',
-          description: '',
-          price: calc.details.totalCost
-        });
-      }
-      if (calc.details.deliveryCost) {
-        details.push({
-          service: 'Стоимость перевозки',
-          description: '',
-          price: calc.details.deliveryCost
-        });
-      }
-      if (calc.details.terminalCost) {
-        details.push({
-          service: 'Стоимость межтерминальной перевозки',
-          description: '',
-          price: calc.details.terminalCost
-        });
-      }
-      if (calc.details.pickupCost) {
-        details.push({
-          service: 'Стоимость забора',
-          description: '',
-          price: calc.details.pickupCost
-        });
-      }
-      if (calc.details.deliveryToDoorCost) {
-        details.push({
-          service: 'Стоимость доставки до двери',
-          description: '',
-          price: calc.details.deliveryToDoorCost
-        });
-      }
-      if (calc.details.additionalServices && calc.details.additionalServices > 0) {
-        details.push({
-          service: 'Стоимость доп.услуг',
-          description: '',
-          price: calc.details.additionalServices
-        });
-      }
+     } else if (calc.company === 'Nord Wheel' && calc.details) {
+       // Расшифровка для Nord Wheel согласно требованиям
+       if (calc.details.totalCost) {
+         details.push({
+           service: 'Общая стоимость доставки',
+           description: calc.details.transportType ? `Тип транспорта: ${calc.details.transportType}` : '',
+           price: calc.details.totalCost
+         });
+       }
+       
+       // Показываем услуги из ответа API
+       if (calc.details.services && Array.isArray(calc.details.services)) {
+         calc.details.services.forEach((service: any) => {
+           if (service.name && service.price) {
+             details.push({
+               service: service.name,
+               description: service.description || '',
+               price: service.price
+             });
+           }
+         });
+       }
+       
+       // Показываем все доступные варианты для отладки
+       if (calc.details.allOptions && Array.isArray(calc.details.allOptions)) {
+         details.push({
+           service: '─────────────────────────',
+           description: '',
+           price: 0
+         });
+         details.push({
+           service: 'Доступные варианты',
+           description: `Выбран: ${calc.details.transportType}`,
+           price: 0
+         });
+         
+         calc.details.allOptions.forEach((option: any) => {
+           details.push({
+             service: `Вариант ${option.type}`,
+             description: `${option.days} дней`,
+             price: option.price
+           });
+         });
+       }
 
     } else if (calc.company === 'ПЭК' && calc.details?.services) {
       // Для ПЭК используем данные из API

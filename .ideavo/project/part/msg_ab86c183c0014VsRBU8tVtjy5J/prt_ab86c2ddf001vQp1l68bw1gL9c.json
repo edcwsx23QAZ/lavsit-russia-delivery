@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab86c2ddf001vQp1l68bw1gL9c",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab86c183c0014VsRBU8tVtjy5J",
+  "type": "tool",
+  "callID": "call_58991727",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build",
+      "description": "Build the project to check for TypeScript and other compilation errors"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n\n\n(Command timed out after 60000 ms)",
+    "title": "cd /home/user/project && npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n\n\n(Command timed out after 60000 ms)",
+      "exit": null,
+      "description": "Build the project to check for TypeScript and other compilation errors"
+    },
+    "time": {
+      "start": 1764030688738,
+      "end": 1764030753774
+    }
+  }
+}

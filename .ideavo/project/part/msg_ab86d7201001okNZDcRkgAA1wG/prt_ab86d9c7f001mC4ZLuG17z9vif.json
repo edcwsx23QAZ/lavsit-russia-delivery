@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab86d9c7f001mC4ZLuG17z9vif",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab86d7201001okNZDcRkgAA1wG",
+  "type": "tool",
+  "callID": "call_46233007",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "app/page.tsx",
+      "newString": "         // Новый формат API с auto/avia объектами\n         if (data.auto || data.avia) {\n           const options: Array<{type: string, price: number, days: number, services: any[]}> = [];\n           \n           if (data.auto) {\n             options.push({\n               type: 'auto',\n               price: data.auto.total_price || 0,\n               days: data.auto.delivery_date || 0,\n               services: data.auto.services || []\n             });\n           }\n           \n           if (data.avia) {\n             options.push({\n               type: 'avia',\n               price: data.avia.total_price || 0,\n               days: data.avia.delivery_date || 0,\n               services: data.avia.services || []\n             });\n           }\n           \n           // Выбираем самый дешевый вариант\n           const bestOption = options.reduce((best, current) => \n             current.price < best.price ? current : best\n           );\n           \n           price = bestOption.price;\n           days = bestOption.days;\n           details = {\n             totalCost: price,\n             deliveryCost: price, // В новом формате общая стоимость включает все\n             transportType: bestOption.type,\n             services: bestOption.services,\n             allOptions: options, // Сохраняем все варианты для отладки\n             currency: 'RUB'\n           };\n         }",
+      "oldString": "         // Новый формат API с auto/avia объектами\n         if (data.auto || data.avia) {\n           const options = [];\n           \n           if (data.auto) {\n             options.push({\n               type: 'auto',\n               price: data.auto.total_price || 0,\n               days: data.auto.delivery_date || 0,\n               services: data.auto.services || []\n             });\n           }\n           \n           if (data.avia) {\n             options.push({\n               type: 'avia',\n               price: data.avia.total_price || 0,\n               days: data.avia.delivery_date || 0,\n               services: data.avia.services || []\n             });\n           }\n           \n           // Выбираем самый дешевый вариант\n           const bestOption = options.reduce((best, current) => \n             current.price < best.price ? current : best\n           );\n           \n           price = bestOption.price;\n           days = bestOption.days;\n           details = {\n             totalCost: price,\n             deliveryCost: price, // В новом формате общая стоимость включает все\n             transportType: bestOption.type,\n             services: bestOption.services,\n             allOptions: options, // Сохраняем все варианты для отладки\n             currency: 'RUB'\n           };\n         }"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3700,9 +3700,9 @@\n \n if (data.success) {\n   // Новый формат API с auto/avia объектами\n   if (data.auto || data.avia) {\n-    const options = [];\n+    const options: Array<{type: string, price: number, days: number, services: any[]}> = [];\n     \n     if (data.auto) {\n       options.push({\n         type: 'auto',\n"
+    },
+    "time": {
+      "start": 1764030782593,
+      "end": 1764030782618
+    }
+  }
+}

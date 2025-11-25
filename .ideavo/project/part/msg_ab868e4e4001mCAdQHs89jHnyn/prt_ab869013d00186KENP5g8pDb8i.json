@@ -1,0 +1,24 @@
+{
+  "id": "prt_ab869013d00186KENP5g8pDb8i",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab868e4e4001mCAdQHs89jHnyn",
+  "type": "tool",
+  "callID": "call_04237604",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "NORDWHEEL_API_KEY"
+    },
+    "output": "Found 4 matches\n/home/user/project/app/page.tsx:\n  Line 3653:           'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}`\n\n/home/user/project/test-nordwheel-api.js:\n  Line 42:         'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'}`\n\n/home/user/project/test-nordwheel-integration.js:\n  Line 102:         'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY}`\n\n/home/user/project/test-nordwheel-cities.js:\n  Line 18:           'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'}`",
+    "title": "NORDWHEEL_API_KEY",
+    "metadata": {
+      "matches": 4,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764030480704,
+      "end": 1764030480723
+    }
+  }
+}

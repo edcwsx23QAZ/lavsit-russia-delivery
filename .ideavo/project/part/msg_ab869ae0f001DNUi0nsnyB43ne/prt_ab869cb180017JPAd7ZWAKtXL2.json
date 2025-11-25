@@ -1,0 +1,24 @@
+{
+  "id": "prt_ab869cb180017JPAd7ZWAKtXL2",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab869ae0f001DNUi0nsnyB43ne",
+  "type": "tool",
+  "callID": "call_73220741",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "getDispatchLocation"
+    },
+    "output": "Found 3 matches\n/home/user/project/app/page.tsx:\n  Line 3652:           location: getDispatchLocation()\n\n/home/user/project/test-nordwheel-integration.js:\n  Line 39:     const getDispatchLocation = () => {\n  Line 71:         location: getDispatchLocation()",
+    "title": "getDispatchLocation",
+    "metadata": {
+      "matches": 3,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764030532380,
+      "end": 1764030532397
+    }
+  }
+}
