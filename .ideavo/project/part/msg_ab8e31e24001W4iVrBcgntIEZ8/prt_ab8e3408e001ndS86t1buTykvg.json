@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8e3408e001ndS86t1buTykvg",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e31e24001W4iVrBcgntIEZ8",
+  "type": "tool",
+  "callID": "call_00b98dcc5132470b9e4d105d",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                    <SaveCalculation \n                      formData={form}\n                      calculations={calculations}\n                      onSaved={(orderNumber) => {\n                        console.log('Расчет сохранен с номером:', orderNumber);\n                      }}\n                    />",
+      "newString": "                    <SaveCalculation \n                      formData={form}\n                      calculations={calculations}\n                      enabledCompanies={hiddenCompanies}\n                      onSave={(result) => {\n                        console.log('Расчет сохранен:', result);\n                      }}\n                    />"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -5320,10 +5320,11 @@\n <div className=\"flex gap-2\">\n   <SaveCalculation \n     formData={form}\n     calculations={calculations}\n-    onSaved={(orderNumber) => {\n-      console.log('Расчет сохранен с номером:', orderNumber);\n+    enabledCompanies={hiddenCompanies}\n+    onSave={(result) => {\n+      console.log('Расчет сохранен:', result);\n     }}\n   />\n   <Button \n     onClick={exportToPDF} \n"
+    },
+    "time": {
+      "start": 1764038492307,
+      "end": 1764038492359
+    }
+  }
+}

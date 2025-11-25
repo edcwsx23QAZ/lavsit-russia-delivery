@@ -3756,7 +3756,12 @@ export default function Home() {
             const scaleFactor = Math.max(totalWeight / 999, totalVolume / 4.9);
             
             if (fallbackData.auto || fallbackData.avia) {
-              const options = [];
+              const options: Array<{
+                type: string;
+                price: number;
+                days: any;
+                services: any;
+              }> = [];
               
               if (fallbackData.auto) {
                 const scaledPrice = Math.round((fallbackData.auto.total_amount || 0) * scaleFactor);
@@ -5316,8 +5321,9 @@ export default function Home() {
                     <SaveCalculation 
                       formData={form}
                       calculations={calculations}
-                      onSaved={(orderNumber) => {
-                        console.log('Расчет сохранен с номером:', orderNumber);
+                      enabledCompanies={hiddenCompanies}
+                      onSave={(result) => {
+                        console.log('Расчет сохранен:', result);
                       }}
                     />
                     <Button 

@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab8e33a9c001pcoDjVE7wv33MB",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e31e24001W4iVrBcgntIEZ8",
+  "type": "text",
+  "text": "\nI see the issue. The SaveCalculation component expects `onSave` and `enabledCompanies` props, but I'm passing `onSaved` and missing `enabledCompanies`. Let me fix this:",
+  "time": {
+    "start": 1764038493109,
+    "end": 1764038493109
+  }
+}

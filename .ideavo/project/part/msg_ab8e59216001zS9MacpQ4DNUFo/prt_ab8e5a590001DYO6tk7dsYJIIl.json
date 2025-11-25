@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8e5a590001DYO6tk7dsYJIIl",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e59216001zS9MacpQ4DNUFo",
+  "type": "tool",
+  "callID": "call_124160e01a084991ad6787d4",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build the project to verify all TypeScript errors are fixed"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\nError: @prisma/client did not initialize yet. Please run \"prisma generate\" and try to import it again.\n    at new PrismaClient (/home/user/project/node_modules/.prisma/client/default.js:43:11)\n    at 9873 (/home/user/project/.next/server/app/api/calculations/route.js:1:497)\n    at t (/home/user/project/.next/server/webpack-runtime.js:1:127)\n    at t (/home/user/project/.next/server/app/api/calculations/route.js:1:2798)\n    at /home/user/project/.next/server/app/api/calculations/route.js:1:2829\n    at t.X (/home/user/project/.next/server/webpack-runtime.js:1:2120)\n    at /home/user/project/.next/server/app/api/calculations/route.js:1:2811\n    at Object.<anonymous> (/home/user/project/.next/server/app/api/calculations/route.js:1:2856)\n    at Module._compile (node:internal/modules/cjs/loader:1521:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\n\n> Build error occurred\nError: Failed to collect page data for /api/calculations\n    at /home/user/project/node_modules/next/dist/build/utils.js:1269:15\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {\n  type: 'Error'\n}\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\n   Collecting page data ...\nError: @prisma/client did not initialize yet. Please run \"prisma generate\" and try to import it again.\n    at new PrismaClient (/home/user/project/node_modules/.prisma/client/default.js:43:11)\n    at 9873 (/home/user/project/.next/server/app/api/calculations/route.js:1:497)\n    at t (/home/user/project/.next/server/webpack-runtime.js:1:127)\n    at t (/home/user/project/.next/server/app/api/calculations/route.js:1:2798)\n    at /home/user/project/.next/server/app/api/calculations/route.js:1:2829\n    at t.X (/home/user/project/.next/server/webpack-runtime.js:1:2120)\n    at /home/user/project/.next/server/app/api/calculations/route.js:1:2811\n    at Object.<anonymous> (/home/user/project/.next/server/app/api/calculations/route.js:1:2856)\n    at Module._compile (node:internal/modules/cjs/loader:1521:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\n\n> Build error occurred\nError: Failed to collect page data for /api/calculations\n    at /home/user/project/node_modules/next/dist/build/utils.js:1269:15\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {\n  type: 'Error'\n}\n",
+      "exit": 1,
+      "description": "Build the project to verify all TypeScript errors are fixed"
+    },
+    "time": {
+      "start": 1764038649239,
+      "end": 1764038668768
+    }
+  }
+}

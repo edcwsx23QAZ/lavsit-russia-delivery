@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8e542b50018KpNTQCieT8AUO",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e536c00015JFtcT3V7aFSae",
+  "type": "tool",
+  "callID": "call_00cf1efc76fb4b22bb0a02ac",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build the project to verify all TypeScript errors are fixed"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./lib/screenshot-utils.ts:123:47\nType error: Argument of type 'string' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 121 |\u001b[39m     \u001b[90m// Дополнительные услуги\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 122 |\u001b[39m     \u001b[36mconst\u001b[39m services \u001b[33m=\u001b[39m []\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 123 |\u001b[39m     \u001b[36mif\u001b[39m (formData\u001b[33m.\u001b[39mneedPackaging) services\u001b[33m.\u001b[39mpush(\u001b[32m'Упаковка'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 124 |\u001b[39m     \u001b[36mif\u001b[39m (formData\u001b[33m.\u001b[39mneedLoading) services\u001b[33m.\u001b[39mpush(\u001b[32m'Погрузка'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 125 |\u001b[39m     \u001b[36mif\u001b[39m (formData\u001b[33m.\u001b[39mneedCarry) services\u001b[33m.\u001b[39mpush(\u001b[32m'Переноска'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 126 |\u001b[39m     \u001b[36mif\u001b[39m (formData\u001b[33m.\u001b[39mneedInsurance) services\u001b[33m.\u001b[39mpush(\u001b[32m`Страхование (${formData.declaredValue}₽)`\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./lib/screenshot-utils.ts:123:47\nType error: Argument of type 'string' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 121 |\u001b[39m     \u001b[90m// Дополнительные услуги\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 122 |\u001b[39m     \u001b[36mconst\u001b[39m services \u001b[33m=\u001b[39m []\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 123 |\u001b[39m     \u001b[36mif\u001b[39m (formData\u001b[33m.\u001b[39mneedPackaging) services\u001b[33m.\u001b[39mpush(\u001b[32m'Упаковка'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 124 |\u001b[39m     \u001b[36mif\u001b[39m (formData\u001b[33m.\u001b[39mneedLoading) services\u001b[33m.\u001b[39mpush(\u001b[32m'Погрузка'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 125 |\u001b[39m     \u001b[36mif\u001b[39m (formData\u001b[33m.\u001b[39mneedCarry) services\u001b[33m.\u001b[39mpush(\u001b[32m'Переноска'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 126 |\u001b[39m     \u001b[36mif\u001b[39m (formData\u001b[33m.\u001b[39mneedInsurance) services\u001b[33m.\u001b[39mpush(\u001b[32m`Страхование (${formData.declaredValue}₽)`\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build the project to verify all TypeScript errors are fixed"
+    },
+    "time": {
+      "start": 1764038623931,
+      "end": 1764038638322
+    }
+  }
+}

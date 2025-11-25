@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8e4ce72001h2UJinrRZVwm3G",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e4bcce0013UmoLZoN15rZko",
+  "type": "tool",
+  "callID": "call_fa57c7badf934b29b266a4f3",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build the project to verify all TypeScript errors are fixed"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./lib/screenshot-utils.ts:105:16\nType error: Argument of type 'string' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 103 |\u001b[39m     \u001b[36mconst\u001b[39m items \u001b[33m=\u001b[39m []\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 104 |\u001b[39m     \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 105 |\u001b[39m     items\u001b[33m.\u001b[39mpush(\u001b[32m`📍 Маршрут: ${formData.fromCity} → ${formData.toCity}`\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 106 |\u001b[39m     \u001b[0m\n\u001b[0m \u001b[90m 107 |\u001b[39m     \u001b[36mif\u001b[39m (formData\u001b[33m.\u001b[39mfromAddress) {\u001b[0m\n\u001b[0m \u001b[90m 108 |\u001b[39m       items\u001b[33m.\u001b[39mpush(\u001b[32m`🏠 Адрес отправления: ${formData.fromAddress}`\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./lib/screenshot-utils.ts:105:16\nType error: Argument of type 'string' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 103 |\u001b[39m     \u001b[36mconst\u001b[39m items \u001b[33m=\u001b[39m []\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 104 |\u001b[39m     \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 105 |\u001b[39m     items\u001b[33m.\u001b[39mpush(\u001b[32m`📍 Маршрут: ${formData.fromCity} → ${formData.toCity}`\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 106 |\u001b[39m     \u001b[0m\n\u001b[0m \u001b[90m 107 |\u001b[39m     \u001b[36mif\u001b[39m (formData\u001b[33m.\u001b[39mfromAddress) {\u001b[0m\n\u001b[0m \u001b[90m 108 |\u001b[39m       items\u001b[33m.\u001b[39mpush(\u001b[32m`🏠 Адрес отправления: ${formData.fromAddress}`\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build the project to verify all TypeScript errors are fixed"
+    },
+    "time": {
+      "start": 1764038594170,
+      "end": 1764038610229
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8e294c9001xU6uMkC4n3yR09",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e284ab001L9pPFNqnGL5YA0",
+  "type": "tool",
+  "callID": "call_cedcdf2ddd2a46a690621c1d",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "            if (fallbackData.auto || fallbackData.avia) {\n              const options = [];",
+      "newString": "            if (fallbackData.auto || fallbackData.avia) {\n              const options: Array<{\n                type: string;\n                price: number;\n                days: any;\n                services: any;\n              }> = [];"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3755,9 +3755,14 @@\n // Парсим fallback результат и масштабируем цену\n const scaleFactor = Math.max(totalWeight / 999, totalVolume / 4.9);\n \n if (fallbackData.auto || fallbackData.avia) {\n-  const options = [];\n+  const options: Array<{\n+    type: string;\n+    price: number;\n+    days: any;\n+    services: any;\n+  }> = [];\n   \n   if (fallbackData.auto) {\n     const scaledPrice = Math.round((fallbackData.auto.total_amount || 0) * scaleFactor);\n     options.push({\n"
+    },
+    "time": {
+      "start": 1764038448333,
+      "end": 1764038448373
+    }
+  }
+}

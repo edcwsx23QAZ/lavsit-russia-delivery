@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8e2a5ac001YnLR5CkpftAr4e",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e299a90017v3R1lYBmJwZJl",
+  "type": "tool",
+  "callID": "call_871a538020804b6dae72b314",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build the project to verify TypeScript error is fixed"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:5324:23\nType error: Type '{ formData: DeliveryForm; calculations: CalculationResult[]; onSaved: (orderNumber: any) => void; }' is not assignable to type 'IntrinsicAttributes & SaveCalculationProps'.\n  Property 'onSaved' does not exist on type 'IntrinsicAttributes & SaveCalculationProps'. Did you mean 'onSave'?\n\n\u001b[0m \u001b[90m 5322 |\u001b[39m                       formData\u001b[33m=\u001b[39m{form}\u001b[0m\n\u001b[0m \u001b[90m 5323 |\u001b[39m                       calculations\u001b[33m=\u001b[39m{calculations}\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5324 |\u001b[39m                       onSaved\u001b[33m=\u001b[39m{(orderNumber) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5325 |\u001b[39m                         console\u001b[33m.\u001b[39mlog(\u001b[32m'Расчет сохранен с номером:'\u001b[39m\u001b[33m,\u001b[39m orderNumber)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5326 |\u001b[39m                       }}\u001b[0m\n\u001b[0m \u001b[90m 5327 |\u001b[39m                     \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:5324:23\nType error: Type '{ formData: DeliveryForm; calculations: CalculationResult[]; onSaved: (orderNumber: any) => void; }' is not assignable to type 'IntrinsicAttributes & SaveCalculationProps'.\n  Property 'onSaved' does not exist on type 'IntrinsicAttributes & SaveCalculationProps'. Did you mean 'onSave'?\n\n\u001b[0m \u001b[90m 5322 |\u001b[39m                       formData\u001b[33m=\u001b[39m{form}\u001b[0m\n\u001b[0m \u001b[90m 5323 |\u001b[39m                       calculations\u001b[33m=\u001b[39m{calculations}\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5324 |\u001b[39m                       onSaved\u001b[33m=\u001b[39m{(orderNumber) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                       \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5325 |\u001b[39m                         console\u001b[33m.\u001b[39mlog(\u001b[32m'Расчет сохранен с номером:'\u001b[39m\u001b[33m,\u001b[39m orderNumber)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 5326 |\u001b[39m                       }}\u001b[0m\n\u001b[0m \u001b[90m 5327 |\u001b[39m                     \u001b[33m/\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build the project to verify TypeScript error is fixed"
+    },
+    "time": {
+      "start": 1764038452658,
+      "end": 1764038473625
+    }
+  }
+}

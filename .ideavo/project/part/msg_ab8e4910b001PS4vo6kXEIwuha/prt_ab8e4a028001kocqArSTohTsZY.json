@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8e4a028001kocqArSTohTsZY",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e4910b001PS4vo6kXEIwuha",
+  "type": "tool",
+  "callID": "call_8b40fed1e7834af5ac1ce6ca",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/screenshot-utils.ts",
+      "limit": 20,
+      "offset": 45
+    },
+    "output": "<file>\n00046|     await page.setContent(html, {\n00047|       waitUntil: 'networkidle0',\n00048|       timeout: 30000\n00049|     });\n00050| \n00051|     // Ожидание загрузки всех стилей и изображений\n00052|     await page.waitForTimeout(2000);\n00053| \n00054|     // Создание скриншота в base64\n00055|     const screenshot = await page.screenshot({\n00056|       fullPage,\n00057|       quality,\n00058|       type: 'jpeg',\n00059|       encoding: 'base64'\n00060|     });\n00061| \n00062|     // Формирование data URL\n00063|     const dataUrl = `data:image/jpeg;base64,${screenshot}`;\n00064|     \n00065|     console.log('✅ Screenshot created successfully');\n\n(File has more lines. Use 'offset' parameter to read beyond line 65)\n</file>",
+    "title": "lib/screenshot-utils.ts",
+    "metadata": {
+      "preview": "    await page.setContent(html, {\n      waitUntil: 'networkidle0',\n      timeout: 30000\n    });\n\n    // Ожидание загрузки всех стилей и изображений\n    await page.waitForTimeout(2000);\n\n    // Создание скриншота в base64\n    const screenshot = await page.screenshot({\n      fullPage,\n      quality,\n      type: 'jpeg',\n      encoding: 'base64'\n    });\n\n    // Формирование data URL\n    const dataUrl = `data:image/jpeg;base64,${screenshot}`;\n    \n    console.log('✅ Screenshot created successfully');"
+    },
+    "time": {
+      "start": 1764038582315,
+      "end": 1764038582320
+    }
+  }
+}

@@ -49,7 +49,7 @@ export async function createPageScreenshot(
     });
 
     // Ожидание загрузки всех стилей и изображений
-    await page.waitForTimeout(2000);
+    await new Promise(resolve => setTimeout(resolve, 2000));
 
     // Создание скриншота в base64
     const screenshot = await page.screenshot({
@@ -100,7 +100,7 @@ function generateCalculationHTML(
   
   // Форматирование данных формы
   const formatFormData = () => {
-    const items = [];
+    const items: string[] = [];
     
     items.push(`📍 Маршрут: ${formData.fromCity} → ${formData.toCity}`);
     
@@ -119,7 +119,7 @@ function generateCalculationHTML(
     });
     
     // Дополнительные услуги
-    const services = [];
+    const services: string[] = [];
     if (formData.needPackaging) services.push('Упаковка');
     if (formData.needLoading) services.push('Погрузка');
     if (formData.needCarry) services.push('Переноска');

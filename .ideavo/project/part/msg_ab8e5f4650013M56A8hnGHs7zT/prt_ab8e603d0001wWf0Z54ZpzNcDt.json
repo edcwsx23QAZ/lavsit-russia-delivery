@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8e603d0001wWf0Z54ZpzNcDt",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e5f4650013M56A8hnGHs7zT",
+  "type": "tool",
+  "callID": "call_36d7124d10e046899abf5ac5",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npx prisma generate",
+      "description": "Generate Prisma client"
+    },
+    "output": "Environment variables loaded from .env\nPrisma schema loaded from prisma/schema.prisma\n\n✔ Generated Prisma Client (v5.22.0) to ./node_modules/@prisma/client in 164ms\n\nStart by importing your Prisma Client (See: https://pris.ly/d/importing-client)\n\nTip: Want to react to database changes in your app as they happen? Discover how with Pulse: https://pris.ly/tip-1-pulse\n\n",
+    "title": "npx prisma generate",
+    "metadata": {
+      "output": "Environment variables loaded from .env\nPrisma schema loaded from prisma/schema.prisma\n\n✔ Generated Prisma Client (v5.22.0) to ./node_modules/@prisma/client in 164ms\n\nStart by importing your Prisma Client (See: https://pris.ly/d/importing-client)\n\nTip: Want to react to database changes in your app as they happen? Discover how with Pulse: https://pris.ly/tip-1-pulse\n\n",
+      "exit": 0,
+      "description": "Generate Prisma client"
+    },
+    "time": {
+      "start": 1764038673369,
+      "end": 1764038677126
+    }
+  }
+}

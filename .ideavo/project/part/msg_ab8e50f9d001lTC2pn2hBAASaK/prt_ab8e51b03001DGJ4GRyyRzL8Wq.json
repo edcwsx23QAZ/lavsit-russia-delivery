@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8e51b03001DGJ4GRyyRzL8Wq",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e50f9d001lTC2pn2hBAASaK",
+  "type": "tool",
+  "callID": "call_44779e756c704aa98e93b60b",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/screenshot-utils.ts",
+      "limit": 10,
+      "offset": 100
+    },
+    "output": "<file>\n00101|   // Форматирование данных формы\n00102|   const formatFormData = () => {\n00103|     const items = [];\n00104|     \n00105|     items.push(`📍 Маршрут: ${formData.fromCity} → ${formData.toCity}`);\n00106|     \n00107|     if (formData.fromAddress) {\n00108|       items.push(`🏠 Адрес отправления: ${formData.fromAddress}`);\n00109|     }\n00110|     \n\n(File has more lines. Use 'offset' parameter to read beyond line 110)\n</file>",
+    "title": "lib/screenshot-utils.ts",
+    "metadata": {
+      "preview": "  // Форматирование данных формы\n  const formatFormData = () => {\n    const items = [];\n    \n    items.push(`📍 Маршрут: ${formData.fromCity} → ${formData.toCity}`);\n    \n    if (formData.fromAddress) {\n      items.push(`🏠 Адрес отправления: ${formData.fromAddress}`);\n    }\n    "
+    },
+    "time": {
+      "start": 1764038613766,
+      "end": 1764038613769
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8e4213d0012ETowUuBJLTBW0",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e3cb27001qKC4GyKKjZ9f2r",
+  "type": "tool",
+  "callID": "call_d7ff6bdb7fa84865868b6f51",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/SaveCalculation.tsx",
+      "limit": 20,
+      "offset": 160
+    },
+    "output": "<file>\n00161|     formData.cargos.forEach((cargo: any, index: number) => {\n00162|       text += `${index + 1}. ${cargo.length}×${cargo.width}×${cargo.height} см, ${cargo.weight} кг\\n`;\n00163|     });\n00164|     text += `\\n`;\n00165| \n00166|     text += `УСЛУГИ:\\n`;\n00167|     const services = [];\n00168|     if (formData.needPackaging) services.push('Упаковка');\n00169|     if (formData.needLoading) services.push('Погрузка');\n00170|     if (formData.needCarry) services.push('Переноска');\n00171|     if (formData.needInsurance) services.push(`Страхование (${formData.declaredValue}₽)`);\n00172|     text += services.length > 0 ? services.join(', ') : 'Нет дополнительных услуг';\n00173|     text += `\\n\\n`;\n00174| \n00175|     text += `РЕЗУЛЬТАТЫ РАСЧЕТА:\\n`;\n00176|     text += `${'='.repeat(50)}\\n`;\n00177|     \n00178|     if (validCalculations.length === 0) {\n00179|       text += 'Нет доступных расчетов\\n';\n00180|     } else {\n\n(File has more lines. Use 'offset' parameter to read beyond line 180)\n</file>",
+    "title": "components/SaveCalculation.tsx",
+    "metadata": {
+      "preview": "    formData.cargos.forEach((cargo: any, index: number) => {\n      text += `${index + 1}. ${cargo.length}×${cargo.width}×${cargo.height} см, ${cargo.weight} кг\\n`;\n    });\n    text += `\\n`;\n\n    text += `УСЛУГИ:\\n`;\n    const services = [];\n    if (formData.needPackaging) services.push('Упаковка');\n    if (formData.needLoading) services.push('Погрузка');\n    if (formData.needCarry) services.push('Переноска');\n    if (formData.needInsurance) services.push(`Страхование (${formData.declaredValue}₽)`);\n    text += services.length > 0 ? services.join(', ') : 'Нет дополнительных услуг';\n    text += `\\n\\n`;\n\n    text += `РЕЗУЛЬТАТЫ РАСЧЕТА:\\n`;\n    text += `${'='.repeat(50)}\\n`;\n    \n    if (validCalculations.length === 0) {\n      text += 'Нет доступных расчетов\\n';\n    } else {"
+    },
+    "time": {
+      "start": 1764038549824,
+      "end": 1764038549829
+    }
+  }
+}

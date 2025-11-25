@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8e12f27001c505kE2yIzLStK",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e11c49001EdAgfRw46BTkhu",
+  "type": "tool",
+  "callID": "call_9039e825b5324649aec87d75",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build the project to check for compilation errors"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:3763:30\nType error: Argument of type '{ type: string; price: number; days: any; services: any; }' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 3761 |\u001b[39m               \u001b[36mif\u001b[39m (fallbackData\u001b[33m.\u001b[39mauto) {\u001b[0m\n\u001b[0m \u001b[90m 3762 |\u001b[39m                 \u001b[36mconst\u001b[39m scaledPrice \u001b[33m=\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround((fallbackData\u001b[33m.\u001b[39mauto\u001b[33m.\u001b[39mtotal_amount \u001b[33m||\u001b[39m \u001b[35m0\u001b[39m) \u001b[33m*\u001b[39m scaleFactor)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 3763 |\u001b[39m                 options\u001b[33m.\u001b[39mpush({\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3764 |\u001b[39m                   type\u001b[33m:\u001b[39m \u001b[32m'auto'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3765 |\u001b[39m                   price\u001b[33m:\u001b[39m scaledPrice\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3766 |\u001b[39m                   days\u001b[33m:\u001b[39m fallbackData\u001b[33m.\u001b[39mauto\u001b[33m.\u001b[39mdelivery_date \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:3763:30\nType error: Argument of type '{ type: string; price: number; days: any; services: any; }' is not assignable to parameter of type 'never'.\n\n\u001b[0m \u001b[90m 3761 |\u001b[39m               \u001b[36mif\u001b[39m (fallbackData\u001b[33m.\u001b[39mauto) {\u001b[0m\n\u001b[0m \u001b[90m 3762 |\u001b[39m                 \u001b[36mconst\u001b[39m scaledPrice \u001b[33m=\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround((fallbackData\u001b[33m.\u001b[39mauto\u001b[33m.\u001b[39mtotal_amount \u001b[33m||\u001b[39m \u001b[35m0\u001b[39m) \u001b[33m*\u001b[39m scaleFactor)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 3763 |\u001b[39m                 options\u001b[33m.\u001b[39mpush({\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                              \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3764 |\u001b[39m                   type\u001b[33m:\u001b[39m \u001b[32m'auto'\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3765 |\u001b[39m                   price\u001b[33m:\u001b[39m scaledPrice\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3766 |\u001b[39m                   days\u001b[33m:\u001b[39m fallbackData\u001b[33m.\u001b[39mauto\u001b[33m.\u001b[39mdelivery_date \u001b[33m||\u001b[39m \u001b[32m''\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build the project to check for compilation errors"
+    },
+    "time": {
+      "start": 1764038356802,
+      "end": 1764038414916
+    }
+  }
+}

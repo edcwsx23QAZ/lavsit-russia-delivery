@@ -164,7 +164,7 @@ export default function SaveCalculation({
     text += `\n`;
 
     text += `УСЛУГИ:\n`;
-    const services = [];
+    const services: string[] = [];
     if (formData.needPackaging) services.push('Упаковка');
     if (formData.needLoading) services.push('Погрузка');
     if (formData.needCarry) services.push('Переноска');

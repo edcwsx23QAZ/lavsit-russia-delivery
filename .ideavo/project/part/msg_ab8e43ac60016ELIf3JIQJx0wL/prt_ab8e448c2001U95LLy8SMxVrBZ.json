@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8e448c2001U95LLy8SMxVrBZ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8e43ac60016ELIf3JIQJx0wL",
+  "type": "tool",
+  "callID": "call_75ed91b66bb947098ec91bbd",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build the project to verify all TypeScript errors are fixed"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./lib/screenshot-utils.ts:52:16\nType error: Property 'waitForTimeout' does not exist on type 'Page'.\n\n\u001b[0m \u001b[90m 50 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 51 |\u001b[39m     \u001b[90m// Ожидание загрузки всех стилей и изображений\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 52 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 53 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 54 |\u001b[39m     \u001b[90m// Создание скриншота в base64\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 55 |\u001b[39m     \u001b[36mconst\u001b[39m screenshot \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./lib/screenshot-utils.ts:52:16\nType error: Property 'waitForTimeout' does not exist on type 'Page'.\n\n\u001b[0m \u001b[90m 50 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 51 |\u001b[39m     \u001b[90m// Ожидание загрузки всех стилей и изображений\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 52 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m2000\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 53 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 54 |\u001b[39m     \u001b[90m// Создание скриншота в base64\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 55 |\u001b[39m     \u001b[36mconst\u001b[39m screenshot \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mscreenshot({\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build the project to verify all TypeScript errors are fixed"
+    },
+    "time": {
+      "start": 1764038559943,
+      "end": 1764038577909
+    }
+  }
+}
