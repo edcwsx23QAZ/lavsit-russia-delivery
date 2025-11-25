@@ -1,0 +1,21 @@
+{
+  "id": "prt_ab8d6ecd6001RaWFxtv0HXncRA",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8d6cb4b001uahMSt7fbdk7fa",
+  "type": "tool",
+  "callID": "call_73b5a88a7fc840009369015c",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/.env",
+      "oldString": "DATABASE_URL=\nNEXT_PUBLIC_SUPABASE_URL=\nNEXT_PUBLIC_SUPABASE_ANON_KEY=",
+      "newString": "DATABASE_URL=postgresql://postgres.jnkjrieifdfbjuwmcocq:password@aws-0-us-east-1.pooler.supabase.co:6543/postgres\nNEXT_PUBLIC_SUPABASE_URL=https://jnkjrieifdfbjuwmcocq.supabase.co\nNEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impua2pyaWVpZmRmYmp1d21jb2NxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM5OTk5MjgsImV4cCI6MjA3OTU3NTkyOH0.qdGFiqU6gR-TNHAxreoMBh3btQzXkQOnLPErvhCwsSc"
+    },
+    "error": "Error: You must read the file /home/user/project/.env before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1764037684444,
+      "end": 1764037684447
+    }
+  }
+}
