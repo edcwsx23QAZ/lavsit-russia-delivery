@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8c59ede001b5NBOWJqldPQEF",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8c4e71b001AB6N4p3kXLWYZq",
+  "type": "tool",
+  "callID": "call_b5cab3d3c99d4119bc787a05",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "content": "import { NextRequest, NextResponse } from 'next/server';\nimport { createCalculationScreenshot } from '@/lib/screenshot-utils';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    const { formData, calculations, enabledCompanies } = body;\n\n    console.log('📸 Creating calculation screenshot...');\n\n    if (!formData || !calculations) {\n      return NextResponse.json(\n        { \n          success: false, \n          error: 'Missing required fields: formData and calculations are required' \n        },\n        { status: 400 }\n      );\n    }\n\n    // Создание скриншота\n    const screenshot = await createCalculationScreenshot(\n      formData, \n      calculations, \n      enabledCompanies || {}\n    );\n\n    return NextResponse.json({\n      success: true,\n      screenshot\n    });\n\n  } catch (error: any) {\n    console.error('❌ Error creating screenshot:', error);\n    \n    // Проверка на отсутствие Puppeteer\n    if (error.message.includes('Cannot find module')) {\n      return NextResponse.json(\n        { \n          success: false, \n          error: 'Screenshot service not available. Please install puppeteer: npm install puppeteer' \n        },\n        { status: 503 }\n      );\n    }\n\n    return NextResponse.json(\n      { \n        success: false, \n        error: 'Screenshot creation failed: ' + error.message \n      },\n      { status: 500 }\n    );\n  }\n}",
+      "filePath": "/home/user/project/app/api/screenshot/route.ts"
+    },
+    "output": "",
+    "title": "app/api/screenshot/route.ts",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/api/screenshot/route.ts",
+      "exists": false
+    },
+    "time": {
+      "start": 1764036550368,
+      "end": 1764036550370
+    }
+  }
+}

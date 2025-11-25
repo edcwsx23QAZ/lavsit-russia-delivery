@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8c80650001p252BBen6VLeRl",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8c7fc0c001VeiJMfjmEb6EUS",
+  "type": "tool",
+  "callID": "call_2f88689fb30b4c13a2ae311f",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 1700
+    },
+    "output": "<file>\n01701|             variant: form.toAddressDelivery ? 'address' : 'terminal',\n01702|             ...(form.toAddressDelivery ? {\n01703|               address: {\n01704|                 search: normalizedToAddress || form.toAddress || form.toCity\n01705|               }\n01706|             } : {\n01707|               terminalID: toTerminalId\n01708|             }),\n01709|             time: {\n01710|               worktimeStart: '10:00',\n01711|               worktimeEnd: '18:00',\n01712|               breakStart: '13:00',\n01713|               breakEnd: '14:00',\n01714|               exactTime: false\n01715|             },\n01716|             // handling в arrival заполняется только если требуется подъем\n01717|             ...(form.needCarry ? {\n01718|               handling: {\n01719|                 freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n01720|                 toFloor: form.floor, // этаж из формы\n01721|                 carry: 0\n01722|               }\n01723|             } : {})\n01724|           },\n01725|           ...(form.needPackaging && packageUid ? {\n01726|             packages: [{\n01727|               uid: packageUid,  // UID упаковки crate_with_bubble из справочника\n01728|               count: 1  // По умолчанию 1\n01729|             }]\n01730|           } : {})\n01731|         },\n01732|         cargo: {\n01733|           quantity: form.cargos.length,\n01734|           length: maxLength,\n01735|           width: maxWidth,\n01736|           height: maxHeight,\n01737|           weight: totalWeight,\n01738|           totalVolume: totalVolume,\n01739|           totalWeight: totalWeight,\n01740|           oversizedWeight: 0,\n01741|           oversizedVolume: 0,\n01742|           hazardClass: 0,  // Всегда 0 если нет опасных грузов\n01743|           ...(form.needInsurance && form.declaredValue > 0 ? {\n01744|             insurance: {\n01745|               statedValue: form.declaredValue,\n01746|               term: true  // Всегда true при наличии страхования\n01747|             }\n01748|           } : {})\n01749|         },\n01750|         payment: {\n\n(File has more lines. Use 'offset' parameter to read beyond line 1750)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "            variant: form.toAddressDelivery ? 'address' : 'terminal',\n            ...(form.toAddressDelivery ? {\n              address: {\n                search: normalizedToAddress || form.toAddress || form.toCity\n              }\n            } : {\n              terminalID: toTerminalId\n            }),\n            time: {\n              worktimeStart: '10:00',\n              worktimeEnd: '18:00',\n              breakStart: '13:00',\n              breakEnd: '14:00',\n              exactTime: false\n            },\n            // handling в arrival заполняется только если требуется подъем\n            ...(form.needCarry ? {\n              handling: {\n                freightLift: form.hasFreightLift, // true только если есть галочка \"наличие грузового лифта\"\n                toFloor: form.floor, // этаж из формы"
+    },
+    "time": {
+      "start": 1764036707922,
+      "end": 1764036707925
+    }
+  }
+}

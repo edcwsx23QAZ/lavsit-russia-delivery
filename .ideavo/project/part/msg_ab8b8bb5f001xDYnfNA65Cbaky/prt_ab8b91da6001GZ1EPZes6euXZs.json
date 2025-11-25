@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8b91da6001GZ1EPZes6euXZs",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8b8bb5f001xDYnfNA65Cbaky",
+  "type": "tool",
+  "callID": "call_a47db22f66ea42858489a42b",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "content": "// Comparison test: Before vs After quantity fix\nasync function compareResults() {\n  console.log('🧪 Comparison: Before vs After quantity fix\\n');\n\n  const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';\n  const apiKey = '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950';\n\n  const baseParams = {\n    dispatch: {\n      location: {\n        type: 'terminal',\n        city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5'\n      }\n    },\n    destination: {\n      location: {\n        type: 'terminal',\n        city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6'\n      }\n    },\n    cargo: {\n      total_weight: 150,\n      total_volume: 0.6\n    },\n    insurance: null,\n    insurance_refuse: true,\n    services: {\n      is_package: false,\n      is_documents_return: false,\n      is_fragile: false\n    },\n    promocode: null\n  };\n\n  // Тест 1: СТАРЫЙ подход (quantity = 3)\n  console.log('📋 BEFORE FIX: quantity = 3 (умножает цену)');\n  const beforeRequest = {\n    ...baseParams,\n    cargo: {\n      ...baseParams.cargo,\n      total_quantity: 3\n    }\n  };\n\n  const beforeResponse = await makeRequest(beforeRequest);\n  console.log(`   💰 Auto: ${beforeResponse.auto}₽`);\n  console.log(`   🔍 Weight used: ${beforeResponse.weight}kg`);\n\n  // Тест 2: НОВЫЙ подход (quantity = 1)\n  console.log('\\n📋 AFTER FIX: quantity = 1 (корректный расчет)');\n  const afterRequest = {\n    ...baseParams,\n    cargo: {\n      ...baseParams.cargo,\n      total_quantity: 1\n    }\n  };\n\n  const afterResponse = await makeRequest(afterRequest);\n  console.log(`   💰 Auto: ${afterResponse.auto}₽`);\n  console.log(`   🔍 Weight used: ${afterResponse.weight}kg`);\n\n  // Сравнение\n  console.log('\\n📊 COMPARISON RESULTS:');\n  const savings = beforeResponse.auto - afterResponse.auto;\n  const percentage = ((savings / beforeResponse.auto) * 100).toFixed(1);\n  \n  console.log(`   💰 Price difference: ${savings}₽ (${percentage}% cheaper)`);\n  console.log(`   ⚖️  Weight difference: ${beforeResponse.weight - afterResponse.weight}kg`);\n  \n  if (savings > 0) {\n    console.log(`   ✅ FIX SUCCESSFUL: Correct pricing saves ${percentage}%`);\n  } else {\n    console.log(`   ❌ Fix may need adjustment`);\n  }\n\n  async function makeRequest(requestData) {\n    const response = await fetch(apiUrl, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'Authorization': `Bearer ${apiKey}`,\n        'User-Agent': 'DeliveryCalculator/1.0',\n        'Accept': 'application/json'\n      },\n      body: JSON.stringify(requestData)\n    });\n    \n    const data = await response.json();\n    \n    if (data.auto && data.auto.services && data.auto.services[0]) {\n      const service = data.auto.services[0];\n      return {\n        auto: data.auto.total_amount,\n        weight: service.quantity,\n        rate: service.price\n      };\n    }\n    \n    return { auto: 0, weight: 0, rate: 0 };\n  }\n}\n\n// Run comparison\ncompareResults();",
+      "filePath": "/home/user/project/test-nordwheel-comparison.js"
+    },
+    "output": "",
+    "title": "test-nordwheel-comparison.js",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-nordwheel-comparison.js",
+      "exists": false
+    },
+    "time": {
+      "start": 1764035730858,
+      "end": 1764035730859
+    }
+  }
+}

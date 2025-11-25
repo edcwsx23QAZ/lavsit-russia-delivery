@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8c94414001aWZh6A2zAa1eiT",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8c91c28001PNbLUWFtsxIw5L",
+  "type": "tool",
+  "callID": "call_8a7498e312f04513ab5773bb",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "                <div className=\"flex justify-between items-center\">\n                  <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n                  <Button \n                    onClick={exportToPDF} \n                    variant=\"outline\" \n                    size=\"sm\" \n                    className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n                  >\n                    Сохранить в PDF\n                  </Button>\n                </div>",
+      "newString": "                <div className=\"flex justify-between items-center\">\n                  <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n                  <div className=\"flex gap-2\">\n                    <SaveCalculation \n                      formData={form}\n                      calculations={calculations}\n                      onSaved={(orderNumber) => {\n                        console.log('Расчет сохранен с номером:', orderNumber);\n                      }}\n                    />\n                    <Button \n                      onClick={exportToPDF} \n                      variant=\"outline\" \n                      size=\"sm\" \n                      className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n                    >\n                      Сохранить в PDF\n                    </Button>\n                  </div>\n                </div>"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -5311,16 +5311,25 @@\n {calculations.length > 0 && (\n      <div className=\"space-y-2\">\n     <div className=\"flex justify-between items-center\">\n       <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>\n-      <Button \n-        onClick={exportToPDF} \n-        variant=\"outline\" \n-        size=\"sm\" \n-        className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n-      >\n-        Сохранить в PDF\n-      </Button>\n+      <div className=\"flex gap-2\">\n+        <SaveCalculation \n+          formData={form}\n+          calculations={calculations}\n+          onSaved={(orderNumber) => {\n+            console.log('Расчет сохранен с номером:', orderNumber);\n+          }}\n+        />\n+        <Button \n+          onClick={exportToPDF} \n+          variant=\"outline\" \n+          size=\"sm\" \n+          className=\"h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden\"\n+        >\n+          Сохранить в PDF\n+        </Button>\n+      </div>\n     </div>\n     \n     {calculations\n       .filter(calc => !hiddenCompanies[calc.company])\n"
+    },
+    "time": {
+      "start": 1764036789269,
+      "end": 1764036789296
+    }
+  }
+}

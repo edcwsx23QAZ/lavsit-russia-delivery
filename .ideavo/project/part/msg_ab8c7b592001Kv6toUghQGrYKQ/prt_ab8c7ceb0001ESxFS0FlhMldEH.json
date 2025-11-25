@@ -1,0 +1,24 @@
+{
+  "id": "prt_ab8c7ceb0001ESxFS0FlhMldEH",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8c7b592001Kv6toUghQGrYKQ",
+  "type": "tool",
+  "callID": "call_b278132221fb46c0bc07d43c",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50
+    },
+    "output": "<file>\n00001| 'use client';\n00002| \n00003| import React, { useState, useEffect, useCallback, useMemo } from 'react';\n00004| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00005| import { Button } from '@/components/ui/button';\n00006| import { Input } from '@/components/ui/input';\n00007| import { Label } from '@/components/ui/label';\n00008| import { Checkbox } from '@/components/ui/checkbox';\n00009| import { Switch } from '@/components/ui/switch';\n00010| import { Plus, Truck, Building2, Map, Settings, Package2, Trash2 } from 'lucide-react';\n00011| import { Alert, AlertDescription } from '@/components/ui/alert';\n00012| import { Badge } from '@/components/ui/badge';\n00013| import { Separator } from '@/components/ui/separator';\n00014| import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\n00015| import { LazyProductSearch, LazyTruckVisualization } from '@/components/LazyLoadedComponents';\n00016| import ProductManager from '@/components/ProductManager';\n00017| import CalculationProgress from '@/components/CalculationProgress';\n00018| import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\n00019| import { saveFormData, loadFormData, hasStoredFormData, createDebouncedSaver, clearFormData } from '@/lib/form-storage';\n00020| import {\n00021|   createCargosForProduct,\n00022|   removeCargosForProduct,\n00023|   calculateTotalValue,\n00024|   findCargoIndexesForProduct\n00025| } from '@/lib/furniture-utils';\n00026| import { enhancedApiRequest } from '@/lib/api-utils';\n00027| import { cacheManager } from '@/lib/cache-manager';\n00028| import { optimizedApiClient } from '@/lib/optimized-api-client';\n00029| \n00030| interface Cargo {\n00031|   id: string;\n00032|   length: number;\n00033|   width: number;\n00034|   height: number;\n00035|   weight: number;\n00036|   // Добавляем метаданные для связи с товарами\n00037|   productId?: string;\n00038|   placeNumber?: number;\n00039|   isFromProduct?: boolean;\n00040|   addedAt?: number;\n00041| }\n00042| \n00043| interface DeliveryForm {\n00044|   cargos: Cargo[];\n00045|   fromCity: string;\n00046|   toCity: string;\n00047|   fromAddress: string;\n00048|   toAddress: string;\n00049|   declaredValue: number;\n00050|   needPackaging: boolean;\n\n(File has more lines. Use 'offset' parameter to read beyond line 50)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "'use client';\n\nimport React, { useState, useEffect, useCallback, useMemo } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Checkbox } from '@/components/ui/checkbox';\nimport { Switch } from '@/components/ui/switch';\nimport { Plus, Truck, Building2, Map, Settings, Package2, Trash2 } from 'lucide-react';\nimport { Alert, AlertDescription } from '@/components/ui/alert';\nimport { Badge } from '@/components/ui/badge';\nimport { Separator } from '@/components/ui/separator';\nimport { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\nimport { LazyProductSearch, LazyTruckVisualization } from '@/components/LazyLoadedComponents';\nimport ProductManager from '@/components/ProductManager';\nimport CalculationProgress from '@/components/CalculationProgress';\nimport { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\nimport { saveFormData, loadFormData, hasStoredFormData, createDebouncedSaver, clearFormData } from '@/lib/form-storage';\nimport {"
+    },
+    "time": {
+      "start": 1764036693682,
+      "end": 1764036693689
+    }
+  }
+}

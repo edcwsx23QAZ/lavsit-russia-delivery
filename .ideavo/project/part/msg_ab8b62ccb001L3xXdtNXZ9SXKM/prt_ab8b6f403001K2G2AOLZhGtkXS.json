@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8b6f403001K2G2AOLZhGtkXS",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8b62ccb001L3xXdtNXZ9SXKM",
+  "type": "tool",
+  "callID": "call_6f7d37518447478f81b6bf7e",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "content": "// Test NordWheel API behavior with quantity parameter\nasync function testQuantityBehavior() {\n  console.log('🧪 Testing NordWheel API quantity behavior...\\n');\n\n  const baseRequest = {\n    dispatch: {\n      location: {\n        type: 'terminal',\n        city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Москва\n      }\n    },\n    destination: {\n      location: {\n        type: 'terminal',\n        city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // Санкт-Петербург\n      }\n    },\n    cargo: {\n      total_weight: 100,\n      total_volume: 0.5,\n      total_quantity: 1 // Базовое значение\n    },\n    insurance: null,\n    insurance_refuse: true,\n    services: {\n      is_package: false,\n      is_documents_return: false,\n      is_fragile: false\n    },\n    promocode: null\n  };\n\n  const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';\n  const apiKey = '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950';\n\n  // Тест 1: quantity = 1\n  console.log('📋 Test 1: quantity = 1');\n  const test1 = { ...baseRequest, cargo: { ...baseRequest.cargo, total_quantity: 1 } };\n  await testRequest(test1, 'quantity=1');\n\n  // Тест 2: quantity = 3 \n  console.log('\\n📋 Test 2: quantity = 3');\n  const test2 = { ...baseRequest, cargo: { ...baseRequest.cargo, total_quantity: 3 } };\n  await testRequest(test2, 'quantity=3');\n\n  // Тест 3: quantity = 5\n  console.log('\\n📋 Test 3: quantity = 5');\n  const test3 = { ...baseRequest, cargo: { ...baseRequest.cargo, total_quantity: 5 } };\n  await testRequest(test3, 'quantity=5');\n\n  console.log('\\n🏁 Analysis complete!');\n}\n\nasync function testRequest(requestData, testName) {\n  try {\n    console.log(`📦 Sending ${testName} request...`);\n    console.log(`   Weight: ${requestData.cargo.total_weight}kg`);\n    console.log(`   Volume: ${requestData.cargo.total_volume}m³`);\n    console.log(`   Quantity: ${requestData.cargo.total_quantity}`);\n    \n    const response = await fetch('https://api.nordw.orog.ru/api/v1/calculate', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'Authorization': 'Bearer 5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950',\n        'User-Agent': 'DeliveryCalculator/1.0',\n        'Accept': 'application/json'\n      },\n      body: JSON.stringify(requestData)\n    });\n    \n    const responseText = await response.text();\n    \n    if (response.ok) {\n      const data = JSON.parse(responseText);\n      if (data.auto || data.avia) {\n        const autoPrice = data.auto ? data.auto.total_amount : 0;\n        const aviaPrice = data.avia ? data.avia.total_amount : 0;\n        \n        console.log(`✅ ${testName}: SUCCESS`);\n        console.log(`   💰 Auto: ${autoPrice}₽`);\n        console.log(`   ✈️  Avia: ${aviaPrice}₽`);\n        \n        // Анализируем услуги для понимания ценообразования\n        if (data.auto && data.auto.services) {\n          console.log(`   🔍 Auto services:`);\n          data.auto.services.forEach((service, index) => {\n            console.log(`     ${index + 1}. ${service.name}: ${service.price}₽ × ${service.quantity}${service.measure} = ${service.amount}₽`);\n          });\n        }\n      } else {\n        console.log(`❌ ${testName}: No delivery options`);\n      }\n    } else {\n      console.log(`❌ ${testName}: ERROR ${response.status}`);\n      try {\n        const errorData = JSON.parse(responseText);\n        console.log(`   Details:`, errorData.meta?.errors || errorData);\n      } catch (e) {\n        console.log(`   Raw:`, responseText.substring(0, 200));\n      }\n    }\n    \n  } catch (error) {\n    console.log(`❌ ${testName}: FAILED - ${error.message}`);\n  }\n}\n\n// Run tests\ntestQuantityBehavior();",
+      "filePath": "/home/user/project/test-nordwheel-quantity.js"
+    },
+    "output": "",
+    "title": "test-nordwheel-quantity.js",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-nordwheel-quantity.js",
+      "exists": false
+    },
+    "time": {
+      "start": 1764035589136,
+      "end": 1764035589138
+    }
+  }
+}

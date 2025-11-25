@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8b7c9b7001elC8Hva1a0egXC",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8b7b8a50017GjJLI9gAbEUjm",
+  "type": "tool",
+  "callID": "call_3f442fa4cb0d47c5b9aaecab",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 3699
+    },
+    "output": "<file>\n03700|       };\n03701| \n03702|       console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n03703| \n03704|       const result = await enhancedApiRequest(\n03705|         apiUrl,\n03706|         {\n03707|           method: 'POST',\n03708|           headers: {\n03709|             'Content-Type': 'application/json'\n03710|           },\n03711|           body: JSON.stringify(requestData)\n03712|         },\n03713|         { operation: 'calculate', company: 'Nord Wheel' }\n03714|       );\n03715| \n03716|       if (result && typeof result === 'object' && 'success' in result && !result.success) {\n03717|         console.error('❌ Nord Wheel API ошибка:', result.error);\n03718|         \n03719|         // Если ошибка 400 и большие параметры, пробуем с уменьшенными значениями\n03720|         if (result.error.status === 400 && (totalWeight > 1000 || totalVolume > 5)) {\n03721|           console.log('🔄 Nord Wheel: Пробуем fallback расчет с уменьшенными параметрами...');\n03722|           \n03723|           const fallbackRequestData = {\n03724|             ...requestData,\n03725|             cargo: {\n03726|               total_weight: Math.min(totalWeight, 999),\n03727|               total_volume: Math.min(totalVolume, 4.9),\n03728|               total_quantity: form.cargos.length\n03729|             }\n\n(File has more lines. Use 'offset' parameter to read beyond line 3729)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "      };\n\n      console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n\n      const result = await enhancedApiRequest(\n        apiUrl,\n        {\n          method: 'POST',\n          headers: {\n            'Content-Type': 'application/json'\n          },\n          body: JSON.stringify(requestData)\n        },\n        { operation: 'calculate', company: 'Nord Wheel' }\n      );\n\n      if (result && typeof result === 'object' && 'success' in result && !result.success) {\n        console.error('❌ Nord Wheel API ошибка:', result.error);\n        \n        // Если ошибка 400 и большие параметры, пробуем с уменьшенными значениями"
+    },
+    "time": {
+      "start": 1764035643833,
+      "end": 1764035643839
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8c8f03f001QMOjVDmtylfPPy",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8c89fbe001JhdILQSNLy07XT",
+  "type": "tool",
+  "callID": "call_7c58165e21ad4854ad68b958",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "Результаты расчета|calculation.*result|results.*Card"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 5313:                   <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>",
+    "title": "Результаты расчета|calculation.*result|results.*Card",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764036767811,
+      "end": 1764036767825
+    }
+  }
+}

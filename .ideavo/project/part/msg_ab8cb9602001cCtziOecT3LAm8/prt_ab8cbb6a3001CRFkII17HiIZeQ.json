@@ -1,0 +1,61 @@
+{
+  "id": "prt_ab8cbb6a3001CRFkII17HiIZeQ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8cb9602001cCtziOecT3LAm8",
+  "type": "tool",
+  "callID": "call_efa5e8f45f224b09a5f6b7b2",
+  "tool": "asksecrets",
+  "state": {
+    "status": "completed",
+    "input": {
+      "secrets": [
+        {
+          "name": "DATABASE_URL",
+          "display_name": "Supabase Database URL",
+          "description": "PostgreSQL connection string for database operations",
+          "resource_url": "https://supabase.com/dashboard"
+        },
+        {
+          "name": "NEXT_PUBLIC_SUPABASE_URL",
+          "display_name": "Supabase Project URL",
+          "description": "Supabase project URL for client-side operations",
+          "resource_url": "https://supabase.com/dashboard"
+        },
+        {
+          "name": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+          "display_name": "Supabase Anonymous Key",
+          "description": "Public API key for Supabase authentication",
+          "resource_url": "https://supabase.com/dashboard"
+        }
+      ]
+    },
+    "output": "Requesting the following secrets:\n\n- Supabase Database URL (DATABASE_URL): PostgreSQL connection string for database operations\n- Supabase Project URL (NEXT_PUBLIC_SUPABASE_URL): Supabase project URL for client-side operations\n- Supabase Anonymous Key (NEXT_PUBLIC_SUPABASE_ANON_KEY): Public API key for Supabase authentication\n\nResource Links:\n- Get Supabase Database URL: https://supabase.com/dashboard\n- Get Supabase Project URL: https://supabase.com/dashboard\n- Get Supabase Anonymous Key: https://supabase.com/dashboard\n\nWaiting for user input...",
+    "title": "Requesting API Keys & Secrets",
+    "metadata": {
+      "secrets": [
+        {
+          "name": "DATABASE_URL",
+          "display_name": "Supabase Database URL",
+          "description": "PostgreSQL connection string for database operations",
+          "resource_url": "https://supabase.com/dashboard"
+        },
+        {
+          "name": "NEXT_PUBLIC_SUPABASE_URL",
+          "display_name": "Supabase Project URL",
+          "description": "Supabase project URL for client-side operations",
+          "resource_url": "https://supabase.com/dashboard"
+        },
+        {
+          "name": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+          "display_name": "Supabase Anonymous Key",
+          "description": "Public API key for Supabase authentication",
+          "resource_url": "https://supabase.com/dashboard"
+        }
+      ]
+    },
+    "time": {
+      "start": 1764036949672,
+      "end": 1764036949672
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8c68f20001zMOKstafkixypa",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8c68234001v7p7iwS8HyH7zL",
+  "type": "tool",
+  "callID": "call_8ac0fd58cf234a13b8a485d4",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "Результаты расчета"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 5313:                   <h2 className=\"text-lg font-bold text-blue-400\">Результаты расчета</h2>",
+    "title": "Результаты расчета",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764036611875,
+      "end": 1764036611887
+    }
+  }
+}

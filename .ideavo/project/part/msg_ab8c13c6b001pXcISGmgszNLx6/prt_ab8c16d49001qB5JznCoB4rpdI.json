@@ -1,0 +1,23 @@
+{
+  "id": "prt_ab8c16d49001qB5JznCoB4rpdI",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8c13c6b001pXcISGmgszNLx6",
+  "type": "tool",
+  "callID": "call_dbe86cd885e44597b1b14361",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/prisma/schema.prisma"
+    },
+    "output": "<file>\n00001| // This is your Prisma schema file,\n00002| // learn more about it in the docs: https://pris.ly/d/prisma-schema\n00003| \n00004| generator client {\n00005|   provider = \"prisma-client-js\"\n00006| }\n00007| \n00008| datasource db {\n00009|   provider = \"postgresql\"\n00010|   url      = env(\"DATABASE_URL\")\n00011| }\n00012| \n</file>",
+    "title": "prisma/schema.prisma",
+    "metadata": {
+      "preview": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n"
+    },
+    "time": {
+      "start": 1764036275539,
+      "end": 1764036275546
+    }
+  }
+}

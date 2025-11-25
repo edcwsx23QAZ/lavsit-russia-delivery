@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8c66b360014CjRlos6f2bcgT",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8c6553b001IsaiqD7txZgkjB",
+  "type": "tool",
+  "callID": "call_b48c3121862745cabc0ca451",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app",
+      "pattern": "setCalculations"
+    },
+    "output": "Found 6 matches\n/home/user/project/app/page.tsx:\n  Line 186:   const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n  Line 4255:     setCalculations([]);\n  Line 4304:         setCalculations([]);\n  Line 4427:       setCalculations(sortedResults);\n  Line 4431:       setCalculations([{\n  Line 4483:       setCalculations([]);",
+    "title": "setCalculations",
+    "metadata": {
+      "matches": 6,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764036602682,
+      "end": 1764036602695
+    }
+  }
+}

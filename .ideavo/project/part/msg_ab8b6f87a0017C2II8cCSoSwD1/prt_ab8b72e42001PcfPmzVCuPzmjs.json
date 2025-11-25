@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8b72e42001PcfPmzVCuPzmjs",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8b6f87a0017C2II8cCSoSwD1",
+  "type": "tool",
+  "callID": "call_b8527a16b9cc4cb4ab3badc0",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-quantity.js",
+      "description": "Test NordWheel API quantity behavior"
+    },
+    "output": "🧪 Testing NordWheel API quantity behavior...\n\n📋 Test 1: quantity = 1\n📦 Sending quantity=1 request...\n   Weight: 100kg\n   Volume: 0.5m³\n   Quantity: 1\n✅ quantity=1: SUCCESS\n   💰 Auto: 1994₽\n   ✈️  Avia: 9493₽\n   🔍 Auto services:\n     1. Экспедирование межтерминальное (кг): 14.5₽ × 137.5кг = 1994₽\n\n📋 Test 2: quantity = 3\n📦 Sending quantity=3 request...\n   Weight: 100kg\n   Volume: 0.5m³\n   Quantity: 3\n✅ quantity=3: SUCCESS\n   💰 Auto: 5816₽\n   ✈️  Avia: 9493₽\n   🔍 Auto services:\n     1. Экспедирование межтерминальное (кг): 14.1₽ × 412.5кг = 5816₽\n\n📋 Test 3: quantity = 5\n📦 Sending quantity=5 request...\n   Weight: 100kg\n   Volume: 0.5m³\n   Quantity: 5\n✅ quantity=5: SUCCESS\n   💰 Auto: 9488₽\n   ✈️  Avia: 9493₽\n   🔍 Auto services:\n     1. Экспедирование межтерминальное (кг): 13.8₽ × 687.5кг = 9488₽\n\n🏁 Analysis complete!\n",
+    "title": "node test-nordwheel-quantity.js",
+    "metadata": {
+      "output": "🧪 Testing NordWheel API quantity behavior...\n\n📋 Test 1: quantity = 1\n📦 Sending quantity=1 request...\n   Weight: 100kg\n   Volume: 0.5m³\n   Quantity: 1\n✅ quantity=1: SUCCESS\n   💰 Auto: 1994₽\n   ✈️  Avia: 9493₽\n   🔍 Auto services:\n     1. Экспедирование межтерминальное (кг): 14.5₽ × 137.5кг = 1994₽\n\n📋 Test 2: quantity = 3\n📦 Sending quantity=3 request...\n   Weight: 100kg\n   Volume: 0.5m³\n   Quantity: 3\n✅ quantity=3: SUCCESS\n   💰 Auto: 5816₽\n   ✈️  Avia: 9493₽\n   🔍 Auto services:\n     1. Экспедирование межтерминальное (кг): 14.1₽ × 412.5кг = 5816₽\n\n📋 Test 3: quantity = 5\n📦 Sending quantity=5 request...\n   Weight: 100kg\n   Volume: 0.5m³\n   Quantity: 5\n✅ quantity=5: SUCCESS\n   💰 Auto: 9488₽\n   ✈️  Avia: 9493₽\n   🔍 Auto services:\n     1. Экспедирование межтерминальное (кг): 13.8₽ × 687.5кг = 9488₽\n\n🏁 Analysis complete!\n",
+      "exit": 0,
+      "description": "Test NordWheel API quantity behavior"
+    },
+    "time": {
+      "start": 1764035604066,
+      "end": 1764035606932
+    }
+  }
+}

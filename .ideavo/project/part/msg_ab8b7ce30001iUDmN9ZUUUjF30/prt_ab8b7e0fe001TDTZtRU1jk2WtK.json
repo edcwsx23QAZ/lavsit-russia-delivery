@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8b7e0fe001TDTZtRU1jk2WtK",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8b7ce30001iUDmN9ZUUUjF30",
+  "type": "tool",
+  "callID": "call_830ab2509b7f47b294cbe90c",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          const fallbackRequestData = {\n            ...requestData,\n            cargo: {\n              total_weight: Math.min(totalWeight, 999),\n              total_volume: Math.min(totalVolume, 4.9),\n              total_quantity: form.cargos.length\n            }",
+      "newString": "          const fallbackRequestData = {\n            ...requestData,\n            cargo: {\n              total_weight: Math.min(totalWeight, 999),\n              total_volume: Math.min(totalVolume, 4.9),\n              total_quantity: 1 // Также всегда 1 для fallback\n            }"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3724,9 +3724,9 @@\n   ...requestData,\n   cargo: {\n     total_weight: Math.min(totalWeight, 999),\n     total_volume: Math.min(totalVolume, 4.9),\n-    total_quantity: form.cargos.length\n+    total_quantity: 1 // Также всегда 1 для fallback\n   }\n };\n \n console.log('🔄 Fallback запрос:', JSON.stringify(fallbackRequestData, null, 2));\n"
+    },
+    "time": {
+      "start": 1764035649792,
+      "end": 1764035649826
+    }
+  }
+}

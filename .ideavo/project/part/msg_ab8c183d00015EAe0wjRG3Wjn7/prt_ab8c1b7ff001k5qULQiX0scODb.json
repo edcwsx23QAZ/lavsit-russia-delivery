@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8c1b7ff001k5qULQiX0scODb",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8c183d00015EAe0wjRG3Wjn7",
+  "type": "tool",
+  "callID": "call_80913656bec546eb979f4535",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/prisma/schema.prisma",
+      "oldString": "datasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}",
+      "newString": "datasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Calculation {\n  id          String   @id @default(cuid())\n  orderNumber String?  @unique // Номер заказа (уникальный)\n  createdAt   DateTime @default(now()) // Дата расчета\n  formData    Json     // Все введенные данные формы\n  results     Json     // Все результаты расчетов ТК\n  screenshot  String?  // Путь к скриншоту страницы\n  status      String   @default(\"active\") // Статус сохранения\n  \n  @@map(\"calculations\")\n}"
+    },
+    "output": "",
+    "title": "prisma/schema.prisma",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/prisma/schema.prisma\n===================================================================\n--- /home/user/project/prisma/schema.prisma\n+++ /home/user/project/prisma/schema.prisma\n@@ -8,4 +8,16 @@\n datasource db {\n   provider = \"postgresql\"\n   url      = env(\"DATABASE_URL\")\n }\n+\n+model Calculation {\n+  id          String   @id @default(cuid())\n+  orderNumber String?  @unique // Номер заказа (уникальный)\n+  createdAt   DateTime @default(now()) // Дата расчета\n+  formData    Json     // Все введенные данные формы\n+  results     Json     // Все результаты расчетов ТК\n+  screenshot  String?  // Путь к скриншоту страницы\n+  status      String   @default(\"active\") // Статус сохранения\n+  \n+  @@map(\"calculations\")\n+}\n"
+    },
+    "time": {
+      "start": 1764036294659,
+      "end": 1764036294670
+    }
+  }
+}

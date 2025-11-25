@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8c6e4fe001baImIx8fXQDMfk",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8c6d461001LwSklDHW6A8ves",
+  "type": "tool",
+  "callID": "call_64d16b5a39104e2c87ef5d8d",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 10
+    },
+    "output": "<file>\n00011| import { Alert, AlertDescription } from '@/components/ui/alert';\n00012| import { Badge } from '@/components/ui/badge';\n00013| import { Separator } from '@/components/ui/separator';\n00014| import { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\n00015| import { LazyProductSearch, LazyTruckVisualization } from '@/components/LazyLoadedComponents';\n00016| import ProductManager from '@/components/ProductManager';\n00017| import CalculationProgress from '@/components/CalculationProgress';\n00018| import { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\n00019| import { saveFormData, loadFormData, hasStoredFormData, createDebouncedSaver, clearFormData } from '@/lib/form-storage';\n00020| import {\n00021|   createCargosForProduct,\n00022|   removeCargosForProduct,\n00023|   calculateTotalValue,\n00024|   findCargoIndexesForProduct\n00025| } from '@/lib/furniture-utils';\n00026| import { enhancedApiRequest } from '@/lib/api-utils';\n00027| import { cacheManager } from '@/lib/cache-manager';\n00028| import { optimizedApiClient } from '@/lib/optimized-api-client';\n00029| \n00030| interface Cargo {\n\n(File has more lines. Use 'offset' parameter to read beyond line 30)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "import { Alert, AlertDescription } from '@/components/ui/alert';\nimport { Badge } from '@/components/ui/badge';\nimport { Separator } from '@/components/ui/separator';\nimport { Collapsible, CollapsibleContent } from '@/components/ui/collapsible';\nimport { LazyProductSearch, LazyTruckVisualization } from '@/components/LazyLoadedComponents';\nimport ProductManager from '@/components/ProductManager';\nimport CalculationProgress from '@/components/CalculationProgress';\nimport { FurnitureProduct, ProductInForm, CargoWithMetadata } from '@/lib/furniture-types';\nimport { saveFormData, loadFormData, hasStoredFormData, createDebouncedSaver, clearFormData } from '@/lib/form-storage';\nimport {\n  createCargosForProduct,\n  removeCargosForProduct,\n  calculateTotalValue,\n  findCargoIndexesForProduct\n} from '@/lib/furniture-utils';\nimport { enhancedApiRequest } from '@/lib/api-utils';\nimport { cacheManager } from '@/lib/cache-manager';\nimport { optimizedApiClient } from '@/lib/optimized-api-client';\n\ninterface Cargo {"
+    },
+    "time": {
+      "start": 1764036633856,
+      "end": 1764036633859
+    }
+  }
+}

@@ -26,6 +26,7 @@ import {
 import { enhancedApiRequest } from '@/lib/api-utils';
 import { cacheManager } from '@/lib/cache-manager';
 import { optimizedApiClient } from '@/lib/optimized-api-client';
+import SaveCalculation from '@/components/SaveCalculation';
 
 interface Cargo {
   id: string;
@@ -3687,7 +3688,7 @@ export default function Home() {
         cargo: {
           total_weight: totalWeight,
           total_volume: totalVolume,
-          total_quantity: form.cargos.length
+          total_quantity: 1 // Всегда 1, чтобы NordWheel не умножал стоимость на кол-во мест
         },
         insurance: form.needInsurance && form.declaredValue ? form.declaredValue : null,
         insurance_refuse: !form.needInsurance,
@@ -3725,7 +3726,7 @@ export default function Home() {
             cargo: {
               total_weight: Math.min(totalWeight, 999),
               total_volume: Math.min(totalVolume, 4.9),
-              total_quantity: form.cargos.length
+              total_quantity: 1 // Также всегда 1 для fallback
             }
           };
           
@@ -5311,14 +5312,23 @@ export default function Home() {
                  <div className="space-y-2">
                 <div className="flex justify-between items-center">
                   <h2 className="text-lg font-bold text-blue-400">Результаты расчета</h2>
-                  <Button 
-                    onClick={exportToPDF} 
-                    variant="outline" 
-                    size="sm" 
-                    className="h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden"
-                  >
-                    Сохранить в PDF
-                  </Button>
+                  <div className="flex gap-2">
+                    <SaveCalculation 
+                      formData={form}
+                      calculations={calculations}
+                      onSaved={(orderNumber) => {
+                        console.log('Расчет сохранен с номером:', orderNumber);
+                      }}
+                    />
+                    <Button 
+                      onClick={exportToPDF} 
+                      variant="outline" 
+                      size="sm" 
+                      className="h-7 text-xs border-blue-500 text-blue-400 hover:bg-blue-900/20 print:hidden"
+                    >
+                      Сохранить в PDF
+                    </Button>
+                  </div>
                 </div>
                 
                 {calculations

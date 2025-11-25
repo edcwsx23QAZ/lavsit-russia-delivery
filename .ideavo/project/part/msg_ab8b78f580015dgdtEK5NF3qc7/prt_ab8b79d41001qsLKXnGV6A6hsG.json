@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab8b79d41001qsLKXnGV6A6hsG",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8b78f580015dgdtEK5NF3qc7",
+  "type": "tool",
+  "callID": "call_81af37c6e08b4d7ca86042e6",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 3655
+    },
+    "output": "<file>\n03656|         } else {\n03657|           return {\n03658|             type: 'address' as const,\n03659|             address: form.fromAddress || form.fromCity // Используем адрес если есть, иначе город\n03660|           };\n03661|         }\n03662|       };\n03663| \n03664|       const getDestinationLocation = () => {\n03665|         if (form.toTerminal) {\n03666|           return {\n03667|             type: 'terminal' as const,\n03668|             // Для терминальной доставки используем реальный FIAS код города\n03669|             city_fias: getCityFias(form.toCity)\n03670|           };\n03671|         } else {\n03672|           return {\n03673|             type: 'address' as const,\n03674|             address: form.toAddress || form.toCity // Используем адрес если есть, иначе город\n03675|           };\n03676|         }\n03677|       };\n03678| \n03679|       // Формируем запрос для нового API NordWheel с учетом настроек формы\n03680|       const requestData = {\n03681|         dispatch: {\n03682|           location: getDispatchLocation()\n03683|         },\n03684|         destination: {\n03685|           location: getDestinationLocation()\n03686|         },\n03687|         cargo: {\n03688|           total_weight: totalWeight,\n03689|           total_volume: totalVolume,\n03690|           total_quantity: form.cargos.length\n03691|         },\n03692|         insurance: form.needInsurance && form.declaredValue ? form.declaredValue : null,\n03693|         insurance_refuse: !form.needInsurance,\n03694|         services: {\n03695|           is_package: form.needPackaging,\n03696|           is_documents_return: false,\n03697|           is_fragile: false\n03698|         },\n03699|         promocode: null\n03700|       };\n03701| \n03702|       console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));\n03703| \n03704|       const result = await enhancedApiRequest(\n03705|         apiUrl,\n\n(File has more lines. Use 'offset' parameter to read beyond line 3705)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        } else {\n          return {\n            type: 'address' as const,\n            address: form.fromAddress || form.fromCity // Используем адрес если есть, иначе город\n          };\n        }\n      };\n\n      const getDestinationLocation = () => {\n        if (form.toTerminal) {\n          return {\n            type: 'terminal' as const,\n            // Для терминальной доставки используем реальный FIAS код города\n            city_fias: getCityFias(form.toCity)\n          };\n        } else {\n          return {\n            type: 'address' as const,\n            address: form.toAddress || form.toCity // Используем адрес если есть, иначе город\n          };"
+    },
+    "time": {
+      "start": 1764035632453,
+      "end": 1764035632462
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8cab24f001orwRyt8u6JvXGP",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8caa22f001tm1mvuSgVRoN8g",
+  "type": "tool",
+  "callID": "call_5bf13b52aaf94e39bc2a6734",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "bunx prisma migrate dev --name add_calculations_table",
+      "description": "Run Prisma migration for Calculation model"
+    },
+    "output": "/bin/sh: 1: bunx: not found\n",
+    "title": "bunx prisma migrate dev --name add_calculations_table",
+    "metadata": {
+      "output": "/bin/sh: 1: bunx: not found\n",
+      "exit": 127,
+      "description": "Run Prisma migration for Calculation model"
+    },
+    "time": {
+      "start": 1764036883037,
+      "end": 1764036883039
+    }
+  }
+}

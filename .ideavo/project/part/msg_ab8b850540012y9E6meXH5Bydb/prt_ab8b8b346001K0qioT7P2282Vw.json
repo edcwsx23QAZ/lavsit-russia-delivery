@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8b8b346001K0qioT7P2282Vw",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8b850540012y9E6meXH5Bydb",
+  "type": "tool",
+  "callID": "call_b54bb94cd01b431ca6b47cc4",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-nordwheel-fix.js",
+      "description": "Test NordWheel quantity fix"
+    },
+    "output": "🧪 Testing NordWheel API quantity fix...\n\n📦 Test: Multiple cargos with quantity=1\n   Total weight: 150kg\n   Total volume: 0.6m³\n   Quantity: 1 (фиксировано)\n   Simulates: 3 cargo places × 50kg × 0.2m³ each\n\n✅ SUCCESS: Quantity fix works!\n   💰 Auto: 2393₽\n   ✈️  Avia: 11130₽\n   🔍 Auto services breakdown:\n     1. Экспедирование межтерминальное (кг): 14.5₽ × 165кг = 2393₽\n\n🎯 VERIFICATION:\n   ✅ Price based on total weight/volume, not quantity\n   ✅ No artificial multiplication by cargo places\n",
+    "title": "node test-nordwheel-fix.js",
+    "metadata": {
+      "output": "🧪 Testing NordWheel API quantity fix...\n\n📦 Test: Multiple cargos with quantity=1\n   Total weight: 150kg\n   Total volume: 0.6m³\n   Quantity: 1 (фиксировано)\n   Simulates: 3 cargo places × 50kg × 0.2m³ each\n\n✅ SUCCESS: Quantity fix works!\n   💰 Auto: 2393₽\n   ✈️  Avia: 11130₽\n   🔍 Auto services breakdown:\n     1. Экспедирование межтерминальное (кг): 14.5₽ × 165кг = 2393₽\n\n🎯 VERIFICATION:\n   ✅ Price based on total weight/volume, not quantity\n   ✅ No artificial multiplication by cargo places\n",
+      "exit": 0,
+      "description": "Test NordWheel quantity fix"
+    },
+    "time": {
+      "start": 1764035703649,
+      "end": 1764035705337
+    }
+  }
+}
