@@ -3069,18 +3069,19 @@ export default function Home() {
        console.log('🚂 Rail Continent ответ:', data);
 
       if (response.ok && data.result === 'success' && data.data) {
-        // Выбираем автомобильный тариф как основной (самый быстрый)
-        const autoTariff = data.data.auto;
+        // Выбираем железнодорожный тариф как основной (более точный для сайта)
+        const trainTariff = data.data.train;
         
-        if (autoTariff) {
+        if (trainTariff) {
           // Собираем детали по услугам для расчета стоимости
           const services: { name: string; description: string; price: number }[] = [];
           let totalPrice = 0;
           
           console.log('🚂 Rail Continent детали тарифа:', {
-            price_with_out_sale: autoTariff.price_with_out_sale,
-            pricePackage: autoTariff.pricePackage,
-            priceInsurance: autoTariff.priceInsurance,
+            priceTotal: trainTariff.priceTotal,
+            price_with_out_sale: trainTariff.price_with_out_sale,
+            pricePackage: trainTariff.pricePackage,
+            priceInsurance: trainTariff.priceInsurance,
             needPackaging: form.needPackaging,
             needInsurance: form.needInsurance,
             declaredValue: form.declaredValue
@@ -3091,40 +3092,74 @@ export default function Home() {
           console.log('   - Страхование требуется:', form.needInsurance);
           console.log('   - Заявленная стоимость:', form.declaredValue);
           
-          // Основная стоимость доставки груза
-          if (autoTariff.price_with_out_sale) {
-            const deliveryPrice = parseFloat(autoTariff.price_with_out_sale);
-            console.log('🚂 Доставка груза:', deliveryPrice);
+          // Используем priceTotal как основную стоимость (включает терминальные сборы)
+          if (trainTariff.priceTotal) {
+            const deliveryPrice = parseFloat(trainTariff.priceTotal);
+            console.log('🚂 Доставка груза (priceTotal):', deliveryPrice);
             services.push({
               name: 'Доставка груза',
-              description: `${autoTariff.type} (${autoTariff.rsType})`,
+              description: `${trainTariff.type} (${trainTariff.rsType})`,
+              price: deliveryPrice
+            });
+            totalPrice = deliveryPrice; // Устанавливаем как базовую цену
+            
+            // Если есть доп. услуги, добавляем их отдельно
+            if (form.needPackaging && trainTariff.pricePackage) {
+              const packagingPrice = parseFloat(trainTariff.pricePackage);
+              console.log('🚂 Упаковка груза:', packagingPrice);
+              services.push({
+                name: 'Упаковка груза',
+                description: 'Профессиональная упаковка',
+                price: packagingPrice
+              });
+              totalPrice += packagingPrice;
+            }
+            
+            // Страхование (рассчитывается отдельно от priceTotal)
+            if (form.needInsurance && trainTariff.priceInsurance) {
+              const insuranceCost = Math.round(form.declaredValue * parseFloat(trainTariff.priceInsurance) / 100);
+              console.log('🚂 Страхование груза:', insuranceCost, '(', form.declaredValue, '*', trainTariff.priceInsurance, '%)');
+              services.push({
+                name: 'Страхование груза',
+                description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
+                price: insuranceCost
+              });
+              totalPrice += insuranceCost;
+            }
+          } else if (trainTariff.price_with_out_sale) {
+            // Fallback на старую логику если priceTotal отсутствует
+            const deliveryPrice = parseFloat(trainTariff.price_with_out_sale);
+            console.log('🚂 Доставка груза (fallback):', deliveryPrice);
+            services.push({
+              name: 'Доставка груза',
+              description: `${trainTariff.type} (${trainTariff.rsType})`,
               price: deliveryPrice
             });
             totalPrice += deliveryPrice;
-          }
-          
-          // Упаковка
-          if (form.needPackaging && autoTariff.pricePackage) {
-            const packagingPrice = parseFloat(autoTariff.pricePackage);
-            console.log('🚂 Упаковка груза:', packagingPrice);
-            services.push({
-              name: 'Упаковка груза',
-              description: 'Профессиональная упаковка',
-              price: packagingPrice
-            });
-            totalPrice += packagingPrice;
-          }
-          
-          // Страхование
-          if (form.needInsurance && autoTariff.priceInsurance) {
-            const insuranceCost = Math.round(form.declaredValue * parseFloat(autoTariff.priceInsurance) / 100);
-            console.log('🚂 Страхование груза:', insuranceCost, '(', form.declaredValue, '*', autoTariff.priceInsurance, '%)');
-            services.push({
-              name: 'Страхование груза',
-              description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
-              price: insuranceCost
-            });
-            totalPrice += insuranceCost;
+            
+            // Упаковка
+            if (form.needPackaging && trainTariff.pricePackage) {
+              const packagingPrice = parseFloat(trainTariff.pricePackage);
+              console.log('🚂 Упаковка груза:', packagingPrice);
+              services.push({
+                name: 'Упаковка груза',
+                description: 'Профессиональная упаковка',
+                price: packagingPrice
+              });
+              totalPrice += packagingPrice;
+            }
+            
+            // Страхование
+            if (form.needInsurance && trainTariff.priceInsurance) {
+              const insuranceCost = Math.round(form.declaredValue * parseFloat(trainTariff.priceInsurance) / 100);
+              console.log('🚂 Страхование груза:', insuranceCost, '(', form.declaredValue, '*', trainTariff.priceInsurance, '%)');
+              services.push({
+                name: 'Страхование груза',
+                description: `На сумму ${form.declaredValue.toLocaleString()} ₽`,
+                price: insuranceCost
+              });
+              totalPrice += insuranceCost;
+            }
           }
 
           console.log('🚂 Rail Continent итоговая стоимость:', totalPrice);
@@ -3134,38 +3169,38 @@ export default function Home() {
           const additionalServices: { name: string; description: string; price: number }[] = [];
           
           // Терминальные сборы
-          if (autoTariff.terminalEnter1) {
+          if (trainTariff.terminalEnter1) {
             additionalServices.push({
               name: 'Терминальный сбор отправления',
               description: 'Обработка груза на терминале',
-              price: parseInt(autoTariff.terminalEnter1)
+              price: parseInt(trainTariff.terminalEnter1)
             });
           }
           
           // Забор/доставка
-          if (form.fromAddressDelivery && autoTariff.pricePickup && parseInt(autoTariff.pricePickup) > 0) {
+          if (form.fromAddressDelivery && trainTariff.pricePickup && parseInt(trainTariff.pricePickup) > 0) {
             additionalServices.push({
               name: 'Забор груза',
               description: 'От адреса отправителя',
-              price: parseInt(autoTariff.pricePickup)
+              price: parseInt(trainTariff.pricePickup)
             });
           }
           
-          if (form.toAddressDelivery && autoTariff.priceDelivery && parseInt(autoTariff.priceDelivery) > 0) {
+          if (form.toAddressDelivery && trainTariff.priceDelivery && parseInt(trainTariff.priceDelivery) > 0) {
             additionalServices.push({
               name: 'Доставка по адресу',
               description: 'До адреса получателя',
-              price: parseInt(autoTariff.priceDelivery)
+              price: parseInt(trainTariff.priceDelivery)
             });
           }
 
           return {
             company: 'Rail Continent',
             price: Math.round(totalPrice),
-            days: parseInt(autoTariff.duration) || 5,
+            days: parseInt(trainTariff.duration) || 5,
             details: {
-              tariff: `${autoTariff.type} - ${autoTariff.service}`,
-              transportType: autoTariff.rsType,
+              tariff: `${trainTariff.type} - ${trainTariff.service}`,
+              transportType: trainTariff.rsType,
               weight: totalWeight,
               volume: totalVolume,
               route: `${form.fromCity} - ${form.toCity}`,
@@ -3182,7 +3217,7 @@ export default function Home() {
             company: 'Rail Continent',
             price: 0,
             days: 0,
-            error: 'Автомобильный тариф недоступен для данного маршрута',
+            error: 'Железнодорожный тариф недоступен для данного маршрута',
             requestData,
             responseData: data,
             apiUrl

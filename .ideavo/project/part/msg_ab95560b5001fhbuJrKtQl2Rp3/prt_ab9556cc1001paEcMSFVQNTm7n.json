@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab9556cc1001paEcMSFVQNTm7n",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab95560b5001fhbuJrKtQl2Rp3",
+  "type": "text",
+  "text": "\nТеперь я вижу проблему! В коде есть несколько потенциальных проблем:\n\n1. **Используется автомобильный тариф (`autoTariff`)** вместо железнодорожного (`train`)\n2. **Цена может быть в `priceTotal`** а не в `price_with_out_sale`\n3. **Неправильный расчет страхования**\n\nДавайте проверим, что возвращает API Rail Continent. Сначала посмотрим на логи:",
+  "time": {
+    "start": 1764045978078,
+    "end": 1764045978078
+  }
+}

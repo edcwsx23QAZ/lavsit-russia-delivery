@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab95598f5001bo3to9Vj3K17k8",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab9557c7d001QLrOVW92s9Vfob",
+  "type": "tool",
+  "callID": "call_3141a94bf0a94c3fa690c018",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -s \"https://www.railcontinent.ru/ajax/api.php?city_sender=Москва&city_receiver=Санкт-Петербург&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto\" | jq .",
+      "description": "Test Rail Continent API directly to see response structure"
+    },
+    "output": "/bin/sh: 1: jq: not found\n",
+    "title": "curl -s \"https://www.railcontinent.ru/ajax/api.php?city_sender=Москва&city_receiver=Санкт-Петербург&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto\" | jq .",
+    "metadata": {
+      "output": "/bin/sh: 1: jq: not found\n",
+      "exit": 127,
+      "description": "Test Rail Continent API directly to see response structure"
+    },
+    "time": {
+      "start": 1764045986077,
+      "end": 1764045987103
+    }
+  }
+}

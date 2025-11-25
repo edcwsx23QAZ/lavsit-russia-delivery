@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab9564422001lutmz0gjduqQ3e",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab956300d001slH6ANTzX4mbo2",
+  "type": "tool",
+  "callID": "call_674d9127aa2847bab9b0c886",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          console.log('🚂 Rail Continent детали тарифа:', {\n            price_with_out_sale: autoTariff.price_with_out_sale,\n            pricePackage: autoTariff.pricePackage,\n            priceInsurance: autoTariff.priceInsurance,\n            needPackaging: form.needPackaging,\n            needInsurance: form.needInsurance,\n            declaredValue: form.declaredValue\n          });",
+      "newString": "          console.log('🚂 Rail Continent детали тарифа:', {\n            priceTotal: trainTariff.priceTotal,\n            price_with_out_sale: trainTariff.price_with_out_sale,\n            pricePackage: trainTariff.pricePackage,\n            priceInsurance: trainTariff.priceInsurance,\n            needPackaging: form.needPackaging,\n            needInsurance: form.needInsurance,\n            declaredValue: form.declaredValue\n          });"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3077,11 +3077,12 @@\n const services: { name: string; description: string; price: number }[] = [];\n let totalPrice = 0;\n \n console.log('🚂 Rail Continent детали тарифа:', {\n-  price_with_out_sale: autoTariff.price_with_out_sale,\n-  pricePackage: autoTariff.pricePackage,\n-  priceInsurance: autoTariff.priceInsurance,\n+  priceTotal: trainTariff.priceTotal,\n+  price_with_out_sale: trainTariff.price_with_out_sale,\n+  pricePackage: trainTariff.pricePackage,\n+  priceInsurance: trainTariff.priceInsurance,\n   needPackaging: form.needPackaging,\n   needInsurance: form.needInsurance,\n   declaredValue: form.declaredValue\n });\n"
+    },
+    "time": {
+      "start": 1764046029861,
+      "end": 1764046029897
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab9555ac7001O1Ov1WeU9n2iqs",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab9552b95001ewl1H1Ty1T4GNo",
+  "type": "tool",
+  "callID": "call_88d4b36840424d23a2525592",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 3170
+    },
+    "output": "<file>\n03171|               route: `${form.fromCity} - ${form.toCity}`,\n03172|               services,\n03173|               additionalServices,\n03174|               allTariffs: data.data\n03175|             },\n03176|             requestData,\n03177|             responseData: data,\n03178|             apiUrl\n03179|           };\n03180|         } else {\n03181|           return {\n03182|             company: 'Rail Continent',\n03183|             price: 0,\n03184|             days: 0,\n03185|             error: 'Автомобильный тариф недоступен для данного маршрута',\n03186|             requestData,\n03187|             responseData: data,\n03188|             apiUrl\n03189|           };\n03190|         }\n03191|       } else {\n03192|         return {\n03193|           company: 'Rail Continent',\n03194|           price: 0,\n03195|           days: 0,\n03196|           error: data.error || 'Ошибка расчета Rail Continent',\n03197|           requestData,\n03198|           responseData: data,\n03199|           apiUrl\n03200|         };\n03201|       }\n03202|     } catch (error: any) {\n03203|       console.error('🚂 Rail Continent ошибка:', error);\n03204|       return {\n03205|         company: 'Rail Continent',\n03206|         price: 0,\n03207|         days: 0,\n03208|         error: `Ошибка соединения: ${error.message}`,\n03209|         apiUrl\n03210|       };\n03211|     }\n03212|   };\n03213| \n03214|   const calculateVozovoz = async (): Promise<CalculationResult> => {\n03215|     const apiUrl = '/api/vozovoz';\n03216|     \n03217|     try {\n03218|       // Вычисляем основные параметры груза\n03219|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n03220|       const totalVolume = form.cargos.reduce((sum, cargo) => \n\n(File has more lines. Use 'offset' parameter to read beyond line 3220)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "              route: `${form.fromCity} - ${form.toCity}`,\n              services,\n              additionalServices,\n              allTariffs: data.data\n            },\n            requestData,\n            responseData: data,\n            apiUrl\n          };\n        } else {\n          return {\n            company: 'Rail Continent',\n            price: 0,\n            days: 0,\n            error: 'Автомобильный тариф недоступен для данного маршрута',\n            requestData,\n            responseData: data,\n            apiUrl\n          };\n        }"
+    },
+    "time": {
+      "start": 1764045970122,
+      "end": 1764045970126
+    }
+  }
+}

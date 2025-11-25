@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab957113800188LSMbTZE08il2",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab956e188001FvZvN0MR3aKKhG",
+  "type": "tool",
+  "callID": "call_cfceefcdb82c499d8a6ddb1a",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "            days: parseInt(autoTariff.duration) || 5,\n            details: {\n              tariff: `${autoTariff.type} - ${autoTariff.service}`,\n              transportType: autoTariff.rsType,",
+      "newString": "            days: parseInt(trainTariff.duration) || 5,\n            details: {\n              tariff: `${trainTariff.type} - ${trainTariff.service}`,\n              transportType: trainTariff.rsType,"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3196,12 +3196,12 @@\n \n return {\n   company: 'Rail Continent',\n   price: Math.round(totalPrice),\n-  days: parseInt(autoTariff.duration) || 5,\n+  days: parseInt(trainTariff.duration) || 5,\n   details: {\n-    tariff: `${autoTariff.type} - ${autoTariff.service}`,\n-    transportType: autoTariff.rsType,\n+    tariff: `${trainTariff.type} - ${trainTariff.service}`,\n+    transportType: trainTariff.rsType,\n     weight: totalWeight,\n     volume: totalVolume,\n     route: `${form.fromCity} - ${form.toCity}`,\n     services,\n"
+    },
+    "time": {
+      "start": 1764046082363,
+      "end": 1764046082389
+    }
+  }
+}

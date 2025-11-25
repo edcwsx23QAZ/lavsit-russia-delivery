@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab95727fc001d5BwyCnXEd2pAb",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab9571658001yGfN9cmmp5Q9mp",
+  "type": "tool",
+  "callID": "call_f0f29f7fb3804ee4b1b8a5d3",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "        } else {\n          return {\n            company: 'Rail Continent',\n            price: 0,\n            days: 0,\n            error: 'Автомобильный тариф недоступен для данного маршрута',\n            requestData,\n            responseData: data,\n            apiUrl\n          };\n        }",
+      "newString": "        } else {\n          return {\n            company: 'Rail Continent',\n            price: 0,\n            days: 0,\n            error: 'Железнодорожный тариф недоступен для данного маршрута',\n            requestData,\n            responseData: data,\n            apiUrl\n          };\n        }"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3216,9 +3216,9 @@\n return {\n   company: 'Rail Continent',\n   price: 0,\n   days: 0,\n-  error: 'Автомобильный тариф недоступен для данного маршрута',\n+  error: 'Железнодорожный тариф недоступен для данного маршрута',\n   requestData,\n   responseData: data,\n   apiUrl\n };\n"
+    },
+    "time": {
+      "start": 1764046088191,
+      "end": 1764046088235
+    }
+  }
+}

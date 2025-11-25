@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab956dc610012C375TvRtfmeg9",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab9569ca2001rcc6strKuwVzTl",
+  "type": "tool",
+  "callID": "call_df4a8b58f587422abe6c708b",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "          // Терминальные сборы\n          if (autoTariff.terminalEnter1) {\n            additionalServices.push({\n              name: 'Терминальный сбор отправления',\n              description: 'Обработка груза на терминале',\n              price: parseInt(autoTariff.terminalEnter1)\n            });\n          }\n          \n          // Забор/доставка\n          if (form.fromAddressDelivery && autoTariff.pricePickup && parseInt(autoTariff.pricePickup) > 0) {\n            additionalServices.push({\n              name: 'Забор груза',\n              description: 'От адреса отправителя',\n              price: parseInt(autoTariff.pricePickup)\n            });\n          }\n          \n          if (form.toAddressDelivery && autoTariff.priceDelivery && parseInt(autoTariff.priceDelivery) > 0) {\n            additionalServices.push({\n              name: 'Доставка по адресу',\n              description: 'До адреса получателя',\n              price: parseInt(autoTariff.priceDelivery)\n            });\n          }",
+      "newString": "          // Терминальные сборы\n          if (trainTariff.terminalEnter1) {\n            additionalServices.push({\n              name: 'Терминальный сбор отправления',\n              description: 'Обработка груза на терминале',\n              price: parseInt(trainTariff.terminalEnter1)\n            });\n          }\n          \n          // Забор/доставка\n          if (form.fromAddressDelivery && trainTariff.pricePickup && parseInt(trainTariff.pricePickup) > 0) {\n            additionalServices.push({\n              name: 'Забор груза',\n              description: 'От адреса отправителя',\n              price: parseInt(trainTariff.pricePickup)\n            });\n          }\n          \n          if (form.toAddressDelivery && trainTariff.priceDelivery && parseInt(trainTariff.priceDelivery) > 0) {\n            additionalServices.push({\n              name: 'Доставка по адресу',\n              description: 'До адреса получателя',\n              price: parseInt(trainTariff.priceDelivery)\n            });\n          }"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3168,30 +3168,30 @@\n // Дополнительные услуги (показываем, но не включаем в общую стоимость)\n const additionalServices: { name: string; description: string; price: number }[] = [];\n \n // Терминальные сборы\n-if (autoTariff.terminalEnter1) {\n+if (trainTariff.terminalEnter1) {\n   additionalServices.push({\n     name: 'Терминальный сбор отправления',\n     description: 'Обработка груза на терминале',\n-    price: parseInt(autoTariff.terminalEnter1)\n+    price: parseInt(trainTariff.terminalEnter1)\n   });\n }\n \n // Забор/доставка\n-if (form.fromAddressDelivery && autoTariff.pricePickup && parseInt(autoTariff.pricePickup) > 0) {\n+if (form.fromAddressDelivery && trainTariff.pricePickup && parseInt(trainTariff.pricePickup) > 0) {\n   additionalServices.push({\n     name: 'Забор груза',\n     description: 'От адреса отправителя',\n-    price: parseInt(autoTariff.pricePickup)\n+    price: parseInt(trainTariff.pricePickup)\n   });\n }\n \n-if (form.toAddressDelivery && autoTariff.priceDelivery && parseInt(autoTariff.priceDelivery) > 0) {\n+if (form.toAddressDelivery && trainTariff.priceDelivery && parseInt(trainTariff.priceDelivery) > 0) {\n   additionalServices.push({\n     name: 'Доставка по адресу',\n     description: 'До адреса получателя',\n-    price: parseInt(autoTariff.priceDelivery)\n+    price: parseInt(trainTariff.priceDelivery)\n   });\n }\n \n return {\n"
+    },
+    "time": {
+      "start": 1764046068835,
+      "end": 1764046068871
+    }
+  }
+}

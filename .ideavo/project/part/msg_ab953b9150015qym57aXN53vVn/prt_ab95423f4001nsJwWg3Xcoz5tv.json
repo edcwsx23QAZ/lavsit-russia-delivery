@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab95423f4001nsJwWg3Xcoz5tv",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab953b9150015qym57aXN53vVn",
+  "type": "tool",
+  "callID": "call_43ec451f7d9a4bac8a1a4780",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project",
+      "pattern": "rail.*continent|railcontinent"
+    },
+    "output": "Found 42 matches\n/home/user/project/app/page.tsx:\n  Line 93:   { name: 'Rail Continent', logo: '🚂', apiKey: 'railcontinent' },\n  Line 167:     railcontinent: true,\n  Line 209:     railcontinent: 'проверка...',\n  Line 562:       checkAPIStatus('railcontinent', async () => {\n  Line 564:           const response = await fetch('/api/rail-continent', {\n  Line 2984:     const apiUrl = '/api/rail-continent';\n  Line 4303:       if (enabledCompanies.railcontinent) enabledCompaniesList.push({ name: 'Rail Continent', key: 'railcontinent', func: calculateRailContinent });\n\n/home/user/project/components/diagnostic/ApiMasterTab.tsx:\n  Line 114:     key: 'railcontinent',\n  Line 118:     endpoints: ['/api/rail-continent'],\n  Line 277:         case 'railcontinent':\n  Line 278:           const railResponse = await apiRequestWithTimeout('/api/rail-continent', {\n\n/home/user/project/app/diagnostic/page.tsx:\n  Line 97:     testAPI('RailContinent', '/api/rail-continent', { method: 'test' });\n  Line 140:       { service: 'Rail Continent', endpoint: '/api/rail-continent', data: { method: 'test' } },\n\n/home/user/project/components/diagnostic/ApiTestingSection.tsx:\n  Line 127:       {renderApiCard('railcontinent', 'Rail Continent', 'text-purple-400', testStates.isTestingRailContinent, onTestRailContinent, 'railcontinent')}\n\n/home/user/project/app/api/external/route.ts:\n  Line 9:   'railcontinent',\n  Line 268:     railcontinent: '/api/rail-continent',\n  Line 309:     case 'railcontinent':\n\n/home/user/project/components/diagnostic/ManualTesting.tsx:\n  Line 56:   { id: 'railcontinent', name: 'Rail Continent', officialSite: 'https://railcont.ru/calc/' },\n\n/home/user/project/ideavo-server.info:\n  Line 17:  ✓ Compiled /api/rail-continent in 440ms (374 modules)\n  Line 19: 🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=10&volume=0.1&length=1&width=1&height=1&declared_cost=50000&pickup=0&delivery=0&packaging=0&insurance=0&tariff=auto\n  Line 187:  POST /api/rail-continent 200 in 1638ms\n  Line 243: 🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%B3+%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%B3+%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=112&volume=6.984419&quantity=8&length=8.14&width=1.14&height=1.14&declared_cost=227000&pickup=1&delivery=1&packaging=1&insurance=1&tariff=auto\n  Line 408:  POST /api/rail-continent 200 in 1075ms\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 456:       const response = await fetch('/api/rail-continent', {\n  Line 468:         updateResult('railcontinent', {\n  Line 477:         updateResult('railcontinent', {\n  Line 488:       updateResult('railcontinent', {\n  Line 757:         case 'railcontinent':\n  Line 758:           apiUrl = '/api/rail-continent';\n  Line 899:         case 'railcontinent':\n  Line 953:       const transportCompanies = ['pek', 'railcontinent', 'vozovoz', 'nordwheel', 'dellin'];\n  Line 1637:               {diagnosticResults.railcontinent ? (\n  Line 1638:                 <Alert className={getStatusColor(diagnosticResults.railcontinent.status)}>\n  Line 1640:                     {getStatusIcon(diagnosticResults.railcontinent.status)}\n  Line 1643:                         <div className=\"font-medium mb-2\">{diagnosticResults.railcontinent.message}</div>\n  Line 1644:                         {diagnosticResults.railcontinent.timing && (\n  Line 1646:                             Время ответа: {diagnosticResults.railcontinent.timing}мс\n  Line 1649:                         {diagnosticResults.railcontinent.details && (\n  Line 1653:                               {JSON.stringify(diagnosticResults.railcontinent.details, null, 2)}\n\n/home/user/project/app/diagnostic/optimized-page.tsx:\n  Line 82:     testAPI('RailContinent', '/api/rail-continent', { method: 'test' });\n  Line 125:       { service: 'Rail Continent', endpoint: '/api/rail-continent', data: { method: 'test' } },\n\n/home/user/project/app/api/rail-continent/route.ts:\n  Line 8:     const apiUrl = new URL('https://www.railcontinent.ru/ajax/api.php');",
+    "title": "rail.*continent|railcontinent",
+    "metadata": {
+      "matches": 42,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764045890558,
+      "end": 1764045890590
+    }
+  }
+}

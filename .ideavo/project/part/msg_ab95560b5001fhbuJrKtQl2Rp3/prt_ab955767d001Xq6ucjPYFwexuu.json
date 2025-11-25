@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab955767d001Xq6ucjPYFwexuu",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab95560b5001fhbuJrKtQl2Rp3",
+  "type": "tool",
+  "callID": "call_ec14aa4bdf2b4537ae9d3dce",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/ideavo-server.info",
+      "limit": 20,
+      "offset": 240
+    },
+    "output": "<file>\n00241|   \"address\": \"г Москва, Шмитовский проезд, д 39\"\n00242| }\n00243| 🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%B3+%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%B3+%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=112&volume=6.984419&quantity=8&length=8.14&width=1.14&height=1.14&declared_cost=227000&pickup=1&delivery=1&packaging=1&insurance=1&tariff=auto\n00244| 🚚 Vozovoz API запрос: {\n00245|   \"object\": \"price\",\n00246|   \"action\": \"get\",\n00247|   \"params\": {\n00248|     \"cargo\": {\n00249|       \"dimension\": {\n00250|         \"quantity\": 8,\n00251|         \"volume\": 6.984419,\n00252|         \"weight\": 112\n00253|       },\n00254|       \"insurance\": 227000,\n00255|       \"wrapping\": {\n00256|         \"palletCollar\": 6.984419\n00257|       }\n00258|     },\n00259|     \"gateway\": {\n00260|       \"dispatch\": {\n\n(File has more lines. Use 'offset' parameter to read beyond line 260)\n</file>",
+    "title": "ideavo-server.info",
+    "metadata": {
+      "preview": "  \"address\": \"г Москва, Шмитовский проезд, д 39\"\n}\n🚂 Rail Continent API запрос: https://www.railcontinent.ru/ajax/api.php?city_sender=%D0%B3+%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0&city_receiver=%D0%B3+%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&weight=112&volume=6.984419&quantity=8&length=8.14&width=1.14&height=1.14&declared_cost=227000&pickup=1&delivery=1&packaging=1&insurance=1&tariff=auto\n🚚 Vozovoz API запрос: {\n  \"object\": \"price\",\n  \"action\": \"get\",\n  \"params\": {\n    \"cargo\": {\n      \"dimension\": {\n        \"quantity\": 8,\n        \"volume\": 6.984419,\n        \"weight\": 112\n      },\n      \"insurance\": 227000,\n      \"wrapping\": {\n        \"palletCollar\": 6.984419\n      }\n    },\n    \"gateway\": {\n      \"dispatch\": {"
+    },
+    "time": {
+      "start": 1764045977215,
+      "end": 1764045977217
+    }
+  }
+}

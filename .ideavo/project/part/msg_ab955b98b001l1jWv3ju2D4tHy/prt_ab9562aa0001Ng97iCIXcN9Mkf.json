@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab9562aa0001Ng97iCIXcN9Mkf",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab955b98b001l1jWv3ju2D4tHy",
+  "type": "tool",
+  "callID": "call_163baea64eaa45e69c2c0970",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "oldString": "      if (response.ok && data.result === 'success' && data.data) {\n        // Выбираем автомобильный тариф как основной (самый быстрый)\n        const autoTariff = data.data.auto;\n        \n        if (autoTariff) {",
+      "newString": "      if (response.ok && data.result === 'success' && data.data) {\n        // Выбираем железнодорожный тариф как основной (более точный для сайта)\n        const trainTariff = data.data.train;\n        \n        if (trainTariff) {"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3068,12 +3068,12 @@\n  const data = await response.json();\n  console.log('🚂 Rail Continent ответ:', data);\n \n if (response.ok && data.result === 'success' && data.data) {\n-  // Выбираем автомобильный тариф как основной (самый быстрый)\n-  const autoTariff = data.data.auto;\n+  // Выбираем железнодорожный тариф как основной (более точный для сайта)\n+  const trainTariff = data.data.train;\n   \n-  if (autoTariff) {\n+  if (trainTariff) {\n     // Собираем детали по услугам для расчета стоимости\n     const services: { name: string; description: string; price: number }[] = [];\n     let totalPrice = 0;\n     \n"
+    },
+    "time": {
+      "start": 1764046023334,
+      "end": 1764046023395
+    }
+  }
+}
