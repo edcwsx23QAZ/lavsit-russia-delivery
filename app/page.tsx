@@ -674,9 +674,10 @@ export default function Home() {
           const response = result as Response;
           const data = await response.json();
           
-          if (response.ok && (data.success || data.auto || data.avia)) {
+          if (response.ok && (data.auto || data.avia || data.success)) {
             return { success: true };
           } else {
+            console.error('❌ Nord Wheel API status check ошибка:', data);
             return { error: true };
           }
         } catch (error) {
@@ -3561,6 +3562,14 @@ export default function Home() {
         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
       );
 
+      // 🔧 ДОБАВЛЕНО: Валидация ограничений API NordWheel
+      if (totalWeight > 1000) {
+        console.warn('⚠️ Nord Wheel: Вес превышает 1000 кг, может быть ошибка API');
+      }
+      if (totalVolume > 5) {
+        console.warn('⚠️ Nord Wheel: Объем превышает 5 м³, может быть ошибка API');
+      }
+
       // 🔧 ДОБАВЛЕНО: Расчет габаритов для множественных мест
       const maxLength = Math.max(...form.cargos.map(c => c.length));
       const maxWidth = Math.max(...form.cargos.map(c => c.width));
@@ -3682,11 +3691,127 @@ export default function Home() {
 
       if (result && typeof result === 'object' && 'success' in result && !result.success) {
         console.error('❌ Nord Wheel API ошибка:', result.error);
+        
+        // Если ошибка 400 и большие параметры, пробуем с уменьшенными значениями
+        if (result.error.status === 400 && (totalWeight > 1000 || totalVolume > 5)) {
+          console.log('🔄 Nord Wheel: Пробуем fallback расчет с уменьшенными параметрами...');
+          
+          const fallbackRequestData = {
+            ...requestData,
+            cargo: {
+              total_weight: Math.min(totalWeight, 999),
+              total_volume: Math.min(totalVolume, 4.9),
+              total_quantity: form.cargos.length
+            }
+          };
+          
+          console.log('🔄 Fallback запрос:', JSON.stringify(fallbackRequestData, null, 2));
+          
+          const fallbackResult = await enhancedApiRequest(
+            apiUrl,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(fallbackRequestData)
+            },
+            { operation: 'calculate', company: 'Nord Wheel (fallback)' }
+          );
+          
+          if (fallbackResult && typeof fallbackResult === 'object' && 'success' in fallbackResult && !fallbackResult.success) {
+            console.error('❌ Nord Wheel fallback тоже не сработал:', fallbackResult.error);
+          } else {
+            console.log('✅ Nord Wheel fallback сработал! Используем его результат.');
+            // Используем fallback результат для дальнейшего парсинга
+            const fallbackResponse = fallbackResult as Response;
+            const fallbackData = await fallbackResponse.json();
+            
+            // Парсим fallback результат и масштабируем цену
+            const scaleFactor = Math.max(totalWeight / 999, totalVolume / 4.9);
+            
+            if (fallbackData.auto || fallbackData.avia) {
+              const options = [];
+              
+              if (fallbackData.auto) {
+                const scaledPrice = Math.round((fallbackData.auto.total_amount || 0) * scaleFactor);
+                options.push({
+                  type: 'auto',
+                  price: scaledPrice,
+                  days: fallbackData.auto.delivery_date || '',
+                  services: fallbackData.auto.services || []
+                });
+              }
+              
+              if (fallbackData.avia) {
+                const scaledPrice = Math.round((fallbackData.avia.total_amount || 0) * scaleFactor);
+                options.push({
+                  type: 'avia',
+                  price: scaledPrice,
+                  days: fallbackData.avia.delivery_date || '',
+                  services: fallbackData.avia.services || []
+                });
+              }
+              
+              if (options.length > 0) {
+                const bestOption = options.reduce((best, current) => 
+                  current.price < best.price ? current : best
+                );
+                
+                // Вычисляем дни
+                let calculatedDays = 3;
+                try {
+                  if (bestOption.days) {
+                    const deliveryDate = new Date(bestOption.days);
+                    const today = new Date();
+                    if (!isNaN(deliveryDate.getTime())) {
+                      const diffTime = deliveryDate.getTime() - today.getTime();
+                      calculatedDays = Math.max(1, Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
+                    }
+                  }
+                } catch (e) {
+                  // Оставляем значение по умолчанию
+                }
+                
+                return {
+                  company: 'Nord Wheel',
+                  price: bestOption.price,
+                  days: calculatedDays,
+                  details: {
+                    totalCost: bestOption.price,
+                    deliveryCost: bestOption.price,
+                    transportType: bestOption.type,
+                    services: bestOption.services,
+                    allOptions: options,
+                    currency: 'RUB',
+                    deliveryDate: bestOption.days,
+                    note: `Расчет по масштабированным параметрам (коэф. ${scaleFactor.toFixed(2)})`
+                  },
+                  requestData: {
+                    original: requestData,
+                    fallback: fallbackRequestData,
+                    scaleFactor
+                  },
+                  responseData: fallbackData,
+                  apiUrl
+                };
+              }
+            }
+          }
+        }
+        
+        // Детализация ошибок 400
+        let errorMessage = result.error.userMessage || result.error.message || 'Ошибка API NordWheel';
+        
+        if (result.error.status === 400) {
+          errorMessage += `. Превышены лимиты API: вес >1000кг или объем >5м³. Попробуйте разделить груз на несколько отправлений.`;
+        }
+        
         return {
           company: 'Nord Wheel',
           price: 0,
           days: 0,
-          error: result.error.userMessage || result.error.message,
+          error: errorMessage,
           apiUrl,
           requestData
         };
@@ -3701,57 +3826,82 @@ export default function Home() {
        let days = 0;
        let details: any = {};
 
-       if (data.success) {
-         // Новый формат API с auto/avia объектами
-         if (data.auto || data.avia) {
-           const options: Array<{type: string, price: number, days: number, services: any[]}> = [];
+       // Новый формат API с auto/avia объектами (проверяем без data.success)
+       if (data.auto || data.avia) {
+         const options: Array<{type: string, price: number, days: number, services: any[]}> = [];
+         
+         if (data.auto) {
+           const autoPrice = data.auto.total_amount || 0;
+           const autoDeliveryDate = data.auto.delivery_date || '';
            
-           if (data.auto) {
-             options.push({
-               type: 'auto',
-               price: data.auto.total_price || 0,
-               days: data.auto.delivery_date || 0,
-               services: data.auto.services || []
-             });
-           }
+           options.push({
+             type: 'auto',
+             price: autoPrice,
+             days: autoDeliveryDate, // Сохраняем как строку для отладки
+             services: data.auto.services || []
+           });
+         }
+         
+         if (data.avia) {
+           const aviaPrice = data.avia.total_amount || 0;
+           const aviaDeliveryDate = data.avia.delivery_date || '';
            
-           if (data.avia) {
-             options.push({
-               type: 'avia',
-               price: data.avia.total_price || 0,
-               days: data.avia.delivery_date || 0,
-               services: data.avia.services || []
-             });
-           }
-           
-           // Выбираем самый дешевый вариант
-           const bestOption = options.reduce((best, current) => 
-             current.price < best.price ? current : best
-           );
-           
-           price = bestOption.price;
-           days = bestOption.days;
-           details = {
-             totalCost: price,
-             deliveryCost: price, // В новом формате общая стоимость включает все
-             transportType: bestOption.type,
-             services: bestOption.services,
-             allOptions: options, // Сохраняем все варианты для отладки
-             currency: 'RUB'
-           };
-         } else {
-           // Альтернативный формат ответа
-           price = data.price || data.total_cost || data.cost || 0;
-           days = data.days || data.delivery_days || data.delivery_time || 0;
-           details = {
-             totalCost: price,
-             deliveryCost: data.delivery_cost || 0,
-             pickupCost: data.pickup_cost || 0,
-             insuranceCost: data.insurance_cost || 0,
-             services: data.services || [],
-             currency: data.currency || 'RUB'
+           options.push({
+             type: 'avia',
+             price: aviaPrice,
+             days: aviaDeliveryDate, // Сохраняем как строку для отладки
+             services: data.avia.services || []
+           });
+         }
+         
+         if (options.length === 0) {
+           console.error('❌ Nord Wheel: Нет опций доставки в ответе:', data);
+           return {
+             company: 'Nord Wheel',
+             price: 0,
+             days: 0,
+             error: 'Нет доступных опций доставки',
+             apiUrl,
+             requestData,
+             responseData: data
            };
          }
+         
+         // Выбираем самый дешевый вариант
+         const bestOption = options.reduce((best, current) => 
+           current.price < best.price ? current : best
+         );
+         
+         price = bestOption.price;
+         
+         // Вычисляем дни из даты доставки
+         try {
+           if (bestOption.days && typeof bestOption.days === 'string') {
+             const deliveryDate = new Date(bestOption.days);
+             const today = new Date();
+             if (!isNaN(deliveryDate.getTime())) {
+               const diffTime = deliveryDate.getTime() - today.getTime();
+               days = Math.max(1, Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
+             } else {
+               days = 3; // По умолчанию
+             }
+           } else {
+             days = 3; // По умолчанию
+           }
+         } catch (dateError) {
+           console.warn('⚠️ Nord Wheel: Ошибка расчета дней из даты:', dateError);
+           days = 3;
+         }
+         
+         details = {
+           totalCost: price,
+           deliveryCost: price, // В новом формате общая стоимость включает все
+           transportType: bestOption.type,
+           services: bestOption.services,
+           allOptions: options, // Сохраняем все варианты для отладки
+           currency: 'RUB',
+           deliveryDate: bestOption.days // Сохраняем исходную дату
+         };
        } else if (data.price !== undefined) {
          // Старый формат ответа
          price = data.price;

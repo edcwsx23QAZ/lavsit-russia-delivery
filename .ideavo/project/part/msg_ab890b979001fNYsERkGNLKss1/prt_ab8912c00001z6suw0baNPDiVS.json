@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8912c00001z6suw0baNPDiVS",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab890b979001fNYsERkGNLKss1",
+  "type": "tool",
+  "callID": "call_2a2da3c3d96742ccbae0c045",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:3000/api/nordwheel \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"dispatch\": {\n      \"location\": {\n        \"type\": \"terminal\",\n        \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n      }\n    },\n    \"destination\": {\n      \"location\": {\n        \"type\": \"terminal\", \n        \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n      }\n    },\n    \"cargo\": {\n      \"total_weight\": 6474.6,\n      \"total_volume\": 12.89,\n      \"total_quantity\": 1\n    },\n    \"insurance\": 122.78,\n    \"insurance_refuse\": false,\n    \"services\": {\n      \"is_package\": false,\n      \"is_documents_return\": false,\n      \"is_fragile\": false\n    },\n    \"promocode\": null\n  }' -v",
+      "description": "Test with verbose output to see detailed error"
+    },
+    "output": "Note: Unnecessary use of -X or --request, POST is already inferred.\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 127.0.0.1:3000...\n* Connected to localhost (127.0.0.1) port 3000 (#0)\n> POST /api/nordwheel HTTP/1.1\r\n> Host: localhost:3000\r\n> User-Agent: curl/7.88.1\r\n> Accept: */*\r\n> Content-Type: application/json\r\n> Content-Length: 590\r\n> \r\n} [590 bytes data]\n< HTTP/1.1 400 Bad Request\r\n< Cache-Control: no-cache, no-store, must-revalidate, proxy-revalidate, s-maxage=0\r\n< Pragma: no-cache\r\n< Expires: 0\r\n< vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch\r\n< content-type: application/json\r\n< Date: Tue, 25 Nov 2025 01:11:54 GMT\r\n< Connection: keep-alive\r\n< Keep-Alive: timeout=5\r\n< Transfer-Encoding: chunked\r\n< \r\n\r100   590    0     0  100   590      0    553  0:00:01  0:00:01 --:--:--   553{ [87 bytes data]\n\r100   666    0    76  100   590     71    553  0:00:01  0:00:01 --:--:--   624\n* Connection #0 to host localhost left intact\n{\"success\":false,\"error\":{\"message\":\"HTTP 400\",\"details\":null,\"status\":400}}",
+    "title": "curl -X POST http://localhost:3000/api/nordwheel \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"dispatch\": {\n      \"location\": {\n        \"type\": \"terminal\",\n        \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n      }\n    },\n    \"destination\": {\n      \"location\": {\n        \"type\": \"terminal\", \n        \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n      }\n    },\n    \"cargo\": {\n      \"total_weight\": 6474.6,\n      \"total_volume\": 12.89,\n      \"total_quantity\": 1\n    },\n    \"insurance\": 122.78,\n    \"insurance_refuse\": false,\n    \"services\": {\n      \"is_package\": false,\n      \"is_documents_return\": false,\n      \"is_fragile\": false\n    },\n    \"promocode\": null\n  }' -v",
+    "metadata": {
+      "output": "Note: Unnecessary use of -X or --request, POST is already inferred.\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0*   Trying 127.0.0.1:3000...\n* Connected to localhost (127.0.0.1) port 3000 (#0)\n> POST /api/nordwheel HTTP/1.1\r\n> Host: localhost:3000\r\n> User-Agent: curl/7.88.1\r\n> Accept: */*\r\n> Content-Type: application/json\r\n> Content-Length: 590\r\n> \r\n} [590 bytes data]\n< HTTP/1.1 400 Bad Request\r\n< Cache-Control: no-cache, no-store, must-revalidate, proxy-revalidate, s-maxage=0\r\n< Pragma: no-cache\r\n< Expires: 0\r\n< vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch\r\n< content-type: application/json\r\n< Date: Tue, 25 Nov 2025 01:11:54 GMT\r\n< Connection: keep-alive\r\n< Keep-Alive: timeout=5\r\n< Transfer-Encoding: chunked\r\n< \r\n\r100   590    0     0  100   590      0    553  0:00:01  0:00:01 --:--:--   553{ [87 bytes data]\n\r100   666    0    76  100   590     71    553  0:00:01  0:00:01 --:--:--   624\n* Connection #0 to host localhost left intact\n{\"success\":false,\"error\":{\"message\":\"HTTP 400\",\"details\":null,\"status\":400}}",
+      "exit": 0,
+      "description": "Test with verbose output to see detailed error"
+    },
+    "time": {
+      "start": 1764033113103,
+      "end": 1764033114208
+    }
+  }
+}

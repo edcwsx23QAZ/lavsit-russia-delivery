@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8923c31001oZRsT33fwbvQ4d",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab892211e001X78hMI8G3yQM3q",
+  "type": "tool",
+  "callID": "call_7667cc85cf3042f3b709427e",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "pkill -f \"next dev\" && npm run dev &",
+      "description": "Restart development server"
+    },
+    "output": "",
+    "title": "pkill -f \"next dev\" && npm run dev &",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Restart development server"
+    },
+    "time": {
+      "start": 1764033182777,
+      "end": 1764033182782
+    }
+  }
+}

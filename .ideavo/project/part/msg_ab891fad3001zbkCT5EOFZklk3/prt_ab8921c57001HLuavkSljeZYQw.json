@@ -1,0 +1,34 @@
+{
+  "id": "prt_ab8921c57001HLuavkSljeZYQw",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab891fad3001zbkCT5EOFZklk3",
+  "type": "tool",
+  "callID": "call_732756b47fbc44de9a4d16ab",
+  "tool": "multiedit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "edits": [
+        {
+          "newString": "      if (result && typeof result === 'object' && 'success' in result && !result.success) {\n        console.error('❌ Nord Wheel API ошибка:', result.error);\n        \n        // Детализация ошибок 400\n        let errorMessage = result.error.userMessage || result.error.message || 'Ошибка API NordWheel';\n        \n        if (result.error.status === 400) {\n          errorMessage += `. Возможные причины: превышен вес (>1000кг), объем (>5м³) или некорректные параметры города`;\n        }\n        \n        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: errorMessage,\n          apiUrl,\n          requestData\n        };\n      }",
+          "oldString": "      if (result && typeof result === 'object' && 'success' in result && !result.success) {\n        console.error('❌ Nord Wheel API ошибка:', result.error);\n        return {\n          company: 'Nord Wheel',\n          price: 0,\n          days: 0,\n          error: result.error.userMessage || result.error.message,\n          apiUrl,\n          requestData\n        };\n      }"
+        }
+      ],
+      "filePath": "/home/user/project/app/page.tsx"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -3690,13 +3690,21 @@\n );\n \n if (result && typeof result === 'object' && 'success' in result && !result.success) {\n   console.error('❌ Nord Wheel API ошибка:', result.error);\n+  \n+  // Детализация ошибок 400\n+  let errorMessage = result.error.userMessage || result.error.message || 'Ошибка API NordWheel';\n+  \n+  if (result.error.status === 400) {\n+    errorMessage += `. Возможные причины: превышен вес (>1000кг), объем (>5м³) или некорректные параметры города`;\n+  }\n+  \n   return {\n     company: 'Nord Wheel',\n     price: 0,\n     days: 0,\n-    error: result.error.userMessage || result.error.message,\n+    error: errorMessage,\n     apiUrl,\n     requestData\n   };\n }\n"
+        }
+      ]
+    },
+    "time": {
+      "start": 1764033174619,
+      "end": 1764033174672
+    }
+  }
+}

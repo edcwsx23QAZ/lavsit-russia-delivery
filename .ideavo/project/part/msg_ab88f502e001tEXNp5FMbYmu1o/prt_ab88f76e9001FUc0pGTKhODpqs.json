@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab88f76e9001FUc0pGTKhODpqs",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab88f502e001tEXNp5FMbYmu1o",
+  "type": "text",
+  "text": "\nЯ нашел проблему! В коде есть несколько ошибок парсинга ответа API:\n\n1. **Главная ошибка**: Проверяется `data.success`, но в ответе API нет поля `success`\n2. **Ошибка в полях**: Используется `data.auto.total_price`, а в ответе `data.auto.total_amount`\n3. **Ошибка в датах**: Используется `data.auto.delivery_date` как число, а это строка\n\nДавайте исправим это:",
+  "time": {
+    "start": 1764033041661,
+    "end": 1764033041661
+  }
+}

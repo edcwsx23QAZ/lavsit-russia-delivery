@@ -1,0 +1,34 @@
+{
+  "id": "prt_ab89034db001qlQo8Ub8E0mPSN",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab89016c6001DyL1TUK1HvXg0g",
+  "type": "tool",
+  "callID": "call_149f4e23bfc643d8ba4fa599",
+  "tool": "multiedit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "edits": [
+        {
+          "newString": "          if (response.ok && (data.auto || data.avia || data.success)) {\n            return { success: true };\n          } else {\n            console.error('❌ Nord Wheel API status check ошибка:', data);\n            return { error: true };\n          }",
+          "oldString": "          if (response.ok && (data.success || data.auto || data.avia)) {\n            return { success: true };\n          } else {\n            return { error: true };\n          }"
+        }
+      ],
+      "filePath": "/home/user/project/app/page.tsx"
+    },
+    "output": "",
+    "title": "app/page.tsx",
+    "metadata": {
+      "results": [
+        {
+          "diagnostics": {},
+          "diff": "Index: /home/user/project/app/page.tsx\n===================================================================\n--- /home/user/project/app/page.tsx\n+++ /home/user/project/app/page.tsx\n@@ -673,11 +673,12 @@\n \n   const response = result as Response;\n   const data = await response.json();\n   \n-  if (response.ok && (data.success || data.auto || data.avia)) {\n+  if (response.ok && (data.auto || data.avia || data.success)) {\n     return { success: true };\n   } else {\n+    console.error('❌ Nord Wheel API status check ошибка:', data);\n     return { error: true };\n   }\n } catch (error) {\n   return { error: true };\n"
+        }
+      ]
+    },
+    "time": {
+      "start": 1764033049822,
+      "end": 1764033049865
+    }
+  }
+}

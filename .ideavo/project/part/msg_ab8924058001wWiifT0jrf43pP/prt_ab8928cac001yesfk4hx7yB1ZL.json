@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8928cac001yesfk4hx7yB1ZL",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8924058001wWiifT0jrf43pP",
+  "type": "tool",
+  "callID": "call_6f11fd3db9ed487f8101cfff",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "sleep 5 && curl -X POST http://localhost:3000/api/nordwheel \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"dispatch\": {\n      \"location\": {\n        \"type\": \"terminal\",\n        \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n      }\n    },\n    \"destination\": {\n      \"location\": {\n        \"type\": \"terminal\", \n        \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n      }\n    },\n    \"cargo\": {\n      \"total_weight\": 10,\n      \"total_volume\": 0.1,\n      \"total_quantity\": 1\n    },\n    \"insurance\": 50000,\n    \"insurance_refuse\": false,\n    \"services\": {\n      \"is_package\": true,\n      \"is_documents_return\": false,\n      \"is_fragile\": false\n    },\n    \"promocode\": null\n  }' | jq .",
+      "description": "Test NordWheel API with JSON parsing"
+    },
+    "output": "/bin/sh: 29: jq: not found\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 1 ms: Couldn't connect to server\n",
+    "title": "sleep 5 && curl -X POST http://localhost:3000/api/nordwheel \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"dispatch\": {\n      \"location\": {\n        \"type\": \"terminal\",\n        \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n      }\n    },\n    \"destination\": {\n      \"location\": {\n        \"type\": \"terminal\", \n        \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n      }\n    },\n    \"cargo\": {\n      \"total_weight\": 10,\n      \"total_volume\": 0.1,\n      \"total_quantity\": 1\n    },\n    \"insurance\": 50000,\n    \"insurance_refuse\": false,\n    \"services\": {\n      \"is_package\": true,\n      \"is_documents_return\": false,\n      \"is_fragile\": false\n    },\n    \"promocode\": null\n  }' | jq .",
+    "metadata": {
+      "output": "/bin/sh: 29: jq: not found\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 1 ms: Couldn't connect to server\n",
+      "exit": 127,
+      "description": "Test NordWheel API with JSON parsing"
+    },
+    "time": {
+      "start": 1764033203380,
+      "end": 1764033208413
+    }
+  }
+}

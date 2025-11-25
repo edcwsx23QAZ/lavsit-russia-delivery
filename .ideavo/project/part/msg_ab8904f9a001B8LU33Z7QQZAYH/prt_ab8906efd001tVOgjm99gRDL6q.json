@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8906efd001tVOgjm99gRDL6q",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8904f9a001B8LU33Z7QQZAYH",
+  "type": "tool",
+  "callID": "call_77313e43f9b44a6aa6567122",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "sleep 5 && curl -X POST http://localhost:3000/api/nordwheel \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"dispatch\": {\n      \"location\": {\n        \"type\": \"terminal\",\n        \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n      }\n    },\n    \"destination\": {\n      \"location\": {\n        \"type\": \"terminal\", \n        \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n      }\n    },\n    \"cargo\": {\n      \"total_weight\": 6474.6,\n      \"total_volume\": 12.89,\n      \"total_quantity\": 1\n    },\n    \"insurance\": 122.78,\n    \"insurance_refuse\": false,\n    \"services\": {\n      \"is_package\": false,\n      \"is_documents_return\": false,\n      \"is_fragile\": false\n    },\n    \"promocode\": null\n  }'",
+      "description": "Test NordWheel API with real cargo data"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   590    0     0  100   590      0    490  0:00:01  0:00:01 --:--:--   490\r100   590    0     0  100   590      0    267  0:00:02  0:00:02 --:--:--   267\r100   590    0     0  100   590      0    181  0:00:03  0:00:03 --:--:--   181\r100   666    0    76  100   590     21    169  0:00:03  0:00:03 --:--:--   190\n{\"success\":false,\"error\":{\"message\":\"HTTP 400\",\"details\":null,\"status\":400}}",
+    "title": "sleep 5 && curl -X POST http://localhost:3000/api/nordwheel \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"dispatch\": {\n      \"location\": {\n        \"type\": \"terminal\",\n        \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n      }\n    },\n    \"destination\": {\n      \"location\": {\n        \"type\": \"terminal\", \n        \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n      }\n    },\n    \"cargo\": {\n      \"total_weight\": 6474.6,\n      \"total_volume\": 12.89,\n      \"total_quantity\": 1\n    },\n    \"insurance\": 122.78,\n    \"insurance_refuse\": false,\n    \"services\": {\n      \"is_package\": false,\n      \"is_documents_return\": false,\n      \"is_fragile\": false\n    },\n    \"promocode\": null\n  }'",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   590    0     0  100   590      0    490  0:00:01  0:00:01 --:--:--   490\r100   590    0     0  100   590      0    267  0:00:02  0:00:02 --:--:--   267\r100   590    0     0  100   590      0    181  0:00:03  0:00:03 --:--:--   181\r100   666    0    76  100   590     21    169  0:00:03  0:00:03 --:--:--   190\n{\"success\":false,\"error\":{\"message\":\"HTTP 400\",\"details\":null,\"status\":400}}",
+      "exit": 0,
+      "description": "Test NordWheel API with real cargo data"
+    },
+    "time": {
+      "start": 1764033064714,
+      "end": 1764033073244
+    }
+  }
+}

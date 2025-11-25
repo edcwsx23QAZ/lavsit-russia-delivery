@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab890b33f001SV1xKAEiAtLn7D",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab890929b001sap07LsGutF3wQ",
+  "type": "tool",
+  "callID": "call_07f829a0c5d54bf48416ec03",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:3000/api/nordwheel \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"dispatch\": {\n      \"location\": {\n        \"type\": \"terminal\",\n        \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n      }\n    },\n    \"destination\": {\n      \"location\": {\n        \"type\": \"terminal\", \n        \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n      }\n    },\n    \"cargo\": {\n      \"total_weight\": 10,\n      \"total_volume\": 0.1,\n      \"total_quantity\": 1\n    },\n    \"insurance\": 50000,\n    \"insurance_refuse\": false,\n    \"services\": {\n      \"is_package\": true,\n      \"is_documents_return\": false,\n      \"is_fragile\": false\n    },\n    \"promocode\": null\n  }'",
+      "description": "Test NordWheel API with simple cargo data"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   582    0     0  100   582      0    678 --:--:-- --:--:-- --:--:--   678\r100  1605    0  1023  100   582   1192    678 --:--:-- --:--:-- --:--:--  1870\n{\"auto\":{\"total_amount\":1700,\"delivery_date\":\"2025-11-26\",\"services\":[{\"id\":\"c9d0e1f2-g3h4-5678-cdef-901234567890\",\"name\":\"Экспедирование межтерминальное (кг)\",\"price\":22.38,\"quantity\":35.75,\"measure\":\"кг\",\"amount\":800},{\"id\":\"i9j0k1l2-m3n4-5678-ijkl-901234567890\",\"name\":\"Обрешетка\",\"price\":8000,\"quantity\":0.1,\"measure\":\"м3\",\"amount\":800},{\"id\":\"v2w3x4y5-z6a7-8901-vwxy-234567890123\",\"name\":\"Страхование груза\",\"price\":100,\"quantity\":1,\"measure\":\"шт\",\"amount\":100}]},\"avia\":{\"total_amount\":4560,\"services\":[{\"id\":\"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\"name\":\"Авиаперевозка\",\"price\":2450,\"quantity\":1,\"measure\":\"шт\",\"amount\":2450},{\"id\":\"a4bfb8d1-6bd7-4065-9972-2cf3563919b8\",\"name\":\"Авианакладная\",\"price\":1210,\"quantity\":1,\"measure\":\"шт\",\"amount\":1210},{\"id\":\"v2w3x4y5-z6a7-8901-vwxy-234567890123\",\"name\":\"Страхование груза\",\"price\":100,\"quantity\":1,\"measure\":\"шт\",\"amount\":100}],\"delivery_date\":\"2025-11-28\"}}",
+    "title": "curl -X POST http://localhost:3000/api/nordwheel \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"dispatch\": {\n      \"location\": {\n        \"type\": \"terminal\",\n        \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n      }\n    },\n    \"destination\": {\n      \"location\": {\n        \"type\": \"terminal\", \n        \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n      }\n    },\n    \"cargo\": {\n      \"total_weight\": 10,\n      \"total_volume\": 0.1,\n      \"total_quantity\": 1\n    },\n    \"insurance\": 50000,\n    \"insurance_refuse\": false,\n    \"services\": {\n      \"is_package\": true,\n      \"is_documents_return\": false,\n      \"is_fragile\": false\n    },\n    \"promocode\": null\n  }'",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   582    0     0  100   582      0    678 --:--:-- --:--:-- --:--:--   678\r100  1605    0  1023  100   582   1192    678 --:--:-- --:--:-- --:--:--  1870\n{\"auto\":{\"total_amount\":1700,\"delivery_date\":\"2025-11-26\",\"services\":[{\"id\":\"c9d0e1f2-g3h4-5678-cdef-901234567890\",\"name\":\"Экспедирование межтерминальное (кг)\",\"price\":22.38,\"quantity\":35.75,\"measure\":\"кг\",\"amount\":800},{\"id\":\"i9j0k1l2-m3n4-5678-ijkl-901234567890\",\"name\":\"Обрешетка\",\"price\":8000,\"quantity\":0.1,\"measure\":\"м3\",\"amount\":800},{\"id\":\"v2w3x4y5-z6a7-8901-vwxy-234567890123\",\"name\":\"Страхование груза\",\"price\":100,\"quantity\":1,\"measure\":\"шт\",\"amount\":100}]},\"avia\":{\"total_amount\":4560,\"services\":[{\"id\":\"a1b2c3d4-e5f6-7890-abcd-ef1234567890\",\"name\":\"Авиаперевозка\",\"price\":2450,\"quantity\":1,\"measure\":\"шт\",\"amount\":2450},{\"id\":\"a4bfb8d1-6bd7-4065-9972-2cf3563919b8\",\"name\":\"Авианакладная\",\"price\":1210,\"quantity\":1,\"measure\":\"шт\",\"amount\":1210},{\"id\":\"v2w3x4y5-z6a7-8901-vwxy-234567890123\",\"name\":\"Страхование груза\",\"price\":100,\"quantity\":1,\"measure\":\"шт\",\"amount\":100}],\"delivery_date\":\"2025-11-28\"}}",
+      "exit": 0,
+      "description": "Test NordWheel API with simple cargo data"
+    },
+    "time": {
+      "start": 1764033082183,
+      "end": 1764033083071
+    }
+  }
+}
