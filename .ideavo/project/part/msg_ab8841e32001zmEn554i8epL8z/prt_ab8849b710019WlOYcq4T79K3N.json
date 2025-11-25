@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8849b710019WlOYcq4T79K3N",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8841e32001zmEn554i8epL8z",
+  "type": "tool",
+  "callID": "call_4796fe7c5f9e4dd28d379818",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "content": "import { NextRequest, NextResponse } from 'next/server';\n\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    \n    // NordWheel API endpoint\n    const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';\n    \n    // Get API key from environment variables or use default\n    const apiKey = process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950';\n    \n    console.log('🚛 NordWheel API Route: Forwarding request to:', apiUrl);\n    console.log('🚛 NordWheel API Route: Request body:', JSON.stringify(body, null, 2));\n    \n    // Make request to NordWheel API\n    const response = await fetch(apiUrl, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n        'Authorization': `Bearer ${apiKey}`,\n        'User-Agent': 'DeliveryCalculator/1.0',\n        'Accept': 'application/json'\n      },\n      body: JSON.stringify(body)\n    });\n    \n    // Get response text first for better error handling\n    const responseText = await response.text();\n    console.log('🚛 NordWheel API Route: Response status:', response.status, response.statusText);\n    console.log('🚛 NordWheel API Route: Response body:', responseText.substring(0, 1000));\n    \n    // Try to parse JSON\n    let data;\n    try {\n      data = JSON.parse(responseText);\n    } catch (parseError) {\n      console.error('🚛 NordWheel API Route: JSON parse error:', parseError);\n      return NextResponse.json(\n        { \n          success: false, \n          error: { \n            message: 'Invalid JSON response from NordWheel API',\n            details: responseText.substring(0, 500)\n          }\n        },\n        { status: 500 }\n      );\n    }\n    \n    // Return the response with the same status code\n    if (response.ok) {\n      return NextResponse.json(data, { status: 200 });\n    } else {\n      // Handle API errors\n      const errorMessage = data?.message || data?.error || `HTTP ${response.status}`;\n      const errorDetails = data?.errors || data?.details || null;\n      \n      return NextResponse.json(\n        {\n          success: false,\n          error: {\n            message: errorMessage,\n            details: errorDetails,\n            status: response.status\n          }\n        },\n        { status: response.status }\n      );\n    }\n    \n  } catch (error: any) {\n    console.error('🚛 NordWheel API Route: Critical error:', error);\n    \n    return NextResponse.json(\n      { \n        success: false, \n        error: { \n          message: 'Internal server error',\n          details: error.message\n        }\n      },\n      { status: 500 }\n    );\n  }\n}",
+      "filePath": "/home/user/project/app/api/nordwheel/route.ts"
+    },
+    "output": "",
+    "title": "app/api/nordwheel/route.ts",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/api/nordwheel/route.ts",
+      "exists": false
+    },
+    "time": {
+      "start": 1764032289654,
+      "end": 1764032289659
+    }
+  }
+}

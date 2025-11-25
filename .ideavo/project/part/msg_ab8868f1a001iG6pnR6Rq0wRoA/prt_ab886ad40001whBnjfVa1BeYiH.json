@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab886ad40001whBnjfVa1BeYiH",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8868f1a001iG6pnR6Rq0wRoA",
+  "type": "tool",
+  "callID": "call_13de5f28bb5e427c8ebfa42e",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:3000/api/nordwheel \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"dispatch\": {\n      \"location\": {\n        \"type\": \"terminal\",\n        \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n      }\n    },\n    \"destination\": {\n      \"location\": {\n        \"type\": \"terminal\", \n        \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n      }\n    },\n    \"cargo\": {\n      \"total_weight\": 10,\n      \"total_volume\": 0.1,\n      \"total_quantity\": 1\n    },\n    \"insurance\": 50000,\n    \"insurance_refuse\": false,\n    \"services\": {\n      \"is_package\": true,\n      \"is_documents_return\": false,\n      \"is_fragile\": false\n    },\n    \"promocode\": null\n  }'",
+      "description": "Test NordWheel API route with sample data"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server\n",
+    "title": "curl -X POST http://localhost:3000/api/nordwheel \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"dispatch\": {\n      \"location\": {\n        \"type\": \"terminal\",\n        \"city_fias\": \"0c5b2444-70a0-4932-980c-b4dc0d3f02b5\"\n      }\n    },\n    \"destination\": {\n      \"location\": {\n        \"type\": \"terminal\", \n        \"city_fias\": \"c2deb16a-0330-4f05-821f-1d09c93331e6\"\n      }\n    },\n    \"cargo\": {\n      \"total_weight\": 10,\n      \"total_volume\": 0.1,\n      \"total_quantity\": 1\n    },\n    \"insurance\": 50000,\n    \"insurance_refuse\": false,\n    \"services\": {\n      \"is_package\": true,\n      \"is_documents_return\": false,\n      \"is_fragile\": false\n    },\n    \"promocode\": null\n  }'",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server\n",
+      "exit": 7,
+      "description": "Test NordWheel API route with sample data"
+    },
+    "time": {
+      "start": 1764032425285,
+      "end": 1764032426022
+    }
+  }
+}

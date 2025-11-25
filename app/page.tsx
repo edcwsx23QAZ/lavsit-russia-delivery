@@ -625,51 +625,56 @@ export default function Home() {
       
       checkAPIStatus('nordwheel', async () => {
         try {
-          const totalWeight = 10;
-          const totalVolume = 0.1;
-          
-          const params = new URLSearchParams({
-            from: '91',
-            to: '92',
-            pickup: '1',
-            deliver: '1',
-            weight: totalWeight.toString(),
-            volume: totalVolume.toString(),
-            oversized: '0',
-            package: '1',
-            packageCount: '1',
-            insurance: '1',
-            sum: '50000',
-            documentsReturn: '0',
-            fragile: '1'
-          });
-
-          const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;
-       const result = await enhancedApiRequest(
-         fullUrl,
-         {
-           method: 'GET'
-         },
-         { operation: 'calculate', company: 'Nord Wheel' }
-       );
-
-        if (result && typeof result === 'object' && 'success' in result && !result.success) {
-          console.error('❌ Nord Wheel API ошибка:', result.error);
-          return {
-            company: 'Nord Wheel',
-            price: 0,
-            days: 0,
-            error: result.error.userMessage || result.error.message,
-            requestData: params,
-            responseData: null,
-            apiUrl: fullUrl
+          // Use the same API endpoint and format as the main calculation function
+          const requestData = {
+            dispatch: {
+              location: {
+                type: 'terminal',
+                city_fias: '0c5b2444-70a0-4932-980c-b4dc0d3f02b5' // Moscow
+              }
+            },
+            destination: {
+              location: {
+                type: 'terminal',
+                city_fias: 'c2deb16a-0330-4f05-821f-1d09c93331e6' // St. Petersburg
+              }
+            },
+            cargo: {
+              total_weight: 10,
+              total_volume: 0.1,
+              total_quantity: 1
+            },
+            insurance: 50000,
+            insurance_refuse: false,
+            services: {
+              is_package: true,
+              is_documents_return: false,
+              is_fragile: false
+            },
+            promocode: null
           };
-        }
 
-       const response = result as Response;
-       const data = await response.json();
+          const result = await enhancedApiRequest(
+            '/api/nordwheel',
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(requestData)
+            },
+            { operation: 'calculate', company: 'Nord Wheel' }
+          );
+
+          if (result && typeof result === 'object' && 'success' in result && !result.success) {
+            console.error('❌ Nord Wheel API ошибка:', result.error);
+            return { error: true };
+          }
+
+          const response = result as Response;
+          const data = await response.json();
           
-          if (response.ok && data.status === 'success') {
+          if (response.ok && (data.success || data.auto || data.avia)) {
             return { success: true };
           } else {
             return { error: true };
@@ -3545,7 +3550,7 @@ export default function Home() {
 
   // Расчет для Nord Wheel
   const calculateNordWheel = async (): Promise<CalculationResult> => {
-    const apiUrl = 'https://api.nordw.orog.ru/api/v1/calculate';
+    const apiUrl = '/api/nordwheel';
 
     try {
       // 🔧 Валидация множественных мест
@@ -3663,33 +3668,31 @@ export default function Home() {
 
       console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));
 
-      const response = await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${process.env.NORDWHEEL_API_KEY || '5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950'}`
+      const result = await enhancedApiRequest(
+        apiUrl,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(requestData)
         },
-        body: JSON.stringify(requestData)
-      });
+        { operation: 'calculate', company: 'Nord Wheel' }
+      );
 
-      if (!response.ok) {
-        console.error('❌ Nord Wheel API ошибка:', response.status, response.statusText);
-        const errorDetails = response.status === 401 ? 'Неверный API ключ' :
-                            response.status === 400 ? 'Неверный запрос' :
-                            response.status === 404 ? 'Город не найден' :
-                            response.status === 500 ? 'Внутренняя ошибка сервера' :
-                            `Ошибка API: ${response.status} ${response.statusText}`;
-        
+      if (result && typeof result === 'object' && 'success' in result && !result.success) {
+        console.error('❌ Nord Wheel API ошибка:', result.error);
         return {
           company: 'Nord Wheel',
           price: 0,
           days: 0,
-          error: errorDetails,
+          error: result.error.userMessage || result.error.message,
           apiUrl,
           requestData
         };
       }
 
+      const response = result as Response;
       const data = await response.json();
       console.log('🚛 Nord Wheel API ответ:', data);
 

@@ -1,0 +1,11 @@
+{
+  "id": "prt_ab8879fd4001LT3fadCLp0yQ92",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8878859001GSYjuuMYP76s0O",
+  "type": "text",
+  "text": "\n## ✅ NordWheel API Integration Fixed Successfully!\n\nI've successfully resolved all the NordWheel API integration issues:\n\n### **🔧 What Was Fixed:**\n\n1. **✅ API Endpoint Updated**: \n   - Fixed API status check to use new endpoint `https://api.nordw.orog.ru/api/v1/calculate`\n   - Removed old `https://nordw.ru/tools/api/calc/calculate/` endpoint\n\n2. **✅ CORS Issues Resolved**: \n   - Created server-side API route `/app/api/nordwheel/route.ts`\n   - All NordWheel requests now go through our server, eliminating CORS problems\n   - Added proper error handling and logging\n\n3. **✅ Request Format Corrected**: \n   - Updated API status check to use same request format as main calculation\n   - Proper JSON structure with `dispatch.location`, `destination.location`, `cargo`, etc.\n   - Correct FIAS codes for Moscow and St. Petersburg\n\n4. **✅ Integration Tested**: \n   - API route tested successfully with sample data\n   - Returns both auto and avia transport options\n   - Proper pricing and delivery dates returned\n\n### **📊 Test Results:**\n```json\n{\n  \"auto\": {\n    \"total_amount\": 1700,\n    \"delivery_date\": \"2025-11-26\",\n    \"services\": [...detailed services...]\n  },\n  \"avia\": {\n    \"total_amount\": 4560, \n    \"delivery_date\": \"2025-11-28\",\n    \"services\": [...detailed services...]\n  }\n}\n```\n\n### **🚀 Key Improvements:**\n- **No more CORS errors** - server-side proxy handles all requests\n- **Correct API endpoint** - using new `api.nordw.orog.ru` domain\n- **Proper request format** - matches new API documentation\n- **Smart option selection** - automatically chooses cheapest transport (auto: 1700₽ vs avia: 4560₽)\n- **Enhanced error handling** - detailed logging and error responses\n\nThe NordWheel integration is now fully functional and ready for production use! 🎉",
+  "time": {
+    "start": 1764032498514,
+    "end": 1764032498514
+  }
+}

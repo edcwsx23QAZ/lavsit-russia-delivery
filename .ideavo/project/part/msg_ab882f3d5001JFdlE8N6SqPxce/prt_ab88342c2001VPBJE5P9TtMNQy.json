@@ -1,0 +1,25 @@
+{
+  "id": "prt_ab88342c2001VPBJE5P9TtMNQy",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab882f3d5001JFdlE8N6SqPxce",
+  "type": "tool",
+  "callID": "call_8120a1c25bb54c4883fd4eef",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 100,
+      "offset": 626
+    },
+    "output": "<file>\n00627|         try {\n00628|           const totalWeight = 10;\n00629|           const totalVolume = 0.1;\n00630|           \n00631|           const params = new URLSearchParams({\n00632|             from: '91',\n00633|             to: '92',\n00634|             pickup: '1',\n00635|             deliver: '1',\n00636|             weight: totalWeight.toString(),\n00637|             volume: totalVolume.toString(),\n00638|             oversized: '0',\n00639|             package: '1',\n00640|             packageCount: '1',\n00641|             insurance: '1',\n00642|             sum: '50000',\n00643|             documentsReturn: '0',\n00644|             fragile: '1'\n00645|           });\n00646| \n00647|           const fullUrl = `https://nordw.ru/tools/api/calc/calculate/?${params.toString()}`;\n00648|        const result = await enhancedApiRequest(\n00649|          fullUrl,\n00650|          {\n00651|            method: 'GET'\n00652|          },\n00653|          { operation: 'calculate', company: 'Nord Wheel' }\n00654|        );\n00655| \n00656|         if (result && typeof result === 'object' && 'success' in result && !result.success) {\n00657|           console.error('❌ Nord Wheel API ошибка:', result.error);\n00658|           return {\n00659|             company: 'Nord Wheel',\n00660|             price: 0,\n00661|             days: 0,\n00662|             error: result.error.userMessage || result.error.message,\n00663|             requestData: params,\n00664|             responseData: null,\n00665|             apiUrl: fullUrl\n00666|           };\n00667|         }\n00668| \n00669|        const response = result as Response;\n00670|        const data = await response.json();\n00671|           \n00672|           if (response.ok && data.status === 'success') {\n00673|             return { success: true };\n00674|           } else {\n00675|             return { error: true };\n00676|           }\n00677|         } catch (error) {\n00678|           return { error: true };\n00679|         }\n00680|       }),\n00681|       \n00682|       checkAPIStatus('cdek', async () => {\n00683|         try {\n00684|           const response = await fetch('/api/cdek', {\n00685|             method: 'POST',\n00686|             headers: { 'Content-Type': 'application/json' },\n00687|             body: JSON.stringify({\n00688|               from_city: testData.fromCity,\n00689|               to_city: testData.toCity,\n00690|               packages: [{\n00691|                 height: 10,\n00692|                 length: 20,\n00693|                 width: 10,\n00694|                 weight: 1000\n00695|               }]\n00696|             })\n00697|           });\n00698|           const data = await response.json();\n00699|           \n00700|           if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {\n00701|             return { success: true };\n00702|           } else {\n00703|             return { error: true };\n00704|           }\n00705|         } catch (error) {\n00706|           return { error: true };\n00707|         }\n00708|       })\n00709|     ]).finally(() => {\n00710|       // Восстанавливаем исходное состояние формы\n00711|       setForm(currentForm);\n00712|     });\n00713|   };\n00714| \n00715|   const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {\n00716|     if (query.length < 3) {\n00717|       setSuggestions([]);\n00718|       setShowSuggestions(false);\n00719|       return;\n00720|     }\n00721| \n00722|     setActiveField(field);\n00723|     \n00724|     // Установка позиции автоподсказок\n00725|     if (element) {\n00726|       const rect = element.getBoundingClientRect();\n\n(File has more lines. Use 'offset' parameter to read beyond line 726)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        try {\n          const totalWeight = 10;\n          const totalVolume = 0.1;\n          \n          const params = new URLSearchParams({\n            from: '91',\n            to: '92',\n            pickup: '1',\n            deliver: '1',\n            weight: totalWeight.toString(),\n            volume: totalVolume.toString(),\n            oversized: '0',\n            package: '1',\n            packageCount: '1',\n            insurance: '1',\n            sum: '50000',\n            documentsReturn: '0',\n            fragile: '1'\n          });\n"
+    },
+    "time": {
+      "start": 1764032201413,
+      "end": 1764032201417
+    }
+  }
+}
