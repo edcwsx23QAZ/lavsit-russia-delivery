@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8de9f7f001YT0qtCZ56lsfUI",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8de9379001qnu2skY3R2DczW",
+  "type": "tool",
+  "callID": "call_9c50688d1c25429589985179",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "export $(cat .env | xargs) && npx prisma migrate dev --name add_calculations_table",
+      "description": "Run Prisma migration with pooler connection"
+    },
+    "output": "Environment variables loaded from .env\nPrisma schema loaded from prisma/schema.prisma\nDatasource \"db\": PostgreSQL database \"postgres\", schema \"public\" at \"aws-0-us-east-1.pooler.supabase.co:6543\"\n\nError: P1001: Can't reach database server at `aws-0-us-east-1.pooler.supabase.co:6543`\n\nPlease make sure your database server is running at `aws-0-us-east-1.pooler.supabase.co:6543`.\n",
+    "title": "export $(cat .env | xargs) && npx prisma migrate dev --name add_calculations_table",
+    "metadata": {
+      "output": "Environment variables loaded from .env\nPrisma schema loaded from prisma/schema.prisma\nDatasource \"db\": PostgreSQL database \"postgres\", schema \"public\" at \"aws-0-us-east-1.pooler.supabase.co:6543\"\n\nError: P1001: Can't reach database server at `aws-0-us-east-1.pooler.supabase.co:6543`\n\nPlease make sure your database server is running at `aws-0-us-east-1.pooler.supabase.co:6543`.\n",
+      "exit": 1,
+      "description": "Run Prisma migration with pooler connection"
+    },
+    "time": {
+      "start": 1764038188931,
+      "end": 1764038190600
+    }
+  }
+}

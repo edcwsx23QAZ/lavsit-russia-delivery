@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8ddc368001SVdLdFtWm4mq9I",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8dd9c11001qxtRfIYOuQ9MAe",
+  "type": "tool",
+  "callID": "call_cefd52c999354dd0bee6a992",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npx prisma migrate dev --name add_calculations_table",
+      "description": "Run Prisma migration for Calculation model"
+    },
+    "output": "Environment variables loaded from .env\nPrisma schema loaded from prisma/schema.prisma\nDatasource \"db\": PostgreSQL database\n\nError: Prisma schema validation - (get-config wasm)\nError code: P1012\nerror: Error validating datasource `db`: You must provide a nonempty URL. The environment variable `DATABASE_URL` resolved to an empty string.\n  -->  prisma/schema.prisma:10\n   | \n 9 |   provider = \"postgresql\"\n10 |   url      = env(\"DATABASE_URL\")\n   | \n\nValidation Error Count: 1\n[Context: getConfig]\n\nPrisma CLI Version : 5.22.0\n",
+    "title": "npx prisma migrate dev --name add_calculations_table",
+    "metadata": {
+      "output": "Environment variables loaded from .env\nPrisma schema loaded from prisma/schema.prisma\nDatasource \"db\": PostgreSQL database\n\nError: Prisma schema validation - (get-config wasm)\nError code: P1012\nerror: Error validating datasource `db`: You must provide a nonempty URL. The environment variable `DATABASE_URL` resolved to an empty string.\n  -->  prisma/schema.prisma:10\n   | \n 9 |   provider = \"postgresql\"\n10 |   url      = env(\"DATABASE_URL\")\n   | \n\nValidation Error Count: 1\n[Context: getConfig]\n\nPrisma CLI Version : 5.22.0\n",
+      "exit": 1,
+      "description": "Run Prisma migration for Calculation model"
+    },
+    "time": {
+      "start": 1764038132614,
+      "end": 1764038134168
+    }
+  }
+}

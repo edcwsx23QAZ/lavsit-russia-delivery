@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8dd8275001cLWcgiiBmj7M5q",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8dd5e70001B94nHd1n0TcdmF",
+  "type": "tool",
+  "callID": "call_c67d96c539fb459daf9bbe75",
+  "tool": "edit",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/.env",
+      "oldString": "DATABASE_URL=",
+      "newString": "DATABASE_URL=postgresql://postgres:edcwsx123QAZ!@db.jnkjrieifdfbjuwmcocq.supabase.co:5432/postgres"
+    },
+    "output": "",
+    "title": ".env",
+    "metadata": {
+      "diagnostics": {},
+      "diff": "Index: /home/user/project/.env\n===================================================================\n--- /home/user/project/.env\n+++ /home/user/project/.env\n@@ -1,5 +1,5 @@\n-DATABASE_URL=\n+DATABASE_URL=postgresql://postgres:edcwsx123QAZ!@db.jnkjrieifdfbjuwmcocq.supabase.co:5432/postgres\n NEXT_PUBLIC_SUPABASE_URL=https://jnkjrieifdfbjuwmcocq.supabase.co\n NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impua2pyaWVpZmRmYmp1d21jb2NxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM5OTk5MjgsImV4cCI6MjA3OTU3NTkyOH0.qdGFiqU6gR-TNHAxreoMBh3btQzXkQOnLPErvhCwsSc\n NORDWHEEL_API_KEY=5|WYpV9f788Y2ASobpv3xy6N5qxtIUaKhxFF4yWETOfc398950\n SUPABASE_DB_PASSWORD=edcwsx123QAZ!\n\\ No newline at end of file\n"
+    },
+    "time": {
+      "start": 1764038115959,
+      "end": 1764038115967
+    }
+  }
+}

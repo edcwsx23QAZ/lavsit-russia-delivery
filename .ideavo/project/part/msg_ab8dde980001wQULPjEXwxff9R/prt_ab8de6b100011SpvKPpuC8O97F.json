@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8de6b100011SpvKPpuC8O97F",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8dde980001wQULPjEXwxff9R",
+  "type": "tool",
+  "callID": "call_f742a3d6b88e4308ad72fc16",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "export $(cat .env | xargs) && npx prisma migrate dev --name add_calculations_table",
+      "description": "Load environment variables and run Prisma migration"
+    },
+    "output": "Environment variables loaded from .env\nPrisma schema loaded from prisma/schema.prisma\nDatasource \"db\": PostgreSQL database \"postgres\", schema \"public\" at \"db.jnkjrieifdfbjuwmcocq.supabase.co:5432\"\n\nError: P1001: Can't reach database server at `db.jnkjrieifdfbjuwmcocq.supabase.co:5432`\n\nPlease make sure your database server is running at `db.jnkjrieifdfbjuwmcocq.supabase.co:5432`.\n",
+    "title": "export $(cat .env | xargs) && npx prisma migrate dev --name add_calculations_table",
+    "metadata": {
+      "output": "Environment variables loaded from .env\nPrisma schema loaded from prisma/schema.prisma\nDatasource \"db\": PostgreSQL database \"postgres\", schema \"public\" at \"db.jnkjrieifdfbjuwmcocq.supabase.co:5432\"\n\nError: P1001: Can't reach database server at `db.jnkjrieifdfbjuwmcocq.supabase.co:5432`\n\nPlease make sure your database server is running at `db.jnkjrieifdfbjuwmcocq.supabase.co:5432`.\n",
+      "exit": 1,
+      "description": "Load environment variables and run Prisma migration"
+    },
+    "time": {
+      "start": 1764038175510,
+      "end": 1764038177007
+    }
+  }
+}

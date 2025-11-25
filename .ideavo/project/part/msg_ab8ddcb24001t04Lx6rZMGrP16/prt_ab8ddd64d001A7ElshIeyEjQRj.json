@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8ddd64d001A7ElshIeyEjQRj",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8ddcb24001t04Lx6rZMGrP16",
+  "type": "tool",
+  "callID": "call_d343ab9352d44a0b9be3ca47",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "echo $DATABASE_URL",
+      "description": "Check if DATABASE_URL environment variable is set"
+    },
+    "output": "\n",
+    "title": "echo $DATABASE_URL",
+    "metadata": {
+      "output": "\n",
+      "exit": 0,
+      "description": "Check if DATABASE_URL environment variable is set"
+    },
+    "time": {
+      "start": 1764038137424,
+      "end": 1764038137426
+    }
+  }
+}

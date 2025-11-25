@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8df91a5001cb28vJetDhSF2u",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8df6c2100167Ox45AVYTIjgq",
+  "type": "tool",
+  "callID": "call_cea7a71e4f1f45d1bee53bcf",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "export $(cat .env | xargs) && npx prisma db pull",
+      "description": "Test database connection with port 5432"
+    },
+    "output": "Prisma schema loaded from prisma/schema.prisma\nEnvironment variables loaded from .env\nDatasource \"db\": PostgreSQL database \"postgres\", schema \"public\" at \"aws-0-us-east-1.pooler.supabase.co:5432\"\n\n- Introspecting based on datasource defined in prisma/schema.prisma\n✖ Introspecting based on datasource defined in prisma/schema.prisma\n\nError: P1001\n\nCan't reach database server at `aws-0-us-east-1.pooler.supabase.co:5432`\n\nPlease make sure your database server is running at `aws-0-us-east-1.pooler.supabase.co:5432`.\n\n",
+    "title": "export $(cat .env | xargs) && npx prisma db pull",
+    "metadata": {
+      "output": "Prisma schema loaded from prisma/schema.prisma\nEnvironment variables loaded from .env\nDatasource \"db\": PostgreSQL database \"postgres\", schema \"public\" at \"aws-0-us-east-1.pooler.supabase.co:5432\"\n\n- Introspecting based on datasource defined in prisma/schema.prisma\n✖ Introspecting based on datasource defined in prisma/schema.prisma\n\nError: P1001\n\nCan't reach database server at `aws-0-us-east-1.pooler.supabase.co:5432`\n\nPlease make sure your database server is running at `aws-0-us-east-1.pooler.supabase.co:5432`.\n\n",
+      "exit": 1,
+      "description": "Test database connection with port 5432"
+    },
+    "time": {
+      "start": 1764038250953,
+      "end": 1764038253062
+    }
+  }
+}

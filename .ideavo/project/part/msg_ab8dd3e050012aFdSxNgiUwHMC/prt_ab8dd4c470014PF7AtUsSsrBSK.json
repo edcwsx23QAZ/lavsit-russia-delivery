@@ -1,0 +1,21 @@
+{
+  "id": "prt_ab8dd4c470014PF7AtUsSsrBSK",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8dd3e050012aFdSxNgiUwHMC",
+  "type": "tool",
+  "callID": "call_69df5a21de64484c8f017db6",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/.env",
+      "oldString": "DATABASE_URL=",
+      "newString": "DATABASE_URL=postgresql://postgres:edcwsx123QAZ!@db.jnkjrieifdfbjuwmcocq.supabase.co:5432/postgres"
+    },
+    "error": "Error: You must read the file /home/user/project/.env before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1764038102093,
+      "end": 1764038102097
+    }
+  }
+}

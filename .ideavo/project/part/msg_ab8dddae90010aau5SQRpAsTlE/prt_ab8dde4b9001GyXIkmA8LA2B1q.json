@@ -1,0 +1,26 @@
+{
+  "id": "prt_ab8dde4b9001GyXIkmA8LA2B1q",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_ab8dddae90010aau5SQRpAsTlE",
+  "type": "tool",
+  "callID": "call_51bae3eebf544b32bad8593a",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cat .env | grep DATABASE_URL",
+      "description": "Check DATABASE_URL in .env file"
+    },
+    "output": "DATABASE_URL=postgresql://postgres:edcwsx123QAZ!@db.jnkjrieifdfbjuwmcocq.supabase.co:5432/postgres\n",
+    "title": "cat .env | grep DATABASE_URL",
+    "metadata": {
+      "output": "DATABASE_URL=postgresql://postgres:edcwsx123QAZ!@db.jnkjrieifdfbjuwmcocq.supabase.co:5432/postgres\n",
+      "exit": 0,
+      "description": "Check DATABASE_URL in .env file"
+    },
+    "time": {
+      "start": 1764038141118,
+      "end": 1764038141123
+    }
+  }
+}
