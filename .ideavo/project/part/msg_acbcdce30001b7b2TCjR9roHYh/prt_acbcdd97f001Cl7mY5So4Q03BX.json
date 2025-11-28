@@ -1,0 +1,26 @@
+{
+  "id": "prt_acbcdd97f001Cl7mY5So4Q03BX",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbcdce30001b7b2TCjR9roHYh",
+  "type": "tool",
+  "callID": "call_08cccd2a4d4847529f12ad0c",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-vozovoz-authenticity.js",
+      "description": "Run Vozovoz API authenticity test with corrected analysis"
+    },
+    "output": "/home/user/project/test-vozovoz-authenticity.js:320\n}\n^\n\nSyntaxError: Unexpected token '}'\n    at wrapSafe (node:internal/modules/cjs/loader:1464:18)\n    at Module._compile (node:internal/modules/cjs/loader:1495:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\n    at node:internal/main/run_main_module:28:49\n\nNode.js v20.19.5\n",
+    "title": "node test-vozovoz-authenticity.js",
+    "metadata": {
+      "output": "/home/user/project/test-vozovoz-authenticity.js:320\n}\n^\n\nSyntaxError: Unexpected token '}'\n    at wrapSafe (node:internal/modules/cjs/loader:1464:18)\n    at Module._compile (node:internal/modules/cjs/loader:1495:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\n    at node:internal/main/run_main_module:28:49\n\nNode.js v20.19.5\n",
+      "exit": 1,
+      "description": "Run Vozovoz API authenticity test with corrected analysis"
+    },
+    "time": {
+      "start": 1764355856775,
+      "end": 1764355856823
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbcde9db001LrtsuCNU2dYiDG",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbcddcea001Q15LWiuGXBBzHK",
+  "type": "tool",
+  "callID": "call_d1c0ac9ea35c4fa7911df937",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/test-vozovoz-authenticity.js",
+      "limit": 10,
+      "offset": 315
+    },
+    "output": "<file>\n00316|     console.log('🔶 УМЕРЕННО: Несколько разных услуг');\n00317|   } else {\n00318|     console.log('⚠️  ПОДОЗРИТЕЛЬНО: Нет услуг или одинаковый набор услуг');\n00319|   }\n00320| }\n00321| \n00322| async function runAuthenticityTest() {\n00323|   console.log('🚚 ТЕСТ ПОДЛИННОСТИ VOZOVOZ API');\n00324|   console.log('='.repeat(60));\n00325|   console.log(`🔑 Токен: ${VOZOVOZ_TOKEN}`);\n\n(File has more lines. Use 'offset' parameter to read beyond line 325)\n</file>",
+    "title": "test-vozovoz-authenticity.js",
+    "metadata": {
+      "preview": "    console.log('🔶 УМЕРЕННО: Несколько разных услуг');\n  } else {\n    console.log('⚠️  ПОДОЗРИТЕЛЬНО: Нет услуг или одинаковый набор услуг');\n  }\n}\n\nasync function runAuthenticityTest() {\n  console.log('🚚 ТЕСТ ПОДЛИННОСТИ VOZOVOZ API');\n  console.log('='.repeat(60));\n  console.log(`🔑 Токен: ${VOZOVOZ_TOKEN}`);"
+    },
+    "time": {
+      "start": 1764355860958,
+      "end": 1764355860960
+    }
+  }
+}

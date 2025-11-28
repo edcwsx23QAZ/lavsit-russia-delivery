@@ -1,0 +1,21 @@
+{
+  "id": "prt_acbcd195f001l5QQp3BI3pvOhI",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbcd0ea0001X9Qau3QQTVlFHR",
+  "type": "tool",
+  "callID": "chatcmpl-tool-0a3bdedcba2d4f6aa26aa49e15596400",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/test-vozovoz-authenticity.js",
+      "oldString": "// Проверяем структуру ответов\n  console.log('\\n🏗️  Структура ответов:');\n  validResponses.forEach(r => {\n    const resp = r.response;\n    console.log(`   ${r.test}:`);\n    console.log(`     - price: ${resp.price}`);\n    console.log(`     - basePrice: ${resp.basePrice}`);\n    console.log(`     - service: ${Array.isArray(resp.service) ? resp.service.length + ' услуг' : 'нет массива'}`);\n    console.log(`     - deliveryTime: ${resp.deliveryTime ? 'есть' : 'нет'}`);\n  });",
+      "newString": "// Проверяем структуру ответов\n  console.log('\\n🏗️  Структура ответов:');\n  validResponses.forEach(r => {\n    const resp = r.response;\n    console.log(`   ${r.test}:`);\n    console.log(`     - price: ${resp.price}`);\n    console.log(`     - basePrice: ${resp.basePrice}`);\n    console.log(`     - service: ${Array.isArray(resp.service) ? resp.service.length + ' услуг' : 'нет массива'}`);\n    console.log(`     - deliveryTime: ${resp.deliveryTime ? 'есть' : 'нет'}`);\n  });"
+    },
+    "error": "Error: oldString and newString must be different",
+    "time": {
+      "start": 1764355807646,
+      "end": 1764355807650
+    }
+  }
+}

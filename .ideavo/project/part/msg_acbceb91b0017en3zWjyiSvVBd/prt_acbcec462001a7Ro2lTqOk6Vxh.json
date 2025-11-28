@@ -1,0 +1,11 @@
+{
+  "id": "prt_acbcec462001a7Ro2lTqOk6Vxh",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbceb91b0017en3zWjyiSvVBd",
+  "type": "text",
+  "text": "\nI can see the issue now. The analysis function is still not extracting the data correctly. Looking at the raw responses, I can see that the API is actually returning **REAL** responses with different prices:\n\n1. **Базовый тест Москва-СПБ**: 1190 ₽ (basePrice: 1209 ₽)\n2. **Измененный вес (20 кг)**: 1190 ₽ (basePrice: 1209 ₽) - same price (weight doesn't affect this route)\n3. **Измененный объем (0.5 м³)**: 2240 ₽ (basePrice: 2279 ₽) - **different price!**\n4. **Другой маршрут (Москва-Екатеринбург)**: 1830 ₽ (basePrice: 1860 ₽) - **different price!**\n5. **Со страхованием (50000 ₽)**: 1210 ₽ (basePrice: 1230 ₽) - **different price!**\n\nThe Vozovoz API is **REAL** and working correctly! Let me create a summary report:",
+  "time": {
+    "start": 1764355930797,
+    "end": 1764355930797
+  }
+}

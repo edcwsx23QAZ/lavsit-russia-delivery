@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbcc4839001OLYT5mRVbopcH8",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbcc43e3001oZqZunYuCaufrW",
+  "type": "tool",
+  "callID": "chatcmpl-tool-1c874830092745abad2c41ac80b92750",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project",
+      "pattern": "calculateVozovoz"
+    },
+    "output": "Found 4 matches\n/home/user/project/app/page.tsx:\n  Line 3249:   const calculateVozovoz = async (): Promise<CalculationResult> => {\n  Line 4339:       if (enabledCompanies.vozovoz) enabledCompaniesList.push({ name: 'Возовоз', key: 'vozovoz', func: calculateVozovoz });\n\n/home/user/project/components/diagnostic/TechnicalDocumentation.tsx:\n  Line 155:           id: 'calculateVozovoz',\n  Line 156:           title: 'Функция расчета доставки Возовоз (calculateVozovoz)',",
+    "title": "calculateVozovoz",
+    "metadata": {
+      "matches": 4,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764355754047,
+      "end": 1764355754063
+    }
+  }
+}
