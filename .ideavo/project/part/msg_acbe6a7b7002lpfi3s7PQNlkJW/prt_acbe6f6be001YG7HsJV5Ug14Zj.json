@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbe6f6be001YG7HsJV5Ug14Zj",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbe6a7b7002lpfi3s7PQNlkJW",
+  "type": "tool",
+  "callID": "call_54c54f2346324363a6bb4a21",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 4970
+    },
+    "output": "<file>\n04971|                 Очистить\n04972|               </Button>\n04973|             )}\n04974|           </div>\n04975|         </div>\n04976|         \n04977|         {/* Кнопки диагностики и документации */}\n04978|         <div className=\"flex justify-end gap-2 mb-4\">\n04979|           <Button \n04980|             onClick={() => window.open('/diagnostic?tab=api', '_blank')}\n04981|             variant=\"outline\" \n04982|             className=\"border-green-500 text-green-400 hover:bg-green-900/20\"\n04983|           >\n04984|             <Settings className=\"h-4 w-4 mr-2\" />\n04985|             Все API\n04986|           </Button>\n04987|           <Button \n04988|             onClick={() => window.open('/diagnostic?tab=docs', '_blank')}\n04989|             variant=\"outline\" \n04990|             className=\"border-purple-500 text-purple-400 hover:bg-purple-900/20\"\n\n(File has more lines. Use 'offset' parameter to read beyond line 4990)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                Очистить\n              </Button>\n            )}\n          </div>\n        </div>\n        \n        {/* Кнопки диагностики и документации */}\n        <div className=\"flex justify-end gap-2 mb-4\">\n          <Button \n            onClick={() => window.open('/diagnostic?tab=api', '_blank')}\n            variant=\"outline\" \n            className=\"border-green-500 text-green-400 hover:bg-green-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Все API\n          </Button>\n          <Button \n            onClick={() => window.open('/diagnostic?tab=docs', '_blank')}\n            variant=\"outline\" \n            className=\"border-purple-500 text-purple-400 hover:bg-purple-900/20\""
+    },
+    "time": {
+      "start": 1764357502658,
+      "end": 1764357502665
+    }
+  }
+}

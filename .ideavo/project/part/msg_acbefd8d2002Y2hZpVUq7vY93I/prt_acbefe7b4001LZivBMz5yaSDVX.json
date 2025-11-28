@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbefe7b4001LZivBMz5yaSDVX",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbefd8d2002Y2hZpVUq7vY93I",
+  "type": "tool",
+  "callID": "call_022da4979a364debad7016cc",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app/api/vozovoz-parser/route.ts",
+      "pattern": "waitForTimeout"
+    },
+    "output": "Found 10 matches\n/home/user/project/app/api/vozovoz-parser/route.ts:\n  Line 241:         await page.waitForTimeout(1000);\n  Line 265:         await page.waitForTimeout(1000);\n  Line 289:         await page.waitForTimeout(1000);\n  Line 318:     await page.waitForTimeout(1000);\n  Line 334:         await page.waitForTimeout(1000);\n  Line 377:     await page.waitForTimeout(1000);\n  Line 426:       await page.waitForTimeout(1000);\n  Line 457:       await page.waitForTimeout(1000);\n  Line 481:       await page.waitForTimeout(1000);\n  Line 506:     await page.waitForTimeout(5000);",
+    "title": "waitForTimeout",
+    "metadata": {
+      "matches": 10,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764358088632,
+      "end": 1764358088800
+    }
+  }
+}

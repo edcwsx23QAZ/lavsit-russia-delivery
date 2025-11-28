@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbe67e5a0019g05J1iGbHQtfp",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbe66b15002pPG0kKiyY9ZaxJ",
+  "type": "tool",
+  "callID": "call_88ec6a2d435d4e739a258cb2",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app/page.tsx",
+      "pattern": "Все API"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/page.tsx:\n  Line 4985:             Все API",
+    "title": "Все API",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764357471841,
+      "end": 1764357471850
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "prt_acbe9997c001aIMJ93igA1YkoW",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbe98ce9002Goz0N09LE3ttCm",
+  "type": "tool",
+  "callID": "call_5f70de083adc4c818e04a35e",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build application after fixing TypeScript errors",
+      "timeout": 120000
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:3464:33\nType error: Cannot find name 'useAddressType'.\n\n\u001b[0m \u001b[90m 3462 |\u001b[39m         \u001b[0m\n\u001b[0m \u001b[90m 3463 |\u001b[39m         \u001b[90m// Если ошибка связана с терминалом и мы еще не пробовали address тип, пробуем переключиться\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 3464 |\u001b[39m         \u001b[36mif\u001b[39m (isTerminalError \u001b[33m&&\u001b[39m \u001b[33m!\u001b[39museAddressType) {\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3465 |\u001b[39m           console\u001b[33m.\u001b[39mlog(\u001b[32m'🚚 Возовоз: ошибка связана с терминалом, пробуем с address типом...'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3466 |\u001b[39m           \u001b[0m\n\u001b[0m \u001b[90m 3467 |\u001b[39m           useAddressType \u001b[33m=\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/page.tsx:3464:33\nType error: Cannot find name 'useAddressType'.\n\n\u001b[0m \u001b[90m 3462 |\u001b[39m         \u001b[0m\n\u001b[0m \u001b[90m 3463 |\u001b[39m         \u001b[90m// Если ошибка связана с терминалом и мы еще не пробовали address тип, пробуем переключиться\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 3464 |\u001b[39m         \u001b[36mif\u001b[39m (isTerminalError \u001b[33m&&\u001b[39m \u001b[33m!\u001b[39museAddressType) {\u001b[0m\n\u001b[0m \u001b[90m      |\u001b[39m                                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3465 |\u001b[39m           console\u001b[33m.\u001b[39mlog(\u001b[32m'🚚 Возовоз: ошибка связана с терминалом, пробуем с address типом...'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 3466 |\u001b[39m           \u001b[0m\n\u001b[0m \u001b[90m 3467 |\u001b[39m           useAddressType \u001b[33m=\u001b[39m \u001b[36mtrue\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build application after fixing TypeScript errors"
+    },
+    "time": {
+      "start": 1764357675394,
+      "end": 1764357689868
+    }
+  }
+}

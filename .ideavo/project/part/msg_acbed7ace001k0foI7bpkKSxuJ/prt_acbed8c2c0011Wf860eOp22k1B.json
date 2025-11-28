@@ -1,0 +1,26 @@
+{
+  "id": "prt_acbed8c2c0011Wf860eOp22k1B",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbed7ace001k0foI7bpkKSxuJ",
+  "type": "tool",
+  "callID": "call_aa55b8ec192646eba970bf4a",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "apt-get update && apt-get install -y libnspr4 libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libxss1 libasound2",
+      "description": "Install required system libraries for Chrome/Chromium"
+    },
+    "output": "Reading package lists...\nE: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)\nE: Unable to lock directory /var/lib/apt/lists/\n",
+    "title": "apt-get update && apt-get install -y libnspr4 libnss3 libatk-bridge2.0-0 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libxss1 libasound2",
+    "metadata": {
+      "output": "Reading package lists...\nE: Could not open lock file /var/lib/apt/lists/lock - open (13: Permission denied)\nE: Unable to lock directory /var/lib/apt/lists/\n",
+      "exit": 100,
+      "description": "Install required system libraries for Chrome/Chromium"
+    },
+    "time": {
+      "start": 1764357934130,
+      "end": 1764357937581
+    }
+  }
+}

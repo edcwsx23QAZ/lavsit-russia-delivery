@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbf149d8001gelzFTQBbDM2b0",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbf13a16002qckadNDSakQ7L9",
+  "type": "tool",
+  "callID": "call_bb23c2ae5e57482ca3646cd1",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser/route.ts",
+      "limit": 10,
+      "offset": 240
+    },
+    "output": "<file>\n00241|         await new Promise(resolve => setTimeout(resolve, 1000);\n00242|         await page.keyboard.press('Enter');\n00243|         break;\n00244|       } catch (e) {\n00245|         continue;\n00246|       }\n00247|     }\n00248| \n00249|     // Заполнение города назначения\n00250|     const toCitySelectors = [\n\n(File has more lines. Use 'offset' parameter to read beyond line 250)\n</file>",
+    "title": "app/api/vozovoz-parser/route.ts",
+    "metadata": {
+      "preview": "        await new Promise(resolve => setTimeout(resolve, 1000);\n        await page.keyboard.press('Enter');\n        break;\n      } catch (e) {\n        continue;\n      }\n    }\n\n    // Заполнение города назначения\n    const toCitySelectors = ["
+    },
+    "time": {
+      "start": 1764358179290,
+      "end": 1764358179294
+    }
+  }
+}

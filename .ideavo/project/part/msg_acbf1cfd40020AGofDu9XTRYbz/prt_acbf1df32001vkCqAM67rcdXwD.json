@@ -1,0 +1,27 @@
+{
+  "id": "prt_acbf1df32001vkCqAM67rcdXwD",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbf1cfd40020AGofDu9XTRYbz",
+  "type": "tool",
+  "callID": "call_24f6d2ae3059401ea3d637aa",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-vozovoz-parser.js",
+      "description": "Test Vozovoz parser API after fixing syntax",
+      "timeout": 120000
+    },
+    "output": "🕷️ Тестирование API парсера Vozovoz\n==================================================\n📋 Параметры теста:\n   Откуда: Москва (терминал)\n   Куда: Санкт-Петербург (адрес)\n   Адрес: Невский проспект д.132\n   Груз: 200x100x100см, 100кг\n==================================================\n\n\n(Command timed out after 120000 ms)",
+    "title": "node test-vozovoz-parser.js",
+    "metadata": {
+      "output": "🕷️ Тестирование API парсера Vozovoz\n==================================================\n📋 Параметры теста:\n   Откуда: Москва (терминал)\n   Куда: Санкт-Петербург (адрес)\n   Адрес: Невский проспект д.132\n   Груз: 200x100x100см, 100кг\n==================================================\n\n\n(Command timed out after 120000 ms)",
+      "exit": null,
+      "description": "Test Vozovoz parser API after fixing syntax"
+    },
+    "time": {
+      "start": 1764358217528,
+      "end": 1764358347543
+    }
+  }
+}

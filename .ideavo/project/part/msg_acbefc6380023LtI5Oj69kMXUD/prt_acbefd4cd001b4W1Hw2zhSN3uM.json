@@ -1,0 +1,21 @@
+{
+  "id": "prt_acbefd4cd001b4W1Hw2zhSN3uM",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbefc6380023LtI5Oj69kMXUD",
+  "type": "tool",
+  "callID": "call_5f3a7e27336e492a9d0eca2f",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser/route.ts",
+      "oldString": "    await page.waitForTimeout(1000);",
+      "newString": "    await new Promise(resolve => setTimeout(resolve, 1000));"
+    },
+    "error": "Error: Found multiple matches for oldString. Provide more surrounding lines in oldString to identify the correct match.",
+    "time": {
+      "start": 1764358083791,
+      "end": 1764358083800
+    }
+  }
+}

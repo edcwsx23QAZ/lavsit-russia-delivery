@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Switch } from '@/components/ui/switch';
-import { Plus, Truck, Building2, Map, Settings, Package2, Trash2 } from 'lucide-react';
+import { Plus, Truck, Building2, Map, Settings, Package2, Trash2, Loader2 } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -3453,125 +3453,15 @@ export default function Home() {
         const errorMessage = data.error || data.message || 'Ошибка расчета Возовоз';
         console.log('🚚 Возовоз: получена ошибка в ответе API:', errorMessage);
         
-        // Проверяем, связана ли ошибка с отсутствием терминала
-        const isTerminalError = errorMessage.toLowerCase().includes('терминал') || 
-                               errorMessage.toLowerCase().includes('локация') ||
-                               errorMessage.toLowerCase().includes('не имеет') ||
-                               errorMessage.toLowerCase().includes('terminal') ||
-                               errorMessage.toLowerCase().includes('location');
-        
-        // Если ошибка связана с терминалом и мы еще не пробовали address тип, пробуем переключиться
-        if (isTerminalError && !useAddressType) {
-          console.log('🚚 Возовоз: ошибка связана с терминалом, пробуем с address типом...');
-          
-          useAddressType = true;
-          requestData = createRequestData(useAddressType);
-          
-          console.log('🚚 Возовоз повторный запрос с address:', JSON.stringify(requestData, null, 2));
-          
-          result = await enhancedApiRequest(
-            apiUrl,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(requestData)
-            },
-            { operation: 'calculate', company: 'Возовоз' }
-          );
-
-          // Проверяем на ошибку API уровня для повторного запроса
-          if (result && typeof result === 'object' && 'success' in result && !result.success) {
-            console.error('❌ Возовоз API ошибка (повторный запрос):', result.error);
-            return {
-              company: 'Возовоз',
-              price: 0,
-              days: 0,
-              error: result.error.userMessage || result.error.message,
-              requestData,
-              responseData: null,
-              apiUrl
-            };
-          }
-
-          const retryResponse = result as Response;
-          const retryData = await retryResponse.json();
-          console.log('🚚 Возовоз повторный ответ:', JSON.stringify(retryData, null, 2));
-
-          if (retryResponse.ok && retryData.response) {
-            // Успешный расчет после переключения
-            const responseData = retryData.response;
-            
-            console.log('🚚 Возовоз: успешный расчет после переключения на address');
-            
-            const services: { name: string; description: string; price: number }[] = [];
-            let totalPrice = responseData.price || responseData.basePrice || 0;
-            
-            if (responseData.service && Array.isArray(responseData.service)) {
-              responseData.service.forEach((service: any, index: number) => {
-                if (service.price > 0) {
-                  services.push({
-                    name: service.name || 'Дополнительная услуга',
-                    description: service.description || '',
-                    price: service.price
-                  });
-                }
-              });
-            }
-            
-            if (services.length === 0 && totalPrice > 0) {
-              services.push({
-                name: 'Доставка груза (адресная)',
-                description: `${form.fromCity} - ${form.toCity}`,
-                price: totalPrice
-              });
-            }
-
-            return {
-              company: 'Возовоз',
-              price: Math.round(totalPrice),
-              days: responseData.deliveryTime?.to || responseData.deliveryTime?.from || 3,
-              details: {
-                note: `Доставка ${form.fromCity} - ${form.toCity} (адресная)`,
-                services,
-                basePrice: responseData.basePrice,
-                finalPrice: responseData.price,
-                deliveryTime: responseData.deliveryTime,
-                weight: totalWeight,
-                volume: totalVolume
-              },
-              requestData,
-              responseData: retryData,
-              apiUrl
-            };
-          } else {
-            // И повторный запрос с address не удался
-            const retryErrorMessage = retryData.error || retryData.message || 'Ошибка расчета с адресной доставкой';
-            console.log('🚚 Возовоз: и повторный запрос с address вернул ошибку:', retryErrorMessage);
-            
-            return {
-              company: 'Возовоз',
-              price: 0,
-              days: 0,
-              error: `Город не найден для терминальной и адресной доставки. ${retryErrorMessage}`,
-              requestData,
-              responseData: retryData,
-              apiUrl
-            };
-          }
-        } else {
-          // Ошибка не связана с терминалом или уже пробовали address
-          return {
-            company: 'Возовоз',
-            price: 0,
-            days: 0,
-            error: errorMessage,
-            requestData,
-            responseData: data,
-            apiUrl
-          };
-        }
+        return {
+          company: 'Возовоз',
+          price: 0,
+          days: 0,
+          error: errorMessage,
+          requestData,
+          responseData: data,
+          apiUrl
+        };
       }
     } catch (error: any) {
       console.error('🚚 Возовоз ошибка:', error);
@@ -4976,6 +4866,14 @@ export default function Home() {
         
         {/* Кнопки диагностики и документации */}
         <div className="flex justify-end gap-2 mb-4">
+          <Button 
+            onClick={() => window.open('/vozovoz-parser', '_blank')}
+            variant="outline" 
+            className="border-orange-500 text-orange-400 hover:bg-orange-900/20"
+          >
+            <Loader2 className="h-4 w-4 mr-2" />
+            Парсер Vozovoz
+          </Button>
           <Button 
             onClick={() => window.open('/diagnostic?tab=api', '_blank')}
             variant="outline" 

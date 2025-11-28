@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbf1b9c7001mNtcudQb7MXP9n",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbf1aabc002T7pf1avvWYEBDr",
+  "type": "tool",
+  "callID": "call_f2b6bca69f934c1aa68067a3",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser/route.ts",
+      "limit": 10,
+      "offset": 505
+    },
+    "output": "<file>\n00506|     await new Promise(resolve => setTimeout(resolve,(5000);\n00507| \n00508|     // Шаг 8: Парсинг результатов\n00509|     console.log('📊 Парсинг результатов...');\n00510|     \n00511|     const results = await page.evaluate(() => {\n00512|       const result: any = {\n00513|         totalCost: 0,\n00514|         services: [],\n00515|         deliveryTime: null,\n\n(File has more lines. Use 'offset' parameter to read beyond line 515)\n</file>",
+    "title": "app/api/vozovoz-parser/route.ts",
+    "metadata": {
+      "preview": "    await new Promise(resolve => setTimeout(resolve,(5000);\n\n    // Шаг 8: Парсинг результатов\n    console.log('📊 Парсинг результатов...');\n    \n    const results = await page.evaluate(() => {\n      const result: any = {\n        totalCost: 0,\n        services: [],\n        deliveryTime: null,"
+    },
+    "time": {
+      "start": 1764358207945,
+      "end": 1764358207948
+    }
+  }
+}

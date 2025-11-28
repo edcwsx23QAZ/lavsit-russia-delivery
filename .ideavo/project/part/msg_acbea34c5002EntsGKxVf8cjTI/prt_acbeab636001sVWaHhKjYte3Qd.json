@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbeab636001sVWaHhKjYte3Qd",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbea34c5002EntsGKxVf8cjTI",
+  "type": "tool",
+  "callID": "call_57f027f85a4b41118fed23bb",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 3550
+    },
+    "output": "<file>\n03551|             console.log('🚚 Возовоз: и повторный запрос с address вернул ошибку:', retryErrorMessage);\n03552|             \n03553|             return {\n03554|               company: 'Возовоз',\n03555|               price: 0,\n03556|               days: 0,\n03557|               error: `Город не найден для терминальной и адресной доставки. ${retryErrorMessage}`,\n03558|               requestData,\n03559|               responseData: retryData,\n03560|               apiUrl\n03561|             };\n03562|           }\n03563|         } else {\n03564|           // Ошибка не связана с терминалом или уже пробовали address\n03565|           return {\n03566|             company: 'Возовоз',\n03567|             price: 0,\n03568|             days: 0,\n03569|             error: errorMessage,\n03570|             requestData,\n03571|             responseData: data,\n03572|             apiUrl\n03573|           };\n03574|         }\n03575|       }\n03576|     } catch (error: any) {\n03577|       console.error('🚚 Возовоз ошибка:', error);\n03578|       return {\n03579|         company: 'Возовоз',\n03580|         price: 0,\n\n(File has more lines. Use 'offset' parameter to read beyond line 3580)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "            console.log('🚚 Возовоз: и повторный запрос с address вернул ошибку:', retryErrorMessage);\n            \n            return {\n              company: 'Возовоз',\n              price: 0,\n              days: 0,\n              error: `Город не найден для терминальной и адресной доставки. ${retryErrorMessage}`,\n              requestData,\n              responseData: retryData,\n              apiUrl\n            };\n          }\n        } else {\n          // Ошибка не связана с терминалом или уже пробовали address\n          return {\n            company: 'Возовоз',\n            price: 0,\n            days: 0,\n            error: errorMessage,\n            requestData,"
+    },
+    "time": {
+      "start": 1764357748281,
+      "end": 1764357748290
+    }
+  }
+}

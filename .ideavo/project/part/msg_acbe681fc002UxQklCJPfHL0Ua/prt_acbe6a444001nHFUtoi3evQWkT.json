@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbe6a444001nHFUtoi3evQWkT",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbe681fc002UxQklCJPfHL0Ua",
+  "type": "tool",
+  "callID": "call_690c85a755444b0792db0c93",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 4980
+    },
+    "output": "<file>\n04981|             variant=\"outline\" \n04982|             className=\"border-green-500 text-green-400 hover:bg-green-900/20\"\n04983|           >\n04984|             <Settings className=\"h-4 w-4 mr-2\" />\n04985|             Все API\n04986|           </Button>\n04987|           <Button \n04988|             onClick={() => window.open('/diagnostic?tab=docs', '_blank')}\n04989|             variant=\"outline\" \n04990|             className=\"border-purple-500 text-purple-400 hover:bg-purple-900/20\"\n04991|           >\n04992|             <Package2 className=\"h-4 w-4 mr-2\" />\n04993|             Документация\n04994|           </Button>\n04995|           <Button \n04996|             onClick={() => window.open('/diagnostic', '_blank')}\n04997|             variant=\"outline\" \n04998|             className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n04999|           >\n05000|             <Settings className=\"h-4 w-4 mr-2\" />\n\n(File has more lines. Use 'offset' parameter to read beyond line 5000)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "            variant=\"outline\" \n            className=\"border-green-500 text-green-400 hover:bg-green-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Все API\n          </Button>\n          <Button \n            onClick={() => window.open('/diagnostic?tab=docs', '_blank')}\n            variant=\"outline\" \n            className=\"border-purple-500 text-purple-400 hover:bg-purple-900/20\"\n          >\n            <Package2 className=\"h-4 w-4 mr-2\" />\n            Документация\n          </Button>\n          <Button \n            onClick={() => window.open('/diagnostic', '_blank')}\n            variant=\"outline\" \n            className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />"
+    },
+    "time": {
+      "start": 1764357481546,
+      "end": 1764357481552
+    }
+  }
+}

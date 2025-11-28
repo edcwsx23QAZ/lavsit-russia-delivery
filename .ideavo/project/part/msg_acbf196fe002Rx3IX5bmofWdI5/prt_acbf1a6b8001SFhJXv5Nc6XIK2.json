@@ -1,0 +1,21 @@
+{
+  "id": "prt_acbf1a6b8001SFhJXv5Nc6XIK2",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbf196fe002Rx3IX5bmofWdI5",
+  "type": "tool",
+  "callID": "call_7ed369a700a34e15a8f10f44",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser/route.ts",
+      "oldString": "setTimeout(resolve, 5000);",
+      "newString": "setTimeout(resolve, 5000));"
+    },
+    "error": "Error: oldString not found in content",
+    "time": {
+      "start": 1764358203065,
+      "end": 1764358203073
+    }
+  }
+}

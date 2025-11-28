@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbea1fe0001Wirc0lAsswhLOc",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbea11c90026O90QRB0l3wOJx",
+  "type": "tool",
+  "callID": "call_44f92a57d81346c8a568efb7",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 3455
+    },
+    "output": "<file>\n03456|         // Проверяем, связана ли ошибка с отсутствием терминала\n03457|         const isTerminalError = errorMessage.toLowerCase().includes('терминал') || \n03458|                                errorMessage.toLowerCase().includes('локация') ||\n03459|                                errorMessage.toLowerCase().includes('не имеет') ||\n03460|                                errorMessage.toLowerCase().includes('terminal') ||\n03461|                                errorMessage.toLowerCase().includes('location');\n03462|         \n03463|         // Если ошибка связана с терминалом и мы еще не пробовали address тип, пробуем переключиться\n03464|         if (isTerminalError && !useAddressType) {\n03465|           console.log('🚚 Возовоз: ошибка связана с терминалом, пробуем с address типом...');\n03466|           \n03467|           useAddressType = true;\n03468|           requestData = createRequestData(useAddressType);\n03469|           \n03470|           console.log('🚚 Возовоз повторный запрос с address:', JSON.stringify(requestData, null, 2));\n03471|           \n03472|           result = await enhancedApiRequest(\n03473|             apiUrl,\n03474|             {\n03475|               method: 'POST',\n03476|               headers: {\n03477|                 'Content-Type': 'application/json',\n03478|               },\n03479|               body: JSON.stringify(requestData)\n03480|             },\n03481|             { operation: 'calculate', company: 'Возовоз' }\n03482|           );\n03483| \n03484|           // Проверяем на ошибку API уровня для повторного запроса\n03485|           if (result && typeof result === 'object' && 'success' in result && !result.success) {\n03486|             console.error('❌ Возовоз API ошибка (повторный запрос):', result.error);\n03487|             return {\n03488|               company: 'Возовоз',\n03489|               price: 0,\n03490|               days: 0,\n03491|               error: result.error.userMessage || result.error.message,\n03492|               requestData,\n03493|               responseData: null,\n03494|               apiUrl\n03495|             };\n03496|           }\n03497| \n03498|           const retryResponse = result as Response;\n03499|           const retryData = await retryResponse.json();\n03500|           console.log('🚚 Возовоз повторный ответ:', JSON.stringify(retryData, null, 2));\n03501| \n03502|           if (retryResponse.ok && retryData.response) {\n03503|             // Успешный расчет после переключения\n03504|             const responseData = retryData.response;\n03505|             \n\n(File has more lines. Use 'offset' parameter to read beyond line 3505)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        // Проверяем, связана ли ошибка с отсутствием терминала\n        const isTerminalError = errorMessage.toLowerCase().includes('терминал') || \n                               errorMessage.toLowerCase().includes('локация') ||\n                               errorMessage.toLowerCase().includes('не имеет') ||\n                               errorMessage.toLowerCase().includes('terminal') ||\n                               errorMessage.toLowerCase().includes('location');\n        \n        // Если ошибка связана с терминалом и мы еще не пробовали address тип, пробуем переключиться\n        if (isTerminalError && !useAddressType) {\n          console.log('🚚 Возовоз: ошибка связана с терминалом, пробуем с address типом...');\n          \n          useAddressType = true;\n          requestData = createRequestData(useAddressType);\n          \n          console.log('🚚 Возовоз повторный запрос с address:', JSON.stringify(requestData, null, 2));\n          \n          result = await enhancedApiRequest(\n            apiUrl,\n            {\n              method: 'POST',"
+    },
+    "time": {
+      "start": 1764357709794,
+      "end": 1764357709806
+    }
+  }
+}

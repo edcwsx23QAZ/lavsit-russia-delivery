@@ -1,0 +1,27 @@
+{
+  "id": "prt_acbe7f8890015xHBZeF08IDE7O",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbe7d5e7002g64oD6VJMmMQHO",
+  "type": "tool",
+  "callID": "call_c5db563c467345f998000d8f",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build application after removing puppeteer-extra",
+      "timeout": 120000
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ⚠ Compiled with warnings\n\n./app/vozovoz-parser/page.tsx\nAttempted import error: 'Compare' is not exported from '__barrel_optimize__?names=Compare,Loader2,Play!=!lucide-react' (imported as 'Compare').\n\nImport trace for requested module:\n./app/vozovoz-parser/page.tsx\n\n./app/vozovoz-parser/page.tsx\nAttempted import error: 'Compare' is not exported from '__barrel_optimize__?names=Compare,Loader2,Play!=!lucide-react' (imported as 'Compare').\n\nImport trace for requested module:\n./app/vozovoz-parser/page.tsx\n\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/api/vozovoz-parser/route.ts:495:17\nType error: Property 'placeholder' does not exist on type 'Element'.\n\n\u001b[0m \u001b[90m 493 |\u001b[39m         \u001b[36mconst\u001b[39m floorInputs \u001b[33m=\u001b[39m \u001b[33mArray\u001b[39m\u001b[33m.\u001b[39m\u001b[36mfrom\u001b[39m(document\u001b[33m.\u001b[39mquerySelectorAll(\u001b[32m'input[type=\"number\"]'\u001b[39m))\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 494 |\u001b[39m         \u001b[36mconst\u001b[39m floorInput \u001b[33m=\u001b[39m floorInputs\u001b[33m.\u001b[39mfind(input \u001b[33m=>\u001b[39m \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 495 |\u001b[39m           input\u001b[33m.\u001b[39mplaceholder\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mincludes(\u001b[32m'этаж'\u001b[39m) \u001b[33m||\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 496 |\u001b[39m           input\u001b[33m.\u001b[39mname\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mincludes(\u001b[32m'floor'\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 497 |\u001b[39m         )\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 498 |\u001b[39m         \u001b[36mif\u001b[39m (floorInput) {\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ⚠ Compiled with warnings\n\n./app/vozovoz-parser/page.tsx\nAttempted import error: 'Compare' is not exported from '__barrel_optimize__?names=Compare,Loader2,Play!=!lucide-react' (imported as 'Compare').\n\nImport trace for requested module:\n./app/vozovoz-parser/page.tsx\n\n./app/vozovoz-parser/page.tsx\nAttempted import error: 'Compare' is not exported from '__barrel_optimize__?names=Compare,Loader2,Play!=!lucide-react' (imported as 'Compare').\n\nImport trace for requested module:\n./app/vozovoz-parser/page.tsx\n\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/api/vozovoz-parser/route.ts:495:17\nType error: Property 'placeholder' does not exist on type 'Element'.\n\n\u001b[0m \u001b[90m 493 |\u001b[39m         \u001b[36mconst\u001b[39m floorInputs \u001b[33m=\u001b[39m \u001b[33mArray\u001b[39m\u001b[33m.\u001b[39m\u001b[36mfrom\u001b[39m(document\u001b[33m.\u001b[39mquerySelectorAll(\u001b[32m'input[type=\"number\"]'\u001b[39m))\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 494 |\u001b[39m         \u001b[36mconst\u001b[39m floorInput \u001b[33m=\u001b[39m floorInputs\u001b[33m.\u001b[39mfind(input \u001b[33m=>\u001b[39m \u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 495 |\u001b[39m           input\u001b[33m.\u001b[39mplaceholder\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mincludes(\u001b[32m'этаж'\u001b[39m) \u001b[33m||\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                 \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 496 |\u001b[39m           input\u001b[33m.\u001b[39mname\u001b[33m?\u001b[39m\u001b[33m.\u001b[39mincludes(\u001b[32m'floor'\u001b[39m)\u001b[0m\n\u001b[0m \u001b[90m 497 |\u001b[39m         )\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 498 |\u001b[39m         \u001b[36mif\u001b[39m (floorInput) {\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build application after removing puppeteer-extra"
+    },
+    "time": {
+      "start": 1764357568656,
+      "end": 1764357602111
+    }
+  }
+}

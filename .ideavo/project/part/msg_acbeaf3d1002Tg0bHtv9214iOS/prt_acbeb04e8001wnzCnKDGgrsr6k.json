@@ -1,0 +1,27 @@
+{
+  "id": "prt_acbeb04e8001wnzCnKDGgrsr6k",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbeaf3d1002Tg0bHtv9214iOS",
+  "type": "tool",
+  "callID": "call_469eb0dab21240898d46ea39",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run build",
+      "description": "Build application after removing old code",
+      "timeout": 120000
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/vozovoz-parser/page.tsx:142:41\nType error: 'params.declaredValue' is possibly 'undefined'.\n\n\u001b[0m \u001b[90m 140 |\u001b[39m               weight\u001b[33m:\u001b[39m totalWeight\u001b[0m\n\u001b[0m \u001b[90m 141 |\u001b[39m             }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 142 |\u001b[39m             \u001b[33m...\u001b[39m(params\u001b[33m.\u001b[39mneedInsurance \u001b[33m&&\u001b[39m params\u001b[33m.\u001b[39mdeclaredValue \u001b[33m>\u001b[39m \u001b[35m0\u001b[39m \u001b[33m?\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 143 |\u001b[39m               insurance\u001b[33m:\u001b[39m params\u001b[33m.\u001b[39mdeclaredValue\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 144 |\u001b[39m               insuranceNdv\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 145 |\u001b[39m             } \u001b[33m:\u001b[39m {\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "npm run build",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/vozovoz-parser/page.tsx:142:41\nType error: 'params.declaredValue' is possibly 'undefined'.\n\n\u001b[0m \u001b[90m 140 |\u001b[39m               weight\u001b[33m:\u001b[39m totalWeight\u001b[0m\n\u001b[0m \u001b[90m 141 |\u001b[39m             }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 142 |\u001b[39m             \u001b[33m...\u001b[39m(params\u001b[33m.\u001b[39mneedInsurance \u001b[33m&&\u001b[39m params\u001b[33m.\u001b[39mdeclaredValue \u001b[33m>\u001b[39m \u001b[35m0\u001b[39m \u001b[33m?\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                         \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 143 |\u001b[39m               insurance\u001b[33m:\u001b[39m params\u001b[33m.\u001b[39mdeclaredValue\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 144 |\u001b[39m               insuranceNdv\u001b[33m:\u001b[39m \u001b[36mfalse\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 145 |\u001b[39m             } \u001b[33m:\u001b[39m {\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 1,
+      "description": "Build application after removing old code"
+    },
+    "time": {
+      "start": 1764357768430,
+      "end": 1764357784454
+    }
+  }
+}
