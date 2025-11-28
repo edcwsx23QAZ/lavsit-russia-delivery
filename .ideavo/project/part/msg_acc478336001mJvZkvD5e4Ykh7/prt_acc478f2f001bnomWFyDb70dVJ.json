@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc478f2f001bnomWFyDb70dVJ",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_acc478336001mJvZkvD5e4Ykh7",
+  "type": "tool",
+  "callID": "call_cdc184b7cda5406ab672da84",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 4870
+    },
+    "output": "<file>\n04871|             variant=\"outline\" \n04872|             className=\"border-orange-500 text-orange-400 hover:bg-orange-900/20\"\n04873|           >\n04874|             <Loader2 className=\"h-4 w-4 mr-2\" />\n04875|             Парсер Vozovoz\n04876|           </Button>\n04877|           <Button \n04878|             onClick={() => window.open('/diagnostic?tab=api', '_blank')}\n04879|             variant=\"outline\" \n04880|             className=\"border-green-500 text-green-400 hover:bg-green-900/20\"\n04881|           >\n04882|             <Settings className=\"h-4 w-4 mr-2\" />\n04883|             Все API\n04884|           </Button>\n04885|           <Button \n04886|             onClick={() => window.open('/diagnostic?tab=docs', '_blank')}\n04887|             variant=\"outline\" \n04888|             className=\"border-purple-500 text-purple-400 hover:bg-purple-900/20\"\n04889|           >\n04890|             <Package2 className=\"h-4 w-4 mr-2\" />\n04891|             Документация\n04892|           </Button>\n04893|           <Button \n04894|             onClick={() => window.open('/diagnostic', '_blank')}\n04895|             variant=\"outline\" \n04896|             className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n04897|           >\n04898|             <Settings className=\"h-4 w-4 mr-2\" />\n04899|             Диагностика\n04900|           </Button>\n04901|         </div>\n04902|         \n04903|         <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-3 h-[85vh]\">\n04904|           {/* Левая часть - форма */}\n04905|           <div className=\"space-y-2 overflow-y-auto pr-2\">\n04906|             {/* Каталог мебели */}\n04907|             <Card className=\"bg-gray-800 border-gray-700\">\n04908|               <CardHeader className=\"pb-2\">\n04909|                 <CardTitle className=\"text-white flex items-center gap-2 text-sm\">\n04910|                   <Package2 className=\"h-3 w-3\" />\n04911|                   Каталог мебели\n04912|                 </CardTitle>\n04913|               </CardHeader>\n04914|               <CardContent className=\"space-y-2\">\n04915|                 {/* Поиск и добавление товаров */}\n04916|                 <LazyProductSearch \n04917|                   onProductAdd={handleProductAdd}\n04918|                   disabled={calculating}\n04919|                 />\n04920|                 \n\n(File has more lines. Use 'offset' parameter to read beyond line 4920)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "            variant=\"outline\" \n            className=\"border-orange-500 text-orange-400 hover:bg-orange-900/20\"\n          >\n            <Loader2 className=\"h-4 w-4 mr-2\" />\n            Парсер Vozovoz\n          </Button>\n          <Button \n            onClick={() => window.open('/diagnostic?tab=api', '_blank')}\n            variant=\"outline\" \n            className=\"border-green-500 text-green-400 hover:bg-green-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Все API\n          </Button>\n          <Button \n            onClick={() => window.open('/diagnostic?tab=docs', '_blank')}\n            variant=\"outline\" \n            className=\"border-purple-500 text-purple-400 hover:bg-purple-900/20\"\n          >\n            <Package2 className=\"h-4 w-4 mr-2\" />"
+    },
+    "time": {
+      "start": 1764363833139,
+      "end": 1764363833146
+    }
+  }
+}

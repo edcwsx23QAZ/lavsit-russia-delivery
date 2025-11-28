@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc479d32001Tns0f572QtvxW8",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_acc4792b9001Ssze2ZUY3bAIXw",
+  "type": "tool",
+  "callID": "call_b053218a0190488a89aa5433",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 4865
+    },
+    "output": "<file>\n04866|         \n04867|         {/* Кнопки диагностики и документации */}\n04868|         <div className=\"flex justify-end gap-2 mb-4\">\n04869|           <Button \n04870|             onClick={() => window.open('/vozovoz-parser', '_blank')}\n04871|             variant=\"outline\" \n04872|             className=\"border-orange-500 text-orange-400 hover:bg-orange-900/20\"\n04873|           >\n04874|             <Loader2 className=\"h-4 w-4 mr-2\" />\n04875|             Парсер Vozovoz\n04876|           </Button>\n04877|           <Button \n04878|             onClick={() => window.open('/diagnostic?tab=api', '_blank')}\n04879|             variant=\"outline\" \n04880|             className=\"border-green-500 text-green-400 hover:bg-green-900/20\"\n04881|           >\n04882|             <Settings className=\"h-4 w-4 mr-2\" />\n04883|             Все API\n04884|           </Button>\n04885|           <Button \n\n(File has more lines. Use 'offset' parameter to read beyond line 4885)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        \n        {/* Кнопки диагностики и документации */}\n        <div className=\"flex justify-end gap-2 mb-4\">\n          <Button \n            onClick={() => window.open('/vozovoz-parser', '_blank')}\n            variant=\"outline\" \n            className=\"border-orange-500 text-orange-400 hover:bg-orange-900/20\"\n          >\n            <Loader2 className=\"h-4 w-4 mr-2\" />\n            Парсер Vozovoz\n          </Button>\n          <Button \n            onClick={() => window.open('/diagnostic?tab=api', '_blank')}\n            variant=\"outline\" \n            className=\"border-green-500 text-green-400 hover:bg-green-900/20\"\n          >\n            <Settings className=\"h-4 w-4 mr-2\" />\n            Все API\n          </Button>\n          <Button "
+    },
+    "time": {
+      "start": 1764363836726,
+      "end": 1764363836733
+    }
+  }
+}

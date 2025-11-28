@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc47bd85001VypINkzeVQoSS2",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_acc47b29d001BmVLXbDpedbW24",
+  "type": "tool",
+  "callID": "call_b4993fdc7f424379b7b15ba7",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/CalculationDetails.tsx",
+      "limit": 15,
+      "offset": 50
+    },
+    "output": "<file>\n00051|       case 'Возовоз': return 'text-blue-600';\n00052|       case 'Парсер Vozovoz': return 'text-green-600';\n00053|       case 'API Vozovoz': return 'text-purple-600';\n00054|       default: return 'text-gray-600';\n00055|     }\n00056|   };\n00057| \n00058|   const getStatusIcon = (company: string) => {\n00059|     switch (company) {\n00060|       case 'Возовоз': return <Calculator className=\"w-4 h-4\" />;\n00061|       case 'Парсер Vozovoz': return <Info className=\"w-4 h-4\" />;\n00062|       case 'API Vozovoz': return <AlertTriangle className=\"w-4 h-4\" />;\n00063|       default: return <Info className=\"w-4 h-4\" />;\n00064|     }\n00065|   };\n\n(File has more lines. Use 'offset' parameter to read beyond line 65)\n</file>",
+    "title": "components/CalculationDetails.tsx",
+    "metadata": {
+      "preview": "      case 'Возовоз': return 'text-blue-600';\n      case 'Парсер Vozovoz': return 'text-green-600';\n      case 'API Vozovoz': return 'text-purple-600';\n      default: return 'text-gray-600';\n    }\n  };\n\n  const getStatusIcon = (company: string) => {\n    switch (company) {\n      case 'Возовоз': return <Calculator className=\"w-4 h-4\" />;\n      case 'Парсер Vozovoz': return <Info className=\"w-4 h-4\" />;\n      case 'API Vozovoz': return <AlertTriangle className=\"w-4 h-4\" />;\n      default: return <Info className=\"w-4 h-4\" />;\n    }\n  };"
+    },
+    "time": {
+      "start": 1764363844999,
+      "end": 1764363845001
+    }
+  }
+}

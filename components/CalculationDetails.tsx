@@ -49,7 +49,7 @@ export default function CalculationDetails({ details, isExpanded = false }: Calc
   const getStatusColor = (company: string) => {
     switch (company) {
       case 'Возовоз': return 'text-blue-600';
-      case 'Парсер Vozovoz': return 'text-green-600';
+
       case 'API Vozovoz': return 'text-purple-600';
       default: return 'text-gray-600';
     }
@@ -58,7 +58,7 @@ export default function CalculationDetails({ details, isExpanded = false }: Calc
   const getStatusIcon = (company: string) => {
     switch (company) {
       case 'Возовоз': return <Calculator className="w-4 h-4" />;
-      case 'Парсер Vozovoz': return <Info className="w-4 h-4" />;
+
       case 'API Vozovoz': return <AlertTriangle className="w-4 h-4" />;
       default: return <Info className="w-4 h-4" />;
     }

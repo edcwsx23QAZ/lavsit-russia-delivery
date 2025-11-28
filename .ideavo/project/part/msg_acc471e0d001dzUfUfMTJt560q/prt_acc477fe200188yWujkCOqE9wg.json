@@ -1,0 +1,24 @@
+{
+  "id": "prt_acc477fe200188yWujkCOqE9wg",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_acc471e0d001dzUfUfMTJt560q",
+  "type": "tool",
+  "callID": "call_69de67207c6d4a9f9df87dc7",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "Парсер Vozovoz|Vozovoz Parser"
+    },
+    "output": "Found 15 matches\n/home/user/project/VOZOVOZ_PARSER_SUCCESS_REPORT.md:\n  Line 1: # 🎯 Vozovoz Parser - Final Implementation Report\n\n/home/user/project/app/vozovoz-parser/page.tsx:\n  Line 233:           <h1 className=\"text-3xl font-bold mb-2\">🕷️ Парсер Vozovoz</h1>\n  Line 481:                   company: 'Парсер Vozovoz',\n\n/home/user/project/components/CalculationDetails.tsx:\n  Line 52:       case 'Парсер Vozovoz': return 'text-green-600';\n  Line 61:       case 'Парсер Vozovoz': return <Info className=\"w-4 h-4\" />;\n\n/home/user/project/VOZOVOZ_DISCREPANCY_ANALYSIS.md:\n  Line 310: **Парсер Vozovoz может быть сделан точным!** 🎯\n\n/home/user/project/test-vozovoz-complete.js:\n  Line 170:       console.log('🔗 Кнопка \"Парсер Vozovoz\" должна быть слева от \"Все API\"');\n\n/home/user/project/VOZOVOZ_PARSER_FINAL_REPORT.md:\n  Line 70: - **Кнопка:** \"Парсер Vozovoz\" на главной странице\n  Line 144: **Парсер Vozovoz полностью готов к использованию в основном приложении!**\n\n/home/user/project/VOZOVOZ_PARSER_STATUS_REPORT.md:\n  Line 9: - **Заголовок:** \"🕷️ Парсер Vozovoz\"\n  Line 110: **✅ Парсер Vozovoz РАБОТАЕТ и готов к тестированию!**\n\n/home/user/project/VOZOVOZ_PARSER_IMPLEMENTATION_REPORT.md:\n  Line 27: - **Добавлена кнопка:** \"Парсер Vozovoz\" слева от \"Все API\"\n  Line 150: **✅ Парсер Vozovoz успешно реализован и готов к использованию!**\n\n/home/user/project/app/api/vozovoz-parser/route.ts:\n  Line 650:     console.log('✅ Парсер Vozovoz успешно завершил работу');\n\n/home/user/project/app/page.tsx:\n  Line 4875:             Парсер Vozovoz",
+    "title": "Парсер Vozovoz|Vozovoz Parser",
+    "metadata": {
+      "matches": 15,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764363829226,
+      "end": 1764363829241
+    }
+  }
+}

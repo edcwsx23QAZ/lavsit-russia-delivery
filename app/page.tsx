@@ -4867,14 +4867,6 @@ export default function Home() {
         {/* Кнопки диагностики и документации */}
         <div className="flex justify-end gap-2 mb-4">
           <Button 
-            onClick={() => window.open('/vozovoz-parser', '_blank')}
-            variant="outline" 
-            className="border-orange-500 text-orange-400 hover:bg-orange-900/20"
-          >
-            <Loader2 className="h-4 w-4 mr-2" />
-            Парсер Vozovoz
-          </Button>
-          <Button 
             onClick={() => window.open('/diagnostic?tab=api', '_blank')}
             variant="outline" 
             className="border-green-500 text-green-400 hover:bg-green-900/20"
