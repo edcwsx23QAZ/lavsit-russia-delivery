@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc380bc1001d4n6fNDj2IB27U",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc374c760027YQ27ofBYkwiqO",
+  "type": "tool",
+  "callID": "call_db96244c9c3f4b2a8aecae3f",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 230
+    },
+    "output": "<file>\n00231|       <div className=\"max-w-7xl mx-auto\">\n00232|         <div className=\"mb-6\">\n00233|           <h1 className=\"text-3xl font-bold mb-2\">🕷️ Парсер Vozovoz</h1>\n00234|           <p className=\"text-gray-400\">Тестирование точности расчетов через веб-парсинг сайта</p>\n00235|         </div>\n00236| \n00237|         <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-6\">\n00238|           {/* Форма параметров */}\n00239|           <Card className=\"bg-gray-800 border-gray-700\">\n00240|             <CardHeader>\n00241|               <CardTitle className=\"text-xl\">📋 Параметры груза</CardTitle>\n00242|             </CardHeader>\n00243|             <CardContent className=\"space-y-4\">\n00244|               {/* Маршрут */}\n00245|               <div className=\"space-y-3\">\n00246|                 <h3 className=\"text-lg font-semibold text-blue-400\">🛣️ Маршрут</h3>\n00247|                 \n00248|                 <div>\n00249|                   <Label>Город отправления</Label>\n00250|                   <Input\n\n(File has more lines. Use 'offset' parameter to read beyond line 250)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "      <div className=\"max-w-7xl mx-auto\">\n        <div className=\"mb-6\">\n          <h1 className=\"text-3xl font-bold mb-2\">🕷️ Парсер Vozovoz</h1>\n          <p className=\"text-gray-400\">Тестирование точности расчетов через веб-парсинг сайта</p>\n        </div>\n\n        <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-6\">\n          {/* Форма параметров */}\n          <Card className=\"bg-gray-800 border-gray-700\">\n            <CardHeader>\n              <CardTitle className=\"text-xl\">📋 Параметры груза</CardTitle>\n            </CardHeader>\n            <CardContent className=\"space-y-4\">\n              {/* Маршрут */}\n              <div className=\"space-y-3\">\n                <h3 className=\"text-lg font-semibold text-blue-400\">🛣️ Маршрут</h3>\n                \n                <div>\n                  <Label>Город отправления</Label>\n                  <Input"
+    },
+    "time": {
+      "start": 1764362816452,
+      "end": 1764362816456
+    }
+  }
+}

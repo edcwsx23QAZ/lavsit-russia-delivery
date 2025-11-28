@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc38aef5001SXs6pdX1I5CeMZ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc389c2a0027dI3kM0VSDlPor",
+  "type": "tool",
+  "callID": "call_94c2a48fdfd3447ba9904078",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 370
+    },
+    "output": "<file>\n00371|                       onChange={(e) => handleParamChange('declaredValue', parseInt(e.target.value) || 0)}\n00372|                       placeholder=\"50000\"\n00373|                       className=\"bg-gray-700 border-gray-600\"\n00374|                     />\n00375|                   </div>\n00376|                 )}\n00377| \n00378|                 <div className=\"flex items-center space-x-4\">\n00379|                   <Checkbox\n00380|                     checked={params.needPackaging}\n00381|                     onCheckedChange={(checked) => handleParamChange('needPackaging', checked)}\n00382|                   />\n00383|                   <Label>Требуется упаковка</Label>\n00384|                 </div>\n00385| \n00386|                 <div className=\"flex items-center space-x-4\">\n00387|                   <Checkbox\n00388|                     checked={params.needLoading}\n00389|                     onCheckedChange={(checked) => handleParamChange('needLoading', checked)}\n00390|                   />\n\n(File has more lines. Use 'offset' parameter to read beyond line 390)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                      onChange={(e) => handleParamChange('declaredValue', parseInt(e.target.value) || 0)}\n                      placeholder=\"50000\"\n                      className=\"bg-gray-700 border-gray-600\"\n                    />\n                  </div>\n                )}\n\n                <div className=\"flex items-center space-x-4\">\n                  <Checkbox\n                    checked={params.needPackaging}\n                    onCheckedChange={(checked) => handleParamChange('needPackaging', checked)}\n                  />\n                  <Label>Требуется упаковка</Label>\n                </div>\n\n                <div className=\"flex items-center space-x-4\">\n                  <Checkbox\n                    checked={params.needLoading}\n                    onCheckedChange={(checked) => handleParamChange('needLoading', checked)}\n                  />"
+    },
+    "time": {
+      "start": 1764362858231,
+      "end": 1764362858234
+    }
+  }
+}

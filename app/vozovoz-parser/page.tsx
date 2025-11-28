@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Loader2, Play, GitCompare } from 'lucide-react';
+import CalculationDetails from '@/components/CalculationDetails';
 
 interface VozovozParserParams {
   fromCity: string;
@@ -475,71 +476,30 @@ export default function VozovozParserPage() {
 
             {/* Результаты парсера */}
             {parserResult && (
-              <Card className="bg-gray-800 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-xl text-green-400">
-                    🕷️ Результаты парсера
-                    {parserResult.parseTime && (
-                      <span className="text-sm text-gray-400 ml-2">
-                        ({parserResult.parseTime}с)
-                      </span>
-                    )}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold mb-4">
-                    Итого: {parserResult.totalCost.toLocaleString()} ₽
-                  </div>
-                  
-                  {parserResult.services.length > 0 && (
-                    <div className="space-y-2">
-                      <h4 className="font-semibold">Детализация:</h4>
-                      {parserResult.services.map((service, index) => (
-                        <div key={index} className="flex justify-between text-sm">
-                          <span>{service.name}</span>
-                          <span>{service.price.toLocaleString()} ₽</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  {parserResult.deliveryTime && (
-                    <div className="mt-4 text-sm text-gray-400">
-                      Срок доставки: {parserResult.deliveryTime}
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
+              <CalculationDetails
+                details={{
+                  company: 'Парсер Vozovoz',
+                  price: parserResult.totalCost,
+                  days: parseInt(parserResult.deliveryTime?.split('-')[1] || parserResult.deliveryTime?.split(' ')[0] || '1'),
+                  details: parserResult,
+                  parseTime: parserResult.parseTime
+                }}
+                isExpanded={true}
+              />
             )}
 
             {/* Результаты API */}
             {apiResult && (
-              <Card className="bg-gray-800 border-gray-700">
-                <CardHeader>
-                  <CardTitle className="text-xl text-blue-400">🔌 Результаты API</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold mb-4">
-                    Итого: {apiResult.price.toLocaleString()} ₽
-                  </div>
-                  
-                  {apiResult.details?.service && (
-                    <div className="space-y-2">
-                      <h4 className="font-semibold">Детализация:</h4>
-                      {apiResult.details.service.map((service: any, index: number) => (
-                        <div key={index} className="flex justify-between text-sm">
-                          <span>{service.name}</span>
-                          <span>{service.price.toLocaleString()} ₽</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-
-                  <div className="mt-4 text-sm text-gray-400">
-                    Срок доставки: {apiResult.days} дней
-                  </div>
-                </CardContent>
-              </Card>
+              <CalculationDetails
+                details={{
+                  company: 'API Vozovoz',
+                  price: apiResult.price,
+                  days: apiResult.days,
+                  details: apiResult.details,
+                  apiUrl: '/api/vozovoz'
+                }}
+                isExpanded={false}
+              />
             )}
 
             {/* Сравнение */}

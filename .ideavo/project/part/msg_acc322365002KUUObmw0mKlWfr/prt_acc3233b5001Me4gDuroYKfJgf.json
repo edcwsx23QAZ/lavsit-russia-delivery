@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc3233b5001Me4gDuroYKfJgf",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc322365002KUUObmw0mKlWfr",
+  "type": "tool",
+  "callID": "call_9e55941b6cdc45c7acbc3f21",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 50,
+      "offset": 200
+    },
+    "output": "<file>\n00201|         details: result.response\n00202|       });\n00203|     } catch (err: any) {\n00204|       setError(err.message || 'Ошибка при выполнении API запроса');\n00205|     } finally {\n00206|       setIsApiLoading(false);\n00207|     }\n00208|   };\n00209| \n00210|   const runBoth = async () => {\n00211|     await Promise.all([runParser(), runApiComparison()]);\n00212|   };\n00213| \n00214|   const calculateDifference = () => {\n00215|     if (!parserResult || !apiResult) return null;\n00216|     \n00217|     const diff = parserResult.totalCost - apiResult.price;\n00218|     const percent = ((diff / apiResult.price) * 100).toFixed(1);\n00219|     \n00220|     return {\n00221|       absolute: diff,\n00222|       percent: parseFloat(percent),\n00223|       parserMore: diff > 0\n00224|     };\n00225|   };\n00226| \n00227|   const difference = calculateDifference();\n00228| \n00229|   return (\n00230|     <div className=\"min-h-screen bg-gray-900 text-white p-6\">\n00231|       <div className=\"max-w-7xl mx-auto\">\n00232|         <div className=\"mb-6\">\n00233|           <h1 className=\"text-3xl font-bold mb-2\">🕷️ Парсер Vozovoz</h1>\n00234|           <p className=\"text-gray-400\">Тестирование точности расчетов через веб-парсинг сайта</p>\n00235|         </div>\n00236| \n00237|         <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-6\">\n00238|           {/* Форма параметров */}\n00239|           <Card className=\"bg-gray-800 border-gray-700\">\n00240|             <CardHeader>\n00241|               <CardTitle className=\"text-xl\">📋 Параметры груза</CardTitle>\n00242|             </CardHeader>\n00243|             <CardContent className=\"space-y-4\">\n00244|               {/* Маршрут */}\n00245|               <div className=\"space-y-3\">\n00246|                 <h3 className=\"text-lg font-semibold text-blue-400\">🛣️ Маршрут</h3>\n00247|                 \n00248|                 <div>\n00249|                   <Label>Город отправления</Label>\n00250|                   <Input\n\n(File has more lines. Use 'offset' parameter to read beyond line 250)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "        details: result.response\n      });\n    } catch (err: any) {\n      setError(err.message || 'Ошибка при выполнении API запроса');\n    } finally {\n      setIsApiLoading(false);\n    }\n  };\n\n  const runBoth = async () => {\n    await Promise.all([runParser(), runApiComparison()]);\n  };\n\n  const calculateDifference = () => {\n    if (!parserResult || !apiResult) return null;\n    \n    const diff = parserResult.totalCost - apiResult.price;\n    const percent = ((diff / apiResult.price) * 100).toFixed(1);\n    \n    return {"
+    },
+    "time": {
+      "start": 1764362433463,
+      "end": 1764362433466
+    }
+  }
+}

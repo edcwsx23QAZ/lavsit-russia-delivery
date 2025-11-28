@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc320965001aFOwAUSTmanFrF",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc31f9ba002KaH6QZJQYbzaSl",
+  "type": "tool",
+  "callID": "call_30a5e193d23b462a94c94e0b",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 50,
+      "offset": 1
+    },
+    "output": "<file>\n00002| \n00003| import { useState } from 'react';\n00004| import { Button } from '@/components/ui/button';\n00005| import { Input } from '@/components/ui/input';\n00006| import { Label } from '@/components/ui/label';\n00007| import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\n00008| import { Checkbox } from '@/components/ui/checkbox';\n00009| import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';\n00010| import { Loader2, Play, GitCompare } from 'lucide-react';\n00011| \n00012| interface VozovozParserParams {\n00013|   fromCity: string;\n00014|   toCity: string;\n00015|   fromAddressDelivery: boolean;\n00016|   toAddressDelivery: boolean;\n00017|   fromAddress?: string;\n00018|   toAddress?: string;\n00019|   length: number;\n00020|   width: number;\n00021|   height: number;\n00022|   weight: number;\n00023|   needInsurance: boolean;\n00024|   declaredValue?: number;\n00025|   needPackaging: boolean;\n00026|   needLoading: boolean;\n00027|   hasFreightElevator: boolean;\n00028|   floor: number;\n00029| }\n00030| \n00031| interface ParsedResult {\n00032|   totalCost: number;\n00033|   services: ServiceItem[];\n00034|   deliveryTime?: string;\n00035|   warnings?: string[];\n00036|   parseTime?: number;\n00037| }\n00038| \n00039| interface ServiceItem {\n00040|   name: string;\n00041|   basePrice?: number;\n00042|   price: number;\n00043|   discount?: number;\n00044| }\n00045| \n00046| interface ApiResult {\n00047|   price: number;\n00048|   days: number;\n00049|   details?: any;\n00050|   error?: string;\n00051| }\n\n(File has more lines. Use 'offset' parameter to read beyond line 51)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "\nimport { useState } from 'react';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Checkbox } from '@/components/ui/checkbox';\nimport { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';\nimport { Loader2, Play, GitCompare } from 'lucide-react';\n\ninterface VozovozParserParams {\n  fromCity: string;\n  toCity: string;\n  fromAddressDelivery: boolean;\n  toAddressDelivery: boolean;\n  fromAddress?: string;\n  toAddress?: string;\n  length: number;\n  width: number;\n  height: number;"
+    },
+    "time": {
+      "start": 1764362422634,
+      "end": 1764362422637
+    }
+  }
+}

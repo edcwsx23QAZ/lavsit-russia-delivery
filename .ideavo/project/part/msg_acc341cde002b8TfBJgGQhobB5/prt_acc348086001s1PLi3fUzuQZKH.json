@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc348086001s1PLi3fUzuQZKH",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc341cde002b8TfBJgGQhobB5",
+  "type": "tool",
+  "callID": "call_af7158a2c8d54f729cde5a31",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 50,
+      "offset": 550
+    },
+    "output": "<file>\n00551|                 </CardHeader>\n00552|                 <CardContent>\n00553|                   <div className=\"space-y-3\">\n00554|                     <div className=\"flex justify-between\">\n00555|                       <span>Разница:</span>\n00556|                       <span className={`font-bold ${difference.parserMore ? 'text-red-400' : 'text-green-400'}`}>\n00557|                         {difference.parserMore ? '+' : ''}{difference.absolute.toLocaleString()} ₽\n00558|                       </span>\n00559|                     </div>\n00560|                     <div className=\"flex justify-between\">\n00561|                       <span>Разница в %:</span>\n00562|                       <span className={`font-bold ${difference.parserMore ? 'text-red-400' : 'text-green-400'}`}>\n00563|                         {difference.parserMore ? '+' : ''}{difference.percent}%\n00564|                       </span>\n00565|                     </div>\n00566|                     <div className=\"flex justify-between\">\n00567|                       <span>Точнее:</span>\n00568|                       <span className=\"font-bold text-green-400\">\n00569|                         {difference.parserMore ? 'API' : 'Парсер'}\n00570|                       </span>\n00571|                     </div>\n00572|                   </div>\n00573|                 </CardContent>\n00574|               </Card>\n00575|             )}\n00576|           </div>\n00577|         </div>\n00578|       </div>\n00579|     </div>\n00580|   );\n00581| }\n\n(End of file - total 581 lines)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                </CardHeader>\n                <CardContent>\n                  <div className=\"space-y-3\">\n                    <div className=\"flex justify-between\">\n                      <span>Разница:</span>\n                      <span className={`font-bold ${difference.parserMore ? 'text-red-400' : 'text-green-400'}`}>\n                        {difference.parserMore ? '+' : ''}{difference.absolute.toLocaleString()} ₽\n                      </span>\n                    </div>\n                    <div className=\"flex justify-between\">\n                      <span>Разница в %:</span>\n                      <span className={`font-bold ${difference.parserMore ? 'text-red-400' : 'text-green-400'}`}>\n                        {difference.parserMore ? '+' : ''}{difference.percent}%\n                      </span>\n                    </div>\n                    <div className=\"flex justify-between\">\n                      <span>Точнее:</span>\n                      <span className=\"font-bold text-green-400\">\n                        {difference.parserMore ? 'API' : 'Парсер'}\n                      </span>"
+    },
+    "time": {
+      "start": 1764362584201,
+      "end": 1764362584208
+    }
+  }
+}

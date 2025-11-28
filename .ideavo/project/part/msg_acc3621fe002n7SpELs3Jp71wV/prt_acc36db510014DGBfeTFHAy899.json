@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc36db510014DGBfeTFHAy899",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc3621fe002n7SpELs3Jp71wV",
+  "type": "tool",
+  "callID": "call_3548013f470a402094e562a5",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 150
+    },
+    "output": "<file>\n00151|                 \"hardPackageVolume\": totalVolume\n00152|               }\n00153|             } : {})\n00154|           },\n00155|           gateway: {\n00156|             dispatch: {\n00157|               point: {\n00158|                 location: params.fromCity,\n00159|                 ...(params.fromAddressDelivery ? {\n00160|                   address: params.fromAddress || \"адрес отправления\"\n00161|                 } : {\n00162|                   terminal: \"default\"\n00163|                 })\n00164|               }\n00165|             },\n00166|             destination: {\n00167|               point: {\n00168|                 location: params.toCity,\n00169|                 ...(params.toAddressDelivery ? {\n00170|                   address: params.toAddress || \"адрес получения\"\n\n(File has more lines. Use 'offset' parameter to read beyond line 170)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                \"hardPackageVolume\": totalVolume\n              }\n            } : {})\n          },\n          gateway: {\n            dispatch: {\n              point: {\n                location: params.fromCity,\n                ...(params.fromAddressDelivery ? {\n                  address: params.fromAddress || \"адрес отправления\"\n                } : {\n                  terminal: \"default\"\n                })\n              }\n            },\n            destination: {\n              point: {\n                location: params.toCity,\n                ...(params.toAddressDelivery ? {\n                  address: params.toAddress || \"адрес получения\""
+    },
+    "time": {
+      "start": 1764362738515,
+      "end": 1764362738519
+    }
+  }
+}

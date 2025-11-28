@@ -1,0 +1,26 @@
+{
+  "id": "prt_acc3b4fae001Iy4Ne5wNY2DMKo",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc3b3e17001Vr4x9O7tOmYfDT",
+  "type": "tool",
+  "callID": "call_7753a9af3ce7426eaf1f530f",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:38473/api/vozovoz-parser-hybrid -H \"Content-Type: application/json\" -d '{\"fromCity\":\"Москва\",\"toCity\":\"Санкт-Петербург\",\"fromAddressDelivery\":false,\"toAddressDelivery\":true,\"toAddress\":\"Невский проспект д.132\",\"length\":200,\"width\":100,\"height\":100,\"weight\":100,\"needInsurance\":false,\"declaredValue\":0,\"needPackaging\":false,\"needLoading\":false,\"hasFreightElevator\":false,\"floor\":1}'",
+      "description": "Test hybrid parser on correct port"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   367    0    23  100   344   4134  61837 --:--:-- --:--:-- --:--:-- 73400\nUnsupported method POST",
+    "title": "curl -X POST http://localhost:38473/api/vozovoz-parser-hybrid -H \"Content-Type: application/json\" -d '{\"fromCity\":\"Москва\",\"toCity\":\"Санкт-Петербург\",\"fromAddressDelivery\":false,\"toAddressDelivery\":true,\"toAddress\":\"Невский проспект д.132\",\"length\":200,\"width\":100,\"height\":100,\"weight\":100,\"needInsurance\":false,\"declaredValue\":0,\"needPackaging\":false,\"needLoading\":false,\"hasFreightElevator\":false,\"floor\":1}'",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   367    0    23  100   344   4134  61837 --:--:-- --:--:-- --:--:-- 73400\nUnsupported method POST",
+      "exit": 0,
+      "description": "Test hybrid parser on correct port"
+    },
+    "time": {
+      "start": 1764363030451,
+      "end": 1764363030478
+    }
+  }
+}

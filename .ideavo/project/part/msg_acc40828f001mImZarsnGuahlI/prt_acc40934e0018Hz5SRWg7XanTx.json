@@ -1,0 +1,26 @@
+{
+  "id": "prt_acc40934e0018Hz5SRWg7XanTx",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc40828f001mImZarsnGuahlI",
+  "type": "tool",
+  "callID": "call_deda3aa3492e4a49a66f4e20",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:3000/api/vozovoz-parser-hybrid -H \"Content-Type: application/json\" -d '{\"fromCity\":\"Москва\",\"toCity\":\"Санкт-Петербург\",\"fromAddressDelivery\":false,\"toAddressDelivery\":true,\"toAddress\":\"Невский проспект д.132\",\"length\":200,\"width\":100,\"height\":100,\"weight\":100,\"needInsurance\":false,\"declaredValue\":0,\"needPackaging\":false,\"needLoading\":false,\"hasFreightElevator\":false,\"floor\":1}' 2>/dev/null",
+      "description": "Test fixed hybrid parser"
+    },
+    "output": "{\"totalCost\":21908,\"services\":[{\"name\":\"Платный въезд (отправитель)\",\"price\":100,\"basePrice\":100},{\"name\":\"Перевозка между городами\",\"price\":7061,\"basePrice\":7209,\"discount\":148},{\"name\":\"Скидка\",\"price\":-148,\"basePrice\":0,\"discount\":148},{\"name\":\"Страхование груза без объявленной стоимости\",\"price\":159,\"basePrice\":159},{\"name\":\"Складская обработка\",\"price\":1048,\"basePrice\":1048},{\"name\":\"Отвоз груза клиенту\",\"price\":2882,\"basePrice\":3030,\"discount\":148},{\"name\":\"Скидка\",\"price\":-148,\"basePrice\":0,\"discount\":148},{\"name\":\"Платный въезд (отправитель)\",\"price\":100,\"basePrice\":100},{\"name\":\"Перевозка между городами\",\"price\":7061,\"basePrice\":7209,\"discount\":148},{\"name\":\"Скидка\",\"price\":-148,\"basePrice\":0,\"discount\":148},{\"name\":\"Страхование груза без объявленной стоимости\",\"price\":159,\"basePrice\":159},{\"name\":\"Складская обработка\",\"price\":1048,\"basePrice\":1048},{\"name\":\"Отвоз груза клиенту\",\"price\":2882,\"basePrice\":3030,\"discount\":148},{\"name\":\"Скидка\",\"price\":-148,\"basePrice\":0,\"discount\":148}],\"deliveryTime\":\"1-2 дней\",\"warnings\":[\"Гибридный режим - API + эмуляция сайта\"],\"parseTime\":3}",
+    "title": "curl -X POST http://localhost:3000/api/vozovoz-parser-hybrid -H \"Content-Type: application/json\" -d '{\"fromCity\":\"Москва\",\"toCity\":\"Санкт-Петербург\",\"fromAddressDelivery\":false,\"toAddressDelivery\":true,\"toAddress\":\"Невский проспект д.132\",\"length\":200,\"width\":100,\"height\":100,\"weight\":100,\"needInsurance\":false,\"declaredValue\":0,\"needPackaging\":false,\"needLoading\":false,\"hasFreightElevator\":false,\"floor\":1}' 2>/dev/null",
+    "metadata": {
+      "output": "{\"totalCost\":21908,\"services\":[{\"name\":\"Платный въезд (отправитель)\",\"price\":100,\"basePrice\":100},{\"name\":\"Перевозка между городами\",\"price\":7061,\"basePrice\":7209,\"discount\":148},{\"name\":\"Скидка\",\"price\":-148,\"basePrice\":0,\"discount\":148},{\"name\":\"Страхование груза без объявленной стоимости\",\"price\":159,\"basePrice\":159},{\"name\":\"Складская обработка\",\"price\":1048,\"basePrice\":1048},{\"name\":\"Отвоз груза клиенту\",\"price\":2882,\"basePrice\":3030,\"discount\":148},{\"name\":\"Скидка\",\"price\":-148,\"basePrice\":0,\"discount\":148},{\"name\":\"Платный въезд (отправитель)\",\"price\":100,\"basePrice\":100},{\"name\":\"Перевозка между городами\",\"price\":7061,\"basePrice\":7209,\"discount\":148},{\"name\":\"Скидка\",\"price\":-148,\"basePrice\":0,\"discount\":148},{\"name\":\"Страхование груза без объявленной стоимости\",\"price\":159,\"basePrice\":159},{\"name\":\"Складская обработка\",\"price\":1048,\"basePrice\":1048},{\"name\":\"Отвоз груза клиенту\",\"price\":2882,\"basePrice\":3030,\"discount\":148},{\"name\":\"Скидка\",\"price\":-148,\"basePrice\":0,\"discount\":148}],\"deliveryTime\":\"1-2 дней\",\"warnings\":[\"Гибридный режим - API + эмуляция сайта\"],\"parseTime\":3}",
+      "exit": 0,
+      "description": "Test fixed hybrid parser"
+    },
+    "time": {
+      "start": 1764363375444,
+      "end": 1764363378804
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc3825760013duZV9gi0xpB69",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc3810b6002Tl9P0REXgWmLbW",
+  "type": "tool",
+  "callID": "call_542161544e674d68bc34a8ee",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 250
+    },
+    "output": "<file>\n00251|                     value={params.fromCity}\n00252|                     onChange={(e) => handleParamChange('fromCity', e.target.value)}\n00253|                     placeholder=\"Москва\"\n00254|                     className=\"bg-gray-700 border-gray-600\"\n00255|                   />\n00256|                 </div>\n00257| \n00258|                 <div className=\"flex items-center space-x-4\">\n00259|                   <Checkbox\n00260|                     checked={params.fromAddressDelivery}\n00261|                     onCheckedChange={(checked) => handleParamChange('fromAddressDelivery', checked)}\n00262|                   />\n00263|                   <Label>Отправление от адреса</Label>\n00264|                 </div>\n00265| \n00266|                 {params.fromAddressDelivery && (\n00267|                   <div>\n00268|                     <Label>Адрес отправления</Label>\n00269|                     <Input\n00270|                       value={params.fromAddress}\n\n(File has more lines. Use 'offset' parameter to read beyond line 270)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                    value={params.fromCity}\n                    onChange={(e) => handleParamChange('fromCity', e.target.value)}\n                    placeholder=\"Москва\"\n                    className=\"bg-gray-700 border-gray-600\"\n                  />\n                </div>\n\n                <div className=\"flex items-center space-x-4\">\n                  <Checkbox\n                    checked={params.fromAddressDelivery}\n                    onCheckedChange={(checked) => handleParamChange('fromAddressDelivery', checked)}\n                  />\n                  <Label>Отправление от адреса</Label>\n                </div>\n\n                {params.fromAddressDelivery && (\n                  <div>\n                    <Label>Адрес отправления</Label>\n                    <Input\n                      value={params.fromAddress}"
+    },
+    "time": {
+      "start": 1764362823032,
+      "end": 1764362823035
+    }
+  }
+}

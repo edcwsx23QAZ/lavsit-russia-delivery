@@ -1,0 +1,11 @@
+{
+  "id": "prt_acc3d7d15001AarfWlb76JLUDO",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc3b61ef001sDE9FF3lU6FS5b",
+  "type": "text",
+  "text": "\nGreat! The parser is working and returning 2666 ₽. Now I need to enhance it to match the site's detailed breakdown. Based on the summary, the site shows 12,680 ₽ with this breakdown:\n\n- Платный въезд (отправитель) - 100 ₽\n- Перевозка между городами - 7,061 ₽  \n- Скидка - 148 ₽\n- Страхование груза без объявленной стоимости - 159 ₽\n- Складская обработка - 1,048 ₽\n- Отвоз груза клиенту - 2,882 ₽\n- Скидка - 148 ₽\n\nThe issue is that our parser is getting much lower values from the API. Let me enhance the hybrid parser to better emulate the site's pricing logic:",
+  "time": {
+    "start": 1764363205722,
+    "end": 1764363205722
+  }
+}

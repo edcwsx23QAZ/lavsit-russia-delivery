@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc3855f30016NCs8Hbzyp5hXB",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc383f32002TlYCzidx0znBkS",
+  "type": "tool",
+  "callID": "call_328d6ee0098747bd9bad6fec",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 290
+    },
+    "output": "<file>\n00291|                     onCheckedChange={(checked) => handleParamChange('toAddressDelivery', checked)}\n00292|                   />\n00293|                   <Label>Доставка до адреса</Label>\n00294|                 </div>\n00295| \n00296|                 {params.toAddressDelivery && (\n00297|                   <div>\n00298|                     <Label>Адрес назначения</Label>\n00299|                     <Input\n00300|                       value={params.toAddress}\n00301|                       onChange={(e) => handleParamChange('toAddress', e.target.value)}\n00302|                       placeholder=\"Адрес назначения\"\n00303|                       className=\"bg-gray-700 border-gray-600\"\n00304|                     />\n00305|                   </div>\n00306|                 )}\n00307|               </div>\n00308| \n00309|               {/* Габариты */}\n00310|               <div className=\"space-y-3\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 310)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                    onCheckedChange={(checked) => handleParamChange('toAddressDelivery', checked)}\n                  />\n                  <Label>Доставка до адреса</Label>\n                </div>\n\n                {params.toAddressDelivery && (\n                  <div>\n                    <Label>Адрес назначения</Label>\n                    <Input\n                      value={params.toAddress}\n                      onChange={(e) => handleParamChange('toAddress', e.target.value)}\n                      placeholder=\"Адрес назначения\"\n                      className=\"bg-gray-700 border-gray-600\"\n                    />\n                  </div>\n                )}\n              </div>\n\n              {/* Габариты */}\n              <div className=\"space-y-3\">"
+    },
+    "time": {
+      "start": 1764362835446,
+      "end": 1764362835449
+    }
+  }
+}

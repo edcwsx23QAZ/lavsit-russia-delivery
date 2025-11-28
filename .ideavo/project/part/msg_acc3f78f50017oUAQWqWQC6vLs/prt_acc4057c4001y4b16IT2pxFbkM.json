@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc4057c4001y4b16IT2pxFbkM",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc3f78f50017oUAQWqWQC6vLs",
+  "type": "tool",
+  "callID": "call_3054ff8362234cdd9a125a1d",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser-hybrid/route.ts",
+      "limit": 30,
+      "offset": 270
+    },
+    "output": "<file>\n00271|           if (params.toAddressDelivery) {\n00272|             siteServices.push({ \n00273|               name: 'Отвоз груза клиенту', \n00274|               basePrice: 3030, \n00275|               price: 2882,\n00276|               hasDiscount: true,\n00277|               discount: 148\n00278|             });\n00279|           }\n00280|           \n00281|           // Корректируем цены в зависимости от объема и веса\n00282|           const volumeMultiplier = Math.max(0.5, Math.min(2.0, siteVolume / 2));\n00283|           const weightMultiplier = Math.max(0.8, Math.min(1.5, params.weight / 100));\n00284|           \n00285|           siteServices.forEach(service => {\n00286|             let adjustedBasePrice = Math.round(service.basePrice * volumeMultiplier * weightMultiplier);\n00287|             let adjustedPrice = Math.round(service.price * volumeMultiplier * weightMultiplier);\n00288|             let adjustedDiscount = service.discount ? Math.round(service.discount * volumeMultiplier * weightMultiplier) : 0;\n00289|             \n00290|             // Добавляем основную услугу\n00291|             services.push({\n00292|               name: service.name,\n00293|               price: adjustedPrice,\n00294|               basePrice: adjustedBasePrice,\n00295|               discount: service.hasDiscount ? adjustedDiscount : undefined\n00296|             });\n00297|             \n00298|             // Добавляем скидку как отдельную услугу если она есть\n00299|             if (service.hasDiscount && adjustedDiscount > 0) {\n00300|               services.push({\n\n(File has more lines. Use 'offset' parameter to read beyond line 300)\n</file>",
+    "title": "app/api/vozovoz-parser-hybrid/route.ts",
+    "metadata": {
+      "preview": "          if (params.toAddressDelivery) {\n            siteServices.push({ \n              name: 'Отвоз груза клиенту', \n              basePrice: 3030, \n              price: 2882,\n              hasDiscount: true,\n              discount: 148\n            });\n          }\n          \n          // Корректируем цены в зависимости от объема и веса\n          const volumeMultiplier = Math.max(0.5, Math.min(2.0, siteVolume / 2));\n          const weightMultiplier = Math.max(0.8, Math.min(1.5, params.weight / 100));\n          \n          siteServices.forEach(service => {\n            let adjustedBasePrice = Math.round(service.basePrice * volumeMultiplier * weightMultiplier);\n            let adjustedPrice = Math.round(service.price * volumeMultiplier * weightMultiplier);\n            let adjustedDiscount = service.discount ? Math.round(service.discount * volumeMultiplier * weightMultiplier) : 0;\n            \n            // Добавляем основную услугу"
+    },
+    "time": {
+      "start": 1764363360198,
+      "end": 1764363360203
+    }
+  }
+}

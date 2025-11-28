@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc406ccd001P52rPHeGyw67KT",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc405b1b001lwdXuUQSlFrqTs",
+  "type": "tool",
+  "callID": "call_cfee92ddc38f462eabcdd645",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser-hybrid/route.ts",
+      "limit": 20,
+      "offset": 305
+    },
+    "output": "<file>\n00306|             }\n00307|           });\n00308|         }\n00309|     }\n00310|     \n00311|     // Если никаких услуг не найдено, добавляем общую стоимость\n00312|     if (services.length === 0 && totalPrice > 0) {\n00313|       services.push({\n00314|         name: 'Доставка груза',\n00315|         description: `${params.fromCity} - ${params.toCity}`,\n00316|         price: totalPrice\n00317|       });\n00318|     }\n00319| \n00320|     // Эмулируем общую стоимость как на сайте\n00321|     const totalCost = services.reduce((sum, service) => sum + service.price, 0);\n00322|     \n00323|     // Эмулируем сроки доставки\n00324|     let deliveryTime = '1-2 дня';\n00325|     if (responseData.deliveryTime) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 325)\n</file>",
+    "title": "app/api/vozovoz-parser-hybrid/route.ts",
+    "metadata": {
+      "preview": "            }\n          });\n        }\n    }\n    \n    // Если никаких услуг не найдено, добавляем общую стоимость\n    if (services.length === 0 && totalPrice > 0) {\n      services.push({\n        name: 'Доставка груза',\n        description: `${params.fromCity} - ${params.toCity}`,\n        price: totalPrice\n      });\n    }\n\n    // Эмулируем общую стоимость как на сайте\n    const totalCost = services.reduce((sum, service) => sum + service.price, 0);\n    \n    // Эмулируем сроки доставки\n    let deliveryTime = '1-2 дня';\n    if (responseData.deliveryTime) {"
+    },
+    "time": {
+      "start": 1764363365584,
+      "end": 1764363365587
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc35df47001zkQaJP0QkKXX27",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc35d076002n87H2fzsIEMa2Z",
+  "type": "tool",
+  "callID": "call_2ba5718f73bc4b1885d479f3",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 70
+    },
+    "output": "<file>\n00071|     floor: 1\n00072|   });\n00073| \n00074|   const [parserResult, setParserResult] = useState<ParsedResult | null>(null);\n00075|   const [apiResult, setApiResult] = useState<ApiResult | null>(null);\n00076|   const [isParserLoading, setIsParserLoading] = useState(false);\n00077|   const [isApiLoading, setIsApiLoading] = useState(false);\n00078|   const [error, setError] = useState<string | null>(null);\n00079| \n00080|   const handleParamChange = (key: keyof VozovozParserParams, value: any) => {\n00081|     setParams(prev => ({ ...prev, [key]: value }));\n00082|   };\n00083| \n00084|   const runParser = async () => {\n00085|     setIsParserLoading(true);\n00086|     setError(null);\n00087|     setParserResult(null);\n00088| \n00089|     try {\n00090|       const response = await fetch('/api/vozovoz-parser-hybrid', {\n\n(File has more lines. Use 'offset' parameter to read beyond line 90)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "    floor: 1\n  });\n\n  const [parserResult, setParserResult] = useState<ParsedResult | null>(null);\n  const [apiResult, setApiResult] = useState<ApiResult | null>(null);\n  const [isParserLoading, setIsParserLoading] = useState(false);\n  const [isApiLoading, setIsApiLoading] = useState(false);\n  const [error, setError] = useState<string | null>(null);\n\n  const handleParamChange = (key: keyof VozovozParserParams, value: any) => {\n    setParams(prev => ({ ...prev, [key]: value }));\n  };\n\n  const runParser = async () => {\n    setIsParserLoading(true);\n    setError(null);\n    setParserResult(null);\n\n    try {\n      const response = await fetch('/api/vozovoz-parser-hybrid', {"
+    },
+    "time": {
+      "start": 1764362673994,
+      "end": 1764362673998
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc391aa3001pZ6cz4eaWMigLj",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc38ef85002dB0M644e7jX08W",
+  "type": "tool",
+  "callID": "call_3341d5d1b146456a9955ee0f",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 410
+    },
+    "output": "<file>\n00411|                         type=\"number\"\n00412|                         value={params.floor}\n00413|                         onChange={(e) => handleParamChange('floor', parseInt(e.target.value) || 1)}\n00414|                         className=\"bg-gray-700 border-gray-600\"\n00415|                       />\n00416|                     </div>\n00417|                   </div>\n00418|                 )}\n00419|               </div>\n00420| \n00421|               {/* Кнопки управления */}\n00422|               <div className=\"flex space-x-3 pt-4\">\n00423|                 <Button\n00424|                   onClick={runParser}\n00425|                   disabled={isParserLoading}\n00426|                   className=\"bg-blue-600 hover:bg-blue-700\"\n00427|                 >\n00428|                   {isParserLoading ? (\n00429|                     <Loader2 className=\"w-4 h-4 mr-2 animate-spin\" />\n00430|                   ) : (\n\n(File has more lines. Use 'offset' parameter to read beyond line 430)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                        type=\"number\"\n                        value={params.floor}\n                        onChange={(e) => handleParamChange('floor', parseInt(e.target.value) || 1)}\n                        className=\"bg-gray-700 border-gray-600\"\n                      />\n                    </div>\n                  </div>\n                )}\n              </div>\n\n              {/* Кнопки управления */}\n              <div className=\"flex space-x-3 pt-4\">\n                <Button\n                  onClick={runParser}\n                  disabled={isParserLoading}\n                  className=\"bg-blue-600 hover:bg-blue-700\"\n                >\n                  {isParserLoading ? (\n                    <Loader2 className=\"w-4 h-4 mr-2 animate-spin\" />\n                  ) : ("
+    },
+    "time": {
+      "start": 1764362885797,
+      "end": 1764362885801
+    }
+  }
+}

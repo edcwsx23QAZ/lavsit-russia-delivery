@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc360849001FpSVK8Gpv1JoJX",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc35f7ae0024z5NG0Nss5Qvbn",
+  "type": "tool",
+  "callID": "call_f9bd5dbacfe4483ca1825dd1",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 110
+    },
+    "output": "<file>\n00111|     } finally {\n00112|       setIsParserLoading(false);\n00113|     }\n00114|   };\n00115| \n00116|   const runApiComparison = async () => {\n00117|     setIsApiLoading(true);\n00118|     setApiResult(null);\n00119| \n00120|     try {\n00121|       // Формируем запрос для API аналогично основному приложению\n00122|       const maxDimensions = {\n00123|         length: params.length / 1000, // переводим мм в м\n00124|         width: params.width / 1000,\n00125|         height: params.height / 1000,\n00126|         weight: params.weight\n00127|       };\n00128| \n00129|       const totalVolume = (params.length * params.width * params.height) / 1000000000; // м³\n00130|       const totalWeight = params.weight;\n\n(File has more lines. Use 'offset' parameter to read beyond line 130)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "    } finally {\n      setIsParserLoading(false);\n    }\n  };\n\n  const runApiComparison = async () => {\n    setIsApiLoading(true);\n    setApiResult(null);\n\n    try {\n      // Формируем запрос для API аналогично основному приложению\n      const maxDimensions = {\n        length: params.length / 1000, // переводим мм в м\n        width: params.width / 1000,\n        height: params.height / 1000,\n        weight: params.weight\n      };\n\n      const totalVolume = (params.length * params.width * params.height) / 1000000000; // м³\n      const totalWeight = params.weight;"
+    },
+    "time": {
+      "start": 1764362684490,
+      "end": 1764362684493
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc372337001fgXLPLxlBuVwmF",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc3712d30029D8soBEJwJw3ZL",
+  "type": "tool",
+  "callID": "call_aaa1f31ec6e447249ae55173",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 190
+    },
+    "output": "<file>\n00191| \n00192|       const result = await response.json();\n00193|       \n00194|       if (result.error) {\n00195|         throw new Error(result.error);\n00196|       }\n00197| \n00198|       setApiResult({\n00199|         price: result.response?.price || 0,\n00200|         days: result.response?.deliveryTime?.to || 1,\n00201|         details: result.response\n00202|       });\n00203|     } catch (err: any) {\n00204|       setError(err.message || 'Ошибка при выполнении API запроса');\n00205|     } finally {\n00206|       setIsApiLoading(false);\n00207|     }\n00208|   };\n00209| \n00210|   const runBoth = async () => {\n\n(File has more lines. Use 'offset' parameter to read beyond line 210)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "\n      const result = await response.json();\n      \n      if (result.error) {\n        throw new Error(result.error);\n      }\n\n      setApiResult({\n        price: result.response?.price || 0,\n        days: result.response?.deliveryTime?.to || 1,\n        details: result.response\n      });\n    } catch (err: any) {\n      setError(err.message || 'Ошибка при выполнении API запроса');\n    } finally {\n      setIsApiLoading(false);\n    }\n  };\n\n  const runBoth = async () => {"
+    },
+    "time": {
+      "start": 1764362756921,
+      "end": 1764362756925
+    }
+  }
+}

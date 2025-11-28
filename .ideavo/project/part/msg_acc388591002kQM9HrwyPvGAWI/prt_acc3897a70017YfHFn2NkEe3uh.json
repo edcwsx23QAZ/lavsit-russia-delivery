@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc3897a70017YfHFn2NkEe3uh",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc388591002kQM9HrwyPvGAWI",
+  "type": "tool",
+  "callID": "call_6f9a30a6f4bb4e14a7b7308d",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 350
+    },
+    "output": "<file>\n00351|               </div>\n00352| \n00353|               {/* Доп услуги */}\n00354|               <div className=\"space-y-3\">\n00355|                 <h3 className=\"text-lg font-semibold text-yellow-400\">🛡️ Дополнительные услуги</h3>\n00356|                 \n00357|                 <div className=\"flex items-center space-x-4\">\n00358|                   <Checkbox\n00359|                     checked={params.needInsurance}\n00360|                     onCheckedChange={(checked) => handleParamChange('needInsurance', checked)}\n00361|                   />\n00362|                   <Label>Требуется страховка</Label>\n00363|                 </div>\n00364| \n00365|                 {params.needInsurance && (\n00366|                   <div>\n00367|                     <Label>Объявленная стоимость (₽)</Label>\n00368|                     <Input\n00369|                       type=\"number\"\n00370|                       value={params.declaredValue}\n\n(File has more lines. Use 'offset' parameter to read beyond line 370)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "              </div>\n\n              {/* Доп услуги */}\n              <div className=\"space-y-3\">\n                <h3 className=\"text-lg font-semibold text-yellow-400\">🛡️ Дополнительные услуги</h3>\n                \n                <div className=\"flex items-center space-x-4\">\n                  <Checkbox\n                    checked={params.needInsurance}\n                    onCheckedChange={(checked) => handleParamChange('needInsurance', checked)}\n                  />\n                  <Label>Требуется страховка</Label>\n                </div>\n\n                {params.needInsurance && (\n                  <div>\n                    <Label>Объявленная стоимость (₽)</Label>\n                    <Input\n                      type=\"number\"\n                      value={params.declaredValue}"
+    },
+    "time": {
+      "start": 1764362852265,
+      "end": 1764362852268
+    }
+  }
+}

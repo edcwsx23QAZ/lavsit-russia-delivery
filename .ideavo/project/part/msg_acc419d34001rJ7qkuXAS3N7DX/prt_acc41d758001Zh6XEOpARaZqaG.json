@@ -1,0 +1,26 @@
+{
+  "id": "prt_acc41d758001Zh6XEOpARaZqaG",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc419d34001rJ7qkuXAS3N7DX",
+  "type": "tool",
+  "callID": "call_6d40b5026a584bcf9c5889ad",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "content": "#!/usr/bin/env node\n\nconst testCases = [\n  {\n    name: \"Стандартный тест (как на сайте)\",\n    params: {\n      fromCity: \"Москва\",\n      toCity: \"Санкт-Петербург\",\n      fromAddressDelivery: false,\n      toAddressDelivery: true,\n      toAddress: \"Невский проспект д.132\",\n      length: 200,\n      width: 100,\n      height: 100,\n      weight: 100,\n      needInsurance: false,\n      declaredValue: 0,\n      needPackaging: false,\n      needLoading: false,\n      hasFreightElevator: false,\n      floor: 1\n    },\n    expected: \"Около 12,680 ₽ (с сайта)\"\n  },\n  {\n    name: \"Большой объем\",\n    params: {\n      fromCity: \"Москва\",\n      toCity: \"Санкт-Петербург\",\n      fromAddressDelivery: false,\n      toAddressDelivery: true,\n      toAddress: \"Невский проспект д.132\",\n      length: 300,\n      width: 200,\n      height: 200,\n      weight: 200,\n      needInsurance: false,\n      declaredValue: 0,\n      needPackaging: false,\n      needLoading: false,\n      hasFreightElevator: false,\n      floor: 1\n    },\n    expected: \"Выше стандартного\"\n  },\n  {\n    name: \"Маленький объем\",\n    params: {\n      fromCity: \"Москва\",\n      toCity: \"Санкт-Петербург\",\n      fromAddressDelivery: false,\n      toAddressDelivery: true,\n      toAddress: \"Невский проспект д.132\",\n      length: 50,\n      width: 50,\n      height: 50,\n      weight: 10,\n      needInsurance: false,\n      declaredValue: 0,\n      needPackaging: false,\n      needLoading: false,\n      hasFreightElevator: false,\n      floor: 1\n    },\n    expected: \"Ниже стандартного\"\n  },\n  {\n    name: \"Без адресной доставки\",\n    params: {\n      fromCity: \"Москва\",\n      toCity: \"Санкт-Петербург\",\n      fromAddressDelivery: false,\n      toAddressDelivery: false,\n      length: 200,\n      width: 100,\n      height: 100,\n      weight: 100,\n      needInsurance: false,\n      declaredValue: 0,\n      needPackaging: false,\n      needLoading: false,\n      hasFreightElevator: false,\n      floor: 1\n    },\n    expected: \"Меньше (без отвоза груза)\"\n  }\n];\n\nasync function runTests() {\n  console.log(\"🧪 Запуск тестов Vozovoz парсера...\\n\");\n  \n  for (let i = 0; i < testCases.length; i++) {\n    const testCase = testCases[i];\n    console.log(`\\n📋 Тест ${i + 1}: ${testCase.name}`);\n    console.log(`🎯 Ожидаемый результат: ${testCase.expected}`);\n    console.log(`📦 Параметры: ${testCase.params.length}x${testCase.params.width}x${testCase.params.height}см, ${testCase.params.weight}кг`);\n    \n    try {\n      const response = await fetch('http://localhost:3000/api/vozovoz-parser-hybrid', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(testCase.params)\n      });\n      \n      if (!response.ok) {\n        throw new Error(`HTTP ${response.status}: ${response.statusText}`);\n      }\n      \n      const result = await response.json();\n      \n      console.log(`✅ Результат: ${result.totalCost.toLocaleString()} ₽`);\n      console.log(`⏱️  Время выполнения: ${result.parseTime}с`);\n      console.log(`🚚 Количество услуг: ${result.services.length}`);\n      \n      // Показываем детализацию услуг\n      console.log(\"📋 Детализация услуг:\");\n      result.services.forEach((service, index) => {\n        const discount = service.discount ? ` (скидка ${service.discount} ₽)` : '';\n        console.log(`   ${index + 1}. ${service.name}: ${service.price.toLocaleString()} ₽${discount}`);\n      });\n      \n      if (result.warnings && result.warnings.length > 0) {\n        console.log(`⚠️  Предупреждения: ${result.warnings.join(', ')}`);\n      }\n      \n    } catch (error) {\n      console.log(`❌ Ошибка: ${error.message}`);\n    }\n  }\n  \n  console.log(\"\\n🎉 Тестирование завершено!\");\n}\n\nrunTests().catch(console.error);",
+      "filePath": "/home/user/project/test-vozovoz-parser-final.js"
+    },
+    "output": "",
+    "title": "test-vozovoz-parser-final.js",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-vozovoz-parser-final.js",
+      "exists": false
+    },
+    "time": {
+      "start": 1764363458395,
+      "end": 1764363458402
+    }
+  }
+}

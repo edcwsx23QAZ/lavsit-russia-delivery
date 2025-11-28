@@ -1,0 +1,26 @@
+{
+  "id": "prt_acc3b1f45001lQdcOAqhC8mKzW",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc3b1040001C0BYQ4Z05eo6tc",
+  "type": "tool",
+  "callID": "call_ebcb12057c0a4afbb627aeca",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:3000/api/vozovoz-parser-hybrid -H \"Content-Type: application/json\" -d '{\"fromCity\":\"Москва\",\"toCity\":\"Санкт-Петербург\",\"fromAddressDelivery\":false,\"toAddressDelivery\":true,\"toAddress\":\"Невский проспект д.132\",\"length\":200,\"width\":100,\"height\":100,\"weight\":100,\"needInsurance\":false,\"declaredValue\":0,\"needPackaging\":false,\"needLoading\":false,\"hasFreightElevator\":false,\"floor\":1}'",
+      "description": "Test hybrid parser with full output"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server\n",
+    "title": "curl -X POST http://localhost:3000/api/vozovoz-parser-hybrid -H \"Content-Type: application/json\" -d '{\"fromCity\":\"Москва\",\"toCity\":\"Санкт-Петербург\",\"fromAddressDelivery\":false,\"toAddressDelivery\":true,\"toAddress\":\"Невский проспект д.132\",\"length\":200,\"width\":100,\"height\":100,\"weight\":100,\"needInsurance\":false,\"declaredValue\":0,\"needPackaging\":false,\"needLoading\":false,\"hasFreightElevator\":false,\"floor\":1}'",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server\n",
+      "exit": 7,
+      "description": "Test hybrid parser with full output"
+    },
+    "time": {
+      "start": 1764363018059,
+      "end": 1764363018076
+    }
+  }
+}

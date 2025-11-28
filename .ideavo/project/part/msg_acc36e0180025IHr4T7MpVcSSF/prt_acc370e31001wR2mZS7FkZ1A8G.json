@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc370e31001wR2mZS7FkZ1A8G",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc36e0180025IHr4T7MpVcSSF",
+  "type": "tool",
+  "callID": "call_76490327ad0f4af8999c9588",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 170
+    },
+    "output": "<file>\n00171|                 } : {\n00172|                   terminal: \"default\"\n00173|                 })\n00174|               }\n00175|             }\n00176|           }\n00177|         }\n00178|       };\n00179| \n00180|       const response = await fetch('/api/vozovoz', {\n00181|         method: 'POST',\n00182|         headers: {\n00183|           'Content-Type': 'application/json',\n00184|         },\n00185|         body: JSON.stringify(requestData),\n00186|       });\n00187| \n00188|       if (!response.ok) {\n00189|         throw new Error(`Ошибка API: ${response.status}`);\n00190|       }\n\n(File has more lines. Use 'offset' parameter to read beyond line 190)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                } : {\n                  terminal: \"default\"\n                })\n              }\n            }\n          }\n        }\n      };\n\n      const response = await fetch('/api/vozovoz', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(requestData),\n      });\n\n      if (!response.ok) {\n        throw new Error(`Ошибка API: ${response.status}`);\n      }"
+    },
+    "time": {
+      "start": 1764362751540,
+      "end": 1764362751543
+    }
+  }
+}

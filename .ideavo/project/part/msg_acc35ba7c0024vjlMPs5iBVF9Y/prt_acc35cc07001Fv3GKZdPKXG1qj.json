@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc35cc07001Fv3GKZdPKXG1qj",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc35ba7c0024vjlMPs5iBVF9Y",
+  "type": "tool",
+  "callID": "call_4aceb44582ba42a0986982d0",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "pattern": "parserResult.*setParserResult"
+    },
+    "output": "Found 1 matches\n/home/user/project/app/vozovoz-parser/page.tsx:\n  Line 74:   const [parserResult, setParserResult] = useState<ParsedResult | null>(null);",
+    "title": "parserResult.*setParserResult",
+    "metadata": {
+      "matches": 1,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764362669069,
+      "end": 1764362669076
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc3f7592001AI64WJbdadFV4M",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc3f688d001NGRcuF4EPMrmy9",
+  "type": "tool",
+  "callID": "call_4593a5ea86604e9db31e6148",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser-hybrid/route.ts",
+      "limit": 50,
+      "offset": 300
+    },
+    "output": "<file>\n00301|                 name: 'Скидка',\n00302|                 price: -adjustedDiscount,\n00303|                 basePrice: 0,\n00304|                 discount: adjustedDiscount\n00305|               });\n00306|             }\n00307|           });\n00308|         }\n00309|     }\n00310|     \n00311|     // Если никаких услуг не найдено, добавляем общую стоимость\n00312|     if (services.length === 0 && totalPrice > 0) {\n00313|       services.push({\n00314|         name: 'Доставка груза',\n00315|         description: `${params.fromCity} - ${params.toCity}`,\n00316|         price: totalPrice\n00317|       });\n00318|     }\n00319| \n00320|     // Эмулируем общую стоимость как на сайте\n00321|     const totalCost = services.reduce((sum, service) => sum + service.price, 0);\n00322|     \n00323|     // Эмулируем сроки доставки\n00324|     let deliveryTime = '1-2 дня';\n00325|     if (responseData.deliveryTime) {\n00326|       if (responseData.deliveryTime.from && responseData.deliveryTime.to) {\n00327|         deliveryTime = `${responseData.deliveryTime.from}-${responseData.deliveryTime.to} дней`;\n00328|       } else if (responseData.deliveryTime.from) {\n00329|         deliveryTime = `${responseData.deliveryTime.from} дней`;\n00330|       } else if (responseData.deliveryTime.to) {\n00331|         deliveryTime = `${responseData.deliveryTime.to} дней`;\n00332|       }\n00333|     }\n00334| \n00335|     const parseTime = ((Date.now() - startTime) / 1000).toFixed(1);\n00336| \n00337|     console.log('✅ Гибридный парсер завершил работу');\n00338|     console.log('💰 Итоговая стоимость:', totalCost);\n00339|     console.log('📦 Количество услуг:', services.length);\n00340| \n00341|     return {\n00342|       totalCost: Math.round(totalCost),\n00343|       services: services,\n00344|       deliveryTime: deliveryTime,\n00345|       warnings: ['Гибридный режим - API + эмуляция сайта'],\n00346|       parseTime: parseFloat(parseTime)\n00347|     };\n00348| \n00349|   } catch (error: any) {\n00350|     console.error('❌ Ошибка гибридного парсера:', error);\n\n(File has more lines. Use 'offset' parameter to read beyond line 350)\n</file>",
+    "title": "app/api/vozovoz-parser-hybrid/route.ts",
+    "metadata": {
+      "preview": "                name: 'Скидка',\n                price: -adjustedDiscount,\n                basePrice: 0,\n                discount: adjustedDiscount\n              });\n            }\n          });\n        }\n    }\n    \n    // Если никаких услуг не найдено, добавляем общую стоимость\n    if (services.length === 0 && totalPrice > 0) {\n      services.push({\n        name: 'Доставка груза',\n        description: `${params.fromCity} - ${params.toCity}`,\n        price: totalPrice\n      });\n    }\n\n    // Эмулируем общую стоимость как на сайте"
+    },
+    "time": {
+      "start": 1764363302292,
+      "end": 1764363302295
+    }
+  }
+}

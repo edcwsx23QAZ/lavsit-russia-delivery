@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc383af3001WWWMNoPNIoooya",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc382a01002o8ur696hrE3vdG",
+  "type": "tool",
+  "callID": "call_bb9f7e4dc28e46e4bf11a31a",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 270
+    },
+    "output": "<file>\n00271|                       onChange={(e) => handleParamChange('fromAddress', e.target.value)}\n00272|                       placeholder=\"Адрес отправления\"\n00273|                       className=\"bg-gray-700 border-gray-600\"\n00274|                     />\n00275|                   </div>\n00276|                 )}\n00277| \n00278|                 <div>\n00279|                   <Label>Город назначения</Label>\n00280|                   <Input\n00281|                     value={params.toCity}\n00282|                     onChange={(e) => handleParamChange('toCity', e.target.value)}\n00283|                     placeholder=\"Санкт-Петербург\"\n00284|                     className=\"bg-gray-700 border-gray-600\"\n00285|                   />\n00286|                 </div>\n00287| \n00288|                 <div className=\"flex items-center space-x-4\">\n00289|                   <Checkbox\n00290|                     checked={params.toAddressDelivery}\n\n(File has more lines. Use 'offset' parameter to read beyond line 290)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                      onChange={(e) => handleParamChange('fromAddress', e.target.value)}\n                      placeholder=\"Адрес отправления\"\n                      className=\"bg-gray-700 border-gray-600\"\n                    />\n                  </div>\n                )}\n\n                <div>\n                  <Label>Город назначения</Label>\n                  <Input\n                    value={params.toCity}\n                    onChange={(e) => handleParamChange('toCity', e.target.value)}\n                    placeholder=\"Санкт-Петербург\"\n                    className=\"bg-gray-700 border-gray-600\"\n                  />\n                </div>\n\n                <div className=\"flex items-center space-x-4\">\n                  <Checkbox\n                    checked={params.toAddressDelivery}"
+    },
+    "time": {
+      "start": 1764362828534,
+      "end": 1764362828543
+    }
+  }
+}

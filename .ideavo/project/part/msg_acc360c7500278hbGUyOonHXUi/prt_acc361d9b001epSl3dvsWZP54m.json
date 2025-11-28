@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc361d9b001epSl3dvsWZP54m",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc360c7500278hbGUyOonHXUi",
+  "type": "tool",
+  "callID": "call_ef7e1e78d60b429db51ddce8",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 130
+    },
+    "output": "<file>\n00131| \n00132|       const requestData = {\n00133|         object: \"price\",\n00134|         action: \"get\",\n00135|         params: {\n00136|           cargo: {\n00137|             dimension: {\n00138|               max: maxDimensions,\n00139|               quantity: 1,\n00140|               volume: totalVolume,\n00141|               weight: totalWeight\n00142|             },\n00143|             ...(params.needInsurance && (params.declaredValue || 0) > 0 ? {\n00144|               insurance: params.declaredValue || 0,\n00145|               insuranceNdv: false\n00146|             } : {\n00147|               insuranceNdv: true\n00148|             }),\n00149|             ...(params.needPackaging ? {\n00150|               wrapping: {\n\n(File has more lines. Use 'offset' parameter to read beyond line 150)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "\n      const requestData = {\n        object: \"price\",\n        action: \"get\",\n        params: {\n          cargo: {\n            dimension: {\n              max: maxDimensions,\n              quantity: 1,\n              volume: totalVolume,\n              weight: totalWeight\n            },\n            ...(params.needInsurance && (params.declaredValue || 0) > 0 ? {\n              insurance: params.declaredValue || 0,\n              insuranceNdv: false\n            } : {\n              insuranceNdv: true\n            }),\n            ...(params.needPackaging ? {\n              wrapping: {"
+    },
+    "time": {
+      "start": 1764362689949,
+      "end": 1764362689951
+    }
+  }
+}

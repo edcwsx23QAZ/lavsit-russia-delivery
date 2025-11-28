@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc392e73001N65a9J4EAsvfxu",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc391f5c001S7bGrolyAxxXB9",
+  "type": "tool",
+  "callID": "call_a74fd817d81e4efb8034f32b",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 430
+    },
+    "output": "<file>\n00431|                     <Play className=\"w-4 h-4 mr-2\" />\n00432|                   )}\n00433|                   Парсер\n00434|                 </Button>\n00435| \n00436|                 <Button\n00437|                   onClick={runApiComparison}\n00438|                   disabled={isApiLoading}\n00439|                   variant=\"outline\"\n00440|                   className=\"border-gray-600 hover:bg-gray-700\"\n00441|                 >\n00442|                   {isApiLoading ? (\n00443|                     <Loader2 className=\"w-4 h-4 mr-2 animate-spin\" />\n00444|                   ) : (\n00445|                     <Play className=\"w-4 h-4 mr-2\" />\n00446|                   )}\n00447|                   API\n00448|                 </Button>\n00449| \n00450|                 <Button\n\n(File has more lines. Use 'offset' parameter to read beyond line 450)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                    <Play className=\"w-4 h-4 mr-2\" />\n                  )}\n                  Парсер\n                </Button>\n\n                <Button\n                  onClick={runApiComparison}\n                  disabled={isApiLoading}\n                  variant=\"outline\"\n                  className=\"border-gray-600 hover:bg-gray-700\"\n                >\n                  {isApiLoading ? (\n                    <Loader2 className=\"w-4 h-4 mr-2 animate-spin\" />\n                  ) : (\n                    <Play className=\"w-4 h-4 mr-2\" />\n                  )}\n                  API\n                </Button>\n\n                <Button"
+    },
+    "time": {
+      "start": 1764362890869,
+      "end": 1764362890873
+    }
+  }
+}

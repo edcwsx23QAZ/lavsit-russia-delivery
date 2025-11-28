@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc3392c2001rNHrk18tjw4PgB",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc32e84a002e5rMuMJIVk4lnB",
+  "type": "tool",
+  "callID": "call_0fa242bb28a14b26af3b5f82",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 50,
+      "offset": 450
+    },
+    "output": "<file>\n00451|                   onClick={runBoth}\n00452|                   disabled={isParserLoading || isApiLoading}\n00453|                   className=\"bg-green-600 hover:bg-green-700\"\n00454|                 >\n00455|                   {isParserLoading || isApiLoading ? (\n00456|                     <Loader2 className=\"w-4 h-4 mr-2 animate-spin\" />\n00457|                   ) : (\n00458|                     <GitCompare className=\"w-4 h-4 mr-2\" />\n00459|                   )}\n00460|                   Оба\n00461|                 </Button>\n00462|               </div>\n00463|             </CardContent>\n00464|           </Card>\n00465| \n00466|           {/* Результаты */}\n00467|           <div className=\"space-y-6\">\n00468|             {/* Ошибки */}\n00469|             {error && (\n00470|               <Card className=\"bg-red-900 border-red-700\">\n00471|                 <CardContent className=\"pt-6\">\n00472|                   <p className=\"text-red-200\">❌ {error}</p>\n00473|                 </CardContent>\n00474|               </Card>\n00475|             )}\n00476| \n00477|             {/* Результаты парсера */}\n00478|             {parserResult && (\n00479|               <Card className=\"bg-gray-800 border-gray-700\">\n00480|                 <CardHeader>\n00481|                   <CardTitle className=\"text-xl text-green-400\">\n00482|                     🕷️ Результаты парсера\n00483|                     {parserResult.parseTime && (\n00484|                       <span className=\"text-sm text-gray-400 ml-2\">\n00485|                         ({parserResult.parseTime}с)\n00486|                       </span>\n00487|                     )}\n00488|                   </CardTitle>\n00489|                 </CardHeader>\n00490|                 <CardContent>\n00491|                   <div className=\"text-2xl font-bold mb-4\">\n00492|                     Итого: {parserResult.totalCost.toLocaleString()} ₽\n00493|                   </div>\n00494|                   \n00495|                   {parserResult.services.length > 0 && (\n00496|                     <div className=\"space-y-2\">\n00497|                       <h4 className=\"font-semibold\">Детализация:</h4>\n00498|                       {parserResult.services.map((service, index) => (\n00499|                         <div key={index} className=\"flex justify-between text-sm\">\n00500|                           <span>{service.name}</span>\n\n(File has more lines. Use 'offset' parameter to read beyond line 500)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                  onClick={runBoth}\n                  disabled={isParserLoading || isApiLoading}\n                  className=\"bg-green-600 hover:bg-green-700\"\n                >\n                  {isParserLoading || isApiLoading ? (\n                    <Loader2 className=\"w-4 h-4 mr-2 animate-spin\" />\n                  ) : (\n                    <GitCompare className=\"w-4 h-4 mr-2\" />\n                  )}\n                  Оба\n                </Button>\n              </div>\n            </CardContent>\n          </Card>\n\n          {/* Результаты */}\n          <div className=\"space-y-6\">\n            {/* Ошибки */}\n            {error && (\n              <Card className=\"bg-red-900 border-red-700\">"
+    },
+    "time": {
+      "start": 1764362523333,
+      "end": 1764362523336
+    }
+  }
+}

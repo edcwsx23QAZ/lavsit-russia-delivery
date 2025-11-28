@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc386bbe001b4nyLMINr8EFJQ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc385ad8001Bf29eg6s4ePZcU",
+  "type": "tool",
+  "callID": "call_74a138fe8abe4fa3a9703789",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 310
+    },
+    "output": "<file>\n00311|                 <h3 className=\"text-lg font-semibold text-green-400\">📦 Габариты и вес</h3>\n00312|                 \n00313|                 <div className=\"grid grid-cols-2 gap-3\">\n00314|                   <div>\n00315|                     <Label>Длина (см)</Label>\n00316|                     <Input\n00317|                       type=\"number\"\n00318|                       value={params.length}\n00319|                       onChange={(e) => handleParamChange('length', parseInt(e.target.value) || 0)}\n00320|                       className=\"bg-gray-700 border-gray-600\"\n00321|                     />\n00322|                   </div>\n00323|                   <div>\n00324|                     <Label>Ширина (см)</Label>\n00325|                     <Input\n00326|                       type=\"number\"\n00327|                       value={params.width}\n00328|                       onChange={(e) => handleParamChange('width', parseInt(e.target.value) || 0)}\n00329|                       className=\"bg-gray-700 border-gray-600\"\n00330|                     />\n\n(File has more lines. Use 'offset' parameter to read beyond line 330)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                <h3 className=\"text-lg font-semibold text-green-400\">📦 Габариты и вес</h3>\n                \n                <div className=\"grid grid-cols-2 gap-3\">\n                  <div>\n                    <Label>Длина (см)</Label>\n                    <Input\n                      type=\"number\"\n                      value={params.length}\n                      onChange={(e) => handleParamChange('length', parseInt(e.target.value) || 0)}\n                      className=\"bg-gray-700 border-gray-600\"\n                    />\n                  </div>\n                  <div>\n                    <Label>Ширина (см)</Label>\n                    <Input\n                      type=\"number\"\n                      value={params.width}\n                      onChange={(e) => handleParamChange('width', parseInt(e.target.value) || 0)}\n                      className=\"bg-gray-700 border-gray-600\"\n                    />"
+    },
+    "time": {
+      "start": 1764362841025,
+      "end": 1764362841033
+    }
+  }
+}

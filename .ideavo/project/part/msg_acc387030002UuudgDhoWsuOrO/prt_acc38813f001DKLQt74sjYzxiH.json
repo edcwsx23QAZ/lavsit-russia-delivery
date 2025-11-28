@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc38813f001DKLQt74sjYzxiH",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc387030002UuudgDhoWsuOrO",
+  "type": "tool",
+  "callID": "call_143484ed7d8048caa3f8bdcd",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 330
+    },
+    "output": "<file>\n00331|                   </div>\n00332|                   <div>\n00333|                     <Label>Высота (см)</Label>\n00334|                     <Input\n00335|                       type=\"number\"\n00336|                       value={params.height}\n00337|                       onChange={(e) => handleParamChange('height', parseInt(e.target.value) || 0)}\n00338|                       className=\"bg-gray-700 border-gray-600\"\n00339|                     />\n00340|                   </div>\n00341|                   <div>\n00342|                     <Label>Вес (кг)</Label>\n00343|                     <Input\n00344|                       type=\"number\"\n00345|                       value={params.weight}\n00346|                       onChange={(e) => handleParamChange('weight', parseInt(e.target.value) || 0)}\n00347|                       className=\"bg-gray-700 border-gray-600\"\n00348|                     />\n00349|                   </div>\n00350|                 </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 350)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                  </div>\n                  <div>\n                    <Label>Высота (см)</Label>\n                    <Input\n                      type=\"number\"\n                      value={params.height}\n                      onChange={(e) => handleParamChange('height', parseInt(e.target.value) || 0)}\n                      className=\"bg-gray-700 border-gray-600\"\n                    />\n                  </div>\n                  <div>\n                    <Label>Вес (кг)</Label>\n                    <Input\n                      type=\"number\"\n                      value={params.weight}\n                      onChange={(e) => handleParamChange('weight', parseInt(e.target.value) || 0)}\n                      className=\"bg-gray-700 border-gray-600\"\n                    />\n                  </div>\n                </div>"
+    },
+    "time": {
+      "start": 1764362846529,
+      "end": 1764362846532
+    }
+  }
+}

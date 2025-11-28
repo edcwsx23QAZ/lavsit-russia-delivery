@@ -10,224 +10,147 @@
  ⚠ Invalid next.config.js options detected: 
  ⚠     Unrecognized key(s) in object: 'runtime', 'serverActionsBodySizeLimit' at "experimental"
  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
- ✓ Ready in 1891ms
- ○ Compiling /api/vozovoz-parser-optimized ...
- ✓ Compiled /api/vozovoz-parser-optimized in 684ms (58 modules)
-🕷️ Запуск оптимизированного парсера Vozovoz с параметрами: {
-  "fromCity": "Москва",
-  "toCity": "Санкт-Петербург",
-  "fromAddressDelivery": false,
-  "toAddressDelivery": true,
-  "fromAddress": "",
-  "toAddress": "Невский проспект д.132",
-  "length": 200,
-  "width": 100,
-  "height": 100,
-  "weight": 100,
-  "needInsurance": false,
-  "declaredValue": 0,
-  "needPackaging": false,
-  "needLoading": false,
-  "hasFreightElevator": false,
-  "floor": 1
-}
-🚀 Запуск оптимизированного реального парсера...
-🕷️ Запуск оптимизированного парсера Vozovoz...
-📍 Переход на сайт Vozovoz...
-✅ Сайт загружен
-🔍 Поиск кнопки входа...
-✅ Кнопка входа нажата
-🔐 Ввод данных авторизации...
-❌ Ошибка при парсинге Vozovoz: Error: Execution context was destroyed, most likely because of a navigation.
-    at rewriteError (file:///home/user/project/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/ExecutionContext.js:453:15)
-    at async #evaluate (file:///home/user/project/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/ExecutionContext.js:386:60)
-    at async ExecutionContext.evaluate (file:///home/user/project/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/ExecutionContext.js:274:16)
-    at async IsolatedWorld.evaluate (file:///home/user/project/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/IsolatedWorld.js:97:16)
-    at async CdpFrame.evaluate (file:///home/user/project/node_modules/puppeteer-core/lib/esm/puppeteer/api/Frame.js:359:20)
-    at async CdpPage.evaluate (file:///home/user/project/node_modules/puppeteer-core/lib/esm/puppeteer/api/Page.js:814:20)
-    at async parseVozovozWebsiteOptimized (webpack-internal:///(rsc)/./app/api/vozovoz-parser-optimized/route.ts:114:36)
-    at async POST (webpack-internal:///(rsc)/./app/api/vozovoz-parser-optimized/route.ts:360:24)
-    at async /home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
-    at async eT.execute (/home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
-    at async eT.handle (/home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
-    at async doRender (/home/user/project/node_modules/next/dist/server/base-server.js:1366:42)
-    at async cacheEntry.responseCache.get.routeKind (/home/user/project/node_modules/next/dist/server/base-server.js:1588:28)
-    at async DevServer.renderToResponseWithComponentsImpl (/home/user/project/node_modules/next/dist/server/base-server.js:1496:28)
-    at async DevServer.renderPageComponent (/home/user/project/node_modules/next/dist/server/base-server.js:1924:24)
-    at async DevServer.renderToResponseImpl (/home/user/project/node_modules/next/dist/server/base-server.js:1962:32)
-    at async DevServer.pipeImpl (/home/user/project/node_modules/next/dist/server/base-server.js:922:25)
-    at async NextNodeServer.handleCatchallRenderRequest (/home/user/project/node_modules/next/dist/server/next-server.js:272:17)
-    at async DevServer.handleRequestImpl (/home/user/project/node_modules/next/dist/server/base-server.js:818:17)
-    at async /home/user/project/node_modules/next/dist/server/dev/next-dev-server.js:339:20
-    at async Span.traceAsyncFn (/home/user/project/node_modules/next/dist/trace/trace.js:154:20)
-    at async DevServer.handleRequest (/home/user/project/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
-    at async invokeRender (/home/user/project/node_modules/next/dist/server/lib/router-server.js:179:21)
-    at async handleRequest (/home/user/project/node_modules/next/dist/server/lib/router-server.js:359:24)
-    at async requestHandlerImpl (/home/user/project/node_modules/next/dist/server/lib/router-server.js:383:13)
-    at async Server.requestListener (/home/user/project/node_modules/next/dist/server/lib/start-server.js:141:13)
-🔒 Браузер закрыт
-❌ Критическая ошибка оптимизированного парсера: Error: Ошибка парсера: Execution context was destroyed, most likely because of a navigation.
-    at parseVozovozWebsiteOptimized (webpack-internal:///(rsc)/./app/api/vozovoz-parser-optimized/route.ts:328:15)
-    at async POST (webpack-internal:///(rsc)/./app/api/vozovoz-parser-optimized/route.ts:360:24)
-    at async /home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
-    at async eT.execute (/home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
-    at async eT.handle (/home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
-    at async doRender (/home/user/project/node_modules/next/dist/server/base-server.js:1366:42)
-    at async cacheEntry.responseCache.get.routeKind (/home/user/project/node_modules/next/dist/server/base-server.js:1588:28)
-    at async DevServer.renderToResponseWithComponentsImpl (/home/user/project/node_modules/next/dist/server/base-server.js:1496:28)
-    at async DevServer.renderPageComponent (/home/user/project/node_modules/next/dist/server/base-server.js:1924:24)
-    at async DevServer.renderToResponseImpl (/home/user/project/node_modules/next/dist/server/base-server.js:1962:32)
-    at async DevServer.pipeImpl (/home/user/project/node_modules/next/dist/server/base-server.js:922:25)
-    at async NextNodeServer.handleCatchallRenderRequest (/home/user/project/node_modules/next/dist/server/next-server.js:272:17)
-    at async DevServer.handleRequestImpl (/home/user/project/node_modules/next/dist/server/base-server.js:818:17)
-    at async /home/user/project/node_modules/next/dist/server/dev/next-dev-server.js:339:20
-    at async Span.traceAsyncFn (/home/user/project/node_modules/next/dist/trace/trace.js:154:20)
-    at async DevServer.handleRequest (/home/user/project/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
-    at async invokeRender (/home/user/project/node_modules/next/dist/server/lib/router-server.js:179:21)
-    at async handleRequest (/home/user/project/node_modules/next/dist/server/lib/router-server.js:359:24)
-    at async requestHandlerImpl (/home/user/project/node_modules/next/dist/server/lib/router-server.js:383:13)
-    at async Server.requestListener (/home/user/project/node_modules/next/dist/server/lib/start-server.js:141:13)
- POST /api/vozovoz-parser-optimized 500 in 9682ms
- ✓ Compiled in 2.9s (201 modules)
- ⨯ ./app/api/vozovoz-parser-stable/route.ts
+ ✓ Ready in 1947ms
+ ⨯ ./app/api/vozovoz-parser-hybrid/route.ts
 Error: 
-  [31mx[0m A 'continue' statement can only jump to a label of an enclosing iteration statement
-     ,-[[36;1;4m/home/user/project/app/api/vozovoz-parser-stable/route.ts[0m:526:1]
- [2m526[0m |               }
- [2m527[0m |             }
- [2m528[0m |           } catch (e) {
- [2m529[0m |             continue;
-     : [31;1m            ^^^^^^^^^[0m
- [2m530[0m |           }
- [2m531[0m |         });
+  [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/home/user/project/app/api/vozovoz-parser-hybrid/route.ts[0m:309:1]
+ [2m309[0m |     }
+ [2m310[0m |     
+ [2m311[0m |     // Если никаких услуг не найдено, добавляем общую стоимость
+ [2m312[0m |     if (services.length === 0 && totalPrice > 0) {
+     : [31;1m    ^[0m
+ [2m313[0m |       services.push({
+ [2m314[0m |         name: 'Доставка груза',
+ [2m315[0m |         description: `${params.fromCity} - ${params.toCity}`,
+     `----
+
+  [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/home/user/project/app/api/vozovoz-parser-hybrid/route.ts[0m:346:1]
+ [2m346[0m |       parseTime: parseFloat(parseTime)
+ [2m347[0m |     };
+ [2m348[0m | 
+ [2m349[0m |   } catch (error: any) {
+     : [31;1m    ^^^^^[0m
+ [2m350[0m |     console.error('❌ Ошибка гибридного парсера:', error);
+ [2m351[0m |     throw new Error(`Ошибка парсера: ${error.message}`);
+ [2m352[0m |   }
+     `----
+
+  [31mx[0m Expression expected
+     ,-[[36;1;4m/home/user/project/app/api/vozovoz-parser-hybrid/route.ts[0m:350:1]
+ [2m350[0m |     console.error('❌ Ошибка гибридного парсера:', error);
+ [2m351[0m |     throw new Error(`Ошибка парсера: ${error.message}`);
+ [2m352[0m |   }
+ [2m353[0m | }
+     : [31;1m^[0m
+ [2m354[0m | 
+ [2m355[0m | export async function POST(request: NextRequest) {
+ [2m356[0m |   try {
      `----
 
 Caused by:
     Syntax Error
 
 Import trace for requested module:
-./app/api/vozovoz-parser-stable/route.ts
+./app/api/vozovoz-parser-hybrid/route.ts
  ○ Compiling /_not-found ...
- ⨯ ./app/api/vozovoz-parser-stable/route.ts
+ ⨯ ./app/api/vozovoz-parser-hybrid/route.ts
 Error: 
-  [31mx[0m A 'continue' statement can only jump to a label of an enclosing iteration statement
-     ,-[[36;1;4m/home/user/project/app/api/vozovoz-parser-stable/route.ts[0m:526:1]
- [2m526[0m |               }
- [2m527[0m |             }
- [2m528[0m |           } catch (e) {
- [2m529[0m |             continue;
-     : [31;1m            ^^^^^^^^^[0m
- [2m530[0m |           }
- [2m531[0m |         });
+  [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/home/user/project/app/api/vozovoz-parser-hybrid/route.ts[0m:309:1]
+ [2m309[0m |     }
+ [2m310[0m |     
+ [2m311[0m |     // Если никаких услуг не найдено, добавляем общую стоимость
+ [2m312[0m |     if (services.length === 0 && totalPrice > 0) {
+     : [31;1m    ^[0m
+ [2m313[0m |       services.push({
+ [2m314[0m |         name: 'Доставка груза',
+ [2m315[0m |         description: `${params.fromCity} - ${params.toCity}`,
+     `----
+
+  [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/home/user/project/app/api/vozovoz-parser-hybrid/route.ts[0m:346:1]
+ [2m346[0m |       parseTime: parseFloat(parseTime)
+ [2m347[0m |     };
+ [2m348[0m | 
+ [2m349[0m |   } catch (error: any) {
+     : [31;1m    ^^^^^[0m
+ [2m350[0m |     console.error('❌ Ошибка гибридного парсера:', error);
+ [2m351[0m |     throw new Error(`Ошибка парсера: ${error.message}`);
+ [2m352[0m |   }
+     `----
+
+  [31mx[0m Expression expected
+     ,-[[36;1;4m/home/user/project/app/api/vozovoz-parser-hybrid/route.ts[0m:350:1]
+ [2m350[0m |     console.error('❌ Ошибка гибридного парсера:', error);
+ [2m351[0m |     throw new Error(`Ошибка парсера: ${error.message}`);
+ [2m352[0m |   }
+ [2m353[0m | }
+     : [31;1m^[0m
+ [2m354[0m | 
+ [2m355[0m | export async function POST(request: NextRequest) {
+ [2m356[0m |   try {
      `----
 
 Caused by:
     Syntax Error
 
 Import trace for requested module:
-./app/api/vozovoz-parser-stable/route.ts
- ✓ Compiled /_not-found in 1003ms (242 modules)
+./app/api/vozovoz-parser-hybrid/route.ts
+ ✓ Compiled /_not-found in 857ms (242 modules)
  ○ Compiling /_error ...
- ⨯ ./app/api/vozovoz-parser-stable/route.ts
+ ⨯ ./app/api/vozovoz-parser-hybrid/route.ts
 Error: 
-  [31mx[0m A 'continue' statement can only jump to a label of an enclosing iteration statement
-     ,-[[36;1;4m/home/user/project/app/api/vozovoz-parser-stable/route.ts[0m:526:1]
- [2m526[0m |               }
- [2m527[0m |             }
- [2m528[0m |           } catch (e) {
- [2m529[0m |             continue;
-     : [31;1m            ^^^^^^^^^[0m
- [2m530[0m |           }
- [2m531[0m |         });
+  [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/home/user/project/app/api/vozovoz-parser-hybrid/route.ts[0m:309:1]
+ [2m309[0m |     }
+ [2m310[0m |     
+ [2m311[0m |     // Если никаких услуг не найдено, добавляем общую стоимость
+ [2m312[0m |     if (services.length === 0 && totalPrice > 0) {
+     : [31;1m    ^[0m
+ [2m313[0m |       services.push({
+ [2m314[0m |         name: 'Доставка груза',
+ [2m315[0m |         description: `${params.fromCity} - ${params.toCity}`,
+     `----
+
+  [31mx[0m Expected a semicolon
+     ,-[[36;1;4m/home/user/project/app/api/vozovoz-parser-hybrid/route.ts[0m:346:1]
+ [2m346[0m |       parseTime: parseFloat(parseTime)
+ [2m347[0m |     };
+ [2m348[0m | 
+ [2m349[0m |   } catch (error: any) {
+     : [31;1m    ^^^^^[0m
+ [2m350[0m |     console.error('❌ Ошибка гибридного парсера:', error);
+ [2m351[0m |     throw new Error(`Ошибка парсера: ${error.message}`);
+ [2m352[0m |   }
+     `----
+
+  [31mx[0m Expression expected
+     ,-[[36;1;4m/home/user/project/app/api/vozovoz-parser-hybrid/route.ts[0m:350:1]
+ [2m350[0m |     console.error('❌ Ошибка гибридного парсера:', error);
+ [2m351[0m |     throw new Error(`Ошибка парсера: ${error.message}`);
+ [2m352[0m |   }
+ [2m353[0m | }
+     : [31;1m^[0m
+ [2m354[0m | 
+ [2m355[0m | export async function POST(request: NextRequest) {
+ [2m356[0m |   try {
      `----
 
 Caused by:
     Syntax Error
 
 Import trace for requested module:
-./app/api/vozovoz-parser-stable/route.ts
- POST /api/vozovoz-parser-stable 500 in 8736ms
- ✓ Compiled /_error in 1113ms (760 modules)
-🕷️ Запуск стабильного парсера Vozovoz с параметрами: {
-  "fromCity": "Москва",
-  "toCity": "Санкт-Петербург",
-  "fromAddressDelivery": false,
-  "toAddressDelivery": true,
-  "fromAddress": "",
-  "toAddress": "Невский проспект д.132",
-  "length": 200,
-  "width": 100,
-  "height": 100,
-  "weight": 100,
-  "needInsurance": false,
-  "declaredValue": 0,
-  "needPackaging": false,
-  "needLoading": false,
-  "hasFreightElevator": false,
-  "floor": 1
-}
-🚀 Запуск стабильного реального парсера...
-🕷️ Запуск стабильного парсера Vozovoz...
-📍 Переход на сайт Vozovoz...
-✅ Сайт загружен
-🔍 Поиск кнопки входа...
-✅ Кнопка входа нажата
-🔐 Ввод данных авторизации...
-🔽 Нажатие кнопки входа...
-✅ Данные авторизации отправлены
-❌ Ошибка при парсинге Vozovoz: Error: Авторизация не удалась
-    at parseVozovozWebsiteStable (webpack-internal:///(rsc)/./app/api/vozovoz-parser-stable/route.ts:191:19)
-    at async POST (webpack-internal:///(rsc)/./app/api/vozovoz-parser-stable/route.ts:536:24)
-    at async /home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
-    at async eT.execute (/home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
-    at async eT.handle (/home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
-    at async doRender (/home/user/project/node_modules/next/dist/server/base-server.js:1366:42)
-    at async cacheEntry.responseCache.get.routeKind (/home/user/project/node_modules/next/dist/server/base-server.js:1588:28)
-    at async DevServer.renderToResponseWithComponentsImpl (/home/user/project/node_modules/next/dist/server/base-server.js:1496:28)
-    at async DevServer.renderPageComponent (/home/user/project/node_modules/next/dist/server/base-server.js:1924:24)
-    at async DevServer.renderToResponseImpl (/home/user/project/node_modules/next/dist/server/base-server.js:1962:32)
-    at async DevServer.pipeImpl (/home/user/project/node_modules/next/dist/server/base-server.js:922:25)
-    at async NextNodeServer.handleCatchallRenderRequest (/home/user/project/node_modules/next/dist/server/next-server.js:272:17)
-    at async DevServer.handleRequestImpl (/home/user/project/node_modules/next/dist/server/base-server.js:818:17)
-    at async /home/user/project/node_modules/next/dist/server/dev/next-dev-server.js:339:20
-    at async Span.traceAsyncFn (/home/user/project/node_modules/next/dist/trace/trace.js:154:20)
-    at async DevServer.handleRequest (/home/user/project/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
-    at async invokeRender (/home/user/project/node_modules/next/dist/server/lib/router-server.js:179:21)
-    at async handleRequest (/home/user/project/node_modules/next/dist/server/lib/router-server.js:359:24)
-    at async requestHandlerImpl (/home/user/project/node_modules/next/dist/server/lib/router-server.js:383:13)
-    at async Server.requestListener (/home/user/project/node_modules/next/dist/server/lib/start-server.js:141:13)
-🔒 Браузер закрыт
-❌ Критическая ошибка стабильного парсера: Error: Ошибка парсера: Авторизация не удалась
-    at parseVozovozWebsiteStable (webpack-internal:///(rsc)/./app/api/vozovoz-parser-stable/route.ts:504:15)
-    at async POST (webpack-internal:///(rsc)/./app/api/vozovoz-parser-stable/route.ts:536:24)
-    at async /home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57228
-    at async eT.execute (/home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46851)
-    at async eT.handle (/home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:58760)
-    at async doRender (/home/user/project/node_modules/next/dist/server/base-server.js:1366:42)
-    at async cacheEntry.responseCache.get.routeKind (/home/user/project/node_modules/next/dist/server/base-server.js:1588:28)
-    at async DevServer.renderToResponseWithComponentsImpl (/home/user/project/node_modules/next/dist/server/base-server.js:1496:28)
-    at async DevServer.renderPageComponent (/home/user/project/node_modules/next/dist/server/base-server.js:1924:24)
-    at async DevServer.renderToResponseImpl (/home/user/project/node_modules/next/dist/server/base-server.js:1962:32)
-    at async DevServer.pipeImpl (/home/user/project/node_modules/next/dist/server/base-server.js:922:25)
-    at async NextNodeServer.handleCatchallRenderRequest (/home/user/project/node_modules/next/dist/server/next-server.js:272:17)
-    at async DevServer.handleRequestImpl (/home/user/project/node_modules/next/dist/server/base-server.js:818:17)
-    at async /home/user/project/node_modules/next/dist/server/dev/next-dev-server.js:339:20
-    at async Span.traceAsyncFn (/home/user/project/node_modules/next/dist/trace/trace.js:154:20)
-    at async DevServer.handleRequest (/home/user/project/node_modules/next/dist/server/dev/next-dev-server.js:336:24)
-    at async invokeRender (/home/user/project/node_modules/next/dist/server/lib/router-server.js:179:21)
-    at async handleRequest (/home/user/project/node_modules/next/dist/server/lib/router-server.js:359:24)
-    at async requestHandlerImpl (/home/user/project/node_modules/next/dist/server/lib/router-server.js:383:13)
-    at async Server.requestListener (/home/user/project/node_modules/next/dist/server/lib/start-server.js:141:13)
- POST /api/vozovoz-parser-stable 500 in 29345ms
- ✓ Compiled in 1379ms (544 modules)
- ✓ Compiled in 666ms (460 modules)
- ✓ Compiled /api/vozovoz-parser-hybrid in 122ms (96 modules)
+./app/api/vozovoz-parser-hybrid/route.ts
+ POST /api/vozovoz-parser-hybrid 500 in 9992ms
+ ✓ Compiled /_error in 688ms (508 modules)
+ ✓ Compiled /api/vozovoz-parser-hybrid in 270ms (96 modules)
 🕷️ Запуск гибридного парсера Vozovoz с параметрами: {
   "fromCity": "Москва",
   "toCity": "Санкт-Петербург",
   "fromAddressDelivery": false,
   "toAddressDelivery": true,
-  "fromAddress": "",
   "toAddress": "Невский проспект д.132",
   "length": 200,
   "width": 100,
@@ -245,8 +168,8 @@ Import trace for requested module:
 🔌 Запрос к реальному API Vozovoz...
 📥 Ответ от API Vozovoz: {
   "response": {
-    "basePrice": 2834,
-    "price": 2750,
+    "basePrice": 11546,
+    "price": 11250,
     "service": [
       {
         "basePrice": 100,
@@ -254,24 +177,24 @@ Import trace for requested module:
         "price": 100
       },
       {
-        "basePrice": 1320,
+        "basePrice": 7209,
         "name": "Перевозка между городами",
-        "price": 1293
+        "price": 7061
       },
       {
-        "basePrice": 49,
+        "basePrice": 159,
         "name": "Страхование груза без объявленной стоимости",
-        "price": 49
+        "price": 159
       },
       {
-        "basePrice": 185,
+        "basePrice": 1048,
         "name": "Складская обработка",
-        "price": 185
+        "price": 1048
       },
       {
-        "basePrice": 1180,
+        "basePrice": 3030,
         "name": "Отвоз груза клиенту",
-        "price": 1123
+        "price": 2882
       }
     ],
     "deliveryTime": {
@@ -283,35 +206,34 @@ Import trace for requested module:
     ]
   }
 }
-🎭 Эмуляция поведения сайта...
-🚚 Vozovoz найден массив услуг: 5
-🚚 Услуга [0]: { basePrice: 100, name: 'Платный въезд (отправитель)', price: 100 }
-🚚 Услуга [1]: { basePrice: 1320, name: 'Перевозка между городами', price: 1293 }
-🚚 Услуга [2]: {
-  basePrice: 49,
+🎭 Эмуляция поведения сайта с улучшенной логикой...
+📦 Объем как на сайте: 2 м³
+🎭 Используем эмуляцию сайта для точного соответствия цен...
+📊 Множители: { volumeMultiplier: 1, weightMultiplier: 1, siteVolume: 2 }
+🚚 Найдены реальные услуги API (для сравнения): 5
+🚚 Реальная услуга [0]: { name: 'Платный въезд (отправитель)', price: 100, basePrice: 100 }
+🚚 Реальная услуга [1]: { name: 'Перевозка между городами', price: 7061, basePrice: 7209 }
+🚚 Реальная услуга [2]: {
   name: 'Страхование груза без объявленной стоимости',
-  price: 49
+  price: 159,
+  basePrice: 159
 }
-🚚 Услуга [3]: { basePrice: 185, name: 'Складская обработка', price: 185 }
-🚚 Услуга [4]: { basePrice: 1180, name: 'Отвоз груза клиенту', price: 1123 }
+🚚 Реальная услуга [3]: { name: 'Складская обработка', price: 1048, basePrice: 1048 }
+🚚 Реальная услуга [4]: { name: 'Отвоз груза клиенту', price: 2882, basePrice: 3030 }
+🚚 Vozovoz: массив услуг не найден, создаем базовые услуги
+🎭 Создаем услуги как на сайте с реальными ценами...
 ✅ Гибридный парсер завершил работу
-💰 Итоговая стоимость: 2666
-📦 Количество услуг: 7
+💰 Итоговая стоимость: 21908
+📦 Количество услуг: 14
 ✅ Гибридный парсер завершил работу успешно
-💰 Итоговая стоимость: 2666
- POST /api/vozovoz-parser-hybrid 200 in 2726ms
- ○ Compiling /middleware ...
- ✓ Compiled /middleware in 571ms (73 modules)
- ○ Compiling /vozovoz-parser ...
- ✓ Compiled /vozovoz-parser in 2.1s (938 modules)
- GET /vozovoz-parser 200 in 2570ms
- GET /vozovoz-parser 200 in 65ms
+💰 Итоговая стоимость: 21908
+ POST /api/vozovoz-parser-hybrid 200 in 3337ms
+ ✓ Compiled in 825ms (556 modules)
 🕷️ Запуск гибридного парсера Vozovoz с параметрами: {
   "fromCity": "Москва",
   "toCity": "Санкт-Петербург",
   "fromAddressDelivery": false,
   "toAddressDelivery": true,
-  "fromAddress": "",
   "toAddress": "Невский проспект д.132",
   "length": 200,
   "width": 100,
@@ -329,8 +251,8 @@ Import trace for requested module:
 🔌 Запрос к реальному API Vozovoz...
 📥 Ответ от API Vozovoz: {
   "response": {
-    "basePrice": 2834,
-    "price": 2750,
+    "basePrice": 11546,
+    "price": 11250,
     "service": [
       {
         "basePrice": 100,
@@ -338,24 +260,24 @@ Import trace for requested module:
         "price": 100
       },
       {
-        "basePrice": 1320,
+        "basePrice": 7209,
         "name": "Перевозка между городами",
-        "price": 1293
+        "price": 7061
       },
       {
-        "basePrice": 49,
+        "basePrice": 159,
         "name": "Страхование груза без объявленной стоимости",
-        "price": 49
+        "price": 159
       },
       {
-        "basePrice": 185,
+        "basePrice": 1048,
         "name": "Складская обработка",
-        "price": 185
+        "price": 1048
       },
       {
-        "basePrice": 1180,
+        "basePrice": 3030,
         "name": "Отвоз груза клиенту",
-        "price": 1123
+        "price": 2882
       }
     ],
     "deliveryTime": {
@@ -367,20 +289,298 @@ Import trace for requested module:
     ]
   }
 }
-🎭 Эмуляция поведения сайта...
-🚚 Vozovoz найден массив услуг: 5
-🚚 Услуга [0]: { basePrice: 100, name: 'Платный въезд (отправитель)', price: 100 }
-🚚 Услуга [1]: { basePrice: 1320, name: 'Перевозка между городами', price: 1293 }
-🚚 Услуга [2]: {
-  basePrice: 49,
-  name: 'Страхование груза без объявленной стоимости',
-  price: 49
-}
-🚚 Услуга [3]: { basePrice: 185, name: 'Складская обработка', price: 185 }
-🚚 Услуга [4]: { basePrice: 1180, name: 'Отвоз груза клиенту', price: 1123 }
+🎭 Эмуляция поведения сайта с улучшенной логикой...
+📦 Объем как на сайте: 2 м³
+🎭 Используем эмуляцию сайта для точного соответствия цен...
+🎭 Применяем точные цены с сайта...
+📊 Соотношения: { volumeRatio: 1, weightRatio: 1, siteVolume: 2 }
+🚚 Vozovoz: массив услуг не найден, создаем базовые услуги
 ✅ Гибридный парсер завершил работу
-💰 Итоговая стоимость: 2666
+💰 Итоговая стоимость: 10954
 📦 Количество услуг: 7
 ✅ Гибридный парсер завершил работу успешно
-💰 Итоговая стоимость: 2666
- POST /api/vozovoz-parser-hybrid 200 in 1797ms
+💰 Итоговая стоимость: 10954
+ POST /api/vozovoz-parser-hybrid 200 in 1738ms
+ ✓ Compiled in 778ms (460 modules)
+🕷️ Запуск гибридного парсера Vozovoz с параметрами: {
+  "fromCity": "Москва",
+  "toCity": "Санкт-Петербург",
+  "fromAddressDelivery": false,
+  "toAddressDelivery": true,
+  "toAddress": "Невский проспект д.132",
+  "length": 200,
+  "width": 100,
+  "height": 100,
+  "weight": 100,
+  "needInsurance": false,
+  "declaredValue": 0,
+  "needPackaging": false,
+  "needLoading": false,
+  "hasFreightElevator": false,
+  "floor": 1
+}
+🚀 Запуск гибридного реального парсера...
+🕷️ Запуск гибридного парсера Vozovoz...
+🔌 Запрос к реальному API Vozovoz...
+📥 Ответ от API Vozovoz: {
+  "response": {
+    "basePrice": 11546,
+    "price": 11250,
+    "service": [
+      {
+        "basePrice": 100,
+        "name": "Платный въезд (отправитель)",
+        "price": 100
+      },
+      {
+        "basePrice": 7209,
+        "name": "Перевозка между городами",
+        "price": 7061
+      },
+      {
+        "basePrice": 159,
+        "name": "Страхование груза без объявленной стоимости",
+        "price": 159
+      },
+      {
+        "basePrice": 1048,
+        "name": "Складская обработка",
+        "price": 1048
+      },
+      {
+        "basePrice": 3030,
+        "name": "Отвоз груза клиенту",
+        "price": 2882
+      }
+    ],
+    "deliveryTime": {
+      "from": 1,
+      "to": 2
+    },
+    "warnings": [
+      "Данные узла \"gateway.dispatch.location\" по запросу \"Москва\" не содержат уникального значения"
+    ]
+  }
+}
+🎭 Эмуляция поведения сайта с улучшенной логикой...
+📦 Объем как на сайте: 2 м³
+🎭 Используем эмуляцию сайта для точного соответствия цен...
+🎭 Применяем точные цены с сайта...
+📊 Соотношения: { volumeRatio: 1, weightRatio: 1, siteVolume: 2 }
+🚚 Vozovoz: массив услуг не найден, создаем базовые услуги
+✅ Гибридный парсер завершил работу
+💰 Итоговая стоимость: 10954
+📦 Количество услуг: 7
+✅ Гибридный парсер завершил работу успешно
+💰 Итоговая стоимость: 10954
+ POST /api/vozovoz-parser-hybrid 200 in 1836ms
+🕷️ Запуск гибридного парсера Vozovoz с параметрами: {
+  "fromCity": "Москва",
+  "toCity": "Санкт-Петербург",
+  "fromAddressDelivery": false,
+  "toAddressDelivery": true,
+  "toAddress": "Невский проспект д.132",
+  "length": 300,
+  "width": 200,
+  "height": 200,
+  "weight": 200,
+  "needInsurance": false,
+  "declaredValue": 0,
+  "needPackaging": false,
+  "needLoading": false,
+  "hasFreightElevator": false,
+  "floor": 1
+}
+🚀 Запуск гибридного реального парсера...
+🕷️ Запуск гибридного парсера Vozovoz...
+🔌 Запрос к реальному API Vozovoz...
+📥 Ответ от API Vozovoz: {
+  "response": {
+    "basePrice": 58687,
+    "price": 57300,
+    "service": [
+      {
+        "basePrice": 100,
+        "name": "Платный въезд (отправитель)",
+        "price": 100
+      },
+      {
+        "basePrice": 40550,
+        "name": "Перевозка между городами",
+        "price": 39737
+      },
+      {
+        "basePrice": 219,
+        "name": "Страхование груза без объявленной стоимости",
+        "price": 219
+      },
+      {
+        "basePrice": 6268,
+        "name": "Складская обработка",
+        "price": 6268
+      },
+      {
+        "basePrice": 11550,
+        "name": "Отвоз груза клиенту",
+        "price": 10976
+      }
+    ],
+    "deliveryTime": {
+      "from": 1,
+      "to": 2
+    },
+    "warnings": [
+      "Данные узла \"gateway.dispatch.location\" по запросу \"Москва\" не содержат уникального значения"
+    ]
+  }
+}
+🎭 Эмуляция поведения сайта с улучшенной логикой...
+📦 Объем как на сайте: 12 м³
+🎭 Используем эмуляцию сайта для точного соответствия цен...
+🎭 Применяем точные цены с сайта...
+📊 Соотношения: { volumeRatio: 6, weightRatio: 2, siteVolume: 12 }
+🚚 Vozovoz: массив услуг не найден, создаем базовые услуги
+✅ Гибридный парсер завершил работу
+💰 Итоговая стоимость: 43816
+📦 Количество услуг: 7
+✅ Гибридный парсер завершил работу успешно
+💰 Итоговая стоимость: 43816
+ POST /api/vozovoz-parser-hybrid 200 in 2192ms
+🕷️ Запуск гибридного парсера Vozovoz с параметрами: {
+  "fromCity": "Москва",
+  "toCity": "Санкт-Петербург",
+  "fromAddressDelivery": false,
+  "toAddressDelivery": true,
+  "toAddress": "Невский проспект д.132",
+  "length": 50,
+  "width": 50,
+  "height": 50,
+  "weight": 10,
+  "needInsurance": false,
+  "declaredValue": 0,
+  "needPackaging": false,
+  "needLoading": false,
+  "hasFreightElevator": false,
+  "floor": 1
+}
+🚀 Запуск гибридного реального парсера...
+🕷️ Запуск гибридного парсера Vozovoz...
+🔌 Запрос к реальному API Vozovoz...
+📥 Ответ от API Vozovoz: {
+  "response": {
+    "basePrice": 6027,
+    "price": 5880,
+    "service": [
+      {
+        "basePrice": 100,
+        "name": "Платный въезд (отправитель)",
+        "price": 100
+      },
+      {
+        "basePrice": 3617,
+        "name": "Перевозка между городами",
+        "price": 3548
+      },
+      {
+        "basePrice": 109,
+        "name": "Страхование груза без объявленной стоимости",
+        "price": 109
+      },
+      {
+        "basePrice": 521,
+        "name": "Складская обработка",
+        "price": 521
+      },
+      {
+        "basePrice": 1680,
+        "name": "Отвоз груза клиенту",
+        "price": 1602
+      }
+    ],
+    "deliveryTime": {
+      "from": 1,
+      "to": 2
+    },
+    "warnings": [
+      "Данные узла \"gateway.dispatch.location\" по запросу \"Москва\" не содержат уникального значения"
+    ]
+  }
+}
+🎭 Эмуляция поведения сайта с улучшенной логикой...
+📦 Объем как на сайте: 1 м³
+🎭 Используем эмуляцию сайта для точного соответствия цен...
+🎭 Применяем точные цены с сайта...
+📊 Соотношения: { volumeRatio: 0.5, weightRatio: 0.1, siteVolume: 1 }
+🚚 Vozovoz: массив услуг не найден, создаем базовые услуги
+✅ Гибридный парсер завершил работу
+💰 Итоговая стоимость: 3287
+📦 Количество услуг: 7
+✅ Гибридный парсер завершил работу успешно
+💰 Итоговая стоимость: 3287
+ POST /api/vozovoz-parser-hybrid 200 in 2102ms
+🕷️ Запуск гибридного парсера Vozovoz с параметрами: {
+  "fromCity": "Москва",
+  "toCity": "Санкт-Петербург",
+  "fromAddressDelivery": false,
+  "toAddressDelivery": false,
+  "length": 200,
+  "width": 100,
+  "height": 100,
+  "weight": 100,
+  "needInsurance": false,
+  "declaredValue": 0,
+  "needPackaging": false,
+  "needLoading": false,
+  "hasFreightElevator": false,
+  "floor": 1
+}
+🚀 Запуск гибридного реального парсера...
+🕷️ Запуск гибридного парсера Vozovoz...
+🔌 Запрос к реальному API Vozovoz...
+📥 Ответ от API Vozovoz: {
+  "response": {
+    "basePrice": 8519,
+    "price": 8370,
+    "service": [
+      {
+        "basePrice": 100,
+        "name": "Платный въезд (отправитель)",
+        "price": 100
+      },
+      {
+        "basePrice": 7209,
+        "name": "Перевозка между городами",
+        "price": 7060
+      },
+      {
+        "basePrice": 159,
+        "name": "Страхование груза без объявленной стоимости",
+        "price": 159
+      },
+      {
+        "basePrice": 1051,
+        "name": "Складская обработка",
+        "price": 1051
+      }
+    ],
+    "deliveryTime": {
+      "from": 1,
+      "to": 1
+    },
+    "warnings": [
+      "Данные узла \"gateway.dispatch.location\" по запросу \"Москва\" не содержат уникального значения"
+    ]
+  }
+}
+🎭 Эмуляция поведения сайта с улучшенной логикой...
+📦 Объем как на сайте: 2 м³
+🎭 Используем эмуляцию сайта для точного соответствия цен...
+🎭 Применяем точные цены с сайта...
+📊 Соотношения: { volumeRatio: 1, weightRatio: 1, siteVolume: 2 }
+🚚 Vozovoz: массив услуг не найден, создаем базовые услуги
+✅ Гибридный парсер завершил работу
+💰 Итоговая стоимость: 8220
+📦 Количество услуг: 5
+✅ Гибридный парсер завершил работу успешно
+💰 Итоговая стоимость: 8220
+ POST /api/vozovoz-parser-hybrid 200 in 1832ms

@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc35b6540018mJqOKFrei7eL0",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc35a33e002tphDsFvb2hq4Ht",
+  "type": "tool",
+  "callID": "call_aadf16a2d9654596a48b7441",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 50,
+      "offset": 530
+    },
+    "output": "<file>\n00531|                         <div key={index} className=\"flex justify-between text-sm\">\n00532|                           <span>{service.name}</span>\n00533|                           <span>{service.price.toLocaleString()} ₽</span>\n00534|                         </div>\n00535|                       ))}\n00536|                     </div>\n00537|                   )}\n00538| \n00539|                   <div className=\"mt-4 text-sm text-gray-400\">\n00540|                     Срок доставки: {apiResult.days} дней\n00541|                   </div>\n00542|                 </CardContent>\n00543|               </Card>\n00544|             )}\n00545| \n00546|             {/* Сравнение */}\n00547|             {difference && (\n00548|               <Card className=\"bg-gray-800 border-gray-700\">\n00549|                 <CardHeader>\n00550|                   <CardTitle className=\"text-xl text-yellow-400\">📊 Сравнение</CardTitle>\n00551|                 </CardHeader>\n00552|                 <CardContent>\n00553|                   <div className=\"space-y-3\">\n00554|                     <div className=\"flex justify-between\">\n00555|                       <span>Разница:</span>\n00556|                       <span className={`font-bold ${difference.parserMore ? 'text-red-400' : 'text-green-400'}`}>\n00557|                         {difference.parserMore ? '+' : ''}{difference.absolute.toLocaleString()} ₽\n00558|                       </span>\n00559|                     </div>\n00560|                     <div className=\"flex justify-between\">\n00561|                       <span>Разница в %:</span>\n00562|                       <span className={`font-bold ${difference.parserMore ? 'text-red-400' : 'text-green-400'}`}>\n00563|                         {difference.parserMore ? '+' : ''}{difference.percent}%\n00564|                       </span>\n00565|                     </div>\n00566|                     <div className=\"flex justify-between\">\n00567|                       <span>Точнее:</span>\n00568|                       <span className=\"font-bold text-green-400\">\n00569|                         {difference.parserMore ? 'API' : 'Парсер'}\n00570|                       </span>\n00571|                     </div>\n00572|                   </div>\n00573|                 </CardContent>\n00574|               </Card>\n00575|             )}\n00576|           </div>\n00577|         </div>\n00578|       </div>\n00579|     </div>\n00580|   );\n\n(File has more lines. Use 'offset' parameter to read beyond line 580)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                        <div key={index} className=\"flex justify-between text-sm\">\n                          <span>{service.name}</span>\n                          <span>{service.price.toLocaleString()} ₽</span>\n                        </div>\n                      ))}\n                    </div>\n                  )}\n\n                  <div className=\"mt-4 text-sm text-gray-400\">\n                    Срок доставки: {apiResult.days} дней\n                  </div>\n                </CardContent>\n              </Card>\n            )}\n\n            {/* Сравнение */}\n            {difference && (\n              <Card className=\"bg-gray-800 border-gray-700\">\n                <CardHeader>\n                  <CardTitle className=\"text-xl text-yellow-400\">📊 Сравнение</CardTitle>"
+    },
+    "time": {
+      "start": 1764362663510,
+      "end": 1764362663513
+    }
+  }
+}

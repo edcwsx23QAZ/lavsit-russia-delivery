@@ -1,0 +1,21 @@
+{
+  "id": "prt_acc31f599001mFWtnGpvk9b9Aq",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc315c51002SoCbxGOcsWnz56",
+  "type": "tool",
+  "callID": "call_f387f5dc263644b08a44b0b9",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "oldString": "import { useState } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Checkbox } from '@/components/ui/checkbox';\nimport { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';\nimport { Loader2, Play, GitCompare } from 'lucide-react';",
+      "newString": "import { useState } from 'react';\nimport { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';\nimport { Button } from '@/components/ui/button';\nimport { Input } from '@/components/ui/input';\nimport { Label } from '@/components/ui/label';\nimport { Checkbox } from '@/components/ui/checkbox';\nimport { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';\nimport { Loader2, Play, GitCompare } from 'lucide-react';\nimport CalculationDetails from '@/components/CalculationDetails';"
+    },
+    "error": "Error: You must read the file /home/user/project/app/vozovoz-parser/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1764362417567,
+      "end": 1764362417628
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc32ba4a001AfquCoUU3AkkRs",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc32a89d002MkKmt1b2Kv00LI",
+  "type": "tool",
+  "callID": "call_cf52deead29449d797d7cb4b",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 50,
+      "offset": 300
+    },
+    "output": "<file>\n00301|                       onChange={(e) => handleParamChange('toAddress', e.target.value)}\n00302|                       placeholder=\"Адрес назначения\"\n00303|                       className=\"bg-gray-700 border-gray-600\"\n00304|                     />\n00305|                   </div>\n00306|                 )}\n00307|               </div>\n00308| \n00309|               {/* Габариты */}\n00310|               <div className=\"space-y-3\">\n00311|                 <h3 className=\"text-lg font-semibold text-green-400\">📦 Габариты и вес</h3>\n00312|                 \n00313|                 <div className=\"grid grid-cols-2 gap-3\">\n00314|                   <div>\n00315|                     <Label>Длина (см)</Label>\n00316|                     <Input\n00317|                       type=\"number\"\n00318|                       value={params.length}\n00319|                       onChange={(e) => handleParamChange('length', parseInt(e.target.value) || 0)}\n00320|                       className=\"bg-gray-700 border-gray-600\"\n00321|                     />\n00322|                   </div>\n00323|                   <div>\n00324|                     <Label>Ширина (см)</Label>\n00325|                     <Input\n00326|                       type=\"number\"\n00327|                       value={params.width}\n00328|                       onChange={(e) => handleParamChange('width', parseInt(e.target.value) || 0)}\n00329|                       className=\"bg-gray-700 border-gray-600\"\n00330|                     />\n00331|                   </div>\n00332|                   <div>\n00333|                     <Label>Высота (см)</Label>\n00334|                     <Input\n00335|                       type=\"number\"\n00336|                       value={params.height}\n00337|                       onChange={(e) => handleParamChange('height', parseInt(e.target.value) || 0)}\n00338|                       className=\"bg-gray-700 border-gray-600\"\n00339|                     />\n00340|                   </div>\n00341|                   <div>\n00342|                     <Label>Вес (кг)</Label>\n00343|                     <Input\n00344|                       type=\"number\"\n00345|                       value={params.weight}\n00346|                       onChange={(e) => handleParamChange('weight', parseInt(e.target.value) || 0)}\n00347|                       className=\"bg-gray-700 border-gray-600\"\n00348|                     />\n00349|                   </div>\n00350|                 </div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 350)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "                      onChange={(e) => handleParamChange('toAddress', e.target.value)}\n                      placeholder=\"Адрес назначения\"\n                      className=\"bg-gray-700 border-gray-600\"\n                    />\n                  </div>\n                )}\n              </div>\n\n              {/* Габариты */}\n              <div className=\"space-y-3\">\n                <h3 className=\"text-lg font-semibold text-green-400\">📦 Габариты и вес</h3>\n                \n                <div className=\"grid grid-cols-2 gap-3\">\n                  <div>\n                    <Label>Длина (см)</Label>\n                    <Input\n                      type=\"number\"\n                      value={params.length}\n                      onChange={(e) => handleParamChange('length', parseInt(e.target.value) || 0)}\n                      className=\"bg-gray-700 border-gray-600\""
+    },
+    "time": {
+      "start": 1764362467916,
+      "end": 1764362467923
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc35f33f001tzKQfZsRkyeJFZ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc35e3ed0021qhTKCcorcP1Ph",
+  "type": "tool",
+  "callID": "call_fa2d4487f164464cac4d7133",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 20,
+      "offset": 90
+    },
+    "output": "<file>\n00091|         method: 'POST',\n00092|         headers: {\n00093|           'Content-Type': 'application/json',\n00094|         },\n00095|         body: JSON.stringify(params),\n00096|       });\n00097| \n00098|       if (!response.ok) {\n00099|         throw new Error(`Ошибка HTTP: ${response.status}`);\n00100|       }\n00101| \n00102|       const result = await response.json();\n00103|       \n00104|       if (result.error) {\n00105|         throw new Error(result.error);\n00106|       }\n00107| \n00108|       setParserResult(result);\n00109|     } catch (err: any) {\n00110|       setError(err.message || 'Ошибка при выполнении парсера');\n\n(File has more lines. Use 'offset' parameter to read beyond line 110)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(params),\n      });\n\n      if (!response.ok) {\n        throw new Error(`Ошибка HTTP: ${response.status}`);\n      }\n\n      const result = await response.json();\n      \n      if (result.error) {\n        throw new Error(result.error);\n      }\n\n      setParserResult(result);\n    } catch (err: any) {\n      setError(err.message || 'Ошибка при выполнении парсера');"
+    },
+    "time": {
+      "start": 1764362679106,
+      "end": 1764362679109
+    }
+  }
+}
