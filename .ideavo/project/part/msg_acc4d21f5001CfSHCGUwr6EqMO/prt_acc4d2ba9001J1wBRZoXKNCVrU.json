@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc4d2ba9001J1wBRZoXKNCVrU",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_acc4d21f5001CfSHCGUwr6EqMO",
+  "type": "tool",
+  "callID": "call_2efd3b42fde644e0a92055a5",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/ideavo-server.info",
+      "limit": 50,
+      "offset": 320
+    },
+    "output": "<file>\n00321|       \"pricePackage\": 6285.9771,\n00322|       \"priceDocuments\": 400,\n00323|       \"priceInsurance\": 0.16,\n00324|       \"price_with_out_sale\": 34991.93919,\n00325|       \"sale\": 0,\n00326|       \"discount_params\": {\n00327|         \"amount\": 0,\n00328|         \"volume\": 0,\n00329|         \"weight\": 0\n00330|       },\n00331|       \"duration\": \"14\",\n00332|       \"type\": \"ЖД\",\n00333|       \"rsClass\": \"ВАГОН\",\n00334|       \"rsType\": \"КРЫТЫЙ\",\n00335|       \"temp\": \"БЕЗ ТЕПЛ\",\n00336|       \"service\": \"СБОРНАЯ\",\n00337|       \"velocity\": \"ЖД\",\n00338|       \"terminalEnter1\": \"195\",\n00339|       \"terminalEnter2\": 0,\n00340|       \"priceTotal\": 35186.94\n00341|     },\n00342|     \"train_fast\": false,\n00343|     \"auto_temp\": {\n00344|       \"method\": \"_calcUsual\",\n00345|       \"id\": \"6292631\",\n00346|       \"sbornaya\": 39461.96735,\n00347|       \"sbornayaPack\": 47354.360819999994,\n00348|       \"price_terminal_enter1\": \"195\",\n00349|       \"price_terminal_enter2\": 0,\n00350|       \"price\": 39656.96735,\n00351|       \"pricePickup\": \"0\",\n00352|       \"priceDelivery\": \"0\",\n00353|       \"pricePackage\": 6285.9771,\n00354|       \"priceDocuments\": 400,\n00355|       \"priceInsurance\": 0.16,\n00356|       \"price_with_out_sale\": 39461.96735,\n00357|       \"sale\": 0,\n00358|       \"discount_params\": {\n00359|         \"amount\": 0,\n00360|         \"volume\": 0,\n00361|         \"weight\": 0\n00362|       },\n00363|       \"duration\": \"4\",\n00364|       \"type\": \"АВТО\",\n00365|       \"rsClass\": \"АВТО\",\n00366|       \"rsType\": \"РЕФ 86 М3\",\n00367|       \"temp\": \"ТЕПЛЫЙ\",\n00368|       \"service\": \"СБОРНАЯ\",\n00369|       \"velocity\": \"АВТОМОБИЛЬНАЯ\",\n00370|       \"terminalEnter1\": \"195\",\n\n(File has more lines. Use 'offset' parameter to read beyond line 370)\n</file>",
+    "title": "ideavo-server.info",
+    "metadata": {
+      "preview": "      \"pricePackage\": 6285.9771,\n      \"priceDocuments\": 400,\n      \"priceInsurance\": 0.16,\n      \"price_with_out_sale\": 34991.93919,\n      \"sale\": 0,\n      \"discount_params\": {\n        \"amount\": 0,\n        \"volume\": 0,\n        \"weight\": 0\n      },\n      \"duration\": \"14\",\n      \"type\": \"ЖД\",\n      \"rsClass\": \"ВАГОН\",\n      \"rsType\": \"КРЫТЫЙ\",\n      \"temp\": \"БЕЗ ТЕПЛ\",\n      \"service\": \"СБОРНАЯ\",\n      \"velocity\": \"ЖД\",\n      \"terminalEnter1\": \"195\",\n      \"terminalEnter2\": 0,\n      \"priceTotal\": 35186.94"
+    },
+    "time": {
+      "start": 1764364200875,
+      "end": 1764364200879
+    }
+  }
+}

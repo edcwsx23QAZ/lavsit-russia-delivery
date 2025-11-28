@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc4d1ea0001TIyTE1zxFGIJR7",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_acc4d1250001A15mLWacO0DySs",
+  "type": "tool",
+  "callID": "call_0c0dc8c284924b2d9ec5fff9",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/ideavo-server.info",
+      "limit": 50,
+      "offset": 270
+    },
+    "output": "<file>\n00271|       }\n00272|     }\n00273|   }\n00274| }\n00275| 🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp\n00276|  ✓ Compiled /api/dellin-packages in 396ms (383 modules)\n00277| 🚂 Rail Continent API ответ: {\n00278|   \"result\": \"success\",\n00279|   \"data\": {\n00280|     \"auto\": {\n00281|       \"method\": \"_calcUsual\",\n00282|       \"id\": \"6282032\",\n00283|       \"sbornaya\": 16343.54046,\n00284|       \"sbornayaPack\": 19612.248552,\n00285|       \"price_terminal_enter1\": \"195\",\n00286|       \"price_terminal_enter2\": 0,\n00287|       \"price\": 16538.54046,\n00288|       \"pricePickup\": \"0\",\n00289|       \"priceDelivery\": \"0\",\n00290|       \"pricePackage\": 6285.9771,\n00291|       \"priceDocuments\": 400,\n00292|       \"priceInsurance\": 0.16,\n00293|       \"price_with_out_sale\": 16343.54046,\n00294|       \"sale\": 0,\n00295|       \"discount_params\": {\n00296|         \"amount\": 0,\n00297|         \"volume\": 0,\n00298|         \"weight\": 0\n00299|       },\n00300|       \"duration\": \"4\",\n00301|       \"type\": \"АВТО\",\n00302|       \"rsClass\": \"АВТО\",\n00303|       \"rsType\": \"ТЕНТ 82М3\",\n00304|       \"temp\": \"БЕЗ ТЕПЛ\",\n00305|       \"service\": \"СБОРНАЯ\",\n00306|       \"velocity\": \"АВТОМОБИЛЬНАЯ\",\n00307|       \"terminalEnter1\": \"195\",\n00308|       \"terminalEnter2\": 0,\n00309|       \"priceTotal\": 16538.54\n00310|     },\n00311|     \"train\": {\n00312|       \"method\": \"_calcUsual\",\n00313|       \"id\": \"6283325\",\n00314|       \"sbornaya\": 34991.93919,\n00315|       \"sbornayaPack\": 34991.93919,\n00316|       \"price_terminal_enter1\": \"195\",\n00317|       \"price_terminal_enter2\": 0,\n00318|       \"price\": 35186.93919,\n00319|       \"pricePickup\": \"800\",\n00320|       \"priceDelivery\": \"800\",\n\n(File has more lines. Use 'offset' parameter to read beyond line 320)\n</file>",
+    "title": "ideavo-server.info",
+    "metadata": {
+      "preview": "      }\n    }\n  }\n}\n🚚 Vozovoz API URL: https://vozovoz.ru/api/?token=efijwYxNUE8ahEqlnRT8oZ00R3rDDBjcLgGsTLLp\n ✓ Compiled /api/dellin-packages in 396ms (383 modules)\n🚂 Rail Continent API ответ: {\n  \"result\": \"success\",\n  \"data\": {\n    \"auto\": {\n      \"method\": \"_calcUsual\",\n      \"id\": \"6282032\",\n      \"sbornaya\": 16343.54046,\n      \"sbornayaPack\": 19612.248552,\n      \"price_terminal_enter1\": \"195\",\n      \"price_terminal_enter2\": 0,\n      \"price\": 16538.54046,\n      \"pricePickup\": \"0\",\n      \"priceDelivery\": \"0\",\n      \"pricePackage\": 6285.9771,"
+    },
+    "time": {
+      "start": 1764364197538,
+      "end": 1764364197542
+    }
+  }
+}
