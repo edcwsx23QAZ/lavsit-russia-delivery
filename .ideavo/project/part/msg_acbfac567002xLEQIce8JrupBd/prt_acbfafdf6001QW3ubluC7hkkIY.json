@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbfafdf6001QW3ubluC7hkkIY",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbfac567002xLEQIce8JrupBd",
+  "type": "tool",
+  "callID": "call_f2ccecaaad9a41b59354d10e",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "limit": 50,
+      "offset": 70
+    },
+    "output": "<file>\n00071|   });\n00072| \n00073|   const [parserResult, setParserResult] = useState<ParsedResult | null>(null);\n00074|   const [apiResult, setApiResult] = useState<ApiResult | null>(null);\n00075|   const [isParserLoading, setIsParserLoading] = useState(false);\n00076|   const [isApiLoading, setIsApiLoading] = useState(false);\n00077|   const [error, setError] = useState<string | null>(null);\n00078| \n00079|   const handleParamChange = (key: keyof VozovozParserParams, value: any) => {\n00080|     setParams(prev => ({ ...prev, [key]: value }));\n00081|   };\n00082| \n00083|   const runParser = async () => {\n00084|     setIsParserLoading(true);\n00085|     setError(null);\n00086|     setParserResult(null);\n00087| \n00088|     try {\n00089|       const response = await fetch('/api/vozovoz-parser', {\n00090|         method: 'POST',\n00091|         headers: {\n00092|           'Content-Type': 'application/json',\n00093|         },\n00094|         body: JSON.stringify(params),\n00095|       });\n00096| \n00097|       if (!response.ok) {\n00098|         throw new Error(`Ошибка HTTP: ${response.status}`);\n00099|       }\n00100| \n00101|       const result = await response.json();\n00102|       \n00103|       if (result.error) {\n00104|         throw new Error(result.error);\n00105|       }\n00106| \n00107|       setParserResult(result);\n00108|     } catch (err: any) {\n00109|       setError(err.message || 'Ошибка при выполнении парсера');\n00110|     } finally {\n00111|       setIsParserLoading(false);\n00112|     }\n00113|   };\n00114| \n00115|   const runApiComparison = async () => {\n00116|     setIsApiLoading(true);\n00117|     setApiResult(null);\n00118| \n00119|     try {\n00120|       // Формируем запрос для API аналогично основному приложению\n\n(File has more lines. Use 'offset' parameter to read beyond line 120)\n</file>",
+    "title": "app/vozovoz-parser/page.tsx",
+    "metadata": {
+      "preview": "  });\n\n  const [parserResult, setParserResult] = useState<ParsedResult | null>(null);\n  const [apiResult, setApiResult] = useState<ApiResult | null>(null);\n  const [isParserLoading, setIsParserLoading] = useState(false);\n  const [isApiLoading, setIsApiLoading] = useState(false);\n  const [error, setError] = useState<string | null>(null);\n\n  const handleParamChange = (key: keyof VozovozParserParams, value: any) => {\n    setParams(prev => ({ ...prev, [key]: value }));\n  };\n\n  const runParser = async () => {\n    setIsParserLoading(true);\n    setError(null);\n    setParserResult(null);\n\n    try {\n      const response = await fetch('/api/vozovoz-parser', {\n        method: 'POST',"
+    },
+    "time": {
+      "start": 1764358815228,
+      "end": 1764358815236
+    }
+  }
+}

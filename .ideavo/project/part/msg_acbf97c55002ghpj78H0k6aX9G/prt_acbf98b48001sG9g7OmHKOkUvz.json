@@ -1,0 +1,26 @@
+{
+  "id": "prt_acbf98b48001sG9g7OmHKOkUvz",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbf97c55002ghpj78H0k6aX9G",
+  "type": "tool",
+  "callID": "call_3d16cbb00a45406faf36b62e",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -I http://localhost:3000/vozovoz-parser",
+      "description": "Check HTTP status of parser page"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server\n",
+    "title": "curl -I http://localhost:3000/vozovoz-parser",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server\n",
+      "exit": 7,
+      "description": "Check HTTP status of parser page"
+    },
+    "time": {
+      "start": 1764358720332,
+      "end": 1764358720349
+    }
+  }
+}

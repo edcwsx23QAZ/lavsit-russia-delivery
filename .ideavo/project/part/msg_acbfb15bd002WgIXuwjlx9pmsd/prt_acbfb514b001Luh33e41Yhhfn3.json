@@ -1,0 +1,26 @@
+{
+  "id": "prt_acbfb514b001Luh33e41Yhhfn3",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbfb15bd002WgIXuwjlx9pmsd",
+  "type": "tool",
+  "callID": "call_46a1d0ab2c034d1aab13c338",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:3000/api/vozovoz-parser-mock \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"fromCity\": \"Москва\",\n    \"toCity\": \"Санкт-Петербург\",\n    \"fromAddressDelivery\": false,\n    \"toAddressDelivery\": true,\n    \"length\": 200,\n    \"width\": 100,\n    \"height\": 100,\n    \"weight\": 100\n  }'",
+      "description": "Test mock Vozovoz parser API"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   223    0     0  100   223      0    185  0:00:01  0:00:01 --:--:--   185\r100   223    0     0  100   223      0    100  0:00:02  0:00:02 --:--:--   100\r100   223    0     0  100   223      0     77  0:00:02  0:00:02 --:--:--    77\r100   744    0   521  100   223    182     77  0:00:02  0:00:02 --:--:--   259\n{\"totalCost\":11956,\"services\":[{\"name\":\"Платный въезд (отправитель)\",\"price\":100},{\"name\":\"Перевозка между городами\",\"price\":8028},{\"name\":\"Страхование груза без объявленной стоимости\",\"price\":149},{\"name\":\"Складская обработка\",\"price\":1043},{\"name\":\"Отвоз груза клиенту\",\"price\":2370}],\"deliveryTime\":\"1-2 дня\",\"warnings\":[\"Тестовый режим - моковые данные\"],\"parseTime\":2}",
+    "title": "curl -X POST http://localhost:3000/api/vozovoz-parser-mock \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"fromCity\": \"Москва\",\n    \"toCity\": \"Санкт-Петербург\",\n    \"fromAddressDelivery\": false,\n    \"toAddressDelivery\": true,\n    \"length\": 200,\n    \"width\": 100,\n    \"height\": 100,\n    \"weight\": 100\n  }'",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   223    0     0  100   223      0    185  0:00:01  0:00:01 --:--:--   185\r100   223    0     0  100   223      0    100  0:00:02  0:00:02 --:--:--   100\r100   223    0     0  100   223      0     77  0:00:02  0:00:02 --:--:--    77\r100   744    0   521  100   223    182     77  0:00:02  0:00:02 --:--:--   259\n{\"totalCost\":11956,\"services\":[{\"name\":\"Платный въезд (отправитель)\",\"price\":100},{\"name\":\"Перевозка между городами\",\"price\":8028},{\"name\":\"Страхование груза без объявленной стоимости\",\"price\":149},{\"name\":\"Складская обработка\",\"price\":1043},{\"name\":\"Отвоз груза клиенту\",\"price\":2370}],\"deliveryTime\":\"1-2 дня\",\"warnings\":[\"Тестовый режим - моковые данные\"],\"parseTime\":2}",
+      "exit": 0,
+      "description": "Test mock Vozovoz parser API"
+    },
+    "time": {
+      "start": 1764358836561,
+      "end": 1764358839438
+    }
+  }
+}

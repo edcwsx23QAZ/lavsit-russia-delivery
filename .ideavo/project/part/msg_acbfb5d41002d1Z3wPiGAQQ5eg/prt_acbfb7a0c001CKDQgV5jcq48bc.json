@@ -1,0 +1,26 @@
+{
+  "id": "prt_acbfb7a0c001CKDQgV5jcq48bc",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbfb5d41002d1Z3wPiGAQQ5eg",
+  "type": "tool",
+  "callID": "call_5b064865e9af4d12bab8a14c",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -s http://localhost:3000/vozovoz-parser | grep -o \"<title>.*</title>\"",
+      "description": "Check if parser page loads correctly"
+    },
+    "output": "<title>Междугородняя доставка Лавсит</title>\n",
+    "title": "curl -s http://localhost:3000/vozovoz-parser | grep -o \"<title>.*</title>\"",
+    "metadata": {
+      "output": "<title>Междугородняя доставка Лавсит</title>\n",
+      "exit": 0,
+      "description": "Check if parser page loads correctly"
+    },
+    "time": {
+      "start": 1764358846994,
+      "end": 1764358856460
+    }
+  }
+}

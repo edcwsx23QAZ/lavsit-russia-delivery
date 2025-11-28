@@ -1,0 +1,26 @@
+{
+  "id": "prt_acbfc25f6001DmhYCqRyd7g0Uw",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbfb9ffd002nn2EIbG5ffHRi7",
+  "type": "tool",
+  "callID": "call_e48f31e9ae214b92b05072a7",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "content": "#!/usr/bin/env node\n\n/**\n * Тестирование фронтенда парсера Vozovoz с моковым API\n */\n\nconst testParams = {\n  fromCity: 'Москва',\n  toCity: 'Санкт-Петербург',\n  fromAddressDelivery: false,\n  toAddressDelivery: true,\n  fromAddress: '',\n  toAddress: 'Невский проспект д.132',\n  length: 200,\n  width: 100,\n  height: 100,\n  weight: 100,\n  needInsurance: false,\n  declaredValue: 0,\n  needPackaging: false,\n  needLoading: false,\n  hasFreightElevator: false,\n  floor: 1\n};\n\nasync function testParserFrontend() {\n  console.log('🖥️ Тестирование фронтенда парсера Vozovoz');\n  console.log('='.repeat(50));\n  console.log('📋 Параметры теста:');\n  console.log(`   Откуда: ${testParams.fromCity} (${testParams.fromAddressDelivery ? 'адрес' : 'терминал'})`);\n  console.log(`   Куда: ${testParams.toCity} (${testParams.toAddressDelivery ? 'адрес' : 'терминал'})`);\n  if (testParams.toAddressDelivery) {\n    console.log(`   Адрес: ${testParams.toAddress}`);\n  }\n  console.log(`   Груз: ${testParams.length}x${testParams.width}x${testParams.height}см, ${testParams.weight}кг`);\n  console.log('='.repeat(50));\n\n  try {\n    // Тестирование мокового API\n    console.log('🔌 Тестирование мокового API...');\n    const response = await fetch('http://localhost:3000/api/vozovoz-parser-mock', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify(testParams),\n    });\n\n    if (!response.ok) {\n      throw new Error(`Ошибка HTTP: ${response.status}`);\n    }\n\n    const result = await response.json();\n    \n    console.log('✅ API работает корректно');\n    console.log('='.repeat(50));\n    console.log('💰 Итоговая стоимость:', result.totalCost.toLocaleString(), '₽');\n    \n    if (result.parseTime) {\n      console.log('⏱️ Время выполнения:', result.parseTime, 'сек');\n    }\n\n    if (result.services && result.services.length > 0) {\n      console.log('\\n📦 Детализация услуг:');\n      result.services.forEach((service, index) => {\n        console.log(`   ${index + 1}. ${service.name}: ${service.price.toLocaleString()} ₽`);\n      });\n    }\n\n    if (result.deliveryTime) {\n      console.log('\\n⏰ Сроки доставки:', result.deliveryTime);\n    }\n\n    if (result.warnings && result.warnings.length > 0) {\n      console.log('\\n⚠️ Предупреждения:');\n      result.warnings.forEach(warning => console.log(`   - ${warning}`));\n    }\n\n    console.log('\\n🎯 Тест API завершен успешно!');\n    console.log('\\n📝 Рекомендации:');\n    console.log('   1. Откройте в браузере: http://localhost:3000/vozovoz-parser');\n    console.log('   2. Нажмите кнопку \"Парсер\" для тестирования фронтенда');\n    console.log('   3. Проверьте отображение результатов');\n    console.log('   4. Попробуйте изменить параметры и запустить снова');\n\n  } catch (error) {\n    console.error('❌ Ошибка при тестировании:', error.message);\n  }\n}\n\n// Запуск теста\ntestParserFrontend();",
+      "filePath": "/home/user/project/test-vozovoz-frontend.js"
+    },
+    "output": "",
+    "title": "test-vozovoz-frontend.js",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-vozovoz-frontend.js",
+      "exists": false
+    },
+    "time": {
+      "start": 1764358891003,
+      "end": 1764358891005
+    }
+  }
+}

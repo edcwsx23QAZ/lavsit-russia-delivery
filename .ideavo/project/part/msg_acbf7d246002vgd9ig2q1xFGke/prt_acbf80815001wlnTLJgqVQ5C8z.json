@@ -1,0 +1,26 @@
+{
+  "id": "prt_acbf80815001wlnTLJgqVQ5C8z",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbf7d246002vgd9ig2q1xFGke",
+  "type": "tool",
+  "callID": "call_d2304c8c278f4643bafd13ab",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "ps aux | grep \"npm run dev\"",
+      "description": "Check if dev server is running"
+    },
+    "output": "user       85802  0.0  1.2 1090972 52468 ?       Sl   19:23   0:00 npm run dev\nuser       87380  0.0  0.0   2584   924 ?        Ss   19:37   0:00 /bin/sh -c ps aux | grep \"npm run dev\"\nuser       87382  0.0  0.0   3332  1448 ?        S    19:37   0:00 grep npm run dev\n",
+    "title": "ps aux | grep \"npm run dev\"",
+    "metadata": {
+      "output": "user       85802  0.0  1.2 1090972 52468 ?       Sl   19:23   0:00 npm run dev\nuser       87380  0.0  0.0   2584   924 ?        Ss   19:37   0:00 /bin/sh -c ps aux | grep \"npm run dev\"\nuser       87382  0.0  0.0   3332  1448 ?        S    19:37   0:00 grep npm run dev\n",
+      "exit": 0,
+      "description": "Check if dev server is running"
+    },
+    "time": {
+      "start": 1764358621214,
+      "end": 1764358621251
+    }
+  }
+}

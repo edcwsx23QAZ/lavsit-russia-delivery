@@ -1,0 +1,21 @@
+{
+  "id": "prt_acbfac119001COo3bvdqwbpWdw",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbfaa5bc002l3M1qoCeVjDFfS",
+  "type": "tool",
+  "callID": "call_8cd1f6401dbf41d2b94ea3b0",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/vozovoz-parser/page.tsx",
+      "oldString": "  const runParser = async () => {\n    setIsParserLoading(true);\n    setError(null);\n    setParserResult(null);\n\n    try {\n      const response = await fetch('/api/vozovoz-parser', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(params),\n      });\n\n      if (!response.ok) {\n        throw new Error(`Ошибка HTTP: ${response.status}`);\n      }\n\n      const result = await response.json();\n      \n      if (result.error) {\n        throw new Error(result.error);\n      }\n\n      setParserResult(result);\n    } catch (err: any) {\n      setError(err.message || 'Ошибка при выполнении парсера');\n    } finally {\n      setIsParserLoading(false);\n    }\n  };",
+      "newString": "  const runParser = async () => {\n    setIsParserLoading(true);\n    setError(null);\n    setParserResult(null);\n\n    try {\n      // Используем моковый API для тестирования\n      const response = await fetch('/api/vozovoz-parser-mock', {\n        method: 'POST',\n        headers: {\n          'Content-Type': 'application/json',\n        },\n        body: JSON.stringify(params),\n      });\n\n      if (!response.ok) {\n        throw new Error(`Ошибка HTTP: ${response.status}`);\n      }\n\n      const result = await response.json();\n      \n      if (result.error) {\n        throw new Error(result.error);\n      }\n\n      setParserResult(result);\n    } catch (err: any) {\n      setError(err.message || 'Ошибка при выполнении парсера');\n    } finally {\n      setIsParserLoading(false);\n    }\n  };"
+    },
+    "error": "Error: You must read the file /home/user/project/app/vozovoz-parser/page.tsx before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1764358799653,
+      "end": 1764358799722
+    }
+  }
+}

@@ -10,8 +10,77 @@
  ⚠ Invalid next.config.js options detected: 
  ⚠     Unrecognized key(s) in object: 'runtime', 'serverActionsBodySizeLimit' at "experimental"
  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
- ✓ Ready in 1650ms
- ○ Compiling /api/test ...
- ✓ Compiled /api/test in 802ms (103 modules)
- POST /api/test 200 in 958ms
- POST /api/test 200 in 17ms
+ ✓ Ready in 6.2s
+ ○ Compiling /api/vozovoz-parser-mock ...
+ ✓ Compiled /api/vozovoz-parser-mock in 692ms (56 modules)
+🕷️ Получен запрос на моковый парсинг Vozovoz: {
+  "fromCity": "Москва",
+  "toCity": "Санкт-Петербург",
+  "fromAddressDelivery": false,
+  "toAddressDelivery": true,
+  "length": 200,
+  "width": 100,
+  "height": 100,
+  "weight": 100
+}
+🚀 Запуск мокового парсера...
+🕷️ Запуск мокового парсера Vozovoz с параметрами: {
+  fromCity: 'Москва',
+  toCity: 'Санкт-Петербург',
+  fromAddressDelivery: false,
+  toAddressDelivery: true,
+  length: 200,
+  width: 100,
+  height: 100,
+  weight: 100
+}
+✅ Моковый парсер завершил работу
+💰 Итоговая стоимость: 11956
+ POST /api/vozovoz-parser-mock 200 in 2849ms
+ ○ Compiling /middleware ...
+ ✓ Compiled /middleware in 617ms (73 modules)
+ ○ Compiling /vozovoz-parser ...
+ ✓ Compiled /vozovoz-parser in 8.4s (701 modules)
+ GET /vozovoz-parser 200 in 8707ms
+ ✓ Compiled in 778ms (342 modules)
+🕷️ Получен запрос на моковый парсинг Vozovoz: {
+  "fromCity": "Москва",
+  "toCity": "Санкт-Петербург",
+  "fromAddressDelivery": false,
+  "toAddressDelivery": true,
+  "fromAddress": "",
+  "toAddress": "Невский проспект д.132",
+  "length": 200,
+  "width": 100,
+  "height": 100,
+  "weight": 100,
+  "needInsurance": false,
+  "declaredValue": 0,
+  "needPackaging": false,
+  "needLoading": false,
+  "hasFreightElevator": false,
+  "floor": 1
+}
+🚀 Запуск мокового парсера...
+🕷️ Запуск мокового парсера Vozovoz с параметрами: {
+  fromCity: 'Москва',
+  toCity: 'Санкт-Петербург',
+  fromAddressDelivery: false,
+  toAddressDelivery: true,
+  fromAddress: '',
+  toAddress: 'Невский проспект д.132',
+  length: 200,
+  width: 100,
+  height: 100,
+  weight: 100,
+  needInsurance: false,
+  declaredValue: 0,
+  needPackaging: false,
+  needLoading: false,
+  hasFreightElevator: false,
+  floor: 1
+}
+✅ Моковый парсер завершил работу
+💰 Итоговая стоимость: 11956
+ POST /api/vozovoz-parser-mock 200 in 2077ms
+ GET /vozovoz-parser 200 in 54ms
