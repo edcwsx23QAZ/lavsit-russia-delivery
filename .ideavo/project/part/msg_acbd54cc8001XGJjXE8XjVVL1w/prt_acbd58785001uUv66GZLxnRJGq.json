@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbd58785001uUv66GZLxnRJGq",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbd54cc8001XGJjXE8XjVVL1w",
+  "type": "tool",
+  "callID": "call_24a64f17daac4dc5b252c4dd",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 5210
+    },
+    "output": "<file>\n05211|                     </label>\n05212|                     <label className=\"flex items-center space-x-1\">\n05213|                       <input\n05214|                         type=\"radio\"\n05215|                         name=\"toDelivery\"\n05216|                         checked={form.toAddressDelivery}\n05217|                         onChange={() => setForm(prev => ({ ...prev, toTerminal: false, toAddressDelivery: true }))}\n05218|                       />\n05219|                       <span className=\"text-white text-xs\">До адреса</span>\n05220|                     </label>\n05221|                   </div>\n05222|                   \n05223|                   <div>\n05224|                     <Label className=\"text-white text-xs\">Город назначения</Label>\n05225|                     <Input\n05226|                       value={form.toCity}\n05227|                       onChange={(e) => handleAddressChange('toCity', e.target.value, e.target)}\n05228|                       placeholder=\"Начните вводить город\"\n05229|                       className=\"bg-gray-700 border-gray-600 h-7 text-white text-xs\"\n05230|                     />\n\n(File has more lines. Use 'offset' parameter to read beyond line 5230)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                    </label>\n                    <label className=\"flex items-center space-x-1\">\n                      <input\n                        type=\"radio\"\n                        name=\"toDelivery\"\n                        checked={form.toAddressDelivery}\n                        onChange={() => setForm(prev => ({ ...prev, toTerminal: false, toAddressDelivery: true }))}\n                      />\n                      <span className=\"text-white text-xs\">До адреса</span>\n                    </label>\n                  </div>\n                  \n                  <div>\n                    <Label className=\"text-white text-xs\">Город назначения</Label>\n                    <Input\n                      value={form.toCity}\n                      onChange={(e) => handleAddressChange('toCity', e.target.value, e.target)}\n                      placeholder=\"Начните вводить город\"\n                      className=\"bg-gray-700 border-gray-600 h-7 text-white text-xs\"\n                    />"
+    },
+    "time": {
+      "start": 1764356360071,
+      "end": 1764356360076
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbd5cc6d001ti5cWda9VEpg2t",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbd5ae02001hvhIdizJjvwz9R",
+  "type": "tool",
+  "callID": "call_9fd9f4918be7428fb0a8ec17",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 3350
+    },
+    "output": "<file>\n03351|         { operation: 'calculate', company: 'Возовоз' }\n03352|       );\n03353| \n03354|       // Проверяем на ошибку API уровня\n03355|       if (result && typeof result === 'object' && 'success' in result && !result.success) {\n03356|         console.error('❌ Возовоз API ошибка:', result.error);\n03357|         return {\n03358|           company: 'Возовоз',\n03359|           price: 0,\n03360|           days: 0,\n03361|           error: result.error.userMessage || result.error.message,\n03362|           requestData,\n03363|           responseData: null,\n03364|           apiUrl\n03365|         };\n03366|       }\n03367| \n03368|       const response = result as Response;\n03369|       const data = await response.json();\n03370|       console.log('🚚 Возовоз ответ:', JSON.stringify(data, null, 2));\n03371| \n03372|       // Проверяем успешность ответа ИЛИ наличие ошибки в ответе\n03373|       if (response.ok && data.response) {\n03374|         // Успешный расчет\n03375|         const responseData = data.response;\n03376|         \n03377|         console.log('🚚 Возовоз анализ ответа согласно документации:', responseData);\n03378|         \n03379|         // ✅ Используем правильную структуру ответа согласно документации\n03380|         const services: { name: string; description: string; price: number }[] = [];\n03381|         let totalPrice = responseData.price || responseData.basePrice || 0;\n03382|         \n03383|         // ✅ Обрабатываем массив услуг согласно документации API\n03384|         if (responseData.service && Array.isArray(responseData.service)) {\n03385|           console.log('🚚 Возовоз найден массив услуг:', responseData.service.length);\n03386|           \n03387|           responseData.service.forEach((service: any, index: number) => {\n03388|             console.log(`🚚 Услуга [${index}]:`, service);\n03389|             if (service.price > 0) {\n03390|               services.push({\n03391|                 name: service.name || 'Дополнительная услуга',\n03392|                 description: service.description || '',\n03393|                 price: service.price\n03394|               });\n03395|             }\n03396|           });\n03397|         } else {\n03398|           console.log('🚚 Возовоз: массив услуг не найден или пуст');\n03399|           \n03400|           // Если массива услуг нет, добавляем общую стоимость\n\n(File has more lines. Use 'offset' parameter to read beyond line 3400)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        { operation: 'calculate', company: 'Возовоз' }\n      );\n\n      // Проверяем на ошибку API уровня\n      if (result && typeof result === 'object' && 'success' in result && !result.success) {\n        console.error('❌ Возовоз API ошибка:', result.error);\n        return {\n          company: 'Возовоз',\n          price: 0,\n          days: 0,\n          error: result.error.userMessage || result.error.message,\n          requestData,\n          responseData: null,\n          apiUrl\n        };\n      }\n\n      const response = result as Response;\n      const data = await response.json();\n      console.log('🚚 Возовоз ответ:', JSON.stringify(data, null, 2));"
+    },
+    "time": {
+      "start": 1764356377710,
+      "end": 1764356377714
+    }
+  }
+}

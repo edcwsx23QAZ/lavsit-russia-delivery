@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbd54838001Cn9UY7U2ru2IzK",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbd537e2001mqz8xju2iZ4NE1",
+  "type": "tool",
+  "callID": "call_f00c7a5389b94f3bbaf3aca3",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "path": "/home/user/project",
+      "pattern": "toAddressDelivery"
+    },
+    "output": "Found 53 matches\n/home/user/project/app/page.tsx:\n  Line 61:   toAddressDelivery: boolean;\n  Line 133:     toAddressDelivery: false,\n  Line 276:                     toAddressDelivery: restoredData.toAddressDelivery,\n  Line 338:             toAddressDelivery: savedFormData.toAddressDelivery,\n  Line 422:         toAddressDelivery: form.toAddressDelivery,\n  Line 496:       toAddressDelivery: false,\n  Line 512:       toAddressDelivery: testData.toAddressDelivery,\n  Line 1553:       if (!form.toAddressDelivery) {\n  Line 1563:       console.log('🏢 form.toAddressDelivery:', form.toAddressDelivery);\n  Line 1583:       if (!form.toAddressDelivery && !toTerminalId) {\n  Line 1610:       if (form.toAddressDelivery && !normalizedToAddress) {\n  Line 1703:             variant: form.toAddressDelivery ? 'address' : 'terminal',\n  Line 1704:             ...(form.toAddressDelivery ? {\n  Line 2501:       if (form.toAddressDelivery && receiverZone.warehousePoint) {\n  Line 2569:           isDelivery: form.toAddressDelivery,\n  Line 2604:         if (form.toAddressDelivery) {\n  Line 2692:       console.log('🔧 form.toAddressDelivery:', form.toAddressDelivery);\n  Line 2868:       if (form.toAddressDelivery) {\n  Line 3034:         delivery: form.toAddressDelivery ? '1' : '0',\n  Line 3189:           if (form.toAddressDelivery && trainTariff.priceDelivery && parseInt(trainTariff.priceDelivery) > 0) {\n  Line 3326:                 ...(form.toAddressDelivery ? {\n  Line 4043:         toAddressDelivery: form.toAddressDelivery\n  Line 4077:         const isToDoor = form.toAddressDelivery;\n  Line 4315:       toAddressDelivery: form.toAddressDelivery,\n  Line 5208:                         onChange={() => setForm(prev => ({ ...prev, toTerminal: true, toAddressDelivery: false }))}\n  Line 5216:                         checked={form.toAddressDelivery}\n  Line 5217:                         onChange={() => setForm(prev => ({ ...prev, toTerminal: false, toAddressDelivery: true }))}\n  Line 5233:                   {form.toAddressDelivery && (\n\n/home/user/project/VOZOVOZ_COMPARISON_ANALYSIS.md:\n  Line 82: ...(useAddressType || form.toAddressDelivery ? {\n  Line 111:         ...(form.toAddressDelivery ? {\n  Line 123: Просто использовать `form.toAddressDelivery` и `form.fromAddressDelivery`\n\n/home/user/project/calculation-performance-results.json:\n  Line 23:     \"toAddressDelivery\": false,\n\n/home/user/project/calculation-performance-test.js:\n  Line 125:       toAddressDelivery: false,\n  Line 149:             toAddressDelivery: testData.toAddressDelivery,\n\n/home/user/project/lib/cache-manager.ts:\n  Line 23:   toAddressDelivery: boolean;\n  Line 81:       toAddr: key.toAddressDelivery,\n  Line 271:   toAddressDelivery: form.toAddressDelivery || false,\n\n/home/user/project/public/persistent-form-guardian.js:\n  Line 167:         toAddressDelivery: false,\n\n/home/user/project/lib/form-storage.ts:\n  Line 48:   toAddressDelivery: boolean;\n  Line 101:       toAddressDelivery: formData.toAddressDelivery || false,\n  Line 254:       toAddressDelivery: oldData.toAddressDelivery || false,\n\n/home/user/project/lib/cookie-storage.ts:\n  Line 126:         tad: parsed.toAddressDelivery,\n  Line 168:         toAddressDelivery: compressed.tad,\n\n/home/user/project/test-dellin-derival.js:\n  Line 14:       toAddressDelivery: false,\n  Line 29:       toAddressDelivery: true,\n  Line 43:       toAddressDelivery: true,\n  Line 56:       toAddressDelivery: false,\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 319:         toAddressDelivery: false,\n  Line 385:         toAddressDelivery: false,\n  Line 704:       { name: 'toAddressDelivery', values: [true, false] },\n  Line 772:             delivery: testData.toAddressDelivery ? '1' : '0',\n  Line 817:                     ...(testData.toAddressDelivery ? {\n  Line 842:             deliver: testData.toAddressDelivery ? '1' : '0',",
+    "title": "toAddressDelivery",
+    "metadata": {
+      "matches": 53,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764356343874,
+      "end": 1764356344201
+    }
+  }
+}

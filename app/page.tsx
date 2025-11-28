@@ -3278,8 +3278,8 @@ export default function Home() {
       console.log('   - Откуда:', form.fromCity);
       console.log('   - Куда:', form.toCity);
       
-      // Функция для создания запроса с указанным типом доставки
-      const createRequestData = (useAddressType: boolean) => ({
+      // Функция для создания запроса с правильной логикой адресов
+      const createRequestData = () => ({
         object: "price",
         action: "get",
         params: {
@@ -3312,7 +3312,7 @@ export default function Home() {
               point: {
                 location: form.fromCity || 'Москва',
                 // ✅ Поля address и terminal взаимоисключающие согласно документации
-                ...(useAddressType || form.fromAddressDelivery ? {
+                ...(form.fromAddressDelivery ? {
                   address: form.fromAddress || "адрес отправления"
                 } : {
                   terminal: "default"
@@ -3323,7 +3323,7 @@ export default function Home() {
               point: {
                 location: form.toCity || 'Санкт-Петербург',
                 // ✅ Поля address и terminal взаимоисключающие согласно документации
-                ...(useAddressType || form.toAddressDelivery ? {
+                ...(form.toAddressDelivery ? {
                   address: form.toAddress || "адрес получения"
                 } : {
                   terminal: "default"
@@ -3334,9 +3334,8 @@ export default function Home() {
         }
       });
 
-      // Сначала пробуем с terminal типом (если не выбран address delivery)
-      let useAddressType = false;
-      let requestData = createRequestData(useAddressType);
+      // Создаем запрос с правильной логикой адресов
+      let requestData = createRequestData();
       
       console.log('🚚 Возовоз запрос:', JSON.stringify(requestData, null, 2));
 

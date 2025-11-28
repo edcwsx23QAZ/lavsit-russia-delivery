@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbd5a9fe0012Z955L0HOPGHhR",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbd58c7400199QsvLM6l8s8dk",
+  "type": "tool",
+  "callID": "call_db11e30e55da40469e8c8a88",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 5230
+    },
+    "output": "<file>\n05231|                   </div>\n05232|                   \n05233|                   {form.toAddressDelivery && (\n05234|                     <div>\n05235|                       <Label className=\"text-white text-xs\">Адрес назначения</Label>\n05236|                       <Input\n05237|                         value={form.toAddress}\n05238|                         onChange={(e) => handleAddressChange('toAddress', e.target.value, e.target)}\n05239|                         placeholder=\"Начните вводить адрес\"\n05240|                         className=\"bg-gray-700 border-gray-600 h-7 text-white text-xs\"\n05241|                       />\n05242|                     </div>\n05243|                   )}\n05244|                 </div>\n05245| \n05246|                 <div>\n05247|                   <Label className=\"text-white text-xs\">Объявленная стоимость (руб.)</Label>\n05248|                   <Input\n05249|                     type=\"number\"\n05250|                     value={form.declaredValue || ''}\n\n(File has more lines. Use 'offset' parameter to read beyond line 5250)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                  </div>\n                  \n                  {form.toAddressDelivery && (\n                    <div>\n                      <Label className=\"text-white text-xs\">Адрес назначения</Label>\n                      <Input\n                        value={form.toAddress}\n                        onChange={(e) => handleAddressChange('toAddress', e.target.value, e.target)}\n                        placeholder=\"Начните вводить адрес\"\n                        className=\"bg-gray-700 border-gray-600 h-7 text-white text-xs\"\n                      />\n                    </div>\n                  )}\n                </div>\n\n                <div>\n                  <Label className=\"text-white text-xs\">Объявленная стоимость (руб.)</Label>\n                  <Input\n                    type=\"number\"\n                    value={form.declaredValue || ''}"
+    },
+    "time": {
+      "start": 1764356368896,
+      "end": 1764356368900
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbd42eb0001NAat7Zzn1Y4390",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbd42068001WLyQl9qktCWHtU",
+  "type": "tool",
+  "callID": "call_780a110dd7ff43968c76796a",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 3280
+    },
+    "output": "<file>\n03281|       // Функция для создания запроса с указанным типом доставки\n03282|       const createRequestData = (useAddressType: boolean) => ({\n03283|         object: \"price\",\n03284|         action: \"get\",\n03285|         params: {\n03286|           cargo: {\n03287|             dimension: {\n03288|               max: {                              // ✅ Добавляем обязательную структуру max\n03289|                 length: maxDimensions.length,     // Максимальная длина одного места в метрах\n03290|                 width: maxDimensions.width,       // Максимальная ширина одного места в метрах\n03291|                 height: maxDimensions.height,     // Максимальная высота одного места в метрах\n03292|                 weight: maxDimensions.weight      // Максимальный вес одного места в кг\n03293|               },\n03294|               quantity: form.cargos.length,       // Количество мест\n03295|               volume: totalVolume,                // Общий объем в м³\n03296|               weight: totalWeight                 // Общий вес в кг\n03297|             },\n03298|             ...(form.needInsurance && form.declaredValue > 0 ? {\n03299|               insurance: form.declaredValue,      // ✅ Страхование корректно\n03300|               insuranceNdv: false                 // Отключаем страхование без объявленной стоимости\n03301|             } : {\n03302|               insuranceNdv: true                  // Включаем страхование без объявленной стоимости\n03303|             }),\n03304|              ...(form.needPackaging ? {\n03305|                wrapping: {\n03306|                  \"hardPackageVolume\": totalVolume  // ✅ ИСПРАВЛЕНО: Правильный код \"Жёсткая упаковка\" из документации\n03307|                }\n03308|              } : {})\n03309|           },\n03310|           gateway: {\n03311|             dispatch: {\n03312|               point: {\n03313|                 location: form.fromCity || 'Москва',\n03314|                 // ✅ Поля address и terminal взаимоисключающие согласно документации\n03315|                 ...(useAddressType || form.fromAddressDelivery ? {\n03316|                   address: form.fromAddress || \"адрес отправления\"\n03317|                 } : {\n03318|                   terminal: \"default\"\n03319|                 })\n03320|               }\n03321|             },\n03322|             destination: {\n03323|               point: {\n03324|                 location: form.toCity || 'Санкт-Петербург',\n03325|                 // ✅ Поля address и terminal взаимоисключающие согласно документации\n03326|                 ...(useAddressType || form.toAddressDelivery ? {\n03327|                   address: form.toAddress || \"адрес получения\"\n03328|                 } : {\n03329|                   terminal: \"default\"\n03330|                 })\n\n(File has more lines. Use 'offset' parameter to read beyond line 3330)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "      // Функция для создания запроса с указанным типом доставки\n      const createRequestData = (useAddressType: boolean) => ({\n        object: \"price\",\n        action: \"get\",\n        params: {\n          cargo: {\n            dimension: {\n              max: {                              // ✅ Добавляем обязательную структуру max\n                length: maxDimensions.length,     // Максимальная длина одного места в метрах\n                width: maxDimensions.width,       // Максимальная ширина одного места в метрах\n                height: maxDimensions.height,     // Максимальная высота одного места в метрах\n                weight: maxDimensions.weight      // Максимальный вес одного места в кг\n              },\n              quantity: form.cargos.length,       // Количество мест\n              volume: totalVolume,                // Общий объем в м³\n              weight: totalWeight                 // Общий вес в кг\n            },\n            ...(form.needInsurance && form.declaredValue > 0 ? {\n              insurance: form.declaredValue,      // ✅ Страхование корректно\n              insuranceNdv: false                 // Отключаем страхование без объявленной стоимости"
+    },
+    "time": {
+      "start": 1764356271799,
+      "end": 1764356271805
+    }
+  }
+}

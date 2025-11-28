@@ -1,0 +1,25 @@
+{
+  "id": "prt_acbd4cf1c001S1gYfKQmTdEc17",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acbd4c04e001QyWj6iEFlWNZup",
+  "type": "tool",
+  "callID": "call_f0de2bf9223d46468037f70c",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 3336
+    },
+    "output": "<file>\n03337|       // Сначала пробуем с terminal типом (если не выбран address delivery)\n03338|       let useAddressType = false;\n03339|       let requestData = createRequestData(useAddressType);\n03340|       \n03341|       console.log('🚚 Возовоз запрос:', JSON.stringify(requestData, null, 2));\n03342| \n03343|       let result = await enhancedApiRequest(\n03344|         apiUrl,\n03345|         {\n03346|           method: 'POST',\n03347|           headers: {\n03348|             'Content-Type': 'application/json',\n03349|           },\n03350|           body: JSON.stringify(requestData)\n03351|         },\n03352|         { operation: 'calculate', company: 'Возовоз' }\n03353|       );\n03354| \n03355|       // Проверяем на ошибку API уровня\n03356|       if (result && typeof result === 'object' && 'success' in result && !result.success) {\n03357|         console.error('❌ Возовоз API ошибка:', result.error);\n03358|         return {\n03359|           company: 'Возовоз',\n03360|           price: 0,\n03361|           days: 0,\n03362|           error: result.error.userMessage || result.error.message,\n03363|           requestData,\n03364|           responseData: null,\n03365|           apiUrl\n03366|         };\n\n(File has more lines. Use 'offset' parameter to read beyond line 3366)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "      // Сначала пробуем с terminal типом (если не выбран address delivery)\n      let useAddressType = false;\n      let requestData = createRequestData(useAddressType);\n      \n      console.log('🚚 Возовоз запрос:', JSON.stringify(requestData, null, 2));\n\n      let result = await enhancedApiRequest(\n        apiUrl,\n        {\n          method: 'POST',\n          headers: {\n            'Content-Type': 'application/json',\n          },\n          body: JSON.stringify(requestData)\n        },\n        { operation: 'calculate', company: 'Возовоз' }\n      );\n\n      // Проверяем на ошибку API уровня\n      if (result && typeof result === 'object' && 'success' in result && !result.success) {"
+    },
+    "time": {
+      "start": 1764356312862,
+      "end": 1764356312868
+    }
+  }
+}
