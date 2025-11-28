@@ -1,0 +1,26 @@
+{
+  "id": "prt_acc1b86510010qDoELWhdUrbTt",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc1b332d002loCbWdvwg1Sywf",
+  "type": "tool",
+  "callID": "call_76576ed2d53d450895c57dfa",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "npm run dev > dev.log 2>&1 &",
+      "description": "Start dev server in background"
+    },
+    "output": "",
+    "title": "npm run dev > dev.log 2>&1 &",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Start dev server in background"
+    },
+    "time": {
+      "start": 1764360947286,
+      "end": 1764360947289
+    }
+  }
+}

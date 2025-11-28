@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc203232001Slj67RO55TzDKb",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc2023820024OLrln1jXttpRN",
+  "type": "tool",
+  "callID": "call_ce1b1908a3ae423d8f5eb09a",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/test-vozovoz-complete.js",
+      "limit": 5,
+      "offset": 200
+    },
+    "output": "<file>\n00201|   }\n00202| }\n00203| \n00204| // Запуск финального теста\n00205| testCompleteSystem();\n\n(End of file - total 205 lines)\n</file>",
+    "title": "test-vozovoz-complete.js",
+    "metadata": {
+      "preview": "  }\n}\n\n// Запуск финального теста\ntestCompleteSystem();"
+    },
+    "time": {
+      "start": 1764361253428,
+      "end": 1764361253431
+    }
+  }
+}

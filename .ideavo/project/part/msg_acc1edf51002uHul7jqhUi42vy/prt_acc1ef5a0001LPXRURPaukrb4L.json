@@ -1,0 +1,26 @@
+{
+  "id": "prt_acc1ef5a0001LPXRURPaukrb4L",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc1edf51002uHul7jqhUi42vy",
+  "type": "tool",
+  "callID": "call_7a0565b5364b41e7b322a63c",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:3000/api/vozovoz-parser-hybrid \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"fromCity\": \"Москва\",\n    \"toCity\": \"Санкт-Петербург\",\n    \"fromAddressDelivery\": false,\n    \"toAddressDelivery\": true,\n    \"fromAddress\": \"\",\n    \"toAddress\": \"Невский проспект д.132\",\n    \"length\": 200,\n    \"width\": 100,\n    \"height\": 100,\n    \"weight\": 100,\n    \"needInsurance\": false,\n    \"declaredValue\": 0,\n    \"needPackaging\": false,\n    \"needLoading\": false,\n    \"hasFreightElevator\": false,\n    \"floor\": 1\n  }' \\\n  --max-time 30",
+      "description": "Test hybrid Vozovoz parser"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   460    0     0  100   460      0    381  0:00:01  0:00:01 --:--:--   381\r100   460    0     0  100   460      0    207  0:00:02  0:00:02 --:--:--   207\r100   460    0     0  100   460      0    168  0:00:02  0:00:02 --:--:--   168\r100  1227    0   767  100   460    280    168  0:00:02  0:00:02 --:--:--   449\n{\"totalCost\":2666,\"services\":[{\"name\":\"Платный въезд (отправитель)\",\"price\":100,\"basePrice\":100},{\"name\":\"Перевозка между городами\",\"price\":1293,\"basePrice\":1320,\"discount\":27},{\"name\":\"Скидка\",\"price\":-27,\"basePrice\":0,\"discount\":27},{\"name\":\"Страхование груза без объявленной стоимости\",\"price\":49,\"basePrice\":49},{\"name\":\"Складская обработка\",\"price\":185,\"basePrice\":185},{\"name\":\"Отвоз груза клиенту\",\"price\":1123,\"basePrice\":1180,\"discount\":57},{\"name\":\"Скидка\",\"price\":-57,\"basePrice\":0,\"discount\":57}],\"deliveryTime\":\"1-2 дней\",\"warnings\":[\"Гибридный режим - API + эмуляция сайта\"],\"parseTime\":2.5}",
+    "title": "curl -X POST http://localhost:3000/api/vozovoz-parser-hybrid \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"fromCity\": \"Москва\",\n    \"toCity\": \"Санкт-Петербург\",\n    \"fromAddressDelivery\": false,\n    \"toAddressDelivery\": true,\n    \"fromAddress\": \"\",\n    \"toAddress\": \"Невский проспект д.132\",\n    \"length\": 200,\n    \"width\": 100,\n    \"height\": 100,\n    \"weight\": 100,\n    \"needInsurance\": false,\n    \"declaredValue\": 0,\n    \"needPackaging\": false,\n    \"needLoading\": false,\n    \"hasFreightElevator\": false,\n    \"floor\": 1\n  }' \\\n  --max-time 30",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r100   460    0     0  100   460      0    381  0:00:01  0:00:01 --:--:--   381\r100   460    0     0  100   460      0    207  0:00:02  0:00:02 --:--:--   207\r100   460    0     0  100   460      0    168  0:00:02  0:00:02 --:--:--   168\r100  1227    0   767  100   460    280    168  0:00:02  0:00:02 --:--:--   449\n{\"totalCost\":2666,\"services\":[{\"name\":\"Платный въезд (отправитель)\",\"price\":100,\"basePrice\":100},{\"name\":\"Перевозка между городами\",\"price\":1293,\"basePrice\":1320,\"discount\":27},{\"name\":\"Скидка\",\"price\":-27,\"basePrice\":0,\"discount\":27},{\"name\":\"Страхование груза без объявленной стоимости\",\"price\":49,\"basePrice\":49},{\"name\":\"Складская обработка\",\"price\":185,\"basePrice\":185},{\"name\":\"Отвоз груза клиенту\",\"price\":1123,\"basePrice\":1180,\"discount\":57},{\"name\":\"Скидка\",\"price\":-57,\"basePrice\":0,\"discount\":57}],\"deliveryTime\":\"1-2 дней\",\"warnings\":[\"Гибридный режим - API + эмуляция сайта\"],\"parseTime\":2.5}",
+      "exit": 0,
+      "description": "Test hybrid Vozovoz parser"
+    },
+    "time": {
+      "start": 1764361172391,
+      "end": 1764361175139
+    }
+  }
+}

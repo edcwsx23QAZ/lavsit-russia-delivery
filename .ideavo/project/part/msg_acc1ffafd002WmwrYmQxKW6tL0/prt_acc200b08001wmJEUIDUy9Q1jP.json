@@ -1,0 +1,26 @@
+{
+  "id": "prt_acc200b08001wmJEUIDUy9Q1jP",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc1ffafd002WmwrYmQxKW6tL0",
+  "type": "tool",
+  "callID": "call_17a6253f8293442a8a9e9e0e",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "node test-vozovoz-complete.js",
+      "description": "Run complete system test for Vozovoz parser"
+    },
+    "output": "/home/user/project/test-vozovoz-complete.js:194\n  } catch (error: any) {\n                ^\n\nSyntaxError: Unexpected token ':'\n    at wrapSafe (node:internal/modules/cjs/loader:1464:18)\n    at Module._compile (node:internal/modules/cjs/loader:1495:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\n    at node:internal/main/run_main_module:28:49\n\nNode.js v20.19.5\n",
+    "title": "node test-vozovoz-complete.js",
+    "metadata": {
+      "output": "/home/user/project/test-vozovoz-complete.js:194\n  } catch (error: any) {\n                ^\n\nSyntaxError: Unexpected token ':'\n    at wrapSafe (node:internal/modules/cjs/loader:1464:18)\n    at Module._compile (node:internal/modules/cjs/loader:1495:20)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\n    at node:internal/main/run_main_module:28:49\n\nNode.js v20.19.5\n",
+      "exit": 1,
+      "description": "Run complete system test for Vozovoz parser"
+    },
+    "time": {
+      "start": 1764361243408,
+      "end": 1764361243453
+    }
+  }
+}

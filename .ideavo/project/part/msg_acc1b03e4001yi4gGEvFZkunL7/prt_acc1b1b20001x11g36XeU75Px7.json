@@ -1,0 +1,26 @@
+{
+  "id": "prt_acc1b1b20001x11g36XeU75Px7",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc1b03e4001yi4gGEvFZkunL7",
+  "type": "tool",
+  "callID": "call_0e084bf3419247458b587e5f",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -X POST http://localhost:3000/api/vozovoz-parser-optimized \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"fromCity\": \"Москва\",\n    \"toCity\": \"Санкт-Петербург\",\n    \"fromAddressDelivery\": false,\n    \"toAddressDelivery\": true,\n    \"fromAddress\": \"\",\n    \"toAddress\": \"Невский проспект д.132\",\n    \"length\": 200,\n    \"width\": 100,\n    \"height\": 100,\n    \"weight\": 100,\n    \"needInsurance\": false,\n    \"declaredValue\": 0,\n    \"needPackaging\": false,\n    \"needLoading\": false,\n    \"hasFreightElevator\": false,\n    \"floor\": 1\n  }' \\\n  --max-time 90",
+      "description": "Test optimized Vozovoz parser with real data"
+    },
+    "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server\n",
+    "title": "curl -X POST http://localhost:3000/api/vozovoz-parser-optimized \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"fromCity\": \"Москва\",\n    \"toCity\": \"Санкт-Петербург\",\n    \"fromAddressDelivery\": false,\n    \"toAddressDelivery\": true,\n    \"fromAddress\": \"\",\n    \"toAddress\": \"Невский проспект д.132\",\n    \"length\": 200,\n    \"width\": 100,\n    \"height\": 100,\n    \"weight\": 100,\n    \"needInsurance\": false,\n    \"declaredValue\": 0,\n    \"needPackaging\": false,\n    \"needLoading\": false,\n    \"hasFreightElevator\": false,\n    \"floor\": 1\n  }' \\\n  --max-time 90",
+    "metadata": {
+      "output": "  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\ncurl: (7) Failed to connect to localhost port 3000 after 0 ms: Couldn't connect to server\n",
+      "exit": 7,
+      "description": "Test optimized Vozovoz parser with real data"
+    },
+    "time": {
+      "start": 1764360919853,
+      "end": 1764360919930
+    }
+  }
+}

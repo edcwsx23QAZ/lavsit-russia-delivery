@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc1878e50015f85LuSGjVd6MA",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc182ebb002aK7iLdsgY7L2Dt",
+  "type": "tool",
+  "callID": "call_9019778ffe81428ab7a7711d",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser-mock/route.ts",
+      "limit": 50,
+      "offset": 50
+    },
+    "output": "<file>\n00051|       { name: 'Складская обработка', price: 1043 },\n00052|       { name: 'Отвоз груза клиенту', price: 2370 }\n00053|     ],\n00054|     deliveryTime: '1-2 дня',\n00055|     warnings: ['Тестовый режим - моковые данные'],\n00056|     parseTime: 2.0\n00057|   };\n00058| \n00059|   // Изменяем данные в зависимости от параметров\n00060|   if (params.needInsurance && params.declaredValue && params.declaredValue > 0) {\n00061|     mockResult.services.push({\n00062|       name: 'Страхование груза',\n00063|       price: Math.round(params.declaredValue * 0.003) // 0.3% от стоимости\n00064|     });\n00065|     mockResult.totalCost += mockResult.services[mockResult.services.length - 1].price;\n00066|   }\n00067| \n00068|   if (params.needPackaging) {\n00069|     mockResult.services.push({\n00070|       name: 'Защитная упаковка + фото',\n00071|       price: 500\n00072|     });\n00073|     mockResult.totalCost += 500;\n00074|   }\n00075| \n00076|   if (params.needLoading) {\n00077|     mockResult.services.push({\n00078|       name: 'Погрузочные работы',\n00079|       price: 300\n00080|     });\n00081|     mockResult.totalCost += 300;\n00082|   }\n00083| \n00084|   // Учитываем объем и вес\n00085|   const volume = (params.length * params.width * params.height) / 1000000; // м³\n00086|   if (volume > 1) {\n00087|     const extraCost = Math.round((volume - 1) * 1000);\n00088|     mockResult.services[1].price += extraCost; // Добавляем к перевозке\n00089|     mockResult.totalCost += extraCost;\n00090|   }\n00091| \n00092|   console.log('✅ Моковый парсер завершил работу');\n00093|   console.log('💰 Итоговая стоимость:', mockResult.totalCost);\n00094| \n00095|   return mockResult;\n00096| }\n00097| \n00098| export async function POST(request: NextRequest) {\n00099|   try {\n00100|     const body = await request.json();\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "title": "app/api/vozovoz-parser-mock/route.ts",
+    "metadata": {
+      "preview": "      { name: 'Складская обработка', price: 1043 },\n      { name: 'Отвоз груза клиенту', price: 2370 }\n    ],\n    deliveryTime: '1-2 дня',\n    warnings: ['Тестовый режим - моковые данные'],\n    parseTime: 2.0\n  };\n\n  // Изменяем данные в зависимости от параметров\n  if (params.needInsurance && params.declaredValue && params.declaredValue > 0) {\n    mockResult.services.push({\n      name: 'Страхование груза',\n      price: Math.round(params.declaredValue * 0.003) // 0.3% от стоимости\n    });\n    mockResult.totalCost += mockResult.services[mockResult.services.length - 1].price;\n  }\n\n  if (params.needPackaging) {\n    mockResult.services.push({\n      name: 'Защитная упаковка + фото',"
+    },
+    "time": {
+      "start": 1764360747245,
+      "end": 1764360747252
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_acc1b2f26001bKv6CjId3mIgTH",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc1b1fc1002vjD96TZj148yea",
+  "type": "tool",
+  "callID": "call_99aefa0b55ca4228ad90ea5f",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "pkill -f \"npm run dev\" && sleep 2",
+      "description": "Kill existing dev server"
+    },
+    "output": "",
+    "title": "pkill -f \"npm run dev\" && sleep 2",
+    "metadata": {
+      "output": "",
+      "exit": null,
+      "description": "Kill existing dev server"
+    },
+    "time": {
+      "start": 1764360924971,
+      "end": 1764360924989
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc201f6d001I1J2oIu7cvllhQ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc200f5c002r11mwDZEQUJQXl",
+  "type": "tool",
+  "callID": "call_996b851a02944c57b8fc6d4b",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/test-vozovoz-complete.js",
+      "limit": 10,
+      "offset": 190
+    },
+    "output": "<file>\n00191|     \n00192|     console.log('\\n🚀 СИСТЕМА ГОТОВА К ИСПОЛЬЗОВАНИЮ!');\n00193| \n00194|   } catch (error: any) {\n00195|     console.error('❌ Критическая ошибка тестирования:', error.message);\n00196|     console.log('\\n🔧 Возможные решения:');\n00197|     console.log('1. Проверьте, что сервер разработки запущен');\n00198|     console.log('2. Проверьте доступность http://localhost:3000');\n00199|     console.log('3. Проверьте логи сервера');\n00200|     console.log('4. Перезапустите сервер: npm run dev');\n\n(File has more lines. Use 'offset' parameter to read beyond line 200)\n</file>",
+    "title": "test-vozovoz-complete.js",
+    "metadata": {
+      "preview": "    \n    console.log('\\n🚀 СИСТЕМА ГОТОВА К ИСПОЛЬЗОВАНИЮ!');\n\n  } catch (error: any) {\n    console.error('❌ Критическая ошибка тестирования:', error.message);\n    console.log('\\n🔧 Возможные решения:');\n    console.log('1. Проверьте, что сервер разработки запущен');\n    console.log('2. Проверьте доступность http://localhost:3000');\n    console.log('3. Проверьте логи сервера');\n    console.log('4. Перезапустите сервер: npm run dev');"
+    },
+    "time": {
+      "start": 1764361248623,
+      "end": 1764361248626
+    }
+  }
+}

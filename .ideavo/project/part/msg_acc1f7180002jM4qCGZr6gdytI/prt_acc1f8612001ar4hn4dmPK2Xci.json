@@ -1,0 +1,26 @@
+{
+  "id": "prt_acc1f8612001ar4hn4dmPK2Xci",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc1f7180002jM4qCGZr6gdytI",
+  "type": "tool",
+  "callID": "call_7f1a54141f7e4b29aa01e776",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "curl -s http://localhost:3000/vozovoz-parser | grep -o \"Парсер Vozovoz\" | head -1",
+      "description": "Check if parser page is accessible"
+    },
+    "output": "Парсер Vozovoz\n",
+    "title": "curl -s http://localhost:3000/vozovoz-parser | grep -o \"Парсер Vozovoz\" | head -1",
+    "metadata": {
+      "output": "Парсер Vozovoz\n",
+      "exit": 0,
+      "description": "Check if parser page is accessible"
+    },
+    "time": {
+      "start": 1764361209370,
+      "end": 1764361212652
+    }
+  }
+}

@@ -86,7 +86,7 @@ export default function VozovozParserPage() {
     setParserResult(null);
 
     try {
-      const response = await fetch('/api/vozovoz-parser-mock', {
+      const response = await fetch('/api/vozovoz-parser-hybrid', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

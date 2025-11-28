@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc1d6794001N586q3zSa9XnCw",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc1d4b31001kA3r3tP5BqAxod",
+  "type": "tool",
+  "callID": "call_fdd6e3d71e794d3d8e3f7f51",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser-stable/route.ts",
+      "limit": 10,
+      "offset": 520
+    },
+    "output": "<file>\n00521|                     result.services.push({ name, price });\n00522|                     console.log('Найдена услуга:', name, price);\n00523|                     break;\n00524|                   }\n00525|                 }\n00526|               }\n00527|             }\n00528|           } catch (e) {\n00529|             continue;\n00530|           }\n\n(File has more lines. Use 'offset' parameter to read beyond line 530)\n</file>",
+    "title": "app/api/vozovoz-parser-stable/route.ts",
+    "metadata": {
+      "preview": "                    result.services.push({ name, price });\n                    console.log('Найдена услуга:', name, price);\n                    break;\n                  }\n                }\n              }\n            }\n          } catch (e) {\n            continue;\n          }"
+    },
+    "time": {
+      "start": 1764361070486,
+      "end": 1764361070490
+    }
+  }
+}
