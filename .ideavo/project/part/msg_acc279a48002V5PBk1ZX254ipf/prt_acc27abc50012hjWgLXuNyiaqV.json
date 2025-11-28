@@ -1,0 +1,22 @@
+{
+  "id": "prt_acc27abc50012hjWgLXuNyiaqV",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc279a48002V5PBk1ZX254ipf",
+  "type": "tool",
+  "callID": "call_7c64cb905845420da0d24b94",
+  "tool": "webfetch",
+  "state": {
+    "status": "completed",
+    "input": {
+      "url": "https://raw.githubusercontent.com/vozovoz/apiv2/master/ru/docs/params/post.md",
+      "format": "text"
+    },
+    "output": "# <a name=\"up\"/>Vozovoz API 2.5\n\n[Главная страница](/README.md) > [Параметры запроса](index.md) > POST-параметры\n\n## Содержание\n\n* [POST-параметры](#post)\n* [Список доступных POST-параметров](#list)\n* [Примеры](#example)\n\n\n## <a name=\"post\"/>POST-параметры\n\nМетод запроса POST предназначен для запроса, при котором веб-сервер принимает данные, заключённые в тело сообщения, для хранения. Он часто используется для загрузки файла или представления заполненной веб-формы.\n\nВ зависимости от среды разработки POST-параметры передаются по-разному. Вот пара примеров.\n\nPHP:\n```php\n$context = stream_context_create([\n  'http' => [\n    'method' => 'POST',\n    'header' => 'Content-type: application/json',\n    'content' => json_encode([\n      'object' => 'version',\n      'action' => 'get',\n    ]),\n  ]\n]);\n\n/* запрос на тестовый сервер */\necho file_get_contents('https://vozovoz.org/api/?token=yourToken'/* не забудьте указать Ваш токен */, false, $context);\n/* запрос на рабочий сервер */\n// echo file_get_contents('https://vozovoz.ru/api/?token=yourToken'/* не забудьте указать Ваш токен */, false, $context);\n```\n\nJavaScript:\n```javascript\nvar xhttp = new XMLHttpRequest();\n// запрос на тестовый сервер\nxhttp.open(\"POST\", \"//vozovoz.org/api/?token=yourToken\"/*вместо yourToken должен быть указан Ваш идентификационный токен-ключ*/, false);\n// xhttp.open(\"POST\", \"//vozovoz.ru/api/?token=yourToken\", false); // для рабочего сервера\nxhttp.setRequestHeader(\"Content-type\", \"application/json\");\nxhttp.send(JSON.stringify({\n// Тело запроса, например:\n  \"object\": \"version\",\n  \"action\": \"get\"\n}));\n// вывести текст тут же, в консоли\nxhttp.responseText;\n// или разместить его прямо на странице\n//document.body.innerHTML = xhttp.responseText;\n```\n\n\n## <a name=\"list\"/>Список доступных POST-параметров\n\n| Параметр | Тип | Значения | Описание |\n| -------- | --- | -------- | -------- |\n| **Обязательные**\n| `object` | string | `version`, `location` и т.п. | Указывает на объект, с которым будет производится действие. Полный список объектов [тут](../object/index.md) |\n| **Необязательные**\n| `action` | string | `get`, `put` | Указывает на действие, производимое с объектом. По умолчанию `get` |\n| `params` | object | `{\"param1\": \"value1\", \"param2\": \"value2\"}` | Передает необходимые параметры уточнения запроса. Представляет собой объект (ассоциативный массив). Может отсутствовать. Подробнее о структурах данных [здесь](../structure/index.md) |\n\n## <a name=\"example\"/>Примеры\n\n```javascript\nxhttp.send(JSON.stringify({\n  \"object\": \"location\",\n  \"params\": {\n    \"search\": \"санкт\",\n    \"limit\": 25\n  }\n}));\n```\n\n```php\n$context = stream_context_create([\n  'http' => [\n    'method' => 'POST',\n    'header' => 'Content-type: application/json',\n    'content' => json_encode([\n      'object' => 'terminal',\n      'action' => 'get',\n      'params' => [\n\t    'guid' => '99999894-3673-11e5-80cd-00155d903d03',\n      ],\n    ]),\n  ]\n]);\n```\n\n***\n[▲ Наверх](#up)",
+    "title": "https://raw.githubusercontent.com/vozovoz/apiv2/master/ru/docs/params/post.md (text/plain; charset=utf-8)",
+    "metadata": {},
+    "time": {
+      "start": 1764361743303,
+      "end": 1764361743423
+    }
+  }
+}

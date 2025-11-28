@@ -1,0 +1,25 @@
+{
+  "id": "prt_acc292a0c001VvvRnpCaV7VKyZ",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc28ca62001Iq2oNpxZO5AUiA",
+  "type": "tool",
+  "callID": "call_18d478c7bfdb44bcaef7436e",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser-hybrid/route.ts",
+      "limit": 50,
+      "offset": 50
+    },
+    "output": "<file>\n00051| \n00052|     const totalVolume = (params.length * params.width * params.height) / 1000000000; // м³\n00053|     const totalWeight = params.weight;\n00054| \n00055|     const requestData = {\n00056|       object: \"price\",\n00057|       action: \"get\",\n00058|       params: {\n00059|         cargo: {\n00060|           dimension: {\n00061|             max: maxDimensions,\n00062|             quantity: 1,\n00063|             volume: totalVolume,\n00064|             weight: totalWeight\n00065|           },\n00066|           ...(params.needInsurance && params.declaredValue && params.declaredValue > 0 ? {\n00067|             insurance: params.declaredValue,\n00068|             insuranceNdv: false\n00069|           } : {\n00070|             insuranceNdv: true\n00071|           }),\n00072|           ...(params.needPackaging ? {\n00073|             wrapping: {\n00074|               \"hardPackageVolume\": totalVolume\n00075|             }\n00076|           } : {})\n00077|         },\n00078|         gateway: {\n00079|           dispatch: {\n00080|             point: {\n00081|               location: params.fromCity,\n00082|               ...(params.fromAddressDelivery ? {\n00083|                 address: params.fromAddress || \"адрес отправления\"\n00084|               } : {\n00085|                 terminal: \"default\"\n00086|               })\n00087|             }\n00088|           },\n00089|           destination: {\n00090|             point: {\n00091|               location: params.toCity,\n00092|               ...(params.toAddressDelivery ? {\n00093|                 address: params.toAddress || \"адрес получения\"\n00094|               } : {\n00095|                 terminal: \"default\"\n00096|               })\n00097|             }\n00098|           }\n00099|         }\n00100|       }\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "title": "app/api/vozovoz-parser-hybrid/route.ts",
+    "metadata": {
+      "preview": "\n    const totalVolume = (params.length * params.width * params.height) / 1000000000; // м³\n    const totalWeight = params.weight;\n\n    const requestData = {\n      object: \"price\",\n      action: \"get\",\n      params: {\n        cargo: {\n          dimension: {\n            max: maxDimensions,\n            quantity: 1,\n            volume: totalVolume,\n            weight: totalWeight\n          },\n          ...(params.needInsurance && params.declaredValue && params.declaredValue > 0 ? {\n            insurance: params.declaredValue,\n            insuranceNdv: false\n          } : {\n            insuranceNdv: true"
+    },
+    "time": {
+      "start": 1764361841169,
+      "end": 1764361841173
+    }
+  }
+}

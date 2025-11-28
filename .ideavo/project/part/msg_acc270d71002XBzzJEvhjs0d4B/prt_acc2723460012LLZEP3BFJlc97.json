@@ -1,0 +1,22 @@
+{
+  "id": "prt_acc2723460012LLZEP3BFJlc97",
+  "sessionID": "ses_54b97e247ffenCZZa4jZiIWD0l",
+  "messageID": "msg_acc270d71002XBzzJEvhjs0d4B",
+  "type": "tool",
+  "callID": "call_58d06e9ab40e44c49f0a8aa0",
+  "tool": "webfetch",
+  "state": {
+    "status": "completed",
+    "input": {
+      "url": "https://raw.githubusercontent.com/vozovoz/apiv2/master/ru/docs/object/price.md",
+      "format": "text"
+    },
+    "output": "# <a name=\"up\"/>Vozovoz API 2.5\n\n[Главная страница](/README.md) > [Объекты](index.md) > Стоимость\n\n\n> **Код объекта: `price`**\n\n\n## Содержание\n\n* [Примеры](#example)\n* [Описание](#description)\n\n\n## <a name=\"example\"/>Примеры\n\n**Пример запроса на JavaScript**\n```javascript\n// полное оформление кода на javascript для использования в консоли см. в разделе \"Быстрый старт\"\nxhttp.send(JSON.stringify(\n{\n  \"object\": \"price\",\n  \"action\": \"get\",\n  \"params\": {\n    \"cargo\" : {\n      \"dimension\": { // габариты\n        \"quantity\": 1, // количество мест\n        \"volume\": 0.1, // общий объем\n        \"weight\": 0.9 // общий вес\n      }\n    },\n    \"gateway\": {\n      \"dispatch\": { // откуда\n        \"point\": {\n          \"location\": \"Санкт-Петербург\",\n          \"terminal\": \"default\" // терминал по умолчанию\n        }\n      },\n      \"destination\": { // куда\n        \"point\": {\n          \"location\": \"Москва\",\n          \"terminal\": \"default\" // терминал по умолчанию\n        }\n      }\n    }\n  }\n}));\n```\n\n**Пример ответа**\n```json\n{\n  \"response\": {\n    \"basePrice\": 1250,\n    \"price\": 1200,\n    \"service\": [\n      {\n        \"name\": \"Перевозка между городами\",\n        \"price\": 370\n      },\n      {\n        \"name\": \"Страхование груза без объявленной стоимости\",\n        \"price\": 35\n      },\n      {\n        \"name\": \"Забор груза от клиента\",\n        \"price\": 363\n      },\n      {\n        \"name\": \"Отвоз груза клиенту\",\n        \"price\": 432\n      }\n    ],\n    \"deliveryTime\": {\n      \"from\": 1,\n      \"to\": 1\n    }\n  }\n}\n```\n\n\n## <a name=\"description\"/>Описание\nПредставляет собой массив услуг с указанной стоимостью, а также общую стоимость без скидки и с учётом скидок.\n\n\n### Данные запроса\n\n| Структура     | Тип | Описание |\n| ---------     | --- | -------- |\n| Обязательные\n| `cargo`       | object | Структура данных [\"Груз\"](../structure/cargo.md) |\n| `gateway`     | object | Структура данных [\"Пункт доступа\"](../structure/gateway.md) |\n| Необязательные\n| `promoCode`   | string | Строка промокода |\n\n\n### Данные ответа\n\n| Название      | Тип | Описание |\n| --------      | --- | -------- |\n| basePrice     | integer | Базовая стоимость в рублях (без учёта скидок) |\n| price         | integer | Итоговая стоимость в рублях (с учётом скидок) |\n| service<br/>- name</br>- price | array<br/>- string<br/>- integer | Массив услуг, с указанием наименования и стоимости (со скидкой)<br/>- Наименование услуги<br/>- Стоимость услуги со скидкой |\n| deliveryTime<br/>- from<br/>- to  | object<br/>- integer<br/>- integer | Диапазон срока доставки в днях<br/>- Минимальный срок доставки в днях<br/>- Максимальный срок доставки в днях |\n\n\n***\n[▲ Наверх](#up)",
+    "title": "https://raw.githubusercontent.com/vozovoz/apiv2/master/ru/docs/object/price.md (text/plain; charset=utf-8)",
+    "metadata": {},
+    "time": {
+      "start": 1764361708360,
+      "end": 1764361708505
+    }
+  }
+}
