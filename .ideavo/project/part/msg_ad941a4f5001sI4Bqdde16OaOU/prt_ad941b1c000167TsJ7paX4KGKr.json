@@ -1,0 +1,11 @@
+{
+  "id": "prt_ad941b1c000167TsJ7paX4KGKr",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_ad941a4f5001sI4Bqdde16OaOU",
+  "type": "text",
+  "text": "\nPerfect! I can see that the Dellin API request already includes the insurance field in the cargo section (lines 1745-1750). However, I notice that the current implementation only adds insurance when both `form.needInsurance` is true AND `form.declaredValue > 0`. \n\nLet me check if this matches your requirements and update it accordingly:",
+  "time": {
+    "start": 1764581555640,
+    "end": 1764581555640
+  }
+}

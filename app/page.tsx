@@ -1742,12 +1742,10 @@ export default function Home() {
           oversizedWeight: 0,
           oversizedVolume: 0,
           hazardClass: 0,  // Всегда 0 если нет опасных грузов
-          ...(form.needInsurance && form.declaredValue > 0 ? {
-            insurance: {
-              statedValue: form.declaredValue,
-              term: true  // Всегда true при наличии страхования
-            }
-          } : {})
+          insurance: {
+            statedValue: form.declaredValue || 0,
+            term: true  // Всегда true по умолчанию
+          }
         },
         payment: {
           type: 'noncash',  // Всегда "noncash"

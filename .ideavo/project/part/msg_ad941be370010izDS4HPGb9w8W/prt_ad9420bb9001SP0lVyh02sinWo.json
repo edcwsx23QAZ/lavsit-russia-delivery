@@ -1,0 +1,11 @@
+{
+  "id": "prt_ad9420bb9001SP0lVyh02sinWo",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_ad941be370010izDS4HPGb9w8W",
+  "type": "text",
+  "text": "\nАлгоритм запроса в Деловые Линии обновлен. Теперь поле `insurance` всегда включается в запрос с:\n\n- `statedValue`: объявленная стоимость груза (из формы)\n- `term`: всегда `true` по умолчанию\n\nИзменения внесены в `/app/page.tsx:1745-1750`.",
+  "time": {
+    "start": 1764581578129,
+    "end": 1764581578129
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "msg_ad940e8c70018J8q7Z9z7A1BpA",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "role": "user",
+  "time": {
+    "created": 1764581501128
+  },
+  "summary": {
+    "title": "Implementing insurance block in delivery request",
+    "body": "\nАлгоритм запроса в Деловые Линии обновлен. Теперь поле `insurance` всегда включается в запрос с:\n\n- `statedValue`: объявленная стоимость груза (из формы)\n- `term`: всегда `true` по умолчанию\n\nИзменения внесены в `/app/page.tsx:1745-1750`.",
+    "diffs": []
+  }
+}
