@@ -1,0 +1,25 @@
+{
+  "id": "prt_ad98f8ee1001QVVd3uP3qs9V4g",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_ad98f80790019waqmg8DcWFK1u",
+  "type": "tool",
+  "callID": "call_87205cdf4e5e450c89cef2e5",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 1740
+    },
+    "output": "<file>\n01741|           totalWeight: totalWeight,\n01742|           oversizedWeight: 0,\n01743|           oversizedVolume: 0,\n01744|           hazardClass: 0,  // Всегда 0 если нет опасных грузов\n01745|           insurance: {\n01746|             statedValue: form.declaredValue || 0,\n01747|             term: true  // Всегда true по умолчанию\n01748|           }\n01749|         },\n01750|         payment: {\n01751|           type: 'noncash',  // Всегда \"noncash\"\n01752|           paymentCitySearch: {\n01753|             search: form.fromCity  // Город оплаты\n01754|           }\n01755|         }\n01756|       };\n01757| \n01758|       console.log('🚀 ИТОГОВЫЙ ЗАПРОС К ДЛ:', JSON.stringify(requestData, null, 2));\n01759|       \n01760|       // Специальная проверка блока packages\n01761|       if (requestData.delivery.packages) {\n01762|         console.log('✅ PACKAGES НАЙДЕН В ЗАПРОСЕ:', requestData.delivery.packages);\n01763|       } else {\n01764|         console.log('❌ PACKAGES НЕ НАЙДЕН В ЗАПРОСЕ');\n01765|         console.log('   form.needPackaging =', form.needPackaging);\n01766|         console.log('   packageUid =', packageUid);\n01767|         console.log('   Условие:', form.needPackaging && packageUid);\n01768|       }\n01769| \n01770|       // Попытки запроса с повторной авторизацией при ошибках\n\n(File has more lines. Use 'offset' parameter to read beyond line 1770)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "          totalWeight: totalWeight,\n          oversizedWeight: 0,\n          oversizedVolume: 0,\n          hazardClass: 0,  // Всегда 0 если нет опасных грузов\n          insurance: {\n            statedValue: form.declaredValue || 0,\n            term: true  // Всегда true по умолчанию\n          }\n        },\n        payment: {\n          type: 'noncash',  // Всегда \"noncash\"\n          paymentCitySearch: {\n            search: form.fromCity  // Город оплаты\n          }\n        }\n      };\n\n      console.log('🚀 ИТОГОВЫЙ ЗАПРОС К ДЛ:', JSON.stringify(requestData, null, 2));\n      \n      // Специальная проверка блока packages"
+    },
+    "time": {
+      "start": 1764586655461,
+      "end": 1764586655472
+    }
+  }
+}

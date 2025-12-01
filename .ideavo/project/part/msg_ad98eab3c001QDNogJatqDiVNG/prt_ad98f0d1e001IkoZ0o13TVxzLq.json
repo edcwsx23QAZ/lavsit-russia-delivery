@@ -1,0 +1,26 @@
+{
+  "id": "prt_ad98f0d1e001IkoZ0o13TVxzLq",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_ad98eab3c001QDNogJatqDiVNG",
+  "type": "tool",
+  "callID": "call_8f0870a040974b5c9a4358c0",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -A 50 -B 5 \"ДЕЛОВЫХ ЛИНИЙ\\|ДЛ:\" /home/user/project/ideavo-server.info | tail -100",
+      "description": "Search for Dellin API requests in logs"
+    },
+    "output": "",
+    "title": "grep -A 50 -B 5 \"ДЕЛОВЫХ ЛИНИЙ\\|ДЛ:\" /home/user/project/ideavo-server.info | tail -100",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Search for Dellin API requests in logs"
+    },
+    "time": {
+      "start": 1764586622251,
+      "end": 1764586622259
+    }
+  }
+}
