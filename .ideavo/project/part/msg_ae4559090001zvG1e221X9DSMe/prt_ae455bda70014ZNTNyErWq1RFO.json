@@ -1,0 +1,24 @@
+{
+  "id": "prt_ae455bda70014ZNTNyErWq1RFO",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_ae4559090001zvG1e221X9DSMe",
+  "type": "tool",
+  "callID": "call_5419c7a24ee74dd582267c9a",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "setHiddenCompanies|hiddenCompanies.*="
+    },
+    "output": "Found 5 matches\n/home/user/project/app/page.tsx:\n  Line 232:   const [hiddenCompanies, setHiddenCompanies] = useState<Record<string, boolean>>({});\n  Line 5324:                               setHiddenCompanies(prev => ({\n  Line 5428:                  {Object.values(hiddenCompanies).some(hidden => hidden) && (\n  Line 5432:                          Скрыто ТК: {Object.values(hiddenCompanies).filter(hidden => hidden).length}\n  Line 5437:                          onClick={() => setHiddenCompanies({})}",
+    "title": "setHiddenCompanies|hiddenCompanies.*=",
+    "metadata": {
+      "matches": 5,
+      "truncated": false
+    },
+    "time": {
+      "start": 1764767415722,
+      "end": 1764767415738
+    }
+  }
+}

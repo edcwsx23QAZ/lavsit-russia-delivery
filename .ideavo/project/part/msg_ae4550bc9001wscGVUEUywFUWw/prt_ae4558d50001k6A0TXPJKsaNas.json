@@ -1,0 +1,25 @@
+{
+  "id": "prt_ae4558d50001k6A0TXPJKsaNas",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_ae4550bc9001wscGVUEUywFUWw",
+  "type": "tool",
+  "callID": "call_449def9cad014390a6177e2b",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 260
+    },
+    "output": "<file>\n00261|                     cargos: restoredData.cargos.length > 0 ? restoredData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n00262|                     fromCity: restoredData.fromCity,\n00263|                     toCity: restoredData.toCity,\n00264|                     fromAddress: restoredData.fromAddress,\n00265|                     toAddress: restoredData.toAddress,\n00266|                     declaredValue: restoredData.declaredValue,\n00267|                     needPackaging: restoredData.needPackaging,\n00268|                     needLoading: restoredData.needLoading,\n00269|                     needCarry: restoredData.needCarry,\n00270|                     floor: restoredData.floor,\n00271|                     hasFreightLift: restoredData.hasFreightLift,\n00272|                     needInsurance: restoredData.needInsurance,\n00273|                     fromTerminal: restoredData.fromTerminal,\n00274|                     toTerminal: restoredData.toTerminal,\n00275|                     fromAddressDelivery: restoredData.fromAddressDelivery,\n00276|                     toAddressDelivery: restoredData.toAddressDelivery,\n00277|                     fromLavsiteWarehouse: restoredData.fromLavsiteWarehouse || false,\n00278|                     selectedProducts: restoredData.selectedProducts,\n00279|                   };\n00280|                   setForm(restoredForm);\n00281|                   if (restoredData.enabledCompanies && Object.keys(restoredData.enabledCompanies).length > 0) {\n00282|                     setEnabledCompanies(restoredData.enabledCompanies);\n00283|                   }\n00284|                   setTimeout(() => setIsRestoring(false), 100);\n00285|                   console.log('✅ Данные формы принудительно восстановлены!');\n00286|                 }\n00287|                 break;\n00288|               } catch (e) {\n00289|                 console.warn('⚠️ Ошибка восстановления из backup:', key, e);\n00290|               }\n\n(File has more lines. Use 'offset' parameter to read beyond line 290)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                    cargos: restoredData.cargos.length > 0 ? restoredData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n                    fromCity: restoredData.fromCity,\n                    toCity: restoredData.toCity,\n                    fromAddress: restoredData.fromAddress,\n                    toAddress: restoredData.toAddress,\n                    declaredValue: restoredData.declaredValue,\n                    needPackaging: restoredData.needPackaging,\n                    needLoading: restoredData.needLoading,\n                    needCarry: restoredData.needCarry,\n                    floor: restoredData.floor,\n                    hasFreightLift: restoredData.hasFreightLift,\n                    needInsurance: restoredData.needInsurance,\n                    fromTerminal: restoredData.fromTerminal,\n                    toTerminal: restoredData.toTerminal,\n                    fromAddressDelivery: restoredData.fromAddressDelivery,\n                    toAddressDelivery: restoredData.toAddressDelivery,\n                    fromLavsiteWarehouse: restoredData.fromLavsiteWarehouse || false,\n                    selectedProducts: restoredData.selectedProducts,\n                  };\n                  setForm(restoredForm);"
+    },
+    "time": {
+      "start": 1764767403346,
+      "end": 1764767403353
+    }
+  }
+}

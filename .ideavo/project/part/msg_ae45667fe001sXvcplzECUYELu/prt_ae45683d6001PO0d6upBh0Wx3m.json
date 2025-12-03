@@ -1,0 +1,25 @@
+{
+  "id": "prt_ae45683d6001PO0d6upBh0Wx3m",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_ae45667fe001sXvcplzECUYELu",
+  "type": "tool",
+  "callID": "call_591114b173484e0c97453d04",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "limit": 30,
+      "offset": 95
+    },
+    "output": "<file>\n00096|       hasFreightLift: formData.hasFreightLift || false,\n00097|       needInsurance: formData.needInsurance || false,\n00098|       fromTerminal: formData.fromTerminal ?? true,\n00099|       toTerminal: formData.toTerminal ?? true,\n00100|       fromAddressDelivery: formData.fromAddressDelivery || false,\n00101|       toAddressDelivery: formData.toAddressDelivery || false,\n00102|       fromLavsiteWarehouse: formData.fromLavsiteWarehouse || false,\n00103|       selectedProducts: formData.selectedProducts || [],\n00104|       enabledCompanies: formData.enabledCompanies || {},\n00105|     };\n00106| \n00107|     const serializedData = JSON.stringify(dataToSave);\n00108|     \n00109|     // Тройная защита: сохраняем в localStorage, IndexedDB и cookies\n00110|     let localStorageSuccess = false;\n00111|     let indexedDBSuccess = false;\n00112|     let cookieSuccess = false;\n00113|     \n00114|     // 1. localStorage (основной метод)\n00115|     try {\n00116|       localStorage.setItem(FORM_DATA_KEY, serializedData);\n00117|       localStorageSuccess = true;\n00118|       console.log('💾 Данные формы сохранены в localStorage');\n00119|     } catch (error) {\n00120|       console.warn('⚠️ Ошибка сохранения в localStorage:', error);\n00121|     }\n00122|     \n00123|     // 2. IndexedDB (защита от Clear-Site-Data для storage)\n00124|     if (isIndexedDBAvailable()) {\n00125|       saveFormDataToIndexedDB(serializedData).then(success => {\n\n(File has more lines. Use 'offset' parameter to read beyond line 125)\n</file>",
+    "title": "lib/form-storage.ts",
+    "metadata": {
+      "preview": "      hasFreightLift: formData.hasFreightLift || false,\n      needInsurance: formData.needInsurance || false,\n      fromTerminal: formData.fromTerminal ?? true,\n      toTerminal: formData.toTerminal ?? true,\n      fromAddressDelivery: formData.fromAddressDelivery || false,\n      toAddressDelivery: formData.toAddressDelivery || false,\n      fromLavsiteWarehouse: formData.fromLavsiteWarehouse || false,\n      selectedProducts: formData.selectedProducts || [],\n      enabledCompanies: formData.enabledCompanies || {},\n    };\n\n    const serializedData = JSON.stringify(dataToSave);\n    \n    // Тройная защита: сохраняем в localStorage, IndexedDB и cookies\n    let localStorageSuccess = false;\n    let indexedDBSuccess = false;\n    let cookieSuccess = false;\n    \n    // 1. localStorage (основной метод)\n    try {"
+    },
+    "time": {
+      "start": 1764767466457,
+      "end": 1764767466461
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_ae45508b6001UrYmuCnPREBkux",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_ae454e2d4001OwO5bGNKg8MyOT",
+  "type": "tool",
+  "callID": "call_842afb3f56b248d5aef53a9f",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 230
+    },
+    "output": "<file>\n00231|   // Состояние для скрытых транспортных компаний\n00232|   const [hiddenCompanies, setHiddenCompanies] = useState<Record<string, boolean>>({});\n00233|   const [showHiddenCompanies, setShowHiddenCompanies] = useState(false);\n00234| \n00235|   // Защита от потери данных - НЕ очищаем localStorage в dev режиме\n00236|   // Пользовательские данные должны сохраняться между перезагрузками\n00237| \n00238|   // Дополнительная проверка восстановления данных после серверной очистки\n00239|   useEffect(() => {\n00240|     if (typeof window !== 'undefined' && isLoaded) {\n00241|       // Проверяем через 2 секунды после загрузки (после Clear-Site-Data)\n00242|       const delayedCheck = setTimeout(() => {\n00243|         const currentFormData = loadFormData();\n00244|         if (!currentFormData) {\n00245|           console.log('🔍 Дополнительная проверка: данные формы отсутствуют, ищем backup...');\n00246|           \n00247|           // Пытаемся найти backup данные\n00248|           const backupKeys = ['formBackup1', 'formBackup2', 'formBackup3'];\n00249|           for (const key of backupKeys) {\n00250|             const backup = localStorage.getItem(key);\n00251|             if (backup) {\n00252|               try {\n00253|                 localStorage.setItem('deliveryFormData', backup);\n00254|                 console.log('🔄 Восстановлены данные из backup:', key);\n00255|                 \n00256|                 // Принудительно перезагружаем данные\n00257|                 const restoredData = loadFormData();\n00258|                 if (restoredData) {\n00259|                   setIsRestoring(true);\n00260|                   const restoredForm: DeliveryForm = {\n\n(File has more lines. Use 'offset' parameter to read beyond line 260)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  // Состояние для скрытых транспортных компаний\n  const [hiddenCompanies, setHiddenCompanies] = useState<Record<string, boolean>>({});\n  const [showHiddenCompanies, setShowHiddenCompanies] = useState(false);\n\n  // Защита от потери данных - НЕ очищаем localStorage в dev режиме\n  // Пользовательские данные должны сохраняться между перезагрузками\n\n  // Дополнительная проверка восстановления данных после серверной очистки\n  useEffect(() => {\n    if (typeof window !== 'undefined' && isLoaded) {\n      // Проверяем через 2 секунды после загрузки (после Clear-Site-Data)\n      const delayedCheck = setTimeout(() => {\n        const currentFormData = loadFormData();\n        if (!currentFormData) {\n          console.log('🔍 Дополнительная проверка: данные формы отсутствуют, ищем backup...');\n          \n          // Пытаемся найти backup данные\n          const backupKeys = ['formBackup1', 'formBackup2', 'formBackup3'];\n          for (const key of backupKeys) {\n            const backup = localStorage.getItem(key);"
+    },
+    "time": {
+      "start": 1764767369402,
+      "end": 1764767369410
+    }
+  }
+}

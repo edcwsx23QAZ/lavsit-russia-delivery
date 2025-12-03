@@ -281,6 +281,9 @@ export default function Home() {
                   if (restoredData.enabledCompanies && Object.keys(restoredData.enabledCompanies).length > 0) {
                     setEnabledCompanies(restoredData.enabledCompanies);
                   }
+                  if (restoredData.hiddenCompanies && Object.keys(restoredData.hiddenCompanies).length > 0) {
+                    setHiddenCompanies(restoredData.hiddenCompanies);
+                  }
                   setTimeout(() => setIsRestoring(false), 100);
                   console.log('✅ Данные формы принудительно восстановлены!');
                 }
@@ -343,9 +346,12 @@ export default function Home() {
           setForm(restoredForm);
           
           // Восстанавливаем состояние включенных компаний
-          if (savedFormData.enabledCompanies && Object.keys(savedFormData.enabledCompanies).length > 0) {
-            setEnabledCompanies(savedFormData.enabledCompanies);
-          }
+            if (savedFormData.enabledCompanies && Object.keys(savedFormData.enabledCompanies).length > 0) {
+              setEnabledCompanies(savedFormData.enabledCompanies);
+            }
+            if (savedFormData.hiddenCompanies && Object.keys(savedFormData.hiddenCompanies).length > 0) {
+              setHiddenCompanies(savedFormData.hiddenCompanies);
+            }
           console.log('✅ Данные формы успешно восстановлены из localStorage');
           
           // Диагностика времени для Supabase
@@ -423,6 +429,7 @@ export default function Home() {
         fromLavsiteWarehouse: form.fromLavsiteWarehouse,
         selectedProducts: form.selectedProducts,
         enabledCompanies: enabledCompanies,
+        hiddenCompanies: hiddenCompanies,
       });
     }
   }, [form, enabledCompanies, isLoaded, isRestoring, debouncedSave]);

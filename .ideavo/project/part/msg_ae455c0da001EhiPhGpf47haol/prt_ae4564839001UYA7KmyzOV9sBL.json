@@ -1,0 +1,25 @@
+{
+  "id": "prt_ae4564839001UYA7KmyzOV9sBL",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_ae455c0da001EhiPhGpf47haol",
+  "type": "tool",
+  "callID": "call_5be82ae6bd254378b3c9ab46",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 5320
+    },
+    "output": "<file>\n05321|                             variant=\"outline\"\n05322|                             size=\"sm\"\n05323|                             onClick={() => {\n05324|                               setHiddenCompanies(prev => ({\n05325|                                 ...prev,\n05326|                                 [calc.company]: true\n05327|                               }));\n05328|                             }}\n05329|                             className=\"h-6 text-xs border-red-500 text-red-400 hover:bg-red-900/20\"\n05330|                           >\n05331|                             Скрыть\n05332|                           </Button>\n05333|                         </div>\n05334|                         \n05335|                         {/* Детали расчета */}\n05336|                         {!calc.error && (\n05337|                           <Collapsible open={expandedDetails[calc.company]}>\n05338|                             <CollapsibleContent className=\"mt-2\">\n05339|                               <div className=\"bg-gray-900 p-3 rounded text-xs\">\n05340|                                 <h4 className=\"font-bold mb-2 text-white\">Детали расчета:</h4>\n\n(File has more lines. Use 'offset' parameter to read beyond line 5340)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                            variant=\"outline\"\n                            size=\"sm\"\n                            onClick={() => {\n                              setHiddenCompanies(prev => ({\n                                ...prev,\n                                [calc.company]: true\n                              }));\n                            }}\n                            className=\"h-6 text-xs border-red-500 text-red-400 hover:bg-red-900/20\"\n                          >\n                            Скрыть\n                          </Button>\n                        </div>\n                        \n                        {/* Детали расчета */}\n                        {!calc.error && (\n                          <Collapsible open={expandedDetails[calc.company]}>\n                            <CollapsibleContent className=\"mt-2\">\n                              <div className=\"bg-gray-900 p-3 rounded text-xs\">\n                                <h4 className=\"font-bold mb-2 text-white\">Детали расчета:</h4>"
+    },
+    "time": {
+      "start": 1764767451195,
+      "end": 1764767451199
+    }
+  }
+}

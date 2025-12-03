@@ -15,7 +15,7 @@ import {
 
 // Константы для ключей localStorage
 const FORM_DATA_KEY = 'deliveryFormData';
-const FORM_VERSION = '1.2'; // Поддержка полного состояния формы + enabledCompanies
+const FORM_VERSION = '1.3'; // Поддержка полного состояния формы + enabledCompanies + hiddenCompanies
 
 export interface StoredFormData {
   version: string;
@@ -68,6 +68,7 @@ export interface StoredFormData {
     addedAt: number;
   }>;
   enabledCompanies?: Record<string, boolean>;
+  hiddenCompanies?: Record<string, boolean>;
 }
 
 /**
@@ -102,6 +103,7 @@ export const saveFormData = (formData: Partial<StoredFormData>): boolean => {
       fromLavsiteWarehouse: formData.fromLavsiteWarehouse || false,
       selectedProducts: formData.selectedProducts || [],
       enabledCompanies: formData.enabledCompanies || {},
+      hiddenCompanies: formData.hiddenCompanies || {},
     };
 
     const serializedData = JSON.stringify(dataToSave);
@@ -255,6 +257,7 @@ const migrateFormData = (oldData: any): StoredFormData | null => {
       fromLavsiteWarehouse: oldData.fromLavsiteWarehouse || false,
       selectedProducts: oldData.selectedProducts || [],
       enabledCompanies: oldData.enabledCompanies || {},
+      hiddenCompanies: oldData.hiddenCompanies || {},
     };
 
     // Сохраняем мигрированные данные

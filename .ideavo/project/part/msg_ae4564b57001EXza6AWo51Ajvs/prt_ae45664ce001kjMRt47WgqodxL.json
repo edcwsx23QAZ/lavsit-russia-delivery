@@ -1,0 +1,25 @@
+{
+  "id": "prt_ae45664ce001kjMRt47WgqodxL",
+  "sessionID": "ses_533b8e2fbffeGf4K6SZ0fxy9mZ",
+  "messageID": "msg_ae4564b57001EXza6AWo51Ajvs",
+  "type": "tool",
+  "callID": "call_601646631cfa42f49e486d27",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/lib/form-storage.ts",
+      "limit": 30,
+      "offset": 65
+    },
+    "output": "<file>\n00066|     totalPrice: number;\n00067|     cargoIndexes: number[];\n00068|     addedAt: number;\n00069|   }>;\n00070|   enabledCompanies?: Record<string, boolean>;\n00071| }\n00072| \n00073| /**\n00074|  * Сохраняет данные формы в localStorage, IndexedDB и cookies (тройная защита)\n00075|  * НЕ сохраняет результаты расчетов - только пользовательский ввод\n00076|  */\n00077| export const saveFormData = (formData: Partial<StoredFormData>): boolean => {\n00078|   try {\n00079|     if (typeof window === 'undefined') {\n00080|       return false; // SSR safe\n00081|     }\n00082| \n00083|     const dataToSave: StoredFormData = {\n00084|       version: FORM_VERSION,\n00085|       timestamp: Date.now(),\n00086|       cargos: formData.cargos || [],\n00087|       fromCity: formData.fromCity || '',\n00088|       toCity: formData.toCity || '',\n00089|       fromAddress: formData.fromAddress || '',\n00090|       toAddress: formData.toAddress || '',\n00091|       declaredValue: formData.declaredValue || 0,\n00092|       needPackaging: formData.needPackaging || false,\n00093|       needLoading: formData.needLoading || false,\n00094|       needCarry: formData.needCarry || false,\n00095|       floor: formData.floor || 1,\n\n(File has more lines. Use 'offset' parameter to read beyond line 95)\n</file>",
+    "title": "lib/form-storage.ts",
+    "metadata": {
+      "preview": "    totalPrice: number;\n    cargoIndexes: number[];\n    addedAt: number;\n  }>;\n  enabledCompanies?: Record<string, boolean>;\n}\n\n/**\n * Сохраняет данные формы в localStorage, IndexedDB и cookies (тройная защита)\n * НЕ сохраняет результаты расчетов - только пользовательский ввод\n */\nexport const saveFormData = (formData: Partial<StoredFormData>): boolean => {\n  try {\n    if (typeof window === 'undefined') {\n      return false; // SSR safe\n    }\n\n    const dataToSave: StoredFormData = {\n      version: FORM_VERSION,\n      timestamp: Date.now(),"
+    },
+    "time": {
+      "start": 1764767458512,
+      "end": 1764767458515
+    }
+  }
+}
