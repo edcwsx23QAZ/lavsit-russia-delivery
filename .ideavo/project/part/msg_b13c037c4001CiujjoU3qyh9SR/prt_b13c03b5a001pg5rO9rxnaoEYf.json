@@ -1,0 +1,24 @@
+{
+  "id": "prt_b13c03b5a001pg5rO9rxnaoEYf",
+  "sessionID": "ses_4ec3ff722ffeBPzPNwp55I8TOz",
+  "messageID": "msg_b13c037c4001CiujjoU3qyh9SR",
+  "type": "tool",
+  "callID": "call_37805551",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "WP"
+    },
+    "output": "Found 14 matches\n/home/user/project/bun.lock:\n  Line 408:     \"cross-spawn\": [\"cross-spawn@7.0.6\", \"\", { \"dependencies\": { \"path-key\": \"^3.1.0\", \"shebang-command\": \"^2.0.0\", \"which\": \"^2.0.1\" } }, \"sha512-uV2QOWP2nWzsy2aMp8aRibhi9dlzF5Hgh5SHaB9OiTGEyDTiJJyx0uy51QXdyWbtAHNua4XJzUKca3OzKUd3vA==\"],\n  Line 422:     \"d3-interpolate\": [\"d3-interpolate@3.0.1\", \"\", { \"dependencies\": { \"d3-color\": \"1 - 3\" } }, \"sha512-3bYs1rOD33uo8aqJfKP3JWPAibgw8Zm2+L9vBKEHJ2Rg+viTR7o5Mmv5mZcieN+FRYaAOWX5SJATX6k1PWz72g==\"],\n  Line 444:     \"deepmerge\": [\"deepmerge@4.3.1\", \"\", {}, \"sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==\"],\n  Line 468:     \"embla-carousel-reactive-utils\": [\"embla-carousel-reactive-utils@8.3.1\", \"\", { \"peerDependencies\": { \"embla-carousel\": \"8.3.1\" } }, \"sha512-Js6rTTINNGnUGPu7l5kTcheoSbEnP5Ak2iX0G9uOoI8okTNLMzuWlEIpYFd1WP0Sq82FFcLkKM2oiO6jcElZ/Q==\"],\n  Line 638:     \"mitt\": [\"mitt@3.0.1\", \"\", {}, \"sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==\"],\n  Line 796:     \"signal-exit\": [\"signal-exit@4.1.0\", \"\", {}, \"sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==\"],\n  Line 840:     \"thenify\": [\"thenify@3.3.1\", \"\", { \"dependencies\": { \"any-promise\": \"^1.0.0\" } }, \"sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==\"],\n  Line 918:     \"chokidar/fsevents\": [\"fsevents@2.3.3\", \"\", { \"os\": \"darwin\" }, \"sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==\"],\n  Line 922:     \"chromium-bidi/zod\": [\"zod@3.25.76\", \"\", {}, \"sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==\"],\n  Line 934:     \"prisma/fsevents\": [\"fsevents@2.3.3\", \"\", { \"os\": \"darwin\" }, \"sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==\"],\n\n/home/user/project/package-lock.json:\n  Line 2633:       \"integrity\": \"sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==\",\n  Line 3503:       \"integrity\": \"sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==\",\n  Line 4012:       \"integrity\": \"sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==\",\n  Line 5477:       \"integrity\": \"sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==\",",
+    "title": "WP",
+    "metadata": {
+      "matches": 14,
+      "truncated": false
+    },
+    "time": {
+      "start": 1765562923872,
+      "end": 1765562923889
+    }
+  }
+}

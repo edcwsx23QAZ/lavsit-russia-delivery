@@ -1,0 +1,11 @@
+{
+  "id": "prt_b13c109fe001QUNNd7VNXMaUTd",
+  "sessionID": "ses_4ec400949ffekDUyPGFumLInaA",
+  "messageID": "msg_b13c10295001SYwjIecDKozVZt",
+  "type": "text",
+  "text": "Параметр `hardPackageVolumeUOD_WP` не найден в документации и коде Vozovoz API. \n\nВ текущей реализации Vozovoz уже правильно использует параметр `hardPackageVolume` с общим объемом груза в кубических метрах при включенном чекбоксе \"требуется упаковка\":\n\n```typescript\n...(form.needPackaging ? {\n  wrapping: {\n    \"hardPackageVolume\": totalVolume  // Объем в м³\n  }\n} : {})\n```\n\nСогласно документации Vozovoz API 2.5, `hardPackageVolume` - это правильный код для жесткой упаковки типа \"volume\" (объемной). Возможно, `hardPackageVolumeUOD_WP` относится к другому API или является опечаткой.\n\nТекущая реализация уже применяет упаковку по умолчанию при чекбоксе \"требуется упаковка\" без необходимости дополнительных изменений.",
+  "time": {
+    "start": 1765562978201,
+    "end": 1765562978201
+  }
+}

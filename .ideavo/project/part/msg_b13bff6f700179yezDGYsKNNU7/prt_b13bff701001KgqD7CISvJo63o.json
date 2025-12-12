@@ -1,0 +1,7 @@
+{
+  "id": "prt_b13bff701001KgqD7CISvJo63o",
+  "sessionID": "ses_4ec400949ffekDUyPGFumLInaA",
+  "messageID": "msg_b13bff6f700179yezDGYsKNNU7",
+  "type": "text",
+  "text": "На текущий момент в запросе к API Vozovoz выглядит так:\n\n{\n  \"object\": \"price\",\n  \"action\": \"get\",\n  \"params\": {\n    \"cargo\": {\n      \"dimension\": {\n        \"max\": {\n          \"length\": 0.1,\n          \"width\": 0.2,\n          \"height\": 0.1,\n          \"weight\": 100\n        },\n        \"quantity\": 1,\n        \"volume\": 2,\n        \"weight\": 100\n      },\n      \"insurance\": 200000,\n      \"insuranceNdv\": false,\n      \"wrapping\": {\n        \"hardPackageVolume\": 2\n      }\n    },\n    \"gateway\": {\n      \"dispatch\": {\n        \"point\": {\n          \"location\": \"г Москва\",\n          \"terminal\": \"default\"\n        }\n      },\n      \"destination\": {\n        \"point\": {\n          \"location\": \"г Санкт-Петербург\",\n          \"terminal\": \"default\"\n        }\n      }\n    }\n  }\n}\nПолученный ответ:\n{\n\nПроверь точно ли нужно указывать для упаковки + фото с разбором следующий парамтер: hardPackageVolumeUOD_WP\n\nИ если да, сделай его используемым по умолчанию у API Vozovoz во всех случаях когда проставлен чекбокс \"требуется упаковка\""
+}

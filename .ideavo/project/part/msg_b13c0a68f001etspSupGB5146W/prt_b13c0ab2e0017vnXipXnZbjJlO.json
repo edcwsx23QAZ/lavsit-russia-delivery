@@ -1,0 +1,24 @@
+{
+  "id": "prt_b13c0ab2e0017vnXipXnZbjJlO",
+  "sessionID": "ses_4ec3ff722ffeBPzPNwp55I8TOz",
+  "messageID": "msg_b13c0a68f001etspSupGB5146W",
+  "type": "tool",
+  "callID": "call_18436357",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "hardPackage"
+    },
+    "output": "Found 7 matches\n/home/user/project/app/page.tsx:\n  Line 3311:                  \"hardPackageVolume\": totalVolume  // ✅ ИСПРАВЛЕНО: Правильный код \"Жёсткая упаковка\" из документации\n\n/home/user/project/app/vozovoz-parser/page.tsx:\n  Line 151:                 \"hardPackageVolume\": totalVolume\n\n/home/user/project/app/api/vozovoz-parser-hybrid/route.ts:\n  Line 81:               \"hardPackageVolume\": totalVolume\n\n/home/user/project/components/diagnostic/TechnicalDocumentation.tsx:\n  Line 180:       \"wrapping\": { \"hardPackageVolume\": 0.03 }\n  Line 392:       \"hardPackageVolume\": 0.03\n\n/home/user/project/vozovoz-docs/ru/docs/object/wrapping.md:\n  Line 80:       \"code\": \"hardPackageVolume\", // уникальный код упаковки\n\n/home/user/project/vozovoz-docs/en/docs/object/wrapping.md:\n  Line 82:       \"code\": \"hardPackageVolume\", // unique code of the wrapping",
+    "title": "hardPackage",
+    "metadata": {
+      "matches": 7,
+      "truncated": false
+    },
+    "time": {
+      "start": 1765562952500,
+      "end": 1765562952515
+    }
+  }
+}

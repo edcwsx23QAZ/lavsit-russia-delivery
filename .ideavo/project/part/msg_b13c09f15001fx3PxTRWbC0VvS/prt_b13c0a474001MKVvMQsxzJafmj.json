@@ -1,0 +1,24 @@
+{
+  "id": "prt_b13c0a474001MKVvMQsxzJafmj",
+  "sessionID": "ses_4ec3ff722ffeBPzPNwp55I8TOz",
+  "messageID": "msg_b13c09f15001fx3PxTRWbC0VvS",
+  "type": "tool",
+  "callID": "call_99100017",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "wrapping.*:"
+    },
+    "output": "Found 26 matches\n/home/user/project/app/page.tsx:\n  Line 3310:                wrapping: {\n\n/home/user/project/app/vozovoz-parser/page.tsx:\n  Line 150:               wrapping: {\n\n/home/user/project/app/api/vozovoz-parser-hybrid/route.ts:\n  Line 80:             wrapping: {\n\n/home/user/project/VOZOVOZ_DISCREPANCY_ANALYSIS.md:\n  Line 54:   \"wrapping\": object      // Упаковка\n\n/home/user/project/components/diagnostic/TechnicalDocumentation.tsx:\n  Line 180:       \"wrapping\": { \"hardPackageVolume\": 0.03 }\n  Line 391:     \"wrapping\": {        // упаковка\n\n/home/user/project/vozovoz-docs/en/docs/structure/cargo.md:\n  Line 47:   \"wrapping\": { /* for more information see \"Wrapping\" structure */ }\n  Line 112:       \"wrapping\": {  // volumetric wrapping only\n  Line 122:       \"wrapping\": {} // volumetric wrapping only\n  Line 135: \"wrapping\": {\n  Line 196:           \"wrapping\": { // here used only volumetric wrapping\n  Line 206:           \"wrapping\": {} // here used only volumetric wrapping\n\n/home/user/project/vozovoz-docs/en/docs/object/order.md:\n  Line 431:           \"wrapping\": {\n  Line 539:       \"wrapping\": { // packaging the cargo\n  Line 696:       \"wrapping\": {\n\n/home/user/project/vozovoz-docs/ru/docs/structure/cargo.md:\n  Line 44:   \"wrapping\": { /* подробнее в структуре \"Упаковка\" */ }\n  Line 109:       \"wrapping\": {  // только объёмная упаковка\n  Line 119:       \"wrapping\": {} // только объёмная упаковка\n  Line 132: \"wrapping\": {\n  Line 193:           \"wrapping\": {  // только объёмная упаковка\n  Line 203:           \"wrapping\": {} // только объёмная упаковка\n\n/home/user/project/vozovoz-docs/ru/docs/object/order.md:\n  Line 420:           \"wrapping\": {\n  Line 533:       \"wrapping\": { // упаковка\n  Line 688:       \"wrapping\": {\n\n/home/user/project/ideavo-server.info:\n  Line 255:       \"wrapping\": {\n\n/home/user/project/app/diagnostic/page-original.tsx:\n  Line 796:                   wrapping: {",
+    "title": "wrapping.*:",
+    "metadata": {
+      "matches": 26,
+      "truncated": false
+    },
+    "time": {
+      "start": 1765562950779,
+      "end": 1765562950797
+    }
+  }
+}
