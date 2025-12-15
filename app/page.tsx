@@ -3617,9 +3617,10 @@ export default function Home() {
               city_fias: await getNordwheelCityFias(form.fromCity)
             };
           } else if (form.fromLavsiteWarehouse) {
-            // 🏭 Склад Лавсит: type=address + city_fias_id (получаем из адреса)
-            const warehouseAddress = form.fromAddress || 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область';
-            const cityFiasId = await getCityFiasFromAddress(warehouseAddress);
+            // 🏭 Склад Лавсит: type=address + city_fias_id (используем упрощенный адрес)
+            const warehouseAddressSimplified = 'Лосино-Петровский, д.Осеево';
+            console.log(`🏭 Nordwheel: Склад Лавсит - используем упрощенный адрес: ${warehouseAddressSimplified}`);
+            const cityFiasId = await getCityFiasFromAddress(warehouseAddressSimplified);
             
             return {
               type: 'address' as const,

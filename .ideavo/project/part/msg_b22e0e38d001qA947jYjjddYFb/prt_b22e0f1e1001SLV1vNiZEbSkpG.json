@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22e0f1e1001SLV1vNiZEbSkpG",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22e0e38d001qA947jYjjddYFb",
+  "type": "tool",
+  "callID": "toolu_018ySnp4K13FXchZLq27fCvU",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 3616
+    },
+    "output": "<file>\n03617|               city_fias: await getNordwheelCityFias(form.fromCity)\n03618|             };\n03619|           } else if (form.fromLavsiteWarehouse) {\n03620|             // 🏭 Склад Лавсит: type=address + city_fias_id (получаем из адреса)\n03621|             const warehouseAddress = form.fromAddress || 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область';\n03622|             const cityFiasId = await getCityFiasFromAddress(warehouseAddress);\n03623|             \n03624|             return {\n03625|               type: 'address' as const,\n03626|               city_fias: cityFiasId\n03627|             };\n03628|           } else {\n03629|             // Адресная доставка: type=address + city_fias_id\n03630|             const address = form.fromAddress || form.fromCity;\n03631|             const cityFiasId = await getCityFiasFromAddress(address);\n03632|             \n03633|             return {\n03634|               type: 'address' as const,\n03635|               city_fias: cityFiasId\n03636|             };\n03637|           }\n03638|         } catch (error) {\n03639|           console.error(`🚛 Nordwheel: Ошибка определения локации отправления:`, error);\n03640|           throw error;\n03641|         }\n03642|       };\n03643| \n03644|       const getDestinationLocation = async () => {\n03645|         try {\n03646|           if (form.toTerminal) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 3646)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "              city_fias: await getNordwheelCityFias(form.fromCity)\n            };\n          } else if (form.fromLavsiteWarehouse) {\n            // 🏭 Склад Лавсит: type=address + city_fias_id (получаем из адреса)\n            const warehouseAddress = form.fromAddress || 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область';\n            const cityFiasId = await getCityFiasFromAddress(warehouseAddress);\n            \n            return {\n              type: 'address' as const,\n              city_fias: cityFiasId\n            };\n          } else {\n            // Адресная доставка: type=address + city_fias_id\n            const address = form.fromAddress || form.fromCity;\n            const cityFiasId = await getCityFiasFromAddress(address);\n            \n            return {\n              type: 'address' as const,\n              city_fias: cityFiasId\n            };"
+    },
+    "time": {
+      "start": 1765816726466,
+      "end": 1765816726471
+    }
+  }
+}

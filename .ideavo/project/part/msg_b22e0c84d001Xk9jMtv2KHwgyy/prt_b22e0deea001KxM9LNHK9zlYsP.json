@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22e0deea001KxM9LNHK9zlYsP",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22e0c84d001Xk9jMtv2KHwgyy",
+  "type": "tool",
+  "callID": "toolu_01RufyF7vuNuCMftZ4Z3FzDV",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 3566
+    },
+    "output": "<file>\n03567|           } else {\n03568|             console.error(`❌ Nordwheel: city_fias_id не найден для адреса ${address}`);\n03569|             throw new Error(`city_fias_id не найден для адреса ${address}`);\n03570|           }\n03571|         } catch (error) {\n03572|           console.error(`❌ Nordwheel: Ошибка получения city_fias_id:`, error);\n03573|           throw error;\n03574|         }\n03575|       };\n03576| \n03577|       // Функция для получения FIAS кода города через Dadata (для терминальной доставки)\n03578|       const getNordwheelCityFias = async (cityName: string): Promise<string> => {\n03579|         try {\n03580|           console.log(`🚛 Nordwheel: Запрос FIAS для города: ${cityName}`);\n03581|           \n03582|           // Используем clean API для получения FIAS кода города\n03583|           const response = await fetch('/api/dadata', {\n03584|             method: 'POST',\n03585|             headers: {\n03586|               'Content-Type': 'application/json'\n03587|             },\n03588|             body: JSON.stringify({\n03589|               address: cityName,\n03590|               type: 'clean'\n03591|             })\n03592|           });\n03593|           \n03594|           const data = await response.json();\n03595|           console.log('🚛 Nordwheel: Dadata clean ответ для города:', data);\n03596| \n03597|           if (data.success && data.data?.cleaned?.city_fias_id) {\n03598|             console.log(`✅ Nordwheel: Получен FIAS для ${cityName}: ${data.data.cleaned.city_fias_id}`);\n03599|             return data.data.cleaned.city_fias_id;\n03600|           } else {\n03601|             console.error(`❌ Nordwheel: FIAS код не найден для города ${cityName}`);\n03602|             throw new Error(`FIAS код не найден для города ${cityName}`);\n03603|           }\n03604|         } catch (error) {\n03605|           console.warn(`⚠️ Nordwheel: Dadata недоступна для ${cityName}, используем город как строку:`, error);\n03606|           // Fallback: возвращаем город как строку вместо FIAS кода\n03607|           return cityName;\n03608|         }\n03609|       };\n03610|       // 🏙️ Определяем тип локации на основе настроек формы\n03611|       const getDispatchLocation = async () => {\n03612|         try {\n03613|           if (form.fromTerminal) {\n03614|             // Терминальная доставка: type=terminal + city_fias\n03615|             return {\n03616|               type: 'terminal' as const,\n\n(File has more lines. Use 'offset' parameter to read beyond line 3616)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "          } else {\n            console.error(`❌ Nordwheel: city_fias_id не найден для адреса ${address}`);\n            throw new Error(`city_fias_id не найден для адреса ${address}`);\n          }\n        } catch (error) {\n          console.error(`❌ Nordwheel: Ошибка получения city_fias_id:`, error);\n          throw error;\n        }\n      };\n\n      // Функция для получения FIAS кода города через Dadata (для терминальной доставки)\n      const getNordwheelCityFias = async (cityName: string): Promise<string> => {\n        try {\n          console.log(`🚛 Nordwheel: Запрос FIAS для города: ${cityName}`);\n          \n          // Используем clean API для получения FIAS кода города\n          const response = await fetch('/api/dadata', {\n            method: 'POST',\n            headers: {\n              'Content-Type': 'application/json'"
+    },
+    "time": {
+      "start": 1765816722035,
+      "end": 1765816722047
+    }
+  }
+}
