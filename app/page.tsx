@@ -3554,43 +3554,34 @@ export default function Home() {
             },
             body: JSON.stringify({
               address: address,
-              type: 'clean'
+              type: 'suggest'
             })
           });
           
           const data = await response.json();
-          console.log('🚛 Nordwheel: Dadata clean полный ответ:', JSON.stringify(data, null, 2));
+          console.log('🚛 Nordwheel: Dadata suggest полный ответ:', JSON.stringify(data, null, 2));
           
-          // Проверяем структуру ответа
-          console.log('🔍 Nordwheel: Проверка структуры:', {
-            'data.success': data.success,
-            'data.data exists': !!data.data,
-            'data.data.cleaned exists': !!(data.data && data.data.cleaned),
-            'typeof data.data': typeof data.data,
-            'data.data keys': data.data ? Object.keys(data.data) : 'N/A'
-          });
-          
-          if (data.success && data.data?.cleaned) {
-            const cleaned = data.data.cleaned;
+          if (data.success && data.data && Array.isArray(data.data) && data.data.length > 0) {
+            const firstSuggestion = data.data[0];
+            const suggestionData = firstSuggestion.data;
             
-            // Выводим детальную информацию для отладки
-            console.log('🔍 Nordwheel: Dadata cleaned данные:', {
-              city: cleaned.city,
-              city_fias_id: cleaned.city_fias_id,
-              settlement: cleaned.settlement,
-              settlement_fias_id: cleaned.settlement_fias_id,
-              divisions: cleaned.divisions
+            console.log('🔍 Nordwheel: Dadata suggestion данные:', {
+              value: firstSuggestion.value,
+              city: suggestionData.city,
+              city_fias_id: suggestionData.city_fias_id,
+              settlement: suggestionData.settlement,
+              settlement_fias_id: suggestionData.settlement_fias_id
             });
             
             // Используем city_fias_id (приоритет)
-            if (cleaned.city_fias_id) {
-              console.log(`✅ Nordwheel: Получен city_fias_id: ${cleaned.city_fias_id} (город: ${cleaned.city})`);
-              return cleaned.city_fias_id;
+            if (suggestionData.city_fias_id) {
+              console.log(`✅ Nordwheel: Получен city_fias_id: ${suggestionData.city_fias_id} (город: ${suggestionData.city})`);
+              return suggestionData.city_fias_id;
             }
             // Fallback на settlement_fias_id если city_fias_id отсутствует
-            else if (cleaned.settlement_fias_id) {
-              console.log(`✅ Nordwheel: Используем settlement_fias_id: ${cleaned.settlement_fias_id} (населенный пункт: ${cleaned.settlement})`);
-              return cleaned.settlement_fias_id;
+            else if (suggestionData.settlement_fias_id) {
+              console.log(`✅ Nordwheel: Используем settlement_fias_id: ${suggestionData.settlement_fias_id} (населенный пункт: ${suggestionData.settlement})`);
+              return suggestionData.settlement_fias_id;
             }
             else {
               console.error(`❌ Nordwheel: Ни city_fias_id, ни settlement_fias_id не найдены для адреса ${address}`);
@@ -3620,38 +3611,31 @@ export default function Home() {
             },
             body: JSON.stringify({
               address: cityName,
-              type: 'clean'
+              type: 'suggest'
             })
           });
           
           const data = await response.json();
-          console.log('🚛 Nordwheel: Dadata clean полный ответ для города:', JSON.stringify(data, null, 2));
-          
-          // Проверяем структуру ответа
-          console.log('🔍 Nordwheel: Проверка структуры для города:', {
-            'data.success': data.success,
-            'data.data exists': !!data.data,
-            'data.data.cleaned exists': !!(data.data && data.data.cleaned),
-            'typeof data.data': typeof data.data,
-            'data.data keys': data.data ? Object.keys(data.data) : 'N/A'
-          });
+          console.log('🚛 Nordwheel: Dadata suggest полный ответ для города:', JSON.stringify(data, null, 2));
 
-          if (data.success && data.data?.cleaned) {
-            const cleaned = data.data.cleaned;
+          if (data.success && data.data && Array.isArray(data.data) && data.data.length > 0) {
+            const firstSuggestion = data.data[0];
+            const suggestionData = firstSuggestion.data;
             
-            console.log('🔍 Nordwheel: Dadata cleaned данные для города:', {
-              city: cleaned.city,
-              city_fias_id: cleaned.city_fias_id,
-              settlement: cleaned.settlement,
-              settlement_fias_id: cleaned.settlement_fias_id
+            console.log('🔍 Nordwheel: Dadata suggestion данные для города:', {
+              value: firstSuggestion.value,
+              city: suggestionData.city,
+              city_fias_id: suggestionData.city_fias_id,
+              settlement: suggestionData.settlement,
+              settlement_fias_id: suggestionData.settlement_fias_id
             });
             
-            if (cleaned.city_fias_id) {
-              console.log(`✅ Nordwheel: Получен FIAS для ${cityName}: ${cleaned.city_fias_id}`);
-              return cleaned.city_fias_id;
-            } else if (cleaned.settlement_fias_id) {
-              console.log(`✅ Nordwheel: Используем settlement_fias_id для ${cityName}: ${cleaned.settlement_fias_id}`);
-              return cleaned.settlement_fias_id;
+            if (suggestionData.city_fias_id) {
+              console.log(`✅ Nordwheel: Получен FIAS для ${cityName}: ${suggestionData.city_fias_id}`);
+              return suggestionData.city_fias_id;
+            } else if (suggestionData.settlement_fias_id) {
+              console.log(`✅ Nordwheel: Используем settlement_fias_id для ${cityName}: ${suggestionData.settlement_fias_id}`);
+              return suggestionData.settlement_fias_id;
             } else {
               console.error(`❌ Nordwheel: FIAS код не найден для города ${cityName}`);
               throw new Error(`FIAS код не найден для города ${cityName}`);

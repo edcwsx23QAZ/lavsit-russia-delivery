@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22f6ff1e0017haJxFcQ90nmQU",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22f6efdf0011ziMrJqlXp3mZk",
+  "type": "tool",
+  "callID": "toolu_013vb92CxnxpiRxFdUuGGPMN",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 3615
+    },
+    "output": "<file>\n03616|           });\n03617|           \n03618|           const data = await response.json();\n03619|           console.log('🚛 Nordwheel: Dadata clean полный ответ для города:', JSON.stringify(data, null, 2));\n03620|           \n03621|           // Проверяем структуру ответа\n03622|           console.log('🔍 Nordwheel: Проверка структуры для города:', {\n03623|             'data.success': data.success,\n03624|             'data.data exists': !!data.data,\n03625|             'data.data.cleaned exists': !!(data.data && data.data.cleaned),\n03626|             'typeof data.data': typeof data.data,\n03627|             'data.data keys': data.data ? Object.keys(data.data) : 'N/A'\n03628|           });\n03629| \n03630|           if (data.success && data.data?.cleaned) {\n03631|             const cleaned = data.data.cleaned;\n03632|             \n03633|             console.log('🔍 Nordwheel: Dadata cleaned данные для города:', {\n03634|               city: cleaned.city,\n03635|               city_fias_id: cleaned.city_fias_id,\n03636|               settlement: cleaned.settlement,\n03637|               settlement_fias_id: cleaned.settlement_fias_id\n03638|             });\n03639|             \n03640|             if (cleaned.city_fias_id) {\n03641|               console.log(`✅ Nordwheel: Получен FIAS для ${cityName}: ${cleaned.city_fias_id}`);\n03642|               return cleaned.city_fias_id;\n03643|             } else if (cleaned.settlement_fias_id) {\n03644|               console.log(`✅ Nordwheel: Используем settlement_fias_id для ${cityName}: ${cleaned.settlement_fias_id}`);\n03645|               return cleaned.settlement_fias_id;\n03646|             } else {\n03647|               console.error(`❌ Nordwheel: FIAS код не найден для города ${cityName}`);\n03648|               throw new Error(`FIAS код не найден для города ${cityName}`);\n03649|             }\n03650|           } else {\n03651|             console.error(`❌ Nordwheel: Некорректный ответ от Dadata для города ${cityName}`);\n03652|             console.error('Полученные данные:', JSON.stringify(data, null, 2));\n03653|             throw new Error(`Некорректный ответ от Dadata для города ${cityName}`);\n03654|           }\n03655|         } catch (error) {\n03656|           console.warn(`⚠️ Nordwheel: Dadata недоступна для ${cityName}, используем город как строку:`, error);\n03657|           // Fallback: возвращаем город как строку вместо FIAS кода\n03658|           return cityName;\n03659|         }\n03660|       };\n03661|       // 🏙️ Определяем тип локации на основе настроек формы\n03662|       const getDispatchLocation = async () => {\n03663|         try {\n03664|           if (form.fromTerminal) {\n03665|             // Терминальная доставка: type=terminal + city_fias\n\n(File has more lines. Use 'offset' parameter to read beyond line 3665)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "          });\n          \n          const data = await response.json();\n          console.log('🚛 Nordwheel: Dadata clean полный ответ для города:', JSON.stringify(data, null, 2));\n          \n          // Проверяем структуру ответа\n          console.log('🔍 Nordwheel: Проверка структуры для города:', {\n            'data.success': data.success,\n            'data.data exists': !!data.data,\n            'data.data.cleaned exists': !!(data.data && data.data.cleaned),\n            'typeof data.data': typeof data.data,\n            'data.data keys': data.data ? Object.keys(data.data) : 'N/A'\n          });\n\n          if (data.success && data.data?.cleaned) {\n            const cleaned = data.data.cleaned;\n            \n            console.log('🔍 Nordwheel: Dadata cleaned данные для города:', {\n              city: cleaned.city,\n              city_fias_id: cleaned.city_fias_id,"
+    },
+    "time": {
+      "start": 1765818171997,
+      "end": 1765818172001
+    }
+  }
+}
