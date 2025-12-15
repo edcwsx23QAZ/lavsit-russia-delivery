@@ -1,0 +1,33 @@
+{
+  "id": "msg_b22b8dd5e0027uKVCH4nq7M8Im",
+  "sessionID": "ses_4ec400949ffekDUyPGFumLInaA",
+  "role": "assistant",
+  "time": {
+    "created": 1765814099294,
+    "completed": 1765814218618
+  },
+  "error": {
+    "name": "UnknownError",
+    "data": {
+      "message": "Error: The socket connection was closed unexpectedly. For more information, pass `verbose: true` in the second argument to fetch()"
+    }
+  },
+  "parentID": "msg_b22b8c583001ONhLnj9F3M5jyC",
+  "modelID": "grok-code",
+  "providerID": "ideavo",
+  "mode": "build",
+  "path": {
+    "cwd": "/home/user/project",
+    "root": "/home/user/project"
+  },
+  "cost": 0,
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "reasoning": 0,
+    "cache": {
+      "read": 0,
+      "write": 0
+    }
+  }
+}
