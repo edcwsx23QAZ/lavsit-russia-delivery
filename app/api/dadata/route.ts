@@ -155,10 +155,63 @@ export async function GET(request: NextRequest) {
   try {
     const { searchParams } = new URL(request.url);
     const cityName = searchParams.get('city');
+    const fiasId = searchParams.get('fias_id');
+    const type = searchParams.get('type') || 'suggest';
 
+    // Если указан fias_id и type=findById, используем findById API
+    if (fiasId && type === 'findById') {
+      console.log('🏙️ DaData findById запрос для FIAS:', fiasId);
+
+      const response = await fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/address', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Token ${DADATA_API_KEY}`,
+        },
+        body: JSON.stringify({
+          query: fiasId
+        })
+      });
+
+      const data = await response.json();
+      
+      console.log('🏙️ DaData findById response:', JSON.stringify(data, null, 2));
+
+      if (!response.ok) {
+        return NextResponse.json(
+          { error: 'DaData API error', details: data },
+          { status: response.status }
+        );
+      }
+
+      if (data.suggestions && Array.isArray(data.suggestions) && data.suggestions.length > 0) {
+        const suggestion = data.suggestions[0];
+        return NextResponse.json({
+          success: true,
+          data: {
+            value: suggestion.value,
+            city: suggestion.data.city || suggestion.data.settlement,
+            region: suggestion.data.region,
+            city_fias_id: suggestion.data.city_fias_id || suggestion.data.settlement_fias_id,
+            region_fias_id: suggestion.data.region_fias_id,
+            city_kladr_id: suggestion.data.city_kladr_id || suggestion.data.settlement_kladr_id,
+            region_kladr_id: suggestion.data.region_kladr_id,
+            data: suggestion.data
+          }
+        });
+      }
+
+      return NextResponse.json({
+        success: false,
+        error: 'FIAS code not found'
+      });
+    }
+
+    // Обычный поиск города по названию
     if (!cityName) {
       return NextResponse.json(
-        { error: 'City name is required' },
+        { error: 'City name or FIAS ID is required' },
         { status: 400 }
       );
     }

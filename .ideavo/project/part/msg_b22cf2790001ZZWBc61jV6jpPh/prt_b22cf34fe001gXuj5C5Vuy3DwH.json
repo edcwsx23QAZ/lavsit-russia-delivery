@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22cf34fe001gXuj5C5Vuy3DwH",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22cf2790001ZZWBc61jV6jpPh",
+  "type": "tool",
+  "callID": "toolu_01GkMZBn3BGmNqPSLoaQZ3Tv",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser-stable/route.ts",
+      "limit": 30,
+      "offset": 425
+    },
+    "output": "<file>\n00426|           length: Array.from(document.querySelectorAll('input[name*=\"length\"], input[placeholder*=\"длин\"]')),\n00427|           width: Array.from(document.querySelectorAll('input[name*=\"width\"], input[placeholder*=\"ширин\"]')),\n00428|           height: Array.from(document.querySelectorAll('input[name*=\"height\"], input[placeholder*=\"высот\"]')),\n00429|           weight: Array.from(document.querySelectorAll('input[name*=\"weight\"], input[placeholder*=\"вес\"]'))\n00430|         };\n00431| \n00432|         if (dimensionInputs.length > 0) {\n00433|           Object.entries(dimensionInputs).forEach(([key, inputs]) => {\n00434|             if (inputs.length > 0) {\n00435|               const input = inputs[0] as HTMLInputElement;\n00436|               input.focus();\n00437|               input.value = params[key].toString();\n00438|               input.dispatchEvent(new Event('input', { bubbles: true }));\n00439|             }\n00440|           });\n00441|         }\n00442| \n00443|         return true;\n00444|       } catch (error) {\n00445|         console.error('Ошибка заполнения параметров груза:', error);\n00446|         return false;\n00447|       }\n00448|     }, params);\n00449| \n00450|     if (!cargoParamsFilled) {\n00451|       throw new Error('Не удалось заполнить параметры груза');\n00452|     }\n00453| \n00454|     await new Promise(resolve => setTimeout(resolve, 3000));\n00455| \n\n(File has more lines. Use 'offset' parameter to read beyond line 455)\n</file>",
+    "title": "app/api/vozovoz-parser-stable/route.ts",
+    "metadata": {
+      "preview": "          length: Array.from(document.querySelectorAll('input[name*=\"length\"], input[placeholder*=\"длин\"]')),\n          width: Array.from(document.querySelectorAll('input[name*=\"width\"], input[placeholder*=\"ширин\"]')),\n          height: Array.from(document.querySelectorAll('input[name*=\"height\"], input[placeholder*=\"высот\"]')),\n          weight: Array.from(document.querySelectorAll('input[name*=\"weight\"], input[placeholder*=\"вес\"]'))\n        };\n\n        if (dimensionInputs.length > 0) {\n          Object.entries(dimensionInputs).forEach(([key, inputs]) => {\n            if (inputs.length > 0) {\n              const input = inputs[0] as HTMLInputElement;\n              input.focus();\n              input.value = params[key].toString();\n              input.dispatchEvent(new Event('input', { bubbles: true }));\n            }\n          });\n        }\n\n        return true;\n      } catch (error) {\n        console.error('Ошибка заполнения параметров груза:', error);"
+    },
+    "time": {
+      "start": 1765815563950,
+      "end": 1765815563958
+    }
+  }
+}

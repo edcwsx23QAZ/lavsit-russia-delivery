@@ -211,7 +211,7 @@ async function parseVozovozHybrid(params: VozovozParserParams): Promise<ParsedRe
         const adjustmentFactor = (volumeRatio + weightRatio) / 2;
         finalBasePrice = Math.round(service.basePrice * adjustmentFactor);
         finalPrice = Math.round(service.price * adjustmentFactor);
-        finalDiscount = Math.round(service.discount * adjustmentFactor);
+        finalDiscount = Math.round((service.discount || 0) * adjustmentFactor);
       }
       
       // Добавляем основную услугу
@@ -240,7 +240,6 @@ async function parseVozovozHybrid(params: VozovozParserParams): Promise<ParsedRe
     if (services.length === 0 && totalPrice > 0) {
       services.push({
         name: 'Доставка груза',
-        description: `${params.fromCity} - ${params.toCity}`,
         price: totalPrice
       });
     }

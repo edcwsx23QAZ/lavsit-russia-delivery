@@ -1,0 +1,27 @@
+{
+  "id": "prt_b22d02b76001ec79qPll5l5I3T",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22d01ebc001fAMEwI1j8SALmh",
+  "type": "tool",
+  "callID": "toolu_01E3n7NfcRPWZFJCbEv9SQpC",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | tail -30",
+      "description": "Build project to verify no errors",
+      "timeout": 120000
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/api/vozovoz-parser-stable/route.ts:551:44\nType error: 'error' is of type 'unknown'.\n\n\u001b[0m \u001b[90m 549 |\u001b[39m           services\u001b[33m:\u001b[39m []\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 550 |\u001b[39m           deliveryTime\u001b[33m:\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 551 |\u001b[39m           warnings\u001b[33m:\u001b[39m [\u001b[32m'Ошибка парсинга: '\u001b[39m \u001b[33m+\u001b[39m error\u001b[33m.\u001b[39mmessage]\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 552 |\u001b[39m         }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 553 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 554 |\u001b[39m     })\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "Build project to verify no errors",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/api/vozovoz-parser-stable/route.ts:551:44\nType error: 'error' is of type 'unknown'.\n\n\u001b[0m \u001b[90m 549 |\u001b[39m           services\u001b[33m:\u001b[39m []\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 550 |\u001b[39m           deliveryTime\u001b[33m:\u001b[39m \u001b[36mnull\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 551 |\u001b[39m           warnings\u001b[33m:\u001b[39m [\u001b[32m'Ошибка парсинга: '\u001b[39m \u001b[33m+\u001b[39m error\u001b[33m.\u001b[39mmessage]\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 552 |\u001b[39m         }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 553 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 554 |\u001b[39m     })\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 0,
+      "description": "Build project to verify no errors"
+    },
+    "time": {
+      "start": 1765815627015,
+      "end": 1765815639687
+    }
+  }
+}

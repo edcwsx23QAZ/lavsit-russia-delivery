@@ -1,0 +1,27 @@
+{
+  "id": "prt_b22cef655001kvdPn4EdDGVviB",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22cee255001Gw3vv0B3KOmNvr",
+  "type": "tool",
+  "callID": "toolu_01UaPJkuRe1VwdxZd8z7U9vB",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | tail -30",
+      "description": "Build project to verify no errors",
+      "timeout": 120000
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/api/vozovoz-parser-stable/route.ts:432:13\nType error: Operator '>' cannot be applied to types 'Element[]' and 'number'.\n\n\u001b[0m \u001b[90m 430 |\u001b[39m         }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 431 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 432 |\u001b[39m         \u001b[36mif\u001b[39m (dimensionInputs\u001b[33m.\u001b[39mlength \u001b[33m>\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 433 |\u001b[39m           \u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mentries(dimensionInputs)\u001b[33m.\u001b[39mforEach(([key\u001b[33m,\u001b[39m inputs]) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 434 |\u001b[39m             \u001b[36mif\u001b[39m (inputs\u001b[33m.\u001b[39mlength \u001b[33m>\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m\n\u001b[0m \u001b[90m 435 |\u001b[39m               \u001b[36mconst\u001b[39m input \u001b[33m=\u001b[39m inputs[\u001b[35m0\u001b[39m] \u001b[36mas\u001b[39m \u001b[33mHTMLInputElement\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "Build project to verify no errors",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/api/vozovoz-parser-stable/route.ts:432:13\nType error: Operator '>' cannot be applied to types 'Element[]' and 'number'.\n\n\u001b[0m \u001b[90m 430 |\u001b[39m         }\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 431 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 432 |\u001b[39m         \u001b[36mif\u001b[39m (dimensionInputs\u001b[33m.\u001b[39mlength \u001b[33m>\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 433 |\u001b[39m           \u001b[33mObject\u001b[39m\u001b[33m.\u001b[39mentries(dimensionInputs)\u001b[33m.\u001b[39mforEach(([key\u001b[33m,\u001b[39m inputs]) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m 434 |\u001b[39m             \u001b[36mif\u001b[39m (inputs\u001b[33m.\u001b[39mlength \u001b[33m>\u001b[39m \u001b[35m0\u001b[39m) {\u001b[0m\n\u001b[0m \u001b[90m 435 |\u001b[39m               \u001b[36mconst\u001b[39m input \u001b[33m=\u001b[39m inputs[\u001b[35m0\u001b[39m] \u001b[36mas\u001b[39m \u001b[33mHTMLInputElement\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 0,
+      "description": "Build project to verify no errors"
+    },
+    "time": {
+      "start": 1765815548169,
+      "end": 1765815560005
+    }
+  }
+}

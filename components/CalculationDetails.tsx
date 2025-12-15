@@ -180,7 +180,7 @@ export default function CalculationDetails({ details, isExpanded = false }: Calc
               <div>
                 <span className="text-gray-400">Время выполнения:</span>
                 <div className="text-white">
-                  {formatDuration(details.parseTime)}
+                  {formatDuration(details.parseTime || 0)}
                 </div>
               </div>
             </div>

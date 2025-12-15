@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22ceca39001m4SfkwX1zz7G19",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22cebc96001Hf2fa8Vzfm3Fgy",
+  "type": "tool",
+  "callID": "toolu_017JLSzwyVjR7xMBHuLhNJh7",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser-hybrid/route.ts",
+      "limit": 20,
+      "offset": 239
+    },
+    "output": "<file>\n00240|     if (services.length === 0 && totalPrice > 0) {\n00241|       services.push({\n00242|         name: 'Доставка груза',\n00243|         description: `${params.fromCity} - ${params.toCity}`,\n00244|         price: totalPrice\n00245|       });\n00246|     }\n00247| \n00248|     // Эмулируем общую стоимость как на сайте\n00249|     const totalCost = services.reduce((sum, service) => sum + service.price, 0);\n00250|     \n00251|     // Эмулируем сроки доставки\n00252|     let deliveryTime = '1-2 дня';\n00253|     if (responseData.deliveryTime) {\n00254|       if (responseData.deliveryTime.from && responseData.deliveryTime.to) {\n00255|         deliveryTime = `${responseData.deliveryTime.from}-${responseData.deliveryTime.to} дней`;\n00256|       } else if (responseData.deliveryTime.from) {\n00257|         deliveryTime = `${responseData.deliveryTime.from} дней`;\n00258|       } else if (responseData.deliveryTime.to) {\n00259|         deliveryTime = `${responseData.deliveryTime.to} дней`;\n\n(File has more lines. Use 'offset' parameter to read beyond line 259)\n</file>",
+    "title": "app/api/vozovoz-parser-hybrid/route.ts",
+    "metadata": {
+      "preview": "    if (services.length === 0 && totalPrice > 0) {\n      services.push({\n        name: 'Доставка груза',\n        description: `${params.fromCity} - ${params.toCity}`,\n        price: totalPrice\n      });\n    }\n\n    // Эмулируем общую стоимость как на сайте\n    const totalCost = services.reduce((sum, service) => sum + service.price, 0);\n    \n    // Эмулируем сроки доставки\n    let deliveryTime = '1-2 дня';\n    if (responseData.deliveryTime) {\n      if (responseData.deliveryTime.from && responseData.deliveryTime.to) {\n        deliveryTime = `${responseData.deliveryTime.from}-${responseData.deliveryTime.to} дней`;\n      } else if (responseData.deliveryTime.from) {\n        deliveryTime = `${responseData.deliveryTime.from} дней`;\n      } else if (responseData.deliveryTime.to) {\n        deliveryTime = `${responseData.deliveryTime.to} дней`;"
+    },
+    "time": {
+      "start": 1765815536801,
+      "end": 1765815536805
+    }
+  }
+}

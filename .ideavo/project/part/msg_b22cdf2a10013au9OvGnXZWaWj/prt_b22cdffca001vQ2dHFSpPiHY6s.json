@@ -1,0 +1,26 @@
+{
+  "id": "prt_b22cdffca001vQ2dHFSpPiHY6s",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22cdf2a10013au9OvGnXZWaWj",
+  "type": "tool",
+  "callID": "toolu_01QaMoTdU4fHLPk2322xD6Ub",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | head -100",
+      "description": "Build project to check for errors"
+    },
+    "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/api/vozovoz-parser-hybrid/route.ts:214:36\nType error: 'service.discount' is possibly 'undefined'.\n\n\u001b[0m \u001b[90m 212 |\u001b[39m         finalBasePrice \u001b[33m=\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround(service\u001b[33m.\u001b[39mbasePrice \u001b[33m*\u001b[39m adjustmentFactor)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 213 |\u001b[39m         finalPrice \u001b[33m=\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround(service\u001b[33m.\u001b[39mprice \u001b[33m*\u001b[39m adjustmentFactor)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 214 |\u001b[39m         finalDiscount \u001b[33m=\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround(service\u001b[33m.\u001b[39mdiscount \u001b[33m*\u001b[39m adjustmentFactor)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 215 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 216 |\u001b[39m       \u001b[0m\n\u001b[0m \u001b[90m 217 |\u001b[39m       \u001b[90m// Добавляем основную услугу\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+    "title": "Build project to check for errors",
+    "metadata": {
+      "output": "\n> ideavo-nextjs@0.1.0 build\n> next build\n\n  ▲ Next.js 14.2.31\n  - Environments: .env.local, .env\n\n   Creating an optimized production build ...\n ✓ Compiled successfully\n   Linting and checking validity of types ...\nFailed to compile.\n\n./app/api/vozovoz-parser-hybrid/route.ts:214:36\nType error: 'service.discount' is possibly 'undefined'.\n\n\u001b[0m \u001b[90m 212 |\u001b[39m         finalBasePrice \u001b[33m=\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround(service\u001b[33m.\u001b[39mbasePrice \u001b[33m*\u001b[39m adjustmentFactor)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 213 |\u001b[39m         finalPrice \u001b[33m=\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround(service\u001b[33m.\u001b[39mprice \u001b[33m*\u001b[39m adjustmentFactor)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 214 |\u001b[39m         finalDiscount \u001b[33m=\u001b[39m \u001b[33mMath\u001b[39m\u001b[33m.\u001b[39mround(service\u001b[33m.\u001b[39mdiscount \u001b[33m*\u001b[39m adjustmentFactor)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 215 |\u001b[39m       }\u001b[0m\n\u001b[0m \u001b[90m 216 |\u001b[39m       \u001b[0m\n\u001b[0m \u001b[90m 217 |\u001b[39m       \u001b[90m// Добавляем основную услугу\u001b[39m\u001b[0m\nNext.js build worker exited with code: 1 and signal: null\n",
+      "exit": 0,
+      "description": "Build project to check for errors"
+    },
+    "time": {
+      "start": 1765815484898,
+      "end": 1765815504742
+    }
+  }
+}

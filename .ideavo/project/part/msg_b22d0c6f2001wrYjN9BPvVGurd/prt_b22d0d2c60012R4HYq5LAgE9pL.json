@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22d0d2c60012R4HYq5LAgE9pL",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22d0c6f2001wrYjN9BPvVGurd",
+  "type": "tool",
+  "callID": "toolu_01HnqgHegAvpdLT8SKiorq9r",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/components/CalculationDetails.tsx",
+      "limit": 20,
+      "offset": 178
+    },
+    "output": "<file>\n00179|               \n00180|               <div>\n00181|                 <span className=\"text-gray-400\">Время выполнения:</span>\n00182|                 <div className=\"text-white\">\n00183|                   {formatDuration(details.parseTime)}\n00184|                 </div>\n00185|               </div>\n00186|             </div>\n00187| \n00188|             {details.requestData && (\n00189|               <div>\n00190|                 <span className=\"text-gray-400\">Параметры запроса:</span>\n00191|                 <div className=\"text-white font-mono bg-gray-900 p-2 rounded text-xs max-h-32 overflow-y-auto\">\n00192|                   <pre>{JSON.stringify(details.requestData, null, 2)}</pre>\n00193|                 </div>\n00194|               </div>\n00195|             )}\n00196| \n00197|             {details.responseData && (\n00198|               <div>\n\n(File has more lines. Use 'offset' parameter to read beyond line 198)\n</file>",
+    "title": "components/CalculationDetails.tsx",
+    "metadata": {
+      "preview": "              \n              <div>\n                <span className=\"text-gray-400\">Время выполнения:</span>\n                <div className=\"text-white\">\n                  {formatDuration(details.parseTime)}\n                </div>\n              </div>\n            </div>\n\n            {details.requestData && (\n              <div>\n                <span className=\"text-gray-400\">Параметры запроса:</span>\n                <div className=\"text-white font-mono bg-gray-900 p-2 rounded text-xs max-h-32 overflow-y-auto\">\n                  <pre>{JSON.stringify(details.requestData, null, 2)}</pre>\n                </div>\n              </div>\n            )}\n\n            {details.responseData && (\n              <div>"
+    },
+    "time": {
+      "start": 1765815670010,
+      "end": 1765815670014
+    }
+  }
+}

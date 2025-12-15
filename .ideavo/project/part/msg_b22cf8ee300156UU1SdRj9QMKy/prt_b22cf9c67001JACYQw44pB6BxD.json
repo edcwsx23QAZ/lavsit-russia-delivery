@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22cf9c67001JACYQw44pB6BxD",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22cf8ee300156UU1SdRj9QMKy",
+  "type": "tool",
+  "callID": "toolu_016ezkMyQLrNNgS9Db8iiype",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser-stable/route.ts",
+      "limit": 30,
+      "offset": 478
+    },
+    "output": "<file>\n00479|         ];\n00480| \n00481|         for (const selector of totalSelectors) {\n00482|           try {\n00483|             const elements = document.querySelectorAll(selector);\n00484|             for (const element of elements) {\n00485|               const text = element.textContent || '';\n00486|               const priceMatch = text.match(/(\\d[\\s\\d]*\\d+)\\s*₽/);\n00487|               if (priceMatch) {\n00488|                 result.totalCost = parseInt(priceMatch[1].replace(/\\s/g, ''));\n00489|                 console.log('Найдена общая стоимость:', result.totalCost);\n00490|                 break;\n00491|               }\n00492|             }\n00493|             if (result.totalCost > 0) break;\n00494|           } catch (e) {\n00495|             continue;\n00496|           }\n00497|         }\n00498| \n00499|         // Поиск услуг\n00500|         const serviceKeywords = [\n00501|           'Платный въезд',\n00502|           'Перевозка между городами',\n00503|           'Страхование',\n00504|           'Складская обработка',\n00505|           'Отвоз груза',\n00506|           'Скидка'\n00507|         ];\n00508| \n\n(File has more lines. Use 'offset' parameter to read beyond line 508)\n</file>",
+    "title": "app/api/vozovoz-parser-stable/route.ts",
+    "metadata": {
+      "preview": "        ];\n\n        for (const selector of totalSelectors) {\n          try {\n            const elements = document.querySelectorAll(selector);\n            for (const element of elements) {\n              const text = element.textContent || '';\n              const priceMatch = text.match(/(\\d[\\s\\d]*\\d+)\\s*₽/);\n              if (priceMatch) {\n                result.totalCost = parseInt(priceMatch[1].replace(/\\s/g, ''));\n                console.log('Найдена общая стоимость:', result.totalCost);\n                break;\n              }\n            }\n            if (result.totalCost > 0) break;\n          } catch (e) {\n            continue;\n          }\n        }\n"
+    },
+    "time": {
+      "start": 1765815590675,
+      "end": 1765815590679
+    }
+  }
+}

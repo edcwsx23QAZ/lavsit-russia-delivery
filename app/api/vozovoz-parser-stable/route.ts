@@ -429,7 +429,7 @@ async function parseVozovozWebsiteStable(params: VozovozParserParams): Promise<P
           weight: Array.from(document.querySelectorAll('input[name*="weight"], input[placeholder*="вес"]'))
         };
 
-        if (dimensionInputs.length > 0) {
+        if (Object.keys(dimensionInputs).length > 0) {
           Object.entries(dimensionInputs).forEach(([key, inputs]) => {
             if (inputs.length > 0) {
               const input = inputs[0] as HTMLInputElement;
@@ -481,7 +481,7 @@ async function parseVozovozWebsiteStable(params: VozovozParserParams): Promise<P
         for (const selector of totalSelectors) {
           try {
             const elements = document.querySelectorAll(selector);
-            for (const element of elements) {
+            for (const element of Array.from(elements)) {
               const text = element.textContent || '';
               const priceMatch = text.match(/(\d[\s\d]*\d+)\s*₽/);
               if (priceMatch) {
@@ -509,7 +509,7 @@ async function parseVozovozWebsiteStable(params: VozovozParserParams): Promise<P
         serviceKeywords.forEach(keyword => {
           try {
             const elements = document.querySelectorAll('*');
-            for (const element of elements) {
+            for (const element of Array.from(elements)) {
               const text = element.textContent || '';
               if (text.includes(keyword) && text.includes('₽')) {
                 const priceMatch = text.match(/(\d[\s\d]*\d+)\s*₽/);
@@ -532,7 +532,7 @@ async function parseVozovozWebsiteStable(params: VozovozParserParams): Promise<P
 
         // Поиск сроков доставки
         const timeElements = document.querySelectorAll('*');
-        for (const element of timeElements) {
+        for (const element of Array.from(timeElements)) {
           const text = element.textContent || '';
           if (text.includes('дней') || text.includes('дня') || text.includes('день')) {
             result.deliveryTime = text.trim();
@@ -548,7 +548,7 @@ async function parseVozovozWebsiteStable(params: VozovozParserParams): Promise<P
           totalCost: 0,
           services: [],
           deliveryTime: null,
-          warnings: ['Ошибка парсинга: ' + error.message]
+          warnings: ['Ошибка парсинга: ' + (error instanceof Error ? error.message : String(error))]
         };
       }
     });

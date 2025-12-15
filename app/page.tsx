@@ -3542,93 +3542,106 @@ export default function Home() {
         console.log(`   📐 Максимальные габариты: ${maxLength}×${maxWidth}×${maxHeight} см`);
       }
 
-      // Функция для определения FIAS кода города
-      const getCityFias = (cityName: string): string => {
-        const cityFiasMap: Record<string, string> = {
-          'москва': '0c5b2444-70a0-4932-980c-b4dc0d3f02b5',
-          'санкт-петербург': 'c2deb16a-0330-4f05-821f-1d09c93331e6',
-          'спб': 'c2deb16a-0330-4f05-821f-1d09c93331e6',
-          'екатеринбург': '2763c110-cb8b-416a-9dac-ad28a55b4402',
-          'новосибирск': '8dea00e3-9aab-4d8e-887c-ef2aaa546456',
-          'казань': '93b3df57-4c89-44df-ac42-96f05e9cd3b9',
-          'нижний новгород': '555e7d61-d9a7-4ba6-9770-6caa8198c483',
-          'челябинск': 'a376e68d-724a-4472-be7c-891bdb09ae32',
-          'омск': 'bb035cc3-1dc2-4627-9d25-a1bf5fed073d',
-          'ростов-на-дону': 'c1cfe4b9-f7c2-423c-abfa-6ed5cb24d83e',
-          'уфа': '7339e834-2cb4-473c-9c6e-93f3dcd66011',
-          'красноярск': '9b968c73-f4d4-4012-8da8-3dacd4d4c1bd',
-          'пермь': '4dc222e8-1f6a-4c36-894b-2b4a8c8a9b08',
-          'воронеж': '5bf5ddff-6353-4a3d-80c4-6fb27f00c6c1',
-          'волгоград': 'da051ec8-da2e-4a66-b542-473b8d221ab6',
-          'лосино-петровский': '0c5b2444-70a0-4932-980c-b4dc0d3f02b5', // Используем FIAS Москвы (ближайший крупный город)
-        };
+      // Функция для получения FIAS кода города через Dadata с fallback на строку
+      const getNordwheelCityFias = async (cityName: string): Promise<string> => {
+        try {
+          // Попытка получить актуальные данные через Dadata findById
+          const response = await fetch('/api/dadata?fias_id=' + encodeURIComponent(cityName) + '&type=findById');
+          const data = await response.json();
 
-        const normalizedCity = cityName.toLowerCase().trim()
-          .replace(/^г\s+/, '') // Убираем префикс "г "
-          .replace(/^город\s+/, '') // Убираем префикс "город "
-          .replace(/\s+/g, ' '); // Нормализуем пробелы
-
-        return cityFiasMap[normalizedCity] || '0c5b2444-70a0-4932-980c-b4dc0d3f02b5'; // По умолчанию Москва
+          if (data.success && data.data?.city_fias_id) {
+            console.log(`🚛 Nordwheel: Получен актуальный FIAS для ${cityName}:`, data.data.city_fias_id);
+            return data.data.city_fias_id;
+          } else {
+            // FIAS не найден - выводим ошибку
+            console.error(`🚛 Nordwheel: FIAS код не найден для города ${cityName}`);
+            throw new Error(`FIAS код не найден для города ${cityName}`);
+          }
+        } catch (error) {
+          console.warn(`🚛 Nordwheel: Dadata недоступна для ${cityName}, используем город как строку:`, error);
+          // Fallback: возвращаем город как строку вместо FIAS кода
+          return cityName;
+        }
       };
       // 🏙️ Определяем тип локации на основе настроек формы
-      const getDispatchLocation = () => {
-        if (form.fromTerminal) {
-          return {
-            type: 'terminal' as const,
-            // Для терминальной доставки используем реальный FIAS код города
-            city_fias: getCityFias(form.fromCity)
-          };
-        } else if (form.fromLavsiteWarehouse) {
-          // 🏭 Для склада Лавсит используем специальный формат с FIAS кодом города
-          return {
-            type: 'terminal' as const, // Используем terminal тип для склада
-            city_fias: getCityFias('Лосино-Петровский') // Используем FIAS города склада
-          };
-        } else {
-          return {
-            type: 'address' as const,
-            address: form.fromAddress || form.fromCity // Используем адрес если есть, иначе город
-          };
+      const getDispatchLocation = async () => {
+        try {
+          if (form.fromTerminal) {
+            return {
+              type: 'terminal' as const,
+              city_fias: await getNordwheelCityFias(form.fromCity)
+            };
+          } else if (form.fromLavsiteWarehouse) {
+            // 🏭 Для склада Лавсит используем адрес вместо терминала
+            return {
+              type: 'address' as const,
+              address: form.fromAddress || 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область'
+            };
+          } else {
+            return {
+              type: 'address' as const,
+              address: form.fromAddress || form.fromCity
+            };
+          }
+        } catch (error) {
+          console.error(`🚛 Nordwheel: Ошибка определения локации отправления:`, error);
+          throw error;
         }
       };
 
-      const getDestinationLocation = () => {
-        if (form.toTerminal) {
-          return {
-            type: 'terminal' as const,
-            // Для терминальной доставки используем реальный FIAS код города
-            city_fias: getCityFias(form.toCity)
-          };
-        } else {
-          return {
-            type: 'address' as const,
-            address: form.toAddress || form.toCity // Используем адрес если есть, иначе город
-          };
+      const getDestinationLocation = async () => {
+        try {
+          if (form.toTerminal) {
+            return {
+              type: 'terminal' as const,
+              city_fias: await getNordwheelCityFias(form.toCity)
+            };
+          } else {
+            return {
+              type: 'address' as const,
+              address: form.toAddress || form.toCity
+            };
+          }
+        } catch (error) {
+          console.error(`🚛 Nordwheel: Ошибка определения локации назначения:`, error);
+          throw error;
         }
       };
 
       // Формируем запрос для нового API NordWheel с учетом настроек формы
-      const requestData = {
-        dispatch: {
-          location: getDispatchLocation()
-        },
-        destination: {
-          location: getDestinationLocation()
-        },
-        cargo: {
-          total_weight: totalWeight,
-          total_volume: totalVolume,
-          total_quantity: 1 // Всегда 1, чтобы NordWheel не умножал стоимость на кол-во мест
-        },
-        insurance: form.needInsurance && form.declaredValue ? form.declaredValue : null,
-        insurance_refuse: !form.needInsurance,
-        services: {
-          is_package: form.needPackaging,
-          is_documents_return: false,
-          is_fragile: false
-        },
-        promocode: null
-      };
+      let requestData;
+      try {
+        requestData = {
+          dispatch: {
+            location: await getDispatchLocation()
+          },
+          destination: {
+            location: await getDestinationLocation()
+          },
+          cargo: {
+            total_weight: totalWeight,
+            total_volume: totalVolume,
+            total_quantity: 1 // Всегда 1, чтобы NordWheel не умножал стоимость на кол-во мест
+          },
+          insurance: form.needInsurance && form.declaredValue ? form.declaredValue : null,
+          insurance_refuse: !form.needInsurance,
+          services: {
+            is_package: form.needPackaging,
+            is_documents_return: false,
+            is_fragile: false
+          },
+          promocode: null
+        };
+      } catch (locationError) {
+        console.error('🚛 Nordwheel: Критическая ошибка определения локаций:', locationError);
+        return {
+          company: 'Nord Wheel',
+          price: 0,
+          days: 0,
+          error: `Ошибка определения адресов: ${locationError instanceof Error ? locationError.message : 'Неизвестная ошибка'}`,
+          apiUrl
+        };
+      }
 
       console.log('🚛 Nord Wheel новый API запрос:', JSON.stringify(requestData, null, 2));
 

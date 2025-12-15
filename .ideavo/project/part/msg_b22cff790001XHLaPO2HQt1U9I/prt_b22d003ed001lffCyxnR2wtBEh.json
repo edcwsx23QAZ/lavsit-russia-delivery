@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22d003ed001lffCyxnR2wtBEh",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22cff790001XHLaPO2HQt1U9I",
+  "type": "tool",
+  "callID": "toolu_01W7mpqyAEM284jRpzrPqcNn",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser-stable/route.ts",
+      "limit": 30,
+      "offset": 508
+    },
+    "output": "<file>\n00509|         serviceKeywords.forEach(keyword => {\n00510|           try {\n00511|             const elements = document.querySelectorAll('*');\n00512|             for (const element of elements) {\n00513|               const text = element.textContent || '';\n00514|               if (text.includes(keyword) && text.includes('₽')) {\n00515|                 const priceMatch = text.match(/(\\d[\\s\\d]*\\d+)\\s*₽/);\n00516|                 if (priceMatch) {\n00517|                   const price = parseInt(priceMatch[1].replace(/\\s/g, ''));\n00518|                   const name = text.replace(priceMatch[0], '').trim();\n00519|                   \n00520|                   if (name && price > 0) {\n00521|                     result.services.push({ name, price });\n00522|                     console.log('Найдена услуга:', name, price);\n00523|                     break;\n00524|                   }\n00525|                 }\n00526|               }\n00527|             }\n00528|           } catch (e) {\n00529|             // Игнорируем ошибки и продолжаем\n00530|           }\n00531|         });\n00532| \n00533|         // Поиск сроков доставки\n00534|         const timeElements = document.querySelectorAll('*');\n00535|         for (const element of timeElements) {\n00536|           const text = element.textContent || '';\n00537|           if (text.includes('дней') || text.includes('дня') || text.includes('день')) {\n00538|             result.deliveryTime = text.trim();\n\n(File has more lines. Use 'offset' parameter to read beyond line 538)\n</file>",
+    "title": "app/api/vozovoz-parser-stable/route.ts",
+    "metadata": {
+      "preview": "        serviceKeywords.forEach(keyword => {\n          try {\n            const elements = document.querySelectorAll('*');\n            for (const element of elements) {\n              const text = element.textContent || '';\n              if (text.includes(keyword) && text.includes('₽')) {\n                const priceMatch = text.match(/(\\d[\\s\\d]*\\d+)\\s*₽/);\n                if (priceMatch) {\n                  const price = parseInt(priceMatch[1].replace(/\\s/g, ''));\n                  const name = text.replace(priceMatch[0], '').trim();\n                  \n                  if (name && price > 0) {\n                    result.services.push({ name, price });\n                    console.log('Найдена услуга:', name, price);\n                    break;\n                  }\n                }\n              }\n            }\n          } catch (e) {"
+    },
+    "time": {
+      "start": 1765815617078,
+      "end": 1765815617115
+    }
+  }
+}

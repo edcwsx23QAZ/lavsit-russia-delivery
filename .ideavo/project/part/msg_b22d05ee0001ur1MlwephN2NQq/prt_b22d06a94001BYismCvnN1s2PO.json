@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22d06a94001BYismCvnN1s2PO",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22d05ee0001ur1MlwephN2NQq",
+  "type": "tool",
+  "callID": "toolu_015mVwXpKVG4huRaRqJD5e8v",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser-stable/route.ts",
+      "limit": 30,
+      "offset": 545
+    },
+    "output": "<file>\n00546|         console.error('Ошибка парсинга:', error);\n00547|         return {\n00548|           totalCost: 0,\n00549|           services: [],\n00550|           deliveryTime: null,\n00551|           warnings: ['Ошибка парсинга: ' + error.message]\n00552|         };\n00553|       }\n00554|     });\n00555| \n00556|     const parseTime = ((Date.now() - startTime) / 1000).toFixed(1);\n00557| \n00558|     console.log('✅ Парсинг завершен');\n00559|     console.log('💰 Найдена стоимость:', results.totalCost);\n00560|     console.log('📦 Найдено услуг:', results.services.length);\n00561| \n00562|     return {\n00563|       totalCost: results.totalCost,\n00564|       services: results.services,\n00565|       deliveryTime: results.deliveryTime,\n00566|       warnings: results.warnings,\n00567|       parseTime: parseFloat(parseTime)\n00568|     };\n00569| \n00570|   } catch (error: any) {\n00571|     console.error('❌ Ошибка при парсинге Vozovoz:', error);\n00572|     throw new Error(`Ошибка парсера: ${error.message}`);\n00573|   } finally {\n00574|     if (browser) {\n00575|       await browser.close();\n\n(File has more lines. Use 'offset' parameter to read beyond line 575)\n</file>",
+    "title": "app/api/vozovoz-parser-stable/route.ts",
+    "metadata": {
+      "preview": "        console.error('Ошибка парсинга:', error);\n        return {\n          totalCost: 0,\n          services: [],\n          deliveryTime: null,\n          warnings: ['Ошибка парсинга: ' + error.message]\n        };\n      }\n    });\n\n    const parseTime = ((Date.now() - startTime) / 1000).toFixed(1);\n\n    console.log('✅ Парсинг завершен');\n    console.log('💰 Найдена стоимость:', results.totalCost);\n    console.log('📦 Найдено услуг:', results.services.length);\n\n    return {\n      totalCost: results.totalCost,\n      services: results.services,\n      deliveryTime: results.deliveryTime,"
+    },
+    "time": {
+      "start": 1765815643350,
+      "end": 1765815643352
+    }
+  }
+}

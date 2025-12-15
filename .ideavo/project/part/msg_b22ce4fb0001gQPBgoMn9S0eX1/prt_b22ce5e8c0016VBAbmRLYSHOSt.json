@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22ce5e8c0016VBAbmRLYSHOSt",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22ce4fb0001gQPBgoMn9S0eX1",
+  "type": "tool",
+  "callID": "toolu_01Pjrh8gvwjQoeJ1MxuaKFad",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-parser-hybrid/route.ts",
+      "limit": 30,
+      "offset": 210
+    },
+    "output": "<file>\n00211|         const adjustmentFactor = (volumeRatio + weightRatio) / 2;\n00212|         finalBasePrice = Math.round(service.basePrice * adjustmentFactor);\n00213|         finalPrice = Math.round(service.price * adjustmentFactor);\n00214|         finalDiscount = Math.round(service.discount * adjustmentFactor);\n00215|       }\n00216|       \n00217|       // Добавляем основную услугу\n00218|       services.push({\n00219|         name: service.name,\n00220|         price: finalPrice,\n00221|         basePrice: finalBasePrice,\n00222|         discount: service.hasDiscount ? finalDiscount : undefined\n00223|       });\n00224|       \n00225|       // Добавляем скидку как отдельную услугу если она есть\n00226|       if (service.hasDiscount && finalDiscount > 0) {\n00227|         services.push({\n00228|           name: 'Скидка',\n00229|           price: -finalDiscount,\n00230|           basePrice: 0,\n00231|           discount: finalDiscount\n00232|         });\n00233|       }\n00234|     });\n00235|       console.log('🚚 Vozovoz: массив услуг не найден, создаем базовые услуги');\n00236|       \n00237|         // Этот блок больше не нужен, так как мы всегда используем эмуляцию сайта выше\n00238|     \n00239|     // Если никаких услуг не найдено, добавляем общую стоимость\n00240|     if (services.length === 0 && totalPrice > 0) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 240)\n</file>",
+    "title": "app/api/vozovoz-parser-hybrid/route.ts",
+    "metadata": {
+      "preview": "        const adjustmentFactor = (volumeRatio + weightRatio) / 2;\n        finalBasePrice = Math.round(service.basePrice * adjustmentFactor);\n        finalPrice = Math.round(service.price * adjustmentFactor);\n        finalDiscount = Math.round(service.discount * adjustmentFactor);\n      }\n      \n      // Добавляем основную услугу\n      services.push({\n        name: service.name,\n        price: finalPrice,\n        basePrice: finalBasePrice,\n        discount: service.hasDiscount ? finalDiscount : undefined\n      });\n      \n      // Добавляем скидку как отдельную услугу если она есть\n      if (service.hasDiscount && finalDiscount > 0) {\n        services.push({\n          name: 'Скидка',\n          price: -finalDiscount,\n          basePrice: 0,"
+    },
+    "time": {
+      "start": 1765815509438,
+      "end": 1765815509444
+    }
+  }
+}

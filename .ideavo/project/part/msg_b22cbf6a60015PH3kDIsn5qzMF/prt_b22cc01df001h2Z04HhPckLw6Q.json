@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22cc01df001h2Z04HhPckLw6Q",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22cbf6a60015PH3kDIsn5qzMF",
+  "type": "tool",
+  "callID": "toolu_014Fa4axokBVuZixCfAwdSvV",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 100,
+      "offset": 3880
+    },
+    "output": "<file>\n03881|            apiUrl,\n03882|            requestData,\n03883|            responseData: data\n03884|          };\n03885|        }\n03886| \n03887|       return {\n03888|         company: 'Nord Wheel',\n03889|         price: Math.round(price),\n03890|         days: days,\n03891|         details,\n03892|         requestData,\n03893|         responseData: data,\n03894|         apiUrl\n03895|       };\n03896|     } catch (error: any) {\n03897|       console.error('🚛 Nord Wheel ошибка:', error);\n03898|       return {\n03899|         company: 'Nord Wheel',\n03900|         price: 0,\n03901|         days: 0,\n03902|         error: `Ошибка соединения: ${error.message}`,\n03903|         apiUrl\n03904|       };\n03905|     }\n03906|   };\n03907|     const calculateCdek = async (): Promise<CalculationResult> => {\n03908|     const apiUrl = '/api/cdek';\n03909|     \n03910|     try {\n03911|       validateMultipleCargos(form.cargos);\n03912|       \n03913|       const packages = form.cargos.map(cargo => ({\n03914|         height: cargo.height,\n03915|         length: cargo.length,\n03916|         width: cargo.width,\n03917|         weight: cargo.weight * 1000\n03918|       }));\n03919| \n03920|       const requestData: any = {\n03921|         from_city: form.fromCity || 'Москва',\n03922|         to_city: form.toCity || 'Санкт-Петербург',\n03923|         packages: packages\n03924|       };\n03925| \n03926|       if (form.needInsurance && form.declaredValue > 0) {\n03927|         requestData.services = [{\n03928|           code: 'INSURANCE',\n03929|           parameter: form.declaredValue\n03930|         }];\n03931|         console.log('📦 CDEK: добавлено страхование', form.declaredValue);\n03932|       }\n03933| \n03934|       console.log('📦 CDEK запрос:', JSON.stringify(requestData, null, 2));\n03935|       console.log('📦 CDEK маршрут:', {\n03936|         fromAddressDelivery: form.fromAddressDelivery,\n03937|         fromLavsiteWarehouse: form.fromLavsiteWarehouse,\n03938|         toAddressDelivery: form.toAddressDelivery\n03939|       });\n03940| \n03941|        const result = await enhancedApiRequest(\n03942|          apiUrl,\n03943|          {\n03944|            method: 'POST',\n03945|            headers: {\n03946|              'Content-Type': 'application/json',\n03947|            },\n03948|            body: JSON.stringify(requestData)\n03949|          },\n03950|          { operation: 'calculate', company: 'СДЭК' }\n03951|        );\n03952| \n03953|        if (result && typeof result === 'object' && 'success' in result && !result.success) {\n03954|          console.error('❌ СДЭК API ошибка:', result.error);\n03955|          return {\n03956|            company: 'СДЭК',\n03957|            price: 0,\n03958|            days: 0,\n03959|            error: result.error.userMessage || result.error.message,\n03960|            requestData,\n03961|            responseData: null,\n03962|            apiUrl\n03963|          };\n03964|        }\n03965| \n03966|        const response = result as Response;\n03967|        const data = await response.json();\n03968|        console.log('📦 CDEK ответ получен, тарифов:', data.tariff_codes?.length || 0);\n03969| \n03970|       if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {\n03971|         const isFromDoor = form.fromAddressDelivery || form.fromLavsiteWarehouse;\n03972|         const isToDoor = form.toAddressDelivery;\n03973|         \n03974|         let deliveryMode: number;\n03975|         let deliveryModeText: string;\n03976|         \n03977|         if (isFromDoor && isToDoor) {\n03978|           deliveryMode = 1;\n03979|           deliveryModeText = 'дверь-дверь';\n03980|         } else if (isFromDoor && !isToDoor) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 3980)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "           apiUrl,\n           requestData,\n           responseData: data\n         };\n       }\n\n      return {\n        company: 'Nord Wheel',\n        price: Math.round(price),\n        days: days,\n        details,\n        requestData,\n        responseData: data,\n        apiUrl\n      };\n    } catch (error: any) {\n      console.error('🚛 Nord Wheel ошибка:', error);\n      return {\n        company: 'Nord Wheel',\n        price: 0,"
+    },
+    "time": {
+      "start": 1765815354369,
+      "end": 1765815354372
+    }
+  }
+}
