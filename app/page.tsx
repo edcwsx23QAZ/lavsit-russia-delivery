@@ -3559,7 +3559,16 @@ export default function Home() {
           });
           
           const data = await response.json();
-          console.log('🚛 Nordwheel: Dadata clean ответ:', data);
+          console.log('🚛 Nordwheel: Dadata clean полный ответ:', JSON.stringify(data, null, 2));
+          
+          // Проверяем структуру ответа
+          console.log('🔍 Nordwheel: Проверка структуры:', {
+            'data.success': data.success,
+            'data.data exists': !!data.data,
+            'data.data.cleaned exists': !!(data.data && data.data.cleaned),
+            'typeof data.data': typeof data.data,
+            'data.data keys': data.data ? Object.keys(data.data) : 'N/A'
+          });
           
           if (data.success && data.data?.cleaned) {
             const cleaned = data.data.cleaned;
@@ -3589,6 +3598,7 @@ export default function Home() {
             }
           } else {
             console.error(`❌ Nordwheel: Некорректный ответ от Dadata для адреса ${address}`);
+            console.error('Полученные данные:', JSON.stringify(data, null, 2));
             throw new Error(`Некорректный ответ от Dadata для адреса ${address}`);
           }
         } catch (error) {
@@ -3615,7 +3625,16 @@ export default function Home() {
           });
           
           const data = await response.json();
-          console.log('🚛 Nordwheel: Dadata clean ответ для города:', data);
+          console.log('🚛 Nordwheel: Dadata clean полный ответ для города:', JSON.stringify(data, null, 2));
+          
+          // Проверяем структуру ответа
+          console.log('🔍 Nordwheel: Проверка структуры для города:', {
+            'data.success': data.success,
+            'data.data exists': !!data.data,
+            'data.data.cleaned exists': !!(data.data && data.data.cleaned),
+            'typeof data.data': typeof data.data,
+            'data.data keys': data.data ? Object.keys(data.data) : 'N/A'
+          });
 
           if (data.success && data.data?.cleaned) {
             const cleaned = data.data.cleaned;
@@ -3639,6 +3658,7 @@ export default function Home() {
             }
           } else {
             console.error(`❌ Nordwheel: Некорректный ответ от Dadata для города ${cityName}`);
+            console.error('Полученные данные:', JSON.stringify(data, null, 2));
             throw new Error(`Некорректный ответ от Dadata для города ${cityName}`);
           }
         } catch (error) {

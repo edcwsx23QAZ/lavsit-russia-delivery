@@ -1,0 +1,11 @@
+{
+  "id": "prt_b22e8d387001mrhwO25m9w23GS",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22e8c249001YMC4d3JcYj3kll",
+  "type": "text",
+  "text": "Вижу! Проблема в том, что API Dadata возвращает структуру:\n\n```json\n{\n  \"success\": true,\n  \"data\": {\n    \"cleaned\": cleanedAddress,  // весь объект\n    \"city_fias_id\": cleanedAddress.city_fias_id  // дублируем для удобства\n  }\n}\n```\n\nНо в функции `getCityFiasFromAddress` мы обращаемся к `data.data.cleaned.city_fias_id`, что правильно. Проблема в том, что мы проверяем `data.data?.cleaned`, но в ответе есть `data.data.cleaned` (это объект с полями).\n\nДавайте добавим более детальное логирование, чтобы увидеть точную структуру:",
+  "time": {
+    "start": 1765817245684,
+    "end": 1765817245684
+  }
+}

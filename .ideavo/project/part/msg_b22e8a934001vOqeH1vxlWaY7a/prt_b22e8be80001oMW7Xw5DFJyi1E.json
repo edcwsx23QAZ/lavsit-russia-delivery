@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22e8be80001oMW7Xw5DFJyi1E",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22e8a934001vOqeH1vxlWaY7a",
+  "type": "tool",
+  "callID": "toolu_012L93vmwfRSHRh3iXKBdKwu",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/dadata/route.ts",
+      "limit": 50,
+      "offset": 50
+    },
+    "output": "<file>\n00051|     const data = await response.json();\n00052|     \n00053|     console.log('🌐 DaData response status:', response.status);\n00054|     console.log('🌐 DaData response:', JSON.stringify(data, null, 2));\n00055| \n00056|     if (!response.ok) {\n00057|       console.error('❌ DaData API error:', data);\n00058|       return NextResponse.json(\n00059|         { error: 'DaData API error', details: data },\n00060|         { status: response.status }\n00061|       );\n00062|     }\n00063| \n00064|     // Обработка ответа в зависимости от типа запроса\n00065|     if (type === 'clean' && Array.isArray(data) && data.length > 0) {\n00066|       const cleanedAddress = data[0];\n00067|       \n00068|       // Формируем нормализованный адрес для Деловых Линий\n00069|       const dellinFormat = formatAddressForDellin(cleanedAddress);\n00070|       \n00071|       return NextResponse.json({\n00072|         success: true,\n00073|         data: {\n00074|           original: address,\n00075|           cleaned: cleanedAddress,\n00076|           dellinFormat,\n00077|           region_kladr_id: cleanedAddress.region_kladr_id,\n00078|           city_kladr_id: cleanedAddress.city_kladr_id,\n00079|           street_kladr_id: cleanedAddress.street_kladr_id,\n00080|           city_fias_id: cleanedAddress.city_fias_id,\n00081|           settlement_fias_id: cleanedAddress.settlement_fias_id\n00082|         }\n00083|       });\n00084|     } else if (type === 'suggest' && data.suggestions && Array.isArray(data.suggestions)) {\n00085|       const suggestions = data.suggestions.map((suggestion: any) => ({\n00086|         value: suggestion.value,\n00087|         unrestricted_value: suggestion.unrestricted_value,\n00088|         data: suggestion.data,\n00089|         dellinFormat: formatAddressForDellin(suggestion.data)\n00090|       }));\n00091| \n00092|       return NextResponse.json({\n00093|         success: true,\n00094|         data: suggestions\n00095|       });\n00096|     }\n00097| \n00098|     return NextResponse.json({\n00099|       success: false,\n00100|       error: 'Invalid response format',\n\n(File has more lines. Use 'offset' parameter to read beyond line 100)\n</file>",
+    "title": "app/api/dadata/route.ts",
+    "metadata": {
+      "preview": "    const data = await response.json();\n    \n    console.log('🌐 DaData response status:', response.status);\n    console.log('🌐 DaData response:', JSON.stringify(data, null, 2));\n\n    if (!response.ok) {\n      console.error('❌ DaData API error:', data);\n      return NextResponse.json(\n        { error: 'DaData API error', details: data },\n        { status: response.status }\n      );\n    }\n\n    // Обработка ответа в зависимости от типа запроса\n    if (type === 'clean' && Array.isArray(data) && data.length > 0) {\n      const cleanedAddress = data[0];\n      \n      // Формируем нормализованный адрес для Деловых Линий\n      const dellinFormat = formatAddressForDellin(cleanedAddress);\n      "
+    },
+    "time": {
+      "start": 1765817237673,
+      "end": 1765817237694
+    }
+  }
+}
