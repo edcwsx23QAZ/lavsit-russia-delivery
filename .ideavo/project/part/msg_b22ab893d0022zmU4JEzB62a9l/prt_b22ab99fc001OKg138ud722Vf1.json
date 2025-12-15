@@ -1,0 +1,11 @@
+{
+  "id": "prt_b22ab99fc001OKg138ud722Vf1",
+  "sessionID": "ses_4ec400949ffekDUyPGFumLInaA",
+  "messageID": "msg_b22ab893d0022zmU4JEzB62a9l",
+  "type": "reasoning",
+  "text": "Пользователь спрашивает о логике API Nordwheel, почему когда стоит чекбокс \"Со склада Лавсит\", в отправленном запросе тип отправления \"terminal\", и проверяет, меняется ли фиасный код города.\n\n\n## Investigating user query  \n- The user is asking about the logic behind the Nordwheel API, specifically related to the \"From Lavsit Warehouse\" checkbox.  \n- They want to understand why selecting this checkbox results in a \"terminal\" shipment type in the sent request.  \n\n## Examining city FIAS code  \n- The user is also checking if the FIAS code of the city changes with the checkbox selection.  \n- This involves verifying how the API handles location data based on warehouse settings.\n\n## Analyzing Nordwheel API Logic  \n- The `calculateNordWheel` function in app/page.tsx includes `getDispatchLocation` to determine shipment type and location.  \n- When `form.",
+  "time": {
+    "start": 1765813230076,
+    "end": 1765813236535
+  }
+}
