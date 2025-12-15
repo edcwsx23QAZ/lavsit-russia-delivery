@@ -1,9 +1,14 @@
 /**
- * Утилиты для работы со справочником упаковок Деловых Линий
+ * Утилиты для работы со справочником упаковок и характера груза Деловых Линий
  */
 
 export interface DellinPackage {
   id: string;
+  uid: string;
+  name: string;
+}
+
+export interface DellinFreight {
   uid: string;
   name: string;
 }
@@ -170,4 +175,83 @@ export async function getPackageUidWithFallback(packageName: string): Promise<st
   // Если совсем ничего не найдено, используем UID с сайта ДЛ как последний fallback
   console.log(`🔧 Используем универсальный fallback UID (с сайта ДЛ): ${FALLBACK_PACKAGE_UIDS.crate_with_bubble}`);
   return FALLBACK_PACKAGE_UIDS.crate_with_bubble;
+}
+
+/**
+ * Получает UID характера груза "Мебель" для Деловых Линий
+ */
+export async function getDellinFreightUid(): Promise<string | null> {
+  try {
+    console.log('📦 Запрос UID характера груза "Мебель" через API...');
+    
+    const response = await fetch('/api/dellin-freight', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      console.error('❌ Ошибка API характера груза:', response.status, response.statusText);
+      return null;
+    }
+
+    const result = await response.json();
+    
+    if (!result.success || !result.data || !Array.isArray(result.data)) {
+      console.error('❌ Некорректная структура ответа API характера груза:', result);
+      return null;
+    }
+
+    console.log(`📦 Получено характеров груза "Мебель": ${result.data.length}`);
+    console.log(`📦 Источник: ${result.cached ? 'кэш' : 'API'}`);
+    
+    // Ищем точное совпадение "Мебель" (не "Мебельные фасады" или "Мебельная фурнитура")
+    const exactMatch = result.data.find((freight: DellinFreight) => 
+      freight.name && freight.name.trim().toLowerCase() === 'мебель'
+    );
+    
+    if (exactMatch && exactMatch.uid) {
+      console.log(`✅ Найден UID характера груза "Мебель": ${exactMatch.uid}`);
+      return exactMatch.uid;
+    }
+    
+    // Если точное совпадение не найдено, берем первый элемент как fallback
+    const freight = result.data[0] as DellinFreight;
+    
+    if (freight && freight.uid) {
+      console.log(`⚠️ Точное совпадение "Мебель" не найдено, используем: "${freight.name}" → ${freight.uid}`);
+      return freight.uid;
+    } else {
+      console.log('❌ UID характера груза "Мебель" не найден');
+      return null;
+    }
+
+  } catch (error) {
+    console.error('❌ Ошибка получения UID характера груза:', error);
+    return null;
+  }
+}
+
+/**
+ * Fallback UID для характера груза "Мебель"
+ * На случай если API недоступен
+ * UID получен из официального API Деловых Линий
+ */
+export const FALLBACK_FREIGHT_UID = 'eddb67e3-bdb3-11e0-ad24-001a64963cbd';
+
+/**
+ * Получает UID характера груза с fallback логикой
+ */
+export async function getFreightUidWithFallback(): Promise<string> {
+  // Сначала пытаемся получить из актуального API
+  const uid = await getDellinFreightUid();
+  
+  if (uid) {
+    return uid;
+  }
+
+  // Если не удалось, используем fallback
+  console.log(`🔧 Используем fallback UID для характера груза "Мебель": ${FALLBACK_FREIGHT_UID}`);
+  return FALLBACK_FREIGHT_UID;
 }

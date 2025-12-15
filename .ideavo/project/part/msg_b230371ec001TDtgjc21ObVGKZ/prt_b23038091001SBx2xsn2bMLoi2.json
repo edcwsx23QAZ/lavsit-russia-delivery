@@ -1,0 +1,26 @@
+{
+  "id": "prt_b23038091001SBx2xsn2bMLoi2",
+  "sessionID": "ses_4dcfe2ec6ffeGyMv3tDAZ25rFC",
+  "messageID": "msg_b230371ec001TDtgjc21ObVGKZ",
+  "type": "tool",
+  "callID": "toolu_01Gmy6iFwFzpNAmk5iE7csJP",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "find /home/user/project -type f \\( -name \"*.ts\" -o -name \"*.tsx\" \\) -exec grep -l \"dellin.*ru/v\" {} \\; | head -20",
+      "description": "Find files with dellin API calls"
+    },
+    "output": "/home/user/project/app/page.tsx\n/home/user/project/app/api/dellin-packages/route.ts\n/home/user/project/app/api/dellin-freight/route.ts\n/home/user/project/lib/cache-manager.ts\n",
+    "title": "Find files with dellin API calls",
+    "metadata": {
+      "output": "/home/user/project/app/page.tsx\n/home/user/project/app/api/dellin-packages/route.ts\n/home/user/project/app/api/dellin-freight/route.ts\n/home/user/project/lib/cache-manager.ts\n",
+      "exit": 0,
+      "description": "Find files with dellin API calls"
+    },
+    "time": {
+      "start": 1765818991977,
+      "end": 1765819009642
+    }
+  }
+}

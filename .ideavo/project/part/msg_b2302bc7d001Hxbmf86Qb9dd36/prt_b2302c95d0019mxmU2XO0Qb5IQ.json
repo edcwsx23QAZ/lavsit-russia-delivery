@@ -1,0 +1,85 @@
+{
+  "id": "prt_b2302c95d0019mxmU2XO0Qb5IQ",
+  "sessionID": "ses_4dcfe2ec6ffeGyMv3tDAZ25rFC",
+  "messageID": "msg_b2302bc7d001Hxbmf86Qb9dd36",
+  "type": "tool",
+  "callID": "toolu_01YZEPMc49FPmKZfDngbVNx8",
+  "tool": "todowrite",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Создать API endpoint для получения характера груза (freight_types) Деловых Линий",
+          "id": "1",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Добавить кэширование для freight_types с TTL 24 часа",
+          "id": "2",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Создать утилиту для поиска UID характера груза 'Мебель'",
+          "id": "3",
+          "priority": "high",
+          "status": "in_progress"
+        },
+        {
+          "content": "Интегрировать freightUID в существующие расчеты Деловых Линий",
+          "id": "4",
+          "priority": "high",
+          "status": "pending"
+        },
+        {
+          "content": "Протестировать работу API с характером груза",
+          "id": "5",
+          "priority": "medium",
+          "status": "pending"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Создать API endpoint для получения характера груза (freight_types) Деловых Линий\",\n    \"id\": \"1\",\n    \"priority\": \"high\",\n    \"status\": \"completed\"\n  },\n  {\n    \"content\": \"Добавить кэширование для freight_types с TTL 24 часа\",\n    \"id\": \"2\",\n    \"priority\": \"high\",\n    \"status\": \"completed\"\n  },\n  {\n    \"content\": \"Создать утилиту для поиска UID характера груза 'Мебель'\",\n    \"id\": \"3\",\n    \"priority\": \"high\",\n    \"status\": \"in_progress\"\n  },\n  {\n    \"content\": \"Интегрировать freightUID в существующие расчеты Деловых Линий\",\n    \"id\": \"4\",\n    \"priority\": \"high\",\n    \"status\": \"pending\"\n  },\n  {\n    \"content\": \"Протестировать работу API с характером груза\",\n    \"id\": \"5\",\n    \"priority\": \"medium\",\n    \"status\": \"pending\"\n  }\n]",
+    "title": "3 todos",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Создать API endpoint для получения характера груза (freight_types) Деловых Линий",
+          "id": "1",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Добавить кэширование для freight_types с TTL 24 часа",
+          "id": "2",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Создать утилиту для поиска UID характера груза 'Мебель'",
+          "id": "3",
+          "priority": "high",
+          "status": "in_progress"
+        },
+        {
+          "content": "Интегрировать freightUID в существующие расчеты Деловых Линий",
+          "id": "4",
+          "priority": "high",
+          "status": "pending"
+        },
+        {
+          "content": "Протестировать работу API с характером груза",
+          "id": "5",
+          "priority": "medium",
+          "status": "pending"
+        }
+      ]
+    },
+    "time": {
+      "start": 1765818945798,
+      "end": 1765818945803
+    }
+  }
+}

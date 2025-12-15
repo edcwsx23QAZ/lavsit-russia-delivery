@@ -1,0 +1,7 @@
+{
+  "id": "prt_b2301d179001mKFUZiLf1DoxCe",
+  "sessionID": "ses_4dcfe2ec6ffeGyMv3tDAZ25rFC",
+  "messageID": "msg_b2301d170001WJQp8Q5yzuLpP5",
+  "type": "text",
+  "text": "Теперь давай обратим внимание на ТК Линии. \nОстальные ТК сейчас не затрагиваем\n\n1, В запросе необходимо передавать характер груза (freightUID)\n\nАдрес метода: https://api.dellin.ru/v1/ftl/freight_types.json\n\n{\n   \"appKey\":\"00000000-0000-0000-0000-000000000000\",\n   \"search\":\"Мебель\"\n}\n\nДля Деловых Линий всегда фиксируем \"Мебель\"\n\nСтруктура ответа:\n\n{\n   \"metadata\":{\n      \"status\":200,\n      \"generated_at\":\"2020-06-17 15:10:42\"\n   },\n   \"data\":[\n      {\n         \"uid\":\"3b4feeb0-cedf-11e0-99f0-001a64963cbd\",\n         \"name\":\"Мебель\"\n      },\n      {\n         \"uid\":\"eddb67f5-bdb3-11e0-ad24-001a64963cbd\",\n         \"name\":\"Мебель\"\n      }\n   ]\n}\n\nResponse\nПараметр\tТип\tОписание\nmetadata\tobject\tСистемная информация\nmetadata.status\tinteger\tЭмуляция http-кода состояния. В случае успешного выполнения возвращается код \"200\" (OK)\nmetadata.generated_at\tstring\t\nДата и время генерации ответа сервера.\n\nФормат: \"ГГГГ-ММ-ДД ЧЧ:ММ:СС\"\n\ndata\tarray of Data\tСписок найденных элементов справочника \"Характер груза\"\ndata.uid\tstring\tUID груза\ndata.name\tstring\tНаименование груза"
+}
