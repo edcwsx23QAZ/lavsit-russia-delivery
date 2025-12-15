@@ -1,0 +1,85 @@
+{
+  "id": "prt_b230df9fa001C0MHLtWggHtpD3",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b230defd4001bFAgR4zwwigz2w",
+  "type": "tool",
+  "callID": "toolu_014oRfEAHub6PDxFMviFEVhM",
+  "tool": "todowrite",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Исправить формат freightUID - удалить дефисы из UUID",
+          "id": "1",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Обновить FALLBACK_FREIGHT_UID в dellin-packaging-utils.ts",
+          "id": "2",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Обновить fallback UID в app/page.tsx",
+          "id": "3",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Обновить документацию",
+          "id": "4",
+          "priority": "medium",
+          "status": "in_progress"
+        },
+        {
+          "content": "Проверить билд",
+          "id": "5",
+          "priority": "high",
+          "status": "pending"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Исправить формат freightUID - удалить дефисы из UUID\",\n    \"id\": \"1\",\n    \"priority\": \"high\",\n    \"status\": \"completed\"\n  },\n  {\n    \"content\": \"Обновить FALLBACK_FREIGHT_UID в dellin-packaging-utils.ts\",\n    \"id\": \"2\",\n    \"priority\": \"high\",\n    \"status\": \"completed\"\n  },\n  {\n    \"content\": \"Обновить fallback UID в app/page.tsx\",\n    \"id\": \"3\",\n    \"priority\": \"high\",\n    \"status\": \"completed\"\n  },\n  {\n    \"content\": \"Обновить документацию\",\n    \"id\": \"4\",\n    \"priority\": \"medium\",\n    \"status\": \"in_progress\"\n  },\n  {\n    \"content\": \"Проверить билд\",\n    \"id\": \"5\",\n    \"priority\": \"high\",\n    \"status\": \"pending\"\n  }\n]",
+    "title": "2 todos",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Исправить формат freightUID - удалить дефисы из UUID",
+          "id": "1",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Обновить FALLBACK_FREIGHT_UID в dellin-packaging-utils.ts",
+          "id": "2",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Обновить fallback UID в app/page.tsx",
+          "id": "3",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Обновить документацию",
+          "id": "4",
+          "priority": "medium",
+          "status": "in_progress"
+        },
+        {
+          "content": "Проверить билд",
+          "id": "5",
+          "priority": "high",
+          "status": "pending"
+        }
+      ]
+    },
+    "time": {
+      "start": 1765819682864,
+      "end": 1765819682868
+    }
+  }
+}

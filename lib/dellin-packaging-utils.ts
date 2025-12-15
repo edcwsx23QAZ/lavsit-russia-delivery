@@ -212,16 +212,20 @@ export async function getDellinFreightUid(): Promise<string | null> {
     );
     
     if (exactMatch && exactMatch.uid) {
-      console.log(`✅ Найден UID характера груза "Мебель": ${exactMatch.uid}`);
-      return exactMatch.uid;
+      // Удаляем дефисы из UID т.к. API требует максимум 34 символа
+      const cleanUid = exactMatch.uid.replace(/-/g, '');
+      console.log(`✅ Найден UID характера груза "Мебель": ${exactMatch.uid} → ${cleanUid}`);
+      return cleanUid;
     }
     
     // Если точное совпадение не найдено, берем первый элемент как fallback
     const freight = result.data[0] as DellinFreight;
     
     if (freight && freight.uid) {
-      console.log(`⚠️ Точное совпадение "Мебель" не найдено, используем: "${freight.name}" → ${freight.uid}`);
-      return freight.uid;
+      // Удаляем дефисы из UID т.к. API требует максимум 34 символа
+      const cleanUid = freight.uid.replace(/-/g, '');
+      console.log(`⚠️ Точное совпадение "Мебель" не найдено, используем: "${freight.name}" → ${freight.uid} → ${cleanUid}`);
+      return cleanUid;
     } else {
       console.log('❌ UID характера груза "Мебель" не найден');
       return null;
@@ -238,7 +242,8 @@ export async function getDellinFreightUid(): Promise<string | null> {
  * На случай если API недоступен
  * UID получен из официального API Деловых Линий
  */
-export const FALLBACK_FREIGHT_UID = 'eddb67e3-bdb3-11e0-ad24-001a64963cbd';
+// UID без дефисов, т.к. API требует максимум 34 символа (UUID с дефисами = 36 символов)
+export const FALLBACK_FREIGHT_UID = 'eddb67e3bdb311e0ad24001a64963cbd';
 
 /**
  * Получает UID характера груза с fallback логикой

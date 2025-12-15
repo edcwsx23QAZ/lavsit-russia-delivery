@@ -1,0 +1,26 @@
+{
+  "id": "prt_b230b4576001IUhGMeUdtkw7DP",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b230b393e001IChpFj0G2HaCTe",
+  "type": "tool",
+  "callID": "toolu_01ESbee9B9c5KY5LBpJsdhfg",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "rg -B 10 -A 10 \"freightUID.*freightUid\" /home/user/project/app/page.tsx",
+      "description": "Find freightUID context in page.tsx"
+    },
+    "output": "          quantity: form.cargos.length,\n          length: maxLength,\n          width: maxWidth,\n          height: maxHeight,\n          weight: totalWeight,\n          totalVolume: totalVolume,\n          totalWeight: totalWeight,\n          oversizedWeight: 0,\n          oversizedVolume: 0,\n          hazardClass: 0,  // Всегда 0 если нет опасных грузов\n          freightUID: freightUid,  // Характер груза \"Мебель\" (обязательное поле)\n          insurance: {\n            statedValue: form.declaredValue || 0,\n            term: true  // Всегда true по умолчанию\n          }\n        },\n        payment: {\n          type: 'noncash',  // Всегда \"noncash\"\n          paymentCitySearch: {\n            search: form.fromCity  // Город оплаты\n          }\n",
+    "title": "Find freightUID context in page.tsx",
+    "metadata": {
+      "output": "          quantity: form.cargos.length,\n          length: maxLength,\n          width: maxWidth,\n          height: maxHeight,\n          weight: totalWeight,\n          totalVolume: totalVolume,\n          totalWeight: totalWeight,\n          oversizedWeight: 0,\n          oversizedVolume: 0,\n          hazardClass: 0,  // Всегда 0 если нет опасных грузов\n          freightUID: freightUid,  // Характер груза \"Мебель\" (обязательное поле)\n          insurance: {\n            statedValue: form.declaredValue || 0,\n            term: true  // Всегда true по умолчанию\n          }\n        },\n        payment: {\n          type: 'noncash',  // Всегда \"noncash\"\n          paymentCitySearch: {\n            search: form.fromCity  // Город оплаты\n          }\n",
+      "exit": 0,
+      "description": "Find freightUID context in page.tsx"
+    },
+    "time": {
+      "start": 1765819500721,
+      "end": 1765819500731
+    }
+  }
+}

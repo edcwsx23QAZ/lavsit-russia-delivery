@@ -1,0 +1,7 @@
+{
+  "id": "prt_b230abfba001Lm228NmNynk3K8",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b230abfae001FrZGT2Y1lrDHza",
+  "type": "text",
+  "text": "Деловые Линии возвращают следующую ошибку:\n\n{\n  \"metadata\": {\n    \"status\": 400,\n    \"detail\": \"abc\",\n    \"generated_at\": \"2025-12-15 19:21:30\"\n  },\n  \"errors\": [\n    {\n      \"code\": 110002,\n      \"title\": \"Ошибка типизации\",\n      \"detail\": \"Убедитесь, что в этом поле не больше 34 символов.\",\n      \"link\": \"https://dev.dellin.ru/api/errors/#error_110002\",\n      \"fields\": [\n        \"cargo.freightUID\"\n      ]\n    },\n    {\n      \"code\": 180007,\n      \"title\": \"Недопустимое значение параметра\",\n      \"detail\": \"Указанный груз не может быть принят к перевозке (не найден)\",\n      \"link\": \"https://dev.dellin.ru/api/errors/#error_180007\",\n      \"fields\": [\n        \"cargo.freightUID\"\n      ]\n    }\n  ]\n}\n\nПроверь и исправь"
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_b230c14300011g2gEqHg43FUjf",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b230bf2de0019LRoRmU5V5fsGP",
+  "type": "tool",
+  "callID": "toolu_01F2vHZjc7dyDc7HaoEV219N",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "rg \"0x[0-9a-f]+\" /home/user/project --type-add 'script:*.js' -t script -o | sort -u | head -20",
+      "description": "Find hex UIDs in test files"
+    },
+    "output": "",
+    "title": "Find hex UIDs in test files",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Find hex UIDs in test files"
+    },
+    "time": {
+      "start": 1765819554832,
+      "end": 1765819554872
+    }
+  }
+}

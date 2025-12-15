@@ -1,0 +1,73 @@
+{
+  "id": "prt_b230dbb7d001JRFNw8OaTTjZrE",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b230db0b0001pOlJNDhEhNvKpd",
+  "type": "tool",
+  "callID": "toolu_016u5z4DyoY2k5mq2D8teRvy",
+  "tool": "todowrite",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Исправить формат freightUID - удалить дефисы из UUID",
+          "id": "1",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Обновить FALLBACK_FREIGHT_UID в dellin-packaging-utils.ts",
+          "id": "2",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Обновить fallback UID в app/page.tsx",
+          "id": "3",
+          "priority": "high",
+          "status": "in_progress"
+        },
+        {
+          "content": "Протестировать исправление",
+          "id": "4",
+          "priority": "high",
+          "status": "pending"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Исправить формат freightUID - удалить дефисы из UUID\",\n    \"id\": \"1\",\n    \"priority\": \"high\",\n    \"status\": \"completed\"\n  },\n  {\n    \"content\": \"Обновить FALLBACK_FREIGHT_UID в dellin-packaging-utils.ts\",\n    \"id\": \"2\",\n    \"priority\": \"high\",\n    \"status\": \"completed\"\n  },\n  {\n    \"content\": \"Обновить fallback UID в app/page.tsx\",\n    \"id\": \"3\",\n    \"priority\": \"high\",\n    \"status\": \"in_progress\"\n  },\n  {\n    \"content\": \"Протестировать исправление\",\n    \"id\": \"4\",\n    \"priority\": \"high\",\n    \"status\": \"pending\"\n  }\n]",
+    "title": "2 todos",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Исправить формат freightUID - удалить дефисы из UUID",
+          "id": "1",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Обновить FALLBACK_FREIGHT_UID в dellin-packaging-utils.ts",
+          "id": "2",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Обновить fallback UID в app/page.tsx",
+          "id": "3",
+          "priority": "high",
+          "status": "in_progress"
+        },
+        {
+          "content": "Протестировать исправление",
+          "id": "4",
+          "priority": "high",
+          "status": "pending"
+        }
+      ]
+    },
+    "time": {
+      "start": 1765819667060,
+      "end": 1765819667074
+    }
+  }
+}

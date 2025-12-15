@@ -1,0 +1,25 @@
+{
+  "id": "prt_b230ae932001UYkXxEH7KdqgIh",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b230ad5890016iWO4H83a4kSE4",
+  "type": "tool",
+  "callID": "toolu_01SCKyKtiWku3wRG6no88Jth",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "include": "*.ts,*.tsx",
+      "pattern": "cargo.*freight|freight.*cargo"
+    },
+    "output": "No files found",
+    "title": "cargo.*freight|freight.*cargo",
+    "metadata": {
+      "matches": 0,
+      "truncated": false
+    },
+    "time": {
+      "start": 1765819476791,
+      "end": 1765819476806
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_b230cef2e001GsmIpBmyBhrjC6",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b230cdd71001eFJ6rCvVpzn68b",
+  "type": "tool",
+  "callID": "toolu_01TYhUKEXYRuJ3vTZtAb4HoT",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && rg \"calculator|calculation\" /home/user/project/app/page.tsx | grep \"dellin\\|api\\.dellin\" -i | head -5",
+      "description": "Find calculator API URL"
+    },
+    "output": "    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n",
+    "title": "Find calculator API URL",
+    "metadata": {
+      "output": "    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';\n",
+      "exit": 0,
+      "description": "Find calculator API URL"
+    },
+    "time": {
+      "start": 1765819610226,
+      "end": 1765819610243
+    }
+  }
+}

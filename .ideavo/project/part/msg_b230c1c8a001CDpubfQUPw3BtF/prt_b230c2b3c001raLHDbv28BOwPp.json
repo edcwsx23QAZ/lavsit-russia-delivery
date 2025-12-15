@@ -1,0 +1,26 @@
+{
+  "id": "prt_b230c2b3c001raLHDbv28BOwPp",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b230c1c8a001CDpubfQUPw3BtF",
+  "type": "tool",
+  "callID": "toolu_01NFD9g4rh5MRQUHDJ9pVbvE",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "rg \"uid.*0x\" /home/user/project/test*.js -i -A 1 -B 1 | head -30",
+      "description": "Search for UIDs in test files"
+    },
+    "output": "",
+    "title": "Search for UIDs in test files",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Search for UIDs in test files"
+    },
+    "time": {
+      "start": 1765819559626,
+      "end": 1765819559638
+    }
+  }
+}

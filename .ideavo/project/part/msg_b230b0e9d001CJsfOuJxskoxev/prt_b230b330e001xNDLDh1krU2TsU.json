@@ -1,0 +1,26 @@
+{
+  "id": "prt_b230b330e001xNDLDh1krU2TsU",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b230b0e9d001CJsfOuJxskoxev",
+  "type": "tool",
+  "callID": "toolu_014RSYKy1JhUuzEr5V1bs3oK",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "rg \"freightUID|freight_uid\" /home/user/project --type-add 'ts:*.ts' --type-add 'tsx:*.tsx' -t ts -t tsx",
+      "description": "Search for freightUID usage"
+    },
+    "output": "/home/user/project/app/page.tsx:          freightUID: freightUid,  // Характер груза \"Мебель\" (обязательное поле)\n",
+    "title": "Search for freightUID usage",
+    "metadata": {
+      "output": "/home/user/project/app/page.tsx:          freightUID: freightUid,  // Характер груза \"Мебель\" (обязательное поле)\n",
+      "exit": 0,
+      "description": "Search for freightUID usage"
+    },
+    "time": {
+      "start": 1765819496730,
+      "end": 1765819496746
+    }
+  }
+}

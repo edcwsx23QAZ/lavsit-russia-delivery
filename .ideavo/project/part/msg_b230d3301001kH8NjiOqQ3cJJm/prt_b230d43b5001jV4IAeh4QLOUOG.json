@@ -1,0 +1,26 @@
+{
+  "id": "prt_b230d43b5001jV4IAeh4QLOUOG",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b230d3301001kH8NjiOqQ3cJJm",
+  "type": "tool",
+  "callID": "toolu_01EzRdVTzjTyNLSKXQbb7WAU",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "find /home/user/project/docs -name \"*.md\" -type f -exec cat {} \\; | rg \"freightUID|cargo\" -A 2 -B 2 | head -40",
+      "description": "Search docs for freight examples"
+    },
+    "output": "\n#### 6. Специальные грузы\n- **heavy_cargo**: Тяжелый груз 500кг\n\n## Инструкция по использованию\n",
+    "title": "Search docs for freight examples",
+    "metadata": {
+      "output": "\n#### 6. Специальные грузы\n- **heavy_cargo**: Тяжелый груз 500кг\n\n## Инструкция по использованию\n",
+      "exit": 0,
+      "description": "Search docs for freight examples"
+    },
+    "time": {
+      "start": 1765819631640,
+      "end": 1765819631662
+    }
+  }
+}

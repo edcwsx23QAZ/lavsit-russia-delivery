@@ -1,0 +1,26 @@
+{
+  "id": "prt_b230cd850001tq0R4ZnIhLCGa8",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b230ccdf70016VLMN52EWrx2o7",
+  "type": "tool",
+  "callID": "toolu_01QMmU1chHB7MPn96rbMqPnU",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "rg \"calculator\\.json|calculation\\.json\" /home/user/project/test-dellin*.js -l",
+      "description": "Find calculator API calls"
+    },
+    "output": "",
+    "title": "Find calculator API calls",
+    "metadata": {
+      "output": "",
+      "exit": 1,
+      "description": "Find calculator API calls"
+    },
+    "time": {
+      "start": 1765819604161,
+      "end": 1765819604179
+    }
+  }
+}

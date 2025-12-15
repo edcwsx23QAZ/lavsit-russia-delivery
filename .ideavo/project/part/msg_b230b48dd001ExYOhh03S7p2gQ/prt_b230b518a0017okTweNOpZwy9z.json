@@ -1,0 +1,26 @@
+{
+  "id": "prt_b230b518a0017okTweNOpZwy9z",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b230b48dd001ExYOhh03S7p2gQ",
+  "type": "tool",
+  "callID": "toolu_01XTEi9nfPuHXvN57xv2JHGA",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "rg -B 30 \"freightUID.*freightUid\" /home/user/project/app/page.tsx | rg \"freightUid|freight.*uid\" -i",
+      "description": "Find freightUid variable definition"
+    },
+    "output": "          freightUID: freightUid,  // Характер груза \"Мебель\" (обязательное поле)\n",
+    "title": "Find freightUid variable definition",
+    "metadata": {
+      "output": "          freightUID: freightUid,  // Характер груза \"Мебель\" (обязательное поле)\n",
+      "exit": 0,
+      "description": "Find freightUid variable definition"
+    },
+    "time": {
+      "start": 1765819504037,
+      "end": 1765819504049
+    }
+  }
+}

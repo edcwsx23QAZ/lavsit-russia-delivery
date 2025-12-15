@@ -1636,8 +1636,9 @@ export default function Home() {
         console.log('🔍 ✅ ПОЛУЧЕН freightUid "Мебель":', freightUid);
       } catch (error) {
         console.log('🔍 ❌ ОШИБКА при получении freightUid:', error);
-        // Используем fallback UID (реальный UID из API ДЛ)
-        freightUid = 'eddb67e3-bdb3-11e0-ad24-001a64963cbd';
+        // Используем fallback UID без дефисов (реальный UID из API ДЛ)
+        // API требует максимум 34 символа, UUID с дефисами = 36 символов
+        freightUid = 'eddb67e3bdb311e0ad24001a64963cbd';
         console.log('🔍 🧪 ИСПОЛЬЗУЕМ FALLBACK freightUid:', freightUid);
       }
       console.log('=== КОНЕЦ ПОЛУЧЕНИЯ ХАРАКТЕРА ГРУЗА ===');
