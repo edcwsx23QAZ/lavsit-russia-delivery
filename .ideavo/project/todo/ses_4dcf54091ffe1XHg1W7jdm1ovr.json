@@ -1,19 +1,43 @@
 [
   {
-    "content": "Удалить freightUID из cargo, оставить только freightName",
+    "content": "Исправить расчет max габаритов - найти самое объемное место",
     "id": "1",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Обновить документацию",
+    "content": "Использовать wizard вместо dimension",
     "id": "2",
-    "priority": "medium",
+    "priority": "high",
+    "status": "completed"
+  },
+  {
+    "content": "Исправить код упаковки на hardPackageVolume",
+    "id": "3",
+    "priority": "high",
+    "status": "completed"
+  },
+  {
+    "content": "Добавить услугу разбора при упаковке (unboxingOnDelivery)",
+    "id": "4",
+    "priority": "high",
+    "status": "completed"
+  },
+  {
+    "content": "Добавить услуги погрузки/разгрузки (needLoading)",
+    "id": "5",
+    "priority": "high",
     "status": "completed"
   },
   {
     "content": "Проверить билд",
-    "id": "3",
+    "id": "6",
+    "priority": "high",
+    "status": "completed"
+  },
+  {
+    "content": "Провести повторный анализ",
+    "id": "7",
     "priority": "high",
     "status": "completed"
   }

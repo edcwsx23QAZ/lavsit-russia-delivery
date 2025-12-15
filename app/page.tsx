@@ -3248,79 +3248,87 @@ export default function Home() {
         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
       );
       
-      // Находим максимальные габариты одного места для соответствия документации Возовоз
-      const maxDimensions = form.cargos.reduce((max, cargo) => {
-        const length = cargo.length / 1000; // переводим мм в м
-        const width = cargo.width / 1000;
-        const height = cargo.height / 1000;
-        const weight = cargo.weight;
-        
-        return {
-          length: Math.max(max.length, length),
-          width: Math.max(max.width, width),
-          height: Math.max(max.height, height),
-          weight: Math.max(max.weight, weight)
-        };
-      }, { length: 0, width: 0, height: 0, weight: 0 });
-      
       console.log('🚚 Возовоз: подготовка данных...');
       console.log('   - Общий вес:', totalWeight, 'кг');
       console.log('   - Общий объем:', totalVolume, 'м³');
-      console.log('   - Максимальные габариты:', maxDimensions);
+      console.log('   - Количество мест:', form.cargos.length);
       console.log('   - Откуда:', form.fromCity);
       console.log('   - Куда:', form.toCity);
       
-      // Функция для создания запроса с правильной логикой адресов
+      // ✅ ИСПРАВЛЕНО: Используем структуру wizard для точного расчета каждого места
       const createRequestData = () => ({
         object: "price",
         action: "get",
         params: {
           cargo: {
-            dimension: {
-              max: {                              // ✅ Добавляем обязательную структуру max
-                length: maxDimensions.length,     // Максимальная длина одного места в метрах
-                width: maxDimensions.width,       // Максимальная ширина одного места в метрах
-                height: maxDimensions.height,     // Максимальная высота одного места в метрах
-                weight: maxDimensions.weight      // Максимальный вес одного места в кг
-              },
-              quantity: form.cargos.length,       // Количество мест
-              volume: totalVolume,                // Общий объем в м³
-              weight: totalWeight                 // Общий вес в кг
-            },
+            // ✅ Используем wizard вместо dimension для точности
+            wizard: form.cargos.map(cargo => ({
+              length: cargo.length / 1000,   // мм → м
+              width: cargo.width / 1000,
+              height: cargo.height / 1000,
+              quantity: 1,
+              weight: cargo.weight,
+              ...(form.needPackaging ? {
+                wrapping: {
+                  // ✅ "Защитная жёсткая упаковка с разбором" согласно документации
+                  hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000
+                }
+              } : {})
+            })),
+            // Страхование
             ...(form.needInsurance && form.declaredValue > 0 ? {
-              insurance: form.declaredValue,      // ✅ Страхование корректно
-              insuranceNdv: false                 // Отключаем страхование без объявленной стоимости
+              insurance: form.declaredValue,
+              insuranceNdv: false
             } : {
-              insuranceNdv: true                  // Включаем страхование без объявленной стоимости
-            }),
-             ...(form.needPackaging ? {
-               wrapping: {
-                 "hardPackageVolume": totalVolume  // ✅ ИСПРАВЛЕНО: Правильный код "Жёсткая упаковка" из документации
-               }
-             } : {})
+              insuranceNdv: true
+            })
           },
           gateway: {
             dispatch: {
               point: {
                 location: form.fromCity || 'Москва',
-                // ✅ Поля address и terminal взаимоисключающие согласно документации
-                ...(form.fromAddressDelivery ? {
-                  address: form.fromAddress || "адрес отправления"
+                ...(form.fromAddressDelivery && form.fromAddress?.trim() ? {
+                  address: form.fromAddress.trim()
                 } : {
                   terminal: "default"
                 })
-              }
+              },
+              // ✅ Добавлены дополнительные услуги на отправлении
+              ...(form.needLoading || form.needPackaging ? {
+                service: {
+                  // Погрузка на отправлении (если включена)
+                  ...(form.needLoading ? {
+                    needLoading: {
+                      floor: form.floor || 1,
+                      lift: form.hasFreightLift || false
+                    }
+                  } : {}),
+                  // Разбор груза при доставке (если включена упаковка)
+                  ...(form.needPackaging ? {
+                    unboxingOnDelivery: totalWeight
+                  } : {})
+                }
+              } : {})
             },
             destination: {
               point: {
                 location: form.toCity || 'Санкт-Петербург',
-                // ✅ Поля address и terminal взаимоисключающие согласно документации
-                ...(form.toAddressDelivery ? {
-                  address: form.toAddress || "адрес получения"
+                ...(form.toAddressDelivery && form.toAddress?.trim() ? {
+                  address: form.toAddress.trim()
                 } : {
                   terminal: "default"
                 })
-              }
+              },
+              // ✅ Добавлены дополнительные услуги на получении
+              ...(form.needCarry ? {
+                service: {
+                  // Разгрузка на получении (если включен подъем на этаж)
+                  needLoading: {
+                    floor: form.floor || 1,
+                    lift: form.hasFreightLift || false
+                  }
+                }
+              } : {})
             }
           }
         }
