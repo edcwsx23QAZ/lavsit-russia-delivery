@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22e5a909001C4mbG4E79LifA6",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22e58ace001a1IiwZvSqLVnw3",
+  "type": "tool",
+  "callID": "toolu_01NDshdAwcpWCiv5kv5KvKEF",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 35,
+      "offset": 3546
+    },
+    "output": "<file>\n03547|         try {\n03548|           console.log(`🚛 Nordwheel: Запрос city_fias_id для адреса: ${address}`);\n03549|           \n03550|           const response = await fetch('/api/dadata', {\n03551|             method: 'POST',\n03552|             headers: {\n03553|               'Content-Type': 'application/json'\n03554|             },\n03555|             body: JSON.stringify({\n03556|               address: address,\n03557|               type: 'clean'\n03558|             })\n03559|           });\n03560|           \n03561|           const data = await response.json();\n03562|           console.log('🚛 Nordwheel: Dadata clean ответ:', data);\n03563|           \n03564|           if (data.success && data.data?.cleaned?.city_fias_id) {\n03565|             console.log(`✅ Nordwheel: Получен city_fias_id: ${data.data.cleaned.city_fias_id}`);\n03566|             return data.data.cleaned.city_fias_id;\n03567|           } else {\n03568|             console.error(`❌ Nordwheel: city_fias_id не найден для адреса ${address}`);\n03569|             throw new Error(`city_fias_id не найден для адреса ${address}`);\n03570|           }\n03571|         } catch (error) {\n03572|           console.error(`❌ Nordwheel: Ошибка получения city_fias_id:`, error);\n03573|           throw error;\n03574|         }\n03575|       };\n03576| \n03577|       // Функция для получения FIAS кода города через Dadata (для терминальной доставки)\n03578|       const getNordwheelCityFias = async (cityName: string): Promise<string> => {\n03579|         try {\n03580|           console.log(`🚛 Nordwheel: Запрос FIAS для города: ${cityName}`);\n03581|           \n\n(File has more lines. Use 'offset' parameter to read beyond line 3581)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        try {\n          console.log(`🚛 Nordwheel: Запрос city_fias_id для адреса: ${address}`);\n          \n          const response = await fetch('/api/dadata', {\n            method: 'POST',\n            headers: {\n              'Content-Type': 'application/json'\n            },\n            body: JSON.stringify({\n              address: address,\n              type: 'clean'\n            })\n          });\n          \n          const data = await response.json();\n          console.log('🚛 Nordwheel: Dadata clean ответ:', data);\n          \n          if (data.success && data.data?.cleaned?.city_fias_id) {\n            console.log(`✅ Nordwheel: Получен city_fias_id: ${data.data.cleaned.city_fias_id}`);\n            return data.data.cleaned.city_fias_id;"
+    },
+    "time": {
+      "start": 1765817035828,
+      "end": 1765817035843
+    }
+  }
+}

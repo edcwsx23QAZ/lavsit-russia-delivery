@@ -1,0 +1,11 @@
+{
+  "id": "prt_b22e5d2b9001hT4Z3HDvX0YJW3",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22e5c5ed001gnxtCo2r0sW5Oh",
+  "type": "text",
+  "text": "Отлично! API правильно возвращает структуру:\n```typescript\n{\n  success: true,\n  data: {\n    cleaned: cleanedAddress,  // весь объект от Dadata\n    city_fias_id: cleanedAddress.city_fias_id  // отдельно для удобства\n  }\n}\n```\n\nЗначит в коде нужно обращаться к `data.data.cleaned.city_fias_id`. Это уже есть! \n\nНо давайте добавим дополнительную проверку и логирование, чтобы убедиться что `city_fias_id` корректно извлекается. Также добавим fallback на `settlement_fias_id` если `city_fias_id` отсутствует (на случай если адрес содержит только деревню):",
+  "time": {
+    "start": 1765817049441,
+    "end": 1765817049441
+  }
+}

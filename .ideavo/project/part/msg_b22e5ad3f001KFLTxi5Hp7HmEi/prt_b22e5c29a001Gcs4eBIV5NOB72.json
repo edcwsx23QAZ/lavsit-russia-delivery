@@ -1,0 +1,25 @@
+{
+  "id": "prt_b22e5c29a001Gcs4eBIV5NOB72",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22e5ad3f001KFLTxi5Hp7HmEi",
+  "type": "tool",
+  "callID": "toolu_01EZfjyaKinAkckikeCWcKM4",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/dadata/route.ts",
+      "limit": 25,
+      "offset": 64
+    },
+    "output": "<file>\n00065|     if (type === 'clean' && Array.isArray(data) && data.length > 0) {\n00066|       const cleanedAddress = data[0];\n00067|       \n00068|       // Формируем нормализованный адрес для Деловых Линий\n00069|       const dellinFormat = formatAddressForDellin(cleanedAddress);\n00070|       \n00071|       return NextResponse.json({\n00072|         success: true,\n00073|         data: {\n00074|           original: address,\n00075|           cleaned: cleanedAddress,\n00076|           dellinFormat,\n00077|           region_kladr_id: cleanedAddress.region_kladr_id,\n00078|           city_kladr_id: cleanedAddress.city_kladr_id,\n00079|           street_kladr_id: cleanedAddress.street_kladr_id,\n00080|           city_fias_id: cleanedAddress.city_fias_id,\n00081|           settlement_fias_id: cleanedAddress.settlement_fias_id\n00082|         }\n00083|       });\n00084|     } else if (type === 'suggest' && data.suggestions && Array.isArray(data.suggestions)) {\n00085|       const suggestions = data.suggestions.map((suggestion: any) => ({\n00086|         value: suggestion.value,\n00087|         unrestricted_value: suggestion.unrestricted_value,\n00088|         data: suggestion.data,\n00089|         dellinFormat: formatAddressForDellin(suggestion.data)\n\n(File has more lines. Use 'offset' parameter to read beyond line 89)\n</file>",
+    "title": "app/api/dadata/route.ts",
+    "metadata": {
+      "preview": "    if (type === 'clean' && Array.isArray(data) && data.length > 0) {\n      const cleanedAddress = data[0];\n      \n      // Формируем нормализованный адрес для Деловых Линий\n      const dellinFormat = formatAddressForDellin(cleanedAddress);\n      \n      return NextResponse.json({\n        success: true,\n        data: {\n          original: address,\n          cleaned: cleanedAddress,\n          dellinFormat,\n          region_kladr_id: cleanedAddress.region_kladr_id,\n          city_kladr_id: cleanedAddress.city_kladr_id,\n          street_kladr_id: cleanedAddress.street_kladr_id,\n          city_fias_id: cleanedAddress.city_fias_id,\n          settlement_fias_id: cleanedAddress.settlement_fias_id\n        }\n      });\n    } else if (type === 'suggest' && data.suggestions && Array.isArray(data.suggestions)) {"
+    },
+    "time": {
+      "start": 1765817042166,
+      "end": 1765817042170
+    }
+  }
+}

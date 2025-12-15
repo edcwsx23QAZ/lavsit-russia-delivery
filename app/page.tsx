@@ -3561,12 +3561,35 @@ export default function Home() {
           const data = await response.json();
           console.log('🚛 Nordwheel: Dadata clean ответ:', data);
           
-          if (data.success && data.data?.cleaned?.city_fias_id) {
-            console.log(`✅ Nordwheel: Получен city_fias_id: ${data.data.cleaned.city_fias_id}`);
-            return data.data.cleaned.city_fias_id;
+          if (data.success && data.data?.cleaned) {
+            const cleaned = data.data.cleaned;
+            
+            // Выводим детальную информацию для отладки
+            console.log('🔍 Nordwheel: Dadata cleaned данные:', {
+              city: cleaned.city,
+              city_fias_id: cleaned.city_fias_id,
+              settlement: cleaned.settlement,
+              settlement_fias_id: cleaned.settlement_fias_id,
+              divisions: cleaned.divisions
+            });
+            
+            // Используем city_fias_id (приоритет)
+            if (cleaned.city_fias_id) {
+              console.log(`✅ Nordwheel: Получен city_fias_id: ${cleaned.city_fias_id} (город: ${cleaned.city})`);
+              return cleaned.city_fias_id;
+            }
+            // Fallback на settlement_fias_id если city_fias_id отсутствует
+            else if (cleaned.settlement_fias_id) {
+              console.log(`✅ Nordwheel: Используем settlement_fias_id: ${cleaned.settlement_fias_id} (населенный пункт: ${cleaned.settlement})`);
+              return cleaned.settlement_fias_id;
+            }
+            else {
+              console.error(`❌ Nordwheel: Ни city_fias_id, ни settlement_fias_id не найдены для адреса ${address}`);
+              throw new Error(`FIAS код не найден для адреса ${address}`);
+            }
           } else {
-            console.error(`❌ Nordwheel: city_fias_id не найден для адреса ${address}`);
-            throw new Error(`city_fias_id не найден для адреса ${address}`);
+            console.error(`❌ Nordwheel: Некорректный ответ от Dadata для адреса ${address}`);
+            throw new Error(`Некорректный ответ от Dadata для адреса ${address}`);
           }
         } catch (error) {
           console.error(`❌ Nordwheel: Ошибка получения city_fias_id:`, error);
@@ -3594,12 +3617,29 @@ export default function Home() {
           const data = await response.json();
           console.log('🚛 Nordwheel: Dadata clean ответ для города:', data);
 
-          if (data.success && data.data?.cleaned?.city_fias_id) {
-            console.log(`✅ Nordwheel: Получен FIAS для ${cityName}: ${data.data.cleaned.city_fias_id}`);
-            return data.data.cleaned.city_fias_id;
+          if (data.success && data.data?.cleaned) {
+            const cleaned = data.data.cleaned;
+            
+            console.log('🔍 Nordwheel: Dadata cleaned данные для города:', {
+              city: cleaned.city,
+              city_fias_id: cleaned.city_fias_id,
+              settlement: cleaned.settlement,
+              settlement_fias_id: cleaned.settlement_fias_id
+            });
+            
+            if (cleaned.city_fias_id) {
+              console.log(`✅ Nordwheel: Получен FIAS для ${cityName}: ${cleaned.city_fias_id}`);
+              return cleaned.city_fias_id;
+            } else if (cleaned.settlement_fias_id) {
+              console.log(`✅ Nordwheel: Используем settlement_fias_id для ${cityName}: ${cleaned.settlement_fias_id}`);
+              return cleaned.settlement_fias_id;
+            } else {
+              console.error(`❌ Nordwheel: FIAS код не найден для города ${cityName}`);
+              throw new Error(`FIAS код не найден для города ${cityName}`);
+            }
           } else {
-            console.error(`❌ Nordwheel: FIAS код не найден для города ${cityName}`);
-            throw new Error(`FIAS код не найден для города ${cityName}`);
+            console.error(`❌ Nordwheel: Некорректный ответ от Dadata для города ${cityName}`);
+            throw new Error(`Некорректный ответ от Dadata для города ${cityName}`);
           }
         } catch (error) {
           console.warn(`⚠️ Nordwheel: Dadata недоступна для ${cityName}, используем город как строку:`, error);

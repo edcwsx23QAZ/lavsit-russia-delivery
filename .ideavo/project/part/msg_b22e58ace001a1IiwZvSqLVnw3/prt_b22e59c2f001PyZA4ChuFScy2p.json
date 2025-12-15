@@ -1,0 +1,11 @@
+{
+  "id": "prt_b22e59c2f001PyZA4ChuFScy2p",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22e58ace001a1IiwZvSqLVnw3",
+  "type": "text",
+  "text": "Вижу проблему! В ответе Dadata для адреса \"Лосино-Петровский, д.Осеево\" есть два FIAS кода:\n- `city_fias_id`: `96c869d9-51a8-4db6-8011-9fc459c9a78c` (город Лосино-Петровский) ✅\n- `settlement_fias_id`: `e8e2c58c-30f4-4664-9014-b778b76052e4` (деревня Осеево)\n\nНужно использовать именно `city_fias_id` из объекта `divisions.administrative.city.fias_id` или напрямую `city_fias_id`.\n\nДавайте проверим текущую логику и исправим её, если нужно:",
+  "time": {
+    "start": 1765817035016,
+    "end": 1765817035016
+  }
+}
