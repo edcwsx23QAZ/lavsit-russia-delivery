@@ -1,0 +1,20 @@
+{
+  "id": "prt_b22bf09a3001dJx6RMkvm8oIML",
+  "sessionID": "ses_4ec400949ffekDUyPGFumLInaA",
+  "messageID": "msg_b22bed1b3002Rw61MVJOgd88tj",
+  "type": "tool",
+  "callID": "call_19857383",
+  "tool": "multiedit",
+  "state": {
+    "status": "error",
+    "input": {
+      "edits": "[{\"newString\":\"      // Локальная функция для Nordwheel - получение FIAS через Dadata\\n      async function getNordwheelCityFias(cityName: string): Promise<string> {\\n        try {\\n          // Попытка получить актуальные данные через Dadata findById\\n          const response = await fetch('/api/dadata?fias_id=' + encodeURIComponent(cityName) + '&type=findById');\\n          const data = await response.json();\\n          \\n          if (data.success && data.data?.data?.city_fias_id) {\\n            console.log(`🚛 Nordwheel: Получен актуальный FIAS для ${cityName}:`, data.data.data.city_fias_id);\\n            return data.data.data.city_fias_id;\\n          } else {\\n            // FIAS не найден - выводим ошибку\\n            console.error(`🚛 Nordwheel: FIAS код не найден для города ${cityName}`);\\n            throw new Error(`FIAS код не найден для города ${cityName}`);\\n          }\\n        } catch (error) {\\n          console.warn(`🚛 Nordwheel: Dadata недоступна для ${cityName}, используем город как строку:`, error);\\n          // Fallback: возвращаем город как строку вместо FIAS кода\\n          return cityName;\\n        }\\n      }\\n\\n      // 🏙️ Определяем тип локации на основе настроек формы\\n      const getDispatchLocation = async () => {\\n        try {\\n          if (form.fromTerminal) {\\n            return {\\n              type: 'terminal' as const,\\n              city_fias: await getNordwheelCityFias(form.fromCity)\\n            };\\n          } else if (form.fromLavsiteWarehouse) {\\n            // 🏭 Склад Лавсит - адресная доставка\\n            return {\\n              type: 'address' as const,\\n              address: form.fromAddress || 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область'\\n            };\\n          } else {\\n            return {\\n              type: 'address' as const,\\n              address: form.fromAddress || form.fromCity\\n            };\\n          }\\n        } catch (error) {\\n          console.error(`🚛 Nordwheel: Ошибка определения локации отправления:`, error);\\n          throw error; // Пробрасываем ошибку выше для обработки в calculateNordWheel\\n        }\\n      };\\n\\n      const getDestinationLocation = async () => {\\n        try {\\n          if (form.toTerminal) {\\n            return {\\n              type: 'terminal' as const,\\n              city_fias: await getNordwheelCityFias(form.toCity)\\n            };\\n          } else {\\n            return {\\n              type: 'address' as const,\\n              address: form.toAddress || form.toCity\\n            };\\n          }\\n        } catch (error) {\\n          console.error(`🚛 Nordwheel: Ошибка определения локации назначения:`, error);\\n          throw error; // Пробрасываем ошибку выше для обработки в calculateNordWheel\\n        }\\n      };",
+      "filePath": "app/page.tsx"
+    },
+    "error": "Error: The multiedit tool was called with invalid arguments: [\n  {\n    \"expected\": \"array\",\n    \"code\": \"invalid_type\",\n    \"path\": [\n      \"edits\"\n    ],\n    \"message\": \"Invalid input: expected array, received string\"\n  }\n].\nPlease rewrite the input so it satisfies the expected schema.",
+    "time": {
+      "start": 1765814503854,
+      "end": 1765814503861
+    }
+  }
+}
