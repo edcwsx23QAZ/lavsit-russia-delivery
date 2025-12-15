@@ -3542,23 +3542,67 @@ export default function Home() {
         console.log(`   📐 Максимальные габариты: ${maxLength}×${maxWidth}×${maxHeight} см`);
       }
 
-      // Функция для получения FIAS кода города через Dadata с fallback на строку
+      // Функция для получения city_fias_id из адреса через Dadata clean API
+      const getCityFiasFromAddress = async (address: string): Promise<string> => {
+        try {
+          console.log(`🚛 Nordwheel: Запрос city_fias_id для адреса: ${address}`);
+          
+          const response = await fetch('/api/dadata', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              address: address,
+              type: 'clean'
+            })
+          });
+          
+          const data = await response.json();
+          console.log('🚛 Nordwheel: Dadata clean ответ:', data);
+          
+          if (data.success && data.data?.cleaned?.city_fias_id) {
+            console.log(`✅ Nordwheel: Получен city_fias_id: ${data.data.cleaned.city_fias_id}`);
+            return data.data.cleaned.city_fias_id;
+          } else {
+            console.error(`❌ Nordwheel: city_fias_id не найден для адреса ${address}`);
+            throw new Error(`city_fias_id не найден для адреса ${address}`);
+          }
+        } catch (error) {
+          console.error(`❌ Nordwheel: Ошибка получения city_fias_id:`, error);
+          throw error;
+        }
+      };
+
+      // Функция для получения FIAS кода города через Dadata (для терминальной доставки)
       const getNordwheelCityFias = async (cityName: string): Promise<string> => {
         try {
-          // Попытка получить актуальные данные через Dadata findById
-          const response = await fetch('/api/dadata?fias_id=' + encodeURIComponent(cityName) + '&type=findById');
+          console.log(`🚛 Nordwheel: Запрос FIAS для города: ${cityName}`);
+          
+          // Используем clean API для получения FIAS кода города
+          const response = await fetch('/api/dadata', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              address: cityName,
+              type: 'clean'
+            })
+          });
+          
           const data = await response.json();
+          console.log('🚛 Nordwheel: Dadata clean ответ для города:', data);
 
-          if (data.success && data.data?.city_fias_id) {
-            console.log(`🚛 Nordwheel: Получен актуальный FIAS для ${cityName}:`, data.data.city_fias_id);
-            return data.data.city_fias_id;
+          if (data.success && data.data?.cleaned?.city_fias_id) {
+            console.log(`✅ Nordwheel: Получен FIAS для ${cityName}: ${data.data.cleaned.city_fias_id}`);
+            return data.data.cleaned.city_fias_id;
           } else {
-            // FIAS не найден - выводим ошибку
-            console.error(`🚛 Nordwheel: FIAS код не найден для города ${cityName}`);
+            console.error(`❌ Nordwheel: FIAS код не найден для города ${cityName}`);
             throw new Error(`FIAS код не найден для города ${cityName}`);
           }
         } catch (error) {
-          console.warn(`🚛 Nordwheel: Dadata недоступна для ${cityName}, используем город как строку:`, error);
+          console.warn(`⚠️ Nordwheel: Dadata недоступна для ${cityName}, используем город как строку:`, error);
           // Fallback: возвращаем город как строку вместо FIAS кода
           return cityName;
         }
@@ -3567,20 +3611,28 @@ export default function Home() {
       const getDispatchLocation = async () => {
         try {
           if (form.fromTerminal) {
+            // Терминальная доставка: type=terminal + city_fias
             return {
               type: 'terminal' as const,
               city_fias: await getNordwheelCityFias(form.fromCity)
             };
           } else if (form.fromLavsiteWarehouse) {
-            // 🏭 Для склада Лавсит используем адрес вместо терминала
+            // 🏭 Склад Лавсит: type=address + city_fias_id (получаем из адреса)
+            const warehouseAddress = form.fromAddress || 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область';
+            const cityFiasId = await getCityFiasFromAddress(warehouseAddress);
+            
             return {
               type: 'address' as const,
-              address: form.fromAddress || 'деревня Осеево, 202, городской округ Лосино-Петровский, Московская область'
+              city_fias: cityFiasId
             };
           } else {
+            // Адресная доставка: type=address + city_fias_id
+            const address = form.fromAddress || form.fromCity;
+            const cityFiasId = await getCityFiasFromAddress(address);
+            
             return {
               type: 'address' as const,
-              address: form.fromAddress || form.fromCity
+              city_fias: cityFiasId
             };
           }
         } catch (error) {
@@ -3592,14 +3644,19 @@ export default function Home() {
       const getDestinationLocation = async () => {
         try {
           if (form.toTerminal) {
+            // Терминальная доставка: type=terminal + city_fias
             return {
               type: 'terminal' as const,
               city_fias: await getNordwheelCityFias(form.toCity)
             };
           } else {
+            // Адресная доставка: type=address + city_fias_id
+            const address = form.toAddress || form.toCity;
+            const cityFiasId = await getCityFiasFromAddress(address);
+            
             return {
               type: 'address' as const,
-              address: form.toAddress || form.toCity
+              city_fias: cityFiasId
             };
           }
         } catch (error) {

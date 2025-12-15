@@ -1,43 +1,31 @@
 [
   {
-    "content": "Добавить поддержку findById в API Dadata для получения FIAS кодов",
+    "content": "Обновить API Dadata для использования clean метода вместо findById",
     "id": "1",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Создать функцию getNordwheelCityFias с fallback логикой",
+    "content": "Создать новую функцию getCityFiasFromAddress для получения city_fias_id из адреса",
     "id": "2",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Обновить getDispatchLocation для асинхронности и обработки ошибок",
+    "content": "Обновить getDispatchLocation для склада Лавсит: type=address + city_fias_id",
     "id": "3",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Обновить getDestinationLocation для асинхронности и обработки ошибок",
+    "content": "Обновить getDestinationLocation: type=address + city_fias_id",
     "id": "4",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Изменить обработку склада Лавсит с terminal на address",
+    "content": "Протестировать сборку проекта",
     "id": "5",
-    "priority": "high",
-    "status": "completed"
-  },
-  {
-    "content": "Добавить обработку ошибок в основной функции calculateNordWheel",
-    "id": "6",
-    "priority": "high",
-    "status": "completed"
-  },
-  {
-    "content": "Протестировать изменения",
-    "id": "7",
     "priority": "medium",
     "status": "completed"
   }

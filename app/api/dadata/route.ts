@@ -76,7 +76,9 @@ export async function POST(request: NextRequest) {
           dellinFormat,
           region_kladr_id: cleanedAddress.region_kladr_id,
           city_kladr_id: cleanedAddress.city_kladr_id,
-          street_kladr_id: cleanedAddress.street_kladr_id
+          street_kladr_id: cleanedAddress.street_kladr_id,
+          city_fias_id: cleanedAddress.city_fias_id,
+          settlement_fias_id: cleanedAddress.settlement_fias_id
         }
       });
     } else if (type === 'suggest' && data.suggestions && Array.isArray(data.suggestions)) {

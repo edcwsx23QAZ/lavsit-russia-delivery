@@ -1,0 +1,85 @@
+{
+  "id": "prt_b22da7346001Riy1oIYELKRA4D",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22da5d40001imokR8Fr6vCYHy",
+  "type": "tool",
+  "callID": "toolu_01RKdGYPtJyV7pV5wWzSXp4o",
+  "tool": "todowrite",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "id": "1",
+          "content": "Обновить API Dadata для использования clean метода вместо findById",
+          "status": "pending",
+          "priority": "high"
+        },
+        {
+          "id": "2",
+          "content": "Создать новую функцию getCityFiasFromAddress для получения city_fias_id из адреса",
+          "status": "pending",
+          "priority": "high"
+        },
+        {
+          "id": "3",
+          "content": "Обновить getDispatchLocation для склада Лавсит: type=address + city_fias_id",
+          "status": "pending",
+          "priority": "high"
+        },
+        {
+          "id": "4",
+          "content": "Обновить getDestinationLocation: type=address + city_fias_id",
+          "status": "pending",
+          "priority": "high"
+        },
+        {
+          "id": "5",
+          "content": "Протестировать сборку проекта",
+          "status": "pending",
+          "priority": "medium"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"id\": \"1\",\n    \"content\": \"Обновить API Dadata для использования clean метода вместо findById\",\n    \"status\": \"pending\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"2\",\n    \"content\": \"Создать новую функцию getCityFiasFromAddress для получения city_fias_id из адреса\",\n    \"status\": \"pending\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"3\",\n    \"content\": \"Обновить getDispatchLocation для склада Лавсит: type=address + city_fias_id\",\n    \"status\": \"pending\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"4\",\n    \"content\": \"Обновить getDestinationLocation: type=address + city_fias_id\",\n    \"status\": \"pending\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"5\",\n    \"content\": \"Протестировать сборку проекта\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\"\n  }\n]",
+    "title": "5 todos",
+    "metadata": {
+      "todos": [
+        {
+          "id": "1",
+          "content": "Обновить API Dadata для использования clean метода вместо findById",
+          "status": "pending",
+          "priority": "high"
+        },
+        {
+          "id": "2",
+          "content": "Создать новую функцию getCityFiasFromAddress для получения city_fias_id из адреса",
+          "status": "pending",
+          "priority": "high"
+        },
+        {
+          "id": "3",
+          "content": "Обновить getDispatchLocation для склада Лавсит: type=address + city_fias_id",
+          "status": "pending",
+          "priority": "high"
+        },
+        {
+          "id": "4",
+          "content": "Обновить getDestinationLocation: type=address + city_fias_id",
+          "status": "pending",
+          "priority": "high"
+        },
+        {
+          "id": "5",
+          "content": "Протестировать сборку проекта",
+          "status": "pending",
+          "priority": "medium"
+        }
+      ]
+    },
+    "time": {
+      "start": 1765816303962,
+      "end": 1765816303980
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "msg_b22da5d40001imokR8Fr6vCYHy",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "role": "assistant",
+  "time": {
+    "created": 1765816294720,
+    "completed": 1765816304127
+  },
+  "parentID": "msg_b22da5c69001wELp3Ridkjnblm",
+  "modelID": "claude-sonnet-4-5-20250929",
+  "providerID": "anthropic",
+  "mode": "build",
+  "path": {
+    "cwd": "/home/user/project",
+    "root": "/home/user/project"
+  },
+  "cost": 0.3588375,
+  "tokens": {
+    "input": 0,
+    "output": 429,
+    "reasoning": 0,
+    "cache": {
+      "read": 0,
+      "write": 93974
+    }
+  },
+  "finish": "tool-calls"
+}

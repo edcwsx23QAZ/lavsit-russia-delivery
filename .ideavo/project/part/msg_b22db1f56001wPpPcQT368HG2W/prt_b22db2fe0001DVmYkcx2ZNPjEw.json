@@ -1,0 +1,21 @@
+{
+  "id": "prt_b22db2fe0001DVmYkcx2ZNPjEw",
+  "sessionID": "ses_4dd34592affehJqMoLA2ZOxuZo",
+  "messageID": "msg_b22db1f56001wPpPcQT368HG2W",
+  "type": "tool",
+  "callID": "toolu_01BFEMPq36pSLj9YyMeDzB2D",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/api/dadata/route.ts",
+      "oldString": "    // Обработка ответа в зависимости от типа запроса\n    if (type === 'clean' && Array.isArray(data) && data.length > 0) {\n      const cleanedAddress = data[0];\n      \n      // Формируем нормализованный адрес для Деловых Линий\n      const dellinFormat = formatAddressForDellin(cleanedAddress);\n      \n      return NextResponse.json({\n        success: true,\n        data: {\n          original: address,\n          cleaned: cleanedAddress,\n          dellinFormat,\n          region_kladr_id: cleanedAddress.region_kladr_id,\n          city_kladr_id: cleanedAddress.city_kladr_id,\n          street_kladr_id: cleanedAddress.street_kladr_id\n        }\n      });\n    } else if (type === 'suggest' && data.suggestions && Array.isArray(data.suggestions)) {",
+      "newString": "    // Обработка ответа в зависимости от типа запроса\n    if (type === 'clean' && Array.isArray(data) && data.length > 0) {\n      const cleanedAddress = data[0];\n      \n      // Формируем нормализованный адрес для Деловых Линий\n      const dellinFormat = formatAddressForDellin(cleanedAddress);\n      \n      return NextResponse.json({\n        success: true,\n        data: {\n          original: address,\n          cleaned: cleanedAddress,\n          dellinFormat,\n          region_kladr_id: cleanedAddress.region_kladr_id,\n          city_kladr_id: cleanedAddress.city_kladr_id,\n          street_kladr_id: cleanedAddress.street_kladr_id,\n          city_fias_id: cleanedAddress.city_fias_id,\n          settlement_fias_id: cleanedAddress.settlement_fias_id\n        }\n      });\n    } else if (type === 'suggest' && data.suggestions && Array.isArray(data.suggestions)) {"
+    },
+    "error": "Error: You must read the file /home/user/project/app/api/dadata/route.ts before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1765816354889,
+      "end": 1765816354900
+    }
+  }
+}
