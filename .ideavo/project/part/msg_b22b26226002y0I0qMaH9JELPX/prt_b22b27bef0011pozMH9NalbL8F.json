@@ -1,0 +1,24 @@
+{
+  "id": "prt_b22b27bef0011pozMH9NalbL8F",
+  "sessionID": "ses_4ec400949ffekDUyPGFumLInaA",
+  "messageID": "msg_b22b26226002y0I0qMaH9JELPX",
+  "type": "tool",
+  "callID": "call_36431914",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "dadata|handleAddressChange"
+    },
+    "output": "Found 15 matches\n/home/user/project/app/page.tsx:\n  Line 749:       const response = await fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {\n  Line 782:   const handleAddressChange = (field: string, value: string, element?: HTMLInputElement) => {\n  Line 1411:       const response = await fetch('/api/dadata', {\n  Line 5073:                       onChange={(e) => !form.fromLavsiteWarehouse && handleAddressChange('fromCity', e.target.value, e.target)}\n  Line 5085:                         onChange={(e) => !form.fromLavsiteWarehouse && handleAddressChange('fromAddress', e.target.value, e.target)}\n  Line 5122:                       onChange={(e) => handleAddressChange('toCity', e.target.value, e.target)}\n  Line 5133:                         onChange={(e) => handleAddressChange('toAddress', e.target.value, e.target)}\n\n/home/user/project/components/diagnostic/ApiMasterTab.tsx:\n  Line 123:     key: 'dadata',\n  Line 129:     endpoints: ['https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address'],\n  Line 297:         case 'dadata':\n  Line 298:           const dadataResponse = await fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {\n  Line 306:           testResult = dadataResponse.ok;\n\n/home/user/project/app/api/dadata/route.ts:\n  Line 30:       url = 'https://cleaner.dadata.ru/api/v1/clean/address';\n  Line 35:       url = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address';\n  Line 168:     const response = await fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {",
+    "title": "dadata|handleAddressChange",
+    "metadata": {
+      "matches": 15,
+      "truncated": false
+    },
+    "time": {
+      "start": 1765813681143,
+      "end": 1765813681327
+    }
+  }
+}

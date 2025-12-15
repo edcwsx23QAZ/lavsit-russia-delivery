@@ -1,0 +1,28 @@
+{
+  "id": "msg_b22b27d56002nfCY0QBvWfbmny",
+  "sessionID": "ses_4ec400949ffekDUyPGFumLInaA",
+  "role": "assistant",
+  "time": {
+    "created": 1765813681494,
+    "completed": 1765813690937
+  },
+  "parentID": "msg_b22b261d0001kqzVnXs7BI1YjN",
+  "modelID": "grok-code",
+  "providerID": "ideavo",
+  "mode": "plan",
+  "path": {
+    "cwd": "/home/user/project",
+    "root": "/home/user/project"
+  },
+  "cost": 0,
+  "tokens": {
+    "input": 477,
+    "output": 30,
+    "reasoning": 83,
+    "cache": {
+      "read": 92160,
+      "write": 0
+    }
+  },
+  "finish": "tool-calls"
+}
