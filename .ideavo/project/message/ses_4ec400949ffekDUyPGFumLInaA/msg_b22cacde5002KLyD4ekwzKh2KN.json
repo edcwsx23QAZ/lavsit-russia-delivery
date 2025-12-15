@@ -1,0 +1,43 @@
+{
+  "id": "msg_b22cacde5002KLyD4ekwzKh2KN",
+  "sessionID": "ses_4ec400949ffekDUyPGFumLInaA",
+  "role": "assistant",
+  "time": {
+    "created": 1765815274982,
+    "completed": 1765815275463
+  },
+  "error": {
+    "name": "APIError",
+    "data": {
+      "message": "Method Not Allowed: {\"detail\":\"Method Not Allowed\"}",
+      "statusCode": 405,
+      "isRetryable": false,
+      "responseHeaders": {
+        "connection": "keep-alive",
+        "content-type": "application/json",
+        "date": "Mon, 15 Dec 2025 15:06:10 GMT",
+        "server": "nginx/1.24.0 (Ubuntu)",
+        "transfer-encoding": "chunked"
+      },
+      "responseBody": "{\"detail\":\"Method Not Allowed\"}"
+    }
+  },
+  "parentID": "msg_b22cacd5e001vSEnjMAEz7L33t",
+  "modelID": "grok-code",
+  "providerID": "ideavo",
+  "mode": "build",
+  "path": {
+    "cwd": "/home/user/project",
+    "root": "/home/user/project"
+  },
+  "cost": 0,
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "reasoning": 0,
+    "cache": {
+      "read": 0,
+      "write": 0
+    }
+  }
+}
