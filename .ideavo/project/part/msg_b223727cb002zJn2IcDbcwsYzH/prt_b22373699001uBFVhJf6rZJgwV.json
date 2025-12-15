@@ -1,0 +1,11 @@
+{
+  "id": "prt_b22373699001uBFVhJf6rZJgwV",
+  "sessionID": "ses_4ec400949ffekDUyPGFumLInaA",
+  "messageID": "msg_b223727cb002zJn2IcDbcwsYzH",
+  "type": "reasoning",
+  "text": "Сначала пользователь спрашивает о проблеме с API СДЭК: почему передается адрес отправления \"Лосино-Петровский\", когда в строке адреса отправления прописано \"деревня Осеево, 202, городской округ Лосино-Петровский, Московская область\". Он говорит, что передаваться должна \"деревня Осеево\".\n\n\n## Investigating User Query  \n- The user asked why the CDEK API sends \"Losino-Petrovskiy\" as the origin address instead of \"derevnya Oseevo.\"  \n- They noted the origin address in the input is \"derevnya Oseevo, 202, gorodskoy okrug Losino-Petrovskiy, Moskovskaya oblast.\"  \n- The user expects \"derevnya Oseevo\" to be transmitted, not the city name.  \n- This suggests a possible issue with how the API processes or prioritizes address components.\n\n## Examining Form Behavior  \n- When \"So sklada Lavsit\" checkbox is selected, the form auto-fills with fromLavsiteWarehouse: true and fromCity: 'Losino-Petrovskiy'.",
+  "time": {
+    "start": 1765805602457,
+    "end": 1765805609767
+  }
+}

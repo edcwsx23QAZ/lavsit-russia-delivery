@@ -1,0 +1,11 @@
+{
+  "id": "prt_b22377578001BJrJsm4aHzsGfy",
+  "sessionID": "ses_4ec400949ffekDUyPGFumLInaA",
+  "messageID": "msg_b223770e2002tKICsW97DIzhkH",
+  "type": "reasoning",
+  "text": "Теперь я понимаю проблему полностью. В API СДЭК (`app/api/cdek/route.ts`) используется структура:\n\n\n## Examining API Structure  \n- The CDEK API in `app/api/cdek/route.ts` includes a `from_location` structure.  \n- This structure contains a `code` field, which is set to `fromCity`.",
+  "time": {
+    "start": 1765805618552,
+    "end": 1765805624610
+  }
+}
