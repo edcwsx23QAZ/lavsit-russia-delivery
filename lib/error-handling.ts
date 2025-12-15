@@ -136,6 +136,13 @@ export function categorizeError(error: any, response?: Response): ErrorType {
   if (error instanceof TypeError && error.message.includes('fetch')) return ErrorType.NETWORK;
   if (error.name === 'AbortError') return ErrorType.TIMEOUT;
   if (error.message?.includes('timeout')) return ErrorType.TIMEOUT;
+  
+  // Handle socket connection errors
+  if (error.message?.includes('socket connection was closed')) return ErrorType.NETWORK;
+  if (error.message?.includes('connection closed unexpectedly')) return ErrorType.NETWORK;
+  if (error.message?.includes('ECONNRESET')) return ErrorType.NETWORK;
+  if (error.message?.includes('ENOTFOUND')) return ErrorType.NETWORK;
+  if (error.message?.includes('ETIMEDOUT')) return ErrorType.TIMEOUT;
 
   return ErrorType.UNKNOWN;
 }

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { enhancedApiRequest } from '@/lib/api-utils';
 
 export async function POST(request: NextRequest) {
   try {
@@ -13,19 +14,41 @@ export async function POST(request: NextRequest) {
     console.log('🚛 NordWheel API Route: Forwarding request to:', apiUrl);
     console.log('🚛 NordWheel API Route: Request body:', JSON.stringify(body, null, 2));
     
-    // Make request to NordWheel API
-    const response = await fetch(apiUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-        'User-Agent': 'DeliveryCalculator/1.0',
-        'Accept': 'application/json'
+    // Use enhanced API request with longer timeout for NordWheel
+    const result = await enhancedApiRequest(
+      apiUrl,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+          'User-Agent': 'DeliveryCalculator/1.0',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(body)
       },
-      body: JSON.stringify(body)
-    });
+      { operation: 'calculate', company: 'NordWheel API' },
+      { maxRetries: 2, baseDelay: 2000 } // Reduced retries, increased delay
+    );
     
-    // Get response text first for better error handling
+    // Handle error result from enhancedApiRequest
+    if (result && typeof result === 'object' && 'success' in result && !result.success) {
+      console.error('🚛 NordWheel API Route: Enhanced API error:', result.error);
+      return NextResponse.json(
+        {
+          success: false,
+          error: {
+            message: result.error.userMessage || result.error.message,
+            details: result.error.technicalDetails,
+            type: result.error.type
+          }
+        },
+        { status: 500 }
+      );
+    }
+    
+    // Get the response object
+    const response = result as Response;
     const responseText = await response.text();
     console.log('🚛 NordWheel API Route: Response status:', response.status, response.statusText);
     console.log('🚛 NordWheel API Route: Response body:', responseText.substring(0, 1000));

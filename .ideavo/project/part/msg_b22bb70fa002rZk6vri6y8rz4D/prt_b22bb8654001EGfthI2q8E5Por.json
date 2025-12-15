@@ -1,0 +1,24 @@
+{
+  "id": "prt_b22bb8654001EGfthI2q8E5Por",
+  "sessionID": "ses_4ec400949ffekDUyPGFumLInaA",
+  "messageID": "msg_b22bb70fa002rZk6vri6y8rz4D",
+  "type": "tool",
+  "callID": "call_28605450",
+  "tool": "grep",
+  "state": {
+    "status": "completed",
+    "input": {
+      "pattern": "fetch.*verbose|socket.*connection|connection.*closed"
+    },
+    "output": "No files found",
+    "title": "fetch.*verbose|socket.*connection|connection.*closed",
+    "metadata": {
+      "matches": 0,
+      "truncated": false
+    },
+    "time": {
+      "start": 1765814273635,
+      "end": 1765814273646
+    }
+  }
+}
