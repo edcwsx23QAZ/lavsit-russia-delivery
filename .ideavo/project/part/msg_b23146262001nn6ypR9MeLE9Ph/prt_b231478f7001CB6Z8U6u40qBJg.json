@@ -1,0 +1,29 @@
+{
+  "id": "prt_b231478f7001CB6Z8U6u40qBJg",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b23146262001nn6ypR9MeLE9Ph",
+  "type": "tool",
+  "callID": "toolu_015brptfu5zxoSzxYeeoi5ko",
+  "tool": "multiedit",
+  "state": {
+    "status": "error",
+    "input": {
+      "edits": [
+        {
+          "newString": "**Добавлено в структуру запроса** (строка ~1758):\n```typescript\ncargo: {\n  quantity: form.cargos.length,\n  length: maxLength,\n  width: maxWidth,\n  height: maxHeight,\n  weight: totalWeight,\n  totalVolume: totalVolume,\n  totalWeight: totalWeight,\n  oversizedWeight: 0,\n  oversizedVolume: 0,\n  hazardClass: 0,\n  freightUID: freightUid,  // UID без дефисов (32 символа)\n  freightName: 'Мебель',  // Название груза (обязательное поле)\n  insurance: {\n    statedValue: form.declaredValue || 0,\n    term: true\n  }\n}\n```",
+          "oldString": "**Добавлено в структуру запроса** (строка ~1752):\n```typescript\ncargo: {\n  quantity: form.cargos.length,\n  length: maxLength,\n  width: maxWidth,\n  height: maxHeight,\n  weight: totalWeight,\n  totalVolume: totalVolume,\n  totalWeight: totalWeight,\n  oversizedWeight: 0,\n  oversizedVolume: 0,\n  hazardClass: 0,\n  freightUID: freightUid,  // ← КРИТИЧЕСКИ ВАЖНОЕ ПОЛЕ\n  insurance: {\n    statedValue: form.declaredValue || 0,\n    term: true\n  }\n}\n```"
+        },
+        {
+          "newString": "1. **Обязательное поле freightUID**: UUID характера груза является обязательным для корректных расчетов через API Деловых Линий, передается БЕЗ дефисов (32 символа)\n\n2. **Обязательное поле freightName**: Текстовое название груза \"Мебель\" является обязательным полем\n\n3. **Фиксированная упаковка**: При включенном чекбоксе \"требуется упаковка\" всегда используется UID `0xad97901b0ecef0f211e889fcf4624fec`\n\n4. **Фиксированное значение**: Для всех расчетов мебели используется характер груза **\"Мебель\"** (не \"Мебельные фасады\" или \"Мебельная фурнитура\")",
+          "oldString": "1. **Обязательное поле**: `freightUID` является обязательным для корректных расчетов через API Деловых Линий\n\n2. **Фиксированное значение**: Для всех расчетов мебели используется характер груза **\"Мебель\"** (не \"Мебельные фасады\" или \"Мебельная фурнитура\")"
+        }
+      ],
+      "filePath": "/home/user/project/DELLIN_FREIGHT_UID_IMPLEMENTATION.md"
+    },
+    "error": "Error: You must read the file /home/user/project/DELLIN_FREIGHT_UID_IMPLEMENTATION.md before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1765820114197,
+      "end": 1765820114213
+    }
+  }
+}

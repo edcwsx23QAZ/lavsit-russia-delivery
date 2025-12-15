@@ -1,0 +1,73 @@
+{
+  "id": "prt_b23133e210016gWcH0vonOIsrB",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b23133180001H2sDca4o9Q2eye",
+  "type": "tool",
+  "callID": "toolu_01Yaf9pYzjY3mTgVMuv54NWN",
+  "tool": "todowrite",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "id": "1",
+          "content": "Добавить freightName: 'Мебель' в cargo",
+          "status": "in_progress",
+          "priority": "high"
+        },
+        {
+          "id": "2",
+          "content": "Заменить packages UID на фиксированный 0xad97901b0ecef0f211e889fcf4624fec",
+          "status": "pending",
+          "priority": "high"
+        },
+        {
+          "id": "3",
+          "content": "Обновить документацию",
+          "status": "pending",
+          "priority": "medium"
+        },
+        {
+          "id": "4",
+          "content": "Проверить билд",
+          "status": "pending",
+          "priority": "high"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"id\": \"1\",\n    \"content\": \"Добавить freightName: 'Мебель' в cargo\",\n    \"status\": \"in_progress\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"2\",\n    \"content\": \"Заменить packages UID на фиксированный 0xad97901b0ecef0f211e889fcf4624fec\",\n    \"status\": \"pending\",\n    \"priority\": \"high\"\n  },\n  {\n    \"id\": \"3\",\n    \"content\": \"Обновить документацию\",\n    \"status\": \"pending\",\n    \"priority\": \"medium\"\n  },\n  {\n    \"id\": \"4\",\n    \"content\": \"Проверить билд\",\n    \"status\": \"pending\",\n    \"priority\": \"high\"\n  }\n]",
+    "title": "4 todos",
+    "metadata": {
+      "todos": [
+        {
+          "id": "1",
+          "content": "Добавить freightName: 'Мебель' в cargo",
+          "status": "in_progress",
+          "priority": "high"
+        },
+        {
+          "id": "2",
+          "content": "Заменить packages UID на фиксированный 0xad97901b0ecef0f211e889fcf4624fec",
+          "status": "pending",
+          "priority": "high"
+        },
+        {
+          "id": "3",
+          "content": "Обновить документацию",
+          "status": "pending",
+          "priority": "medium"
+        },
+        {
+          "id": "4",
+          "content": "Проверить билд",
+          "status": "pending",
+          "priority": "high"
+        }
+      ]
+    },
+    "time": {
+      "start": 1765820026268,
+      "end": 1765820026273
+    }
+  }
+}

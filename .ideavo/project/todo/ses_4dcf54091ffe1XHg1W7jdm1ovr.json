@@ -1,31 +1,25 @@
 [
   {
-    "content": "Исправить формат freightUID - удалить дефисы из UUID",
+    "content": "Добавить freightName: 'Мебель' в cargo",
     "id": "1",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Обновить FALLBACK_FREIGHT_UID в dellin-packaging-utils.ts",
+    "content": "Заменить packages UID на фиксированный 0xad97901b0ecef0f211e889fcf4624fec",
     "id": "2",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Обновить fallback UID в app/page.tsx",
-    "id": "3",
-    "priority": "high",
-    "status": "completed"
-  },
-  {
     "content": "Обновить документацию",
-    "id": "4",
+    "id": "3",
     "priority": "medium",
     "status": "completed"
   },
   {
     "content": "Проверить билд",
-    "id": "5",
+    "id": "4",
     "priority": "high",
     "status": "completed"
   }

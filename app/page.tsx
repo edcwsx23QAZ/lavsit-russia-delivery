@@ -1643,33 +1643,19 @@ export default function Home() {
       }
       console.log('=== КОНЕЦ ПОЛУЧЕНИЯ ХАРАКТЕРА ГРУЗА ===');
 
-      // Получаем UID упаковки crate_with_bubble (если нужна упаковка)
+      // Получаем UID упаковки (если нужна упаковка)
+      // Всегда используем фиксированный UID для упаковки согласно требованиям
       let packageUid: string | null = null;
       console.log('=== НАЧАЛО ОТЛАДКИ УПАКОВКИ ===');
       console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);
       console.log('🔍 ОТЛАДКА УПАКОВКИ: typeof form.needPackaging =', typeof form.needPackaging);
       
       if (form.needPackaging) {
-        console.log('🔍 ✅ УПАКОВКА ТРЕБУЕТСЯ - ЗАПРАШИВАЕМ UID через CSV WORKFLOW...');
-        try {
-          packageUid = await getDellinPackageUid('crate_with_bubble');
-          console.log('🔍 ✅ ПОЛУЧЕН packageUid из CSV WORKFLOW:', packageUid);
-          
-          // Если не получили UID из CSV, используем UID с сайта ДЛ (исправляем расхождение 500₽)
-          if (!packageUid) {
-            packageUid = '0x9dd8901b0ecef10c11e8ed001199bf6e'; // UID с официального сайта ДЛ
-            console.log('🔍 🧪 ИСПОЛЬЗУЕМ UID С САЙТА ДЛ (исправляем расхождение):', packageUid);
-          }
-          
-          console.log('🔍 ✅ ФИНАЛЬНЫЙ packageUid:', packageUid);
-          console.log('🔍 ✅ typeof packageUid:', typeof packageUid);
-          console.log('🔍 ✅ packageUid truthy:', !!packageUid);
-        } catch (error) {
-          console.log('🔍 ❌ ОШИБКА при получении packageUid через CSV WORKFLOW:', error);
-          // Используем UID с сайта ДЛ как fallback (исправляем расхождение)
-          packageUid = '0x9dd8901b0ecef10c11e8ed001199bf6e'; // UID с официального сайта ДЛ
-          console.log('🔍 🧪 ИСПОЛЬЗУЕМ UID С САЙТА ДЛ после ошибки (исправляем расхождение):', packageUid);
-        }
+        // Используем фиксированный UID для упаковки
+        packageUid = '0xad97901b0ecef0f211e889fcf4624fec';
+        console.log('🔍 ✅ УПАКОВКА ТРЕБУЕТСЯ - используем фиксированный UID:', packageUid);
+        console.log('🔍 ✅ typeof packageUid:', typeof packageUid);
+        console.log('🔍 ✅ packageUid truthy:', !!packageUid);
       } else {
         console.log('🔍 ❌ Упаковка не требуется, пропускаем получение UID');
       }
@@ -1766,7 +1752,8 @@ export default function Home() {
           oversizedWeight: 0,
           oversizedVolume: 0,
           hazardClass: 0,  // Всегда 0 если нет опасных грузов
-          freightUID: freightUid,  // Характер груза "Мебель" (обязательное поле)
+          freightUID: freightUid,  // UID характера груза (UUID без дефисов)
+          freightName: 'Мебель',  // Название груза (обязательное поле)
           insurance: {
             statedValue: form.declaredValue || 0,
             term: true  // Всегда true по умолчанию
