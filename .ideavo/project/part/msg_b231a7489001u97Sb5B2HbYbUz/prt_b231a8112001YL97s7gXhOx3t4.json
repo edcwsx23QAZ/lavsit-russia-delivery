@@ -1,0 +1,25 @@
+{
+  "id": "prt_b231a8112001YL97s7gXhOx3t4",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b231a7489001u97Sb5B2HbYbUz",
+  "type": "tool",
+  "callID": "toolu_01GJggYe4XqDschFgNcaBzn9",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 1740
+    },
+    "output": "<file>\n01741|             }]\n01742|           } : {})\n01743|         },\n01744|         cargo: {\n01745|           quantity: form.cargos.length,\n01746|           length: maxLength,\n01747|           width: maxWidth,\n01748|           height: maxHeight,\n01749|           weight: totalWeight,\n01750|           totalVolume: totalVolume,\n01751|           totalWeight: totalWeight,\n01752|           oversizedWeight: 0,\n01753|           oversizedVolume: 0,\n01754|           hazardClass: 0,  // Всегда 0 если нет опасных грузов\n01755|           freightUID: freightUid,  // UID характера груза (UUID без дефисов)\n01756|           freightName: 'Мебель',  // Название груза (обязательное поле)\n01757|           insurance: {\n01758|             statedValue: form.declaredValue || 0,\n01759|             term: true  // Всегда true по умолчанию\n01760|           }\n01761|         },\n01762|         payment: {\n01763|           type: 'noncash',  // Всегда \"noncash\"\n01764|           paymentCitySearch: {\n01765|             search: form.fromCity  // Город оплаты\n01766|           }\n01767|         }\n01768|       };\n01769| \n01770|       console.log('🚀 ИТОГОВЫЙ ЗАПРОС К ДЛ:', JSON.stringify(requestData, null, 2));\n\n(File has more lines. Use 'offset' parameter to read beyond line 1770)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "            }]\n          } : {})\n        },\n        cargo: {\n          quantity: form.cargos.length,\n          length: maxLength,\n          width: maxWidth,\n          height: maxHeight,\n          weight: totalWeight,\n          totalVolume: totalVolume,\n          totalWeight: totalWeight,\n          oversizedWeight: 0,\n          oversizedVolume: 0,\n          hazardClass: 0,  // Всегда 0 если нет опасных грузов\n          freightUID: freightUid,  // UID характера груза (UUID без дефисов)\n          freightName: 'Мебель',  // Название груза (обязательное поле)\n          insurance: {\n            statedValue: form.declaredValue || 0,\n            term: true  // Всегда true по умолчанию\n          }"
+    },
+    "time": {
+      "start": 1765820498670,
+      "end": 1765820498675
+    }
+  }
+}

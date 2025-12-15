@@ -1,0 +1,25 @@
+{
+  "id": "prt_b231aef04001m74xS17vwMXg0V",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b231ae3eb0019krVr7uTJKZB6X",
+  "type": "tool",
+  "callID": "toolu_013S11ru35gNjFRHB7BJpgGz",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 1650
+    },
+    "output": "<file>\n01651|       const produceDate = tomorrow.toISOString().split('T')[0];\n01652| \n01653|       // Отладка перед формированием запроса\n01654|       console.log('=== ОТЛАДКА ФОРМИРОВАНИЯ ЗАПРОСА ===');\n01655|       console.log('🔍 freightUid =', freightUid, '(тип:', typeof freightUid, ')');\n01656|       console.log('🔍 form.needPackaging =', form.needPackaging, '(тип:', typeof form.needPackaging, ')');\n01657|       console.log('🔍 packageUid =', packageUid, '(тип:', typeof packageUid, ')');\n01658|       console.log('🔍 packageUid truthy =', !!packageUid);\n01659|       console.log('🔍 Условие (form.needPackaging && packageUid) =', form.needPackaging && packageUid);\n01660|       \n01661|       if (form.needPackaging && packageUid) {\n01662|         console.log('✅ PACKAGES БУДЕТ ДОБАВЛЕН В ЗАПРОС!');\n01663|       } else {\n01664|         console.log('❌ PACKAGES НЕ БУДЕТ ДОБАВЛЕН:');\n01665|         if (!form.needPackaging) console.log('  - form.needPackaging = false');\n01666|         if (!packageUid) console.log('  - packageUid отсутствует/null');\n01667|       }\n01668| \n01669|       // Формируем корректную структуру запроса согласно инструкции\n01670|       const requestData = {\n\n(File has more lines. Use 'offset' parameter to read beyond line 1670)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "      const produceDate = tomorrow.toISOString().split('T')[0];\n\n      // Отладка перед формированием запроса\n      console.log('=== ОТЛАДКА ФОРМИРОВАНИЯ ЗАПРОСА ===');\n      console.log('🔍 freightUid =', freightUid, '(тип:', typeof freightUid, ')');\n      console.log('🔍 form.needPackaging =', form.needPackaging, '(тип:', typeof form.needPackaging, ')');\n      console.log('🔍 packageUid =', packageUid, '(тип:', typeof packageUid, ')');\n      console.log('🔍 packageUid truthy =', !!packageUid);\n      console.log('🔍 Условие (form.needPackaging && packageUid) =', form.needPackaging && packageUid);\n      \n      if (form.needPackaging && packageUid) {\n        console.log('✅ PACKAGES БУДЕТ ДОБАВЛЕН В ЗАПРОС!');\n      } else {\n        console.log('❌ PACKAGES НЕ БУДЕТ ДОБАВЛЕН:');\n        if (!form.needPackaging) console.log('  - form.needPackaging = false');\n        if (!packageUid) console.log('  - packageUid отсутствует/null');\n      }\n\n      // Формируем корректную структуру запроса согласно инструкции\n      const requestData = {"
+    },
+    "time": {
+      "start": 1765820526948,
+      "end": 1765820526953
+    }
+  }
+}

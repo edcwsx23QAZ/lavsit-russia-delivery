@@ -1,0 +1,21 @@
+{
+  "id": "prt_b231b427c001VCrliLbP0xPR2I",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b231b3233001M5LA7k8s9FnXjS",
+  "type": "tool",
+  "callID": "toolu_0194qN1o3YUhpy8vdPs19iw7",
+  "tool": "edit",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/DELLIN_FREIGHT_UID_IMPLEMENTATION.md",
+      "newString": "# Реализация характера груза (freightName) для Деловых Линий\n\n## Обзор\n\nРеализована интеграция поля `freightName` (характер груза) в расчеты стоимости доставки через API Деловых Линий. Для всех расчетов автоматически используется характер груза **\"Мебель\"**.\n\n**ВАЖНО**: API Деловых Линий требует использования ЛИБО `freightName` (строка), ЛИБО `freightUID` (UUID). Эти поля взаимоисключающие (код ошибки 110005). В текущей реализации используется `freightName: 'Мебель'`.",
+      "oldString": "# Реализация характера груза (freightUID) для Деловых Линий\n\n## Обзор\n\nРеализована полная интеграция поля `freightUID` (характер груза) в расчеты стоимости доставки через API Деловых Линий. Для всех расчетов автоматически используется характер груза **\"Мебель\"**."
+    },
+    "error": "Error: You must read the file /home/user/project/DELLIN_FREIGHT_UID_IMPLEMENTATION.md before overwriting it. Use the Read tool first",
+    "time": {
+      "start": 1765820553873,
+      "end": 1765820553877
+    }
+  }
+}

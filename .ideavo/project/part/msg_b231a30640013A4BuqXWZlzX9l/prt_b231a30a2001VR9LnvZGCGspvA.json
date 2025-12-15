@@ -1,0 +1,7 @@
+{
+  "id": "prt_b231a30a2001VR9LnvZGCGspvA",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b231a30640013A4BuqXWZlzX9l",
+  "type": "text",
+  "text": "Проверь текущий ответ Деловых Линий, проанализируй возможную причину ошибки и предложи варианты исправления\n\n{\n  \"metadata\": {\n    \"status\": 400,\n    \"detail\": \"abc\",\n    \"generated_at\": \"2025-12-15 19:39:37\"\n  },\n  \"errors\": [\n    {\n      \"code\": 110005,\n      \"title\": \"Допустима передача только одного из параметров\",\n      \"detail\": \"Указаны взаимоисключающие параметры, только один из которых может присутствовать в запросе\",\n      \"link\": \"https://dev.dellin.ru/api/errors/#error_110005\",\n      \"fields\": [\n        \"cargo.freightName\",\n        \"cargo.freightUID\"\n      ]\n    }\n  ]\n}"
+}

@@ -1,0 +1,61 @@
+{
+  "id": "prt_b231b1ecd001k5bCfZZa7JdJ0n",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b231b0e0f0013sYzxQDivV9Kti",
+  "type": "tool",
+  "callID": "toolu_01NZBMGe4Chehpdw1zByuNnU",
+  "tool": "todowrite",
+  "state": {
+    "status": "completed",
+    "input": {
+      "todos": [
+        {
+          "content": "Удалить freightUID из cargo, оставить только freightName",
+          "id": "1",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Обновить документацию",
+          "id": "2",
+          "priority": "medium",
+          "status": "in_progress"
+        },
+        {
+          "content": "Проверить билд",
+          "id": "3",
+          "priority": "high",
+          "status": "pending"
+        }
+      ]
+    },
+    "output": "[\n  {\n    \"content\": \"Удалить freightUID из cargo, оставить только freightName\",\n    \"id\": \"1\",\n    \"priority\": \"high\",\n    \"status\": \"completed\"\n  },\n  {\n    \"content\": \"Обновить документацию\",\n    \"id\": \"2\",\n    \"priority\": \"medium\",\n    \"status\": \"in_progress\"\n  },\n  {\n    \"content\": \"Проверить билд\",\n    \"id\": \"3\",\n    \"priority\": \"high\",\n    \"status\": \"pending\"\n  }\n]",
+    "title": "2 todos",
+    "metadata": {
+      "todos": [
+        {
+          "content": "Удалить freightUID из cargo, оставить только freightName",
+          "id": "1",
+          "priority": "high",
+          "status": "completed"
+        },
+        {
+          "content": "Обновить документацию",
+          "id": "2",
+          "priority": "medium",
+          "status": "in_progress"
+        },
+        {
+          "content": "Проверить билд",
+          "id": "3",
+          "priority": "high",
+          "status": "pending"
+        }
+      ]
+    },
+    "time": {
+      "start": 1765820543341,
+      "end": 1765820543352
+    }
+  }
+}

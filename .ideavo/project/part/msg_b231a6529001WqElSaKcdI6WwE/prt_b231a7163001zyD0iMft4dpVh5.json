@@ -1,0 +1,21 @@
+{
+  "id": "prt_b231a7163001zyD0iMft4dpVh5",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b231a6529001WqElSaKcdI6WwE",
+  "type": "tool",
+  "callID": "toolu_014nvGrg4U2bWP57NRhyyKa1",
+  "tool": "read",
+  "state": {
+    "status": "error",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": "(1740)"
+    },
+    "error": "Error: The read tool was called with invalid arguments: [\n  {\n    \"expected\": \"number\",\n    \"code\": \"invalid_type\",\n    \"received\": \"NaN\",\n    \"path\": [\n      \"offset\"\n    ],\n    \"message\": \"Invalid input: expected number, received NaN\"\n  }\n].\nPlease rewrite the input so it satisfies the expected schema.",
+    "time": {
+      "start": 1765820494847,
+      "end": 1765820494849
+    }
+  }
+}

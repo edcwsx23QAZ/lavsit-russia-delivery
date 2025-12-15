@@ -1,0 +1,25 @@
+{
+  "id": "prt_b231aa9ee001SLAUvtBPUVwli4",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b231a9ec4001CNTV5xyW6j7xbP",
+  "type": "tool",
+  "callID": "toolu_01PME9NSG12rxB7BZd9yxrwC",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 1628
+    },
+    "output": "<file>\n01629| \n01630|       // Получаем UID характера груза \"Мебель\" (обязательно для всех расчетов ДЛ)\n01631|       console.log('=== НАЧАЛО ПОЛУЧЕНИЯ ХАРАКТЕРА ГРУЗА ===');\n01632|       let freightUid: string | null = null;\n01633|       try {\n01634|         const { getFreightUidWithFallback } = await import('@/lib/dellin-packaging-utils');\n01635|         freightUid = await getFreightUidWithFallback();\n01636|         console.log('🔍 ✅ ПОЛУЧЕН freightUid \"Мебель\":', freightUid);\n01637|       } catch (error) {\n01638|         console.log('🔍 ❌ ОШИБКА при получении freightUid:', error);\n01639|         // Используем fallback UID без дефисов (реальный UID из API ДЛ)\n01640|         // API требует максимум 34 символа, UUID с дефисами = 36 символов\n01641|         freightUid = 'eddb67e3bdb311e0ad24001a64963cbd';\n01642|         console.log('🔍 🧪 ИСПОЛЬЗУЕМ FALLBACK freightUid:', freightUid);\n01643|       }\n01644|       console.log('=== КОНЕЦ ПОЛУЧЕНИЯ ХАРАКТЕРА ГРУЗА ===');\n01645| \n01646|       // Получаем UID упаковки (если нужна упаковка)\n01647|       // Всегда используем фиксированный UID для упаковки согласно требованиям\n01648|       let packageUid: string | null = null;\n01649|       console.log('=== НАЧАЛО ОТЛАДКИ УПАКОВКИ ===');\n01650|       console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);\n01651|       console.log('🔍 ОТЛАДКА УПАКОВКИ: typeof form.needPackaging =', typeof form.needPackaging);\n01652|       \n01653|       if (form.needPackaging) {\n01654|         // Используем фиксированный UID для упаковки\n01655|         packageUid = '0xad97901b0ecef0f211e889fcf4624fec';\n01656|         console.log('🔍 ✅ УПАКОВКА ТРЕБУЕТСЯ - используем фиксированный UID:', packageUid);\n01657|         console.log('🔍 ✅ typeof packageUid:', typeof packageUid);\n01658|         console.log('🔍 ✅ packageUid truthy:', !!packageUid);\n\n(File has more lines. Use 'offset' parameter to read beyond line 1658)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "\n      // Получаем UID характера груза \"Мебель\" (обязательно для всех расчетов ДЛ)\n      console.log('=== НАЧАЛО ПОЛУЧЕНИЯ ХАРАКТЕРА ГРУЗА ===');\n      let freightUid: string | null = null;\n      try {\n        const { getFreightUidWithFallback } = await import('@/lib/dellin-packaging-utils');\n        freightUid = await getFreightUidWithFallback();\n        console.log('🔍 ✅ ПОЛУЧЕН freightUid \"Мебель\":', freightUid);\n      } catch (error) {\n        console.log('🔍 ❌ ОШИБКА при получении freightUid:', error);\n        // Используем fallback UID без дефисов (реальный UID из API ДЛ)\n        // API требует максимум 34 символа, UUID с дефисами = 36 символов\n        freightUid = 'eddb67e3bdb311e0ad24001a64963cbd';\n        console.log('🔍 🧪 ИСПОЛЬЗУЕМ FALLBACK freightUid:', freightUid);\n      }\n      console.log('=== КОНЕЦ ПОЛУЧЕНИЯ ХАРАКТЕРА ГРУЗА ===');\n\n      // Получаем UID упаковки (если нужна упаковка)\n      // Всегда используем фиксированный UID для упаковки согласно требованиям\n      let packageUid: string | null = null;"
+    },
+    "time": {
+      "start": 1765820509437,
+      "end": 1765820509442
+    }
+  }
+}

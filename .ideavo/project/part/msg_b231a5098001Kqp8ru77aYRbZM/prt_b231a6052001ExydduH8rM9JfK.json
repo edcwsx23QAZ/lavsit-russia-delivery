@@ -1,0 +1,25 @@
+{
+  "id": "prt_b231a6052001ExydduH8rM9JfK",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b231a5098001Kqp8ru77aYRbZM",
+  "type": "tool",
+  "callID": "toolu_01FFXYDmAZGnaMv6mT2XKxmK",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 1755
+    },
+    "output": "<file>\n01756|           freightName: 'Мебель',  // Название груза (обязательное поле)\n01757|           insurance: {\n01758|             statedValue: form.declaredValue || 0,\n01759|             term: true  // Всегда true по умолчанию\n01760|           }\n01761|         },\n01762|         payment: {\n01763|           type: 'noncash',  // Всегда \"noncash\"\n01764|           paymentCitySearch: {\n01765|             search: form.fromCity  // Город оплаты\n01766|           }\n01767|         }\n01768|       };\n01769| \n01770|       console.log('🚀 ИТОГОВЫЙ ЗАПРОС К ДЛ:', JSON.stringify(requestData, null, 2));\n01771|       \n01772|       // Специальная проверка блока packages\n01773|       if (requestData.delivery.packages) {\n01774|         console.log('✅ PACKAGES НАЙДЕН В ЗАПРОСЕ:', requestData.delivery.packages);\n01775|       } else {\n01776|         console.log('❌ PACKAGES НЕ НАЙДЕН В ЗАПРОСЕ');\n01777|         console.log('   form.needPackaging =', form.needPackaging);\n01778|         console.log('   packageUid =', packageUid);\n01779|         console.log('   Условие:', form.needPackaging && packageUid);\n01780|       }\n01781| \n01782|       // Попытки запроса с повторной авторизацией при ошибках\n01783|       let response: any = null;\n01784|       let data: any = null;\n01785|       \n\n(File has more lines. Use 'offset' parameter to read beyond line 1785)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "          freightName: 'Мебель',  // Название груза (обязательное поле)\n          insurance: {\n            statedValue: form.declaredValue || 0,\n            term: true  // Всегда true по умолчанию\n          }\n        },\n        payment: {\n          type: 'noncash',  // Всегда \"noncash\"\n          paymentCitySearch: {\n            search: form.fromCity  // Город оплаты\n          }\n        }\n      };\n\n      console.log('🚀 ИТОГОВЫЙ ЗАПРОС К ДЛ:', JSON.stringify(requestData, null, 2));\n      \n      // Специальная проверка блока packages\n      if (requestData.delivery.packages) {\n        console.log('✅ PACKAGES НАЙДЕН В ЗАПРОСЕ:', requestData.delivery.packages);\n      } else {"
+    },
+    "time": {
+      "start": 1765820490861,
+      "end": 1765820490868
+    }
+  }
+}

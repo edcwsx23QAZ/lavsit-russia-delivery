@@ -1627,22 +1627,6 @@ export default function Home() {
         };
       }
 
-      // Получаем UID характера груза "Мебель" (обязательно для всех расчетов ДЛ)
-      console.log('=== НАЧАЛО ПОЛУЧЕНИЯ ХАРАКТЕРА ГРУЗА ===');
-      let freightUid: string | null = null;
-      try {
-        const { getFreightUidWithFallback } = await import('@/lib/dellin-packaging-utils');
-        freightUid = await getFreightUidWithFallback();
-        console.log('🔍 ✅ ПОЛУЧЕН freightUid "Мебель":', freightUid);
-      } catch (error) {
-        console.log('🔍 ❌ ОШИБКА при получении freightUid:', error);
-        // Используем fallback UID без дефисов (реальный UID из API ДЛ)
-        // API требует максимум 34 символа, UUID с дефисами = 36 символов
-        freightUid = 'eddb67e3bdb311e0ad24001a64963cbd';
-        console.log('🔍 🧪 ИСПОЛЬЗУЕМ FALLBACK freightUid:', freightUid);
-      }
-      console.log('=== КОНЕЦ ПОЛУЧЕНИЯ ХАРАКТЕРА ГРУЗА ===');
-
       // Получаем UID упаковки (если нужна упаковка)
       // Всегда используем фиксированный UID для упаковки согласно требованиям
       let packageUid: string | null = null;
@@ -1668,7 +1652,6 @@ export default function Home() {
 
       // Отладка перед формированием запроса
       console.log('=== ОТЛАДКА ФОРМИРОВАНИЯ ЗАПРОСА ===');
-      console.log('🔍 freightUid =', freightUid, '(тип:', typeof freightUid, ')');
       console.log('🔍 form.needPackaging =', form.needPackaging, '(тип:', typeof form.needPackaging, ')');
       console.log('🔍 packageUid =', packageUid, '(тип:', typeof packageUid, ')');
       console.log('🔍 packageUid truthy =', !!packageUid);
@@ -1752,8 +1735,7 @@ export default function Home() {
           oversizedWeight: 0,
           oversizedVolume: 0,
           hazardClass: 0,  // Всегда 0 если нет опасных грузов
-          freightUID: freightUid,  // UID характера груза (UUID без дефисов)
-          freightName: 'Мебель',  // Название груза (обязательное поле)
+          freightName: 'Мебель',  // Название груза (обязательное поле, взаимоисключающее с freightUID)
           insurance: {
             statedValue: form.declaredValue || 0,
             term: true  // Всегда true по умолчанию

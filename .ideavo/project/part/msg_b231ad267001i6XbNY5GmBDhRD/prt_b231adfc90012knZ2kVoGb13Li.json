@@ -1,0 +1,25 @@
+{
+  "id": "prt_b231adfc90012knZ2kVoGb13Li",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b231ad267001i6XbNY5GmBDhRD",
+  "type": "tool",
+  "callID": "toolu_014uh3WBE5yXEhhYP6J5ukhE",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 1665
+    },
+    "output": "<file>\n01666|         if (!packageUid) console.log('  - packageUid отсутствует/null');\n01667|       }\n01668| \n01669|       // Формируем корректную структуру запроса согласно инструкции\n01670|       const requestData = {\n01671|         appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n01672|         sessionID: sessionID,\n01673|         delivery: {\n01674|           deliveryType: {\n01675|             type: 'auto'  // Всегда \"auto\" по умолчанию\n01676|           },\n01677|           derival: {\n01678|             produceDate: produceDate,  // Обязательная дата отправления\n01679|             variant: form.fromAddressDelivery ? 'address' : 'terminal',\n01680|             ...(form.fromAddressDelivery ? {\n01681|               address: {\n01682|                 search: normalizedFromAddress || form.fromAddress || form.fromCity\n01683|               }\n01684|             } : {\n01685|               terminalID: fromTerminalId\n01686|             }),\n01687|             time: {\n01688|               worktimeStart: '10:00',\n01689|               worktimeEnd: '18:00',\n01690|               breakStart: '13:00',\n01691|               breakEnd: '14:00',\n01692|               exactTime: false\n01693|             }\n01694|             // handling в derival всегда пропускается согласно инструкции\n01695|           },\n\n(File has more lines. Use 'offset' parameter to read beyond line 1695)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "        if (!packageUid) console.log('  - packageUid отсутствует/null');\n      }\n\n      // Формируем корректную структуру запроса согласно инструкции\n      const requestData = {\n        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',\n        sessionID: sessionID,\n        delivery: {\n          deliveryType: {\n            type: 'auto'  // Всегда \"auto\" по умолчанию\n          },\n          derival: {\n            produceDate: produceDate,  // Обязательная дата отправления\n            variant: form.fromAddressDelivery ? 'address' : 'terminal',\n            ...(form.fromAddressDelivery ? {\n              address: {\n                search: normalizedFromAddress || form.fromAddress || form.fromCity\n              }\n            } : {\n              terminalID: fromTerminalId"
+    },
+    "time": {
+      "start": 1765820523254,
+      "end": 1765820523259
+    }
+  }
+}
