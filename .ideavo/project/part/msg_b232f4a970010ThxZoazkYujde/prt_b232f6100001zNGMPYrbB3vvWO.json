@@ -1,0 +1,26 @@
+{
+  "id": "prt_b232f6100001zNGMPYrbB3vvWO",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b232f4a970010ThxZoazkYujde",
+  "type": "tool",
+  "callID": "toolu_018HHnddFSvbFUWmKAW1ecoA",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "rg \"cargo\\.length.*\\/\\s*(100|1000)\" /home/user/project/app/page.tsx -n | head -20",
+      "description": "Find division for cargo dimensions"
+    },
+    "output": "regex parse error:\n    cargo\\.length.*\\/\\s*(100|1000)\n                   ^^\nerror: unrecognized escape sequence\n",
+    "title": "Find division for cargo dimensions",
+    "metadata": {
+      "output": "regex parse error:\n    cargo\\.length.*\\/\\s*(100|1000)\n                   ^^\nerror: unrecognized escape sequence\n",
+      "exit": 0,
+      "description": "Find division for cargo dimensions"
+    },
+    "time": {
+      "start": 1765821867525,
+      "end": 1765821867533
+    }
+  }
+}

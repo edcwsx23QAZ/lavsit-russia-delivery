@@ -1,0 +1,26 @@
+{
+  "id": "prt_b232f45290016YdsPkfzV81yRO",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b232f27df001uRrJ8tTv2MQTu8",
+  "type": "tool",
+  "callID": "toolu_01QroQ4uuEXvc6MCacweCzUa",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "rg \"length.*width.*height\" /home/user/project/app/page.tsx -A 2 -B 2 | grep -E \"length|width|height|Input|число\" | head -30",
+      "description": "Check cargo input format"
+    },
+    "output": "    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n                    cargos: restoredData.cargos.length > 0 ? restoredData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n            cargos: savedFormData.cargos.length > 0 ? savedFormData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n            if (!oldForm.cargos || oldForm.cargos.length === 0) {\n              oldForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n      cargos: [{ id: '1', length: 100, width: 100, height: 100, weight: 10 }],\n      cargos: [...prev.cargos, { id: newId, length: 0, width: 0, height: 0, weight: 0 }]\n    return cargo.length === 0 && cargo.width === 0 && cargo.height === 0 && cargo.weight === 0;\n        cargos: cargos.length > 0 ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }] : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n      const key = `${cargo.length}_${cargo.width}_${cargo.height}_${cargo.weight}`;\n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n          width: cargo.width / 100,\n          height: cargo.height / 100,\n          volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n        console.log(`     - Габариты: ${cargo.length}×${cargo.width}×${cargo.height} см`);\n        console.log(`     - Объем: ${((cargo.length * cargo.width * cargo.height) / 1000000).toFixed(3)} м³`);\n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n                  hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000\n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n        console.log(`     - Габариты: ${cargo.length}×${cargo.width}×${cargo.height} см`);\n        console.log(`     - Объем: ${((cargo.length * cargo.width * cargo.height) / 1000000).toFixed(3)} м³`);\n                          объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³\n",
+    "title": "Check cargo input format",
+    "metadata": {
+      "output": "    cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n                    cargos: restoredData.cargos.length > 0 ? restoredData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n            cargos: savedFormData.cargos.length > 0 ? savedFormData.cargos : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n            if (!oldForm.cargos || oldForm.cargos.length === 0) {\n              oldForm.cargos = [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }];\n      cargos: [{ id: '1', length: 100, width: 100, height: 100, weight: 10 }],\n      cargos: [...prev.cargos, { id: newId, length: 0, width: 0, height: 0, weight: 0 }]\n    return cargo.length === 0 && cargo.width === 0 && cargo.height === 0 && cargo.weight === 0;\n        cargos: cargos.length > 0 ? [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }] : [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }],\n      const key = `${cargo.length}_${cargo.width}_${cargo.height}_${cargo.weight}`;\n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах\n          width: cargo.width / 100,\n          height: cargo.height / 100,\n          volume: (cargo.length * cargo.width * cargo.height) / 1000000, // м3\n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n        console.log(`     - Габариты: ${cargo.length}×${cargo.width}×${cargo.height} см`);\n        console.log(`     - Объем: ${((cargo.length * cargo.width * cargo.height) / 1000000).toFixed(3)} м³`);\n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n                  hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000\n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n        console.log(`     - Габариты: ${cargo.length}×${cargo.width}×${cargo.height} см`);\n        console.log(`     - Объем: ${((cargo.length * cargo.width * cargo.height) / 1000000).toFixed(3)} м³`);\n                          объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³\n",
+      "exit": 0,
+      "description": "Check cargo input format"
+    },
+    "time": {
+      "start": 1765821860170,
+      "end": 1765821860272
+    }
+  }
+}

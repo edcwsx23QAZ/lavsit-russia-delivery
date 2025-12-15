@@ -1,0 +1,25 @@
+{
+  "id": "prt_b232f22e0001ZzG47wAMi7MJBL",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b232f066e0011BxTcRvJmwVGvy",
+  "type": "tool",
+  "callID": "toolu_01Try716ndn56NYgYDmPxqUB",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 3241
+    },
+    "output": "<file>\n03242|     const apiUrl = '/api/vozovoz';\n03243|     \n03244|     try {\n03245|       // Вычисляем основные параметры груза\n03246|       const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n03247|       const totalVolume = form.cargos.reduce((sum, cargo) => \n03248|         sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n03249|       );\n03250|       \n03251|       console.log('🚚 Возовоз: подготовка данных...');\n03252|       console.log('   - Общий вес:', totalWeight, 'кг');\n03253|       console.log('   - Общий объем:', totalVolume, 'м³');\n03254|       console.log('   - Количество мест:', form.cargos.length);\n03255|       console.log('   - Откуда:', form.fromCity);\n03256|       console.log('   - Куда:', form.toCity);\n03257|       \n03258|       // ✅ ИСПРАВЛЕНО: Используем структуру wizard для точного расчета каждого места\n03259|       const createRequestData = () => ({\n03260|         object: \"price\",\n03261|         action: \"get\",\n03262|         params: {\n03263|           cargo: {\n03264|             // ✅ Используем wizard вместо dimension для точности\n03265|             wizard: form.cargos.map(cargo => ({\n03266|               length: cargo.length / 1000,   // мм → м\n03267|               width: cargo.width / 1000,\n03268|               height: cargo.height / 1000,\n03269|               quantity: 1,\n03270|               weight: cargo.weight,\n03271|               ...(form.needPackaging ? {\n03272|                 wrapping: {\n03273|                   // ✅ \"Защитная жёсткая упаковка с разбором\" согласно документации\n03274|                   hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000\n03275|                 }\n03276|               } : {})\n03277|             })),\n03278|             // Страхование\n03279|             ...(form.needInsurance && form.declaredValue > 0 ? {\n03280|               insurance: form.declaredValue,\n03281|               insuranceNdv: false\n03282|             } : {\n03283|               insuranceNdv: true\n03284|             })\n03285|           },\n03286|           gateway: {\n03287|             dispatch: {\n03288|               point: {\n03289|                 location: form.fromCity || 'Москва',\n03290|                 ...(form.fromAddressDelivery && form.fromAddress?.trim() ? {\n03291|                   address: form.fromAddress.trim()\n\n(File has more lines. Use 'offset' parameter to read beyond line 3291)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "    const apiUrl = '/api/vozovoz';\n    \n    try {\n      // Вычисляем основные параметры груза\n      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);\n      const totalVolume = form.cargos.reduce((sum, cargo) => \n        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0\n      );\n      \n      console.log('🚚 Возовоз: подготовка данных...');\n      console.log('   - Общий вес:', totalWeight, 'кг');\n      console.log('   - Общий объем:', totalVolume, 'м³');\n      console.log('   - Количество мест:', form.cargos.length);\n      console.log('   - Откуда:', form.fromCity);\n      console.log('   - Куда:', form.toCity);\n      \n      // ✅ ИСПРАВЛЕНО: Используем структуру wizard для точного расчета каждого места\n      const createRequestData = () => ({\n        object: \"price\",\n        action: \"get\","
+    },
+    "time": {
+      "start": 1765821851260,
+      "end": 1765821851278
+    }
+  }
+}

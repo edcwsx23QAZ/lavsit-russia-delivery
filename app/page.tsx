@@ -3252,6 +3252,16 @@ export default function Home() {
       console.log('   - Общий вес:', totalWeight, 'кг');
       console.log('   - Общий объем:', totalVolume, 'м³');
       console.log('   - Количество мест:', form.cargos.length);
+      
+      // Отладка габаритов каждого места
+      form.cargos.forEach((cargo, index) => {
+        console.log(`   - Место ${index + 1}:`);
+        console.log(`     - Габариты: ${cargo.length}×${cargo.width}×${cargo.height} см`);
+        console.log(`     - В метрах: ${cargo.length/100}×${cargo.width/100}×${cargo.height/100} м`);
+        console.log(`     - Вес: ${cargo.weight} кг`);
+        console.log(`     - Объем: ${((cargo.length * cargo.width * cargo.height) / 1000000).toFixed(3)} м³`);
+      });
+      
       console.log('   - Откуда:', form.fromCity);
       console.log('   - Куда:', form.toCity);
       
@@ -3263,15 +3273,15 @@ export default function Home() {
           cargo: {
             // ✅ Используем wizard вместо dimension для точности
             wizard: form.cargos.map(cargo => ({
-              length: cargo.length / 1000,   // мм → м
-              width: cargo.width / 1000,
-              height: cargo.height / 1000,
+              length: cargo.length / 100,   // см → м
+              width: cargo.width / 100,     // см → м
+              height: cargo.height / 100,   // см → м
               quantity: 1,
               weight: cargo.weight,
               ...(form.needPackaging ? {
                 wrapping: {
                   // ✅ "Защитная жёсткая упаковка с разбором" согласно документации
-                  hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000
+                  hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000  // см³ → м³
                 }
               } : {})
             })),
