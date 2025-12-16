@@ -3271,6 +3271,10 @@ export default function Home() {
         action: "get",
         params: {
           cargo: {
+            // ✅ Категория груза "Мебель мягкая" (необязательный параметр, используется при оформлении заказа)
+            // UUID получен из справочника категорий Vozovoz API
+            category: "f1965e92-13ea-11e4-826b-d850e6bbb0fc", // Мебель мягкая
+            
             // ✅ Используем wizard вместо dimension для точности
             wizard: form.cargos.map(cargo => ({
               length: cargo.length / 100,   // см → м
@@ -3280,7 +3284,8 @@ export default function Home() {
               weight: cargo.weight,
               ...(form.needPackaging ? {
                 wrapping: {
-                  // ✅ "Защитная жёсткая упаковка с разбором" согласно документации
+                  // ✅ "Защитная жёсткая упаковка с фото с разбором" согласно документации
+                  // hardPackageVolume - объемная упаковка, значение в м³
                   hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000  // см³ → м³
                 }
               } : {})

@@ -1,0 +1,26 @@
+{
+  "id": "prt_b260f317d001SAVgGRqJMsXpmt",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b260f21e20012M43fXqpzYhvL6",
+  "type": "tool",
+  "callID": "toolu_01ECbTpTomqWqdycUD4yBtPN",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "find /home/user/project/vozovoz-docs -name \"*.md\" -exec grep -l \"категор\\|category\" {} \\;",
+      "description": "Find documentation about cargo categories"
+    },
+    "output": "/home/user/project/vozovoz-docs/en/docs/object/directQuery/getCargoTypes.md\n/home/user/project/vozovoz-docs/en/docs/object/order.md\n/home/user/project/vozovoz-docs/en/docs/structure/cargo.md\n/home/user/project/vozovoz-docs/ru/docs/object/directQuery.md\n/home/user/project/vozovoz-docs/ru/docs/object/directQuery/getCargoTypes.md\n/home/user/project/vozovoz-docs/ru/docs/object/order.md\n/home/user/project/vozovoz-docs/ru/docs/structure/cargo.md\n",
+    "title": "Find documentation about cargo categories",
+    "metadata": {
+      "output": "/home/user/project/vozovoz-docs/en/docs/object/directQuery/getCargoTypes.md\n/home/user/project/vozovoz-docs/en/docs/object/order.md\n/home/user/project/vozovoz-docs/en/docs/structure/cargo.md\n/home/user/project/vozovoz-docs/ru/docs/object/directQuery.md\n/home/user/project/vozovoz-docs/ru/docs/object/directQuery/getCargoTypes.md\n/home/user/project/vozovoz-docs/ru/docs/object/order.md\n/home/user/project/vozovoz-docs/ru/docs/structure/cargo.md\n",
+      "exit": 0,
+      "description": "Find documentation about cargo categories"
+    },
+    "time": {
+      "start": 1765870089403,
+      "end": 1765870089803
+    }
+  }
+}

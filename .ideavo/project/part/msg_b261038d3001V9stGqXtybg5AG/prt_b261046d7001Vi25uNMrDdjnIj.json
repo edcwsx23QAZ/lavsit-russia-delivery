@@ -1,0 +1,26 @@
+{
+  "id": "prt_b261046d7001Vi25uNMrDdjnIj",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b261038d3001V9stGqXtybg5AG",
+  "type": "tool",
+  "callID": "toolu_01Ghc2JZXcc7VjnHR8irToCM",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/test-vozovoz-categories.js",
+      "content": "/**\n * Тестовый скрипт для получения категорий груза Vozovoz\n * Цель: Найти UUID категории \"Мебель мягкая\"\n */\n\nasync function getVozovozCategories() {\n  console.log('📦 Получение категорий груза Vozovoz...\\n');\n\n  try {\n    const response = await fetch('http://localhost:3000/api/vozovoz-categories', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify({\n        limit: 100,\n        offset: 0\n      })\n    });\n\n    if (!response.ok) {\n      const error = await response.json();\n      console.error('❌ Ошибка API:', error);\n      return;\n    }\n\n    const result = await response.json();\n    \n    if (!result.success) {\n      console.error('❌ Ошибка:', result.error);\n      return;\n    }\n\n    console.log(`✅ Получено категорий: ${result.meta.total || result.data.length}`);\n    console.log('');\n\n    // Ищем категории, связанные с мебелью\n    const furnitureCategories = result.data.filter(cat => \n      cat.name.toLowerCase().includes('мебель') || \n      cat.category?.name?.toLowerCase().includes('мебель')\n    );\n\n    console.log('🪑 КАТЕГОРИИ С \"МЕБЕЛЬ\":');\n    console.log('='.repeat(80));\n    \n    furnitureCategories.forEach(cat => {\n      console.log(`\\n📌 ${cat.name}`);\n      console.log(`   UUID: ${cat.id}`);\n      if (cat.category && cat.category.name) {\n        console.log(`   Родительская: ${cat.category.name} (${cat.category.id})`);\n      }\n      console.log(`   Макс. объявленная стоимость: ${cat.restrictions?.declaredCost?.max || 'N/A'} руб.`);\n    });\n\n    // Ищем именно \"Мебель мягкая\"\n    const softFurniture = result.data.find(cat => \n      cat.name.toLowerCase() === 'мебель мягкая'\n    );\n\n    if (softFurniture) {\n      console.log('\\n' + '='.repeat(80));\n      console.log('✅ НАЙДЕНА КАТЕГОРИЯ \"МЕБЕЛЬ МЯГКАЯ\":');\n      console.log('='.repeat(80));\n      console.log(`UUID: ${softFurniture.id}`);\n      console.log(`Название: ${softFurniture.name}`);\n      if (softFurniture.category && softFurniture.category.name) {\n        console.log(`Родительская категория: ${softFurniture.category.name}`);\n      }\n      console.log('='.repeat(80));\n    } else {\n      console.log('\\n⚠️  Категория \"Мебель мягкая\" не найдена напрямую');\n      console.log('💡 Возможно нужно использовать общую категорию \"Мебель\"');\n    }\n\n    // Показываем все категории для справки\n    console.log('\\n\\n📋 ВСЕ ДОСТУПНЫЕ КАТЕГОРИИ:');\n    console.log('='.repeat(80));\n    result.data.forEach((cat, index) => {\n      const parent = cat.category?.name ? ` (родитель: ${cat.category.name})` : '';\n      console.log(`${index + 1}. ${cat.name}${parent}`);\n      console.log(`   UUID: ${cat.id}`);\n    });\n\n  } catch (error) {\n    console.error('❌ Ошибка:', error.message);\n  }\n}\n\n// Запуск\ngetVozovozCategories();\n"
+    },
+    "output": "",
+    "title": "test-vozovoz-categories.js",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-vozovoz-categories.js",
+      "exists": false
+    },
+    "time": {
+      "start": 1765870173460,
+      "end": 1765870173474
+    }
+  }
+}

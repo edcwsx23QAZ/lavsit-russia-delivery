@@ -1,0 +1,27 @@
+{
+  "id": "prt_b261090fd0016GkYUfWk7OJxNE",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b26107d65001OQqlLBglYWfE3z",
+  "type": "tool",
+  "callID": "toolu_01KedS4GmcFLuyNQHJSLxakM",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && node test-vozovoz-categories.js 2>&1 | head -150",
+      "description": "Run test to find furniture category UUID",
+      "timeout": 15000
+    },
+    "output": "📦 Получение категорий груза Vozovoz...\n\n❌ Ошибка: fetch failed\n",
+    "title": "Run test to find furniture category UUID",
+    "metadata": {
+      "output": "📦 Получение категорий груза Vozovoz...\n\n❌ Ошибка: fetch failed\n",
+      "exit": 0,
+      "description": "Run test to find furniture category UUID"
+    },
+    "time": {
+      "start": 1765870179600,
+      "end": 1765870179751
+    }
+  }
+}

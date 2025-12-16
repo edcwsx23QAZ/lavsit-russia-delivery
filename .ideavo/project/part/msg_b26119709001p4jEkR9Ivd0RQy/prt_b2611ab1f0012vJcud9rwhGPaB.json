@@ -1,0 +1,25 @@
+{
+  "id": "prt_b2611ab1f0012vJcud9rwhGPaB",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b26119709001p4jEkR9Ivd0RQy",
+  "type": "tool",
+  "callID": "toolu_014PoQgSkE1nRADgF1WXs9hp",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 3280
+    },
+    "output": "<file>\n03281|               ...(form.needPackaging ? {\n03282|                 wrapping: {\n03283|                   // ✅ \"Защитная жёсткая упаковка с разбором\" согласно документации\n03284|                   hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000  // см³ → м³\n03285|                 }\n03286|               } : {})\n03287|             })),\n03288|             // Страхование\n03289|             ...(form.needInsurance && form.declaredValue > 0 ? {\n03290|               insurance: form.declaredValue,\n03291|               insuranceNdv: false\n03292|             } : {\n03293|               insuranceNdv: true\n03294|             })\n03295|           },\n03296|           gateway: {\n03297|             dispatch: {\n03298|               point: {\n03299|                 location: form.fromCity || 'Москва',\n03300|                 ...(form.fromAddressDelivery && form.fromAddress?.trim() ? {\n03301|                   address: form.fromAddress.trim()\n03302|                 } : {\n03303|                   terminal: \"default\"\n03304|                 })\n03305|               },\n03306|               // ✅ Добавлены дополнительные услуги на отправлении\n03307|               ...(form.needLoading || form.needPackaging ? {\n03308|                 service: {\n03309|                   // Погрузка на отправлении (если включена)\n03310|                   ...(form.needLoading ? {\n03311|                     needLoading: {\n03312|                       floor: form.floor || 1,\n03313|                       lift: form.hasFreightLift || false\n03314|                     }\n03315|                   } : {}),\n03316|                   // Разбор груза при доставке (если включена упаковка)\n03317|                   ...(form.needPackaging ? {\n03318|                     unboxingOnDelivery: totalWeight\n03319|                   } : {})\n03320|                 }\n03321|               } : {})\n03322|             },\n03323|             destination: {\n03324|               point: {\n03325|                 location: form.toCity || 'Санкт-Петербург',\n03326|                 ...(form.toAddressDelivery && form.toAddress?.trim() ? {\n03327|                   address: form.toAddress.trim()\n03328|                 } : {\n03329|                   terminal: \"default\"\n03330|                 })\n\n(File has more lines. Use 'offset' parameter to read beyond line 3330)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "              ...(form.needPackaging ? {\n                wrapping: {\n                  // ✅ \"Защитная жёсткая упаковка с разбором\" согласно документации\n                  hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000  // см³ → м³\n                }\n              } : {})\n            })),\n            // Страхование\n            ...(form.needInsurance && form.declaredValue > 0 ? {\n              insurance: form.declaredValue,\n              insuranceNdv: false\n            } : {\n              insuranceNdv: true\n            })\n          },\n          gateway: {\n            dispatch: {\n              point: {\n                location: form.fromCity || 'Москва',\n                ...(form.fromAddressDelivery && form.fromAddress?.trim() ? {"
+    },
+    "time": {
+      "start": 1765870251932,
+      "end": 1765870251940
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_b2612aab9001LEO7XJBMn0OadC",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b26129b46001XD6rN03yDN6Llu",
+  "type": "tool",
+  "callID": "toolu_01AqvDLTvShAW8jaFjKauLc5",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 3275
+    },
+    "output": "<file>\n03276|             category: \"f1965e92-13ea-11e4-826b-d850e6bbb0fc\", // Мебель мягкая\n03277|             \n03278|             // ✅ Используем wizard вместо dimension для точности\n03279|             wizard: form.cargos.map(cargo => ({\n03280|               length: cargo.length / 100,   // см → м\n03281|               width: cargo.width / 100,     // см → м\n03282|               height: cargo.height / 100,   // см → м\n03283|               quantity: 1,\n03284|               weight: cargo.weight,\n03285|               ...(form.needPackaging ? {\n03286|                 wrapping: {\n03287|                   // ✅ \"Защитная жёсткая упаковка с фото с разбором\" согласно документации\n03288|                   // hardPackageVolume - объемная упаковка, значение в м³\n03289|                   hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000  // см³ → м³\n03290|                 }\n03291|               } : {})\n03292|             })),\n03293|             // Страхование\n03294|             ...(form.needInsurance && form.declaredValue > 0 ? {\n03295|               insurance: form.declaredValue,\n03296|               insuranceNdv: false\n03297|             } : {\n03298|               insuranceNdv: true\n03299|             })\n03300|           },\n03301|           gateway: {\n03302|             dispatch: {\n03303|               point: {\n03304|                 location: form.fromCity || 'Москва',\n03305|                 ...(form.fromAddressDelivery && form.fromAddress?.trim() ? {\n\n(File has more lines. Use 'offset' parameter to read beyond line 3305)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "            category: \"f1965e92-13ea-11e4-826b-d850e6bbb0fc\", // Мебель мягкая\n            \n            // ✅ Используем wizard вместо dimension для точности\n            wizard: form.cargos.map(cargo => ({\n              length: cargo.length / 100,   // см → м\n              width: cargo.width / 100,     // см → м\n              height: cargo.height / 100,   // см → м\n              quantity: 1,\n              weight: cargo.weight,\n              ...(form.needPackaging ? {\n                wrapping: {\n                  // ✅ \"Защитная жёсткая упаковка с фото с разбором\" согласно документации\n                  // hardPackageVolume - объемная упаковка, значение в м³\n                  hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000  // см³ → м³\n                }\n              } : {})\n            })),\n            // Страхование\n            ...(form.needInsurance && form.declaredValue > 0 ? {\n              insurance: form.declaredValue,"
+    },
+    "time": {
+      "start": 1765870317504,
+      "end": 1765870317512
+    }
+  }
+}

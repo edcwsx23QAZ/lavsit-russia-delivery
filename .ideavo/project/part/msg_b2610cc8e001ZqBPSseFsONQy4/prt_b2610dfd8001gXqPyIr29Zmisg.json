@@ -1,0 +1,27 @@
+{
+  "id": "prt_b2610dfd8001gXqPyIr29Zmisg",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b2610cc8e001ZqBPSseFsONQy4",
+  "type": "tool",
+  "callID": "toolu_01GYPZZfZYrJXpUcqJqimRMC",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && node test-vozovoz-categories-direct.js 2>&1",
+      "description": "Get furniture category UUID from Vozovoz",
+      "timeout": 15000
+    },
+    "output": "📦 Прямой запрос категорий груза к Vozovoz API...\n\n❌ Неожиданный формат ответа: {\n  error: {\n    id: 12003,\n    code: 12003,\n    message: 'Идентификационные данные отсутствуют',\n    description: '[2025-12-16 10:39:27] 12003: Идентификационные данные отсутствуют'\n  }\n}\n",
+    "title": "Get furniture category UUID from Vozovoz",
+    "metadata": {
+      "output": "📦 Прямой запрос категорий груза к Vozovoz API...\n\n❌ Неожиданный формат ответа: {\n  error: {\n    id: 12003,\n    code: 12003,\n    message: 'Идентификационные данные отсутствуют',\n    description: '[2025-12-16 10:39:27] 12003: Идентификационные данные отсутствуют'\n  }\n}\n",
+      "exit": 0,
+      "description": "Get furniture category UUID from Vozovoz"
+    },
+    "time": {
+      "start": 1765870199962,
+      "end": 1765870201241
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_b261137eb001VRCMoLuiO62bxh",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b26112136001qFsR7HFSuuqtHB",
+  "type": "tool",
+  "callID": "toolu_01Nafg3XgCYsL7SPrsRkLEUb",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -r \"f1965e7\" /home/user/project/ --include=\"*.js\" --include=\"*.md\" 2>/dev/null | grep -i \"мебель\\|furniture\" | head -5",
+      "description": "Search for furniture UUID in project"
+    },
+    "output": "",
+    "title": "Search for furniture UUID in project",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Search for furniture UUID in project"
+    },
+    "time": {
+      "start": 1765870223173,
+      "end": 1765870245561
+    }
+  }
+}

@@ -1,44 +1,38 @@
 [
   {
-    "content": "Исправить расчет max габаритов - найти самое объемное место",
+    "content": "Создать API endpoint для получения категорий груза Vozovoz",
     "id": "1",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Использовать wizard вместо dimension",
+    "content": "Найти UUID категории 'Мебель мягкая' в категориях Vozovoz",
     "id": "2",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Исправить код упаковки на hardPackageVolume",
+    "content": "Добавить параметр category в запрос Vozovoz calculateVozovoz()",
     "id": "3",
     "priority": "high",
     "status": "completed"
   },
   {
-    "content": "Добавить услугу разбора при упаковке (unboxingOnDelivery)",
+    "content": "Проверить что упаковка hardPackageVolume указывается правильно",
     "id": "4",
-    "priority": "high",
+    "priority": "medium",
     "status": "completed"
   },
   {
-    "content": "Добавить услуги погрузки/разгрузки (needLoading)",
+    "content": "Проверить что услуга unboxingOnDelivery работает правильно",
     "id": "5",
-    "priority": "high",
+    "priority": "medium",
     "status": "completed"
   },
   {
-    "content": "Проверить билд",
+    "content": "Запустить тесты и проверить работу API",
     "id": "6",
-    "priority": "high",
-    "status": "completed"
-  },
-  {
-    "content": "Провести повторный анализ",
-    "id": "7",
-    "priority": "high",
+    "priority": "medium",
     "status": "completed"
   }
 ]

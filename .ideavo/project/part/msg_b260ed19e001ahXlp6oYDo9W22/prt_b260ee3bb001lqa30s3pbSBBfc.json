@@ -1,0 +1,26 @@
+{
+  "id": "prt_b260ee3bb001lqa30s3pbSBBfc",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b260ed19e001ahXlp6oYDo9W22",
+  "type": "tool",
+  "callID": "toolu_01P3DyX84JXbzsTgHcUCpzXd",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -r \"hardPackage\" /home/user/project/vozovoz-docs/ 2>/dev/null | head -20",
+      "description": "Search for hardPackage in documentation"
+    },
+    "output": "/home/user/project/vozovoz-docs/en/docs/object/wrapping.md:      \"code\": \"hardPackageVolume\", // unique code of the wrapping\n/home/user/project/vozovoz-docs/ru/docs/object/wrapping.md:      \"code\": \"hardPackageVolume\", // уникальный код упаковки\n",
+    "title": "Search for hardPackage in documentation",
+    "metadata": {
+      "output": "/home/user/project/vozovoz-docs/en/docs/object/wrapping.md:      \"code\": \"hardPackageVolume\", // unique code of the wrapping\n/home/user/project/vozovoz-docs/ru/docs/object/wrapping.md:      \"code\": \"hardPackageVolume\", // уникальный код упаковки\n",
+      "exit": 0,
+      "description": "Search for hardPackage in documentation"
+    },
+    "time": {
+      "start": 1765870069951,
+      "end": 1765870070098
+    }
+  }
+}

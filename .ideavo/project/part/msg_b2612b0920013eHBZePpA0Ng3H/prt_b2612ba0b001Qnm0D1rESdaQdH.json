@@ -1,0 +1,25 @@
+{
+  "id": "prt_b2612ba0b001Qnm0D1rESdaQdH",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b2612b0920013eHBZePpA0Ng3H",
+  "type": "tool",
+  "callID": "toolu_01Kh96PKFsB1sCvY3E2YGKLY",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 3310
+    },
+    "output": "<file>\n03311|               // ✅ Добавлены дополнительные услуги на отправлении\n03312|               ...(form.needLoading || form.needPackaging ? {\n03313|                 service: {\n03314|                   // Погрузка на отправлении (если включена)\n03315|                   ...(form.needLoading ? {\n03316|                     needLoading: {\n03317|                       floor: form.floor || 1,\n03318|                       lift: form.hasFreightLift || false\n03319|                     }\n03320|                   } : {}),\n03321|                   // Разбор груза при доставке (если включена упаковка)\n03322|                   ...(form.needPackaging ? {\n03323|                     unboxingOnDelivery: totalWeight\n03324|                   } : {})\n03325|                 }\n03326|               } : {})\n03327|             },\n03328|             destination: {\n03329|               point: {\n03330|                 location: form.toCity || 'Санкт-Петербург',\n03331|                 ...(form.toAddressDelivery && form.toAddress?.trim() ? {\n03332|                   address: form.toAddress.trim()\n03333|                 } : {\n03334|                   terminal: \"default\"\n03335|                 })\n03336|               },\n03337|               // ✅ Добавлены дополнительные услуги на получении\n03338|               ...(form.needCarry ? {\n03339|                 service: {\n03340|                   // Разгрузка на получении (если включен подъем на этаж)\n\n(File has more lines. Use 'offset' parameter to read beyond line 3340)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "              // ✅ Добавлены дополнительные услуги на отправлении\n              ...(form.needLoading || form.needPackaging ? {\n                service: {\n                  // Погрузка на отправлении (если включена)\n                  ...(form.needLoading ? {\n                    needLoading: {\n                      floor: form.floor || 1,\n                      lift: form.hasFreightLift || false\n                    }\n                  } : {}),\n                  // Разбор груза при доставке (если включена упаковка)\n                  ...(form.needPackaging ? {\n                    unboxingOnDelivery: totalWeight\n                  } : {})\n                }\n              } : {})\n            },\n            destination: {\n              point: {\n                location: form.toCity || 'Санкт-Петербург',"
+    },
+    "time": {
+      "start": 1765870320719,
+      "end": 1765870320727
+    }
+  }
+}

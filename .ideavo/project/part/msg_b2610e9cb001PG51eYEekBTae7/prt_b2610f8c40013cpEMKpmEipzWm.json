@@ -1,0 +1,26 @@
+{
+  "id": "prt_b2610f8c40013cpEMKpmEipzWm",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b2610e9cb001PG51eYEekBTae7",
+  "type": "tool",
+  "callID": "toolu_017Du6XeCTsGvYhWmBEfKZGA",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -r \"Мебель\" /home/user/project/vozovoz-docs/ | grep -i \"мягкая\\|soft\" | head -5",
+      "description": "Search for soft furniture in docs"
+    },
+    "output": "",
+    "title": "Search for soft furniture in docs",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Search for soft furniture in docs"
+    },
+    "time": {
+      "start": 1765870206440,
+      "end": 1765870206453
+    }
+  }
+}

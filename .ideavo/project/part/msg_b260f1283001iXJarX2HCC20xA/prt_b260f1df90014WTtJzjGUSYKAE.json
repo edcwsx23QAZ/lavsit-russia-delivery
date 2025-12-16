@@ -1,0 +1,26 @@
+{
+  "id": "prt_b260f1df90014WTtJzjGUSYKAE",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b260f1283001iXJarX2HCC20xA",
+  "type": "tool",
+  "callID": "toolu_01R7AJEvMqWr13JL4FQriD2h",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -i \"unboxing\" /home/user/project/vozovoz-docs/ru/docs/structure/service.md",
+      "description": "Search for unboxing service"
+    },
+    "output": "  \"unboxingOnDelivery\" : 20 // услуга \"Разбор груза при доставке до адреса\"\n| [`unboxingOnDelivery`](#uod) | float | Отправление или получение | Вес груза (кг) для услуги \"Разбор при доставке до адреса\"                                                                |\n>  \"unboxingOnDelivery\": 16.3\n| `unboxingOnDelivery` | float | Вес груза в килограммах |\n",
+    "title": "Search for unboxing service",
+    "metadata": {
+      "output": "  \"unboxingOnDelivery\" : 20 // услуга \"Разбор груза при доставке до адреса\"\n| [`unboxingOnDelivery`](#uod) | float | Отправление или получение | Вес груза (кг) для услуги \"Разбор при доставке до адреса\"                                                                |\n>  \"unboxingOnDelivery\": 16.3\n| `unboxingOnDelivery` | float | Вес груза в килограммах |\n",
+      "exit": 0,
+      "description": "Search for unboxing service"
+    },
+    "time": {
+      "start": 1765870084516,
+      "end": 1765870084533
+    }
+  }
+}

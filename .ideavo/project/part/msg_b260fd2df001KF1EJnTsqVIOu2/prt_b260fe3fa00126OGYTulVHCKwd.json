@@ -1,0 +1,26 @@
+{
+  "id": "prt_b260fe3fa00126OGYTulVHCKwd",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b260fd2df001KF1EJnTsqVIOu2",
+  "type": "tool",
+  "callID": "toolu_01S6rmWsu62QE65yiwUXG2SU",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/api/vozovoz-categories/route.ts",
+      "content": "import { NextRequest, NextResponse } from 'next/server';\n\n/**\n * API Route: Получение категорий груза Vozovoz\n * \n * Использует directQuery.getCargoTypes для получения списка категорий\n * Документация: vozovoz-docs/ru/docs/object/directQuery/getCargoTypes.md\n */\nexport async function POST(request: NextRequest) {\n  try {\n    const body = await request.json();\n    const { limit = 100, offset = 0 } = body;\n\n    console.log('📦 Vozovoz: Запрос категорий груза...');\n    console.log('   - limit:', limit);\n    console.log('   - offset:', offset);\n\n    const requestData = {\n      object: \"directQuery\",\n      action: \"get\",\n      params: {\n        method: \"getCargoTypes\",\n        data: {\n          limit,\n          offset\n        }\n      }\n    };\n\n    const response = await fetch('https://vozovoz.ru/api/', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify(requestData)\n    });\n\n    if (!response.ok) {\n      const errorText = await response.text();\n      console.error('❌ Vozovoz API ошибка:', response.status, errorText);\n      return NextResponse.json(\n        { \n          success: false, \n          error: `API вернул ошибку: ${response.status}`,\n          details: errorText\n        },\n        { status: response.status }\n      );\n    }\n\n    const data = await response.json();\n    console.log('✅ Vozovoz: Получено категорий:', data.response?.meta?.total || 0);\n\n    return NextResponse.json({\n      success: true,\n      data: data.response?.data || [],\n      meta: data.response?.meta || {}\n    });\n\n  } catch (error: unknown) {\n    console.error('❌ Vozovoz Categories API error:', error);\n    return NextResponse.json(\n      { \n        success: false, \n        error: error instanceof Error ? error.message : 'Неизвестная ошибка' \n      },\n      { status: 500 }\n    );\n  }\n}\n"
+    },
+    "output": "",
+    "title": "app/api/vozovoz-categories/route.ts",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/app/api/vozovoz-categories/route.ts",
+      "exists": false
+    },
+    "time": {
+      "start": 1765870142972,
+      "end": 1765870142997
+    }
+  }
+}
