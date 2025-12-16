@@ -1,0 +1,25 @@
+{
+  "id": "prt_b266a9fad001gFTeHYVMYablUG",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b266a8bc3001H3LfVy2tHF3uHe",
+  "type": "tool",
+  "callID": "toolu_01XWqm1LTSpD9rXCPQHnpX7v",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 5450
+    },
+    "output": "<file>\n05451|                             </Button>\n05452|                           )}\n05453|                           <Button\n05454|                             variant=\"outline\"\n05455|                             size=\"sm\"\n05456|                             onClick={() => toggleDebugInfo(calc.company)}\n05457|                             className=\"h-6 text-xs\"\n05458|                           >\n05459|                             {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}\n05460|                           </Button>\n05461|                           <Button\n05462|                             variant=\"outline\"\n05463|                             size=\"sm\"\n05464|                             onClick={() => {\n05465|                               setHiddenCompanies(prev => ({\n05466|                                 ...prev,\n05467|                                 [calc.company]: true\n05468|                               }));\n05469|                             }}\n05470|                             className=\"h-6 text-xs border-red-500 text-red-400 hover:bg-red-900/20\"\n05471|                           >\n05472|                             Скрыть\n05473|                           </Button>\n05474|                         </div>\n05475|                         \n05476|                         {/* Детали расчета */}\n05477|                         {!calc.error && (\n05478|                           <Collapsible open={expandedDetails[calc.company]}>\n05479|                             <CollapsibleContent className=\"mt-2\">\n05480|                               <div className=\"bg-gray-900 p-3 rounded text-xs\">\n\n(File has more lines. Use 'offset' parameter to read beyond line 5480)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                            </Button>\n                          )}\n                          <Button\n                            variant=\"outline\"\n                            size=\"sm\"\n                            onClick={() => toggleDebugInfo(calc.company)}\n                            className=\"h-6 text-xs\"\n                          >\n                            {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}\n                          </Button>\n                          <Button\n                            variant=\"outline\"\n                            size=\"sm\"\n                            onClick={() => {\n                              setHiddenCompanies(prev => ({\n                                ...prev,\n                                [calc.company]: true\n                              }));\n                            }}\n                            className=\"h-6 text-xs border-red-500 text-red-400 hover:bg-red-900/20\""
+    },
+    "time": {
+      "start": 1765876081245,
+      "end": 1765876081256
+    }
+  }
+}

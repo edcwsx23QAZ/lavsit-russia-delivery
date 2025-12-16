@@ -1,0 +1,25 @@
+{
+  "id": "prt_b266a86bc001UIIGZ5T39hMyAD",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b266a724f001cBD5UqUPT6QBtS",
+  "type": "tool",
+  "callID": "toolu_01HmtuFA4HTk2EkyvUCLB8dq",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 4985
+    },
+    "output": "<file>\n04986|               <Button\n04987|                 onClick={() => {\n04988|                   if (confirm('Очистить все сохраненные данные формы?')) {\n04989|                     clearFormData();\n04990|                     setForm(initialFormState);\n04991|                     setLastSaveTime(null);\n04992|                     setIsFormChanged(false);\n04993|                   }\n04994|                 }}\n04995|                 variant=\"outline\"\n04996|                 size=\"sm\"\n04997|                 className=\"border-red-500 text-red-400 hover:bg-red-900/20\"\n04998|               >\n04999|                 <Trash2 className=\"h-3 w-3 mr-1\" />\n05000|                 Очистить\n05001|               </Button>\n05002|             )}\n05003|           </div>\n05004|         </div>\n05005|         \n05006|         {/* Кнопки диагностики и документации */}\n05007|         <div className=\"flex justify-end gap-2 mb-4\">\n05008|           <Button \n05009|             onClick={() => window.open('/diagnostic?tab=api', '_blank')}\n05010|             variant=\"outline\" \n05011|             className=\"border-green-500 text-green-400 hover:bg-green-900/20\"\n05012|           >\n05013|             <Settings className=\"h-4 w-4 mr-2\" />\n05014|             Все API\n05015|           </Button>\n05016|           <Button \n05017|             onClick={() => window.open('/diagnostic?tab=docs', '_blank')}\n05018|             variant=\"outline\" \n05019|             className=\"border-purple-500 text-purple-400 hover:bg-purple-900/20\"\n05020|           >\n05021|             <Package2 className=\"h-4 w-4 mr-2\" />\n05022|             Документация\n05023|           </Button>\n05024|           <Button \n05025|             onClick={() => window.open('/diagnostic', '_blank')}\n05026|             variant=\"outline\" \n05027|             className=\"border-blue-500 text-blue-400 hover:bg-blue-900/20\"\n05028|           >\n05029|             <Settings className=\"h-4 w-4 mr-2\" />\n05030|             Диагностика\n05031|           </Button>\n05032|         </div>\n05033|         \n05034|         <div className=\"grid grid-cols-1 lg:grid-cols-2 gap-3 h-[85vh]\">\n05035|           {/* Левая часть - форма */}\n\n(File has more lines. Use 'offset' parameter to read beyond line 5035)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "              <Button\n                onClick={() => {\n                  if (confirm('Очистить все сохраненные данные формы?')) {\n                    clearFormData();\n                    setForm(initialFormState);\n                    setLastSaveTime(null);\n                    setIsFormChanged(false);\n                  }\n                }}\n                variant=\"outline\"\n                size=\"sm\"\n                className=\"border-red-500 text-red-400 hover:bg-red-900/20\"\n              >\n                <Trash2 className=\"h-3 w-3 mr-1\" />\n                Очистить\n              </Button>\n            )}\n          </div>\n        </div>\n        "
+    },
+    "time": {
+      "start": 1765876075084,
+      "end": 1765876075093
+    }
+  }
+}

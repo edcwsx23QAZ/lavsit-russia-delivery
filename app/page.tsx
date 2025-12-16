@@ -7,7 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Switch } from '@/components/ui/switch';
-import { Plus, Truck, Building2, Map, Settings, Package2, Trash2, Loader2 } from 'lucide-react';
+import { Plus, Truck, Building2, Map, Settings, Package2, Trash2, Loader2, Eye, EyeOff } from 'lucide-react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
@@ -231,6 +231,22 @@ export default function Home() {
   // Состояние для скрытых транспортных компаний
   const [hiddenCompanies, setHiddenCompanies] = useState<Record<string, boolean>>({});
   const [showHiddenCompanies, setShowHiddenCompanies] = useState(false);
+
+  // Состояние для сервисного меню (скрыто/показано)
+  const [isServiceMenuVisible, setIsServiceMenuVisible] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('serviceMenuVisible');
+      return saved !== null ? JSON.parse(saved) : true; // По умолчанию показано
+    }
+    return true;
+  });
+
+  // Сохранение состояния сервисного меню в localStorage
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('serviceMenuVisible', JSON.stringify(isServiceMenuVisible));
+    }
+  }, [isServiceMenuVisible]);
 
   // Защита от потери данных - НЕ очищаем localStorage в dev режиме
   // Пользовательские данные должны сохраняться между перезагрузками
@@ -4981,8 +4997,8 @@ export default function Home() {
               </div>
             ) : null}
             
-            {/* Кнопка очистки данных */}
-            {hasStoredFormData() && (
+            {/* Кнопка очистки данных - показывается только если сервисное меню видимо */}
+            {hasStoredFormData() && isServiceMenuVisible && (
               <Button
                 onClick={() => {
                   if (confirm('Очистить все сохраненные данные формы?')) {
@@ -5005,30 +5021,54 @@ export default function Home() {
         
         {/* Кнопки диагностики и документации */}
         <div className="flex justify-end gap-2 mb-4">
+          {/* Кнопка управления сервисным меню */}
           <Button 
-            onClick={() => window.open('/diagnostic?tab=api', '_blank')}
+            onClick={() => setIsServiceMenuVisible(!isServiceMenuVisible)}
             variant="outline" 
-            className="border-green-500 text-green-400 hover:bg-green-900/20"
+            className="border-yellow-500 text-yellow-400 hover:bg-yellow-900/20"
           >
-            <Settings className="h-4 w-4 mr-2" />
-            Все API
+            {isServiceMenuVisible ? (
+              <>
+                <EyeOff className="h-4 w-4 mr-2" />
+                Скрыть сервисное меню
+              </>
+            ) : (
+              <>
+                <Eye className="h-4 w-4 mr-2" />
+                Показать сервисное меню
+              </>
+            )}
           </Button>
-          <Button 
-            onClick={() => window.open('/diagnostic?tab=docs', '_blank')}
-            variant="outline" 
-            className="border-purple-500 text-purple-400 hover:bg-purple-900/20"
-          >
-            <Package2 className="h-4 w-4 mr-2" />
-            Документация
-          </Button>
-          <Button 
-            onClick={() => window.open('/diagnostic', '_blank')}
-            variant="outline" 
-            className="border-blue-500 text-blue-400 hover:bg-blue-900/20"
-          >
-            <Settings className="h-4 w-4 mr-2" />
-            Диагностика
-          </Button>
+
+          {/* Сервисные кнопки - показываются только если меню видимо */}
+          {isServiceMenuVisible && (
+            <>
+              <Button 
+                onClick={() => window.open('/diagnostic?tab=api', '_blank')}
+                variant="outline" 
+                className="border-green-500 text-green-400 hover:bg-green-900/20"
+              >
+                <Settings className="h-4 w-4 mr-2" />
+                Все API
+              </Button>
+              <Button 
+                onClick={() => window.open('/diagnostic?tab=docs', '_blank')}
+                variant="outline" 
+                className="border-purple-500 text-purple-400 hover:bg-purple-900/20"
+              >
+                <Package2 className="h-4 w-4 mr-2" />
+                Документация
+              </Button>
+              <Button 
+                onClick={() => window.open('/diagnostic', '_blank')}
+                variant="outline" 
+                className="border-blue-500 text-blue-400 hover:bg-blue-900/20"
+              >
+                <Settings className="h-4 w-4 mr-2" />
+                Диагностика
+              </Button>
+            </>
+          )}
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 h-[85vh]">
@@ -5450,14 +5490,17 @@ export default function Home() {
                               {expandedDetails[calc.company] ? 'Скрыть подробнее' : 'Показать подробнее'}
                             </Button>
                           )}
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => toggleDebugInfo(calc.company)}
-                            className="h-6 text-xs"
-                          >
-                            {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}
-                          </Button>
+                          {/* Кнопка отладочной информации - показывается только если сервисное меню видимо */}
+                          {isServiceMenuVisible && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => toggleDebugInfo(calc.company)}
+                              className="h-6 text-xs"
+                            >
+                              {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}
+                            </Button>
+                          )}
                           <Button
                             variant="outline"
                             size="sm"

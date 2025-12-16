@@ -1,0 +1,26 @@
+{
+  "id": "prt_b266aba67001NoNjOVBrtN4QCz",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b266aa40c001PruswXBDAqrLBh",
+  "type": "tool",
+  "callID": "toolu_01LCKxLWBQ4Wfo4gcm14zYu7",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -n \"const \\[.*useState\" /home/user/project/app/page.tsx | head -30",
+      "description": "Find useState declarations"
+    },
+    "output": "138:  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n139:  const [isLoaded, setIsLoaded] = useState(false);\n140:  const [isRestoring, setIsRestoring] = useState(false);\n141:  const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);\n142:  const [isFormChanged, setIsFormChanged] = useState(false);\n159:  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n160:  const [showSuggestions, setShowSuggestions] = useState(false);\n161:  const [activeField, setActiveField] = useState('');\n164:  const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n188:  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n189:  const [calculating, setCalculating] = useState(false);\n190:  const [calculationProgress, setCalculationProgress] = useState<{\n203:  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n204:  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n205:  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n206:  const [apiStatus, setApiStatus] = useState({\n232:  const [hiddenCompanies, setHiddenCompanies] = useState<Record<string, boolean>>({});\n233:  const [showHiddenCompanies, setShowHiddenCompanies] = useState(false);\n",
+    "title": "Find useState declarations",
+    "metadata": {
+      "output": "138:  const [form, setForm] = useState<DeliveryForm>(initialFormState);\n139:  const [isLoaded, setIsLoaded] = useState(false);\n140:  const [isRestoring, setIsRestoring] = useState(false);\n141:  const [lastSaveTime, setLastSaveTime] = useState<Date | null>(null);\n142:  const [isFormChanged, setIsFormChanged] = useState(false);\n159:  const [suggestions, setSuggestions] = useState<AddressSuggestion[]>([]);\n160:  const [showSuggestions, setShowSuggestions] = useState(false);\n161:  const [activeField, setActiveField] = useState('');\n164:  const [enabledCompanies, setEnabledCompanies] = useState<Record<string, boolean>>({\n188:  const [calculations, setCalculations] = useState<CalculationResult[]>([]);\n189:  const [calculating, setCalculating] = useState(false);\n190:  const [calculationProgress, setCalculationProgress] = useState<{\n203:  const [expandedDetails, setExpandedDetails] = useState<{ [key: string]: boolean }>({});\n204:  const [expandedDebugInfo, setExpandedDebugInfo] = useState<{ [key: string]: boolean }>({});\n205:  const [suggestionPosition, setSuggestionPosition] = useState({ top: 0, left: 0 });\n206:  const [apiStatus, setApiStatus] = useState({\n232:  const [hiddenCompanies, setHiddenCompanies] = useState<Record<string, boolean>>({});\n233:  const [showHiddenCompanies, setShowHiddenCompanies] = useState(false);\n",
+      "exit": 0,
+      "description": "Find useState declarations"
+    },
+    "time": {
+      "start": 1765876088395,
+      "end": 1765876088408
+    }
+  }
+}

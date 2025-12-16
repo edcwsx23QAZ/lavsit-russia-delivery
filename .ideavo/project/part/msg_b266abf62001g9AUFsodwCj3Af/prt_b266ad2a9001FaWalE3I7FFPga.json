@@ -1,0 +1,25 @@
+{
+  "id": "prt_b266ad2a9001FaWalE3I7FFPga",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b266abf62001g9AUFsodwCj3Af",
+  "type": "tool",
+  "callID": "toolu_01NKk2oGMN57edNeujiBupum",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 10,
+      "offset": 230
+    },
+    "output": "<file>\n00231|   // Состояние для скрытых транспортных компаний\n00232|   const [hiddenCompanies, setHiddenCompanies] = useState<Record<string, boolean>>({});\n00233|   const [showHiddenCompanies, setShowHiddenCompanies] = useState(false);\n00234| \n00235|   // Защита от потери данных - НЕ очищаем localStorage в dev режиме\n00236|   // Пользовательские данные должны сохраняться между перезагрузками\n00237| \n00238|   // Дополнительная проверка восстановления данных после серверной очистки\n00239|   useEffect(() => {\n00240|     if (typeof window !== 'undefined' && isLoaded) {\n\n(File has more lines. Use 'offset' parameter to read beyond line 240)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "  // Состояние для скрытых транспортных компаний\n  const [hiddenCompanies, setHiddenCompanies] = useState<Record<string, boolean>>({});\n  const [showHiddenCompanies, setShowHiddenCompanies] = useState(false);\n\n  // Защита от потери данных - НЕ очищаем localStorage в dev режиме\n  // Пользовательские данные должны сохраняться между перезагрузками\n\n  // Дополнительная проверка восстановления данных после серверной очистки\n  useEffect(() => {\n    if (typeof window !== 'undefined' && isLoaded) {"
+    },
+    "time": {
+      "start": 1765876094442,
+      "end": 1765876094453
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_b266bbe30001eQmeHh6QfySu3s",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b266ba53c001GxkjqH7S0WT44d",
+  "type": "tool",
+  "callID": "toolu_01T4PMbr1L2rjxJcEtH2bKqb",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -n \"toggleDebugInfo\\|Отладочная информация\\|Скрыть отладку\" /home/user/project/app/page.tsx | head -10",
+      "description": "Find debug info button"
+    },
+    "output": "4552:  const toggleDebugInfo = (company: string) => {\n5496:                            onClick={() => toggleDebugInfo(calc.company)}\n5499:                            {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}\n5547:                        {/* Отладочная информация - всегда доступна */}\n5551:                              <h4 className=\"font-bold mb-2 text-white\">Отладочная информация:</h4>\n",
+    "title": "Find debug info button",
+    "metadata": {
+      "output": "4552:  const toggleDebugInfo = (company: string) => {\n5496:                            onClick={() => toggleDebugInfo(calc.company)}\n5499:                            {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}\n5547:                        {/* Отладочная информация - всегда доступна */}\n5551:                              <h4 className=\"font-bold mb-2 text-white\">Отладочная информация:</h4>\n",
+      "exit": 0,
+      "description": "Find debug info button"
+    },
+    "time": {
+      "start": 1765876155967,
+      "end": 1765876155979
+    }
+  }
+}

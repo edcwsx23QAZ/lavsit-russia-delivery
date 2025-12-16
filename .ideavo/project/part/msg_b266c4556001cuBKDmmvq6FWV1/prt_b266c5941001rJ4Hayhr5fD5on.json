@@ -1,0 +1,27 @@
+{
+  "id": "prt_b266c5941001rJ4Hayhr5fD5on",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b266c4556001cuBKDmmvq6FWV1",
+  "type": "tool",
+  "callID": "toolu_01VVJThongQfkEcUwL2CcHnJ",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | grep -E \"error|Error|Failed|failed|warning\" | head -20",
+      "description": "Check build for errors and warnings",
+      "timeout": 120000
+    },
+    "output": "",
+    "title": "Check build for errors and warnings",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Check build for errors and warnings"
+    },
+    "time": {
+      "start": 1765876195298,
+      "end": 1765876268213
+    }
+  }
+}

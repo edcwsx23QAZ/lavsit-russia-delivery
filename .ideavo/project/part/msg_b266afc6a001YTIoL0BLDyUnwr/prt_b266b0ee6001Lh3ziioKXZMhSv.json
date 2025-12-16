@@ -1,0 +1,25 @@
+{
+  "id": "prt_b266b0ee6001Lh3ziioKXZMhSv",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b266afc6a001YTIoL0BLDyUnwr",
+  "type": "tool",
+  "callID": "toolu_01GWgjUuxKT2aCyy1uYFykri",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 5005
+    },
+    "output": "<file>\n05006|                     setForm(initialFormState);\n05007|                     setLastSaveTime(null);\n05008|                     setIsFormChanged(false);\n05009|                   }\n05010|                 }}\n05011|                 variant=\"outline\"\n05012|                 size=\"sm\"\n05013|                 className=\"border-red-500 text-red-400 hover:bg-red-900/20\"\n05014|               >\n05015|                 <Trash2 className=\"h-3 w-3 mr-1\" />\n05016|                 Очистить\n05017|               </Button>\n05018|             )}\n05019|           </div>\n05020|         </div>\n05021|         \n05022|         {/* Кнопки диагностики и документации */}\n05023|         <div className=\"flex justify-end gap-2 mb-4\">\n05024|           <Button \n05025|             onClick={() => window.open('/diagnostic?tab=api', '_blank')}\n05026|             variant=\"outline\" \n05027|             className=\"border-green-500 text-green-400 hover:bg-green-900/20\"\n05028|           >\n05029|             <Settings className=\"h-4 w-4 mr-2\" />\n05030|             Все API\n05031|           </Button>\n05032|           <Button \n05033|             onClick={() => window.open('/diagnostic?tab=docs', '_blank')}\n05034|             variant=\"outline\" \n05035|             className=\"border-purple-500 text-purple-400 hover:bg-purple-900/20\"\n\n(File has more lines. Use 'offset' parameter to read beyond line 5035)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                    setForm(initialFormState);\n                    setLastSaveTime(null);\n                    setIsFormChanged(false);\n                  }\n                }}\n                variant=\"outline\"\n                size=\"sm\"\n                className=\"border-red-500 text-red-400 hover:bg-red-900/20\"\n              >\n                <Trash2 className=\"h-3 w-3 mr-1\" />\n                Очистить\n              </Button>\n            )}\n          </div>\n        </div>\n        \n        {/* Кнопки диагностики и документации */}\n        <div className=\"flex justify-end gap-2 mb-4\">\n          <Button \n            onClick={() => window.open('/diagnostic?tab=api', '_blank')}"
+    },
+    "time": {
+      "start": 1765876109708,
+      "end": 1765876109713
+    }
+  }
+}

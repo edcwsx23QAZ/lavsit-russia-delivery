@@ -1,0 +1,26 @@
+{
+  "id": "prt_b266a6bee0017ZRZATLy51Ahxv",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b266a4df9001UoJq0t70mMuA0D",
+  "type": "tool",
+  "callID": "toolu_01CtSspmn4Qtxmx7stvgzrLn",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -n \"Все API\\|Документация\\|Диагностика\\|Очистить\\|Отладочная информация\" /home/user/project/app/page.tsx | head -20",
+      "description": "Find service menu buttons location"
+    },
+    "output": "357:          // Диагностика времени для Supabase\n3276:            // Документация: vozovoz-docs/ru/docs/structure/cargo.md строка 28\n3291:            // Документация: vozovoz-docs/ru/docs/object/order.md строка 533-537\n4988:                  if (confirm('Очистить все сохраненные данные формы?')) {\n5000:                Очистить\n5014:            Все API\n5022:            Документация\n5030:            Диагностика\n5459:                            {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}\n5507:                        {/* Отладочная информация - всегда доступна */}\n5511:                              <h4 className=\"font-bold mb-2 text-white\">Отладочная информация:</h4>\n",
+    "title": "Find service menu buttons location",
+    "metadata": {
+      "output": "357:          // Диагностика времени для Supabase\n3276:            // Документация: vozovoz-docs/ru/docs/structure/cargo.md строка 28\n3291:            // Документация: vozovoz-docs/ru/docs/object/order.md строка 533-537\n4988:                  if (confirm('Очистить все сохраненные данные формы?')) {\n5000:                Очистить\n5014:            Все API\n5022:            Документация\n5030:            Диагностика\n5459:                            {expandedDebugInfo[calc.company] ? 'Скрыть отладку' : 'Отладочная информация'}\n5507:                        {/* Отладочная информация - всегда доступна */}\n5511:                              <h4 className=\"font-bold mb-2 text-white\">Отладочная информация:</h4>\n",
+      "exit": 0,
+      "description": "Find service menu buttons location"
+    },
+    "time": {
+      "start": 1765876068326,
+      "end": 1765876068436
+    }
+  }
+}

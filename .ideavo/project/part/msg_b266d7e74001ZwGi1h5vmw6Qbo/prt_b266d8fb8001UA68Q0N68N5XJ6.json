@@ -1,0 +1,27 @@
+{
+  "id": "prt_b266d8fb8001UA68Q0N68N5XJ6",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b266d7e74001ZwGi1h5vmw6Qbo",
+  "type": "tool",
+  "callID": "toolu_01RKPoCX6UMYXv77sHr4c9jF",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && npm run build 2>&1 | tail -40",
+      "description": "Build and check output",
+      "timeout": 120000
+    },
+    "output": "├ ○ /_not-found                          873 B          88.2 kB\n├ ƒ /api/calculations                    0 B                0 B\n├ ƒ /api/cdek                            0 B                0 B\n├ ƒ /api/dadata                          0 B                0 B\n├ ƒ /api/dellin-freight                  0 B                0 B\n├ ƒ /api/dellin-packages                 0 B                0 B\n├ ƒ /api/external                        0 B                0 B\n├ ƒ /api/furniture-products              0 B                0 B\n├ ƒ /api/kit                             0 B                0 B\n├ ƒ /api/nordwheel                       0 B                0 B\n├ ƒ /api/pek                             0 B                0 B\n├ ƒ /api/pek-get                         0 B                0 B\n├ ƒ /api/pek-simple                      0 B                0 B\n├ ƒ /api/rail-continent                  0 B                0 B\n├ ƒ /api/run-tests                       0 B                0 B\n├ ƒ /api/screenshot                      0 B                0 B\n├ ƒ /api/test                            0 B                0 B\n├ ƒ /api/vozovoz                         0 B                0 B\n├ ƒ /api/vozovoz-categories              0 B                0 B\n├ ƒ /api/vozovoz-parser                  0 B                0 B\n├ ƒ /api/vozovoz-parser-hybrid           0 B                0 B\n├ ƒ /api/vozovoz-parser-mock             0 B                0 B\n├ ƒ /api/vozovoz-parser-optimized        0 B                0 B\n├ ƒ /api/vozovoz-parser-simple           0 B                0 B\n├ ƒ /api/vozovoz-parser-stable           0 B                0 B\n├ ○ /diagnostic                          25.9 kB         133 kB\n├ ○ /env-check                           8.88 kB        96.2 kB\n├ ○ /pek-test                            3.07 kB        98.2 kB\n└ ○ /vozovoz-parser                      13.2 kB         130 kB\n+ First Load JS shared by all            87.3 kB\n  ├ chunks/117-a9311b30f8c1d654.js       31.6 kB\n  ├ chunks/fd9d1056-dbbc99e218e38580.js  53.6 kB\n  └ other shared chunks (total)          2.1 kB\n\n\nƒ Middleware                             27.9 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+    "title": "Build and check output",
+    "metadata": {
+      "output": "├ ○ /_not-found                          873 B          88.2 kB\n├ ƒ /api/calculations                    0 B                0 B\n├ ƒ /api/cdek                            0 B                0 B\n├ ƒ /api/dadata                          0 B                0 B\n├ ƒ /api/dellin-freight                  0 B                0 B\n├ ƒ /api/dellin-packages                 0 B                0 B\n├ ƒ /api/external                        0 B                0 B\n├ ƒ /api/furniture-products              0 B                0 B\n├ ƒ /api/kit                             0 B                0 B\n├ ƒ /api/nordwheel                       0 B                0 B\n├ ƒ /api/pek                             0 B                0 B\n├ ƒ /api/pek-get                         0 B                0 B\n├ ƒ /api/pek-simple                      0 B                0 B\n├ ƒ /api/rail-continent                  0 B                0 B\n├ ƒ /api/run-tests                       0 B                0 B\n├ ƒ /api/screenshot                      0 B                0 B\n├ ƒ /api/test                            0 B                0 B\n├ ƒ /api/vozovoz                         0 B                0 B\n├ ƒ /api/vozovoz-categories              0 B                0 B\n├ ƒ /api/vozovoz-parser                  0 B                0 B\n├ ƒ /api/vozovoz-parser-hybrid           0 B                0 B\n├ ƒ /api/vozovoz-parser-mock             0 B                0 B\n├ ƒ /api/vozovoz-parser-optimized        0 B                0 B\n├ ƒ /api/vozovoz-parser-simple           0 B                0 B\n├ ƒ /api/vozovoz-parser-stable           0 B                0 B\n├ ○ /diagnostic                          25.9 kB         133 kB\n├ ○ /env-check                           8.88 kB        96.2 kB\n├ ○ /pek-test                            3.07 kB        98.2 kB\n└ ○ /vozovoz-parser                      13.2 kB         130 kB\n+ First Load JS shared by all            87.3 kB\n  ├ chunks/117-a9311b30f8c1d654.js       31.6 kB\n  ├ chunks/fd9d1056-dbbc99e218e38580.js  53.6 kB\n  └ other shared chunks (total)          2.1 kB\n\n\nƒ Middleware                             27.9 kB\n\n○  (Static)   prerendered as static content\nƒ  (Dynamic)  server-rendered on demand\n\n",
+      "exit": 0,
+      "description": "Build and check output"
+    },
+    "time": {
+      "start": 1765876273928,
+      "end": 1765876330589
+    }
+  }
+}
