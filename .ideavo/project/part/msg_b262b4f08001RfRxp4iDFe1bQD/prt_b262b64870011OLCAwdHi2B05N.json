@@ -1,0 +1,25 @@
+{
+  "id": "prt_b262b64870011OLCAwdHi2B05N",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b262b4f08001RfRxp4iDFe1bQD",
+  "type": "tool",
+  "callID": "toolu_01R2Wif2siKd5Yco7YRAsZhn",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/vozovoz-docs/ru/docs/structure/cargo.md",
+      "limit": 80,
+      "offset": 96
+    },
+    "output": "<file>\n00097| \n00098| Пример\n00099| \n00100| ```json\n00101| {\n00102|   \"wizard\": [\n00103|     {\n00104|       \"length\": 0.3,\n00105|       \"width\": 0.2,\n00106|       \"height\": 0.1,\n00107|       \"quantity\": 2,\n00108|       \"weight\": 10,\n00109|       \"wrapping\": {  // только объёмная упаковка\n00110|           \"bubbleFilmVolume\": 0.5\n00111|       }\n00112|     },\n00113|     {\n00114|       \"length\": 0.5,\n00115|       \"width\": 0.1,\n00116|       \"height\": 0.5,\n00117|       \"quantity\": 3,\n00118|       \"weight\": 8,\n00119|       \"wrapping\": {} // только объёмная упаковка\n00120|     }\n00121|   ]\n00122| }\n00123| ```\n00124| \n00125| ### <a name=\"wrapping\"/>Cубструктура данных `wrapping` (\"Упаковка\")\n00126| \n00127| > Про коды упаковок более подробно в объекте [\"Упаковка\"](../object/wrapping.md).\n00128| \n00129| Пример\n00130| \n00131| ```javascript\n00132| \"wrapping\": {\n00133|   box1: 2, // 2 шт. коробки под кодом box1\n00134|   bubbleFilmVolume: 0.5, // 0.5м3 - объём воздушно-пузырьковой плёнки, необходимый для упаковки\n00135| }\n00136| ```\n00137| \n00138| ## <a name=\"example\"/>Примеры\n00139| \n00140| ```javascript\n00141| // полное оформление кода на javascript для использования в консоли см. в разделе \"Быстрый старт\"\n00142| xhttp.send(JSON.stringify(\n00143| {\n00144|   \"object\": \"price\",\n00145|   \"action\": \"get\",\n00146|   \"params\": {\n00147|     \"cargo\" : {\n00148|       \"dimension\": { // габариты\n00149|         \"max\": {\n00150|           \"length\": 0.1, // макс. длина одного места\n00151|           \"height\": 0.1, // макс. высота одного места\n00152|           \"weight\": 0.9, // макс. вес одного места\n00153|           \"width\": 0.1 // макс. ширина одного места\n00154|         },\n00155|         \"quantity\": 1, // количество мест\n00156|         \"volume\": 0.01, // общий объем\n00157|         \"weight\": 0.9 // общий вес\n00158|       }\n00159|     },\n00160|     \"gateway\": {\n00161|       \"dispatch\": { // откуда\n00162|         \"point\": {\n00163|           \"location\": \"Санкт-Петербург\",\n00164|           \"terminal\": \"default\" // терминал по умолчанию\n00165|         }\n00166|       },\n00167|       \"destination\": { // куда\n00168|         \"point\": {\n00169|           \"location\": \"Москва\",\n00170|           \"terminal\": \"default\" // терминал по умолчанию\n00171|         }\n00172|       }\n00173|     }\n00174|   }\n00175| }));\n00176| ```\n\n(File has more lines. Use 'offset' parameter to read beyond line 176)\n</file>",
+    "title": "vozovoz-docs/ru/docs/structure/cargo.md",
+    "metadata": {
+      "preview": "\nПример\n\n```json\n{\n  \"wizard\": [\n    {\n      \"length\": 0.3,\n      \"width\": 0.2,\n      \"height\": 0.1,\n      \"quantity\": 2,\n      \"weight\": 10,\n      \"wrapping\": {  // только объёмная упаковка\n          \"bubbleFilmVolume\": 0.5\n      }\n    },\n    {\n      \"length\": 0.5,\n      \"width\": 0.1,\n      \"height\": 0.5,"
+    },
+    "time": {
+      "start": 1765871937652,
+      "end": 1765871937665
+    }
+  }
+}

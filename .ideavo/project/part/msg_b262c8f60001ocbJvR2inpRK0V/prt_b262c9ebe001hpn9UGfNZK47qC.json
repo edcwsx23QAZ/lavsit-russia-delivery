@@ -1,0 +1,26 @@
+{
+  "id": "prt_b262c9ebe001hpn9UGfNZK47qC",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b262c8f60001ocbJvR2inpRK0V",
+  "type": "tool",
+  "callID": "toolu_019TzHvjJHWn1kyCvuaD7Zxs",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -n \"hardBoxVolume\\|hardPackageVolume\" /home/user/project/vozovoz-docs/ru/docs/object/wrapping.md",
+      "description": "Compare hardBoxVolume vs hardPackageVolume"
+    },
+    "output": "52:    \"code\": \"hardBoxVolume\", // отобрать информацию по конкретной упаковке\n80:      \"code\": \"hardPackageVolume\", // уникальный код упаковки\n",
+    "title": "Compare hardBoxVolume vs hardPackageVolume",
+    "metadata": {
+      "output": "52:    \"code\": \"hardBoxVolume\", // отобрать информацию по конкретной упаковке\n80:      \"code\": \"hardPackageVolume\", // уникальный код упаковки\n",
+      "exit": 0,
+      "description": "Compare hardBoxVolume vs hardPackageVolume"
+    },
+    "time": {
+      "start": 1765872018050,
+      "end": 1765872018062
+    }
+  }
+}

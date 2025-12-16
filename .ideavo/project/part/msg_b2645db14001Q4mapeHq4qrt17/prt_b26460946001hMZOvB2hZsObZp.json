@@ -1,0 +1,25 @@
+{
+  "id": "prt_b26460946001hMZOvB2hZsObZp",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b2645db14001Q4mapeHq4qrt17",
+  "type": "tool",
+  "callID": "toolu_01C3HwnFRhpkPfRqJKpKdV5C",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 35,
+      "offset": 3268
+    },
+    "output": "<file>\n03269|       const createRequestData = () => ({\n03270|         object: \"price\",\n03271|         action: \"get\",\n03272|         params: {\n03273|           cargo: {\n03274|             // ⚠️ ВАЖНО: category НЕ используется для расчета цены (price.get)\n03275|             // Параметр category используется ТОЛЬКО при оформлении заказа (order.set)\n03276|             // Документация: vozovoz-docs/ru/docs/structure/cargo.md строка 28\n03277|             // Ошибка: \"В узле guid не удалось найти ссылку на справочник КлассификаторГрузов\"\n03278|             \n03279|             // ✅ Используем wizard вместо dimension для точности\n03280|             wizard: form.cargos.map(cargo => ({\n03281|               length: cargo.length / 100,   // см → м\n03282|               width: cargo.width / 100,     // см → м\n03283|               height: cargo.height / 100,   // см → м\n03284|               quantity: 1,\n03285|               weight: cargo.weight,\n03286|               ...(form.needPackaging ? {\n03287|                 wrapping: {\n03288|                   // ✅ \"Защитная жёсткая упаковка с фото с разбором\" согласно документации\n03289|                   // hardPackageVolumeUOD_WP - С РАЗБОРОМ + С ФОТО (UOD = Unboxing On Delivery, WP = With Photos)\n03290|                   // Список упаковок:\n03291|                   // - hardPackageVolume - без разбора, без фото\n03292|                   // - hardPackageVolume_WP - без разбора, С ФОТО\n03293|                   // - hardPackageVolumeUOD - С РАЗБОРОМ, без фото\n03294|                   // - hardPackageVolumeUOD_WP - С РАЗБОРОМ + С ФОТО ✅\n03295|                   hardPackageVolumeUOD_WP: (cargo.length * cargo.width * cargo.height) / 1000000  // см³ → м³\n03296|                 }\n03297|               } : {})\n03298|             })),\n03299|             // Страхование\n03300|             ...(form.needInsurance && form.declaredValue > 0 ? {\n03301|               insurance: form.declaredValue,\n03302|               insuranceNdv: false\n03303|             } : {\n\n(File has more lines. Use 'offset' parameter to read beyond line 3303)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "      const createRequestData = () => ({\n        object: \"price\",\n        action: \"get\",\n        params: {\n          cargo: {\n            // ⚠️ ВАЖНО: category НЕ используется для расчета цены (price.get)\n            // Параметр category используется ТОЛЬКО при оформлении заказа (order.set)\n            // Документация: vozovoz-docs/ru/docs/structure/cargo.md строка 28\n            // Ошибка: \"В узле guid не удалось найти ссылку на справочник КлассификаторГрузов\"\n            \n            // ✅ Используем wizard вместо dimension для точности\n            wizard: form.cargos.map(cargo => ({\n              length: cargo.length / 100,   // см → м\n              width: cargo.width / 100,     // см → м\n              height: cargo.height / 100,   // см → м\n              quantity: 1,\n              weight: cargo.weight,\n              ...(form.needPackaging ? {\n                wrapping: {\n                  // ✅ \"Защитная жёсткая упаковка с фото с разбором\" согласно документации"
+    },
+    "time": {
+      "start": 1765873683925,
+      "end": 1765873683933
+    }
+  }
+}

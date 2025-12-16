@@ -1,0 +1,26 @@
+{
+  "id": "prt_b2644b315001sqksRLqHDcbFte",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b26449dc6001Xs45j21dFxnHNl",
+  "type": "tool",
+  "callID": "toolu_01CXHqkVacAxRinE97dbkYXZ",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -n \"wrapping\\|упаковк\" /home/user/project/vozovoz-docs/ru/docs/object/order.md | head -20",
+      "description": "Find wrapping mentions in order docs"
+    },
+    "output": "420:          \"wrapping\": {\n533:      \"wrapping\": { // упаковка\n534:        \"bag1\": 1, // 1 шт. упаковки с кодом `bag1`\n535:        \"box1\": 2, // 2 шт. упаковки с кодом `box1`\n536:        \"palletCollar\": 0.5 // 0.5м3 упаковки с кодом `palletCollar`\n688:      \"wrapping\": {\n",
+    "title": "Find wrapping mentions in order docs",
+    "metadata": {
+      "output": "420:          \"wrapping\": {\n533:      \"wrapping\": { // упаковка\n534:        \"bag1\": 1, // 1 шт. упаковки с кодом `bag1`\n535:        \"box1\": 2, // 2 шт. упаковки с кодом `box1`\n536:        \"palletCollar\": 0.5 // 0.5м3 упаковки с кодом `palletCollar`\n688:      \"wrapping\": {\n",
+      "exit": 0,
+      "description": "Find wrapping mentions in order docs"
+    },
+    "time": {
+      "start": 1765873596860,
+      "end": 1765873596872
+    }
+  }
+}

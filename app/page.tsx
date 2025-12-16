@@ -3282,15 +3282,27 @@ export default function Home() {
               width: cargo.width / 100,     // см → м
               height: cargo.height / 100,   // см → м
               quantity: 1,
-              weight: cargo.weight,
-              ...(form.needPackaging ? {
-                wrapping: {
-                  // ✅ "Защитная жёсткая упаковка с фото с разбором" согласно документации
-                  // hardPackageVolume - объемная упаковка, значение в м³
-                  hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000  // см³ → м³
-                }
-              } : {})
+              weight: cargo.weight
+              // ⚠️ wrapping НЕ указывается внутри wizard для price.get!
+              // Упаковка указывается на уровне cargo.wrapping (ниже)
             })),
+            
+            // ✅ ИСПРАВЛЕНО: Упаковка указывается на уровне cargo.wrapping
+            // Документация: vozovoz-docs/ru/docs/object/order.md строка 533-537
+            // Тест показал: wizard[].wrapping НЕ работает, cargo.wrapping РАБОТАЕТ!
+            ...(form.needPackaging ? {
+              wrapping: {
+                // "Защитная жёсткая упаковка с фото с разбором"
+                // hardPackageVolumeUOD_WP - С РАЗБОРОМ + С ФОТО
+                // UOD = Unboxing On Delivery (разбор при доставке)
+                // WP = With Photos (с фото)
+                // Цена: ~1020 руб. за 0.15 м³ + 10 руб. разбор + 50 руб. фото
+                hardPackageVolumeUOD_WP: form.cargos.reduce((sum, cargo) => 
+                  sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
+                )  // Общий объем всех мест в м³
+              }
+            } : {}),
+            
             // Страхование
             ...(form.needInsurance && form.declaredValue > 0 ? {
               insurance: form.declaredValue,
@@ -3310,19 +3322,15 @@ export default function Home() {
                 })
               },
               // ✅ Добавлены дополнительные услуги на отправлении
-              ...(form.needLoading || form.needPackaging ? {
+              ...(form.needLoading ? {
                 service: {
                   // Погрузка на отправлении (если включена)
-                  ...(form.needLoading ? {
-                    needLoading: {
-                      floor: form.floor || 1,
-                      lift: form.hasFreightLift || false
-                    }
-                  } : {}),
-                  // Разбор груза при доставке (если включена упаковка)
-                  ...(form.needPackaging ? {
-                    unboxingOnDelivery: totalWeight
-                  } : {})
+                  needLoading: {
+                    floor: form.floor || 1,
+                    lift: form.hasFreightLift || false
+                  }
+                  // ⚠️ unboxingOnDelivery НЕ нужен - уже включен в hardPackageVolumeUOD_WP
+                  // (UOD = Unboxing On Delivery - разбор груза при доставке)
                 }
               } : {})
             },

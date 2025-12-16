@@ -1,0 +1,27 @@
+{
+  "id": "prt_b262d86f80019Rq4iw0ZqZZc2G",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b262d66b5001QSheSfnntfdGEA",
+  "type": "tool",
+  "callID": "toolu_017rizSDCqAPsV4pAEy6E58Q",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && timeout 5 npm run dev > /dev/null 2>&1 & sleep 3 && node test-vozovoz-wrappings.js 2>&1 && killall node 2>/dev/null",
+      "description": "Test getting available wrapping types",
+      "timeout": 15000
+    },
+    "output": "📦 Получение списка упаковок Vozovoz...\n\n❌ Ошибка: fetch failed\n",
+    "title": "Test getting available wrapping types",
+    "metadata": {
+      "output": "📦 Получение списка упаковок Vozovoz...\n\n❌ Ошибка: fetch failed\n",
+      "exit": 127,
+      "description": "Test getting available wrapping types"
+    },
+    "time": {
+      "start": 1765872078366,
+      "end": 1765872083449
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "prt_b262ba194001KEHgxAksWTdKkr",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b262b6a02001Y9Vyzx6e1T7BCi",
+  "type": "tool",
+  "callID": "toolu_018bGSD4gyjq6D4mus77er2A",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -A 10 -B 5 \"hardPackage\" /home/user/project/vozovoz-docs/ru/docs/object/wrapping.md",
+      "description": "Find hardPackage wrapping details"
+    },
+    "output": "\n```javascript\n{\n  \"response\": [\n    {\n      \"code\": \"hardPackageVolume\", // уникальный код упаковки\n      \"name\": \"Жёсткая упаковка\", // наименование\n      \"type\": \"volume\", // упаковка принадлежит типу \"объёмная\"\n      // т.е. при передаче её значений в других запросах, они должны быть дробными положительными числами,\n      // отражающими объём груза, требующий упаковки\n      \"description\": \"Описание для клиента\"\n    },\n    {\n      \"code\": \"box3\",\n      \"name\": \"Коробка 40×40×20 см\",\n      \"type\": \"numeric\", // упаковка принадлежит типу \"количественная\"\n",
+    "title": "Find hardPackage wrapping details",
+    "metadata": {
+      "output": "\n```javascript\n{\n  \"response\": [\n    {\n      \"code\": \"hardPackageVolume\", // уникальный код упаковки\n      \"name\": \"Жёсткая упаковка\", // наименование\n      \"type\": \"volume\", // упаковка принадлежит типу \"объёмная\"\n      // т.е. при передаче её значений в других запросах, они должны быть дробными положительными числами,\n      // отражающими объём груза, требующий упаковки\n      \"description\": \"Описание для клиента\"\n    },\n    {\n      \"code\": \"box3\",\n      \"name\": \"Коробка 40×40×20 см\",\n      \"type\": \"numeric\", // упаковка принадлежит типу \"количественная\"\n",
+      "exit": 0,
+      "description": "Find hardPackage wrapping details"
+    },
+    "time": {
+      "start": 1765871953969,
+      "end": 1765871954060
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "prt_b262cb320001jt1bjFQlVuljBU",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b262ca33d001952lSaI21k965B",
+  "type": "tool",
+  "callID": "toolu_019esDyTzuojrGxkhs4ucpug",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/vozovoz-docs/ru/docs/object/wrapping.md",
+      "limit": 30,
+      "offset": 45
+    },
+    "output": "<file>\n00046| // полное оформление кода на javascript для использования в консоли см. в разделе \"Быстрый старт\"\n00047| xhttp.send(JSON.stringify(\n00048| {\n00049|   \"object\": \"wrapping\",\n00050|   \"action\": \"get\",\n00051|   \"params\": {\n00052|     \"code\": \"hardBoxVolume\", // отобрать информацию по конкретной упаковке\n00053|     // без параметра выше метод вернёт полный список\n00054|     \"limit\": 0, // кол-во записей\n00055|     \"offset\": 0 // смещение кол-ва записей\n00056|   }\n00057| }\n00058| ```\n00059| \n00060| #### <a name=\"get-struct\"/>Корневая структура. Передаётся напрямую в узел `params`\n00061| \n00062| | Структура     | Тип       | Описание |\n00063| | ---------     | ---       | -------- |\n00064| | `code`        | string    | Определяет упаковку, для которой нужно вернуть данные. Если не указан, метод возвращает список доступных упаковок |\n00065| | `limit`       | integer   | Ограничивает количество возвращаемых записей |\n00066| | `offset`      | integer   | Задаёт смещение количества возвращаемых записей |\n00067| \n00068| \n00069| ### <a name=\"get-response\"/>Данные ответа\n00070| \n00071| * [Пример ответа](#get-response-example)\n00072| * [Описание данных ответа](#get-response-description)\n00073| \n00074| <a name=\"get-response-example\"/>Пример ответа:\n00075| \n\n(File has more lines. Use 'offset' parameter to read beyond line 75)\n</file>",
+    "title": "vozovoz-docs/ru/docs/object/wrapping.md",
+    "metadata": {
+      "preview": "// полное оформление кода на javascript для использования в консоли см. в разделе \"Быстрый старт\"\nxhttp.send(JSON.stringify(\n{\n  \"object\": \"wrapping\",\n  \"action\": \"get\",\n  \"params\": {\n    \"code\": \"hardBoxVolume\", // отобрать информацию по конкретной упаковке\n    // без параметра выше метод вернёт полный список\n    \"limit\": 0, // кол-во записей\n    \"offset\": 0 // смещение кол-ва записей\n  }\n}\n```\n\n#### <a name=\"get-struct\"/>Корневая структура. Передаётся напрямую в узел `params`\n\n| Структура     | Тип       | Описание |\n| ---------     | ---       | -------- |\n| `code`        | string    | Определяет упаковку, для которой нужно вернуть данные. Если не указан, метод возвращает список доступных упаковок |\n| `limit`       | integer   | Ограничивает количество возвращаемых записей |"
+    },
+    "time": {
+      "start": 1765872023323,
+      "end": 1765872023327
+    }
+  }
+}

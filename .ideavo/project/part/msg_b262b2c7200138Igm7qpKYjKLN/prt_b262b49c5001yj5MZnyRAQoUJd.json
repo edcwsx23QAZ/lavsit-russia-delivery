@@ -1,0 +1,25 @@
+{
+  "id": "prt_b262b49c5001yj5MZnyRAQoUJd",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b262b2c7200138Igm7qpKYjKLN",
+  "type": "tool",
+  "callID": "toolu_01F3YVhwx9J62PQ1SSf5KZsF",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 30,
+      "offset": 3278
+    },
+    "output": "<file>\n03279|             // ✅ Используем wizard вместо dimension для точности\n03280|             wizard: form.cargos.map(cargo => ({\n03281|               length: cargo.length / 100,   // см → м\n03282|               width: cargo.width / 100,     // см → м\n03283|               height: cargo.height / 100,   // см → м\n03284|               quantity: 1,\n03285|               weight: cargo.weight,\n03286|               ...(form.needPackaging ? {\n03287|                 wrapping: {\n03288|                   // ✅ \"Защитная жёсткая упаковка с фото с разбором\" согласно документации\n03289|                   // hardPackageVolume - объемная упаковка, значение в м³\n03290|                   hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000  // см³ → м³\n03291|                 }\n03292|               } : {})\n03293|             })),\n03294|             // Страхование\n03295|             ...(form.needInsurance && form.declaredValue > 0 ? {\n03296|               insurance: form.declaredValue,\n03297|               insuranceNdv: false\n03298|             } : {\n03299|               insuranceNdv: true\n03300|             })\n03301|           },\n03302|           gateway: {\n03303|             dispatch: {\n03304|               point: {\n03305|                 location: form.fromCity || 'Москва',\n03306|                 ...(form.fromAddressDelivery && form.fromAddress?.trim() ? {\n03307|                   address: form.fromAddress.trim()\n03308|                 } : {\n\n(File has more lines. Use 'offset' parameter to read beyond line 3308)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "            // ✅ Используем wizard вместо dimension для точности\n            wizard: form.cargos.map(cargo => ({\n              length: cargo.length / 100,   // см → м\n              width: cargo.width / 100,     // см → м\n              height: cargo.height / 100,   // см → м\n              quantity: 1,\n              weight: cargo.weight,\n              ...(form.needPackaging ? {\n                wrapping: {\n                  // ✅ \"Защитная жёсткая упаковка с фото с разбором\" согласно документации\n                  // hardPackageVolume - объемная упаковка, значение в м³\n                  hardPackageVolume: (cargo.length * cargo.width * cargo.height) / 1000000  // см³ → м³\n                }\n              } : {})\n            })),\n            // Страхование\n            ...(form.needInsurance && form.declaredValue > 0 ? {\n              insurance: form.declaredValue,\n              insuranceNdv: false\n            } : {"
+    },
+    "time": {
+      "start": 1765871930868,
+      "end": 1765871930885
+    }
+  }
+}

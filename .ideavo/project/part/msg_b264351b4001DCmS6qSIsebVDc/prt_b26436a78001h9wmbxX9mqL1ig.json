@@ -1,0 +1,26 @@
+{
+  "id": "prt_b26436a78001h9wmbxX9mqL1ig",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b264351b4001DCmS6qSIsebVDc",
+  "type": "tool",
+  "callID": "toolu_01NbYbHFr9VFw2y8gQBmzru6",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -B 5 -A 10 \"терминал\\|адрес\" /home/user/project/test-vozovoz-wrappings-direct.js 2>&1 | head -30",
+      "description": "Check terminal vs address in wrapping"
+    },
+    "output": "",
+    "title": "Check terminal vs address in wrapping",
+    "metadata": {
+      "output": "",
+      "exit": 0,
+      "description": "Check terminal vs address in wrapping"
+    },
+    "time": {
+      "start": 1765873512837,
+      "end": 1765873512850
+    }
+  }
+}

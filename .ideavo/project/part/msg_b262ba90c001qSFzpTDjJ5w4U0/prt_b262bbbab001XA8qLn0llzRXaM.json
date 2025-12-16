@@ -1,0 +1,26 @@
+{
+  "id": "prt_b262bbbab001XA8qLn0llzRXaM",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b262ba90c001qSFzpTDjJ5w4U0",
+  "type": "tool",
+  "callID": "toolu_01MCLnHfvwmom6hVSzXbcnU9",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "content": "/**\n * Тест: Проверка влияния упаковки на цену в Vozovoz API\n * Цель: Сравнить цены с упаковкой и без упаковки\n */\n\nasync function testVozovozPackaging() {\n  console.log('🧪 ТЕСТ: Влияние упаковки на цену Vozovoz\\n');\n  console.log('='.repeat(80));\n\n  // Базовые параметры груза\n  const baseParams = {\n    object: \"price\",\n    action: \"get\",\n    params: {\n      cargo: {\n        wizard: [\n          {\n            length: 1.0,    // метры\n            width: 0.5,     // метры\n            height: 0.3,    // метры\n            quantity: 1,\n            weight: 20      // кг\n          }\n        ],\n        insuranceNdv: true\n      },\n      gateway: {\n        dispatch: {\n          point: {\n            location: \"Москва\",\n            terminal: \"default\"\n          }\n        },\n        destination: {\n          point: {\n            location: \"Санкт-Петербург\",\n            terminal: \"default\"\n          }\n        }\n      }\n    }\n  };\n\n  // 1. Запрос БЕЗ упаковки\n  console.log('\\n📦 ЗАПРОС 1: БЕЗ упаковки');\n  console.log('-'.repeat(80));\n  \n  const requestWithoutPackaging = JSON.parse(JSON.stringify(baseParams));\n  console.log('Отправка запроса...');\n  console.log(JSON.stringify(requestWithoutPackaging, null, 2));\n\n  try {\n    const response1 = await fetch('https://vozovoz.ru/api/', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify(requestWithoutPackaging)\n    });\n\n    const data1 = await response1.json();\n    \n    if (data1.response) {\n      console.log('\\n✅ Ответ получен:');\n      console.log(`   Цена: ${data1.response.price} руб.`);\n      console.log(`   Базовая цена: ${data1.response.basePrice} руб.`);\n      console.log(`   Срок доставки: ${data1.response.deliveryTime.from}-${data1.response.deliveryTime.to} дн.`);\n      console.log('\\n   Услуги:');\n      data1.response.service.forEach(s => {\n        console.log(`   - ${s.name}: ${s.price} руб.`);\n      });\n    } else if (data1.error) {\n      console.log('\\n❌ Ошибка:', data1.error);\n    }\n  } catch (error) {\n    console.log('\\n❌ Ошибка запроса:', error.message);\n  }\n\n  // 2. Запрос С упаковкой\n  console.log('\\n\\n📦 ЗАПРОС 2: С упаковкой hardPackageVolume');\n  console.log('-'.repeat(80));\n\n  const requestWithPackaging = JSON.parse(JSON.stringify(baseParams));\n  requestWithPackaging.params.cargo.wizard[0].wrapping = {\n    hardPackageVolume: 0.15  // 1.0 * 0.5 * 0.3 = 0.15 м³\n  };\n\n  console.log('Отправка запроса...');\n  console.log(JSON.stringify(requestWithPackaging, null, 2));\n\n  try {\n    const response2 = await fetch('https://vozovoz.ru/api/', {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify(requestWithPackaging)\n    });\n\n    const data2 = await response2.json();\n    \n    if (data2.response) {\n      console.log('\\n✅ Ответ получен:');\n      console.log(`   Цена: ${data2.response.price} руб.`);\n      console.log(`   Базовая цена: ${data2.response.basePrice} руб.`);\n      console.log(`   Срок доставки: ${data2.response.deliveryTime.from}-${data2.response.deliveryTime.to} дн.`);\n      console.log('\\n   Услуги:');\n      data2.response.service.forEach(s => {\n        console.log(`   - ${s.name}: ${s.price} руб.`);\n      });\n    } else if (data2.error) {\n      console.log('\\n❌ Ошибка:', data2.error);\n    }\n  } catch (error) {\n    console.log('\\n❌ Ошибка запроса:', error.message);\n  }\n\n  console.log('\\n' + '='.repeat(80));\n  console.log('ТЕСТ ЗАВЕРШЕН');\n  console.log('='.repeat(80));\n}\n\n// Запуск теста\ntestVozovozPackaging();\n",
+      "filePath": "/home/user/project/test-vozovoz-packaging.js"
+    },
+    "output": "",
+    "title": "test-vozovoz-packaging.js",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-vozovoz-packaging.js",
+      "exists": false
+    },
+    "time": {
+      "start": 1765871975327,
+      "end": 1765871975337
+    }
+  }
+}

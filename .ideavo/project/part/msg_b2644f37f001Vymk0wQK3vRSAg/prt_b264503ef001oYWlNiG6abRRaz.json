@@ -1,0 +1,11 @@
+{
+  "id": "prt_b264503ef001oYWlNiG6abRRaz",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b2644f37f001Vymk0wQK3vRSAg",
+  "type": "text",
+  "text": "КРИТИЧЕСКОЕ ОТКРЫТИЕ! **В `order.set` упаковка указывается на уровне `cargo.wrapping`, а НЕ внутри `cargo.wizard[].wrapping`!**\n\nСравним структуры:\n\n**В документации `order.set` (строка 420-423):**\n```json\n{\n  \"cargo\": {\n    \"dimension\": {...},\n    \"wrapping\": {           // ← На уровне cargo!\n      \"hardBoxVolume\": 0.1,\n      \"box1\": 2\n    }\n  }\n}\n```\n\n**В документации `cargo.wizard` (строка 109):**\n```json\n{\n  \"wizard\": [\n    {\n      \"wrapping\": {...}     // ← Внутри wizard элемента!\n    }\n  ]\n}\n```\n\nВозможно, для `price.get` упаковка должна быть на уровне `cargo.wrapping`! Давайте проверим:",
+  "time": {
+    "start": 1765873620574,
+    "end": 1765873620574
+  }
+}

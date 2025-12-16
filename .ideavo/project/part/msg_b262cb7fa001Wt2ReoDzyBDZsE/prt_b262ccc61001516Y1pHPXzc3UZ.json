@@ -1,0 +1,26 @@
+{
+  "id": "prt_b262ccc61001516Y1pHPXzc3UZ",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b262cb7fa001Wt2ReoDzyBDZsE",
+  "type": "tool",
+  "callID": "toolu_01KdhJf4ido5XRGq5urM5uaK",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "find /home/user/project -name \"*.js\" -o -name \"*.md\" | xargs grep -l \"wrapping.*hard\" 2>/dev/null | head -10",
+      "description": "Find files with wrapping examples"
+    },
+    "output": "/home/user/project/node_modules/next/dist/compiled/next-server/app-route-experimental.runtime.dev.js\n/home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js\n/home/user/project/.next/server/app/page.js\n/home/user/project/.next/static/chunks/app/page.js\n/home/user/project/.next/static/chunks/main-app.js\n",
+    "title": "Find files with wrapping examples",
+    "metadata": {
+      "output": "/home/user/project/node_modules/next/dist/compiled/next-server/app-route-experimental.runtime.dev.js\n/home/user/project/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js\n/home/user/project/.next/server/app/page.js\n/home/user/project/.next/static/chunks/app/page.js\n/home/user/project/.next/static/chunks/main-app.js\n",
+      "exit": 0,
+      "description": "Find files with wrapping examples"
+    },
+    "time": {
+      "start": 1765872029843,
+      "end": 1765872036576
+    }
+  }
+}

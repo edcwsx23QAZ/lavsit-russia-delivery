@@ -1,0 +1,25 @@
+{
+  "id": "prt_b2644eff6001pi19LICKGrAIjt",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b2644d64d001Qeugsq1vqLQKfG",
+  "type": "tool",
+  "callID": "toolu_01ErqqLnfCnvzTDw7fwrJwyS",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/vozovoz-docs/ru/docs/object/order.md",
+      "limit": 30,
+      "offset": 415
+    },
+    "output": "<file>\n00416|             \"volume\": 0.1,\n00417|             \"weight\": 0.9\n00418|           },\n00419|           \"insurance\": 590880.23,\n00420|           \"wrapping\": {\n00421|             \"hardBoxVolume\": 0.1,\n00422|             \"box1\": 2\n00423|           }\n00424|         },\n00425|         \"customId\": \"МойПользовательскийНомер\",\n00426|         \"gateway\": {\n00427|           \"dispatch\": {\n00428|             \"point\": {\n00429|               \"location\": {\n00430|                 \"id\": \"e90f19de-0128-11e5-80c7-00155d903d03\",\n00431|                 \"name\": \"Санкт-Петербург\",\n00432|                 \"type\": \"г\"\n00433|               },\n00434|               \"address\": \"Пивоварная ул. 11\",\n00435|               \"date\": \"2017-06-03\",\n00436|               \"time\": {\n00437|                 \"start\": \"10:00\",\n00438|                 \"end\": \"16:00\"\n00439|               }\n00440|             },\n00441|             \"customer\": {\n00442|               \"type\": \"individual\",\n00443|               \"name\": \"Name 1\",\n00444|               \"phone\": [\n00445|                 \"79991112233\"\n\n(File has more lines. Use 'offset' parameter to read beyond line 445)\n</file>",
+    "title": "vozovoz-docs/ru/docs/object/order.md",
+    "metadata": {
+      "preview": "            \"volume\": 0.1,\n            \"weight\": 0.9\n          },\n          \"insurance\": 590880.23,\n          \"wrapping\": {\n            \"hardBoxVolume\": 0.1,\n            \"box1\": 2\n          }\n        },\n        \"customId\": \"МойПользовательскийНомер\",\n        \"gateway\": {\n          \"dispatch\": {\n            \"point\": {\n              \"location\": {\n                \"id\": \"e90f19de-0128-11e5-80c7-00155d903d03\",\n                \"name\": \"Санкт-Петербург\",\n                \"type\": \"г\"\n              },\n              \"address\": \"Пивоварная ул. 11\",\n              \"date\": \"2017-06-03\","
+    },
+    "time": {
+      "start": 1765873611367,
+      "end": 1765873611373
+    }
+  }
+}

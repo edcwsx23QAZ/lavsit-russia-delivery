@@ -1,0 +1,25 @@
+{
+  "id": "prt_b262e64400015JTrvH4FaWx9k6",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b262e4c91001RO4bNr3F8NhKQd",
+  "type": "tool",
+  "callID": "toolu_01Jrx3tVCF1aU4KHqNtK5hnS",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 3312
+    },
+    "output": "<file>\n03313|                 } : {\n03314|                   terminal: \"default\"\n03315|                 })\n03316|               },\n03317|               // ✅ Добавлены дополнительные услуги на отправлении\n03318|               ...(form.needLoading || form.needPackaging ? {\n03319|                 service: {\n03320|                   // Погрузка на отправлении (если включена)\n03321|                   ...(form.needLoading ? {\n03322|                     needLoading: {\n03323|                       floor: form.floor || 1,\n03324|                       lift: form.hasFreightLift || false\n03325|                     }\n03326|                   } : {}),\n03327|                   // Разбор груза при доставке (если включена упаковка)\n03328|                   ...(form.needPackaging ? {\n03329|                     unboxingOnDelivery: totalWeight\n03330|                   } : {})\n03331|                 }\n03332|               } : {})\n\n(File has more lines. Use 'offset' parameter to read beyond line 3332)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "                } : {\n                  terminal: \"default\"\n                })\n              },\n              // ✅ Добавлены дополнительные услуги на отправлении\n              ...(form.needLoading || form.needPackaging ? {\n                service: {\n                  // Погрузка на отправлении (если включена)\n                  ...(form.needLoading ? {\n                    needLoading: {\n                      floor: form.floor || 1,\n                      lift: form.hasFreightLift || false\n                    }\n                  } : {}),\n                  // Разбор груза при доставке (если включена упаковка)\n                  ...(form.needPackaging ? {\n                    unboxingOnDelivery: totalWeight\n                  } : {})\n                }\n              } : {})"
+    },
+    "time": {
+      "start": 1765872134092,
+      "end": 1765872134097
+    }
+  }
+}

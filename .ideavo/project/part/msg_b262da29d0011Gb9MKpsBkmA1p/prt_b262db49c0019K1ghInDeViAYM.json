@@ -1,0 +1,26 @@
+{
+  "id": "prt_b262db49c0019K1ghInDeViAYM",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b262da29d0011Gb9MKpsBkmA1p",
+  "type": "tool",
+  "callID": "toolu_01L1vQLGwmWc56ZVNXnjAB32",
+  "tool": "write",
+  "state": {
+    "status": "completed",
+    "input": {
+      "content": "/**\n * Прямой запрос к Vozovoz API для получения списка упаковок\n */\n\nconst VOZOVOZ_TOKEN = 'sBDUaEmzVBO6syQWHvHxmjxJQiON2BZplQaqrU3N';\n\nasync function getVozovozWrappingsDirect() {\n  console.log('📦 Прямой запрос списка упаковок к Vozovoz API...\\n');\n\n  const requestData = {\n    object: \"wrapping\",\n    action: \"get\",\n    params: {}\n  };\n\n  const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOZ_TOKEN}`;\n\n  try {\n    console.log('🌐 URL:', apiUrl);\n    console.log('📤 Запрос:', JSON.stringify(requestData, null, 2));\n    console.log('');\n\n    const response = await fetch(apiUrl, {\n      method: 'POST',\n      headers: {\n        'Content-Type': 'application/json',\n      },\n      body: JSON.stringify(requestData)\n    });\n\n    if (!response.ok) {\n      console.error('❌ Ошибка HTTP:', response.status);\n      const text = await response.text();\n      console.error('Ответ:', text);\n      return;\n    }\n\n    const result = await response.json();\n    \n    if (result.error) {\n      console.error('❌ Ошибка API:', result.error);\n      return;\n    }\n\n    if (result.response && Array.isArray(result.response)) {\n      console.log(`✅ Получено упаковок: ${result.response.length}\\n`);\n      console.log('='.repeat(100));\n      \n      result.response.forEach((wrapping, index) => {\n        console.log(`\\n${index + 1}. ${wrapping.name}`);\n        console.log(`   Код: ${wrapping.code}`);\n        console.log(`   Тип: ${wrapping.type} ${wrapping.type === 'volume' ? '(объёмная - м³)' : '(количественная - шт.)'}`);\n        if (wrapping.description) {\n          console.log(`   Описание: ${wrapping.description}`);\n        }\n      });\n\n      console.log('\\n' + '='.repeat(100));\n      \n      // Ищем упаковки со словом \"жёсткая\" или \"hard\"\n      const hardPackages = result.response.filter(w => \n        w.name.toLowerCase().includes('жёст') || \n        w.name.toLowerCase().includes('жест') ||\n        w.code.toLowerCase().includes('hard')\n      );\n\n      if (hardPackages.length > 0) {\n        console.log('\\n🔍 НАЙДЕНЫ ЖЁСТКИЕ УПАКОВКИ:');\n        console.log('='.repeat(100));\n        hardPackages.forEach(w => {\n          console.log(`\\n   ✅ ${w.name}`);\n          console.log(`      Код: ${w.code}`);\n          console.log(`      Тип: ${w.type}`);\n        });\n        console.log('\\n💡 Используй этот код для жёсткой упаковки!');\n      }\n\n      // Ищем пленочные упаковки\n      const filmPackages = result.response.filter(w => \n        w.name.toLowerCase().includes('плен') ||\n        w.name.toLowerCase().includes('пленк') ||\n        w.code.toLowerCase().includes('film') ||\n        w.code.toLowerCase().includes('bubble')\n      );\n\n      if (filmPackages.length > 0) {\n        console.log('\\n\\n🔍 НАЙДЕНЫ ПЛЕНОЧНЫЕ УПАКОВКИ:');\n        console.log('='.repeat(100));\n        filmPackages.forEach(w => {\n          console.log(`\\n   - ${w.name}`);\n          console.log(`     Код: ${w.code}`);\n          console.log(`     Тип: ${w.type}`);\n        });\n      }\n\n    } else {\n      console.log('⚠️  Неожиданный формат ответа:');\n      console.log(JSON.stringify(result, null, 2));\n    }\n\n  } catch (error) {\n    console.error('❌ Ошибка:', error.message);\n  }\n}\n\n// Запуск\ngetVozovozWrappingsDirect();\n",
+      "filePath": "/home/user/project/test-vozovoz-wrappings-direct.js"
+    },
+    "output": "",
+    "title": "test-vozovoz-wrappings-direct.js",
+    "metadata": {
+      "diagnostics": {},
+      "filepath": "/home/user/project/test-vozovoz-wrappings-direct.js",
+      "exists": false
+    },
+    "time": {
+      "start": 1765872102987,
+      "end": 1765872102991
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "prt_b2642bc89001Q4RZmWxwubqJt9",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b2642a4c3001HvVbdV2cpnaBu3",
+  "type": "tool",
+  "callID": "toolu_0138ScnAZnMtHxNpMhvwfcDf",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "cd /home/user/project && node test-vozovoz-packaging-comparison.js 2>&1",
+      "description": "Test packaging price comparison",
+      "timeout": 30000
+    },
+    "output": "🧪 ТЕСТ: Влияние упаковки на цену Vozovoz\n\n====================================================================================================\n/home/user/project/test-vozovoz-packaging-comparison.js:46\n  const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOV_TOKEN}`;\n                                                  ^\n\nReferenceError: VOZOVOV_TOKEN is not defined\n    at testPackagingPrice (/home/user/project/test-vozovoz-packaging-comparison.js:46:51)\n    at Object.<anonymous> (/home/user/project/test-vozovoz-packaging-comparison.js:175:1)\n    at Module._compile (node:internal/modules/cjs/loader:1521:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\n    at node:internal/main/run_main_module:28:49\n\nNode.js v20.19.5\n",
+    "title": "Test packaging price comparison",
+    "metadata": {
+      "output": "🧪 ТЕСТ: Влияние упаковки на цену Vozovoz\n\n====================================================================================================\n/home/user/project/test-vozovoz-packaging-comparison.js:46\n  const apiUrl = `https://vozovoz.ru/api/?token=${VOZOVOV_TOKEN}`;\n                                                  ^\n\nReferenceError: VOZOVOV_TOKEN is not defined\n    at testPackagingPrice (/home/user/project/test-vozovoz-packaging-comparison.js:46:51)\n    at Object.<anonymous> (/home/user/project/test-vozovoz-packaging-comparison.js:175:1)\n    at Module._compile (node:internal/modules/cjs/loader:1521:14)\n    at Module._extensions..js (node:internal/modules/cjs/loader:1623:10)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12)\n    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:164:12)\n    at node:internal/main/run_main_module:28:49\n\nNode.js v20.19.5\n",
+      "exit": 1,
+      "description": "Test packaging price comparison"
+    },
+    "time": {
+      "start": 1765873467503,
+      "end": 1765873467672
+    }
+  }
+}

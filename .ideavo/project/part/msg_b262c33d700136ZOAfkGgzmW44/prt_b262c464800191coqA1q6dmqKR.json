@@ -1,0 +1,25 @@
+{
+  "id": "prt_b262c464800191coqA1q6dmqKR",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b262c33d700136ZOAfkGgzmW44",
+  "type": "tool",
+  "callID": "toolu_01DAFZMm2rzs4pJ4uJwjmHcq",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 50,
+      "offset": 3348
+    },
+    "output": "<file>\n03349|           }\n03350|         }\n03351|       });\n03352| \n03353|       // Создаем запрос с правильной логикой адресов\n03354|       let requestData = createRequestData();\n03355|       \n03356|       console.log('🚚 Возовоз запрос:', JSON.stringify(requestData, null, 2));\n03357| \n03358|       let result = await enhancedApiRequest(\n03359|         apiUrl,\n03360|         {\n03361|           method: 'POST',\n03362|           headers: {\n03363|             'Content-Type': 'application/json',\n03364|           },\n03365|           body: JSON.stringify(requestData)\n03366|         },\n03367|         { operation: 'calculate', company: 'Возовоз' }\n03368|       );\n03369| \n03370|       // Проверяем на ошибку API уровня\n03371|       if (result && typeof result === 'object' && 'success' in result && !result.success) {\n03372|         console.error('❌ Возовоз API ошибка:', result.error);\n03373|         return {\n03374|           company: 'Возовоз',\n03375|           price: 0,\n03376|           days: 0,\n03377|           error: result.error.userMessage || result.error.message,\n03378|           requestData,\n03379|           responseData: null,\n03380|           apiUrl\n03381|         };\n03382|       }\n03383| \n03384|       const response = result as Response;\n03385|       const data = await response.json();\n03386|       console.log('🚚 Возовоз ответ:', JSON.stringify(data, null, 2));\n03387| \n03388|       // Проверяем успешность ответа ИЛИ наличие ошибки в ответе\n03389|       if (response.ok && data.response) {\n03390|         // Успешный расчет\n03391|         const responseData = data.response;\n03392|         \n03393|         console.log('🚚 Возовоз анализ ответа согласно документации:', responseData);\n03394|         \n03395|         // ✅ Используем правильную структуру ответа согласно документации\n03396|         const services: { name: string; description: string; price: number }[] = [];\n03397|         let totalPrice = responseData.price || responseData.basePrice || 0;\n03398|         \n\n(File has more lines. Use 'offset' parameter to read beyond line 3398)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "          }\n        }\n      });\n\n      // Создаем запрос с правильной логикой адресов\n      let requestData = createRequestData();\n      \n      console.log('🚚 Возовоз запрос:', JSON.stringify(requestData, null, 2));\n\n      let result = await enhancedApiRequest(\n        apiUrl,\n        {\n          method: 'POST',\n          headers: {\n            'Content-Type': 'application/json',\n          },\n          body: JSON.stringify(requestData)\n        },\n        { operation: 'calculate', company: 'Возовоз' }\n      );"
+    },
+    "time": {
+      "start": 1765871995686,
+      "end": 1765871995692
+    }
+  }
+}

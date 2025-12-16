@@ -1,0 +1,26 @@
+{
+  "id": "prt_b262d18c8001KEjubl6BQno98F",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b262d04d5001WG9DbKMZpDNazk",
+  "type": "tool",
+  "callID": "toolu_01G1fzEctD5YkM9VjeQpcJje",
+  "tool": "bash",
+  "state": {
+    "status": "completed",
+    "input": {
+      "command": "grep -B 2 -A 15 '\"wizard\":' /home/user/project/vozovoz-docs/ru/docs/structure/cargo.md",
+      "description": "Check wizard wrapping examples"
+    },
+    "output": "```json\n{\n  \"wizard\": [\n    {\n      \"length\": 0.3,\n      \"width\": 0.2,\n      \"height\": 0.1,\n      \"quantity\": 2,\n      \"weight\": 10,\n      \"wrapping\": {  // только объёмная упаковка\n          \"bubbleFilmVolume\": 0.5\n      }\n    },\n    {\n      \"length\": 0.5,\n      \"width\": 0.1,\n      \"height\": 0.5,\n      \"quantity\": 3,\n--\n  \"params\": {\n    \"cargo\" : {\n      \"wizard\": [\n        { // место 1\n          \"length\": 0.3, // длина места\n          \"width\": 0.2, // ширина места\n          \"height\": 0.1, // высота места\n          \"quantity\": 2, // количество подобных мест,\n          // т.е. если габариты совпадают, здесь можно указать кол-во этих мест\n          \"weight\": 10, // вес места\n          \"wrapping\": {  // только объёмная упаковка\n            \"bubbleFilmVolume\": 0.5\n          }\n        },\n        { // место 2 (c другими габаритами)\n          \"length\": 0.5,\n          \"width\": 0.1,\n          \"height\": 0.5,\n",
+    "title": "Check wizard wrapping examples",
+    "metadata": {
+      "output": "```json\n{\n  \"wizard\": [\n    {\n      \"length\": 0.3,\n      \"width\": 0.2,\n      \"height\": 0.1,\n      \"quantity\": 2,\n      \"weight\": 10,\n      \"wrapping\": {  // только объёмная упаковка\n          \"bubbleFilmVolume\": 0.5\n      }\n    },\n    {\n      \"length\": 0.5,\n      \"width\": 0.1,\n      \"height\": 0.5,\n      \"quantity\": 3,\n--\n  \"params\": {\n    \"cargo\" : {\n      \"wizard\": [\n        { // место 1\n          \"length\": 0.3, // длина места\n          \"width\": 0.2, // ширина места\n          \"height\": 0.1, // высота места\n          \"quantity\": 2, // количество подобных мест,\n          // т.е. если габариты совпадают, здесь можно указать кол-во этих мест\n          \"weight\": 10, // вес места\n          \"wrapping\": {  // только объёмная упаковка\n            \"bubbleFilmVolume\": 0.5\n          }\n        },\n        { // место 2 (c другими габаритами)\n          \"length\": 0.5,\n          \"width\": 0.1,\n          \"height\": 0.5,\n",
+      "exit": 0,
+      "description": "Check wizard wrapping examples"
+    },
+    "time": {
+      "start": 1765872049429,
+      "end": 1765872049443
+    }
+  }
+}
