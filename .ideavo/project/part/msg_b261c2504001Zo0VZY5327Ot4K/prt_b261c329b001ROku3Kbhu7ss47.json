@@ -1,0 +1,25 @@
+{
+  "id": "prt_b261c329b001ROku3Kbhu7ss47",
+  "sessionID": "ses_4dcf54091ffe1XHg1W7jdm1ovr",
+  "messageID": "msg_b261c2504001Zo0VZY5327Ot4K",
+  "type": "tool",
+  "callID": "toolu_015FedA9TXodvvGGPKsbNhAL",
+  "tool": "read",
+  "state": {
+    "status": "completed",
+    "input": {
+      "filePath": "/home/user/project/app/page.tsx",
+      "limit": 20,
+      "offset": 3268
+    },
+    "output": "<file>\n03269|       const createRequestData = () => ({\n03270|         object: \"price\",\n03271|         action: \"get\",\n03272|         params: {\n03273|           cargo: {\n03274|             // ✅ Категория груза \"Мебель мягкая\" (необязательный параметр, используется при оформлении заказа)\n03275|             // UUID получен из справочника категорий Vozovoz API\n03276|             category: \"f1965e92-13ea-11e4-826b-d850e6bbb0fc\", // Мебель мягкая\n03277|             \n03278|             // ✅ Используем wizard вместо dimension для точности\n03279|             wizard: form.cargos.map(cargo => ({\n03280|               length: cargo.length / 100,   // см → м\n03281|               width: cargo.width / 100,     // см → м\n03282|               height: cargo.height / 100,   // см → м\n03283|               quantity: 1,\n03284|               weight: cargo.weight,\n03285|               ...(form.needPackaging ? {\n03286|                 wrapping: {\n03287|                   // ✅ \"Защитная жёсткая упаковка с фото с разбором\" согласно документации\n03288|                   // hardPackageVolume - объемная упаковка, значение в м³\n\n(File has more lines. Use 'offset' parameter to read beyond line 3288)\n</file>",
+    "title": "app/page.tsx",
+    "metadata": {
+      "preview": "      const createRequestData = () => ({\n        object: \"price\",\n        action: \"get\",\n        params: {\n          cargo: {\n            // ✅ Категория груза \"Мебель мягкая\" (необязательный параметр, используется при оформлении заказа)\n            // UUID получен из справочника категорий Vozovoz API\n            category: \"f1965e92-13ea-11e4-826b-d850e6bbb0fc\", // Мебель мягкая\n            \n            // ✅ Используем wizard вместо dimension для точности\n            wizard: form.cargos.map(cargo => ({\n              length: cargo.length / 100,   // см → м\n              width: cargo.width / 100,     // см → м\n              height: cargo.height / 100,   // см → м\n              quantity: 1,\n              weight: cargo.weight,\n              ...(form.needPackaging ? {\n                wrapping: {\n                  // ✅ \"Защитная жёсткая упаковка с фото с разбором\" согласно документации\n                  // hardPackageVolume - объемная упаковка, значение в м³"
+    },
+    "time": {
+      "start": 1765870941580,
+      "end": 1765870941589
+    }
+  }
+}

@@ -3271,9 +3271,10 @@ export default function Home() {
         action: "get",
         params: {
           cargo: {
-            // ✅ Категория груза "Мебель мягкая" (необязательный параметр, используется при оформлении заказа)
-            // UUID получен из справочника категорий Vozovoz API
-            category: "f1965e92-13ea-11e4-826b-d850e6bbb0fc", // Мебель мягкая
+            // ⚠️ ВАЖНО: category НЕ используется для расчета цены (price.get)
+            // Параметр category используется ТОЛЬКО при оформлении заказа (order.set)
+            // Документация: vozovoz-docs/ru/docs/structure/cargo.md строка 28
+            // Ошибка: "В узле guid не удалось найти ссылку на справочник КлассификаторГрузов"
             
             // ✅ Используем wizard вместо dimension для точности
             wizard: form.cargos.map(cargo => ({
