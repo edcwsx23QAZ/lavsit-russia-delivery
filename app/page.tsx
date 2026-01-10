@@ -509,6 +509,30 @@ export default function Home() {
   };
 
   const checkAllAPIStatus = async () => {
+    // Сначала проверяем переменные окружения через API
+    try {
+      const envCheckResponse = await fetch('/api/check-env-vars');
+      if (envCheckResponse.ok) {
+        const envData = await envCheckResponse.json();
+        
+        // Обновляем статус на основе переменных окружения
+        Object.keys(envData.companies || {}).forEach((companyKey) => {
+          const companyStatus = envData.companies[companyKey];
+          if (!companyStatus.canWork) {
+            // Компания не может работать из-за отсутствия переменных
+            setApiStatus(prev => ({ 
+              ...prev, 
+              [companyKey]: companyStatus.missingVars.length > 0 
+                ? 'нет переменных' 
+                : 'не настроено' 
+            }));
+          }
+        });
+      }
+    } catch (error) {
+      console.error('Ошибка проверки переменных окружения:', error);
+    }
+
     // Тестовые данные для проверки
     const testData = {
       fromCity: 'Москва',
@@ -537,7 +561,7 @@ export default function Home() {
       needInsurance: testData.needInsurance
     });
 
-    // Запускаем проверки параллельно
+    // Запускаем проверки параллельно (только для компаний с переменными)
     Promise.all([
       checkAPIStatus('pek', async () => {
         try {
@@ -729,6 +753,39 @@ export default function Home() {
           const data = await response.json();
           
           if (response.ok && data.tariff_codes && data.tariff_codes.length > 0) {
+            return { success: true };
+          } else {
+            return { error: true };
+          }
+        } catch (error) {
+          return { error: true };
+        }
+      }),
+      
+      checkAPIStatus('kit', async () => {
+        try {
+          const response = await fetch('/api/kit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              from_city: testData.fromCity,
+              to_city: testData.toCity,
+              declared_price: testData.declaredValue
+            })
+          });
+          
+          // Если нет токена, API вернет ошибку 500 с сообщением о токене
+          if (response.status === 500) {
+            const errorData = await response.json().catch(() => ({}));
+            if (errorData.error && errorData.error.includes('не настроен')) {
+              // Токен не настроен - не критично, но помечаем
+              setApiStatus(prev => ({ ...prev, kit: 'нет переменных' }));
+              return { error: 'missing_token' };
+            }
+          }
+          
+          const data = await response.json();
+          if (response.ok && (data.success !== false)) {
             return { success: true };
           } else {
             return { error: true };
@@ -5654,6 +5711,7 @@ export default function Home() {
                     const isConnected = apiStatus[company.apiKey as keyof typeof apiStatus] === 'подключено';
                     const statusText = apiStatus[company.apiKey as keyof typeof apiStatus];
                     const isEnabled = enabledCompanies[company.apiKey];
+                    const hasMissingVars = statusText === 'нет переменных' || statusText === 'не настроено';
                     
                     // Отладка для первых 3 компаний
                     if (index < 3) {
@@ -5664,13 +5722,20 @@ export default function Home() {
                       <div key={index} className="flex items-center justify-between p-1.5 bg-gray-700 rounded">
                         <div className="flex items-center gap-2">
                           <span className="text-lg">{company.logo}</span>
-                          <div>
-                            <p className="font-medium text-white text-[10px] leading-tight">{company.name}</p>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-1">
+                              <p className="font-medium text-white text-[10px] leading-tight">{company.name}</p>
+                              {hasMissingVars && (
+                                <span className="text-red-500 text-xs" title="Отсутствуют переменные окружения">
+                                  ⚠️
+                                </span>
+                              )}
+                            </div>
                             <Badge 
-                              variant={isConnected ? "default" : "destructive"} 
+                              variant={isConnected ? "default" : hasMissingVars ? "destructive" : "destructive"} 
                               className="text-[9px] py-0 px-1"
                             >
-                              {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : 'Ошибка'}
+                              {isConnected ? 'Подключена' : statusText === 'проверка...' ? 'Проверка...' : hasMissingVars ? 'Нет переменных' : 'Ошибка'}
                             </Badge>
                           </div>
                         </div>
@@ -5686,6 +5751,7 @@ export default function Home() {
                                 [company.apiKey]: checked
                               }));
                             }}
+                            disabled={hasMissingVars}
                           />
                         </div>
                       </div>

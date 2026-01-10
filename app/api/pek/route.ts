@@ -21,22 +21,25 @@ export async function POST(request: NextRequest) {
     const PEK_API_KEY = process.env.PEK_API_KEY || '624FC93CA677B23673BB476D4982294DC27E246F';
     const PEK_LOGIN = process.env.PEK_LOGIN || 'demo';
     
-    // Проверяем только для не-тестовых методов
-    if (method !== 'test' && (!process.env.PEK_LOGIN || !process.env.PEK_API_KEY)) {
-      console.warn('⚠️ Не настроены переменные окружения PEK_LOGIN и PEK_API_KEY');
-      console.warn('⚠️ Перейдите на /env-check для настройки');
-      
+    // Проверяем наличие переменных окружения (для метода test всегда разрешаем)
+    if (method === 'test') {
+      // Для теста возвращаем информацию о наличии переменных
       return NextResponse.json({ 
-        error: 'Не настроены данные ПЭК',
-        details: 'Необходимо настроить PEK_LOGIN и PEK_API_KEY в переменных окружения',
-        suggestion: 'Перейдите на /env-check для настройки',
-        requiredVars: ['PEK_LOGIN', 'PEK_API_KEY'],
-        currentEnv: {
+        status: 'OK',
+        message: 'Простая версия прокси работает',
+        env: {
           hasLogin: !!process.env.PEK_LOGIN,
           hasKey: !!process.env.PEK_API_KEY,
-          loginPreview: process.env.PEK_LOGIN ? process.env.PEK_LOGIN.substring(0, 3) + '***' : 'отсутствует'
+          loginPreview: process.env.PEK_LOGIN ? process.env.PEK_LOGIN.substring(0, 3) + '***' : 'отсутствует',
+          hasAllRequired: !!(process.env.PEK_LOGIN && process.env.PEK_API_KEY)
         }
-      }, { status: 500 });
+      });
+    }
+    
+    // Для реальных запросов проверяем наличие переменных, но используем дефолтные если нет
+    if (!process.env.PEK_LOGIN || !process.env.PEK_API_KEY) {
+      console.warn('⚠️ Не настроены переменные окружения PEK_LOGIN и PEK_API_KEY, используются дефолтные значения');
+      // Не возвращаем ошибку - используем дефолтные значения из кода
     }
     
     // Официальный базовый URL согласно документации
