@@ -27,6 +27,7 @@ const ProductSearch = memo(function ProductSearch({ onProductAdd, disabled = fal
   const [isLoadingProducts, setIsLoadingProducts] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const suggestionsRef = useRef<HTMLDivElement>(null);
+  const debounceTimerRef = useRef<NodeJS.Timeout | null>(null);
   
   // Загрузка продуктов при монтировании
   useEffect(() => {
@@ -93,18 +94,22 @@ const ProductSearch = memo(function ProductSearch({ onProductAdd, disabled = fal
       selectedIndex: -1
     }));
     
+    // Очищаем предыдущий таймер
+    if (debounceTimerRef.current) {
+      clearTimeout(debounceTimerRef.current);
+    }
+    
     if (query.trim().length >= 2) {
       // Используем debounce для оптимизации поиска
-      const debouncedSearch = setTimeout(() => {
+      debounceTimerRef.current = setTimeout(() => {
         const filtered = searchProducts(allProducts, query);
+        console.log(`🔍 Поиск "${query}": найдено ${filtered.length} товаров`);
         setSearchState(prev => ({
           ...prev,
           suggestions: filtered,
           showSuggestions: true
         }));
       }, 150);
-      
-      return () => clearTimeout(debouncedSearch);
     } else {
       setSearchState(prev => ({
         ...prev,

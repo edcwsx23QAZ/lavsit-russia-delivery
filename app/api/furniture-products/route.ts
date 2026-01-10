@@ -108,6 +108,18 @@ async function fetchFurnitureData(): Promise<{products: FurnitureProduct[], last
     const products = await parseProductsFromRows(rows);
     console.log('🛋️ Обработано товаров:', products.length);
     
+    // Логируем первые несколько товаров для проверки
+    if (products.length > 0) {
+      console.log('📦 Примеры товаров:');
+      products.slice(0, 3).forEach((product, idx) => {
+        console.log(`  ${idx + 1}. ${product.name} - ${product.retailPrice} руб., мест: ${product.cargoPlaces.length}`);
+        if (product.cargoPlaces.length > 0) {
+          const firstPlace = product.cargoPlaces[0];
+          console.log(`     Место 1: ${firstPlace.weight}кг, ${firstPlace.length}×${firstPlace.depth}×${firstPlace.height} см`);
+        }
+      });
+    }
+    
     return {
       products,
       lastUpdated: Date.now()
@@ -147,11 +159,20 @@ function parseCSV(csvText: string): string[][] {
       cells.push(current.trim());
       
       // Очищаем кавычки и лишние символы
-      const cleanedCells = cells.map(cell => 
-        cell.replace(/^"(.*)"$/, '$1').replace(/\r/g, '').trim()
-      );
+      const cleanedCells = cells.map(cell => {
+        // Удаляем внешние кавычки, если они есть
+        let cleaned = cell.replace(/^"(.*)"$/, '$1');
+        // Удаляем возврат каретки
+        cleaned = cleaned.replace(/\r/g, '');
+        // Удаляем двойные кавычки внутри (если они экранированы)
+        cleaned = cleaned.replace(/""/g, '"');
+        return cleaned.trim();
+      });
       
-      result.push(cleanedCells);
+      // Добавляем только если есть хотя бы одна непустая ячейка
+      if (cleanedCells.some(cell => cell.length > 0)) {
+        result.push(cleanedCells);
+      }
     }
   }
   
@@ -171,46 +192,57 @@ async function parseProductsFromRows(rows: string[][]): Promise<FurnitureProduct
   for (let i = 1; i < rows.length; i++) {
     const row = rows[i];
     
-    if (row.length < 6) {
+    if (row.length < 3) {
       console.warn(`⚠️ Строка ${i + 1} содержит недостаточно данных:`, row);
       continue;
     }
     
     try {
       // Маппинг колонок (согласно структуре таблицы)
-      const id = row[0] || '';
-      const externalCode = row[1] || '';
-      const isActive = row[2]?.toLowerCase() === 'да';
-      const name = row[3] || '';
-      const priceStr = row[4] || '0';
+      // После удаления первых трех столбцов (ID, Код, Активность):
+      // Товар(0), Цена(1), Место1: Вес(2), Высота(3), Глубина(4), Длина(5) и т.д.
+      const name = (row[0] || '').trim();
+      const priceStr = row[1] || '0';
+      
+      // Пропускаем строки без названия товара
+      if (!name) {
+        continue;
+      }
       
       // Очищаем цену от лишних символов
       const retailPrice = parseFloat(priceStr.replace(/[^0-9.]/g, '')) || 0;
       
-      // Извлекаем грузовые места (начиная с колонки 5)
+      // Извлекаем грузовые места (начиная с колонки 2)
       const cargoPlaces: CargoPlace[] = [];
       
       // В таблице может быть до 7 мест (Место 1-7)
-      // Колонки: ID(0), Код(1), Активность(2), Товар(3), Цена(4), 
-      // Место1: Вес(5), Высота(6), Глубина(7), Длина(8)
-      // Место2: Вес(9), Высота(10), Глубина(11), Длина(12) и т.д.
+      // После удаления первых трех столбцов:
+      // Товар(0), Цена(1), 
+      // Место1: Вес(2), Высота(3), Глубина(4), Длина(5)
+      // Место2: Вес(6), Высота(7), Глубина(8), Длина(9) и т.д.
       for (let placeNum = 1; placeNum <= 7; placeNum++) {
-        const baseIndex = 5 + (placeNum - 1) * 4; // 5, 9, 13, 17, 21, 25, 29
+        const baseIndex = 2 + (placeNum - 1) * 4; // 2, 6, 10, 14, 18, 22, 26
         
         if (baseIndex + 3 < row.length) {
-          const weight = parseFloat(row[baseIndex]) || 0;      // Вес
-          const height = parseFloat(row[baseIndex + 1]) || 0;  // Высота
-          const depth = parseFloat(row[baseIndex + 2]) || 0;   // Глубина (ширина)
-          const length = parseFloat(row[baseIndex + 3]) || 0;  // Длина
+          // Парсим значения, обрабатывая пустые строки
+          const weightStr = (row[baseIndex] || '').trim();
+          const heightStr = (row[baseIndex + 1] || '').trim();
+          const depthStr = (row[baseIndex + 2] || '').trim();
+          const lengthStr = (row[baseIndex + 3] || '').trim();
+          
+          const weight = weightStr ? parseFloat(weightStr) : 0;
+          const height = heightStr ? parseFloat(heightStr) : 0;
+          const depth = depthStr ? parseFloat(depthStr) : 0;
+          const length = lengthStr ? parseFloat(lengthStr) : 0;
           
           // Добавляем только если есть хотя бы одно значение больше 0
           if (weight > 0 || height > 0 || depth > 0 || length > 0) {
             cargoPlaces.push({
               placeNumber: placeNum,
-              weight,
-              height,
-              depth,  // в таблице это "глубина", но мы называем depth
-              length
+              weight: weight || 0,
+              height: height || 0,
+              depth: depth || 0,  // в таблице это "глубина", но мы называем depth
+              length: length || 0
             });
           }
         }
@@ -218,14 +250,21 @@ async function parseProductsFromRows(rows: string[][]): Promise<FurnitureProduct
       
       // Добавляем продукт только если есть имя и хотя бы одно грузовое место
       if (name && cargoPlaces.length > 0) {
+        // Генерируем id и externalCode на основе имени, так как эти столбцы были удалены
+        const id = `product_${i}`;
+        const externalCode = name.substring(0, 20).replace(/\s+/g, '_');
+        
         products.push({
           id,
           externalCode,
-          name: name.trim(),
+          name,
           retailPrice,
-          isActive,
+          isActive: true, // По умолчанию активен, так как столбец активности был удален
           cargoPlaces
         });
+      } else if (name && cargoPlaces.length === 0) {
+        // Логируем товары без мест для отладки
+        console.warn(`⚠️ Товар "${name}" не имеет транспортных мест (строка ${i + 1})`);
       }
       
     } catch (error) {

@@ -236,9 +236,9 @@ export default function Home() {
   const [isServiceMenuVisible, setIsServiceMenuVisible] = useState<boolean>(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('serviceMenuVisible');
-      return saved !== null ? JSON.parse(saved) : true; // По умолчанию показано
+      return saved !== null ? JSON.parse(saved) : false; // По умолчанию скрыто
     }
-    return true;
+    return false;
   });
 
   // Сохранение состояния сервисного меню в localStorage
