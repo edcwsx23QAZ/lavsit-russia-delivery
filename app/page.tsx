@@ -1718,10 +1718,19 @@ export default function Home() {
       }
       console.log('=== КОНЕЦ ОТЛАДКИ УПАКОВКИ ===');
 
-      // Формируем дату отправления на завтра
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      const produceDate = tomorrow.toISOString().split('T')[0];
+      // Функция для получения даты с учетом смещения дней от сегодня
+      const getDateForDellin = (dayOffset: number): string => {
+        const date = new Date();
+        date.setDate(date.getDate() + dayOffset);
+        return date.toISOString().split('T')[0];
+      };
+
+      // Начинаем с сегодня (dayOffset = 0)
+      let currentDayOffset = 0;
+      const maxDaysToTry = 14; // Перебираем на 2 недели вперед
+      
+      // Инициализируем дату для первоначального формирования запроса
+      let produceDate = getDateForDellin(currentDayOffset);
 
       // Отладка перед формированием запроса
       console.log('=== ОТЛАДКА ФОРМИРОВАНИЯ ЗАПРОСА ===');
@@ -1747,7 +1756,7 @@ export default function Home() {
             type: 'auto'  // Всегда "auto" по умолчанию
           },
           derival: {
-            produceDate: produceDate,  // Обязательная дата отправления
+            produceDate: produceDate,  // Обязательная дата отправления (будет обновляться в цикле)
             variant: form.fromAddressDelivery ? 'address' : 'terminal',
             ...(form.fromAddressDelivery ? {
               address: {
@@ -1834,25 +1843,39 @@ export default function Home() {
         console.log('   Условие:', form.needPackaging && packageUid);
       }
 
-      // Попытки запроса с повторной авторизацией при ошибках
+      // Попытки запроса с повторной авторизацией при ошибках и перебором дат
       let response: any = null;
       let data: any = null;
+      let lastError: Error | null = null;
+      let successfulDate: string | null = null;
       
-      for (let attempt = 1; attempt <= maxRetries; attempt++) {
-        console.log(`🔄 ДЛ: попытка запроса ${attempt}/${maxRetries}`);
+      // Внешний цикл для перебора дат (до 14 дней)
+      while (currentDayOffset <= maxDaysToTry) {
+        // Формируем дату для текущей попытки
+        const produceDate = getDateForDellin(currentDayOffset);
+        requestData.delivery.derival.produceDate = produceDate;
         
-        const result = await enhancedApiRequest(
-          apiUrl,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json'
+        console.log(`📅 ДЛ: Попытка расчета с датой ${produceDate} (день +${currentDayOffset})`);
+        
+        // Внутренний цикл для повторных попыток с авторизацией
+        let requestSuccessful = false;
+        let hasDateError = false;
+        
+        for (let attempt = 1; attempt <= maxRetries; attempt++) {
+          console.log(`🔄 ДЛ: попытка запроса ${attempt}/${maxRetries} (дата: ${produceDate})`);
+          
+          const result = await enhancedApiRequest(
+            apiUrl,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+              },
+              body: JSON.stringify(requestData)
             },
-            body: JSON.stringify(requestData)
-          },
-          { operation: 'calculate', company: 'Деловые Линии' }
-        );
+            { operation: 'calculate', company: 'Деловые Линии' }
+          );
 
         if (result && typeof result === 'object' && 'success' in result && !result.success) {
           console.error('❌ ДЛ API ошибка:', result.error);
@@ -1902,23 +1925,133 @@ export default function Home() {
           }
         }
         
-        if (response.status === 400 && data?.errors) {
-          console.log('=== АНАЛИЗ ОШИБКИ 400 ===');
-          console.log('🔍 Ошибки:', data.errors);
-          data.errors.forEach((error: any, index: number) => {
-            console.log(`🔍 Ошибка ${index + 1}:`, error);
-            console.log(`   - Поле: ${error.field || 'не указано'}`);
-            console.log(`   - Сообщение: ${error.detail || error.message || 'не указано'}`);
-          });
-          console.log('=== КОНЕЦ АНАЛИЗА ОШИБКИ 400 ===');
-        }
+          // Проверяем на ошибку 180012 (недоступная дата)
+          hasDateError = false;
+          if (response.status === 400 && data?.errors) {
+            console.log('=== АНАЛИЗ ОШИБКИ 400 ===');
+            console.log('🔍 Ошибки:', data.errors);
+            
+            // Проверяем наличие ошибки 180012 (недоступная дата)
+            hasDateError = data.errors.some((error: any) => 
+              error.code === 180012 || 
+              error.code === '180012' ||
+              (error.title && error.title.toLowerCase().includes('дата недоступна')) ||
+              (error.detail && error.detail.toLowerCase().includes('дата недоступна')) ||
+              (error.detail && error.detail.toLowerCase().includes('выбранная дата недоступна'))
+            );
+            
+            if (hasDateError) {
+              console.log(`📅 ДЛ: Обнаружена ошибка 180012 - дата ${produceDate} недоступна`);
+              data.errors.forEach((error: any, index: number) => {
+                console.log(`🔍 Ошибка ${index + 1}:`, error);
+                if (error.code === 180012 || error.code === '180012') {
+                  console.log(`   ⚠️ Код ошибки: ${error.code}`);
+                  console.log(`   ⚠️ Сообщение: ${error.title || error.detail || 'Дата недоступна'}`);
+                }
+              });
+              console.log('=== КОНЕЦ АНАЛИЗА ОШИБКИ 400 (дата недоступна) ===');
+              
+              // Выходим из внутреннего цикла попыток - будем пробовать следующую дату
+              lastError = new Error(`Дата ${produceDate} недоступна`);
+              break; // Выходим из цикла попыток для этой даты
+            } else {
+              // Другая ошибка 400 - выводим информацию
+              data.errors.forEach((error: any, index: number) => {
+                console.log(`🔍 Ошибка ${index + 1}:`, error);
+                console.log(`   - Поле: ${error.field || 'не указано'}`);
+                console.log(`   - Код: ${error.code || 'не указано'}`);
+                console.log(`   - Сообщение: ${error.detail || error.title || error.message || 'не указано'}`);
+              });
+              console.log('=== КОНЕЦ АНАЛИЗА ОШИБКИ 400 (другая ошибка) ===');
+            }
+          }
 
-        // Если запрос успешный или не связан с авторизацией, продолжаем обработку
+          // Если запрос успешный (не ошибка 180012), выходим из обоих циклов
+          if (response.ok && data?.data && data.metadata?.status === 200) {
+            console.log(`✅ ДЛ: Успешный расчет с датой ${produceDate}`);
+            successfulDate = produceDate;
+            requestSuccessful = true;
+            break; // Выходим из цикла попыток
+          }
+          
+          // Если это была ошибка даты, выходим из внутреннего цикла для перехода к следующей дате
+          if (hasDateError) {
+            break; // Выходим из цикла попыток, чтобы перейти к следующей дате
+          }
+          
+          // Если это ошибка авторизации и есть еще попытки, продолжаем
+          if (isAuthError && attempt < maxRetries) {
+            continue; // Продолжаем внутренний цикл попыток
+          }
+          
+          // Если другая ошибка и нет больше попыток, прерываем внутренний цикл
+          if (!isAuthError && attempt >= maxRetries) {
+            lastError = new Error(data.metadata?.detail || data.errors?.[0]?.detail || 'Ошибка API Деловых Линий');
+            break; // Выходим из цикла попыток для этой даты
+          }
+        } // Конец внутреннего цикла попыток
+        
+        // Если запрос успешен, выходим из внешнего цикла перебора дат
+        if (requestSuccessful) {
+          break;
+        }
+        
+        // Если это была ошибка даты и мы еще не достигли максимума, продолжаем перебор
+        if (hasDateError && currentDayOffset < maxDaysToTry) {
+          console.log(`📅 ДЛ: Пробуем следующую дату (осталось попыток: ${maxDaysToTry - currentDayOffset})`);
+          currentDayOffset++;
+          continue; // Переходим к следующей дате
+        }
+        
+        // Если другая ошибка или достигли максимума, прерываем перебор дат
         break;
+      } // Конец внешнего цикла перебора дат
+      
+      // Если не нашли доступную дату (проверяем после выхода из циклов)
+      if (!successfulDate) {
+        // Если это была ошибка даты и мы перебрали все даты
+        if (lastError && lastError.message.includes('недоступна') && currentDayOffset > maxDaysToTry) {
+          console.error(`❌ ДЛ: Не удалось найти доступную дату за ${maxDaysToTry + 1} дней`);
+          return {
+            company: 'Деловые Линии',
+            price: 0,
+            days: 0,
+            error: `Не удалось найти доступную дату для отправления в течение ${maxDaysToTry + 1} дней. Попробуйте выбрать другую дату вручную.`,
+            requestData,
+            responseData: data,
+            apiUrl,
+            sessionId: sessionID
+          };
+        }
+        
+        // Если другая ошибка и ответ не успешен, возвращаем ошибку
+        if (!response || !response.ok || !data?.data) {
+          console.log('❌ Ошибочный ответ API - пропускаем анализ данных');
+          const errorMessage = data?.metadata?.detail || 
+                             data?.metadata?.message || 
+                             data?.errors?.[0]?.detail || 
+                             (data?.metadata?.status !== 200 ? `HTTP ${data?.metadata?.status}` : '') ||
+                             (response ? `HTTP ${response.status} - ${response.statusText}` : '') ||
+                             lastError?.message ||
+                             'Ошибка расчета Деловые Линии';
+          return {
+            company: 'Деловые Линии',
+            price: 0,
+            days: 0,
+            error: errorMessage,
+            requestData,
+            responseData: data,
+            apiUrl,
+            sessionId: sessionID
+          };
+        }
+      } else {
+        // Если успешно нашли дату, логируем информацию
+        console.log(`✅ ДЛ: Используется дата ${successfulDate} для расчета`);
       }
 
-      // Проверяем на ошибки ПЕРЕД анализом данных
-      if (!response.ok || !data.data) {
+      // Проверяем на ошибки ПЕРЕД анализом данных (финальная проверка)
+      if (!response?.ok || !data?.data) {
         console.log('❌ Ошибочный ответ API - пропускаем анализ данных');
         const errorMessage = data.metadata?.detail || 
                            data.metadata?.message || 
