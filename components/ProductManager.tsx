@@ -47,7 +47,7 @@ export default function ProductManager({
                     {productInForm.product.name}
                   </h4>
                   <div className="flex items-center gap-2 mt-1">
-                    <Badge variant="outline" className="text-xs border-gray-500">
+                    <Badge variant="outline" className="text-xs border-gray-500 text-white">
                       {productInForm.product.externalCode}
                     </Badge>
                     <div className="flex items-center text-gray-400 text-xs">
