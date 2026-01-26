@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Calculation {
+  id          String   @id @default(cuid())
+  orderNumber String?  @unique // Номер заказа (уникальный)
+  createdAt   DateTime @default(now()) // Дата расчета
+  formData    Json     // Все введенные данные формы
+  results     Json     // Все результаты расчетов ТК
+  screenshot  String?  // Путь к скриншоту страницы
+  status      String   @default("active") // Статус сохранения
+  
+  @@map("calculations")
+}
