@@ -194,7 +194,7 @@ const MarkdownPreview = ({ content }: { content: string }) => {
       if (typeof part === 'string') {
         let italicLastIndex = 0;
         let italicMatch;
-        while ((italicMatch = italicitalicRegex.exec(part)) !== null) {
+        while ((italicMatch = italicRegex.exec(part)) !== null) {
           if (italicMatch.index > italicLastIndex) {
             italicParts.push(part.substring(italicLastIndex, italicMatch.index));
           }
