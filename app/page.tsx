@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -5164,9 +5165,17 @@ export default function Home() {
     <div className="min-h-screen bg-gray-900 text-white p-4 relative">
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between mb-3">
-          <h1 className="text-xl font-bold text-blue-400">
-            Междугородняя доставка Лавсит
-          </h1>
+          <div className="flex items-center gap-4">
+            <h1 className="text-xl font-bold text-blue-400">
+              Междугородняя доставка Лавсит
+            </h1>
+            <Link 
+              href="/wiki" 
+              className="text-blue-400 hover:text-blue-300 underline text-sm font-medium transition-colors"
+            >
+              Инструкция логиста
+            </Link>
+          </div>
           
           {/* Индикатор сохранения */}
           <div className="flex items-center gap-4">
