@@ -3,7 +3,7 @@
 
 param(
     [string]$VercelToken = "RnInNokLq4N7UuMfJC5Z2HcZ",
-    [string]$ProjectName = "lavsit-russia-delivery-1763017917119"
+    [string]$ProjectName = "lavsit-russia-delivery"
 )
 
 # Получаем имя проекта из Vercel или используем значение по умолчанию

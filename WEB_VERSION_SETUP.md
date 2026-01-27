@@ -18,8 +18,8 @@
 1. Перейдите на **https://cursor.com/agents** или **https://cursor.com**
 2. Войдите в свой аккаунт Cursor
 3. Откройте проект из GitHub:
-   - Найдите репозиторий: `lavsit-russia-delivery-1763017917119`
-   - Или используйте URL: `https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1763017917119`
+   - Найдите репозиторий: `lavsit-russia-delivery`
+   - Или используйте URL: `https://github.com/edcwsx23QAZ/lavsit-russia-delivery`
 
 ### Шаг 2: Настройки применятся автоматически
 
@@ -59,7 +59,7 @@
 
 ## 🔗 Ссылки
 
-- **Репозиторий:** https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1763017917119
+- **Репозиторий:** https://github.com/edcwsx23QAZ/lavsit-russia-delivery
 - **Веб-версия Cursor:** https://cursor.com/agents
 - **Документация:** См. `CURSOR_WEB_MIGRATION.md` для подробной информации
 

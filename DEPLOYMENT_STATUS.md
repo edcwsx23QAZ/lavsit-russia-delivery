@@ -7,7 +7,7 @@
 ## ✅ Выполнено
 
 1. ✅ **Репозиторий синхронизирован с GitHub**
-   - URL: https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1763017917119
+   - URL: https://github.com/edcwsx23QAZ/lavsit-russia-delivery
    - Последний коммит отправлен
 
 2. ✅ **Токен Vercel сохранен**
@@ -75,7 +75,7 @@ CREATE INDEX IF NOT EXISTS "calculations_status_idx" ON "calculations"("status")
 **Через Vercel Dashboard (рекомендуется):**
 
 1. Откройте https://vercel.com/dashboard
-2. Найдите или создайте проект `lavsit-russia-delivery-1763017917119`
+2. Найдите или создайте проект `lavsit-russia-delivery`
 3. Перейдите: **Settings** → **Environment Variables**
 4. Добавьте переменные для **всех окружений** (Production, Preview, Development):
 
@@ -92,7 +92,7 @@ CREATE INDEX IF NOT EXISTS "calculations_status_idx" ON "calculations"("status")
 vercel login
 
 # Связывание проекта
-cd "E:\Work programs\cursor\repositary\lavsit-russia-delivery-1763017917119"
+cd "E:\Work programs\cursor\repositary\lavsit-russia-delivery"
 vercel link
 
 # Добавление переменных (для каждого окружения)
@@ -115,7 +115,7 @@ vercel env add DATABASE_URL production
 2. Убедитесь, что проект связан с GitHub репозиторием
 3. Если проект еще не создан:
    - **Add New...** → **Project**
-   - Выберите `edcwsx23QAZ/lavsit-russia-delivery-1763017917119`
+   - Выберите `edcwsx23QAZ/lavsit-russia-delivery`
    - Vercel автоматически определит настройки Next.js
 4. Проверьте, что все переменные окружения добавлены
 5. Нажмите **Deploy**
@@ -212,7 +212,7 @@ https://your-project.vercel.app/env-check
 
 - [Supabase Dashboard](https://supabase.com/dashboard/project/sirqrnffrpdkdtqiwjgq)
 - [Vercel Dashboard](https://vercel.com/dashboard)
-- [GitHub Repository](https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1763017917119)
+- [GitHub Repository](https://github.com/edcwsx23QAZ/lavsit-russia-delivery)
 - [Инструкция по настройке](./SETUP_COMPLETE.md)
 
 ---

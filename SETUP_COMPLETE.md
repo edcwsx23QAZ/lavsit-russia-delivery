@@ -39,7 +39,7 @@
 ### Вариант A: Через Vercel Dashboard (Рекомендуется)
 
 1. Откройте [Vercel Dashboard](https://vercel.com/dashboard)
-2. Найдите проект `lavsit-russia-delivery-1763017917119` или создайте новый
+2. Найдите проект `lavsit-russia-delivery` или создайте новый
 3. Перейдите в **Settings** → **Environment Variables**
 4. Добавьте следующие переменные для **всех окружений** (Production, Preview, Development):
 
@@ -70,7 +70,7 @@
 vercel login
 
 # Связывание проекта (если еще не связано)
-cd "E:\Work programs\cursor\repositary\lavsit-russia-delivery-1763017917119"
+cd "E:\Work programs\cursor\repositary\lavsit-russia-delivery"
 vercel link
 
 # Добавление переменных
@@ -103,7 +103,7 @@ vercel env add DATABASE_URL development
 2. Найдите или создайте проект
 3. Если проект еще не связан с GitHub:
    - Нажмите **Add New...** → **Project**
-   - Выберите репозиторий `edcwsx23QAZ/lavsit-russia-delivery-1763017917119`
+   - Выберите репозиторий `edcwsx23QAZ/lavsit-russia-delivery`
    - Vercel автоматически определит Next.js настройки
 4. Убедитесь, что все переменные окружения добавлены
 5. Нажмите **Deploy**
@@ -112,7 +112,7 @@ vercel env add DATABASE_URL development
 
 ```bash
 # Из корня проекта
-cd "E:\Work programs\cursor\repositary\lavsit-russia-delivery-1763017917119"
+cd "E:\Work programs\cursor\repositary\lavsit-russia-delivery"
 
 # Авторизация (если еще не авторизованы)
 vercel login
@@ -151,7 +151,7 @@ vercel --prod
 - **База данных:** Активна ✅
 - **REST API:** Работает ✅
 - **Таблица calculations:** Требует создания ⚠️
-- **GitHub репозиторий:** https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1763017917119
+- **GitHub репозиторий:** https://github.com/edcwsx23QAZ/lavsit-russia-delivery
 - **Vercel токен:** Сохранен ✅
 
 ---

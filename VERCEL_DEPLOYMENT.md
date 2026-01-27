@@ -2,7 +2,7 @@
 
 ## Обзор
 
-Данная инструкция описывает процесс импорта проекта в Vercel и настройку автоматического обновления из GitHub. Проект уже подключен к GitHub репозиторию: `https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1763017917119.git`
+Данная инструкция описывает процесс импорта проекта в Vercel и настройку автоматического обновления из GitHub. Проект уже подключен к GitHub репозиторию: `https://github.com/edcwsx23QAZ/lavsit-russia-delivery.git`
 
 **Важно**: Локальная машина и Cursor являются источником правды (master). Обновления идут только в одну сторону: Cursor/локальная машина → GitHub → Vercel.
 
@@ -26,7 +26,7 @@
 Убедитесь, что все изменения закоммичены и отправлены в GitHub:
 
 ```bash
-cd "E:\Work programs\cursor\repositary\lavsit-russia-delivery-1763017917119"
+cd "E:\Work programs\cursor\repositary\lavsit-russia-delivery"
 
 # Проверить статус
 git status
@@ -46,8 +46,8 @@ git push origin main
 ```bash
 git remote -v
 # Должно показать:
-# origin  https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1763017917119.git (fetch)
-# origin  https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1763017917119.git (push)
+# origin  https://github.com/edcwsx23QAZ/lavsit-russia-delivery.git (fetch)
+# origin  https://github.com/edcwsx23QAZ/lavsit-russia-delivery.git (push)
 ```
 
 ---
@@ -65,7 +65,7 @@ git remote -v
 1. На главной странице Vercel Dashboard нажмите кнопку **"Add New..."** → **"Project"**
 2. В разделе **"Import Git Repository"** найдите и выберите репозиторий:
    ```
-   edcwsx23QAZ/lavsit-russia-delivery-1763017917119
+   edcwsx23QAZ/lavsit-russia-delivery
    ```
 3. Если репозиторий не отображается:
    - Нажмите **"Adjust GitHub App Permissions"**
@@ -195,7 +195,7 @@ npm i -g vercel
 vercel login
 
 # Связать проект с локальной папкой
-cd "E:\Work programs\cursor\repositary\lavsit-russia-delivery-1763017917119"
+cd "E:\Work programs\cursor\repositary\lavsit-russia-delivery"
 vercel link
 
 # Выполнить миграции на production
@@ -252,7 +252,7 @@ npx prisma migrate deploy
 Автообновление настраивается автоматически при импорте проекта из GitHub. Проверьте настройки:
 
 1. В настройках проекта Vercel перейдите в раздел **"Git"**
-2. Убедитесь, что подключен правильный репозиторий: `edcwsx23QAZ/lavsit-russia-delivery-1763017917119`
+2. Убедитесь, что подключен правильный репозиторий: `edcwsx23QAZ/lavsit-russia-delivery`
 3. Проверьте, что выбрана правильная ветка: `main` (или `master`, если используется она)
 
 ### 6.2. Настройка автоматических деплоев
@@ -454,7 +454,7 @@ A: Git работает с коммитами, а не с отдельными �
 - [Next.js на Vercel](https://vercel.com/docs/concepts/next.js/overview)
 - [Vercel Environment Variables](https://vercel.com/docs/concepts/projects/environment-variables)
 - [Supabase Dashboard](https://supabase.com/dashboard)
-- [GitHub Repository](https://github.com/edcwsx23QAZ/lavsit-russia-delivery-1763017917119)
+- [GitHub Repository](https://github.com/edcwsx23QAZ/lavsit-russia-delivery)
 
 ---
 

@@ -29,7 +29,7 @@ vercel login
 Если проект еще не связан с Vercel:
 
 ```bash
-cd "E:\Work programs\cursor\repositary\lavsit-russia-delivery-1763017917119"
+cd "E:\Work programs\cursor\repositary\lavsit-russia-delivery"
 vercel link
 ```
 
