@@ -417,7 +417,7 @@ export default function WikiPage() {
                       }}
                     >
                       <Layout className="w-4 h-4 mr-2" />
-                      Структура
+                      Войти в структурный режим
                     </Button>
                     <Button
                       variant="outline"
