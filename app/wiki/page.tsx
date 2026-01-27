@@ -8,7 +8,7 @@ import WikiEditor from '@/components/wiki/WikiEditor';
 import WikiContentEditor, { WikiContentEditorRef } from '@/components/wiki/WikiContentEditor';
 import PageManager from '@/components/wiki/PageManager';
 import VersionHistory from '@/components/wiki/VersionHistory';
-import { FileText, Edit, History, ArrowLeft, Layout, Save, Loader2 } from 'lucide-react';
+import { FileText, Edit, History, ArrowLeft, Layout, Save, Loader2, Lock, Unlock } from 'lucide-react';
 
 interface WikiPage {
   id: string;
@@ -30,6 +30,7 @@ export default function WikiPage() {
   const [showHistory, setShowHistory] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
+  const [editModeEnabled, setEditModeEnabled] = useState(false);
   const wikiEditorRef = useRef<WikiContentEditorRef>(null);
 
   // Загрузить страницу по slug из URL или первую доступную
@@ -404,8 +405,34 @@ export default function WikiPage() {
                 Инструкция логиста
               </h1>
             </div>
-            {selectedPage && (
-              <div className="flex gap-2">
+            <div className="flex items-center gap-2">
+              <Button
+                variant={editModeEnabled ? "default" : "outline"}
+                size="sm"
+                onClick={() => {
+                  setEditModeEnabled(!editModeEnabled);
+                  if (!editModeEnabled) {
+                    // При выключении режима редактирования выходим из всех режимов редактирования
+                    setIsEditing(false);
+                    setIsStructuredEditing(false);
+                  }
+                }}
+                title={editModeEnabled ? "Выключить режим редактирования" : "Включить режим редактирования"}
+              >
+                {editModeEnabled ? (
+                  <>
+                    <Unlock className="w-4 h-4 mr-2" />
+                    Редактирование включено
+                  </>
+                ) : (
+                  <>
+                    <Lock className="w-4 h-4 mr-2" />
+                    Редактирование выключено
+                  </>
+                )}
+              </Button>
+              {selectedPage && editModeEnabled && (
+                <div className="flex gap-2">
                 {!isStructuredEditing ? (
                   <>
                     <Button
@@ -475,8 +502,22 @@ export default function WikiPage() {
                   <History className="w-4 h-4 mr-2" />
                   История
                 </Button>
-              </div>
-            )}
+                </div>
+              )}
+              {selectedPage && !editModeEnabled && (
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setShowHistory(!showHistory);
+                    setIsEditing(false);
+                    setIsStructuredEditing(false);
+                  }}
+                >
+                  <History className="w-4 h-4 mr-2" />
+                  История
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </header>
