@@ -579,19 +579,25 @@ export default function WikiPage() {
                 <h1 className="text-3xl font-bold mb-6">{selectedPage.title}</h1>
                 <div className="prose prose-lg max-w-none">
                   {(() => {
+                    if (!selectedPage.content) {
+                      return <p className="text-gray-400 italic">Содержимое отсутствует</p>;
+                    }
+                    
                     // Попробовать отобразить как структурированный контент
                     try {
                       const parsed = JSON.parse(selectedPage.content);
-                      if (parsed.sections && Array.isArray(parsed.sections)) {
+                      if (parsed.sections && Array.isArray(parsed.sections) && parsed.sections.length > 0) {
                         // Это структурированный контент - отобразить его
                         return (
                           <div className="space-y-6">
                             {parsed.sections.map((section: any, index: number) => (
                               <div key={section.id || index} className="border-b pb-6 last:border-b-0">
-                                <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
+                                {section.title && (
+                                  <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
+                                )}
                                 {section.content && (
                                   <div className="mb-4 whitespace-pre-wrap text-gray-700">
-                                    {section.content}
+                                    {renderMarkdown(section.content)}
                                   </div>
                                 )}
                                 {section.columns && section.columns.length > 0 && (
@@ -601,7 +607,9 @@ export default function WikiPage() {
                                         {column.title && (
                                           <h3 className="font-semibold mb-2">{column.title}</h3>
                                         )}
-                                        <p className="text-sm whitespace-pre-wrap">{column.content}</p>
+                                        {column.content && (
+                                          <p className="text-sm whitespace-pre-wrap">{column.content}</p>
+                                        )}
                                         {column.contacts && column.contacts.length > 0 && (
                                           <div className="mt-4 pt-4 border-t">
                                             <h4 className="font-semibold text-sm mb-2">Контакты:</h4>
@@ -640,9 +648,11 @@ export default function WikiPage() {
                           </div>
                         );
                       }
-                    } catch {
+                    } catch (e) {
                       // Не структурированный контент - отобразить как markdown
+                      console.log('Content is not JSON, rendering as markdown:', e);
                     }
+                    // Отобразить как markdown
                     return renderMarkdown(selectedPage.content);
                   })()}
                 </div>
