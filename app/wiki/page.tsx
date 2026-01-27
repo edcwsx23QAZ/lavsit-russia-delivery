@@ -50,11 +50,22 @@ export default function WikiPage() {
     try {
       setLoading(true);
       const response = await fetch(`/api/wiki/pages?slug=${slug}`);
-      if (!response.ok) throw new Error('Страница не найдена');
+      if (!response.ok) {
+        if (response.status === 404) {
+          // Если страница не найдена, попробуем загрузить первую доступную
+          await loadDefaultPage();
+          return;
+        }
+        throw new Error('Страница не найдена');
+      }
       const page = await response.json();
-      setSelectedPage(page);
+      if (page) {
+        setSelectedPage(page);
+      }
     } catch (error) {
       console.error('Error loading page:', error);
+      // Попробуем загрузить первую доступную страницу
+      await loadDefaultPage();
     } finally {
       setLoading(false);
     }
@@ -62,18 +73,23 @@ export default function WikiPage() {
 
   const loadDefaultPage = async () => {
     try {
+      setLoading(true);
       const response = await fetch('/api/wiki/pages');
       if (!response.ok) throw new Error('Ошибка загрузки');
       const pages = await response.json();
       
       if (pages.length > 0) {
         setSelectedPage(pages[0]);
+        // Обновить URL с slug первой страницы
+        window.history.pushState({}, '', `/wiki?slug=${pages[0].slug}`);
       } else {
         // Создать дефолтную страницу при первом запуске
         createDefaultPage();
       }
     } catch (error) {
       console.error('Error loading default page:', error);
+    } finally {
+      setLoading(false);
     }
   };
 
