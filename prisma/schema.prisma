@@ -21,3 +21,39 @@ model Calculation {
   
   @@map("calculations")
 }
+
+model WikiPage {
+  id          String        @id @default(cuid())
+  slug        String        @unique // URL-путь страницы (например, "introduction")
+  title       String        // Заголовок страницы
+  content     String        // Markdown контент страницы
+  order       Int           @default(0) // Порядок отображения
+  parentId    String?       // ID родительской страницы (для вложенности)
+  parent      WikiPage?     @relation("WikiPageHierarchy", fields: [parentId], references: [id], onDelete: Cascade)
+  children    WikiPage[]    @relation("WikiPageHierarchy")
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  createdBy   String?       // ID пользователя, создавшего страницу
+  updatedBy   String?       // ID пользователя, обновившего страницу
+  isActive    Boolean        @default(true) // Активна ли страница
+  versions    WikiVersion[]  // История версий
+  
+  @@map("wiki_pages")
+}
+
+model WikiVersion {
+  id          String    @id @default(cuid())
+  pageId      String    // ID страницы
+  page        WikiPage  @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  content     String    // Markdown контент этой версии
+  title       String    // Заголовок этой версии
+  version     Int       // Номер версии (начинается с 1)
+  changeNote  String?   // Примечание об изменении
+  createdBy   String?   // ID пользователя, создавшего версию
+  createdAt   DateTime  @default(now())
+  
+  @@unique([pageId, version]) // Уникальная комбинация страницы и версии
+  @@map("wiki_versions")
+  @@index([pageId])
+  @@index([createdAt])
+}
