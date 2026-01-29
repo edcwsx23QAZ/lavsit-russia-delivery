@@ -93,8 +93,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const importedPages = [];
-    const errors = [];
+    const importedPages: Array<{ slug: string; title: string; action: string }> = [];
+    const errors: string[] = [];
 
     for (const pageData of pages) {
       try {
