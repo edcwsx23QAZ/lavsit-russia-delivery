@@ -694,7 +694,7 @@ export default function WikiPage() {
                       console.log('Content is not JSON, rendering as markdown:', e);
                     }
                     // Отобразить как markdown
-                    return renderMarkdown(selectedPage.content);
+                    return renderMarkdown(selectedPage.content, pages);
                   })()}
                 </div>
               </div>
