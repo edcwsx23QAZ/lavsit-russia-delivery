@@ -1,0 +1,78 @@
+From bb4b1ed18057052ddf9dcc0ce708cdffafc758d7 Mon Sep 17 00:00:00 2001
+From: edcwsx23QAZ <edcwsx23qaz@users.noreply.github.com>
+Date: Thu, 29 Jan 2026 10:56:15 +0300
+Subject: [PATCH 11/12] =?UTF-8?q?fix:=20=D0=A0=D1=91=D0=A1=D0=83=D0=A0?=
+ =?UTF-8?q?=D1=97=D0=A1=D0=82=D0=A0=C2=B0=D0=A0=D0=86=D0=A0=C2=BB=D0=A0?=
+ =?UTF-8?q?=C2=B5=D0=A0=D0=85=D0=A0=C2=B0=20=D0=A0=D1=95=D0=A1=E2=82=AC?=
+ =?UTF-8?q?=D0=A0=D1=91=D0=A0=C2=B1=D0=A0=D1=94=D0=A0=C2=B0=20=D0=A1=D0=83?=
+ =?UTF-8?q?=20=D0=A0=D1=97=D0=A0=C2=B5=D0=A1=D0=82=D0=A0=C2=B5=D0=A0=D1=98?=
+ =?UTF-8?q?=D0=A0=C2=B5=D0=A0=D0=85=D0=A0=D0=85=D0=A0=D1=95=D0=A0=E2=84=96?=
+ =?UTF-8?q?=20pages=20=D0=A0=D0=86=20renderMarkdown?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ app/wiki/page.tsx | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
+
+diff --git a/app/wiki/page.tsx b/app/wiki/page.tsx
+index e754b788..44720b93 100644
+--- a/app/wiki/page.tsx
++++ b/app/wiki/page.tsx
+@@ -387,6 +387,7 @@ const FALLBACK_CONTENT = {
+ 
+ export default function WikiPage() {
+   const [selectedPage, setSelectedPage] = useState<WikiPage | null>(null);
++  const [pages, setPages] = useState<WikiPage[]>([]);
+   const [isEditing, setIsEditing] = useState(false);
+   const [isStructuredEditing, setIsStructuredEditing] = useState(false);
+   const [showHistory, setShowHistory] = useState(false);
+@@ -445,12 +446,13 @@ export default function WikiPage() {
+         setSelectedPage(FALLBACK_CONTENT as WikiPage);
+         return;
+       }
+-      const pages = await response.json();
++      const pagesData = await response.json();
++      setPages(pagesData);
+       
+-      if (pages.length > 0) {
+-        setSelectedPage(pages[0]);
++      if (pagesData.length > 0) {
++        setSelectedPage(pagesData[0]);
+         // Обновить URL с slug первой страницы
+-        window.history.pushState({}, '', `/wiki?slug=${pages[0].slug}`);
++        window.history.pushState({}, '', `/wiki?slug=${pagesData[0].slug}`);
+       } else {
+         // Создать дефолтную страницу при первом запуске
+         createDefaultPage();
+@@ -595,7 +597,7 @@ export default function WikiPage() {
+   };
+ 
+   // Простой markdown рендерер
+-  const renderMarkdown = (text: string) => {
++  const renderMarkdown = (text: string, pagesForLinks: WikiPage[] = pages) => {
+     if (!text) return <p className="text-gray-400 italic">Содержимое отсутствует</p>;
+     
+     const lines = text.split('\n');
+@@ -608,7 +610,7 @@ export default function WikiPage() {
+         const paraText = currentParagraph.join(' ');
+         elements.push(
+           <p key={`p-${elements.length}`} className="mb-4">
+-            {renderInline(paraText, pages)}
++            {renderInline(paraText, pagesForLinks)}
+           </p>
+         );
+         currentParagraph = [];
+@@ -620,7 +622,7 @@ export default function WikiPage() {
+         elements.push(
+           <ul key={`ul-${elements.length}`} className="list-disc list-inside mb-4 space-y-1">
+             {listItems.map((item, idx) => (
+-              <li key={idx}>{renderInline(item, pages)}</li>
++              <li key={idx}>{renderInline(item, pagesForLinks)}</li>
+             ))}
+           </ul>
+         );
+-- 
+2.51.2.windows.1
+

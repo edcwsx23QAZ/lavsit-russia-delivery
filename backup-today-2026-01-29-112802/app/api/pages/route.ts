@@ -1,31 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 
-// Асинхронная функция для создания бэкапа (не блокирует основной поток)
-async function createBackupAsync() {
-  try {
-    // Получить все активные страницы с версиями
-    const pages = await prisma.wikiPage.findMany({
-      where: { isActive: true },
-      include: {
-        versions: {
-          orderBy: { version: 'desc' },
-          take: 10 // Последние 10 версий каждой страницы
-        }
-      },
-      orderBy: [{ order: 'asc' }, { createdAt: 'asc' }]
-    });
-
-    // Сохранить бэкап в файловую систему (опционально)
-    // Или просто логировать, что бэкап создан
-    // В данном случае версии уже хранятся в БД, так что это дополнительная защита
-    console.log(`Automatic backup created at ${new Date().toISOString()} for ${pages.length} pages`);
-  } catch (error) {
-    console.error('Error in automatic backup:', error);
-    throw error;
-  }
-}
-
 // GET - Получить все страницы или конкретную страницу
 export async function GET(request: NextRequest) {
   try {
@@ -165,11 +140,6 @@ export async function POST(request: NextRequest) {
       }
     });
 
-    // Автоматически создать бэкап после создания новой страницы
-    createBackupAsync().catch(err => {
-      console.error('Error creating automatic backup:', err);
-    });
-
     return NextResponse.json(newPage, { status: 201 });
   } catch (error: any) {
     console.error('Error creating wiki page:', error);
@@ -275,28 +245,15 @@ export async function PUT(request: NextRequest) {
       });
 
       // Очистить старые версии (оставить только последние 10)
-      // Удаляем версии, которые старше 10 последних
-      const versionsToKeep = 10;
-      const oldestVersionToKeep = nextVersion - versionsToKeep + 1;
-      
-      if (oldestVersionToKeep > 1) {
-        await prisma.wikiVersion.deleteMany({
-          where: {
-            pageId: id,
-            version: {
-              lt: oldestVersionToKeep
-            }
+      await prisma.wikiVersion.deleteMany({
+        where: {
+          pageId: id,
+          version: {
+            lt: nextVersion - 9 // Удалить версии старше 10 последних
           }
-        });
-      }
+        }
+      });
     }
-
-    // Автоматически создать бэкап всех страниц после изменения
-    // Выполняем асинхронно, чтобы не замедлять ответ
-    createBackupAsync().catch(err => {
-      console.error('Error creating automatic backup:', err);
-      // Не прерываем выполнение, если бэкап не удался
-    });
 
     return NextResponse.json(updatedPage);
   } catch (error: any) {

@@ -1,0 +1,42 @@
+From 7db3ca4dc40f34a3c9d1b7d1534a6ff2fc1c9033 Mon Sep 17 00:00:00 2001
+From: edcwsx23QAZ <edcwsx23QAZ@users.noreply.github.com>
+Date: Tue, 27 Jan 2026 17:59:48 +0300
+Subject: [PATCH 03/12] Fix API error handling: return 200 with empty array
+ instead of 500, better error logging
+
+---
+ app/api/wiki/pages/route.ts | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/app/api/wiki/pages/route.ts b/app/api/wiki/pages/route.ts
+index 6c9a7707..b140e1b9 100644
+--- a/app/api/wiki/pages/route.ts
++++ b/app/api/wiki/pages/route.ts
+@@ -50,13 +50,22 @@ export async function GET(request: NextRequest) {
+ 
+       return NextResponse.json(pages || []);
+     }
+-  } catch (error) {
++  } catch (error: any) {
+     console.error('Error fetching wiki pages:', error);
++    console.error('Error details:', {
++      message: error?.message,
++      code: error?.code,
++      name: error?.name,
++      stack: error?.stack
++    });
++    
+     // Возвращаем пустой массив вместо ошибки, чтобы страница могла работать
++    // Это позволяет странице работать даже если база данных не настроена
+     if (slug) {
+       return NextResponse.json({ error: 'Страница не найдена' }, { status: 404 });
+     }
+-    return NextResponse.json([]);
++    // Возвращаем 200 с пустым массивом, чтобы не было 500 ошибки
++    return NextResponse.json([], { status: 200 });
+   }
+ }
+ 
+-- 
+2.51.2.windows.1
+

@@ -9,7 +9,7 @@ import WikiContentEditor, { WikiContentEditorRef } from '@/components/wiki/WikiC
 import PageManager from '@/components/wiki/PageManager';
 import VersionHistory from '@/components/wiki/VersionHistory';
 import EditableSection from '@/components/wiki/EditableSection';
-import { FileText, Edit, History, ArrowLeft, Layout, Save, Loader2, Lock, Unlock, Download, Database } from 'lucide-react';
+import { FileText, Edit, History, ArrowLeft, Layout, Save, Loader2, Lock, Unlock } from 'lucide-react';
 import { WikiSection } from '@/components/wiki/types';
 import {
   Breadcrumb,
@@ -395,14 +395,10 @@ export default function WikiPage() {
   const [isSaving, setIsSaving] = useState(false);
   const [editModeEnabled, setEditModeEnabled] = useState(false);
   const [dbError, setDbError] = useState(false);
-  const [isCreatingBackup, setIsCreatingBackup] = useState(false);
   const wikiEditorRef = useRef<WikiContentEditorRef>(null);
 
   // Загрузить страницу по slug из URL или первую доступную
   useEffect(() => {
-    // Проверяем, что мы в браузере
-    if (typeof window === 'undefined') return;
-    
     const urlParams = new URLSearchParams(window.location.search);
     const slug = urlParams.get('slug');
     
@@ -412,7 +408,6 @@ export default function WikiPage() {
       // Загрузить первую страницу или создать дефолтную
       loadDefaultPage();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadPageBySlug = async (slug: string) => {
@@ -425,20 +420,15 @@ export default function WikiPage() {
           await loadDefaultPage();
           return;
         }
-        // Не показываем ошибку пользователю, просто загружаем дефолтную страницу
-        await loadDefaultPage();
-        return;
+        throw new Error('Страница не найдена');
       }
       const page = await response.json();
       if (page) {
         setSelectedPage(page);
-      } else {
-        // Если страница не найдена, загружаем дефолтную
-        await loadDefaultPage();
       }
     } catch (error) {
       console.error('Error loading page:', error);
-      // Попробуем загрузить первую доступную страницу без показа ошибки
+      // Попробуем загрузить первую доступную страницу
       await loadDefaultPage();
     } finally {
       setLoading(false);
@@ -451,29 +441,27 @@ export default function WikiPage() {
       setDbError(false);
       const response = await fetch('/api/wiki/pages');
       if (!response.ok) {
-        // Если ошибка, используем fallback контент без показа ошибки
+        // Если ошибка, используем fallback контент
         setDbError(true);
         setSelectedPage(FALLBACK_CONTENT as WikiPage);
-        setPages([]);
         return;
       }
       const pagesData = await response.json();
-      setPages(pagesData || []);
+      setPages(pagesData);
       
-      if (pagesData && pagesData.length > 0) {
+      if (pagesData.length > 0) {
         setSelectedPage(pagesData[0]);
         // Обновить URL с slug первой страницы
         window.history.pushState({}, '', `/wiki?slug=${pagesData[0].slug}`);
       } else {
         // Создать дефолтную страницу при первом запуске
-        await createDefaultPage();
+        createDefaultPage();
       }
     } catch (error) {
       console.error('Error loading default page:', error);
-      // При ошибке используем fallback контент без показа модального окна
+      // При ошибке используем fallback контент
       setDbError(true);
       setSelectedPage(FALLBACK_CONTENT as WikiPage);
-      setPages([]);
     } finally {
       setLoading(false);
     }
@@ -499,21 +487,14 @@ export default function WikiPage() {
       if (response.ok) {
         const page = await response.json();
         setSelectedPage(page);
-        setPages([page]);
         // Обновить URL
         window.history.pushState({}, '', `/wiki?slug=${page.slug}`);
       } else {
-        // Если не удалось создать страницу, используем fallback контент
         const error = await response.json().catch(() => ({}));
         console.error('Error creating default page:', error);
-        setDbError(true);
-        setSelectedPage(FALLBACK_CONTENT as WikiPage);
       }
     } catch (error) {
       console.error('Error creating default page:', error);
-      // При ошибке используем fallback контент
-      setDbError(true);
-      setSelectedPage(FALLBACK_CONTENT as WikiPage);
     } finally {
       setLoading(false);
     }
@@ -613,37 +594,6 @@ export default function WikiPage() {
   const handleRestore = async (version: number) => {
     await loadPageBySlug(selectedPage?.slug || '');
     setIsEditing(false);
-  };
-
-  const handleCreateBackup = async () => {
-    try {
-      setIsCreatingBackup(true);
-      const response = await fetch('/api/wiki/backup?format=json');
-      if (!response.ok) {
-        throw new Error('Ошибка создания бэкапа');
-      }
-      
-      const backup = await response.json();
-      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `wiki-backup-${new Date().toISOString().split('T')[0]}.json`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      
-      // Используем toast для уведомления
-      const { toast } = await import('sonner');
-      toast.success('Бэкап успешно создан и загружен');
-    } catch (error) {
-      console.error('Error creating backup:', error);
-      const { toast } = await import('sonner');
-      toast.error('Ошибка при создании бэкапа: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка'));
-    } finally {
-      setIsCreatingBackup(false);
-    }
   };
 
   // Простой markdown рендерер
@@ -968,25 +918,6 @@ export default function WikiPage() {
                   История
                 </Button>
               )}
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleCreateBackup}
-                disabled={isCreatingBackup}
-                title="Создать бэкап всех страниц вики"
-              >
-                {isCreatingBackup ? (
-                  <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Создание...
-                  </>
-                ) : (
-                  <>
-                    <Database className="w-4 h-4 mr-2" />
-                    Бэкап
-                  </>
-                )}
-              </Button>
             </div>
           </div>
         </div>
@@ -1093,7 +1024,6 @@ export default function WikiPage() {
                                 onUpdate={handleSectionUpdate}
                                 onDelete={handleSectionDelete}
                                 isEditing={false}
-                                editModeEnabled={editModeEnabled}
                               />
                             ))}
                           </div>

@@ -16,15 +16,13 @@ interface EditableSectionProps {
   onUpdate: (section: WikiSection) => void;
   onDelete: (id: string) => void;
   isEditing?: boolean;
-  editModeEnabled?: boolean; // Добавляем проп для проверки режима редактирования
 }
 
 export default function EditableSection({
   section,
   onUpdate,
   onDelete,
-  isEditing: initialEditing = false,
-  editModeEnabled = false
+  isEditing: initialEditing = false
 }: EditableSectionProps) {
   const [isEditing, setIsEditing] = useState(initialEditing);
   const [editedSection, setEditedSection] = useState<WikiSection>(section);
@@ -258,26 +256,22 @@ export default function EditableSection({
             <FolderOpen className="w-5 h-5" />
             {section.title}
           </CardTitle>
-          {editModeEnabled && (
-            <div className="flex gap-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setIsEditing(true)}
-                title="Редактировать раздел"
-              >
-                <Edit className="w-4 h-4" />
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => onDelete(section.id)}
-                title="Удалить раздел"
-              >
-                <Trash2 className="w-4 h-4 text-red-500" />
+          <div className="flex gap-2">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setIsEditing(true)}
+            >
+              <Edit className="w-4 h-4" />
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => onDelete(section.id)}
+            >
+              <Trash2 className="w-4 h-4 text-red-500" />
             </Button>
           </div>
-          )}
         </div>
       </CardHeader>
       <CardContent>

@@ -1,0 +1,30 @@
+From d3298d4be9c946f1058ad9c172d96b655163155a Mon Sep 17 00:00:00 2001
+From: edcwsx23QAZ <edcwsx23qaz@users.noreply.github.com>
+Date: Thu, 29 Jan 2026 10:57:01 +0300
+Subject: [PATCH 12/12] =?UTF-8?q?fix:=20=D0=A0=D1=97=D0=A0=C2=B5=D0=A1?=
+ =?UTF-8?q?=D0=82=D0=A0=C2=B5=D0=A0=D2=91=D0=A0=C2=B0=D0=A1=E2=80=A1=D0=A0?=
+ =?UTF-8?q?=C2=B0=20pages=20=D0=A0=D0=86=20renderMarkdown?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ app/wiki/page.tsx | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/app/wiki/page.tsx b/app/wiki/page.tsx
+index 44720b93..226190f3 100644
+--- a/app/wiki/page.tsx
++++ b/app/wiki/page.tsx
+@@ -1034,7 +1034,7 @@ export default function WikiPage() {
+                       console.log('Content is not JSON, rendering as markdown:', e);
+                     }
+                     // Отобразить как markdown
+-                    return renderMarkdown(selectedPage.content);
++                    return renderMarkdown(selectedPage.content, pages);
+                   })()}
+                 </div>
+               </div>
+-- 
+2.51.2.windows.1
+
