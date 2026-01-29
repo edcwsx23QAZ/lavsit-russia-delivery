@@ -35,6 +35,7 @@ interface WikiPage {
 
 export default function WikiPage() {
   const [selectedPage, setSelectedPage] = useState<WikiPage | null>(null);
+  const [pages, setPages] = useState<WikiPage[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [isStructuredEditing, setIsStructuredEditing] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
@@ -85,13 +86,24 @@ export default function WikiPage() {
     try {
       setLoading(true);
       const response = await fetch('/api/wiki/pages');
+<<<<<<< HEAD
       if (!response.ok) throw new Error('Ошибка загрузки');
       const pages = await response.json();
+=======
+      if (!response.ok) {
+        // Если ошибка, используем fallback контент
+        setDbError(true);
+        setSelectedPage(FALLBACK_CONTENT as WikiPage);
+        return;
+      }
+      const pagesData = await response.json();
+      setPages(pagesData);
+>>>>>>> bb4b1ed1 (fix: РёСЃРїСЂР°РІР»РµРЅР° РѕС€РёР±РєР° СЃ РїРµСЂРµРјРµРЅРЅРѕР№ pages РІ renderMarkdown)
       
-      if (pages.length > 0) {
-        setSelectedPage(pages[0]);
+      if (pagesData.length > 0) {
+        setSelectedPage(pagesData[0]);
         // Обновить URL с slug первой страницы
-        window.history.pushState({}, '', `/wiki?slug=${pages[0].slug}`);
+        window.history.pushState({}, '', `/wiki?slug=${pagesData[0].slug}`);
       } else {
         // Создать дефолтную страницу при первом запуске
         createDefaultPage();
@@ -245,7 +257,7 @@ export default function WikiPage() {
   };
 
   // Простой markdown рендерер
-  const renderMarkdown = (text: string) => {
+  const renderMarkdown = (text: string, pagesForLinks: WikiPage[] = pages) => {
     if (!text) return <p className="text-gray-400 italic">Содержимое отсутствует</p>;
     
     const lines = text.split('\n');
@@ -258,7 +270,7 @@ export default function WikiPage() {
         const paraText = currentParagraph.join(' ');
         elements.push(
           <p key={`p-${elements.length}`} className="mb-4">
-            {renderInline(paraText, pages)}
+            {renderInline(paraText, pagesForLinks)}
           </p>
         );
         currentParagraph = [];
@@ -270,7 +282,7 @@ export default function WikiPage() {
         elements.push(
           <ul key={`ul-${elements.length}`} className="list-disc list-inside mb-4 space-y-1">
             {listItems.map((item, idx) => (
-              <li key={idx}>{renderInline(item, pages)}</li>
+              <li key={idx}>{renderInline(item, pagesForLinks)}</li>
             ))}
           </ul>
         );
