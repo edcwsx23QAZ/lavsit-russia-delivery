@@ -56,12 +56,16 @@ export default function PageManager({
     try {
       setLoading(true);
       const response = await fetch('/api/wiki/pages');
-      if (!response.ok) throw new Error('Ошибка загрузки страниц');
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Ошибка загрузки страниц');
+      }
       const data = await response.json();
-      setPages(data);
+      setPages(data || []);
     } catch (error) {
       console.error('Error loading pages:', error);
-      alert('Ошибка при загрузке страниц');
+      // Не показываем alert, просто оставляем пустой список
+      setPages([]);
     } finally {
       setLoading(false);
     }
@@ -247,7 +251,7 @@ export default function PageManager({
           <CardTitle>Страницы Wiki</CardTitle>
           <Dialog open={showCreateDialog} onOpenChange={setShowCreateDialog}>
             <DialogTrigger asChild>
-              <Button size="sm">
+              <Button size="sm" className="bg-black text-white hover:bg-gray-800">
                 <Plus className="w-4 h-4 mr-2" />
                 Новая страница
               </Button>

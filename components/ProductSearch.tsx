@@ -260,7 +260,7 @@ const ProductSearch = memo(function ProductSearch({ onProductAdd, disabled = fal
                       {product.name}
                     </h4>
                     <div className="flex items-center gap-2 mt-1">
-                      <Badge variant="outline" className="text-xs border-gray-600">
+                      <Badge variant="outline" className="text-xs border-gray-600 text-white">
                         {product.externalCode}
                       </Badge>
                       <div className="flex items-center text-gray-400 text-xs">

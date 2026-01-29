@@ -919,28 +919,40 @@ export default function WikiPage() {
                     </Button>
                   </>
                 ) : (
-                  <Button
-                    variant="default"
-                    onClick={async () => {
-                      // Вызываем сохранение через ref
-                      if (wikiEditorRef.current) {
-                        await wikiEditorRef.current.save();
-                      }
-                    }}
-                    disabled={isSaving}
-                  >
-                    {isSaving ? (
-                      <>
-                        <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                        Сохранение...
-                      </>
-                    ) : (
-                      <>
-                        <Save className="w-4 h-4 mr-2" />
-                        Сохранить
-                      </>
-                    )}
-                  </Button>
+                  <>
+                    <Button
+                      variant="default"
+                      onClick={async () => {
+                        // Вызываем сохранение через ref
+                        if (wikiEditorRef.current) {
+                          await wikiEditorRef.current.save();
+                        }
+                      }}
+                      disabled={isSaving}
+                    >
+                      {isSaving ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          Сохранение...
+                        </>
+                      ) : (
+                        <>
+                          <Save className="w-4 h-4 mr-2" />
+                          Сохранить
+                        </>
+                      )}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        setIsStructuredEditing(false);
+                      }}
+                      disabled={isSaving}
+                    >
+                      <ArrowLeft className="w-4 h-4 mr-2" />
+                      Выход из структурного редактирования
+                    </Button>
+                  </>
                 )}
                 <Button
                   variant="outline"
