@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { History, RotateCcw, Calendar, User } from 'lucide-react';
 import { format } from 'date-fns';
+import { toast } from 'sonner';
+import ConfirmDialog from './ConfirmDialog';
 
 interface WikiVersion {
   id: string;
@@ -25,6 +27,10 @@ export default function VersionHistory({ pageId, onRestore }: VersionHistoryProp
   const [versions, setVersions] = useState<WikiVersion[]>([]);
   const [loading, setLoading] = useState(true);
   const [restoring, setRestoring] = useState<number | null>(null);
+  const [confirmDialog, setConfirmDialog] = useState<{ open: boolean; version: number | null }>({
+    open: false,
+    version: null,
+  });
 
   useEffect(() => {
     loadVersions();
@@ -39,16 +45,19 @@ export default function VersionHistory({ pageId, onRestore }: VersionHistoryProp
       setVersions(data);
     } catch (error) {
       console.error('Error loading versions:', error);
-      alert('Ошибка при загрузке истории версий');
+      toast.error('Ошибка при загрузке истории версий');
     } finally {
       setLoading(false);
     }
   };
 
-  const handleRestore = async (version: number) => {
-    if (!confirm(`Вы уверены, что хотите откатить страницу к версии ${version}?`)) {
-      return;
-    }
+  const handleRestoreClick = (version: number) => {
+    setConfirmDialog({ open: true, version });
+  };
+
+  const handleRestore = async () => {
+    const version = confirmDialog.version;
+    if (!version) return;
 
     try {
       setRestoring(version);
@@ -68,12 +77,13 @@ export default function VersionHistory({ pageId, onRestore }: VersionHistoryProp
       if (onRestore) {
         await onRestore(version);
       }
-      alert('Страница успешно откачена к выбранной версии');
+      toast.success('Страница успешно откачена к выбранной версии');
     } catch (error) {
       console.error('Error restoring version:', error);
-      alert('Ошибка при откате версии');
+      toast.error('Ошибка при откате версии');
     } finally {
       setRestoring(null);
+      setConfirmDialog({ open: false, version: null });
     }
   };
 
@@ -112,7 +122,7 @@ export default function VersionHistory({ pageId, onRestore }: VersionHistoryProp
                 <Button
                   size="sm"
                   variant="outline"
-                  onClick={() => handleRestore(version.version)}
+                  onClick={() => handleRestoreClick(version.version)}
                   disabled={restoring === version.version || version.version === versions[0].version}
                 >
                   {restoring === version.version ? (
@@ -155,6 +165,15 @@ export default function VersionHistory({ pageId, onRestore }: VersionHistoryProp
           ))}
         </div>
       </CardContent>
+      <ConfirmDialog
+        open={confirmDialog.open}
+        onOpenChange={(open) => setConfirmDialog({ open, version: confirmDialog.version })}
+        title="Откат к версии"
+        description={`Вы уверены, что хотите откатить страницу к версии ${confirmDialog.version}? Это действие создаст новую версию с содержимым выбранной версии.`}
+        confirmText="Откатить"
+        cancelText="Отмена"
+        onConfirm={handleRestore}
+      />
     </Card>
   );
 }

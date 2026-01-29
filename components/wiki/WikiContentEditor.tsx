@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Plus, Save, Eye, Edit as EditIcon, Loader2 } from 'lucide-react';
 import { WikiSection, WikiStructuredContent, generateId } from './types';
 import EditableSection from './EditableSection';
+import { toast } from 'sonner';
 
 interface WikiContentEditorProps {
   pageId: string;
@@ -91,10 +92,11 @@ const WikiContentEditor = forwardRef<WikiContentEditorRef, WikiContentEditorProp
 
   const handleDeleteSection = (sectionId: string) => {
     if (sections.length === 1) {
-      alert('Нельзя удалить последний раздел. Добавьте новый раздел перед удалением.');
+      toast.error('Нельзя удалить последний раздел. Добавьте новый раздел перед удалением.');
       return;
     }
     setSections(sections.filter((s) => s.id !== sectionId));
+    toast.success('Раздел удален');
   };
 
   const handleSave = async () => {
@@ -113,9 +115,10 @@ const WikiContentEditor = forwardRef<WikiContentEditorRef, WikiContentEditorProp
       if (onSaveComplete) {
         onSaveComplete();
       }
+      toast.success('Контент успешно сохранен');
     } catch (error) {
       console.error('Error saving content:', error);
-      alert('Ошибка при сохранении: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка'));
+      toast.error('Ошибка при сохранении: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка'));
     } finally {
       setIsLoading(false);
     }

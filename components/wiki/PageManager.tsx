@@ -5,7 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Plus, Trash2, Edit, FileText, ChevronRight } from 'lucide-react';
+import { Plus, Trash2, Edit, FileText, ChevronRight, ChevronDown, FolderPlus } from 'lucide-react';
+import { toast } from 'sonner';
+import ConfirmDialog from './ConfirmDialog';
 
 interface WikiPage {
   id: string;
@@ -38,6 +40,13 @@ export default function PageManager({
   const [showCreateDialog, setShowCreateDialog] = useState(false);
   const [newPageTitle, setNewPageTitle] = useState('');
   const [newPageSlug, setNewPageSlug] = useState('');
+  const [newPageParentId, setNewPageParentId] = useState<string | null>(null);
+  const [expandedPages, setExpandedPages] = useState<Set<string>>(new Set());
+  const [deleteDialog, setDeleteDialog] = useState<{ open: boolean; pageId: string | null; title: string }>({
+    open: false,
+    pageId: null,
+    title: '',
+  });
 
   useEffect(() => {
     loadPages();
@@ -60,13 +69,13 @@ export default function PageManager({
 
   const handleCreatePage = async () => {
     if (!newPageTitle.trim() || !newPageSlug.trim()) {
-      alert('Заполните заголовок и slug');
+      toast.error('Заполните заголовок и slug');
       return;
     }
 
     // Проверка формата slug (только латиница, цифры, дефисы)
     if (!/^[a-z0-9-]+$/.test(newPageSlug)) {
-      alert('Slug может содержать только латинские буквы, цифры и дефисы');
+      toast.error('Slug может содержать только латинские буквы, цифры и дефисы');
       return;
     }
 
@@ -77,7 +86,9 @@ export default function PageManager({
         body: JSON.stringify({
           title: newPageTitle.trim(),
           slug: newPageSlug.trim(),
-          content: `# ${newPageTitle.trim()}\n\nНовая страница. Начните редактирование.`
+          content: `# ${newPageTitle.trim()}\n\nНовая страница. Начните редактирование.`,
+          parentId: newPageParentId || null,
+          order: 0
         })
       });
 
@@ -87,22 +98,27 @@ export default function PageManager({
       }
 
       const newPage = await response.json();
-      setPages([...pages, newPage]);
+      await loadPages(); // Перезагрузить страницы для обновления дерева
       setNewPageTitle('');
       setNewPageSlug('');
+      setNewPageParentId(null);
       setShowCreateDialog(false);
       onPageCreate(newPage);
       onPageSelect(newPage);
+      toast.success('Страница успешно создана');
     } catch (error) {
       console.error('Error creating page:', error);
-      alert('Ошибка при создании страницы: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка'));
+      toast.error('Ошибка при создании страницы: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка'));
     }
   };
 
-  const handleDeletePage = async (pageId: string, title: string) => {
-    if (!confirm(`Вы уверены, что хотите удалить страницу "${title}"?`)) {
-      return;
-    }
+  const handleDeletePageClick = (pageId: string, title: string) => {
+    setDeleteDialog({ open: true, pageId, title });
+  };
+
+  const handleDeletePage = async () => {
+    const { pageId, title } = deleteDialog;
+    if (!pageId) return;
 
     try {
       const response = await fetch(`/api/wiki/pages?id=${pageId}`, {
@@ -113,48 +129,111 @@ export default function PageManager({
 
       setPages(pages.filter(p => p.id !== pageId));
       onPageDelete(pageId);
+      toast.success(`Страница "${title}" успешно удалена`);
     } catch (error) {
       console.error('Error deleting page:', error);
-      alert('Ошибка при удалении страницы');
+      toast.error('Ошибка при удалении страницы');
+    } finally {
+      setDeleteDialog({ open: false, pageId: null, title: '' });
     }
   };
 
+  const toggleExpand = (pageId: string) => {
+    setExpandedPages(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(pageId)) {
+        newSet.delete(pageId);
+      } else {
+        newSet.add(pageId);
+      }
+      return newSet;
+    });
+  };
+
+  const handleCreateChildPage = (parentId: string, parentTitle: string) => {
+    setNewPageParentId(parentId);
+    setNewPageTitle(`${parentTitle} - `);
+    setShowCreateDialog(true);
+  };
+
   const renderPageTree = (pageList: WikiPage[], parentId: string | null = null, level: number = 0): JSX.Element[] => {
-    return pageList
+    const children = pageList
       .filter(page => page.parentId === parentId)
-      .sort((a, b) => a.order - b.order)
-      .map(page => (
+      .sort((a, b) => a.order - b.order);
+
+    return children.map(page => {
+      const hasChildren = page.children && page.children.length > 0;
+      const isExpanded = expandedPages.has(page.id);
+      const childrenToRender = hasChildren && isExpanded;
+
+      return (
         <div key={page.id}>
           <div
             className={`flex items-center gap-2 p-2 rounded cursor-pointer hover:bg-gray-100 transition-colors ${
               selectedPageId === page.id ? 'bg-blue-100 border border-blue-300' : ''
             }`}
             style={{ paddingLeft: `${level * 20 + 8}px` }}
-            onClick={() => onPageSelect(page)}
           >
-            {page.children && page.children.length > 0 && (
-              <ChevronRight className="w-4 h-4 text-gray-400" />
+            {hasChildren ? (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleExpand(page.id);
+                }}
+                className="p-0.5 hover:bg-gray-200 rounded"
+              >
+                {isExpanded ? (
+                  <ChevronDown className="w-4 h-4 text-gray-400" />
+                ) : (
+                  <ChevronRight className="w-4 h-4 text-gray-400" />
+                )}
+              </button>
+            ) : (
+              <div className="w-5" /> // Placeholder для выравнивания
             )}
-            <FileText className="w-4 h-4 text-gray-500" />
-            <span className="flex-1 font-medium">{page.title}</span>
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={(e) => {
-                e.stopPropagation();
-                handleDeletePage(page.id, page.title);
-              }}
+            <FileText 
+              className="w-4 h-4 text-gray-500 flex-shrink-0" 
+              onClick={() => onPageSelect(page)}
+            />
+            <span 
+              className="flex-1 font-medium"
+              onClick={() => onPageSelect(page)}
             >
-              <Trash2 className="w-4 h-4 text-red-500" />
-            </Button>
+              {page.title}
+            </span>
+            <div className="flex gap-1">
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleCreateChildPage(page.id, page.title);
+                }}
+                title="Создать дочернюю страницу"
+              >
+                <FolderPlus className="w-4 h-4 text-blue-500" />
+              </Button>
+              <Button
+                size="sm"
+                variant="ghost"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleDeletePageClick(page.id, page.title);
+                }}
+                title="Удалить страницу"
+              >
+                <Trash2 className="w-4 h-4 text-red-500" />
+              </Button>
+            </div>
           </div>
-          {page.children && page.children.length > 0 && (
+          {childrenToRender && (
             <div className="ml-4">
               {renderPageTree(pageList, page.id, level + 1)}
             </div>
           )}
         </div>
-      ));
+      );
+    });
   };
 
   if (loading) {
@@ -197,6 +276,11 @@ export default function PageManager({
                     Только латинские буквы, цифры и дефисы
                   </p>
                 </div>
+                {newPageParentId && (
+                  <div className="p-2 bg-blue-50 rounded text-sm text-blue-700">
+                    Создается как дочерняя страница
+                  </div>
+                )}
                 <div className="flex justify-end gap-2">
                   <Button variant="outline" onClick={() => setShowCreateDialog(false)}>
                     Отмена
@@ -221,6 +305,16 @@ export default function PageManager({
           </div>
         )}
       </CardContent>
+      <ConfirmDialog
+        open={deleteDialog.open}
+        onOpenChange={(open) => setDeleteDialog({ ...deleteDialog, open })}
+        title="Удаление страницы"
+        description={`Вы уверены, что хотите удалить страницу "${deleteDialog.title}"? Это действие нельзя отменить.`}
+        confirmText="Удалить"
+        cancelText="Отмена"
+        onConfirm={handleDeletePage}
+        variant="destructive"
+      />
     </Card>
   );
 }

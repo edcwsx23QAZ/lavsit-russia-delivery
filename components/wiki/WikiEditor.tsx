@@ -8,6 +8,8 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Upload, X, Save, Eye, Edit, Link as LinkIcon, Image as ImageIcon, Type } from 'lucide-react';
+import { toast } from 'sonner';
+import LinkEditor from './LinkEditor';
 // Простой markdown рендерер без внешних зависимостей
 const MarkdownPreview = ({ content }: { content: string }) => {
   // Простая функция для рендеринга markdown
@@ -114,13 +116,20 @@ const MarkdownPreview = ({ content }: { content: string }) => {
       if (match.index > lastIndex) {
         parts.push(text.substring(lastIndex, match.index));
       }
+      const url = match[2];
+      const isInternal = url.startsWith('/wiki') || url.startsWith('wiki');
       parts.push(
         <a
           key={`link-${key++}`}
-          href={match[2]}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={url}
+          target={isInternal ? undefined : '_blank'}
+          rel={isInternal ? undefined : 'noopener noreferrer'}
           className="text-blue-600 hover:underline"
+          onClick={isInternal ? (e) => {
+            e.preventDefault();
+            const slug = url.includes('slug=') ? url.split('slug=')[1] : url.replace('/wiki?', '').replace('wiki/', '');
+            window.location.href = `/wiki?slug=${slug}`;
+          } : undefined}
         >
           {match[1]}
         </a>
@@ -228,6 +237,7 @@ interface WikiEditorProps {
   onSave: (title: string, content: string, changeNote?: string) => Promise<void>;
   onCancel?: () => void;
   isNewPage?: boolean;
+  pages?: Array<{ id: string; title: string; slug: string }>;
 }
 
 export default function WikiEditor({
@@ -236,7 +246,8 @@ export default function WikiEditor({
   initialContent = '',
   onSave,
   onCancel,
-  isNewPage = false
+  isNewPage = false,
+  pages = []
 }: WikiEditorProps) {
   const [title, setTitle] = useState(initialTitle);
   const [content, setContent] = useState(initialContent);
@@ -276,12 +287,12 @@ export default function WikiEditor({
   // Обработка загрузки изображения
   const handleImageUpload = async (file: File) => {
     if (!file.type.startsWith('image/')) {
-      alert('Пожалуйста, выберите файл изображения');
+      toast.error('Пожалуйста, выберите файл изображения');
       return;
     }
 
     if (file.size > 10 * 1024 * 1024) {
-      alert('Размер файла не должен превышать 10MB');
+      toast.error('Размер файла не должен превышать 10MB');
       return;
     }
 
@@ -302,9 +313,10 @@ export default function WikiEditor({
       const data = await response.json();
       const imageMarkdown = `![${file.name}](${data.url})`;
       insertText(imageMarkdown);
+      toast.success('Изображение успешно загружено');
     } catch (error) {
       console.error('Error uploading image:', error);
-      alert('Ошибка при загрузке изображения: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка'));
+      toast.error('Ошибка при загрузке изображения: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка'));
     }
   };
 
@@ -349,12 +361,12 @@ export default function WikiEditor({
   // Обработка сохранения
   const handleSave = async () => {
     if (!title.trim()) {
-      alert('Пожалуйста, введите заголовок');
+      toast.error('Пожалуйста, введите заголовок');
       return;
     }
 
     if (!content.trim()) {
-      alert('Пожалуйста, введите содержимое');
+      toast.error('Пожалуйста, введите содержимое');
       return;
     }
 
@@ -362,9 +374,10 @@ export default function WikiEditor({
     try {
       await onSave(title.trim(), content.trim(), changeNote.trim() || undefined);
       setChangeNote('');
+      toast.success('Страница успешно сохранена');
     } catch (error) {
       console.error('Error saving:', error);
-      alert('Ошибка при сохранении: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка'));
+      toast.error('Ошибка при сохранении: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка'));
     } finally {
       setIsSaving(false);
     }
@@ -445,15 +458,13 @@ export default function WikiEditor({
                   >
                     <Type className="w-4 h-4 mr-1" />H3
                   </Button>
-                  <Button
-                    type="button"
-                    variant="outline"
-                    size="sm"
-                    onClick={() => insertText('[', '](url)')}
-                    title="Ссылка"
-                  >
-                    <LinkIcon className="w-4 h-4 mr-1" />Ссылка
-                  </Button>
+                  <LinkEditor
+                    onInsert={(text, url, isInternal) => {
+                      const markdownLink = `[${text}](${url})`;
+                      insertText(markdownLink);
+                    }}
+                    pages={pages}
+                  />
                   <Button
                     type="button"
                     variant="outline"

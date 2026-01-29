@@ -8,7 +8,17 @@ import WikiEditor from '@/components/wiki/WikiEditor';
 import WikiContentEditor, { WikiContentEditorRef } from '@/components/wiki/WikiContentEditor';
 import PageManager from '@/components/wiki/PageManager';
 import VersionHistory from '@/components/wiki/VersionHistory';
+import EditableSection from '@/components/wiki/EditableSection';
 import { FileText, Edit, History, ArrowLeft, Layout, Save, Loader2, Lock, Unlock } from 'lucide-react';
+import { WikiSection } from '@/components/wiki/types';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
 
 interface WikiPage {
   id: string;
@@ -203,6 +213,20 @@ export default function WikiPage() {
     window.history.pushState({}, '', `/wiki?slug=${page.slug}`);
   };
 
+  // Функция для построения breadcrumbs
+  const buildBreadcrumbs = (page: WikiPage | null): WikiPage[] => {
+    if (!page) return [];
+    const breadcrumbs: WikiPage[] = [];
+    let current: WikiPage | null = page;
+    
+    while (current) {
+      breadcrumbs.unshift(current);
+      current = current.parent || null;
+    }
+    
+    return breadcrumbs;
+  };
+
   const handlePageCreate = (page: WikiPage) => {
     setSelectedPage(page);
     setIsEditing(true);
@@ -234,7 +258,7 @@ export default function WikiPage() {
         const paraText = currentParagraph.join(' ');
         elements.push(
           <p key={`p-${elements.length}`} className="mb-4">
-            {renderInline(paraText)}
+            {renderInline(paraText, pages)}
           </p>
         );
         currentParagraph = [];
@@ -246,7 +270,7 @@ export default function WikiPage() {
         elements.push(
           <ul key={`ul-${elements.length}`} className="list-disc list-inside mb-4 space-y-1">
             {listItems.map((item, idx) => (
-              <li key={idx}>{renderInline(item)}</li>
+              <li key={idx}>{renderInline(item, pages)}</li>
             ))}
           </ul>
         );
@@ -307,7 +331,7 @@ export default function WikiPage() {
     return <div>{elements}</div>;
   };
 
-  const renderInline = (text: string): (string | JSX.Element)[] => {
+  const renderInline = (text: string, pages: WikiPage[] = []): (string | JSX.Element)[] => {
     const parts: (string | JSX.Element)[] = [];
     let lastIndex = 0;
     let key = 0;
@@ -319,13 +343,22 @@ export default function WikiPage() {
       if (match.index > lastIndex) {
         parts.push(text.substring(lastIndex, match.index));
       }
+      const url = match[2];
+      const isInternal = url.startsWith('/wiki') || url.startsWith('wiki') || url.includes('slug=');
+      const handleClick = isInternal ? (e: React.MouseEvent) => {
+        e.preventDefault();
+        const slug = url.includes('slug=') ? url.split('slug=')[1].split('&')[0] : url.replace('/wiki?', '').replace('wiki/', '');
+        window.location.href = `/wiki?slug=${slug}`;
+      } : undefined;
+      
       parts.push(
         <a
           key={`link-${key++}`}
-          href={match[2]}
-          target="_blank"
-          rel="noopener noreferrer"
+          href={url}
+          target={isInternal ? undefined : '_blank'}
+          rel={isInternal ? undefined : 'noopener noreferrer'}
           className="text-blue-600 hover:underline"
+          onClick={handleClick}
         >
           {match[1]}
         </a>
@@ -559,6 +592,7 @@ export default function WikiPage() {
                 initialContent={selectedPage.content}
                 onSave={handleSave}
                 onCancel={() => setIsEditing(false)}
+                pages={pages.map(p => ({ id: p.id, title: p.title, slug: p.slug }))}
               />
             ) : isStructuredEditing && selectedPage ? (
               <WikiContentEditor
@@ -576,6 +610,33 @@ export default function WikiPage() {
               />
             ) : selectedPage ? (
               <div className="bg-white rounded-lg shadow p-8">
+                {/* Breadcrumbs */}
+                {buildBreadcrumbs(selectedPage).length > 1 && (
+                  <Breadcrumb className="mb-4">
+                    <BreadcrumbList>
+                      {buildBreadcrumbs(selectedPage).map((page, index, array) => (
+                        <div key={page.id} className="flex items-center">
+                          {index > 0 && <BreadcrumbSeparator />}
+                          {index === array.length - 1 ? (
+                            <BreadcrumbPage>{page.title}</BreadcrumbPage>
+                          ) : (
+                            <BreadcrumbItem>
+                              <BreadcrumbLink
+                                href="#"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handlePageSelect(page);
+                                }}
+                              >
+                                {page.title}
+                              </BreadcrumbLink>
+                            </BreadcrumbItem>
+                          )}
+                        </div>
+                      ))}
+                    </BreadcrumbList>
+                  </Breadcrumb>
+                )}
                 <h1 className="text-3xl font-bold mb-6">{selectedPage.title}</h1>
                 <div className="prose prose-lg max-w-none">
                   {(() => {
@@ -587,63 +648,31 @@ export default function WikiPage() {
                     try {
                       const parsed = JSON.parse(selectedPage.content);
                       if (parsed.sections && Array.isArray(parsed.sections) && parsed.sections.length > 0) {
-                        // Это структурированный контент - отобразить его
+                        // Это структурированный контент - отобразить его с возможностью редактирования
+                        const handleSectionUpdate = async (updatedSection: WikiSection) => {
+                          const updatedSections = parsed.sections.map((s: WikiSection) =>
+                            s.id === updatedSection.id ? updatedSection : s
+                          );
+                          const updatedContent = JSON.stringify({ sections: updatedSections }, null, 2);
+                          await handleStructuredSave(updatedContent);
+                        };
+
+                        const handleSectionDelete = async (sectionId: string) => {
+                          const updatedSections = parsed.sections.filter((s: WikiSection) => s.id !== sectionId);
+                          const updatedContent = JSON.stringify({ sections: updatedSections }, null, 2);
+                          await handleStructuredSave(updatedContent);
+                        };
+
                         return (
                           <div className="space-y-6">
-                            {parsed.sections.map((section: any, index: number) => (
-                              <div key={section.id || index} className="border-b pb-6 last:border-b-0">
-                                {section.title && (
-                                  <h2 className="text-2xl font-bold mb-4">{section.title}</h2>
-                                )}
-                                {section.content && (
-                                  <div className="mb-4 whitespace-pre-wrap text-gray-700">
-                                    {renderMarkdown(section.content)}
-                                  </div>
-                                )}
-                                {section.columns && section.columns.length > 0 && (
-                                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
-                                    {section.columns.map((column: any) => (
-                                      <div key={column.id} className="border rounded p-4">
-                                        {column.title && (
-                                          <h3 className="font-semibold mb-2">{column.title}</h3>
-                                        )}
-                                        {column.content && (
-                                          <p className="text-sm whitespace-pre-wrap">{column.content}</p>
-                                        )}
-                                        {column.contacts && column.contacts.length > 0 && (
-                                          <div className="mt-4 pt-4 border-t">
-                                            <h4 className="font-semibold text-sm mb-2">Контакты:</h4>
-                                            {column.contacts.map((contact: any) => (
-                                              <div key={contact.id} className="text-sm mb-2">
-                                                <p className="font-medium">{contact.name}</p>
-                                                {contact.position && <p className="text-gray-600">{contact.position}</p>}
-                                                {contact.phone && <p>📞 {contact.phone}</p>}
-                                                {contact.email && <p>✉️ {contact.email}</p>}
-                                              </div>
-                                            ))}
-                                          </div>
-                                        )}
-                                      </div>
-                                    ))}
-                                  </div>
-                                )}
-                                {section.contacts && section.contacts.length > 0 && (
-                                  <div className="mt-4 pt-4 border-t">
-                                    <h3 className="font-semibold mb-3">Контакты:</h3>
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                      {section.contacts.map((contact: any) => (
-                                        <div key={contact.id} className="border rounded p-4">
-                                          <p className="font-semibold">{contact.name}</p>
-                                          {contact.position && <p className="text-sm text-gray-600">{contact.position}</p>}
-                                          {contact.phone && <p className="text-sm">📞 {contact.phone}</p>}
-                                          {contact.email && <p className="text-sm">✉️ {contact.email}</p>}
-                                          {contact.notes && <p className="text-sm text-gray-500 italic mt-2">{contact.notes}</p>}
-                                        </div>
-                                      ))}
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
+                            {parsed.sections.map((section: WikiSection, index: number) => (
+                              <EditableSection
+                                key={section.id || index}
+                                section={section}
+                                onUpdate={handleSectionUpdate}
+                                onDelete={handleSectionDelete}
+                                isEditing={false}
+                              />
                             ))}
                           </div>
                         );
