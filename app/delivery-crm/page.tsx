@@ -1404,9 +1404,9 @@ export default function DeliveryCRMPage() {
                             {isFirstInDate ? formatDate(date) : ''}
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="orderNumber" className="text-center align-middle">
-                            <div className="flex flex-col items-center justify-center h-full relative">
+                            <div className="flex flex-col items-center justify-center h-full relative" style={{ minHeight: '3rem' }}>
                               {/* Номер заказа по центру ячейки */}
-                              <div className="flex-1 flex items-center justify-center w-full">
+                              <div className="flex-1 flex items-center justify-center w-full py-1">
                                 <Textarea
                                   value={order.orderNumber}
                                   onChange={(e) => handleCellChange(order.id, 'orderNumber', e.target.value)}
@@ -1421,18 +1421,21 @@ export default function DeliveryCRMPage() {
                                     textAlign: 'center',
                                     fontSize: '0.85rem',
                                     lineHeight: '1.3',
-                                    fontWeight: '500'
+                                    fontWeight: '500',
+                                    maxHeight: 'calc(100% - 20px)' // Оставляем место для кнопок
                                   }}
                                   onInput={(e) => {
                                     const target = e.target as HTMLTextAreaElement
                                     target.style.height = 'auto'
-                                    target.style.height = `${target.scrollHeight}px`
+                                    const maxHeight = target.parentElement?.parentElement?.clientHeight || 100
+                                    const newHeight = Math.min(target.scrollHeight, maxHeight - 20)
+                                    target.style.height = `${newHeight}px`
                                   }}
                                   onFocus={() => editingCellRef.current = { orderId: order.id, field: 'orderNumber' }}
                                 />
                               </div>
                               {/* Кнопки внизу в одну строчку, выровнены по высоте */}
-                              <div className="flex items-center justify-center gap-1 mt-auto pb-0.5">
+                              <div className="flex items-center justify-center gap-1 mt-auto" style={{ height: '18px', marginTop: 'auto' }}>
                                 <div className="relative">
                                   <Button
                                     type="button"
