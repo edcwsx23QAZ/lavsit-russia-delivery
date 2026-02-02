@@ -156,8 +156,8 @@ const initialColumnWidths: Record<string, number> = {
   drag: 35,
   date: 65,
   orderNumber: 90,
-  wrote: 75,
-  confirmed: 90,
+  wrote: 80,
+  confirmed: 100,
   products: 280,
   fsm: 70,
   address: 180,
@@ -1158,11 +1158,15 @@ export default function DeliveryCRMPage() {
     >
       <div className="flex items-center justify-center relative h-full">
         <div 
-          className="flex-1 text-center overflow-hidden whitespace-nowrap" 
+          className="flex-1 text-center" 
           style={{ 
             padding: '1px',
             fontSize: '0.75rem',
-            lineHeight: '1.2'
+            lineHeight: '1.2',
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word',
+            hyphens: 'auto',
+            whiteSpace: 'normal'
           }}
         >
           {children}
