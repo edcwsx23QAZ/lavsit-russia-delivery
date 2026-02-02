@@ -159,9 +159,9 @@ const initialColumnWidths: Record<string, number> = {
   wrote: 55,
   confirmed: 70,
   products: 180,
-  fsm: 55,
+  fsm: 60,
   address: 130,
-  contact: 110,
+  contact: 120,
   payment: 70,
   time: 95,
   comment: 100,
@@ -1228,18 +1228,18 @@ export default function DeliveryCRMPage() {
           className="absolute top-0 h-full cursor-col-resize z-20"
           onMouseDown={(e) => handleResizeStart(e, columnKey)}
           style={{ 
-            right: '-3px',
-            width: '6px',
-            backgroundColor: 'rgba(59, 130, 246, 0.4)',
-            borderRight: '2px solid rgba(59, 130, 246, 0.7)'
+            right: '-1px',
+            width: '4px',
+            backgroundColor: 'rgba(59, 130, 246, 0.5)',
+            borderRight: '1px solid rgba(59, 130, 246, 0.8)'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.6)'
-            e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.9)'
+            e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.7)'
+            e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 1)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.4)'
-            e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.7)'
+            e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.5)'
+            e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.8)'
           }}
           title="Перетащите для изменения ширины столбца"
         />
@@ -1422,59 +1422,34 @@ export default function DeliveryCRMPage() {
                           >
                             {isFirstInDate ? formatDate(date) : ''}
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="orderNumber" className="text-center">
-                            <div className="flex flex-col gap-0.5">
-                              <div className="flex items-center gap-0.5">
-                                <Textarea
-                                  value={order.orderNumber}
-                                  onChange={(e) => handleCellChange(order.id, 'orderNumber', e.target.value)}
-                                  placeholder="№ заказа"
-                                  className="border-0 bg-transparent p-0 h-auto min-h-[1.5rem] flex-1 resize-none focus-visible:ring-0 text-center"
-                                  rows={1}
-                                  style={{ 
-                                    height: 'auto',
-                                    overflow: 'visible',
-                                    wordWrap: 'break-word',
-                                    whiteSpace: 'pre-wrap',
-                                    textAlign: 'center',
-                                    fontSize: '0.7rem',
-                                    lineHeight: '1.3'
-                                  }}
-                                  onInput={(e) => {
-                                    const target = e.target as HTMLTextAreaElement
-                                    target.style.height = 'auto'
-                                    target.style.height = `${target.scrollHeight}px`
-                                  }}
-                                  onFocus={() => editingCellRef.current = { orderId: order.id, field: 'orderNumber' }}
-                                />
-                                <Button
-                                  type="button"
-                                  variant="ghost"
-                                  size="sm"
-                                  className="h-5 w-5 p-0 flex-shrink-0"
-                                  onClick={() => {
-                                    const orderId = order.orderNumber.trim()
-                                    if (orderId) {
-                                      handleLoadFromBitrix(orderId, order.id)
-                                    } else {
-                                      const inputId = prompt('Введите ID заказа из Битрикса:')
-                                      if (inputId) {
-                                        handleLoadFromBitrix(inputId, order.id)
-                                      }
-                                    }
-                                  }}
-                                  disabled={loadingBitrix === order.orderNumber}
-                                  title="Загрузить из Битрикса"
-                                >
-                                  {loadingBitrix === order.orderNumber ? (
-                                    <Loader2 className="w-2.5 h-2.5 animate-spin" />
-                                  ) : (
-                                    <Download className="w-2.5 h-2.5" />
-                                  )}
-                                </Button>
-                              </div>
-                              {/* Кнопки меток */}
-                              <div className="flex items-center justify-center gap-0.5">
+                          <ResizableTableCell columnKey="orderNumber" className="text-center align-middle">
+                            <div className="flex flex-col gap-1 items-center justify-center h-full">
+                              {/* Номер заказа сверху - крупнее, почти во всю ширину */}
+                              <Textarea
+                                value={order.orderNumber}
+                                onChange={(e) => handleCellChange(order.id, 'orderNumber', e.target.value)}
+                                placeholder="№ заказа"
+                                className="border-0 bg-transparent p-0 h-auto min-h-[1.5rem] w-full resize-none focus-visible:ring-0 text-center"
+                                rows={1}
+                                style={{ 
+                                  height: 'auto',
+                                  overflow: 'visible',
+                                  wordWrap: 'break-word',
+                                  whiteSpace: 'pre-wrap',
+                                  textAlign: 'center',
+                                  fontSize: '0.85rem',
+                                  lineHeight: '1.3',
+                                  fontWeight: '500'
+                                }}
+                                onInput={(e) => {
+                                  const target = e.target as HTMLTextAreaElement
+                                  target.style.height = 'auto'
+                                  target.style.height = `${target.scrollHeight}px`
+                                }}
+                                onFocus={() => editingCellRef.current = { orderId: order.id, field: 'orderNumber' }}
+                              />
+                              {/* Кнопки снизу в одну строчку */}
+                              <div className="flex items-center justify-center gap-1">
                                 <div className="relative">
                                   <Button
                                     type="button"
@@ -1537,6 +1512,31 @@ export default function DeliveryCRMPage() {
                                   title="Отгрузка в ТК"
                                 >
                                   ТК
+                                </Button>
+                                <Button
+                                  type="button"
+                                  variant="ghost"
+                                  size="sm"
+                                  className="h-4 w-4 p-0 flex-shrink-0"
+                                  onClick={() => {
+                                    const orderId = order.orderNumber.trim()
+                                    if (orderId) {
+                                      handleLoadFromBitrix(orderId, order.id)
+                                    } else {
+                                      const inputId = prompt('Введите ID заказа из Битрикса:')
+                                      if (inputId) {
+                                        handleLoadFromBitrix(inputId, order.id)
+                                      }
+                                    }
+                                  }}
+                                  disabled={loadingBitrix === order.orderNumber}
+                                  title="Загрузить из Битрикса"
+                                >
+                                  {loadingBitrix === order.orderNumber ? (
+                                    <Loader2 className="w-2.5 h-2.5 animate-spin" />
+                                  ) : (
+                                    <Download className="w-2.5 h-2.5" />
+                                  )}
                                 </Button>
                               </div>
                             </div>
@@ -1609,7 +1609,9 @@ export default function DeliveryCRMPage() {
                                 overflow: 'visible',
                                 wordWrap: 'break-word',
                                 whiteSpace: 'pre-wrap',
-                                textAlign: 'center'
+                                textAlign: 'center',
+                                fontSize: '0.7rem',
+                                lineHeight: '1.2'
                               }}
                               onInput={(e) => {
                                 const target = e.target as HTMLTextAreaElement
@@ -1660,7 +1662,9 @@ export default function DeliveryCRMPage() {
                                 overflow: 'visible',
                                 wordWrap: 'break-word',
                                 whiteSpace: 'pre-wrap',
-                                textAlign: 'center'
+                                textAlign: 'center',
+                                fontSize: '0.7rem',
+                                lineHeight: '1.2'
                               }}
                               onInput={(e) => {
                                 const target = e.target as HTMLTextAreaElement
