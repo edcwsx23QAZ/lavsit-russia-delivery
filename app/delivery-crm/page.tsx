@@ -1385,7 +1385,8 @@ export default function DeliveryCRMPage() {
                           }}
                           className={`${isDragging ? 'opacity-50' : ''} ${isDragOver && !isDragging ? 'bg-blue-50 dark:bg-blue-900/20' : ''} ${hasTopBorder ? 'border-t-4 border-gray-600 dark:border-gray-500' : ''} cursor-move`}
                           style={{ 
-                            height: 'auto',
+                            height: order.isEmpty ? '2.5rem' : 'auto',
+                            minHeight: '2.5rem',
                             backgroundColor: getRowBackgroundColor(order) || undefined
                           }}
                         >
@@ -1554,53 +1555,58 @@ export default function DeliveryCRMPage() {
                             />
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="products" className="align-middle">
-                            <div className="flex items-center justify-center h-full min-h-[2rem]">
+                            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
                               <Textarea
                                 value={order.products}
                                 onChange={(e) => handleCellChange(order.id, 'products', e.target.value)}
                                 placeholder="Товары"
-                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0"
+                                className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0"
                                 rows={1}
                                 style={{ 
-                                  height: 'auto',
+                                  height: order.isEmpty ? '1.5rem' : 'auto',
+                                  minHeight: '1.5rem',
                                   overflow: 'visible',
                                   wordWrap: 'break-word',
                                   whiteSpace: 'pre-wrap',
-                                  verticalAlign: 'middle'
+                                  verticalAlign: 'middle',
+                                  lineHeight: '1.5rem'
                                 }}
                                 onInput={(e) => {
+                                  if (order.isEmpty) return // Не изменяем высоту для пустых строк
                                   const target = e.target as HTMLTextAreaElement
                                   target.style.height = 'auto'
-                                  const newHeight = Math.max(32, target.scrollHeight)
+                                  const newHeight = Math.max(24, target.scrollHeight)
                                   target.style.height = `${newHeight}px`
                                   // Обновляем высоту строки если нужно
                                   const row = target.closest('tr')
                                   if (row) {
                                     row.style.height = 'auto'
-                                    row.style.minHeight = `${newHeight + 8}px`
+                                    row.style.minHeight = `${newHeight + 16}px`
                                   }
                                 }}
                               />
                             </div>
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="fsm" className="text-center align-middle">
-                            <div className="flex items-center justify-center h-full w-full">
+                            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
                               <Textarea
                                 value={order.fsm}
                                 onChange={(e) => handleCellChange(order.id, 'fsm', e.target.value)}
                                 placeholder="ФСМ"
-                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
+                                className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-center"
                                 rows={1}
                                 style={{ 
-                                  height: 'auto',
+                                  height: order.isEmpty ? '1.5rem' : 'auto',
+                                  minHeight: '1.5rem',
                                   overflow: 'visible',
                                   wordWrap: 'break-word',
                                   whiteSpace: 'pre-wrap',
                                   textAlign: 'center',
                                   fontSize: '0.7rem',
-                                  lineHeight: '1.2'
+                                  lineHeight: '1.5rem'
                                 }}
                                 onInput={(e) => {
+                                  if (order.isEmpty) return
                                   const target = e.target as HTMLTextAreaElement
                                   target.style.height = 'auto'
                                   target.style.height = `${target.scrollHeight}px`
@@ -1609,53 +1615,58 @@ export default function DeliveryCRMPage() {
                             </div>
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="address" className="align-middle">
-                            <div className="flex items-center justify-center h-full min-h-[2rem]">
+                            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
                               <Textarea
                                 value={order.address}
                                 onChange={(e) => handleCellChange(order.id, 'address', e.target.value)}
                                 placeholder="Адрес"
-                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0"
+                                className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0"
                                 rows={1}
                                 style={{ 
-                                  height: 'auto',
+                                  height: order.isEmpty ? '1.5rem' : 'auto',
+                                  minHeight: '1.5rem',
                                   overflow: 'visible',
                                   wordWrap: 'break-word',
                                   whiteSpace: 'pre-wrap',
-                                  verticalAlign: 'middle'
+                                  verticalAlign: 'middle',
+                                  lineHeight: '1.5rem'
                                 }}
                                 onInput={(e) => {
+                                  if (order.isEmpty) return
                                   const target = e.target as HTMLTextAreaElement
                                   target.style.height = 'auto'
-                                  const newHeight = Math.max(32, target.scrollHeight)
+                                  const newHeight = Math.max(24, target.scrollHeight)
                                   target.style.height = `${newHeight}px`
                                   // Обновляем высоту строки если нужно
                                   const row = target.closest('tr')
                                   if (row) {
                                     row.style.height = 'auto'
-                                    row.style.minHeight = `${newHeight + 8}px`
+                                    row.style.minHeight = `${newHeight + 16}px`
                                   }
                                 }}
                               />
                             </div>
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="contact" className="text-center align-middle">
-                            <div className="flex items-center justify-center h-full w-full">
+                            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
                               <Textarea
                                 value={order.contact}
                                 onChange={(e) => handleCellChange(order.id, 'contact', e.target.value)}
                                 placeholder="Контакт"
-                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
+                                className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-center"
                                 rows={1}
                                 style={{ 
-                                  height: 'auto',
+                                  height: order.isEmpty ? '1.5rem' : 'auto',
+                                  minHeight: '1.5rem',
                                   overflow: 'visible',
                                   wordWrap: 'break-word',
                                   whiteSpace: 'pre-wrap',
                                   textAlign: 'center',
                                   fontSize: '0.7rem',
-                                  lineHeight: '1.2'
+                                  lineHeight: '1.5rem'
                                 }}
                                 onInput={(e) => {
+                                  if (order.isEmpty) return
                                   const target = e.target as HTMLTextAreaElement
                                   target.style.height = 'auto'
                                   target.style.height = `${target.scrollHeight}px`
@@ -1673,21 +1684,24 @@ export default function DeliveryCRMPage() {
                                 : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
                             }`}
                           >
-                            <div className="flex items-center justify-center h-full w-full">
+                            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
                               <Textarea
                                 value={order.payment}
                                 onChange={(e) => handleCellChange(order.id, 'payment', e.target.value)}
                                 placeholder="Оплата"
-                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
+                                className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-center"
                                 rows={1}
                                 style={{ 
-                                  height: 'auto',
+                                  height: order.isEmpty ? '1.5rem' : 'auto',
+                                  minHeight: '1.5rem',
                                   overflow: 'visible',
                                   wordWrap: 'break-word',
                                   whiteSpace: 'pre-wrap',
-                                  textAlign: 'center'
+                                  textAlign: 'center',
+                                  lineHeight: '1.5rem'
                                 }}
                                 onInput={(e) => {
+                                  if (order.isEmpty) return
                                   const target = e.target as HTMLTextAreaElement
                                   target.style.height = 'auto'
                                   target.style.height = `${target.scrollHeight}px`
@@ -1696,7 +1710,7 @@ export default function DeliveryCRMPage() {
                             </div>
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="time" className="text-center align-middle">
-                            <div className="flex flex-col gap-0.5 items-center justify-center h-full">
+                            <div className="flex flex-col gap-0.5 items-center justify-center h-full" style={{ minHeight: '2.5rem' }}>
                               <Input
                                 value={parseTimeSlot(order.time).start}
                                 onChange={(e) => {
@@ -1774,31 +1788,34 @@ export default function DeliveryCRMPage() {
                             </div>
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="comment" className="align-middle">
-                            <div className="flex items-center justify-center h-full min-h-[2rem]">
+                            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
                               <Textarea
                                 value={order.comment}
                                 onChange={(e) => handleCellChange(order.id, 'comment', e.target.value)}
                                 placeholder="Комментарий"
-                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
+                                className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-center"
                                 rows={1}
                                 style={{ 
-                                  height: 'auto',
+                                  height: order.isEmpty ? '1.5rem' : 'auto',
+                                  minHeight: '1.5rem',
                                   overflow: 'visible',
                                   wordWrap: 'break-word',
                                   whiteSpace: 'pre-wrap',
                                   textAlign: 'center',
-                                  verticalAlign: 'middle'
+                                  verticalAlign: 'middle',
+                                  lineHeight: '1.5rem'
                                 }}
                                 onInput={(e) => {
+                                  if (order.isEmpty) return
                                   const target = e.target as HTMLTextAreaElement
                                   target.style.height = 'auto'
-                                  const newHeight = Math.max(32, target.scrollHeight)
+                                  const newHeight = Math.max(24, target.scrollHeight)
                                   target.style.height = `${newHeight}px`
                                   // Обновляем высоту строки если нужно
                                   const row = target.closest('tr')
                                   if (row) {
                                     row.style.height = 'auto'
-                                    row.style.minHeight = `${newHeight + 8}px`
+                                    row.style.minHeight = `${newHeight + 16}px`
                                   }
                                 }}
                               />
