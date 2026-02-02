@@ -186,7 +186,7 @@ export async function POST(request: NextRequest) {
         console.log(`[Import] Row ${i + startRow}, date (A): "${values[0]}", orderNumber (B): "${values[1]}"`)
       }
       
-      // A (0): Дата - обязательное поле, но копируем как есть (может быть любой формат)
+      // A (0): Дата - обязательное поле
       const dateValue = values[0] ? values[0].trim() : ''
       if (!dateValue) {
         continue // Пропускаем строки без даты
@@ -201,44 +201,58 @@ export async function POST(request: NextRequest) {
         orderDate = new Date()
       }
 
-      const order: any = {
-        date: orderDate,
-        orderNumber: (values[1] || '').trim(),
-        products: '',
-        fsm: '',
-        address: (values[6] || '').trim(),
-        contact: (values[7] || '').trim(),
-        payment: (values[8] || '').trim(),
-        time: (values[9] || '').trim(),
-        comment: '',
-        wrote: false,
-        confirmed: false,
-        shipped: parseBoolean(values[10]),
-        delivered: parseBoolean(values[11]),
-        isEmpty: false,
-      }
-
-      // C (2): Написали - описание товаров
-      const wroteText = values[2] || ''
+      // B (1): № заказа - может содержать несколько номеров и текст в скобках
+      const orderNumberValue = (values[1] || '').trim()
       
-      // D (3): Подтвердил
-      const confirmedText = values[3] || ''
+      // C (2): Написали - чекбокс (да/нет или галочка)
+      const wroteValue = values[2] || ''
+      const wrote = parseBoolean(wroteValue)
       
-      // E (4): Товар
-      const productText = values[4] || ''
+      // D (3): Подтвердили - чекбокс (да/нет или галочка)
+      const confirmedValue = values[3] || ''
+      const confirmed = parseBoolean(confirmedValue)
       
-      // Объединяем C (Написали) и E (Товар) в products
-      order.products = [wroteText, productText].filter(t => t.trim()).join('\n')
+      // E (4): Товары - длинный текст, может содержать несколько заказов
+      const productsText = values[4] || ''
       
       // F (5): ФСМ
-      const fsmText = values[5] || ''
-      order.fsm = fsmText || confirmedText || ''
+      const fsmText = (values[5] || '').trim()
       
-      // Написали - если есть текст в столбце C
-      order.wrote = !!wroteText.trim()
+      // G (6): Адрес
+      const addressText = (values[6] || '').trim()
       
-      // Подтвердили - если есть текст в столбце D или F (ФСМ)
-      order.confirmed = !!confirmedText.trim() || !!fsmText.trim()
+      // H (7): Контакт
+      const contactText = (values[7] || '').trim()
+      
+      // I (8): Оплата - чекбокс (да/нет или галочка)
+      const paymentValue = values[8] || ''
+      const payment = parseBoolean(paymentValue) ? 'Оплачено' : (paymentValue.trim() || 'Не оплачено')
+      
+      // J (9): Время - может быть пусто
+      const timeValue = (values[9] || '').trim()
+      
+      // K (10): Отгрузки - чекбокс (да/нет или галочка)
+      const shipped = parseBoolean(values[10])
+      
+      // L (11): Доставлен - чекбокс (да/нет или галочка)
+      const delivered = parseBoolean(values[11])
+
+      const order: any = {
+        date: orderDate,
+        orderNumber: orderNumberValue,
+        products: productsText,
+        fsm: fsmText,
+        address: addressText,
+        contact: contactText,
+        payment: payment,
+        time: timeValue,
+        comment: '',
+        wrote: wrote,
+        confirmed: confirmed,
+        shipped: shipped,
+        delivered: delivered,
+        isEmpty: false,
+      }
       
       // Пропускаем пустые строки
       if (!order.orderNumber && !order.products && !order.address) {
