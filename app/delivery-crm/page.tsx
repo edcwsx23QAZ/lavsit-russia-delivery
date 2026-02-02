@@ -258,7 +258,7 @@ export default function DeliveryCRMPage() {
     try {
       // Пытаемся загрузить данные из Google Sheets через API
       // Используем spreadsheet ID из URL
-      const spreadsheetId = '1ZTRCsSU6NEq36KZBPs9c3zEAstM6GDQ6EiowGf6uA2c'
+      const spreadsheetId = '1Cvl-0P0uBoYupGGbZ2AG70S0VDyrAII8L0vNjUykOsI'
       const gid = '0' // Вкладка "Доставки"
       
       // Пытаемся получить данные через публичный CSV экспорт
@@ -328,6 +328,7 @@ export default function DeliveryCRMPage() {
   }
 
   // Парсинг CSV из Google Sheets
+  // Структура столбцов: A=Дата, B=№ заказа, C=Написали, D=Подтвердил, E=Товар, F=ФСМ, G=Адрес, H=Контакт, I=Оплата, J=Время, K=Отгрузки, L=Доставлен
   const parseGoogleSheetsCSV = (csvText: string, startRow: number): any[] => {
     const lines = csvText.split('\n').filter(line => line.trim())
     if (lines.length < startRow) return []
@@ -336,49 +337,68 @@ export default function DeliveryCRMPage() {
     const dataLines = lines.slice(startRow - 1)
     if (dataLines.length === 0) return []
     
-    // Парсим заголовки
-    const headers = parseCSVLine(dataLines[0])
     const orders: any[] = []
     
-    // Маппинг индексов столбцов
-    const dateIndex = findColumnIndex(headers, ['Дата', 'дата', 'Date', 'date'])
-    const orderNumberIndex = findColumnIndex(headers, ['№ заказа', 'номер заказа', 'Order', 'order', '№'])
-    const wroteIndex = findColumnIndex(headers, ['Написали', 'написали', 'Wrote'])
-    const confirmedIndex = findColumnIndex(headers, ['Подтвердили', 'подтвердили', 'Confirmed'])
-    const productsIndex = findColumnIndex(headers, ['Товары', 'товары', 'Products', 'products'])
-    const fsmIndex = findColumnIndex(headers, ['ФСМ', 'fsm', 'FSM'])
-    const addressIndex = findColumnIndex(headers, ['Адрес', 'адрес', 'Address', 'address'])
-    const contactIndex = findColumnIndex(headers, ['Контакт', 'контакт', 'Contact', 'contact'])
-    const paymentIndex = findColumnIndex(headers, ['Оплата', 'оплата', 'Payment', 'payment'])
-    const timeIndex = findColumnIndex(headers, ['Время', 'время', 'Time', 'time'])
-    const commentIndex = findColumnIndex(headers, ['Комментарий', 'комментарий', 'Comment', 'comment'])
-    const shippedIndex = findColumnIndex(headers, ['Отгрузили', 'отгрузили', 'Shipped'])
-    const deliveredIndex = findColumnIndex(headers, ['Доставлен', 'доставлен', 'Delivered'])
-    
+    // Прямой маппинг по индексам столбцов (A=0, B=1, C=2, и т.д.)
     for (let i = 1; i < dataLines.length; i++) {
       const values = parseCSVLine(dataLines[i])
       if (values.length === 0) continue
       
       const order: any = {}
       
-      if (dateIndex >= 0 && values[dateIndex]) {
-        order.date = parseDateFromString(values[dateIndex])
+      // A (0): Дата
+      if (values[0] && values[0].trim()) {
+        order.date = parseDateFromString(values[0])
       } else {
-        order.date = format(new Date(), 'yyyy-MM-dd')
+        // Если дата пустая, пропускаем строку
+        continue
       }
       
-      if (orderNumberIndex >= 0) order.orderNumber = values[orderNumberIndex] || ''
-      if (wroteIndex >= 0) order.wrote = parseBooleanFromString(values[wroteIndex])
-      if (confirmedIndex >= 0) order.confirmed = parseBooleanFromString(values[confirmedIndex])
-      if (productsIndex >= 0) order.products = values[productsIndex] || ''
-      if (fsmIndex >= 0) order.fsm = values[fsmIndex] || ''
-      if (addressIndex >= 0) order.address = values[addressIndex] || ''
-      if (contactIndex >= 0) order.contact = values[contactIndex] || ''
-      if (paymentIndex >= 0) order.payment = values[paymentIndex] || ''
-      if (timeIndex >= 0) order.time = values[timeIndex] || ''
-      if (commentIndex >= 0) order.comment = values[commentIndex] || ''
-      if (shippedIndex >= 0) order.shipped = parseBooleanFromString(values[shippedIndex])
-      if (deliveredIndex >= 0) order.delivered = parseBooleanFromString(values[deliveredIndex])
+      // B (1): № заказа
+      order.orderNumber = values[1] || ''
+      
+      // C (2): Написали - описание товаров
+      const wroteText = values[2] || ''
+      
+      // D (3): Подтвердил - может быть ФСМ или подтверждение
+      const confirmedText = values[3] || ''
+      
+      // E (4): Товар
+      const productText = values[4] || ''
+      
+      // Объединяем C (Написали) и E (Товар) в products
+      order.products = [wroteText, productText].filter(t => t.trim()).join('\n')
+      
+      // F (5): ФСМ
+      const fsmText = values[5] || ''
+      order.fsm = fsmText || confirmedText || ''
+      
+      // G (6): Адрес
+      order.address = values[6] || ''
+      
+      // H (7): Контакт
+      order.contact = values[7] || ''
+      
+      // I (8): Оплата
+      order.payment = values[8] || ''
+      
+      // J (9): Время
+      order.time = values[9] || ''
+      
+      // K (10): Отгрузки (shipped)
+      order.shipped = parseBooleanFromString(values[10])
+      
+      // L (11): Доставлен
+      order.delivered = parseBooleanFromString(values[11])
+      
+      // Написали - если есть текст в столбце C, считаем что написали
+      order.wrote = !!wroteText.trim()
+      
+      // Подтвердили - если есть текст в столбце D или F (ФСМ), считаем что подтвердили
+      order.confirmed = !!confirmedText.trim() || !!fsmText.trim()
+      
+      // Комментарий - пустое поле, можно использовать для дополнительной информации
+      order.comment = ''
       
       // Пропускаем пустые строки
       if (!order.orderNumber && !order.products && !order.address) {
