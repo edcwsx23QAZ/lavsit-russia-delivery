@@ -310,62 +310,6 @@ export default function DeliveryCRMPage() {
     return ''
   }
 
-  // Экспорт в Google Sheets
-  const handleExportToGoogleSheets = async () => {
-    if (!confirm('Экспортировать все данные в Google Sheets? Это создаст новый файл.')) {
-      return
-    }
-
-    try {
-      // Формируем CSV данные
-      const csvRows: string[] = []
-      
-      // Заголовки
-      csvRows.push('Дата,№ заказа,Написали,Подтвердили,Товары,ФСМ,Адрес,Контакт,Оплата,Время,Комментарий,Отгрузили,Доставлен,Метки')
-      
-      // Данные
-      orders
-        .filter(o => !o.isEmpty)
-        .sort((a, b) => {
-          const dateCompare = a.date.localeCompare(b.date)
-          if (dateCompare !== 0) return dateCompare
-          return parseTimeForSort(a.time) - parseTimeForSort(b.time)
-        })
-        .forEach(order => {
-          const row = [
-            format(parseISO(order.date), 'dd.MM.yyyy'),
-            order.orderNumber || '',
-            order.wrote ? 'Да' : '',
-            order.confirmed ? 'Да' : '',
-            `"${(order.products || '').replace(/"/g, '""')}"`,
-            order.fsm || '',
-            `"${(order.address || '').replace(/"/g, '""')}"`,
-            order.contact || '',
-            order.payment || '',
-            order.time || '',
-            `"${(order.comment || '').replace(/"/g, '""')}"`,
-            order.shipped ? 'Да' : '',
-            order.delivered ? 'Да' : '',
-            (order.tags || []).join(', '),
-          ]
-          csvRows.push(row.join(','))
-        })
-      
-      const csvContent = csvRows.join('\n')
-      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
-      const url = URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      link.download = `delivery-crm-backup-${format(new Date(), 'yyyy-MM-dd')}.csv`
-      link.click()
-      URL.revokeObjectURL(url)
-      
-      alert('Данные экспортированы в CSV файл. Вы можете импортировать его в Google Sheets.')
-    } catch (error: any) {
-      console.error('Error exporting:', error)
-      alert(`Ошибка экспорта: ${error.message}`)
-    }
-  }
 
   // Загрузка заказов из БД при инициализации
   useEffect(() => {
