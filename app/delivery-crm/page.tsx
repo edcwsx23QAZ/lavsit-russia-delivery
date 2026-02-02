@@ -1303,7 +1303,7 @@ export default function DeliveryCRMPage() {
             <CardTitle>Заказы доставки</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="rounded-md border overflow-x-auto overflow-y-auto" style={{ maxHeight: 'calc(100vh - 300px)' }}>
+            <div className="rounded-md border overflow-x-auto">
               <Table ref={tableRef} className="table-fixed w-full">
                 <TableHeader className="sticky top-0 z-10 bg-white dark:bg-gray-900">
                   <TableRow>
@@ -1400,11 +1400,11 @@ export default function DeliveryCRMPage() {
                                   value={order.orderNumber}
                                   onChange={(e) => handleCellChange(order.id, 'orderNumber', e.target.value)}
                                   placeholder="№ заказа"
-                                  className="border-0 bg-transparent p-0 h-auto min-h-[2rem] flex-1 resize-none focus-visible:ring-0 overflow-hidden text-center"
+                                  className="border-0 bg-transparent p-0 h-auto min-h-[2rem] flex-1 resize-none focus-visible:ring-0 text-center"
                                   rows={1}
                                   style={{ 
                                     height: 'auto',
-                                    overflow: 'hidden',
+                                    overflow: 'visible',
                                     wordWrap: 'break-word',
                                     whiteSpace: 'pre-wrap',
                                     textAlign: 'center'
@@ -1542,11 +1542,11 @@ export default function DeliveryCRMPage() {
                                 value={order.products}
                                 onChange={(e) => handleCellChange(order.id, 'products', e.target.value)}
                                 placeholder="Товары"
-                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 overflow-hidden"
+                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0"
                                 rows={1}
                                 style={{ 
                                   height: 'auto',
-                                  overflow: 'hidden',
+                                  overflow: 'visible',
                                   wordWrap: 'break-word',
                                   whiteSpace: 'pre-wrap',
                                   verticalAlign: 'middle'
@@ -1571,11 +1571,11 @@ export default function DeliveryCRMPage() {
                               value={order.fsm}
                               onChange={(e) => handleCellChange(order.id, 'fsm', e.target.value)}
                               placeholder="ФСМ"
-                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 overflow-hidden text-center"
+                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
                               rows={1}
                               style={{ 
                                 height: 'auto',
-                                overflow: 'hidden',
+                                overflow: 'visible',
                                 wordWrap: 'break-word',
                                 whiteSpace: 'pre-wrap',
                                 textAlign: 'center'
@@ -1593,11 +1593,11 @@ export default function DeliveryCRMPage() {
                                 value={order.address}
                                 onChange={(e) => handleCellChange(order.id, 'address', e.target.value)}
                                 placeholder="Адрес"
-                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 overflow-hidden"
+                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0"
                                 rows={1}
                                 style={{ 
                                   height: 'auto',
-                                  overflow: 'hidden',
+                                  overflow: 'visible',
                                   wordWrap: 'break-word',
                                   whiteSpace: 'pre-wrap',
                                   verticalAlign: 'middle'
@@ -1622,11 +1622,11 @@ export default function DeliveryCRMPage() {
                               value={order.contact}
                               onChange={(e) => handleCellChange(order.id, 'contact', e.target.value)}
                               placeholder="Контакт"
-                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 overflow-hidden text-center"
+                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
                               rows={1}
                               style={{ 
                                 height: 'auto',
-                                overflow: 'hidden',
+                                overflow: 'visible',
                                 wordWrap: 'break-word',
                                 whiteSpace: 'pre-wrap',
                                 textAlign: 'center'
@@ -1652,11 +1652,11 @@ export default function DeliveryCRMPage() {
                               value={order.payment}
                               onChange={(e) => handleCellChange(order.id, 'payment', e.target.value)}
                               placeholder="Оплата"
-                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 overflow-hidden text-center"
+                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
                               rows={1}
                               style={{ 
                                 height: 'auto',
-                                overflow: 'hidden',
+                                overflow: 'visible',
                                 wordWrap: 'break-word',
                                 whiteSpace: 'pre-wrap',
                                 textAlign: 'center'
@@ -1699,11 +1699,11 @@ export default function DeliveryCRMPage() {
                               value={order.comment}
                               onChange={(e) => handleCellChange(order.id, 'comment', e.target.value)}
                               placeholder="Комментарий"
-                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 overflow-hidden"
+                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0"
                               rows={1}
                               style={{ 
                                 height: 'auto',
-                                overflow: 'hidden',
+                                overflow: 'visible',
                                 wordWrap: 'break-word',
                                 whiteSpace: 'pre-wrap'
                               }}
@@ -1741,25 +1741,30 @@ export default function DeliveryCRMPage() {
                             />
                           </ResizableTableCell>
                         </TableRow>
-                      )
-                    })
+                        )
+                      })}
+                      {/* Кнопка "Показать далее" после даты через 7 дней */}
+                      {isLastOrderInSevenDaysDate && hasMoreDates && (
+                        <TableRow key={`show-more-${date}`}>
+                          <ResizableTableCell columnKey="drag" colSpan={14} className="text-center py-4">
+                            <Button
+                              variant="outline"
+                              onClick={handleShowMore}
+                              className="w-full sm:w-auto"
+                            >
+                              Показать далее
+                              <ChevronDown className="w-4 h-4 ml-2" />
+                            </Button>
+                          </ResizableTableCell>
+                        </TableRow>
+                      )}
+                      </React.Fragment>
+                    )
                   })}
                 </TableBody>
               </Table>
             </div>
           </CardContent>
-          {hasMoreDates && (
-            <div className="flex justify-center p-4 border-t">
-              <Button
-                variant="outline"
-                onClick={handleShowMore}
-                className="w-full sm:w-auto"
-              >
-                Показать далее
-                <ChevronDown className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
-          )}
         </Card>
       </div>
 
