@@ -1169,46 +1169,50 @@ export default function DeliveryCRMPage() {
   }, [resizingColumn, resizeStartX, resizeStartWidth])
 
   // Компонент для заголовка столбца с возможностью изменения размера
-  const ResizableTableHead = ({ columnKey, children, className = '' }: { columnKey: string; children: React.ReactNode; className?: string }) => (
-    <TableHead 
-      className={`relative border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 ${className}`}
-      style={{ 
-        width: columnWidths[columnKey], 
-        minWidth: columnWidths[columnKey], 
-        maxWidth: columnWidths[columnKey]
-      }}
-    >
-      <div className="flex items-center justify-center relative h-full">
-        <div 
-          className="flex-1 text-center" 
-          style={{ 
-            padding: '1px',
-            fontSize: '0.75rem',
-            lineHeight: '1.2',
-            wordWrap: 'break-word',
-            overflowWrap: 'break-word',
-            hyphens: 'auto',
-            whiteSpace: 'normal'
-          }}
-        >
-          {children}
+  const ResizableTableHead = ({ columnKey, children, className = '' }: { columnKey: string; children: React.ReactNode; className?: string }) => {
+    return (
+      <TableHead 
+        className={`relative border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 ${className}`}
+        style={{ 
+          width: columnWidths[columnKey], 
+          minWidth: columnWidths[columnKey], 
+          maxWidth: columnWidths[columnKey]
+        }}
+      >
+        <div className="flex items-center justify-center relative h-full">
+          <div 
+            className="flex-1 text-center" 
+            style={{ 
+              padding: '1px',
+              fontSize: '0.75rem',
+              lineHeight: '1.2',
+              wordWrap: 'break-word',
+              overflowWrap: 'break-word',
+              hyphens: 'auto',
+              whiteSpace: 'normal'
+            }}
+          >
+            {children}
+          </div>
         </div>
-      </div>
-    </TableHead>
-  );
+      </TableHead>
+    );
+  };
 
   // Компонент для ячейки с фиксированной шириной
-  const ResizableTableCell = ({ columnKey, children, className = '', ...props }: { columnKey: string; children: React.ReactNode; className?: string; [key: string]: any }) => (
-    <TableCell 
-      className={`border-r border-gray-200 dark:border-gray-700 p-0 relative ${className}`}
-      style={{ width: columnWidths[columnKey], minWidth: columnWidths[columnKey], maxWidth: columnWidths[columnKey] }}
-      {...props}
-    >
-      <div className="w-full h-full px-0.5 py-0.5">
-        {children}
-      </div>
-    </TableCell>
-  );
+  const ResizableTableCell = ({ columnKey, children, className = '', ...props }: { columnKey: string; children: React.ReactNode; className?: string; [key: string]: any }) => {
+    return (
+      <TableCell 
+        className={`border-r border-gray-200 dark:border-gray-700 p-0 relative ${className}`}
+        style={{ width: columnWidths[columnKey], minWidth: columnWidths[columnKey], maxWidth: columnWidths[columnKey] }}
+        {...props}
+      >
+        <div className="w-full h-full px-0.5 py-0.5">
+          {children}
+        </div>
+      </TableCell>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
