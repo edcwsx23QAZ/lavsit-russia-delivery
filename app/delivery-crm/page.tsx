@@ -27,7 +27,6 @@ import {
   Tag,
   MoreVertical,
   Palette,
-  FileSpreadsheet,
 } from 'lucide-react'
 import { Textarea } from '@/components/ui/textarea'
 import { format, addDays, startOfToday, endOfYear, startOfYear, isBefore, isSameDay, parseISO } from 'date-fns'
@@ -1241,74 +1240,99 @@ export default function DeliveryCRMPage() {
     </TableCell>
   )
 
+  // Функция удаления строки
+  const handleDeleteOrder = async (orderId: string) => {
+    if (!confirm('Вы уверены, что хотите удалить эту строку?')) {
+      return
+    }
+
+    try {
+      // Удаляем из локального состояния
+      const updatedOrders = orders.filter(order => order.id !== orderId)
+      setOrders(updatedOrders)
+
+      // Удаляем из БД
+      await fetch(`/api/delivery-crm/orders/${orderId}`, {
+        method: 'DELETE',
+      })
+
+      // Обновляем localStorage
+      localStorage.setItem('delivery-crm-orders', JSON.stringify(updatedOrders))
+    } catch (error) {
+      console.error('Ошибка при удалении заказа:', error)
+      alert('Ошибка при удалении заказа')
+    }
+
+    setContextMenu(null)
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4">
-      <div className="w-full mx-auto">
-        {/* Header */}
-        <div className="mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center gap-4">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Fixed Header */}
+      <div className="sticky top-0 z-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
+        <div className="p-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
-                  <Truck className="w-8 h-8" />
+                <h1 className="text-xl font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                  <Truck className="w-6 h-6" />
                   Delivery CRM
                 </h1>
-                <p className="text-muted-foreground mt-1">
+                <p className="text-xs text-muted-foreground mt-0.5">
                   Система управления заказами доставки
                 </p>
               </div>
             </div>
             <div className="flex items-center gap-2">
               <Link href="/">
-                <Button variant="outline">
-                  <Calculator className="w-4 h-4 mr-2" />
+                <Button variant="outline" size="sm">
+                  <Calculator className="w-3 h-3 mr-1.5" />
                   Открыть калькулятор
                 </Button>
               </Link>
               <Button
                 variant="outline"
+                size="sm"
                 onClick={handleManualImport}
                 disabled={isImporting}
               >
                 {isImporting ? (
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  <Loader2 className="w-3 h-3 mr-1.5 animate-spin" />
                 ) : (
-                  <Upload className="w-4 h-4 mr-2" />
+                  <Upload className="w-3 h-3 mr-1.5" />
                 )}
                 {isImporting ? 'Импорт...' : 'Импорт из Google Sheets'}
               </Button>
               <Button
                 variant="outline"
-                onClick={handleExportToGoogleSheets}
-              >
-                <FileSpreadsheet className="w-4 h-4 mr-2" />
-                Экспорт в CSV
-              </Button>
-              <Button
-                variant="outline"
+                size="sm"
                 onClick={() => setShowHistory(!showHistory)}
               >
-                <History className="w-4 h-4 mr-2" />
+                <History className="w-3 h-3 mr-1.5" />
                 {showHistory ? 'Скрыть историю' : 'Показать историю'}
                 {showHistory ? (
-                  <ChevronUp className="w-4 h-4 ml-2" />
+                  <ChevronUp className="w-3 h-3 ml-1.5" />
                 ) : (
-                  <ChevronDown className="w-4 h-4 ml-2" />
+                  <ChevronDown className="w-3 h-3 ml-1.5" />
                 )}
               </Button>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Orders Table */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Заказы доставки</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="rounded-md border overflow-x-auto">
-              <Table ref={tableRef} className="table-fixed w-full">
-                <TableHeader className="sticky top-0 z-10 bg-white dark:bg-gray-900">
+      {/* Main Content */}
+      <div className="p-4">
+        <div className="w-full mx-auto">
+          {/* Orders Table */}
+          <Card>
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg">Заказы доставки</CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <div className="rounded-md border">
+                <Table ref={tableRef} className="table-fixed w-full">
+                  <TableHeader className="sticky top-[80px] z-10 bg-white dark:bg-gray-900">
                   <TableRow>
                     <ResizableTableHead columnKey="drag" className="text-center"></ResizableTableHead>
                     <ResizableTableHead columnKey="date" className="text-center">
@@ -1360,11 +1384,6 @@ export default function DeliveryCRMPage() {
                     const isDragOver = dragOverDate === date
                     const isFirstDate = dateIndex === 0
                     
-                    // Вычисляем дату через 7 дней от сегодня
-                    const sevenDaysLater = format(addDays(today, 7), 'yyyy-MM-dd')
-                    const isSevenDaysLater = date === sevenDaysLater
-                    const isLastOrderInSevenDaysDate = isSevenDaysLater && dateOrders.length > 0
-
                     return (
                       <React.Fragment key={date}>
                         {dateOrders.map((order, index) => {
@@ -1406,13 +1425,11 @@ export default function DeliveryCRMPage() {
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="orderNumber" className="text-center align-middle">
                             <div className="relative h-full w-full flex flex-col" style={{ minHeight: '2.5rem' }}>
-                              {/* Номер заказа по центру ячейки */}
+                              {/* Номер заказа сверху */}
                               <div 
-                                className="flex-1 flex items-center justify-center w-full"
+                                className="flex items-start justify-center w-full pt-1"
                                 style={{ 
-                                  minHeight: 0,
-                                  paddingTop: '4px',
-                                  paddingBottom: '20px' // Отступ для кнопок
+                                  minHeight: '1.5rem'
                                 }}
                               >
                                 <Textarea
@@ -1444,8 +1461,8 @@ export default function DeliveryCRMPage() {
                               </div>
                               {/* Кнопки внизу в одну строчку, выровнены по высоте */}
                               <div 
-                                className="flex items-center justify-center gap-1 flex-shrink-0"
-                                style={{ height: '18px', marginTop: 'auto' }}
+                                className="flex items-center justify-center gap-1 flex-shrink-0 mt-auto"
+                                style={{ height: '18px', paddingBottom: '2px' }}
                               >
                                 <div className="relative">
                                   <Button
@@ -1860,21 +1877,6 @@ export default function DeliveryCRMPage() {
                         </TableRow>
                         )
                       })}
-                      {/* Кнопка "Показать далее" после даты через 7 дней */}
-                      {isLastOrderInSevenDaysDate && hasMoreDates && (
-                        <TableRow key={`show-more-${date}`}>
-                          <ResizableTableCell columnKey="drag" colSpan={14} className="text-center py-4">
-                            <Button
-                              variant="outline"
-                              onClick={handleShowMore}
-                              className="w-full sm:w-auto"
-                            >
-                              Показать далее
-                              <ChevronDown className="w-4 h-4 ml-2" />
-                            </Button>
-                          </ResizableTableCell>
-                        </TableRow>
-                      )}
                       </React.Fragment>
                     )
                   })}
@@ -1883,6 +1885,20 @@ export default function DeliveryCRMPage() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Кнопка "Показать далее" внизу страницы */}
+        {hasMoreDates && (
+          <div className="mt-4 pb-4 flex justify-center">
+            <Button
+              variant="outline"
+              onClick={handleShowMore}
+              className="w-full sm:w-auto"
+            >
+              Показать далее
+              <ChevronDown className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+        )}
       </div>
 
       {/* Контекстное меню для изменения цвета строки */}
@@ -1900,7 +1916,14 @@ export default function DeliveryCRMPage() {
               minWidth: '150px',
             }}
           >
-            <div className="text-xs font-semibold mb-2 px-2 py-1">Цвет строки</div>
+            <div className="text-xs font-semibold mb-2 px-2 py-1">Действия</div>
+            <button
+              className="w-full px-3 py-2 text-xs rounded hover:bg-red-100 dark:hover:bg-red-900/30 text-left text-red-600 dark:text-red-400 mb-2"
+              onClick={() => handleDeleteOrder(contextMenu.orderId)}
+            >
+              Удалить строку
+            </button>
+            <div className="text-xs font-semibold mb-2 px-2 py-1 border-t border-gray-200 dark:border-gray-700 pt-2">Цвет строки</div>
             <div className="grid grid-cols-2 gap-1">
               {rowColors.map((color) => (
                 <button
