@@ -1180,8 +1180,12 @@ export default function DeliveryCRMPage() {
   // Компонент для заголовка столбца с возможностью изменения размера
   const ResizableTableHead = ({ columnKey, children, className = '' }: { columnKey: string; children: React.ReactNode; className?: string }) => (
     <TableHead 
-      className={`relative border-r border-gray-200 dark:border-gray-700 ${className}`}
-      style={{ width: columnWidths[columnKey], minWidth: columnWidths[columnKey], maxWidth: columnWidths[columnKey] }}
+      className={`relative border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 ${className}`}
+      style={{ 
+        width: columnWidths[columnKey], 
+        minWidth: columnWidths[columnKey], 
+        maxWidth: columnWidths[columnKey]
+      }}
     >
       <div className="flex items-center justify-center relative h-full">
         <div 
