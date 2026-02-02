@@ -214,7 +214,7 @@ const ResizableTableCell = ({ columnKey, children, className = '', columnWidths,
   );
 };
 
-export default function DeliveryCRMPage() {
+export default function DeliveryCRMPage(): React.JSX.Element {
   const [orders, setOrders] = useState<DeliveryOrder[]>(createInitialOrders)
   const [draggedOrderId, setDraggedOrderId] = useState<string | null>(null)
   const [dragOverDate, setDragOverDate] = useState<string | null>(null)
