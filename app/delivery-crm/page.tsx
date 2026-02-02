@@ -23,6 +23,7 @@ import {
   Download,
   Loader2,
   Calculator,
+  Upload,
 } from 'lucide-react'
 import { Textarea } from '@/components/ui/textarea'
 import { format, addDays, startOfToday, endOfYear, startOfYear, isBefore, isSameDay, parseISO } from 'date-fns'
@@ -172,6 +173,7 @@ export default function DeliveryCRMPage() {
   const [loadingBitrix, setLoadingBitrix] = useState<string | null>(null) // ID заказа, который загружается
   const [isLoadingOrders, setIsLoadingOrders] = useState(false)
   const [isInitialized, setIsInitialized] = useState(false)
+  const [isImporting, setIsImporting] = useState(false)
   const editingCellRef = useRef<{ orderId: string; field: keyof DeliveryOrder } | null>(null)
   const tableRef = useRef<HTMLTableElement>(null)
   
@@ -480,6 +482,61 @@ export default function DeliveryCRMPage() {
     return lower === 'да' || lower === 'yes' || lower === 'true' || lower === '1' || 
            lower === '✓' || lower === 'v' || lower === '+' || lower === 'x' ||
            lower === 'checked' || lower === 'отмечено'
+  }
+
+  // Ручной импорт данных из Google Sheets
+  const handleManualImport = async () => {
+    if (!confirm('Импортировать данные из Google Sheets начиная со строки 1622? Это может занять некоторое время.')) {
+      return
+    }
+
+    setIsImporting(true)
+    try {
+      const response = await fetch('/api/delivery-crm/import-google-sheets-manual', {
+        method: 'POST',
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Ошибка импорта')
+      }
+
+      alert(`Импорт завершен!\nИмпортировано: ${data.imported}\nОбновлено: ${data.updated}\nВсего: ${data.total}\nОшибок: ${data.errors}`)
+
+      // Перезагружаем данные из БД
+      const dbResponse = await fetch('/api/delivery-crm/orders?includeEmpty=true')
+      if (dbResponse.ok) {
+        const dbData = await dbResponse.json()
+        if (dbData.success && dbData.orders && dbData.orders.length > 0) {
+          const dbOrders: DeliveryOrder[] = dbData.orders.map((o: any) => ({
+            id: o.id,
+            date: format(new Date(o.date), 'yyyy-MM-dd'),
+            orderNumber: o.orderNumber || '',
+            wrote: o.wrote || false,
+            confirmed: o.confirmed || false,
+            products: o.products || '',
+            fsm: o.fsm || '',
+            address: o.address || '',
+            contact: o.contact || '',
+            payment: o.payment || '',
+            time: o.time || '',
+            comment: o.comment || '',
+            shipped: o.shipped || false,
+            delivered: o.delivered || false,
+            isEmpty: o.isEmpty || false,
+          }))
+          
+          setOrders(dbOrders)
+          localStorage.setItem('delivery-crm-orders', JSON.stringify(dbOrders))
+        }
+      }
+    } catch (error: any) {
+      console.error('Error importing:', error)
+      alert(`Ошибка импорта: ${error.message}`)
+    } finally {
+      setIsImporting(false)
+    }
   }
 
   // Синхронизация изменений с БД и localStorage
@@ -960,6 +1017,18 @@ export default function DeliveryCRMPage() {
                   Открыть калькулятор
                 </Button>
               </Link>
+              <Button
+                variant="outline"
+                onClick={handleManualImport}
+                disabled={isImporting}
+              >
+                {isImporting ? (
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                ) : (
+                  <Upload className="w-4 h-4 mr-2" />
+                )}
+                {isImporting ? 'Импорт...' : 'Импорт из Google Sheets'}
+              </Button>
               <Button
                 variant="outline"
                 onClick={() => setShowHistory(!showHistory)}
