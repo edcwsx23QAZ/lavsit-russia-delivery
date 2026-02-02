@@ -24,24 +24,51 @@ function parseDate(dateStr: string): Date {
     return new Date()
   }
 
-  // Формат DD.MM или DD.MM.YYYY
-  const parts = dateStr.trim().split('.')
+  const dateStrTrimmed = dateStr.trim()
+  
+  // Пробуем разные форматы даты
+  // 1. Формат DD.MM или DD.MM.YYYY
+  const parts = dateStrTrimmed.split('.')
   if (parts.length >= 2) {
     const day = parseInt(parts[0], 10)
     const month = parseInt(parts[1], 10)
     const year = parts[2] ? parseInt(parts[2], 10) : new Date().getFullYear()
     
-    if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
-      return new Date(year, month - 1, day)
+    if (!isNaN(day) && !isNaN(month) && day >= 1 && day <= 31 && month >= 1 && month <= 12) {
+      const date = new Date(year, month - 1, day)
+      if (!isNaN(date.getTime())) {
+        return date
+      }
     }
   }
 
-  // Попытка парсинга как ISO строки
-  const parsed = new Date(dateStr)
-  if (!isNaN(parsed.getTime())) {
-    return parsed
+  // 2. Формат DD/MM или DD/MM/YYYY
+  const partsSlash = dateStrTrimmed.split('/')
+  if (partsSlash.length >= 2) {
+    const day = parseInt(partsSlash[0], 10)
+    const month = parseInt(partsSlash[1], 10)
+    const year = partsSlash[2] ? parseInt(partsSlash[2], 10) : new Date().getFullYear()
+    
+    if (!isNaN(day) && !isNaN(month) && day >= 1 && day <= 31 && month >= 1 && month <= 12) {
+      const date = new Date(year, month - 1, day)
+      if (!isNaN(date.getTime())) {
+        return date
+      }
+    }
   }
 
+  // 3. Попытка парсинга как ISO строки или стандартного формата
+  const parsed = new Date(dateStrTrimmed)
+  if (!isNaN(parsed.getTime())) {
+    // Проверяем, что дата разумная (не 1970 год и т.д.)
+    const year = parsed.getFullYear()
+    if (year >= 2000 && year <= 2100) {
+      return parsed
+    }
+  }
+
+  // Если ничего не подошло, используем текущую дату
+  console.warn(`[Import] Could not parse date: "${dateStrTrimmed}", using current date`)
   return new Date()
 }
 
@@ -133,15 +160,15 @@ export async function POST(request: NextRequest) {
     const orders: any[] = []
     
     // Парсим данные (прямой маппинг по индексам: A=0, B=1, C=2, и т.д.)
-    // Пропускаем первую строку (заголовок), если она есть
-    let startIndex = 1
+    // Строка 1622 - это первая строка данных (заголовки выше), начинаем с неё
+    let startIndex = 0
     const firstLineValues = parseCSVLine(dataLines[0])
-    console.log(`[Import] First line values count: ${firstLineValues.length}`)
-    console.log(`[Import] First line first 5 values:`, firstLineValues.slice(0, 5))
+    console.log(`[Import] First data line (row ${startRow}) values count: ${firstLineValues.length}`)
+    console.log(`[Import] First data line first 5 values:`, firstLineValues.slice(0, 5))
     
-    // Если первая строка похожа на заголовок (содержит "Дата", "№ заказа" и т.д.), пропускаем её
+    // Проверяем, не является ли первая строка заголовком
     const firstLineLower = dataLines[0].toLowerCase()
-    if (firstLineLower.includes('дата') || firstLineLower.includes('date')) {
+    if (firstLineLower.includes('дата') && (firstLineLower.includes('заказа') || firstLineLower.includes('order'))) {
       console.log(`[Import] First line appears to be header, skipping it`)
       startIndex = 1
     } else {
@@ -155,23 +182,34 @@ export async function POST(request: NextRequest) {
       
       // Логируем первые несколько строк для диагностики
       if (i < startIndex + 3) {
-        console.log(`[Import] Row ${i + startRow}, values count: ${values.length}, first 3 values:`, values.slice(0, 3))
+        console.log(`[Import] Row ${i + startRow}, values count: ${values.length}`)
+        console.log(`[Import] Row ${i + startRow}, date (A): "${values[0]}", orderNumber (B): "${values[1]}"`)
       }
       
-      // A (0): Дата - обязательное поле
-      if (!values[0] || !values[0].trim()) {
+      // A (0): Дата - обязательное поле, но копируем как есть (может быть любой формат)
+      const dateValue = values[0] ? values[0].trim() : ''
+      if (!dateValue) {
         continue // Пропускаем строки без даты
       }
 
+      // Парсим дату - пытаемся преобразовать, но если не получается, используем текущую дату
+      let orderDate: Date
+      try {
+        orderDate = parseDate(dateValue)
+      } catch (error) {
+        console.warn(`[Import] Error parsing date "${dateValue}", using current date`)
+        orderDate = new Date()
+      }
+
       const order: any = {
-        date: parseDate(values[0]),
-        orderNumber: values[1] || '',
+        date: orderDate,
+        orderNumber: (values[1] || '').trim(),
         products: '',
         fsm: '',
-        address: values[6] || '',
-        contact: values[7] || '',
-        payment: values[8] || '',
-        time: values[9] || '',
+        address: (values[6] || '').trim(),
+        contact: (values[7] || '').trim(),
+        payment: (values[8] || '').trim(),
+        time: (values[9] || '').trim(),
         comment: '',
         wrote: false,
         confirmed: false,
@@ -210,6 +248,8 @@ export async function POST(request: NextRequest) {
       orders.push(order)
     }
 
+    console.log(`[Import] Parsed ${orders.length} orders from CSV`)
+    
     if (orders.length === 0) {
       return NextResponse.json(
         { error: 'No valid orders found to import' },
@@ -217,75 +257,95 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Импортируем в БД
+    // Импортируем в БД батчами для лучшей производительности
     let imported = 0
     let updated = 0
     const errors: any[] = []
+    const batchSize = 100 // Обрабатываем по 100 записей за раз
 
-    for (let idx = 0; idx < orders.length; idx++) {
-      const orderData = orders[idx]
-      try {
-        // Валидация данных перед импортом
-        if (!orderData.date || isNaN(orderData.date.getTime())) {
-          errors.push({
-            row: idx + startRow,
-            orderNumber: orderData.orderNumber || 'N/A',
-            error: 'Invalid date',
-            data: orderData,
+    for (let batchStart = 0; batchStart < orders.length; batchStart += batchSize) {
+      const batch = orders.slice(batchStart, batchStart + batchSize)
+      console.log(`[Import] Processing batch ${Math.floor(batchStart / batchSize) + 1}/${Math.ceil(orders.length / batchSize)} (${batch.length} orders)`)
+
+      for (let idx = 0; idx < batch.length; idx++) {
+        const orderData = batch[idx]
+        const globalIdx = batchStart + idx
+        
+        try {
+          // Валидация данных перед импортом
+          if (!orderData.date || isNaN(orderData.date.getTime())) {
+            errors.push({
+              row: globalIdx + startRow,
+              orderNumber: orderData.orderNumber || 'N/A',
+              error: 'Invalid date',
+            })
+            continue
+          }
+
+          // Обрезаем слишком длинные строки (если есть ограничения в БД)
+          // В PostgreSQL String может быть очень длинным, но для безопасности ограничим
+          const maxLength = 50000 // Максимальная длина для текстовых полей
+          const processedData: any = {
+            date: orderData.date,
+            orderNumber: String(orderData.orderNumber || '').substring(0, 500),
+            products: String(orderData.products || '').substring(0, maxLength),
+            fsm: String(orderData.fsm || '').substring(0, 500),
+            address: String(orderData.address || '').substring(0, maxLength),
+            contact: String(orderData.contact || '').substring(0, 500),
+            payment: String(orderData.payment || '').substring(0, 500),
+            time: String(orderData.time || '').substring(0, 100),
+            comment: String(orderData.comment || '').substring(0, maxLength),
+            wrote: Boolean(orderData.wrote),
+            confirmed: Boolean(orderData.confirmed),
+            shipped: Boolean(orderData.shipped),
+            delivered: Boolean(orderData.delivered),
+            isEmpty: false,
+          }
+
+          // Проверяем, существует ли заказ с таким номером и датой
+          const existing = await prisma.deliveryOrder.findFirst({
+            where: {
+              orderNumber: processedData.orderNumber,
+              date: processedData.date,
+            },
           })
-          continue
-        }
 
-        // Обрезаем слишком длинные строки (если есть ограничения в БД)
-        const maxLength = 10000 // Максимальная длина для текстовых полей
-        const processedData: any = {
-          date: orderData.date,
-          orderNumber: (orderData.orderNumber || '').substring(0, 255),
-          products: (orderData.products || '').substring(0, maxLength),
-          fsm: (orderData.fsm || '').substring(0, 255),
-          address: (orderData.address || '').substring(0, maxLength),
-          contact: (orderData.contact || '').substring(0, 255),
-          payment: (orderData.payment || '').substring(0, 255),
-          time: (orderData.time || '').substring(0, 255),
-          comment: (orderData.comment || '').substring(0, maxLength),
-          wrote: orderData.wrote || false,
-          confirmed: orderData.confirmed || false,
-          shipped: orderData.shipped || false,
-          delivered: orderData.delivered || false,
-          isEmpty: false,
+          if (existing) {
+            // Обновляем существующий заказ
+            await prisma.deliveryOrder.update({
+              where: { id: existing.id },
+              data: processedData,
+            })
+            updated++
+          } else {
+            // Создаем новый заказ
+            await prisma.deliveryOrder.create({
+              data: processedData,
+            })
+            imported++
+          }
+        } catch (error: any) {
+          const errorMessage = error.message || String(error)
+          const errorCode = error.code || 'UNKNOWN'
+          
+          console.error(`[Import Error] Row ${globalIdx + startRow}, Order: ${orderData.orderNumber || 'N/A'}`)
+          console.error(`[Import Error] Error message: ${errorMessage}`)
+          console.error(`[Import Error] Error code: ${errorCode}`)
+          if (error.meta) {
+            console.error(`[Import Error] Error meta:`, error.meta)
+          }
+          
+          // Сохраняем только первые 100 ошибок, чтобы не перегружать ответ
+          if (errors.length < 100) {
+            errors.push({
+              row: globalIdx + startRow,
+              orderNumber: orderData.orderNumber || 'N/A',
+              error: errorMessage,
+              code: errorCode,
+              meta: error.meta ? JSON.stringify(error.meta) : undefined,
+            })
+          }
         }
-
-        // Проверяем, существует ли заказ с таким номером и датой
-        const existing = await prisma.deliveryOrder.findFirst({
-          where: {
-            orderNumber: processedData.orderNumber,
-            date: processedData.date,
-          },
-        })
-
-        if (existing) {
-          // Обновляем существующий заказ
-          await prisma.deliveryOrder.update({
-            where: { id: existing.id },
-            data: processedData,
-          })
-          updated++
-        } else {
-          // Создаем новый заказ
-          await prisma.deliveryOrder.create({
-            data: processedData,
-          })
-          imported++
-        }
-      } catch (error: any) {
-        console.error(`[Import Error] Row ${idx + startRow}, Order: ${orderData.orderNumber || 'N/A'}`, error)
-        errors.push({
-          row: idx + startRow,
-          orderNumber: orderData.orderNumber || 'N/A',
-          error: error.message || String(error),
-          code: error.code,
-          meta: error.meta,
-        })
       }
     }
 
