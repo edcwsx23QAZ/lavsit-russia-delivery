@@ -156,8 +156,8 @@ const initialColumnWidths: Record<string, number> = {
   drag: 28,
   date: 55,
   orderNumber: 70,
-  wrote: 65,
-  confirmed: 85,
+  wrote: 55,
+  confirmed: 70,
   products: 180,
   fsm: 55,
   address: 130,
@@ -1257,26 +1257,6 @@ export default function DeliveryCRMPage() {
       <div className="w-full h-full px-0.5 py-0.5">
         {children}
       </div>
-      {/* Ползунок на разделительной линии */}
-      <div
-        className="absolute right-0 top-0 h-full cursor-col-resize z-20"
-        onMouseDown={(e) => handleResizeStart(e, columnKey)}
-        style={{ 
-          marginRight: '-2px',
-          width: '6px',
-          backgroundColor: 'rgba(59, 130, 246, 0.2)',
-          borderRight: '2px solid rgba(59, 130, 246, 0.4)'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.4)'
-          e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.7)'
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.2)'
-          e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.4)'
-        }}
-        title="Перетащите для изменения ширины столбца"
-      />
     </TableCell>
   )
 
@@ -1443,20 +1423,22 @@ export default function DeliveryCRMPage() {
                             {isFirstInDate ? formatDate(date) : ''}
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="orderNumber" className="text-center">
-                            <div className="flex flex-col gap-1">
-                              <div className="flex items-center gap-1">
+                            <div className="flex flex-col gap-0.5">
+                              <div className="flex items-center gap-0.5">
                                 <Textarea
                                   value={order.orderNumber}
                                   onChange={(e) => handleCellChange(order.id, 'orderNumber', e.target.value)}
                                   placeholder="№ заказа"
-                                  className="border-0 bg-transparent p-0 h-auto min-h-[2rem] flex-1 resize-none focus-visible:ring-0 text-center"
+                                  className="border-0 bg-transparent p-0 h-auto min-h-[1.5rem] flex-1 resize-none focus-visible:ring-0 text-center"
                                   rows={1}
                                   style={{ 
                                     height: 'auto',
                                     overflow: 'visible',
                                     wordWrap: 'break-word',
                                     whiteSpace: 'pre-wrap',
-                                    textAlign: 'center'
+                                    textAlign: 'center',
+                                    fontSize: '0.7rem',
+                                    lineHeight: '1.3'
                                   }}
                                   onInput={(e) => {
                                     const target = e.target as HTMLTextAreaElement
@@ -1469,7 +1451,7 @@ export default function DeliveryCRMPage() {
                                   type="button"
                                   variant="ghost"
                                   size="sm"
-                                  className="h-6 w-6 p-0 flex-shrink-0"
+                                  className="h-5 w-5 p-0 flex-shrink-0"
                                   onClick={() => {
                                     const orderId = order.orderNumber.trim()
                                     if (orderId) {
@@ -1485,20 +1467,20 @@ export default function DeliveryCRMPage() {
                                   title="Загрузить из Битрикса"
                                 >
                                   {loadingBitrix === order.orderNumber ? (
-                                    <Loader2 className="w-3 h-3 animate-spin" />
+                                    <Loader2 className="w-2.5 h-2.5 animate-spin" />
                                   ) : (
-                                    <Download className="w-3 h-3" />
+                                    <Download className="w-2.5 h-2.5" />
                                   )}
                                 </Button>
                               </div>
                               {/* Кнопки меток */}
-                              <div className="flex items-center justify-center gap-1">
+                              <div className="flex items-center justify-center gap-0.5">
                                 <div className="relative">
                                   <Button
                                     type="button"
                                     variant="ghost"
                                     size="sm"
-                                    className={`h-5 px-2 text-xs ${(order.tags || []).includes('REKL') ? 'bg-pink-200 dark:bg-pink-800' : ''}`}
+                                    className={`h-4 px-1 text-[0.65rem] ${(order.tags || []).includes('REKL') ? 'bg-pink-200 dark:bg-pink-800' : ''}`}
                                     onClick={(e) => {
                                       e.stopPropagation()
                                       if ((order.tags || []).includes('REKL')) {
@@ -1547,7 +1529,7 @@ export default function DeliveryCRMPage() {
                                   type="button"
                                   variant="ghost"
                                   size="sm"
-                                  className={`h-5 px-2 text-xs ${(order.tags || []).includes('ТК') ? 'bg-blue-200 dark:bg-blue-800' : ''}`}
+                                  className={`h-4 px-1 text-[0.65rem] ${(order.tags || []).includes('ТК') ? 'bg-blue-200 dark:bg-blue-800' : ''}`}
                                   onClick={(e) => {
                                     e.stopPropagation()
                                     handleTagToggle(order.id, 'ТК')
