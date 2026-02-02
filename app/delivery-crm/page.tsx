@@ -1405,14 +1405,14 @@ export default function DeliveryCRMPage() {
                             {isFirstInDate ? formatDate(date) : ''}
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="orderNumber" className="text-center align-middle">
-                            <div className="relative h-full w-full" style={{ minHeight: '2.5rem', paddingBottom: '20px' }}>
+                            <div className="relative h-full w-full flex flex-col" style={{ minHeight: '2.5rem' }}>
                               {/* Номер заказа по центру ячейки */}
                               <div 
-                                className="absolute left-0 right-0 flex items-center justify-center"
+                                className="flex-1 flex items-center justify-center w-full"
                                 style={{ 
-                                  top: '50%',
-                                  transform: 'translateY(-50%)',
-                                  marginTop: order.orderNumber.trim() ? '0' : '-10px' // Смещаем вверх если есть кнопки
+                                  minHeight: 0,
+                                  paddingTop: '4px',
+                                  paddingBottom: '20px' // Отступ для кнопок
                                 }}
                               >
                                 <Textarea
@@ -1422,7 +1422,7 @@ export default function DeliveryCRMPage() {
                                   className="border-0 bg-transparent p-0 h-auto w-full resize-none focus-visible:ring-0 text-center"
                                   rows={1}
                                   style={{ 
-                                    height: 'auto',
+                                    height: order.isEmpty ? '1.5rem' : 'auto',
                                     minHeight: '1.5rem',
                                     overflow: 'visible',
                                     wordWrap: 'break-word',
@@ -1444,8 +1444,8 @@ export default function DeliveryCRMPage() {
                               </div>
                               {/* Кнопки внизу в одну строчку, выровнены по высоте */}
                               <div 
-                                className="absolute bottom-0 left-0 right-0 flex items-center justify-center gap-1"
-                                style={{ height: '18px' }}
+                                className="flex items-center justify-center gap-1 flex-shrink-0"
+                                style={{ height: '18px', marginTop: 'auto' }}
                               >
                                 <div className="relative">
                                   <Button
