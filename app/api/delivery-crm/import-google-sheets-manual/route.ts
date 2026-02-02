@@ -121,8 +121,28 @@ export async function POST(request: NextRequest) {
     // Проверяем, что модель DeliveryOrder существует
     if (!prisma.deliveryOrder) {
       console.error('[Import] DeliveryOrder model not found in Prisma client')
+      console.error('[Import] Available models:', Object.keys(prisma).filter(key => !key.startsWith('$') && !key.startsWith('_')))
       return NextResponse.json(
-        { error: 'Database model error: DeliveryOrder model not found. Please run: npx prisma generate && npx prisma migrate dev' },
+        { 
+          error: 'Database model error: DeliveryOrder model not found.',
+          hint: 'Please run: npx prisma generate && npx prisma migrate dev --name add_delivery_order',
+          availableModels: Object.keys(prisma).filter(key => !key.startsWith('$') && !key.startsWith('_'))
+        },
+        { status: 500 }
+      )
+    }
+
+    // Проверяем подключение к БД
+    try {
+      await prisma.$queryRaw`SELECT 1`
+    } catch (dbError: any) {
+      console.error('[Import] Database connection error:', dbError)
+      return NextResponse.json(
+        { 
+          error: 'Database connection failed',
+          details: dbError.message,
+          hint: 'Please check DATABASE_URL and ensure database is accessible'
+        },
         { status: 500 }
       )
     }
