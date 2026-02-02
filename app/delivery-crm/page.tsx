@@ -168,6 +168,52 @@ const initialColumnWidths: Record<string, number> = {
   delivered: 70,
 }
 
+// Компонент для заголовка столбца
+const ResizableTableHead = ({ columnKey, children, className = '', columnWidths }: { columnKey: string; children: React.ReactNode; className?: string; columnWidths: Record<string, number> }) => {
+  return (
+    <TableHead 
+      className={`relative border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 ${className}`}
+      style={{ 
+        width: columnWidths[columnKey], 
+        minWidth: columnWidths[columnKey], 
+        maxWidth: columnWidths[columnKey]
+      }}
+    >
+      <div className="flex items-center justify-center relative h-full">
+        <div 
+          className="flex-1 text-center" 
+          style={{ 
+            padding: '1px',
+            fontSize: '0.75rem',
+            lineHeight: '1.2',
+            wordWrap: 'break-word',
+            overflowWrap: 'break-word',
+            hyphens: 'auto',
+            whiteSpace: 'normal'
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    </TableHead>
+  );
+};
+
+// Компонент для ячейки
+const ResizableTableCell = ({ columnKey, children, className = '', columnWidths, ...props }: { columnKey: string; children: React.ReactNode; className?: string; columnWidths: Record<string, number>; [key: string]: any }) => {
+  return (
+    <TableCell 
+      className={`border-r border-gray-200 dark:border-gray-700 p-0 relative ${className}`}
+      style={{ width: columnWidths[columnKey], minWidth: columnWidths[columnKey], maxWidth: columnWidths[columnKey] }}
+      {...props}
+    >
+      <div className="w-full h-full px-0.5 py-0.5">
+        {children}
+      </div>
+    </TableCell>
+  );
+};
+
 export default function DeliveryCRMPage() {
   const [orders, setOrders] = useState<DeliveryOrder[]>(createInitialOrders)
   const [draggedOrderId, setDraggedOrderId] = useState<string | null>(null)
@@ -1168,50 +1214,6 @@ export default function DeliveryCRMPage() {
     }
   }, [resizingColumn, resizeStartX, resizeStartWidth])
 
-  const ResizableTableHead = ({ columnKey, children, className = '' }: { columnKey: string; children: React.ReactNode; className?: string }) => {
-    return (
-      <TableHead 
-        className={`relative border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 ${className}`}
-        style={{ 
-          width: columnWidths[columnKey], 
-          minWidth: columnWidths[columnKey], 
-          maxWidth: columnWidths[columnKey]
-        }}
-      >
-        <div className="flex items-center justify-center relative h-full">
-          <div 
-            className="flex-1 text-center" 
-            style={{ 
-              padding: '1px',
-              fontSize: '0.75rem',
-              lineHeight: '1.2',
-              wordWrap: 'break-word',
-              overflowWrap: 'break-word',
-              hyphens: 'auto',
-              whiteSpace: 'normal'
-            }}
-          >
-            {children}
-          </div>
-        </div>
-      </TableHead>
-    );
-  };
-
-  const ResizableTableCell = ({ columnKey, children, className = '', ...props }: { columnKey: string; children: React.ReactNode; className?: string; [key: string]: any }) => {
-    return (
-      <TableCell 
-        className={`border-r border-gray-200 dark:border-gray-700 p-0 relative ${className}`}
-        style={{ width: columnWidths[columnKey], minWidth: columnWidths[columnKey], maxWidth: columnWidths[columnKey] }}
-        {...props}
-      >
-        <div className="w-full h-full px-0.5 py-0.5">
-          {children}
-        </div>
-      </TableCell>
-    );
-  };
-
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Fixed Header */}
@@ -1280,44 +1282,44 @@ export default function DeliveryCRMPage() {
                 <Table ref={tableRef} className="table-fixed w-full">
                   <TableHeader className="sticky top-[80px] z-10 bg-white dark:bg-gray-900">
                   <TableRow>
-                    <ResizableTableHead columnKey="drag" className="text-center"></ResizableTableHead>
-                    <ResizableTableHead columnKey="date" className="text-center">
+                    <ResizableTableHead columnKey="drag" className="text-center" columnWidths={columnWidths}></ResizableTableHead>
+                    <ResizableTableHead columnKey="date" className="text-center" columnWidths={columnWidths}>
                       Дата
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="orderNumber" className="text-center">
+                    <ResizableTableHead columnKey="orderNumber" className="text-center" columnWidths={columnWidths}>
                       № заказа
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="wrote" className="text-center">
+                    <ResizableTableHead columnKey="wrote" className="text-center" columnWidths={columnWidths}>
                       Написали
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="confirmed" className="text-center">
+                    <ResizableTableHead columnKey="confirmed" className="text-center" columnWidths={columnWidths}>
                       Подтвердили
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="products" className="text-center">
+                    <ResizableTableHead columnKey="products" className="text-center" columnWidths={columnWidths}>
                       Товары
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="fsm" className="text-center">
+                    <ResizableTableHead columnKey="fsm" className="text-center" columnWidths={columnWidths}>
                       ФСМ
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="address" className="text-center">
+                    <ResizableTableHead columnKey="address" className="text-center" columnWidths={columnWidths}>
                       Адрес
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="contact" className="text-center">
+                    <ResizableTableHead columnKey="contact" className="text-center" columnWidths={columnWidths}>
                       Контакт
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="payment" className="text-center">
+                    <ResizableTableHead columnKey="payment" className="text-center" columnWidths={columnWidths}>
                       Оплата
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="time" className="text-center">
+                    <ResizableTableHead columnKey="time" className="text-center" columnWidths={columnWidths}>
                       Время
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="comment" className="text-center">
+                    <ResizableTableHead columnKey="comment" className="text-center" columnWidths={columnWidths}>
                       Комментарий
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="shipped" className="text-center">
+                    <ResizableTableHead columnKey="shipped" className="text-center" columnWidths={columnWidths}>
                       Отгрузили
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="delivered" className="text-center">
+                    <ResizableTableHead columnKey="delivered" className="text-center" columnWidths={columnWidths}>
                       Доставлен
                     </ResizableTableHead>
                   </TableRow>
@@ -1362,6 +1364,7 @@ export default function DeliveryCRMPage() {
                           </ResizableTableCell>
                           <ResizableTableCell
                             columnKey="date"
+                            columnWidths={columnWidths}
                             onDragOver={(e) => handleDragOver(e, date)}
                             onDragLeave={handleDragLeave}
                             onDrop={(e) => handleDrop(e, date)}
@@ -1369,7 +1372,7 @@ export default function DeliveryCRMPage() {
                           >
                             {isFirstInDate ? formatDate(date) : ''}
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="orderNumber" className="text-center align-middle">
+                          <ResizableTableCell columnKey="orderNumber" className="text-center align-middle" columnWidths={columnWidths}>
                             <div className="relative h-full w-full flex flex-col" style={{ minHeight: '2.5rem' }}>
                               {/* Номер заказа сверху */}
                               <div 
@@ -1503,6 +1506,7 @@ export default function DeliveryCRMPage() {
                           </ResizableTableCell>
                           <ResizableTableCell 
                             columnKey="wrote"
+                            columnWidths={columnWidths}
                             className="text-center align-middle cursor-pointer"
                             onClick={(e) => {
                               e.stopPropagation()
@@ -1516,6 +1520,7 @@ export default function DeliveryCRMPage() {
                           </ResizableTableCell>
                           <ResizableTableCell 
                             columnKey="confirmed"
+                            columnWidths={columnWidths}
                             className="text-center align-middle cursor-pointer"
                             onClick={(e) => {
                               e.stopPropagation()
@@ -1527,7 +1532,7 @@ export default function DeliveryCRMPage() {
                               onCheckedChange={() => handleCheckboxChange(order.id, 'confirmed')}
                             />
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="products" className="align-middle">
+                          <ResizableTableCell columnKey="products" className="align-middle" columnWidths={columnWidths}>
                             <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
                               <Textarea
                                 value={order.products}
@@ -1560,7 +1565,7 @@ export default function DeliveryCRMPage() {
                               />
                             </div>
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="fsm" className="text-center align-middle">
+                          <ResizableTableCell columnKey="fsm" className="text-center align-middle" columnWidths={columnWidths}>
                             <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
                               <Textarea
                                 value={order.fsm}
@@ -1587,7 +1592,7 @@ export default function DeliveryCRMPage() {
                               />
                             </div>
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="address" className="align-middle">
+                          <ResizableTableCell columnKey="address" className="align-middle" columnWidths={columnWidths}>
                             <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
                               <Textarea
                                 value={order.address}
@@ -1620,7 +1625,7 @@ export default function DeliveryCRMPage() {
                               />
                             </div>
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="contact" className="text-center align-middle">
+                          <ResizableTableCell columnKey="contact" className="text-center align-middle" columnWidths={columnWidths}>
                             <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
                               <Textarea
                                 value={order.contact}
@@ -1649,6 +1654,7 @@ export default function DeliveryCRMPage() {
                           </ResizableTableCell>
                           <ResizableTableCell 
                             columnKey="payment"
+                            columnWidths={columnWidths}
                             className={`text-center align-middle ${
                               order.payment.toLowerCase().includes('оплачено') || order.payment.toLowerCase().includes('оплачен')
                                 ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
@@ -1682,7 +1688,7 @@ export default function DeliveryCRMPage() {
                               />
                             </div>
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="time" className="text-center align-middle">
+                          <ResizableTableCell columnKey="time" className="text-center align-middle" columnWidths={columnWidths}>
                             <div className="flex flex-col gap-0.5 items-center justify-center h-full" style={{ minHeight: '2.5rem' }}>
                               <Input
                                 value={parseTimeSlot(order.time).start}
@@ -1760,7 +1766,7 @@ export default function DeliveryCRMPage() {
                               />
                             </div>
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="comment" className="align-middle">
+                          <ResizableTableCell columnKey="comment" className="align-middle" columnWidths={columnWidths}>
                             <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
                               <Textarea
                                 value={order.comment}
@@ -1796,6 +1802,7 @@ export default function DeliveryCRMPage() {
                           </ResizableTableCell>
                           <ResizableTableCell 
                             columnKey="shipped"
+                            columnWidths={columnWidths}
                             className="text-center align-middle cursor-pointer"
                             onClick={(e) => {
                               e.stopPropagation()
@@ -1809,6 +1816,7 @@ export default function DeliveryCRMPage() {
                           </ResizableTableCell>
                           <ResizableTableCell 
                             columnKey="delivered"
+                            columnWidths={columnWidths}
                             className="text-center align-middle cursor-pointer"
                             onClick={(e) => {
                               e.stopPropagation()
