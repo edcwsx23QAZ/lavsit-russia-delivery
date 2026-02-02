@@ -226,23 +226,45 @@ export default function DeliveryCRMPage() {
     return { start: timeStr.trim(), end: '' }
   }
 
-  // Обработка изменения начала времени
-  const handleTimeStartChange = (id: string, startValue: string) => {
+  // Обработка изменения начала времени с умным форматированием
+  const handleTimeStartChange = (id: string, startValue: string, cursorPosition?: number) => {
     const order = orders.find(o => o.id === id)
     if (!order) return
     
+    // Удаляем все нецифровые символы
+    const digitsOnly = startValue.replace(/\D/g, '')
+    
+    // Форматируем как время (XX:XX)
+    let formatted = digitsOnly
+    if (digitsOnly.length > 2) {
+      formatted = digitsOnly.slice(0, 2) + ':' + digitsOnly.slice(2, 4)
+    } else if (digitsOnly.length > 0) {
+      formatted = digitsOnly
+    }
+    
     const { end } = parseTimeSlot(order.time)
-    const newTime = end ? `${startValue} - ${end}` : startValue
+    const newTime = end ? `${formatted} - ${end}` : formatted
     handleCellChange(id, 'time', newTime)
   }
 
-  // Обработка изменения окончания времени
-  const handleTimeEndChange = (id: string, endValue: string) => {
+  // Обработка изменения окончания времени с умным форматированием
+  const handleTimeEndChange = (id: string, endValue: string, cursorPosition?: number) => {
     const order = orders.find(o => o.id === id)
     if (!order) return
     
+    // Удаляем все нецифровые символы
+    const digitsOnly = endValue.replace(/\D/g, '')
+    
+    // Форматируем как время (XX:XX)
+    let formatted = digitsOnly
+    if (digitsOnly.length > 2) {
+      formatted = digitsOnly.slice(0, 2) + ':' + digitsOnly.slice(2, 4)
+    } else if (digitsOnly.length > 0) {
+      formatted = digitsOnly
+    }
+    
     const { start } = parseTimeSlot(order.time)
-    const newTime = start ? `${start} - ${endValue}` : endValue
+    const newTime = start ? `${start} - ${formatted}` : formatted
     handleCellChange(id, 'time', newTime)
   }
 
@@ -1203,11 +1225,21 @@ export default function DeliveryCRMPage() {
           {children}
         </div>
         <div
-          className="absolute right-0 top-0 h-full cursor-col-resize bg-transparent hover:bg-blue-400 dark:hover:bg-blue-500 active:bg-blue-600 dark:active:bg-blue-700 transition-colors z-10"
+          className="absolute right-0 top-0 h-full cursor-col-resize z-20"
           onMouseDown={(e) => handleResizeStart(e, columnKey)}
           style={{ 
-            marginRight: '-1px',
-            width: '4px'
+            marginRight: '-2px',
+            width: '6px',
+            backgroundColor: 'rgba(59, 130, 246, 0.3)',
+            borderRight: '2px solid rgba(59, 130, 246, 0.6)'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.5)'
+            e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.8)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.3)'
+            e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.6)'
           }}
           title="Перетащите для изменения ширины столбца"
         />
@@ -1679,47 +1711,110 @@ export default function DeliveryCRMPage() {
                             <div className="flex flex-col gap-0.5 items-center justify-center">
                               <Input
                                 value={parseTimeSlot(order.time).start}
-                                onChange={(e) => handleTimeStartChange(order.id, e.target.value)}
+                                onChange={(e) => {
+                                  const value = e.target.value
+                                  const cursorPos = e.target.selectionStart || 0
+                                  handleTimeStartChange(order.id, value, cursorPos)
+                                  // Восстанавливаем позицию курсора после форматирования
+                                  setTimeout(() => {
+                                    const input = e.target
+                                    const newValue = parseTimeSlot(orders.find(o => o.id === order.id)?.time || '').start
+                                    let newCursorPos = cursorPos
+                                    // Если добавился двоеточие, сдвигаем курсор
+                                    if (newValue.length > value.length && newValue.includes(':') && !value.includes(':')) {
+                                      newCursorPos = Math.min(cursorPos + 1, newValue.length)
+                                    }
+                                    input.setSelectionRange(newCursorPos, newCursorPos)
+                                  }, 0)
+                                }}
+                                onKeyDown={(e) => {
+                                  // Позволяем удаление и навигацию
+                                  if (['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(e.key)) {
+                                    return
+                                  }
+                                  // Разрешаем только цифры
+                                  if (!/^\d$/.test(e.key) && !e.ctrlKey && !e.metaKey) {
+                                    e.preventDefault()
+                                  }
+                                }}
                                 placeholder="11:00"
                                 className="border-0 bg-transparent p-0 h-5 text-center text-xs focus-visible:ring-0 focus-visible:ring-offset-0"
                                 style={{ 
                                   textAlign: 'center',
                                   fontSize: '0.75rem',
-                                  lineHeight: '1.2'
+                                  lineHeight: '1.2',
+                                  width: '100%'
                                 }}
                               />
                               <Input
                                 value={parseTimeSlot(order.time).end}
-                                onChange={(e) => handleTimeEndChange(order.id, e.target.value)}
+                                onChange={(e) => {
+                                  const value = e.target.value
+                                  const cursorPos = e.target.selectionStart || 0
+                                  handleTimeEndChange(order.id, value, cursorPos)
+                                  // Восстанавливаем позицию курсора после форматирования
+                                  setTimeout(() => {
+                                    const input = e.target
+                                    const newValue = parseTimeSlot(orders.find(o => o.id === order.id)?.time || '').end
+                                    let newCursorPos = cursorPos
+                                    // Если добавился двоеточие, сдвигаем курсор
+                                    if (newValue.length > value.length && newValue.includes(':') && !value.includes(':')) {
+                                      newCursorPos = Math.min(cursorPos + 1, newValue.length)
+                                    }
+                                    input.setSelectionRange(newCursorPos, newCursorPos)
+                                  }, 0)
+                                }}
+                                onKeyDown={(e) => {
+                                  // Позволяем удаление и навигацию
+                                  if (['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(e.key)) {
+                                    return
+                                  }
+                                  // Разрешаем только цифры
+                                  if (!/^\d$/.test(e.key) && !e.ctrlKey && !e.metaKey) {
+                                    e.preventDefault()
+                                  }
+                                }}
                                 placeholder="13:00"
                                 className="border-0 bg-transparent p-0 h-5 text-center text-xs focus-visible:ring-0 focus-visible:ring-offset-0"
                                 style={{ 
                                   textAlign: 'center',
                                   fontSize: '0.75rem',
-                                  lineHeight: '1.2'
+                                  lineHeight: '1.2',
+                                  width: '100%'
                                 }}
                               />
                             </div>
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="comment" className="align-top">
-                            <Textarea
-                              value={order.comment}
-                              onChange={(e) => handleCellChange(order.id, 'comment', e.target.value)}
-                              placeholder="Комментарий"
-                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0"
-                              rows={1}
-                              style={{ 
-                                height: 'auto',
-                                overflow: 'visible',
-                                wordWrap: 'break-word',
-                                whiteSpace: 'pre-wrap'
-                              }}
-                              onInput={(e) => {
-                                const target = e.target as HTMLTextAreaElement
-                                target.style.height = 'auto'
-                                target.style.height = `${target.scrollHeight}px`
-                              }}
-                            />
+                          <ResizableTableCell columnKey="comment" className="align-middle">
+                            <div className="flex items-center justify-center h-full min-h-[2rem]">
+                              <Textarea
+                                value={order.comment}
+                                onChange={(e) => handleCellChange(order.id, 'comment', e.target.value)}
+                                placeholder="Комментарий"
+                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
+                                rows={1}
+                                style={{ 
+                                  height: 'auto',
+                                  overflow: 'visible',
+                                  wordWrap: 'break-word',
+                                  whiteSpace: 'pre-wrap',
+                                  textAlign: 'center',
+                                  verticalAlign: 'middle'
+                                }}
+                                onInput={(e) => {
+                                  const target = e.target as HTMLTextAreaElement
+                                  target.style.height = 'auto'
+                                  const newHeight = Math.max(32, target.scrollHeight)
+                                  target.style.height = `${newHeight}px`
+                                  // Обновляем высоту строки если нужно
+                                  const row = target.closest('tr')
+                                  if (row) {
+                                    row.style.height = 'auto'
+                                    row.style.minHeight = `${newHeight + 8}px`
+                                  }
+                                }}
+                              />
+                            </div>
                           </ResizableTableCell>
                           <ResizableTableCell 
                             columnKey="shipped"
