@@ -1212,11 +1212,10 @@ export default function DeliveryCRMPage() {
       document.body.style.cursor = ''
       document.body.style.userSelect = ''
     }
-  }, [resizingColumn, resizeStartX, resizeStartWidth])
+  }, [resizingColumn, resizeStartX, resizeStartWidth]);
 
   return (
-    <React.Fragment>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Fixed Header */}
       <div className="sticky top-0 z-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="p-3">
@@ -1903,6 +1902,5 @@ export default function DeliveryCRMPage() {
         </>
       )}
     </div>
-    </React.Fragment>
-  )
+  );
 }
