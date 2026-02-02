@@ -153,20 +153,20 @@ const getDateColor = (count: number): string => {
 
 // Начальные ширины столбцов (в пикселях) - оптимизированы для экрана без горизонтальной прокрутки
 const initialColumnWidths: Record<string, number> = {
-  drag: 30,
-  date: 60,
-  orderNumber: 80,
-  wrote: 70,
-  confirmed: 90,
-  products: 220,
-  fsm: 60,
-  address: 150,
-  contact: 120,
-  payment: 75,
-  time: 100,
-  comment: 120,
-  shipped: 70,
-  delivered: 75,
+  drag: 28,
+  date: 55,
+  orderNumber: 70,
+  wrote: 65,
+  confirmed: 85,
+  products: 180,
+  fsm: 55,
+  address: 130,
+  contact: 110,
+  payment: 70,
+  time: 95,
+  comment: 100,
+  shipped: 65,
+  delivered: 70,
 }
 
 export default function DeliveryCRMPage() {
