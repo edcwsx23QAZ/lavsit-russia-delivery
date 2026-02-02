@@ -109,6 +109,24 @@ function parseCSVLine(line: string): string[] {
  */
 export async function POST(request: NextRequest) {
   try {
+    // Проверяем, что prisma инициализирован
+    if (!prisma) {
+      console.error('[Import] Prisma client is not initialized')
+      return NextResponse.json(
+        { error: 'Database connection error: Prisma client not initialized' },
+        { status: 500 }
+      )
+    }
+
+    // Проверяем, что модель DeliveryOrder существует
+    if (!prisma.deliveryOrder) {
+      console.error('[Import] DeliveryOrder model not found in Prisma client')
+      return NextResponse.json(
+        { error: 'Database model error: DeliveryOrder model not found. Please run: npx prisma generate && npx prisma migrate dev' },
+        { status: 500 }
+      )
+    }
+
     const body = await request.json().catch(() => ({}))
     const spreadsheetId = body.spreadsheetId || '1Cvl-0P0uBoYupGGbZ2AG70S0VDyrAII8L0vNjUykOsI'
     const gid = body.gid || '0' // Можно указать gid вкладки "Доставки" если он не 0
@@ -317,26 +335,50 @@ export async function POST(request: NextRequest) {
           }
 
           // Проверяем, существует ли заказ с таким номером и датой
-          const existing = await prisma.deliveryOrder.findFirst({
-            where: {
-              orderNumber: processedData.orderNumber,
-              date: processedData.date,
-            },
-          })
+          let existing = null
+          try {
+            if (!prisma.deliveryOrder) {
+              throw new Error('DeliveryOrder model not available in Prisma client')
+            }
+            existing = await prisma.deliveryOrder.findFirst({
+              where: {
+                orderNumber: processedData.orderNumber,
+                date: processedData.date,
+              },
+            })
+          } catch (dbError: any) {
+            console.error(`[Import] Database error finding order for ${processedData.orderNumber}:`, dbError)
+            const errorMsg = dbError.message || 'Unknown database error'
+            // Если это ошибка отсутствия модели, возвращаем понятное сообщение
+            if (errorMsg.includes('deliveryOrder') || errorMsg.includes('DeliveryOrder')) {
+              throw new Error('Database model not found. Please run: npx prisma generate && npx prisma migrate dev')
+            }
+            throw new Error(`Database error: ${errorMsg}`)
+          }
 
           if (existing) {
             // Обновляем существующий заказ
-            await prisma.deliveryOrder.update({
-              where: { id: existing.id },
-              data: processedData,
-            })
-            updated++
+            try {
+              await prisma.deliveryOrder.update({
+                where: { id: existing.id },
+                data: processedData,
+              })
+              updated++
+            } catch (updateError: any) {
+              console.error(`[Import] Error updating order:`, updateError)
+              throw new Error(`Update error: ${updateError.message || 'Unknown error'}`)
+            }
           } else {
             // Создаем новый заказ
-            await prisma.deliveryOrder.create({
-              data: processedData,
-            })
-            imported++
+            try {
+              await prisma.deliveryOrder.create({
+                data: processedData,
+              })
+              imported++
+            } catch (createError: any) {
+              console.error(`[Import] Error creating order:`, createError)
+              throw new Error(`Create error: ${createError.message || 'Unknown error'}`)
+            }
           }
         } catch (error: any) {
           const errorMessage = error.message || String(error)
