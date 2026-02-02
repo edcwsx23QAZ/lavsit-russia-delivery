@@ -5175,6 +5175,12 @@ export default function Home() {
             >
               Инструкция логиста
             </Link>
+            <Link 
+              href="/delivery-crm" 
+              className="text-blue-400 hover:text-blue-300 underline text-sm font-medium transition-colors"
+            >
+              Delivery CRM
+            </Link>
           </div>
           
           {/* Индикатор сохранения */}

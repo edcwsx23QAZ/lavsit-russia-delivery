@@ -57,3 +57,31 @@ model WikiVersion {
   @@index([pageId])
   @@index([createdAt])
 }
+
+model DeliveryOrder {
+  id            String    @id @default(cuid())
+  bitrixOrderId String?   @unique // ID заказа в Битриксе
+  orderNumber   String    // Номер заказа
+  date          DateTime  // Дата доставки
+  products      String    @default("") // Товары (текст)
+  address       String    @default("") // Адрес доставки
+  contact       String    @default("") // Контакты
+  payment       String    @default("") // Статус оплаты
+  paymentAmount Float?    // Сумма предоплаты/доплаты (скрытое поле)
+  time          String    @default("") // Время доставки
+  comment       String    @default("") // Комментарий
+  fsm           String    @default("") // ФСМ
+  wrote         Boolean   @default(false) // Написали
+  confirmed     Boolean   @default(false) // Подтвердили
+  shipped       Boolean   @default(false) // Отгрузили
+  delivered     Boolean   @default(false) // Доставлен
+  isEmpty       Boolean   @default(false) // Флаг пустой строки
+  bitrixData    Json?     // Полные данные из Битрикса
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  @@map("delivery_orders")
+  @@index([date])
+  @@index([bitrixOrderId])
+  @@index([orderNumber])
+}

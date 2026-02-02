@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 6001",
+    "dev": "next dev -p 9000",
     "build": "prisma generate && next build",
-    "start": "next start -p 6001",
+    "start": "next start -p 9000",
     "postinstall": "prisma generate",
     "db:studio": "prisma studio",
     "db:seed": "prisma db seed"
@@ -42,6 +42,7 @@
     "@radix-ui/react-tooltip": "^1.1.2",
     "@supabase/supabase-js": "^2.52.0",
     "autoprefixer": "10.4.20",
+    "axios": "^1.13.4",
     "class-variance-authority": "0.7.1",
     "clsx": "2.1.1",
     "cmdk": "1.0.4",

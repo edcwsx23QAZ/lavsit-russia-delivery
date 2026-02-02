@@ -360,3 +360,4 @@ initWikiStructure()
     process.exit(1);
   });
 
+

@@ -41,3 +41,8 @@ next-env.d.ts
 # database
 prisma/*.db
 .env*.local
+
+# backups
+backup-*/
+backups/
+*.patch
