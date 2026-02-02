@@ -24,6 +24,10 @@ import {
   Loader2,
   Calculator,
   Upload,
+  Tag,
+  MoreVertical,
+  Palette,
+  FileSpreadsheet,
 } from 'lucide-react'
 import { Textarea } from '@/components/ui/textarea'
 import { format, addDays, startOfToday, endOfYear, startOfYear, isBefore, isSameDay, parseISO } from 'date-fns'
@@ -40,11 +44,14 @@ interface DeliveryOrder {
   address: string
   contact: string
   payment: string
-  time: string
+  time: string // Формат: "11:00 - 13:00" (слот времени)
+  timeStart?: string // Начало слота (для сортировки)
   comment: string
   shipped: boolean
   delivered: boolean
   isEmpty: boolean // Флаг пустой строки
+  tags?: string[] // Метки: ["REKL", "ТК"]
+  rowColor?: string // Цвет строки (hex или название)
 }
 
 // Форматирование даты в "05.02" (ДД.ММ)
@@ -113,6 +120,8 @@ const createInitialOrders = (): DeliveryOrder[] => {
       shipped: false,
       delivered: false,
       isEmpty: true,
+      tags: [],
+      rowColor: undefined,
     })
   })
   
@@ -174,10 +183,149 @@ export default function DeliveryCRMPage() {
   const [isLoadingOrders, setIsLoadingOrders] = useState(false)
   const [isInitialized, setIsInitialized] = useState(false)
   const [isImporting, setIsImporting] = useState(false)
+  const [contextMenu, setContextMenu] = useState<{ x: number; y: number; orderId: string } | null>(null)
+  const [tagMenu, setTagMenu] = useState<{ orderId: string; x: number; y: number } | null>(null)
   const editingCellRef = useRef<{ orderId: string; field: keyof DeliveryOrder } | null>(null)
   const tableRef = useRef<HTMLTableElement>(null)
   
   const today = startOfToday()
+
+  // Цвета для строк
+  const rowColors = [
+    { name: 'Без цвета', value: '' },
+    { name: 'Красный', value: '#fee2e2' },
+    { name: 'Оранжевый', value: '#fed7aa' },
+    { name: 'Желтый', value: '#fef3c7' },
+    { name: 'Зеленый', value: '#d1fae5' },
+    { name: 'Голубой', value: '#dbeafe' },
+    { name: 'Синий', value: '#dbeafe' },
+    { name: 'Фиолетовый', value: '#e9d5ff' },
+    { name: 'Розовый', value: '#fce7f3' },
+    { name: 'Серый', value: '#f3f4f6' },
+  ]
+
+  // Варианты рекламаций (пока базовый список, можно расширить)
+  const reklOptions = [
+    'Повреждение при доставке',
+    'Несоответствие заказу',
+    'Брак',
+    'Другое',
+  ]
+
+  // Обработка изменения времени (формат слота)
+  const handleTimeChange = (id: string, value: string) => {
+    // Если введено просто время (например, "11:00"), преобразуем в слот
+    if (value && !value.includes('-')) {
+      const timeMatch = value.match(/^(\d{1,2}):(\d{2})$/)
+      if (timeMatch) {
+        const hours = parseInt(timeMatch[1], 10)
+        const endHours = hours + 2 // Слот 2 часа по умолчанию
+        const endTime = `${String(endHours).padStart(2, '0')}:${timeMatch[2]}`
+        value = `${value} - ${endTime}`
+      }
+    }
+    handleCellChange(id, 'time', value)
+  }
+
+  // Обработка добавления/удаления меток
+  const handleTagToggle = (orderId: string, tag: string) => {
+    setOrders(orders.map(order => {
+      if (order.id === orderId) {
+        const currentTags = order.tags || []
+        const newTags = currentTags.includes(tag)
+          ? currentTags.filter(t => t !== tag)
+          : [...currentTags, tag]
+        return { ...order, tags: newTags }
+      }
+      return order
+    }))
+  }
+
+  // Обработка изменения цвета строки
+  const handleRowColorChange = (orderId: string, color: string) => {
+    setOrders(orders.map(order => 
+      order.id === orderId 
+        ? { ...order, rowColor: color || undefined }
+        : order
+    ))
+    setContextMenu(null)
+  }
+
+  // Получение цвета строки с учетом меток
+  const getRowBackgroundColor = (order: DeliveryOrder): string => {
+    // Если установлен цвет строки, используем его
+    if (order.rowColor) {
+      return order.rowColor
+    }
+    
+    // Если есть метки, используем их цвета
+    const tags = order.tags || []
+    if (tags.includes('REKL')) {
+      return '#fce7f3' // Бледно-розовый
+    }
+    if (tags.includes('ТК')) {
+      return '#dbeafe' // Бледно-голубой
+    }
+    
+    return ''
+  }
+
+  // Экспорт в Google Sheets
+  const handleExportToGoogleSheets = async () => {
+    if (!confirm('Экспортировать все данные в Google Sheets? Это создаст новый файл.')) {
+      return
+    }
+
+    try {
+      // Формируем CSV данные
+      const csvRows: string[] = []
+      
+      // Заголовки
+      csvRows.push('Дата,№ заказа,Написали,Подтвердили,Товары,ФСМ,Адрес,Контакт,Оплата,Время,Комментарий,Отгрузили,Доставлен,Метки')
+      
+      // Данные
+      orders
+        .filter(o => !o.isEmpty)
+        .sort((a, b) => {
+          const dateCompare = a.date.localeCompare(b.date)
+          if (dateCompare !== 0) return dateCompare
+          return parseTimeForSort(a.time) - parseTimeForSort(b.time)
+        })
+        .forEach(order => {
+          const row = [
+            format(parseISO(order.date), 'dd.MM.yyyy'),
+            order.orderNumber || '',
+            order.wrote ? 'Да' : '',
+            order.confirmed ? 'Да' : '',
+            `"${(order.products || '').replace(/"/g, '""')}"`,
+            order.fsm || '',
+            `"${(order.address || '').replace(/"/g, '""')}"`,
+            order.contact || '',
+            order.payment || '',
+            order.time || '',
+            `"${(order.comment || '').replace(/"/g, '""')}"`,
+            order.shipped ? 'Да' : '',
+            order.delivered ? 'Да' : '',
+            (order.tags || []).join(', '),
+          ]
+          csvRows.push(row.join(','))
+        })
+      
+      const csvContent = csvRows.join('\n')
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' })
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = `delivery-crm-backup-${format(new Date(), 'yyyy-MM-dd')}.csv`
+      link.click()
+      URL.revokeObjectURL(url)
+      
+      alert('Данные экспортированы в CSV файл. Вы можете импортировать его в Google Sheets.')
+    } catch (error: any) {
+      console.error('Error exporting:', error)
+      alert(`Ошибка экспорта: ${error.message}`)
+    }
+  }
 
   // Загрузка заказов из БД при инициализации
   useEffect(() => {
@@ -222,6 +370,8 @@ export default function DeliveryCRMPage() {
               shipped: o.shipped || false,
               delivered: o.delivered || false,
               isEmpty: o.isEmpty || false,
+              tags: Array.isArray(o.tags) ? o.tags : (o.tags ? [o.tags] : []),
+              rowColor: o.rowColor || undefined,
             }))
             
             setOrders(dbOrders)
@@ -300,12 +450,14 @@ export default function DeliveryCRMPage() {
                     payment: o.payment || '',
                     time: o.time || '',
                     comment: o.comment || '',
-                    shipped: o.shipped || false,
-                    delivered: o.delivered || false,
-                    isEmpty: o.isEmpty || false,
-                  }))
-                  
-                  setOrders(dbOrders)
+              shipped: o.shipped || false,
+              delivered: o.delivered || false,
+              isEmpty: o.isEmpty || false,
+              tags: Array.isArray(o.tags) ? o.tags : (o.tags ? [o.tags] : []),
+              rowColor: o.rowColor || undefined,
+            }))
+            
+            setOrders(dbOrders)
                   localStorage.setItem('delivery-crm-orders', JSON.stringify(dbOrders))
                   return
                 }
@@ -534,12 +686,14 @@ export default function DeliveryCRMPage() {
             payment: o.payment || '',
             time: o.time || '',
             comment: o.comment || '',
-            shipped: o.shipped || false,
-            delivered: o.delivered || false,
-            isEmpty: o.isEmpty || false,
-          }))
-          
-          setOrders(dbOrders)
+              shipped: o.shipped || false,
+              delivered: o.delivered || false,
+              isEmpty: o.isEmpty || false,
+              tags: Array.isArray(o.tags) ? o.tags : (o.tags ? [o.tags] : []),
+              rowColor: o.rowColor || undefined,
+            }))
+            
+            setOrders(dbOrders)
           localStorage.setItem('delivery-crm-orders', JSON.stringify(dbOrders))
         }
       }
@@ -550,6 +704,23 @@ export default function DeliveryCRMPage() {
       setIsImporting(false)
     }
   }
+
+  // Закрытие контекстного меню при клике вне его
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (contextMenu) {
+        setContextMenu(null)
+      }
+      if (tagMenu) {
+        setTagMenu(null)
+      }
+    }
+
+    document.addEventListener('click', handleClickOutside)
+    return () => {
+      document.removeEventListener('click', handleClickOutside)
+    }
+  }, [contextMenu, tagMenu])
 
   // Синхронизация изменений с БД и localStorage
   useEffect(() => {
@@ -584,6 +755,8 @@ export default function DeliveryCRMPage() {
               shipped: o.shipped,
               delivered: o.delivered,
               isEmpty: o.isEmpty,
+              tags: o.tags || [],
+              rowColor: o.rowColor || undefined,
             })),
           }),
         })
@@ -599,7 +772,19 @@ export default function DeliveryCRMPage() {
     return () => clearTimeout(timeoutId)
   }, [orders, isInitialized])
 
-  // Группировка заказов по датам с сортировкой (пустые в конце)
+  // Парсинг времени для сортировки (извлекает начальное время из слота "11:00 - 13:00")
+  const parseTimeForSort = (timeStr: string): number => {
+    if (!timeStr) return 9999 // Пустые времена в конец
+    const match = timeStr.match(/^(\d{1,2}):(\d{2})/)
+    if (match) {
+      const hours = parseInt(match[1], 10)
+      const minutes = parseInt(match[2], 10)
+      return hours * 60 + minutes
+    }
+    return 9999
+  }
+
+  // Группировка заказов по датам с сортировкой по времени (от ранних к поздним)
   const ordersByDate = useMemo(() => {
     const grouped: Record<string, DeliveryOrder[]> = {}
     orders.forEach(order => {
@@ -608,12 +793,22 @@ export default function DeliveryCRMPage() {
       }
       grouped[order.date].push(order)
     })
-    // Сортируем каждую группу: сначала заполненные, потом пустые
+    // Сортируем каждую группу: сначала заполненные по времени, потом пустые
     Object.keys(grouped).forEach(date => {
       grouped[date].sort((a, b) => {
         if (a.isEmpty && !b.isEmpty) return 1
         if (!a.isEmpty && b.isEmpty) return -1
-        return 0
+        if (a.isEmpty && b.isEmpty) return 0
+        
+        // Сортируем по времени (от ранних к поздним)
+        const timeA = parseTimeForSort(a.time)
+        const timeB = parseTimeForSort(b.time)
+        if (timeA !== timeB) {
+          return timeA - timeB
+        }
+        
+        // Если время одинаковое, сортируем по номеру заказа
+        return (a.orderNumber || '').localeCompare(b.orderNumber || '')
       })
     })
     return grouped
@@ -696,6 +891,8 @@ export default function DeliveryCRMPage() {
         shipped: bitrixOrder.shipped || false,
         delivered: bitrixOrder.delivered || false,
         isEmpty: false,
+        tags: [],
+        rowColor: undefined,
       }
 
       // Обновляем заказы
@@ -748,6 +945,8 @@ export default function DeliveryCRMPage() {
           shipped: false,
           delivered: false,
           isEmpty: true,
+          tags: [],
+          rowColor: undefined,
         }
         updatedOrders.push(newEmptyOrder)
       }
@@ -1043,6 +1242,13 @@ export default function DeliveryCRMPage() {
               </Button>
               <Button
                 variant="outline"
+                onClick={handleExportToGoogleSheets}
+              >
+                <FileSpreadsheet className="w-4 h-4 mr-2" />
+                Экспорт в CSV
+              </Button>
+              <Button
+                variant="outline"
                 onClick={() => setShowHistory(!showHistory)}
               >
                 <History className="w-4 h-4 mr-2" />
@@ -1068,23 +1274,45 @@ export default function DeliveryCRMPage() {
                 <TableHeader>
                   <TableRow>
                     <ResizableTableHead columnKey="drag" className="text-center"></ResizableTableHead>
-                    <ResizableTableHead columnKey="date" className="text-center">Дата</ResizableTableHead>
-                    <ResizableTableHead columnKey="orderNumber" className="text-center">№ заказа</ResizableTableHead>
-                    <ResizableTableHead columnKey="wrote" className="text-center" style={{ fontSize: '0.75rem', lineHeight: '1.2', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ wordWrap: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>Написали</div>
+                    <ResizableTableHead columnKey="date" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ padding: '0 5px' }}>Дата</div>
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="confirmed" className="text-center" style={{ fontSize: '0.75rem', lineHeight: '1.2', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ wordWrap: 'break-word', overflowWrap: 'break-word', hyphens: 'auto' }}>Подтвердили</div>
+                    <ResizableTableHead columnKey="orderNumber" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ padding: '0 5px' }}>№ заказа</div>
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="products" className="text-center">Товары</ResizableTableHead>
-                    <ResizableTableHead columnKey="fsm" className="text-center">ФСМ</ResizableTableHead>
-                    <ResizableTableHead columnKey="address" className="text-center">Адрес</ResizableTableHead>
-                    <ResizableTableHead columnKey="contact" className="text-center">Контакт</ResizableTableHead>
-                    <ResizableTableHead columnKey="payment" className="text-center">Оплата</ResizableTableHead>
-                    <ResizableTableHead columnKey="time" className="text-center">Время</ResizableTableHead>
-                    <ResizableTableHead columnKey="comment" className="text-center">Комментарий</ResizableTableHead>
-                    <ResizableTableHead columnKey="shipped" className="text-center">Отгрузили</ResizableTableHead>
-                    <ResizableTableHead columnKey="delivered" className="text-center">Доставлен</ResizableTableHead>
+                    <ResizableTableHead columnKey="wrote" className="text-center" style={{ fontSize: '0.65rem', lineHeight: '1.1', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ wordWrap: 'break-word', overflowWrap: 'break-word', hyphens: 'auto', padding: '0 5px' }}>Написали</div>
+                    </ResizableTableHead>
+                    <ResizableTableHead columnKey="confirmed" className="text-center" style={{ fontSize: '0.65rem', lineHeight: '1.1', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ wordWrap: 'break-word', overflowWrap: 'break-word', hyphens: 'auto', padding: '0 5px' }}>Подтвердили</div>
+                    </ResizableTableHead>
+                    <ResizableTableHead columnKey="products" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ padding: '0 5px' }}>Товары</div>
+                    </ResizableTableHead>
+                    <ResizableTableHead columnKey="fsm" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ padding: '0 5px' }}>ФСМ</div>
+                    </ResizableTableHead>
+                    <ResizableTableHead columnKey="address" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ padding: '0 5px' }}>Адрес</div>
+                    </ResizableTableHead>
+                    <ResizableTableHead columnKey="contact" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ padding: '0 5px' }}>Контакт</div>
+                    </ResizableTableHead>
+                    <ResizableTableHead columnKey="payment" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ padding: '0 5px' }}>Оплата</div>
+                    </ResizableTableHead>
+                    <ResizableTableHead columnKey="time" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ padding: '0 5px' }}>Время</div>
+                    </ResizableTableHead>
+                    <ResizableTableHead columnKey="comment" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ padding: '0 5px' }}>Комментарий</div>
+                    </ResizableTableHead>
+                    <ResizableTableHead columnKey="shipped" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ padding: '0 5px' }}>Отгрузили</div>
+                    </ResizableTableHead>
+                    <ResizableTableHead columnKey="delivered" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
+                      <div style={{ padding: '0 5px' }}>Доставлен</div>
+                    </ResizableTableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -1107,11 +1335,20 @@ export default function DeliveryCRMPage() {
                           draggable
                           onDragStart={(e) => handleDragStart(e, order.id)}
                           onDragEnd={handleDragEnd}
+                          onContextMenu={(e) => {
+                            e.preventDefault()
+                            setContextMenu({ x: e.clientX, y: e.clientY, orderId: order.id })
+                          }}
                           className={`${isDragging ? 'opacity-50' : ''} ${isDragOver && !isDragging ? 'bg-blue-50 dark:bg-blue-900/20' : ''} ${hasTopBorder ? 'border-t-4 border-gray-600 dark:border-gray-500' : ''} cursor-move`}
-                          style={{ height: 'auto' }}
+                          style={{ 
+                            height: 'auto',
+                            backgroundColor: getRowBackgroundColor(order) || undefined
+                          }}
                         >
-                          <ResizableTableCell columnKey="drag">
-                            <GripVertical className="w-4 h-4 text-muted-foreground" />
+                          <ResizableTableCell columnKey="drag" className="text-center">
+                            <div className="flex items-center justify-center h-full">
+                              <GripVertical className="w-4 h-4 text-muted-foreground" />
+                            </div>
                           </ResizableTableCell>
                           <ResizableTableCell
                             columnKey="date"
@@ -1123,52 +1360,120 @@ export default function DeliveryCRMPage() {
                             {isFirstInDate ? formatDate(date) : ''}
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="orderNumber" className="text-center">
-                            <div className="flex items-center gap-1">
-                              <Textarea
-                                value={order.orderNumber}
-                                onChange={(e) => handleCellChange(order.id, 'orderNumber', e.target.value)}
-                                placeholder="№ заказа"
-                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] flex-1 resize-none focus-visible:ring-0 overflow-hidden text-center"
-                                rows={1}
-                                style={{ 
-                                  height: 'auto',
-                                  overflow: 'hidden',
-                                  wordWrap: 'break-word',
-                                  whiteSpace: 'pre-wrap',
-                                  textAlign: 'center'
-                                }}
-                                onInput={(e) => {
-                                const target = e.target as HTMLTextAreaElement
-                                target.style.height = 'auto'
-                                target.style.height = `${target.scrollHeight}px`
-                              }}
-                              onFocus={() => editingCellRef.current = { orderId: order.id, field: 'orderNumber' }}
-                            />
-                            <Button
-                              type="button"
-                              variant="ghost"
-                              size="sm"
-                              className="h-6 w-6 p-0 flex-shrink-0"
-                              onClick={() => {
-                                const orderId = order.orderNumber.trim()
-                                if (orderId) {
-                                  handleLoadFromBitrix(orderId, order.id)
-                                } else {
-                                  const inputId = prompt('Введите ID заказа из Битрикса:')
-                                  if (inputId) {
-                                    handleLoadFromBitrix(inputId, order.id)
-                                  }
-                                }
-                              }}
-                              disabled={loadingBitrix === order.orderNumber}
-                              title="Загрузить из Битрикса"
-                            >
-                              {loadingBitrix === order.orderNumber ? (
-                                <Loader2 className="w-3 h-3 animate-spin" />
-                              ) : (
-                                <Download className="w-3 h-3" />
-                              )}
-                            </Button>
+                            <div className="flex flex-col gap-1">
+                              <div className="flex items-center gap-1">
+                                <Textarea
+                                  value={order.orderNumber}
+                                  onChange={(e) => handleCellChange(order.id, 'orderNumber', e.target.value)}
+                                  placeholder="№ заказа"
+                                  className="border-0 bg-transparent p-0 h-auto min-h-[2rem] flex-1 resize-none focus-visible:ring-0 overflow-hidden text-center"
+                                  rows={1}
+                                  style={{ 
+                                    height: 'auto',
+                                    overflow: 'hidden',
+                                    wordWrap: 'break-word',
+                                    whiteSpace: 'pre-wrap',
+                                    textAlign: 'center'
+                                  }}
+                                  onInput={(e) => {
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                  onFocus={() => editingCellRef.current = { orderId: order.id, field: 'orderNumber' }}
+                                />
+                                <Button
+                                  type="button"
+                                  variant="ghost"
+                                  size="sm"
+                                  className="h-6 w-6 p-0 flex-shrink-0"
+                                  onClick={() => {
+                                    const orderId = order.orderNumber.trim()
+                                    if (orderId) {
+                                      handleLoadFromBitrix(orderId, order.id)
+                                    } else {
+                                      const inputId = prompt('Введите ID заказа из Битрикса:')
+                                      if (inputId) {
+                                        handleLoadFromBitrix(inputId, order.id)
+                                      }
+                                    }
+                                  }}
+                                  disabled={loadingBitrix === order.orderNumber}
+                                  title="Загрузить из Битрикса"
+                                >
+                                  {loadingBitrix === order.orderNumber ? (
+                                    <Loader2 className="w-3 h-3 animate-spin" />
+                                  ) : (
+                                    <Download className="w-3 h-3" />
+                                  )}
+                                </Button>
+                              </div>
+                              {/* Кнопки меток */}
+                              <div className="flex items-center justify-center gap-1">
+                                <div className="relative">
+                                  <Button
+                                    type="button"
+                                    variant="ghost"
+                                    size="sm"
+                                    className={`h-5 px-2 text-xs ${(order.tags || []).includes('REKL') ? 'bg-pink-200 dark:bg-pink-800' : ''}`}
+                                    onClick={(e) => {
+                                      e.stopPropagation()
+                                      if ((order.tags || []).includes('REKL')) {
+                                        handleTagToggle(order.id, 'REKL')
+                                      } else {
+                                        setTagMenu({ orderId: order.id, x: e.clientX, y: e.clientY })
+                                      }
+                                    }}
+                                    title="Рекламация"
+                                  >
+                                    REKL
+                                  </Button>
+                                  {tagMenu && tagMenu.orderId === order.id && (
+                                    <div
+                                      className="fixed z-50 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md shadow-lg p-2"
+                                      style={{
+                                        left: `${tagMenu.x}px`,
+                                        top: `${tagMenu.y}px`,
+                                        minWidth: '200px',
+                                      }}
+                                      onClick={(e) => e.stopPropagation()}
+                                    >
+                                      <div className="text-xs font-semibold mb-2 px-2 py-1">Тип рекламации</div>
+                                      {reklOptions.map((option, idx) => (
+                                        <button
+                                          key={idx}
+                                          className="w-full px-3 py-2 text-xs rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-left"
+                                          onClick={() => {
+                                            handleTagToggle(order.id, 'REKL')
+                                            // Добавляем тип рекламации в комментарий
+                                            const currentComment = order.comment || ''
+                                            const newComment = currentComment 
+                                              ? `${currentComment}\nРекламация: ${option}`
+                                              : `Рекламация: ${option}`
+                                            handleCellChange(order.id, 'comment', newComment)
+                                            setTagMenu(null)
+                                          }}
+                                        >
+                                          {option}
+                                        </button>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                                <Button
+                                  type="button"
+                                  variant="ghost"
+                                  size="sm"
+                                  className={`h-5 px-2 text-xs ${(order.tags || []).includes('ТК') ? 'bg-blue-200 dark:bg-blue-800' : ''}`}
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    handleTagToggle(order.id, 'ТК')
+                                  }}
+                                  title="Отгрузка в ТК"
+                                >
+                                  ТК
+                                </Button>
+                              </div>
                             </div>
                           </ResizableTableCell>
                           <ResizableTableCell 
@@ -1312,8 +1617,8 @@ export default function DeliveryCRMPage() {
                           <ResizableTableCell columnKey="time" className="text-center">
                             <Textarea
                               value={order.time}
-                              onChange={(e) => handleCellChange(order.id, 'time', e.target.value)}
-                              placeholder="Время"
+                              onChange={(e) => handleTimeChange(order.id, e.target.value)}
+                              placeholder="11:00 - 13:00"
                               className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 overflow-hidden text-center"
                               rows={1}
                               style={{ 
@@ -1327,6 +1632,19 @@ export default function DeliveryCRMPage() {
                                 const target = e.target as HTMLTextAreaElement
                                 target.style.height = 'auto'
                                 target.style.height = `${target.scrollHeight}px`
+                              }}
+                              onBlur={(e) => {
+                                // При потере фокуса проверяем формат и дополняем слот если нужно
+                                const value = e.target.value.trim()
+                                if (value && !value.includes('-')) {
+                                  const timeMatch = value.match(/^(\d{1,2}):(\d{2})$/)
+                                  if (timeMatch) {
+                                    const hours = parseInt(timeMatch[1], 10)
+                                    const endHours = hours + 2
+                                    const endTime = `${String(endHours).padStart(2, '0')}:${timeMatch[2]}`
+                                    handleTimeChange(order.id, `${value} - ${endTime}`)
+                                  }
+                                }
                               }}
                             />
                           </ResizableTableCell>
@@ -1398,6 +1716,46 @@ export default function DeliveryCRMPage() {
           )}
         </Card>
       </div>
+
+      {/* Контекстное меню для изменения цвета строки */}
+      {contextMenu && (
+        <>
+          <div
+            className="fixed inset-0 z-40"
+            onClick={() => setContextMenu(null)}
+          />
+          <div
+            className="fixed z-50 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md shadow-lg p-2"
+            style={{
+              left: `${contextMenu.x}px`,
+              top: `${contextMenu.y}px`,
+              minWidth: '150px',
+            }}
+          >
+            <div className="text-xs font-semibold mb-2 px-2 py-1">Цвет строки</div>
+            <div className="grid grid-cols-2 gap-1">
+              {rowColors.map((color) => (
+                <button
+                  key={color.value}
+                  className="px-3 py-2 text-xs rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-left flex items-center gap-2"
+                  onClick={() => handleRowColorChange(contextMenu.orderId, color.value)}
+                  style={{
+                    backgroundColor: color.value || undefined,
+                  }}
+                >
+                  {color.value && (
+                    <div
+                      className="w-4 h-4 rounded border border-gray-300"
+                      style={{ backgroundColor: color.value }}
+                    />
+                  )}
+                  {color.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </div>
   )
 }

@@ -91,6 +91,8 @@ export async function POST(request: NextRequest) {
       shipped: body.shipped || false,
       delivered: body.delivered || false,
       isEmpty: body.isEmpty || false,
+      tags: body.tags ? (Array.isArray(body.tags) ? body.tags : []) : null,
+      rowColor: body.rowColor || null,
     }
 
     // Если есть bitrixOrderId, проверяем существование
@@ -194,6 +196,8 @@ export async function PUT(request: NextRequest) {
         if (orderData.shipped !== undefined) updateData.shipped = orderData.shipped
         if (orderData.delivered !== undefined) updateData.delivered = orderData.delivered
         if (orderData.isEmpty !== undefined) updateData.isEmpty = orderData.isEmpty
+        if (orderData.tags !== undefined) updateData.tags = orderData.tags ? (Array.isArray(orderData.tags) ? orderData.tags : []) : null
+        if (orderData.rowColor !== undefined) updateData.rowColor = orderData.rowColor || null
 
         return await prisma.deliveryOrder.update({
           where: { id: orderData.id },

@@ -31,6 +31,8 @@ export async function PUT(
     if (body.shipped !== undefined) updateData.shipped = body.shipped
     if (body.delivered !== undefined) updateData.delivered = body.delivered
     if (body.isEmpty !== undefined) updateData.isEmpty = body.isEmpty
+    if (body.tags !== undefined) updateData.tags = body.tags ? (Array.isArray(body.tags) ? body.tags : []) : null
+    if (body.rowColor !== undefined) updateData.rowColor = body.rowColor || null
     if (body.bitrixData !== undefined) updateData.bitrixData = body.bitrixData
 
     const order = await prisma.deliveryOrder.update({

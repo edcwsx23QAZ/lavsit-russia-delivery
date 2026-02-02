@@ -68,7 +68,7 @@ model DeliveryOrder {
   contact       String    @default("") // Контакты
   payment       String    @default("") // Статус оплаты
   paymentAmount Float?    // Сумма предоплаты/доплаты (скрытое поле)
-  time          String    @default("") // Время доставки
+  time          String    @default("") // Время доставки (слот: "11:00 - 13:00")
   comment       String    @default("") // Комментарий
   fsm           String    @default("") // ФСМ
   wrote         Boolean   @default(false) // Написали
@@ -76,6 +76,8 @@ model DeliveryOrder {
   shipped       Boolean   @default(false) // Отгрузили
   delivered     Boolean   @default(false) // Доставлен
   isEmpty       Boolean   @default(false) // Флаг пустой строки
+  tags          Json?     // Метки: ["REKL", "ТК"]
+  rowColor      String?   // Цвет строки (hex)
   bitrixData    Json?     // Полные данные из Битрикса
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
