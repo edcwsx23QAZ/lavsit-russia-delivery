@@ -1195,7 +1195,7 @@ export default function DeliveryCRMPage() {
         </div>
       </div>
     </TableHead>
-  )
+  );
 
   // Компонент для ячейки с фиксированной шириной
   const ResizableTableCell = ({ columnKey, children, className = '', ...props }: { columnKey: string; children: React.ReactNode; className?: string; [key: string]: any }) => (
@@ -1208,7 +1208,7 @@ export default function DeliveryCRMPage() {
         {children}
       </div>
     </TableCell>
-  )
+  );
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
