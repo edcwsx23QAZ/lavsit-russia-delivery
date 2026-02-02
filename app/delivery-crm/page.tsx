@@ -1299,9 +1299,9 @@ export default function DeliveryCRMPage() {
             <CardTitle>Заказы доставки</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="rounded-md border overflow-x-auto">
+            <div className="rounded-md border overflow-x-auto overflow-y-auto" style={{ maxHeight: 'calc(100vh - 300px)' }}>
               <Table ref={tableRef} className="table-fixed w-full">
-                <TableHeader>
+                <TableHeader className="sticky top-0 z-10 bg-white dark:bg-gray-900">
                   <TableRow>
                     <ResizableTableHead columnKey="drag" className="text-center"></ResizableTableHead>
                     <ResizableTableHead columnKey="date" className="text-center">
