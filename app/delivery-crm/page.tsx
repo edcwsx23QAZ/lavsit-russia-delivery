@@ -1405,38 +1405,48 @@ export default function DeliveryCRMPage() {
                             {isFirstInDate ? formatDate(date) : ''}
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="orderNumber" className="text-center align-middle">
-                            <div className="flex flex-col items-center justify-center h-full relative" style={{ minHeight: '3rem' }}>
+                            <div className="relative h-full w-full" style={{ minHeight: '2.5rem', paddingBottom: '20px' }}>
                               {/* Номер заказа по центру ячейки */}
-                              <div className="flex-1 flex items-center justify-center w-full py-1">
+                              <div 
+                                className="absolute left-0 right-0 flex items-center justify-center"
+                                style={{ 
+                                  top: '50%',
+                                  transform: 'translateY(-50%)',
+                                  marginTop: order.orderNumber.trim() ? '0' : '-10px' // Смещаем вверх если есть кнопки
+                                }}
+                              >
                                 <Textarea
                                   value={order.orderNumber}
                                   onChange={(e) => handleCellChange(order.id, 'orderNumber', e.target.value)}
                                   placeholder="№ заказа"
-                                  className="border-0 bg-transparent p-0 h-auto min-h-[1.5rem] w-full resize-none focus-visible:ring-0 text-center"
+                                  className="border-0 bg-transparent p-0 h-auto w-full resize-none focus-visible:ring-0 text-center"
                                   rows={1}
                                   style={{ 
                                     height: 'auto',
+                                    minHeight: '1.5rem',
                                     overflow: 'visible',
                                     wordWrap: 'break-word',
                                     whiteSpace: 'pre-wrap',
                                     textAlign: 'center',
                                     fontSize: '0.85rem',
                                     lineHeight: '1.3',
-                                    fontWeight: '500',
-                                    maxHeight: 'calc(100% - 20px)' // Оставляем место для кнопок
+                                    fontWeight: '500'
                                   }}
                                   onInput={(e) => {
+                                    if (order.isEmpty) return
                                     const target = e.target as HTMLTextAreaElement
                                     target.style.height = 'auto'
-                                    const maxHeight = target.parentElement?.parentElement?.clientHeight || 100
-                                    const newHeight = Math.min(target.scrollHeight, maxHeight - 20)
+                                    const newHeight = Math.max(24, target.scrollHeight)
                                     target.style.height = `${newHeight}px`
                                   }}
                                   onFocus={() => editingCellRef.current = { orderId: order.id, field: 'orderNumber' }}
                                 />
                               </div>
                               {/* Кнопки внизу в одну строчку, выровнены по высоте */}
-                              <div className="flex items-center justify-center gap-1 mt-auto" style={{ height: '18px', marginTop: 'auto' }}>
+                              <div 
+                                className="absolute bottom-0 left-0 right-0 flex items-center justify-center gap-1"
+                                style={{ height: '18px' }}
+                              >
                                 <div className="relative">
                                   <Button
                                     type="button"
