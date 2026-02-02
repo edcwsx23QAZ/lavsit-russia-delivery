@@ -309,6 +309,30 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Проверяем существование таблицы в БД
+    try {
+      const tableCheck = await prisma.$queryRaw<Array<{ table_name: string }>>`
+        SELECT table_name 
+        FROM information_schema.tables 
+        WHERE table_schema = 'public' 
+        AND table_name = 'delivery_orders'
+      `
+      
+      if (tableCheck.length === 0) {
+        console.error('[Import] Table delivery_orders does not exist in database')
+        return NextResponse.json(
+          { 
+            error: 'Table delivery_orders does not exist in database',
+            hint: 'Please run the migration: Execute the SQL from prisma/migrations/create_delivery_orders.sql in your database, or run: npx prisma migrate dev --name add_delivery_order'
+          },
+          { status: 500 }
+        )
+      }
+    } catch (tableCheckError: any) {
+      console.error('[Import] Error checking table existence:', tableCheckError)
+      // Продолжаем, возможно это просто ошибка прав доступа к information_schema
+    }
+
     // Импортируем в БД батчами для лучшей производительности
     let imported = 0
     let updated = 0
