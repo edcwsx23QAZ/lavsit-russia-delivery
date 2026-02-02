@@ -1168,9 +1168,8 @@ export default function DeliveryCRMPage() {
     }
   }, [resizingColumn, resizeStartX, resizeStartWidth])
 
-  // Компонент для заголовка столбца
-  const ResizableTableHead = useMemo(() => {
-    return ({ columnKey, children, className = '' }: { columnKey: string; children: React.ReactNode; className?: string }) => (
+  const ResizableTableHead = ({ columnKey, children, className = '' }: { columnKey: string; children: React.ReactNode; className?: string }) => {
+    return (
       <TableHead 
         className={`relative border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 ${className}`}
         style={{ 
@@ -1197,11 +1196,10 @@ export default function DeliveryCRMPage() {
         </div>
       </TableHead>
     )
-  }, [columnWidths])
+  }
 
-  // Компонент для ячейки
-  const ResizableTableCell = useMemo(() => {
-    return ({ columnKey, children, className = '', ...props }: { columnKey: string; children: React.ReactNode; className?: string; [key: string]: any }) => (
+  const ResizableTableCell = ({ columnKey, children, className = '', ...props }: { columnKey: string; children: React.ReactNode; className?: string; [key: string]: any }) => {
+    return (
       <TableCell 
         className={`border-r border-gray-200 dark:border-gray-700 p-0 relative ${className}`}
         style={{ width: columnWidths[columnKey], minWidth: columnWidths[columnKey], maxWidth: columnWidths[columnKey] }}
@@ -1212,7 +1210,7 @@ export default function DeliveryCRMPage() {
         </div>
       </TableCell>
     )
-  }, [columnWidths])
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
