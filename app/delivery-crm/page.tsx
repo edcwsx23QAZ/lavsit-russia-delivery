@@ -1224,25 +1224,6 @@ export default function DeliveryCRMPage() {
         >
           {children}
         </div>
-        <div
-          className="absolute top-0 h-full cursor-col-resize z-20"
-          onMouseDown={(e) => handleResizeStart(e, columnKey)}
-          style={{ 
-            right: '-1px',
-            width: '4px',
-            backgroundColor: 'rgba(59, 130, 246, 0.5)',
-            borderRight: '1px solid rgba(59, 130, 246, 0.8)'
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.7)'
-            e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 1)'
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.5)'
-            e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.8)'
-          }}
-          title="Перетащите для изменения ширины столбца"
-        />
       </div>
     </TableHead>
   )
@@ -1418,38 +1399,40 @@ export default function DeliveryCRMPage() {
                             onDragOver={(e) => handleDragOver(e, date)}
                             onDragLeave={handleDragLeave}
                             onDrop={(e) => handleDrop(e, date)}
-                            className={`text-center font-medium ${isFirstInDate ? dateColor : ''} ${isFirstInDate ? 'font-bold' : ''}`}
+                            className={`text-center align-middle font-medium ${isFirstInDate ? dateColor : ''} ${isFirstInDate ? 'font-bold' : ''}`}
                           >
                             {isFirstInDate ? formatDate(date) : ''}
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="orderNumber" className="text-center align-middle">
-                            <div className="flex flex-col gap-1 items-center justify-center h-full">
-                              {/* Номер заказа сверху - крупнее, почти во всю ширину */}
-                              <Textarea
-                                value={order.orderNumber}
-                                onChange={(e) => handleCellChange(order.id, 'orderNumber', e.target.value)}
-                                placeholder="№ заказа"
-                                className="border-0 bg-transparent p-0 h-auto min-h-[1.5rem] w-full resize-none focus-visible:ring-0 text-center"
-                                rows={1}
-                                style={{ 
-                                  height: 'auto',
-                                  overflow: 'visible',
-                                  wordWrap: 'break-word',
-                                  whiteSpace: 'pre-wrap',
-                                  textAlign: 'center',
-                                  fontSize: '0.85rem',
-                                  lineHeight: '1.3',
-                                  fontWeight: '500'
-                                }}
-                                onInput={(e) => {
-                                  const target = e.target as HTMLTextAreaElement
-                                  target.style.height = 'auto'
-                                  target.style.height = `${target.scrollHeight}px`
-                                }}
-                                onFocus={() => editingCellRef.current = { orderId: order.id, field: 'orderNumber' }}
-                              />
-                              {/* Кнопки снизу в одну строчку */}
-                              <div className="flex items-center justify-center gap-1">
+                            <div className="flex flex-col items-center justify-center h-full relative">
+                              {/* Номер заказа по центру ячейки */}
+                              <div className="flex-1 flex items-center justify-center w-full">
+                                <Textarea
+                                  value={order.orderNumber}
+                                  onChange={(e) => handleCellChange(order.id, 'orderNumber', e.target.value)}
+                                  placeholder="№ заказа"
+                                  className="border-0 bg-transparent p-0 h-auto min-h-[1.5rem] w-full resize-none focus-visible:ring-0 text-center"
+                                  rows={1}
+                                  style={{ 
+                                    height: 'auto',
+                                    overflow: 'visible',
+                                    wordWrap: 'break-word',
+                                    whiteSpace: 'pre-wrap',
+                                    textAlign: 'center',
+                                    fontSize: '0.85rem',
+                                    lineHeight: '1.3',
+                                    fontWeight: '500'
+                                  }}
+                                  onInput={(e) => {
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                  onFocus={() => editingCellRef.current = { orderId: order.id, field: 'orderNumber' }}
+                                />
+                              </div>
+                              {/* Кнопки внизу в одну строчку, выровнены по высоте */}
+                              <div className="flex items-center justify-center gap-1 mt-auto pb-0.5">
                                 <div className="relative">
                                   <Button
                                     type="button"
@@ -1543,7 +1526,7 @@ export default function DeliveryCRMPage() {
                           </ResizableTableCell>
                           <ResizableTableCell 
                             columnKey="wrote"
-                            className="text-center cursor-pointer"
+                            className="text-center align-middle cursor-pointer"
                             onClick={(e) => {
                               e.stopPropagation()
                               handleCheckboxChange(order.id, 'wrote')
@@ -1556,7 +1539,7 @@ export default function DeliveryCRMPage() {
                           </ResizableTableCell>
                           <ResizableTableCell 
                             columnKey="confirmed"
-                            className="text-center cursor-pointer"
+                            className="text-center align-middle cursor-pointer"
                             onClick={(e) => {
                               e.stopPropagation()
                               handleCheckboxChange(order.id, 'confirmed')
@@ -1597,28 +1580,30 @@ export default function DeliveryCRMPage() {
                               />
                             </div>
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="fsm" className="text-center">
-                            <Textarea
-                              value={order.fsm}
-                              onChange={(e) => handleCellChange(order.id, 'fsm', e.target.value)}
-                              placeholder="ФСМ"
-                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
-                              rows={1}
-                              style={{ 
-                                height: 'auto',
-                                overflow: 'visible',
-                                wordWrap: 'break-word',
-                                whiteSpace: 'pre-wrap',
-                                textAlign: 'center',
-                                fontSize: '0.7rem',
-                                lineHeight: '1.2'
-                              }}
-                              onInput={(e) => {
-                                const target = e.target as HTMLTextAreaElement
-                                target.style.height = 'auto'
-                                target.style.height = `${target.scrollHeight}px`
-                              }}
-                            />
+                          <ResizableTableCell columnKey="fsm" className="text-center align-middle">
+                            <div className="flex items-center justify-center h-full w-full">
+                              <Textarea
+                                value={order.fsm}
+                                onChange={(e) => handleCellChange(order.id, 'fsm', e.target.value)}
+                                placeholder="ФСМ"
+                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
+                                rows={1}
+                                style={{ 
+                                  height: 'auto',
+                                  overflow: 'visible',
+                                  wordWrap: 'break-word',
+                                  whiteSpace: 'pre-wrap',
+                                  textAlign: 'center',
+                                  fontSize: '0.7rem',
+                                  lineHeight: '1.2'
+                                }}
+                                onInput={(e) => {
+                                  const target = e.target as HTMLTextAreaElement
+                                  target.style.height = 'auto'
+                                  target.style.height = `${target.scrollHeight}px`
+                                }}
+                              />
+                            </div>
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="address" className="align-middle">
                             <div className="flex items-center justify-center h-full min-h-[2rem]">
@@ -1650,32 +1635,34 @@ export default function DeliveryCRMPage() {
                               />
                             </div>
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="contact" className="text-center">
-                            <Textarea
-                              value={order.contact}
-                              onChange={(e) => handleCellChange(order.id, 'contact', e.target.value)}
-                              placeholder="Контакт"
-                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
-                              rows={1}
-                              style={{ 
-                                height: 'auto',
-                                overflow: 'visible',
-                                wordWrap: 'break-word',
-                                whiteSpace: 'pre-wrap',
-                                textAlign: 'center',
-                                fontSize: '0.7rem',
-                                lineHeight: '1.2'
-                              }}
-                              onInput={(e) => {
-                                const target = e.target as HTMLTextAreaElement
-                                target.style.height = 'auto'
-                                target.style.height = `${target.scrollHeight}px`
-                              }}
-                            />
+                          <ResizableTableCell columnKey="contact" className="text-center align-middle">
+                            <div className="flex items-center justify-center h-full w-full">
+                              <Textarea
+                                value={order.contact}
+                                onChange={(e) => handleCellChange(order.id, 'contact', e.target.value)}
+                                placeholder="Контакт"
+                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
+                                rows={1}
+                                style={{ 
+                                  height: 'auto',
+                                  overflow: 'visible',
+                                  wordWrap: 'break-word',
+                                  whiteSpace: 'pre-wrap',
+                                  textAlign: 'center',
+                                  fontSize: '0.7rem',
+                                  lineHeight: '1.2'
+                                }}
+                                onInput={(e) => {
+                                  const target = e.target as HTMLTextAreaElement
+                                  target.style.height = 'auto'
+                                  target.style.height = `${target.scrollHeight}px`
+                                }}
+                              />
+                            </div>
                           </ResizableTableCell>
                           <ResizableTableCell 
                             columnKey="payment"
-                            className={`text-center ${
+                            className={`text-center align-middle ${
                               order.payment.toLowerCase().includes('оплачено') || order.payment.toLowerCase().includes('оплачен')
                                 ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
                                 : order.payment.trim() === ''
@@ -1683,28 +1670,30 @@ export default function DeliveryCRMPage() {
                                 : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
                             }`}
                           >
-                            <Textarea
-                              value={order.payment}
-                              onChange={(e) => handleCellChange(order.id, 'payment', e.target.value)}
-                              placeholder="Оплата"
-                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
-                              rows={1}
-                              style={{ 
-                                height: 'auto',
-                                overflow: 'visible',
-                                wordWrap: 'break-word',
-                                whiteSpace: 'pre-wrap',
-                                textAlign: 'center'
-                              }}
-                              onInput={(e) => {
-                                const target = e.target as HTMLTextAreaElement
-                                target.style.height = 'auto'
-                                target.style.height = `${target.scrollHeight}px`
-                              }}
-                            />
+                            <div className="flex items-center justify-center h-full w-full">
+                              <Textarea
+                                value={order.payment}
+                                onChange={(e) => handleCellChange(order.id, 'payment', e.target.value)}
+                                placeholder="Оплата"
+                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
+                                rows={1}
+                                style={{ 
+                                  height: 'auto',
+                                  overflow: 'visible',
+                                  wordWrap: 'break-word',
+                                  whiteSpace: 'pre-wrap',
+                                  textAlign: 'center'
+                                }}
+                                onInput={(e) => {
+                                  const target = e.target as HTMLTextAreaElement
+                                  target.style.height = 'auto'
+                                  target.style.height = `${target.scrollHeight}px`
+                                }}
+                              />
+                            </div>
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="time" className="text-center">
-                            <div className="flex flex-col gap-0.5 items-center justify-center">
+                          <ResizableTableCell columnKey="time" className="text-center align-middle">
+                            <div className="flex flex-col gap-0.5 items-center justify-center h-full">
                               <Input
                                 value={parseTimeSlot(order.time).start}
                                 onChange={(e) => {
@@ -1814,7 +1803,7 @@ export default function DeliveryCRMPage() {
                           </ResizableTableCell>
                           <ResizableTableCell 
                             columnKey="shipped"
-                            className="text-center cursor-pointer"
+                            className="text-center align-middle cursor-pointer"
                             onClick={(e) => {
                               e.stopPropagation()
                               handleCheckboxChange(order.id, 'shipped')
@@ -1827,7 +1816,7 @@ export default function DeliveryCRMPage() {
                           </ResizableTableCell>
                           <ResizableTableCell 
                             columnKey="delivered"
-                            className="text-center cursor-pointer"
+                            className="text-center align-middle cursor-pointer"
                             onClick={(e) => {
                               e.stopPropagation()
                               handleCheckboxChange(order.id, 'delivered')
