@@ -1903,4 +1903,6 @@ export default function DeliveryCRMPage(): React.JSX.Element {
       )}
     </div>
   )
+
+  return content
 }
