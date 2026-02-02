@@ -212,11 +212,38 @@ export default function DeliveryCRMPage() {
     'Другое',
   ]
 
-  // Обработка изменения времени (формат слота) - сохраняем формат, но позволяем редактировать
-  const handleTimeChange = (id: string, value: string) => {
-    // Просто сохраняем значение как есть - пользователь может редактировать формат
-    // Формат может быть "11:00 - 13:00" или "11:00-13:00" или даже "35:26 - жд:00"
-    handleCellChange(id, 'time', value)
+  // Парсинг времени на начало и конец слота
+  const parseTimeSlot = (timeStr: string): { start: string; end: string } => {
+    if (!timeStr) return { start: '', end: '' }
+    
+    // Пытаемся найти формат "11:00 - 13:00" или "11:00-13:00"
+    const match = timeStr.match(/^(.+?)\s*[-—]\s*(.+)$/)
+    if (match) {
+      return { start: match[1].trim(), end: match[2].trim() }
+    }
+    
+    // Если формат не найден, считаем что это только начало
+    return { start: timeStr.trim(), end: '' }
+  }
+
+  // Обработка изменения начала времени
+  const handleTimeStartChange = (id: string, startValue: string) => {
+    const order = orders.find(o => o.id === id)
+    if (!order) return
+    
+    const { end } = parseTimeSlot(order.time)
+    const newTime = end ? `${startValue} - ${end}` : startValue
+    handleCellChange(id, 'time', newTime)
+  }
+
+  // Обработка изменения окончания времени
+  const handleTimeEndChange = (id: string, endValue: string) => {
+    const order = orders.find(o => o.id === id)
+    if (!order) return
+    
+    const { start } = parseTimeSlot(order.time)
+    const newTime = start ? `${start} - ${endValue}` : endValue
+    handleCellChange(id, 'time', newTime)
   }
 
   // Обработка добавления/удаления меток
@@ -1638,37 +1665,30 @@ export default function DeliveryCRMPage() {
                             />
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="time" className="text-center">
-                            <Textarea
-                              value={order.time}
-                              onChange={(e) => handleTimeChange(order.id, e.target.value)}
-                              placeholder="11:00 - 13:00"
-                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
-                              rows={1}
-                              style={{ 
-                                height: 'auto',
-                                overflow: 'visible',
-                                whiteSpace: 'nowrap',
-                                textAlign: 'center'
-                              }}
-                              onInput={(e) => {
-                                const target = e.target as HTMLTextAreaElement
-                                target.style.height = 'auto'
-                                target.style.height = `${target.scrollHeight}px`
-                              }}
-                              onBlur={(e) => {
-                                // При потере фокуса, если введено только одно время без дефиса, дополняем слот
-                                const value = e.target.value.trim()
-                                if (value && !value.includes('-') && !value.includes('—')) {
-                                  const timeMatch = value.match(/^(\d{1,2}):(\d{2})$/)
-                                  if (timeMatch) {
-                                    const hours = parseInt(timeMatch[1], 10)
-                                    const endHours = hours + 2
-                                    const endTime = `${String(endHours).padStart(2, '0')}:${timeMatch[2]}`
-                                    handleTimeChange(order.id, `${value} - ${endTime}`)
-                                  }
-                                }
-                              }}
-                            />
+                            <div className="flex flex-col gap-0.5 items-center justify-center">
+                              <Input
+                                value={parseTimeSlot(order.time).start}
+                                onChange={(e) => handleTimeStartChange(order.id, e.target.value)}
+                                placeholder="11:00"
+                                className="border-0 bg-transparent p-0 h-5 text-center text-xs focus-visible:ring-0 focus-visible:ring-offset-0"
+                                style={{ 
+                                  textAlign: 'center',
+                                  fontSize: '0.75rem',
+                                  lineHeight: '1.2'
+                                }}
+                              />
+                              <Input
+                                value={parseTimeSlot(order.time).end}
+                                onChange={(e) => handleTimeEndChange(order.id, e.target.value)}
+                                placeholder="13:00"
+                                className="border-0 bg-transparent p-0 h-5 text-center text-xs focus-visible:ring-0 focus-visible:ring-offset-0"
+                                style={{ 
+                                  textAlign: 'center',
+                                  fontSize: '0.75rem',
+                                  lineHeight: '1.2'
+                                }}
+                              />
+                            </div>
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="comment" className="align-top">
                             <Textarea
