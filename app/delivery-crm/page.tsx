@@ -1225,21 +1225,21 @@ export default function DeliveryCRMPage() {
           {children}
         </div>
         <div
-          className="absolute right-0 top-0 h-full cursor-col-resize z-20"
+          className="absolute top-0 h-full cursor-col-resize z-20"
           onMouseDown={(e) => handleResizeStart(e, columnKey)}
           style={{ 
-            marginRight: '-2px',
+            right: '-3px',
             width: '6px',
-            backgroundColor: 'rgba(59, 130, 246, 0.3)',
-            borderRight: '2px solid rgba(59, 130, 246, 0.6)'
+            backgroundColor: 'rgba(59, 130, 246, 0.4)',
+            borderRight: '2px solid rgba(59, 130, 246, 0.7)'
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.5)'
-            e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.8)'
+            e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.6)'
+            e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.9)'
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.3)'
-            e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.6)'
+            e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.4)'
+            e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.7)'
           }}
           title="Перетащите для изменения ширины столбца"
         />
