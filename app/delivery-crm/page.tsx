@@ -1259,11 +1259,21 @@ export default function DeliveryCRMPage() {
       </div>
       {/* Ползунок на разделительной линии */}
       <div
-        className="absolute right-0 top-0 h-full cursor-col-resize bg-transparent hover:bg-blue-400 dark:hover:bg-blue-500 active:bg-blue-600 dark:active:bg-blue-700 transition-colors z-10"
+        className="absolute right-0 top-0 h-full cursor-col-resize z-20"
         onMouseDown={(e) => handleResizeStart(e, columnKey)}
         style={{ 
           marginRight: '-2px',
-          width: '4px'
+          width: '6px',
+          backgroundColor: 'rgba(59, 130, 246, 0.2)',
+          borderRight: '2px solid rgba(59, 130, 246, 0.4)'
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.4)'
+          e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.7)'
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = 'rgba(59, 130, 246, 0.2)'
+          e.currentTarget.style.borderRightColor = 'rgba(59, 130, 246, 0.4)'
         }}
         title="Перетащите для изменения ширины столбца"
       />
