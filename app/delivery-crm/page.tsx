@@ -151,22 +151,22 @@ const getDateColor = (count: number): string => {
   return ''
 }
 
-// Начальные ширины столбцов (в пикселях)
+// Начальные ширины столбцов (в пикселях) - оптимизированы для экрана без горизонтальной прокрутки
 const initialColumnWidths: Record<string, number> = {
-  drag: 40,
-  date: 80,
-  orderNumber: 100,
-  wrote: 80,
-  confirmed: 100,
-  products: 400,
-  fsm: 80,
-  address: 200,
-  contact: 180,
-  payment: 100,
-  time: 80,
-  comment: 200,
-  shipped: 100,
-  delivered: 100,
+  drag: 35,
+  date: 65,
+  orderNumber: 90,
+  wrote: 70,
+  confirmed: 85,
+  products: 280,
+  fsm: 70,
+  address: 180,
+  contact: 140,
+  payment: 85,
+  time: 110,
+  comment: 150,
+  shipped: 80,
+  delivered: 85,
 }
 
 export default function DeliveryCRMPage() {
@@ -212,18 +212,10 @@ export default function DeliveryCRMPage() {
     'Другое',
   ]
 
-  // Обработка изменения времени (формат слота)
+  // Обработка изменения времени (формат слота) - сохраняем формат, но позволяем редактировать
   const handleTimeChange = (id: string, value: string) => {
-    // Если введено просто время (например, "11:00"), преобразуем в слот
-    if (value && !value.includes('-')) {
-      const timeMatch = value.match(/^(\d{1,2}):(\d{2})$/)
-      if (timeMatch) {
-        const hours = parseInt(timeMatch[1], 10)
-        const endHours = hours + 2 // Слот 2 часа по умолчанию
-        const endTime = `${String(endHours).padStart(2, '0')}:${timeMatch[2]}`
-        value = `${value} - ${endTime}`
-      }
-    }
+    // Просто сохраняем значение как есть - пользователь может редактировать формат
+    // Формат может быть "11:00 - 13:00" или "11:00-13:00" или даже "35:26 - жд:00"
     handleCellChange(id, 'time', value)
   }
 
@@ -1165,15 +1157,24 @@ export default function DeliveryCRMPage() {
       style={{ width: columnWidths[columnKey], minWidth: columnWidths[columnKey], maxWidth: columnWidths[columnKey] }}
     >
       <div className="flex items-center justify-center relative h-full">
-        <div className="flex-1 px-1 text-center break-words overflow-hidden" style={{ wordWrap: 'break-word', hyphens: 'auto' }}>
+        <div 
+          className="flex-1 text-center break-words overflow-hidden" 
+          style={{ 
+            wordWrap: 'break-word', 
+            hyphens: 'auto',
+            padding: '1px',
+            fontSize: '0.65rem',
+            lineHeight: '1.1'
+          }}
+        >
           {children}
         </div>
         <div
-          className="absolute right-0 top-0 h-full w-1 cursor-col-resize bg-transparent hover:bg-blue-400 dark:hover:bg-blue-500 active:bg-blue-600 dark:active:bg-blue-700 transition-colors z-10"
+          className="absolute right-0 top-0 h-full cursor-col-resize bg-transparent hover:bg-blue-400 dark:hover:bg-blue-500 active:bg-blue-600 dark:active:bg-blue-700 transition-colors z-10"
           onMouseDown={(e) => handleResizeStart(e, columnKey)}
           style={{ 
             marginRight: '-1px',
-            width: '3px'
+            width: '4px'
           }}
           title="Перетащите для изменения ширины столбца"
         />
@@ -1193,11 +1194,11 @@ export default function DeliveryCRMPage() {
       </div>
       {/* Ползунок на разделительной линии */}
       <div
-        className="absolute right-0 top-0 h-full w-1 cursor-col-resize bg-transparent hover:bg-blue-400 dark:hover:bg-blue-500 active:bg-blue-600 dark:active:bg-blue-700 transition-colors z-10"
+        className="absolute right-0 top-0 h-full cursor-col-resize bg-transparent hover:bg-blue-400 dark:hover:bg-blue-500 active:bg-blue-600 dark:active:bg-blue-700 transition-colors z-10"
         onMouseDown={(e) => handleResizeStart(e, columnKey)}
         style={{ 
-          marginRight: '-1px',
-          width: '3px'
+          marginRight: '-2px',
+          width: '4px'
         }}
         title="Перетащите для изменения ширины столбца"
       />
@@ -1206,7 +1207,7 @@ export default function DeliveryCRMPage() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-4">
-      <div className="max-w-[1800px] mx-auto">
+      <div className="w-full mx-auto">
         {/* Header */}
         <div className="mb-6">
           <div className="flex items-center justify-between mb-4">
@@ -1274,44 +1275,44 @@ export default function DeliveryCRMPage() {
                 <TableHeader>
                   <TableRow>
                     <ResizableTableHead columnKey="drag" className="text-center"></ResizableTableHead>
-                    <ResizableTableHead columnKey="date" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ padding: '0 5px' }}>Дата</div>
+                    <ResizableTableHead columnKey="date" className="text-center">
+                      Дата
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="orderNumber" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ padding: '0 5px' }}>№ заказа</div>
+                    <ResizableTableHead columnKey="orderNumber" className="text-center">
+                      № заказа
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="wrote" className="text-center" style={{ fontSize: '0.65rem', lineHeight: '1.1', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ wordWrap: 'break-word', overflowWrap: 'break-word', hyphens: 'auto', padding: '0 5px' }}>Написали</div>
+                    <ResizableTableHead columnKey="wrote" className="text-center">
+                      Написали
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="confirmed" className="text-center" style={{ fontSize: '0.65rem', lineHeight: '1.1', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ wordWrap: 'break-word', overflowWrap: 'break-word', hyphens: 'auto', padding: '0 5px' }}>Подтвердили</div>
+                    <ResizableTableHead columnKey="confirmed" className="text-center">
+                      Подтвердили
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="products" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ padding: '0 5px' }}>Товары</div>
+                    <ResizableTableHead columnKey="products" className="text-center">
+                      Товары
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="fsm" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ padding: '0 5px' }}>ФСМ</div>
+                    <ResizableTableHead columnKey="fsm" className="text-center">
+                      ФСМ
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="address" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ padding: '0 5px' }}>Адрес</div>
+                    <ResizableTableHead columnKey="address" className="text-center">
+                      Адрес
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="contact" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ padding: '0 5px' }}>Контакт</div>
+                    <ResizableTableHead columnKey="contact" className="text-center">
+                      Контакт
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="payment" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ padding: '0 5px' }}>Оплата</div>
+                    <ResizableTableHead columnKey="payment" className="text-center">
+                      Оплата
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="time" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ padding: '0 5px' }}>Время</div>
+                    <ResizableTableHead columnKey="time" className="text-center">
+                      Время
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="comment" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ padding: '0 5px' }}>Комментарий</div>
+                    <ResizableTableHead columnKey="comment" className="text-center">
+                      Комментарий
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="shipped" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ padding: '0 5px' }}>Отгрузили</div>
+                    <ResizableTableHead columnKey="shipped" className="text-center">
+                      Отгрузили
                     </ResizableTableHead>
-                    <ResizableTableHead columnKey="delivered" className="text-center" style={{ fontSize: '0.7rem', padding: '0.5rem 0.25rem' }}>
-                      <div style={{ padding: '0 5px' }}>Доставлен</div>
+                    <ResizableTableHead columnKey="delivered" className="text-center">
+                      Доставлен
                     </ResizableTableHead>
                   </TableRow>
                 </TableHeader>
@@ -1502,25 +1503,35 @@ export default function DeliveryCRMPage() {
                               onCheckedChange={() => handleCheckboxChange(order.id, 'confirmed')}
                             />
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="products" className="align-top">
-                            <Textarea
-                              value={order.products}
-                              onChange={(e) => handleCellChange(order.id, 'products', e.target.value)}
-                              placeholder="Товары"
-                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 overflow-hidden"
-                              rows={1}
-                              style={{ 
-                                height: 'auto',
-                                overflow: 'hidden',
-                                wordWrap: 'break-word',
-                                whiteSpace: 'pre-wrap'
-                              }}
-                              onInput={(e) => {
-                                const target = e.target as HTMLTextAreaElement
-                                target.style.height = 'auto'
-                                target.style.height = `${target.scrollHeight}px`
-                              }}
-                            />
+                          <ResizableTableCell columnKey="products" className="align-middle">
+                            <div className="flex items-center justify-center h-full min-h-[2rem]">
+                              <Textarea
+                                value={order.products}
+                                onChange={(e) => handleCellChange(order.id, 'products', e.target.value)}
+                                placeholder="Товары"
+                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 overflow-hidden"
+                                rows={1}
+                                style={{ 
+                                  height: 'auto',
+                                  overflow: 'hidden',
+                                  wordWrap: 'break-word',
+                                  whiteSpace: 'pre-wrap',
+                                  verticalAlign: 'middle'
+                                }}
+                                onInput={(e) => {
+                                  const target = e.target as HTMLTextAreaElement
+                                  target.style.height = 'auto'
+                                  const newHeight = Math.max(32, target.scrollHeight)
+                                  target.style.height = `${newHeight}px`
+                                  // Обновляем высоту строки если нужно
+                                  const row = target.closest('tr')
+                                  if (row) {
+                                    row.style.height = 'auto'
+                                    row.style.minHeight = `${newHeight + 8}px`
+                                  }
+                                }}
+                              />
+                            </div>
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="fsm" className="text-center">
                             <Textarea
@@ -1543,25 +1554,35 @@ export default function DeliveryCRMPage() {
                               }}
                             />
                           </ResizableTableCell>
-                          <ResizableTableCell columnKey="address" className="align-top">
-                            <Textarea
-                              value={order.address}
-                              onChange={(e) => handleCellChange(order.id, 'address', e.target.value)}
-                              placeholder="Адрес"
-                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 overflow-hidden"
-                              rows={1}
-                              style={{ 
-                                height: 'auto',
-                                overflow: 'hidden',
-                                wordWrap: 'break-word',
-                                whiteSpace: 'pre-wrap'
-                              }}
-                              onInput={(e) => {
-                                const target = e.target as HTMLTextAreaElement
-                                target.style.height = 'auto'
-                                target.style.height = `${target.scrollHeight}px`
-                              }}
-                            />
+                          <ResizableTableCell columnKey="address" className="align-middle">
+                            <div className="flex items-center justify-center h-full min-h-[2rem]">
+                              <Textarea
+                                value={order.address}
+                                onChange={(e) => handleCellChange(order.id, 'address', e.target.value)}
+                                placeholder="Адрес"
+                                className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 overflow-hidden"
+                                rows={1}
+                                style={{ 
+                                  height: 'auto',
+                                  overflow: 'hidden',
+                                  wordWrap: 'break-word',
+                                  whiteSpace: 'pre-wrap',
+                                  verticalAlign: 'middle'
+                                }}
+                                onInput={(e) => {
+                                  const target = e.target as HTMLTextAreaElement
+                                  target.style.height = 'auto'
+                                  const newHeight = Math.max(32, target.scrollHeight)
+                                  target.style.height = `${newHeight}px`
+                                  // Обновляем высоту строки если нужно
+                                  const row = target.closest('tr')
+                                  if (row) {
+                                    row.style.height = 'auto'
+                                    row.style.minHeight = `${newHeight + 8}px`
+                                  }
+                                }}
+                              />
+                            </div>
                           </ResizableTableCell>
                           <ResizableTableCell columnKey="contact" className="text-center">
                             <Textarea
@@ -1634,9 +1655,9 @@ export default function DeliveryCRMPage() {
                                 target.style.height = `${target.scrollHeight}px`
                               }}
                               onBlur={(e) => {
-                                // При потере фокуса проверяем формат и дополняем слот если нужно
+                                // При потере фокуса, если введено только одно время без дефиса, дополняем слот
                                 const value = e.target.value.trim()
-                                if (value && !value.includes('-')) {
+                                if (value && !value.includes('-') && !value.includes('—')) {
                                   const timeMatch = value.match(/^(\d{1,2}):(\d{2})$/)
                                   if (timeMatch) {
                                     const hours = parseInt(timeMatch[1], 10)
