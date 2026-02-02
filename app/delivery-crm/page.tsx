@@ -1356,8 +1356,15 @@ export default function DeliveryCRMPage() {
                     const dateColor = getDateColor(ordersCount)
                     const isDragOver = dragOverDate === date
                     const isFirstDate = dateIndex === 0
+                    
+                    // Вычисляем дату через 7 дней от сегодня
+                    const sevenDaysLater = format(addDays(today, 7), 'yyyy-MM-dd')
+                    const isSevenDaysLater = date === sevenDaysLater
+                    const isLastOrderInSevenDaysDate = isSevenDaysLater && dateOrders.length > 0
 
-                    return dateOrders.map((order, index) => {
+                    return (
+                      <React.Fragment key={date}>
+                        {dateOrders.map((order, index) => {
                       const isFirstInDate = index === 0
                       const isDragging = draggedOrderId === order.id
                       // Добавляем жирную границу сверху для первой строки каждого дня (кроме первого дня)
