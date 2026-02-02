@@ -82,9 +82,10 @@ function parseCSVLine(line: string): string[] {
  */
 export async function POST(request: NextRequest) {
   try {
-    const spreadsheetId = '1Cvl-0P0uBoYupGGbZ2AG70S0VDyrAII8L0vNjUykOsI'
-    const gid = '0'
-    const startRow = 1622
+    const body = await request.json().catch(() => ({}))
+    const spreadsheetId = body.spreadsheetId || '1Cvl-0P0uBoYupGGbZ2AG70S0VDyrAII8L0vNjUykOsI'
+    const gid = body.gid || '0' // Можно указать gid вкладки "Доставки" если он не 0
+    const startRow = body.startRow || 1622
     
     // Получаем данные через публичный CSV экспорт
     const csvUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/export?format=csv&gid=${gid}`
@@ -100,6 +101,9 @@ export async function POST(request: NextRequest) {
     const csvText = await csvResponse.text()
     const lines = csvText.split('\n').filter(line => line.trim())
     
+    console.log(`[Import] Total lines in CSV: ${lines.length}`)
+    console.log(`[Import] Start row: ${startRow}`)
+    
     if (lines.length < startRow) {
       return NextResponse.json(
         { error: `Not enough rows in CSV. Found ${lines.length}, need at least ${startRow}` },
@@ -109,6 +113,16 @@ export async function POST(request: NextRequest) {
 
     // Пропускаем строки до startRow
     const dataLines = lines.slice(startRow - 1)
+    console.log(`[Import] Data lines after start row: ${dataLines.length}`)
+    
+    // Логируем первые несколько строк для диагностики
+    if (dataLines.length > 0) {
+      console.log(`[Import] First data line (row ${startRow}):`, dataLines[0].substring(0, 200))
+      if (dataLines.length > 1) {
+        console.log(`[Import] Second data line (row ${startRow + 1}):`, dataLines[1].substring(0, 200))
+      }
+    }
+    
     if (dataLines.length === 0) {
       return NextResponse.json(
         { error: 'No data rows found after start row' },
@@ -119,9 +133,30 @@ export async function POST(request: NextRequest) {
     const orders: any[] = []
     
     // Парсим данные (прямой маппинг по индексам: A=0, B=1, C=2, и т.д.)
-    for (let i = 1; i < dataLines.length; i++) {
+    // Пропускаем первую строку (заголовок), если она есть
+    let startIndex = 1
+    const firstLineValues = parseCSVLine(dataLines[0])
+    console.log(`[Import] First line values count: ${firstLineValues.length}`)
+    console.log(`[Import] First line first 5 values:`, firstLineValues.slice(0, 5))
+    
+    // Если первая строка похожа на заголовок (содержит "Дата", "№ заказа" и т.д.), пропускаем её
+    const firstLineLower = dataLines[0].toLowerCase()
+    if (firstLineLower.includes('дата') || firstLineLower.includes('date')) {
+      console.log(`[Import] First line appears to be header, skipping it`)
+      startIndex = 1
+    } else {
+      console.log(`[Import] First line appears to be data, starting from it`)
+      startIndex = 0
+    }
+    
+    for (let i = startIndex; i < dataLines.length; i++) {
       const values = parseCSVLine(dataLines[i])
       if (values.length === 0) continue
+      
+      // Логируем первые несколько строк для диагностики
+      if (i < startIndex + 3) {
+        console.log(`[Import] Row ${i + startRow}, values count: ${values.length}, first 3 values:`, values.slice(0, 3))
+      }
       
       // A (0): Дата - обязательное поле
       if (!values[0] || !values[0].trim()) {
@@ -187,13 +222,44 @@ export async function POST(request: NextRequest) {
     let updated = 0
     const errors: any[] = []
 
-    for (const orderData of orders) {
+    for (let idx = 0; idx < orders.length; idx++) {
+      const orderData = orders[idx]
       try {
+        // Валидация данных перед импортом
+        if (!orderData.date || isNaN(orderData.date.getTime())) {
+          errors.push({
+            row: idx + startRow,
+            orderNumber: orderData.orderNumber || 'N/A',
+            error: 'Invalid date',
+            data: orderData,
+          })
+          continue
+        }
+
+        // Обрезаем слишком длинные строки (если есть ограничения в БД)
+        const maxLength = 10000 // Максимальная длина для текстовых полей
+        const processedData: any = {
+          date: orderData.date,
+          orderNumber: (orderData.orderNumber || '').substring(0, 255),
+          products: (orderData.products || '').substring(0, maxLength),
+          fsm: (orderData.fsm || '').substring(0, 255),
+          address: (orderData.address || '').substring(0, maxLength),
+          contact: (orderData.contact || '').substring(0, 255),
+          payment: (orderData.payment || '').substring(0, 255),
+          time: (orderData.time || '').substring(0, 255),
+          comment: (orderData.comment || '').substring(0, maxLength),
+          wrote: orderData.wrote || false,
+          confirmed: orderData.confirmed || false,
+          shipped: orderData.shipped || false,
+          delivered: orderData.delivered || false,
+          isEmpty: false,
+        }
+
         // Проверяем, существует ли заказ с таким номером и датой
         const existing = await prisma.deliveryOrder.findFirst({
           where: {
-            orderNumber: orderData.orderNumber,
-            date: orderData.date,
+            orderNumber: processedData.orderNumber,
+            date: processedData.date,
           },
         })
 
@@ -201,22 +267,32 @@ export async function POST(request: NextRequest) {
           // Обновляем существующий заказ
           await prisma.deliveryOrder.update({
             where: { id: existing.id },
-            data: orderData,
+            data: processedData,
           })
           updated++
         } else {
           // Создаем новый заказ
           await prisma.deliveryOrder.create({
-            data: orderData,
+            data: processedData,
           })
           imported++
         }
       } catch (error: any) {
+        console.error(`[Import Error] Row ${idx + startRow}, Order: ${orderData.orderNumber || 'N/A'}`, error)
         errors.push({
-          orderNumber: orderData.orderNumber,
-          error: error.message,
+          row: idx + startRow,
+          orderNumber: orderData.orderNumber || 'N/A',
+          error: error.message || String(error),
+          code: error.code,
+          meta: error.meta,
         })
       }
+    }
+
+    // Логируем статистику
+    console.log(`[Import] Total: ${orders.length}, Imported: ${imported}, Updated: ${updated}, Errors: ${errors.length}`)
+    if (errors.length > 0) {
+      console.error('[Import] First 5 errors:', errors.slice(0, 5))
     }
 
     return NextResponse.json({
@@ -225,7 +301,7 @@ export async function POST(request: NextRequest) {
       updated,
       total: orders.length,
       errors: errors.length,
-      errorDetails: errors.slice(0, 10), // Показываем только первые 10 ошибок
+      errorDetails: errors.slice(0, 20), // Показываем первые 20 ошибок для диагностики
     })
   } catch (error: any) {
     console.error('[Manual Import] Error:', error)

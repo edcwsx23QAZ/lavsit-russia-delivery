@@ -502,7 +502,19 @@ export default function DeliveryCRMPage() {
         throw new Error(data.error || 'Ошибка импорта')
       }
 
-      alert(`Импорт завершен!\nИмпортировано: ${data.imported}\nОбновлено: ${data.updated}\nВсего: ${data.total}\nОшибок: ${data.errors}`)
+      let message = `Импорт завершен!\nИмпортировано: ${data.imported}\nОбновлено: ${data.updated}\nВсего: ${data.total}\nОшибок: ${data.errors}`
+      
+      if (data.errorDetails && data.errorDetails.length > 0) {
+        message += `\n\nПервые ошибки:\n`
+        data.errorDetails.slice(0, 5).forEach((err: any, idx: number) => {
+          message += `${idx + 1}. Строка ${err.row || 'N/A'}, Заказ: ${err.orderNumber || 'N/A'}\n   Ошибка: ${err.error || 'Unknown'}\n`
+        })
+        if (data.errorDetails.length > 5) {
+          message += `\n... и еще ${data.errorDetails.length - 5} ошибок`
+        }
+      }
+      
+      alert(message)
 
       // Перезагружаем данные из БД
       const dbResponse = await fetch('/api/delivery-crm/orders?includeEmpty=true')
