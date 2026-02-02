@@ -1169,7 +1169,7 @@ export default function DeliveryCRMPage() {
   }, [resizingColumn, resizeStartX, resizeStartWidth])
 
   // Компонент для заголовка столбца с возможностью изменения размера
-  const ResizableTableHead = React.memo(({ columnKey, children, className = '' }: { columnKey: string; children: React.ReactNode; className?: string }) => {
+  const ResizableTableHead = ({ columnKey, children, className = '' }: { columnKey: string; children: React.ReactNode; className?: string }) => {
     return (
       <TableHead 
         className={`relative border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 ${className}`}
@@ -1197,10 +1197,10 @@ export default function DeliveryCRMPage() {
         </div>
       </TableHead>
     )
-  })
+  }
 
   // Компонент для ячейки с фиксированной шириной
-  const ResizableTableCell = React.memo(({ columnKey, children, className = '', ...props }: { columnKey: string; children: React.ReactNode; className?: string; [key: string]: any }) => {
+  const ResizableTableCell = ({ columnKey, children, className = '', ...props }: { columnKey: string; children: React.ReactNode; className?: string; [key: string]: any }) => {
     return (
       <TableCell 
         className={`border-r border-gray-200 dark:border-gray-700 p-0 relative ${className}`}
@@ -1212,7 +1212,7 @@ export default function DeliveryCRMPage() {
         </div>
       </TableCell>
     )
-  })
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
