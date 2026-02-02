@@ -840,6 +840,32 @@ export default function DeliveryCRMPage() {
     setDaysToShow(prev => prev + 30)
   }
 
+  // Функция удаления строки
+  const handleDeleteOrder = async (orderId: string) => {
+    if (!confirm('Вы уверены, что хотите удалить эту строку?')) {
+      return
+    }
+
+    try {
+      // Удаляем из локального состояния
+      const updatedOrders = orders.filter(order => order.id !== orderId)
+      setOrders(updatedOrders)
+
+      // Удаляем из БД
+      await fetch(`/api/delivery-crm/orders/${orderId}`, {
+        method: 'DELETE',
+      })
+
+      // Обновляем localStorage
+      localStorage.setItem('delivery-crm-orders', JSON.stringify(updatedOrders))
+    } catch (error) {
+      console.error('Ошибка при удалении заказа:', error)
+      alert('Ошибка при удалении заказа')
+    }
+
+    setContextMenu(null)
+  }
+
   // Загрузка заказа из Битрикса
   const handleLoadFromBitrix = async (orderId: string, targetOrderId?: string) => {
     if (!orderId.trim()) {
@@ -1183,32 +1209,6 @@ export default function DeliveryCRMPage() {
       </div>
     </TableCell>
   )
-
-  // Функция удаления строки
-  const handleDeleteOrder = async (orderId: string) => {
-    if (!confirm('Вы уверены, что хотите удалить эту строку?')) {
-      return
-    }
-
-    try {
-      // Удаляем из локального состояния
-      const updatedOrders = orders.filter(order => order.id !== orderId)
-      setOrders(updatedOrders)
-
-      // Удаляем из БД
-      await fetch(`/api/delivery-crm/orders/${orderId}`, {
-        method: 'DELETE',
-      })
-
-      // Обновляем localStorage
-      localStorage.setItem('delivery-crm-orders', JSON.stringify(updatedOrders))
-    } catch (error) {
-      console.error('Ошибка при удалении заказа:', error)
-      alert('Ошибка при удалении заказа')
-    }
-
-    setContextMenu(null)
-  }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
