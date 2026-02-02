@@ -153,20 +153,20 @@ const getDateColor = (count: number): string => {
 
 // Начальные ширины столбцов (в пикселях) - оптимизированы для экрана без горизонтальной прокрутки
 const initialColumnWidths: Record<string, number> = {
-  drag: 35,
-  date: 65,
-  orderNumber: 90,
-  wrote: 80,
-  confirmed: 100,
-  products: 280,
-  fsm: 70,
-  address: 180,
-  contact: 140,
-  payment: 85,
-  time: 110,
-  comment: 150,
-  shipped: 80,
-  delivered: 85,
+  drag: 30,
+  date: 60,
+  orderNumber: 80,
+  wrote: 70,
+  confirmed: 90,
+  products: 220,
+  fsm: 60,
+  address: 150,
+  contact: 120,
+  payment: 75,
+  time: 100,
+  comment: 120,
+  shipped: 70,
+  delivered: 75,
 }
 
 export default function DeliveryCRMPage() {
@@ -1642,13 +1642,12 @@ export default function DeliveryCRMPage() {
                               value={order.time}
                               onChange={(e) => handleTimeChange(order.id, e.target.value)}
                               placeholder="11:00 - 13:00"
-                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 overflow-hidden text-center"
+                              className="border-0 bg-transparent p-0 h-auto min-h-[2rem] w-full resize-none focus-visible:ring-0 text-center"
                               rows={1}
                               style={{ 
                                 height: 'auto',
-                                overflow: 'hidden',
-                                wordWrap: 'break-word',
-                                whiteSpace: 'pre-wrap',
+                                overflow: 'visible',
+                                whiteSpace: 'nowrap',
                                 textAlign: 'center'
                               }}
                               onInput={(e) => {
