@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
           data: {
             ...deliveryOrderData,
             updatedAt: new Date(),
-          },
+          } as any,
         })
       } else {
         // Создаем новый заказ
