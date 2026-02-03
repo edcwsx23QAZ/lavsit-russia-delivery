@@ -44,7 +44,7 @@ export async function GET(
         data: {
           ...deliveryOrderData,
           updatedAt: new Date(),
-        },
+        } as any,
       })
     } else {
       // Создаем новый заказ
