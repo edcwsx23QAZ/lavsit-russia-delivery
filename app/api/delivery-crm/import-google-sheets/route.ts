@@ -71,8 +71,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const importedOrders = []
-    const errors = []
+    const importedOrders: string[] = []
+    const errors: Array<{ row: string; error: string }> = []
 
     for (const row of googleSheetsOrders) {
       try {
@@ -110,7 +110,7 @@ export async function POST(request: NextRequest) {
           // Обновляем существующий заказ
           await prisma.deliveryOrder.update({
             where: { id: existing.id },
-            data: orderData,
+            data: orderData as any,
           })
         } else {
           // Создаем новый заказ
