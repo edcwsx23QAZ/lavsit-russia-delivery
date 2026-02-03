@@ -31,6 +31,8 @@ import {
 import { Textarea } from '@/components/ui/textarea'
 import { format, addDays, startOfToday, endOfYear, startOfYear, isBefore, isSameDay, parseISO } from 'date-fns'
 import { ru } from 'date-fns/locale'
+import { ResizableTableHead } from '@/components/delivery-crm/ResizableTableHead'
+import { ResizableTableCell } from '@/components/delivery-crm/ResizableTableCell'
 
 interface DeliveryOrder {
   id: string
@@ -168,51 +170,7 @@ const initialColumnWidths: Record<string, number> = {
   delivered: 70,
 }
 
-// Компонент для заголовка столбца
-const ResizableTableHead = ({ columnKey, children, className = '', columnWidths }: { columnKey: string; children: React.ReactNode; className?: string; columnWidths: Record<string, number> }) => {
-  return (
-    <TableHead 
-      className={`relative border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 ${className}`}
-      style={{ 
-        width: columnWidths[columnKey], 
-        minWidth: columnWidths[columnKey], 
-        maxWidth: columnWidths[columnKey]
-      }}
-    >
-      <div className="flex items-center justify-center relative h-full">
-        <div 
-          className="flex-1 text-center" 
-          style={{ 
-            padding: '1px',
-            fontSize: '0.75rem',
-            lineHeight: '1.2',
-            wordWrap: 'break-word',
-            overflowWrap: 'break-word',
-            hyphens: 'auto',
-            whiteSpace: 'normal'
-          }}
-        >
-          {children}
-        </div>
-      </div>
-    </TableHead>
-  );
-};
-
-// Компонент для ячейки
-const ResizableTableCell = ({ columnKey, children, className = '', columnWidths, ...props }: { columnKey: string; children: React.ReactNode; className?: string; columnWidths: Record<string, number>; [key: string]: any }) => {
-  return (
-    <TableCell 
-      className={`border-r border-gray-200 dark:border-gray-700 p-0 relative ${className}`}
-      style={{ width: columnWidths[columnKey], minWidth: columnWidths[columnKey], maxWidth: columnWidths[columnKey] }}
-      {...props}
-    >
-      <div className="w-full h-full px-0.5 py-0.5">
-        {children}
-      </div>
-    </TableCell>
-  );
-};
+// ResizableTableHead и ResizableTableCell теперь импортируются из components
 
 export default function DeliveryCRMPage() {
   const [orders, setOrders] = useState<DeliveryOrder[]>(createInitialOrders)
@@ -1335,14 +1293,14 @@ export default function DeliveryCRMPage() {
                     return (
                       <React.Fragment key={date}>
                         {dateOrders.map((order, index) => {
-                      const isFirstInDate = index === 0
-                      const isDragging = draggedOrderId === order.id
-                      // Добавляем жирную границу сверху для первой строки каждого дня (кроме первого дня)
-                      const hasTopBorder = isFirstInDate && !isFirstDate
+                          const isFirstInDate = index === 0
+                          const isDragging = draggedOrderId === order.id
+                          // Добавляем жирную границу сверху для первой строки каждого дня (кроме первого дня)
+                          const hasTopBorder = isFirstInDate && !isFirstDate
 
-                      return (
-                        <TableRow
-                          key={order.id}
+                          return (
+                            <TableRow
+                              key={order.id}
                           draggable
                           onDragStart={(e) => handleDragStart(e, order.id)}
                           onDragEnd={handleDragEnd}
@@ -1356,32 +1314,32 @@ export default function DeliveryCRMPage() {
                             minHeight: '2.5rem',
                             backgroundColor: getRowBackgroundColor(order) || undefined
                           }}
-                        >
-                          <ResizableTableCell columnKey="drag" className="text-center">
-                            <div className="flex items-center justify-center h-full">
-                              <GripVertical className="w-4 h-4 text-muted-foreground" />
-                            </div>
-                          </ResizableTableCell>
-                          <ResizableTableCell
-                            columnKey="date"
-                            columnWidths={columnWidths}
-                            onDragOver={(e) => handleDragOver(e, date)}
-                            onDragLeave={handleDragLeave}
-                            onDrop={(e) => handleDrop(e, date)}
-                            className={`text-center align-middle font-medium ${isFirstInDate ? dateColor : ''} ${isFirstInDate ? 'font-bold' : ''}`}
-                          >
-                            {isFirstInDate ? formatDate(date) : ''}
-                          </ResizableTableCell>
-                          <ResizableTableCell columnKey="orderNumber" className="text-center align-middle" columnWidths={columnWidths}>
-                            <div className="relative h-full w-full flex flex-col" style={{ minHeight: '2.5rem' }}>
-                              {/* Номер заказа сверху */}
-                              <div 
-                                className="flex items-start justify-center w-full pt-1"
-                                style={{ 
-                                  minHeight: '1.5rem'
-                                }}
+                            >
+                              <ResizableTableCell columnKey="drag" className="text-center" columnWidths={columnWidths}>
+                                <div className="flex items-center justify-center h-full">
+                                  <GripVertical className="w-4 h-4 text-muted-foreground" />
+                                </div>
+                              </ResizableTableCell>
+                              <ResizableTableCell
+                                columnKey="date"
+                                columnWidths={columnWidths}
+                                onDragOver={(e) => handleDragOver(e, date)}
+                                onDragLeave={handleDragLeave}
+                                onDrop={(e) => handleDrop(e, date)}
+                                className={`text-center align-middle font-medium ${isFirstInDate ? dateColor : ''} ${isFirstInDate ? 'font-bold' : ''}`}
                               >
-                                <Textarea
+                                {isFirstInDate ? formatDate(date) : ''}
+                              </ResizableTableCell>
+                              <ResizableTableCell columnKey="orderNumber" className="text-center align-middle" columnWidths={columnWidths}>
+                                <div className="relative h-full w-full flex flex-col" style={{ minHeight: '2.5rem' }}>
+                                  {/* Номер заказа сверху */}
+                                  <div 
+                                    className="flex items-start justify-center w-full pt-1"
+                                    style={{ 
+                                      minHeight: '1.5rem'
+                                    }}
+                                  >
+                                    <Textarea
                                   value={order.orderNumber}
                                   onChange={(e) => handleCellChange(order.id, 'orderNumber', e.target.value)}
                                   placeholder="№ заказа"
@@ -1405,15 +1363,15 @@ export default function DeliveryCRMPage() {
                                     const newHeight = Math.max(24, target.scrollHeight)
                                     target.style.height = `${newHeight}px`
                                   }}
-                                  onFocus={() => editingCellRef.current = { orderId: order.id, field: 'orderNumber' }}
-                                />
-                              </div>
-                              {/* Кнопки внизу в одну строчку, выровнены по высоте */}
-                              <div 
-                                className="flex items-center justify-center gap-1 flex-shrink-0 mt-auto"
-                                style={{ height: '18px', paddingBottom: '2px' }}
-                              >
-                                <div className="relative">
+                                    onFocus={() => editingCellRef.current = { orderId: order.id, field: 'orderNumber' }}
+                                  />
+                                  </div>
+                                  {/* Кнопки внизу в одну строчку, выровнены по высоте */}
+                                  <div 
+                                    className="flex items-center justify-center gap-1 flex-shrink-0 mt-auto"
+                                    style={{ height: '18px', paddingBottom: '2px' }}
+                                  >
+                                    <div className="relative">
                                   <Button
                                     type="button"
                                     variant="ghost"
@@ -1827,10 +1785,10 @@ export default function DeliveryCRMPage() {
                               checked={order.delivered}
                               onCheckedChange={() => handleCheckboxChange(order.id, 'delivered')}
                             />
-                          </ResizableTableCell>
-                        </TableRow>
-                        )
-                      })}
+                              </ResizableTableCell>
+                            </TableRow>
+                          )
+                        })}
                       </React.Fragment>
                     )
                   })}
@@ -1839,6 +1797,7 @@ export default function DeliveryCRMPage() {
             </div>
           </CardContent>
         </Card>
+        </div>
 
         {/* Кнопка "Показать далее" внизу страницы */}
         {hasMoreDates && (
