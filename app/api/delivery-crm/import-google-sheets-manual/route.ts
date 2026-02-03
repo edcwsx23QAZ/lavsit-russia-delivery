@@ -379,7 +379,7 @@ export async function POST(request: NextRequest) {
           }
 
           // Проверяем, существует ли заказ с таким номером и датой
-          let existing = null
+          let existing: any = null
           try {
             if (!prisma.deliveryOrder) {
               throw new Error('DeliveryOrder model not available in Prisma client')
@@ -405,7 +405,7 @@ export async function POST(request: NextRequest) {
             try {
               await prisma.deliveryOrder.update({
                 where: { id: existing.id },
-                data: processedData,
+                data: processedData as any,
               })
               updated++
             } catch (updateError: any) {
