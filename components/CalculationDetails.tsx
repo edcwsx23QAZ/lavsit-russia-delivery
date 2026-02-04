@@ -107,8 +107,8 @@ export default function CalculationDetails({ details, isExpanded = false }: Calc
         </div>
 
         {details.error && (
-          <div className="bg-red-900 border border-red-700 rounded p-3">
-            <div className="flex items-center gap-2 text-white">
+          <div className="bg-white border border-red-700 rounded p-3">
+            <div className="flex items-center gap-2 text-black">
               <AlertTriangle className="w-4 h-4" />
               <span>Ошибка: {details.error}</span>
             </div>

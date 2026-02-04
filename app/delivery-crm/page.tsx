@@ -18,26 +18,37 @@ import {
   Truck,
   GripVertical,
   ChevronDown,
-  ChevronUp,
-  History,
-  Download,
-  Loader2,
   Calculator,
   Upload,
-  Tag,
-  MoreVertical,
-  Palette,
+  Loader2,
+  Plus,
 } from 'lucide-react'
 import { Textarea } from '@/components/ui/textarea'
-import { format, addDays, startOfToday, endOfYear, startOfYear, isBefore, isSameDay, parseISO } from 'date-fns'
-import { ru } from 'date-fns/locale'
-import { ResizableTableHead } from '@/components/delivery-crm/ResizableTableHead'
-import { ResizableTableCell } from '@/components/delivery-crm/ResizableTableCell'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+import { format, addDays, subDays, startOfToday, parseISO } from 'date-fns'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog'
 
 interface DeliveryOrder {
   id: string
   date: string // ISO date string
   orderNumber: string
+  reklType?: string // Тип рекламации, если установлен REKL
+  tk: boolean // Флаг ТК
   wrote: boolean
   confirmed: boolean
   products: string
@@ -46,13 +57,10 @@ interface DeliveryOrder {
   contact: string
   payment: string
   time: string // Формат: "11:00 - 13:00" (слот времени)
-  timeStart?: string // Начало слота (для сортировки)
   comment: string
   shipped: boolean
   delivered: boolean
   isEmpty: boolean // Флаг пустой строки
-  tags?: string[] // Метки: ["REKL", "ТК"]
-  rowColor?: string // Цвет строки (hex или название)
 }
 
 // Форматирование даты в "05.02" (ДД.ММ)
@@ -63,8 +71,8 @@ const formatDate = (dateString: string): string => {
 
 // Генерация дат от 01.01 текущего года до конца года
 const generateDates = (): string[] => {
-  const startDate = startOfYear(new Date())
-  const endDate = endOfYear(new Date())
+  const startDate = new Date(new Date().getFullYear(), 0, 1) // 01.01 текущего года
+  const endDate = new Date(new Date().getFullYear(), 11, 31) // 31.12 текущего года
   const dates: string[] = []
   
   let currentDate = startDate
@@ -76,19 +84,21 @@ const generateDates = (): string[] => {
   return dates
 }
 
-// Создание начальных данных
+// Создание начальных данных (заполнение с 01.01)
 const createInitialOrders = (): DeliveryOrder[] => {
   const dates = generateDates()
   const orders: DeliveryOrder[] = []
   let orderCounter = 1
   
   dates.forEach((date) => {
-    // 3 заполненные строки
+    // 3 заполненные строки на каждый день
     for (let i = 0; i < 3; i++) {
       orders.push({
         id: `${date}-${i}`,
         date,
-        orderNumber: `ORD-${String(orderCounter).padStart(3, '0')}`,
+        orderNumber: `OR${String(orderCounter).padStart(3, '0')}`,
+        reklType: undefined,
+        tk: false,
         wrote: i === 0,
         confirmed: i < 2,
         products: `Товар ${orderCounter}`,
@@ -96,7 +106,7 @@ const createInitialOrders = (): DeliveryOrder[] => {
         address: `Адрес ${orderCounter}`,
         contact: `+7 (999) ${String(orderCounter).padStart(3, '0')}-${String(orderCounter).padStart(2, '0')}-${String(orderCounter).padStart(2, '0')}`,
         payment: i === 0 ? 'Оплачено' : 'Частично',
-        time: `${9 + i}:00`,
+        time: i === 0 ? '9:00 - 13:00' : i === 1 ? '11:00 - 13:00' : '11:00 - 13:00',
         comment: i === 0 ? 'Комментарий' : '',
         shipped: i === 2,
         delivered: false,
@@ -104,874 +114,399 @@ const createInitialOrders = (): DeliveryOrder[] => {
       })
       orderCounter++
     }
-    // 1 пустая строка
-    orders.push({
-      id: `${date}-empty`,
-      date,
-      orderNumber: '',
-      wrote: false,
-      confirmed: false,
-      products: '',
-      fsm: '',
-      address: '',
-      contact: '',
-      payment: '',
-      time: '',
-      comment: '',
-      shipped: false,
-      delivered: false,
-      isEmpty: true,
-      tags: [],
-      rowColor: undefined,
-    })
   })
   
   return orders
 }
 
-// Подсчет заказов на день (исключая пустые)
-const getOrdersCountForDate = (orders: DeliveryOrder[], date: string): number => {
-  return orders.filter(order => order.date === date && !order.isEmpty).length
-}
+// Варианты рекламаций
+const reklOptions = [
+  'Повреждение при доставке',
+  'Несоответствие заказу',
+  'Брак',
+  'Другое',
+]
 
-// Получение цвета для даты
-const getDateColor = (count: number): string => {
-  if (count >= 20) {
-    return 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
-  } else if (count > 10) {
-    // Градиент от желтого к красному
-    const ratio = (count - 10) / 10 // 0 при 10, 1 при 20
-    if (ratio < 0.5) {
-      // От желтого к оранжевому
-      return 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300'
-    } else {
-      // От оранжевого к красному
-      return 'bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300'
-    }
-  }
-  return ''
-}
-
-// Начальные ширины столбцов (в пикселях) - оптимизированы для экрана без горизонтальной прокрутки
-const initialColumnWidths: Record<string, number> = {
-  drag: 28,
-  date: 55,
-  orderNumber: 70,
-  wrote: 55,
-  confirmed: 70,
-  products: 180,
-  fsm: 60,
-  address: 130,
+// Ширины столбцов (в пикселях) - оптимизированы для видимости всей таблицы
+const columnWidths: Record<string, number> = {
+  drag: 15,
+  date: 30,
+  orderNumber: 60,
+  wrote: 30,
+  confirmed: 30,
+  products: 240,
+  fsm: 70,
+  address: 150,
   contact: 120,
   payment: 70,
-  time: 95,
-  comment: 100,
-  shipped: 65,
-  delivered: 70,
+  time: 60,
+  comment: 165,
+  shipped: 30,
+  delivered: 30,
 }
 
-// ResizableTableHead и ResizableTableCell теперь импортируются из components
+// Загрузка данных из localStorage
+const loadOrdersFromStorage = (): DeliveryOrder[] => {
+  if (typeof window === 'undefined') return createInitialOrders()
+  try {
+    const saved = localStorage.getItem('delivery-crm-orders')
+    if (saved) {
+      const parsed = JSON.parse(saved)
+      return parsed.length > 0 ? parsed : createInitialOrders()
+    }
+  } catch (error) {
+    console.error('Error loading orders from localStorage:', error)
+  }
+  return createInitialOrders()
+}
+
+// Сохранение данных в localStorage
+const saveOrdersToStorage = (orders: DeliveryOrder[]) => {
+  if (typeof window === 'undefined') return
+  try {
+    localStorage.setItem('delivery-crm-orders', JSON.stringify(orders))
+  } catch (error) {
+    console.error('Error saving orders to localStorage:', error)
+  }
+}
 
 export default function DeliveryCRMPage() {
-  const [orders, setOrders] = useState<DeliveryOrder[]>(createInitialOrders)
+  const [orders, setOrders] = useState<DeliveryOrder[]>(loadOrdersFromStorage)
   const [draggedOrderId, setDraggedOrderId] = useState<string | null>(null)
   const [dragOverDate, setDragOverDate] = useState<string | null>(null)
-  const [showHistory, setShowHistory] = useState(false)
-  const [daysToShow, setDaysToShow] = useState(14) // По умолчанию 2 недели (14 дней)
-  const [columnWidths, setColumnWidths] = useState<Record<string, number>>(initialColumnWidths)
-  const [resizingColumn, setResizingColumn] = useState<string | null>(null)
-  const [resizeStartX, setResizeStartX] = useState(0)
-  const [resizeStartWidth, setResizeStartWidth] = useState(0)
-  const [loadingBitrix, setLoadingBitrix] = useState<string | null>(null) // ID заказа, который загружается
-  const [isLoadingOrders, setIsLoadingOrders] = useState(false)
-  const [isInitialized, setIsInitialized] = useState(false)
-  const [isImporting, setIsImporting] = useState(false)
-  const [contextMenu, setContextMenu] = useState<{ x: number; y: number; orderId: string } | null>(null)
-  const [tagMenu, setTagMenu] = useState<{ orderId: string; x: number; y: number } | null>(null)
-  const editingCellRef = useRef<{ orderId: string; field: keyof DeliveryOrder } | null>(null)
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
+  const [daysToShow, setDaysToShow] = useState(8) // Сегодня + 7 дней = 8 дней
+  const [daysBack, setDaysBack] = useState(0) // Количество дней назад для показа
+  const [showExpandDialog, setShowExpandDialog] = useState(false)
+  const [reklMenu, setReklMenu] = useState<{ orderId: string; x: number; y: number } | null>(null)
+  const [headerHeight, setHeaderHeight] = useState(80)
   const tableRef = useRef<HTMLTableElement>(null)
+  const headerRef = useRef<HTMLDivElement>(null)
   
   const today = startOfToday()
+  const isInitialMount = useRef(true)
 
-  // Цвета для строк
-  const rowColors = [
-    { name: 'Без цвета', value: '' },
-    { name: 'Красный', value: '#fee2e2' },
-    { name: 'Оранжевый', value: '#fed7aa' },
-    { name: 'Желтый', value: '#fef3c7' },
-    { name: 'Зеленый', value: '#d1fae5' },
-    { name: 'Голубой', value: '#dbeafe' },
-    { name: 'Синий', value: '#dbeafe' },
-    { name: 'Фиолетовый', value: '#e9d5ff' },
-    { name: 'Розовый', value: '#fce7f3' },
-    { name: 'Серый', value: '#f3f4f6' },
-  ]
-
-  // Варианты рекламаций (пока базовый список, можно расширить)
-  const reklOptions = [
-    'Повреждение при доставке',
-    'Несоответствие заказу',
-    'Брак',
-    'Другое',
-  ]
-
-  // Парсинг времени на начало и конец слота
-  const parseTimeSlot = (timeStr: string): { start: string; end: string } => {
-    if (!timeStr) return { start: '', end: '' }
-    
-    // Пытаемся найти формат "11:00 - 13:00" или "11:00-13:00"
-    const match = timeStr.match(/^(.+?)\s*[-—]\s*(.+)$/)
-    if (match) {
-      return { start: match[1].trim(), end: match[2].trim() }
-    }
-    
-    // Если формат не найден, считаем что это только начало
-    return { start: timeStr.trim(), end: '' }
-  }
-
-  // Обработка изменения начала времени с умным форматированием
-  const handleTimeStartChange = (id: string, startValue: string, cursorPosition?: number) => {
-    const order = orders.find(o => o.id === id)
-    if (!order) return
-    
-    // Удаляем все нецифровые символы
-    const digitsOnly = startValue.replace(/\D/g, '')
-    
-    // Форматируем как время (XX:XX)
-    let formatted = digitsOnly
-    if (digitsOnly.length > 2) {
-      formatted = digitsOnly.slice(0, 2) + ':' + digitsOnly.slice(2, 4)
-    } else if (digitsOnly.length > 0) {
-      formatted = digitsOnly
-    }
-    
-    const { end } = parseTimeSlot(order.time)
-    const newTime = end ? `${formatted} - ${end}` : formatted
-    handleCellChange(id, 'time', newTime)
-  }
-
-  // Обработка изменения окончания времени с умным форматированием
-  const handleTimeEndChange = (id: string, endValue: string, cursorPosition?: number) => {
-    const order = orders.find(o => o.id === id)
-    if (!order) return
-    
-    // Удаляем все нецифровые символы
-    const digitsOnly = endValue.replace(/\D/g, '')
-    
-    // Форматируем как время (XX:XX)
-    let formatted = digitsOnly
-    if (digitsOnly.length > 2) {
-      formatted = digitsOnly.slice(0, 2) + ':' + digitsOnly.slice(2, 4)
-    } else if (digitsOnly.length > 0) {
-      formatted = digitsOnly
-    }
-    
-    const { start } = parseTimeSlot(order.time)
-    const newTime = start ? `${start} - ${formatted}` : formatted
-    handleCellChange(id, 'time', newTime)
-  }
-
-  // Обработка добавления/удаления меток
-  const handleTagToggle = (orderId: string, tag: string) => {
-    setOrders(orders.map(order => {
-      if (order.id === orderId) {
-        const currentTags = order.tags || []
-        const newTags = currentTags.includes(tag)
-          ? currentTags.filter(t => t !== tag)
-          : [...currentTags, tag]
-        return { ...order, tags: newTags }
-      }
-      return order
-    }))
-  }
-
-  // Обработка изменения цвета строки
-  const handleRowColorChange = (orderId: string, color: string) => {
-    setOrders(orders.map(order => 
-      order.id === orderId 
-        ? { ...order, rowColor: color || undefined }
-        : order
-    ))
-    setContextMenu(null)
-  }
-
-  // Получение цвета строки с учетом меток
-  const getRowBackgroundColor = (order: DeliveryOrder): string => {
-    // Если установлен цвет строки, используем его
-    if (order.rowColor) {
-      return order.rowColor
-    }
-    
-    // Если есть метки, используем их цвета
-    const tags = order.tags || []
-    if (tags.includes('REKL')) {
-      return '#fce7f3' // Бледно-розовый
-    }
-    if (tags.includes('ТК')) {
-      return '#dbeafe' // Бледно-голубой
-    }
-    
-    return ''
-  }
-
-
-  // Загрузка заказов из БД при инициализации
+  // Сохранение в localStorage при изменении orders (кроме первой загрузки)
   useEffect(() => {
-    const loadOrdersFromDB = async () => {
-      if (isInitialized) return
-      
-      setIsLoadingOrders(true)
-      try {
-        // Сначала проверяем localStorage для быстрой загрузки
-        const cachedOrders = localStorage.getItem('delivery-crm-orders')
-        if (cachedOrders) {
-          try {
-            const parsed = JSON.parse(cachedOrders)
-            if (Array.isArray(parsed) && parsed.length > 0) {
-              setOrders(parsed)
-              setIsInitialized(true)
-            }
-          } catch (e) {
-            console.error('Error parsing cached orders:', e)
-          }
-        }
-
-        // Затем загружаем из БД
-        const response = await fetch('/api/delivery-crm/orders?includeEmpty=true')
-        if (response.ok) {
-          const data = await response.json()
-          if (data.success && data.orders && data.orders.length > 0) {
-            // Преобразуем данные из БД в формат DeliveryOrder
-            const dbOrders: DeliveryOrder[] = data.orders.map((o: any) => ({
-              id: o.id,
-              date: format(new Date(o.date), 'yyyy-MM-dd'),
-              orderNumber: o.orderNumber || '',
-              wrote: o.wrote || false,
-              confirmed: o.confirmed || false,
-              products: o.products || '',
-              fsm: o.fsm || '',
-              address: o.address || '',
-              contact: o.contact || '',
-              payment: o.payment || '',
-              time: o.time || '',
-              comment: o.comment || '',
-              shipped: o.shipped || false,
-              delivered: o.delivered || false,
-              isEmpty: o.isEmpty || false,
-              tags: Array.isArray(o.tags) ? o.tags : (o.tags ? [o.tags] : []),
-              rowColor: o.rowColor || undefined,
-            }))
-            
-            setOrders(dbOrders)
-            // Сохраняем в localStorage
-            localStorage.setItem('delivery-crm-orders', JSON.stringify(dbOrders))
-          } else {
-            // Если в БД нет заказов, загружаем данные из Google Sheets
-            await loadFromGoogleSheets()
-          }
-        }
-      } catch (error) {
-        console.error('Error loading orders from DB:', error)
-        // В случае ошибки используем данные из localStorage или начальные
-        const cachedOrders = localStorage.getItem('delivery-crm-orders')
-        if (cachedOrders) {
-          try {
-            const parsed = JSON.parse(cachedOrders)
-            if (Array.isArray(parsed)) {
-              setOrders(parsed)
-            }
-          } catch (e) {
-            // Игнорируем ошибки парсинга
-          }
-        }
-      } finally {
-        setIsLoadingOrders(false)
-        setIsInitialized(true)
-      }
-    }
-
-    loadOrdersFromDB()
-  }, [isInitialized])
-
-  // Функция загрузки данных из Google Sheets
-  const loadFromGoogleSheets = async () => {
-    try {
-      // Пытаемся загрузить данные из Google Sheets через API
-      // Используем spreadsheet ID из URL
-      const spreadsheetId = '1Cvl-0P0uBoYupGGbZ2AG70S0VDyrAII8L0vNjUykOsI'
-      const gid = '0' // Вкладка "Доставки"
-      
-      // Пытаемся получить данные через публичный CSV экспорт
-      // Если файл не публичный, пользователь должен будет предоставить данные вручную
-      const csvUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/export?format=csv&gid=${gid}`
-      
-      try {
-        const csvResponse = await fetch(csvUrl)
-        if (csvResponse.ok) {
-          const csvText = await csvResponse.text()
-          const orders = parseGoogleSheetsCSV(csvText, 1622) // Начинаем со строки 1622
-          
-          if (orders.length > 0) {
-            // Импортируем в БД
-            const importResponse = await fetch('/api/delivery-crm/import-google-sheets', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ orders }),
-            })
-            
-            if (importResponse.ok) {
-              // Загружаем из БД после импорта
-              const dbResponse = await fetch('/api/delivery-crm/orders?includeEmpty=true')
-              if (dbResponse.ok) {
-                const dbData = await dbResponse.json()
-                if (dbData.success && dbData.orders && dbData.orders.length > 0) {
-                  const dbOrders: DeliveryOrder[] = dbData.orders.map((o: any) => ({
-                    id: o.id,
-                    date: format(new Date(o.date), 'yyyy-MM-dd'),
-                    orderNumber: o.orderNumber || '',
-                    wrote: o.wrote || false,
-                    confirmed: o.confirmed || false,
-                    products: o.products || '',
-                    fsm: o.fsm || '',
-                    address: o.address || '',
-                    contact: o.contact || '',
-                    payment: o.payment || '',
-                    time: o.time || '',
-                    comment: o.comment || '',
-              shipped: o.shipped || false,
-              delivered: o.delivered || false,
-              isEmpty: o.isEmpty || false,
-              tags: Array.isArray(o.tags) ? o.tags : (o.tags ? [o.tags] : []),
-              rowColor: o.rowColor || undefined,
-            }))
-            
-            setOrders(dbOrders)
-                  localStorage.setItem('delivery-crm-orders', JSON.stringify(dbOrders))
-                  return
-                }
-              }
-            }
-          }
-        }
-      } catch (csvError) {
-        console.log('Не удалось загрузить данные из Google Sheets напрямую. Используем начальные данные.')
-      }
-      
-      // Если не удалось загрузить из Google Sheets, используем начальные данные
-      const initialOrders = createInitialOrders()
-      setOrders(initialOrders)
-      localStorage.setItem('delivery-crm-orders', JSON.stringify(initialOrders))
-    } catch (error) {
-      console.error('Error loading from Google Sheets:', error)
-      const initialOrders = createInitialOrders()
-      setOrders(initialOrders)
-      localStorage.setItem('delivery-crm-orders', JSON.stringify(initialOrders))
-    }
-  }
-
-  // Парсинг CSV из Google Sheets
-  // Структура столбцов: A=Дата, B=№ заказа, C=Написали, D=Подтвердил, E=Товар, F=ФСМ, G=Адрес, H=Контакт, I=Оплата, J=Время, K=Отгрузки, L=Доставлен
-  const parseGoogleSheetsCSV = (csvText: string, startRow: number): any[] => {
-    const lines = csvText.split('\n').filter(line => line.trim())
-    if (lines.length < startRow) return []
-    
-    // Пропускаем заголовки и строки до startRow
-    const dataLines = lines.slice(startRow - 1)
-    if (dataLines.length === 0) return []
-    
-    const orders: any[] = []
-    
-    // Прямой маппинг по индексам столбцов (A=0, B=1, C=2, и т.д.)
-    for (let i = 1; i < dataLines.length; i++) {
-      const values = parseCSVLine(dataLines[i])
-      if (values.length === 0) continue
-      
-      const order: any = {}
-      
-      // A (0): Дата
-      if (values[0] && values[0].trim()) {
-        order.date = parseDateFromString(values[0])
-      } else {
-        // Если дата пустая, пропускаем строку
-        continue
-      }
-      
-      // B (1): № заказа
-      order.orderNumber = values[1] || ''
-      
-      // C (2): Написали - описание товаров
-      const wroteText = values[2] || ''
-      
-      // D (3): Подтвердил - может быть ФСМ или подтверждение
-      const confirmedText = values[3] || ''
-      
-      // E (4): Товар
-      const productText = values[4] || ''
-      
-      // Объединяем C (Написали) и E (Товар) в products
-      order.products = [wroteText, productText].filter(t => t.trim()).join('\n')
-      
-      // F (5): ФСМ
-      const fsmText = values[5] || ''
-      order.fsm = fsmText || confirmedText || ''
-      
-      // G (6): Адрес
-      order.address = values[6] || ''
-      
-      // H (7): Контакт
-      order.contact = values[7] || ''
-      
-      // I (8): Оплата
-      order.payment = values[8] || ''
-      
-      // J (9): Время
-      order.time = values[9] || ''
-      
-      // K (10): Отгрузки (shipped)
-      order.shipped = parseBooleanFromString(values[10])
-      
-      // L (11): Доставлен
-      order.delivered = parseBooleanFromString(values[11])
-      
-      // Написали - если есть текст в столбце C, считаем что написали
-      order.wrote = !!wroteText.trim()
-      
-      // Подтвердили - если есть текст в столбце D или F (ФСМ), считаем что подтвердили
-      order.confirmed = !!confirmedText.trim() || !!fsmText.trim()
-      
-      // Комментарий - пустое поле, можно использовать для дополнительной информации
-      order.comment = ''
-      
-      // Пропускаем пустые строки
-      if (!order.orderNumber && !order.products && !order.address) {
-        continue
-      }
-      
-      orders.push(order)
-    }
-    
-    return orders
-  }
-
-  const parseCSVLine = (line: string): string[] => {
-    const values: string[] = []
-    let current = ''
-    let inQuotes = false
-    
-    for (let i = 0; i < line.length; i++) {
-      const char = line[i]
-      
-      if (char === '"') {
-        inQuotes = !inQuotes
-      } else if (char === ',' && !inQuotes) {
-        values.push(current.trim())
-        current = ''
-      } else {
-        current += char
-      }
-    }
-    
-    values.push(current.trim())
-    return values
-  }
-
-  const findColumnIndex = (headers: string[], possibleNames: string[]): number => {
-    for (let i = 0; i < headers.length; i++) {
-      const header = headers[i].toLowerCase().trim()
-      for (const name of possibleNames) {
-        if (header === name.toLowerCase().trim() || header.includes(name.toLowerCase().trim())) {
-          return i
-        }
-      }
-    }
-    return -1
-  }
-
-  const parseDateFromString = (dateStr: string): string => {
-    if (!dateStr || !dateStr.trim()) {
-      return format(new Date(), 'yyyy-MM-dd')
-    }
-
-    // Формат DD.MM или DD.MM.YYYY
-    const parts = dateStr.trim().split('.')
-    if (parts.length >= 2) {
-      const day = parseInt(parts[0], 10)
-      const month = parseInt(parts[1], 10)
-      const year = parts[2] ? parseInt(parts[2], 10) : new Date().getFullYear()
-      
-      if (!isNaN(day) && !isNaN(month) && !isNaN(year)) {
-        const date = new Date(year, month - 1, day)
-        if (!isNaN(date.getTime())) {
-          return format(date, 'yyyy-MM-dd')
-        }
-      }
-    }
-
-    // Попытка парсинга как ISO строки
-    const parsed = new Date(dateStr)
-    if (!isNaN(parsed.getTime())) {
-      return format(parsed, 'yyyy-MM-dd')
-    }
-
-    return format(new Date(), 'yyyy-MM-dd')
-  }
-
-  const parseBooleanFromString = (value: string): boolean => {
-    if (!value) return false
-    const lower = String(value).toLowerCase().trim()
-    return lower === 'да' || lower === 'yes' || lower === 'true' || lower === '1' || 
-           lower === '✓' || lower === 'v' || lower === '+' || lower === 'x' ||
-           lower === 'checked' || lower === 'отмечено'
-  }
-
-  // Ручной импорт данных из Google Sheets
-  const handleManualImport = async () => {
-    if (!confirm('Импортировать данные из Google Sheets начиная со строки 1622? Это может занять некоторое время.')) {
+    if (isInitialMount.current) {
+      isInitialMount.current = false
       return
     }
-
-    setIsImporting(true)
-    try {
-      const response = await fetch('/api/delivery-crm/import-google-sheets-manual', {
-        method: 'POST',
-      })
-
-      const data = await response.json()
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Ошибка импорта')
-      }
-
-      let message = `Импорт завершен!\nИмпортировано: ${data.imported}\nОбновлено: ${data.updated}\nВсего: ${data.total}\nОшибок: ${data.errors}`
-      
-      if (data.errorDetails && data.errorDetails.length > 0) {
-        message += `\n\nПервые ошибки:\n`
-        data.errorDetails.slice(0, 5).forEach((err: any, idx: number) => {
-          message += `${idx + 1}. Строка ${err.row || 'N/A'}, Заказ: ${err.orderNumber || 'N/A'}\n   Ошибка: ${err.error || 'Unknown'}\n`
-        })
-        if (data.errorDetails.length > 5) {
-          message += `\n... и еще ${data.errorDetails.length - 5} ошибок`
-        }
-      }
-      
-      alert(message)
-
-      // Перезагружаем данные из БД
-      const dbResponse = await fetch('/api/delivery-crm/orders?includeEmpty=true')
-      if (dbResponse.ok) {
-        const dbData = await dbResponse.json()
-        if (dbData.success && dbData.orders && dbData.orders.length > 0) {
-          const dbOrders: DeliveryOrder[] = dbData.orders.map((o: any) => ({
-            id: o.id,
-            date: format(new Date(o.date), 'yyyy-MM-dd'),
-            orderNumber: o.orderNumber || '',
-            wrote: o.wrote || false,
-            confirmed: o.confirmed || false,
-            products: o.products || '',
-            fsm: o.fsm || '',
-            address: o.address || '',
-            contact: o.contact || '',
-            payment: o.payment || '',
-            time: o.time || '',
-            comment: o.comment || '',
-              shipped: o.shipped || false,
-              delivered: o.delivered || false,
-              isEmpty: o.isEmpty || false,
-              tags: Array.isArray(o.tags) ? o.tags : (o.tags ? [o.tags] : []),
-              rowColor: o.rowColor || undefined,
-            }))
-            
-            setOrders(dbOrders)
-          localStorage.setItem('delivery-crm-orders', JSON.stringify(dbOrders))
-        }
-      }
-    } catch (error: any) {
-      console.error('Error importing:', error)
-      alert(`Ошибка импорта: ${error.message}`)
-    } finally {
-      setIsImporting(false)
-    }
-  }
-
-  // Закрытие контекстного меню при клике вне его
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (contextMenu) {
-        setContextMenu(null)
-      }
-      if (tagMenu) {
-        setTagMenu(null)
-      }
-    }
-
-    document.addEventListener('click', handleClickOutside)
-    return () => {
-      document.removeEventListener('click', handleClickOutside)
-    }
-  }, [contextMenu, tagMenu])
-
-  // Синхронизация изменений с БД и localStorage
-  useEffect(() => {
-    if (!isInitialized) return
-
-    // Сохраняем в localStorage при каждом изменении
-    localStorage.setItem('delivery-crm-orders', JSON.stringify(orders))
-
-    // Дебаунсинг для синхронизации с БД (чтобы не отправлять запрос при каждом изменении)
-    const timeoutId = setTimeout(async () => {
-      try {
-        // Отправляем все заказы на сервер для синхронизации
-        const response = await fetch('/api/delivery-crm/orders', {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            orders: orders.map(o => ({
-              id: o.id,
-              date: o.date,
-              orderNumber: o.orderNumber,
-              wrote: o.wrote,
-              confirmed: o.confirmed,
-              products: o.products,
-              fsm: o.fsm,
-              address: o.address,
-              contact: o.contact,
-              payment: o.payment,
-              time: o.time,
-              comment: o.comment,
-              shipped: o.shipped,
-              delivered: o.delivered,
-              isEmpty: o.isEmpty,
-              tags: o.tags || [],
-              rowColor: o.rowColor || undefined,
-            })),
-          }),
-        })
-
-        if (!response.ok) {
-          console.error('Error syncing orders to DB')
-        }
-      } catch (error) {
-        console.error('Error syncing orders to DB:', error)
-      }
-    }, 2000) // Синхронизация через 2 секунды после последнего изменения
-
-    return () => clearTimeout(timeoutId)
-  }, [orders, isInitialized])
-
-  // Парсинг времени для сортировки (извлекает начальное время из слота "11:00 - 13:00")
-  const parseTimeForSort = (timeStr: string): number => {
-    if (!timeStr) return 9999 // Пустые времена в конец
-    const match = timeStr.match(/^(\d{1,2}):(\d{2})/)
-    if (match) {
-      const hours = parseInt(match[1], 10)
-      const minutes = parseInt(match[2], 10)
-      return hours * 60 + minutes
-    }
-    return 9999
-  }
-
-  // Группировка заказов по датам с сортировкой по времени (от ранних к поздним)
-  const ordersByDate = useMemo(() => {
-    const grouped: Record<string, DeliveryOrder[]> = {}
-    orders.forEach(order => {
-      if (!grouped[order.date]) {
-        grouped[order.date] = []
-      }
-      grouped[order.date].push(order)
-    })
-    // Сортируем каждую группу: сначала заполненные по времени, потом пустые
-    Object.keys(grouped).forEach(date => {
-      grouped[date].sort((a, b) => {
-        if (a.isEmpty && !b.isEmpty) return 1
-        if (!a.isEmpty && b.isEmpty) return -1
-        if (a.isEmpty && b.isEmpty) return 0
-        
-        // Сортируем по времени (от ранних к поздним)
-        const timeA = parseTimeForSort(a.time)
-        const timeB = parseTimeForSort(b.time)
-        if (timeA !== timeB) {
-          return timeA - timeB
-        }
-        
-        // Если время одинаковое, сортируем по номеру заказа
-        return (a.orderNumber || '').localeCompare(b.orderNumber || '')
-      })
-    })
-    return grouped
+    saveOrdersToStorage(orders)
   }, [orders])
 
-  // Получение всех дат в порядке отображения с фильтрацией истории и будущих дат
-  const allDates = useMemo(() => {
-    const dates = Array.from(new Set(orders.map(o => o.date))).sort()
-    
-    // Разделяем на исторические и будущие даты
-    const historicalDates = dates.filter(date => {
-      const dateObj = parseISO(date)
-      return isBefore(dateObj, today)
-    })
-    
-    const futureDates = dates.filter(date => {
-      const dateObj = parseISO(date)
-      return !isBefore(dateObj, today) || isSameDay(dateObj, today)
-    })
-    
-    // Ограничиваем количество показываемых дней вперед
-    const limitedFutureDates = futureDates.slice(0, daysToShow)
-    
-    // Если история включена, добавляем исторические даты
-    if (showHistory) {
-      return [...historicalDates, ...limitedFutureDates]
+  // Измерение высоты хэдера
+  useEffect(() => {
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        const height = headerRef.current.offsetHeight
+        setHeaderHeight(height)
+      }
     }
     
-    return limitedFutureDates
-  }, [orders, showHistory, today, daysToShow])
-  
-  // Проверяем, есть ли еще даты для показа
-  const hasMoreDates = useMemo(() => {
-    const allFutureDates = Array.from(new Set(orders.map(o => o.date)))
-      .sort()
-      .filter(date => {
-        const dateObj = parseISO(date)
-        return !isBefore(dateObj, today) || isSameDay(dateObj, today)
+    updateHeaderHeight()
+    window.addEventListener('resize', updateHeaderHeight)
+    return () => window.removeEventListener('resize', updateHeaderHeight)
+  }, [])
+
+  // #region agent log - измерение и синхронизация ширины столбцов
+  useEffect(() => {
+    const measureAndSyncColumnWidths = () => {
+      // Измеряем заголовки
+      const headerContainer = document.querySelector('[class*="sticky z-50"]') as HTMLElement
+      if (!headerContainer) return
+      
+      const headerDivs = headerContainer.querySelectorAll('div[style*="width"]')
+      const headerWidths: Record<string, number> = {}
+      const headerData: any[] = []
+      
+      headerDivs.forEach((div, index) => {
+        const el = div as HTMLElement
+        const computedStyle = window.getComputedStyle(el)
+        const rect = el.getBoundingClientRect()
+        const columnNames = ['drag', 'date', 'orderNumber', 'wrote', 'confirmed', 'products', 'fsm', 'address', 'contact', 'payment', 'time', 'comment', 'shipped', 'delivered']
+        const colName = columnNames[index] || `col${index}`
+        
+        headerWidths[colName] = rect.width
+        headerData.push({
+          colName,
+          offsetWidth: el.offsetWidth,
+          clientWidth: el.clientWidth,
+          rectWidth: rect.width,
+          computedWidth: computedStyle.width,
+          borderRight: computedStyle.borderRightWidth,
+          paddingLeft: computedStyle.paddingLeft,
+          paddingRight: computedStyle.paddingRight,
+          boxSizing: computedStyle.boxSizing
+        })
       })
-    return allFutureDates.length > daysToShow
-  }, [orders, today, daysToShow])
+      
+      // Измеряем ячейки таблицы
+      const table = tableRef.current
+      if (!table) return
+      
+      const firstRow = table.querySelector('tbody tr')
+      if (!firstRow) return
+      
+      const cells = firstRow.querySelectorAll('td')
+      const cellWidths: Record<string, number> = {}
+      const cellData: any[] = []
+      
+      cells.forEach((cell, index) => {
+        const el = cell as HTMLElement
+        const computedStyle = window.getComputedStyle(el)
+        const rect = el.getBoundingClientRect()
+        const columnNames = ['drag', 'date', 'orderNumber', 'wrote', 'confirmed', 'products', 'fsm', 'address', 'contact', 'payment', 'time', 'comment', 'shipped', 'delivered']
+        const colName = columnNames[index] || `col${index}`
+        
+        cellWidths[colName] = rect.width
+        cellData.push({
+          colName,
+          offsetWidth: el.offsetWidth,
+          clientWidth: el.clientWidth,
+          rectWidth: rect.width,
+          computedWidth: computedStyle.width,
+          borderRight: computedStyle.borderRightWidth,
+          paddingLeft: computedStyle.paddingLeft,
+          paddingRight: computedStyle.paddingRight,
+          boxSizing: computedStyle.boxSizing
+        })
+      })
+      
+      // Жестко привязываем ширину заголовков к ширине ячеек
+      // Сначала синхронизируем colgroup с текущей шириной ячеек
+      const colgroup = table.querySelector('colgroup')
+      if (colgroup && firstRow) {
+        const cols = colgroup.querySelectorAll('col')
+        const measuredCells = firstRow.querySelectorAll('td')
+        cols.forEach((col, index) => {
+          if (measuredCells[index]) {
+            const cellEl = measuredCells[index] as HTMLElement
+            const cellRect = cellEl.getBoundingClientRect()
+            const el = col as HTMLElement
+            el.style.width = `${cellRect.width}px`
+          }
+        })
+      }
+      
+      // Ждем применения стилей и переизмеряем ячейки, затем устанавливаем ширину заголовков
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (firstRow && headerDivs.length === cells.length) {
+            const remeasuredCells = firstRow.querySelectorAll('td')
+            remeasuredCells.forEach((cell, index) => {
+              const cellEl = cell as HTMLElement
+              const cellRect = cellEl.getBoundingClientRect()
+              const cellWidth = cellRect.width
+              
+              // Устанавливаем ширину соответствующего заголовка равной ширине ячейки
+              const headerDiv = headerDivs[index] as HTMLElement
+              if (headerDiv) {
+                headerDiv.style.width = `${cellWidth}px`
+                headerDiv.style.minWidth = `${cellWidth}px`
+                headerDiv.style.maxWidth = `${cellWidth}px`
+              }
+            })
+            
+            // Финальное переизмерение для логирования
+            requestAnimationFrame(() => {
+              if (firstRow) {
+                const finalCells = firstRow.querySelectorAll('td')
+                finalCells.forEach((cell, index) => {
+                  const el = cell as HTMLElement
+                  const rect = el.getBoundingClientRect()
+                  const columnNames = ['drag', 'date', 'orderNumber', 'wrote', 'confirmed', 'products', 'fsm', 'address', 'contact', 'payment', 'time', 'comment', 'shipped', 'delivered']
+                  const colName = columnNames[index] || `col${index}`
+                  cellWidths[colName] = rect.width
+                })
+              }
+              
+              // Переизмеряем заголовки
+              headerDivs.forEach((div, index) => {
+                const el = div as HTMLElement
+                const rect = el.getBoundingClientRect()
+                const columnNames = ['drag', 'date', 'orderNumber', 'wrote', 'confirmed', 'products', 'fsm', 'address', 'contact', 'payment', 'time', 'comment', 'shipped', 'delivered']
+                const colName = columnNames[index] || `col${index}`
+                headerWidths[colName] = rect.width
+              })
+              
+              // Сравниваем ширины после синхронизации
+              const comparisons: any[] = []
+              Object.keys(headerWidths).forEach(colName => {
+                const headerW = headerWidths[colName]
+                const cellW = cellWidths[colName]
+                const diff = headerW - cellW
+                comparisons.push({
+                  colName,
+                  headerWidth: headerW,
+                  cellWidth: cellW,
+                  difference: diff,
+                  expectedWidth: columnWidths[colName]
+                })
+              })
+              
+              fetch('http://127.0.0.1:7243/ingest/8ab1f4de-87e7-4df6-9295-7afa67d5d9f6', {
+        method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  location: 'app/delivery-crm/page.tsx:measureAndSyncColumnWidths',
+                  message: 'Column width measurements and sync',
+                  data: {
+                    headerWidths,
+                    cellWidths,
+                    comparisons,
+                    headerDetails: headerData,
+                    cellDetails: cellData,
+                    columnWidthsConfig: columnWidths,
+                    synced: true
+                  },
+                  timestamp: Date.now(),
+                  sessionId: 'debug-session',
+                  runId: 'post-fix',
+                  hypothesisId: 'F'
+                })
+              }).catch(() => {})
+            })
+          }
+        })
+      })
+    }
+    
+    // Запускаем измерение после рендеринга
+    const timeoutId = setTimeout(measureAndSyncColumnWidths, 100)
+    window.addEventListener('resize', measureAndSyncColumnWidths)
+    
+    return () => {
+      clearTimeout(timeoutId)
+      window.removeEventListener('resize', measureAndSyncColumnWidths)
+    }
+  }, [])
+  // #endregion
+
+  // Получение дат для отображения (включая дни назад и вперед)
+  const visibleDates = useMemo(() => {
+    const dates: string[] = []
+    // Добавляем дни назад (от сегодня в прошлое)
+    for (let i = daysBack; i > 0; i--) {
+      const date = subDays(today, i)
+      dates.push(format(date, 'yyyy-MM-dd'))
+    }
+    // Добавляем дни вперед (от сегодня в будущее)
+    for (let i = 0; i < daysToShow; i++) {
+      const date = addDays(today, i)
+      dates.push(format(date, 'yyyy-MM-dd'))
+    }
+    return dates.sort() // Сортируем по дате
+  }, [today, daysToShow, daysBack])
+
+  // Группировка заказов по датам
+  const ordersByDate = useMemo(() => {
+    const grouped: Record<string, DeliveryOrder[]> = {}
+    visibleDates.forEach(date => {
+      grouped[date] = orders.filter(order => order.date === date)
+    })
+    return grouped
+  }, [orders, visibleDates])
+
+  // Проверка, есть ли еще даты для показа
+  const hasMoreDates = useMemo(() => {
+    const allDates = Array.from(new Set(orders.map(o => o.date))).sort()
+    const lastVisibleDate = visibleDates[visibleDates.length - 1]
+    const lastVisibleDateIndex = allDates.indexOf(lastVisibleDate)
+    return lastVisibleDateIndex >= 0 && lastVisibleDateIndex < allDates.length - 1
+  }, [orders, visibleDates])
   
   const handleShowMore = () => {
-    // Увеличиваем количество показываемых дней на месяц (30 дней)
     setDaysToShow(prev => prev + 30)
   }
 
-  // Функция удаления строки
-  const handleDeleteOrder = async (orderId: string) => {
-    if (!confirm('Вы уверены, что хотите удалить эту строку?')) {
-      return
+  const handleExpandPrevious = () => {
+    if (daysBack > 0) {
+      // Скрыть предыдущие дни
+      setDaysBack(0)
+    } else {
+      // Показать диалог для раскрытия
+      setShowExpandDialog(true)
     }
-
-    try {
-      // Удаляем из локального состояния
-      const updatedOrders = orders.filter(order => order.id !== orderId)
-      setOrders(updatedOrders)
-
-      // Удаляем из БД
-      await fetch(`/api/delivery-crm/orders/${orderId}`, {
-        method: 'DELETE',
-      })
-
-      // Обновляем localStorage
-      localStorage.setItem('delivery-crm-orders', JSON.stringify(updatedOrders))
-    } catch (error) {
-      console.error('Ошибка при удалении заказа:', error)
-      alert('Ошибка при удалении заказа')
-    }
-
-    setContextMenu(null)
   }
 
-  // Загрузка заказа из Битрикса
-  const handleLoadFromBitrix = async (orderId: string, targetOrderId?: string) => {
-    if (!orderId.trim()) {
-      alert('Введите ID заказа из Битрикса')
+  const handleExpand30Days = () => {
+    setDaysBack(30)
+    setShowExpandDialog(false)
+  }
+
+  const handleExpandAll = () => {
+    // Находим все даты с заказами
+    const allDatesWithOrders = Array.from(
+      new Set(orders.filter(o => !o.isEmpty).map(o => o.date))
+    ).sort()
+    
+    if (allDatesWithOrders.length > 0) {
+      const earliestDate = parseISO(allDatesWithOrders[0])
+      const daysDiff = Math.ceil((today.getTime() - earliestDate.getTime()) / (1000 * 60 * 60 * 24))
+      setDaysBack(Math.max(daysDiff, 0))
+    }
+    setShowExpandDialog(false)
+  }
+
+  // Обработка drag-n-drop
+  const handleDragStart = (e: React.DragEvent, orderId: string) => {
+    setDraggedOrderId(orderId)
+    e.dataTransfer.effectAllowed = 'move'
+    e.dataTransfer.setData('text/plain', orderId)
+  }
+
+  const handleDragOver = (e: React.DragEvent, date: string, index?: number) => {
+    e.preventDefault()
+    e.dataTransfer.dropEffect = 'move'
+    setDragOverDate(date)
+    if (index !== undefined) {
+      setDragOverIndex(index)
+    }
+  }
+
+  const handleDragLeave = () => {
+    setDragOverDate(null)
+    setDragOverIndex(null)
+  }
+
+  const handleDrop = (e: React.DragEvent, targetDate: string, targetIndex?: number) => {
+    e.preventDefault()
+    setDragOverDate(null)
+    setDragOverIndex(null)
+    
+    if (!draggedOrderId) return
+    
+    const draggedOrder = orders.find(o => o.id === draggedOrderId)
+    if (!draggedOrder) return
+
+    // Если дата не изменилась и индекс тот же, ничего не делаем
+    if (draggedOrder.date === targetDate) {
+      setDraggedOrderId(null)
       return
     }
 
-    setLoadingBitrix(orderId)
-    try {
-      const response = await fetch(`/api/bitrix/order/${orderId}`)
-      const data = await response.json()
+    // Обновляем дату заказа
+    setOrders(orders.map(order => 
+      order.id === draggedOrderId 
+        ? { ...order, date: targetDate }
+        : order
+    ))
+    setDraggedOrderId(null)
+  }
 
-      if (!response.ok) {
-        throw new Error(data.error || 'Ошибка загрузки заказа')
-      }
+  const handleDragEnd = () => {
+    setDraggedOrderId(null)
+    setDragOverDate(null)
+  }
 
-      const bitrixOrder = data.order
-
-      // Преобразуем данные из БД в формат DeliveryOrder
-      const newOrder: DeliveryOrder = {
-        id: bitrixOrder.id,
-        date: format(new Date(bitrixOrder.date), 'yyyy-MM-dd'),
-        orderNumber: bitrixOrder.orderNumber || '',
-        wrote: bitrixOrder.wrote || false,
-        confirmed: bitrixOrder.confirmed || false,
-        products: bitrixOrder.products || '',
-        fsm: bitrixOrder.fsm || '',
-        address: bitrixOrder.address || '',
-        contact: bitrixOrder.contact || '',
-        payment: bitrixOrder.payment || '',
-        time: bitrixOrder.time || '',
-        comment: bitrixOrder.comment || '',
-        shipped: bitrixOrder.shipped || false,
-        delivered: bitrixOrder.delivered || false,
-        isEmpty: false,
-        tags: [],
-        rowColor: undefined,
-      }
-
-      // Обновляем заказы
-      let updatedOrders: DeliveryOrder[]
-      
-      // Если указан targetOrderId, заменяем существующий заказ
-      if (targetOrderId) {
-        updatedOrders = orders.map(o => o.id === targetOrderId ? newOrder : o)
-      } else {
-        // Иначе добавляем новый заказ на нужную дату (или текущую)
-        const orderDate = newOrder.date
-        const dateOrders = orders.filter(o => o.date === orderDate)
-        
-        // Если есть пустая строка для этой даты, заменяем её
-        const emptyRow = dateOrders.find(o => o.isEmpty)
-        if (emptyRow) {
-          updatedOrders = orders.map(o => o.id === emptyRow.id ? newOrder : o)
-        } else {
-          // Иначе добавляем в конец группы для этой даты
-          const lastDateOrderIndex = orders.findIndex(o => 
-            o.date === orderDate && 
-            o === dateOrders[dateOrders.length - 1]
-          )
-          if (lastDateOrderIndex >= 0) {
-            updatedOrders = [...orders]
-            updatedOrders.splice(lastDateOrderIndex + 1, 0, newOrder)
-          } else {
-            // Если даты нет, просто добавляем
-            updatedOrders = [...orders, newOrder]
-          }
-        }
-      }
-
-      // Создаем пустую строку для этой даты, если её нет
-      const hasEmptyRow = updatedOrders.some(o => o.date === newOrder.date && o.isEmpty)
-      if (!hasEmptyRow) {
-        const newEmptyOrder: DeliveryOrder = {
-          id: `${newOrder.date}-empty-${Date.now()}`,
-          date: newOrder.date,
-          orderNumber: '',
-          wrote: false,
-          confirmed: false,
-          products: '',
-          fsm: '',
-          address: '',
-          contact: '',
-          payment: '',
-          time: '',
-          comment: '',
-          shipped: false,
-          delivered: false,
-          isEmpty: true,
-          tags: [],
-          rowColor: undefined,
-        }
-        updatedOrders.push(newEmptyOrder)
-      }
-
-      setOrders(updatedOrders)
-    } catch (error: any) {
-      console.error('Error loading from Bitrix:', error)
-      alert(`Ошибка загрузки заказа: ${error.message}`)
-    } finally {
-      setLoadingBitrix(null)
-    }
+  // Обработка изменений
+  const handleCellChange = (id: string, field: keyof DeliveryOrder, value: any) => {
+    setOrders(orders.map(order => 
+      order.id === id 
+        ? { ...order, [field]: value, isEmpty: false }
+        : order
+    ))
   }
 
   const handleCheckboxChange = (id: string, field: keyof DeliveryOrder) => {
@@ -982,129 +517,94 @@ export default function DeliveryCRMPage() {
     ))
   }
 
-  const handleCellChange = (id: string, field: keyof DeliveryOrder, value: string) => {
+  // Обработка REKL
+  const handleReklClick = (e: React.MouseEvent, orderId: string) => {
+    e.stopPropagation()
+    const order = orders.find(o => o.id === orderId)
+    if (order?.reklType) {
+      // Если уже есть REKL, убираем его
+      handleCellChange(orderId, 'reklType', undefined)
+    } else {
+      // Показываем меню выбора типа
+      setReklMenu({ orderId, x: e.clientX, y: e.clientY })
+    }
+  }
+
+  const handleReklTypeSelect = (orderId: string, reklType: string) => {
+    handleCellChange(orderId, 'reklType', reklType)
+    setReklMenu(null)
+  }
+
+  // Обработка ТК
+  const handleTkToggle = (orderId: string) => {
+    const order = orders.find(o => o.id === orderId)
+    handleCellChange(orderId, 'tk', !order?.tk)
+  }
+
+  // Получение цвета строки (если ТК включен)
+  const getRowBackgroundColor = (order: DeliveryOrder): string => {
+    const hasRekl = !!order.reklType
+    const hasTk = order.tk
+    
+    if (hasRekl && hasTk) {
+      // Градиент: верхняя половина розовая, нижняя голубая
+      return 'linear-gradient(to bottom, #fce7f3 0%, #fce7f3 50%, #dbeafe 50%, #dbeafe 100%)'
+    } else if (hasRekl) {
+      return '#fce7f3' // Бледно-розовый
+    } else if (hasTk) {
+      return '#dbeafe' // Бледно-голубой
+    }
+    return ''
+  }
+
+  // Парсинг времени на начало и конец слота
+  const parseTimeSlot = (timeStr: string): { start: string; end: string } => {
+    if (!timeStr) return { start: '', end: '' }
+    
+    const match = timeStr.match(/^(.+?)\s*[-—]\s*(.+)$/)
+    if (match) {
+      return { start: match[1].trim(), end: match[2].trim() }
+    }
+    
+    return { start: timeStr.trim(), end: '' }
+  }
+
+  // Обработка изменения времени
+  const handleTimeStartChange = (id: string, startValue: string) => {
     const order = orders.find(o => o.id === id)
     if (!order) return
-
-    const updated = { ...order, [field]: value, isEmpty: false }
     
-    // Если это была пустая строка и теперь заполнена, создаем новую пустую
-    if (order.isEmpty && value.trim() !== '') {
-      const orderDate = order.date
-      // Проверим, есть ли уже пустая строка для этой даты
-      const hasEmptyRow = orders.some(o => o.date === orderDate && o.isEmpty && o.id !== id)
-      
-      if (!hasEmptyRow) {
-        // Создаем новую пустую строку
-        const newEmptyOrder: DeliveryOrder = {
-          id: `${orderDate}-empty-${Date.now()}`,
-          date: orderDate,
-          orderNumber: '',
-          wrote: false,
-          confirmed: false,
-          products: '',
-          fsm: '',
-          address: '',
-          contact: '',
-          payment: '',
-          time: '',
-          comment: '',
-          shipped: false,
-          delivered: false,
-          isEmpty: true,
-        }
-        
-        // Обновляем заказы: заменяем текущий и добавляем пустую в конец группы для этой даты
-        const updatedOrders = orders.map(o => o.id === id ? updated : o)
-        
-        // Находим индекс последнего заказа для этой даты
-        const dateOrders = updatedOrders.filter(o => o.date === orderDate)
-        const lastDateOrderIndex = updatedOrders.findIndex(o => o.id === dateOrders[dateOrders.length - 1].id)
-        
-        // Вставляем пустую строку после последнего заказа для этой даты
-        updatedOrders.splice(lastDateOrderIndex + 1, 0, newEmptyOrder)
-        
-        setOrders(updatedOrders)
-        return
-      }
+    const digitsOnly = startValue.replace(/\D/g, '')
+    let formatted = digitsOnly
+    if (digitsOnly.length > 2) {
+      formatted = digitsOnly.slice(0, 2) + ':' + digitsOnly.slice(2, 4)
     }
     
-    // Обычное обновление
-    setOrders(orders.map(o => o.id === id ? updated : o))
+    const { end } = parseTimeSlot(order.time)
+    const newTime = end ? `${formatted} - ${end}` : formatted
+    handleCellChange(id, 'time', newTime)
   }
 
-  const handleDragStart = (e: React.DragEvent, orderId: string) => {
-    setDraggedOrderId(orderId)
-    e.dataTransfer.effectAllowed = 'move'
-    e.dataTransfer.setData('text/plain', orderId)
-  }
-
-  const handleDragOver = (e: React.DragEvent, date: string) => {
-    e.preventDefault()
-    e.dataTransfer.dropEffect = 'move'
-    setDragOverDate(date)
-  }
-
-  const handleDragLeave = () => {
-    setDragOverDate(null)
-  }
-
-  const handleDrop = (e: React.DragEvent, targetDate: string) => {
-    e.preventDefault()
-    setDragOverDate(null)
+  const handleTimeEndChange = (id: string, endValue: string) => {
+    const order = orders.find(o => o.id === id)
+    if (!order) return
     
-    if (!draggedOrderId) return
+    const digitsOnly = endValue.replace(/\D/g, '')
+    let formatted = digitsOnly
+    if (digitsOnly.length > 2) {
+      formatted = digitsOnly.slice(0, 2) + ':' + digitsOnly.slice(2, 4)
+    }
     
-    const draggedOrder = orders.find(o => o.id === draggedOrderId)
-    if (!draggedOrder || draggedOrder.date === targetDate) {
-      setDraggedOrderId(null)
-      return
-    }
+    const { start } = parseTimeSlot(order.time)
+    const newTime = start ? `${start} - ${formatted}` : formatted
+    handleCellChange(id, 'time', newTime)
+  }
 
-    const oldDate = draggedOrder.date
-    const isDraggedEmpty = draggedOrder.isEmpty
-
-    // Обновляем дату заказа
-    let updatedOrders = orders.map(order => 
-      order.id === draggedOrderId 
-        ? { ...order, date: targetDate }
-        : order
-    )
-
-    // Если перемещаем не пустую строку, проверяем наличие пустой строки для исходной даты
-    if (!isDraggedEmpty) {
-      const oldDateOrders = updatedOrders.filter(o => o.date === oldDate && !o.isEmpty)
-      const hasEmptyInOldDate = updatedOrders.some(o => o.date === oldDate && o.isEmpty)
-      
-      // Если в исходной дате нет пустой строки, создаем ее
-      if (!hasEmptyInOldDate && oldDateOrders.length > 0) {
-        const newEmptyOrder: DeliveryOrder = {
-          id: `${oldDate}-empty-${Date.now()}`,
-          date: oldDate,
-          orderNumber: '',
-          wrote: false,
-          confirmed: false,
-          products: '',
-          fsm: '',
-          address: '',
-          contact: '',
-          payment: '',
-          time: '',
-          comment: '',
-          shipped: false,
-          delivered: false,
-          isEmpty: true,
-        }
-        updatedOrders.push(newEmptyOrder)
-      }
-    }
-
-    // Проверяем наличие пустой строки для целевой даты
-    const hasEmptyInTargetDate = updatedOrders.some(o => o.date === targetDate && o.isEmpty)
-    if (!hasEmptyInTargetDate) {
-      const newEmptyOrder: DeliveryOrder = {
-        id: `${targetDate}-empty-${Date.now()}`,
-        date: targetDate,
+  // Добавление пустой строки в конец дня
+  const handleAddEmptyRow = (date: string) => {
+    const newOrder: DeliveryOrder = {
+      id: `empty-${Date.now()}-${Math.random()}`,
+      date: date,
         orderNumber: '',
         wrote: false,
         confirmed: false,
@@ -1112,70 +612,40 @@ export default function DeliveryCRMPage() {
         fsm: '',
         address: '',
         contact: '',
-        payment: '',
+      payment: 'Не оплачено',
         time: '',
         comment: '',
         shipped: false,
         delivered: false,
+      tk: false,
         isEmpty: true,
       }
-      updatedOrders.push(newEmptyOrder)
-    }
-
-    setOrders(updatedOrders)
-    setDraggedOrderId(null)
+    setOrders([...orders, newOrder])
   }
 
-  const handleDragEnd = () => {
-    setDraggedOrderId(null)
-    setDragOverDate(null)
+  // Удаление строки
+  const handleDeleteRow = (orderId: string) => {
+    setOrders(orders.filter(order => order.id !== orderId))
   }
 
-  // Обработчики для изменения размера столбцов
-  const handleResizeStart = (e: React.MouseEvent, columnKey: string) => {
-    e.preventDefault()
-    e.stopPropagation()
-    setResizingColumn(columnKey)
-    setResizeStartX(e.clientX)
-    setResizeStartWidth(columnWidths[columnKey])
-  }
-
+  // Закрытие меню при клике вне его
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!resizingColumn) return
-
-      const diff = e.clientX - resizeStartX
-      const newWidth = Math.max(50, resizeStartWidth + diff) // Минимальная ширина 50px
-      
-      setColumnWidths(prev => ({
-        ...prev,
-        [resizingColumn]: newWidth
-      }))
+    const handleClickOutside = (e: MouseEvent) => {
+      if (reklMenu) {
+        setReklMenu(null)
+      }
     }
 
-    const handleMouseUp = () => {
-      setResizingColumn(null)
-    }
-
-    if (resizingColumn) {
-      document.addEventListener('mousemove', handleMouseMove)
-      document.addEventListener('mouseup', handleMouseUp)
-      document.body.style.cursor = 'col-resize'
-      document.body.style.userSelect = 'none'
-    }
-
+    document.addEventListener('click', handleClickOutside)
     return () => {
-      document.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseup', handleMouseUp)
-      document.body.style.cursor = ''
-      document.body.style.userSelect = ''
+      document.removeEventListener('click', handleClickOutside)
     }
-  }, [resizingColumn, resizeStartX, resizeStartWidth]);
+  }, [reklMenu])
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
       {/* Fixed Header */}
-      <div className="sticky top-0 z-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
+      <div ref={headerRef} className="sticky top-0 z-20 bg-gray-50 dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 shadow-sm">
         <div className="p-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -1196,31 +666,8 @@ export default function DeliveryCRMPage() {
                   Открыть калькулятор
                 </Button>
               </Link>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleManualImport}
-                disabled={isImporting}
-              >
-                {isImporting ? (
-                  <Loader2 className="w-3 h-3 mr-1.5 animate-spin" />
-                ) : (
-                  <Upload className="w-3 h-3 mr-1.5" />
-                )}
-                {isImporting ? 'Импорт...' : 'Импорт из Google Sheets'}
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setShowHistory(!showHistory)}
-              >
-                <History className="w-3 h-3 mr-1.5" />
-                {showHistory ? 'Скрыть историю' : 'Показать историю'}
-                {showHistory ? (
-                  <ChevronUp className="w-3 h-3 ml-1.5" />
-                ) : (
-                  <ChevronDown className="w-3 h-3 ml-1.5" />
-                )}
+              <Button variant="outline" size="sm" onClick={handleExpandPrevious}>
+                {daysBack > 0 ? 'Скрыть предыдущие' : 'Раскрыть предыдущие'}
               </Button>
             </div>
           </div>
@@ -1232,61 +679,50 @@ export default function DeliveryCRMPage() {
         <div className="w-full mx-auto">
           {/* Orders Table */}
           <Card>
-            <CardHeader className="pb-3">
+            <CardHeader className="pb-2">
               <CardTitle className="text-lg">Заказы доставки</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
-              <div className="rounded-md border">
-                <Table ref={tableRef} className="table-fixed w-full">
-                  <TableHeader className="sticky top-[80px] z-10 bg-white dark:bg-gray-900">
-                  <TableRow>
-                    <ResizableTableHead columnKey="drag" className="text-center" columnWidths={columnWidths}></ResizableTableHead>
-                    <ResizableTableHead columnKey="date" className="text-center" columnWidths={columnWidths}>
-                      Дата
-                    </ResizableTableHead>
-                    <ResizableTableHead columnKey="orderNumber" className="text-center" columnWidths={columnWidths}>
-                      № заказа
-                    </ResizableTableHead>
-                    <ResizableTableHead columnKey="wrote" className="text-center" columnWidths={columnWidths}>
-                      Написали
-                    </ResizableTableHead>
-                    <ResizableTableHead columnKey="confirmed" className="text-center" columnWidths={columnWidths}>
-                      Подтвердили
-                    </ResizableTableHead>
-                    <ResizableTableHead columnKey="products" className="text-center" columnWidths={columnWidths}>
-                      Товары
-                    </ResizableTableHead>
-                    <ResizableTableHead columnKey="fsm" className="text-center" columnWidths={columnWidths}>
-                      ФСМ
-                    </ResizableTableHead>
-                    <ResizableTableHead columnKey="address" className="text-center" columnWidths={columnWidths}>
-                      Адрес
-                    </ResizableTableHead>
-                    <ResizableTableHead columnKey="contact" className="text-center" columnWidths={columnWidths}>
-                      Контакт
-                    </ResizableTableHead>
-                    <ResizableTableHead columnKey="payment" className="text-center" columnWidths={columnWidths}>
-                      Оплата
-                    </ResizableTableHead>
-                    <ResizableTableHead columnKey="time" className="text-center" columnWidths={columnWidths}>
-                      Время
-                    </ResizableTableHead>
-                    <ResizableTableHead columnKey="comment" className="text-center" columnWidths={columnWidths}>
-                      Комментарий
-                    </ResizableTableHead>
-                    <ResizableTableHead columnKey="shipped" className="text-center" columnWidths={columnWidths}>
-                      Отгрузили
-                    </ResizableTableHead>
-                    <ResizableTableHead columnKey="delivered" className="text-center" columnWidths={columnWidths}>
-                      Доставлен
-                    </ResizableTableHead>
-                  </TableRow>
-                </TableHeader>
+              <div className="rounded-md border" style={{ overflow: 'visible' }}>
+                {/* Заголовки столбцов над таблицей */}
+                <div className="sticky z-50 bg-white dark:bg-gray-900 border-b shadow-sm" style={{ top: `${headerHeight}px` }}>
+                  <div className="flex w-full" style={{ boxSizing: 'border-box' }}>
+                    <div style={{ width: columnWidths.drag, minWidth: columnWidths.drag, maxWidth: columnWidths.drag, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700"> </div>
+                    <div style={{ width: columnWidths.date, minWidth: columnWidths.date, maxWidth: columnWidths.date, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Дата</div>
+                    <div style={{ width: columnWidths.orderNumber, minWidth: columnWidths.orderNumber, maxWidth: columnWidths.orderNumber, flexShrink: 0, boxSizing: 'border-box', paddingTop: '10px' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700 text-base leading-tight whitespace-nowrap">№ Заказа</div>
+                    <div style={{ width: columnWidths.wrote, minWidth: columnWidths.wrote, maxWidth: columnWidths.wrote, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700 text-[0.65rem] leading-tight">Напи-<br/>сали</div>
+                    <div style={{ width: columnWidths.confirmed, minWidth: columnWidths.confirmed, maxWidth: columnWidths.confirmed, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700 text-[0.65rem] leading-tight">Подтве-<br/>рдили</div>
+                    <div style={{ width: columnWidths.products, minWidth: columnWidths.products, maxWidth: columnWidths.products, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Товары</div>
+                    <div style={{ width: columnWidths.fsm, minWidth: columnWidths.fsm, maxWidth: columnWidths.fsm, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">ФСМ</div>
+                    <div style={{ width: columnWidths.address, minWidth: columnWidths.address, maxWidth: columnWidths.address, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Адрес</div>
+                    <div style={{ width: columnWidths.contact, minWidth: columnWidths.contact, maxWidth: columnWidths.contact, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Контакт</div>
+                    <div style={{ width: columnWidths.payment, minWidth: columnWidths.payment, maxWidth: columnWidths.payment, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Оплачено</div>
+                    <div style={{ width: columnWidths.time, minWidth: columnWidths.time, maxWidth: columnWidths.time, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Время</div>
+                    <div style={{ width: columnWidths.comment, minWidth: columnWidths.comment, maxWidth: columnWidths.comment, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Комментарии</div>
+                    <div style={{ width: columnWidths.shipped, minWidth: columnWidths.shipped, maxWidth: columnWidths.shipped, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700 text-[0.65rem] leading-tight">Отгру-<br/>зили</div>
+                    <div style={{ width: columnWidths.delivered, minWidth: columnWidths.delivered, maxWidth: columnWidths.delivered, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 text-[0.65rem] leading-tight">Доста-<br/>влен</div>
+                  </div>
+                </div>
+                <Table ref={tableRef} className="w-full border-collapse" style={{ tableLayout: 'fixed', borderCollapse: 'collapse', borderSpacing: 0 }}>
+                  <colgroup>
+                    <col style={{ width: columnWidths.drag - 1 }} />
+                    <col style={{ width: columnWidths.date - 1 }} />
+                    <col style={{ width: columnWidths.orderNumber - 1 }} />
+                    <col style={{ width: columnWidths.wrote - 1 }} />
+                    <col style={{ width: columnWidths.confirmed - 1 }} />
+                    <col style={{ width: columnWidths.products - 1 }} />
+                    <col style={{ width: columnWidths.fsm - 1 }} />
+                    <col style={{ width: columnWidths.address - 1 }} />
+                    <col style={{ width: columnWidths.contact - 1 }} />
+                    <col style={{ width: columnWidths.payment - 1 }} />
+                    <col style={{ width: columnWidths.time - 1 }} />
+                    <col style={{ width: columnWidths.comment - 1 }} />
+                    <col style={{ width: columnWidths.shipped - 1 }} />
+                    <col style={{ width: columnWidths.delivered }} />
+                  </colgroup>
                 <TableBody>
-                  {allDates.map((date, dateIndex) => {
+                    {visibleDates.map((date, dateIndex) => {
                     const dateOrders = ordersByDate[date] || []
-                    const ordersCount = getOrdersCountForDate(orders, date)
-                    const dateColor = getDateColor(ordersCount)
                     const isDragOver = dragOverDate === date
                     const isFirstDate = dateIndex === 0
                     
@@ -1294,498 +730,447 @@ export default function DeliveryCRMPage() {
                       <React.Fragment key={date}>
                         {dateOrders.map((order, index) => {
                           const isFirstInDate = index === 0
+                          const isLastInDate = index === dateOrders.length - 1
                           const isDragging = draggedOrderId === order.id
-                          // Добавляем жирную границу сверху для первой строки каждого дня (кроме первого дня)
                           const hasTopBorder = isFirstInDate && !isFirstDate
 
                           return (
                             <TableRow
                               key={order.id}
-                          draggable
-                          onDragStart={(e) => handleDragStart(e, order.id)}
-                          onDragEnd={handleDragEnd}
-                          onContextMenu={(e) => {
+                          onDragOver={(e) => {
                             e.preventDefault()
-                            setContextMenu({ x: e.clientX, y: e.clientY, orderId: order.id })
+                            handleDragOver(e, date, index)
                           }}
-                          className={`${isDragging ? 'opacity-50' : ''} ${isDragOver && !isDragging ? 'bg-blue-50 dark:bg-blue-900/20' : ''} ${hasTopBorder ? 'border-t-4 border-gray-600 dark:border-gray-500' : ''} cursor-move`}
+                          onDrop={(e) => handleDrop(e, date, index)}
+                          className={`${isDragging ? 'opacity-50' : ''} ${dragOverDate === date && dragOverIndex === index ? 'bg-blue-100 dark:bg-blue-900/40' : ''} ${hasTopBorder ? 'border-t-4 border-gray-600 dark:border-gray-500' : ''}`}
                           style={{ 
-                            height: order.isEmpty ? '2.5rem' : 'auto',
-                            minHeight: '2.5rem',
-                            backgroundColor: getRowBackgroundColor(order) || undefined
+                            background: getRowBackgroundColor(order) || undefined
                           }}
                             >
-                              <ResizableTableCell columnKey="drag" className="text-center" columnWidths={columnWidths}>
-                                <div className="flex items-center justify-center h-full">
+                                {/* Ползунок для drag-n-drop */}
+                                <TableCell className="text-center border-r border-gray-200 dark:border-gray-700 py-2 px-0" style={{ boxSizing: 'border-box' }}>
+                                <div 
+                                  className="flex items-center justify-center h-full cursor-move"
+                                  draggable
+                                  onDragStart={(e) => handleDragStart(e, order.id)}
+                                  onDragEnd={handleDragEnd}
+                                >
                                   <GripVertical className="w-4 h-4 text-muted-foreground" />
                                 </div>
-                              </ResizableTableCell>
-                              <ResizableTableCell
-                                columnKey="date"
-                                columnWidths={columnWidths}
-                                onDragOver={(e) => handleDragOver(e, date)}
+                                </TableCell>
+
+                                {/* Дата */}
+                                <TableCell
+                                  style={{ boxSizing: 'border-box' }}
+                                onDragOver={(e) => handleDragOver(e, date, index)}
                                 onDragLeave={handleDragLeave}
-                                onDrop={(e) => handleDrop(e, date)}
-                                className={`text-center align-middle font-medium ${isFirstInDate ? dateColor : ''} ${isFirstInDate ? 'font-bold' : ''}`}
+                                onDrop={(e) => handleDrop(e, date, index)}
+                                  className={`text-center align-middle font-medium border-r border-gray-200 dark:border-gray-700 py-2 px-3 ${isFirstInDate ? 'font-bold' : ''} ${dragOverDate === date && dragOverIndex === index ? 'bg-blue-100 dark:bg-blue-900/40' : ''}`}
                               >
-                                {isFirstInDate ? formatDate(date) : ''}
-                              </ResizableTableCell>
-                              <ResizableTableCell columnKey="orderNumber" className="text-center align-middle" columnWidths={columnWidths}>
-                                <div className="relative h-full w-full flex flex-col" style={{ minHeight: '2.5rem' }}>
-                                  {/* Номер заказа сверху */}
-                                  <div 
-                                    className="flex items-start justify-center w-full pt-1"
-                                    style={{ 
-                                      minHeight: '1.5rem'
-                                    }}
-                                  >
+                                {isFirstInDate ? (
+                                  <div className="w-full text-center" style={{ marginLeft: '-10px' }}>{formatDate(date)}</div>
+                                ) : (
+                                  <div className="flex items-center justify-center gap-1">
+                                    {isLastInDate && (
+                                      <Button
+                                        type="button"
+                                        variant="ghost"
+                                        size="sm"
+                                        className="h-6 w-6 p-0"
+                                        onClick={() => handleAddEmptyRow(date)}
+                                        title="Добавить пустую строку"
+                                      >
+                                        +
+                                      </Button>
+                                    )}
+                                    <Button
+                                      type="button"
+                                      variant="ghost"
+                                      size="sm"
+                                      className="h-6 w-6 p-0"
+                                      onClick={() => handleDeleteRow(order.id)}
+                                      title="Удалить строку"
+                                    >
+                                      -
+                                    </Button>
+                                  </div>
+                                )}
+                                </TableCell>
+
+                                {/* Номер заказа + REKL + ТК */}
+                                <TableCell className="text-center align-middle border-r border-gray-200 dark:border-gray-700 py-2 px-3" style={{ boxSizing: 'border-box', position: 'relative' }}>
+                                  <div className="flex flex-col items-center justify-center gap-1 h-full">
                                     <Textarea
                                   value={order.orderNumber}
-                                  onChange={(e) => handleCellChange(order.id, 'orderNumber', e.target.value)}
+                                  onChange={(e) => {
+                                    handleCellChange(order.id, 'orderNumber', e.target.value)
+                                    e.target.style.height = 'auto'
+                                    e.target.style.height = `${e.target.scrollHeight}px`
+                                  }}
                                   placeholder="№ заказа"
-                                  className="border-0 bg-transparent p-0 h-auto w-full resize-none focus-visible:ring-0 text-center"
-                                  rows={1}
+                                      className="border-0 bg-transparent p-0 h-auto w-full resize-none focus-visible:ring-0 text-center text-sm font-medium"
                                   style={{ 
-                                    height: order.isEmpty ? '1.5rem' : 'auto',
-                                    minHeight: '1.5rem',
-                                    overflow: 'visible',
+                                    minHeight: 'auto',
+                                    height: 'auto',
+                                    overflow: 'hidden',
                                     wordWrap: 'break-word',
                                     whiteSpace: 'pre-wrap',
-                                    textAlign: 'center',
-                                    fontSize: '0.85rem',
-                                    lineHeight: '1.3',
-                                    fontWeight: '500'
+                                    lineHeight: '1.5',
+                                    paddingTop: '16px',
                                   }}
-                                  onInput={(e) => {
-                                    if (order.isEmpty) return
-                                    const target = e.target as HTMLTextAreaElement
-                                    target.style.height = 'auto'
-                                    const newHeight = Math.max(24, target.scrollHeight)
-                                    target.style.height = `${newHeight}px`
-                                  }}
-                                    onFocus={() => editingCellRef.current = { orderId: order.id, field: 'orderNumber' }}
+                                  onClick={(e) => e.stopPropagation()}
                                   />
-                                  </div>
-                                  {/* Кнопки внизу в одну строчку, выровнены по высоте */}
-                                  <div 
-                                    className="flex items-center justify-center gap-1 flex-shrink-0 mt-auto"
-                                    style={{ height: '18px', paddingBottom: '2px' }}
-                                  >
-                                    <div className="relative">
+                                    {/* Кнопки REKL и ТК */}
+                                    <div className="flex items-center justify-center gap-1" style={{ marginTop: '-25px' }}>
                                   <Button
                                     type="button"
                                     variant="ghost"
                                     size="sm"
-                                    className={`h-4 px-1 text-[0.65rem] ${(order.tags || []).includes('REKL') ? 'bg-pink-200 dark:bg-pink-800' : ''}`}
-                                    onClick={(e) => {
-                                      e.stopPropagation()
-                                      if ((order.tags || []).includes('REKL')) {
-                                        handleTagToggle(order.id, 'REKL')
-                                      } else {
-                                        setTagMenu({ orderId: order.id, x: e.clientX, y: e.clientY })
-                                      }
-                                    }}
-                                    title="Рекламация"
+                                        className={`h-5 px-2 text-[0.65rem] ${order.reklType ? 'bg-pink-200 dark:bg-pink-800' : ''}`}
+                                        onClick={(e) => handleReklClick(e, order.id)}
+                                        title={order.reklType || 'Рекламация'}
                                   >
                                     REKL
                                   </Button>
-                                  {tagMenu && tagMenu.orderId === order.id && (
-                                    <div
-                                      className="fixed z-50 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md shadow-lg p-2"
-                                      style={{
-                                        left: `${tagMenu.x}px`,
-                                        top: `${tagMenu.y}px`,
-                                        minWidth: '200px',
-                                      }}
-                                      onClick={(e) => e.stopPropagation()}
-                                    >
-                                      <div className="text-xs font-semibold mb-2 px-2 py-1">Тип рекламации</div>
-                                      {reklOptions.map((option, idx) => (
-                                        <button
-                                          key={idx}
-                                          className="w-full px-3 py-2 text-xs rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-left"
-                                          onClick={() => {
-                                            handleTagToggle(order.id, 'REKL')
-                                            // Добавляем тип рекламации в комментарий
-                                            const currentComment = order.comment || ''
-                                            const newComment = currentComment 
-                                              ? `${currentComment}\nРекламация: ${option}`
-                                              : `Рекламация: ${option}`
-                                            handleCellChange(order.id, 'comment', newComment)
-                                            setTagMenu(null)
-                                          }}
-                                        >
-                                          {option}
-                                        </button>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
                                 <Button
                                   type="button"
                                   variant="ghost"
                                   size="sm"
-                                  className={`h-4 px-1 text-[0.65rem] ${(order.tags || []).includes('ТК') ? 'bg-blue-200 dark:bg-blue-800' : ''}`}
-                                  onClick={(e) => {
-                                    e.stopPropagation()
-                                    handleTagToggle(order.id, 'ТК')
-                                  }}
+                                        className={`h-5 px-2 text-[0.65rem] ${order.tk ? 'bg-blue-200 dark:bg-blue-800' : ''}`}
+                                        onClick={() => handleTkToggle(order.id)}
                                   title="Отгрузка в ТК"
                                 >
                                   ТК
                                 </Button>
-                                <Button
-                                  type="button"
-                                  variant="ghost"
-                                  size="sm"
-                                  className="h-4 w-4 p-0 flex-shrink-0"
-                                  onClick={() => {
-                                    const orderId = order.orderNumber.trim()
-                                    if (orderId) {
-                                      handleLoadFromBitrix(orderId, order.id)
-                                    } else {
-                                      const inputId = prompt('Введите ID заказа из Битрикса:')
-                                      if (inputId) {
-                                        handleLoadFromBitrix(inputId, order.id)
-                                      }
-                                    }
-                                  }}
-                                  disabled={loadingBitrix === order.orderNumber}
-                                  title="Загрузить из Битрикса"
-                                >
-                                  {loadingBitrix === order.orderNumber ? (
-                                    <Loader2 className="w-2.5 h-2.5 animate-spin" />
-                                  ) : (
-                                    <Download className="w-2.5 h-2.5" />
-                                  )}
-                                </Button>
                               </div>
                             </div>
-                          </ResizableTableCell>
-                          <ResizableTableCell 
-                            columnKey="wrote"
-                            columnWidths={columnWidths}
-                            className="text-center align-middle cursor-pointer"
+                                </TableCell>
+
+                                {/* Написали */}
+                                <TableCell 
+                                  style={{ boxSizing: 'border-box' }}
+                            className="text-center align-middle cursor-pointer border-r border-gray-200 dark:border-gray-700 py-2 px-0"
                             onClick={(e) => {
                               e.stopPropagation()
                               handleCheckboxChange(order.id, 'wrote')
                             }}
                           >
-                            <Checkbox
-                              checked={order.wrote}
-                              onCheckedChange={() => handleCheckboxChange(order.id, 'wrote')}
-                            />
-                          </ResizableTableCell>
-                          <ResizableTableCell 
-                            columnKey="confirmed"
-                            columnWidths={columnWidths}
-                            className="text-center align-middle cursor-pointer"
+                            <div className="flex items-center justify-center h-full">
+                              <Checkbox
+                                checked={order.wrote}
+                                onCheckedChange={() => handleCheckboxChange(order.id, 'wrote')}
+                              />
+                            </div>
+                                </TableCell>
+
+                                {/* Подтвердили */}
+                                <TableCell 
+                                  style={{ boxSizing: 'border-box' }}
+                            className="text-center align-middle cursor-pointer border-r border-gray-200 dark:border-gray-700 py-2 px-0"
                             onClick={(e) => {
                               e.stopPropagation()
                               handleCheckboxChange(order.id, 'confirmed')
                             }}
                           >
-                            <Checkbox
-                              checked={order.confirmed}
-                              onCheckedChange={() => handleCheckboxChange(order.id, 'confirmed')}
-                            />
-                          </ResizableTableCell>
-                          <ResizableTableCell columnKey="products" className="align-middle" columnWidths={columnWidths}>
-                            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
-                              <Textarea
-                                value={order.products}
-                                onChange={(e) => handleCellChange(order.id, 'products', e.target.value)}
-                                placeholder="Товары"
-                                className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0"
-                                rows={1}
-                                style={{ 
-                                  height: order.isEmpty ? '1.5rem' : 'auto',
-                                  minHeight: '1.5rem',
-                                  overflow: 'visible',
-                                  wordWrap: 'break-word',
-                                  whiteSpace: 'pre-wrap',
-                                  verticalAlign: 'middle',
-                                  lineHeight: '1.5rem'
-                                }}
-                                onInput={(e) => {
-                                  if (order.isEmpty) return // Не изменяем высоту для пустых строк
-                                  const target = e.target as HTMLTextAreaElement
-                                  target.style.height = 'auto'
-                                  const newHeight = Math.max(24, target.scrollHeight)
-                                  target.style.height = `${newHeight}px`
-                                  // Обновляем высоту строки если нужно
-                                  const row = target.closest('tr')
-                                  if (row) {
-                                    row.style.height = 'auto'
-                                    row.style.minHeight = `${newHeight + 16}px`
-                                  }
-                                }}
+                            <div className="flex items-center justify-center h-full">
+                              <Checkbox
+                                checked={order.confirmed}
+                                onCheckedChange={() => handleCheckboxChange(order.id, 'confirmed')}
                               />
                             </div>
-                          </ResizableTableCell>
-                          <ResizableTableCell columnKey="fsm" className="text-center align-middle" columnWidths={columnWidths}>
-                            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
-                              <Textarea
-                                value={order.fsm}
-                                onChange={(e) => handleCellChange(order.id, 'fsm', e.target.value)}
-                                placeholder="ФСМ"
-                                className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-center"
-                                rows={1}
-                                style={{ 
-                                  height: order.isEmpty ? '1.5rem' : 'auto',
-                                  minHeight: '1.5rem',
-                                  overflow: 'visible',
-                                  wordWrap: 'break-word',
-                                  whiteSpace: 'pre-wrap',
-                                  textAlign: 'center',
-                                  fontSize: '0.7rem',
-                                  lineHeight: '1.5rem'
-                                }}
-                                onInput={(e) => {
-                                  if (order.isEmpty) return
-                                  const target = e.target as HTMLTextAreaElement
-                                  target.style.height = 'auto'
-                                  target.style.height = `${target.scrollHeight}px`
-                                }}
-                              />
-                            </div>
-                          </ResizableTableCell>
-                          <ResizableTableCell columnKey="address" className="align-middle" columnWidths={columnWidths}>
-                            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
-                              <Textarea
-                                value={order.address}
-                                onChange={(e) => handleCellChange(order.id, 'address', e.target.value)}
-                                placeholder="Адрес"
-                                className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0"
-                                rows={1}
-                                style={{ 
-                                  height: order.isEmpty ? '1.5rem' : 'auto',
-                                  minHeight: '1.5rem',
-                                  overflow: 'visible',
-                                  wordWrap: 'break-word',
-                                  whiteSpace: 'pre-wrap',
-                                  verticalAlign: 'middle',
-                                  lineHeight: '1.5rem'
-                                }}
-                                onInput={(e) => {
-                                  if (order.isEmpty) return
-                                  const target = e.target as HTMLTextAreaElement
-                                  target.style.height = 'auto'
-                                  const newHeight = Math.max(24, target.scrollHeight)
-                                  target.style.height = `${newHeight}px`
-                                  // Обновляем высоту строки если нужно
-                                  const row = target.closest('tr')
-                                  if (row) {
-                                    row.style.height = 'auto'
-                                    row.style.minHeight = `${newHeight + 16}px`
-                                  }
-                                }}
-                              />
-                            </div>
-                          </ResizableTableCell>
-                          <ResizableTableCell columnKey="contact" className="text-center align-middle" columnWidths={columnWidths}>
-                            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
-                              <Textarea
-                                value={order.contact}
-                                onChange={(e) => handleCellChange(order.id, 'contact', e.target.value)}
-                                placeholder="Контакт"
-                                className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-center"
-                                rows={1}
-                                style={{ 
-                                  height: order.isEmpty ? '1.5rem' : 'auto',
-                                  minHeight: '1.5rem',
-                                  overflow: 'visible',
-                                  wordWrap: 'break-word',
-                                  whiteSpace: 'pre-wrap',
-                                  textAlign: 'center',
-                                  fontSize: '0.7rem',
-                                  lineHeight: '1.5rem'
-                                }}
-                                onInput={(e) => {
-                                  if (order.isEmpty) return
-                                  const target = e.target as HTMLTextAreaElement
-                                  target.style.height = 'auto'
-                                  target.style.height = `${target.scrollHeight}px`
-                                }}
-                              />
-                            </div>
-                          </ResizableTableCell>
-                          <ResizableTableCell 
-                            columnKey="payment"
-                            columnWidths={columnWidths}
-                            className={`text-center align-middle ${
+                                </TableCell>
+
+                                {/* Товары */}
+                                <TableCell 
+                                  className="align-middle border-r border-gray-200 dark:border-gray-700 py-2 px-0" 
+                                  style={{ boxSizing: 'border-box', paddingLeft: '3px', position: 'relative', verticalAlign: 'middle', overflow: 'hidden' }}
+                                  onClick={(e) => {
+                                    const textarea = (e.currentTarget as HTMLElement).querySelector('textarea')
+                                    if (textarea) textarea.focus()
+                                  }}
+                                >
+                              <div className="flex items-center justify-start h-full">
+                                <Textarea
+                                  value={order.products}
+                                  onChange={(e) => {
+                                    handleCellChange(order.id, 'products', e.target.value)
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                  onInput={(e) => {
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                  placeholder="Товары"
+                                      className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-sm"
+                                  style={{ 
+                                    minHeight: 'auto',
+                                    width: '100%',
+                                    height: 'auto',
+                                    overflow: 'hidden',
+                                    wordWrap: 'break-word',
+                                    wordBreak: 'break-word',
+                                    whiteSpace: 'pre-wrap',
+                                    paddingLeft: '3px',
+                                    paddingTop: '16px',
+                                  }}
+                                    />
+                              </div>
+                                </TableCell>
+
+                                {/* ФСМ */}
+                                <TableCell 
+                                  className="text-center align-middle border-r border-gray-200 dark:border-gray-700 py-2 px-0" 
+                                  style={{ boxSizing: 'border-box', position: 'relative', verticalAlign: 'middle', overflow: 'hidden' }}
+                                  onClick={(e) => {
+                                    const textarea = (e.currentTarget as HTMLElement).querySelector('textarea')
+                                    if (textarea) textarea.focus()
+                                  }}
+                                >
+                              <div className="flex items-center justify-start h-full">
+                                <Textarea
+                                  value={order.fsm}
+                                  onChange={(e) => {
+                                    handleCellChange(order.id, 'fsm', e.target.value)
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                  onInput={(e) => {
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                  placeholder="ФСМ"
+                                      className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-center text-sm"
+                                  style={{ 
+                                    minHeight: 'auto',
+                                    width: '100%',
+                                    height: 'auto',
+                                    overflow: 'hidden',
+                                    wordWrap: 'break-word',
+                                    wordBreak: 'break-word',
+                                    whiteSpace: 'pre-wrap',
+                                    paddingTop: '16px',
+                                  }}
+                                    />
+                              </div>
+                                </TableCell>
+
+                                {/* Адрес */}
+                                <TableCell 
+                                  className="align-middle border-r border-gray-200 dark:border-gray-700 py-2 px-0" 
+                                  style={{ boxSizing: 'border-box', paddingLeft: '3px', position: 'relative', verticalAlign: 'middle', overflow: 'hidden' }}
+                                  onClick={(e) => {
+                                    const textarea = (e.currentTarget as HTMLElement).querySelector('textarea')
+                                    if (textarea) textarea.focus()
+                                  }}
+                                >
+                              <div className="flex items-center justify-start h-full">
+                                <Textarea
+                                  value={order.address}
+                                  onChange={(e) => {
+                                    handleCellChange(order.id, 'address', e.target.value)
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                  onInput={(e) => {
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                  placeholder="Адрес"
+                                      className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-sm"
+                                  style={{ 
+                                    minHeight: 'auto',
+                                    width: '100%',
+                                    height: 'auto',
+                                    overflow: 'hidden',
+                                    wordWrap: 'break-word',
+                                    wordBreak: 'break-word',
+                                    whiteSpace: 'pre-wrap',
+                                    paddingLeft: '3px',
+                                    paddingTop: '16px',
+                                  }}
+                                    />
+                              </div>
+                                </TableCell>
+
+                                {/* Контакт */}
+                                <TableCell 
+                                  className="text-center align-middle border-r border-gray-200 dark:border-gray-700 py-2 px-0" 
+                                  style={{ boxSizing: 'border-box', position: 'relative', verticalAlign: 'middle', overflow: 'hidden' }}
+                                  onClick={(e) => {
+                                    const textarea = (e.currentTarget as HTMLElement).querySelector('textarea')
+                                    if (textarea) textarea.focus()
+                                  }}
+                                >
+                              <div className="flex items-center justify-start h-full">
+                                <Textarea
+                                  value={order.contact}
+                                  onChange={(e) => {
+                                    handleCellChange(order.id, 'contact', e.target.value)
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                  onInput={(e) => {
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                  placeholder="Контакт"
+                                      className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-center text-sm"
+                                  style={{ 
+                                    minHeight: 'auto',
+                                    width: '100%',
+                                    height: 'auto',
+                                    overflow: 'hidden',
+                                    wordWrap: 'break-word',
+                                    wordBreak: 'break-word',
+                                    whiteSpace: 'pre-wrap',
+                                    paddingTop: '16px',
+                                  }}
+                                    />
+                              </div>
+                                </TableCell>
+
+                                {/* Оплачено */}
+                                <TableCell 
+                                  style={{ boxSizing: 'border-box' }}
+                            className={`text-center align-middle border-r border-gray-200 dark:border-gray-700 py-2 px-3 ${
                               order.payment.toLowerCase().includes('оплачено') || order.payment.toLowerCase().includes('оплачен')
                                 ? 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
-                                : order.payment.trim() === ''
-                                ? 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
+                                : order.payment.toLowerCase().includes('частично')
+                                ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-300'
                                 : 'bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-300'
                             }`}
                           >
-                            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
-                              <Textarea
-                                value={order.payment}
-                                onChange={(e) => handleCellChange(order.id, 'payment', e.target.value)}
-                                placeholder="Оплата"
-                                className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-center"
-                                rows={1}
-                                style={{ 
-                                  height: order.isEmpty ? '1.5rem' : 'auto',
-                                  minHeight: '1.5rem',
-                                  overflow: 'visible',
-                                  wordWrap: 'break-word',
-                                  whiteSpace: 'pre-wrap',
-                                  textAlign: 'center',
-                                  lineHeight: '1.5rem'
-                                }}
-                                onInput={(e) => {
-                                  if (order.isEmpty) return
-                                  const target = e.target as HTMLTextAreaElement
-                                  target.style.height = 'auto'
-                                  target.style.height = `${target.scrollHeight}px`
-                                }}
-                              />
-                            </div>
-                          </ResizableTableCell>
-                          <ResizableTableCell columnKey="time" className="text-center align-middle" columnWidths={columnWidths}>
-                            <div className="flex flex-col gap-0.5 items-center justify-center h-full" style={{ minHeight: '2.5rem' }}>
+                              <Select
+                                value={order.payment || 'Не оплачено'}
+                                onValueChange={(value) => handleCellChange(order.id, 'payment', value)}
+                              >
+                                <SelectTrigger className="border-0 bg-transparent h-auto p-0 w-full text-xs focus:ring-0 focus:ring-offset-0" style={{ fontSize: '0.7rem', lineHeight: '1.2' }}>
+                                  <SelectValue />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="Оплачено">Оплачено</SelectItem>
+                                  <SelectItem value="Частично">Частично</SelectItem>
+                                  <SelectItem value="Не оплачено">Не оплачено</SelectItem>
+                                </SelectContent>
+                              </Select>
+                                </TableCell>
+
+                                {/* Время */}
+                                <TableCell 
+                                  className="text-center align-middle border-r border-gray-200 dark:border-gray-700 p-2" 
+                                  style={{ boxSizing: 'border-box', position: 'relative' }}
+                                  onClick={(e) => {
+                                    const inputs = (e.currentTarget as HTMLElement).querySelectorAll('input')
+                                    if (inputs.length > 0) inputs[0].focus()
+                                  }}
+                                >
+                                  <div className="flex flex-col gap-0.5 items-center justify-center h-full">
                               <Input
                                 value={parseTimeSlot(order.time).start}
-                                onChange={(e) => {
-                                  const value = e.target.value
-                                  const cursorPos = e.target.selectionStart || 0
-                                  handleTimeStartChange(order.id, value, cursorPos)
-                                  // Восстанавливаем позицию курсора после форматирования
-                                  setTimeout(() => {
-                                    const input = e.target
-                                    const newValue = parseTimeSlot(orders.find(o => o.id === order.id)?.time || '').start
-                                    let newCursorPos = cursorPos
-                                    // Если добавился двоеточие, сдвигаем курсор
-                                    if (newValue.length > value.length && newValue.includes(':') && !value.includes(':')) {
-                                      newCursorPos = Math.min(cursorPos + 1, newValue.length)
-                                    }
-                                    input.setSelectionRange(newCursorPos, newCursorPos)
-                                  }, 0)
-                                }}
-                                onKeyDown={(e) => {
-                                  // Позволяем удаление и навигацию
-                                  if (['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(e.key)) {
-                                    return
-                                  }
-                                  // Разрешаем только цифры
-                                  if (!/^\d$/.test(e.key) && !e.ctrlKey && !e.metaKey) {
-                                    e.preventDefault()
-                                  }
-                                }}
+                                      onChange={(e) => handleTimeStartChange(order.id, e.target.value)}
                                 placeholder="11:00"
-                                className="border-0 bg-transparent p-0 h-5 text-center text-xs focus-visible:ring-0 focus-visible:ring-offset-0"
+                                      className="border-0 bg-transparent p-0 h-auto text-center text-xs focus-visible:ring-0"
                                 style={{ 
                                   textAlign: 'center',
                                   fontSize: '0.75rem',
-                                  lineHeight: '1.2',
                                   width: '100%'
                                 }}
                               />
                               <Input
                                 value={parseTimeSlot(order.time).end}
-                                onChange={(e) => {
-                                  const value = e.target.value
-                                  const cursorPos = e.target.selectionStart || 0
-                                  handleTimeEndChange(order.id, value, cursorPos)
-                                  // Восстанавливаем позицию курсора после форматирования
-                                  setTimeout(() => {
-                                    const input = e.target
-                                    const newValue = parseTimeSlot(orders.find(o => o.id === order.id)?.time || '').end
-                                    let newCursorPos = cursorPos
-                                    // Если добавился двоеточие, сдвигаем курсор
-                                    if (newValue.length > value.length && newValue.includes(':') && !value.includes(':')) {
-                                      newCursorPos = Math.min(cursorPos + 1, newValue.length)
-                                    }
-                                    input.setSelectionRange(newCursorPos, newCursorPos)
-                                  }, 0)
-                                }}
-                                onKeyDown={(e) => {
-                                  // Позволяем удаление и навигацию
-                                  if (['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'].includes(e.key)) {
-                                    return
-                                  }
-                                  // Разрешаем только цифры
-                                  if (!/^\d$/.test(e.key) && !e.ctrlKey && !e.metaKey) {
-                                    e.preventDefault()
-                                  }
-                                }}
+                                      onChange={(e) => handleTimeEndChange(order.id, e.target.value)}
                                 placeholder="13:00"
-                                className="border-0 bg-transparent p-0 h-5 text-center text-xs focus-visible:ring-0 focus-visible:ring-offset-0"
+                                      className="border-0 bg-transparent p-0 h-auto text-center text-xs focus-visible:ring-0"
                                 style={{ 
                                   textAlign: 'center',
                                   fontSize: '0.75rem',
-                                  lineHeight: '1.2',
                                   width: '100%'
                                 }}
                               />
                             </div>
-                          </ResizableTableCell>
-                          <ResizableTableCell columnKey="comment" className="align-middle" columnWidths={columnWidths}>
-                            <div className="flex items-center justify-center h-full w-full" style={{ minHeight: '2.5rem' }}>
-                              <Textarea
-                                value={order.comment}
-                                onChange={(e) => handleCellChange(order.id, 'comment', e.target.value)}
-                                placeholder="Комментарий"
-                                className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-center"
-                                rows={1}
-                                style={{ 
-                                  height: order.isEmpty ? '1.5rem' : 'auto',
-                                  minHeight: '1.5rem',
-                                  overflow: 'visible',
-                                  wordWrap: 'break-word',
-                                  whiteSpace: 'pre-wrap',
-                                  textAlign: 'center',
-                                  verticalAlign: 'middle',
-                                  lineHeight: '1.5rem'
-                                }}
-                                onInput={(e) => {
-                                  if (order.isEmpty) return
-                                  const target = e.target as HTMLTextAreaElement
-                                  target.style.height = 'auto'
-                                  const newHeight = Math.max(24, target.scrollHeight)
-                                  target.style.height = `${newHeight}px`
-                                  // Обновляем высоту строки если нужно
-                                  const row = target.closest('tr')
-                                  if (row) {
-                                    row.style.height = 'auto'
-                                    row.style.minHeight = `${newHeight + 16}px`
-                                  }
-                                }}
-                              />
-                            </div>
-                          </ResizableTableCell>
-                          <ResizableTableCell 
-                            columnKey="shipped"
-                            columnWidths={columnWidths}
-                            className="text-center align-middle cursor-pointer"
+                                </TableCell>
+
+                                {/* Комментарии */}
+                                <TableCell 
+                                  className="align-middle border-r border-gray-200 dark:border-gray-700 py-2 px-0" 
+                                  style={{ boxSizing: 'border-box', position: 'relative', verticalAlign: 'middle', overflow: 'hidden' }}
+                                  onClick={(e) => {
+                                    const textarea = (e.currentTarget as HTMLElement).querySelector('textarea')
+                                    if (textarea) textarea.focus()
+                                  }}
+                                >
+                              <div className="flex items-center justify-start h-full">
+                                <Textarea
+                                  value={order.comment}
+                                  onChange={(e) => {
+                                    handleCellChange(order.id, 'comment', e.target.value)
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                  onInput={(e) => {
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                    placeholder="Комментарии"
+                                    className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-sm"
+                                  style={{ 
+                                    minHeight: 'auto',
+                                    width: '100%',
+                                    height: 'auto',
+                                    overflow: 'hidden',
+                                    wordWrap: 'break-word',
+                                    wordBreak: 'break-word',
+                                    whiteSpace: 'pre-wrap',
+                                    paddingTop: '16px',
+                                  }}
+                                    />
+                              </div>
+                                </TableCell>
+
+                                {/* Отгрузили */}
+                                <TableCell 
+                                  style={{ boxSizing: 'border-box' }}
+                            className="text-center align-middle cursor-pointer border-r border-gray-200 dark:border-gray-700 py-2 px-0"
                             onClick={(e) => {
                               e.stopPropagation()
                               handleCheckboxChange(order.id, 'shipped')
                             }}
                           >
-                            <Checkbox
-                              checked={order.shipped}
-                              onCheckedChange={() => handleCheckboxChange(order.id, 'shipped')}
-                            />
-                          </ResizableTableCell>
-                          <ResizableTableCell 
-                            columnKey="delivered"
-                            columnWidths={columnWidths}
-                            className="text-center align-middle cursor-pointer"
+                            <div className="flex items-center justify-center h-full">
+                              <Checkbox
+                                checked={order.shipped}
+                                onCheckedChange={() => handleCheckboxChange(order.id, 'shipped')}
+                              />
+                            </div>
+                                </TableCell>
+
+                                {/* Доставлен */}
+                                <TableCell 
+                                  style={{ boxSizing: 'border-box' }}
+                            className="text-center align-middle cursor-pointer py-2 px-0"
                             onClick={(e) => {
                               e.stopPropagation()
                               handleCheckboxChange(order.id, 'delivered')
                             }}
                           >
-                            <Checkbox
-                              checked={order.delivered}
-                              onCheckedChange={() => handleCheckboxChange(order.id, 'delivered')}
-                            />
-                              </ResizableTableCell>
+                            <div className="flex items-center justify-center h-full">
+                              <Checkbox
+                                checked={order.delivered}
+                                onCheckedChange={() => handleCheckboxChange(order.id, 'delivered')}
+                              />
+                            </div>
+                                </TableCell>
                             </TableRow>
                           )
                         })}
@@ -1794,72 +1179,72 @@ export default function DeliveryCRMPage() {
                   })}
                 </TableBody>
               </Table>
-            </div>
-          </CardContent>
-        </Card>
         </div>
 
-        {/* Кнопка "Показать далее" внизу страницы */}
+              {/* Кнопка "Раскрыть далее" */}
         {hasMoreDates && (
-          <div className="mt-4 pb-4 flex justify-center">
+                <div className="p-4 flex justify-center border-t">
             <Button
               variant="outline"
               onClick={handleShowMore}
               className="w-full sm:w-auto"
             >
-              Показать далее
+                    Раскрыть далее
               <ChevronDown className="w-4 h-4 ml-2" />
             </Button>
           </div>
         )}
+            </CardContent>
+          </Card>
+        </div>
       </div>
 
-      {/* Контекстное меню для изменения цвета строки */}
-      {contextMenu && (
+      {/* Меню выбора типа REKL */}
+      {reklMenu && (
         <>
           <div
             className="fixed inset-0 z-40"
-            onClick={() => setContextMenu(null)}
+            onClick={() => setReklMenu(null)}
           />
           <div
             className="fixed z-50 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-md shadow-lg p-2"
             style={{
-              left: `${contextMenu.x}px`,
-              top: `${contextMenu.y}px`,
-              minWidth: '150px',
+              left: `${reklMenu.x}px`,
+              top: `${reklMenu.y}px`,
+              minWidth: '200px',
             }}
+            onClick={(e) => e.stopPropagation()}
           >
-            <div className="text-xs font-semibold mb-2 px-2 py-1">Действия</div>
+            <div className="text-xs font-semibold mb-2 px-2 py-1">Тип рекламации</div>
+            {reklOptions.map((option, idx) => (
             <button
-              className="w-full px-3 py-2 text-xs rounded hover:bg-red-100 dark:hover:bg-red-900/30 text-left text-red-600 dark:text-red-400 mb-2"
-              onClick={() => handleDeleteOrder(contextMenu.orderId)}
-            >
-              Удалить строку
-            </button>
-            <div className="text-xs font-semibold mb-2 px-2 py-1 border-t border-gray-200 dark:border-gray-700 pt-2">Цвет строки</div>
-            <div className="grid grid-cols-2 gap-1">
-              {rowColors.map((color) => (
-                <button
-                  key={color.value}
-                  className="px-3 py-2 text-xs rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-left flex items-center gap-2"
-                  onClick={() => handleRowColorChange(contextMenu.orderId, color.value)}
-                  style={{
-                    backgroundColor: color.value || undefined,
-                  }}
-                >
-                  {color.value && (
-                    <div
-                      className="w-4 h-4 rounded border border-gray-300"
-                      style={{ backgroundColor: color.value }}
-                    />
-                  )}
-                  {color.name}
+                key={idx}
+                className="w-full px-3 py-2 text-xs rounded hover:bg-gray-100 dark:hover:bg-gray-700 text-left"
+                onClick={() => handleReklTypeSelect(reklMenu.orderId, option)}
+              >
+                {option}
                 </button>
               ))}
-            </div>
           </div>
         </>
       )}
+
+      {/* Диалог для раскрытия предыдущих дней */}
+      <AlertDialog open={showExpandDialog} onOpenChange={setShowExpandDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Раскрыть предыдущие дни</AlertDialogTitle>
+            <AlertDialogDescription>
+              Выберите, сколько предыдущих дней раскрыть:
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Отмена</AlertDialogCancel>
+            <AlertDialogAction onClick={handleExpand30Days}>30</AlertDialogAction>
+            <AlertDialogAction onClick={handleExpandAll}>Все</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 }

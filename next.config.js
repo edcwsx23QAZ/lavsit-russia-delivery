@@ -5,13 +5,10 @@ const nextConfig = {
   // EMERGENCY: DISABLE STRICT MODE 
   reactStrictMode: false,
   
-  // EMERGENCY: DISABLE SSR GLOBALLY IN DEV
-  ...(process.env.NODE_ENV !== 'production' && {
-    experimental: {
-      runtime: 'nodejs',
-      serverActionsBodySizeLimit: '2mb',
-    }
-  }),
+  // Server Actions body size limit
+  serverActions: {
+    bodySizeLimit: '2mb',
+  },
   
   // EMERGENCY: CUSTOM WEBPACK CONFIG
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
@@ -27,12 +24,8 @@ const nextConfig = {
         tls: false,
       };
       
-      // Disable chunk splitting in dev
-      config.optimization = {
-        ...config.optimization,
-        splitChunks: false,
-        runtimeChunk: false,
-      };
+      // Keep chunk splitting enabled for lazy loading to work
+      // splitChunks and runtimeChunk are needed for code splitting with lazy()
       
       // Add error handler plugin
       config.plugins.push(

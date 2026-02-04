@@ -923,6 +923,97 @@ export default function Home() {
     }
   };
 
+  // Удаление нескольких грузов (для групп)
+  const removeCargoGroup = (indices: number[]) => {
+    setForm(prev => {
+      const idsToRemove = new Set(indices.map(idx => prev.cargos[idx].id));
+      const remainingCargos = prev.cargos.filter(cargo => !idsToRemove.has(cargo.id));
+      
+      // Если остался только один груз, оставляем его
+      if (remainingCargos.length === 0) {
+        return {
+          ...prev,
+          cargos: [{ id: '1', length: 0, width: 0, height: 0, weight: 0 }]
+        };
+      }
+      
+      return {
+        ...prev,
+        cargos: remainingCargos
+      };
+    });
+  };
+
+  // Изменение количества мест в группе
+  const updateCargoGroupQuantity = (groupIndices: number[], newQuantity: number) => {
+    if (newQuantity < 1) return;
+    
+    setForm(prev => {
+      const firstCargo = prev.cargos[groupIndices[0]];
+      if (!firstCargo) return prev;
+      
+      const currentQuantity = groupIndices.length;
+      
+      if (newQuantity > currentQuantity) {
+        // Добавляем новые грузы
+        const additionalCount = newQuantity - currentQuantity;
+        const newCargos = Array.from({ length: additionalCount }, (_, i) => ({
+          id: `${Date.now()}_${i}`,
+          length: firstCargo.length,
+          width: firstCargo.width,
+          height: firstCargo.height,
+          weight: firstCargo.weight,
+          productId: firstCargo.productId,
+          placeNumber: firstCargo.placeNumber,
+          isFromProduct: firstCargo.isFromProduct,
+          addedAt: firstCargo.addedAt
+        }));
+        
+        // Вставляем новые грузы после группы
+        const updatedCargos = [...prev.cargos];
+        updatedCargos.splice(groupIndices[groupIndices.length - 1] + 1, 0, ...newCargos);
+        
+        return {
+          ...prev,
+          cargos: updatedCargos
+        };
+      } else if (newQuantity < currentQuantity) {
+        // Удаляем лишние грузы
+        const idsToRemove = new Set(
+          groupIndices.slice(newQuantity).map(idx => prev.cargos[idx].id)
+        );
+        
+        return {
+          ...prev,
+          cargos: prev.cargos.filter(cargo => !idsToRemove.has(cargo.id))
+        };
+      }
+      
+      return prev;
+    });
+  };
+
+  // Обновление размеров для всех грузов в группе
+  const updateCargoGroup = (groupIndices: number[], field: string, value: number) => {
+    setForm(prev => {
+      const updatedCargos = prev.cargos.map((cargo, index) => {
+        if (groupIndices.includes(index)) {
+          return { ...cargo, [field]: value };
+        }
+        return cargo;
+      });
+      
+      // Очищаем пустые грузы согласно новой логике
+      const cleanResult = cleanEmptyCargos(updatedCargos, prev.selectedProducts || []);
+      
+      return {
+        ...prev,
+        cargos: cleanResult.cargos,
+        selectedProducts: cleanResult.products
+      };
+    });
+  };
+
   // 🔧 Функция для проверки пустых грузов (все поля равны 0)
   const isEmptyCargo = (cargo: Cargo) => {
     return cargo.length === 0 && cargo.width === 0 && cargo.height === 0 && cargo.weight === 0;
@@ -5297,6 +5388,7 @@ export default function Home() {
                 {/* Управление добавленными товарами */}
                 <ProductManager
                   products={form.selectedProducts}
+                  cargos={form.cargos}
                   onQuantityChange={handleProductQuantityChange}
                   onProductRemove={handleProductRemove}
                   disabled={calculating}
@@ -5325,74 +5417,123 @@ export default function Home() {
                           `Груз №${group.indices[0] + 1} - ${group.quantity} одинаковых места`
                         )}
                       </h4>
-                      {form.cargos.length > 1 && group.quantity === 1 && (
+                      <div className="flex items-center gap-2">
+                        {group.quantity > 1 && (
+                          <Badge variant="secondary" className="text-xs">
+                            {group.quantity} шт.
+                          </Badge>
+                        )}
                         <Button
                           variant="destructive"
                           size="sm"
-                          onClick={() => removeCargo(form.cargos[group.indices[0]].id)}
+                          onClick={() => {
+                            if (group.quantity === 1) {
+                              removeCargo(form.cargos[group.indices[0]].id);
+                            } else {
+                              removeCargoGroup(group.indices);
+                            }
+                          }}
                           className="h-6 text-xs"
+                          disabled={form.cargos.length <= 1 && group.isEmpty}
                         >
-                          Удалить
+                          <Trash2 className="h-3 w-3" />
                         </Button>
-                      )}
-                      {group.quantity > 1 && (
-                        <Badge variant="secondary" className="text-xs">
-                          {group.quantity} шт.
-                        </Badge>
-                      )}
+                      </div>
                     </div>
                     
-                    {group.isEmpty || group.quantity === 1 ? (
-                      // Показываем поля ввода для пустых грузов или единичных
-                      <div className="grid grid-cols-2 gap-2">
-                        <div>
-                          <Label className="text-white text-xs">Длина (см)</Label>
+                    {/* Поля для изменения размеров - показываем всегда */}
+                    <div className="grid grid-cols-2 gap-2 mb-2">
+                      <div>
+                        <Label className="text-white text-xs">Длина (см)</Label>
+                        <Input
+                          type="number"
+                          value={form.cargos[group.indices[0]].length || ''}
+                          onChange={(e) => {
+                            const value = Number(e.target.value);
+                            if (group.quantity === 1) {
+                              updateCargo(form.cargos[group.indices[0]].id, 'length', value);
+                            } else {
+                              updateCargoGroup(group.indices, 'length', value);
+                            }
+                          }}
+                          className="bg-gray-700 border-gray-600 h-8 text-white"
+                        />
+                      </div>
+                      <div>
+                        <Label className="text-white text-xs">Ширина (см)</Label>
+                        <Input
+                          type="number"
+                          value={form.cargos[group.indices[0]].width || ''}
+                          onChange={(e) => {
+                            const value = Number(e.target.value);
+                            if (group.quantity === 1) {
+                              updateCargo(form.cargos[group.indices[0]].id, 'width', value);
+                            } else {
+                              updateCargoGroup(group.indices, 'width', value);
+                            }
+                          }}
+                          className="bg-gray-700 border-gray-600 h-8 text-white"
+                        />
+                      </div>
+                      <div>
+                        <Label className="text-white text-xs">Высота (см)</Label>
+                        <Input
+                          type="number"
+                          value={form.cargos[group.indices[0]].height || ''}
+                          onChange={(e) => {
+                            const value = Number(e.target.value);
+                            if (group.quantity === 1) {
+                              updateCargo(form.cargos[group.indices[0]].id, 'height', value);
+                            } else {
+                              updateCargoGroup(group.indices, 'height', value);
+                            }
+                          }}
+                          className="bg-gray-700 border-gray-600 h-8 text-white"
+                        />
+                      </div>
+                      <div>
+                        <Label className="text-white text-xs">Вес (кг)</Label>
+                        <Input
+                          type="number"
+                          value={form.cargos[group.indices[0]].weight || ''}
+                          onChange={(e) => {
+                            const value = Number(e.target.value);
+                            if (group.quantity === 1) {
+                              updateCargo(form.cargos[group.indices[0]].id, 'weight', value);
+                            } else {
+                              updateCargoGroup(group.indices, 'weight', value);
+                            }
+                          }}
+                          className="bg-gray-700 border-gray-600 h-8 text-white"
+                        />
+                      </div>
+                    </div>
+                    
+                    {/* Поле для изменения количества мест (только для групп) */}
+                    {group.quantity > 1 && (
+                      <div className="mb-2">
+                        <Label className="text-white text-xs">Количество мест</Label>
+                        <div className="flex items-center gap-2">
                           <Input
                             type="number"
-                            value={form.cargos[group.indices[0]].length || ''}
-                            onChange={(e) => updateCargo(form.cargos[group.indices[0]].id, 'length', Number(e.target.value))}
-                            className="bg-gray-700 border-gray-600 h-8 text-white"
+                            min="1"
+                            value={group.quantity}
+                            onChange={(e) => {
+                              const newQuantity = Math.max(1, Math.min(99, parseInt(e.target.value) || 1));
+                              updateCargoGroupQuantity(group.indices, newQuantity);
+                            }}
+                            className="bg-gray-700 border-gray-600 h-8 text-white flex-1"
                           />
-                        </div>
-                        <div>
-                          <Label className="text-white text-xs">Ширина (см)</Label>
-                          <Input
-                            type="number"
-                            value={form.cargos[group.indices[0]].width || ''}
-                            onChange={(e) => updateCargo(form.cargos[group.indices[0]].id, 'width', Number(e.target.value))}
-                            className="bg-gray-700 border-gray-600 h-8 text-white"
-                          />
-                        </div>
-                        <div>
-                          <Label className="text-white text-xs">Высота (см)</Label>
-                          <Input
-                            type="number"
-                            value={form.cargos[group.indices[0]].height || ''}
-                            onChange={(e) => updateCargo(form.cargos[group.indices[0]].id, 'height', Number(e.target.value))}
-                            className="bg-gray-700 border-gray-600 h-8 text-white"
-                          />
-                        </div>
-                        <div>
-                          <Label className="text-white text-xs">Вес (кг)</Label>
-                          <Input
-                            type="number"
-                            value={form.cargos[group.indices[0]].weight || ''}
-                            onChange={(e) => updateCargo(form.cargos[group.indices[0]].id, 'weight', Number(e.target.value))}
-                            className="bg-gray-700 border-gray-600 h-8 text-white"
-                          />
+                          <span className="text-gray-400 text-xs">шт.</span>
                         </div>
                       </div>
-                    ) : (
-                      // Показываем только информацию для групп
-                      <div className="grid grid-cols-2 gap-2 text-sm text-gray-300">
-                        <div>Длина: {group.length} см</div>
-                        <div>Ширина: {group.width} см</div>
-                        <div>Высота: {group.height} см</div>
-                        <div>Вес: {group.weight} кг</div>
-                        <div className="col-span-2 text-xs text-blue-300 mt-1">
-                          Общий вес: {(group.weight * group.quantity).toFixed(1)} кг, 
-                          объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³
-                        </div>
+                    )}
+                    
+                    {/* Итоговая информация для групп */}
+                    {group.quantity > 1 && !group.isEmpty && (
+                      <div className="text-xs text-blue-300 mt-2 pt-2 border-t border-gray-600">
+                        Общий вес: {(group.weight * group.quantity).toFixed(1)} кг, 
+                        объем: {((group.length * group.width * group.height * group.quantity) / 1000000).toFixed(3)} м³
                       </div>
                     )}
                   </div>
@@ -5401,6 +5542,70 @@ export default function Home() {
                   <Plus className="h-3 w-3 mr-1" />
                   Добавить груз
                 </Button>
+                
+                {/* Общий объем и вес всех грузов */}
+                {(() => {
+                  // Расчет общего объема и веса для ВСЕХ грузов
+                  // 1. Грузовые места товаров (считаем отдельно по каждому месту)
+                  // 2. Ручные грузы (не из товаров)
+                  let totalCargoVolume = 0; // в м³
+                  let totalCargoWeight = 0; // в кг
+                  
+                  // Расчет для грузовых мест товаров
+                  form.selectedProducts?.forEach(productInForm => {
+                    productInForm.product.cargoPlaces.forEach(place => {
+                      // Объем одного грузового места в м³ (переводим см в м)
+                      const placeVolume = (place.length * place.depth * place.height) / 1000000;
+                      // Умножаем на количество товаров
+                      totalCargoVolume += placeVolume * productInForm.quantity;
+                      // Вес одного места умножаем на количество товаров
+                      totalCargoWeight += place.weight * productInForm.quantity;
+                    });
+                  });
+                  
+                  // Расчет для ручных грузов (не из товаров)
+                  form.cargos.forEach(cargo => {
+                    // Учитываем только грузы, которые:
+                    // 1. Не из товаров (isFromProduct !== true или нет productId)
+                    // 2. Имеют заполненные размеры и вес
+                    // 3. Не пустые (length, width, height, weight > 0)
+                    const isManualCargo = !cargo.isFromProduct && !cargo.productId;
+                    const hasValidDimensions = cargo.length && cargo.width && cargo.height && cargo.weight;
+                    const isNotEmpty = cargo.length > 0 && cargo.width > 0 && cargo.height > 0 && cargo.weight > 0;
+                    
+                    if (isManualCargo && hasValidDimensions && isNotEmpty) {
+                      // Объем одного груза в м³ (переводим см в м)
+                      const cargoVolume = (cargo.length * cargo.width * cargo.height) / 1000000;
+                      totalCargoVolume += cargoVolume;
+                      totalCargoWeight += cargo.weight;
+                    }
+                  });
+                  
+                  // Показываем итоговую информацию, если есть грузы
+                  if (totalCargoVolume > 0 || totalCargoWeight > 0 || (form.selectedProducts && form.selectedProducts.length > 0)) {
+                    return (
+                      <div className="mt-3 pt-3 border-t border-gray-600">
+                        <div className="bg-blue-900/20 border border-blue-700 rounded p-2">
+                          <div className="space-y-1">
+                            <div className="flex justify-between items-center">
+                              <span className="text-blue-300 font-medium text-xs">Общий объем всех грузов:</span>
+                              <span className="text-white font-medium text-xs">
+                                {totalCargoVolume.toFixed(3)} м³
+                              </span>
+                            </div>
+                            <div className="flex justify-between items-center">
+                              <span className="text-blue-300 font-medium text-xs">Общий вес всех грузов:</span>
+                              <span className="text-white font-medium text-xs">
+                                {totalCargoWeight.toFixed(1)} кг
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+                  return null;
+                })()}
               </CardContent>
             </Card>
 
@@ -5667,8 +5872,8 @@ export default function Home() {
                       <div className="space-y-2">
                         {calc.error ? (
                           <div className="space-y-2">
-                            <Alert className="border-red-600">
-                              <AlertDescription className="text-white text-xs">{calc.error}</AlertDescription>
+                            <Alert className="border-red-600 bg-white">
+                              <AlertDescription className="text-black text-xs">{calc.error}</AlertDescription>
                             </Alert>
                             {calc.price > 0 && (
                               <>

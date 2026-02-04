@@ -9,8 +9,21 @@ import { Trash2, Package, Minus, Plus } from 'lucide-react';
 import { ProductInForm } from '@/lib/furniture-types';
 import { formatPrice, getProductSummary } from '@/lib/furniture-utils';
 
+interface Cargo {
+  id: string;
+  length: number;
+  width: number;
+  height: number;
+  weight: number;
+  productId?: string;
+  placeNumber?: number;
+  isFromProduct?: boolean;
+  addedAt?: number;
+}
+
 interface ProductManagerProps {
   products: ProductInForm[];
+  cargos?: Cargo[]; // Все грузы (товары + ручные)
   onQuantityChange: (productId: string, addedAt: number, newQuantity: number) => void;
   onProductRemove: (productId: string, addedAt: number) => void;
   disabled?: boolean;
@@ -18,6 +31,7 @@ interface ProductManagerProps {
 
 export default function ProductManager({ 
   products, 
+  cargos = [],
   onQuantityChange, 
   onProductRemove, 
   disabled = false 
@@ -172,32 +186,99 @@ export default function ProductManager({
       ))}
       
       {/* Итоговая статистика */}
-      {products && products.length > 0 && (
-        <Card className="bg-blue-900/20 border-blue-700">
-          <CardContent className="p-3">
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <span className="text-blue-300 font-medium">Всего товаров:</span>
-                <span className="text-white">
-                  {products.reduce((sum, p) => sum + p.quantity, 0)} шт.
-                </span>
+      {(products && products.length > 0) || (cargos && cargos.length > 0) ? (() => {
+        // Расчет общего объема и веса для ВСЕХ грузов
+        // 1. Грузовые места товаров (считаем отдельно по каждому месту)
+        // 2. Ручные грузы из раздела "Грузы"
+        let totalVolume = 0; // в м³
+        let totalWeight = 0; // в кг
+        let totalCargoPlaces = 0; // количество грузовых мест
+        let totalCost = 0; // общая стоимость
+        
+        // Расчет для товаров - грузовые места товаров
+        products.forEach(productInForm => {
+          // Пересчитываем стоимость динамически на основе актуального количества
+          const productCost = productInForm.product.retailPrice * productInForm.quantity;
+          totalCost += productCost;
+          
+          // Считаем грузовые места
+          const cargoPlacesCount = productInForm.product.cargoPlaces.length * productInForm.quantity;
+          totalCargoPlaces += cargoPlacesCount;
+          
+          // Расчет объема и веса по каждому грузовому месту отдельно
+          // Для каждого места считаем объем отдельно, затем умножаем на количество товаров
+          productInForm.product.cargoPlaces.forEach(place => {
+            // Объем одного грузового места в м³ (переводим см в м)
+            // Используем length × depth × height для каждого места
+            const placeVolume = (place.length * place.depth * place.height) / 1000000;
+            
+            // Умножаем объем одного места на количество товаров
+            // Каждое место повторяется quantity раз
+            totalVolume += placeVolume * productInForm.quantity;
+            
+            // Вес одного места умножаем на количество товаров
+            totalWeight += place.weight * productInForm.quantity;
+          });
+        });
+        
+        // Расчет для ручных грузов (не из товаров)
+        cargos.forEach(cargo => {
+          // Учитываем только грузы, которые:
+          // 1. Не из товаров (isFromProduct !== true или нет productId)
+          // 2. Имеют заполненные размеры и вес
+          // 3. Не пустые (length, width, height, weight > 0)
+          const isManualCargo = !cargo.isFromProduct && !cargo.productId;
+          const hasValidDimensions = cargo.length && cargo.width && cargo.height && cargo.weight;
+          const isNotEmpty = cargo.length > 0 && cargo.width > 0 && cargo.height > 0 && cargo.weight > 0;
+          
+          if (isManualCargo && hasValidDimensions && isNotEmpty) {
+            // Объем одного груза в м³ (переводим см в м)
+            const cargoVolume = (cargo.length * cargo.width * cargo.height) / 1000000;
+            totalVolume += cargoVolume;
+            totalWeight += cargo.weight;
+            totalCargoPlaces += 1;
+          }
+        });
+        
+        return (
+          <Card className="bg-blue-900/20 border-blue-700">
+            <CardContent className="p-3">
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-blue-300 font-medium">Всего товаров:</span>
+                  <span className="text-white">
+                    {products.reduce((sum, p) => sum + p.quantity, 0)} шт.
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-blue-300 font-medium">Грузовых мест:</span>
+                  <span className="text-white">
+                    {totalCargoPlaces} шт.
+                  </span>
+                </div>
+                <div className="flex justify-between items-center border-t border-blue-700 pt-2">
+                  <span className="text-blue-300 font-medium">Общая стоимость:</span>
+                  <span className="text-green-400 font-bold text-lg">
+                    {formatPrice(totalCost)}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center border-t border-blue-700 pt-2">
+                  <span className="text-blue-300 font-medium">Общий объем:</span>
+                  <span className="text-white font-medium">
+                    {totalVolume.toFixed(3)} м³
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-blue-300 font-medium">Общий вес:</span>
+                  <span className="text-white font-medium">
+                    {totalWeight.toFixed(1)} кг
+                  </span>
+                </div>
               </div>
-              <div className="flex justify-between items-center">
-                <span className="text-blue-300 font-medium">Грузовых мест:</span>
-                <span className="text-white">
-                  {products.reduce((sum, p) => sum + p.product.cargoPlaces.length * p.quantity, 0)} шт.
-                </span>
-              </div>
-              <div className="flex justify-between items-center border-t border-blue-700 pt-2">
-                <span className="text-blue-300 font-medium">Общая стоимость:</span>
-                <span className="text-green-400 font-bold text-lg">
-                  {formatPrice(products.reduce((sum, p) => sum + p.totalPrice, 0))}
-                </span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      )}
+            </CardContent>
+          </Card>
+        );
+      })() : null}
     </div>
   );
 }

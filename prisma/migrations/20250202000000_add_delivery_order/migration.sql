@@ -38,3 +38,4 @@ CREATE INDEX IF NOT EXISTS "delivery_orders_bitrixOrderId_idx" ON "delivery_orde
 -- CreateIndex
 CREATE INDEX IF NOT EXISTS "delivery_orders_orderNumber_idx" ON "delivery_orders"("orderNumber");
 
+

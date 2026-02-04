@@ -36,3 +36,4 @@ CREATE INDEX IF NOT EXISTS "delivery_orders_date_idx" ON "delivery_orders"("date
 CREATE INDEX IF NOT EXISTS "delivery_orders_bitrixOrderId_idx" ON "delivery_orders"("bitrixOrderId");
 CREATE INDEX IF NOT EXISTS "delivery_orders_orderNumber_idx" ON "delivery_orders"("orderNumber");
 
+
