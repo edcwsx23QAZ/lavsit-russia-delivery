@@ -145,3 +145,31 @@
     margin-bottom: 0.5in;
   }
 }
+
+/* Стили для индикатора места вставки при drag-and-drop */
+@keyframes pulse-indicator {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.drop-indicator-line {
+  animation: pulse-indicator 1.5s ease-in-out infinite;
+}
+
+.drop-indicator-row {
+  pointer-events: none;
+}
+
+/* Стили для placeholder в ячейке "№ Заказа" */
+.order-number-textarea::placeholder {
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.1px;
+}

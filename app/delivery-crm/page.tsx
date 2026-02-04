@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { syncManager } from '@/lib/delivery-crm/sync-manager'
 import {
   Table,
   TableBody,
@@ -14,13 +15,13 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { Checkbox } from '@/components/ui/checkbox'
+import { Badge } from '@/components/ui/badge'
 import { 
   Truck,
   GripVertical,
   ChevronDown,
   Calculator,
-  Upload,
-  Loader2,
+  FileText,
   Plus,
 } from 'lucide-react'
 import { Textarea } from '@/components/ui/textarea'
@@ -61,6 +62,9 @@ interface DeliveryOrder {
   shipped: boolean
   delivered: boolean
   isEmpty: boolean // Флаг пустой строки
+  groupId?: string // ID группы связанных заказов
+  groupPosition?: 'first' | 'middle' | 'last' | 'single' // Позиция в группе
+  groupSize?: number // Размер группы
 }
 
 // Форматирование даты в "05.02" (ДД.ММ)
@@ -175,6 +179,7 @@ export default function DeliveryCRMPage() {
   const [draggedOrderId, setDraggedOrderId] = useState<string | null>(null)
   const [dragOverDate, setDragOverDate] = useState<string | null>(null)
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null)
+  const [dropIndicator, setDropIndicator] = useState<{ date: string; position: 'before' | 'after'; index: number } | null>(null)
   const [daysToShow, setDaysToShow] = useState(8) // Сегодня + 7 дней = 8 дней
   const [daysBack, setDaysBack] = useState(0) // Количество дней назад для показа
   const [showExpandDialog, setShowExpandDialog] = useState(false)
@@ -186,13 +191,65 @@ export default function DeliveryCRMPage() {
   const today = startOfToday()
   const isInitialMount = useRef(true)
 
-  // Сохранение в localStorage при изменении orders (кроме первой загрузки)
+  // Функция для открытия лога в Google Sheets
+  const handleOpenLog = () => {
+    const spreadsheetId = '1lP2s2eTYWBqdKVsymlfBxDRioP_AiGxlTWGhYjiqBXk'
+    // Открываем лист "История изменений" (gid можно получить из URL таблицы)
+    // Если gid неизвестен, открываем таблицу и пользователь может перейти на нужный лист
+    const logUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/edit#gid=0`
+    window.open(logUrl, '_blank')
+  }
+
+  // Инициализация syncManager с URL из переменных окружения
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // В Next.js переменные с префиксом NEXT_PUBLIC_ доступны на клиенте
+      const scriptUrl = (process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL as string) || null
+      if (scriptUrl) {
+        syncManager.setSyncUrl(scriptUrl)
+        console.log('✅ Google Sheets auto-sync enabled (30s delay):', scriptUrl.substring(0, 50) + '...')
+      } else {
+        console.warn('⚠️ Google Apps Script URL not configured. Set NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL in .env.local')
+        console.warn('📖 See instructions: docs/google-sheets-sync-setup.md')
+      }
+    }
+  }, [])
+
+  // Обновление позиций в группах при изменении orders
+  useEffect(() => {
+    const groupKeys = orders.map(o => `${o.id}-${o.groupId || ''}-${o.date}`).join(',')
+    const updatedOrders = updateGroupPositions(orders)
+    
+    // Проверяем, изменились ли позиции
+    const hasChanges = updatedOrders.some((order, index) => {
+      const original = orders[index]
+      return !original || 
+        order.groupPosition !== original.groupPosition || 
+        order.groupSize !== original.groupSize
+    })
+    
+    if (hasChanges) {
+      // Используем функциональное обновление, чтобы избежать зацикливания
+      setOrders(prevOrders => {
+        const updated = updateGroupPositions(prevOrders)
+        return updated
+      })
+    }
+  }, [orders.map(o => `${o.id}-${o.groupId || ''}-${o.date}`).join(',')])
+
+  // Сохранение в localStorage и автоматическая синхронизация с Google Sheets
   useEffect(() => {
     if (isInitialMount.current) {
       isInitialMount.current = false
       return
     }
+    
+    // Сохраняем в localStorage (синхронно, быстро)
     saveOrdersToStorage(orders)
+    
+    // Устанавливаем заказы для автоматической синхронизации
+    // Синхронизация произойдет автоматически через 30 секунд после последнего изменения
+    syncManager.setOrdersForSync(orders)
   }, [orders])
 
   // Измерение высоты хэдера
@@ -456,63 +513,238 @@ export default function DeliveryCRMPage() {
     e.dataTransfer.setData('text/plain', orderId)
   }
 
-  const handleDragOver = (e: React.DragEvent, date: string, index?: number) => {
+  const handleDragOver = (e: React.DragEvent, date: string, index: number) => {
     e.preventDefault()
     e.dataTransfer.dropEffect = 'move'
     setDragOverDate(date)
-    if (index !== undefined) {
+    
+    // Определяем, куда именно вставлять - до или после строки
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect()
+    const mouseY = e.clientY
+    const rowMiddle = rect.top + rect.height / 2
+    
+    if (mouseY < rowMiddle) {
+      // Вставляем ПЕРЕД этой строкой
+      setDropIndicator({ date, position: 'before', index })
       setDragOverIndex(index)
+    } else {
+      // Вставляем ПОСЛЕ этой строки
+      setDropIndicator({ date, position: 'after', index })
+      setDragOverIndex(index + 1)
     }
   }
 
   const handleDragLeave = () => {
-    setDragOverDate(null)
-    setDragOverIndex(null)
+    // Не очищаем dropIndicator сразу, чтобы избежать мерцания
+    // Очистим только если действительно покинули область таблицы
   }
 
-  const handleDrop = (e: React.DragEvent, targetDate: string, targetIndex?: number) => {
+  const handleDrop = (e: React.DragEvent, targetDate: string, targetIndex: number) => {
     e.preventDefault()
     setDragOverDate(null)
     setDragOverIndex(null)
     
-    if (!draggedOrderId) return
+    if (!draggedOrderId) {
+      setDropIndicator(null)
+      return
+    }
     
     const draggedOrder = orders.find(o => o.id === draggedOrderId)
-    if (!draggedOrder) return
-
-    // Если дата не изменилась и индекс тот же, ничего не делаем
-    if (draggedOrder.date === targetDate) {
-      setDraggedOrderId(null)
+    if (!draggedOrder) {
+      setDropIndicator(null)
       return
     }
 
-    // Обновляем дату заказа
-    setOrders(orders.map(order => 
-      order.id === draggedOrderId 
-        ? { ...order, date: targetDate }
-        : order
-    ))
+    const oldDate = draggedOrder.date
+
+    // Используем dropIndicator для точной позиции вставки
+    if (dropIndicator) {
+      // Получаем все заказы для целевой даты (без перетаскиваемого)
+      const allOrdersForDate = orders.filter(o => o.date === dropIndicator.date && !o.isEmpty)
+      
+      // Если перетаскиваемый заказ уже в этой дате, исключаем его из списка для правильного расчета позиции
+      const targetDateOrders = allOrdersForDate.filter(o => o.id !== draggedOrderId)
+      
+      // Определяем индекс вставки
+      const insertIndex = dropIndicator.position === 'before' 
+        ? dropIndicator.index 
+        : dropIndicator.index + 1
+      
+      // Если перемещаем в ту же дату, нужно скорректировать индекс
+      if (draggedOrder.date === dropIndicator.date) {
+        const currentIndex = targetDateOrders.findIndex(o => o.id === draggedOrderId)
+        if (currentIndex !== -1 && insertIndex > currentIndex) {
+          // Если вставляем после текущей позиции, нужно уменьшить индекс на 1
+          const adjustedIndex = insertIndex - 1
+          const beforeOrders = targetDateOrders.slice(0, adjustedIndex)
+          const afterOrders = targetDateOrders.slice(adjustedIndex)
+          const updatedOrder = { ...draggedOrder, date: dropIndicator.date }
+          
+          const otherDateOrders = orders.filter(o => o.date !== dropIndicator.date)
+          const newOrders = [
+            ...otherDateOrders,
+            ...beforeOrders,
+            updatedOrder,
+            ...afterOrders
+          ]
+          
+          // Логируем перемещение (если дата изменилась)
+          if (oldDate !== dropIndicator.date) {
+            syncManager.logChange({
+              type: 'move',
+              orderId: draggedOrderId,
+              field: 'date',
+              oldValue: oldDate,
+              newValue: dropIndicator.date
+            })
+          }
+          
+          setOrders(newOrders)
+          setDraggedOrderId(null)
+          setDropIndicator(null)
+          return
+        }
+      }
+      
+      // Разделяем заказы на те, что до и после точки вставки
+      const beforeOrders = targetDateOrders.slice(0, insertIndex)
+      const afterOrders = targetDateOrders.slice(insertIndex)
+      
+      // Обновляем перетаскиваемый заказ с новой датой
+      const updatedOrder = { ...draggedOrder, date: dropIndicator.date }
+      
+      // Собираем новый массив: заказы других дат + заказы до вставки + перетаскиваемый + заказы после вставки
+      const otherDateOrders = orders.filter(o => o.date !== dropIndicator.date && o.id !== draggedOrderId)
+      
+      // Создаем финальный массив
+      const newOrders = [
+        ...otherDateOrders,
+        ...beforeOrders,
+        updatedOrder,
+        ...afterOrders
+      ]
+      
+      // Логируем перемещение (если дата изменилась)
+      if (oldDate !== dropIndicator.date) {
+        syncManager.logChange({
+          type: 'move',
+          orderId: draggedOrderId,
+          field: 'date',
+          oldValue: oldDate,
+          newValue: dropIndicator.date
+        })
+      }
+      
+      setOrders(newOrders)
+    } else {
+      // Fallback: просто меняем дату (старое поведение)
+      if (draggedOrder.date === targetDate) {
+        setDraggedOrderId(null)
+        setDropIndicator(null)
+        return
+      }
+
+      // Логируем перемещение (если дата изменилась)
+      if (oldDate !== targetDate) {
+        syncManager.logChange({
+          type: 'move',
+          orderId: draggedOrderId,
+          field: 'date',
+          oldValue: oldDate,
+          newValue: targetDate
+        })
+      }
+      
+      setOrders(orders.map(order => 
+        order.id === draggedOrderId 
+          ? { ...order, date: targetDate }
+          : order
+      ))
+    }
+    
     setDraggedOrderId(null)
+    setDropIndicator(null)
   }
 
   const handleDragEnd = () => {
     setDraggedOrderId(null)
     setDragOverDate(null)
+    setDragOverIndex(null)
+    setDropIndicator(null)
   }
 
   // Обработка изменений
   const handleCellChange = (id: string, field: keyof DeliveryOrder, value: any) => {
-    setOrders(orders.map(order => 
-      order.id === id 
-        ? { ...order, [field]: value, isEmpty: false }
-        : order
-    ))
+    const order = orders.find(o => o.id === id)
+    const oldValue = order?.[field]
+    
+    const updatedOrders = orders.map(order => {
+      if (order.id === id) {
+        const updated = { ...order, [field]: value, isEmpty: false }
+        
+        // Если изменился адрес и заказ в группе, проверяем нужно ли разорвать связь
+        if (field === 'address' && order.groupId) {
+          const groupOrders = orders.filter(o => o.groupId === order.groupId && o.id !== id)
+          const newAddress = value.toLowerCase().trim()
+          
+          // Проверяем, совпадает ли новый адрес с адресами других заказов в группе
+          const addressesMatch = groupOrders.every(o => 
+            o.address.toLowerCase().trim() === newAddress && newAddress !== ''
+          )
+          
+          if (!addressesMatch && newAddress !== '') {
+            // Адреса не совпадают - разрываем связь
+            const ungrouped = { ...updated, groupId: undefined, groupPosition: undefined, groupSize: undefined }
+            
+            // Логируем разрыв связи
+            syncManager.logChange({
+              type: 'ungroup',
+              orderId: id,
+              field: 'groupId',
+              oldValue: order.groupId,
+              newValue: undefined
+            })
+            
+            return ungrouped
+          }
+        }
+        
+        // Логируем изменение поля
+        if (oldValue !== value) {
+          syncManager.logChange({
+            type: 'update',
+            orderId: id,
+            field: field as string,
+            oldValue: oldValue,
+            newValue: value
+          })
+        }
+        
+        return updated
+      }
+      return order
+    })
+    
+    setOrders(updatedOrders)
   }
 
   const handleCheckboxChange = (id: string, field: keyof DeliveryOrder) => {
+    const order = orders.find(o => o.id === id)
+    const oldValue = order?.[field]
+    const newValue = !oldValue
+    
+    // Логируем изменение чекбокса
+    syncManager.logChange({
+      type: 'update',
+      orderId: id,
+      field: field as string,
+      oldValue: oldValue,
+      newValue: newValue
+    })
+    
     setOrders(orders.map(order => 
       order.id === id 
-        ? { ...order, [field]: !order[field] }
+        ? { ...order, [field]: newValue }
         : order
     ))
   }
@@ -531,6 +763,7 @@ export default function DeliveryCRMPage() {
   }
 
   const handleReklTypeSelect = (orderId: string, reklType: string) => {
+    // handleCellChange уже логирует изменение, просто вызываем его
     handleCellChange(orderId, 'reklType', reklType)
     setReklMenu(null)
   }
@@ -555,6 +788,65 @@ export default function DeliveryCRMPage() {
       return '#dbeafe' // Бледно-голубой
     }
     return ''
+  }
+
+  // Получение цвета группы для связанных заказов
+  const getGroupColor = (groupId: string | undefined): string | null => {
+    if (!groupId) return null
+    
+    // Генерируем цвет на основе groupId
+    const colors = [
+      '#d1fae5', // светло-зеленый
+      '#dbeafe', // светло-голубой
+      '#fef3c7', // светло-желтый
+      '#fce7f3', // светло-розовый
+      '#e9d5ff', // светло-фиолетовый
+    ]
+    
+    const hash = groupId.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
+    return colors[hash % colors.length]
+  }
+
+  // Определение позиции заказа в группе
+  const getGroupPosition = (
+    order: DeliveryOrder, 
+    date: string
+  ): { position: 'first' | 'middle' | 'last' | 'single', size: number } => {
+    if (!order.groupId) return { position: 'single', size: 1 }
+    
+    const groupOrders = orders
+      .filter(o => o.date === date && o.groupId === order.groupId && !o.isEmpty)
+      .sort((a, b) => {
+        const indexA = orders.findIndex(o => o.id === a.id)
+        const indexB = orders.findIndex(o => o.id === b.id)
+        return indexA - indexB
+      })
+    
+    const currentIndex = groupOrders.findIndex(o => o.id === order.id)
+    const size = groupOrders.length
+    
+    if (size === 1) return { position: 'single', size: 1 }
+    if (currentIndex === 0) return { position: 'first', size }
+    if (currentIndex === size - 1) return { position: 'last', size }
+    return { position: 'middle', size }
+  }
+
+  // Обновление позиций в группах для всех заказов
+  const updateGroupPositions = (updatedOrders: DeliveryOrder[]): DeliveryOrder[] => {
+    const dates = Array.from(new Set(updatedOrders.map(o => o.date)))
+    
+    return updatedOrders.map(order => {
+      if (!order.groupId) {
+        return { ...order, groupPosition: 'single', groupSize: 1 }
+      }
+      
+      const groupInfo = getGroupPosition(order, order.date)
+      return {
+        ...order,
+        groupPosition: groupInfo.position,
+        groupSize: groupInfo.size
+      }
+    })
   }
 
   // Парсинг времени на начало и конец слота
@@ -600,32 +892,209 @@ export default function DeliveryCRMPage() {
     handleCellChange(id, 'time', newTime)
   }
 
-  // Добавление пустой строки в конец дня
-  const handleAddEmptyRow = (date: string) => {
+  // Добавление пустой строки сразу после текущей
+  const handleAddEmptyRow = (orderId: string) => {
+    const currentOrder = orders.find(o => o.id === orderId)
+    if (!currentOrder) return
+    
     const newOrder: DeliveryOrder = {
       id: `empty-${Date.now()}-${Math.random()}`,
-      date: date,
-        orderNumber: '',
-        wrote: false,
-        confirmed: false,
-        products: '',
-        fsm: '',
-        address: '',
-        contact: '',
+      date: currentOrder.date,
+      orderNumber: '',
+      wrote: false,
+      confirmed: false,
+      products: '',
+      fsm: '',
+      address: '',
+      contact: '',
       payment: 'Не оплачено',
-        time: '',
-        comment: '',
-        shipped: false,
-        delivered: false,
+      time: '',
+      comment: '',
+      shipped: false,
+      delivered: false,
       tk: false,
-        isEmpty: true,
-      }
-    setOrders([...orders, newOrder])
+      isEmpty: true,
+    }
+    
+    // Находим индекс текущего заказа
+    const currentIndex = orders.findIndex(o => o.id === orderId)
+    if (currentIndex === -1) return
+    
+    // Вставляем новую строку сразу после текущей
+    const newOrders = [
+      ...orders.slice(0, currentIndex + 1),
+      newOrder,
+      ...orders.slice(currentIndex + 1)
+    ]
+    
+    // Логируем создание нового заказа
+    syncManager.logChange({
+      type: 'create',
+      orderId: newOrder.id,
+      newValue: newOrder
+    })
+    
+    setOrders(newOrders)
   }
 
   // Удаление строки
   const handleDeleteRow = (orderId: string) => {
-    setOrders(orders.filter(order => order.id !== orderId))
+    const orderToDelete = orders.find(o => o.id === orderId)
+    if (!orderToDelete) return
+    
+    // Логируем удаление заказа
+    syncManager.logChange({
+      type: 'delete',
+      orderId: orderId,
+      oldValue: orderToDelete
+    })
+    
+    // Если заказ в группе, разрываем связь перед удалением
+    let updatedOrders = orders
+    if (orderToDelete.groupId) {
+      const groupOrders = orders.filter(o => o.groupId === orderToDelete.groupId && o.id !== orderId)
+      if (groupOrders.length > 1) {
+        // Оставляем группу для остальных заказов
+        updatedOrders = orders.map(o => 
+          o.id === orderId ? o : o
+        )
+      } else {
+        // Удаляем группу, если остался один заказ
+        updatedOrders = orders.map(o => 
+          o.groupId === orderToDelete.groupId && o.id !== orderId
+            ? { ...o, groupId: undefined, groupPosition: undefined, groupSize: undefined }
+            : o
+        )
+      }
+    }
+    
+    setOrders(updatedOrders.filter(order => order.id !== orderId))
+  }
+
+  // Связывание заказов
+  const handleLinkOrder = (orderId: string) => {
+    const currentOrder = orders.find(o => o.id === orderId)
+    if (!currentOrder || !currentOrder.address.trim()) {
+      alert('Сначала укажите адрес для связывания заказов')
+      return
+    }
+
+    // Если заказ уже в группе, разрываем связь
+    if (currentOrder.groupId) {
+      handleUnlinkOrder(orderId)
+      return
+    }
+
+    // Ищем заказы с таким же адресом в той же дате
+    const sameAddressOrders = orders.filter(o => 
+      o.date === currentOrder.date &&
+      o.id !== orderId &&
+      o.address.toLowerCase().trim() === currentOrder.address.toLowerCase().trim() &&
+      o.address.trim() !== '' &&
+      !o.isEmpty
+    )
+
+    if (sameAddressOrders.length === 0) {
+      alert('Не найдено заказов с таким же адресом в этот день')
+      return
+    }
+
+    // Находим заказ для связывания (приоритет - уже в группе, иначе первый)
+    const targetOrder = sameAddressOrders.find(o => o.groupId) || sameAddressOrders[0]
+    
+    if (targetOrder.groupId) {
+      // Добавляем в существующую группу
+      const groupSize = orders.filter(o => o.groupId === targetOrder.groupId).length
+      if (groupSize >= 5) {
+        alert('Максимальное количество заказов в группе - 5')
+        return
+      }
+      
+      // Логируем добавление в группу
+      syncManager.logChange({
+        type: 'group',
+        orderId: orderId,
+        field: 'groupId',
+        oldValue: undefined,
+        newValue: targetOrder.groupId
+      })
+      
+      setOrders(orders.map(o => 
+        o.id === orderId 
+          ? { ...o, groupId: targetOrder.groupId }
+          : o
+      ))
+    } else {
+      // Создаем новую группу
+      const newGroupId = `group-${Date.now()}-${Math.random()}`
+      
+      // Логируем создание группы для обоих заказов
+      syncManager.logChange({
+        type: 'group',
+        orderId: orderId,
+        field: 'groupId',
+        oldValue: undefined,
+        newValue: newGroupId
+      })
+      syncManager.logChange({
+        type: 'group',
+        orderId: targetOrder.id,
+        field: 'groupId',
+        oldValue: undefined,
+        newValue: newGroupId
+      })
+      
+      setOrders(orders.map(o => 
+        o.id === orderId || o.id === targetOrder.id
+          ? { ...o, groupId: newGroupId }
+          : o
+      ))
+    }
+  }
+
+  // Разрыв связи заказа
+  const handleUnlinkOrder = (orderId: string) => {
+    const order = orders.find(o => o.id === orderId)
+    if (!order || !order.groupId) return
+
+    const groupOrders = orders.filter(o => o.groupId === order.groupId)
+    const oldGroupId = order.groupId
+    
+    if (groupOrders.length <= 2) {
+      // Если в группе 2 заказа, удаляем группу полностью
+      // Логируем разрыв связи для всех заказов в группе
+      groupOrders.forEach(o => {
+        syncManager.logChange({
+          type: 'ungroup',
+          orderId: o.id,
+          field: 'groupId',
+          oldValue: oldGroupId,
+          newValue: undefined
+        })
+      })
+      
+      setOrders(orders.map(o => 
+        o.groupId === order.groupId
+          ? { ...o, groupId: undefined, groupPosition: undefined, groupSize: undefined }
+          : o
+      ))
+    } else {
+      // Удаляем только текущий заказ из группы
+      // Логируем разрыв связи
+      syncManager.logChange({
+        type: 'ungroup',
+        orderId: orderId,
+        field: 'groupId',
+        oldValue: oldGroupId,
+        newValue: undefined
+      })
+      
+      setOrders(orders.map(o => 
+        o.id === orderId
+          ? { ...o, groupId: undefined, groupPosition: undefined, groupSize: undefined }
+          : o
+      ))
+    }
   }
 
   // Закрытие меню при клике вне его
@@ -660,15 +1129,20 @@ export default function DeliveryCRMPage() {
               </div>
             </div>
             <div className="flex items-center gap-2">
+              <Button 
+                variant="outline" 
+                size="sm" 
+                onClick={handleOpenLog}
+              >
+                <FileText className="w-3 h-3 mr-1.5" />
+                Лог
+              </Button>
               <Link href="/">
                 <Button variant="outline" size="sm">
                   <Calculator className="w-3 h-3 mr-1.5" />
                   Открыть калькулятор
                 </Button>
               </Link>
-              <Button variant="outline" size="sm" onClick={handleExpandPrevious}>
-                {daysBack > 0 ? 'Скрыть предыдущие' : 'Раскрыть предыдущие'}
-              </Button>
             </div>
           </div>
         </div>
@@ -680,10 +1154,27 @@ export default function DeliveryCRMPage() {
           {/* Orders Table */}
           <Card>
             <CardHeader className="pb-2">
-              <CardTitle className="text-lg">Заказы доставки</CardTitle>
+              <div className="flex items-center justify-between">
+                <CardTitle className="text-lg">Заказы доставки</CardTitle>
+                <Button variant="outline" size="sm" onClick={handleExpandPrevious}>
+                  {daysBack > 0 ? 'Скрыть предыдущие' : 'Раскрыть предыдущие'}
+                </Button>
+              </div>
             </CardHeader>
             <CardContent className="p-0">
-              <div className="rounded-md border" style={{ overflow: 'visible' }}>
+              <div 
+                className="rounded-md border" 
+                style={{ overflow: 'visible' }}
+                onDragLeave={(e) => {
+                  // Очищаем индикатор только если покинули область таблицы
+                  const relatedTarget = e.relatedTarget as HTMLElement
+                  if (!relatedTarget || !e.currentTarget.contains(relatedTarget)) {
+                    setDropIndicator(null)
+                    setDragOverDate(null)
+                    setDragOverIndex(null)
+                  }
+                }}
+              >
                 {/* Заголовки столбцов над таблицей */}
                 <div className="sticky z-50 bg-white dark:bg-gray-900 border-b shadow-sm" style={{ top: `${headerHeight}px` }}>
                   <div className="flex w-full" style={{ boxSizing: 'border-box' }}>
@@ -733,29 +1224,129 @@ export default function DeliveryCRMPage() {
                           const isLastInDate = index === dateOrders.length - 1
                           const isDragging = draggedOrderId === order.id
                           const hasTopBorder = isFirstInDate && !isFirstDate
+                          
+                          // Определяем, нужно ли показывать индикатор вставки
+                          const showDropIndicatorBefore = dropIndicator?.date === date && 
+                            dropIndicator?.position === 'before' && 
+                            dropIndicator?.index === index
+                          
+                          const showDropIndicatorAfter = dropIndicator?.date === date && 
+                            dropIndicator?.position === 'after' && 
+                            dropIndicator?.index === index
 
                           return (
-                            <TableRow
-                              key={order.id}
+                            <React.Fragment key={order.id}>
+                              {/* Индикатор вставки ПЕРЕД строкой */}
+                              {showDropIndicatorBefore && (
+                                <tr className="drop-indicator-row">
+                                  <td colSpan={14} className="p-0 h-0">
+                                    <div 
+                                      className="drop-indicator-line"
+                                      style={{
+                                        height: '3px',
+                                        background: 'linear-gradient(to right, transparent 0%, rgb(59, 130, 246) 20%, rgb(59, 130, 246) 80%, transparent 100%)',
+                                        borderTop: '2px dashed rgb(59, 130, 246)',
+                                        margin: '4px 0',
+                                        animation: 'pulse-indicator 1.5s ease-in-out infinite',
+                                      }}
+                                    />
+                                  </td>
+                                </tr>
+                              )}
+                              
+                              <TableRow
+                                key={order.id}
                           onDragOver={(e) => {
                             e.preventDefault()
                             handleDragOver(e, date, index)
                           }}
                           onDrop={(e) => handleDrop(e, date, index)}
-                          className={`${isDragging ? 'opacity-50' : ''} ${dragOverDate === date && dragOverIndex === index ? 'bg-blue-100 dark:bg-blue-900/40' : ''} ${hasTopBorder ? 'border-t-4 border-gray-600 dark:border-gray-500' : ''}`}
+                          className={`${isDragging ? 'opacity-50' : ''} 
+                            ${showDropIndicatorBefore ? 'border-t-2 border-blue-500' : ''}
+                            ${showDropIndicatorAfter ? 'border-b-2 border-blue-500' : ''}
+                            ${dragOverDate === date && dragOverIndex === index ? 'bg-blue-50 dark:bg-blue-900/20' : ''} 
+                            ${hasTopBorder ? 'border-t-4 border-gray-600 dark:border-gray-500' : ''}
+                            transition-all duration-200`}
                           style={{ 
-                            background: getRowBackgroundColor(order) || undefined
+                            background: getRowBackgroundColor(order) || getGroupColor(order.groupId) || undefined,
+                            marginTop: showDropIndicatorBefore ? '4px' : undefined,
+                            marginBottom: showDropIndicatorAfter ? '4px' : undefined,
                           }}
                             >
                                 {/* Ползунок для drag-n-drop */}
-                                <TableCell className="text-center border-r border-gray-200 dark:border-gray-700 py-2 px-0" style={{ boxSizing: 'border-box' }}>
+                                <TableCell className="text-center border-r border-gray-200 dark:border-gray-700 py-2 px-0 relative" style={{ boxSizing: 'border-box' }}>
                                 <div 
-                                  className="flex items-center justify-center h-full cursor-move"
+                                  className="flex items-center justify-center h-full cursor-move relative"
                                   draggable
                                   onDragStart={(e) => handleDragStart(e, order.id)}
                                   onDragEnd={handleDragEnd}
                                 >
-                                  <GripVertical className="w-4 h-4 text-muted-foreground" />
+                                  {/* Скобка для связанных заказов */}
+                                  {order.groupId && order.groupPosition && order.groupPosition !== 'single' && (
+                                    <div 
+                                      className="absolute left-0 top-0 bottom-0 flex flex-col items-start justify-between pointer-events-none"
+                                      style={{
+                                        width: '10px',
+                                        zIndex: 1,
+                                      }}
+                                    >
+                                      {/* Верхняя горизонтальная линия */}
+                                      {order.groupPosition === 'first' && (
+                                        <div 
+                                          className="bg-green-500"
+                                          style={{
+                                            width: '5px',
+                                            height: '2px',
+                                            marginTop: '50%',
+                                          }}
+                                        />
+                                      )}
+                                      
+                                      {/* Вертикальная линия */}
+                                      <div 
+                                        className="bg-green-500"
+                                        style={{
+                                          width: '2px',
+                                          height: order.groupPosition === 'first' || order.groupPosition === 'last' 
+                                            ? '50%' 
+                                            : '100%',
+                                          marginLeft: '3px',
+                                          marginTop: order.groupPosition === 'first' ? '50%' : '0',
+                                          marginBottom: order.groupPosition === 'last' ? '50%' : '0',
+                                        }}
+                                      />
+                                      
+                                      {/* Нижняя горизонтальная линия */}
+                                      {order.groupPosition === 'last' && (
+                                        <div 
+                                          className="bg-green-500"
+                                          style={{
+                                            width: '5px',
+                                            height: '2px',
+                                            marginBottom: '50%',
+                                          }}
+                                        />
+                                      )}
+                                      
+                                      {/* Индикатор количества (для первой строки) */}
+                                      {order.groupPosition === 'first' && order.groupSize && order.groupSize > 1 && (
+                                        <div 
+                                          className="absolute left-6 top-1/2 transform -translate-y-1/2 bg-green-500 text-white text-[0.6rem] font-bold rounded-full flex items-center justify-center"
+                                          style={{
+                                            width: '14px',
+                                            height: '14px',
+                                            fontSize: '9px',
+                                            lineHeight: '1',
+                                          }}
+                                          title={`Группа из ${order.groupSize} заказов`}
+                                        >
+                                          {order.groupSize}
+                                        </div>
+                                      )}
+                                    </div>
+                                  )}
+                                  
+                                  <GripVertical className="w-4 h-4 text-muted-foreground relative z-10" />
                                 </div>
                                 </TableCell>
 
@@ -771,25 +1362,29 @@ export default function DeliveryCRMPage() {
                                   <div className="w-full text-center" style={{ marginLeft: '-10px' }}>{formatDate(date)}</div>
                                 ) : (
                                   <div className="flex items-center justify-center gap-1">
-                                    {isLastInDate && (
-                                      <Button
-                                        type="button"
-                                        variant="ghost"
-                                        size="sm"
-                                        className="h-6 w-6 p-0"
-                                        onClick={() => handleAddEmptyRow(date)}
-                                        title="Добавить пустую строку"
-                                      >
-                                        +
-                                      </Button>
-                                    )}
                                     <Button
                                       type="button"
                                       variant="ghost"
                                       size="sm"
                                       className="h-6 w-6 p-0"
-                                      onClick={() => handleDeleteRow(order.id)}
-                                      title="Удалить строку"
+                                      onClick={(e) => {
+                                        e.stopPropagation()
+                                        handleAddEmptyRow(order.id)
+                                      }}
+                                      title="Добавить пустую строку после текущей"
+                                    >
+                                      +
+                                    </Button>
+                                    <Button
+                                      type="button"
+                                      variant="ghost"
+                                      size="sm"
+                                      className="h-6 w-6 p-0"
+                                      onClick={(e) => {
+                                        e.stopPropagation()
+                                        handleDeleteRow(order.id)
+                                      }}
+                                      title="Удалить текущую строку"
                                     >
                                       -
                                     </Button>
@@ -808,7 +1403,7 @@ export default function DeliveryCRMPage() {
                                     e.target.style.height = `${e.target.scrollHeight}px`
                                   }}
                                   placeholder="№ заказа"
-                                      className="border-0 bg-transparent p-0 h-auto w-full resize-none focus-visible:ring-0 text-center text-sm font-medium"
+                                      className="border-0 bg-transparent p-0 h-auto w-full resize-none focus-visible:ring-0 text-center text-sm font-medium order-number-textarea"
                                   style={{ 
                                     minHeight: 'auto',
                                     height: 'auto',
@@ -968,7 +1563,18 @@ export default function DeliveryCRMPage() {
                                     if (textarea) textarea.focus()
                                   }}
                                 >
-                              <div className="flex items-center justify-start h-full">
+                              <div className="flex items-center gap-1 h-full relative">
+                                {/* Бейдж группы для первой строки */}
+                                {order.groupId && order.groupPosition === 'first' && order.groupSize && order.groupSize > 1 && (
+                                  <Badge 
+                                    variant="outline" 
+                                    className="text-[0.6rem] px-1 py-0 h-4 bg-green-100 text-green-700 border-green-300 dark:bg-green-900 dark:text-green-300 dark:border-green-700 flex-shrink-0"
+                                    title={`Группа из ${order.groupSize} заказов`}
+                                  >
+                                    🔗 {order.groupSize}
+                                  </Badge>
+                                )}
+                                
                                 <Textarea
                                   value={order.address}
                                   onChange={(e) => {
@@ -983,7 +1589,7 @@ export default function DeliveryCRMPage() {
                                     target.style.height = `${target.scrollHeight}px`
                                   }}
                                   placeholder="Адрес"
-                                      className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-sm"
+                                      className="border-0 bg-transparent p-0 flex-1 resize-none focus-visible:ring-0 text-sm"
                                   style={{ 
                                     minHeight: 'auto',
                                     width: '100%',
@@ -996,6 +1602,21 @@ export default function DeliveryCRMPage() {
                                     paddingTop: '16px',
                                   }}
                                     />
+                                
+                                {/* Кнопка связывания */}
+                                <Button
+                                  type="button"
+                                  variant="ghost"
+                                  size="sm"
+                                  className="absolute top-0 right-0 h-4 w-4 p-0 opacity-60 hover:opacity-100 z-10 flex-shrink-0"
+                                  onClick={(e) => {
+                                    e.stopPropagation()
+                                    handleLinkOrder(order.id)
+                                  }}
+                                  title={order.groupId ? 'Разорвать связь' : 'Связать с другим заказом'}
+                                >
+                                  {order.groupId ? '🔗' : '🔗'}
+                                </Button>
                               </div>
                                 </TableCell>
 
@@ -1172,6 +1793,25 @@ export default function DeliveryCRMPage() {
                             </div>
                                 </TableCell>
                             </TableRow>
+                            
+                            {/* Индикатор вставки ПОСЛЕ строки */}
+                            {showDropIndicatorAfter && (
+                              <tr className="drop-indicator-row">
+                                <td colSpan={14} className="p-0 h-0">
+                                  <div 
+                                    className="drop-indicator-line"
+                                    style={{
+                                      height: '3px',
+                                      background: 'linear-gradient(to right, transparent 0%, rgb(59, 130, 246) 20%, rgb(59, 130, 246) 80%, transparent 100%)',
+                                      borderTop: '2px dashed rgb(59, 130, 246)',
+                                      margin: '4px 0',
+                                      animation: 'pulse-indicator 1.5s ease-in-out infinite',
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                            )}
+                          </React.Fragment>
                           )
                         })}
                       </React.Fragment>
