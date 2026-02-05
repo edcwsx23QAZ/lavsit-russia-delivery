@@ -1,0 +1,1133 @@
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import WikiEditor from '@/components/wiki/WikiEditor';
+import WikiContentEditor, { WikiContentEditorRef } from '@/components/wiki/WikiContentEditor';
+import PageManager from '@/components/wiki/PageManager';
+import VersionHistory from '@/components/wiki/VersionHistory';
+import EditableSection from '@/components/wiki/EditableSection';
+import { FileText, Edit, History, ArrowLeft, Layout, Save, Loader2, Lock, Unlock, Download, Database } from 'lucide-react';
+import { WikiSection } from '@/components/wiki/types';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumb';
+
+interface WikiPage {
+  id: string;
+  slug: string;
+  title: string;
+  content: string;
+  order: number;
+  parentId: string | null;
+  parent?: WikiPage | null;
+  children?: WikiPage[];
+  createdAt: string;
+  updatedAt: string;
+}
+
+// Статический контент для отображения, если база данных недоступна
+const FALLBACK_CONTENT = {
+  id: 'fallback',
+  slug: 'introduction',
+  title: 'Инструкция для менеджера по логистике',
+  content: JSON.stringify({
+    sections: [
+      {
+        id: 'intro',
+        title: '1. Введение',
+        content: `### Цель и важность работы
+
+Менеджер по логистике — ключевое звено в цепочке доставки премиум-мебели. Ваша работа напрямую влияет на удовлетворенность клиентов и репутацию компании.
+
+В компании действует **клиентократия по Вкуссвиллу** и **AJTBD подход**(Always Just The Best Delivery). Это означает, что клиент всегда прав, и мы стремимся предоставить лучший сервис доставки в отрасли.
+
+### Ценность для клиента
+
+* ✅ **Безопасность и сохранность** — гарантия целостности премиум-мебели при транспортировке
+* ✅ **Прозрачность** — полная информация о статусе доставки в реальном времени
+* ✅ **Удобство** — гибкое планирование доставки с учетом пожеланий клиента
+* ✅ **Профессионализм** — компетентное решение любых вопросов и проблем
+* ✅ **Эксклюзивность** — индивидуальный подход к каждому клиенту
+* ✅ **Скорость реакции** — оперативное решение вопросов и рекламаций
+
+### Общие принципы работы
+
+* Клиент всегда в приоритете
+* Проактивная коммуникация вместо реактивной
+* Документирование всех операций
+* Работа в команде и взаимопомощь
+* Постоянное улучшение процессов`
+      },
+      {
+        id: 'schedule',
+        title: '2. Расписание и рабочий день',
+        content: `### Типичное ежедневное расписание
+
+09:00 - 09:30 | Проверка новых заявок и отгрузок на день
+
+09:30 - 10:30 | Согласование отгрузок с производителями
+
+10:30 - 11:30 | Согласование со складом
+
+11:30 - 13:00 | Согласование с экспедиторами/сборщиками
+
+13:00 - 14:00 | Обед
+
+14:00 - 15:30 | Согласование с клиентами, работа с оплатами
+
+15:30 - 17:00 | Оформление заказов через ТК и прямые машины
+
+17:00 - 18:00 | Ведение учета, отчетность, обработка рекламаций
+
+### Критические временные точки
+
+* **09:00** — обязательная проверка всех заявок на день
+* **12:00** — все отгрузки должны быть согласованы
+* **16:00** — все заказы должны быть оформлены
+* **18:00** — отчеты должны быть готовы`
+      },
+      {
+        id: 'tools',
+        title: '3. Инструменты и системы',
+        content: `### CRM и системы учета
+
+#### CRM система
+**Ссылка:** crm.company.ru
+**Логин:** [ваш логин]
+**Пароль:** [хранится в менеджере паролей]
+
+#### Таск-менеджер
+**Ссылка:** tasks.company.ru
+**Логин:** [ваш логин]
+
+#### Система учета платежей
+**Ссылка:** payments.company.ru
+**Логин:** [ваш логин]
+
+### Транспортные платформы
+
+#### ТК Деловые Линии
+**Ссылка:** www.dellin.ru
+**Логин:** [логин компании]
+
+#### ТК ПЭК
+**Ссылка:** www.pecom.ru
+**Логин:** [логин компании]
+
+#### ТК СДЭК
+**Ссылка:** www.cdek.ru
+**Логин:** [логин компании]
+
+#### Прямые машины
+**Контакты:** [телефон диспетчера]
+**Чат:** [ссылка на чат]
+
+### Чаты и коммуникации
+
+* **Общий чат отдела:** [ссылка на Telegram/WhatsApp]
+* **Чат с производителями:** [ссылка]
+* **Чат со складом:** [ссылка]
+* **Чат с экспедиторами:** [ссылка]
+* **Чат с клиентами (премиум):** [ссылка]`
+      },
+      {
+        id: 'processes',
+        title: '4. Процессы и регламенты',
+        content: `### 4.1 Согласование отгрузок
+
+#### С производителями
+1. Проверить готовность заказа в CRM
+2. Связаться с производителем в установленное время (09:30-10:30)
+3. Уточнить сроки готовности и возможность отгрузки
+4. Согласовать дату и время отгрузки
+5. Зафиксировать в системе
+
+#### Со складом
+1. Проверить наличие товара на складе
+2. Согласовать время приёмки
+3. Уточнить условия хранения
+4. Зафиксировать в системе
+
+#### С экспедиторами/сборщиками
+1. Согласовать маршрут и время
+2. Уточнить необходимость сборки
+3. Предоставить контакты клиента
+4. Согласовать условия доставки
+
+#### С клиентами
+1. Связаться с клиентом заранее (минимум за 2 дня)
+2. Предложить удобное время доставки
+3. Уточнить адрес и условия доступа
+4. Предупредить о необходимости присутствия
+5. Подтвердить детали в письменном виде
+
+### 4.2 Работа с оплатами
+
+#### Доплаты клиентов
+1. Рассчитать сумму доплаты
+2. Связаться с клиентом и объяснить причину
+3. Отправить реквизиты для оплаты
+4. Подтвердить получение платежа
+5. Зафиксировать в системе учета
+
+#### Оплата за платное хранение
+1. Рассчитать стоимость хранения (по тарифам)
+2. Уведомить клиента о необходимости оплаты
+3. Принять оплату
+4. Зафиксировать в системе учета платежей
+
+#### Расчеты по доставке в другие города
+1. Рассчитать ставку по доставке
+2. Согласовать с клиентом или менеджером
+3. Зафиксировать расчет
+4. После доставки сравнить с реальными тратами
+5. Внести корректировки в учет
+
+### 4.3 Оформление заказов
+
+#### Через ТК
+1. Выбрать транспортную компанию
+2. Рассчитать стоимость доставки
+3. Оформить заказ на сайте ТК
+4. Получить трек-номер
+5. Передать трек-номер клиенту
+6. Отслеживать статус доставки
+
+#### Прямыми машинами
+1. Связаться с диспетчером
+2. Согласовать маршрут и стоимость
+3. Забронировать машину
+4. Передать информацию экспедитору
+5. Контролировать выполнение
+
+### 4.4 Обработка рекламаций
+1. Принять рекламацию от клиента
+2. Зафиксировать детали проблемы
+3. Согласовать выезд для исправления
+4. Организовать доставку/ремонт
+5. Проконтролировать выполнение
+6. Получить подтверждение от клиента
+7. Зафиксировать в системе
+
+### 4.5 Учёт и отчётность
+* **Учет доставок:** Все доставки фиксируются в CRM с указанием статуса, даты, стоимости
+* **Учет платежей:** Все платежи по хранению фиксируются в системе учета платежей
+* **Учет расчетов:** Все расчеты по доставкам в города и реальные траты фиксируются в таблице учета
+* **Ежедневный отчет:** Формируется до 18:00 и отправляется руководителю`
+      },
+      {
+        id: 'regulations',
+        title: '5. Регламенты и стандарты',
+        content: `### Время реакции
+
+* **На сообщения клиентов:** в течение 15 минут в рабочее время
+* **На заявки на отгрузку:** в течение 1 часа
+* **На рекламации:** немедленно, в течение 30 минут
+* **На запросы коллег:** в течение 2 часов
+
+### Качество коммуникации
+
+* Всегда вежливый и профессиональный тон
+* Полные и точные ответы на вопросы
+* Проактивное информирование о статусах
+* Использование проверенной информации
+* Документирование важных договоренностей
+
+### Документальное оформление
+
+* Все согласования фиксируются в CRM
+* Важные договоренности подтверждаются письменно
+* Отчеты формируются по установленному шаблону
+* Все платежи документируются`
+      },
+      {
+        id: 'clients',
+        title: '6. Работа с клиентами',
+        content: `### Принципы общения с клиентами
+
+1. **Клиент всегда прав** — Даже если клиент ошибается, наша задача — найти решение, которое его удовлетворит. Мы работаем в формате клиентократии. Каждый клиент — это VIP, и мы относимся к нему соответственно.
+
+2. **Проактивная коммуникация** — Не ждите вопросов клиента — информируйте его заранее о статусе заказа, возможных задержках, изменениях. Клиент должен знать всё раньше, чем спросит.
+
+3. **Эмпатия и понимание** — Поставьте себя на место клиента. Премиум-мебель — это важная покупка, и клиент переживает за результат. Покажите, что вы понимаете его чувства.
+
+4. **Прозрачность и честность** — Всегда говорите правду, даже если она неприятна. Лучше честно сообщить о задержке, чем обещать невозможное. Клиенты ценят честность больше, чем пустые обещания.
+
+5. **Быстрая реакция** — Отвечайте на сообщения клиентов в течение 15 минут. Это показывает, что они важны для вас. В премиум-сегменте скорость реакции — это показатель качества сервиса.
+
+6. **Персонализация** — Обращайтесь к клиенту по имени, помните детали предыдущих разговоров, показывайте индивидуальный подход. Каждый клиент уникален, и его опыт должен быть уникальным.
+
+7. **Решение проблем, а не объяснение причин** — Клиенту не важно, почему произошла проблема. Ему важно, как быстро вы её решите. Фокус на решении, а не на оправданиях.
+
+8. **Предложение альтернатив** — Если что-то невозможно, предложите альтернативное решение. Не просто говорите "нет". Всегда есть способ решить проблему, нужно только его найти.
+
+9. **Благодарность и признательность** — Благодарите клиента за терпение, за выбор нашей компании. Показывайте, что цените его. Благодарность создает эмоциональную связь.
+
+10. **Следование обещаниям** — Если вы что-то пообещали — обязательно выполните. Если не можете — немедленно сообщите и предложите компенсацию. Надежность — основа доверия.
+
+11. **Антиципация потребностей** — Предугадывайте, что может понадобиться клиенту, и предлагайте это заранее. Это показывает профессионализм и заботу.
+
+12. **Эксклюзивность сервиса** — Каждый клиент должен чувствовать, что он получает особый, эксклюзивный сервис. Создавайте впечатление, что для него делается всё возможное.
+
+### Ценность менеджера по логистике для клиента
+
+Менеджер по логистике — это не просто координатор доставки, это **персональный ассистент клиента** в процессе получения его премиум-мебели. Вы обеспечиваете:
+
+* **Спокойствие клиента** — он знает, что всё под контролем
+* **Экономию времени** — клиент не тратит время на поиск информации
+* **Уверенность** — клиент уверен, что его заказ в надежных руках
+* **Комфорт** — все вопросы решаются быстро и профессионально
+* **Эмоциональную поддержку** — особенно важна при задержках или проблемах`
+      },
+      {
+        id: 'scripts',
+        title: '7. Скрипты для работы с клиентами',
+        content: `### Редактируемая база скриптов
+
+> 💡 **Важно:** Этот раздел можно редактировать и дополнять. Добавляйте новые скрипты по мере необходимости.
+
+#### Приветствие клиента
+**Категория:** Общение  
+**Текст:** 
+Добрый день, [Имя клиента]! Меня зовут [Ваше имя], я ваш менеджер по логистике. Готов помочь с организацией доставки вашего заказа. Как вам удобнее общаться — по телефону или в мессенджере?
+
+#### Уточнение адреса доставки
+**Категория:** Оформление  
+**Текст:**
+Для оформления доставки мне необходимо уточнить точный адрес и удобное время. Когда вам будет удобно принять заказ? Также уточните, пожалуйста, есть ли лифт, этаж и особенности подъезда.
+
+#### Подтверждение даты доставки
+**Категория:** Информирование  
+**Текст:**
+Отлично! Ваша доставка запланирована на [дата] в период с [время] до [время]. За день до доставки я обязательно с вами свяжусь для подтверждения. Пожалуйста, будьте на связи.
+
+#### Информирование о задержке
+**Категория:** Проблемные ситуации  
+**Текст:**
+[Имя клиента], к сожалению, вынужден сообщить о небольшой задержке в доставке. [Причина]. Новая дата доставки — [дата]. Приношу извинения за неудобства. Мы делаем всё возможное, чтобы минимизировать задержку.
+
+#### Уточнение доплаты
+**Категория:** Оплаты  
+**Текст:**
+[Имя клиента], для завершения доставки необходимо доплатить [сумма] рублей за [причина]. Реквизиты для оплаты: [реквизиты]. После оплаты доставка будет подтверждена.
+
+#### Запрос обратной связи после доставки
+**Категория:** Завершение  
+**Текст:**
+[Имя клиента], надеюсь, доставка прошла успешно! Пожалуйста, подтвердите получение заказа. Если есть какие-либо вопросы или замечания, я всегда на связи.
+
+#### Обработка рекламации
+**Категория:** Проблемные ситуации  
+**Текст:**
+[Имя клиента], очень сожалею о произошедшем. Я уже занимаюсь решением этой проблемы. [Описание действий]. Свяжусь с вами в течение [время] с решением. Ваш комфорт — наш приоритет.
+
+#### Благодарность за выбор компании
+**Категория:** Общение  
+**Текст:**
+[Имя клиента], благодарю вас за выбор нашей компании! Мы ценим ваше доверие и сделаем всё, чтобы ваш опыт работы с нами был максимально комфортным.`
+      },
+      {
+        id: 'contacts',
+        title: '8. Контакты и коммуникации',
+        content: `### Внутренние контакты
+
+#### Руководитель отдела логистики
+**Телефон:** [номер]  
+**Email:** [email]  
+**Telegram:** [username]
+
+#### Менеджеры по производству
+**Телефон:** [номер]  
+**Чат:** [ссылка]
+
+#### Склад
+**Телефон:** [номер]  
+**Чат:** [ссылка]
+
+#### Экспедиторы
+**Диспетчер:** [номер]  
+**Чат:** [ссылка]
+
+### Поставщики и грузоперевозчики
+
+#### ТК Деловые Линии
+**Телефон:** 8-800-100-45-45  
+**Email:** info@dellin.ru  
+**Сайт:** [www.dellin.ru](https://www.dellin.ru)
+
+#### ТК ПЭК
+**Телефон:** 8-800-700-33-55  
+**Email:** info@pecom.ru  
+**Сайт:** [www.pecom.ru](https://www.pecom.ru)
+
+#### ТК СДЭК
+**Телефон:** 8-800-250-04-05  
+**Email:** info@cdek.ru  
+**Сайт:** [www.cdek.ru](https://www.cdek.ru)
+
+#### Прямые машины
+**Диспетчер:** [номер]  
+**Чат:** [ссылка]`
+      }
+    ]
+  }),
+  order: 0,
+  parentId: null,
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString()
+};
+
+export default function WikiPage() {
+  const [selectedPage, setSelectedPage] = useState<WikiPage | null>(null);
+  const [pages, setPages] = useState<WikiPage[]>([]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [isStructuredEditing, setIsStructuredEditing] = useState(false);
+  const [showHistory, setShowHistory] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
+  const [editModeEnabled, setEditModeEnabled] = useState(false);
+  const [dbError, setDbError] = useState(false);
+  const [isCreatingBackup, setIsCreatingBackup] = useState(false);
+  const wikiEditorRef = useRef<WikiContentEditorRef>(null);
+
+  // Загрузить страницу по slug из URL или первую доступную
+  useEffect(() => {
+    // Проверяем, что мы в браузере
+    if (typeof window === 'undefined') return;
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    const slug = urlParams.get('slug');
+    
+    if (slug) {
+      loadPageBySlug(slug);
+    } else {
+      // Загрузить первую страницу или создать дефолтную
+      loadDefaultPage();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const loadPageBySlug = async (slug: string) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`/api/wiki/pages?slug=${slug}`);
+      if (!response.ok) {
+        if (response.status === 404) {
+          // Если страница не найдена, попробуем загрузить первую доступную
+          await loadDefaultPage();
+          return;
+        }
+        // Не показываем ошибку пользователю, просто загружаем дефолтную страницу
+        await loadDefaultPage();
+        return;
+      }
+      const page = await response.json();
+      if (page) {
+        setSelectedPage(page);
+      } else {
+        // Если страница не найдена, загружаем дефолтную
+        await loadDefaultPage();
+      }
+    } catch (error) {
+      console.error('Error loading page:', error);
+      // Попробуем загрузить первую доступную страницу без показа ошибки
+      await loadDefaultPage();
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loadDefaultPage = async () => {
+    try {
+      setLoading(true);
+      setDbError(false);
+      const response = await fetch('/api/wiki/pages');
+      if (!response.ok) {
+        // Если ошибка, используем fallback контент без показа ошибки
+        setDbError(true);
+        setSelectedPage(FALLBACK_CONTENT as WikiPage);
+        setPages([]);
+        return;
+      }
+      const pagesData = await response.json();
+      setPages(pagesData || []);
+      
+      if (pagesData && pagesData.length > 0) {
+        setSelectedPage(pagesData[0]);
+        // Обновить URL с slug первой страницы
+        window.history.pushState({}, '', `/wiki?slug=${pagesData[0].slug}`);
+      } else {
+        // Создать дефолтную страницу при первом запуске
+        await createDefaultPage();
+      }
+    } catch (error) {
+      console.error('Error loading default page:', error);
+      // При ошибке используем fallback контент без показа модального окна
+      setDbError(true);
+      setSelectedPage(FALLBACK_CONTENT as WikiPage);
+      setPages([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const createDefaultPage = async () => {
+    try {
+      setLoading(true);
+      
+      // Используем тот же контент, что и в FALLBACK_CONTENT
+      const structuredContent = FALLBACK_CONTENT.content;
+
+      const response = await fetch('/api/wiki/pages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: 'Инструкция для менеджера по логистике',
+          slug: 'introduction',
+          content: structuredContent
+        })
+      });
+
+      if (response.ok) {
+        const page = await response.json();
+        setSelectedPage(page);
+        setPages([page]);
+        // Обновить URL
+        window.history.pushState({}, '', `/wiki?slug=${page.slug}`);
+      } else {
+        // Если не удалось создать страницу, используем fallback контент
+        const error = await response.json().catch(() => ({}));
+        console.error('Error creating default page:', error);
+        setDbError(true);
+        setSelectedPage(FALLBACK_CONTENT as WikiPage);
+      }
+    } catch (error) {
+      console.error('Error creating default page:', error);
+      // При ошибке используем fallback контент
+      setDbError(true);
+      setSelectedPage(FALLBACK_CONTENT as WikiPage);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSave = async (title: string, content: string, changeNote?: string) => {
+    if (!selectedPage) return;
+
+    try {
+      setIsSaving(true);
+      const response = await fetch('/api/wiki/pages', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: selectedPage.id,
+          title,
+          content,
+          changeNote
+        })
+      });
+
+      if (!response.ok) throw new Error('Ошибка сохранения');
+      
+      const updatedPage = await response.json();
+      setSelectedPage(updatedPage);
+      setIsEditing(false);
+    } catch (error) {
+      console.error('Error saving page:', error);
+      throw error;
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleStructuredSave = async (content: string) => {
+    if (!selectedPage) return;
+
+    try {
+      setIsSaving(true);
+      const response = await fetch('/api/wiki/pages', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: selectedPage.id,
+          title: selectedPage.title,
+          content,
+          changeNote: 'Обновление структурированного контента'
+        })
+      });
+
+      if (!response.ok) throw new Error('Ошибка сохранения');
+      
+      const updatedPage = await response.json();
+      setSelectedPage(updatedPage);
+    } catch (error) {
+      console.error('Error saving structured content:', error);
+      throw error;
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handlePageSelect = (page: WikiPage) => {
+    setSelectedPage(page);
+    setIsEditing(false);
+    setShowHistory(false);
+    // Обновить URL
+    window.history.pushState({}, '', `/wiki?slug=${page.slug}`);
+  };
+
+  // Функция для построения breadcrumbs
+  const buildBreadcrumbs = (page: WikiPage | null): WikiPage[] => {
+    if (!page) return [];
+    const breadcrumbs: WikiPage[] = [];
+    let current: WikiPage | null = page;
+    
+    while (current) {
+      breadcrumbs.unshift(current);
+      current = current.parent || null;
+    }
+    
+    return breadcrumbs;
+  };
+
+  const handlePageCreate = (page: WikiPage) => {
+    setSelectedPage(page);
+    setIsEditing(true);
+  };
+
+  const handlePageDelete = (pageId: string) => {
+    if (selectedPage?.id === pageId) {
+      setSelectedPage(null);
+      setIsEditing(false);
+    }
+  };
+
+  const handleRestore = async (version: number) => {
+    await loadPageBySlug(selectedPage?.slug || '');
+    setIsEditing(false);
+  };
+
+  const handleCreateBackup = async () => {
+    try {
+      setIsCreatingBackup(true);
+      const response = await fetch('/api/wiki/backup?format=json');
+      if (!response.ok) {
+        throw new Error('Ошибка создания бэкапа');
+      }
+      
+      const backup = await response.json();
+      const blob = new Blob([JSON.stringify(backup, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `wiki-backup-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      
+      // Используем toast для уведомления
+      const { toast } = await import('sonner');
+      toast.success('Бэкап успешно создан и загружен');
+    } catch (error) {
+      console.error('Error creating backup:', error);
+      const { toast } = await import('sonner');
+      toast.error('Ошибка при создании бэкапа: ' + (error instanceof Error ? error.message : 'Неизвестная ошибка'));
+    } finally {
+      setIsCreatingBackup(false);
+    }
+  };
+
+  // Простой markdown рендерер
+  const renderMarkdown = (text: string, pagesForLinks: WikiPage[] = pages) => {
+    if (!text) return <p className="text-gray-400 italic">Содержимое отсутствует</p>;
+    
+    const lines = text.split('\n');
+    const elements: JSX.Element[] = [];
+    let currentParagraph: string[] = [];
+    let listItems: string[] = [];
+
+    const flushParagraph = () => {
+      if (currentParagraph.length > 0) {
+        const paraText = currentParagraph.join(' ');
+        elements.push(
+          <p key={`p-${elements.length}`} className="mb-4">
+            {renderInline(paraText, pagesForLinks)}
+          </p>
+        );
+        currentParagraph = [];
+      }
+    };
+
+    const flushList = () => {
+      if (listItems.length > 0) {
+        elements.push(
+          <ul key={`ul-${elements.length}`} className="list-disc list-inside mb-4 space-y-1">
+            {listItems.map((item, idx) => (
+              <li key={idx}>{renderInline(item, pagesForLinks)}</li>
+            ))}
+          </ul>
+        );
+        listItems = [];
+      }
+    };
+
+    lines.forEach((line, idx) => {
+      const trimmed = line.trim();
+      
+      if (trimmed.startsWith('# ')) {
+        flushParagraph();
+        flushList();
+        elements.push(
+          <h1 key={`h1-${idx}`} className="text-3xl font-bold mb-4 mt-6">
+            {trimmed.substring(2)}
+          </h1>
+        );
+      } else if (trimmed.startsWith('## ')) {
+        flushParagraph();
+        flushList();
+        elements.push(
+          <h2 key={`h2-${idx}`} className="text-2xl font-bold mb-3 mt-5">
+            {trimmed.substring(3)}
+          </h2>
+        );
+      } else if (trimmed.startsWith('### ')) {
+        flushParagraph();
+        flushList();
+        elements.push(
+          <h3 key={`h3-${idx}`} className="text-xl font-bold mb-2 mt-4">
+            {trimmed.substring(4)}
+          </h3>
+        );
+      } else if (trimmed.startsWith('#### ')) {
+        flushParagraph();
+        flushList();
+        elements.push(
+          <h4 key={`h4-${idx}`} className="text-lg font-bold mb-2 mt-3">
+            {trimmed.substring(5)}
+          </h4>
+        );
+      } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+        flushParagraph();
+        listItems.push(trimmed.substring(2));
+      } else if (trimmed === '') {
+        flushParagraph();
+        flushList();
+      } else {
+        flushList();
+        currentParagraph.push(trimmed);
+      }
+    });
+
+    flushParagraph();
+    flushList();
+
+    return <div>{elements}</div>;
+  };
+
+  const renderInline = (text: string, pages: WikiPage[] = []): (string | JSX.Element)[] => {
+    const parts: (string | JSX.Element)[] = [];
+    let lastIndex = 0;
+    let key = 0;
+
+    // Обработка ссылок [текст](url)
+    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    let match;
+    while ((match = linkRegex.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      const url = match[2];
+      const isInternal = url.startsWith('/wiki') || url.startsWith('wiki') || url.includes('slug=');
+      const handleClick = isInternal ? (e: React.MouseEvent) => {
+        e.preventDefault();
+        const slug = url.includes('slug=') ? url.split('slug=')[1].split('&')[0] : url.replace('/wiki?', '').replace('wiki/', '');
+        window.location.href = `/wiki?slug=${slug}`;
+      } : undefined;
+      
+      parts.push(
+        <a
+          key={`link-${key++}`}
+          href={url}
+          target={isInternal ? undefined : '_blank'}
+          rel={isInternal ? undefined : 'noopener noreferrer'}
+          className="text-blue-600 hover:underline"
+          onClick={handleClick}
+        >
+          {match[1]}
+        </a>
+      );
+      lastIndex = match.index + match[0].length;
+    }
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    // Обработка изображений ![alt](url)
+    const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
+    lastIndex = 0;
+    const newParts: (string | JSX.Element)[] = [];
+    parts.forEach((part) => {
+      if (typeof part === 'string') {
+        let imgLastIndex = 0;
+        let imgMatch;
+        while ((imgMatch = imageRegex.exec(part)) !== null) {
+          if (imgMatch.index > imgLastIndex) {
+            newParts.push(part.substring(imgLastIndex, imgMatch.index));
+          }
+          newParts.push(
+            <img
+              key={`img-${key++}`}
+              src={imgMatch[2]}
+              alt={imgMatch[1]}
+              className="max-w-full h-auto my-4 rounded"
+            />
+          );
+          imgLastIndex = imgMatch.index + imgMatch[0].length;
+        }
+        if (imgLastIndex < part.length) {
+          newParts.push(part.substring(imgLastIndex));
+        }
+      } else {
+        newParts.push(part);
+      }
+    });
+
+    // Обработка жирного текста **текст**
+    const boldRegex = /\*\*([^*]+)\*\*/g;
+    lastIndex = 0;
+    const finalParts: (string | JSX.Element)[] = [];
+    newParts.forEach((part) => {
+      if (typeof part === 'string') {
+        let boldLastIndex = 0;
+        let boldMatch;
+        while ((boldMatch = boldRegex.exec(part)) !== null) {
+          if (boldMatch.index > boldLastIndex) {
+            finalParts.push(part.substring(boldLastIndex, boldMatch.index));
+          }
+          finalParts.push(
+            <strong key={`bold-${key++}`}>{boldMatch[1]}</strong>
+          );
+          boldLastIndex = boldMatch.index + boldMatch[0].length;
+        }
+        if (boldLastIndex < part.length) {
+          finalParts.push(part.substring(boldLastIndex));
+        }
+      } else {
+        finalParts.push(part);
+      }
+    });
+
+    return finalParts.length > 0 ? finalParts : [text];
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-50 p-4">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center py-20">Загрузка...</div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white border-b sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-4">
+              <Link href="/">
+                <Button variant="ghost" size="sm">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  На главную
+                </Button>
+              </Link>
+              <h1 className="text-2xl font-bold text-gray-900">
+                Инструкция логиста
+              </h1>
+            </div>
+            <div className="flex items-center gap-2">
+              <Button
+                variant={editModeEnabled ? "default" : "outline"}
+                size="sm"
+                onClick={() => {
+                  setEditModeEnabled(!editModeEnabled);
+                  if (!editModeEnabled) {
+                    // При выключении режима редактирования выходим из всех режимов редактирования
+                    setIsEditing(false);
+                    setIsStructuredEditing(false);
+                  }
+                }}
+                title={editModeEnabled ? "Выключить режим редактирования" : "Включить режим редактирования"}
+              >
+                {editModeEnabled ? (
+                  <>
+                    <Unlock className="w-4 h-4 mr-2" />
+                    Редактирование включено
+                  </>
+                ) : (
+                  <>
+                    <Lock className="w-4 h-4 mr-2" />
+                    Редактирование выключено
+                  </>
+                )}
+              </Button>
+              {selectedPage && editModeEnabled && (
+                <div className="flex gap-2">
+                {!isStructuredEditing ? (
+                  <>
+                    <Button
+                      variant="default"
+                      onClick={() => {
+                        setIsStructuredEditing(true);
+                        setIsEditing(false);
+                        setShowHistory(false);
+                      }}
+                    >
+                      <Layout className="w-4 h-4 mr-2" />
+                      Войти в структурный режим
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        setIsEditing(!isEditing);
+                        setIsStructuredEditing(false);
+                        setShowHistory(false);
+                      }}
+                    >
+                      {isEditing ? (
+                        <>
+                          <FileText className="w-4 h-4 mr-2" />
+                          Просмотр
+                        </>
+                      ) : (
+                        <>
+                          <Edit className="w-4 h-4 mr-2" />
+                          Markdown
+                        </>
+                      )}
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      variant="default"
+                      onClick={async () => {
+                        // Вызываем сохранение через ref
+                        if (wikiEditorRef.current) {
+                          await wikiEditorRef.current.save();
+                        }
+                      }}
+                      disabled={isSaving}
+                    >
+                      {isSaving ? (
+                        <>
+                          <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                          Сохранение...
+                        </>
+                      ) : (
+                        <>
+                          <Save className="w-4 h-4 mr-2" />
+                          Сохранить
+                        </>
+                      )}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        setIsStructuredEditing(false);
+                      }}
+                      disabled={isSaving}
+                    >
+                      <ArrowLeft className="w-4 h-4 mr-2" />
+                      Выход из структурного редактирования
+                    </Button>
+                  </>
+                )}
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setShowHistory(!showHistory);
+                    setIsEditing(false);
+                    setIsStructuredEditing(false);
+                  }}
+                >
+                  <History className="w-4 h-4 mr-2" />
+                  История
+                </Button>
+                </div>
+              )}
+              {selectedPage && !editModeEnabled && (
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setShowHistory(!showHistory);
+                    setIsEditing(false);
+                    setIsStructuredEditing(false);
+                  }}
+                >
+                  <History className="w-4 h-4 mr-2" />
+                  История
+                </Button>
+              )}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleCreateBackup}
+                disabled={isCreatingBackup}
+                title="Создать бэкап всех страниц вики"
+              >
+                {isCreatingBackup ? (
+                  <>
+                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    Создание...
+                  </>
+                ) : (
+                  <>
+                    <Database className="w-4 h-4 mr-2" />
+                    Бэкап
+                  </>
+                )}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          {/* Sidebar - Page Manager */}
+          <div className="lg:col-span-1">
+            <PageManager
+              onPageSelect={handlePageSelect}
+              onPageCreate={handlePageCreate}
+              onPageDelete={handlePageDelete}
+              selectedPageId={selectedPage?.id}
+            />
+          </div>
+
+          {/* Main Content */}
+          <div className="lg:col-span-3">
+            {isEditing && selectedPage ? (
+              <WikiEditor
+                pageId={selectedPage.id}
+                initialTitle={selectedPage.title}
+                initialContent={selectedPage.content}
+                onSave={handleSave}
+                onCancel={() => setIsEditing(false)}
+                pages={pages.map(p => ({ id: p.id, title: p.title, slug: p.slug }))}
+              />
+            ) : isStructuredEditing && selectedPage ? (
+              <WikiContentEditor
+                ref={wikiEditorRef}
+                pageId={selectedPage.id}
+                initialContent={selectedPage.content}
+                onSave={handleStructuredSave}
+                isSaving={isSaving}
+                onSaveComplete={() => setIsStructuredEditing(false)}
+              />
+            ) : showHistory && selectedPage ? (
+              <VersionHistory
+                pageId={selectedPage.id}
+                onRestore={handleRestore}
+              />
+            ) : selectedPage ? (
+              <div className="bg-white rounded-lg shadow p-8">
+                {/* Breadcrumbs */}
+                {buildBreadcrumbs(selectedPage).length > 1 && (
+                  <Breadcrumb className="mb-4">
+                    <BreadcrumbList>
+                      {buildBreadcrumbs(selectedPage).map((page, index, array) => (
+                        <div key={page.id} className="flex items-center">
+                          {index > 0 && <BreadcrumbSeparator />}
+                          {index === array.length - 1 ? (
+                            <BreadcrumbPage>{page.title}</BreadcrumbPage>
+                          ) : (
+                            <BreadcrumbItem>
+                              <BreadcrumbLink
+                                href="#"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handlePageSelect(page);
+                                }}
+                              >
+                                {page.title}
+                              </BreadcrumbLink>
+                            </BreadcrumbItem>
+                          )}
+                        </div>
+                      ))}
+                    </BreadcrumbList>
+                  </Breadcrumb>
+                )}
+                <h1 className="text-3xl font-bold mb-6">{selectedPage.title}</h1>
+                <div className="prose prose-lg max-w-none">
+                  {(() => {
+                    if (!selectedPage.content) {
+                      return <p className="text-gray-400 italic">Содержимое отсутствует</p>;
+                    }
+                    
+                    // Попробовать отобразить как структурированный контент
+                    try {
+                      const parsed = JSON.parse(selectedPage.content);
+                      if (parsed.sections && Array.isArray(parsed.sections) && parsed.sections.length > 0) {
+                        // Это структурированный контент - отобразить его с возможностью редактирования
+                        const handleSectionUpdate = async (updatedSection: WikiSection) => {
+                          const updatedSections = parsed.sections.map((s: WikiSection) =>
+                            s.id === updatedSection.id ? updatedSection : s
+                          );
+                          const updatedContent = JSON.stringify({ sections: updatedSections }, null, 2);
+                          await handleStructuredSave(updatedContent);
+                        };
+
+                        const handleSectionDelete = async (sectionId: string) => {
+                          const updatedSections = parsed.sections.filter((s: WikiSection) => s.id !== sectionId);
+                          const updatedContent = JSON.stringify({ sections: updatedSections }, null, 2);
+                          await handleStructuredSave(updatedContent);
+                        };
+
+                        return (
+                          <div className="space-y-6">
+                            {parsed.sections.map((section: WikiSection, index: number) => (
+                              <EditableSection
+                                key={section.id || index}
+                                section={section}
+                                onUpdate={handleSectionUpdate}
+                                onDelete={handleSectionDelete}
+                                isEditing={false}
+                                editModeEnabled={editModeEnabled}
+                              />
+                            ))}
+                          </div>
+                        );
+                      }
+                    } catch (e) {
+                      // Не структурированный контент - отобразить как markdown
+                      console.log('Content is not JSON, rendering as markdown:', e);
+                    }
+                    // Отобразить как markdown
+                    return renderMarkdown(selectedPage.content, pages);
+                  })()}
+                </div>
+              </div>
+            ) : (
+              <div className="bg-white rounded-lg shadow p-8 text-center text-gray-500">
+                Выберите страницу для просмотра или создайте новую
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

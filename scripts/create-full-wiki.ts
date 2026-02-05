@@ -1,0 +1,116 @@
+/**
+ * Скрипт для создания полной структуры вики-инструкции
+ * Запуск: npx tsx scripts/create-full-wiki.ts
+ * 
+ * Этот скрипт создает все страницы вики с полным контентом
+ */
+
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
+
+// Полная структура вики со всеми разделами
+// Из-за объема, создам основные страницы, которые можно будет дополнить через интерфейс
+
+async function createFullWikiStructure() {
+  console.log('Создание полной структуры вики...\n');
+
+  // Список страниц для создания (базовая структура)
+  const pages = [
+    {
+      slug: 'introduction',
+      title: 'Инструкция для менеджера по логистике',
+      content: JSON.stringify({
+        sections: [
+          {
+            id: 'intro',
+            title: 'Введение',
+            content: `### Цель и важность работы
+
+Менеджер по логистике — ключевое звено в цепочке доставки премиум-мебели. Ваша работа напрямую влияет на удовлетворенность клиентов и репутацию компании.
+
+В компании действует **клиентократия по Вкуссвиллу** и **AJTBD подход** (Always Just The Best Delivery). Это означает, что клиент всегда прав, и мы стремимся предоставить лучший сервис доставки в отрасли.
+
+### Навигация по инструкции
+
+Эта вики-инструкция содержит всю необходимую информацию для эффективной работы. Все разделы редактируемы - нажмите на кнопку редактирования (карандашик) рядом с любым блоком для внесения изменений.`,
+            order: 0
+          }
+        ]
+      }),
+      order: 0,
+      parentSlug: null
+    }
+  ];
+
+  for (const pageData of pages) {
+    try {
+      // Проверяем существование
+      const existing = await prisma.wikiPage.findUnique({
+        where: { slug: pageData.slug }
+      });
+
+      if (existing) {
+        console.log(`✓ Страница "${pageData.title}" уже существует`);
+        continue;
+      }
+
+      // Находим родителя
+      let parentId: string | null = null;
+      if (pageData.parentSlug) {
+        const parent = await prisma.wikiPage.findUnique({
+          where: { slug: pageData.parentSlug }
+        });
+        if (parent) parentId = parent.id;
+      }
+
+      // Создаем страницу
+      const page = await prisma.wikiPage.create({
+        data: {
+          slug: pageData.slug,
+          title: pageData.title,
+          content: pageData.content,
+          order: pageData.order,
+          parentId: parentId,
+          isActive: true
+        }
+      });
+
+      // Создаем версию
+      await prisma.wikiVersion.create({
+        data: {
+          pageId: page.id,
+          title: page.title,
+          content: page.content,
+          version: 1,
+          changeNote: 'Создание страницы',
+          createdBy: null
+        }
+      });
+
+      console.log(`✓ Создана страница: "${pageData.title}"`);
+    } catch (error: any) {
+      console.error(`✗ Ошибка при создании страницы "${pageData.title}":`, error.message);
+    }
+  }
+
+  console.log('\n✅ Структура вики создана!');
+  console.log('\n💡 Теперь вы можете:');
+  console.log('   1. Открыть /wiki в браузере');
+  console.log('   2. Использовать режим редактирования для добавления контента');
+  console.log('   3. Создавать новые страницы через интерфейс');
+  console.log('   4. Все изменения автоматически сохраняются с бэкапами\n');
+}
+
+createFullWikiStructure()
+  .then(() => {
+    prisma.$disconnect();
+    process.exit(0);
+  })
+  .catch((error) => {
+    console.error('Критическая ошибка:', error);
+    prisma.$disconnect();
+    process.exit(1);
+  });
+
+

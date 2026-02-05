@@ -1,0 +1,89 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Calculation {
+  id          String   @id @default(cuid())
+  orderNumber String?  @unique // Номер заказа (уникальный)
+  createdAt   DateTime @default(now()) // Дата расчета
+  formData    Json     // Все введенные данные формы
+  results     Json     // Все результаты расчетов ТК
+  screenshot  String?  // Путь к скриншоту страницы
+  status      String   @default("active") // Статус сохранения
+  
+  @@map("calculations")
+}
+
+model WikiPage {
+  id          String        @id @default(cuid())
+  slug        String        @unique // URL-путь страницы (например, "introduction")
+  title       String        // Заголовок страницы
+  content     String        // Markdown контент страницы
+  order       Int           @default(0) // Порядок отображения
+  parentId    String?       // ID родительской страницы (для вложенности)
+  parent      WikiPage?     @relation("WikiPageHierarchy", fields: [parentId], references: [id], onDelete: Cascade)
+  children    WikiPage[]    @relation("WikiPageHierarchy")
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  createdBy   String?       // ID пользователя, создавшего страницу
+  updatedBy   String?       // ID пользователя, обновившего страницу
+  isActive    Boolean        @default(true) // Активна ли страница
+  versions    WikiVersion[]  // История версий
+  
+  @@map("wiki_pages")
+}
+
+model WikiVersion {
+  id          String    @id @default(cuid())
+  pageId      String    // ID страницы
+  page        WikiPage  @relation(fields: [pageId], references: [id], onDelete: Cascade)
+  content     String    // Markdown контент этой версии
+  title       String    // Заголовок этой версии
+  version     Int       // Номер версии (начинается с 1)
+  changeNote  String?   // Примечание об изменении
+  createdBy   String?   // ID пользователя, создавшего версию
+  createdAt   DateTime  @default(now())
+  
+  @@unique([pageId, version]) // Уникальная комбинация страницы и версии
+  @@map("wiki_versions")
+  @@index([pageId])
+  @@index([createdAt])
+}
+
+model DeliveryOrder {
+  id            String    @id @default(cuid())
+  bitrixOrderId String?   @unique // ID заказа в Битриксе
+  orderNumber   String    // Номер заказа
+  date          DateTime  // Дата доставки
+  products      String    @default("") // Товары (текст)
+  address       String    @default("") // Адрес доставки
+  contact       String    @default("") // Контакты
+  payment       String    @default("") // Статус оплаты
+  paymentAmount Float?    // Сумма предоплаты/доплаты (скрытое поле)
+  time          String    @default("") // Время доставки (слот: "11:00 - 13:00")
+  comment       String    @default("") // Комментарий
+  fsm           String    @default("") // ФСМ
+  wrote         Boolean   @default(false) // Написали
+  confirmed     Boolean   @default(false) // Подтвердили
+  shipped       Boolean   @default(false) // Отгрузили
+  delivered     Boolean   @default(false) // Доставлен
+  isEmpty       Boolean   @default(false) // Флаг пустой строки
+  tags          Json?     // Метки: ["REKL", "ТК"]
+  rowColor      String?   // Цвет строки (hex)
+  bitrixData    Json?     // Полные данные из Битрикса
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  @@map("delivery_orders")
+  @@index([date])
+  @@index([bitrixOrderId])
+  @@index([orderNumber])
+}

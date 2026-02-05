@@ -1,0 +1,70 @@
+# ✅ Синхронизация с веб-версией Cursor завершена
+
+## 🎉 Что было синхронизировано
+
+Все настройки проекта были отправлены в GitHub репозиторий:
+
+- ✅ `.vscode/settings.json` - настройки портов и Simple Browser
+- ✅ `.vscode/tasks.json` - задачи для запуска сервера
+- ✅ `.vscode/launch.json` - конфигурации запуска Chrome
+- ✅ `.vscode/keybindings.json` - горячие клавиши (Ctrl+Shift+B для Simple Browser)
+- ✅ `.vscode/extensions.json` - рекомендованные расширения
+- ✅ `CURSOR_WEB_MIGRATION.md` - руководство по переносу
+
+## 🚀 Как использовать в веб-версии Cursor
+
+### Шаг 1: Откройте проект в веб-версии
+
+1. Перейдите на **https://cursor.com/agents** или **https://cursor.com**
+2. Войдите в свой аккаунт Cursor
+3. Откройте проект из GitHub:
+   - Найдите репозиторий: `lavsit-russia-delivery`
+   - Или используйте URL: `https://github.com/edcwsx23QAZ/lavsit-russia-delivery`
+
+### Шаг 2: Настройки применятся автоматически
+
+После открытия проекта в веб-версии:
+- ✅ Все настройки из `.vscode/` будут применены автоматически
+- ✅ Будет доступна горячая клавиша `Ctrl+Shift+B` для Simple Browser
+- ✅ Задачи для запуска сервера будут доступны через `Tasks: Run Task`
+
+### Шаг 3: Запуск проекта в веб-версии
+
+1. **Запустите dev сервер:**
+   - `Ctrl+Shift+P` → `Tasks: Run Task`
+   - Выберите: `Start Dev Server on Port 4000`
+
+2. **Откройте превью:**
+   - Нажмите `Ctrl+Shift+B` (Simple Browser)
+   - Или `Ctrl+Shift+P` → `Simple Browser: Show`
+   - Введите: `http://localhost:4000`
+
+## 📋 Доступные задачи
+
+В веб-версии будут доступны следующие задачи:
+
+- **Start Dev Server on Port 4000** - запуск Next.js dev сервера
+- **Open Preview in Browser (Port 4000)** - открыть в браузере
+- **Start Server and Open Preview** - запустить сервер и открыть браузер
+
+## 🔑 Горячие клавиши
+
+- `Ctrl+Shift+B` - открыть Simple Browser с localhost:4000
+
+## 📝 Примечания
+
+- Настройки workspace (из `.vscode/`) работают в веб-версии
+- Для синхронизации истории диалогов с агентом используйте аккаунт Cursor
+- Проект должен быть открыт из того же GitHub репозитория
+
+## 🔗 Ссылки
+
+- **Репозиторий:** https://github.com/edcwsx23QAZ/lavsit-russia-delivery
+- **Веб-версия Cursor:** https://cursor.com/agents
+- **Документация:** См. `CURSOR_WEB_MIGRATION.md` для подробной информации
+
+
+
+
+
+
