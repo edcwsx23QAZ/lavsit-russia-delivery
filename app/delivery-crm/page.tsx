@@ -23,6 +23,7 @@ import {
   Calculator,
   FileText,
   Plus,
+  Upload,
 } from 'lucide-react'
 import { Textarea } from '@/components/ui/textarea'
 import {
@@ -183,7 +184,11 @@ export default function DeliveryCRMPage() {
   const [daysToShow, setDaysToShow] = useState(8) // Сегодня + 7 дней = 8 дней
   const [daysBack, setDaysBack] = useState(0) // Количество дней назад для показа
   const [showExpandDialog, setShowExpandDialog] = useState(false)
+  const [showImportDialog, setShowImportDialog] = useState(false)
+  const [importUrl, setImportUrl] = useState('')
+  const [isImporting, setIsImporting] = useState(false)
   const [reklMenu, setReklMenu] = useState<{ orderId: string; x: number; y: number } | null>(null)
+  const [linkingOrderId, setLinkingOrderId] = useState<string | null>(null) // ID заказа, который нужно связать
   const [headerHeight, setHeaderHeight] = useState(80)
   const tableRef = useRef<HTMLTableElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
@@ -198,6 +203,92 @@ export default function DeliveryCRMPage() {
     // Если gid неизвестен, открываем таблицу и пользователь может перейти на нужный лист
     const logUrl = `https://docs.google.com/spreadsheets/d/${spreadsheetId}/edit#gid=0`
     window.open(logUrl, '_blank')
+  }
+
+  // Функция для импорта из Google Sheets
+  const handleImport = async () => {
+    if (!importUrl.trim()) {
+      alert('Пожалуйста, введите ссылку на Google Sheet')
+      return
+    }
+
+    setIsImporting(true)
+    try {
+      const response = await fetch('/api/delivery-crm/import-google-sheets-legacy', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          url: importUrl.trim(),
+        }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || data.details || 'Ошибка импорта')
+      }
+
+      // Показываем результат импорта
+      let message = `Импорт завершен!\nИмпортировано: ${data.imported}\nОбновлено: ${data.updated}\nВсего: ${data.total}`
+      
+      if (data.errors > 0) {
+        message += `\nОшибок: ${data.errors}`
+        if (data.errorDetails && data.errorDetails.length > 0) {
+          message += `\n\nПервые ошибки:\n${data.errorDetails.slice(0, 5).map((e: any, i: number) => 
+            `${i + 1}. Заказ ${e.orderNumber || 'N/A'}: ${e.error}${e.code ? ` (${e.code})` : ''}`
+          ).join('\n')}`
+        }
+      }
+      
+      alert(message)
+      
+      // Если есть ошибки, логируем их в консоль для детального анализа
+      if (data.errors > 0 && data.errorDetails) {
+        console.error('Import errors:', data.errorDetails)
+      }
+
+      // Загружаем данные из БД
+      try {
+        const ordersResponse = await fetch('/api/delivery-crm/orders')
+        if (ordersResponse.ok) {
+          const ordersData = await ordersResponse.json()
+          if (ordersData.orders && Array.isArray(ordersData.orders)) {
+            // Преобразуем даты из БД в ISO строки и восстанавливаем reklType/tk из tags
+            const formattedOrders = ordersData.orders.map((order: any) => {
+              const tags = Array.isArray(order.tags) ? order.tags : []
+              const hasRekl = tags.includes('REKL')
+              const hasTk = tags.includes('ТК')
+              
+              return {
+                ...order,
+                date: order.date ? (typeof order.date === 'string' ? order.date : order.date.split('T')[0]) : new Date().toISOString().split('T')[0],
+                reklType: hasRekl ? (order.reklType || '') : undefined,
+                tk: hasTk,
+                // groupId, groupPosition, groupSize не сохраняются в БД, они только в localStorage
+                groupId: order.groupId || undefined,
+                groupPosition: order.groupPosition || undefined,
+                groupSize: order.groupSize || undefined,
+              }
+            })
+            setOrders(formattedOrders)
+            saveOrdersToStorage(formattedOrders)
+          }
+        }
+      } catch (loadError) {
+        console.error('Error loading orders after import:', loadError)
+        // Если не удалось загрузить из БД, просто перезагружаем страницу
+        window.location.reload()
+      }
+    } catch (error: any) {
+      console.error('Import error:', error)
+      alert(`Ошибка импорта: ${error.message}`)
+    } finally {
+      setIsImporting(false)
+      setShowImportDialog(false)
+      setImportUrl('')
+    }
   }
 
   // Инициализация syncManager с URL из переменных окружения
@@ -281,7 +372,7 @@ export default function DeliveryCRMPage() {
         const el = div as HTMLElement
         const computedStyle = window.getComputedStyle(el)
         const rect = el.getBoundingClientRect()
-        const columnNames = ['drag', 'date', 'orderNumber', 'wrote', 'confirmed', 'products', 'fsm', 'address', 'contact', 'payment', 'time', 'comment', 'shipped', 'delivered']
+        const columnNames = ['drag', 'date', 'orderNumber', 'wrote', 'confirmed', 'products', 'comment', 'fsm', 'address', 'contact', 'payment', 'time', 'shipped', 'delivered']
         const colName = columnNames[index] || `col${index}`
         
         headerWidths[colName] = rect.width
@@ -313,7 +404,7 @@ export default function DeliveryCRMPage() {
         const el = cell as HTMLElement
         const computedStyle = window.getComputedStyle(el)
         const rect = el.getBoundingClientRect()
-        const columnNames = ['drag', 'date', 'orderNumber', 'wrote', 'confirmed', 'products', 'fsm', 'address', 'contact', 'payment', 'time', 'comment', 'shipped', 'delivered']
+        const columnNames = ['drag', 'date', 'orderNumber', 'wrote', 'confirmed', 'products', 'comment', 'fsm', 'address', 'contact', 'payment', 'time', 'shipped', 'delivered']
         const colName = columnNames[index] || `col${index}`
         
         cellWidths[colName] = rect.width
@@ -372,7 +463,7 @@ export default function DeliveryCRMPage() {
                 finalCells.forEach((cell, index) => {
                   const el = cell as HTMLElement
                   const rect = el.getBoundingClientRect()
-                  const columnNames = ['drag', 'date', 'orderNumber', 'wrote', 'confirmed', 'products', 'fsm', 'address', 'contact', 'payment', 'time', 'comment', 'shipped', 'delivered']
+                  const columnNames = ['drag', 'date', 'orderNumber', 'wrote', 'confirmed', 'products', 'comment', 'fsm', 'address', 'contact', 'payment', 'time', 'shipped', 'delivered']
                   const colName = columnNames[index] || `col${index}`
                   cellWidths[colName] = rect.width
                 })
@@ -382,7 +473,7 @@ export default function DeliveryCRMPage() {
               headerDivs.forEach((div, index) => {
                 const el = div as HTMLElement
                 const rect = el.getBoundingClientRect()
-                const columnNames = ['drag', 'date', 'orderNumber', 'wrote', 'confirmed', 'products', 'fsm', 'address', 'contact', 'payment', 'time', 'comment', 'shipped', 'delivered']
+                const columnNames = ['drag', 'date', 'orderNumber', 'wrote', 'confirmed', 'products', 'comment', 'fsm', 'address', 'contact', 'payment', 'time', 'shipped', 'delivered']
                 const colName = columnNames[index] || `col${index}`
                 headerWidths[colName] = rect.width
               })
@@ -508,6 +599,12 @@ export default function DeliveryCRMPage() {
 
   // Обработка drag-n-drop
   const handleDragStart = (e: React.DragEvent, orderId: string) => {
+    // Если в режиме выбора для связывания, отменяем drag
+    if (linkingOrderId) {
+      e.preventDefault()
+      return
+    }
+
     setDraggedOrderId(orderId)
     e.dataTransfer.effectAllowed = 'move'
     e.dataTransfer.setData('text/plain', orderId)
@@ -553,6 +650,12 @@ export default function DeliveryCRMPage() {
     if (!draggedOrder) {
       setDropIndicator(null)
       return
+    }
+
+    // Если заказ связан с другими, перемещаем всю группу
+    const linkedOrders: DeliveryOrder[] = []
+    if (draggedOrder.groupId) {
+      linkedOrders.push(...orders.filter(o => o.groupId === draggedOrder.groupId && o.id !== draggedOrderId))
     }
 
     const oldDate = draggedOrder.date
@@ -606,21 +709,31 @@ export default function DeliveryCRMPage() {
         }
       }
       
+      // Исключаем связанные заказы из списка целевой даты
+      const linkedOrderIds = linkedOrders.map(o => o.id)
+      const targetDateOrdersFiltered = targetDateOrders.filter(o => !linkedOrderIds.includes(o.id))
+      
       // Разделяем заказы на те, что до и после точки вставки
-      const beforeOrders = targetDateOrders.slice(0, insertIndex)
-      const afterOrders = targetDateOrders.slice(insertIndex)
+      const beforeOrders = targetDateOrdersFiltered.slice(0, insertIndex)
+      const afterOrders = targetDateOrdersFiltered.slice(insertIndex)
       
-      // Обновляем перетаскиваемый заказ с новой датой
+      // Обновляем перетаскиваемый заказ и связанные заказы с новой датой
       const updatedOrder = { ...draggedOrder, date: dropIndicator.date }
+      const updatedLinkedOrders = linkedOrders.map(o => ({ ...o, date: dropIndicator.date }))
       
-      // Собираем новый массив: заказы других дат + заказы до вставки + перетаскиваемый + заказы после вставки
-      const otherDateOrders = orders.filter(o => o.date !== dropIndicator.date && o.id !== draggedOrderId)
+      // Собираем новый массив: заказы других дат + заказы до вставки + перетаскиваемый + связанные + заказы после вставки
+      const otherDateOrders = orders.filter(o => 
+        o.date !== dropIndicator.date && 
+        o.id !== draggedOrderId && 
+        !linkedOrderIds.includes(o.id)
+      )
       
       // Создаем финальный массив
       const newOrders = [
         ...otherDateOrders,
         ...beforeOrders,
         updatedOrder,
+        ...updatedLinkedOrders,
         ...afterOrders
       ]
       
@@ -633,17 +746,30 @@ export default function DeliveryCRMPage() {
           oldValue: oldDate,
           newValue: dropIndicator.date
         })
+        // Логируем перемещение для всех связанных заказов
+        linkedOrders.forEach(linkedOrder => {
+          syncManager.logChange({
+            type: 'move',
+            orderId: linkedOrder.id,
+            field: 'date',
+            oldValue: linkedOrder.date,
+            newValue: dropIndicator.date
+          })
+        })
       }
       
       setOrders(newOrders)
     } else {
       // Fallback: просто меняем дату (старое поведение)
-      if (draggedOrder.date === targetDate) {
-        setDraggedOrderId(null)
+    if (draggedOrder.date === targetDate) {
+      setDraggedOrderId(null)
         setDropIndicator(null)
-        return
-      }
+      return
+    }
 
+      // Обновляем дату для перетаскиваемого заказа и связанных
+      const linkedOrderIds = linkedOrders.map(o => o.id)
+      
       // Логируем перемещение (если дата изменилась)
       if (oldDate !== targetDate) {
         syncManager.logChange({
@@ -653,13 +779,27 @@ export default function DeliveryCRMPage() {
           oldValue: oldDate,
           newValue: targetDate
         })
+        // Логируем перемещение для всех связанных заказов
+        linkedOrders.forEach(linkedOrder => {
+          syncManager.logChange({
+            type: 'move',
+            orderId: linkedOrder.id,
+            field: 'date',
+            oldValue: linkedOrder.date,
+            newValue: targetDate
+          })
+        })
       }
       
-      setOrders(orders.map(order => 
-        order.id === draggedOrderId 
-          ? { ...order, date: targetDate }
-          : order
-      ))
+      setOrders(orders.map(order => {
+        if (order.id === draggedOrderId) {
+          return { ...order, date: targetDate }
+        }
+        if (linkedOrderIds.includes(order.id)) {
+          return { ...order, date: targetDate }
+        }
+        return order
+      }))
     }
     
     setDraggedOrderId(null)
@@ -861,34 +1001,131 @@ export default function DeliveryCRMPage() {
     return { start: timeStr.trim(), end: '' }
   }
 
-  // Обработка изменения времени
+  // Валидация времени (часы: 0-23, минуты: 0-59)
+  const validateTime = (timeStr: string): string | null => {
+    if (!timeStr) return null
+    
+    // Проверяем формат HH:MM или HHMM
+    const timeMatch = timeStr.match(/^(\d{1,2}):?(\d{0,2})$/)
+    if (!timeMatch) return null
+    
+    let hours = parseInt(timeMatch[1] || '0', 10)
+    let minutes = parseInt(timeMatch[2] || '0', 10)
+    
+    // Валидация часов (0-23)
+    if (hours < 0) hours = 0
+    if (hours > 23) hours = 23
+    
+    // Валидация минут (0-59)
+    if (minutes < 0) minutes = 0
+    if (minutes > 59) minutes = 59
+    
+    // Форматируем с ведущими нулями
+    const formattedHours = String(hours).padStart(2, '0')
+    const formattedMinutes = String(minutes).padStart(2, '0')
+    
+    return `${formattedHours}:${formattedMinutes}`
+  }
+
+  // Обработка изменения времени начала
   const handleTimeStartChange = (id: string, startValue: string) => {
     const order = orders.find(o => o.id === id)
     if (!order) return
     
-    const digitsOnly = startValue.replace(/\D/g, '')
-    let formatted = digitsOnly
+    // Удаляем все нецифровые символы кроме двоеточия
+    const cleaned = startValue.replace(/[^\d:]/g, '')
+    
+    // Если есть двоеточие, разбиваем на части
+    let formatted = cleaned
+    if (cleaned.includes(':')) {
+      const parts = cleaned.split(':')
+      let hours = parts[0] || ''
+      let minutes = parts[1] || ''
+      
+      // Ограничиваем длину
+      if (hours.length > 2) hours = hours.slice(0, 2)
+      if (minutes.length > 2) minutes = minutes.slice(0, 2)
+      
+      // Валидируем и форматируем
+      const validated = validateTime(`${hours}:${minutes}`)
+      if (validated) {
+        formatted = validated
+      } else if (hours) {
+        formatted = hours
+      }
+    } else {
+      // Если нет двоеточия, форматируем автоматически
+      const digitsOnly = cleaned.replace(/\D/g, '')
     if (digitsOnly.length > 2) {
-      formatted = digitsOnly.slice(0, 2) + ':' + digitsOnly.slice(2, 4)
+        const hours = digitsOnly.slice(0, 2)
+        const minutes = digitsOnly.slice(2, 4)
+        const validated = validateTime(`${hours}:${minutes}`)
+        if (validated) {
+          formatted = validated
+        } else {
+          formatted = hours
+        }
+      } else {
+        formatted = digitsOnly
+      }
     }
     
+    // Валидируем финальное значение
+    const finalTime = validateTime(formatted) || formatted
+    
     const { end } = parseTimeSlot(order.time)
-    const newTime = end ? `${formatted} - ${end}` : formatted
+    const newTime = end ? `${finalTime} - ${end}` : finalTime
     handleCellChange(id, 'time', newTime)
   }
 
+  // Обработка изменения времени окончания
   const handleTimeEndChange = (id: string, endValue: string) => {
     const order = orders.find(o => o.id === id)
     if (!order) return
     
-    const digitsOnly = endValue.replace(/\D/g, '')
-    let formatted = digitsOnly
+    // Удаляем все нецифровые символы кроме двоеточия
+    const cleaned = endValue.replace(/[^\d:]/g, '')
+    
+    // Если есть двоеточие, разбиваем на части
+    let formatted = cleaned
+    if (cleaned.includes(':')) {
+      const parts = cleaned.split(':')
+      let hours = parts[0] || ''
+      let minutes = parts[1] || ''
+      
+      // Ограничиваем длину
+      if (hours.length > 2) hours = hours.slice(0, 2)
+      if (minutes.length > 2) minutes = minutes.slice(0, 2)
+      
+      // Валидируем и форматируем
+      const validated = validateTime(`${hours}:${minutes}`)
+      if (validated) {
+        formatted = validated
+      } else if (hours) {
+        formatted = hours
+      }
+    } else {
+      // Если нет двоеточия, форматируем автоматически
+      const digitsOnly = cleaned.replace(/\D/g, '')
     if (digitsOnly.length > 2) {
-      formatted = digitsOnly.slice(0, 2) + ':' + digitsOnly.slice(2, 4)
+        const hours = digitsOnly.slice(0, 2)
+        const minutes = digitsOnly.slice(2, 4)
+        const validated = validateTime(`${hours}:${minutes}`)
+        if (validated) {
+          formatted = validated
+        } else {
+          formatted = hours
+        }
+      } else {
+        formatted = digitsOnly
+      }
     }
     
+    // Валидируем финальное значение
+    const finalTime = validateTime(formatted) || formatted
+    
     const { start } = parseTimeSlot(order.time)
-    const newTime = start ? `${start} - ${formatted}` : formatted
+    const newTime = start ? `${start} - ${finalTime}` : finalTime
     handleCellChange(id, 'time', newTime)
   }
 
@@ -900,21 +1137,21 @@ export default function DeliveryCRMPage() {
     const newOrder: DeliveryOrder = {
       id: `empty-${Date.now()}-${Math.random()}`,
       date: currentOrder.date,
-      orderNumber: '',
-      wrote: false,
-      confirmed: false,
-      products: '',
-      fsm: '',
-      address: '',
-      contact: '',
+        orderNumber: '',
+        wrote: false,
+        confirmed: false,
+        products: '',
+        fsm: '',
+        address: '',
+        contact: '',
       payment: 'Не оплачено',
-      time: '',
-      comment: '',
-      shipped: false,
-      delivered: false,
+        time: '',
+        comment: '',
+        shipped: false,
+        delivered: false,
       tk: false,
-      isEmpty: true,
-    }
+        isEmpty: true,
+      }
     
     // Находим индекс текущего заказа
     const currentIndex = orders.findIndex(o => o.id === orderId)
@@ -971,85 +1208,118 @@ export default function DeliveryCRMPage() {
     setOrders(updatedOrders.filter(order => order.id !== orderId))
   }
 
-  // Связывание заказов
+  // Связывание заказов - новая логика с выбором заказа
   const handleLinkOrder = (orderId: string) => {
     const currentOrder = orders.find(o => o.id === orderId)
-    if (!currentOrder || !currentOrder.address.trim()) {
-      alert('Сначала укажите адрес для связывания заказов')
-      return
-    }
+    if (!currentOrder) return
 
     // Если заказ уже в группе, разрываем связь
     if (currentOrder.groupId) {
       handleUnlinkOrder(orderId)
+      setLinkingOrderId(null)
       return
     }
 
-    // Ищем заказы с таким же адресом в той же дате
-    const sameAddressOrders = orders.filter(o => 
-      o.date === currentOrder.date &&
-      o.id !== orderId &&
-      o.address.toLowerCase().trim() === currentOrder.address.toLowerCase().trim() &&
-      o.address.trim() !== '' &&
-      !o.isEmpty
-    )
-
-    if (sameAddressOrders.length === 0) {
-      alert('Не найдено заказов с таким же адресом в этот день')
+    // Если уже в режиме выбора для этого заказа, отменяем выбор
+    if (linkingOrderId === orderId) {
+      setLinkingOrderId(null)
       return
     }
 
-    // Находим заказ для связывания (приоритет - уже в группе, иначе первый)
-    const targetOrder = sameAddressOrders.find(o => o.groupId) || sameAddressOrders[0]
-    
+    // Переходим в режим выбора заказа для связывания
+    setLinkingOrderId(orderId)
+  }
+
+  // Обработка клика на строку в режиме выбора заказа для связывания
+  const handleRowClickForLinking = (targetOrderId: string) => {
+    if (!linkingOrderId) return
+
+    const sourceOrder = orders.find(o => o.id === linkingOrderId)
+    const targetOrder = orders.find(o => o.id === targetOrderId)
+
+    if (!sourceOrder || !targetOrder) {
+      setLinkingOrderId(null)
+      return
+    }
+
+    // Нельзя связать заказ с самим собой
+    if (sourceOrder.id === targetOrder.id) {
+      setLinkingOrderId(null)
+      return
+    }
+
+    // Проверяем, не превышен ли лимит группы
     if (targetOrder.groupId) {
-      // Добавляем в существующую группу
       const groupSize = orders.filter(o => o.groupId === targetOrder.groupId).length
       if (groupSize >= 5) {
         alert('Максимальное количество заказов в группе - 5')
+        setLinkingOrderId(null)
         return
       }
       
-      // Логируем добавление в группу
+      // Добавляем в существующую группу
       syncManager.logChange({
         type: 'group',
-        orderId: orderId,
+        orderId: linkingOrderId,
         field: 'groupId',
         oldValue: undefined,
         newValue: targetOrder.groupId
       })
       
       setOrders(orders.map(o => 
-        o.id === orderId 
+        o.id === linkingOrderId 
           ? { ...o, groupId: targetOrder.groupId }
           : o
       ))
-    } else {
-      // Создаем новую группу
-      const newGroupId = `group-${Date.now()}-${Math.random()}`
+    } else if (sourceOrder.groupId) {
+      // Если исходный заказ уже в группе, добавляем целевой в эту группу
+      const groupSize = orders.filter(o => o.groupId === sourceOrder.groupId).length
+      if (groupSize >= 5) {
+        alert('Максимальное количество заказов в группе - 5')
+        setLinkingOrderId(null)
+        return
+      }
       
-      // Логируем создание группы для обоих заказов
       syncManager.logChange({
         type: 'group',
-        orderId: orderId,
+        orderId: targetOrderId,
+        field: 'groupId',
+        oldValue: undefined,
+        newValue: sourceOrder.groupId
+      })
+      
+      setOrders(orders.map(o => 
+        o.id === targetOrderId 
+          ? { ...o, groupId: sourceOrder.groupId }
+          : o
+      ))
+    } else {
+      // Создаем новую группу для обоих заказов
+      const newGroupId = `group-${Date.now()}-${Math.random()}`
+      
+      syncManager.logChange({
+        type: 'group',
+        orderId: linkingOrderId,
         field: 'groupId',
         oldValue: undefined,
         newValue: newGroupId
       })
       syncManager.logChange({
         type: 'group',
-        orderId: targetOrder.id,
+        orderId: targetOrderId,
         field: 'groupId',
         oldValue: undefined,
         newValue: newGroupId
       })
       
       setOrders(orders.map(o => 
-        o.id === orderId || o.id === targetOrder.id
+        o.id === linkingOrderId || o.id === targetOrderId
           ? { ...o, groupId: newGroupId }
           : o
       ))
     }
+
+    setLinkingOrderId(null)
   }
 
   // Разрыв связи заказа
@@ -1132,6 +1402,14 @@ export default function DeliveryCRMPage() {
               <Button 
                 variant="outline" 
                 size="sm" 
+                onClick={() => setShowImportDialog(true)}
+              >
+                <Upload className="w-3 h-3 mr-1.5" />
+                Импорт
+              </Button>
+              <Button 
+                variant="outline" 
+                size="sm" 
                 onClick={handleOpenLog}
               >
                 <FileText className="w-3 h-3 mr-1.5" />
@@ -1155,7 +1433,24 @@ export default function DeliveryCRMPage() {
           <Card>
             <CardHeader className="pb-2">
               <div className="flex items-center justify-between">
-                <CardTitle className="text-lg">Заказы доставки</CardTitle>
+                <div className="flex items-center gap-3">
+              <CardTitle className="text-lg">Заказы доставки</CardTitle>
+                  {linkingOrderId && (
+                    <div className="flex items-center gap-2 px-3 py-1 bg-yellow-100 dark:bg-yellow-900/30 rounded-md border border-yellow-300 dark:border-yellow-700">
+                      <span className="text-sm text-yellow-800 dark:text-yellow-200">
+                        С каким заказом связать?
+                      </span>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => setLinkingOrderId(null)}
+                        className="h-6 px-2 text-yellow-800 dark:text-yellow-200 hover:bg-yellow-200 dark:hover:bg-yellow-800"
+                      >
+                        ✕
+                      </Button>
+                    </div>
+                  )}
+                </div>
                 <Button variant="outline" size="sm" onClick={handleExpandPrevious}>
                   {daysBack > 0 ? 'Скрыть предыдущие' : 'Раскрыть предыдущие'}
                 </Button>
@@ -1184,12 +1479,12 @@ export default function DeliveryCRMPage() {
                     <div style={{ width: columnWidths.wrote, minWidth: columnWidths.wrote, maxWidth: columnWidths.wrote, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700 text-[0.65rem] leading-tight">Напи-<br/>сали</div>
                     <div style={{ width: columnWidths.confirmed, minWidth: columnWidths.confirmed, maxWidth: columnWidths.confirmed, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700 text-[0.65rem] leading-tight">Подтве-<br/>рдили</div>
                     <div style={{ width: columnWidths.products, minWidth: columnWidths.products, maxWidth: columnWidths.products, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Товары</div>
+                    <div style={{ width: columnWidths.comment, minWidth: columnWidths.comment, maxWidth: columnWidths.comment, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Комментарии</div>
                     <div style={{ width: columnWidths.fsm, minWidth: columnWidths.fsm, maxWidth: columnWidths.fsm, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">ФСМ</div>
                     <div style={{ width: columnWidths.address, minWidth: columnWidths.address, maxWidth: columnWidths.address, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Адрес</div>
                     <div style={{ width: columnWidths.contact, minWidth: columnWidths.contact, maxWidth: columnWidths.contact, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Контакт</div>
                     <div style={{ width: columnWidths.payment, minWidth: columnWidths.payment, maxWidth: columnWidths.payment, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Оплачено</div>
                     <div style={{ width: columnWidths.time, minWidth: columnWidths.time, maxWidth: columnWidths.time, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Время</div>
-                    <div style={{ width: columnWidths.comment, minWidth: columnWidths.comment, maxWidth: columnWidths.comment, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700">Комментарии</div>
                     <div style={{ width: columnWidths.shipped, minWidth: columnWidths.shipped, maxWidth: columnWidths.shipped, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 border-r border-gray-200 dark:border-gray-700 text-[0.65rem] leading-tight">Отгру-<br/>зили</div>
                     <div style={{ width: columnWidths.delivered, minWidth: columnWidths.delivered, maxWidth: columnWidths.delivered, flexShrink: 0, boxSizing: 'border-box' }} className="text-center bg-white dark:bg-gray-900 font-semibold py-2 text-[0.65rem] leading-tight">Доста-<br/>влен</div>
                   </div>
@@ -1202,12 +1497,12 @@ export default function DeliveryCRMPage() {
                     <col style={{ width: columnWidths.wrote - 1 }} />
                     <col style={{ width: columnWidths.confirmed - 1 }} />
                     <col style={{ width: columnWidths.products - 1 }} />
+                    <col style={{ width: columnWidths.comment - 1 }} />
                     <col style={{ width: columnWidths.fsm - 1 }} />
                     <col style={{ width: columnWidths.address - 1 }} />
                     <col style={{ width: columnWidths.contact - 1 }} />
                     <col style={{ width: columnWidths.payment - 1 }} />
                     <col style={{ width: columnWidths.time - 1 }} />
-                    <col style={{ width: columnWidths.comment - 1 }} />
                     <col style={{ width: columnWidths.shipped - 1 }} />
                     <col style={{ width: columnWidths.delivered }} />
                   </colgroup>
@@ -1254,18 +1549,36 @@ export default function DeliveryCRMPage() {
                                 </tr>
                               )}
                               
-                              <TableRow
-                                key={order.id}
+                            <TableRow
+                              key={order.id}
                           onDragOver={(e) => {
                             e.preventDefault()
                             handleDragOver(e, date, index)
                           }}
                           onDrop={(e) => handleDrop(e, date, index)}
+                          onClick={(e) => {
+                            // Если в режиме выбора для связывания, обрабатываем клик
+                            // Но только если клик был не на интерактивном элементе (input, button, textarea)
+                            if (linkingOrderId && linkingOrderId !== order.id) {
+                              const target = e.target as HTMLElement
+                              const isInteractive = target.tagName === 'INPUT' || 
+                                                    target.tagName === 'BUTTON' || 
+                                                    target.tagName === 'TEXTAREA' ||
+                                                    target.closest('button') ||
+                                                    target.closest('input') ||
+                                                    target.closest('textarea')
+                              if (!isInteractive) {
+                                handleRowClickForLinking(order.id)
+                              }
+                            }
+                          }}
                           className={`${isDragging ? 'opacity-50' : ''} 
                             ${showDropIndicatorBefore ? 'border-t-2 border-blue-500' : ''}
                             ${showDropIndicatorAfter ? 'border-b-2 border-blue-500' : ''}
                             ${dragOverDate === date && dragOverIndex === index ? 'bg-blue-50 dark:bg-blue-900/20' : ''} 
                             ${hasTopBorder ? 'border-t-4 border-gray-600 dark:border-gray-500' : ''}
+                            ${linkingOrderId === order.id ? 'ring-2 ring-yellow-400 ring-opacity-75' : ''}
+                            ${linkingOrderId && linkingOrderId !== order.id ? 'cursor-pointer hover:bg-yellow-50 dark:hover:bg-yellow-900/20' : ''}
                             transition-all duration-200`}
                           style={{ 
                             background: getRowBackgroundColor(order) || getGroupColor(order.groupId) || undefined,
@@ -1388,7 +1701,7 @@ export default function DeliveryCRMPage() {
                                     >
                                       -
                                     </Button>
-                                  </div>
+                                </div>
                                 )}
                                 </TableCell>
 
@@ -1515,6 +1828,46 @@ export default function DeliveryCRMPage() {
                               </div>
                                 </TableCell>
 
+                                {/* Комментарии */}
+                                <TableCell 
+                                  className="align-middle border-r border-gray-200 dark:border-gray-700 py-2 px-0" 
+                                  style={{ boxSizing: 'border-box', position: 'relative', verticalAlign: 'middle', overflow: 'hidden' }}
+                                  onClick={(e) => {
+                                    const textarea = (e.currentTarget as HTMLElement).querySelector('textarea')
+                                    if (textarea) textarea.focus()
+                                  }}
+                                >
+                              <div className="flex items-center justify-start h-full">
+                                <Textarea
+                                  value={order.comment}
+                                  onChange={(e) => {
+                                    handleCellChange(order.id, 'comment', e.target.value)
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                  onInput={(e) => {
+                                    const target = e.target as HTMLTextAreaElement
+                                    target.style.height = 'auto'
+                                    target.style.height = `${target.scrollHeight}px`
+                                  }}
+                                    placeholder="Комментарии"
+                                    className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-sm"
+                                  style={{ 
+                                    minHeight: 'auto',
+                                    width: '100%',
+                                    height: 'auto',
+                                    overflow: 'hidden',
+                                    wordWrap: 'break-word',
+                                    wordBreak: 'break-word',
+                                    whiteSpace: 'pre-wrap',
+                                    paddingTop: '16px',
+                                    paddingLeft: '3px',
+                                  }}
+                                    />
+                              </div>
+                                </TableCell>
+
                                 {/* ФСМ */}
                                 <TableCell 
                                   className="text-center align-middle border-r border-gray-200 dark:border-gray-700 py-2 px-0" 
@@ -1608,14 +1961,22 @@ export default function DeliveryCRMPage() {
                                   type="button"
                                   variant="ghost"
                                   size="sm"
-                                  className="absolute top-0 right-0 h-4 w-4 p-0 opacity-60 hover:opacity-100 z-10 flex-shrink-0"
+                                  className={`absolute top-0 right-0 h-4 w-4 p-0 z-10 flex-shrink-0 ${
+                                    linkingOrderId === order.id 
+                                      ? 'bg-yellow-200 dark:bg-yellow-800 opacity-100' 
+                                      : 'opacity-60 hover:opacity-100'
+                                  }`}
                                   onClick={(e) => {
                                     e.stopPropagation()
                                     handleLinkOrder(order.id)
                                   }}
-                                  title={order.groupId ? 'Разорвать связь' : 'Связать с другим заказом'}
+                                  title={linkingOrderId === order.id 
+                                    ? 'Отменить выбор' 
+                                    : order.groupId 
+                                      ? 'Разорвать связь' 
+                                      : 'Связать с другим заказом'}
                                 >
-                                  {order.groupId ? '🔗' : '🔗'}
+                                  {linkingOrderId === order.id ? '✓' : order.groupId ? '🔗' : '🔗'}
                                 </Button>
                               </div>
                                 </TableCell>
@@ -1718,45 +2079,6 @@ export default function DeliveryCRMPage() {
                                 }}
                               />
                             </div>
-                                </TableCell>
-
-                                {/* Комментарии */}
-                                <TableCell 
-                                  className="align-middle border-r border-gray-200 dark:border-gray-700 py-2 px-0" 
-                                  style={{ boxSizing: 'border-box', position: 'relative', verticalAlign: 'middle', overflow: 'hidden' }}
-                                  onClick={(e) => {
-                                    const textarea = (e.currentTarget as HTMLElement).querySelector('textarea')
-                                    if (textarea) textarea.focus()
-                                  }}
-                                >
-                              <div className="flex items-center justify-start h-full">
-                                <Textarea
-                                  value={order.comment}
-                                  onChange={(e) => {
-                                    handleCellChange(order.id, 'comment', e.target.value)
-                                    const target = e.target as HTMLTextAreaElement
-                                    target.style.height = 'auto'
-                                    target.style.height = `${target.scrollHeight}px`
-                                  }}
-                                  onInput={(e) => {
-                                    const target = e.target as HTMLTextAreaElement
-                                    target.style.height = 'auto'
-                                    target.style.height = `${target.scrollHeight}px`
-                                  }}
-                                    placeholder="Комментарии"
-                                    className="border-0 bg-transparent p-0 w-full resize-none focus-visible:ring-0 text-sm"
-                                  style={{ 
-                                    minHeight: 'auto',
-                                    width: '100%',
-                                    height: 'auto',
-                                    overflow: 'hidden',
-                                    wordWrap: 'break-word',
-                                    wordBreak: 'break-word',
-                                    whiteSpace: 'pre-wrap',
-                                    paddingTop: '16px',
-                                  }}
-                                    />
-                              </div>
                                 </TableCell>
 
                                 {/* Отгрузили */}
@@ -1882,6 +2204,33 @@ export default function DeliveryCRMPage() {
             <AlertDialogCancel>Отмена</AlertDialogCancel>
             <AlertDialogAction onClick={handleExpand30Days}>30</AlertDialogAction>
             <AlertDialogAction onClick={handleExpandAll}>Все</AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+
+      <AlertDialog open={showImportDialog} onOpenChange={setShowImportDialog}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Импорт из Google Sheets</AlertDialogTitle>
+            <AlertDialogDescription>
+              Вставьте ссылку на Google Sheet для импорта заказов. Таблица должна содержать заголовки столбцов.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <div className="py-4">
+            <Input
+              type="url"
+              placeholder="https://docs.google.com/spreadsheets/d/..."
+              value={importUrl}
+              onChange={(e) => setImportUrl(e.target.value)}
+              disabled={isImporting}
+              className="w-full"
+            />
+          </div>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={isImporting}>Отмена</AlertDialogCancel>
+            <AlertDialogAction onClick={handleImport} disabled={isImporting || !importUrl.trim()}>
+              {isImporting ? 'Импорт...' : 'Импортировать'}
+            </AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
