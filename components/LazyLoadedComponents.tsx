@@ -10,11 +10,9 @@ export const LazyProductSearch = dynamic(
   }
 )
 
-// Lazy load TruckVisualization - создаем простой заглушку, если компонент не существует
+// Lazy load TruckVisualization
 export const LazyTruckVisualization = dynamic(
-  () => import('@/components/TruckVisualization').catch(() => ({
-    default: () => <div className="p-4 text-sm text-muted-foreground">Визуализация груза недоступна</div>,
-  })),
+  () => import('@/components/TruckVisualization'),
   {
     loading: () => <div className="flex items-center justify-center p-4">Загрузка визуализации...</div>,
     ssr: false,
