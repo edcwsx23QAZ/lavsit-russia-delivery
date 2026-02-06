@@ -17,6 +17,15 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
       }
     }
 
+    // Исключаем onCheckedChange из пропсов, передаваемых в input
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { onCheckedChange: _, ...inputProps } = props as any
+
+    // Если checked передан, всегда должен быть onChange (через handleChange)
+    // Если checked не передан, используем defaultChecked для неконтролируемого компонента
+    const inputChecked = checked !== undefined ? checked : undefined
+    const inputDefaultChecked = checked === undefined ? defaultChecked : undefined
+
     return (
       <input
         type="checkbox"
@@ -25,10 +34,10 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
           className
         )}
         ref={ref}
-        checked={checked}
-        defaultChecked={defaultChecked}
+        checked={inputChecked}
+        defaultChecked={inputDefaultChecked}
         onChange={handleChange}
-        {...props}
+        {...inputProps}
       />
     )
   }
