@@ -40,8 +40,8 @@
     'body.le-active .section:hover{box-shadow:0 0 0 2px rgba(233,69,96,.3);border-radius:8px}',
     'body.le-active .section.le-on{outline:2.5px solid #e94560;outline-offset:4px;border-radius:8px}',
 
-    /* ── Section controls (sticky: follows scroll inside section) ── */
-    '.le-sec-ctrl{position:sticky;top:8px;float:right;display:none;gap:5px;z-index:1000;margin-bottom:-40px}',
+    /* ── Section controls (sticky, left side to avoid parent toolbar overlap) ── */
+    '.le-sec-ctrl{position:sticky;top:8px;float:left;display:none;gap:5px;z-index:1000;margin-bottom:-40px;margin-left:-8px}',
     'body.le-active .section:hover .le-sec-ctrl,body.le-active .section.le-on .le-sec-ctrl{display:flex}',
     '.le-btn{width:34px;height:34px;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.18);transition:transform .12s}',
     '.le-btn:hover{transform:scale(1.12)}',
