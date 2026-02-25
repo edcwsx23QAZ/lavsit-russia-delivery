@@ -1,7 +1,16 @@
 /**
- * Lavsit Instruction — Inline Edit Mode v2
+ * Lavsit Instruction — Inline Edit Mode v3
  * Injected into the instruction iframe when user activates editing.
  * Communicates with parent via postMessage.
+ *
+ * Features:
+ *  - Every block (card, template, table, list, paragraph, etc.) gets 📋 duplicate + ✕ delete
+ *  - Duplicate copies the exact format and inserts below
+ *  - For grid children the clone stays in the same grid
+ *  - Section-level ✏️ toggle makes inner text editable
+ *  - Sidebar gets ↑ ↓ ✕ per item + ➕ Add section
+ *  - Block type picker for adding new blocks
+ *  - Floating format toolbar (B/I/U/link/list)
  */
 (function () {
   'use strict';
@@ -14,7 +23,7 @@
   var css = document.createElement('style');
   css.id = 'le-css';
   css.textContent = [
-    /* Top Toolbar */
+    /* ── Top Toolbar ── */
     '.le-bar{position:fixed;top:0;left:0;right:0;height:54px;background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;display:flex;align-items:center;padding:0 20px;gap:14px;z-index:100000;box-shadow:0 4px 20px rgba(0,0,0,.35);font-family:"Segoe UI",sans-serif}',
     '.le-bar-label{font-size:14px;font-weight:600;opacity:.92;margin-right:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
     '.le-bar button{padding:8px 20px;border:none;border-radius:7px;cursor:pointer;font-weight:700;font-size:13px;transition:all .15s;white-space:nowrap}',
@@ -27,12 +36,12 @@
     'body.le-active{padding-top:54px!important}',
     'body.le-active .sidebar{top:54px!important;height:calc(100vh - 54px)!important}',
 
-    /* Section hover / edit */
+    /* ── Section states ── */
     'body.le-active .section{position:relative!important;transition:box-shadow .2s}',
     'body.le-active .section:hover{box-shadow:0 0 0 2px rgba(233,69,96,.3);border-radius:8px}',
     'body.le-active .section.le-on{outline:2.5px solid #e94560;outline-offset:4px;border-radius:8px}',
 
-    /* Section controls (top-right corner) */
+    /* ── Section top-right controls ── */
     '.le-sec-ctrl{position:absolute;top:6px;right:6px;display:none;gap:5px;z-index:1000}',
     'body.le-active .section:hover .le-sec-ctrl,body.le-active .section.le-on .le-sec-ctrl{display:flex}',
     '.le-btn{width:34px;height:34px;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.18);transition:transform .12s}',
@@ -40,12 +49,12 @@
     '.le-btn-edit{background:#e94560;color:#fff}',
     '.le-btn-del{background:#d63031;color:#fff}',
 
-    /* Contenteditable */
+    /* ── Contenteditable ── */
     'body.le-active .le-on [contenteditable="true"]{outline:none;background:rgba(233,69,96,.04);border-radius:4px;padding:2px 6px;min-height:1.4em;transition:background .12s;cursor:text}',
     'body.le-active .le-on [contenteditable="true"]:hover{background:rgba(233,69,96,.07)}',
     'body.le-active .le-on [contenteditable="true"]:focus{background:rgba(233,69,96,.09);box-shadow:inset 0 0 0 2px rgba(233,69,96,.2)}',
 
-    /* Floating format bar */
+    /* ── Floating format bar ── */
     '.le-fmt{position:fixed;display:none;background:#1a1a2e;border-radius:8px;padding:5px;gap:2px;z-index:100001;box-shadow:0 6px 20px rgba(0,0,0,.35)}',
     '.le-fmt.le-vis{display:flex}',
     '.le-fmt button{width:30px;height:30px;border:none;background:0 0;color:#fff;border-radius:5px;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:background .1s}',
@@ -63,22 +72,23 @@
     '.le-add-sec{display:block;width:calc(100% - 24px);margin:14px 12px;padding:14px;background:rgba(233,69,96,.12);border:2px dashed rgba(233,69,96,.45);border-radius:8px;color:#ff6b81;font-size:14px;font-weight:700;cursor:pointer;text-align:center;transition:all .15s}',
     '.le-add-sec:hover{background:rgba(233,69,96,.22);border-color:#e94560}',
 
-    /* ── Block controls (inside sections) ── */
-    '.le-blk-ctrl{position:absolute;top:-12px;right:6px;display:none;gap:3px;z-index:10}',
-    '.le-blk-b{width:26px;height:26px;border:none;border-radius:50%;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 6px rgba(0,0,0,.2);transition:transform .1s}',
-    '.le-blk-b:hover{transform:scale(1.1)}',
-    '.le-blk-b.le-bb-dup{background:#0984e3;color:#fff}',
-    '.le-blk-b.le-bb-del{background:#d63031;color:#fff}',
-    /* Show on hover when section is being edited */
-    '.le-on .card,.le-on table,.le-on .info-box,.le-on .warning-box,.le-on .msg-template,.le-on .collapsible-content,.le-on .card-info,.le-on .card-warning{position:relative!important}',
-    '.le-on .card:hover>.le-blk-ctrl,.le-on table:hover>.le-blk-ctrl,.le-on .info-box:hover>.le-blk-ctrl,.le-on .warning-box:hover>.le-blk-ctrl,.le-on .msg-template:hover>.le-blk-ctrl,.le-on .collapsible-content:hover>.le-blk-ctrl,.le-on .card-info:hover>.le-blk-ctrl,.le-on .card-warning:hover>.le-blk-ctrl{display:flex}',
+    /* ── Block hover controls (📋 ✕) — always visible on hover ── */
+    '.le-blk-wrap{position:relative}',
+    '.le-blk-bar{position:absolute;top:-2px;right:-2px;display:none;gap:3px;z-index:100;padding:3px;background:rgba(255,255,255,.92);border-radius:8px;box-shadow:0 2px 10px rgba(0,0,0,.15)}',
+    'body.le-active .le-blk-wrap:hover>.le-blk-bar{display:flex}',
+    '.le-blk-bar button{width:28px;height:28px;border:none;border-radius:6px;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .12s}',
+    '.le-blk-bar button:hover{transform:scale(1.1)}',
+    '.le-bb-dup{background:#0984e3;color:#fff}',
+    '.le-bb-dup:hover{background:#0770c2}',
+    '.le-bb-del{background:#d63031;color:#fff}',
+    '.le-bb-del:hover{background:#b71c1c}',
 
-    /* Add-block button */
+    /* ── Add-block button ── */
     '.le-add-blk{display:block;width:100%;margin:14px 0 0;padding:10px;background:rgba(233,69,96,.05);border:2px dashed rgba(233,69,96,.25);border-radius:8px;color:#e94560;font-size:13px;font-weight:600;cursor:pointer;text-align:center;transition:all .15s}',
     '.le-add-blk:hover{background:rgba(233,69,96,.12)}',
 
-    /* Block type picker (popup) */
-    '.le-picker{position:fixed;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.2);padding:12px;z-index:100002;min-width:220px;font-family:"Segoe UI",sans-serif}',
+    /* ── Block picker popup ── */
+    '.le-picker{position:fixed;background:#fff;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.22);padding:12px;z-index:100002;min-width:230px;font-family:"Segoe UI",sans-serif}',
     '.le-picker-title{font-size:13px;font-weight:700;color:#333;margin-bottom:8px;padding:0 4px}',
     '.le-picker button{display:block;width:100%;padding:10px 12px;border:none;background:none;text-align:left;font-size:13px;border-radius:6px;cursor:pointer;transition:background .1s;color:#333}',
     '.le-picker button:hover{background:#f0f0f0}',
@@ -150,7 +160,6 @@
 
   document.addEventListener('mousedown', function (e) {
     if (!fmt.contains(e.target)) fmt.classList.remove('le-vis');
-    /* Close picker on outside click */
     var picker = document.querySelector('.le-picker');
     if (picker && !picker.contains(e.target) && !e.target.classList.contains('le-add-blk')) {
       picker.remove();
@@ -158,13 +167,181 @@
   });
 
   /* ============================================================
-     SECTION CONTROLS — init all sections
+     BLOCK SELECTORS  —  everything that counts as a "block"
+     ============================================================ */
+  var BLOCK_SEL = [
+    '.card', '.card-info', '.card-warning', '.card-success', '.card-accent',
+    '.card-highlight', '.info-box', '.warning-box',
+    '.msg-template',
+    'table',
+    '.collapsible',       // collapsible header (will include its content)
+    'details',
+    'ol', 'ul',           // top-level lists
+  ].join(',');
+
+  /* Elements that should NOT get block controls */
+  function isEditUI(el) {
+    return el.closest('.le-bar,.le-fmt,.le-sec-ctrl,.le-add-blk,.le-blk-bar,.le-nav-ctrl,.le-add-sec,.le-picker,.le-blk-wrap');
+  }
+
+  /* ============================================================
+     WRAP EVERY BLOCK WITH A WRAPPER that holds 📋 + ✕ buttons
+     ============================================================ */
+  function wrapBlocks(root) {
+    root.querySelectorAll(BLOCK_SEL).forEach(function (block) {
+      if (block.closest('.le-blk-wrap') || block.closest('.le-bar,.le-fmt,.le-sec-ctrl,.le-nav-ctrl,.le-add-sec,.le-picker')) return;
+      if (block.classList.contains('le-blk-wrap')) return;
+      // Skip <ol>/<ul> that are inside a .card (only wrap top-level ones)
+      if ((block.tagName === 'OL' || block.tagName === 'UL') && block.parentElement.closest('.card,.card-info,.card-warning,.card-success,.card-accent,.card-highlight,.info-box,.warning-box,.msg-template')) return;
+
+      wrapSingleBlock(block);
+    });
+
+    // Also wrap standalone <p> that are direct children of .section
+    // (paragraphs not inside any card)
+    root.querySelectorAll('.section > p, .section > h3, .section > h4').forEach(function (block) {
+      if (block.closest('.le-blk-wrap') || block.closest('.le-bar,.le-fmt,.le-sec-ctrl,.le-nav-ctrl,.le-add-sec,.le-picker')) return;
+      wrapSingleBlock(block);
+    });
+  }
+
+  function wrapSingleBlock(block) {
+    var wrap = document.createElement('div');
+    wrap.className = 'le-blk-wrap';
+    block.parentNode.insertBefore(wrap, block);
+    wrap.appendChild(block);
+
+    var barDiv = document.createElement('div');
+    barDiv.className = 'le-blk-bar';
+    barDiv.innerHTML =
+      '<button class="le-bb-dup" title="Дублировать блок">📋</button>' +
+      '<button class="le-bb-del" title="Удалить блок">✕</button>';
+    wrap.appendChild(barDiv);
+
+    barDiv.querySelector('.le-bb-dup').addEventListener('click', function (e) {
+      e.stopPropagation();
+      duplicateBlock(wrap);
+    });
+    barDiv.querySelector('.le-bb-del').addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (confirm('Удалить этот блок?')) {
+        // If collapsible header, also remove the content after it
+        var inner = wrap.firstElementChild;
+        if (inner && inner.classList.contains('collapsible')) {
+          var nextWrap = wrap.nextElementSibling;
+          if (nextWrap && nextWrap.classList.contains('le-blk-wrap')) {
+            var nextInner = nextWrap.firstElementChild;
+            if (nextInner && nextInner.classList.contains('collapsible-content')) {
+              nextWrap.remove();
+            }
+          }
+          // Also check unwrapped collapsible-content
+          var nextSib = wrap.nextElementSibling;
+          if (nextSib && nextSib.classList.contains('collapsible-content')) {
+            nextSib.remove();
+          }
+        }
+        wrap.remove();
+      }
+    });
+  }
+
+  /* ============================================================
+     DUPLICATE BLOCK
+     ============================================================ */
+  function duplicateBlock(wrap) {
+    var inner = wrap.firstElementChild;
+    if (!inner) return;
+
+    // Clone the inner element (not the wrapper)
+    var clone = inner.cloneNode(true);
+    // Remove any leftover editing artifacts
+    clone.querySelectorAll('.le-blk-bar,.le-blk-wrap,.le-sec-ctrl,.le-add-blk').forEach(function (x) { x.remove(); });
+    clone.querySelectorAll('[contenteditable]').forEach(function (x) { x.removeAttribute('contenteditable'); });
+
+    // If the block is a collapsible, also clone its content
+    if (inner.classList.contains('collapsible')) {
+      var contentAfter = wrap.nextElementSibling;
+      var contentEl = null;
+      if (contentAfter && contentAfter.classList.contains('le-blk-wrap')) {
+        contentEl = contentAfter.firstElementChild;
+      } else if (contentAfter && contentAfter.classList.contains('collapsible-content')) {
+        contentEl = contentAfter;
+      }
+
+      // Insert cloned header
+      var newWrap = document.createElement('div');
+      newWrap.className = 'le-blk-wrap';
+      newWrap.appendChild(clone);
+      var ref = contentAfter ? contentAfter.nextSibling : wrap.nextSibling;
+      wrap.parentNode.insertBefore(newWrap, ref);
+      addBarToWrap(newWrap);
+
+      // Clone and insert content too
+      if (contentEl) {
+        var contentClone = contentEl.cloneNode(true);
+        contentClone.querySelectorAll('.le-blk-bar,.le-blk-wrap').forEach(function (x) { x.remove(); });
+        contentClone.querySelectorAll('[contenteditable]').forEach(function (x) { x.removeAttribute('contenteditable'); });
+        var cw = document.createElement('div');
+        cw.className = 'le-blk-wrap';
+        cw.appendChild(contentClone);
+        newWrap.parentNode.insertBefore(cw, newWrap.nextSibling);
+        addBarToWrap(cw);
+      }
+
+      activateIfEditing(newWrap);
+      return;
+    }
+
+    // Standard block — insert clone after current wrapper
+    var newWrap2 = document.createElement('div');
+    newWrap2.className = 'le-blk-wrap';
+    newWrap2.appendChild(clone);
+    wrap.parentNode.insertBefore(newWrap2, wrap.nextSibling);
+    addBarToWrap(newWrap2);
+
+    activateIfEditing(newWrap2);
+  }
+
+  function addBarToWrap(wrap) {
+    if (wrap.querySelector('.le-blk-bar')) return;
+    var barDiv = document.createElement('div');
+    barDiv.className = 'le-blk-bar';
+    barDiv.innerHTML =
+      '<button class="le-bb-dup" title="Дублировать блок">📋</button>' +
+      '<button class="le-bb-del" title="Удалить блок">✕</button>';
+    wrap.appendChild(barDiv);
+
+    barDiv.querySelector('.le-bb-dup').addEventListener('click', function (e) {
+      e.stopPropagation();
+      duplicateBlock(wrap);
+    });
+    barDiv.querySelector('.le-bb-del').addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (confirm('Удалить этот блок?')) wrap.remove();
+    });
+  }
+
+  /** If the parent section is being edited, make cloned block editable */
+  function activateIfEditing(wrap) {
+    var section = wrap.closest('.section');
+    if (section && section.classList.contains('le-on')) {
+      makeEditable(wrap);
+    }
+  }
+
+  /* ============================================================
+     INIT ALL SECTIONS
      ============================================================ */
   document.querySelectorAll('.section').forEach(initSection);
 
   function initSection(section) {
-    if (section.querySelector('.le-sec-ctrl')) return; // already initialized
+    if (section.querySelector('.le-sec-ctrl')) return;
 
+    /* Wrap all blocks inside this section */
+    wrapBlocks(section);
+
+    /* Section controls (top-right ✏️🗑️) */
     var ctrl = document.createElement('div');
     ctrl.className = 'le-sec-ctrl';
     ctrl.innerHTML =
@@ -182,318 +359,54 @@
       if (confirm('Удалить раздел «' + title.substring(0, 60) + '»?')) deleteSection(section);
     });
 
-    /* Add-block button at bottom of section */
+    /* Add-block button at bottom */
     var ab = document.createElement('button');
     ab.className = 'le-add-blk';
     ab.textContent = '➕ Добавить блок';
     ab.addEventListener('click', function (e) { showBlockPicker(e, section); });
     section.appendChild(ab);
-
-    /* Block controls (duplicate + delete) on inner blocks */
-    addBlockControls(section);
-  }
-
-  /* ============================================================
-     BLOCK CONTROLS: duplicate + delete on each inner block
-     ============================================================ */
-  var BLOCK_SELECTORS = '.card, table, .info-box, .warning-box, .msg-template, .collapsible, .card-info, .card-warning';
-
-  function addBlockControls(section) {
-    section.querySelectorAll(BLOCK_SELECTORS).forEach(function (block) {
-      if (block.querySelector('.le-blk-ctrl')) return;
-
-      var ctrl = document.createElement('div');
-      ctrl.className = 'le-blk-ctrl';
-      ctrl.innerHTML =
-        '<button class="le-blk-b le-bb-dup" title="Дублировать блок">📋</button>' +
-        '<button class="le-blk-b le-bb-del" title="Удалить блок">✕</button>';
-      block.appendChild(ctrl);
-
-      /* Duplicate */
-      ctrl.querySelector('.le-bb-dup').addEventListener('click', function (e) {
-        e.stopPropagation();
-        duplicateBlock(block, section);
-      });
-
-      /* Delete */
-      ctrl.querySelector('.le-bb-del').addEventListener('click', function (e) {
-        e.stopPropagation();
-        if (confirm('Удалить этот блок?')) {
-          /* If it's a collapsible, also remove the content div after it */
-          if (block.classList.contains('collapsible')) {
-            var next = block.nextElementSibling;
-            if (next && next.classList.contains('collapsible-content')) next.remove();
-          }
-          block.remove();
-        }
-      });
-    });
-
-    /* Also add controls to collapsible-content blocks */
-    section.querySelectorAll('.collapsible-content').forEach(function (block) {
-      if (block.querySelector('.le-blk-ctrl')) return;
-      var ctrl = document.createElement('div');
-      ctrl.className = 'le-blk-ctrl';
-      ctrl.innerHTML =
-        '<button class="le-blk-b le-bb-dup" title="Дублировать блок">📋</button>' +
-        '<button class="le-blk-b le-bb-del" title="Удалить блок">✕</button>';
-      block.appendChild(ctrl);
-
-      ctrl.querySelector('.le-bb-dup').addEventListener('click', function (e) {
-        e.stopPropagation();
-        duplicateBlock(block, section);
-      });
-      ctrl.querySelector('.le-bb-del').addEventListener('click', function (e) {
-        e.stopPropagation();
-        /* Also remove the collapsible header before it */
-        var prev = block.previousElementSibling;
-        if (prev && prev.classList.contains('collapsible')) prev.remove();
-        block.remove();
-      });
-    });
-  }
-
-  /* ============================================================
-     DUPLICATE BLOCK
-     ============================================================ */
-  function duplicateBlock(block, section) {
-    var clone = block.cloneNode(true);
-
-    /* Remove old controls from clone */
-    clone.querySelectorAll('.le-blk-ctrl').forEach(function (c) { c.remove(); });
-
-    /* If collapsible header, also clone the content */
-    if (block.classList.contains('collapsible')) {
-      var contentAfter = block.nextElementSibling;
-      if (contentAfter && contentAfter.classList.contains('collapsible-content')) {
-        var contentClone = contentAfter.cloneNode(true);
-        contentClone.querySelectorAll('.le-blk-ctrl').forEach(function (c) { c.remove(); });
-        /* Insert clones after the content block */
-        contentAfter.parentNode.insertBefore(clone, contentAfter.nextSibling);
-        clone.parentNode.insertBefore(contentClone, clone.nextSibling);
-        /* Re-init block controls on clones */
-        addBlockControls(section);
-        /* Enable edit on cloned elements */
-        if (section.classList.contains('le-on')) {
-          makeEditable(clone);
-          makeEditable(contentClone);
-        }
-        return;
-      }
-    }
-
-    /* If collapsible-content, also clone the header before it */
-    if (block.classList.contains('collapsible-content')) {
-      var headerBefore = block.previousElementSibling;
-      if (headerBefore && headerBefore.classList.contains('collapsible')) {
-        var headerClone = headerBefore.cloneNode(true);
-        headerClone.querySelectorAll('.le-blk-ctrl').forEach(function (c) { c.remove(); });
-        block.parentNode.insertBefore(headerClone, block.nextSibling);
-        headerClone.parentNode.insertBefore(clone, headerClone.nextSibling);
-        addBlockControls(section);
-        if (section.classList.contains('le-on')) {
-          makeEditable(headerClone);
-          makeEditable(clone);
-        }
-        return;
-      }
-    }
-
-    /* Standard block: insert clone after original */
-    block.parentNode.insertBefore(clone, block.nextSibling);
-    addBlockControls(section);
-
-    if (section.classList.contains('le-on')) {
-      makeEditable(clone);
-    }
-  }
-
-  function makeEditable(el) {
-    var sel = 'h2,h3,h4,p,li,td,th,blockquote,figcaption,dt,dd,div.msg-template';
-    el.querySelectorAll(sel).forEach(function (child) {
-      if (child.closest('.le-blk-ctrl,.le-sec-ctrl,.le-add-blk,.le-bar,.le-fmt,.le-nav-ctrl')) return;
-      child.contentEditable = 'true';
-    });
-    /* If the element itself is a template or simple text */
-    if (el.matches && (el.matches('.msg-template') || el.matches('p'))) {
-      el.contentEditable = 'true';
-    }
-  }
-
-  /* ============================================================
-     BLOCK TYPE PICKER (popup near the + button)
-     ============================================================ */
-  function showBlockPicker(e, section) {
-    /* Remove any existing picker */
-    var old = document.querySelector('.le-picker');
-    if (old) old.remove();
-
-    var picker = document.createElement('div');
-    picker.className = 'le-picker';
-
-    var items = [
-      { icon: '📝', label: 'Текстовый абзац', type: 'text' },
-      { icon: '📦', label: 'Карточка', type: 'card' },
-      { icon: 'ℹ️', label: 'Инфо-блок', type: 'info' },
-      { icon: '⚠️', label: 'Предупреждение', type: 'warning' },
-      { icon: '📋', label: 'Шаблон сообщения', type: 'template' },
-      { icon: '📊', label: 'Таблица', type: 'table' },
-      { icon: '▼', label: 'Раскрывающийся блок', type: 'collapsible' },
-      { icon: '📄', label: 'Нумерованный список', type: 'ol' },
-      { icon: '•', label: 'Маркированный список', type: 'ul' },
-    ];
-
-    picker.innerHTML = '<div class="le-picker-title">Тип блока:</div>' +
-      items.map(function (it) {
-        return '<button data-t="' + it.type + '"><span>' + it.icon + '</span>' + it.label + '</button>';
-      }).join('');
-
-    /* Position near the button */
-    var rect = e.target.getBoundingClientRect();
-    picker.style.top = (rect.top - items.length * 40 - 20) + 'px';
-    picker.style.left = Math.max(8, rect.left) + 'px';
-    /* Fallback: if off-screen top, show below */
-    if (parseInt(picker.style.top) < 60) {
-      picker.style.top = (rect.bottom + 8) + 'px';
-    }
-
-    document.body.appendChild(picker);
-
-    picker.querySelectorAll('button[data-t]').forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        createBlock(btn.dataset.t, section);
-        picker.remove();
-      });
-    });
-  }
-
-  function createBlock(type, section) {
-    var el;
-
-    switch (type) {
-      case 'card':
-        el = document.createElement('div');
-        el.className = 'card';
-        el.innerHTML = '<h4 contenteditable="true">Заголовок</h4><p contenteditable="true">Содержимое...</p>';
-        break;
-      case 'info':
-        el = document.createElement('div');
-        el.className = 'card card-info';
-        el.innerHTML = '<h4 contenteditable="true">ℹ️ Информация</h4><p contenteditable="true">Содержимое...</p>';
-        break;
-      case 'warning':
-        el = document.createElement('div');
-        el.className = 'card card-warning';
-        el.innerHTML = '<h4 contenteditable="true">⚠️ Внимание</h4><p contenteditable="true">Содержимое...</p>';
-        break;
-      case 'template':
-        el = document.createElement('div');
-        el.className = 'msg-template';
-        el.contentEditable = 'true';
-        el.innerHTML = '<button class="copy-btn" onclick="copyTemplate(this)" contenteditable="false">📋 Копировать</button>Текст шаблона...<br>Вторая строка...<br>';
-        break;
-      case 'table':
-        el = document.createElement('div');
-        el.style.overflowX = 'auto';
-        el.innerHTML =
-          '<table><thead><tr>' +
-          '<th contenteditable="true">Столбец 1</th><th contenteditable="true">Столбец 2</th><th contenteditable="true">Столбец 3</th>' +
-          '</tr></thead><tbody><tr>' +
-          '<td contenteditable="true">—</td><td contenteditable="true">—</td><td contenteditable="true">—</td>' +
-          '</tr></tbody></table>';
-        break;
-      case 'collapsible':
-        /* Create header + content pair */
-        var header = document.createElement('div');
-        header.className = 'collapsible';
-        header.setAttribute('onclick', 'toggleCollapse(this)');
-        header.textContent = '📌 Заголовок раскрывающегося блока';
-        var content = document.createElement('div');
-        content.className = 'collapsible-content show';
-        content.innerHTML = '<p contenteditable="true">Содержимое...</p>';
-
-        var addBtn = section.querySelector('.le-add-blk');
-        if (addBtn) {
-          section.insertBefore(header, addBtn);
-          section.insertBefore(content, addBtn);
-        } else {
-          section.appendChild(header);
-          section.appendChild(content);
-        }
-        addBlockControls(section);
-        if (!section.classList.contains('le-on')) startEdit(section);
-        return; /* Already inserted */
-      case 'ol':
-        el = document.createElement('ol');
-        el.innerHTML = '<li contenteditable="true">Пункт 1</li><li contenteditable="true">Пункт 2</li><li contenteditable="true">Пункт 3</li>';
-        break;
-      case 'ul':
-        el = document.createElement('ul');
-        el.innerHTML = '<li contenteditable="true">Пункт 1</li><li contenteditable="true">Пункт 2</li><li contenteditable="true">Пункт 3</li>';
-        break;
-      default: /* text */
-        el = document.createElement('p');
-        el.contentEditable = 'true';
-        el.textContent = 'Новый текст — кликните для редактирования...';
-    }
-
-    if (!el) return;
-
-    var addBtn = section.querySelector('.le-add-blk');
-    if (addBtn) section.insertBefore(el, addBtn);
-    else section.appendChild(el);
-
-    addBlockControls(section);
-    if (!section.classList.contains('le-on')) startEdit(section);
-
-    var editable = el.querySelector('[contenteditable="true"]') || el;
-    if (editable.contentEditable === 'true') editable.focus();
   }
 
   /* ============================================================
      TOGGLE SECTION EDITING
      ============================================================ */
   function toggleEdit(section) {
-    if (section.classList.contains('le-on')) {
-      finishEdit(section);
-    } else {
-      startEdit(section);
-    }
+    if (section.classList.contains('le-on')) finishEdit(section);
+    else startEdit(section);
   }
 
   function startEdit(section) {
     document.querySelectorAll('.section.le-on').forEach(function (s) {
       if (s !== section) finishEdit(s);
     });
-
     section.classList.add('le-on');
 
-    /* Make all text elements editable */
-    var sel = 'h2,h3,h4,p,li,td,th,blockquote,figcaption,dt,dd';
-    section.querySelectorAll(sel).forEach(function (el) {
-      if (el.closest('.le-sec-ctrl,.le-add-blk,.le-bar,.le-fmt,.le-nav-ctrl,.le-blk-ctrl,.le-add-sec,.le-picker,.copy-btn')) return;
+    makeEditable(section);
+
+    section.classList.add('active');
+    var btn = section.querySelector('.le-btn-edit');
+    if (btn) btn.textContent = '✅';
+  }
+
+  function makeEditable(root) {
+    var sel = 'h2,h3,h4,p,li,td,th,blockquote,figcaption,dt,dd,summary';
+    root.querySelectorAll(sel).forEach(function (el) {
+      if (el.closest('.le-sec-ctrl,.le-add-blk,.le-bar,.le-fmt,.le-nav-ctrl,.le-blk-bar,.le-add-sec,.le-picker,.copy-btn')) return;
       el.contentEditable = 'true';
     });
 
-    /* Also make msg-template divs editable (the text inside them) */
-    section.querySelectorAll('.msg-template').forEach(function (tmpl) {
+    /* Template divs */
+    root.querySelectorAll('.msg-template').forEach(function (tmpl) {
       tmpl.contentEditable = 'true';
-      /* Keep copy button non-editable */
-      tmpl.querySelectorAll('.copy-btn').forEach(function (btn) { btn.contentEditable = 'false'; });
+      tmpl.querySelectorAll('.copy-btn').forEach(function (b) { b.contentEditable = 'false'; });
     });
 
     /* Collapsible headers */
-    section.querySelectorAll('.collapsible').forEach(function (col) {
+    root.querySelectorAll('.collapsible').forEach(function (col) {
       col.contentEditable = 'true';
-      /* Disable onclick toggle while editing */
       col.removeAttribute('onclick');
       col.dataset.leOldOnclick = 'toggleCollapse(this)';
     });
-
-    section.classList.add('active');
-
-    var btn = section.querySelector('.le-btn-edit');
-    if (btn) btn.textContent = '✅';
   }
 
   function finishEdit(section) {
@@ -502,7 +415,6 @@
       el.removeAttribute('contenteditable');
     });
 
-    /* Restore collapsible onclick */
     section.querySelectorAll('.collapsible').forEach(function (col) {
       if (col.dataset.leOldOnclick) {
         col.setAttribute('onclick', col.dataset.leOldOnclick);
@@ -520,20 +432,15 @@
     var sectionId = section.id.replace('sec-', '');
     var heading = section.querySelector('h2');
     if (!heading) return;
-
     var navLink = document.querySelector('.sidebar nav a[data-section="' + sectionId + '"]');
     if (!navLink) return;
-
     var iconSpan = navLink.querySelector('.icon');
-    var headingText = heading.textContent.trim();
-    var cleanText = headingText.replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{FE00}-\u{FEFF}\u{1F900}-\u{1F9FF}\u{200D}\u{20E3}]+\s*/u, '');
-    if (!cleanText) cleanText = headingText;
-
+    var txt = heading.textContent.trim().replace(/^[\u{1F000}-\u{1FFFF}\u{2600}-\u{27BF}\u{FE00}-\u{FEFF}\u{1F900}-\u{1F9FF}\u{200D}\u{20E3}]+\s*/u, '');
+    if (!txt) txt = heading.textContent.trim();
     var iconHtml = iconSpan ? iconSpan.outerHTML : '';
     var navCtrl = navLink.querySelector('.le-nav-ctrl');
     var navCtrlHtml = navCtrl ? navCtrl.outerHTML : '';
-    navLink.innerHTML = iconHtml + ' ' + cleanText + navCtrlHtml;
-
+    navLink.innerHTML = iconHtml + ' ' + txt + navCtrlHtml;
     reattachNavCtrlEvents(navLink);
   }
 
@@ -550,10 +457,10 @@
     if (dash) {
       document.querySelectorAll('.section').forEach(function (s) { s.classList.remove('active'); });
       dash.classList.add('active');
-      var dashNav = document.querySelector('.sidebar nav a[data-section="dashboard"]');
-      if (dashNav) {
+      var dn = document.querySelector('.sidebar nav a[data-section="dashboard"]');
+      if (dn) {
         document.querySelectorAll('.sidebar nav a').forEach(function (a) { a.classList.remove('active'); });
-        dashNav.classList.add('active');
+        dn.classList.add('active');
       }
     }
   }
@@ -576,7 +483,6 @@
     main.appendChild(section);
     initSection(section);
 
-    /* Create nav link in sidebar */
     var navEl = document.querySelector('.sidebar nav');
     var addBtn = navEl.querySelector('.le-add-sec');
     var link = document.createElement('a');
@@ -584,7 +490,6 @@
     link.dataset.section = id;
     link.innerHTML = '<span class="icon">📌</span> Новый раздел';
     link.style.position = 'relative';
-
     appendNavControls(link);
     link.addEventListener('click', function (e) {
       e.preventDefault();
@@ -593,7 +498,6 @@
 
     document.querySelectorAll('.sidebar nav a').forEach(function (a) { a.classList.remove('active'); });
     link.classList.add('active');
-
     if (addBtn) navEl.insertBefore(link, addBtn);
     else navEl.appendChild(link);
 
@@ -610,7 +514,149 @@
   }
 
   /* ============================================================
-     SIDEBAR: ↑↓🗑️ controls on each nav link
+     BLOCK TYPE PICKER
+     ============================================================ */
+  function showBlockPicker(e, section) {
+    var old = document.querySelector('.le-picker');
+    if (old) old.remove();
+
+    var picker = document.createElement('div');
+    picker.className = 'le-picker';
+
+    var items = [
+      { icon: '📝', label: 'Текст', type: 'text' },
+      { icon: '📦', label: 'Карточка', type: 'card' },
+      { icon: 'ℹ️', label: 'Инфо-блок', type: 'info' },
+      { icon: '⚠️', label: 'Предупреждение', type: 'warning' },
+      { icon: '✅', label: 'Карточка-акцент', type: 'success' },
+      { icon: '💬', label: 'Шаблон сообщения', type: 'template' },
+      { icon: '📊', label: 'Таблица', type: 'table' },
+      { icon: '▼', label: 'Раскрывающийся блок', type: 'collapsible' },
+      { icon: '📄', label: 'Нумерованный список', type: 'ol' },
+      { icon: '•', label: 'Маркированный список', type: 'ul' },
+    ];
+
+    picker.innerHTML = '<div class="le-picker-title">Тип блока:</div>' +
+      items.map(function (it) {
+        return '<button data-t="' + it.type + '"><span>' + it.icon + '</span>' + it.label + '</button>';
+      }).join('');
+
+    var rect = e.target.getBoundingClientRect();
+    picker.style.top = (rect.top - items.length * 40 - 20) + 'px';
+    picker.style.left = Math.max(8, rect.left) + 'px';
+    if (parseInt(picker.style.top) < 60) {
+      picker.style.top = (rect.bottom + 8) + 'px';
+    }
+
+    document.body.appendChild(picker);
+
+    picker.querySelectorAll('button[data-t]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        createBlock(btn.dataset.t, section);
+        picker.remove();
+      });
+    });
+  }
+
+  function createBlock(type, section) {
+    var el;
+
+    switch (type) {
+      case 'card':
+        el = document.createElement('div');
+        el.className = 'card';
+        el.innerHTML = '<h4>Заголовок</h4><p>Содержимое...</p>';
+        break;
+      case 'info':
+        el = document.createElement('div');
+        el.className = 'card card-info';
+        el.innerHTML = '<h4>ℹ️ Информация</h4><p>Содержимое...</p>';
+        break;
+      case 'warning':
+        el = document.createElement('div');
+        el.className = 'card card-warning';
+        el.innerHTML = '<h4>⚠️ Внимание</h4><p>Содержимое...</p>';
+        break;
+      case 'success':
+        el = document.createElement('div');
+        el.className = 'card card-success';
+        el.innerHTML = '<h4>✅ Акцент</h4><p>Содержимое...</p>';
+        break;
+      case 'template':
+        el = document.createElement('div');
+        el.className = 'msg-template';
+        el.innerHTML = '<button class="copy-btn" onclick="copyTemplate(this)">📋 Копировать</button>Текст шаблона...<br>Вторая строка...<br>';
+        break;
+      case 'table':
+        el = document.createElement('table');
+        el.innerHTML =
+          '<thead><tr><th>Столбец 1</th><th>Столбец 2</th><th>Столбец 3</th></tr></thead>' +
+          '<tbody><tr><td>—</td><td>—</td><td>—</td></tr></tbody>';
+        break;
+      case 'collapsible':
+        var header = document.createElement('div');
+        header.className = 'collapsible';
+        header.setAttribute('onclick', 'toggleCollapse(this)');
+        header.textContent = '📌 Заголовок блока';
+        var content = document.createElement('div');
+        content.className = 'collapsible-content show';
+        content.innerHTML = '<p>Содержимое...</p>';
+
+        var addBtn = section.querySelector('.le-add-blk');
+        if (addBtn) {
+          // Wrap each and insert
+          var w1 = document.createElement('div'); w1.className = 'le-blk-wrap';
+          w1.appendChild(header);
+          var w2 = document.createElement('div'); w2.className = 'le-blk-wrap';
+          w2.appendChild(content);
+          section.insertBefore(w1, addBtn);
+          section.insertBefore(w2, addBtn);
+          addBarToWrap(w1);
+          addBarToWrap(w2);
+        } else {
+          section.appendChild(header);
+          section.appendChild(content);
+          wrapBlocks(section);
+        }
+        if (!section.classList.contains('le-on')) startEdit(section);
+        return;
+      case 'ol':
+        el = document.createElement('ol');
+        el.innerHTML = '<li>Пункт 1</li><li>Пункт 2</li><li>Пункт 3</li>';
+        break;
+      case 'ul':
+        el = document.createElement('ul');
+        el.innerHTML = '<li>Пункт 1</li><li>Пункт 2</li><li>Пункт 3</li>';
+        break;
+      default:
+        el = document.createElement('p');
+        el.textContent = 'Новый текст — кликните для редактирования...';
+    }
+
+    if (!el) return;
+
+    /* Wrap it */
+    var wrap = document.createElement('div');
+    wrap.className = 'le-blk-wrap';
+    wrap.appendChild(el);
+
+    var addBtn = section.querySelector('.le-add-blk');
+    if (addBtn) section.insertBefore(wrap, addBtn);
+    else section.appendChild(wrap);
+
+    addBarToWrap(wrap);
+    if (!section.classList.contains('le-on')) startEdit(section);
+    else makeEditable(wrap);
+
+    var editable = el.querySelector('h4,p,li,td,th') || el;
+    if (editable) {
+      editable.contentEditable = 'true';
+      editable.focus();
+    }
+  }
+
+  /* ============================================================
+     SIDEBAR: ↑ ↓ ✕ on each nav link + ➕ Add section
      ============================================================ */
   var navEl = document.querySelector('.sidebar nav');
 
@@ -619,7 +665,6 @@
     appendNavControls(link);
   });
 
-  /* ➕ Add Section at the bottom */
   var addSecBtn = document.createElement('button');
   addSecBtn.className = 'le-add-sec';
   addSecBtn.textContent = '➕ Добавить раздел';
@@ -628,13 +673,12 @@
 
   function appendNavControls(link) {
     if (link.querySelector('.le-nav-ctrl')) return;
-
     var ctrl = document.createElement('div');
     ctrl.className = 'le-nav-ctrl';
     ctrl.innerHTML =
       '<button class="le-nav-b" data-d="up" title="Вверх">↑</button>' +
       '<button class="le-nav-b" data-d="down" title="Вниз">↓</button>' +
-      '<button class="le-nav-b le-nav-del" data-d="del" title="Удалить раздел">✕</button>';
+      '<button class="le-nav-b le-nav-del" data-d="del" title="Удалить">✕</button>';
     link.appendChild(ctrl);
     reattachNavCtrlEvents(link);
   }
@@ -646,29 +690,27 @@
       nb.addEventListener('click', function (e) {
         e.preventDefault();
         e.stopPropagation();
-        var dir = nb.dataset.d;
-        if (dir === 'del') {
-          /* Delete section from sidebar */
+        var d = nb.dataset.d;
+        if (d === 'del') {
           var sectionId = link.dataset.section;
           var section = document.getElementById('sec-' + sectionId);
           var title = section?.querySelector('h2')?.textContent || sectionId;
           if (confirm('Удалить раздел «' + title.substring(0, 60) + '»?')) {
             if (section) section.remove();
             link.remove();
-            /* Show dashboard */
             var dash = document.getElementById('sec-dashboard');
             if (dash) {
               document.querySelectorAll('.section').forEach(function (s) { s.classList.remove('active'); });
               dash.classList.add('active');
-              var dashNav = document.querySelector('.sidebar nav a[data-section="dashboard"]');
-              if (dashNav) {
+              var dn = document.querySelector('.sidebar nav a[data-section="dashboard"]');
+              if (dn) {
                 document.querySelectorAll('.sidebar nav a').forEach(function (a) { a.classList.remove('active'); });
-                dashNav.classList.add('active');
+                dn.classList.add('active');
               }
             }
           }
         } else {
-          moveSection(link, dir);
+          moveSection(link, d);
         }
       });
     });
@@ -677,15 +719,14 @@
   function moveSection(navLink, dir) {
     var sectionId = navLink.dataset.section;
     var section = document.getElementById('sec-' + sectionId);
-
     if (dir === 'up') {
       var prev = navLink.previousElementSibling;
       while (prev && prev.tagName !== 'A') prev = prev.previousElementSibling;
       if (prev) {
         navLink.parentNode.insertBefore(navLink, prev);
         if (section) {
-          var prevSec = document.getElementById('sec-' + prev.dataset.section);
-          if (prevSec) section.parentNode.insertBefore(section, prevSec);
+          var ps = document.getElementById('sec-' + prev.dataset.section);
+          if (ps) section.parentNode.insertBefore(section, ps);
         }
       }
     } else {
@@ -694,40 +735,53 @@
       if (next) {
         navLink.parentNode.insertBefore(next, navLink);
         if (section) {
-          var nextSec = document.getElementById('sec-' + next.dataset.section);
-          if (nextSec) nextSec.parentNode.insertBefore(nextSec, section);
+          var ns = document.getElementById('sec-' + next.dataset.section);
+          if (ns) ns.parentNode.insertBefore(ns, section);
         }
       }
     }
   }
 
-  /* ============================================================
-     NAVIGATE TO SECTION
-     ============================================================ */
   function showSection(sectionId) {
     document.querySelectorAll('.section').forEach(function (s) { s.classList.remove('active'); });
     document.querySelectorAll('.sidebar nav a').forEach(function (a) { a.classList.remove('active'); });
     var sec = document.getElementById('sec-' + sectionId);
     if (sec) sec.classList.add('active');
-    var link = document.querySelector('.sidebar nav a[data-section="' + sectionId + '"]');
-    if (link) link.classList.add('active');
+    var lnk = document.querySelector('.sidebar nav a[data-section="' + sectionId + '"]');
+    if (lnk) lnk.classList.add('active');
   }
 
   /* ============================================================
      CLEANUP & GET HTML
      ============================================================ */
   function cleanupAndGetHtml() {
+    /* Finish all edits */
     document.querySelectorAll('.section.le-on').forEach(function (s) { finishEdit(s); });
 
-    var selectors = '.le-bar,.le-fmt,.le-sec-ctrl,.le-add-blk,.le-nav-ctrl,.le-add-sec,.le-blk-ctrl,.le-picker';
-    document.querySelectorAll(selectors).forEach(function (el) { el.remove(); });
+    /* Unwrap all le-blk-wrap divs (move children up) */
+    document.querySelectorAll('.le-blk-wrap').forEach(function (wrap) {
+      var parent = wrap.parentNode;
+      while (wrap.firstChild) {
+        if (wrap.firstChild.classList && wrap.firstChild.classList.contains('le-blk-bar')) {
+          wrap.removeChild(wrap.firstChild);
+        } else {
+          parent.insertBefore(wrap.firstChild, wrap);
+        }
+      }
+      parent.removeChild(wrap);
+    });
+
+    /* Remove all editing UI elements */
+    var uiSel = '.le-bar,.le-fmt,.le-sec-ctrl,.le-add-blk,.le-nav-ctrl,.le-add-sec,.le-blk-bar,.le-blk-ctrl,.le-picker';
+    document.querySelectorAll(uiSel).forEach(function (el) { el.remove(); });
     document.getElementById('le-css')?.remove();
 
+    /* Remove contenteditable */
     document.querySelectorAll('[contenteditable]').forEach(function (el) {
       el.removeAttribute('contenteditable');
     });
 
-    /* Remove all le- data attributes */
+    /* Restore collapsible onclick */
     document.querySelectorAll('[data-le-old-onclick]').forEach(function (el) {
       el.setAttribute('onclick', el.dataset.leOldOnclick);
       delete el.dataset.leOldOnclick;

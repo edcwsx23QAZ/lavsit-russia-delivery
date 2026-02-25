@@ -24,8 +24,14 @@ export default function WikiPage() {
   /* ── postMessage listener (save / cancel from iframe editing script) ── */
   useEffect(() => {
     const handler = (e: MessageEvent) => {
-      if (e.data?.type === 'LAVSIT_SAVE' && e.data.html) {
-        saveInstruction(e.data.html);
+      if (e.data?.type === 'LAVSIT_SAVE') {
+        if (e.data.html && typeof e.data.html === 'string' && e.data.html.length > 100) {
+          console.log('[wiki] Received save, HTML length:', e.data.html.length);
+          saveInstruction(e.data.html);
+        } else {
+          console.error('[wiki] LAVSIT_SAVE received but html is empty/invalid');
+          alert('❌ Ошибка: пустое содержимое. Попробуйте ещё раз.');
+        }
       } else if (e.data?.type === 'LAVSIT_CANCEL') {
         setEditMode(false);
         reloadIframe();
@@ -39,6 +45,7 @@ export default function WikiPage() {
   const saveInstruction = async (html: string) => {
     setIsSaving(true);
     try {
+      console.log('[wiki] Sending PUT, content length:', html.length);
       const res = await fetch('/api/wiki/instruction', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -47,11 +54,11 @@ export default function WikiPage() {
           changeNote: 'Обновление через визуальный редактор',
         }),
       });
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error || 'Ошибка сохранения');
-      }
       const result = await res.json();
+      if (!res.ok) {
+        throw new Error(result.error || 'Ошибка сохранения (HTTP ' + res.status + ')');
+      }
+      console.log('[wiki] Saved successfully, version:', result.version);
       alert(`✅ Сохранено! Версия ${result.version}`);
       setEditMode(false);
       reloadIframe();

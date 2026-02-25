@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
   const versionId = searchParams.get('versionId');
 
   try {
-    const page = await prisma.wikiPage.findUnique({
+    const page = await prisma.wikiPage.findFirst({
       where: { slug: INSTRUCTION_SLUG },
     });
 
@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get current page
-    const page = await prisma.wikiPage.findUnique({
+    const page = await prisma.wikiPage.findFirst({
       where: { slug: INSTRUCTION_SLUG },
       include: {
         versions: {
@@ -104,8 +104,8 @@ export async function POST(request: NextRequest) {
 
     // Update page content
     await prisma.wikiPage.update({
-      where: { slug: INSTRUCTION_SLUG },
-      data: { content: version.content },
+      where: { id: page.id },
+      data: { content: version.content, updatedAt: new Date() },
     });
 
     // Create new version (restore point)
