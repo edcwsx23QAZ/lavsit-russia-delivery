@@ -23,26 +23,25 @@
   var css = document.createElement('style');
   css.id = 'le-css';
   css.textContent = [
-    /* ── Top Toolbar ── */
-    '.le-bar{position:fixed;top:0;left:0;right:0;height:54px;background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;display:flex;align-items:center;padding:0 20px;gap:14px;z-index:100000;box-shadow:0 4px 20px rgba(0,0,0,.35);font-family:"Segoe UI",sans-serif}',
+    /* ── Bottom Toolbar (always visible) ── */
+    '.le-bar{position:fixed;bottom:0;left:0;right:0;height:56px;background:linear-gradient(135deg,#1a1a2e,#16213e);color:#fff;display:flex;align-items:center;padding:0 24px;gap:14px;z-index:100000;box-shadow:0 -4px 24px rgba(0,0,0,.35);font-family:"Segoe UI",sans-serif}',
     '.le-bar-label{font-size:14px;font-weight:600;opacity:.92;margin-right:auto;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
-    '.le-bar button{padding:8px 20px;border:none;border-radius:7px;cursor:pointer;font-weight:700;font-size:13px;transition:all .15s;white-space:nowrap}',
-    '.le-bar .le-save{background:#00b894;color:#fff}',
-    '.le-bar .le-save:hover{background:#00a07a}',
+    '.le-bar button{padding:10px 24px;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-size:14px;transition:all .15s;white-space:nowrap}',
+    '.le-bar .le-save{background:#00b894;color:#fff;font-size:15px}',
+    '.le-bar .le-save:hover{background:#00a07a;transform:scale(1.03)}',
     '.le-bar .le-cancel{background:rgba(255,255,255,.13);color:#fff;border:1px solid rgba(255,255,255,.22)!important}',
     '.le-bar .le-cancel:hover{background:rgba(255,255,255,.22)}',
 
-    /* Offset page */
-    'body.le-active{padding-top:54px!important}',
-    'body.le-active .sidebar{top:54px!important;height:calc(100vh - 54px)!important}',
+    /* Offset page so content is not hidden behind bottom bar */
+    'body.le-active{padding-bottom:60px!important}',
 
     /* ── Section states ── */
     'body.le-active .section{position:relative!important;transition:box-shadow .2s}',
     'body.le-active .section:hover{box-shadow:0 0 0 2px rgba(233,69,96,.3);border-radius:8px}',
     'body.le-active .section.le-on{outline:2.5px solid #e94560;outline-offset:4px;border-radius:8px}',
 
-    /* ── Section top-right controls ── */
-    '.le-sec-ctrl{position:absolute;top:6px;right:6px;display:none;gap:5px;z-index:1000}',
+    /* ── Section controls (sticky: follows scroll inside section) ── */
+    '.le-sec-ctrl{position:sticky;top:8px;float:right;display:none;gap:5px;z-index:1000;margin-bottom:-40px}',
     'body.le-active .section:hover .le-sec-ctrl,body.le-active .section.le-on .le-sec-ctrl{display:flex}',
     '.le-btn{width:34px;height:34px;border:none;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:0 2px 8px rgba(0,0,0,.18);transition:transform .12s}',
     '.le-btn:hover{transform:scale(1.12)}',
@@ -103,10 +102,10 @@
   var bar = document.createElement('div');
   bar.className = 'le-bar';
   bar.innerHTML =
-    '<div class="le-bar-label">✏️ Режим редактирования — нажмите ✏️ на разделе, затем кликайте по тексту</div>' +
-    '<button class="le-save">💾 Сохранить</button>' +
-    '<button class="le-cancel">✕ Отмена</button>';
-  document.body.prepend(bar);
+    '<div class="le-bar-label">✏️ Нажмите ✏️ на разделе → кликайте по тексту для правки</div>' +
+    '<button class="le-cancel">✕ Отмена</button>' +
+    '<button class="le-save">💾 Сохранить</button>';
+  document.body.appendChild(bar);
 
   /* ============================================================
      FLOATING FORMAT BAR
@@ -341,13 +340,13 @@
     /* Wrap all blocks inside this section */
     wrapBlocks(section);
 
-    /* Section controls (top-right ✏️🗑️) */
+    /* Section controls (sticky float-right ✏️🗑️) — prepend so they float at top */
     var ctrl = document.createElement('div');
     ctrl.className = 'le-sec-ctrl';
     ctrl.innerHTML =
       '<button class="le-btn le-btn-edit" title="Редактировать секцию">✏️</button>' +
       '<button class="le-btn le-btn-del" title="Удалить раздел">🗑️</button>';
-    section.appendChild(ctrl);
+    section.prepend(ctrl);
 
     ctrl.querySelector('.le-btn-edit').addEventListener('click', function (e) {
       e.stopPropagation();
@@ -789,7 +788,7 @@
 
     document.body.classList.remove('le-active');
     document.querySelectorAll('.le-on').forEach(function (el) { el.classList.remove('le-on'); });
-    document.body.style.paddingTop = '';
+    document.body.style.paddingBottom = '';
 
     var scriptTag = document.getElementById('le-script');
     if (scriptTag) scriptTag.remove();

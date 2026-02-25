@@ -7,10 +7,11 @@ const INSTRUCTION_SLUG = 'instruction-html';
 
 /**
  * Ensures wiki_pages and wiki_versions tables exist.
- * Runs raw SQL with IF NOT EXISTS — safe to call every time.
+ * Split into individual statements for compatibility with PgBouncer/Supabase.
  */
-async function ensureTablesExist() {
+async function ensureTablesExist(): Promise<boolean> {
   try {
+    // 1. Create wiki_pages table
     await prisma.$executeRawUnsafe(`
       CREATE TABLE IF NOT EXISTS "wiki_pages" (
         "id" TEXT NOT NULL,
@@ -25,9 +26,16 @@ async function ensureTablesExist() {
         "updatedBy" TEXT,
         "isActive" BOOLEAN NOT NULL DEFAULT true,
         CONSTRAINT "wiki_pages_pkey" PRIMARY KEY ("id")
-      );
-      CREATE UNIQUE INDEX IF NOT EXISTS "wiki_pages_slug_key" ON "wiki_pages"("slug");
+      )
+    `);
 
+    // 2. Unique index on slug
+    await prisma.$executeRawUnsafe(
+      `CREATE UNIQUE INDEX IF NOT EXISTS "wiki_pages_slug_key" ON "wiki_pages"("slug")`
+    );
+
+    // 3. Create wiki_versions table
+    await prisma.$executeRawUnsafe(`
       CREATE TABLE IF NOT EXISTS "wiki_versions" (
         "id" TEXT NOT NULL,
         "pageId" TEXT NOT NULL,
@@ -38,30 +46,31 @@ async function ensureTablesExist() {
         "createdBy" TEXT,
         "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
         CONSTRAINT "wiki_versions_pkey" PRIMARY KEY ("id")
-      );
-      CREATE INDEX IF NOT EXISTS "wiki_versions_pageId_idx" ON "wiki_versions"("pageId");
-      CREATE UNIQUE INDEX IF NOT EXISTS "wiki_versions_pageId_version_key" ON "wiki_versions"("pageId", "version");
-
-      DO $$ BEGIN
-        IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'wiki_versions_pageId_fkey') THEN
-          ALTER TABLE "wiki_versions" ADD CONSTRAINT "wiki_versions_pageId_fkey"
-            FOREIGN KEY ("pageId") REFERENCES "wiki_pages"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-        END IF;
-      END $$;
+      )
     `);
+
+    // 4. Indexes on wiki_versions
+    await prisma.$executeRawUnsafe(
+      `CREATE INDEX IF NOT EXISTS "wiki_versions_pageId_idx" ON "wiki_versions"("pageId")`
+    );
+    await prisma.$executeRawUnsafe(
+      `CREATE UNIQUE INDEX IF NOT EXISTS "wiki_versions_pageId_version_key" ON "wiki_versions"("pageId", "version")`
+    );
+
+    console.log('[wiki] Tables ensured successfully');
+    return true;
   } catch (e) {
-    // Table might already exist or DB doesn't support some syntax — that's fine
-    console.warn('ensureTablesExist notice:', (e as Error).message?.substring(0, 200));
+    console.error('[wiki] ensureTablesExist FAILED:', (e as Error).message);
+    return false;
   }
 }
 
-// Track if we've already ensured tables in this runtime
 let tablesEnsured = false;
 
 async function ensureOnce() {
   if (!tablesEnsured) {
-    await ensureTablesExist();
-    tablesEnsured = true;
+    const ok = await ensureTablesExist();
+    if (ok) tablesEnsured = true;
   }
 }
 
@@ -94,7 +103,7 @@ export async function GET(request: NextRequest) {
       });
     }
   } catch (error) {
-    console.error('DB error, falling back to static file:', error);
+    console.error('[wiki] DB error, falling back to static file:', error);
   }
 
   // Fallback to static file
@@ -118,7 +127,7 @@ export async function GET(request: NextRequest) {
       },
     });
   } catch (fileError) {
-    console.error('Error reading static instruction file:', fileError);
+    console.error('[wiki] Error reading static instruction file:', fileError);
     return new NextResponse('<h1>Инструкция не найдена</h1>', {
       status: 404,
       headers: { 'Content-Type': 'text/html; charset=utf-8' },
@@ -141,6 +150,8 @@ export async function PUT(request: NextRequest) {
       );
     }
 
+    console.log('[wiki] PUT: content length =', content.length);
+
     // Try to find existing page
     let page = await prisma.wikiPage.findFirst({
       where: { slug: INSTRUCTION_SLUG },
@@ -154,6 +165,7 @@ export async function PUT(request: NextRequest) {
 
     if (page) {
       const nextVersion = (page.versions[0]?.version || 0) + 1;
+      console.log('[wiki] Updating page, next version:', nextVersion);
 
       const updatedPage = await prisma.wikiPage.update({
         where: { id: page.id },
@@ -185,13 +197,14 @@ export async function PUT(request: NextRequest) {
         });
       }
 
+      console.log('[wiki] Updated successfully, version:', nextVersion);
       return NextResponse.json({
         id: updatedPage.id,
         updatedAt: updatedPage.updatedAt,
         version: nextVersion,
       });
     } else {
-      // Create new page with cuid
+      console.log('[wiki] Creating new page');
       const id = generateCuid();
       const newPage = await prisma.wikiPage.create({
         data: {
@@ -214,27 +227,21 @@ export async function PUT(request: NextRequest) {
         },
       });
 
+      console.log('[wiki] Created successfully, version: 1');
       return NextResponse.json(
-        {
-          id: newPage.id,
-          updatedAt: newPage.updatedAt,
-          version: 1,
-        },
+        { id: newPage.id, updatedAt: newPage.updatedAt, version: 1 },
         { status: 201 }
       );
     }
   } catch (error: any) {
-    console.error('Error saving instruction:', error);
+    console.error('[wiki] Error saving instruction:', error);
     return NextResponse.json(
-      {
-        error: 'Ошибка сохранения: ' + (error.message || 'Неизвестная ошибка'),
-      },
+      { error: 'Ошибка сохранения: ' + (error.message || 'Неизвестная ошибка') },
       { status: 500 }
     );
   }
 }
 
-/** Simple cuid-like id generator */
 function generateCuid(): string {
   const ts = Date.now().toString(36);
   const rand = Math.random().toString(36).substring(2, 10);
