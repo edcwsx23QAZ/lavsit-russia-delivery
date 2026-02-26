@@ -6,7 +6,7 @@ const DADATA_SECRET_KEY = '90f3541a30ef6e1c40e665b69f1aa6d74242c3f2';
 // Нормализация адреса через DaData
 export async function POST(request: NextRequest) {
   try {
-    const { address, type = 'clean' } = await request.json();
+    const { address, type = 'clean', bounds, locations, restrict_value } = await request.json();
 
     if (!address) {
       return NextResponse.json(
@@ -33,10 +33,18 @@ export async function POST(request: NextRequest) {
     } else if (type === 'suggest') {
       // Подсказки адресов
       url = 'https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address';
-      body = JSON.stringify({
+      const suggestBody: any = {
         query: address,
         count: 10
-      });
+      };
+      // Поддержка фильтрации (city bounds, locations, restrict_value)
+      if (bounds) {
+        if (bounds.from) suggestBody.from_bound = { value: bounds.from };
+        if (bounds.to) suggestBody.to_bound = { value: bounds.to };
+      }
+      if (locations) suggestBody.locations = locations;
+      if (restrict_value !== undefined) suggestBody.restrict_value = restrict_value;
+      body = JSON.stringify(suggestBody);
     }
 
     console.log('🌐 DaData URL:', url);

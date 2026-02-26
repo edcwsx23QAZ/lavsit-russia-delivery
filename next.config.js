@@ -6,8 +6,10 @@ const nextConfig = {
   reactStrictMode: false,
   
   // Server Actions body size limit
-  serverActions: {
-    bodySizeLimit: '2mb',
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '2mb',
+    },
   },
   
   // EMERGENCY: CUSTOM WEBPACK CONFIG

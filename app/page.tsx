@@ -534,35 +534,10 @@ export default function Home() {
       console.error('Ошибка проверки переменных окружения:', error);
     }
 
-    // Тестовые данные для проверки
-    const testData = {
-      fromCity: 'Москва',
-      toCity: 'Санкт-Петербург', 
-      cargos: [{ id: '1', length: 100, width: 100, height: 100, weight: 10 }],
-      declaredValue: 50000,
-      fromAddressDelivery: false,
-      toAddressDelivery: false,
-      needPackaging: false,
-      needInsurance: false
-    };
+    // Тестовые данные для проверки API (не мутируем форму)
+    const testData = { fromCity: 'Москва', toCity: 'Санкт-Петербург', declaredValue: 10000 };
 
-    // Сохраняем текущее состояние формы
-    const currentForm = form;
-    
-    // Временно устанавливаем тестовые данные
-    setForm({
-      ...form,
-      fromCity: testData.fromCity,
-      toCity: testData.toCity,
-      cargos: testData.cargos,
-      declaredValue: testData.declaredValue,
-      fromAddressDelivery: testData.fromAddressDelivery,
-      toAddressDelivery: testData.toAddressDelivery,
-      needPackaging: testData.needPackaging,
-      needInsurance: testData.needInsurance
-    });
-
-    // Запускаем проверки параллельно (только для компаний с переменными)
+    // Запускаем проверки параллельно (не мутируем форму — каждый тест самодостаточен)
     Promise.all([
       checkAPIStatus('pek', async () => {
         try {
@@ -584,24 +559,14 @@ export default function Home() {
       
       checkAPIStatus('dellin', async () => {
         try {
-          // Тестируем получение sessionID для Деловых Линий (тот же метод что в calculateDellin)
-          const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {
+          // Тестируем через серверный прокси /api/dellin
+          const response = await fetch('/api/dellin', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
-              login: 'service@lavsit.ru',
-              password: 'edcwsx123QAZ'
-            })
+            body: JSON.stringify({ method: 'test' })
           });
-          const authData = await authResponse.json();
-          
-          // Проверяем все возможные пути к sessionID как в calculateDellin
-          if (authData.data?.sessionID || authData.sessionID || authData.data?.session) {
-            return { success: true };
-          } else {
-            return { error: true };
-          }
+          const data = await response.json();
+          return data.status === 'OK' ? { success: true } : { error: true };
         } catch (error) {
           return { error: true };
         }
@@ -795,10 +760,7 @@ export default function Home() {
           return { error: true };
         }
       })
-    ]).finally(() => {
-      // Восстанавливаем исходное состояние формы
-      setForm(currentForm);
-    });
+    ]);
   };
 
   const searchAddresses = useCallback(async (query: string, field: string, element?: HTMLInputElement) => {
@@ -820,31 +782,37 @@ export default function Home() {
     }
     
     try {
-      const response = await fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {
+      // Подсказки через серверный прокси /api/dadata (без утечки ключа в браузер)
+      const isCityField = field === 'fromCity' || field === 'toCity';
+      const response = await fetch('/api/dadata', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Authorization': 'Token eb87bbb3789bb43ed465f796892ea951f9e91008'
         },
         body: JSON.stringify({
-          query: query,
-          count: 10,
-          // Ограничение для полей городов - только города
-          ...(field === 'fromCity' || field === 'toCity' ? {
+          address: query,
+          type: 'suggest',
+          ...(isCityField ? {
+            bounds: { from: 'city', to: 'city' },
+            locations: [{ country: 'Россия' }],
             restrict_value: true,
-            locations: [{
-              country: 'Россия'
-            }],
-            from_bound: { value: 'city' },
-            to_bound: { value: 'city' }
           } : {})
         })
       });
 
       if (response.ok) {
-        const data = await response.json();
-        setSuggestions(data.suggestions || []);
+        const result = await response.json();
+        // Маппинг серверного ответа в формат DaData suggestions
+        if (result.success && Array.isArray(result.data)) {
+          const mapped = result.data.map((s: any) => ({
+            value: s.value,
+            unrestricted_value: s.unrestricted_value || s.value,
+            data: s.data || {}
+          }));
+          setSuggestions(mapped);
+        } else {
+          setSuggestions([]);
+        }
         setShowSuggestions(true);
       }
     } catch (error) {
@@ -1333,1100 +1301,57 @@ export default function Home() {
     console.log(`🗑️ Удален товар ${productId}`);
   };
 
-  // Получение sessionID для Деловых Линий
-  const getDellinSessionId = async (): Promise<string | null> => {
-    try {
-      const authResponse = await fetch('https://api.dellin.ru/v3/auth/login.json', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
-          login: 'service@lavsit.ru',
-          password: 'edcwsx123QAZ'
-        })
-      });
+  // ── Деловые Линии: вся логика на сервере /api/dellin ──
 
-      const authData = await authResponse.json();
-      console.log('🔑 АВТОРИЗАЦИЯ ДЛ response.ok:', authResponse.ok);
-      console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData:', authData);
-      console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data:', authData.data);
-      console.log('🔑 АВТОРИЗАЦИЯ ДЛ authData.data?.sessionID:', authData.data?.sessionID);
-      
-      // Проверяем разные возможные пути к sessionID
-      let sessionID = null;
-      
-      if (authData.data?.sessionID) {
-        sessionID = authData.data.sessionID;
-        console.log('✅ SessionID найден в data.sessionID:', sessionID);
-      } else if (authData.sessionID) {
-        sessionID = authData.sessionID;
-        console.log('✅ SessionID найден в sessionID:', sessionID);
-      } else if (authData.data?.session) {
-        sessionID = authData.data.session;
-        console.log('✅ SessionID найден в data.session:', sessionID);
-      }
-      
-      if (authResponse.ok && sessionID) {
-        return sessionID;
-      } else {
-        console.error('❌ Ошибка авторизации Деловые Линии:', authData);
-        console.error('❌ Статус ответа:', authResponse.status);
-        console.error('❌ Текст ответа:', authResponse.statusText);
-        return null;
-      }
-    } catch (error) {
-      console.error('Ошибка соединения с авторизацией Деловые Линии:', error);
-    }
-    return null;
-  };
 
-  // Загрузка локального справочника городов Деловых Линий
-  const loadDellinCities = async () => {
-    try {
-      const response = await fetch('/data/dellin-cities.json');
-      if (!response.ok) {
-        console.error('❌ Не удалось загрузить справочник городов');
-        return null;
-      }
-      const data = await response.json();
-      return data.cities;
-    } catch (error) {
-      console.error('❌ Ошибка загрузки справочника городов:', error);
-      return null;
-    }
-  };
 
-  // Поиск cityID в локальном справочнике
-  const getCityIDFromLocal = async (cityName: string): Promise<string | null> => {
-    const cities = await loadDellinCities();
-    if (!cities) return null;
-
-    const normalizedSearch = cityName.toLowerCase().trim()
-      .replace(/^г\s+/, '') // Убираем префикс "г "
-      .replace(/^город\s+/, '') // Убираем префикс "город "
-      .replace(/\s+/g, ' '); // Нормализуем пробелы
-
-    console.log(`🔍 Поиск cityID для города: "${normalizedSearch}"`);
-
-    // Поиск в справочнике
-    for (const city of cities) {
-      // Проверяем точное совпадение с именем города
-      if (city.name.toLowerCase() === normalizedSearch) {
-        console.log(`✅ Точное совпадение: "${city.name}" -> cityID: ${city.cityID}`);
-        return city.cityID;
-      }
-
-      // Проверяем совпадение с поисковыми строками
-      for (const searchString of city.searchStrings) {
-        if (searchString === normalizedSearch) {
-          console.log(`✅ Найдено в поисковых строках: "${searchString}" для города "${city.name}" -> cityID: ${city.cityID}`);
-          return city.cityID;
-        }
-      }
-    }
-
-    console.warn(`⚠️ cityID не найден в локальном справочнике для города: "${normalizedSearch}"`);
-    return null;
-  };
-
-  // Получение cityID через правильный API Деловых Линий
-  const findCityInDellinDirectory = async (cityName: string): Promise<{cityID: number, code: string} | null> => {
-    try {
-      console.log(`🔍 Поиск города в справочнике ДЛ: ${cityName}`);
-      
-      // Нормализуем название города
-      const normalizedCity = cityName.toLowerCase().trim()
-        .replace(/^г\s+/, '') // Убираем префикс "г "
-        .replace(/^город\s+/, '') // Убираем префикс "город "
-        .replace(/\s+/g, ' '); // Нормализуем пробелы
-      
-      // Используем правильный API для поиска населенных пунктов
-      const response = await fetch('https://api.dellin.ru/v2/public/kladr.json', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
-          q: normalizedCity,
-          limit: 10
-        })
-      });
-      
-      const data = await response.json();
-      console.log(`🏙️ Поиск города "${normalizedCity}" response:`, data);
-      
-      if (response.ok && data.cities && Array.isArray(data.cities) && data.cities.length > 0) {
-        // Ищем точное соответствие или наиболее подходящий город
-        let bestMatch = data.cities.find((city: any) => 
-          city.searchString?.toLowerCase() === normalizedCity ||
-          city.aString?.toLowerCase().includes(normalizedCity)
-        );
-        
-        // Если точного соответствия нет, берем первый с терминалами
-        if (!bestMatch) {
-          bestMatch = data.cities.find((city: any) => city.isTerminal === 1);
-        }
-        
-        // Если и этого нет, берем первый
-        if (!bestMatch) {
-          bestMatch = data.cities[0];
-        }
-        
-        if (bestMatch) {
-          console.log(`✅ Найден город:`, {
-            cityID: bestMatch.cityID,
-            name: bestMatch.aString,
-            code: bestMatch.code,
-            hasTerminals: bestMatch.isTerminal === 1
-          });
-          
-          return {
-            cityID: bestMatch.cityID,
-            code: bestMatch.code
-          };
-        }
-      }
-      
-      console.warn(`⚠️ Город "${normalizedCity}" не найден в справочнике ДЛ`);
-      return null;
-      
-    } catch (error) {
-      console.error(`❌ Ошибка поиска города в справочнике ДЛ:`, error);
-      return null;
-    }
-  };
-  
-
-  
-  // Поиск терминалов через рабочий v1 API (из test-dellin-terminals-simple.js)
-  const getDellinTerminalByDirection = async (citySearch: string, direction: 'arrival' | 'derival'): Promise<string | null> => {
-    try {
-      console.log(`🔍 РАБОЧИЙ v1 API: Поиск терминала ${direction} для города: ${citySearch}`);
-      
-      // Получаем sessionID для запроса
-      const sessionID = await getDellinSessionId();
-      if (!sessionID) {
-        console.error('❌ Отсутствует sessionID для поиска терминалов');
-        return null;
-      }
-      
-      // Прямой запрос к рабочему API
-      const requestData = {
-        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
-        sessionID: sessionID,
-        search: citySearch,
-        direction: direction
-      };
-      
-      console.log(`📤 Запрос терминалов:`, requestData);
-      
-      const response = await fetch('https://api.dellin.ru/v1/public/request_terminals.json', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestData)
-      });
-      
-      const data = await response.json();
-      console.log(`📥 Ответ терминалов (${response.status}):`, data);
-      
-      if (!response.ok) {
-        console.error('❌ Ошибка запроса терминалов:', data);
-        return null;
-      }
-      
-      // Проверяем наличие терминалов в ответе
-      const terminals = data.terminals || [];
-      if (terminals.length === 0) {
-        console.warn(`⚠️ Терминалы не найдены для города "${citySearch}"`);
-        return null;
-      }
-      
-      // Выбираем первый доступный терминал
-      const selectedTerminal = terminals[0];
-      
-      console.log(`✅ Найден терминал ${direction}:`, {
-        id: selectedTerminal.id,
-        name: selectedTerminal.name,
-        address: selectedTerminal.address
-      });
-      
-      return selectedTerminal.id.toString();
-      
-    } catch (error) {
-      console.error(`❌ Ошибка поиска терминала ${direction} (v1 API):`, error);
-      return null;
-    }
-  };
-
-  // Получение терминалов Деловые Линии для города (используем функцию с направлением)
-  const getDellinTerminal = async (citySearch: string): Promise<string | null> => {
-    return getDellinTerminalByDirection(citySearch, 'arrival');
-  };
-  
-  // Нормализация адреса через DaData для правильного формата Деловых Линий
-  const normalizeAddressForDellin = async (address: string): Promise<string> => {
-    try {
-      console.log(`🌐 Нормализация адреса через DaData: ${address}`);
-      
-      const response = await fetch('/api/dadata', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          address: address,
-          type: 'clean'
-        })
-      });
-      
-      const data = await response.json();
-      console.log(`🌐 DaData response:`, data);
-      
-      if (data.success && data.data?.dellinFormat) {
-        console.log(`✅ Нормализованный адрес: ${data.data.dellinFormat}`);
-        return data.data.dellinFormat;
-      }
-      
-      // Если DaData не сработал, возвращаем исходный адрес
-      console.warn(`⚠️ DaData не смог нормализовать адрес, используем исходный`);
-      return address;
-      
-    } catch (error) {
-      console.error(`❌ Ошибка нормализации адреса через DaData:`, error);
-      return address; // Возвращаем исходный адрес в случае ошибки
-    }
-  };
-
-  // Получение UID упаковки через правильный workflow согласно документации ДЛ
-  const getDellinPackageUid = async (packageName: string = 'crate_with_bubble'): Promise<string | null> => {
-    try {
-      console.log(`📦 CSV WORKFLOW: Получение UID упаковки "${packageName}" через правильный workflow...`);
-      console.log('📦 CSV WORKFLOW: API ДЛ → CSV ссылка → скачать CSV → парсить → получить UID');
-      
-      const response = await fetch('/api/dellin-packages', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      const data = await response.json();
-      console.log('📦 CSV WORKFLOW response.ok:', response.ok);
-      console.log('📦 CSV WORKFLOW status:', response.status);
-      console.log('📦 CSV WORKFLOW workflow info:', data.workflow || 'not specified');
-      
-      if (response.ok && data.success && data.data && Array.isArray(data.data)) {
-        console.log('📦 CSV WORKFLOW: успешно получен справочник');
-        console.log('📦 Количество упаковок в справочнике:', data.data.length);
-        console.log('📦 Источник данных:', data.cached ? 'кэш (24ч)' : 'свежий CSV файл');
-        if (data.csvUrl) {
-          console.log('📦 CSV URL:', data.csvUrl);
-        }
-        
-        // Поиск по нескольким вариантам названия
-        const searchTerms = [
-          packageName,
-          'обрешетка',
-          'обрешётка',
-          'амортизация',
-          'bubble',
-          'защитная упаковка'
-        ];
-        
-        let foundPackage: any = null;
-        
-        for (const term of searchTerms) {
-          foundPackage = data.data.find((pkg: any) => 
-            pkg.name && pkg.name.toLowerCase().includes(term.toLowerCase())
-          );
-          
-          if (foundPackage) {
-            console.log(`✅ CSV WORKFLOW: Найдена упаковка по термину "${term}": ${foundPackage.name} → ${foundPackage.uid}`);
-            break;
-          }
-        }
-        
-        if (foundPackage && foundPackage.uid) {
-          return foundPackage.uid;
-        } else {
-          console.log('❌ CSV WORKFLOW: Упаковка не найдена по поисковым терминам');
-          
-          // Выводим первые 10 упаковок для отладки
-          console.log('📦 Доступные упаковки в справочнике (первые 10):');
-          data.data.slice(0, 10).forEach((pkg: any, index: number) => {
-            console.log(`  ${index + 1}. ${pkg.name} (${pkg.uid})`);
-          });
-        }
-      } else {
-        console.error('❌ CSV WORKFLOW: Ошибка получения справочника:', data);
-      }
-      
-      return null;
-        
-    } catch (error) {
-      console.error('❌ CSV WORKFLOW: Критическая ошибка:', error);
-      return null;
-    }
-  };
-
-  // Расчет для Деловых Линий через корректный API v2/calculator.json с повторной авторизацией
+  // Расчет для Деловых Линий через серверный прокси /api/dellin
   const calculateDellin = async (): Promise<CalculationResult> => {
-    const { enhancedApiRequest } = await import('@/lib/api-utils');
-    const apiUrl = 'https://api.dellin.ru/v2/calculator.json';
-    const maxRetries = 2;
-    
-    console.log('🚀 === НАЧАЛО РАСЧЕТА ДЕЛОВЫХ ЛИНИЙ ===');
-    console.log('🚀 API URL:', apiUrl);
+    console.log('🚀 === РАСЧЕТ ДЕЛОВЫХ ЛИНИЙ (через /api/dellin) ===');
     
     try {
-      let sessionID = await getDellinSessionId();
+      const response = await fetch('/api/dellin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fromCity: form.fromCity,
+          toCity: form.toCity,
+          fromAddress: form.fromAddress,
+          toAddress: form.toAddress,
+          fromAddressDelivery: form.fromAddressDelivery,
+          toAddressDelivery: form.toAddressDelivery,
+          cargos: form.cargos,
+          declaredValue: form.declaredValue,
+          needPackaging: form.needPackaging,
+          needCarry: form.needCarry,
+          floor: form.floor,
+          hasFreightLift: form.hasFreightLift,
+        })
+      });
       
-      if (!sessionID) {
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: 'Не удалось получить sessionID',
-          apiUrl,
-          requestData: null,
-          responseData: null
-        };
-      }
-
-      // Вычисляем размеры и объемы
-      const totalWeight = form.cargos.reduce((sum, cargo) => sum + cargo.weight, 0);
-      const totalVolume = form.cargos.reduce((sum, cargo) => 
-        sum + (cargo.length * cargo.width * cargo.height) / 1000000, 0
-      );
-      const maxLength = Math.max(...form.cargos.map(c => c.length)) / 100; // в метрах
-      const maxWidth = Math.max(...form.cargos.map(c => c.width)) / 100;
-      const maxHeight = Math.max(...form.cargos.map(c => c.height)) / 100;
-
-      // Получаем терминалы и нормализованные адреса
-      let fromTerminalId: string | null = null;
-      let toTerminalId: string | null = null;
-      let normalizedFromAddress: string | null = null;
-      let normalizedToAddress: string | null = null;
-      
-      // Для терминальной доставки получаем терминалы
-      if (!form.fromAddressDelivery) {
-        fromTerminalId = await getDellinTerminalByDirection(form.fromCity, 'derival');
-      } else {
-        // Для адресной доставки нормализуем адрес
-        const addressToNormalize = form.fromAddress || form.fromCity;
-        normalizedFromAddress = await normalizeAddressForDellin(addressToNormalize);
-      }
-      
-      if (!form.toAddressDelivery) {
-        toTerminalId = await getDellinTerminalByDirection(form.toCity, 'arrival');
-      } else {
-        // Для адресной доставки нормализуем адрес
-        const addressToNormalize = form.toAddress || form.toCity;
-        normalizedToAddress = await normalizeAddressForDellin(addressToNormalize);
-      }
-      
-      console.log('🏢 ДАННЫЕ ДЛ:');
-      console.log('🏢 form.fromAddressDelivery:', form.fromAddressDelivery);
-      console.log('🏢 form.toAddressDelivery:', form.toAddressDelivery);
-      console.log('🏢 fromTerminalId:', fromTerminalId);
-      console.log('🏢 toTerminalId:', toTerminalId);
-      console.log('🏢 normalizedFromAddress:', normalizedFromAddress);
-      console.log('🏢 normalizedToAddress:', normalizedToAddress);
-      
-      // Проверяем что терминалы найдены ТОЛЬКО для терминальной доставки
-      if (!form.fromAddressDelivery && !fromTerminalId) {
-        console.error('❌ Не найден терминал отправления для города:', form.fromCity);
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: `Не найден терминал Деловых Линий в городе отправления: ${form.fromCity}`,
-          apiUrl,
-          requestData: null,
-          responseData: null
-        };
-      }
-      
-      if (!form.toAddressDelivery && !toTerminalId) {
-        console.error('❌ Не найден терминал назначения для города:', form.toCity);
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: `Не найден терминал Деловых Линий в городе назначения: ${form.toCity}`,
-          apiUrl,
-          requestData: null,
-          responseData: null
-        };
-      }
-      
-      // Для адресной доставки проверяем что адреса нормализованы
-      if (form.fromAddressDelivery && !normalizedFromAddress) {
-        console.error('❌ Не удалось нормализовать адрес отправления:', form.fromAddress || form.fromCity);
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: `Не удалось обработать адрес отправления: ${form.fromAddress || form.fromCity}`,
-          apiUrl,
-          requestData: null,
-          responseData: null
-        };
-      }
-      
-      if (form.toAddressDelivery && !normalizedToAddress) {
-        console.error('❌ Не удалось нормализовать адрес назначения:', form.toAddress || form.toCity);
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: `Не удалось обработать адрес назначения: ${form.toAddress || form.toCity}`,
-          apiUrl,
-          requestData: null,
-          responseData: null
-        };
-      }
-
-      // Получаем UID упаковки (если нужна упаковка)
-      // Всегда используем фиксированный UID для упаковки согласно требованиям
-      let packageUid: string | null = null;
-      console.log('=== НАЧАЛО ОТЛАДКИ УПАКОВКИ ===');
-      console.log('🔍 ОТЛАДКА УПАКОВКИ: form.needPackaging =', form.needPackaging);
-      console.log('🔍 ОТЛАДКА УПАКОВКИ: typeof form.needPackaging =', typeof form.needPackaging);
-      
-      if (form.needPackaging) {
-        // Используем фиксированный UID для упаковки
-        packageUid = '0xad97901b0ecef0f211e889fcf4624fec';
-        console.log('🔍 ✅ УПАКОВКА ТРЕБУЕТСЯ - используем фиксированный UID:', packageUid);
-        console.log('🔍 ✅ typeof packageUid:', typeof packageUid);
-        console.log('🔍 ✅ packageUid truthy:', !!packageUid);
-      } else {
-        console.log('🔍 ❌ Упаковка не требуется, пропускаем получение UID');
-      }
-      console.log('=== КОНЕЦ ОТЛАДКИ УПАКОВКИ ===');
-
-      // Функция для получения даты с учетом смещения дней от сегодня
-      const getDateForDellin = (dayOffset: number): string => {
-        const date = new Date();
-        date.setDate(date.getDate() + dayOffset);
-        return date.toISOString().split('T')[0];
-      };
-
-      // Начинаем с сегодня (dayOffset = 0)
-      let currentDayOffset = 0;
-      const maxDaysToTry = 14; // Перебираем на 2 недели вперед
-      
-      // Инициализируем дату для первоначального формирования запроса
-      let produceDate = getDateForDellin(currentDayOffset);
-
-      // Отладка перед формированием запроса
-      console.log('=== ОТЛАДКА ФОРМИРОВАНИЯ ЗАПРОСА ===');
-      console.log('🔍 form.needPackaging =', form.needPackaging, '(тип:', typeof form.needPackaging, ')');
-      console.log('🔍 packageUid =', packageUid, '(тип:', typeof packageUid, ')');
-      console.log('🔍 packageUid truthy =', !!packageUid);
-      console.log('🔍 Условие (form.needPackaging && packageUid) =', form.needPackaging && packageUid);
-      
-      if (form.needPackaging && packageUid) {
-        console.log('✅ PACKAGES БУДЕТ ДОБАВЛЕН В ЗАПРОС!');
-      } else {
-        console.log('❌ PACKAGES НЕ БУДЕТ ДОБАВЛЕН:');
-        if (!form.needPackaging) console.log('  - form.needPackaging = false');
-        if (!packageUid) console.log('  - packageUid отсутствует/null');
-      }
-
-      // Формируем корректную структуру запроса согласно инструкции
-      const requestData = {
-        appkey: 'E6C50E91-8E93-440F-9CC6-DEF9F0D68F1B',
-        sessionID: sessionID,
-        delivery: {
-          deliveryType: {
-            type: 'auto'  // Всегда "auto" по умолчанию
-          },
-          derival: {
-            produceDate: produceDate,  // Обязательная дата отправления (будет обновляться в цикле)
-            variant: form.fromAddressDelivery ? 'address' : 'terminal',
-            ...(form.fromAddressDelivery ? {
-              address: {
-                search: normalizedFromAddress || form.fromAddress || form.fromCity
-              }
-            } : {
-              terminalID: fromTerminalId
-            }),
-            time: {
-              worktimeStart: '10:00',
-              worktimeEnd: '18:00',
-              breakStart: '13:00',
-              breakEnd: '14:00',
-              exactTime: false
-            }
-            // handling в derival всегда пропускается согласно инструкции
-          },
-          arrival: {
-            variant: form.toAddressDelivery ? 'address' : 'terminal',
-            ...(form.toAddressDelivery ? {
-              address: {
-                search: normalizedToAddress || form.toAddress || form.toCity
-              }
-            } : {
-              terminalID: toTerminalId
-            }),
-            time: {
-              worktimeStart: '10:00',
-              worktimeEnd: '18:00',
-              breakStart: '13:00',
-              breakEnd: '14:00',
-              exactTime: false
-            },
-            // handling в arrival заполняется только если требуется подъем
-            ...(form.needCarry ? {
-              handling: {
-                freightLift: form.hasFreightLift, // true только если есть галочка "наличие грузового лифта"
-                toFloor: form.floor, // этаж из формы
-                carry: 0
-              }
-            } : {})
-          },
-          ...(form.needPackaging && packageUid ? {
-            packages: [{
-              uid: packageUid,  // UID упаковки crate_with_bubble из справочника
-              count: 1  // По умолчанию 1
-            }]
-          } : {})
-        },
-        cargo: {
-          quantity: form.cargos.length,
-          length: maxLength,
-          width: maxWidth,
-          height: maxHeight,
-          weight: totalWeight,
-          totalVolume: totalVolume,
-          totalWeight: totalWeight,
-          oversizedWeight: 0,
-          oversizedVolume: 0,
-          hazardClass: 0,  // Всегда 0 если нет опасных грузов
-          freightName: 'Мебель',  // Название груза (обязательное поле, взаимоисключающее с freightUID)
-          insurance: {
-            statedValue: form.declaredValue || 0,
-            term: true  // Всегда true по умолчанию
-          }
-        },
-        payment: {
-          type: 'noncash',  // Всегда "noncash"
-          paymentCitySearch: {
-            search: form.fromCity  // Город оплаты
-          }
-        }
-      };
-
-      console.log('🚀 ИТОГОВЫЙ ЗАПРОС К ДЛ:', JSON.stringify(requestData, null, 2));
-      
-      // Специальная проверка блока packages
-      if (requestData.delivery.packages) {
-        console.log('✅ PACKAGES НАЙДЕН В ЗАПРОСЕ:', requestData.delivery.packages);
-      } else {
-        console.log('❌ PACKAGES НЕ НАЙДЕН В ЗАПРОСЕ');
-        console.log('   form.needPackaging =', form.needPackaging);
-        console.log('   packageUid =', packageUid);
-        console.log('   Условие:', form.needPackaging && packageUid);
-      }
-
-      // Попытки запроса с повторной авторизацией при ошибках и перебором дат
-      let response: any = null;
-      let data: any = null;
-      let lastError: Error | null = null;
-      let successfulDate: string | null = null;
-      
-      // Внешний цикл для перебора дат (до 14 дней)
-      while (currentDayOffset <= maxDaysToTry) {
-        // Формируем дату для текущей попытки
-        const produceDate = getDateForDellin(currentDayOffset);
-        requestData.delivery.derival.produceDate = produceDate;
-        
-        console.log(`📅 ДЛ: Попытка расчета с датой ${produceDate} (день +${currentDayOffset})`);
-        
-        // Внутренний цикл для повторных попыток с авторизацией
-        let requestSuccessful = false;
-        let hasDateError = false;
-        
-        for (let attempt = 1; attempt <= maxRetries; attempt++) {
-          console.log(`🔄 ДЛ: попытка запроса ${attempt}/${maxRetries} (дата: ${produceDate})`);
+      const data = await response.json();
+      console.log('🚀 Ответ /api/dellin:', data);
           
-          const result = await enhancedApiRequest(
-            apiUrl,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-              },
-              body: JSON.stringify(requestData)
-            },
-            { operation: 'calculate', company: 'Деловые Линии' }
-          );
-
-        if (result && typeof result === 'object' && 'success' in result && !result.success) {
-          console.error('❌ ДЛ API ошибка:', result.error);
-          // For Dellin, we still want to handle retries manually for session renewal
-          // So we'll create a mock response that indicates failure
-          response = {
-            ok: false,
-            status: 500,
-            json: async () => ({ error: result.error.message })
-          } as any;
-          data = { error: result.error.message };
-        } else {
-          response = result as Response;
-          try {
-            data = await response.json();
-          } catch (parseError) {
-            console.error('❌ Ошибка парсинга JSON ответа ДЛ:', parseError);
-            throw new Error(`Ошибка парсинга ответа API: ${parseError instanceof Error ? parseError.message : 'неизвестная ошибка'}`);
-          }
-        }
-        
-        console.log('🚀 ОТВЕТ ДЛ response.ok:', response.ok);
-        console.log('🚀 ОТВЕТ ДЛ status:', response.status);
-        console.log('🚀 ОТВЕТ ДЛ data:', data);
-        
-        // Проверяем различные типы ошибок авторизации
-        const isAuthError = response.status === 401 || 
-                           response.status === 403 ||
-                           (response.status === 400 && data?.errors?.some((err: any) => 
-                             err.detail?.toLowerCase()?.includes('session') ||
-                             err.detail?.toLowerCase()?.includes('auth') ||
-                             err.detail?.toLowerCase()?.includes('invalid')
-                           ));
-
-        if (isAuthError && attempt < maxRetries) {
-          console.log('🔄 ДЛ: обнаружена ошибка авторизации, выполняем повторную авторизацию...');
-          const newSessionId = await getDellinSessionId();
-          if (newSessionId) {
-            console.log('✅ ДЛ: получен новый SessionID, обновляем запрос...');
-            // Обновляем sessionID в запросе
-            requestData.sessionID = newSessionId;
-            sessionID = newSessionId;
-            continue; // Пробуем еще раз с новой авторизацией
-          } else {
-            console.error('❌ ДЛ: не удалось получить новый SessionID');
-            break;
-          }
-        }
-        
-          // Проверяем на ошибку 180012 (недоступная дата)
-          hasDateError = false;
-          if (response.status === 400 && data?.errors) {
-            console.log('=== АНАЛИЗ ОШИБКИ 400 ===');
-            console.log('🔍 Ошибки:', data.errors);
-            
-            // Проверяем наличие ошибки 180012 (недоступная дата)
-            hasDateError = data.errors.some((error: any) => 
-              error.code === 180012 || 
-              error.code === '180012' ||
-              (error.title && error.title.toLowerCase().includes('дата недоступна')) ||
-              (error.detail && error.detail.toLowerCase().includes('дата недоступна')) ||
-              (error.detail && error.detail.toLowerCase().includes('выбранная дата недоступна'))
-            );
-            
-            if (hasDateError) {
-              console.log(`📅 ДЛ: Обнаружена ошибка 180012 - дата ${produceDate} недоступна`);
-              data.errors.forEach((error: any, index: number) => {
-                console.log(`🔍 Ошибка ${index + 1}:`, error);
-                if (error.code === 180012 || error.code === '180012') {
-                  console.log(`   ⚠️ Код ошибки: ${error.code}`);
-                  console.log(`   ⚠️ Сообщение: ${error.title || error.detail || 'Дата недоступна'}`);
-                }
-              });
-              console.log('=== КОНЕЦ АНАЛИЗА ОШИБКИ 400 (дата недоступна) ===');
-              
-              // Выходим из внутреннего цикла попыток - будем пробовать следующую дату
-              lastError = new Error(`Дата ${produceDate} недоступна`);
-              break; // Выходим из цикла попыток для этой даты
-            } else {
-              // Другая ошибка 400 - выводим информацию
-              data.errors.forEach((error: any, index: number) => {
-                console.log(`🔍 Ошибка ${index + 1}:`, error);
-                console.log(`   - Поле: ${error.field || 'не указано'}`);
-                console.log(`   - Код: ${error.code || 'не указано'}`);
-                console.log(`   - Сообщение: ${error.detail || error.title || error.message || 'не указано'}`);
-              });
-              console.log('=== КОНЕЦ АНАЛИЗА ОШИБКИ 400 (другая ошибка) ===');
-            }
-          }
-
-          // Если запрос успешный (не ошибка 180012), выходим из обоих циклов
-          if (response.ok && data?.data && data.metadata?.status === 200) {
-            console.log(`✅ ДЛ: Успешный расчет с датой ${produceDate}`);
-            successfulDate = produceDate;
-            requestSuccessful = true;
-            break; // Выходим из цикла попыток
-          }
-          
-          // Если это была ошибка даты, выходим из внутреннего цикла для перехода к следующей дате
-          if (hasDateError) {
-            break; // Выходим из цикла попыток, чтобы перейти к следующей дате
-          }
-          
-          // Если это ошибка авторизации и есть еще попытки, продолжаем
-          if (isAuthError && attempt < maxRetries) {
-            continue; // Продолжаем внутренний цикл попыток
-          }
-          
-          // Если другая ошибка и нет больше попыток, прерываем внутренний цикл
-          if (!isAuthError && attempt >= maxRetries) {
-            lastError = new Error(data.metadata?.detail || data.errors?.[0]?.detail || 'Ошибка API Деловых Линий');
-            break; // Выходим из цикла попыток для этой даты
-          }
-        } // Конец внутреннего цикла попыток
-        
-        // Если запрос успешен, выходим из внешнего цикла перебора дат
-        if (requestSuccessful) {
-          break;
-        }
-        
-        // Если это была ошибка даты и мы еще не достигли максимума, продолжаем перебор
-        if (hasDateError && currentDayOffset < maxDaysToTry) {
-          console.log(`📅 ДЛ: Пробуем следующую дату (осталось попыток: ${maxDaysToTry - currentDayOffset})`);
-          currentDayOffset++;
-          continue; // Переходим к следующей дате
-        }
-        
-        // Если другая ошибка или достигли максимума, прерываем перебор дат
-        break;
-      } // Конец внешнего цикла перебора дат
-      
-      // Если не нашли доступную дату (проверяем после выхода из циклов)
-      if (!successfulDate) {
-        // Если это была ошибка даты и мы перебрали все даты
-        if (lastError && lastError.message.includes('недоступна') && currentDayOffset > maxDaysToTry) {
-          console.error(`❌ ДЛ: Не удалось найти доступную дату за ${maxDaysToTry + 1} дней`);
           return {
-            company: 'Деловые Линии',
-            price: 0,
-            days: 0,
-            error: `Не удалось найти доступную дату для отправления в течение ${maxDaysToTry + 1} дней. Попробуйте выбрать другую дату вручную.`,
-            requestData,
-            responseData: data,
-            apiUrl,
-            sessionId: sessionID
-          };
-        }
-        
-        // Если другая ошибка и ответ не успешен, возвращаем ошибку
-        if (!response || !response.ok || !data?.data) {
-          console.log('❌ Ошибочный ответ API - пропускаем анализ данных');
-          const errorMessage = data?.metadata?.detail || 
-                             data?.metadata?.message || 
-                             data?.errors?.[0]?.detail || 
-                             (data?.metadata?.status !== 200 ? `HTTP ${data?.metadata?.status}` : '') ||
-                             (response ? `HTTP ${response.status} - ${response.statusText}` : '') ||
-                             lastError?.message ||
-                             'Ошибка расчета Деловые Линии';
-          return {
-            company: 'Деловые Линии',
-            price: 0,
-            days: 0,
-            error: errorMessage,
-            requestData,
-            responseData: data,
-            apiUrl,
-            sessionId: sessionID
-          };
-        }
-      } else {
-        // Если успешно нашли дату, логируем информацию
-        console.log(`✅ ДЛ: Используется дата ${successfulDate} для расчета`);
-      }
-
-      // Проверяем на ошибки ПЕРЕД анализом данных (финальная проверка)
-      if (!response?.ok || !data?.data) {
-        console.log('❌ Ошибочный ответ API - пропускаем анализ данных');
-        const errorMessage = data.metadata?.detail || 
-                           data.metadata?.message || 
-                           data.errors?.[0]?.detail || 
-                           (data.metadata?.status !== 200 ? `HTTP ${data.metadata?.status}` : '') ||
-                           `HTTP ${response.status} - ${response.statusText}` ||
-                           'Ошибка расчета Деловые Линии';
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: errorMessage,
-          requestData,
-          responseData: data,
-          apiUrl,
-          sessionId: sessionID
-        };
-      }
-      
-      // ДЕТАЛЬНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ (только для успешного ответа)
-      console.log('=== ПОЛНЫЙ АНАЛИЗ СТРУКТУРЫ СТРАХОВКИ ===');
-      console.log('🔍 ПРОВЕРКА СТРУКТУРЫ ДАННЫХ:');
-      console.log('🔍 data:', data ? 'существует' : 'undefined/null');
-      console.log('🔍 typeof data:', typeof data);
-      console.log('🔍 data.data:', data?.data ? 'существует' : 'undefined/null');
-      console.log('🔍 typeof data.data:', typeof data?.data);
-      
-      // Безопасная проверка свойств data.data
-      if (data?.data) {
-        console.log('🔍 Проверяем свойства data.data:');
-        console.log('🔍 data.data.derival:', typeof data.data.derival, data.data.derival);
-        console.log('🔍 data.data.arrival:', typeof data.data.arrival, data.data.arrival);
-        console.log('🔍 data.data.intercity:', typeof data.data.intercity, data.data.intercity);
-      }
-      
-      if (!data) {
-        console.error('❌ КРИТИЧЕСКАЯ ОШИБКА: data undefined/null');
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: 'Ошибка обработки ответа API: данные не получены',
-          apiUrl,
-          requestData,
-          responseData: null
-        };
-      }
-      
-      try {
-        console.log('🔍 ПОЛНАЯ СТРУКТУРА data.data:', JSON.stringify(data.data, null, 2));
-      } catch (jsonError) {
-        console.error('❌ Ошибка JSON.stringify для data.data:', jsonError);
-        console.log('🔍 data.data (toString):', data.data?.toString?.() || 'Не удалось преобразовать');
-      }
-      
-      // Поиск всех полей связанных со страховкой
-      console.log('💳 ПОИСК КОМПОНЕНТОВ СТРАХОВКИ:');
-      console.log('💳 data.data.insurance:', data.data?.insurance);
-      console.log('💳 data.data.cargoInsurance:', data.data?.cargoInsurance);
-      console.log('💳 data.data.termInsurance:', data.data?.termInsurance);
-      console.log('💳 data.data.insuranceDetails:', data.data?.insuranceDetails);
-      console.log('💳 data.data.services:', data.data?.services);
-      console.log('💳 data.data.additionalServices:', data.data?.additionalServices);
-      
-      // Поиск страховки в других разделах
-      try {
-        console.log('💳 Проверяем derival...');
-        if (data.data?.derival) {
-          console.log('💳 derival найден, проверяем insurance...');
-          console.log('💳 СТРАХОВКА В ЗАБОЕ data.data.derival.insurance:', data.data.derival?.insurance);
-        } else {
-          console.log('💳 derival не найден или null');
-        }
-        
-        console.log('💳 Проверяем arrival...');
-        if (data.data?.arrival) {
-          console.log('💳 arrival найден, проверяем insurance...');
-          console.log('💳 СТРАХОВКА В ДОСТАВКЕ data.data.arrival.insurance:', data.data.arrival?.insurance);
-        } else {
-          console.log('💳 arrival не найден или null');
-        }
-        
-        console.log('💳 Проверяем intercity...');
-        if (data.data?.intercity) {
-          console.log('💳 intercity найден, проверяем insurance...');
-          console.log('💳 СТРАХОВКА В ПЕРЕВОЗКЕ data.data.intercity.insurance:', data.data.intercity?.insurance);
-        } else {
-          console.log('💳 intercity не найден или null');
-        }
-      } catch (error) {
-        console.error('❌ ОШИБКА при проверке секций страховки:', error);
-        console.error('❌ Стек ошибки:', error instanceof Error ? error.stack : 'Нет стека');
-      }
-      
-      // Рекурсивный поиск всех полей содержащих "insurance"
-      const findInsuranceFields = (obj: any, path = '') => {
-        if (typeof obj !== 'object' || obj === null || obj === undefined) return;
-        
-        try {
-          Object.keys(obj).forEach(key => {
-            const fullPath = path ? `${path}.${key}` : key;
-            if (key.toLowerCase().includes('insurance') || key.toLowerCase().includes('insur')) {
-              console.log(`💳 НАЙДЕНО ПОЛЕ СТРАХОВКИ [${fullPath}]:`, obj[key]);
-            }
-            if (typeof obj[key] === 'object' && obj[key] !== null && obj[key] !== undefined) {
-              findInsuranceFields(obj[key], fullPath);
-            }
-          });
-        } catch (error) {
-          console.error(`💳 Ошибка в findInsuranceFields для пути ${path}:`, error);
-        }
+        company: data.company || 'Деловые Линии',
+        price: data.price || 0,
+        days: data.days || 0,
+        details: data.details,
+        error: data.error,
+        requestData: data.requestData,
+        responseData: data.responseData,
+        apiUrl: data.apiUrl,
+        sessionId: data.sessionId,
       };
-      
-      console.log('💳 РЕКУРСИВНЫЙ ПОИСК ПОЛЕЙ СТРАХОВКИ:');
-      try {
-        if (data && data.data) {
-          findInsuranceFields(data.data, 'data.data');
-        } else {
-          console.log('💳 Пропуск рекурсивного поиска: data.data недоступен');
-        }
-      } catch (error) {
-        console.error('❌ ОШИБКА в рекурсивном поиске:', error);
-        console.error('❌ Стек ошибки:', error instanceof Error ? error.stack : 'Нет стека');
-      }
-      console.log('=== КОНЕЦ АНАЛИЗА СТРАХОВКИ ===');
-      
-      // Специально проверяем наличие packages в ответе
-      console.log('=== ПОИСК PACKAGES В ОТВЕТЕ ===');
-      console.log('📦 data.data =', data.data);
-      console.log('📦 data.data.packages =', data.data?.packages);
-      console.log('📦 Тип data.data.packages:', typeof data.data?.packages);
-      if (data.data?.packages) {
-        console.log('✅ PACKAGES НАЙДЕН В ОТВЕТЕ!');
-        try {
-          console.log('📦 Содержимое packages:', JSON.stringify(data.data.packages, null, 2));
-        } catch (jsonError) {
-          console.error('❌ Ошибка JSON.stringify для packages:', jsonError);
-          console.log('📦 packages (toString):', data.data.packages?.toString?.() || 'Не удалось преобразовать');
-        }
-      } else {
-        console.log('❌ PACKAGES НЕ НАЙДЕН В ОТВЕТЕ');
-      }
-      console.log('=== КОНЕЦ ПОИСКА PACKAGES ===');
-
-      if (response.ok && data.data && data.metadata?.status === 200) {
-        let totalPrice = data.data.price || 0;
-        console.log('💰 РАСЧЕТ ИТОГОВОЙ СТОИМОСТИ:');
-        console.log('💰 Базовая стоимость data.data.price (УЖЕ ВКЛЮЧАЕТ ВСЕ):', totalPrice);
-        
-        // СТРАХОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно
-        if (data.data.insurance) {
-          console.log('💰 Страховка data.data.insurance (УЖЕ включена в базовую стоимость):', data.data.insurance);
-          console.log('💰 НЕ добавляем страховку повторно');
-        } else {
-          console.log('💰 Страховка отсутствует в ответе');
-        }
-        
-        // УПАКОВКА УЖЕ ВКЛЮЧЕНА в data.data.price - НЕ добавляем повторно
-        console.log('💰 ИНФОРМАЦИЯ ОБ УПАКОВКЕ (УЖЕ ВКЛЮЧЕНА В ОСНОВНУЮ СТОИМОСТЬ):');
-        console.log('💰 data.data.packages =', data.data.packages);
-        console.log('💰 form.needPackaging =', form.needPackaging);
-        
-        if (data.data.packages && form.needPackaging) {
-          console.log('💰 ✅ УПАКОВКА ПРИСУТСТВУЕТ В ОТВЕТЕ (цена уже включена в data.data.price)');
-          console.log('💰 Тип packages:', Array.isArray(data.data.packages) ? 'Array' : 'Object');
-          
-          if (Array.isArray(data.data.packages)) {
-            data.data.packages.forEach((pkg: any, index: number) => {
-              console.log(`💰 Package [${index}] (включена в основную стоимость):`, pkg);
-            });
-          } else {
-            Object.entries(data.data.packages).forEach(([key, pkg]: [string, any]) => {
-              console.log(`💰 Package [${key}] (включена в основную стоимость):`, pkg);
-            });
-          }
-        } else {
-          console.log('💰 ❌ Упаковка не запрашивалась');
-        }
-
-        // Вычисляем срок доставки как разность между датами pickup и arrivalToOspReceiver
-        let deliveryDays = 0;
-        try {
-          console.log('=== ПОИСК ДАТ В ОТВЕТЕ ===');
-          
-          // Проверяем все возможные места где могут быть даты
-          console.log('Проверяем data.data?.pickup:', data.data?.pickup);
-          console.log('Проверяем data.pickup:', data.pickup);
-          console.log('Проверяем data?.pickup:', data?.pickup);
-          console.log('Проверяем data.data?.arrivalToOspReceiver:', data.data?.arrivalToOspReceiver);
-          console.log('Проверяем data.arrivalToOspReceiver:', data.arrivalToOspReceiver);
-          console.log('Проверяем data?.arrivalToOspReceiver:', data?.arrivalToOspReceiver);
-          
-          // Более широкий поиск во всей структуре data
-          const findDateInObject = (obj: any, fieldName: string): string | null => {
-            if (!obj || typeof obj !== 'object') return null;
-            
-            for (const [key, value] of Object.entries(obj)) {
-              if (key === fieldName && typeof value === 'string') {
-                return value;
-              }
-              if (typeof value === 'object' && value !== null) {
-                const found = findDateInObject(value, fieldName);
-                if (found) return found;
-              }
-            }
-            return null;
-          };
-          
-          const pickup = findDateInObject(data, 'pickup');
-          const arrivalToOspReceiver = findDateInObject(data, 'arrivalToOspReceiver');
-          
-          console.log('НАЙДЕННЫЕ ДАТЫ:');
-          console.log('pickup:', pickup);
-          console.log('arrivalToOspReceiver:', arrivalToOspReceiver);
-          
-          if (pickup && arrivalToOspReceiver) {
-            // Парсим даты (формат может быть "2025-09-27" или "2025-09-27 10:00:00")
-            const pickupDate = new Date(pickup);
-            const arrivalDate = new Date(arrivalToOspReceiver);
-            
-            console.log('Парсированная дата pickup:', pickupDate);
-            console.log('Парсированная дата arrival:', arrivalDate);
-            
-            // Проверяем, что даты валидны
-            if (!isNaN(pickupDate.getTime()) && !isNaN(arrivalDate.getTime())) {
-              // Вычисляем разность в днях
-              const timeDiff = arrivalDate.getTime() - pickupDate.getTime();
-              deliveryDays = Math.max(1, Math.ceil(timeDiff / (1000 * 3600 * 24))); // Минимум 1 день
-              
-              console.log('Разность в миллисекундах:', timeDiff);
-              console.log('Деловые Линии - ВЫЧИСЛЕН срок доставки:', deliveryDays, 'дней');
-            } else {
-              console.error('Деловые Линии - Невалидные даты после парсинга');
-              console.error('pickup Date object:', pickupDate);
-              console.error('arrival Date object:', arrivalDate);
-            }
-          } else {
-            console.warn('Деловые Линии - Не найдены даты pickup или arrivalToOspReceiver');
-            console.log('pickup найден:', !!pickup, pickup);
-            console.log('arrivalToOspReceiver найден:', !!arrivalToOspReceiver, arrivalToOspReceiver);
-          }
-        } catch (error) {
-          console.error('Деловые Линии - Ошибка вычисления срока доставки:', error);
-        }
-
-        console.log('💰 ФИНАЛЬНАЯ ИТОГОВАЯ СТОИМОСТЬ:', Math.round(totalPrice));
-        
-        return {
-          company: 'Деловые Линии',
-          price: Math.round(totalPrice),
-          days: deliveryDays || 0,
-          details: data.data || {},
-          requestData,
-          responseData: data,
-          apiUrl,
-          sessionId: sessionID
-        };
-      } else {
-        const errorMessage = data.metadata?.detail || 
-                           data.metadata?.message || 
-                           data.errors?.[0]?.detail || 
-                           (data.metadata?.status !== 200 ? `HTTP ${data.metadata?.status}` : '') ||
-                           'Ошибка расчета Деловые Линии';
-        return {
-          company: 'Деловые Линии',
-          price: 0,
-          days: 0,
-          error: errorMessage,
-          requestData,
-          responseData: data,
-          apiUrl,
-          sessionId: sessionID
-        };
-      }
     } catch (error: any) {
       return {
         company: 'Деловые Линии',
         price: 0,
         days: 0,
-        error: `Ошибка соединения: ${error.message}`,
+        error: `Ошибка соединения: ${error instanceof Error ? error.message : 'Неизвестная ошибка'}`,
         requestData: null,
         responseData: null,
-        apiUrl
+        apiUrl: '/api/dellin'
       };
     }
   };

@@ -266,7 +266,7 @@ function getApiEndpoint(company: SupportedCompany): string {
     dellin: '/api/dellin-packages',
     vozovoz: '/api/vozovoz',
     railcontinent: '/api/rail-continent',
-    nordwheel: '/api/test'
+    nordwheel: '/api/nordwheel'
   };
 
   return endpoints[company];
